@@ -104,7 +104,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             },
             simplify: {
                 textSize: 1.2,
-                lineSpace: 1.2
+                lineSpace: 1.2,
+                toc: true
             }
         },
         invokers: {
