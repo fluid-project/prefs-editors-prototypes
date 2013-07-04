@@ -35,7 +35,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         templates: {
             highContrast: "../html/HighContrastPanelTemplate.html",
             increaseSize: "../html/IncreaseSizePanelTemplate.html",
-            simplify: "../html/SimplifyPanelTemplate.html"
+            simplify: "../html/SimplifyPanelTemplate.html",
+            spoken: "../html/SpokenPanelTemplate.html"
         }
     });
 
@@ -46,6 +47,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 highContrast: false,
                 increaseSize: false,
                 simplify: false,
+                spoken: false,
 
                 textFont: "default",
                 theme: "default",
@@ -54,7 +56,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 toc: false,
                 links: false,
                 inputsLarger: false,
-                simplifyContent: false
+                simplifyContent: false,
+                selfVoicing: false
             }
         }
     });
@@ -82,7 +85,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             panelSelections: {
                 highContrast: false,
                 increaseSize: false,
-                simplify: false
+                simplify: false,
+                spoken: false
             },
             convertedModel: {
                 textFont: "default",
@@ -92,7 +96,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 toc: false,
                 links: false,
                 inputsLarger: false,
-                simplifyContent: false
+                simplifyContent: false,
+                selfVoicing: false
             }
         },
         mapping: {
@@ -111,6 +116,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 lineSpace: 1.2,
                 toc: true,
                 simplifyContent: true
+            },
+            spoken: {
+                selfVoicing: true
             }
         },
         invokers: {
@@ -158,6 +166,20 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                         template: "{templateLoader}.resources.simplify"
                     }
                 }
+            },
+            spoken: {
+                type: "gpii.discoveryTool.panels.spoken",
+                container: "{uiOptions}.dom.spoken",
+                createOnEvent: "{uiOptions}.events.onUIOptionsMarkupReady",
+                options: {
+                    gradeNames: "gpii.discoveryTool.defaultPanel",
+                    rules: {
+                        "panelSelections.spoken": "spoken"
+                    },
+                    resources: {
+                        template: "{templateLoader}.resources.spoken"
+                    }
+                }
             }
         }
     });
@@ -197,7 +219,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         selectors: {
             highContrast: ".flc-discoveryTool-highContrast",
             increaseSize: ".flc-discoveryTool-increaseSize",
-            simplify: ".flc-discoveryTool-simplify"
+            simplify: ".flc-discoveryTool-simplify",
+            spoken: ".flc-discoveryTool-spoken"
         },
         components: {
             modelTransformer: {
@@ -209,6 +232,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                         "selections.highContrast": "panelSelections.highContrast",
                         "selections.increaseSize": "panelSelections.increaseSize",
                         "selections.simplify": "panelSelections.simplify",
+                        "selections.spoken": "panelSelections.spoken",
 
                         "selections.textFont": "convertedModel.textFont",
                         "selections.theme": "convertedModel.theme",
@@ -217,7 +241,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                         "selections.toc": "convertedModel.toc",
                         "selections.links": "convertedModel.links",
                         "selections.inputsLarger": "convertedModel.inputsLarger",
-                        "selections.simplifyContent": "convertedModel.simplifyContent"
+                        "selections.simplifyContent": "convertedModel.simplifyContent",
+                        "selections.selfVoicing": "convertedModel.selfVoicing"
                     }
                 }
             }
@@ -372,6 +397,26 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         that.applier.requestChange("", headingsModel);
     };
 
+    /************************
+     * Spoken
+     *********************/
+    fluid.defaults("gpii.discoveryTool.panels.spoken", {
+        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        // this is being ignored - ??
+        selectors: {
+            spoken: ".flc-discoveryTool-spoken-choice"
+        },
+        model: {
+            spoken: false
+        },
+        protoTree: {
+            spoken: "${spoken}"
+        }
+    });
+
+    /*************************
+     * Set of all enactors
+     **************************/
     fluid.defaults("gpii.discoveryTool.enactorSet", {
         gradeNames: ["fluid.uiEnhancer.starterEnactors", "autoInit"],
         components: {
@@ -390,7 +435,21 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                         settingChanged: "{uiEnhancer}.events.simplifyContentChanged"
                     }
                 }
+            },
+            selfVoicing: {
+                type: "gpii.discoveryTool.enactors.selfVoicing",
+                container: "{uiEnhancer}.container",
+                options: {
+                    sourceApplier: "{uiEnhancer}.applier",
+                    rules: {
+                        "selfVoicing": "value"
+                    },
+                    model: {
+                        value: "{fluid.uiOptions.rootModel}.rootModel.selfVoicing"
+                    }
+                }
             }
         }
     });
+
 })(jQuery, fluid);

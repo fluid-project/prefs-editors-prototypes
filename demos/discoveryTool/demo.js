@@ -78,7 +78,8 @@ var demo = demo || {};
                 uiOptions: "../../src/discoveryTool/html/DiscoveryTool.html",
                 highContrast: "../../src/discoveryTool/html/HighContrastPanelTemplate.html",
                 increaseSize: "../../src/discoveryTool/html/IncreaseSizePanelTemplate.html",
-                simplify: "../../src/discoveryTool/html/SimplifyPanelTemplate.html"
+                simplify: "../../src/discoveryTool/html/SimplifyPanelTemplate.html",
+                spoken: "../../src/discoveryTool/html/SpokenPanelTemplate.html"
             }
         }
     });
