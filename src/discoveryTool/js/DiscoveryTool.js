@@ -33,7 +33,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     fluid.defaults("gpii.discoveryTool.templateLoader", {
         gradeNames: ["fluid.uiOptions.templateLoader", "autoInit"],
         templates: {
-            highContrast: "../html/HighContrastPanelTemplate.html"
+            highContrast: "../html/HighContrastPanelTemplate.html",
+            increaseSize: "../html/IncreaseSizePanelTemplate.html",
+            simplify: "../html/SimplifyPanelTemplate.html"
         }
     });
 
@@ -45,13 +47,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 increaseSize: false,
                 simplify: false,
 
-                textFont: "default",          // key from classname map
-                theme: "default",             // key from classname map
-                textSize: 1,                  // in points
-                lineSpace: 1,               // in ems
-                toc: false,                   // boolean
-                links: false,                 // boolean
-                inputsLarger: false           // boolean
+                textFont: "default",
+                theme: "default",
+                textSize: 1,
+                lineSpace: 1,
+                toc: false,
+                links: false,
+                inputsLarger: false,
+                simplifyContent: false
             }
         }
     });
@@ -88,7 +91,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 lineSpace: 1,
                 toc: false,
                 links: false,
-                inputsLarger: false
+                inputsLarger: false,
+                simplifyContent: false
             }
         },
         mapping: {
@@ -105,7 +109,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             simplify: {
                 textSize: 1.2,
                 lineSpace: 1.2,
-                toc: true
+                toc: true,
+                simplifyContent: true
             }
         },
         invokers: {
@@ -211,7 +216,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                         "selections.lineSpace": "convertedModel.lineSpace",
                         "selections.toc": "convertedModel.toc",
                         "selections.links": "convertedModel.links",
-                        "selections.inputsLarger": "convertedModel.inputsLarger"
+                        "selections.inputsLarger": "convertedModel.inputsLarger",
+                        "selections.simplifyContent": "convertedModel.simplifyContent"
                     }
                 }
             }
@@ -280,4 +286,111 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
 
+    /**********************************************************************************
+     * simplifiedContentEnactor
+     *
+     * Simplify content based upon the model value.
+     **********************************************************************************/
+
+    // Note that the implementors need to provide the container for this view component
+    fluid.defaults("gpii.discoveryTool.enactors.simplifiedContent", {
+        gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
+        selectors: {
+            content: ".flc-uiOptions-content"
+        },
+        styles: {
+            simplified: "fl-uiOptions-content-simplified"
+        },
+        model: {
+            value: false
+        },
+        events: {
+            settingChanged: null
+        },
+        invokers: {
+            set: {
+                funcName: "gpii.discoveryTool.enactors.simplifiedContent.set",
+                args: ["{arguments}.0", "{that}"]
+            }
+        },
+        listeners: {
+            onCreate: {
+                listener: "{that}.set",
+                args: ["{that}.model.value"]
+            }
+        }
+    });
+
+    gpii.discoveryTool.enactors.simplifiedContent.set = function (value, that) {
+        var contentContainer = that.container.find(that.options.selectors.content);
+        var simplified = contentContainer.hasClass(that.options.styles.simplified);
+
+        if (!that.initialContent || !that.article) {
+            that.initialContent = contentContainer.html();
+            var articleDom = contentContainer.find("article").clone();
+            $("aside", articleDom).remove();
+            $("img", articleDom).css("float", "none");
+            $("figure", articleDom).css("float", "none");
+            var article = articleDom.html();
+            that.article = article ? article : that.initialContent;
+            that.origBg = $("body").css("background-image");
+        }
+
+        if (value) {
+            if (!simplified) {
+                $("body").css("background-image", "none");
+                contentContainer.html(that.article);
+                contentContainer.addClass(that.options.styles.simplified);
+                that.events.settingChanged.fire();
+            }
+        } else {
+            if (simplified) {
+                $("body").css("background-image", that.origBg);
+                contentContainer.html(that.initialContent);
+                contentContainer.removeClass(that.options.styles.simplified);
+                that.events.settingChanged.fire();
+            }
+        }
+    };
+
+    gpii.discoveryTool.enactors.simplifiedContent.finalInit = function (that) {
+        that.applier.modelChanged.addListener("value", function (newModel) {
+            that.set(newModel.value);
+        });
+    };
+    gpii.discoveryTool.updateToc = function (tocEnactor) {
+        if (tocEnactor.tableOfContents) {
+            gpii.discoveryTool.regenerateToc(tocEnactor.tableOfContents);
+        }
+    };
+    gpii.discoveryTool.regenerateToc = function (that) {
+        var headings = that.filterHeadings(that.locate("headings"), that.options.selectors.exclude);
+        that.anchorInfo = fluid.transform(headings, function (heading) {
+            return that.headingTextToAnchor(heading);
+        });
+        var headingsModel = that.modelBuilder.assembleModel(headings, that.anchorInfo);
+        that.applier.requestChange("", headingsModel);
+    };
+
+    fluid.defaults("gpii.discoveryTool.enactorSet", {
+        gradeNames: ["fluid.uiEnhancer.starterEnactors", "autoInit"],
+        components: {
+            simplify: {
+                type: "gpii.discoveryTool.enactors.simplifiedContent",
+                container: "{uiEnhancer}.container",
+                options: {
+                    sourceApplier: "{uiEnhancer}.applier",
+                    rules: {
+                        "simplifyContent": "value"
+                    },
+                    model: {
+                        value: "{fluid.uiOptions.rootModel}.rootModel.simplifyContent"
+                    },
+                    listeners: {
+                        settingChanged: "{uiEnhancer}.events.simplifyContentChanged"
+                    }
+                }
+            }
+        }
+    });
 })(jQuery, fluid);

@@ -29,11 +29,20 @@ var demo = demo || {};
 
     demo.initPageEnhancer = function (customThemeName) {
         fluid.pageEnhancer({
-            gradeNames: ["fluid.uiEnhancer.starterEnactors"],
+            gradeNames: ["gpii.discoveryTool.enactorSet"],
             tocTemplate: pathToTocTemplate,
             classnameMap: {
                 theme: {
                     "default": customThemeName
+                }
+            },
+            events: {
+                simplifyContentChanged: null
+            },
+            listeners: {
+                simplifyContentChanged: {
+                    listener: "gpii.discoveryTool.updateToc",
+                    args: "{that}.tableOfContents"
                 }
             }
         });
