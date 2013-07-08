@@ -1,0 +1,22 @@
+.discovery-tool-demo .fl-panelBar {
+    text-align: right;
+    background-color: #777;
+    padding: 1em;
+}
+.discovery-tool-demo .fl-panelBar button {
+    background-color: #777;
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+
+.discovery-tool-demo .fl-uiOptions-fatPanel  {
+    position: absolute;
+    bottom: 0;
+    width: 100%;    
+}
+
+.discovery-tool-demo .fl-uiOptions-fatPanel iframe {
+    width: 100%;
+    border: none;
+}

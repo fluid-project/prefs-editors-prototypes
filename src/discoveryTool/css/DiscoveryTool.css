@@ -1,0 +1,23 @@
+/* Discovery Tool styling, over-rides default Fat Panel styles */
+
+.fl-uiOptions-fatPanel {
+    background: none;
+    background-color: #777;
+    overflow: hidden;
+}
+
+
+.fl-uiOptions-fatPanel .fl-uiOptions-panels {
+    text-align: center;
+}
+
+.fl-uiOptions-fatPanel .fl-uiOptions-panels li.fl-uiOptions-panel {
+    width: 7em;
+    height: 7em;
+}
+
+.fl-uiOptions-fatPanel .fl-uiOptions-panels li.fl-uiOptions-panel h2 {
+    border: none;
+    box-shadow: none;  
+    text-transform: lowercase;  
+}
