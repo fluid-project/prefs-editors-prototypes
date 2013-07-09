@@ -21,7 +21,7 @@
     font-style: normal;
 }
 
-
+/* General */
 .fl-uiOptions-discoveryTool {
     background-color: #6f7b80;
     overflow: hidden;
@@ -31,6 +31,7 @@
     font-family: 'OpenSans',"Myriad Pro", Helvetica, Arial, sans-serif;    
 }
 
+/* Panels */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panels {
     text-align: center;
     margin: 0;
@@ -41,9 +42,11 @@
     width: 10em;
     margin: 0 1em 0 0;
     padding:0;    
-    color: #fff;    
+    color: #fff;
+    vertical-align: middle;    
 }
 
+/* Buttons */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel button {
     width: 9em;
     height: 9em;
@@ -53,16 +56,13 @@
     cursor: pointer;
     margin: 0;
 }
-.fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel button:hover,
-.fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel button:active {
-    background-color: #ffcc00;
-}
 
 .fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel span {
     width: 100%;
     margin: 0 auto;
 }
 
+/* Labels */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel label {
     border: none;
     box-shadow: none;  
@@ -72,6 +72,17 @@
     font-size: 1.4em;
 }
 
+/* Preset hover/active/focus */
+.fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel button:hover+label {
+    color: #fff;   
+}
+
+.fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel button:focus {
+    border: 2px solid #ffcc00;
+    outline: 0;
+}
+
+/* Try something new */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel .fl-discoveryTool-try {
     color: #ffcc00;
     font-size: 1.5em;
