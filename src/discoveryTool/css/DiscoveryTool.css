@@ -1,56 +1,78 @@
-/* Discovery Tool styling, over-rides default Fat Panel styles */
+/* Discovery Tool styling */
 
-.fl-uiOptions-fatPanel {
-    background: none;
+@font-face {
+    font-family: "OpenSans";
+    src: url("../../lib/infusion/lib/fonts/OpenSans-Light.ttf");
+    font-weight: 300;
+    font-style: normal;    
+}
+
+@font-face {
+    font-family: 'OpenSans';
+    src:url('../../lib/infusion/lib/fonts/OpenSans-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OpenSans';
+    src:url('../../lib/infusion/lib/fonts/OpenSans-Semibold.ttf');
+    font-weight: 600;
+    font-style: normal;
+}
+
+
+.fl-uiOptions-discoveryTool {
     background-color: #6f7b80;
     overflow: hidden;
 }
 
-.fl-uiOptions-fatPanel .fl-uiOptions-panels {
+.fl-uiOptions-discoveryTool .fl-uiOptions {
+    font-family: 'OpenSans',"Myriad Pro", Helvetica, Arial, sans-serif;    
+}
+
+.fl-uiOptions-discoveryTool .fl-uiOptions-panels {
     text-align: center;
-}
-
-.fl-uiOptions-fatPanel .fl-uiOptions-panels li.fl-uiOptions-panel {
-    width: 9em;
-    height: 9em;    
-    background: none;
-    border: 0;
-    box-shadow: none;
     margin: 0;
-    padding:0;    
-    color: #fff;
 }
 
-.fl-uiOptions-fatPanel .fl-uiOptions-panels li.fl-uiOptions-panel button {
+.fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel {
+    display: inline-block;
+    width: 10em;
+    margin: 0 1em 0 0;
+    padding:0;    
+    color: #fff;    
+}
+
+.fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel button {
     width: 9em;
     height: 9em;
     background-color: #fff;
     border: 2px solid #fff;
     border-radius: 0.25em;
     cursor: pointer;
-    margin: 0.5em 0;
-    text-align: center;
+    margin: 0;
 }
-.fl-uiOptions-fatPanel .fl-uiOptions-panels li.fl-uiOptions-panel button:hover,
-.fl-uiOptions-fatPanel .fl-uiOptions-panels li.fl-uiOptions-panel button:active {
+.fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel button:hover,
+.fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel button:active {
     background-color: #ffcc00;
 }
 
-.fl-uiOptions-fatPanel .fl-uiOptions-panels li.fl-uiOptions-panel span {
+.fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel span {
     width: 100%;
     margin: 0 auto;
 }
 
-.fl-uiOptions-fatPanel .fl-uiOptions-panels li.fl-uiOptions-panel label {
+.fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel label {
     border: none;
     box-shadow: none;  
     text-transform: lowercase;  
     color: #adb4b7;
     display: block;
-    font-size: 1.1em;
+    font-size: 1.4em;
 }
 
-.fl-uiOptions-fatPanel .fl-uiOptions-panels li.fl-uiOptions-panel .fl-discoveryTool-try {
+.fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel .fl-discoveryTool-try {
     color: #ffcc00;
     font-size: 1.5em;
     font-weight: bold;
