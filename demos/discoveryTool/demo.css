@@ -1,13 +1,14 @@
 .discovery-tool-demo .fl-panelBar {
     text-align: right;
-    background-color: #777;
+    background-color: #6f7b80;
     padding: 1em;
 }
 .discovery-tool-demo .fl-panelBar button {
-    background-color: #777;
-    border: none;
+    background-color: #6f7b80;
+    border: 0;
     color: white;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .discovery-tool-demo .fl-uiOptions-fatPanel  {
