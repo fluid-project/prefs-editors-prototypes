@@ -1,9 +1,9 @@
-.discovery-tool-demo .fl-panelBar {
+.discovery-tool-theme .fl-panelBar {
     text-align: right;
     background-color: #6f7b80;
     padding: 1em;
 }
-.discovery-tool-demo .fl-panelBar button {
+.discovery-tool-theme .fl-panelBar button {
     background-color: #6f7b80;
     border: 0;
     color: white;
@@ -11,13 +11,13 @@
     cursor: pointer;
 }
 
-.discovery-tool-demo .fl-uiOptions-fatPanel  {
+.discovery-tool-theme .fl-uiOptions-discoveryTool  {
     position: absolute;
     bottom: 0;
     width: 100%;    
 }
 
-.discovery-tool-demo .fl-uiOptions-fatPanel iframe {
+.discovery-tool-theme .fl-uiOptions-discoveryTool iframe {
     width: 100%;
     border: none;
 }
