@@ -21,6 +21,12 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'DiscoveryToolIcons'; 
+    src:url('../fonts/GPII-DiscoveryTool.eot?#iefix') format('embedded-opentype'), 
+         url('../fonts/GPII-DiscoveryTool.eot'), 
+         url('../fonts/GPII-DiscoveryTool.ttf');
+}
 
 .fl-uiOptions-discoveryTool {
     background-color: #6f7b80;
