@@ -22,6 +22,13 @@
 }
 
 /* General */
+@font-face {
+    font-family: 'DiscoveryToolIcons'; 
+    src:url('../fonts/GPII-DiscoveryTool.eot?#iefix') format('embedded-opentype'), 
+         url('../fonts/GPII-DiscoveryTool.eot'), 
+         url('../fonts/GPII-DiscoveryTool.ttf');
+}
+
 .fl-uiOptions-discoveryTool {
     background-color: #6f7b80;
     overflow: hidden;
@@ -87,4 +94,34 @@
     color: #ffcc00;
     font-size: 1.5em;
     font-weight: bold;
+}
+
+/* Font Icons */
+.fl-icon-discover, .fl-icon-arrow, .fl-icon-check {
+    font-family: 'DiscoveryToolIcons';
+}
+
+.icon-discover:before {
+    color: #fff;
+    content: "\a013";
+}
+
+.icon-discover:after {
+    content: "\a012";
+    position: relative;
+    left: -1.2em;
+}
+
+.fl-icon-arrow:after {
+    content: "\a016";
+}
+
+.fl-icon-check:before {
+    content: "\a015";
+    color: #fff;
+}
+.fl-icon-check:after {
+    content: "\a014";
+    position: relative;
+    left: -1em;
 }
