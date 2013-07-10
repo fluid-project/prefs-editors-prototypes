@@ -136,15 +136,11 @@
 }
 
 .fl-icon-check:before {
-    /*content: "\a015"; */
-    content: "\a014";    
-}
-/*.fl-icon-check:after {
+	font-size: 0.4em;
     content: "\a014";
     position: relative;
-    left: -1em;
-}*/
-
+    bottom:0.7em;
+}
 
 .fl-discoveryTool-panel-icon {
 	font-family: 'DiscoveryToolIcons';
@@ -153,7 +149,7 @@
 	display: block;
 	margin: 0 auto;
 	position: relative;
-	left: 0.11em;
+	left: 0.09em;
 }
 
 .fl-discoveryTool-panel-icon:before {
@@ -170,6 +166,16 @@
 
 .fl-discoveryTool-icon-high-contrast:after {
 	content: "\a008";
+	position: relative;
+	left: -1em;
+}
+
+.fl-discoveryTool-icon-low-contrast:before {
+	content: "\a007";
+}
+
+.fl-discoveryTool-icon-low-contrast:after {
+	content: "\a006";
 	position: relative;
 	left: -1em;
 }
