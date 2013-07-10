@@ -27,5 +27,6 @@
     "repository": "git://github.com:GPII/prefsEditors.git",
     "engines": {
         "node": ">=0.1.9"
-    }
+    },
+    "main": "./quickEditor/index.js"
 }

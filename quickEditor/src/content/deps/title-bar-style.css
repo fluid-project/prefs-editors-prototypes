@@ -1,0 +1,37 @@
+body {
+    padding-top: 30px;
+    overflow: hidden;
+    -webkit-user-select: none;
+}
+
+.pcp-title-bar {
+    background: grey;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    padding: 5px;
+    color: white;
+    -webkit-app-region: drag;
+}
+
+.pcp-title-bar-text {
+    float: left;
+}
+
+.pcp-title-bar-button {
+    float: right;
+    margin-right: 5px;
+    border: 1px solid white;
+    text-align: center;
+    width: 20px;
+    -webkit-app-region: no-drag;
+}
+
+.pcp-title-bar-button:hover {
+    background: darkgray;
+}
+
+.pcp-minimized {
+    bottom: 0px;
+}

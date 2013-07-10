@@ -1,0 +1,10 @@
+{
+    "name": "Personal Control Panel",
+    "main": "index.html",
+    "window": {
+        "width": 910,
+        "height": 350,
+        "toolbar": false,
+        "frame": false
+    }
+}
