@@ -62,11 +62,7 @@
     border-radius: 0.25em;
     cursor: pointer;
     margin: 0;
-}
-
-.fl-uiOptions-discoveryTool .fl-uiOptions-panel span {
-    width: 100%;
-    margin: 0 auto;
+    overflow: hidden;
 }
 
 /* Labels */
@@ -140,11 +136,86 @@
 }
 
 .fl-icon-check:before {
-    /*content: "\a015"; */
-    content: "\a014";    
-}
-/*.fl-icon-check:after {
+	font-size: 0.4em;
     content: "\a014";
     position: relative;
-    left: -1em;
-}*/
+    bottom:0.7em;
+}
+
+.fl-discoveryTool-panel-icon {
+	font-family: 'DiscoveryToolIcons';
+	font-size: 7em;
+	width: 2em;
+	display: block;
+	margin: 0 auto;
+	position: relative;
+	left: 0.09em;
+}
+
+.fl-discoveryTool-panel-icon:before {
+	color: #fff;
+}
+
+.fl-discoveryTool-panel-icon:after {
+    color: #333;
+}
+
+.fl-discoveryTool-icon-high-contrast:before {
+	content: "\a009";
+}
+
+.fl-discoveryTool-icon-high-contrast:after {
+	content: "\a008";
+	position: relative;
+	left: -1em;
+}
+
+.fl-discoveryTool-icon-low-contrast:before {
+	content: "\a007";
+}
+
+.fl-discoveryTool-icon-low-contrast:after {
+	content: "\a006";
+	position: relative;
+	left: -1em;
+}
+
+.fl-discoveryTool-icon-simplify:before {
+	content: "\a005";
+}
+
+.fl-discoveryTool-icon-simplify:after {
+	content: "\a004";
+	position: relative;
+	left: -1em;
+}
+
+.fl-discoveryTool-icon-speak:before {
+	content: "\a003";
+}
+
+.fl-discoveryTool-icon-speak:after {
+	content: "\a002";
+	position: relative;
+	left: -1em;
+}
+
+.fl-discoveryTool-icon-low-contrast:before {
+	content: "\a007";
+}
+
+.fl-discoveryTool-icon-low-contrast:after {
+	content: "\a006";
+	position: relative;
+	left: -1em;
+}
+
+.fl-discoveryTool-icon-increase-size:before {
+	content: "\a011";
+}
+
+.fl-discoveryTool-icon-increase-size:after {
+	content: "\a010";
+	position: relative;
+	left: -1em;
+}
