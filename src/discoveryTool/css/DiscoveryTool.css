@@ -76,7 +76,15 @@
 }
 
 /* Preference actions */
-.fl-uiOptions-discoveryTool .fl-uiOptions-panel button:hover+label {
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel button:hover,
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel label:hover~button,
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel button[aria-pressed="true"] {
+    background-color: #ffcc00;  
+}
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel label:hover,
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel button:hover~label,
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel button:focus~label,
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel button[aria-pressed="true"]~label {
     color: #fff;   
 }
 
@@ -100,9 +108,6 @@
     display: inline-block;    
 }
 
-.fl-uiOptions-discoveryTool .fl-uiOptions-panel button[aria-pressed="true"] {
-    background-color: #ffcc00;
-}
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel button[aria-pressed="true"]+div.fl-icon-check {
     visibility: visible;
 }
