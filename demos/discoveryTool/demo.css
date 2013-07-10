@@ -1,3 +1,121 @@
+/* Demo content */
+
+body {
+    background-color: #F9F9F5;
+    color: #5C5C5C;
+
+    font-family: "ProximaNova","Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-size: 1.2em;
+    line-height: 150%;    
+}
+
+h1, h2, h3, h4, h5, h6, div, ul, ol, dt {
+    color: #56544D;
+}
+
+a {
+    cursor: pointer;
+    color: #00ABA4;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+#main-header {
+    background-color: #FFFFFF;
+    box-shadow: 0 3px 2px #CCCCCC;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1em;
+}
+
+#main-header div {
+    max-width: 63em;
+    margin: 0 auto;
+}
+
+/* Main content */
+article {
+    margin: 4em auto 0 auto;
+    max-width: 60em;
+}
+
+article header img { float: left; }
+article header h1 { 
+    float: left; 
+    margin-left: 1em;
+}
+
+article header #breadcrumbs { 
+    float: left; 
+    margin-left: -6.15em;
+    margin-top: 4em;    
+}
+
+article header #prevNext { 
+    float: right; 
+    margin-top: 1em;
+}
+
+#main {
+    background-color: #fff;
+    padding: 1em;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);    
+}
+
+#main #helpful h1 {
+    float: left;
+    margin-top: 0.5em;
+    color: #00ABA4;
+}
+
+#main #helpful div {
+    float:right;
+    margin-top: 0.75em;
+}
+
+#main nav {
+    clear: both;
+    float: left;
+    width: 15%;
+}
+#main nav ul {
+    margin: 0;
+}
+#main nav ul li:first-child {
+   /* box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.2); */
+}
+#main nav ul li {
+    list-style: none;
+    border-top: 1px solid #DCDCDC;
+    margin-bottom: 0;
+    padding: 10px 0;
+}
+
+#main #content {
+    margin-left: 16%;
+    border: 1px solid #E0E0E0;
+    box-shadow: 0 0 5px #C5C5C5;    
+    padding: 3em;
+}
+
+/* Article */
+article h2 {
+    border-top: 1px solid #E6E6E6;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 2em 0 0.4em;
+    padding-top: 15px;
+}
+
+article img {
+    margin: 1em 0; 
+}
+
+/* Discovery Tool */
 .discovery-tool-theme .fl-panelBar {
     text-align: right;
     background-color: #6f7b80;
@@ -12,7 +130,7 @@
 }
 
 .discovery-tool-theme .fl-uiOptions-discoveryTool  {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;    
 }
