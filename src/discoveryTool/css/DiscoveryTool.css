@@ -54,7 +54,7 @@
 }
 
 /* Buttons */
-.fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel button {
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel button {
     width: 9em;
     height: 9em;
     background-color: #fff;
@@ -64,13 +64,13 @@
     margin: 0;
 }
 
-.fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel span {
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel span {
     width: 100%;
     margin: 0 auto;
 }
 
 /* Labels */
-.fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel label {
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel label {
     border: none;
     box-shadow: none;  
     text-transform: lowercase;  
@@ -79,15 +79,38 @@
     font-size: 1.4em;
 }
 
-/* Preset hover/active/focus */
-.fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel button:hover+label {
+/* Preference actions */
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel button:hover+label {
     color: #fff;   
 }
 
-.fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel button:focus {
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel button:focus {
     border: 2px solid #ffcc00;
     outline: 0;
 }
+
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel .fl-icon-check {
+    visibility: hidden;
+    
+    background-color: #363c40;
+    color: #fff;    
+    border: 1px solid 363c40;
+    border-radius: 1em;
+    height: 1em;
+    width: 1em;
+    font-size: 2.5em;
+    margin-left: 3em;
+    margin-top: -0.6em;
+    display: inline-block;    
+}
+
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel button[aria-pressed="true"] {
+    background-color: #ffcc00;
+}
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel button[aria-pressed="true"]+div.fl-icon-check {
+    visibility: visible;
+}
+
 
 /* Try something new */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel .fl-discoveryTool-try {
@@ -117,11 +140,11 @@
 }
 
 .fl-icon-check:before {
-    content: "\a015";
-    color: #fff;
+    /*content: "\a015"; */
+    content: "\a014";    
 }
-.fl-icon-check:after {
+/*.fl-icon-check:after {
     content: "\a014";
     position: relative;
     left: -1em;
-}
+}*/
