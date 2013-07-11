@@ -39,7 +39,7 @@ a:hover {
 
 /* Main content */
 article {
-    margin: 4em auto 0 auto;
+    margin: 4em auto;
     max-width: 60em;
 }
 
@@ -103,11 +103,16 @@ article header #prevNext {
 }
 
 /* Article */
+article section {
+    border-bottom: 1px solid #E6E6E6;
+    margin-bottom: 0.25em;
+    padding-bottom: 2em;
+}
+
 article h2 {
-    border-top: 1px solid #E6E6E6;
     font-size: 20px;
     font-weight: bold;
-    margin: 2em 0 0.4em;
+    margin: 0 0 0.4em;
     padding-top: 15px;
 }
 
