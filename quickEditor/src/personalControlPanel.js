@@ -2,7 +2,7 @@
 
     "use strict";
 
-    var fluid = require("../../../universal/node_modules/infusion"); // This should be fixed - universal should be a dependency of prefsEditors.
+    var fluid = require("universal");
     var gpii = fluid.registerNamespace("gpii");
     var spawn = require("child_process").spawn;
     var fs = require("fs");
