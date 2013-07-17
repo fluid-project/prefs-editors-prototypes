@@ -50,19 +50,20 @@
     margin: 0 1em 0 0;
     padding:0;    
     color: #fff;
-    vertical-align: middle;    
+    vertical-align: middle;   
+    height: 13em; 
 }
 
 /* Buttons */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel button {
-    width: 9em;
-    height: 9em;
-    background-color: #fff;
-    border: 2px solid #fff;
-    border-radius: 0.25em;
+	font-family: 'DiscoveryToolIcons';
+	font-size: 7em;
+   	width: 1.15em;
+    height: 1.15em;
+    background-color: #F2F2F2;
+    border: 3px solid #fff;
+    border-radius: 0.08em;
     cursor: pointer;
-    margin: 0;
-    overflow: hidden;
 }
 
 /* Labels */
@@ -73,14 +74,19 @@
     color: #adb4b7;
     display: block;
     font-size: 1.4em;
+    position:relative;
+    
 }
 
 /* Preference actions */
+
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel button:hover,
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel label:hover~button,
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel button[aria-pressed="true"] {
-    background-color: #ffcc00;  
+    background-color: #ffcc00;
+    box-shadow: 3px 3px 1px #4f4f4f;
 }
+
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel label:hover,
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel button:hover~label,
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel button:focus~label,
@@ -104,7 +110,7 @@
     width: 1em;
     font-size: 2.5em;
     margin-left: 3em;
-    margin-top: -0.6em;
+    margin-top: -4.6em;
     display: inline-block;    
 }
 
@@ -116,8 +122,14 @@
 /* Try something new */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel .fl-discoveryTool-try {
     color: #ffcc00;
-    font-size: 1.5em;
-    font-weight: bold;
+    font-size: 1.2em;
+    width: 6.7em;
+    height: 6.7em;
+    border-radius: 0.4em;
+}
+
+.fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel .fl-discoveryTool-try:hover {
+	background-color: #363C3F;
 }
 
 /* Font Icons */
@@ -127,26 +139,26 @@
 
 .icon-discover:before {
     color: #fff;
-    content: "\a013";
+    content: "\e01a";
 }
 
 .icon-discover:after {
-    content: "\a012";
+    content: "\e01b";
     position: relative;
     left: -1.2em;
 }
 
 .fl-icon-arrow:after {
-    content: "\a016";
+    content: "\e019";
 }
 
 .fl-icon-check:before {
 	font-size: 0.4em;
-    content: "\a014";
+    content: "\e018";
     position: relative;
     bottom:0.7em;
 }
-
+/*
 .fl-discoveryTool-panel-icon {
 	font-family: 'DiscoveryToolIcons';
 	font-size: 7em;
@@ -156,71 +168,38 @@
 	position: relative;
 	left: 0.09em;
 }
-
+*/
 .fl-discoveryTool-panel-icon:before {
 	color: #fff;
 }
 
 .fl-discoveryTool-panel-icon:after {
     color: #333;
+    position: relative;
+    left: -1.0em;
 }
 
-.fl-discoveryTool-icon-high-contrast:before {
-	content: "\a009";
-}
+.fl-discoveryTool-icon-high-contrast:before       {content: "\e00a";}
+.fl-discoveryTool-icon-high-contrast:after        {content: "\e016";}
+.fl-discoveryTool-icon-high-contrast:hover:before {content: "\e004";}
+.fl-discoveryTool-icon-high-contrast:hover:after  {content: "\e010";}
 
-.fl-discoveryTool-icon-high-contrast:after {
-	content: "\a008";
-	position: relative;
-	left: -1em;
-}
+.fl-discoveryTool-icon-low-contrast:before       {content: "\e006";}
+.fl-discoveryTool-icon-low-contrast:after        {content: "\e012";}
+.fl-discoveryTool-icon-low-contrast:hover:before {content: "\e003";}
+.fl-discoveryTool-icon-low-contrast:hover:after  {content: "\e00f";}
 
-.fl-discoveryTool-icon-low-contrast:before {
-	content: "\a007";
-}
+.fl-discoveryTool-icon-simplify:before       {content: "\e009";}
+.fl-discoveryTool-icon-simplify:after        {content: "\e015";}
+.fl-discoveryTool-icon-simplify:hover:before {content: "\e002";}
+.fl-discoveryTool-icon-simplify:hover:after  {content: "\e00e";}
 
-.fl-discoveryTool-icon-low-contrast:after {
-	content: "\a006";
-	position: relative;
-	left: -1em;
-}
+.fl-discoveryTool-icon-increase-size:before       {content: "\e00b";}
+.fl-discoveryTool-icon-increase-size:after        {content: "\e017";}
+.fl-discoveryTool-icon-increase-size:hover:before {content: "\e005";}
+.fl-discoveryTool-icon-increase-size:hover:after  {content: "\e011";}
 
-.fl-discoveryTool-icon-simplify:before {
-	content: "\a005";
-}
-
-.fl-discoveryTool-icon-simplify:after {
-	content: "\a004";
-	position: relative;
-	left: -1em;
-}
-
-.fl-discoveryTool-icon-speak:before {
-	content: "\a003";
-}
-
-.fl-discoveryTool-icon-speak:after {
-	content: "\a002";
-	position: relative;
-	left: -1em;
-}
-
-.fl-discoveryTool-icon-low-contrast:before {
-	content: "\a007";
-}
-
-.fl-discoveryTool-icon-low-contrast:after {
-	content: "\a006";
-	position: relative;
-	left: -1em;
-}
-
-.fl-discoveryTool-icon-increase-size:before {
-	content: "\a011";
-}
-
-.fl-discoveryTool-icon-increase-size:after {
-	content: "\a010";
-	position: relative;
-	left: -1em;
-}
+.fl-discoveryTool-icon-speak:before       {content: "\e008";}
+.fl-discoveryTool-icon-speak:after        {content: "\e014";}
+.fl-discoveryTool-icon-speak:hover:before {content: "\e001";}
+.fl-discoveryTool-icon-speak:hover:after  {content: "\e00d";}
