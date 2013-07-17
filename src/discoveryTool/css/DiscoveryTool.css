@@ -54,7 +54,7 @@
     height: 13em; 
 }
 
-/* Buttons */
+/* Buttons 
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel button {
 	font-family: 'DiscoveryToolIcons';
 	font-size: 7em;
@@ -65,6 +65,7 @@
     border-radius: 0.08em;
     cursor: pointer;
 }
+*/
 
 /* Labels */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel label {
@@ -75,7 +76,7 @@
     display: block;
     font-size: 1.4em;
     position:relative;
-    
+    cursor: pointer;
 }
 
 /* Preference actions */
@@ -104,7 +105,7 @@
     
     background-color: #363c40;
     color: #fff;    
-    border: 1px solid 363c40;
+    border: 1px solid #363c40;
     border-radius: 1em;
     height: 1em;
     width: 1em;
@@ -158,25 +159,44 @@
     position: relative;
     bottom:0.7em;
 }
-/*
-.fl-discoveryTool-panel-icon {
-	font-family: 'DiscoveryToolIcons';
-	font-size: 7em;
-	width: 2em;
-	display: block;
-	margin: 0 auto;
-	position: relative;
-	left: 0.09em;
+
+.fl-discoveryTool-checkbox {
+    border: 0 none;
+    clip: rect(0px, 0px, 0px, 0px);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 }
-*/
+
+.fl-discoveryTool-panel-icon{
+	font-family: 'DiscoveryToolIcons';
+	font-size: 4.6em;
+   	width: 1.2em;
+    height: 1.2em;
+    background-color: #F2F2F2;
+    border: 3px solid #fff;
+    border-radius: 0.08em;
+    cursor: pointer;
+    display:block;
+    margin: 0 auto;
+}
+
+.fl-discoveryTool-panel-icon:before{
+	position:relative;
+	left: 0.1em;
+}
+
 .fl-discoveryTool-panel-icon:before {
 	color: #fff;
 }
 
-.fl-discoveryTool-panel-icon:after {
-    color: #333;
-    position: relative;
-    left: -1.0em;
+.fl-discoveryTool-panel-icon:after{
+	color: #333;
+	position: relative;
+	left: -0.9em;
 }
 
 .fl-discoveryTool-icon-high-contrast:before       {content: "\e00a";}
