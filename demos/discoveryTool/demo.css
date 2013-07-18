@@ -44,24 +44,24 @@ a:hover {
 }
 
 /* Main content */
-article {
+.main-content {
     margin: 4em auto;
     max-width: 60em;
 }
 
-article header img { float: left; }
-article header h1 { 
+.main-content header img { float: left; }
+.main-content header h1 {
     float: left; 
     margin-left: 1em;
 }
 
-article header #breadcrumbs { 
+.main-content header #breadcrumbs {
     float: left; 
     margin-left: -6.15em;
     margin-top: 4em;    
 }
 
-article header #prevNext { 
+.main-content header #prevNext {
     float: right; 
     margin-top: 1em;
 }
@@ -83,18 +83,18 @@ article header #prevNext {
     margin-top: 0.75em;
 }
 
-#main nav {
+#main .resource-tools {
     clear: both;
     float: left;
     width: 15%;
 }
-#main nav ul {
+#main .resource-tools .tools {
     margin: 0;
 }
-#main nav ul li:first-child {
+#main .resource-tools .tools li:first-child {
    /* box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.2); */
 }
-#main nav ul li {
+#main .resource-tools .tools li {
     list-style: none;
     border-top: 1px solid #DCDCDC;
     margin-bottom: 0;
@@ -109,16 +109,16 @@ article header #prevNext {
 }
 
 /* Article */
-article #article-filters {
+.main-content #article-filters {
     border-bottom: 1px solid #E6E6E6;
 
 }
-article #article-filter {
+.main-content #article-filter {
     float: left;
     padding-right: 7em;
     /*border-right: 1px dotted #56544D;*/
 }
-article .article-tab {
+.main-content .article-tab {
     float: left;
     padding: 0.5em 1em;
     font-size: 0.8em;
@@ -126,12 +126,12 @@ article .article-tab {
     border-right: 1px dotted #56544D;
     margin-bottom: 0.5em;
 }
-article .article-tab span {
+.main-content .article-tab span {
     display: block;
     font-size: 2.5em;
 }
 
-article section {
+.main-content section {
     border-bottom: 1px solid #E6E6E6;
     margin-bottom: 0.25em;
     padding-bottom: 2em;
@@ -144,7 +144,7 @@ article h2 {
     padding-top: 15px;
 }
 
-article img {
+.main-content img {
     margin: 1em 0; 
 }
 
