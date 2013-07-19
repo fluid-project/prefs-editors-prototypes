@@ -79,6 +79,7 @@ var demo = demo || {};
                 highContrast: "../../src/discoveryTool/html/HighContrastPanelTemplate.html",
                 increaseSize: "../../src/discoveryTool/html/IncreaseSizePanelTemplate.html",
                 simplify: "../../src/discoveryTool/html/SimplifyPanelTemplate.html",
+                moreText: "../../src/discoveryTool/html/MoreTextPanelTemplate.html",
                 spoken: "../../src/discoveryTool/html/SpokenPanelTemplate.html"
             }
         }

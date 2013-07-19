@@ -36,6 +36,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             highContrast: "../html/HighContrastPanelTemplate.html",
             increaseSize: "../html/IncreaseSizePanelTemplate.html",
             simplify: "../html/SimplifyPanelTemplate.html",
+            moreText: "../html/MoreTextPanelTemplate.html",
             spoken: "../html/SpokenPanelTemplate.html"
         }
     });
@@ -47,6 +48,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 highContrast: false,
                 increaseSize: false,
                 simplify: false,
+                moreText: false,
                 spoken: false,
 
                 textFont: "default",
@@ -86,6 +88,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 highContrast: false,
                 increaseSize: false,
                 simplify: false,
+                moreText: false,
                 spoken: false
             },
             convertedModel: {
@@ -97,6 +100,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 links: false,
                 inputsLarger: false,
                 simplifyContent: false,
+                showAltText: false,
                 selfVoicing: false
             }
         },
@@ -116,6 +120,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 lineSpace: 1.2,
                 toc: true,
                 simplifyContent: true
+            },
+            moreText: {
+                showAltText: true
             },
             spoken: {
                 selfVoicing: true
@@ -164,6 +171,20 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     },
                     resources: {
                         template: "{templateLoader}.resources.simplify"
+                    }
+                }
+            },
+            moreText: {
+                type: "gpii.discoveryTool.panels.moreText",
+                container: "{uiOptions}.dom.moreText",
+                createOnEvent: "{uiOptions}.events.onUIOptionsMarkupReady",
+                options: {
+                    gradeNames: "gpii.discoveryTool.defaultPanel",
+                    rules: { // "externalModelKey": "internalModelKey"
+                        "panelSelections.moreText": "moreText"
+                    },
+                    resources: {
+                        template: "{templateLoader}.resources.moreText"
                     }
                 }
             },
@@ -220,6 +241,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             highContrast: ".flc-discoveryTool-highContrast",
             increaseSize: ".flc-discoveryTool-increaseSize",
             simplify: ".flc-discoveryTool-simplify",
+            moreText: ".flc-discoveryTool-moreText",
             spoken: ".flc-discoveryTool-spoken"
         },
         components: {
@@ -232,6 +254,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                         "selections.highContrast": "panelSelections.highContrast",
                         "selections.increaseSize": "panelSelections.increaseSize",
                         "selections.simplify": "panelSelections.simplify",
+                        "selections.moreText": "panelSelections.moreText",
                         "selections.spoken": "panelSelections.spoken",
 
                         "selections.textFont": "convertedModel.textFont",
@@ -242,6 +265,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                         "selections.links": "convertedModel.links",
                         "selections.inputsLarger": "convertedModel.inputsLarger",
                         "selections.simplifyContent": "convertedModel.simplifyContent",
+                        "selections.showAltText": "convertedModel.showAltText",
                         "selections.selfVoicing": "convertedModel.selfVoicing"
                     }
                 }
@@ -396,6 +420,23 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         var headingsModel = that.modelBuilder.assembleModel(headings, that.anchorInfo);
         that.applier.requestChange("", headingsModel);
     };
+
+    /***********************
+     * More Text
+     ***********************/
+    fluid.defaults("gpii.discoveryTool.panels.moreText", {
+        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        // this is being ignored - ??
+        selectors: {
+            moreText: ".flc-discoveryTool-moreText-choice"
+        },
+        model: {
+            moreText: false
+        },
+        protoTree: {
+            moreText: "${moreText}"
+        }
+    });
 
     /************************
      * Spoken
