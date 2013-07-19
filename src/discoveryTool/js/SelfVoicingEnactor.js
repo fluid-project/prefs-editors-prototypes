@@ -102,7 +102,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 return;
             }
             audioElement.play();
-            setTimeout(that.events.afterAnnounce.fire, audioElement.duration * 1000 + 500);
+        });
+        audioElement.addEventListener("ended", function () {
+            that.events.afterAnnounce.fire();
         });
         audioElement.addEventListener("error", function () {
             if (!that.model.value) {
