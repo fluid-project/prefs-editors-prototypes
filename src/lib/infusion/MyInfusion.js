@@ -12197,6 +12197,16 @@ var fluid = fluid || fluid_1_5;
         demands:            600 // and above
     };
 
+    /** Delete the value in the supplied object held at the specified path
+     * @param target {Object} The object holding the value to be deleted (possibly empty)
+     * @param path {String/Array of String} the path of the value to be deleted
+     */
+     
+    fluid.destroyValue = function (target, path) {
+        if (target) {
+            fluid.model.applyChangeRequest(target, {type: "DELETE", path: path});
+        }
+    };
     /**
      * Merges the component's declared defaults, as obtained from fluid.defaults(),
      * with the user's specified overrides.
@@ -12242,6 +12252,12 @@ var fluid = fluid || fluid_1_5;
         var mergeOptions = fluid.makeMergeOptions(sharedMergePolicy, sources, baseMergeOptions);
         mergeOptions.mergeBlocks = mergeBlocks;
         mergeOptions.updateBlocks = updateBlocks;
+        mergeOptions.destroyValue = function (path) { // This method is a temporary hack to assist FLUID-5091
+            for (var i = 0; i < mergeBlocks.length; ++ i) {
+                fluid.destroyValue(mergeBlocks[i].target, path);
+            }
+            fluid.destroyValue(baseMergeOptions.target, path);
+        };
         
         // Decode the now available mergePolicy
         var mergePolicy = fluid.driveStrategy(options, "mergePolicy", mergeOptions.strategy);
@@ -13490,15 +13506,6 @@ var fluid_1_5 = fluid_1_5 || {};
         }
     };
     
-        
-    fluid.model.defaultGetConfig = {
-        strategies: [fluid.model.funcResolverStrategy, fluid.model.defaultFetchStrategy]
-    };
-
-    fluid.model.defaultSetConfig = {
-        strategies: [fluid.model.funcResolverStrategy, fluid.model.defaultFetchStrategy, fluid.model.defaultCreatorStrategy]
-    };
-    
     // unsupported, NON-API function
     fluid.model.traverseWithStrategy = function (root, segs, initPos, config, uncess) {
         var strategies = config.strategies;
@@ -13798,7 +13805,31 @@ var fluid_1_5 = fluid_1_5 || {};
             }
         }
     };
-          
+        
+    fluid.model.defaultGetConfig = {
+        strategies: [fluid.model.funcResolverStrategy, fluid.model.defaultFetchStrategy]
+    };
+
+    fluid.model.defaultSetConfig = {
+        strategies: [fluid.model.funcResolverStrategy, fluid.model.defaultFetchStrategy, fluid.model.defaultCreatorStrategy]
+    };
+
+    fluid.model.escapedGetConfig = {
+        parser: {
+            parse: fluid.pathUtil.parseEL,
+            compose: fluid.pathUtil.composePath
+        },
+        strategies: [fluid.model.defaultFetchStrategy]
+    };
+
+    fluid.model.escapedSetConfig = {
+        parser: {
+            parse: fluid.pathUtil.parseEL,
+            compose: fluid.pathUtil.composePath
+        },
+        strategies: [fluid.model.defaultFetchStrategy, fluid.model.defaultCreatorStrategy]
+    };
+
     /** Add a listener to a ChangeApplier event that only acts in the case the event
      * has not come from the specified source (typically ourself)
      * @param modelEvent An model event held by a changeApplier (typically applier.modelChanged)
@@ -14224,6 +14255,10 @@ var fluid = fluid || fluid_1_5;
     fluid.defaults("fluid.standardOutputTransformFunction", {
         gradeNames: "fluid.transformFunction"  
     });
+
+    fluid.defaults("fluid.multiInputTransformFunction", {
+        gradeNames: "fluid.transformFunction"
+    });
     
     // uses the standard layout and workflow involving inputPath and outputPath
     fluid.defaults("fluid.standardTransformFunction", {
@@ -14274,6 +14309,17 @@ var fluid = fluid || fluid_1_5;
         }
     };
 
+    fluid.model.transform.accumulateStandardInputPath = function (input, expandSpec, expander, paths) {
+        fluid.model.transform.getValue(undefined, expandSpec[input], expander);    
+        fluid.model.transform.accumulateInputPath(expandSpec[input + "Path"], expander, paths);
+    };
+
+    fluid.model.transform.accumulateMultiInputPaths = function (inputVariables, expandSpec, expander, paths) {
+        fluid.each(inputVariables, function (v, k) {
+            fluid.model.transform.accumulateStandardInputPath(k, expandSpec, expander, paths);
+        });
+    };
+
     fluid.model.transform.getValue = function (inputPath, value, expander) {
         var togo;
         if (inputPath !== undefined) { // NB: We may one day want to reverse the crazy jQuery-like convention that "no path means root path"
@@ -14296,80 +14342,21 @@ var fluid = fluid || fluid_1_5;
         var outputPath = fluid.model.composePaths(expander.outputPrefix, userOutputPath);
         // TODO: custom resolver config here to create non-hash output model structure
         if (toset !== undefined) {
-            expander.applier.requestChange(outputPath, toset, merge? "MERGE": undefined);
+            expander.applier.requestChange(outputPath, toset, merge ? "MERGE" : undefined);
         }
         return userOutputPath ? fluid.model.transform.NONDEFAULT_OUTPUT_PATH_RETURN : toset;
     };
     
-    /**********************************
-     * Standard transformer functions *
-     **********************************/
-        
-    fluid.model.transform.value = fluid.identity;
-    
-    fluid.defaults("fluid.model.transform.value", { 
-        gradeNames: "fluid.standardTransformFunction",
-        invertConfiguration: "fluid.model.transform.invertValue"
-    });
-    
-    fluid.model.transform.invertValue = function (expandSpec, expander) {
-        var togo = fluid.copy(expandSpec);
-        // TODO: this will not behave correctly in the face of compound "value" which contains
-        // further expanders
-        togo.inputPath = fluid.model.composePaths(expander.outputPrefix, expandSpec.outputPath);
-        togo.outputPath = fluid.model.composePaths(expander.inputPrefix, expandSpec.inputPath);
-        return togo;
-    };
-    
-    fluid.model.transform.literalValue = function (expanderSpec) {
-        return expanderSpec.value;  
-    };
-    
-    fluid.defaults("fluid.model.transform.literalValue", { 
-        gradeNames: "fluid.standardOutputTransformFunction"
-    });
-    
-    fluid.model.transform.arrayValue = fluid.makeArray;
-        
-    fluid.defaults("fluid.model.transform.arrayValue", { 
-        gradeNames: "fluid.standardTransformFunction"
-    });
-     
-    fluid.model.transform.count = function (value) {
-        return fluid.makeArray(value).length;
-    };
-    
-    fluid.defaults("fluid.model.transform.count", { 
-        gradeNames: "fluid.standardTransformFunction"
-    });
-    
-    fluid.model.transform["delete"] = function (expandSpec, expander) {
-        var outputPath = fluid.model.composePaths(expander.outputPrefix, expandSpec.outputPath);
-        expander.applier.requestChange(outputPath, null, "DELETE");
+    /* Resolves the <key> given as parameter by looking up the path <key>Path in the object
+     * to be transformed. If not present, it resolves the <key> by using the literal value if primitive,
+     * or expanding otherwise. <def> defines the default value if unableto resolve the key. If no
+     * default value is given undefined is returned
+     */
+    fluid.model.transform.resolveParam = function (expandSpec, expander, key, def) {
+        var val = fluid.model.transform.getValue(expandSpec[key + "Path"], expandSpec[key], expander);
+        return (val !== undefined) ? val : def;
     };
 
-    fluid.defaults("fluid.model.transform.delete", { 
-        gradeNames: "fluid.transformFunction"
-    });
-     
-    fluid.model.transform.firstValue = function (expandSpec, expander) {
-        if (!expandSpec.values || !expandSpec.values.length) {
-            fluid.fail("firstValue transformer requires an array of values at path named \"values\", supplied", expandSpec);
-        }
-        for (var i = 0; i < expandSpec.values.length; i++) {
-            var value = expandSpec.values[i];
-            // TODO: problem here - all of these expanders will have their side-effects (setValue) even if only one is chosen 
-            var expanded = expander.expand(value);
-            if (expanded !== undefined) {
-                return expanded;
-            }
-        }
-    };
-    
-    fluid.defaults("fluid.model.transform.firstValue", { 
-        gradeNames: "fluid.transformFunction"
-    });
-    
     // TODO: Incomplete implementation which only checks expected paths
     fluid.deepEquals = function (expected, actual, stats) {
         if (fluid.isPrimitive(expected)) {
@@ -14383,7 +14370,7 @@ var fluid = fluid || fluid_1_5;
         else {
             if (typeof(expected) !== typeof(actual)) {
                 ++stats.mismatchCount;
-                stats.messages.push("Type mismatch at path " + stats.path + ": expected " + typeof(expected) + " actual " + typeof(actual)); 
+                stats.messages.push("Type mismatch at path " + stats.path + ": expected " + typeof(expected)  + " actual " + typeof(actual)); 
             } else {
                 fluid.each(expected, function (value, key) {
                     stats.pathOps.push(key);
@@ -14418,115 +14405,7 @@ var fluid = fluid || fluid_1_5;
         return a === undefined ? b : a;
     };
 
-    // unsupported, NON-API function    
-    fluid.model.transform.matchValueMapperFull = function (outerValue, expander, expandSpec) {
-        var o = expandSpec.options;
-        if (o.length === 0) {
-            fluid.fail("valueMapper supplied empty list of options: ", expandSpec);
-        }
-        if (o.length === 1) {
-            return 0;
-        }
-        var matchPower = []; 
-        for (var i = 0; i < o.length; ++i) {
-            var option = o[i];
-            var value = fluid.firstDefined(fluid.model.transform.getValue(option.inputPath, undefined, expander),
-                outerValue);
-            var matchCount = fluid.model.transform.matchValue(option.undefinedInputValue ? undefined : option.inputValue, value);
-            matchPower[i] = {index: i, matchCount: matchCount};
-        }
-        matchPower.sort(fluid.model.transform.compareMatches);
-        return matchPower[0].matchCount === matchPower[1].matchCount ? -1 : matchPower[0].index; 
-    };
-
-    fluid.model.transform.valueMapper = function (expandSpec, expander) {
-        if (!expandSpec.options) {
-            fluid.fail("demultiplexValue requires a list or hash of options at path named \"options\", supplied ", expandSpec);
-        }
-        var value = fluid.model.transform.getValue(expandSpec.inputPath, undefined, expander);
-        var deref = fluid.isArrayable(expandSpec.options) ? // long form with list of records    
-            function (testVal) {
-                var index = fluid.model.transform.matchValueMapperFull(testVal, expander, expandSpec);
-                return index === -1 ? null : expandSpec.options[index];
-            } : 
-            function (testVal) {
-                return expandSpec.options[testVal];
-            };
-      
-        var indexed = deref(value);
-        if (!indexed) {
-            // if no branch matches, try again using this value - WARNING, this seriously
-            // threatens invertibility
-            indexed = deref(expandSpec.defaultInputValue);
-        }
-        if (!indexed) {
-            return;
-        }
-        var outputValue = fluid.isPrimitive(indexed) ? indexed : 
-            (indexed.undefinedOutputValue ? undefined : 
-                (indexed.outputValue === undefined ? expandSpec.defaultOutputValue : indexed.outputValue));
-        var outputPath = indexed.outputPath === undefined ? expandSpec.outputPath : indexed.outputPath;
-        return fluid.model.transform.setValue(outputPath, outputValue, expander, expandSpec.merge); 
-    };
-    
-    fluid.model.transform.valueMapper.invert = function (expandSpec, expander) {
-        var options = [];
-        var togo = {
-            type: "fluid.model.transform.valueMapper",
-            options: options
-        };
-        var isArray = fluid.isArrayable(expandSpec.options);
-        var findCustom = function (name) {
-            return fluid.find(expandSpec.options, function (option) {
-                if (option[name]) {
-                    return true;
-                }
-            });
-        };
-        var anyCustomOutput = findCustom("outputPath");
-        var anyCustomInput = findCustom("inputPath");
-        if (!anyCustomOutput) {
-            togo.inputPath = fluid.model.composePaths(expander.outputPrefix, expandSpec.outputPath);
-        }
-        if (!anyCustomInput) {
-            togo.outputPath = fluid.model.composePaths(expander.inputPrefix, expandSpec.inputPath);
-        }
-        var def = fluid.firstDefined;
-        fluid.each(expandSpec.options, function (option, key) {
-            var outOption = {};
-            var origInputValue = def(isArray ? option.inputValue : key, expandSpec.defaultInputValue);
-            if (origInputValue === undefined) {
-                fluid.fail("Failure inverting configuration for valueMapper - inputValue could not be resolved for record " + key + ": ", expandSpec);
-            }
-            outOption.outputValue = origInputValue;
-            var origOutputValue = def(option.outputValue, expandSpec.defaultOutputValue);
-            outOption.inputValue = origOutputValue;
-            if (anyCustomOutput) {
-                outOption.inputPath = fluid.model.composePaths(expander.outputPrefix, def(option.outputPath, expandSpec.outputPath));
-            }
-            if (anyCustomInput) {
-                outOption.outputPath = fluid.model.composePaths(expander.inputPrefix, def(option.inputPath, expandSpec.inputPath));
-            }
-            options.push(outOption);
-        });
-        return togo;
-    };
-    
-    fluid.model.transform.valueMapper.collect = function (expandSpec, expander) {
-        var togo = [];
-        fluid.model.transform.accumulateInputPath(expandSpec.inputPath, expander, togo);
-        fluid.each(expandSpec.options, function (option) {
-            fluid.model.transform.accumulateInputPath(option.inputPath, expander, togo);
-        });
-        return togo;
-    };
-
-    fluid.defaults("fluid.model.transform.valueMapper", { 
-        gradeNames: ["fluid.transformFunction", "fluid.lens"],
-        invertConfiguration: "fluid.model.transform.valueMapper.invert",
-        collectInputPaths: "fluid.model.transform.valueMapper.collect"
-    });
-    
+        
     // TODO: prefixApplier is an expander which is currently unused and untested
     fluid.model.transform.prefixApplier = function (expandSpec, expander) {
         if (expandSpec.inputPrefix) {
@@ -14585,9 +14464,18 @@ var fluid = fluid || fluid_1_5;
         }
         var expanderArgs = [expandSpec, expander];
         if (fluid.hasGrade(expdef, "fluid.standardInputTransformFunction")) {
+            if (expandSpec.input !== undefined) { 
+                expandSpec.value = expandSpec.input; // alias input and value
+            }
             var expanded = fluid.model.transform.getValue(expandSpec.inputPath, expandSpec.value, expander);
-            expanderArgs[0] = expanded;
-            expanderArgs[2] = expandSpec;
+            expanderArgs.unshift(expanded);
+        } else if (fluid.hasGrade(expdef, "fluid.multiInputTransformFunction")) {
+            var inputs = {};
+            fluid.each(expdef.inputVariables, function (v, k) {
+                var input = fluid.model.transform.getValue(expandSpec[k + "Path"], expandSpec[k], expander);
+                inputs[k] = (input !== undefined) ? input : v; // if no match, assign default
+            });
+            expanderArgs.unshift(inputs);
         }
         var transformed = expanderFn.apply(null, expanderArgs);
         if (fluid.hasGrade(expdef, "fluid.standardOutputTransformFunction")) {
@@ -14628,7 +14516,7 @@ var fluid = fluid || fluid_1_5;
     };
     
     // unsupported, NON-API function
-    fluid.model.transform.maybePushWildcard = function (expander, expandSpec) {
+    fluid.model.transform.maybePushWildcard = function (expandSpec, expander) {
         var hw = fluid.model.transform.hasWildcard;
         var matchPath;
         if (hw(expandSpec.inputPath)) {
@@ -14645,7 +14533,6 @@ var fluid = fluid || fluid_1_5;
         return false;
     };
     
-    // From UIOptions utility fluid.uiOptions.sortByKeyLength!
     fluid.model.sortByKeyLength = function (inObject) {
         var keys = fluid.keys(inObject);
         return keys.sort(fluid.compareStringLength(true));
@@ -14653,8 +14540,8 @@ var fluid = fluid || fluid_1_5;
     
     // Three handler functions operating the (currently) three different processing modes
     // unsupported, NON-API function
-    fluid.model.transform.handleExpandExpander = function (expander, expandSpec) {
-        if (fluid.model.transform.maybePushWildcard(expander, expandSpec)) {
+    fluid.model.transform.handleExpandExpander = function (expandSpec, expander) {
+        if (fluid.model.transform.maybePushWildcard(expandSpec, expander)) {
             return;
         }
         else {
@@ -14662,7 +14549,7 @@ var fluid = fluid || fluid_1_5;
         }
     };
     // unsupported, NON-API function
-    fluid.model.transform.handleInvertExpander = function (expander, expandSpec, expdef) {
+    fluid.model.transform.handleInvertExpander = function (expandSpec, expander, expdef) {
         var invertor = expdef.invertConfiguration;
         if (invertor) {
             var inverted = fluid.invokeGlobalFunction(invertor, [expandSpec, expander]);
@@ -14671,12 +14558,15 @@ var fluid = fluid || fluid_1_5;
     };
     
     // unsupported, NON-API function
-    fluid.model.transform.handlerCollectExpander = function (expander, expandSpec, expdef) {
+    fluid.model.transform.handlerCollectExpander = function (expandSpec, expander, expdef) {
         var standardInput = fluid.hasGrade(expdef, "fluid.standardInputTransformFunction");
+        var multiInput = fluid.hasGrade(expdef, "fluid.multiInputTransformFunction");
+
         if (standardInput) {
-            fluid.model.transform.accumulateInputPath(expandSpec.inputPath, expander, expander.inputPaths);
-        }
-        else {
+            fluid.model.transform.accumulateStandardInputPath("input", expandSpec, expander, expander.inputPaths);
+        } else if (multiInput) {
+            fluid.model.transform.accumulateMultiInputPaths(expdef.inputVariables, expandSpec, expander, expander.inputPaths);
+        } else {
             var collector = expdef.collectInputPaths;
             if (collector) {
                 var collected = fluid.makeArray(fluid.invokeGlobalFunction(collector, [expandSpec, expander]));
@@ -14701,7 +14591,7 @@ var fluid = fluid || fluid_1_5;
             for (var i = 0; i < expanders.length; ++i) {
                 var expandSpec = expanders[i];
                 var expdef = fluid.defaults(expandSpec.type);
-                var returned = expander.expanderHandler(expander, expandSpec, expdef);
+                var returned = expander.expanderHandler(expandSpec, expander, expdef);
                 if (returned !== undefined) {
                     togo = returned;
                 }
@@ -14810,7 +14700,7 @@ var fluid = fluid || fluid_1_5;
     
     fluid.model.compareByPathLength = function (changea, changeb) {
         var pdiff = changea.path.length - changeb.path.length; 
-        return pdiff === 0? changea.sequence - changeb.sequence : pdiff;
+        return pdiff === 0 ? changea.sequence - changeb.sequence : pdiff;
     };
     
    /** Fires an accumulated set of change requests in increasing order of target pathlength
@@ -14842,20 +14732,14 @@ var fluid = fluid || fluid_1_5;
      */
     fluid.model.transformWithRules = function (source, rules, options) {
         options = options || {};
-        var parser = {
-            parse: fluid.pathUtil.parseEL,
-            compose: fluid.pathUtil.composePath
-        };
-        var getConfig = {
-            parser: parser,
-            strategies: [fluid.model.defaultFetchStrategy]
-        };
+        
+        var getConfig = fluid.model.escapedGetConfig;
+        
         var schemaStrategy = fluid.model.transform.decodeStrategy(source, options, getConfig);
-        var setConfig = {
-            parser: parser,
-            strategies: [fluid.model.defaultFetchStrategy, schemaStrategy ? fluid.model.transform.schemaToCreatorStrategy(schemaStrategy)
-                : fluid.model.defaultCreatorStrategy]
-        };
+        var setConfig = fluid.copy(fluid.model.escapedSetConfig);
+        setConfig.strategies = [fluid.model.defaultFetchStrategy, schemaStrategy ? fluid.model.transform.schemaToCreatorStrategy(schemaStrategy)
+                : fluid.model.defaultCreatorStrategy];
+
         var expander = {
             source: source,
             target: schemaStrategy ? fluid.model.transform.defaultSchemaValue(schemaStrategy(null, "", 0, [""])) : {},
@@ -14880,8 +14764,7 @@ var fluid = fluid || fluid_1_5;
             fluid.model.transform.expandWildcards(expander, source);
         }
         fluid.model.fireSortedChanges(expander.queuedChanges, expander.finalApplier);
-        return expander.target;
-        
+        return expander.target;    
     };
     
     $.extend(fluid.model.transformWithRules, fluid.model.transform);
@@ -14889,22 +14772,544 @@ var fluid = fluid || fluid_1_5;
 
     /** Utility function to produce a standard options transformation record for a single set of rules **/    
     fluid.transformOne = function (rules) {
-        return {transformOptions: {
-            transformer: "fluid.model.transformWithRules",
-            config: rules
+        return {
+            transformOptions: {
+                transformer: "fluid.model.transformWithRules",
+                config: rules
             }
         };
     };
     
     /** Utility function to produce a standard options transformation record for multiple rules to be applied in sequence **/    
     fluid.transformMany = function (rules) {
-        return {transformOptions: {
-            transformer: "fluid.model.transform.sequence",
-            config: rules
+        return {
+            transformOptions: {
+                transformer: "fluid.model.transform.sequence",
+                config: rules
             }
         };
     };
     
+})(jQuery, fluid_1_5);
+/*
+Copyright 2010 University of Toronto
+Copyright 2010-2011 OCAD University
+Copyright 2013 Raising the Floor - International
+
+Licensed under the Educational Community License (ECL), Version 2.0 or the New
+BSD license. You may not use this file except in compliance with one these
+Licenses.
+
+You may obtain a copy of the ECL 2.0 License and BSD License at
+https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
+*/
+
+// Declare dependencies
+/*global fluid:true, fluid_1_5:true, jQuery*/
+
+// JSLint options 
+/*jslint white: true, elsecatch: true, jslintok: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
+
+var fluid_1_5 = fluid_1_5 || {};
+var fluid = fluid || fluid_1_5;
+
+(function ($) {
+    fluid.registerNamespace("fluid.model.transform");
+    /**********************************
+     * Standard transformer functions *
+     **********************************/
+        
+    fluid.defaults("fluid.model.transform.value", { 
+        gradeNames: "fluid.standardTransformFunction",
+        invertConfiguration: "fluid.model.transform.invertValue"
+    });
+
+    fluid.model.transform.value = fluid.identity;
+    
+    fluid.model.transform.invertValue = function (expandSpec, expander) {
+        var togo = fluid.copy(expandSpec);
+        // TODO: this will not behave correctly in the face of compound "value" which contains
+        // further expanders
+        togo.inputPath = fluid.model.composePaths(expander.outputPrefix, expandSpec.outputPath);
+        togo.outputPath = fluid.model.composePaths(expander.inputPrefix, expandSpec.inputPath);
+        return togo;
+    };
+
+
+    fluid.defaults("fluid.model.transform.literalValue", { 
+        gradeNames: "fluid.standardOutputTransformFunction"
+    });
+
+    fluid.model.transform.literalValue = function (expanderSpec) {
+        return expanderSpec.value;  
+    };
+    
+
+    fluid.defaults("fluid.model.transform.arrayValue", { 
+        gradeNames: "fluid.standardTransformFunction"
+    });
+    
+    fluid.model.transform.arrayValue = fluid.makeArray;
+
+
+    fluid.defaults("fluid.model.transform.count", { 
+        gradeNames: "fluid.standardTransformFunction"
+    });
+    
+    fluid.model.transform.count = function (value) {
+        return fluid.makeArray(value).length;
+    };
+    
+    
+    fluid.defaults("fluid.model.transform.round", { 
+        gradeNames: "fluid.standardTransformFunction"
+    });
+    
+    fluid.model.transform.round = function (value) {
+        return Math.round(value);
+    };
+    
+
+    fluid.defaults("fluid.model.transform.delete", { 
+        gradeNames: "fluid.transformFunction"
+    });
+
+    fluid.model.transform["delete"] = function (expandSpec, expander) {
+        var outputPath = fluid.model.composePaths(expander.outputPrefix, expandSpec.outputPath);
+        expander.applier.requestChange(outputPath, null, "DELETE");
+    };
+
+    
+    fluid.defaults("fluid.model.transform.firstValue", { 
+        gradeNames: "fluid.transformFunction"
+    });
+    
+    fluid.model.transform.firstValue = function (expandSpec, expander) {
+        if (!expandSpec.values || !expandSpec.values.length) {
+            fluid.fail("firstValue transformer requires an array of values at path named \"values\", supplied", expandSpec);
+        }
+        for (var i = 0; i < expandSpec.values.length; i++) {
+            var value = expandSpec.values[i];
+            // TODO: problem here - all of these expanders will have their side-effects (setValue) even if only one is chosen 
+            var expanded = expander.expand(value);
+            if (expanded !== undefined) {
+                return expanded;
+            }
+        }
+    };
+    
+     
+    fluid.defaults("fluid.model.transform.scaleValue", {
+        gradeNames: [ "fluid.multiInputTransformFunction", "fluid.standardOutputTransformFunction" ],
+        inputVariables: { 
+            value: null, 
+            factor: 1,
+            offset: 0
+        }
+    });
+
+    /* simple linear transformation */
+    fluid.model.transform.scaleValue = function (inputs, expandSpec, expander) {        
+        if (typeof(inputs.value) !== "number" || typeof(inputs.factor) !== "number" || typeof(inputs.offset) !== "number") {
+            return undefined;
+        }
+        return inputs.value * inputs.factor + inputs.offset;
+    };
+
+
+    fluid.defaults("fluid.model.transform.binaryOp", { 
+        gradeNames: [ "fluid.multiInputTransformFunction", "fluid.standardOutputTransformFunction" ],
+        inputVariables: {
+            left: null,
+            right: null
+        }
+    });
+    
+    fluid.model.transform.binaryLookup = {
+        "===": function (a, b) { return a === b; },
+        "!==": function (a, b) { return a !== b; },
+        "<=": function (a, b) { return a <= b; },
+        "<": function (a, b) { return a < b; },
+        ">=": function (a, b) { return a >= b; },
+        ">": function (a, b) { return a > b; },
+        "+": function (a, b) { return a + b; },
+        "-": function (a, b) { return a - b; },
+        "*": function (a, b) { return a * b; },
+        "/": function (a, b) { return a / b; },
+        "%": function (a, b) { return a % b; },
+        "&&": function (a, b) { return a && b; },
+        "||": function (a, b) { return a || b; }
+    };
+
+    fluid.model.transform.binaryOp = function (inputs, expandSpec, expander) {
+        var operator = fluid.model.transform.getValue(undefined, expandSpec.operator, expander);
+
+        var fun = fluid.model.transform.binaryLookup[operator];
+        return (fun === undefined || inputs.left === null || inputs.right === null) ? undefined : fun(inputs.left, inputs.right);
+    };
+
+
+    fluid.defaults("fluid.model.transform.condition", { 
+        gradeNames: [ "fluid.multiInputTransformFunction", "fluid.standardOutputTransformFunction" ],
+        inputVariables: {
+            "true": null,
+            "false": null,
+            "condition": null
+        }
+    });
+    
+    fluid.model.transform.condition = function (inputs, expandSpec, expander) {
+        if (inputs.condition === null) {
+            return undefined;
+        }
+
+        return inputs[inputs.condition];
+    };
+
+
+    fluid.defaults("fluid.model.transform.valueMapper", { 
+        gradeNames: ["fluid.transformFunction", "fluid.lens"],
+        invertConfiguration: "fluid.model.transform.valueMapper.invert",
+        collectInputPaths: "fluid.model.transform.valueMapper.collect"
+    });
+
+    // unsupported, NON-API function    
+    fluid.model.transform.matchValueMapperFull = function (outerValue, expandSpec, expander) {
+        var o = expandSpec.options;
+        if (o.length === 0) {
+            fluid.fail("valueMapper supplied empty list of options: ", expandSpec);
+        }
+        if (o.length === 1) {
+            return 0;
+        }
+        var matchPower = []; 
+        for (var i = 0; i < o.length; ++i) {
+            var option = o[i];
+            var value = fluid.firstDefined(fluid.model.transform.getValue(option.inputPath, undefined, expander),
+                outerValue);
+            var matchCount = fluid.model.transform.matchValue(option.undefinedInputValue ? undefined : option.inputValue, value);
+            matchPower[i] = {index: i, matchCount: matchCount};
+        }
+        matchPower.sort(fluid.model.transform.compareMatches);
+        return matchPower[0].matchCount === matchPower[1].matchCount ? -1 : matchPower[0].index; 
+    };
+
+    fluid.model.transform.valueMapper = function (expandSpec, expander) {
+        if (!expandSpec.options) {
+            fluid.fail("demultiplexValue requires a list or hash of options at path named \"options\", supplied ", expandSpec);
+        }
+        var value = fluid.model.transform.getValue(expandSpec.inputPath, undefined, expander);
+        var deref = fluid.isArrayable(expandSpec.options) ? // long form with list of records    
+            function (testVal) {
+                var index = fluid.model.transform.matchValueMapperFull(testVal, expandSpec, expander);
+                return index === -1 ? null : expandSpec.options[index];
+            } : 
+            function (testVal) {
+                return expandSpec.options[testVal];
+            };
+      
+        var indexed = deref(value);
+        if (!indexed) {
+            // if no branch matches, try again using this value - WARNING, this seriously
+            // threatens invertibility
+            indexed = deref(expandSpec.defaultInputValue);
+        }
+        if (!indexed) {
+            return;
+        }
+
+        var outputPath = indexed.outputPath === undefined ? expandSpec.defaultOutputPath : indexed.outputPath;
+        expander.outputPrefixOp.push(outputPath);
+        var outputValue;
+        if (fluid.isPrimitive(indexed)) {
+            outputValue = indexed;
+        } else {
+            // if undefinedOutputValue is set, outputValue should be undefined
+            if (indexed.undefinedOutputValue) {
+                outputValue = undefined;
+            } else {
+                // get value from outputValue or outputValuePath. If none is found set the outputValue to be that of defaultOutputValue (or undefined)
+                outputValue = fluid.model.transform.resolveParam(indexed, expander, "outputValue", undefined);
+                outputValue = (outputValue === undefined) ? expandSpec.defaultOutputValue : outputValue;
+            }
+        }
+        var togo = fluid.model.transform.setValue(undefined, outputValue, expander, expandSpec.merge);
+        expander.outputPrefixOp.pop();
+        return togo; 
+    };
+    
+    fluid.model.transform.valueMapper.invert = function (expandSpec, expander) {
+        var options = [];
+        var togo = {
+            type: "fluid.model.transform.valueMapper",
+            options: options
+        };
+        var isArray = fluid.isArrayable(expandSpec.options);
+        var findCustom = function (name) {
+            return fluid.find(expandSpec.options, function (option) {
+                if (option[name]) {
+                    return true;
+                }
+            });
+        };
+        var anyCustomOutput = findCustom("outputPath");
+        var anyCustomInput = findCustom("inputPath");
+        if (!anyCustomOutput) {
+            togo.inputPath = fluid.model.composePaths(expander.outputPrefix, expandSpec.outputPath);
+        }
+        if (!anyCustomInput) {
+            togo.defaultOutputPath = fluid.model.composePaths(expander.inputPrefix, expandSpec.inputPath);
+        }
+        var def = fluid.firstDefined;
+        fluid.each(expandSpec.options, function (option, key) {
+            var outOption = {};
+            var origInputValue = def(isArray ? option.inputValue : key, expandSpec.defaultInputValue);
+            if (origInputValue === undefined) {
+                fluid.fail("Failure inverting configuration for valueMapper - inputValue could not be resolved for record " + key + ": ", expandSpec);
+            }
+            outOption.outputValue = origInputValue;
+            var origOutputValue = def(option.outputValue, expandSpec.defaultOutputValue);
+            outOption.inputValue = fluid.model.transform.getValue(option.outputValuePath, origOutputValue, expander);
+            if (anyCustomOutput) {
+                outOption.inputPath = fluid.model.composePaths(expander.outputPrefix, def(option.outputPath, expandSpec.outputPath));
+            }
+            if (anyCustomInput) {
+                outOption.outputPath = fluid.model.composePaths(expander.inputPrefix, def(option.inputPath, expandSpec.inputPath));
+            }
+            if (option.outputValuePath) {
+                outOption.inputValuePath = option.outputValuePath;
+            }
+            options.push(outOption);
+        });
+        return togo;
+    };
+    
+    fluid.model.transform.valueMapper.collect = function (expandSpec, expander) {
+        var togo = [];
+        fluid.model.transform.accumulateInputPath(expandSpec.inputPath, expander, togo);
+        fluid.each(expandSpec.options, function (option) {
+            fluid.model.transform.accumulateInputPath(option.inputPath, expander, togo);
+        });
+        return togo;
+    };
+
+    /* -------- arrayToSetMembership and setMembershipToArray ---------------- */
+    
+    fluid.defaults("fluid.model.transform.arrayToSetMembership", { 
+        gradeNames: ["fluid.standardInputTransformFunction", "fluid.lens"],
+        invertConfiguration: "fluid.model.transform.arrayToSetMembership.invert"
+    });
+
+ 
+    fluid.model.transform.arrayToSetMembership = function (value, expandSpec, expander) {
+        var options = expandSpec.options;
+
+        if (!value || !fluid.isArrayable(value)) {
+            fluid.fail("arrayToSetMembership didn't find array at inputPath nor passed as value.", expandSpec);
+        }
+        if (!options) {
+            fluid.fail("arrayToSetMembership requires an options block set");
+        }
+
+        if (expandSpec.presentValue === undefined) {
+            expandSpec.presentValue = true;
+        }
+        
+        if (expandSpec.missingValue === undefined) {
+            expandSpec.missingValue = false;
+        }
+
+        fluid.each(options, function (outPath, key) {
+            // write to output path given in options the value <presentValue> or <missingValue> depending on whether key is found in user input
+            var outVal = (value.indexOf(key) !== -1) ? expandSpec.presentValue : expandSpec.missingValue;
+            fluid.model.transform.setValue(outPath, outVal, expander);
+        });
+        // TODO: Why does this transform make no return?
+    };
+
+    fluid.model.transform.arrayToSetMembership.invert = function (expandSpec, expander) {
+        var togo = fluid.copy(expandSpec);
+        delete togo.inputPath;
+        togo.type = "fluid.model.transform.setMembershipToArray";
+        togo.outputPath = fluid.model.composePaths(expander.inputPrefix, expandSpec.inputPath);
+        var newOptions = {};
+        fluid.each(expandSpec.options, function (path, oldKey) {
+            var newKey = fluid.model.composePaths(expander.outputPrefix, path);
+            newOptions[newKey] = oldKey;
+        });
+        togo.options = newOptions;
+        return togo;
+    };
+
+    fluid.defaults("fluid.model.transform.setMembershipToArray", { 
+        gradeNames: ["fluid.standardOutputTransformFunction"]
+    });
+
+    fluid.model.transform.setMembershipToArray = function (expandSpec, expander) {
+        var options = expandSpec.options;
+
+        if (!options) {
+            fluid.fail("setMembershipToArray requires an options block specified");
+        }
+
+        if (expandSpec.presentValue === undefined) {
+            expandSpec.presentValue = true;
+        }
+        
+        if (expandSpec.missingValue === undefined) {
+            expandSpec.missingValue = false;
+        }
+
+        var outputArr = [];
+        fluid.each(options, function (arrVal, inPath) {
+            var val = fluid.model.transform.getValue(inPath, undefined, expander);
+            if (val === expandSpec.presentValue) {
+                outputArr.push(arrVal);
+            }
+        });
+        return outputArr;
+    };    
+
+    /* -------- objectToArray and arrayToObject -------------------- */
+    
+    /**
+     * Transforms the given array to an object.
+     * Uses the expandSpec.options.key values from each object within the array as new keys.
+     *
+     * For example, with expandSpec.key = "name" and an input object like this:
+     *
+     * {
+     *   b: [
+     *     { name: b1, v: v1 },
+     *     { name: b2, v: v2 }
+     *   ]
+     * }
+     *
+     * The output will be:
+     * {
+     *   b: {
+     *     b1: {
+     *       v: v1
+     *     }
+     *   },
+     *   {
+     *     b2: {
+     *       v: v2
+     *     }
+     *   }
+     * }
+     */
+    fluid.model.transform.applyPaths = function (operation, pathOp, paths) {
+        for (var i = 0; i < paths.length; ++i) {
+            if (operation === "push") {
+                pathOp.push(paths[i]);
+            } else {
+                pathOp.pop();   
+            }
+        }
+    };
+    
+    fluid.model.transform.expandInnerValues = function (inputPath, outputPath, expander, innerValues) {
+        var inputPrefixOp = expander.inputPrefixOp;
+        var outputPrefixOp = expander.outputPrefixOp;
+        var apply = fluid.model.transform.applyPaths;
+        
+        apply("push", inputPrefixOp, inputPath);
+        apply("push", outputPrefixOp, outputPath);
+        var expanded = {};
+        fluid.each(innerValues, function (innerValue) {
+            var expandedInner = expander.expand(innerValue);
+            $.extend(true, expanded, expandedInner);
+        });
+        apply("pop", outputPrefixOp, outputPath);
+        apply("pop", inputPrefixOp, inputPath);
+        
+        return expanded;
+    };
+
+
+    fluid.defaults("fluid.model.transform.arrayToObject", {
+        gradeNames: ["fluid.standardTransformFunction", "fluid.lens" ],
+        invertConfiguration: "fluid.model.transform.arrayToObject.invertRules"
+    });
+
+    fluid.model.transform.arrayToObject = function (arr, expandSpec, expander) {
+        if (expandSpec.key === undefined) {
+            fluid.fail("arrayToObject requires a 'key' option.", expandSpec);
+        }
+        if (!fluid.isArrayable(arr)) {
+            fluid.fail("arrayToObject didn't find array at inputPath.", expandSpec);
+        }
+        var newHash = {};
+        var pivot = expandSpec.key;
+
+        fluid.each(arr, function (v, k) {
+            // check that we have a pivot entry in the object and it's a valid type:            
+            var newKey = v[pivot];
+            var keyType = typeof(newKey);
+            if (keyType !== "string" && keyType !== "boolean" && keyType !== "number") {
+                fluid.fail("arrayToObject encountered untransformable array due to missing or invalid key", v);
+            }
+            // use the value of the key element as key and use the remaining content as value
+            var content = fluid.copy(v);
+            delete content[pivot];
+            // fix sub Arrays if needed:
+            if (expandSpec.innerValue) {
+                content = fluid.model.transform.expandInnerValues([expander.inputPrefix, expandSpec.inputPath, k.toString()], 
+                    [newKey], expander, expandSpec.innerValue);
+            }
+            newHash[newKey] = content;
+        });
+        return newHash;
+    };
+
+    fluid.model.transform.arrayToObject.invertRules = function (expandSpec, expander) {
+        var togo = fluid.copy(expandSpec);
+        togo.type = "fluid.model.transform.objectToArray";
+        togo.inputPath = fluid.model.composePaths(expander.outputPrefix, expandSpec.outputPath);
+        togo.outputPath = fluid.model.composePaths(expander.inputPrefix, expandSpec.inputPath);
+        // invert expanders from innerValue as well:
+        // TODO: The Model Transformations framework should be capable of this, but right now the
+        // issue is that we use a "private contract" to operate the "innerValue" slot. We need to
+        // spend time thinking of how this should be formalised
+        if (togo.innerValue) {
+            var innerValue = togo.innerValue;
+            for (var i = 0; i < innerValue.length; ++i) {
+                innerValue[i] = fluid.model.transform.invertConfiguration(innerValue[i]);
+            }            
+        }
+        return togo;
+    };
+    
+
+    fluid.defaults("fluid.model.transform.objectToArray", {
+        gradeNames: "fluid.standardTransformFunction"
+    });
+
+    /**
+     * Transforms an object into array of objects.
+     * This performs the inverse transform of fluid.model.transform.arrayToObject.
+     */
+    fluid.model.transform.objectToArray = function (hash, expandSpec, expander) {
+        if (expandSpec.key === undefined) {
+            fluid.fail("objectToArray requires a 'key' option.", expandSpec);
+        }
+        
+        var newArray = [];
+        var pivot = expandSpec.key;
+
+        fluid.each(hash, function (v, k) {
+            var content = {};
+            content[pivot] = k;
+            if (expandSpec.innerValue) {
+                v = fluid.model.transform.expandInnerValues([expandSpec.inputPath, k], [expandSpec.outputPath, newArray.length.toString()], 
+                    expander, expandSpec.innerValue);
+            }
+            $.extend(true, content, v);
+            newArray.push(content);
+        });
+        return newArray;
+    };
 })(jQuery, fluid_1_5);
 /*
 Copyright 2008-2010 University of Cambridge
@@ -16554,6 +16959,9 @@ var fluid_1_5 = fluid_1_5 || {};
             gradeNames.length = 0; // acquire derivatives of dynamic grades (FLUID-5054)
             gradeNames.push.apply(gradeNames, newDefaults.gradeNames);
             fluid.cacheShadowGrades(that, shadow);
+            // This cheap strategy patches FLUID-5091 for now - some more sophisticated activity will take place 
+            // at this site when we have a full fix for FLUID-5028
+            shadow.mergeOptions.destroyValue("components");
             
             var defaultsBlock = fluid.findMergeBlocks(shadow.mergeOptions.mergeBlocks, "defaults")[0];
             defaultsBlock.source = newDefaults;
@@ -26059,7 +26467,11 @@ var fluid_1_5 = fluid_1_5 || {};
         textSizeLargeIcon: "icon of a large capital letter 'A'",
 
         // Shared
-        multiplier: "times"
+        multiplier: "times",
+        
+        // Sliding Panel
+        slidingPanelShowText: "+ Show Display Preferences",
+        slidingPanelHideText: "- Hide"        
     };
 
     fluid.staticEnvironment.uioMsgBundle = fluid.messageResolver({
@@ -26619,13 +27031,11 @@ var fluid_1_5 = fluid_1_5 || {};
      */
     fluid.defaults("fluid.uiOptions", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.settingsGetter", "fluid.uiOptions.settingsSetter", "fluid.uiOptions.rootModel", "autoInit"],
-/*
         components: {
             eventBinder: {
                 type: "fluid.uiOptions.eventBinder"
             }
         },
-*/
         invokers: {
             /**
              * Updates the change applier and fires modelChanged on subcomponent fluid.uiOptions.controls
@@ -27396,7 +27806,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 // Declare dependencies
 /*global fluid_1_5:true, jQuery*/
 
-// JSLint options 
+// JSLint options
 /*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
 
 var fluid_1_5 = fluid_1_5 || {};
@@ -27413,6 +27823,7 @@ var fluid_1_5 = fluid_1_5 || {};
 
     fluid.defaults("fluid.uiOptions.modelRelay", {
         gradeNames: ["fluid.modelComponent", "fluid.eventedComponent", "autoInit"],
+        listenerNamespaces: [], // keep track of all the added listeners for removal at the destroy of this component
         mergePolicy: {
             sourceApplier: "nomerge"
         },
@@ -27423,31 +27834,35 @@ var fluid_1_5 = fluid_1_5 || {};
         invokers: {
             addListeners: {
                 funcName: "fluid.uiOptions.modelRelay.addListeners",
-                args: ["{that}.options.rules", "{that}.applier", "{that}.options.sourceApplier", "{that}.id"]
+                args: ["{that}.options.rules", "{that}.applier", "{that}.options.sourceApplier", "{that}.options.listenerNamespaces"]
             },
             removeListeners: {
                 funcName: "fluid.uiOptions.modelRelay.removeListeners",
-                args: ["{that}.options.rules", "{that}.options.sourceApplier", "{that}.id"]
+                args: ["{that}.options.sourceApplier.modelChanged", "{that}.options.listenerNamespaces"]
             }
         },
         sourceApplier: null,  // must be supplied by implementors
         rules: {}  // must be supplied by implementors, in format: "externalModelKey": "internalModelKey"
     });
 
-    fluid.uiOptions.modelRelay.removeListeners = function (rules, applier, namespace) {
-        fluid.each(rules, function () {
-            applier.removeListener(namespace);
+    fluid.uiOptions.modelRelay.removeListeners = function (modelChanged, namespaces) {
+        fluid.each(namespaces, function (namespace) {
+            modelChanged.removeListener(namespace);
         });
     };
 
-    fluid.uiOptions.modelRelay.addListeners = function (rules, applier, sourceApplier, namespace) {
+    fluid.uiOptions.modelRelay.addListeners = function (rules, applier, sourceApplier, listenerNamespaces) {
         fluid.each(rules, function (internalKey, sourceKey) {
+            var uniqueNamespace = fluid.allocateGuid();
+
+            listenerNamespaces.push(uniqueNamespace);
+
             fluid.addSourceGuardedListener(applier, internalKey, sourceKey, function (newModel) {
                 fluid.fireSourcedChange(sourceApplier, sourceKey, fluid.get(newModel, internalKey), internalKey)
             });
             fluid.addSourceGuardedListener(sourceApplier, sourceKey, internalKey, function (newModel) {
                 fluid.fireSourcedChange(applier, internalKey, fluid.get(newModel, sourceKey), sourceKey);
-            }, undefined, namespace);
+            }, undefined, uniqueNamespace);
         });
     };
 
@@ -28607,8 +29022,8 @@ var fluid_1_5 = fluid_1_5 || {};
             toggleButton: ".flc-slidingPanel-toggleButton"
         },
         strings: {
-            showText: "+ Show Display Preferences",
-            hideText: "- Hide"
+            showText: "{uioMsgBundle}.options.messageBase.slidingPanelShowText",
+            hideText: "{uioMsgBundle}.options.messageBase.slidingPanelHideText"            
         },          
         events: {
             onPanelHide: null,
