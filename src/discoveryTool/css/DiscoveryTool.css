@@ -160,6 +160,11 @@
     width: 1px;
 }
 
+.fl-icon-text {
+	position:relative;
+	top: -0.6em; /* shift text up since Checkmark icon is shifted upward. */
+}
+
 .fl-discoveryTool-panel-icon{
 	font-family: 'DiscoveryToolIcons';
 	font-size: 4.6em;
@@ -240,8 +245,9 @@
 	background-color: #000 !important;  /* !important needed to override FSS-UIO themeing. See FLUID-5097. */
 }
 
-.fl-theme-bw.fl-uiOptions-discoveryTool .fl-uiOptions-panel label {	
+.fl-theme-bw.fl-uiOptions-discoveryTool .fl-uiOptions-panel .fl-icon-text {	
 	color: #fff !important; /* !important needed to override FSS-UIO themeing. See FLUID-5097. */
+	background: #000 !important; /* !important needed to override FSS-UIO themeing. See FLUID-5097. */ ;
 }
 
 .fl-theme-bw .fl-icon-discover, .fl-theme-bw .fl-icon-arrow, .fl-theme-bw .fl-icon-check, .fl-theme-bw .fl-discoveryTool-panel-icon {
@@ -277,7 +283,7 @@
 
 /* Preference set hover */
 .fl-theme-bw .fl-uiOptions-panel label .fl-discoveryTool-panel-icon:hover { box-shadow: none;}
-.fl-theme-bw .fl-uiOptions-panel .fl-uiOptions-panel label:hover {color: #fff; }
+.fl-theme-bw .fl-uiOptions-panel .fl-uiOptions-panel .fl-icon-text:hover {color: #fff; }
 
 /* Preference set enabled / checked. */
 .fl-theme-bw .fl-uiOptions-panel input:checked + label .fl-discoveryTool-panel-icon { background-color: #fff !important;}
