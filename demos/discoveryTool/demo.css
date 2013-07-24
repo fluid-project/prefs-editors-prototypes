@@ -61,6 +61,8 @@ a:hover {
     width: 50%;
 }
 
+#main-header input[type=search] { -webkit-appearance: textfield; }
+
 #main-header .subjects {
     color: #666666;
     text-transform: uppercase;
