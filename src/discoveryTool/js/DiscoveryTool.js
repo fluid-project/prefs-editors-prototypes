@@ -325,10 +325,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
 
-    gpii.discoveryTool.panels.lowContrast.preInit = function (that) {
-        console.log(that);
-    };
-
     fluid.defaults("gpii.discoveryTool.enactors.lowContrast", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"]
     });
