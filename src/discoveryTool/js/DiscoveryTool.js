@@ -34,6 +34,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         gradeNames: ["fluid.uiOptions.templateLoader", "autoInit"],
         templates: {
             highContrast: "../html/HighContrastPanelTemplate.html",
+            lowContrast: "../html/LowContrastPanelTemplate.html",
             increaseSize: "../html/IncreaseSizePanelTemplate.html",
             simplify: "../html/SimplifyPanelTemplate.html",
             spoken: "../html/SpokenPanelTemplate.html"
@@ -45,6 +46,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         members: {
             rootModel: {
                 highContrast: false,
+                lowContrast: false,
                 increaseSize: false,
                 simplify: false,
                 spoken: false,
@@ -84,6 +86,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         model: {
             panelSelections: {
                 highContrast: false,
+                lowContrast: false,
                 increaseSize: false,
                 simplify: false,
                 spoken: false
@@ -103,6 +106,12 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         mapping: {
             highContrast: {
                 theme: "bw",
+                links: true,
+                inputsLarger: true,
+                textFont: "arial"
+            },
+            lowContrast: {
+                theme: "lgdg",
                 links: true,
                 inputsLarger: true,
                 textFont: "arial"
@@ -136,6 +145,20 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     },
                     resources: {
                         template: "{templateLoader}.resources.highContrast"
+                    }
+                }
+            },
+            lowContrast: {
+                type: "gpii.discoveryTool.panels.lowContrast",
+                container: "{uiOptions}.dom.lowContrast",
+                createOnEvent: "{uiOptions}.events.onUIOptionsMarkupReady",
+                options: {
+                    gradeNames: "gpii.discoveryTool.defaultPanel",
+                    rules: { // "externalModelKey": "internalModelKey"
+                        "panelSelections.lowContrast": "lowContrast"
+                    },
+                    resources: {
+                        template: "{templateLoader}.resources.lowContrast"
                     }
                 }
             },
@@ -218,6 +241,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         gradeNames: ["fluid.uiOptions", "autoInit"],
         selectors: {
             highContrast: ".flc-discoveryTool-highContrast",
+            lowContrast: ".flc-discoveryTool-lowContrast",
             increaseSize: ".flc-discoveryTool-increaseSize",
             simplify: ".flc-discoveryTool-simplify",
             spoken: ".flc-discoveryTool-spoken"
@@ -230,6 +254,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     rootModel: "{panels}.rootModel",
                     rules: {  // "externalModelKey": "internalModelKey"
                         "selections.highContrast": "panelSelections.highContrast",
+                        "selections.lowContrast": "panelSelections.lowContrast",
                         "selections.increaseSize": "panelSelections.increaseSize",
                         "selections.simplify": "panelSelections.simplify",
                         "selections.spoken": "panelSelections.spoken",
@@ -274,6 +299,37 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     });
 
     fluid.defaults("gpii.discoveryTool.enactors.highContrast", {
+        gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"]
+    });
+
+    /************************
+     * Low Contrast:
+     *
+     * The Discovery Tool 'high contrast' option will set:
+     * - light grey on dark grey
+     * - emphasize links
+     * - inputs larger
+     * - sans serif font or monospaced font
+     *********************/
+    fluid.defaults("gpii.discoveryTool.panels.lowContrast", {
+        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        // this is being ignored - ??
+        selectors: {
+            lowContrast: ".flc-discoveryTool-lowContrast-choice"
+        },
+        model: {
+            lowContrast: false
+        },
+        protoTree: {
+            lowContrast: "${lowContrast}"
+        }
+    });
+
+    gpii.discoveryTool.panels.lowContrast.preInit = function (that) {
+        console.log(that);
+    };
+
+    fluid.defaults("gpii.discoveryTool.enactors.lowContrast", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"]
     });
 

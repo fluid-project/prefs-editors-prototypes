@@ -77,6 +77,7 @@ var demo = demo || {};
             templates: {
                 uiOptions: "../../src/discoveryTool/html/DiscoveryTool.html",
                 highContrast: "../../src/discoveryTool/html/HighContrastPanelTemplate.html",
+                lowContrast: "../../src/discoveryTool/html/LowContrastPanelTemplate.html",
                 increaseSize: "../../src/discoveryTool/html/IncreaseSizePanelTemplate.html",
                 simplify: "../../src/discoveryTool/html/SimplifyPanelTemplate.html",
                 spoken: "../../src/discoveryTool/html/SpokenPanelTemplate.html"
