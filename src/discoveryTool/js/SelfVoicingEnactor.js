@@ -12,14 +12,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 // Declare dependencies
 /*global fluid, gpii, jQuery, window*/
 
-// JSLint options 
+// JSLint options
 /*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
 
 (function ($, fluid) {
-    
+
     /*******************************************************************************
      * selfVoicing
-     * 
+     *
      * The enactor that enables self voicing in the user interface options.
      *******************************************************************************/
 
@@ -78,7 +78,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         markup: '<audio type="audio/x-wav"></audio>',
 
         // Fireworks Server
-        ttsUrl: "http://ec2-23-23-52-224.compute-1.amazonaws.com?q=%text"
+        ttsUrl: "http://tts.idrc.ocadu.ca?q=%text"
         // Google Translate TTS Proxy
         // lang: "en",
         // ttsUrl: "http://ec2-23-23-52-224.compute-1.amazonaws.com?q=%text&tl=%lang"
@@ -102,7 +102,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 return;
             }
             audioElement.play();
-            setTimeout(that.events.afterAnnounce.fire, audioElement.duration * 1000 + 500);
+        });
+        audioElement.addEventListener("ended", function () {
+            that.events.afterAnnounce.fire();
         });
         audioElement.addEventListener("error", function () {
             if (!that.model.value) {
