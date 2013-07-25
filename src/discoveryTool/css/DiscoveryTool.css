@@ -64,7 +64,7 @@
     font-size: 1.4em;
     position:relative;
     cursor: pointer;
-    height: 6em;
+    line-height: 1.2;
 }
 
 /* Panel states */
@@ -305,8 +305,11 @@
 /* Preference set focused - text label*/ 
 .fl-theme-bw .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:focus ~ label {color: #fff;}
 
+/* Checkmark icon */
 .fl-theme-bw.fl-uiOptions-discoveryTool .fl-uiOptions-panel .fl-icon-check {
     background-color: #fff !important; /* !important needed to override FSS-UIO themeing. See FLUID-5097. */
     border: 3px solid #000;
     color: #000 !important;
+    position: relative;	
+    top: -0.9em;
 }
