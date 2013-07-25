@@ -53,18 +53,13 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 funcName: "gpii.discoveryTool.enactors.selfVoicing.announce",
                 args: ["{that}.audio", "{that}.options.ttsUrl", "{that}.options.lang", "{arguments}.0"]
             },
-            buildSpeechQueue: {
-                funcName: "gpii.discoveryTool.enactors.selfVoicing.buildSpeechQueue",
-                args: ["{that}.queue", "{arguments}.0"]
-            },
             announceNext: {
                 funcName: "gpii.discoveryTool.enactors.selfVoicing.announceNext",
                 args: "{that}"
             }
         },
         members: {
-            seen: [],
-            queue: []
+            seen: []
         },
         strings: {
             loaded: "text to speech enabled"
@@ -110,7 +105,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             if (!that.model.value) {
                 return;
             }
-            setTimeout(that.events.afterAnnounce.fire, 1500);
+            setTimeout(that.events.afterAnnounce.fire, 500);
         });
     };
 
@@ -120,7 +115,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         } else {
             delete that.currentElement;
             that.seen = [];
-            that.queue = [];
         }
     };
 
@@ -136,26 +130,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         return string.replace(/\s{2,}/gi, " ");
     };
 
-    var buildSpeechQueueImpl = function (queue, text) {
-        if (text.length <= 100) {
-            queue.push(text);
-            return;
-        }
-        var currentText = text.substr(0, 100);
-        var sIndex = currentText.lastIndexOf(" ");
-        queue.push(currentText.substring(0, sIndex));
-        buildSpeechQueueImpl(queue, text.substring(sIndex + 1));
-    };
-
-    gpii.discoveryTool.enactors.selfVoicing.buildSpeechQueue = function (queue, text) {
-        buildSpeechQueueImpl(queue, text);
-    };
-
     gpii.discoveryTool.enactors.selfVoicing.announceNext = function (that) {
-        if (that.queue.length > 0) {
-            that.announce(that.queue.shift());
-            return;
-        }
         var announcement = "";
         that.currentElement = that.currentElement ||
             document.activeElement;
@@ -198,8 +173,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
         that.currentElement = next;
         if (announcement) {
-            that.buildSpeechQueue(announcement);
-            that.announce(that.queue.shift());
+            that.announce(announcement);
         } else {
             that.announceNext();
         }
