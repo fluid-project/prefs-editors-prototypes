@@ -92,7 +92,7 @@
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel .fl-icon-check {
     visibility: hidden;
     background-color: #363c40;
-    color: #fff; /* !important needed to override FSS-UIO themeing. See FLUID-5097. */    
+    color: #fff;
     border-radius: 1em;
     height: 1.1em;
     width: 1.1em;
