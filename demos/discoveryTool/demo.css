@@ -234,3 +234,13 @@ article h2 {
 .fl-icon-book:before {
 	content: "\e008";
 }
+
+/* High Contrast Theme for panel bar*/
+.fl-theme-bw .fl-panelBar {
+	background-color: #000 !important;
+}
+
+.fl-theme-bw .fl-panelBar button {
+	color: #fff !important;
+	background-color: #000 !important;
+}
