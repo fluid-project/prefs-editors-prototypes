@@ -1,0 +1,45 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Exploration of &lt;details&gt; element</title>
+    <style type="text/css">
+        details {
+            border: 1px solid #C5C5C5;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Exploration of &lt;details&gt; element</h1>
+
+    <h2>Notes</h2>
+    <ul>
+        <li>the 'open' attribute indicates whether the details will be shown to the user on page load; default = false</li>
+        <li>If the <summary> element is omitted the heading "details" will be used. This is the responsibility of the user agent.</li>
+        <li>In these examples, the gray border is being added to the &lt;details&gt; element through local CSS.</li>
+    </ul>
+    <h2>Test: Open &lt;details&gt;, with &lt;summary&gt;</h2>
+    <details open="true">
+        <summary>An 'open' details section with a summary</summary>
+        <p>These are the details.</p>
+    </details>
+
+    <h2>Test: Closed &lt;details&gt;, with &lt;summary&gt;</h2>
+    <details> <!-- this details element is not open -->
+        <summary>A 'closed' details section with a summary</summary>
+        <p>These are the details.</p>
+    </details>
+
+    <h2>Test: Open &lt;details&gt;, without &lt;summary&gt;</h2>
+    <details open="true">
+        <p>This is an 'open' details section without a summary.</p>
+    </details>
+
+    <h2>Test: Closed &lt;details&gt;, without &lt;summary&gt;</h2>
+    <details>
+        <p>This is a 'closed' details section without a summary.</p>
+    </details>
+
+    <img alt="grammar nazi comic strip" src="http://24.media.tumblr.com/tumblr_lzq3yt3bVR1qz6z0no1_1280.jpg" />
+
+</body>

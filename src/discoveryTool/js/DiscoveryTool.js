@@ -59,6 +59,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 links: false,
                 inputsLarger: false,
                 simplifyContent: false,
+                showAltText: false,
                 selfVoicing: false
             }
         }
@@ -403,8 +404,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     };
 
     gpii.discoveryTool.enactors.simplifiedContent.finalInit = function (that) {
-        that.applier.modelChanged.addListener("value", function (newModel) {
-            that.set(newModel.value);
+        that.applier.modelChanged.addListener("value", function (newModel, oldModel) {
+            if (newModel.value !== oldModel.value) {
+                that.set(newModel.value);
+            }
         });
     };
     gpii.discoveryTool.updateToc = function (tocEnactor) {
@@ -437,6 +440,57 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             moreText: "${moreText}"
         }
     });
+
+    /**********************************************************************************
+     * showAltText enactor
+     **********************************************************************************/
+
+    // Note that the implementors need to provide the container for this view component
+    fluid.defaults("gpii.discoveryTool.enactors.showAltText", {
+        gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
+        selectors: {
+            content: ".flc-uiOptions-content",
+            altText: ".flc-discoveryTool-altTextText"
+        },
+        styles: {
+            showAltText: "fl-uiOptions-content-showAltText"
+        },
+        model: {
+            value: false
+        },
+        events: {
+            settingChanged: null
+        },
+        invokers: {
+            set: {
+                funcName: "gpii.discoveryTool.enactors.showAltText.set",
+                args: ["{arguments}.0", "{that}"]
+            }
+        },
+        altTextDivTemplate: "<div class='fl-discoveryTool-altText'><span class='fl-discoveryTool-altTextIcon'></span><span class='flc-discoveryTool-altTextText'></span></div>"
+    });
+
+    gpii.discoveryTool.enactors.showAltText.finalInit = function (that) {
+        that.applier.modelChanged.addListener("value", function (newModel, oldModel) {
+            if (newModel.value !== oldModel.value) {
+                that.set(newModel.value);
+            }
+        });
+    };
+    gpii.discoveryTool.enactors.showAltText.set = function (value, that) {
+console.log("showAltText.set()");
+        var imgs = $("img", that.container);
+        if (value) {
+console.log("            set to true!");
+            fluid.each(imgs, function (img, index) {
+                var img = $(img);
+                var alt = img.attr("alt");
+                var altDiv = $(that.options.altTextDivTemplate);
+                $(that.options.selectors.altText, altDiv).text(alt);
+                img.after(altDiv);
+            });
+        }
+    };
 
     /************************
      * Spoken
@@ -474,6 +528,19 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     },
                     listeners: {
                         settingChanged: "{uiEnhancer}.events.simplifyContentChanged"
+                    }
+                }
+            },
+            moreText: {
+                type: "gpii.discoveryTool.enactors.showAltText",
+                container: "{uiEnhancer}.container",
+                options: {
+                    sourceApplier: "{uiEnhancer}.applier",
+                    rules: {
+                        "showAltText": "value"
+                    },
+                    model: {
+                        value: "{fluid.uiOptions.rootModel}.rootModel.showAltText"
                     }
                 }
             },

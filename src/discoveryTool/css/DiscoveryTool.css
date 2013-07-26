@@ -38,6 +38,15 @@
     font-family: 'OpenSans',"Myriad Pro", Helvetica, Arial, sans-serif;    
 }
 
+/* text overlay */
+.fl-discoveryTool-altText {
+    background-color: lightgrey;
+}
+.fl-discoveryTool-altTextIcon:before {
+    font-family: 'DiscoveryToolIcons';
+    content: "\e013";
+}
+
 /* Panels */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panels {
     text-align: center;

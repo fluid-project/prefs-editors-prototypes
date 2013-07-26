@@ -78,7 +78,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         markup: '<audio type="audio/x-wav"></audio>',
 
         // Fireworks Server
-        ttsUrl: "http://ec2-23-23-52-224.compute-1.amazonaws.com?q=%text"
+        ttsUrl: "http://tts.idrc.ocadu.ca?q=%text"
         // Google Translate TTS Proxy
         // lang: "en",
         // ttsUrl: "http://ec2-23-23-52-224.compute-1.amazonaws.com?q=%text&tl=%lang"
