@@ -77,6 +77,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         sourceApplier: "{modelTransformer}.applier"
     });
 
+    fluid.consoleLog = function (that) {
+        console.log(that);
+    };
+
     /*************
      * A component that transforms the panels' boolean models into UIO model values
      * and relays the changes
@@ -145,6 +149,12 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     },
                     resources: {
                         template: "{templateLoader}.resources.highContrast"
+                    },
+                    listeners: {
+                        "{lowContrast}.events.afterEnabled": {
+                            listener: "{that}.applier.requestChange",
+                            args: ["enabled", false]
+                        }
                     }
                 }
             },
@@ -159,6 +169,12 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     },
                     resources: {
                         template: "{templateLoader}.resources.lowContrast"
+                    },
+                    listeners: {
+                        "{highContrast}.events.afterEnabled": {
+                            listener: "{that}.applier.requestChange",
+                            args: ["enabled", false]
+                        }
                     }
                 }
             },
@@ -297,6 +313,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             if (newModel.enabled !== oldModel.enabled) {
                 that.events[newModel.enabled ? "afterEnabled" : "afterDisabled"].fire(that);
             }
+            that.refreshView();
         });
     };
 
