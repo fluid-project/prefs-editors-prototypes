@@ -287,3 +287,24 @@ article h2 {
 .fl-icon-book:before {
 	content: "\e008";
 }
+
+/* Theming */
+
+.fl-theme-bw #main,
+.fl-theme-lgdg #main,
+.fl-theme-bw #main #content,
+.fl-theme-lgdg #main #content {
+    box-shadow: none;
+}
+
+.fl-theme-bw .main-content header #breadcrumbs,
+.fl-theme-lgdg .main-content header #breadcrumbs {
+    background: none;
+    box-shadow: none;
+    border-bottom: none;
+}
+
+.fl-theme-bw .main-content header #prevNext span,
+.fl-theme-lgdg .main-content header #prevNext span {
+    background: none;
+}
