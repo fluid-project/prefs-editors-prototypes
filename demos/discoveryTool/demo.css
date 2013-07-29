@@ -308,3 +308,11 @@ article h2 {
 .fl-theme-lgdg .main-content header #prevNext span {
     background: none;
 }
+
+.fl-theme-bw .fl-panelBar {
+	background-color: #000 !important;
+}
+.fl-theme-bw .fl-panelBar button {
+	color: #fff !important;
+	background-color: #000 !important;
+}
