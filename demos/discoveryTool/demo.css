@@ -9,8 +9,7 @@
 body {
     background-color: #F9F9F5;
     color: #5C5C5C;
-
-    font-family: "ProximaNova","Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
     font-size: 1.2em;
     line-height: 150%;    
 }
@@ -27,6 +26,9 @@ a {
 a:hover {
     text-decoration: underline;
 }
+a:focus {
+    color: #2795B6;
+}
 
 #main-header {
     background-color: #FFFFFF;
@@ -35,7 +37,7 @@ a:hover {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 1em;
+    padding: 0.5em;
 }
 
 #main-header #main-header-content {
@@ -71,14 +73,16 @@ a:hover {
     font-size: 90%;
 }
 
-
 /* Main content */
 .main-content {
     margin: 4em auto;
     max-width: 60em;
 }
 
-.main-content header img { float: left; }
+.main-content header img { 
+    float: left; 
+    margin: 0.5em 0;    
+}
 .main-content header h1 {
     float: left; 
     margin-left: 1em;
@@ -87,17 +91,60 @@ a:hover {
 .main-content header #breadcrumbs {
     float: left; 
     margin-left: -6.15em;
-    margin-top: 4em;    
+    margin-top: 4em;  
+    background: linear-gradient(to bottom, #DDDDDD 0%, #E8E8E8 99%) repeat scroll 0 0 transparent;
+    border-bottom: 1px solid white;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) inset;
+    padding: 0px 20px 0px 10px;          
+}
+.main-content header #breadcrumbs a:link {
+    color: #707070;
+}
+.main-content header #breadcrumbs a:focus {
+    color: #2795B6;
 }
 
 .main-content header #prevNext {
-    float: right; 
-    margin-top: 1em;
+    float: right;
+    margin-top: 2em;    
+}
+
+.main-content header #prevNext span {
+    background: linear-gradient(-90deg, #F9F9F9, #EFEFEF) repeat scroll 0 0 transparent;
+    border-color: #CECECE #CECECE #939393;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px
+    box-shadow: 0 1px 0 0 #D4D4D4, 0 1px 0 0 #FFFFFF inset;
+    height: 1.65em;
+    width: 1.65em;  
+    display: block;  
+    float: left;
+    text-align: center;
+    margin-top: 2px;
+}
+
+.main-content header #prevNext a {
+    color: #939393;
+    font-weight: normal;
+}    
+.main-content header #prevNext a:focus {
+    color: #2795B6;
+}
+
+.main-content header #prevNext .fl-icon-prev {
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+}
+.main-content header #prevNext .fl-icon-next {
+    border-bottom-right-radius: 3px;
+    border-left: none;
+    border-top-right-radius: 3px;
 }
 
 #main {
     background-color: #fff;
-    padding: 1em;
+    padding: 0.75em;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);    
 }
 
@@ -119,6 +166,7 @@ a:hover {
 }
 #main .resource-tools .tools {
     margin: 0;
+    padding: 0;
 }
 #main .resource-tools .tools li:first-child {
    /* box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.2); */
@@ -140,12 +188,13 @@ a:hover {
 /* Article */
 .main-content #article-filters {
     border-bottom: 1px solid #E6E6E6;
-
+    margin-top: -0.5em
 }
 .main-content #article-filter {
     float: left;
     padding-right: 7em;
-    /*border-right: 1px dotted #56544D;*/
+    height: 5em;
+    border-right: 1px dotted #56544D;
 }
 .main-content .article-tab {
     float: left;
@@ -154,6 +203,8 @@ a:hover {
     text-align: center;
     border-right: 1px dotted #56544D;
     margin-bottom: 0.5em;
+    height: 5em;    
+    width: 6.5em;
 }
 .main-content .article-tab span {
     display: block;
@@ -212,9 +263,11 @@ article h2 {
 }
 .fl-icon-prev:before {
 	content: "\a000";
+    font-size: 0.9em;	
 }
 .fl-icon-next:before {
 	content: "\a001";
+    font-size: 0.9em;	
 }
 .fl-icon-thumbsUp:before {
 	content: "\a002";
@@ -235,11 +288,30 @@ article h2 {
 	content: "\e008";
 }
 
-/* High Contrast Theme for panel bar*/
+/* Theming */
+
+.fl-theme-bw #main,
+.fl-theme-lgdg #main,
+.fl-theme-bw #main #content,
+.fl-theme-lgdg #main #content {
+    box-shadow: none;
+}
+
+.fl-theme-bw .main-content header #breadcrumbs,
+.fl-theme-lgdg .main-content header #breadcrumbs {
+    background: none;
+    box-shadow: none;
+    border-bottom: none;
+}
+
+.fl-theme-bw .main-content header #prevNext span,
+.fl-theme-lgdg .main-content header #prevNext span {
+    background: none;
+}
+
 .fl-theme-bw .fl-panelBar {
 	background-color: #000 !important;
 }
-
 .fl-theme-bw .fl-panelBar button {
 	color: #fff !important;
 	background-color: #000 !important;
