@@ -288,6 +288,59 @@ article h2 {
 	content: "\e008";
 }
 
+/* Images */
+details {
+    padding-bottom: 1em;
+    display: block;
+    display: none;
+}
+
+div[role="img"] {
+    background-repeat: no-repeat;
+    background-size: contain; 
+    margin-bottom: 1em;
+}
+
+#storm { 
+    background-image:url('images/storm.png'); 
+    height: 20em;    
+}
+.fl-theme-bw #storm { background-image:url('images/storm_bw.png'); }
+.fl-theme-lgdg #storm { background-image:url('images/storm_lgdg.png'); }
+
+#structure { 
+    background-image:url('images/atomic_structure.svg'); 
+    height: 25em;  
+}
+.fl-theme-bw #structure { background-image:url('images/atomic_structure_bw.svg'); }
+.fl-theme-lgdg #structure { background-image:url('images/atomic_structure_lgdg.svg'); }
+
+#sorbital { 
+    background-image:url('images/sorbital.png'); 
+    width: 15em;
+    height: 15em;
+    margin-right: 1em;
+}
+.fl-theme-bw #sorbital { background-image:url('images/sorbital_bw.png'); }
+.fl-theme-lgdg #sorbital { background-image:url('images/sorbital_lgdg.png'); }
+
+#porbital { 
+    background-image:url('images/porbital.png'); 
+    width: 19.7em;
+    height: 15em;    
+}
+.fl-theme-bw #porbital { background-image:url('images/porbital_bw.png'); }
+.fl-theme-lgdg #porbital { background-image:url('images/porbital_lgdg.png'); }
+
+#energylevels { 
+    background-image:url('images/energy_levels.svg'); 
+    width: 19.7em;
+    height: 15em;    
+}
+.fl-theme-bw #energylevels { background-image:url('images/energy_levels_bw.svg'); }
+.fl-theme-lgdg #energylevels { background-image:url('images/energy_levels_lgdg.svg'); }
+
+
 /* Theming */
 
 .fl-theme-bw #main,
