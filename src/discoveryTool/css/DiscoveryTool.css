@@ -2,30 +2,30 @@
 
 @font-face {
     font-family: "OpenSans";
-    src: url("../../lib/infusion/lib/fonts/OpenSans-Light.ttf");
+    src: url("../../shared/lib/infusion/lib/fonts/OpenSans-Light.ttf");
     font-weight: 300;
-    font-style: normal;    
+    font-style: normal;
 }
 
 @font-face {
     font-family: 'OpenSans';
-    src:url('../../lib/infusion/lib/fonts/OpenSans-Regular.ttf');
+    src:url('../../shared/lib/infusion/lib/fonts/OpenSans-Regular.ttf');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'OpenSans';
-    src:url('../../lib/infusion/lib/fonts/OpenSans-Semibold.ttf');
+    src:url('../../shared/lib/infusion/lib/fonts/OpenSans-Semibold.ttf');
     font-weight: 600;
     font-style: normal;
 }
 
 /* General */
 @font-face {
-    font-family: 'DiscoveryToolIcons'; 
-    src:url('../fonts/GPII-DiscoveryTool.eot?#iefix') format('embedded-opentype'), 
-         url('../fonts/GPII-DiscoveryTool.eot'), 
+    font-family: 'DiscoveryToolIcons';
+    src:url('../fonts/GPII-DiscoveryTool.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/GPII-DiscoveryTool.eot'),
          url('../fonts/GPII-DiscoveryTool.ttf');
 }
 
@@ -35,7 +35,7 @@
 }
 
 .fl-uiOptions-discoveryTool .fl-uiOptions {
-    font-family: 'OpenSans',"Myriad Pro", Helvetica, Arial, sans-serif;    
+    font-family: 'OpenSans',"Myriad Pro", Helvetica, Arial, sans-serif;
 }
 
 /* Panels */
@@ -48,10 +48,10 @@
     display: inline-block;
     width: 10em;
     margin: 0 1em 0 0;
-    padding:0;    
+    padding:0;
     color: #fff;
-    vertical-align: middle;   
-    height: 13em; 
+    vertical-align: middle;
+    height: 13em;
 }
 
 /* Labels */
@@ -78,12 +78,12 @@
     background-color: #ffcc00;
 }
 
-/* Preference set focused - icon*/ 
+/* Preference set focused - icon*/
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:focus + label .fl-discoveryTool-panel-icon {
 	border: 3px solid #ffcc00;
 }
 
-/* Preference set focused - text label*/ 
+/* Preference set focused - text label*/
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:focus ~ label {
 	color: #fff;
 }
@@ -100,7 +100,7 @@
     margin-left: 4.6em;
     display: inline-block;
     position:relative;
-    top: -0.6em;    
+    top: -0.6em;
 }
 
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:checked + label div.fl-icon-check {

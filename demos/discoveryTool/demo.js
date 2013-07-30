@@ -12,7 +12,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 // Declare dependencies
 /*global demo:true, fluid, gpii, jQuery, window*/
 
-// JSLint options 
+// JSLint options
 /*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
 
 var demo = demo || {};
@@ -20,8 +20,8 @@ var demo = demo || {};
 
     fluid.staticEnvironment["gpii--discoveryTool--demo"] = fluid.typeTag("gpii.discoveryTool.demo");
 
-    var pathToTemplates = "../../src/lib/infusion/components/uiOptions/html/";
-    var pathToTocTemplate = "../../src/lib/infusion/components/tableOfContents/html/TableOfContents.html";
+    var pathToTemplates = "../../src/shared/lib/infusion/components/uiOptions/html/";
+    var pathToTocTemplate = "../../src/shared/lib/infusion/components/tableOfContents/html/TableOfContents.html";
 
     demo.initSettingsStore = function () {
         fluid.globalSettingsStore();
@@ -77,6 +77,7 @@ var demo = demo || {};
             templates: {
                 uiOptions: "../../src/discoveryTool/html/DiscoveryTool.html",
                 highContrast: "../../src/discoveryTool/html/HighContrastPanelTemplate.html",
+                lowContrast: "../../src/discoveryTool/html/LowContrastPanelTemplate.html",
                 increaseSize: "../../src/discoveryTool/html/IncreaseSizePanelTemplate.html",
                 simplify: "../../src/discoveryTool/html/SimplifyPanelTemplate.html",
                 spoken: "../../src/discoveryTool/html/SpokenPanelTemplate.html"
