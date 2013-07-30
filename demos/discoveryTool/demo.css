@@ -363,7 +363,3 @@ div[role="img"] {
 	color: #fff !important;
 	background-color: #000 !important;
 }
-
-.fl-theme-bw img#energylevels:before {
-    background-image:url('images/energy_levels_bw.svg');
-}
