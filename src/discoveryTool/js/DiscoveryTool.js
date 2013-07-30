@@ -162,7 +162,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 createOnEvent: "{uiOptions}.events.onUIOptionsMarkupReady",
                 options: {
                     gradeNames: "gpii.discoveryTool.defaultPanel",
-                    rules: { // "externalModelKey": "internalModelKey"
+                    rules: {
                         "panelSelections.lowContrast": "enabled"
                     },
                     resources: {
@@ -293,9 +293,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
 
-    fluid.defaults("gpii.discovertyTool.togglePanel", {
+    fluid.defaults("gpii.discoveryTool.togglePanel", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
-        finalInitFunction: "gpii.discovertyTool.togglePanel.finalInit",
+        finalInitFunction: "gpii.discoveryTool.togglePanel.finalInit",
         selectors: {
             toggle: ".flc-discoveryTool-togglePanel.toggle"
         },
@@ -311,7 +311,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
 
-    gpii.discovertyTool.togglePanel.finalInit = function (that) {
+    gpii.discoveryTool.togglePanel.finalInit = function (that) {
         that.applier.modelChanged.addListener("enabled", function (newModel, oldModel) {
             if (newModel.enabled !== oldModel.enabled) {
                 that.events[newModel.enabled ? "afterEnabled" : "afterDisabled"].fire(that);
@@ -329,7 +329,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * - sans serif font or monospaced font
      *********************/
     fluid.defaults("gpii.discoveryTool.panels.highContrast", {
-        gradeNames: ["gpii.discovertyTool.togglePanel", "autoInit"],
+        gradeNames: ["gpii.discoveryTool.togglePanel", "autoInit"],
         selectors: {
             toggle: ".flc-discoveryTool-highContrast-choice"
         }
@@ -349,7 +349,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * - sans serif font or monospaced font
      *********************/
     fluid.defaults("gpii.discoveryTool.panels.lowContrast", {
-        gradeNames: ["gpii.discovertyTool.togglePanel", "autoInit"],
+        gradeNames: ["gpii.discoveryTool.togglePanel", "autoInit"],
         selectors: {
             toggle: ".flc-discoveryTool-lowContrast-choice"
         }
@@ -363,7 +363,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * Increase Size
      *********************/
     fluid.defaults("gpii.discoveryTool.panels.increaseSize", {
-        gradeNames: ["gpii.discovertyTool.togglePanel", "autoInit"],
+        gradeNames: ["gpii.discoveryTool.togglePanel", "autoInit"],
         // this is being ignored - ??
         selectors: {
             toggle: ".flc-discoveryTool-increaseSize-choice"
@@ -374,7 +374,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * Simplify
      *********************/
     fluid.defaults("gpii.discoveryTool.panels.simplify", {
-        gradeNames: ["gpii.discovertyTool.togglePanel", "autoInit"],
+        gradeNames: ["gpii.discoveryTool.togglePanel", "autoInit"],
         // this is being ignored - ??
         selectors: {
             toggle: ".flc-discoveryTool-simplify-choice"
@@ -471,7 +471,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * Spoken
      *********************/
     fluid.defaults("gpii.discoveryTool.panels.spoken", {
-        gradeNames: ["gpii.discovertyTool.togglePanel", "autoInit"],
+        gradeNames: ["gpii.discoveryTool.togglePanel", "autoInit"],
         // this is being ignored - ??
         selectors: {
             toggle: ".flc-discoveryTool-spoken-choice"
