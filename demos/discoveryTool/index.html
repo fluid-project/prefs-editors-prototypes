@@ -48,11 +48,11 @@
         
                 <div id="breadcrumbs">
                     <a href="#">Physical Science</a> > 
-                    <a href="">Electrons</a>
+                    <a href="#">Electrons</a>
                 </div>
         
                 <div id="prevNext">
-                    <a href="#"><span class="fl-icon-prev" aria-label="Previous" role="image"></span></a> | 
+                    <a href="#"><span class="fl-icon-prev" aria-label="Previous" role="image"></span></a>  
                     <a href="#"><span class="fl-icon-next" aria-label="Next" role="image"></span></a>
                 </div>
             </header>
@@ -60,7 +60,7 @@
             <div id="main">            
                 <div id="article-filters" class="fl-clearfix">
                     <div id="article-filter">
-                        Read<br>
+                        <span class="fl-font-size-130">Read</span><br>
                         Basic
                     </div>   
                     <div class="article-tab">
@@ -95,7 +95,7 @@
             
                 <article id="content">
                 <section>
-                <img src="images/storm.jpg" alt="Photo of stormy sky" style="width: 30em;" />
+                <div id="storm" role="img" aria-label="Photo of stormy sky"></div>
                 <p>Watch out! Lightning is extremely dangerous. A single bolt of lightning can carry a billion volts of electricity. That’s enough energy to light a 100-watt light bulb—for three months! As impressive as it is, lightning is nothing more than a sudden flow of extremely tiny particles. What are the particles that flow in a lightning bolt? The answer is electrons.</p>
                 </section>
             
@@ -118,8 +118,9 @@
                     <h2>Where Are Electrons?</h2>
 
                     <p>Unlike protons and neutrons, which are located inside the nucleus at the center of the atom, electrons are found outside the nucleus. Because opposite electric charges attract each other, negative electrons are attracted to the positive nucleus. This force of attraction keeps electrons constantly moving through the otherwise empty space around the nucleus. The Figure shown below is a common way to represent the structure of an atom. It shows the electron as a particle orbiting the nucleus, similar to the way that planets orbit the sun.</p>
-                    <img src="images/atomic_structure.png" alt="Model of atomic structure" />
-                    <p>DESCRIBE IMG HERE</p>
+                    <h3>Model of Atomic Structure</h3>             
+                    <div id="structure" role="img" aria-label="Model of atomic structure" aria-describedby="structure-descrip"></div>                    
+                    <p id="structure-descrip">This image illustrates atomic structure: a cluster of three neutrons (labeled "2") and three protons (labeled "3") are surrounded by two rings of electrons (labeled "1"). The inner ring has two electrons on it and the outer ring has one.</p>                           
                 </section>  
             
                 <section>
@@ -129,12 +130,25 @@
                     
                     <p>http://www.youtube.com/watch?v=K-jNgq16jEY (1:37)</P>
                     <p>VIDEO PLAYER HERE</p>
-                     <img src="images/orbitals.png" alt="Image showing an S orbital on the left and a P orbital on the right" />                   
+                    
+                    <div class="fl-clearfix">
+                        <div class="fl-force-left" style="width: 45%">                    
+                        <h3>S Orbital</h3>
+                        <div id="sorbital" role="img" aria-label="Image showing an S orbital" aria-describedby="sorb-descrip"></div>
+                        <p id="sorb-descrip">An image of an S Orbital: a multi-coloured set of rings made of small dots, radiating out from a red coloured centre. The rings closest to the centre are red and close together, the rings further out from the centre are pink and a bit more spaced apart, and the outer-most rings are blue and have more space between them.</p>                        
+                        </div>                        
+                        
+                        <div class="fl-force-left" style="width: 45%">
+                        <h3>P Orbital</h3>                                              
+                        <div id="porbital" role="img" aria-label="Image showing a P orbital" aria-describedby="porb-descrip"></div>
+                        <p id="porb-descrip">An image of an P Orbital: two red coloured centres surrounded by rings, pressed together. The rings closest to each centre are red and close together, the rings further out from each centre are pink and a bit more spaced apart, and the outer-most rings are blue and have more space between them. Where the two meet the rings are bright blue and flattened together.</p>                         
+                        </div>
+                    </div>
                 
-                    <p>Q: How many electrons can there be in each type of orbital shown above?</p>
-                    <p>A: There can be a maximum of two electrons in any orbital, regardless of its shape.</p>
-                    <p>Q: Where is the nucleus in each orbital?</p>
-                    <p>A: The nucleus is at the center of each orbital. It is in the middle of the sphere in the S orbital and in the pinched part of the P orbital.</p>
+                    <p><strong>Q:</strong> How many electrons can there be in each type of orbital shown above?</p>
+                    <p><strong>A:</strong> There can be a maximum of two electrons in any orbital, regardless of its shape.</p>
+                    <p><strong>Q:</strong> Where is the nucleus in each orbital?</p>
+                    <p><strong>A:</strong> The nucleus is at the center of each orbital. It is in the middle of the sphere in the S orbital and in the pinched part of the P orbital.</p>
                 </section> 
                 
                 <section>
@@ -149,9 +163,17 @@
 
 <p>You can see all of these ideas in action at the following URL (scroll down to the animation at the bottom of the Web page): http://www.brooklyn.cuny.edu/bc/ahp/SDPS/SD.PS.electrons.html</p>                 
                     
-                    <img src="images/energy_levels.png" alt="Graphic showing energy levels and electrons" />                   
-                    <p>DESCRIBE IMG HERE</p>
-                    
+                    <h3>Energy Levels and Electrons</h3>                   
+                    <div id="energylevels" role="img" aria-label="Graphic showing energy levels and electrons" aria-describedby="energy-descrip"></div>         
+                    <div id="energy-descrip">
+                    <p>This diagram shows a circle (labelled "1") surrounded by three rings, labelled moving outward from the centre "2", "3" and "4".</p>          
+                    <ol>
+                        <li><strong>Nucleus</strong> - contains protons and neutrons</li>
+                        <li><strong>1st energy level</strong> - can hold a maximum of 2 electrons in one orbital</li>
+                        <li><strong>2nd energy level</strong> - can hold a maximum of 8 electrons over 4 different orbitals</li>
+                        <li><strong>3rd energy level</strong> - can hold a maximum of 18 electrons distributed over 9 different orbitals</li>                                                
+                    </ol>
+                    </div>                     
                     <p>Q: How many electrons can there be in each type of orbital shown above?</p>
                     <p>A: There can be a maximum of two electrons in any orbital, regardless of its shape.</p>
                     <p>Q: Where is the nucleus in each orbital?</p>
