@@ -1,0 +1,318 @@
+/* Demo content */
+@font-face {
+    font-family: 'DemoIcons'; 
+    src:url('fonts/Demo-CK12.eot?#iefix') format('embedded-opentype'), 
+         url('fonts/Demo-CK12.eot'), 
+         url('fonts/Demo-CK12.ttf');
+}
+
+body {
+    background-color: #F9F9F5;
+    color: #5C5C5C;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-size: 1.2em;
+    line-height: 150%;    
+}
+
+h1, h2, h3, h4, h5, h6, div, ul, ol, dt {
+    color: #56544D;
+}
+
+a {
+    cursor: pointer;
+    color: #00ABA4;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+a:focus {
+    color: #2795B6;
+}
+
+#main-header {
+    background-color: #FFFFFF;
+    box-shadow: 0 3px 2px #CCCCCC;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 0.5em;
+}
+
+#main-header #main-header-content {
+    max-width: 63em;
+    margin: 0 auto;
+}
+#main-header #main-header-content div {
+    float:right;    
+    text-align: right;
+    margin-right: 2em;
+    width: 50%;
+}
+
+#main-header input {
+    background-color: #F2F2F1;
+    color: #56544D;
+    font-size: 0.875em;
+    padding: 0 0px 0 10px;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    height: 2.3em;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;    
+    width: 50%;
+}
+
+#main-header input[type=search] { -webkit-appearance: textfield; }
+
+#main-header .subjects {
+    color: #666666;
+    text-transform: uppercase;
+    padding-left: 0.5em;
+    font-weight: bold;
+    font-size: 90%;
+}
+
+/* Main content */
+.main-content {
+    margin: 4em auto;
+    max-width: 60em;
+}
+
+.main-content header img { 
+    float: left; 
+    margin: 0.5em 0;    
+}
+.main-content header h1 {
+    float: left; 
+    margin-left: 1em;
+}
+
+.main-content header #breadcrumbs {
+    float: left; 
+    margin-left: -6.15em;
+    margin-top: 4em;  
+    background: linear-gradient(to bottom, #DDDDDD 0%, #E8E8E8 99%) repeat scroll 0 0 transparent;
+    border-bottom: 1px solid white;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) inset;
+    padding: 0px 20px 0px 10px;          
+}
+.main-content header #breadcrumbs a:link {
+    color: #707070;
+}
+.main-content header #breadcrumbs a:focus {
+    color: #2795B6;
+}
+
+.main-content header #prevNext {
+    float: right;
+    margin-top: 2em;    
+}
+
+.main-content header #prevNext span {
+    background: linear-gradient(-90deg, #F9F9F9, #EFEFEF) repeat scroll 0 0 transparent;
+    border-color: #CECECE #CECECE #939393;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px
+    box-shadow: 0 1px 0 0 #D4D4D4, 0 1px 0 0 #FFFFFF inset;
+    height: 1.65em;
+    width: 1.65em;  
+    display: block;  
+    float: left;
+    text-align: center;
+    margin-top: 2px;
+}
+
+.main-content header #prevNext a {
+    color: #939393;
+    font-weight: normal;
+}    
+.main-content header #prevNext a:focus {
+    color: #2795B6;
+}
+
+.main-content header #prevNext .fl-icon-prev {
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+}
+.main-content header #prevNext .fl-icon-next {
+    border-bottom-right-radius: 3px;
+    border-left: none;
+    border-top-right-radius: 3px;
+}
+
+#main {
+    background-color: #fff;
+    padding: 0.75em;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);    
+}
+
+#main #helpful h1 {
+    float: left;
+    margin-top: 0.5em;
+    color: #00ABA4;
+}
+
+#main #helpful div {
+    float:right;
+    margin-top: 0.75em;
+}
+
+#main .resource-tools {
+    clear: both;
+    float: left;
+    width: 15%;
+}
+#main .resource-tools .tools {
+    margin: 0;
+    padding: 0;
+}
+#main .resource-tools .tools li:first-child {
+   /* box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.2); */
+}
+#main .resource-tools .tools li {
+    list-style: none;
+    border-top: 1px solid #DCDCDC;
+    margin-bottom: 0;
+    padding: 10px 0;
+}
+
+#main #content {
+    margin-left: 16%;
+    border: 1px solid #E0E0E0;
+    box-shadow: 0 0 5px #C5C5C5;    
+    padding: 3em;
+}
+
+/* Article */
+.main-content #article-filters {
+    border-bottom: 1px solid #E6E6E6;
+    margin-top: -0.5em
+}
+.main-content #article-filter {
+    float: left;
+    padding-right: 7em;
+    height: 5em;
+    border-right: 1px dotted #56544D;
+}
+.main-content .article-tab {
+    float: left;
+    padding: 0.5em 1em;
+    font-size: 0.8em;
+    text-align: center;
+    border-right: 1px dotted #56544D;
+    margin-bottom: 0.5em;
+    height: 5em;    
+    width: 6.5em;
+}
+.main-content .article-tab span {
+    display: block;
+    font-size: 2.5em;
+}
+
+.main-content section {
+    border-bottom: 1px solid #E6E6E6;
+    margin-bottom: 0.25em;
+    padding-bottom: 2em;
+}
+
+article h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 0 0.4em;
+    padding-top: 15px;
+}
+
+.main-content img {
+    margin: 1em 0; 
+}
+
+/* Discovery Tool */
+.fl-panelBar {
+    text-align: right;
+    background-color: #6f7b80;
+    padding: 1em;
+}
+.fl-panelBar button {
+    background-color: #6f7b80;
+    border: 0;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.fl-uiOptions-discoveryTool  {
+    position: fixed;
+    bottom: 0;
+    width: 100%;    
+}
+
+.fl-uiOptions-discoveryTool iframe {
+    width: 100%;
+    border: none;
+}
+
+/* Font Icons */
+
+.fl-icon-search, .fl-icon-prev, .fl-icon-next, .fl-icon-thumbsUp, .fl-icon-thumbsDown, .fl-icon-arrow, .fl-icon-light, .fl-icon-book {
+    font-family: 'DemoIcons';    
+}
+.fl-icon-search:before {
+	content: "\ea06";
+}
+.fl-icon-prev:before {
+	content: "\a000";
+    font-size: 0.9em;	
+}
+.fl-icon-next:before {
+	content: "\a001";
+    font-size: 0.9em;	
+}
+.fl-icon-thumbsUp:before {
+	content: "\a002";
+    font-size: 2em;	
+}
+.fl-icon-thumbsDown:before {
+	content: "\a003";
+    font-size: 2em;	
+}
+.fl-icon-arrow:before {
+	content: "\a004";
+	font-size: 0.6em;
+}
+.fl-icon-light:before {
+	content: "\a007";
+}
+.fl-icon-book:before {
+	content: "\e008";
+}
+
+/* Theming */
+
+.fl-theme-bw #main,
+.fl-theme-lgdg #main,
+.fl-theme-bw #main #content,
+.fl-theme-lgdg #main #content {
+    box-shadow: none;
+}
+
+.fl-theme-bw .main-content header #breadcrumbs,
+.fl-theme-lgdg .main-content header #breadcrumbs {
+    background: none;
+    box-shadow: none;
+    border-bottom: none;
+}
+
+.fl-theme-bw .main-content header #prevNext span,
+.fl-theme-lgdg .main-content header #prevNext span {
+    background: none;
+}
+
+.fl-theme-bw .fl-panelBar {
+	background-color: #000 !important;
+}
+.fl-theme-bw .fl-panelBar button {
+	color: #fff !important;
+	background-color: #000 !important;
+}
