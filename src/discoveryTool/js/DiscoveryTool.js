@@ -142,6 +142,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 type: "gpii.discoveryTool.panels.highContrast",
                 container: "{uiOptions}.dom.highContrast",
                 createOnEvent: "{uiOptions}.events.onUIOptionsMarkupReady",
+                priority: "first",
                 options: {
                     gradeNames: "gpii.discoveryTool.defaultPanel",
                     rules: { // "externalModelKey": "internalModelKey"
@@ -151,10 +152,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                         template: "{templateLoader}.resources.highContrast"
                     },
                     listeners: {
-                        "{lowContrast}.events.afterEnabled": {
-                            listener: "{that}.applier.requestChange",
-                            args: ["enabled", false]
-                        }
+                        afterDisabled: "{that}.refreshView"
                     }
                 }
             },
@@ -174,7 +172,12 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                         "{highContrast}.events.afterEnabled": {
                             listener: "{that}.applier.requestChange",
                             args: ["enabled", false]
-                        }
+                        },
+                        "afterEnabled": {
+                            listener: "{highContrast}.applier.requestChange",
+                            args: ["enabled", false]
+                        },
+                        afterDisabled: "{that}.refreshView"
                     }
                 }
             },
@@ -313,7 +316,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             if (newModel.enabled !== oldModel.enabled) {
                 that.events[newModel.enabled ? "afterEnabled" : "afterDisabled"].fire(that);
             }
-            that.refreshView();
         });
     };
 
