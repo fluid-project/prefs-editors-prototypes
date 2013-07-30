@@ -165,6 +165,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                         template: "{templateLoader}.resources.lowContrast"
                     },
                     listeners: {
+                        // All of the listeners for toggling the contrasts are inside of
+                        // lowContrast because the highContrast component has to be created
+                        // before the IoC reference will resolve correctly.
                         "{highContrast}.events.afterEnabled": {
                             listener: "{that}.applier.requestChange",
                             args: ["enabled", false]
