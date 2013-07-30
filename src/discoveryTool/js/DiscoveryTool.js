@@ -77,10 +77,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         sourceApplier: "{modelTransformer}.applier"
     });
 
-    fluid.consoleLog = function (that) {
-        console.log(that);
-    };
-
     /*************
      * A component that transforms the panels' boolean models into UIO model values
      * and relays the changes
@@ -342,7 +338,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     /************************
      * Low Contrast:
      *
-     * The Discovery Tool 'high contrast' option will set:
+     * The Discovery Tool 'low contrast' option will set:
      * - light grey on dark grey
      * - emphasize links
      * - inputs larger
