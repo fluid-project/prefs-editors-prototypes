@@ -6,6 +6,12 @@
          url('fonts/Demo-CK12.ttf');
 }
 
+@font-face {
+	font-family: 'DemoLogos';
+    src: url('fonts/Demo-DiscoveryTool-Logos.eot'), 
+         url('fonts/Demo-DiscoveryTool-Logos.ttf');	
+}
+
 body {
     background-color: #F9F9F5;
     color: #5C5C5C;
@@ -37,7 +43,7 @@ a:focus {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 0.5em;
+    padding: 0.25em;
 }
 
 #main-header #main-header-content {
@@ -48,6 +54,7 @@ a:focus {
     float:right;    
     text-align: right;
     margin-right: 2em;
+    margin-top: 0.5em;
     width: 50%;
 }
 
@@ -255,6 +262,32 @@ article h2 {
 
 /* Font Icons */
 
+.fl-icon-tree, .fl-icon-atom {
+    font-family: 'DemoLogos';    
+}
+.fl-icon-tree:before {
+	content: "\e000";
+	font-size: 2em;
+	color: darkbrown;
+}
+.fl-icon-tree:after {
+	content: "\e001";
+	font-size: 2em;
+	margin-left: -0.6em;	
+	color: green;
+}
+.fl-icon-atom:before {
+	content: "\e002";
+	font-size: 4em;
+	float: left;
+	border: 0.1em solid #ddd;
+	border-radius: 1em;
+	width: 1.5em;
+	height: 1.5em;	
+	text-align: center;
+	margin-bottom: 0.15em;
+}
+
 .fl-icon-search, .fl-icon-prev, .fl-icon-next, .fl-icon-thumbsUp, .fl-icon-thumbsDown, .fl-icon-arrow, .fl-icon-light, .fl-icon-book {
     font-family: 'DemoIcons';    
 }
@@ -368,4 +401,10 @@ div[role="img"] {
 .fl-theme-bw .fl-panelBar button {
 	color: #fff !important;
 	background-color: #000 !important;
+}
+
+.fl-theme-bw .fl-icon-atom:before,
+.fl-theme-bw .fl-icon-tree:after,
+.fl-theme-bw .fl-icon-tree:before, {
+    border-color: #000;
 }
