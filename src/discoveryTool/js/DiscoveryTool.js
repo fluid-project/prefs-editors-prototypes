@@ -92,11 +92,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     });
 
     gpii.discoveryTool.addFontIcon = function (toggleButton) {
-        // toggleButton.addClass("fl-icon-discover").attr({
-        //     "aria-label": "Discover",
-        //     "role": "presentation"
-        // });
-        toggleButton.html(toggleButton.html() + "<span class=\"fl-icon-discover\" aria-label=\"Discover\" role=\"presentation\"></span>");
+        toggleButton.addClass("fl-icon-discover").attr({
+            "aria-label": "Discover",
+            "role": "presentation"
+        });
     };
 
     gpii.discoveryTool.removeFontIcon = function (toggleButton) {
