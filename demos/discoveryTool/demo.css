@@ -362,10 +362,7 @@ div[role="img"] {
     background: none;
 }
 
-.fl-theme-bw .fl-panelBar {
-	background-color: #000 !important;
-}
-.fl-theme-bw .fl-panelBar button {
-	color: #fff !important;
-	background-color: #000 !important;
+.fl-theme-bw .fl-panelBar button,
+.fl-theme-lgdg .fl-panelBar button {
+	border: none;
 }
