@@ -127,17 +127,6 @@
     font-family: 'DiscoveryToolIcons';
 }
 
-.fl-icon-discover:before {
-    color: #fff;
-    content: "\e01a";
-}
-
-.fl-icon-discover:after {
-    content: "\e01b";
-    position: relative;
-    left: 15em;
-}
-
 .fl-icon-arrow:after {
     content: "\e019";
     color: #C8CCCE;

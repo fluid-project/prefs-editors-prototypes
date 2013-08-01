@@ -288,6 +288,17 @@ article h2 {
 	content: "\e008";
 }
 
+.fl-icon-discover:before {
+    color: #fff;
+    content: "\e01a";
+}
+
+.fl-icon-discover:after {
+    content: "\e01b";
+    position: relative;
+    left: 15em;
+}
+
 /* Images */
 details {
     padding-bottom: 1em;
