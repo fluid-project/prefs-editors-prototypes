@@ -366,3 +366,8 @@ div[role="img"] {
 .fl-theme-lgdg .fl-panelBar button {
 	border: none;
 }
+
+/* Add padding to bottom of simplified content so it's not obscured by the DT panel bar */
+.fl-uiOptions-content-simplified {
+    padding-bottom: 4em;
+}
