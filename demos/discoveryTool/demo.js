@@ -48,7 +48,7 @@ var demo = demo || {};
         });
     };
 
-    demo.initFatPanel = function (container) {
+    demo.intiDiscoveryTool = function (container) {
         gpii.discoveryTool(container, {
             templatePrefix: pathToTemplates,
             templateLoader: {
@@ -68,19 +68,6 @@ var demo = demo || {};
         options: {
             markupProps: {
                 src: "../../src/discoveryTool/html/FatPanelUIOptionsFrame.html"
-            }
-        }
-    });
-
-    fluid.demands("fluid.uiOptions.templateLoader", ["gpii.discoveryTool", "gpii.discoveryTool.demo"], {
-        options: {
-            templates: {
-                uiOptions: "../../src/discoveryTool/html/DiscoveryTool.html",
-                highContrast: "../../src/discoveryTool/html/HighContrastPanelTemplate.html",
-                lowContrast: "../../src/discoveryTool/html/LowContrastPanelTemplate.html",
-                increaseSize: "../../src/discoveryTool/html/IncreaseSizePanelTemplate.html",
-                simplify: "../../src/discoveryTool/html/SimplifyPanelTemplate.html",
-                spoken: "../../src/discoveryTool/html/SpokenPanelTemplate.html"
             }
         }
     });
