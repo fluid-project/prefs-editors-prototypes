@@ -259,3 +259,8 @@
     top: -0.9em;    
 }
 
+.fl-theme-bw .fl-uiOptions input:focus + label,  
+.fl-theme-lgdg .fl-uiOptions input:focus + label {
+    outline: none;
+    border: 0.2em solid #00AAFF;
+}
