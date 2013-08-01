@@ -497,4 +497,78 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
 
+    /**************************************
+     * gpii.discoveryTool.trySomethingNew *
+     ***************************************/
+
+    fluid.defaults("gpii.discoveryTool.trySomethingNew", {
+        gradeNames: ["fluid.viewComponent", "autoInit"],
+        selectors: {
+            label: "flc-discoveryTool-tryLabel"
+        },
+        strings: {
+            label: "Try Something New" // TODO: convert to message bundle
+        },
+        events: {
+            onHover: null,
+            afterHover: null,
+            afterActivate: null
+        },
+        presetComponents: [],
+        numSelections: 2,
+        listeners: {
+            "onCreate.click": {
+                "this": "{that}.container",
+                "method": "click",
+                "args": ["{that}.events.afterActivate.fire"]
+            },
+            "onCreate.mouseenter": {
+                "this": "{that}.container",
+                "method": "mouseenter",
+                "args": ["{that}.events.onHover.fire"]
+            },
+            "onCreate.mouseleave": {
+                "this": "{that}.container",
+                "method": "mouseleave",
+                "args": ["{that}.events.afterHover.fire"]
+            },
+            "afterActivate.preventDefault": {
+                listener: "gpii.discoveryTool.trySomethingNew.preventDefault"
+            },
+            "afterActivate.activate": {
+                listener: "{that}.randomizeSelection"
+            }
+        },
+        invokers: {
+            randomizeSelection: {
+                funcName: "gpii.discoveryTool.trySomethingNew.randomizeSelection",
+                args: ["{that}.options.presetComponents", "{that}.options.numSelections"]
+            }
+        }
+    });
+
+    gpii.discoveryTool.trySomethingNew.preventDefault = function (event) {
+        event.preventDefault();
+    };
+
+    gpii.discoveryTool.trySomethingNew.randomizeSelection = function (presetComponents, numSelections) {
+        var components = fluid.copy(presetComponents);
+        var toSelect = [];
+        var numSelections = Math.min(numSelections || 0, components.length);
+
+        for (var i = 0; i < numSelections; i++) {
+            var randIndex = Math.floor(Math.random() * (components.length));
+            toSelect = toSelect.concat(components.splice(randIndex, 1));
+        }
+
+        fluid.each(components, function (that) {
+            that.applier.requestChange("enabled", false);
+            that.refreshView();
+        });
+        fluid.each(toSelect, function (that) {
+            that.applier.requestChange("enabled", true);
+            that.refreshView();
+        });
+    };
+
 })(jQuery, fluid);
