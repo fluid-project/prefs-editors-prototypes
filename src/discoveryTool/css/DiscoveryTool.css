@@ -48,7 +48,6 @@
 .fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel {
     display: inline-block;
     width: 10em;
-    margin: 0 1em 0 0;
     padding:0;
     color: #fff;
     vertical-align: middle;
@@ -106,6 +105,21 @@
 
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:checked + label div.fl-icon-check {
     visibility: visible;
+    animation: checkshrink 2s linear;
+    -webkit-animation: checkshrink 2s linear; /* Safari and Chrome */    
+}
+
+/* Checkbox animation */
+@keyframes checkshrink {
+    0%  { height: 2em; width: 2em; margin-left: 4.3em; opacity: 50%; }
+    33% { height: 1.7em; width: 1.7em; margin-left: 4.4em; opacity: 70%; }
+    66% { height: 1.4em; width: 1.4em; margin-left: 4.5em; opacity: 90%; }
+    100%{ height: 1.1em; width: 1.1em; margin-left: 4.6em; opacity: 100%; }        
+}
+
+@-webkit-keyframes checkshrink { /* Safari and Chrome */
+    from {height: 1.3em; width: 1.3em;}
+    to {height: 1.2em; width: 1.2em;}
 }
 
 
@@ -115,7 +129,9 @@
     font-size: 1.2em;
     width: 6.7em;
     height: 6.7em;
-    border-radius: 0.4em;
+    border-radius: 0.4em; 
+    border: none;
+    background: none;   
 }
 
 .fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel .fl-discoveryTool-try:hover {
