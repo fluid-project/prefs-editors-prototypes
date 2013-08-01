@@ -17,19 +17,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
 (function ($, fluid) {
 
-    fluid.staticEnvironment["gpii--discoveryTool"] = fluid.typeTag("gpii.discoveryTool");
     fluid.registerNamespace("gpii.discoveryTool");
 
-    /**
-     * These paths will need to be customized for the integration
-     */
-    fluid.demands("fluid.uiOptions.templateLoader", ["gpii.discoveryTool"], {
-        options: {
-            templates: {
-                uiOptions: "../html/DiscoveryTool.html"
-            }
-        }
-    });
     fluid.defaults("gpii.discoveryTool.templateLoader", {
         gradeNames: ["fluid.uiOptions.resourceLoader", "autoInit"],
         templates: {
@@ -335,10 +324,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
 
-    fluid.defaults("gpii.discoveryTool.enactors.highContrast", {
-        gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"]
-    });
-
     /************************
      * Low Contrast:
      *
@@ -353,10 +338,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         selectors: {
             toggle: ".flc-discoveryTool-lowContrast-choice"
         }
-    });
-
-    fluid.defaults("gpii.discoveryTool.enactors.lowContrast", {
-        gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"]
     });
 
     /************************
