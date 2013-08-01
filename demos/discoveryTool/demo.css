@@ -255,7 +255,7 @@ article h2 {
 
 /* Font Icons */
 
-.fl-icon-search, .fl-icon-prev, .fl-icon-next, .fl-icon-thumbsUp, .fl-icon-thumbsDown, .fl-icon-arrow, .fl-icon-light, .fl-icon-book {
+.fl-icon-search, .fl-icon-prev, .fl-icon-next, .fl-icon-thumbsUp, .fl-icon-thumbsDown, .fl-icon-arrow, .fl-icon-light, .fl-icon-book, .fl-icon-discover {
     font-family: 'DemoIcons';    
 }
 .fl-icon-search:before {
