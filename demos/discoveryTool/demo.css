@@ -369,3 +369,8 @@ div[role="img"] {
 	color: #fff !important;
 	background-color: #000 !important;
 }
+
+/* Add padding to bottom of simplified content so it's not obscured by the DT panel bar */
+.fl-uiOptions-content-simplified {
+    padding-bottom: 4em;
+}
