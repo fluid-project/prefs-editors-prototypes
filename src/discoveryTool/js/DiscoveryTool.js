@@ -23,13 +23,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     /**
      * These paths will need to be customized for the integration
      */
-    fluid.demands("fluid.uiOptions.templateLoader", ["gpii.discoveryTool"], {
-        options: {
-            templates: {
-                uiOptions: "../html/DiscoveryTool.html"
-            }
-        }
-    });
     fluid.defaults("gpii.discoveryTool.templateLoader", {
         gradeNames: ["fluid.uiOptions.resourceLoader", "autoInit"],
         templates: {
@@ -39,6 +32,13 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             simplify: "%prefix/SimplifyPanelTemplate.html",
             spoken: "%prefix/SpokenPanelTemplate.html",
             uiOptions: "%prefix/DiscoveryTool.html"
+        }
+    });
+
+    fluid.defaults("gpii.discoveryTool.messageLoader", {
+        gradeNames: ["fluid.uiOptions.resourceLoader", "autoInit"],
+        templates: {
+            uiOptions: "%prefix/DiscoveryTool.json"
         }
     });
 
@@ -70,8 +70,37 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * An instance of a Fat Panel UIO
      ****************/
     fluid.defaults("gpii.discoveryTool", {
-        gradeNames: ["fluid.uiOptions.fatPanel", "autoInit"]
+        gradeNames: ["fluid.uiOptions.fatPanel", "autoInit"],
+        slidingPanel: {
+            options: {
+                listeners: {
+                    onCreate: {
+                        listener: "gpii.discoveryTool.addFontIcon",
+                        args: "{that}.dom.toggleButton"
+                    },
+                    onPanelHide: {
+                        listener: "gpii.discoveryTool.addFontIcon",
+                        args: "{that}.dom.toggleButton"
+                    },
+                    onPanelShow: {
+                        listener: "gpii.discoveryTool.removeFontIcon",
+                        args: "{that}.dom.toggleButton"
+                    }
+                }
+            }
+        }
     });
+
+    gpii.discoveryTool.addFontIcon = function (toggleButton) {
+        toggleButton.addClass("fl-icon-discover").attr({
+            "aria-label": "Discover",
+            "role": "presentation"
+        });
+    };
+
+    gpii.discoveryTool.removeFontIcon = function (toggleButton) {
+        toggleButton.removeClass("fl-icon-discover").removeAttr("aria-label").removeAttr("role");
+    };
 
     fluid.defaults("gpii.discoveryTool.defaultPanel", {
         gradeNames: ["fluid.uiOptions.defaultPanel", "autoInit"],
