@@ -12,14 +12,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 // Declare dependencies
 /*global fluid, gpii, jQuery, window*/
 
-// JSLint options 
+// JSLint options
 /*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
 
 (function ($, fluid) {
-    
+
     /*******************************************************************************
      * selfVoicing
-     * 
+     *
      * The enactor that enables self voicing in the user interface options.
      *******************************************************************************/
 
@@ -51,11 +51,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             },
             announce: {
                 funcName: "gpii.discoveryTool.enactors.selfVoicing.announce",
-                args: ["{that}.audio", "{that}.options.ttsUrl", "{that}.options.lang", "{arguments}.0"]
-            },
-            buildSpeechQueue: {
-                funcName: "gpii.discoveryTool.enactors.selfVoicing.buildSpeechQueue",
-                args: ["{that}.queue", "{arguments}.0"]
+                args: ["{that}", "{arguments}.0"]
             },
             announceNext: {
                 funcName: "gpii.discoveryTool.enactors.selfVoicing.announceNext",
@@ -64,7 +60,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         },
         members: {
             seen: [],
-            queue: []
+            speaking: false
         },
         strings: {
             loaded: "text to speech enabled"
@@ -78,10 +74,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         markup: '<audio type="audio/x-wav"></audio>',
 
         // Fireworks Server
-        ttsUrl: "http://tts.idrc.ocadu.ca?q=%text"
-        // Google Translate TTS Proxy
-        // lang: "en",
-        // ttsUrl: "http://ec2-23-23-52-224.compute-1.amazonaws.com?q=%text&tl=%lang"
+        ttsUrl: "http://tts.idrc.ocadu.ca?q=%text",
+
+        lang: "en"
     });
 
     gpii.discoveryTool.enactors.selfVoicing.finalInit = function (that) {
@@ -101,14 +96,19 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             if (!that.model.value) {
                 return;
             }
+            that.speaking = true;
             audioElement.play();
-            setTimeout(that.events.afterAnnounce.fire, audioElement.duration * 1000 + 500);
+        });
+        audioElement.addEventListener("ended", function () {
+            that.speaking = false;
+            that.events.afterAnnounce.fire();
         });
         audioElement.addEventListener("error", function () {
+            that.speaking = false;
             if (!that.model.value) {
                 return;
             }
-            setTimeout(that.events.afterAnnounce.fire, 1500);
+            setTimeout(that.events.afterAnnounce.fire, 500);
         });
     };
 
@@ -118,13 +118,19 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         } else {
             delete that.currentElement;
             that.seen = [];
-            that.queue = [];
         }
     };
 
-    gpii.discoveryTool.enactors.selfVoicing.announce = function (audio, url, lang, text) {
-        audio.attr("src", fluid.stringTemplate(url, {
-            lang: lang,
+    gpii.discoveryTool.enactors.selfVoicing.announce = function (that, text) {
+        if (!that.model.value) {return;}
+        if (that.speaking) {
+            setTimeout(function () {
+                that.announce(text);
+            }, 500)
+            return;
+        }
+        that.audio.attr("src", fluid.stringTemplate(that.options.ttsUrl, {
+            lang: that.options.lang,
             text: text
         }));
     };
@@ -134,26 +140,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         return string.replace(/\s{2,}/gi, " ");
     };
 
-    var buildSpeechQueueImpl = function (queue, text) {
-        if (text.length <= 100) {
-            queue.push(text);
-            return;
-        }
-        var currentText = text.substr(0, 100);
-        var sIndex = currentText.lastIndexOf(" ");
-        queue.push(currentText.substring(0, sIndex));
-        buildSpeechQueueImpl(queue, text.substring(sIndex + 1));
-    };
-
-    gpii.discoveryTool.enactors.selfVoicing.buildSpeechQueue = function (queue, text) {
-        buildSpeechQueueImpl(queue, text);
-    };
-
     gpii.discoveryTool.enactors.selfVoicing.announceNext = function (that) {
-        if (that.queue.length > 0) {
-            that.announce(that.queue.shift());
-            return;
-        }
         var announcement = "";
         that.currentElement = that.currentElement ||
             document.activeElement;
@@ -196,8 +183,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
         that.currentElement = next;
         if (announcement) {
-            that.buildSpeechQueue(announcement);
-            that.announce(that.queue.shift());
+            that.announce(announcement);
         } else {
             that.announceNext();
         }

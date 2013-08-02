@@ -31,13 +31,15 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
     fluid.defaults("gpii.discoveryTool.templateLoader", {
-        gradeNames: ["fluid.uiOptions.templateLoader", "autoInit"],
+        gradeNames: ["fluid.uiOptions.resourceLoader", "autoInit"],
         templates: {
-            highContrast: "../html/HighContrastPanelTemplate.html",
-            increaseSize: "../html/IncreaseSizePanelTemplate.html",
-            simplify: "../html/SimplifyPanelTemplate.html",
-            moreText: "../html/MoreTextPanelTemplate.html",
-            spoken: "../html/SpokenPanelTemplate.html"
+            highContrast: "%prefix/HighContrastPanelTemplate.html",
+            lowContrast: "%prefix/LowContrastPanelTemplate.html",
+            increaseSize: "%prefix/IncreaseSizePanelTemplate.html",
+            simplify: "%prefix/SimplifyPanelTemplate.html",
+            moreText: "%prefix/MoreTextPanelTemplate.html",
+            spoken: "%prefix/SpokenPanelTemplate.html",
+            uiOptions: "%prefix/DiscoveryTool.html"
         }
     });
 
@@ -46,6 +48,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         members: {
             rootModel: {
                 highContrast: false,
+                lowContrast: false,
                 increaseSize: false,
                 simplify: false,
                 moreText: false,
@@ -87,6 +90,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         model: {
             panelSelections: {
                 highContrast: false,
+                lowContrast: false,
                 increaseSize: false,
                 simplify: false,
                 moreText: false,
@@ -108,6 +112,12 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         mapping: {
             highContrast: {
                 theme: "bw",
+                links: true,
+                inputsLarger: true,
+                textFont: "arial"
+            },
+            lowContrast: {
+                theme: "lgdg",
                 links: true,
                 inputsLarger: true,
                 textFont: "arial"
@@ -137,13 +147,45 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 type: "gpii.discoveryTool.panels.highContrast",
                 container: "{uiOptions}.dom.highContrast",
                 createOnEvent: "{uiOptions}.events.onUIOptionsMarkupReady",
+                priority: "first",
                 options: {
                     gradeNames: "gpii.discoveryTool.defaultPanel",
                     rules: { // "externalModelKey": "internalModelKey"
-                        "panelSelections.highContrast": "highContrast"
+                        "panelSelections.highContrast": "enabled"
                     },
                     resources: {
                         template: "{templateLoader}.resources.highContrast"
+                    },
+                    listeners: {
+                        afterDisabled: "{that}.refreshView"
+                    }
+                }
+            },
+            lowContrast: {
+                type: "gpii.discoveryTool.panels.lowContrast",
+                container: "{uiOptions}.dom.lowContrast",
+                createOnEvent: "{uiOptions}.events.onUIOptionsMarkupReady",
+                options: {
+                    gradeNames: "gpii.discoveryTool.defaultPanel",
+                    rules: {
+                        "panelSelections.lowContrast": "enabled"
+                    },
+                    resources: {
+                        template: "{templateLoader}.resources.lowContrast"
+                    },
+                    listeners: {
+                        // All of the listeners for toggling the contrasts are inside of
+                        // lowContrast because the highContrast component has to be created
+                        // before the IoC reference will resolve correctly.
+                        "{highContrast}.events.afterEnabled": {
+                            listener: "{that}.applier.requestChange",
+                            args: ["enabled", false]
+                        },
+                        "afterEnabled": {
+                            listener: "{highContrast}.applier.requestChange",
+                            args: ["enabled", false]
+                        },
+                        afterDisabled: "{that}.refreshView"
                     }
                 }
             },
@@ -154,7 +196,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 options: {
                     gradeNames: "gpii.discoveryTool.defaultPanel",
                     rules: {
-                        "panelSelections.increaseSize": "increaseSize"
+                        "panelSelections.increaseSize": "enabled"
                     },
                     resources: {
                         template: "{templateLoader}.resources.increaseSize"
@@ -168,7 +210,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 options: {
                     gradeNames: "gpii.discoveryTool.defaultPanel",
                     rules: {
-                        "panelSelections.simplify": "simplify"
+                        "panelSelections.simplify": "enabled"
                     },
                     resources: {
                         template: "{templateLoader}.resources.simplify"
@@ -181,8 +223,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 createOnEvent: "{uiOptions}.events.onUIOptionsMarkupReady",
                 options: {
                     gradeNames: "gpii.discoveryTool.defaultPanel",
-                    rules: { // "externalModelKey": "internalModelKey"
-                        "panelSelections.moreText": "moreText"
+                    rules: {
+                        "panelSelections.moreText": "enabled"
                     },
                     resources: {
                         template: "{templateLoader}.resources.moreText"
@@ -196,7 +238,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 options: {
                     gradeNames: "gpii.discoveryTool.defaultPanel",
                     rules: {
-                        "panelSelections.spoken": "spoken"
+                        "panelSelections.spoken": "enabled"
                     },
                     resources: {
                         template: "{templateLoader}.resources.spoken"
@@ -240,6 +282,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         gradeNames: ["fluid.uiOptions", "autoInit"],
         selectors: {
             highContrast: ".flc-discoveryTool-highContrast",
+            lowContrast: ".flc-discoveryTool-lowContrast",
             increaseSize: ".flc-discoveryTool-increaseSize",
             simplify: ".flc-discoveryTool-simplify",
             moreText: ".flc-discoveryTool-moreText",
@@ -252,28 +295,54 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     sourceApplier: "{panels}.applier",
                     rootModel: "{panels}.rootModel",
                     rules: {  // "externalModelKey": "internalModelKey"
-                        "selections.highContrast": "panelSelections.highContrast",
-                        "selections.increaseSize": "panelSelections.increaseSize",
-                        "selections.simplify": "panelSelections.simplify",
-                        "selections.moreText": "panelSelections.moreText",
-                        "selections.spoken": "panelSelections.spoken",
+                        "highContrast": "panelSelections.highContrast",
+                        "lowContrast": "panelSelections.lowContrast",
+                        "increaseSize": "panelSelections.increaseSize",
+                        "simplify": "panelSelections.simplify",
+                        "moreText": "panelSelections.moreText",
+                        "spoken": "panelSelections.spoken",
 
-                        "selections.textFont": "convertedModel.textFont",
-                        "selections.theme": "convertedModel.theme",
-                        "selections.textSize": "convertedModel.textSize",
-                        "selections.lineSpace": "convertedModel.lineSpace",
-                        "selections.toc": "convertedModel.toc",
-                        "selections.links": "convertedModel.links",
-                        "selections.inputsLarger": "convertedModel.inputsLarger",
-                        "selections.simplifyContent": "convertedModel.simplifyContent",
-                        "selections.showAltText": "convertedModel.showAltText",
-                        "selections.selfVoicing": "convertedModel.selfVoicing"
+                        "textFont": "convertedModel.textFont",
+                        "theme": "convertedModel.theme",
+                        "textSize": "convertedModel.textSize",
+                        "lineSpace": "convertedModel.lineSpace",
+                        "toc": "convertedModel.toc",
+                        "links": "convertedModel.links",
+                        "inputsLarger": "convertedModel.inputsLarger",
+                        "simplifyContent": "convertedModel.simplifyContent",
+                        "showAltText": "convertedModel.showAltText",
+                        "selfVoicing": "convertedModel.selfVoicing"
                     }
                 }
             }
         }
     });
 
+    fluid.defaults("gpii.discoveryTool.togglePanel", {
+        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        finalInitFunction: "gpii.discoveryTool.togglePanel.finalInit",
+        selectors: {
+            toggle: ".flc-discoveryTool-togglePanel.toggle"
+        },
+        events: {
+            afterDisabled: null,
+            afterEnabled: null
+        },
+        model: {
+            enabled: false
+        },
+        protoTree: {
+            toggle: "${enabled}"
+        }
+    });
+
+    gpii.discoveryTool.togglePanel.finalInit = function (that) {
+        that.applier.modelChanged.addListener("enabled", function (newModel, oldModel) {
+            if (newModel.enabled !== oldModel.enabled) {
+                that.events[newModel.enabled ? "afterEnabled" : "afterDisabled"].fire(that);
+            }
+        });
+    };
 
     /************************
      * High Contrast:
@@ -285,16 +354,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * - sans serif font or monospaced font
      *********************/
     fluid.defaults("gpii.discoveryTool.panels.highContrast", {
-        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
-        // this is being ignored - ??
+        gradeNames: ["gpii.discoveryTool.togglePanel", "autoInit"],
         selectors: {
-            highContrast: ".flc-discoveryTool-highContrast-choice"
-        },
-        model: {
-            highContrast: false
-        },
-        protoTree: {
-            highContrast: "${highContrast}"
+            toggle: ".flc-discoveryTool-highContrast-choice"
         }
     });
 
@@ -303,19 +365,33 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     });
 
     /************************
+     * Low Contrast:
+     *
+     * The Discovery Tool 'low contrast' option will set:
+     * - light grey on dark grey
+     * - emphasize links
+     * - inputs larger
+     * - sans serif font or monospaced font
+     *********************/
+    fluid.defaults("gpii.discoveryTool.panels.lowContrast", {
+        gradeNames: ["gpii.discoveryTool.togglePanel", "autoInit"],
+        selectors: {
+            toggle: ".flc-discoveryTool-lowContrast-choice"
+        }
+    });
+
+    fluid.defaults("gpii.discoveryTool.enactors.lowContrast", {
+        gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"]
+    });
+
+    /************************
      * Increase Size
      *********************/
     fluid.defaults("gpii.discoveryTool.panels.increaseSize", {
-        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        gradeNames: ["gpii.discoveryTool.togglePanel", "autoInit"],
         // this is being ignored - ??
         selectors: {
-            increaseSize: ".flc-discoveryTool-increaseSize-choice"
-        },
-        model: {
-            increaseSize: false
-        },
-        protoTree: {
-            increaseSize: "${increaseSize}"
+            toggle: ".flc-discoveryTool-increaseSize-choice"
         }
     });
 
@@ -323,16 +399,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * Simplify
      *********************/
     fluid.defaults("gpii.discoveryTool.panels.simplify", {
-        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        gradeNames: ["gpii.discoveryTool.togglePanel", "autoInit"],
         // this is being ignored - ??
         selectors: {
-            simplify: ".flc-discoveryTool-simplify-choice"
-        },
-        model: {
-            simplify: false
-        },
-        protoTree: {
-            simplify: "${simplify}"
+            toggle: ".flc-discoveryTool-simplify-choice"
         }
     });
 
@@ -428,16 +498,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * More Text
      ***********************/
     fluid.defaults("gpii.discoveryTool.panels.moreText", {
-        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        gradeNames: ["gpii.discoveryTool.togglePanel", "autoInit"],
         // this is being ignored - ??
         selectors: {
-            moreText: ".flc-discoveryTool-moreText-choice"
-        },
-        model: {
-            moreText: false
-        },
-        protoTree: {
-            moreText: "${moreText}"
+            toggle: ".flc-discoveryTool-moreText-choice"
         }
     });
 
@@ -478,10 +542,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         });
     };
     gpii.discoveryTool.enactors.showAltText.set = function (value, that) {
-console.log("showAltText.set()");
-        var imgs = $("img", that.container);
+        var imgs = $("img, [role~='img']", that.container);
         if (value) {
-console.log("            set to true!");
             fluid.each(imgs, function (img, index) {
                 var img = $(img);
                 var alt = img.attr("alt");
@@ -496,16 +558,10 @@ console.log("            set to true!");
      * Spoken
      *********************/
     fluid.defaults("gpii.discoveryTool.panels.spoken", {
-        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        gradeNames: ["gpii.discoveryTool.togglePanel", "autoInit"],
         // this is being ignored - ??
         selectors: {
-            spoken: ".flc-discoveryTool-spoken-choice"
-        },
-        model: {
-            spoken: false
-        },
-        protoTree: {
-            spoken: "${spoken}"
+            toggle: ".flc-discoveryTool-spoken-choice"
         }
     });
 

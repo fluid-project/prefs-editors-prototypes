@@ -1,17 +1,21 @@
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <link rel="stylesheet" type="text/css" href="../../src/lib/infusion/framework/fss/css/fss-reset-global.css" />
-    <link rel="stylesheet" type="text/css" href="../../src/lib/infusion/framework/fss/css/fss-base-global.css" />
-    <link rel="stylesheet" type="text/css" href="../../src/lib/infusion/framework/fss/css/fss-layout.css" />
-    <link rel="stylesheet" type="text/css" href="../../src/lib/infusion/framework/fss/css/fss-text.css" />
-    <link rel="stylesheet" type="text/css" href="../../src/lib/infusion/components/uiOptions/css/fss/fss-theme-bw-uio.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/framework/fss/css/fss-reset-global.css" />
+    <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/framework/fss/css/fss-base-global.css" />
+    <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/framework/fss/css/fss-layout.css" />
+    <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/framework/fss/css/fss-text.css" />
+    <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/components/uiOptions/css/fss/fss-theme-bw-uio.css" />
+    <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/components/uiOptions/css/fss/fss-theme-wb-uio.css" />    
+    <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/components/uiOptions/css/fss/fss-theme-lgdg-uio.css" />
+    <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/components/uiOptions/css/fss/fss-theme-dglg-uio.css" />    
+
     <link rel="stylesheet" type="text/css" href="../../src/discoveryTool/css/DiscoveryTool.css" />
     <link rel="stylesheet" type="text/css" href="demo.css" />
 
-    <script type="text/javascript" src="../../src/lib/infusion/MyInfusion.js"></script>
+    <script type="text/javascript" src="../../src/shared/lib/infusion/MyInfusion.js"></script>
     <script type="text/javascript" src="../../src/discoveryTool/js/SelfVoicingEnactor.js"></script>
     <script type="text/javascript" src="../../src/discoveryTool/js/DiscoveryTool.js"></script>
 
@@ -19,7 +23,7 @@
 </head>
 
 <body class="discovery-tool-demo">
-    
+
     <script type="text/javascript">
         $(document).ready(function () {
             demo.initSettingsStore();
@@ -32,52 +36,56 @@
 
     <div class="flc-uiOptions-content">
         <header id="main-header">
-            <div>
+            <div id="main-header-content">
                 <img src="images/logo_ck12.png" alt="ck-12 logo" />
+
+                <div>
+                    <input type="search" placeholder="SEARCH" /> <span class="fl-icon-search" role="presentation"></span><a href="#" class="subjects">Subjects</a>
+                </div>
             </div>
         </header>
-        
+
         <section class="main-content">
             <header class="fl-clearfix">
                 <img src="images/electrons.png" alt="Image of electrons" />
                 <h1>Electrons</h1>
-        
+
                 <div id="breadcrumbs">
                     <a href="#">Physical Science</a> > 
-                    <a href="">Electrons</a>
+                    <a href="#">Electrons</a>
                 </div>
-        
+
                 <div id="prevNext">
-                    <a href="#"><span class="fl-icon-prev" aria-label="Previous" role="image"></span></a> | 
+                    <a href="#"><span class="fl-icon-prev" aria-label="Previous" role="image"></span></a>  
                     <a href="#"><span class="fl-icon-next" aria-label="Next" role="image"></span></a>
                 </div>
             </header>
 
-            <div id="main">            
+            <div id="main">
                 <div id="article-filters" class="fl-clearfix">
                     <div id="article-filter">
-                        Read<br>
+                        <span class="fl-font-size-130">Read</span><br>
                         Basic
-                    </div>   
+                    </div>
                     <div class="article-tab">
                         <span class="fl-icon-light"></span>
                         All Modalities
-                    </div>   
-                    <div class="article-tab">                        
+                    </div>
+                    <div class="article-tab">
                         <span class="fl-icon-book"></span>
                         Read
                     </div>
                 </div>
-            
+
                 <div id="helpful" class="fl-clearfix">
                     <h1>Electrons</h1>
-                
+
                     <div>
-                        Was this helpful? 
+                        Was this helpful?
                         <span class="fl-icon-thumbsUp" aria-label="Yes, thumbs up" role="image"></span>
                         <span class="fl-icon-thumbsDown" aria-label="No, thumbs down" role="image"></span>
                     </div>
-                </div>            
+                </div>
                 <div class="resource-tools">
                     <menu type="toolbar" class="tools">
                         <li><a href="#">Add to FlexBook</a></li>
@@ -85,54 +93,74 @@
                         <li><a href="#">Details</a></li>
                         <li><a href="#">Resources</a></li>
                         <li><a href="#">Download <span class="fl-icon-arrow"></span></a></li>
-                        <li><a href="#">Share <span class="fl-icon-arrow"></span></a></li> 
+                        <li><a href="#">Share <span class="fl-icon-arrow"></span></a></li>
                     </menu>
                 </div>
-            
+
                 <article id="content">
                 <section>
-                <img src="images/storm.jpg" alt="Photo of stormy sky" style="width: 30em;" />
+                <div id="storm" role="img" aria-label="Photo of stormy sky, with lightning striking over a city."></div>
+                <details>Photo of stormy sky, with lightning striking over a city.</details>
                 <p>Watch out! Lightning is extremely dangerous. A single bolt of lightning can carry a billion volts of electricity. That’s enough energy to light a 100-watt light bulb—for three months! As impressive as it is, lightning is nothing more than a sudden flow of extremely tiny particles. What are the particles that flow in a lightning bolt? The answer is electrons.</p>
                 </section>
-            
+
                 <section>
                     <h2>What Are Electrons?</h2>
 
                     <p><strong>Electrons</strong> are one of three main types of particles that make up atoms. The other two types are protons and neutrons. Unlike protons and neutrons, which consist of smaller, simpler particles, electrons are fundamental particles that do not consist of smaller particles. They are a type of fundamental particles called leptons. All leptons have an electric charge of -1 or 0. For an excellent video about electrons and other fundamental particles in atoms, go to this URL: </p>
                     <p>http://www.youtube.com/watch?v=Vi91qyjuknM (7:44)</p>
-                    
+
                     <p>VIDEO PLAYER HERE</p>
                 </section>
-            
+
                 <section>
                     <h2>Properties of Electrons</h2>
 
                     <p>Electrons are extremely small. The mass of an electron is only about 1/2000 the mass of a proton or neutron, so electrons contribute virtually nothing to the total mass of an atom. Electrons have an electric charge of -1, which is equal but opposite to the charge of proton, which is +1. All atoms have the same number of electrons as protons, so the positive and negative charges “cancel out,” making atoms electrically neutral.</p>
                 </section>
-            
+
                 <section>
                     <h2>Where Are Electrons?</h2>
 
                     <p>Unlike protons and neutrons, which are located inside the nucleus at the center of the atom, electrons are found outside the nucleus. Because opposite electric charges attract each other, negative electrons are attracted to the positive nucleus. This force of attraction keeps electrons constantly moving through the otherwise empty space around the nucleus. The Figure shown below is a common way to represent the structure of an atom. It shows the electron as a particle orbiting the nucleus, similar to the way that planets orbit the sun.</p>
-                    <img src="images/atomic_structure.png" alt="Model of atomic structure" />
-                    <p>DESCRIBE IMG HERE</p>
+                    <h3>Model of Atomic Structure</h3>             
+                    <div id="structure" role="img" aria-label="Model of atomic structure" aria-describedby="structure-descrip"></div>                    
+                    <ol id="structure-descrip">
+                        <li>Electron</li>
+                        <li>Neutron</li>
+                        <li>Proton</li>                                                
+                    </ol>
+                    <details>This image illustrates atomic structure: a cluster of three neutrons (labelled "2") and three protons (labelled "3") are surrounded by two rings of electrons (labelled "1"). The inner ring has two electrons on it and the outer ring has one.</details>                           
                 </section>  
-            
+    
                 <section>
                     <h2>Orbitals</h2>
 
                     <p>The atomic model above is useful for some purposes, but it’s too simple when it comes to the location of electrons. In reality, it’s impossible to say what path an electron will follow. Instead, it’s only possible to describe the chances of finding an electron in a certain region around the nucleus. The region where an electron is most likely to be is called an orbital. Each orbital can have at most two electrons. Some orbitals, called S orbitals, are shaped like spheres, with the nucleus in the center. An S orbital is pictured in Figure below. Where the dots are denser, the chance of finding an electron is greater. Also pictured in Figure below is a P orbital. P orbitals are shaped like dumbbells, with the nucleus in the pinched part of the dumbbell. You can see animated, three-dimensional models of orbitals at the following URL.</p>
-                    
+
                     <p>http://www.youtube.com/watch?v=K-jNgq16jEY (1:37)</P>
                     <p>VIDEO PLAYER HERE</p>
-                     <img src="images/orbitals.png" alt="Image showing an S orbital on the left and a P orbital on the right" />                   
+                    
+                    <div class="fl-clearfix">
+                        <div class="fl-force-left" style="width: 45%">                    
+                        <h3>S Orbital</h3>
+                        <div id="sorbital" role="img" aria-label="Image showing an S orbital" aria-describedby="sorb-descrip"></div>
+                        <details id="sorb-descrip">An image of an S Orbital: a multi-coloured set of rings made of small dots, radiating out from a red coloured centre. The rings closest to the centre are red and close together, the rings further out from the centre are pink and a bit more spaced apart, and the outer-most rings are blue and have more space between them.</details>                        
+                        </div>                        
+                        
+                        <div class="fl-force-left" style="width: 45%">
+                        <h3>P Orbital</h3>                                              
+                        <div id="porbital" role="img" aria-label="Image showing a P orbital" aria-describedby="porb-descrip"></div>
+                        <details id="porb-descrip">An image of an P Orbital: two red coloured centres surrounded by rings, pressed together. The rings closest to each centre are red and close together, the rings further out from each centre are pink and a bit more spaced apart, and the outer-most rings are blue and have more space between them. Where the two meet the rings are bright blue and flattened together.</details>  
+                        </div>
+                    </div>
                 
-                    <p>Q: How many electrons can there be in each type of orbital shown above?</p>
-                    <p>A: There can be a maximum of two electrons in any orbital, regardless of its shape.</p>
-                    <p>Q: Where is the nucleus in each orbital?</p>
-                    <p>A: The nucleus is at the center of each orbital. It is in the middle of the sphere in the S orbital and in the pinched part of the P orbital.</p>
+                    <p><strong>Q:</strong> How many electrons can there be in each type of orbital shown above?</p>
+                    <p><strong>A:</strong> There can be a maximum of two electrons in any orbital, regardless of its shape.</p>
+                    <p><strong>Q:</strong> Where is the nucleus in each orbital?</p>
+                    <p><strong>A:</strong> The nucleus is at the center of each orbital. It is in the middle of the sphere in the S orbital and in the pinched part of the P orbital.</p>
                 </section> 
-                
+
                 <section>
                     <h2>What’s Your Energy Level?</h2>
 
@@ -145,28 +173,36 @@
 
 <p>You can see all of these ideas in action at the following URL (scroll down to the animation at the bottom of the Web page): http://www.brooklyn.cuny.edu/bc/ahp/SDPS/SD.PS.electrons.html</p>                 
                     
-                    <img src="images/energy_levels.png" alt="Graphic showing energy levels and electrons" />                   
-                    <p>DESCRIBE IMG HERE</p>
-                    
-                    <p>Q: How many electrons can there be in each type of orbital shown above?</p>
-                    <p>A: There can be a maximum of two electrons in any orbital, regardless of its shape.</p>
-                    <p>Q: Where is the nucleus in each orbital?</p>
-                    <p>A: The nucleus is at the center of each orbital. It is in the middle of the sphere in the S orbital and in the pinched part of the P orbital.</p>
-                </section>                 
- 
+                    <h3>Energy Levels and Electrons</h3>                   
+                    <div id="energylevels" role="img" aria-label="Graphic showing energy levels and electrons" aria-describedby="energy-descrip"></div>         
+                    <div id="energy-descrip">          
+                    <ol>
+                        <li><strong>Nucleus</strong> - contains protons and neutrons</li>
+                        <li><strong>1st energy level</strong> - can hold a maximum of 2 electrons in one orbital</li>
+                        <li><strong>2nd energy level</strong> - can hold a maximum of 8 electrons over 4 different orbitals</li>
+                        <li><strong>3rd energy level</strong> - can hold a maximum of 18 electrons distributed over 9 different orbitals</li>                                                
+                    </ol>
+                    <details>This diagram shows a circle (labelled "1") surrounded by three rings, labelled moving outward from the centre "2", "3" and "4".</details>                    
+                    </div>                     
+                    <p><strong>Q:</strong> How many electrons can there be in each type of orbital shown above?</p>
+                    <p><strong>A:</strong> There can be a maximum of two electrons in any orbital, regardless of its shape.</p>
+                    <p><strong>Q:</strong> Where is the nucleus in each orbital?</p>
+                    <p><strong>A:</strong> The nucleus is at the center of each orbital. It is in the middle of the sphere in the S orbital and in the pinched part of the P orbital.</p>
+                </section>
+
                  <section>
                     <h2>Summary</h2>
 
                     <p>Electrons are one of three main types of particles that make up the atom. They are extremely small and have an electric charge of -1. All atoms have the same number of electrons as protons.</p>
                     <p>Negative electrons are attracted to the positive nucleus. This force of attraction keeps electrons constantly moving around the nucleus. The region where an electron is most likely to be found is called an orbital.</p>
                     <p>Electrons are located at fixed distances from the nucleus, called energy levels. Electrons at lower energy levels have less energy than electrons at higher energy levels.</p>
-                </section>  
+                </section>
 
                  <section>
                     <h2>Vocabulary</h2>
-                    
+
                     <p>electron: Negatively charged atomic particle that moves around the nucleus of an atom.</p>
-                </section> 
+                </section>
 
                  <section>
                     <h2>Practice</h2>
@@ -174,45 +210,44 @@
                     <p>Research the discovery of electrons at the following URLs, and then answer the questions below.</p>
 
                     <p>http://www.youtube.com/watch?v=IdTxGJjA4Jw (2:54)</p>
-                    
+
                     <p>VIDEO PLAYER HERE</p>
-                    
+
                     <p>http://www.aip.org/history/electron/jjhome.htm</p>
 
                     <p>Who discovered electrons? When were they discovered?</p>
                     <p>Outline how electrons were discovered.</p>
                     <p>What was the significance of the discovery of electrons?</p>
                     <p>Where did Thomson think electrons were located in the atom? How does this differ from the modern view of electrons presented above?</p>
-                                        
-                </section>             
-                
+
+                </section>
+
                 <section>
                     <h2>Review</h2>
-                    
+
                     <p>What are electrons?</p>
                     <p>Compare and contrast electrons and protons.</p>
                     <p>Sketch a model of a beryllium atom, which has four protons, five neutrons, and four electrons. Your model should include the placement of electrons at the appropriate energy levels.</p>
                     <p>What are valence electrons? Why are they so important? How many valence electrons does a beryllium atom have (see question 3)?</p>
-                </section> 
-                
+                </section>
+
                 <section>
                     <p><a href="#">Show Details</a></p>
                 </section>
                 <section>
-                    <p><a href="#">Show Resources</a></p> 
-                </section>                                
+                    <p><a href="#">Show Resources</a></p>
+                </section>
                 </article>  <!-- closing content column -->
-            
-            </div>  <!-- closing main div -->                                  
+
+            </div>  <!-- closing main div -->
         </section>
-        <footer>This is a footer.</footer>
     </div>
-    
+
     <!-- BEGIN markup for fat-panel UI Options -->
     <div class="flc-uiOptions-fatPanel fl-uiOptions-discoveryTool">
 
         <!-- This div is for the sliding panel that shows and hides the UI Options controls -->
-        <div class="fl-panelBar">
+        <div class="fl-panelBar fl-inverted-color">
             <!-- button id="reset" class="flc-uiOptions-reset fl-uiOptions-reset"><span class="fl-icon-undo"></span> Reset</button -->
             <button id="show-hide" class="flc-slidingPanel-toggleButton fl-uiOptions-showHide"> Show/Hide</button>
         </div>
@@ -220,7 +255,7 @@
         <!-- This is the div that will contain the UI Options component -->
         <div class="flc-slidingPanel-panel flc-uiOptions-iframe"></div>
 
-    </div>  
-    <!-- END markup for fat-panel UI Options -->        
+    </div>
+    <!-- END markup for fat-panel UI Options -->
 </body>
 </html>
