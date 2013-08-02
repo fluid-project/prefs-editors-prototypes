@@ -519,6 +519,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             images: "img, [role~='img']"
         },
         styles: {
+            altText: "fl-discoveryTool-altText",
+            altTextIcon: "fl-discoveryTool-altTextIcon",
             hidden: "fl-hidden"
         },
         model: {
@@ -536,7 +538,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         members: {
             docScannedForImages: false
         },
-        altTextDivTemplate: "<div class='flc-discoveryTool-altText fl-discoveryTool-altText'><span class='fl-discoveryTool-altTextIcon'></span><span class='flc-discoveryTool-altTextText'></span></div>"
+        altTextDivTemplate: "<div class='flc-discoveryTool-altText'></div>"
     });
 
     gpii.discoveryTool.enactors.showAltText.finalInit = function (that) {
@@ -548,12 +550,18 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     };
     gpii.discoveryTool.enactors.showAltText.set = function (value, that) {
         if (!that.docScannedForImages) {
-            var imgs = that.dom.fastLocate("images");
+            var imgs = that.locate("images");
             fluid.each(imgs, function (img, index) {
                 var img = $(img);
+                // XXX img.attr("alt") won't work for the divs with role="img"
                 var alt = img.attr("alt");
+                var altSpan = $("<span>");
+                altSpan.text(alt);
+                var altIconSpan = $("<span></span>");
+                altIconSpan.addClass(that.options.styles.altTextIcon);
                 var altDiv = $(that.options.altTextDivTemplate);
-                $(that.options.selectors.altTextText, altDiv).text(alt);
+                altDiv.addClass(that.options.styles.altText);
+                altDiv.append(altIconSpan).append(altSpan);
                 img.after(altDiv);
             });
             that.docScannedForImages = true;
