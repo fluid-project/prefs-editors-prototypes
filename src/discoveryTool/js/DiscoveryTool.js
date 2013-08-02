@@ -514,10 +514,12 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
         selectors: {
             content: ".flc-uiOptions-content",
-            altText: ".flc-discoveryTool-altTextText"
+            altTexts: ".flc-discoveryTool-altText",
+            altTextText: ".flc-discoveryTool-altTextText",
+            images: "img, [role~='img']"
         },
         styles: {
-            showAltText: "fl-uiOptions-content-showAltText"
+            hidden: "fl-hidden"
         },
         model: {
             value: false
@@ -531,7 +533,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 args: ["{arguments}.0", "{that}"]
             }
         },
-        altTextDivTemplate: "<div class='fl-discoveryTool-altText'><span class='fl-discoveryTool-altTextIcon'></span><span class='flc-discoveryTool-altTextText'></span></div>"
+        members: {
+            docScannedForImages: false
+        },
+        altTextDivTemplate: "<div class='flc-discoveryTool-altText fl-discoveryTool-altText'><span class='fl-discoveryTool-altTextIcon'></span><span class='flc-discoveryTool-altTextText'></span></div>"
     });
 
     gpii.discoveryTool.enactors.showAltText.finalInit = function (that) {
@@ -542,16 +547,18 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         });
     };
     gpii.discoveryTool.enactors.showAltText.set = function (value, that) {
-        var imgs = $("img, [role~='img']", that.container);
-        if (value) {
+        if (!that.docScannedForImages) {
+            var imgs = that.dom.fastLocate("images");
             fluid.each(imgs, function (img, index) {
                 var img = $(img);
                 var alt = img.attr("alt");
                 var altDiv = $(that.options.altTextDivTemplate);
-                $(that.options.selectors.altText, altDiv).text(alt);
+                $(that.options.selectors.altTextText, altDiv).text(alt);
                 img.after(altDiv);
             });
+            that.docScannedForImages = true;
         }
+        that.dom.fastLocate("altTexts").toggleClass(that.options.styles.hidden, !value)
     };
 
     /************************
