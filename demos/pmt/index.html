@@ -1,0 +1,177 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Preferences Management Tool</title>
+
+	<link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/framework/fss/css/fss-reset-global.css" />
+    <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/framework/fss/css/fss-base-global.css" />
+    <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/framework/fss/css/fss-layout.css" />
+    <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/framework/fss/css/fss-text.css" />
+    <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/components/uiOptions/css/fss/fss-theme-bw-uio.css" />
+    <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/components/uiOptions/css/fss/fss-theme-wb-uio.css" />    
+    <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/components/uiOptions/css/fss/fss-theme-lgdg-uio.css" />
+    <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/components/uiOptions/css/fss/fss-theme-dglg-uio.css" />    
+
+    <script type="text/javascript" src="../../src/shared/lib/infusion/MyInfusion.js"></script>
+    
+<script type="text/javascript">
+	fluid.uiOptions.primarySchema = {
+	    "fluid.uiOptions.lineSpace": {
+	        "type": "number",
+	        "default": 1,
+	        "minimum": 1,
+	        "maximum": 2,
+	        "divisibleBy": 0.1
+	    }/* ,
+	    "fluid.uiOptions.textFont": {
+	        "type": "string",
+	        "default": "",
+	        "enum": ["", "Times New Roman", "Comic Sans", "Arial", "Verdana"]
+	    },
+	    "fluid.uiOptions.tableOfContents": {
+	        "type": "boolean",
+	        "default": false
+	    } */
+	};
+	
+	fluid.defaults("fluid.uiOptions.panels.lineSpace", {
+	    gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+	    preferenceMap: {
+	        "fluid.uiOptions.lineSpace": {
+	            "model.value": "default",
+	            "range.min": "minimum",
+	            "range.max": "maximum"
+	        }
+	    },
+	    range: {
+	        min: 1,
+	        max: 2
+	    },
+	    selectors: {
+	        lineSpace: ".flc-uiOptions-line-space",
+	        label: ".flc-uiOptions-line-space-label",
+	        narrowIcon: ".flc-uiOptions-line-space-narrowIcon",
+	        wideIcon: ".flc-uiOptions-line-space-wideIcon",
+	        multiplier: ".flc-uiOptions-multiplier"
+	    },
+	    protoTree: {
+	        label: {messagekey: "lineSpaceLabel"},
+	        narrowIcon: {messagekey: "lineSpaceNarrowIcon"},
+	        wideIcon: {messagekey: "lineSpaceWideIcon"},
+	        multiplier: {messagekey: "multiplier"},
+	        lineSpace: {
+	            decorators: {
+	                type: "fluid",
+	                func: "fluid.uiOptions.textfieldSlider"
+	            }
+	        }
+	    },
+	    sliderOptions: {
+	        orientation: "horizontal",
+	        step: 0.1,
+	        range: "min"
+	    }
+	});
+	
+	fluid.defaults("fluid.uiOptions.auxSchema.starter", {
+	    gradeNames: ["fluid.uiOptions.auxSchema", "autoInit"],
+	    auxiliarySchema: {
+	        // The global values:
+	        "namespace": "fluid.uiOptions.constructed",
+	        "templatePrefix": "../../src/pmt/html/", // The common path to settings panel templates
+	        "template": "%prefix/FatPanelUIOptions.html",
+	        "messagePrefix": "../../src/shared/lib/infusion/components/uiOptions/messages/",
+	        "message": "%prefix/uiOptions.json",
+	 
+	        // The preference-specific information:
+	        "lineSpace": {
+	            "type": "fluid.uiOptions.lineSpace",
+	            "enactor": {
+	                "type": "fluid.uiOptions.enactors.lineSpace",
+	                "fontSizeMap": {
+	                    "xx-small": "9px",
+	                    "x-small": "11px",
+	                    "small": "13px",
+	                    "medium": "15px",
+	                    "large": "18px",
+	                    "x-large": "23px",
+	                    "xx-large": "30px"
+	                }
+	            },
+	            "panel": {
+	                "type": "fluid.uiOptions.panels.lineSpace",
+	                "container": ".flc-uiOptions-line-space",  // the css selector in the template where the panel is rendered
+	                "template": "%prefix/UIOptionsTemplate-lineSpace.html",
+	                "message": "%prefix/lineSpace.json"
+	            }
+	        }/* ,
+	        "textFont": {
+	            "type": "fluid.uiOptions.textFont",
+	            "classes": {
+	                "": "",
+	                "Times New Roman": "fl-font-uio-times",
+	                "Comic Sans": "fl-font-uio-comic-sans",
+	                "Arial": "fl-font-uio-arial",
+	                "Verdana": "fl-font-uio-verdana"
+	            },
+	            "enactor": {
+	                "type": "fluid.uiOptions.enactors.textFont",
+	                "classes": "@textFont.classes"
+	            },
+	            "panel": {
+	                "type": "fluid.uiOptions.panels.textFont",
+	                "container": ".flc-uiOptions-text-font",  // the css selector in the template where the panel is rendered
+	                "classnameMap": {"textFont": "@textFont.classes"},
+	                "template": "%prefix/UIOptionsTemplate-textFont.html",
+	                "message": "%prefix/textFont.json"
+	            }
+	        },
+	        "tableOfContents": {
+	            "type": "fluid.uiOptions.tableOfContents",
+	            "enactor": {
+	                "type": "fluid.uiOptions.enactors.tableOfContents",
+	                "tocTemplate": "../../src/shared/lib/infusion/components/tableOfContents/html/TableOfContents.html"
+	            },
+	            "panel": {
+	                "type": "fluid.uiOptions.panels.layoutControls",
+	                "container": ".flc-uiOptions-layout-controls",  // the css selector in the template where the panel is rendered
+	                "template": "%prefix/UIOptionsTemplate-layout.html",
+	                "message": "%prefix/tableOfContents.json"
+	            }
+	        } */
+	    }
+	});
+	
+	fluid.defaults("fluid.videoPlayer.myBuilder", {
+	    gradeNames: ["fluid.uiOptions.builder", "fluid.uiOptions.auxSchema.starter", "autoInit"]
+	});
+	var uioBuilder = fluid.videoPlayer.myBuilder();
+	
+    $(document).ready(function () {
+    	//fluid.uiOptions.constructed.uio(".flc-uiOpions-fatPanel");
+    	fluid.invokeGlobalFunction(uioBuilder.options.assembledUIOGrade, [".flc-uiOptions-fatPanel"]);
+    	
+    	//fluid.uiOptions.constructed.uie();
+    })
+</script>
+
+</head>
+<body>
+
+	<!-- BEGIN markup for fat-panel UI Options -->
+    <div class="flc-uiOptions-fatPanel">
+
+        <!-- This div is for the sliding panel that shows and hides the UI Options controls -->
+        <div class="fl-panelBar fl-inverted-color">
+            <!-- button id="reset" class="flc-uiOptions-reset fl-uiOptions-reset"><span class="fl-icon-undo"></span> Reset</button -->
+            <button id="show-hide" class="flc-slidingPanel-toggleButton fl-uiOptions-showHide"> Show/Hide</button>
+        </div>
+
+        <!-- This is the div that will contain the UI Options component -->
+        <div class="flc-slidingPanel-panel flc-uiOptions-iframe"></div>
+
+    </div>
+    <!-- END markup for fat-panel UI Options -->
+    
+</body>
+</html>
