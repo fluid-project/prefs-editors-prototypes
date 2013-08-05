@@ -1,0 +1,119 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script type="text/javascript" src="MyInfusion.js"></script>
+    <title>Speak text</title>
+</head>
+
+<body>
+    <h1>Speak text</h1>
+
+    <div class="preference">
+        <label for="preferenceSwitch"> On/Off </label>
+        <input id="preferenceSwitch" class="toggle" type="checkbox"/>
+
+        <div id="more-options" class="more-options"> more options </div>
+
+        <div id="expanded-top">
+            <h4>Screen reader</h4>
+            <div id="languages">
+                <label for="languagesList">Language</label> <br>
+                <form>
+                    <select id="languagesList" style="width: 134px">
+                        <option selected>English</option>
+                        <option>French (Français)</option>
+                        <option>Russian (Русский)</option>
+                        <option>Spanish (Español)</option>
+                        <option>German (Deutsch)</option>
+                        <option>Chinese (中文)</option>
+                    </select>
+                </form>
+
+            </div>
+        </div>
+
+        <div class="speech-rate">
+            <label for="speech-rate"> Speech rate </label>
+                <form action="">
+                    <select name="rates" id="speech-rate">
+                        <option value="-" selected>-</option>
+                    </select>
+                </form>
+        </div>
+
+        <div id="expanded-bottom">
+            <div id="punctuation">
+                <label for="frequency-list">Punctuation verbosity</label>
+                <form action="">
+                    <select name="frequency" id="frequency-list">
+                        <option selected>none</option>
+                        <option>some</option>
+                        <option selected>most</option>
+                        <option>all</option>
+                    </select>
+                </form>
+            </div>
+            <div>
+                <input id="announce-uppercase" class="toggle" type="checkbox"/>
+                <label for="announce-uppercase"> Announce uppercase letters </label>
+            </div>
+            <div>
+                <input id="provide-instructions" class="toggle" type="checkbox"/>
+                <label for="provide-instructions"> Provide instructions on how to interact with a focused element </label> <br> <br>
+            </div>
+            <div>
+                <label> Read-back </label> <br>
+                <input id="echo-letter" class="toggle" type="checkbox"/>
+                <label for="echo-letter"> Echo letter after typed </label> <br>
+                <input id="echo-word" class="toggle" type="checkbox"/>
+                <label for="echo-word"> Echo word after typed </label>
+            </div>
+            <div>
+                <h4> Braille </h4>
+                <label for="braille-on-off"> Output to available device </label>
+                <input id="braille-on-off" class="toggle" type="checkbox"/>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        function slideExpandedUp() {
+            $("#expanded-top").slideUp();
+            $("#expanded-bottom").slideUp();
+        };
+
+        function slideExpandedDown() {
+            $("#expanded-top").slideDown();
+            $("#expanded-bottom").slideDown();
+        };
+
+        function moreOrLessOptions(currentValue) {
+            if (currentValue == "more options") {
+                return "less options";
+            }
+            return "more options";
+        };
+
+        $("#preferenceSwitch").change(function () {
+            if ($(this).attr("checked")) {
+                $("#more-options").text("more options")
+                $(".speech-rate").slideDown();
+                $("#more-options").slideDown();
+            } else {
+                $(".speech-rate").slideUp();
+                $("#more-options").slideUp();
+                slideExpandedUp();
+            };
+        });
+
+        $("#more-options").click(function () {
+            $("#expanded-top").toggle(400);
+            $("#expanded-bottom").toggle(400);
+            var callbacks = $.Callbacks();
+            $(this).text(moreOrLessOptions($(this).text()));
+        });
+    </script>
+
+</body>
+</html>
