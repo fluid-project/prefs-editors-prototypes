@@ -2,7 +2,7 @@
     display: none;
 }
 
-.speech-rate {
+#speech-rate {
 	display: none;
 }
 
@@ -18,8 +18,6 @@
 #expanded-bottom {
 	display: none;
 }
-
-#expand-button {}
 
 .onoffswitch {
     position: relative; width: 90px;
