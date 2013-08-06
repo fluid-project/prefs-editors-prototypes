@@ -31,13 +31,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
     fluid.defaults("gpii.discoveryTool.templateLoader", {
-        gradeNames: ["fluid.uiOptions.templateLoader", "autoInit"],
+        gradeNames: ["fluid.uiOptions.resourceLoader", "autoInit"],
         templates: {
-            highContrast: "../html/HighContrastPanelTemplate.html",
-            lowContrast: "../html/LowContrastPanelTemplate.html",
-            increaseSize: "../html/IncreaseSizePanelTemplate.html",
-            simplify: "../html/SimplifyPanelTemplate.html",
-            spoken: "../html/SpokenPanelTemplate.html"
+            highContrast: "%prefix/HighContrastPanelTemplate.html",
+            lowContrast: "%prefix/LowContrastPanelTemplate.html",
+            increaseSize: "%prefix/IncreaseSizePanelTemplate.html",
+            simplify: "%prefix/SimplifyPanelTemplate.html",
+            spoken: "%prefix/SpokenPanelTemplate.html",
+            uiOptions: "%prefix/DiscoveryTool.html"
         }
     });
 
@@ -271,21 +272,21 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     sourceApplier: "{panels}.applier",
                     rootModel: "{panels}.rootModel",
                     rules: {  // "externalModelKey": "internalModelKey"
-                        "selections.highContrast": "panelSelections.highContrast",
-                        "selections.lowContrast": "panelSelections.lowContrast",
-                        "selections.increaseSize": "panelSelections.increaseSize",
-                        "selections.simplify": "panelSelections.simplify",
-                        "selections.spoken": "panelSelections.spoken",
+                        "highContrast": "panelSelections.highContrast",
+                        "lowContrast": "panelSelections.lowContrast",
+                        "increaseSize": "panelSelections.increaseSize",
+                        "simplify": "panelSelections.simplify",
+                        "spoken": "panelSelections.spoken",
 
-                        "selections.textFont": "convertedModel.textFont",
-                        "selections.theme": "convertedModel.theme",
-                        "selections.textSize": "convertedModel.textSize",
-                        "selections.lineSpace": "convertedModel.lineSpace",
-                        "selections.toc": "convertedModel.toc",
-                        "selections.links": "convertedModel.links",
-                        "selections.inputsLarger": "convertedModel.inputsLarger",
-                        "selections.simplifyContent": "convertedModel.simplifyContent",
-                        "selections.selfVoicing": "convertedModel.selfVoicing"
+                        "textFont": "convertedModel.textFont",
+                        "theme": "convertedModel.theme",
+                        "textSize": "convertedModel.textSize",
+                        "lineSpace": "convertedModel.lineSpace",
+                        "toc": "convertedModel.toc",
+                        "links": "convertedModel.links",
+                        "inputsLarger": "convertedModel.inputsLarger",
+                        "simplifyContent": "convertedModel.simplifyContent",
+                        "selfVoicing": "convertedModel.selfVoicing"
                     }
                 }
             }

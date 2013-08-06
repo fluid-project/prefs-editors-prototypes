@@ -16614,17 +16614,17 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 // Declare dependencies
 /*global fluid_1_5:true, jQuery*/
 
-// JSLint options 
+// JSLint options
 /*jslint white: true, funcinvoke: true, continue: true, elsecatch: true, operator: true, jslintok:true, undef: true, newcap: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 1000, indent: 4 */
 
 var fluid_1_5 = fluid_1_5 || {};
 
 (function ($, fluid) {
 
-    /** The Fluid "IoC System proper" - resolution of references and 
+    /** The Fluid "IoC System proper" - resolution of references and
      * completely automated instantiation of declaratively defined
      * component trees */
-    
+
     // unsupported, non-API function
     // Currently still uses manual traversal - once we ban manually instantiated components,
     // it will use the instantiator's records instead.
@@ -16647,7 +16647,7 @@ var fluid_1_5 = fluid_1_5 || {};
             }
         }
     };
-    
+
     // unsupported, non-API function
     fluid.getMemberNames = function (instantiator, thatStack) {
         var path = instantiator.idToPath(thatStack[thatStack.length - 1].id);
@@ -16655,7 +16655,7 @@ var fluid_1_5 = fluid_1_5 || {};
         segs.unshift.apply(segs, fluid.generate(thatStack.length - segs.length, ""));
         return segs;
     };
-    
+
     // thatStack contains an increasing list of MORE SPECIFIC thats.
     // this visits all components starting from the current location (end of stack)
     // in visibility order up the tree.
@@ -16680,7 +16680,7 @@ var fluid_1_5 = fluid_1_5 || {};
             }
         }
     };
-    
+
     fluid.mountStrategy = function (prefix, root, toMount, targetPrefix) {
         var offset = prefix.length;
         return function (target, name, i, segs) {
@@ -16695,23 +16695,23 @@ var fluid_1_5 = fluid_1_5 || {};
             return toMount(target, name, i - prefix.length, segs.slice(offset));
         };
     };
-    
-    // unsupported, NON-API function    
+
+    // unsupported, NON-API function
     fluid.invokerFromRecord = function (invokerec, name, that) {
-        fluid.pushActivity("makeInvoker", "beginning instantiation of invoker with name %name and record %record as child of %that", 
+        fluid.pushActivity("makeInvoker", "beginning instantiation of invoker with name %name and record %record as child of %that",
             {name: name, record: invokerec, that: that});
         var invoker = fluid.makeInvoker(that, invokerec, name);
         fluid.popActivity();
         return invoker;
     };
 
-    // unsupported, NON-API function    
+    // unsupported, NON-API function
     fluid.memberFromRecord = function (memberrec, name, that) {
         var value = fluid.expandOptions(memberrec, that);
         return value;
     };
 
-    // unsupported, NON-API function    
+    // unsupported, NON-API function
     fluid.recordStrategy = function (that, options, optionsStrategy, recordPath, recordMaker, prefix) {
         prefix = prefix || [];
         return {
@@ -16736,7 +16736,7 @@ var fluid_1_5 = fluid_1_5 || {};
             }
         };
     };
-    
+
     // patch Fluid.js version for timing
     // unsupported, NON-API function
     fluid.instantiateFirers = function (that, options) {
@@ -16761,7 +16761,7 @@ var fluid_1_5 = fluid_1_5 || {};
         return $.extend(record, {contextThat: contextThat, recordType: sourceType, priority: fluid.mergeRecordTypes.distribution + offset});
     };
 
-    // unsupported, NON-API function    
+    // unsupported, NON-API function
     fluid.filterBlocks = function (contextThat, sourceBlocks, sourcePath, targetSegs, exclusions, removeSource) {
         var togo = [], offset = 0;
         fluid.each(sourceBlocks, function (block) {
@@ -16778,9 +16778,9 @@ var fluid_1_5 = fluid_1_5 || {};
                 });
             }
         });
-        return togo; 
+        return togo;
     };
-    
+
     // unsupported, NON-API function
     // TODO: This implementation is obviously poor and has numerous flaws
     fluid.matchIoCSelector = function (selector, thatStack, contextHashes, memberNames, i) {
@@ -16788,8 +16788,8 @@ var fluid_1_5 = fluid_1_5 || {};
         var selpos = selector.length - 1;
         while (true) {
             var mustMatchHere = thatpos === thatStack.length - 1 || selector[selpos].child;
-            
-            var that = thatStack[thatpos];  
+
+            var that = thatStack[thatpos];
             var selel = selector[selpos];
             var match = true;
             for (var j = 0; j < selel.predList.length; ++j) {
@@ -16826,7 +16826,7 @@ var fluid_1_5 = fluid_1_5 || {};
             }
         }
     };
-    
+
     // unsupported, NON-API function
     fluid.collectDistributions = function (distributedBlocks, distribution, thatStack, contextHashes, memberNames, i) {
         if (fluid.matchIoCSelector(distribution.selector, thatStack, contextHashes, memberNames, i)) {
@@ -16834,7 +16834,7 @@ var fluid_1_5 = fluid_1_5 || {};
         }
     };
 
-    // unsupported, NON-API function 
+    // unsupported, NON-API function
     fluid.receiveDistributions = function (parentThat, gradeNames, memberName) {
         var instantiator = fluid.getInstantiator(parentThat);
         var thatStack = instantiator.getThatStack(parentThat); // most specific is at end
@@ -16855,14 +16855,14 @@ var fluid_1_5 = fluid_1_5 || {};
         return distributedBlocks;
     };
 
-    // unsupported, NON-API function 
+    // unsupported, NON-API function
     fluid.applyDistributions = function (that, preBlocks, targetShadow) {
         var distributedBlocks = fluid.transform(preBlocks, function (preBlock) {
             return fluid.generateExpandBlock(preBlock, that, targetShadow.mergePolicy);
         });
         var mergeOptions = targetShadow.mergeOptions;
         mergeOptions.mergeBlocks.push.apply(mergeOptions.mergeBlocks, distributedBlocks);
-        mergeOptions.updateBlocks();  
+        mergeOptions.updateBlocks();
     };
 
     // unsupported, NON-API function
@@ -16871,15 +16871,15 @@ var fluid_1_5 = fluid_1_5 || {};
         if (segs.length > 1 && segs[0] !== "options") {
             fluid.fail("Error in options distribution record ", record, " - only " + role + " paths beginning with \"options\" are supported");
         }
-        return segs.slice(1);  
-    };
-    
-    // unsupported, NON-API function    
-    fluid.isIoCSSSelector = function (context) {
-        return context.indexOf(" ") !== -1; // simple-minded check for an IoCSS reference  
+        return segs.slice(1);
     };
 
-    // unsupported, NON-API function     
+    // unsupported, NON-API function
+    fluid.isIoCSSSelector = function (context) {
+        return context.indexOf(" ") !== -1; // simple-minded check for an IoCSS reference
+    };
+
+    // unsupported, NON-API function
     fluid.pushDistributions = function (targetHead, selector, blocks) {
         var targetShadow = fluid.shadowForComponent(targetHead);
         var id = fluid.allocateGuid();
@@ -16892,16 +16892,16 @@ var fluid_1_5 = fluid_1_5 || {};
         return id;
     };
 
-    // unsupported, NON-API function    
+    // unsupported, NON-API function
     fluid.clearDistributions = function (targetHead, id) {
         var targetShadow = fluid.shadowForComponent(targetHead);
         fluid.remove_if(targetShadow.distributions, function (distribution) {
             return distribution.id === id;
         });
     };
-    
+
     // unsupported, NON-API function
-    // Modifies a parsed selector to extra its head context which will be matched upwards     
+    // Modifies a parsed selector to extra its head context which will be matched upwards
     fluid.extractSelectorHead = function (parsedSelector) {
         var predList = parsedSelector[0].predList;
         var context = predList[0].context;
@@ -16911,7 +16911,7 @@ var fluid_1_5 = fluid_1_5 || {};
 
     fluid.undistributableOptions = ["gradeNames", "distributeOptions", "returnedPath", "argumentMap", "initFunction", "mergePolicy", "progressiveCheckerOptions"]; // automatically added to "exclusions" of every distribution
 
-    // unsupported, NON-API function    
+    // unsupported, NON-API function
     fluid.distributeOptions = function (that, optionsStrategy) {
         var records = fluid.makeArray(fluid.driveStrategy(that.options, "distributeOptions", optionsStrategy));
         fluid.each(records, function (record) {
@@ -16943,17 +16943,17 @@ var fluid_1_5 = fluid_1_5 || {};
                     fluid.fail("Error in options distribution record ", record, " only a context of {that} is supported");
                 }
                 var sourcePath = fluid.parseExpectedOptionsPath(source.path, "source");
-                var fullExclusions = fluid.makeArray(record.exclusions).concat(sourcePath.length === 0 ? fluid.undistributableOptions : []); 
-                
+                var fullExclusions = fluid.makeArray(record.exclusions).concat(sourcePath.length === 0 ? fluid.undistributableOptions : []);
+
                 var exclusions = fluid.transform(fullExclusions, function (exclusion) {
-                    return fluid.model.parseEL(exclusion);  
+                    return fluid.model.parseEL(exclusion);
                 });
-                
+
                 preBlocks = fluid.filterBlocks(that, thatShadow.mergeOptions.mergeBlocks, sourcePath, targetSegs, exclusions, record.removeSource);
                 thatShadow.mergeOptions.updateBlocks(); // perhaps unnecessary
             }
             // TODO: inline material has to be expanded in its original context!
-            
+
             if (selector) {
                 fluid.pushDistributions(targetComp, selector, preBlocks);
             }
@@ -16964,23 +16964,23 @@ var fluid_1_5 = fluid_1_5 || {};
         });
     };
 
-    // unsupported, NON-API function    
+    // unsupported, NON-API function
     fluid.gradeNamesToHash = function (gradeNames) {
         var contextHash = {};
         fluid.each(gradeNames, function (gradeName) {
             contextHash[gradeName] = true;
-            contextHash[fluid.computeNickName(gradeName)] = true;  
+            contextHash[fluid.computeNickName(gradeName)] = true;
         });
-        return contextHash;      
+        return contextHash;
     };
 
-    // unsupported, NON-API function    
+    // unsupported, NON-API function
     fluid.cacheShadowGrades = function (that, shadow) {
         var contextHash = fluid.gradeNamesToHash(that.options.gradeNames);
         contextHash[that.nickName] = true;
-        shadow.contextHash = contextHash;      
+        shadow.contextHash = contextHash;
     };
-    
+
     // First sequence point where the mergeOptions strategy is delivered from Fluid.js - here we take care
     // of both receiving and transmitting options distributions
     // unsupported, NON-API function
@@ -16990,18 +16990,18 @@ var fluid_1_5 = fluid_1_5 || {};
         shadow.mergeOptions = mergeOptions;
     };
 
-    // unsupported, NON-API function    
+    // unsupported, NON-API function
     fluid.resolveReturnedPath = function (returnedPath, that) {
         var shadow = fluid.shadowForComponent(that);
-        // This prevents corruption of instantiator records by defeating effect of "returnedPath" for non-roots 
+        // This prevents corruption of instantiator records by defeating effect of "returnedPath" for non-roots
         return shadow && shadow.path !== "" ? null : returnedPath;
     };
 
-    // unsupported, NON-API function    
+    // unsupported, NON-API function
     fluid.computeDynamicGrades = function (that, shadow, strategy) {
         delete that.options.gradeNames; // Recompute gradeNames for FLUID-5012 and others
         var gradeNames = fluid.driveStrategy(that.options, "gradeNames", strategy);
-        
+
         // TODO: In complex distribution cases, a component might end up with multiple default blocks
         var defaultsBlock = fluid.findMergeBlocks(shadow.mergeOptions.mergeBlocks, "defaults")[0];
         var dynamicGrades = fluid.remove_if(gradeNames, function (gradeName) {
@@ -17017,21 +17017,21 @@ var fluid_1_5 = fluid_1_5 || {};
             gradeNames.length = 0; // acquire derivatives of dynamic grades (FLUID-5054)
             gradeNames.push.apply(gradeNames, newDefaults.gradeNames);
             fluid.cacheShadowGrades(that, shadow);
-            // This cheap strategy patches FLUID-5091 for now - some more sophisticated activity will take place 
+            // This cheap strategy patches FLUID-5091 for now - some more sophisticated activity will take place
             // at this site when we have a full fix for FLUID-5028
             shadow.mergeOptions.destroyValue("components");
-            
+
             var defaultsBlock = fluid.findMergeBlocks(shadow.mergeOptions.mergeBlocks, "defaults")[0];
             defaultsBlock.source = newDefaults;
             shadow.mergeOptions.updateBlocks();
         }
     };
-    
+
     fluid.computeDynamicComponentKey = function (recordKey, sourceKey) {
-        return recordKey + (sourceKey === 0 ? "" : "-" + sourceKey); // TODO: configurable name strategies      
+        return recordKey + (sourceKey === 0 ? "" : "-" + sourceKey); // TODO: configurable name strategies
     };
 
-    // unsupported, NON-API function    
+    // unsupported, NON-API function
     fluid.registerDynamicRecord = function (that, recordKey, sourceKey, record, toCensor) {
         var key = fluid.computeDynamicComponentKey(recordKey, sourceKey);
         var cRecord = fluid.copy(record);
@@ -17047,7 +17047,7 @@ var fluid_1_5 = fluid_1_5 || {};
         var records = fluid.driveStrategy(that.options, "dynamicComponents", mergeOptions.strategy);
         fluid.each(records, function (record, recordKey) {
             if (!record.sources && !record.createOnEvent) {
-                fluid.fail("Cannot process dynamicComponents record ", record, " without a \"sources\" or \"createOnEvent\" entry");  
+                fluid.fail("Cannot process dynamicComponents record ", record, " without a \"sources\" or \"createOnEvent\" entry");
             }
             if (record.sources) {
                 var sources = fluid.expandOptions(record.sources, that);
@@ -17069,7 +17069,7 @@ var fluid_1_5 = fluid_1_5 || {};
             }
         });
     };
-    
+
     // Second sequence point for mergeOptions from Fluid.js - here we construct all further
     // strategies required on the IoC side and mount them into the shadow's getConfig for universal use
     // unsupported, NON-API function
@@ -17083,26 +17083,26 @@ var fluid_1_5 = fluid_1_5 || {};
         var eventStrategy = fluid.mountStrategy(["events"], that, shadow.eventStrategyBlock.strategy, ["events"]);
         shadow.memberStrategy = fluid.recordStrategy(that, options, strategy, "members", fluid.memberFromRecord);
         // NB - ginger strategy handles concrete, rationalise
-        shadow.getConfig = {strategies: [fluid.model.funcResolverStrategy, fluid.makeGingerStrategy(that), 
+        shadow.getConfig = {strategies: [fluid.model.funcResolverStrategy, fluid.makeGingerStrategy(that),
             optionsStrategy, shadow.invokerStrategy.strategy, shadow.memberStrategy.strategy, eventStrategy]};
-            
+
         fluid.computeDynamicGrades(that, shadow, strategy, shadow.mergeOptions.mergeBlocks);
         fluid.distributeOptions(that, strategy);
-        
+
         return shadow.getConfig;
     };
-    
+
     fluid.shadowForComponent = function (component) {
         var instantiator = fluid.getInstantiator(component);
-        return instantiator && component ? instantiator.idToShadow[component.id] : null;      
+        return instantiator && component ? instantiator.idToShadow[component.id] : null;
     };
-    
+
     fluid.getForComponent = function (component, path) {
         var shadow = fluid.shadowForComponent(component);
         var getConfig = shadow ? shadow.getConfig : undefined;
         return fluid.get(component, path, getConfig);
     };
-    
+
     // An EL segment resolver strategy that will attempt to trigger creation of
     // components that it discovers along the EL path, if they have been defined but not yet
     // constructed.
@@ -17113,7 +17113,7 @@ var fluid_1_5 = fluid_1_5 || {};
             var atval = component[thisSeg];
             if (atval === fluid.inEvaluationMarker && index === segs.length) {
                 fluid.fail("Error in component configuration - a circular reference was found during evaluation of path segment \"" + thisSeg
-                + "\": for more details, see the activity records following this message in the console, or issue fluid.setLogging(fluid.logLevel.TRACE) when running your application"); 
+                + "\": for more details, see the activity records following this message in the console, or issue fluid.setLogging(fluid.logLevel.TRACE) when running your application");
             }
             if (index > 1) {
                 return atval;
@@ -17124,7 +17124,7 @@ var fluid_1_5 = fluid_1_5 || {};
                 atval = instantiator.pathToComponent[childPath];
             }
             if (atval === undefined) {
-                // TODO: This check is very expensive - once gingerness is stable, we ought to be able to 
+                // TODO: This check is very expensive - once gingerness is stable, we ought to be able to
                 // eagerly compute and cache the value of options.components - check is also incorrect and will miss injections
                 if (fluid.getForComponent(component, ["options", "components", thisSeg])) {
                     fluid.initDependent(component, thisSeg);
@@ -17134,24 +17134,24 @@ var fluid_1_5 = fluid_1_5 || {};
             return atval;
         };
     };
-    
+
     fluid.filterBuiltinGrades = function (gradeNames) {
         return fluid.remove_if(fluid.makeArray(gradeNames), function (gradeName) {
             return /autoInit|fluid.littleComponent|fluid.modelComponent|fluid.eventedComponent|fluid.viewComponent|fluid.typeFount/.test(gradeName);
         });
     };
-    
+
     fluid.dumpGradeNames = function (that) {
-        return that.options && that.options.gradeNames ? 
-            " gradeNames: " + JSON.stringify(fluid.filterBuiltinGrades(that.options.gradeNames)) : ""; 
+        return that.options && that.options.gradeNames ?
+            " gradeNames: " + JSON.stringify(fluid.filterBuiltinGrades(that.options.gradeNames)) : "";
     };
-    
+
     // unsupported, non-API function
     fluid.dumpThat = function (that) {
-        return "{ typeName: \"" + that.typeName + "\"" + 
+        return "{ typeName: \"" + that.typeName + "\"" +
              fluid.dumpGradeNames(that) + " id: " + that.id + "}";
     };
-    
+
     // unsupported, non-API function
     fluid.dumpThatStack = function (thatStack, instantiator) {
         var togo = fluid.transform(thatStack, function(that) {
@@ -17163,20 +17163,20 @@ var fluid_1_5 = fluid_1_5 || {};
 
     var localRecordExpected = /arguments|options|container|source|sourcePath/;
 
-    // unsupported, NON-API function    
+    // unsupported, NON-API function
     fluid.resolveContext = function (context, that) {
         var instantiator = fluid.getInstantiator(that);
         if (context === "instantiator") {
             return instantiator;
         }
         else if (context === "that") {
-            return that; 
+            return that;
         }
         var foundComponent;
         var thatStack = instantiator.getFullStack(that);
         visitComponents(instantiator, thatStack, function (component, name) {
             var shadow = fluid.shadowForComponent(component);
-            // TODO: Some components, e.g. the static environment and typeTags do not have a shadow, which slows us down here 
+            // TODO: Some components, e.g. the static environment and typeTags do not have a shadow, which slows us down here
             if (context === name || shadow && shadow.contextHash && shadow.contextHash[context] || context === component.typeName || context === component.nickName) {
                 foundComponent = component;
                 return true; // YOUR VISIT IS AT AN END!!
@@ -17192,7 +17192,7 @@ var fluid_1_5 = fluid_1_5 || {};
         });
         return foundComponent;
     };
-    
+
     // unsupported, NON-API function
     fluid.makeStackFetcher = function (parentThat, localRecord) {
         var fetcher = function (parsed) {
@@ -17207,7 +17207,7 @@ var fluid_1_5 = fluid_1_5 || {};
             var foundComponent = fluid.resolveContext(context, parentThat);
             if (!foundComponent && parsed.path !== "") {
                 var ref = fluid.renderContextReference(parsed);
-                fluid.fail("Failed to resolve reference " + ref + " - could not match context with name " 
+                fluid.fail("Failed to resolve reference " + ref + " - could not match context with name "
                     + context + " from component leaf ", parentThat);
             }
             return fluid.getForComponent(foundComponent, parsed.path);
@@ -17215,23 +17215,23 @@ var fluid_1_5 = fluid_1_5 || {};
         return fetcher;
     };
 
-    // unsupported, NON-API function     
+    // unsupported, NON-API function
     fluid.makeStackResolverOptions = function (parentThat, localRecord) {
         return $.extend(fluid.copy(fluid.rawDefaults("fluid.makeExpandOptions")), {
             fetcher: fluid.makeStackFetcher(parentThat, localRecord),
             contextThat: parentThat
-        }); 
+        });
     };
-    
+
     // unsupported, non-API function
     fluid.clearListeners = function (shadow) {
         fluid.each(shadow.listeners, function (rec) {
-            rec.event.removeListener(rec.listener);  
+            rec.event.removeListener(rec.listener);
         });
         delete shadow.listeners;
     };
 
-    // unsupported, non-API function    
+    // unsupported, non-API function
     fluid.recordListener = function (event, listener, shadow) {
         var listeners = shadow.listeners;
         if (!listeners) {
@@ -17239,9 +17239,9 @@ var fluid_1_5 = fluid_1_5 || {};
         }
         listeners.push({event: event, listener: listener});
     };
-    
+
     var idToInstantiator = {};
-    
+
     // unsupported, non-API function - however, this structure is of considerable interest to those debugging
     // into IoC issues. The structures idToShadow and pathToComponent contain a complete map of the component tree
     // forming the surrounding scope
@@ -17293,7 +17293,7 @@ var fluid_1_5 = fluid_1_5 || {};
                 shadow.path = path;
             }
             if (that.pathToComponent[path]) {
-                fluid.fail("Error during instantiation - path " + path + " which has just created component " + fluid.dumpThat(component) 
+                fluid.fail("Error during instantiation - path " + path + " which has just created component " + fluid.dumpThat(component)
                     + " has already been used for component " + fluid.dumpThat(that.pathToComponent[path]) + " - this is a circular instantiation or other oversight."
                     + " Please clear the component using instantiator.clearComponent() before reusing the path.");
             }
@@ -17302,7 +17302,7 @@ var fluid_1_5 = fluid_1_5 || {};
         that.recordRoot = function (component) {
             if (component && component.id && !that.pathToComponent[""]) {
                 recordComponent(component, "", true);
-            }  
+            }
         };
         that.recordKnownComponent = function (parent, component, name, created) {
             var parentPath = that.idToShadow[parent.id].path;
@@ -17316,8 +17316,8 @@ var fluid_1_5 = fluid_1_5 || {};
             child = child || component[name];
             path = path || record;
             if (path === undefined) {
-                fluid.fail("Cannot clear component " + name + " from component ", component, 
-                    " which was not created by this instantiator"); 
+                fluid.fail("Cannot clear component " + name + " from component ", component,
+                    " which was not created by this instantiator");
             }
             fluid.fireEvent(child, "events.onClear", [child, name, component]);
 
@@ -17342,22 +17342,22 @@ var fluid_1_5 = fluid_1_5 || {};
         };
         return that;
     };
-    
+
     // An instantiator to be used in the "free environment", unattached to any component tree
     fluid.freeInstantiator = fluid.instantiator(true);
-    
+
     // Look up the globally registered instantiator for a particular component
     fluid.getInstantiator = function (component) {
         return component && idToInstantiator[component.id] || fluid.freeInstantiator;
     };
-      
+
     /** Expand a set of component options either immediately, or with deferred effect.
-     *  The current policy is to expand immediately function arguments within fluid.embodyDemands which are not the main options of a 
-     *  component. The component's own options take <code>{defer: true}</code> as part of 
+     *  The current policy is to expand immediately function arguments within fluid.embodyDemands which are not the main options of a
+     *  component. The component's own options take <code>{defer: true}</code> as part of
      *  <code>outerExpandOptions</code> which produces an "expandOptions" structure holding the "strategy" and "initter" pattern
      *  common to ginger participants.
      *  Probably not to be advertised as part of a public API, but is considerably more stable than most of the rest
-     *  of the IoC API structure especially with respect to the first arguments.  
+     *  of the IoC API structure especially with respect to the first arguments.
      */
 
     fluid.expandOptions = function (args, that, mergePolicy, localRecord, outerExpandOptions) {
@@ -17367,15 +17367,15 @@ var fluid_1_5 = fluid_1_5 || {};
         fluid.pushActivity("expandOptions", "expanding options %args for component %that ", {that: that, args: args});
         var expandOptions = fluid.makeStackResolverOptions(that, localRecord);
         expandOptions.mergePolicy = mergePolicy;
-        var expanded = outerExpandOptions && outerExpandOptions.defer ? 
+        var expanded = outerExpandOptions && outerExpandOptions.defer ?
             fluid.makeExpandOptions(args, expandOptions) : fluid.expand(args, expandOptions);
         fluid.popActivity();
         return expanded;
     };
-    
-    // unsupported, non-API function    
+
+    // unsupported, non-API function
     fluid.localRecordExpected = ["type", "options", "args", "mergeOptions", "createOnEvent", "priority", "recordType"]; // last element unavoidably polluting
-    // unsupported, non-API function    
+    // unsupported, non-API function
     fluid.checkComponentRecord = function (defaults, localRecord) {
         var expected = fluid.arrayToHash(fluid.localRecordExpected);
         fluid.each(defaults && defaults.argumentMap, function(value, key) {
@@ -17383,14 +17383,14 @@ var fluid_1_5 = fluid_1_5 || {};
         });
         fluid.each(localRecord, function (value, key) {
             if (!expected[key]) {
-                fluid.fail("Probable error in subcomponent record - key \"" + key + 
-                    "\" found, where the only legal options are " + 
+                fluid.fail("Probable error in subcomponent record - key \"" + key +
+                    "\" found, where the only legal options are " +
                     fluid.keys(expected).join(", "));
-            }  
+            }
         });
     };
 
-    // unsupported, non-API function    
+    // unsupported, non-API function
     fluid.pushDemands = function (list, demands) {
         demands = fluid.makeArray(demands);
         var thisp = fluid.mergeRecordTypes.demands;
@@ -17414,7 +17414,7 @@ var fluid_1_5 = fluid_1_5 || {};
             }
         }
     };
-    
+
     // unsupported, non-API function
     fluid.mergeRecordsToList = function (mergeRecords) {
         var list = [];
@@ -17427,7 +17427,7 @@ var fluid_1_5 = fluid_1_5 || {};
                 if (!value.options) { return; }
                 value.priority = fluid.mergeRecordTypes[key];
                 if (value.priority === undefined) {
-                    fluid.fail("Merge record with unrecognised type " + key + ": ", value); 
+                    fluid.fail("Merge record with unrecognised type " + key + ": ", value);
                 }
                 list.push(value);
             }
@@ -17435,11 +17435,11 @@ var fluid_1_5 = fluid_1_5 || {};
                 fluid.pushDemands(list, value);
             }
         });
-        return list; 
+        return list;
     };
 
     // TODO: overall efficiency could huge be improved by resorting to the hated PROTOTYPALISM as an optimisation
-    // for this mergePolicy which occurs in every component. Although it is a deep structure, the root keys are all we need 
+    // for this mergePolicy which occurs in every component. Although it is a deep structure, the root keys are all we need
     var addPolicyBuiltins = function (policy) {
         fluid.each(["gradeNames", "mergePolicy", "argumentMap", "components", "dynamicComponents", "members", "invokers", "events", "listeners", "distributeOptions", "transformOptions"], function (key) {
             fluid.set(policy, [key, "*", "noexpand"], true);
@@ -17463,7 +17463,7 @@ var fluid_1_5 = fluid_1_5 || {};
         var mergeRecords = {
             defaults: {options: defaultCopy}
         };
-        
+
         if (userOptions) {
             if (userOptions.marker === fluid.EXPAND) {
                 $.extend(mergeRecords, userOptions.mergeRecords);
@@ -17484,7 +17484,7 @@ var fluid_1_5 = fluid_1_5 || {};
         return togo;
     };
 
-    // unsupported, non-API function    
+    // unsupported, non-API function
     fluid.makeIoCRootDestroy = function (instantiator, that) {
         return function () {
             instantiator.clearComponent(that, "", that, null, true);
@@ -17494,7 +17494,7 @@ var fluid_1_5 = fluid_1_5 || {};
 
     // unsupported, non-API function
     fluid.expandComponentOptions = function (mergePolicy, defaults, userOptions, that) {
-        var instantiator = userOptions && userOptions.marker === fluid.EXPAND && userOptions.memberName !== undefined ? 
+        var instantiator = userOptions && userOptions.marker === fluid.EXPAND && userOptions.memberName !== undefined ?
             userOptions.instantiator : null;
         var fresh;
         if (!instantiator) {
@@ -17503,9 +17503,9 @@ var fluid_1_5 = fluid_1_5 || {};
             fluid.log("Created new instantiator with id " + instantiator.id + " in order to operate on component " + (that? that.typeName : "[none]"));
             that.destroy = fluid.makeIoCRootDestroy(instantiator, that);
         }
-        fluid.pushActivity("expandComponentOptions", "expanding component options %options with record %record for component %that", 
+        fluid.pushActivity("expandComponentOptions", "expanding component options %options with record %record for component %that",
             {options: userOptions && userOptions.mergeRecords, record: userOptions, that: that});
-        if (fresh) { 
+        if (fresh) {
             instantiator.recordRoot(that);
         }
         else {
@@ -17515,16 +17515,16 @@ var fluid_1_5 = fluid_1_5 || {};
         fluid.popActivity();
         return togo;
     };
-    
+
     // unsupported, non-API function
     fluid.argMapToDemands = function (argMap) {
         var togo = [];
         fluid.each(argMap, function (value, key) {
-            togo[value] = "{" + key + "}";  
+            togo[value] = "{" + key + "}";
         });
         return togo;
     };
-    
+
     // unsupported, non-API function
     fluid.makePassArgsSpec = function (initArgs) {
         return fluid.transform(initArgs, function(arg, index) {
@@ -17532,7 +17532,7 @@ var fluid_1_5 = fluid_1_5 || {};
         });
     };
 
-    // unsupported, NON-API function    
+    // unsupported, NON-API function
     fluid.pushDemandSpec = function (record, options, mergeOptions) {
         if (options && options !== "{options}") {
             record.push({options: options});
@@ -17541,23 +17541,23 @@ var fluid_1_5 = fluid_1_5 || {};
             record.push({mergeOptions: mergeOptions});
         }
     };
-    
+
     /** Given a concrete argument list and/or options, determine the final concrete
-     * "invocation specification" which is coded by the supplied demandspec in the 
+     * "invocation specification" which is coded by the supplied demandspec in the
      * environment "thatStack" - the return is a package of concrete global function name
      * and argument list which is suitable to be executed directly by fluid.invokeGlobalFunction.
      */
     // unsupported, non-API function
     // options is just a disposition record containing memberName, componentRecord + passArgs
-    // various built-in effects of this method 
+    // various built-in effects of this method
     // i) note that it makes no effort to actually propagate direct
     // options from "initArgs", assuming that they will be seen again in expandComponentOptions
     fluid.embodyDemands = function (parentThat, demandspec, initArgs, options) {
         options = options || {};
-        
+
         if (demandspec.mergeOptions && demandspec.options) {
-            fluid.fail("demandspec ", demandspec, 
-                    " is invalid - cannot specify literal options together with mergeOptions"); 
+            fluid.fail("demandspec ", demandspec,
+                    " is invalid - cannot specify literal options together with mergeOptions");
         }
         if (demandspec.transformOptions) { // Support for "transformOptions" at top level in a demands record
             demandspec.options = $.extend(true, {}, demandspec.options, {
@@ -17565,11 +17565,11 @@ var fluid_1_5 = fluid_1_5 || {};
             });
         }
         var demands = fluid.makeArray(demandspec.args);
-        
+
         var upDefaults = fluid.defaults(demandspec.funcName);
-        
+
         var distributions = upDefaults && parentThat ? fluid.receiveDistributions(parentThat, upDefaults.gradeNames, options.memberName) : [];
-        
+
         var argMap = upDefaults? upDefaults.argumentMap : null;
         var inferMap = false;
         if (!argMap && (upDefaults || (options && options.componentRecord)) && !options.passArgs) {
@@ -17601,7 +17601,7 @@ var fluid_1_5 = fluid_1_5 || {};
         // confusion remains with "localRecord" - it is a random mishmash of user arguments and the component record
         // this should itself be absorbed into "mergeRecords" and let stackFetcher sort it out
         var localRecord = $.extend({"arguments": initArgs}, fluid.censorKeys(options.componentRecord, ["type"]), localDynamic);
-        
+
         fluid.each(argMap, function (index, name) {
             // this is incorrect anyway! What if the supplied arguments were not in the same order as the target argmap,
             // which was obtained from the target defaults
@@ -17624,9 +17624,9 @@ var fluid_1_5 = fluid_1_5 || {};
                 demandspec.funcName = distributions[i].type;
             }
         }
-        
+
         var mergeRecords = {distributions: distributions};
-        
+
         if (options.componentRecord !== undefined) {
             // Deliberately put too many things here so they can be checked in expandComponentOptions (FLUID-4285)
             mergeRecords.subcomponentRecord = $.extend({}, options.componentRecord);
@@ -17642,7 +17642,7 @@ var fluid_1_5 = fluid_1_5 || {};
                     // Backwards compatibility for non-users of GRADES - last-ditch chance to correct the inference
                     if (inferMap) {
                         argMap = {options: i};
-                    } 
+                    }
                 }
                 if (typeof(arg) === "string") {
                     if (arg.charAt(0) === "@") {
@@ -17660,7 +17660,7 @@ var fluid_1_5 = fluid_1_5 || {};
                     }
                     mergeRecords.demands = [];
                     fluid.each(demandspec.backSpecs.reverse(), function (backSpec) {
-                        fluid.pushDemandSpec(mergeRecords.demands, backSpec.options, backSpec.mergeOptions);  
+                        fluid.pushDemandSpec(mergeRecords.demands, backSpec.options, backSpec.mergeOptions);
                     });
                     fluid.pushDemandSpec(mergeRecords.demands, demandspec.options || arg, demandspec.mergeOptions);
                     if (initArgs.length > 0) {
@@ -17688,36 +17688,36 @@ var fluid_1_5 = fluid_1_5 || {};
         };
         return togo;
     };
-    
+
     // NON-API function
     fluid.fabricateDestroyMethod = function (that, name, instantiator, child) {
         return function () {
             instantiator.clearComponent(that, name, child);
         };
     };
-    
+
     /** Instantiate the subcomponent with the supplied name of the supplied top-level component. Although this method
      * is published as part of the Fluid API, it should not be called by general users and may not remain stable. It is
-     * currently the only mechanism provided for instantiating components whose definitions are dynamic, and will be 
+     * currently the only mechanism provided for instantiating components whose definitions are dynamic, and will be
      * replaced in time by dedicated declarative framework described by FLUID-5022.
      * @param that {Component} the parent component for which the subcomponent is to be instantiated
      * @param name {String} the name of the component - the index of the options block which configures it as part of the
      * <code>components</code> section of its parent's options
      */
      // NB "directArgs" is now disused by the framework
-    
+
     fluid.initDependent = function (that, name, directArgs) {
         if (that[name]) { return; } // TODO: move this into strategy
         directArgs = directArgs || [];
         var component = that.options.components[name];
-        fluid.pushActivity("initDependent", "instantiating dependent component with name \"%name\" with record %record as child of %parent", 
+        fluid.pushActivity("initDependent", "instantiating dependent component with name \"%name\" with record %record as child of %parent",
             {name: name, record: component, parent: that});
         var instance;
         var instantiator = idToInstantiator[that.id];
-        
+
         if (typeof(component) === "string") {
             instance = fluid.expandOptions(component, that);
-            instantiator.recordKnownComponent(that, instance, name, false); 
+            instantiator.recordKnownComponent(that, instance, name, false);
         }
         else if (component.type) {
             var type = fluid.expandOptions(component.type, that);
@@ -17725,7 +17725,7 @@ var fluid_1_5 = fluid_1_5 || {};
                 fluid.fail("Error in subcomponent record: ", component.type, " could not be resolved to a type for component ", name,
                     " of parent ", that);
             }
-            var invokeSpec = fluid.resolveDemands(that, [type, name], directArgs, 
+            var invokeSpec = fluid.resolveDemands(that, [type, name], directArgs,
                 {componentRecord: component, memberName: name});
             instance = fluid.initSubcomponentImpl(that, {type: invokeSpec.funcName}, invokeSpec.args);
             // The existing instantiator record will be provisional, adjust it to take account of the true return
@@ -17751,7 +17751,7 @@ var fluid_1_5 = fluid_1_5 || {};
         fluid.popActivity();
         return instance;
     };
-    
+
     // unsupported, non-API function
     fluid.bindDeferredComponent = function (that, componentName, component) {
         var events = fluid.makeArray(component.createOnEvent);
@@ -17769,19 +17769,19 @@ var fluid_1_5 = fluid_1_5 || {};
             }, null, null, component.priority);
         });
     };
-    
+
     // unsupported, non-API function
     fluid.priorityForComponent = function (component) {
-        return component.priority? component.priority : 
+        return component.priority? component.priority :
             (component.type === "fluid.typeFount" || fluid.hasGrade(fluid.defaults(component.type), "fluid.typeFount"))?
-            "first" : undefined;  
+            "first" : undefined;
     };
-    
+
     fluid.initDependents = function (that) {
         fluid.pushActivity("initDependents", "instantiating dependent components for component %that", {that: that});
         var shadow = fluid.shadowForComponent(that);
         shadow.memberStrategy.initter();
-        
+
         var options = that.options;
         var components = options.components || {};
         var componentSort = {};
@@ -17797,15 +17797,15 @@ var fluid_1_5 = fluid_1_5 || {};
         });
         var componentList = fluid.event.sortListeners(componentSort);
         fluid.each(componentList, function (entry) {
-            fluid.initDependent(that, entry.key);  
+            fluid.initDependent(that, entry.key);
         });
 
         shadow.invokerStrategy.initter();
         fluid.popActivity();
-    };   
-   
+    };
+
     var dependentStore = {};
-    
+
     function searchDemands (demandingName, contextNames) {
         var exist = dependentStore[demandingName] || [];
 outer:  for (var i = 0; i < exist.length; ++i) {
@@ -17818,19 +17818,19 @@ outer:  for (var i = 0; i < exist.length; ++i) {
             return rec.spec; // jslint:ok
         }
     }
-    
+
     var isDemandLogging = false;
     fluid.setDemandLogging = function (set) {
-        isDemandLogging = set;  
+        isDemandLogging = set;
     };
-    
+
     // unsupported, non-API function
     fluid.isDemandLogging = function (demandingNames) {
         return isDemandLogging && fluid.isLogging();
     };
-    
+
     fluid.demands = function (demandingName, contextName, spec) {
-        var contextNames = fluid.makeArray(contextName).sort(); 
+        var contextNames = fluid.makeArray(contextName).sort();
         if (!spec) {
             return searchDemands(demandingName, contextNames);
         }
@@ -17856,7 +17856,7 @@ outer:  for (var i = 0; i < exist.length; ++i) {
     fluid.compareDemands = function (speca, specb) {
         return specb.intersect - speca.intersect;
     };
-    
+
     // unsupported, non-API function
     fluid.locateAllDemands = function (parentThat, demandingNames) {
         var demandLogging = fluid.isDemandLogging(demandingNames);
@@ -17864,7 +17864,7 @@ outer:  for (var i = 0; i < exist.length; ++i) {
             fluid.log("Resolving demands for function names ", demandingNames, " in context of " +
                 (parentThat? "component " + parentThat.typeName : "no component"));
         }
-        
+
         var contextNames = {};
         var visited = [];
         var instantiator = fluid.getInstantiator(parentThat);
@@ -17874,12 +17874,12 @@ outer:  for (var i = 0; i < exist.length; ++i) {
             contextNames[component.typeName] = depth;
             var gradeNames = fluid.makeArray(fluid.get(component, ["options", "gradeNames"]));
             fluid.each(gradeNames, function (gradeName) {
-                contextNames[gradeName] = depth;  
+                contextNames[gradeName] = depth;
             });
             visited.push(component);
         });
         if (demandLogging) {
-            fluid.log("Components in scope for resolution:\n" + fluid.dumpThatStack(visited, instantiator));  
+            fluid.log("Components in scope for resolution:\n" + fluid.dumpThatStack(visited, instantiator));
         }
         var matches = [];
         for (var i = 0; i < demandingNames.length; ++i) {
@@ -17889,7 +17889,7 @@ outer:  for (var i = 0; i < exist.length; ++i) {
                 var horizonLevel = spec.spec.horizon ? contextNames[spec.spec.horizon] : -1;
                 var record = {spec: spec, intersect: 0, uncess: 0};
                 for (var k = 0; k < spec.contexts.length; ++k) {
-                    var depth = contextNames[spec.contexts[k]]; 
+                    var depth = contextNames[spec.contexts[k]];
                     record[depth !== undefined && depth >= horizonLevel ? "intersect" : "uncess"] += 2;
                 }
                 if (spec.contexts.length === 0) { // allow weak priority for contextless matches
@@ -17897,11 +17897,11 @@ outer:  for (var i = 0; i < exist.length; ++i) {
                 }
                 if (record.uncess === 0) {
                     matches.push(record);
-                } 
+                }
             }
         }
         matches.sort(fluid.compareDemands);
-        return matches;   
+        return matches;
     };
 
     // unsupported, non-API function
@@ -17910,17 +17910,17 @@ outer:  for (var i = 0; i < exist.length; ++i) {
         var demandspec = fluid.getMembers(matches, ["spec", "spec"]);
         if (fluid.isDemandLogging(demandingNames)) {
             if (demandspec.length) {
-                fluid.log("Located " + matches.length + " potential match" + (matches.length === 1? "" : "es") + ", selected best match with " + matches[0].intersect 
+                fluid.log("Located " + matches.length + " potential match" + (matches.length === 1? "" : "es") + ", selected best match with " + matches[0].intersect
                     + " matched context names: ", demandspec);
             }
             else {
                 fluid.log("No matches found for demands, using direct implementation");
             }
-        }  
+        }
         return demandspec;
     };
-    
-    /** Determine the appropriate demand specification held in the fluid.demands environment 
+
+    /** Determine the appropriate demand specification held in the fluid.demands environment
      * relative the supplied component position for the function name(s) funcNames.
      */
     // unsupported, non-API function
@@ -17931,8 +17931,8 @@ outer:  for (var i = 0; i < exist.length; ++i) {
         if (demandspec.length && demandspec[0].funcName) {
             newFuncName = demandspec[0].funcName;
         }
-        
-        return $.extend(true, {funcName: newFuncName, 
+
+        return $.extend(true, {funcName: newFuncName,
                                 args: demandspec[0] ? fluid.makeArray(demandspec[0].args) : [],
                                 backSpecs: demandspec.slice(1)
                                 },
@@ -17944,7 +17944,7 @@ outer:  for (var i = 0; i < exist.length; ++i) {
         var demandspec = fluid.determineDemands(parentThat, funcNames);
         return fluid.embodyDemands(parentThat, demandspec, initArgs, options);
     };
-    
+
     // Convert a record which may harbour a "this/method" pair into an object which mocks the function.apply operation, pre-bound (for FLUID-4878)
     // unsupported, non-API function
     fluid.recordToApplicable = function (record, that) {
@@ -17964,7 +17964,7 @@ outer:  for (var i = 0; i < exist.length; ++i) {
                     resolvedThis = fluid.getGlobalValue(resolvedThis);
                 }
                 if (!resolvedThis) {
-                    fluid.fail("Could not resolve reference " + recthis + " to a value"); 
+                    fluid.fail("Could not resolve reference " + recthis + " to a value");
                 }
                 var resolvedFunc = resolvedThis[record.method];
                 if (typeof(resolvedFunc) !== "function") {
@@ -17975,7 +17975,7 @@ outer:  for (var i = 0; i < exist.length; ++i) {
             }
         };
     };
-    
+
     // TODO: make a *slightly* more performant version of fluid.invoke that perhaps caches the demands
     // after the first successful invocation
     fluid.invoke = function (functionName, args, that, environment) {
@@ -17985,13 +17985,13 @@ outer:  for (var i = 0; i < exist.length; ++i) {
         fluid.popActivity();
         return togo;
     };
-    
-    /** Make a function which performs only "static redispatch" of the supplied function name - 
+
+    /** Make a function which performs only "static redispatch" of the supplied function name -
      * that is, taking only account of the contents of the "static environment". Since the static
      * environment is assumed to be constant, the dispatch of the call will be evaluated at the
      * time this call is made, as an optimisation.
      */
-    // unsupported, non-API function    
+    // unsupported, non-API function
     fluid.makeFreeInvoker = function (functionName, environment) {
         var demandSpec = fluid.determineDemands(null, functionName);
         return function () {
@@ -17999,7 +17999,7 @@ outer:  for (var i = 0; i < exist.length; ++i) {
             return fluid.invokeGlobalFunction(invokeSpec.funcName, invokeSpec.args, environment);
         };
     };
-    
+
     // unsupported, non-API function
     fluid.makeInvoker = function (that, invokerec, name, environment) {
         var functionName;
@@ -18026,9 +18026,9 @@ outer:  for (var i = 0; i < exist.length; ++i) {
             return togo;
         };
     };
-    
+
     // unsupported, non-API function
-    // weird higher-order function so that we can staightforwardly dispatch original args back onto listener   
+    // weird higher-order function so that we can staightforwardly dispatch original args back onto listener
     fluid.event.makeTrackedListenerAdder = function (source) {
         var shadow = fluid.shadowForComponent(source);
         return function (event) {
@@ -18040,14 +18040,14 @@ outer:  for (var i = 0; i < exist.length; ++i) {
         };
     };
 
-    // unsupported, non-API function    
+    // unsupported, non-API function
     fluid.event.listenerEngine = function (eventSpec, callback, adder) {
         var argstruc = {};
         function checkFire() {
             var notall = fluid.find(eventSpec, function(value, key) {
                 if (argstruc[key] === undefined) {
                     return true;
-                }  
+                }
             });
             if (!notall) {
                 callback(argstruc);
@@ -18061,11 +18061,11 @@ outer:  for (var i = 0; i < exist.length; ++i) {
             });
         });
     };
-    
+
     // unsupported, non-API function
     fluid.event.dispatchListener = function (that, listener, eventName, eventSpec, indirectArgs) {
         return function () {
-            fluid.pushActivity("dispatchListener", "firing to listener to event named %eventName of component %that", 
+            fluid.pushActivity("dispatchListener", "firing to listener to event named %eventName of component %that",
                 {eventName: eventName, that: that});
             if (typeof(listener) === "string") {
                 listener = fluid.event.resolveListener({globalName: listener}); // just resolves globals
@@ -18077,12 +18077,12 @@ outer:  for (var i = 0; i < exist.length; ++i) {
             }
             var resolved = fluid.embodyDemands(that, demandspec, args, {passArgs: true});
             var togo = listener.apply(null, resolved.args);
-            fluid.popActivity();  
+            fluid.popActivity();
             return togo;
         };
     };
 
-    // unsupported, non-API function    
+    // unsupported, non-API function
     fluid.event.resolveSoftNamespace = function (key) {
         if (typeof(key) !== "string") {
             return null;
@@ -18091,7 +18091,7 @@ outer:  for (var i = 0; i < exist.length; ++i) {
             return key.substring(lastpos + 1);
         }
     };
-    
+
     // unsupported, non-API function
     fluid.event.resolveListenerRecord = function (lisrec, that, eventName, namespace) {
         var badRec = function (record, extra) {
@@ -18113,8 +18113,8 @@ outer:  for (var i = 0; i < exist.length; ++i) {
             if (!expanded.listener) {
                 badRec(record, " Listener record must contain a member named \"listener\", \"func\", \"funcName\" or \"method\"");
             }
-            var softNamespace = record.method ? 
-                fluid.event.resolveSoftNamespace(record["this"]) + "." + record.method : 
+            var softNamespace = record.method ?
+                fluid.event.resolveSoftNamespace(record["this"]) + "." + record.method :
                 fluid.event.resolveSoftNamespace(expanded.listener);
             if (!expanded.namespace && !namespace && softNamespace) {
                 expanded.softNamespace = true;
@@ -18139,7 +18139,7 @@ outer:  for (var i = 0; i < exist.length; ++i) {
         fluid.popActivity();
         return togo;
     };
-    
+
     // unsupported, non-API function
     fluid.event.expandOneEvent = function (that, event) {
         var origin;
@@ -18156,7 +18156,7 @@ outer:  for (var i = 0; i < exist.length; ++i) {
         return origin;
     };
 
-    // unsupported, non-API function    
+    // unsupported, non-API function
     fluid.event.expandEvents = function (that, event) {
         return typeof(event) === "string" ?
             fluid.event.expandOneEvent(that, event) :
@@ -18164,10 +18164,10 @@ outer:  for (var i = 0; i < exist.length; ++i) {
                 return fluid.event.expandOneEvent(that, oneEvent);
             });
     };
-    
+
     // unsupported, non-API function
     fluid.event.resolveEvent = function (that, eventName, eventSpec) {
-        fluid.pushActivity("resolveEvent", "resolving event with name %eventName attached to component %that", 
+        fluid.pushActivity("resolveEvent", "resolving event with name %eventName attached to component %that",
             {eventName: eventName, that: that});
         var adder = fluid.event.makeTrackedListenerAdder(that);
         if (typeof(eventSpec) === "string") {
@@ -18177,7 +18177,7 @@ outer:  for (var i = 0; i < exist.length; ++i) {
         if (!event) {
             fluid.fail("Event specification for event with name " + eventName + " does not include a base event specification: ", eventSpec);
         }
-        
+
         var origin = fluid.event.expandEvents(that, event);
 
         var isMultiple = origin.typeName !== "fluid.event.firer";
@@ -18200,7 +18200,7 @@ outer:  for (var i = 0; i < exist.length; ++i) {
             firer = {typeName: "fluid.event.firer"}; // jslint:ok - already defined
             firer.fire = function () {
                 var outerArgs = fluid.makeArray(arguments);
-                fluid.pushActivity("fireSynthetic", "firing synthetic event %eventName ", {eventName: eventName});  
+                fluid.pushActivity("fireSynthetic", "firing synthetic event %eventName ", {eventName: eventName});
                 var togo = origin.fire.apply(null, outerArgs);
                 fluid.popActivity();
                 return togo;
@@ -18221,7 +18221,7 @@ outer:  for (var i = 0; i < exist.length; ++i) {
     // Although the following three functions are unsupported and not part of the IoC
     // implementation proper, they are still used in the renderer
     // expander as well as in some old-style tests and various places in CSpace.
-    
+
     // unsupported, non-API function
     fluid.withEnvironment = function (envAdd, func, root) {
         root = root || fluid.globalThreadLocal();
@@ -18237,11 +18237,11 @@ outer:  for (var i = 0; i < exist.length; ++i) {
             }
         });
     };
-    
-    // unsupported, NON-API function    
+
+    // unsupported, NON-API function
     fluid.fetchContextReference = function (parsed, directModel, env, elResolver, externalFetcher) {
         // The "elResolver" is a hack to make certain common idioms in protoTrees work correctly, where a contextualised EL
-        // path actually resolves onto a further EL reference rather than directly onto a value target 
+        // path actually resolves onto a further EL reference rather than directly onto a value target
         if (elResolver) {
             parsed = elResolver(parsed, env);
         }
@@ -18252,8 +18252,8 @@ outer:  for (var i = 0; i < exist.length; ++i) {
         }
         return parsed.noDereference? parsed.path : fluid.get(base, parsed.path);
     };
-    
-    // unsupported, non-API function  
+
+    // unsupported, non-API function
     fluid.makeEnvironmentFetcher = function (directModel, elResolver, envGetter, externalFetcher) {
         envGetter = envGetter || fluid.globalThreadLocal;
         return function(parsed) {
@@ -18261,10 +18261,10 @@ outer:  for (var i = 0; i < exist.length; ++i) {
             return fluid.fetchContextReference(parsed, directModel, env, elResolver, externalFetcher);
         };
     };
-    
+
     /** END of unofficial IoC material **/
 
-    // unsupported, non-API function  
+    // unsupported, non-API function
     fluid.extractEL = function (string, options) {
         if (options.ELstyle === "ALL") {
             return string;
@@ -18282,11 +18282,11 @@ outer:  for (var i = 0; i < exist.length; ++i) {
             }
         }
     };
-    
+
     // unsupported, non-API function
     fluid.extractELWithContext = function (string, options) {
         var EL = fluid.extractEL(string, options);
-        if (EL && EL.charAt(0) === "{") {
+        if (EL && EL.charAt(0) === "{" && EL.indexOf("}") > 0) {
             return fluid.parseContextReference(EL);
         }
         return EL? {path: EL} : EL;
@@ -18306,11 +18306,11 @@ outer:  for (var i = 0; i < exist.length; ++i) {
         }
         return {context: context, path: path, endpos: endpos};
     };
-    
+
     fluid.renderContextReference = function (parsed) {
-        return "{" + parsed.context + "}." + parsed.path;  
+        return "{" + parsed.context + "}." + parsed.path;
     };
-    
+
     // unsupported, non-API function
     fluid.resolveContextValue = function (string, options) {
         function fetch(parsed) {
@@ -18320,9 +18320,9 @@ outer:  for (var i = 0; i < exist.length; ++i) {
             fluid.popActivity(2);
             return togo;
         }
-        if (options.bareContextRefs && string.charAt(0) === "{") {
+        if (options.bareContextRefs && string.charAt(0) === "{" && string.indexOf("}") > 0) {
             var parsed = fluid.parseContextReference(string);
-            return fetch(parsed);        
+            return fetch(parsed);
         }
         else if (options.ELstyle && options.ELstyle !== "${}") {
             var parsed = fluid.extractELWithContext(string, options); // jslint:ok, redefinition
@@ -18343,7 +18343,7 @@ outer:  for (var i = 0; i < exist.length; ++i) {
                     parsed = {path: string.substring(i1 + 2, i2)};
                 }
                 var subs = fetch(parsed);
-                var all = (i1 === 0 && i2 === string.length - 1); 
+                var all = (i1 === 0 && i2 === string.length - 1);
                 // TODO: test case for all undefined substitution
                 if (subs === undefined || subs === null) {
                     return subs;
@@ -18359,12 +18359,12 @@ outer:  for (var i = 0; i < exist.length; ++i) {
 
     // unsupported, NON-API function
     fluid.expandExpander = function (target, source, options) {
-        var expander = fluid.getGlobalValue(source.expander.type || "fluid.deferredInvokeCall");  
+        var expander = fluid.getGlobalValue(source.expander.type || "fluid.deferredInvokeCall");
         if (expander) {
             return expander.call(null, target, source, options);
         }
     };
-    
+
     // This function appears somewhat reusable, but not entirely - it probably needs to be packaged
     // along with the particular "strategy". Very similar to the old "filter"... the "outer driver" needs
     // to execute it to get the first recursion going at top level. This was one of the most odd results
@@ -18395,9 +18395,9 @@ outer:  for (var i = 0; i < exist.length; ++i) {
         });
         return target;
     };
-    
-    // TODO: This method is unnecessary and will quadratic inefficiency if RHS block is not concrete. 
-    // The driver should detect "homogeneous uni-strategy trundling" and agree to preserve the extra 
+
+    // TODO: This method is unnecessary and will quadratic inefficiency if RHS block is not concrete.
+    // The driver should detect "homogeneous uni-strategy trundling" and agree to preserve the extra
     // "cursor arguments" which should be advertised somehow (at least their number)
     function regenerateCursor (source, segs, limit, sourceStrategy) {
         for (var i = 0; i < limit; ++ i) {
@@ -18406,11 +18406,11 @@ outer:  for (var i = 0; i < exist.length; ++i) {
         return source;
     }
 
-    // unsupported, NON-API function    
+    // unsupported, NON-API function
     fluid.isUnexpandable = function (source) {
         return fluid.isPrimitive(source) || source.nodeType !== undefined || source.jquery;
     };
-    
+
     // unsupported, NON-API function
     fluid.guardCircularity = function (seenIds, source, message1, message2) {
         if (source && source.id) {
@@ -18423,11 +18423,11 @@ outer:  for (var i = 0; i < exist.length; ++i) {
         }
     };
 
-    // unsupported, NON-API function    
+    // unsupported, NON-API function
     fluid.expandSource = function (options, target, deliverer, source, policy, miniWorld, recurse) {
         var expanded, isTrunk, isLate;
         var thisPolicy = fluid.derefMergePolicy(policy);
-        fluid.guardCircularity(options.seenIds, source, "expansion", 
+        fluid.guardCircularity(options.seenIds, source, "expansion",
              " - please ensure options are not circularly connected, or protect from expansion using the \"noexpand\" policy or expander");
         if (typeof (source) === "string" && !thisPolicy.noexpand) {
             expanded = fluid.resolveContextValue(source, options);
@@ -18460,7 +18460,7 @@ outer:  for (var i = 0; i < exist.length; ++i) {
         return expanded;
     };
 
-    // unsupported, NON-API function    
+    // unsupported, NON-API function
     fluid.makeExpandStrategy = function (options) {
         var recurse = function (target, source, policy, miniWorld) {
             return fluid.fetchExpandChildren(target, source, policy, miniWorld, options);
@@ -18484,21 +18484,21 @@ outer:  for (var i = 0; i < exist.length; ++i) {
             function deliverer(value) {
                 target[name] = value;
             }
-            
+
             return fluid.expandSource(options, target, deliverer, thisSource, thisPolicy, miniWorld, recurse);
         };
         options.recurse = recurse;
         options.strategy = strategy;
         return strategy;
     };
-    
+
     fluid.defaults("fluid.makeExpandOptions", {
         ELstyle:          "${}",
         bareContextRefs:  true,
         target:           fluid.inCreationMarker
     });
 
-    // unsupported, NON-API function    
+    // unsupported, NON-API function
     fluid.makeExpandOptions = function (source, options) {
         options = $.extend({}, fluid.rawDefaults("fluid.makeExpandOptions"), options);
         options.expandSource = function (source) {
@@ -18526,15 +18526,15 @@ outer:  for (var i = 0; i < exist.length; ++i) {
         }
         return options;
     };
-    
+
     fluid.expand = function (source, options) {
         var expandOptions = fluid.makeExpandOptions(source, options);
         expandOptions.initter();
         return expandOptions.target;
     };
-      
+
     fluid.registerNamespace("fluid.expander");
-            
+
     /** "light" expanders, starting with support functions for the so-called "deferredCall" expanders,
          which make an arbitrary function call (after expanding arguments) and are then replaced in
          the configuration with the call results. These will probably be abolished and replaced with
@@ -18543,33 +18543,33 @@ outer:  for (var i = 0; i < exist.length; ++i) {
     fluid.expander.deferredCall = function (deliverer, source, options) {
         var expander = source.expander;
         var args = (!expander.args || fluid.isArrayable(expander.args))? expander.args : fluid.makeArray(expander.args);
-        args = options.recurse([], args); 
+        args = options.recurse([], args);
         return fluid.invokeGlobalFunction(expander.func, args);
     };
-    
+
     fluid.deferredCall = fluid.expander.deferredCall; // put in top namespace for convenience
-    
+
     // This one is now positioned as the "universal expander" - default if no type supplied
     fluid.deferredInvokeCall = function (deliverer, source, options) {
         var expander = source.expander;
         var args = fluid.makeArray(expander.args);
         args = options.recurse([], args); // TODO: risk of double expansion here. embodyDemands will sometimes expand, sometimes not...
-        var funcEntry = expander.func || expander.funcName; 
+        var funcEntry = expander.func || expander.funcName;
         var func = options.expandSource(funcEntry) || fluid.recordToApplicable(expander, options.contextThat);
         if (!func) {
             fluid.fail("Error in expander record - " + funcEntry + " could not be resolved to a function for component ", options.contextThat);
         }
         return func.apply ? func.apply(null, args) : fluid.invoke(func, args, options.contextThat);
     };
-    
+
     // The "noexpand" expander which simply unwraps one level of expansion and ceases.
     fluid.expander.noexpand = function (deliverer, source) {
         return source.expander.value ? source.expander.value : source.expander.tree;
     };
-  
+
     fluid.noexpand = fluid.expander.noexpand; // TODO: check naming and namespacing
 
-          
+
 })(jQuery, fluid_1_5);
 /*
 Copyright 2010-2011 OCAD University
@@ -21463,7 +21463,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 // Declare dependencies
 /*global fluid_1_5:true, jQuery*/
 
-// JSLint options 
+// JSLint options
 /*jslint white: true, funcinvoke: true, continue: true, elsecatch: true, operator: true, jslintok:true, undef: true, newcap: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
 
 fluid_1_5 = fluid_1_5 || {};
@@ -21481,7 +21481,7 @@ fluid_1_5 = fluid_1_5 || {};
             if (name.indexOf(fluid.renderer.decoratorComponentPrefix) === 0) {
                 visitor(component, name);
             }
-        }, {flat: true});  
+        }, {flat: true});
     };
 
     fluid.renderer.clearDecorators = function(that) {
@@ -21490,7 +21490,7 @@ fluid_1_5 = fluid_1_5 || {};
             instantiator.clearComponent(that, name);
         });
     };
-    
+
     fluid.renderer.getDecoratorComponents = function(that) {
         var togo = {};
         fluid.renderer.visitDecorators(that, function(component, name) {
@@ -21514,7 +21514,7 @@ fluid_1_5 = fluid_1_5 || {};
     };
 
     /** "Renderer component" infrastructure **/
-  // TODO: fix this up with IoC and improved handling of templateSource as well as better 
+  // TODO: fix this up with IoC and improved handling of templateSource as well as better
   // options layout (model appears in both rOpts and eOpts)
     fluid.renderer.createRendererSubcomponent = function (container, selectors, options, parentThat, fossils) {
         options = options || {};
@@ -21525,38 +21525,38 @@ fluid_1_5 = fluid_1_5 || {};
         if (container.jquery) {
             var cascadeOptions = {
                 document: container[0].ownerDocument,
-                jQuery: container.constructor  
+                jQuery: container.constructor
             };
             fluid.renderer.reverseMerge(rendererOptions, cascadeOptions, fluid.keys(cascadeOptions));
         }
-        
+
         var expanderOptions = fluid.renderer.modeliseOptions(options.expanderOptions, {ELstyle: "${}"}, parentThat);
         fluid.renderer.reverseMerge(expanderOptions, options, ["resolverGetConfig", "resolverSetConfig"]);
         var that = {};
         if (!options.noexpand) {
             that.expander = fluid.renderer.makeProtoExpander(expanderOptions, parentThat);
         }
-        
+
         var templates = null;
         that.render = function (tree) {
             var cutpointFn = options.cutpointGenerator || "fluid.renderer.selectorsToCutpoints";
             rendererOptions.cutpoints = rendererOptions.cutpoints || fluid.invokeGlobalFunction(cutpointFn, [selectors, options]);
             var renderTarget = $(options.renderTarget ? options.renderTarget : container);
-              
+
             if (templates) {
                 fluid.clear(rendererOptions.fossils);
                 fluid.reRender(templates, renderTarget, tree, rendererOptions);
-            } 
+            }
             else {
                 if (typeof(source) === "function") { // TODO: make a better attempt than this at asynchrony
-                    source = source();  
+                    source = source();
                 }
                 templates = fluid.render(source, renderTarget, tree, rendererOptions);
             }
         };
         return that;
     };
-    
+
     fluid.defaults("fluid.rendererComponent", {
         gradeNames: ["fluid.viewComponent", "autoInit"],
         initFunction: "fluid.initRendererComponent",
@@ -21574,7 +21574,7 @@ fluid_1_5 = fluid_1_5 || {};
             },
             produceTree: {
                 funcName: "fluid.rendererComponent.produceTree",
-                args: "{that}"  
+                args: "{that}"
             }
         },
         rendererOptions: {
@@ -21593,13 +21593,13 @@ fluid_1_5 = fluid_1_5 || {};
             }
         }
     });
-    
+
     fluid.rendererComponent.renderOnInit = function (renderOnInit, that) {
         if (renderOnInit) {
             that.refreshView();
         }
     };
-    
+
     fluid.rendererComponent.refreshView = function (that) {
         fluid.renderer.clearDecorators(that);
         that.events.prepareModelForRender.fire(that.model, that.applier, that);
@@ -21609,22 +21609,22 @@ fluid_1_5 = fluid_1_5 || {};
         }
         that.events.onRenderTree.fire(that, tree);
         that.renderer.render(tree);
-        that.events.afterRender.fire(that);     
+        that.events.afterRender.fire(that);
     };
-    
+
     fluid.rendererComponent.produceTree = function (that) {
        var produceTreeOption = that.options.produceTree;
-       return produceTreeOption ? 
+       return produceTreeOption ?
            (typeof(produceTreeOption) === "string" ? fluid.getGlobalValue(produceTreeOption) : produceTreeOption) (that) :
-           that.options.protoTree;   
+           that.options.protoTree;
     };
 
     fluid.initRendererComponent = function (componentName, container, options) {
         var that = fluid.initView(componentName, container, options, {gradeNames: ["fluid.rendererComponent"]});
         fluid.diagnoseFailedView(componentName, that, fluid.defaults(componentName), arguments);
-        
+
         fluid.fetchResources(that.options.resources); // TODO: deal with asynchrony
-        
+
         var rendererOptions = fluid.renderer.modeliseOptions(that.options.rendererOptions, null, that);
 
         var messageResolver;
@@ -21634,7 +21634,7 @@ fluid_1_5 = fluid_1_5 || {};
                 resolveFunc: that.options.messageResolverFunction,
                 parents: fluid.makeArray(that.options.parentBundle)
             });
-            rendererOptions.messageSource = {type: "resolver", resolver: messageResolver}; 
+            rendererOptions.messageSource = {type: "resolver", resolver: messageResolver};
         }
         fluid.renderer.reverseMerge(rendererOptions, that.options, ["resolverGetConfig", "resolverSetConfig"]);
         that.rendererOptions = rendererOptions;
@@ -21647,7 +21647,7 @@ fluid_1_5 = fluid_1_5 || {};
                 envAdd: {styles: that.options.styles}
             }
         });
-           
+
         if (that.options.resources && that.options.resources.template) {
             rendererFnOptions.templateSource = function () { // TODO: don't obliterate, multitemplates, etc.
                 return that.options.resources.template.resourceText;
@@ -21658,17 +21658,17 @@ fluid_1_5 = fluid_1_5 || {};
         if (rendererFnOptions.rendererTargetSelector) {
             container = function () {return that.dom.locate(rendererFnOptions.rendererTargetSelector); };
         }
-       
+
         var renderer = {
             fossils: {},
             boundPathForNode: function (node) {
                 return fluid.boundPathForNode(node, renderer.fossils);
             }
         };
-       
+
         var rendererSub = fluid.renderer.createRendererSubcomponent(container, that.options.selectors, rendererFnOptions, that, renderer.fossils);
         that.renderer = $.extend(renderer, rendererSub);
-        
+
         if (messageResolver) {
             that.messageResolver = messageResolver;
         }
@@ -21676,7 +21676,7 @@ fluid_1_5 = fluid_1_5 || {};
 
         return that;
     };
-    
+
     var removeSelectors = function (selectors, selectorsToIgnore) {
         fluid.each(fluid.makeArray(selectorsToIgnore), function (selectorToIgnore) {
             delete selectors[selectorToIgnore];
@@ -21699,27 +21699,27 @@ fluid_1_5 = fluid_1_5 || {};
         var togo = [];
         options = options || {};
         selectors = fluid.copy(selectors); // Make a copy before potentially destructively changing someone's selectors.
-    
+
         if (options.selectorsToIgnore) {
             selectors = removeSelectors(selectors, options.selectorsToIgnore);
         }
-    
+
         for (var selectorKey in selectors) {
             togo.push({
                 id: markRepeated(selectorKey, options.repeatingSelectors),
                 selector: selectors[selectorKey]
             });
         }
-    
+
         return togo;
     };
-  
+
     /** END of "Renderer Components" infrastructure **/
-    
+
     fluid.renderer.NO_COMPONENT = {};
-  
+
     /** A special "shallow copy" operation suitable for nondestructively
-     * merging trees of components. jQuery.extend in shallow mode will 
+     * merging trees of components. jQuery.extend in shallow mode will
      * neglect null valued properties.
      * This function is unsupported: It is not really intended for use by implementors.
      */
@@ -21729,11 +21729,11 @@ fluid_1_5 = fluid_1_5 || {};
         }
         return target;
     };
-    
+
     fluid.registerNamespace("fluid.renderer.selection");
-        
+
     /** Definition of expanders - firstly, "heavy" expanders **/
-    
+
     fluid.renderer.selection.inputs = function (options, container, key, config) {
         fluid.expect("Selection to inputs expander", ["selectID", "inputID", "labelID", "rowID"], options);
         var selection = config.expander(options.tree);
@@ -21741,7 +21741,7 @@ fluid_1_5 = fluid_1_5 || {};
             var togo = {};
             var element =  {parentRelativeID: "..::" + options.selectID, choiceindex: index};
             togo[options.inputID] = element;
-            togo[options.labelID] = fluid.copy(element); 
+            togo[options.labelID] = fluid.copy(element);
             return togo;
         });
         var togo = {}; // TODO: JICO needs to support "quoted literal key initialisers" :P
@@ -21750,13 +21750,13 @@ fluid_1_5 = fluid_1_5 || {};
         togo = config.expander(togo);
         return togo;
     };
-    
+
     fluid.renderer.repeat = function (options, container, key, config) {
         fluid.expect("Repetition expander", ["controlledBy", "tree"], options);
         var env = config.threadLocal();
         var path = fluid.extractContextualPath(options.controlledBy, {ELstyle: "ALL"}, env);
         var list = fluid.get(config.model, path, config.resolverGetConfig);
-        
+
         var togo = {};
         if (!list || list.length === 0) {
             return options.ifEmpty ? config.expander(options.ifEmpty) : togo;
@@ -21764,7 +21764,7 @@ fluid_1_5 = fluid_1_5 || {};
         var expanded = [];
         fluid.each(list, function (element, i) {
             var EL = fluid.model.composePath(path, i);
-            var envAdd = {}; 
+            var envAdd = {};
             if (options.pathAs) {
                 envAdd[options.pathAs] = "${" + EL + "}";
             }
@@ -21790,7 +21790,7 @@ fluid_1_5 = fluid_1_5 || {};
         fluid.each(expanded, function (entry) {entry.ID = repeatID; });
         return expanded;
     };
-    
+
     fluid.renderer.condition = function (options, container, key, config) {
         fluid.expect("Selection to condition expander", ["condition"], options);
         var condition;
@@ -21808,9 +21808,9 @@ fluid_1_5 = fluid_1_5 || {};
         }
         return config.expander(tree);
     };
-    
-    
-    /* An EL extraction utility suitable for context expressions which occur in 
+
+
+    /* An EL extraction utility suitable for context expressions which occur in
      * expanding component trees. It assumes that any context expressions refer
      * to EL paths that are to be referred to the "true (direct) model" - since
      * the context during expansion may not agree with the context during rendering.
@@ -21830,7 +21830,7 @@ fluid_1_5 = fluid_1_5 || {};
             }
         }
     };
-    
+
     fluid.transformContextPath = function (parsed, env) {
         if (parsed.context) {
             var fetched = env[parsed.context];
@@ -21840,15 +21840,15 @@ fluid_1_5 = fluid_1_5 || {};
             }
             if (EL) {
                 return {
-                    noDereference: parsed.path === "", 
-                    path: fluid.model.composePath(EL, parsed.path) 
-                }; 
+                    noDereference: parsed.path === "",
+                    path: fluid.model.composePath(EL, parsed.path)
+                };
             }
         }
         return parsed;
     };
-    
-    // A forgiving variation of "makeStackFetcher" that returns nothing on failing to resolve an IoC reference, 
+
+    // A forgiving variation of "makeStackFetcher" that returns nothing on failing to resolve an IoC reference,
     // in keeping with current protoComponent semantics. Note to self: abolish protoComponents
     fluid.renderer.makeExternalFetcher = function (contextThat) {
         return function (parsed) {
@@ -21886,16 +21886,16 @@ fluid_1_5 = fluid_1_5 || {};
             options.externalFetcher = fluid.renderer.makeExternalFetcher(parentThat);
         }
         var threadLocal; // rebound on every expansion at entry point
-        
+
         function fetchEL(string) {
             var env = threadLocal();
             return fluid.extractContextualPath(string, options, env, options.externalFetcher);
         }
-         
+
         var IDescape = options.IDescape || "\\";
-        
+
         var expandLight = function (source) {
-            return fluid.expand(source, options); 
+            return fluid.expand(source, options);
         };
 
         var expandBound = function (value, concrete) {
@@ -21921,7 +21921,8 @@ fluid_1_5 = fluid_1_5 || {};
             if (EL) {
                 proto.valuebinding = EL;
             } else if (value !== undefined) {
-                proto.value = value;
+                var expanded = expandLight(value);
+                proto.value = expanded !== undefined ? expanded : value;
             }
             if (options.model && proto.valuebinding && proto.value === undefined) {
                 proto.value = fluid.get(options.model, proto.valuebinding, options.resolverGetConfig);
@@ -21931,18 +21932,18 @@ fluid_1_5 = fluid_1_5 || {};
             }
             return proto;
         };
-        
+
         options.filter = fluid.expander.lightFilter;
-        
+
         var expandCond;
         var expandLeafOrCond;
-        
+
         var expandEntry = function (entry) {
             var comp = [];
             expandCond(entry, comp);
             return {children: comp};
         };
-        
+
         var expandExternal = function (entry) {
             if (entry === fluid.renderer.NO_COMPONENT) {
                 return entry;
@@ -21955,7 +21956,7 @@ fluid_1_5 = fluid_1_5 || {};
             expandLeafOrCond(entry, target, pusher);
             return singleTarget || target;
         };
-        
+
         var expandConfig = {
             model: options.model,
             resolverGetConfig: options.resolverGetConfig,
@@ -21964,7 +21965,7 @@ fluid_1_5 = fluid_1_5 || {};
             expandLight: expandLight
             //threadLocal: threadLocal
         };
-        
+
         var expandLeaf = function (leaf, componentType) {
             var togo = {componentType: componentType};
             var map = fluid.renderer.boundMap[componentType] || {};
@@ -21980,10 +21981,10 @@ fluid_1_5 = fluid_1_5 || {};
             }
             return togo;
         };
-        
+
         // A child entry may be a cond, a leaf, or another "thing with children".
         // Unlike the case with a cond's contents, these must be homogeneous - at least
-        // they may either be ALL leaves, or else ALL cond/childed etc. 
+        // they may either be ALL leaves, or else ALL cond/childed etc.
         // In all of these cases, the key will be THE PARENT'S KEY
         var expandChildren = function (entry, pusher) {
             var children = entry.children;
@@ -21994,22 +21995,22 @@ fluid_1_5 = fluid_1_5 || {};
                 var child = children[i];
                 var childPusher = function (comp) {
                     target[target.length] = comp;
-                }; // jslint:ok - function in loop 
+                }; // jslint:ok - function in loop
                 expandLeafOrCond(child, target, childPusher);
                 // Rescue the case of an expanded leaf into single component - TODO: check what sense this makes of the grammar
                 if (comp.children.length === 1 && !comp.children[0].ID) {
                     comp = comp.children[0];
                 }
-                pusher(comp); 
+                pusher(comp);
             }
         };
-        
+
         function detectBareBound(entry) {
             return fluid.find(entry, function (value, key) {
                 return key === "decorators";
             }) !== false;
         }
-        
+
         // We have reached something which is either a leaf or Cond - either inside
         // a Cond or as an entry in children.
         var expandLeafOrCond = function (entry, target, pusher) { // jslint:ok - forward declaration
@@ -22028,11 +22029,11 @@ fluid_1_5 = fluid_1_5 || {};
                 expandCond(entry, target);
             }
         };
-        
+
         // cond entry may be a leaf, "thing with children" or a "direct bound".
         // a Cond can ONLY occur as a direct member of "children". Each "cond" entry may
         // give rise to one or many elements with the SAME key - if "expandSingle" discovers
-        // "thing with children" they will all share the same key found in proto. 
+        // "thing with children" they will all share the same key found in proto.
         expandCond = function (proto, target) {
             for (var key in proto) {
                 var entry = proto[key];
@@ -22050,7 +22051,7 @@ fluid_1_5 = fluid_1_5 || {};
                 } else if (entry) {
                     var condPusher = function (comp) {
                         comp.ID = key;
-                        target[target.length] = comp; 
+                        target[target.length] = comp;
                     }; // jslint:ok - function in loop
 
                     if (entry.children) {
@@ -22065,9 +22066,9 @@ fluid_1_5 = fluid_1_5 || {};
                     }
                 }
             }
-                
+
         };
-        
+
         return function(entry) {
             threadLocal = fluid.threadLocal(function() {
                 return $.extend({}, options.envAdd);
@@ -22077,9 +22078,9 @@ fluid_1_5 = fluid_1_5 || {};
             return expandEntry(entry);
         };
     };
-    
+
 })(jQuery, fluid_1_5);
-    /*
+/*
  * jQuery UI Draggable @VERSION
  *
  * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
@@ -26499,76 +26500,6 @@ var fluid_1_5 = fluid_1_5 || {};
     };
     
 })(jQuery, fluid_1_5);/*
-Copyright 2013 OCAD University
-
-Licensed under the Educational Community License (ECL), Version 2.0 or the New
-BSD license. You may not use this file except in compliance with one these
-Licenses.
-
-You may obtain a copy of the ECL 2.0 License and BSD License at
-https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
-*/
-
-// Declare dependencies
-/*global fluid_1_5:true*/
-
-// JSLint options 
-/*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
-
-var fluid_1_5 = fluid_1_5 || {};
-
-(function (fluid) {
-
-    fluid.registerNamespace("fluid.uiOptions");
-
-    fluid.uiOptions.messages = {
-
-        // UI Options Text Font Settings Panel
-        // Note: if you modify these, you need to update the appropriate
-        // controlValues in fluid.uiOptions.panels.textFont component options.
-        textFont: ["Default", "Times New Roman", "Comic Sans", "Arial",
-            "Verdana"],
-        textFontLabel: "Text Style",
-
-        // UI Options Contrast Settings Panel
-        // Note: if you modify these, you need to update the appropriate
-        // controlValues in fluid.uiOptions.panels.contrast component options.
-        theme: ["Default", "Black on white", "White on black", "Black on yellow",
-            "Yellow on black"],
-        contrastLabel: "Colour & Contrast",
-
-        // Table of Contents Settings Panel
-        tocLabel: "Table of Contents",
-        tocChoiceLabel: "Add a table of contents",
-
-        // Line spacing
-        lineSpaceLabel: "Line Spacing",
-        lineSpaceNarrowIcon: "icon of 3 horizontal lines with narrow spacing",
-        lineSpaceWideIcon: "icon of 3 horizontal lines with wide spacing",
-
-        // Links and Buttons
-        linksLabel: "Links & buttons",
-        linksChoiceLabel: "Underline and bold",
-        inputsChoiceLabel: "Enlarge buttons, menus, text-fields, and other inputs",
-
-        // Text Size
-        textSizeLabel: "Text Size",
-        textSizeSmallIcon: "icon of a small capital letter 'A'",
-        textSizeLargeIcon: "icon of a large capital letter 'A'",
-
-        // Shared
-        multiplier: "times",
-        
-        // Sliding Panel
-        slidingPanelShowText: "+ Show Display Preferences",
-        slidingPanelHideText: "- Hide"        
-    };
-
-    fluid.staticEnvironment.uioMsgBundle = fluid.messageResolver({
-        messageBase: fluid.uiOptions.messages
-    });
-
-})(fluid_1_5);/*
 Copyright 2009 University of Toronto
 Copyright 2011-2013 OCAD University
 
@@ -26934,13 +26865,113 @@ var fluid_1_5 = fluid_1_5 || {};
 
 (function ($, fluid) {
 
+    /*******************************************************************************
+     * Root Model                                                                  *
+     *                                                                             *
+     * Holds the default values for enactors and panel model values                *
+     *******************************************************************************/
+
+    fluid.defaults("fluid.uiOptions.rootModel", {
+        gradeNames: ["fluid.littleComponent", "autoInit"],
+        members: {
+            // TODO: This information is supposed to be generated from the JSON
+            // schema describing various preferences. For now it's kept in top
+            // level uiOptions to avoid further duplication.
+            rootModel: {}
+        }
+    });
+
+    /*******************************************************************************
+     * UI Enhancer                                                                 *
+     *                                                                             *
+     * Works in conjunction with FSS to transform the page based on user settings. *
+     *******************************************************************************/
+
+    fluid.defaults("fluid.uiEnhancer", {
+        gradeNames: ["fluid.viewComponent", "autoInit"],
+        invokers: {
+            updateModel: {
+                funcName: "fluid.uiEnhancer.updateModel",
+                args: ["{arguments}.0", "{uiEnhancer}.applier"]
+            }
+        }
+    });
+
+    fluid.uiEnhancer.updateModel = function (newModel, applier) {
+        applier.requestChange("", newModel);
+    };
+
+    /*******************************************************************************
+     * PageEnhancer                                                                *
+     *                                                                             *
+     * A UIEnhancer wrapper that concerns itself with the entire page.             *
+     *******************************************************************************/
+    fluid.pageEnhancer = function (uiEnhancerOptions) {
+        var that = fluid.initLittleComponent("fluid.pageEnhancer");
+        // This hack is required to resolve FLUID-4409 - much improved framework support is required
+        that.options.originalUserOptions = fluid.copy(uiEnhancerOptions);
+        that.uiEnhancerOptions = uiEnhancerOptions;
+        fluid.initDependents(that);
+        that.uiEnhancer.updateModel(that.getSettings());
+        fluid.staticEnvironment.uiEnhancer = that.uiEnhancer;
+        return that;
+    };
+
+    fluid.defaults("fluid.pageEnhancer", {
+        gradeNames: ["fluid.originalEnhancerOptions", "fluid.uiOptions.rootModel", "fluid.uiOptions.settingsGetter"],
+        components: {
+            uiEnhancer: {
+                type: "fluid.uiEnhancer",
+                container: "body",
+                options: "{pageEnhancer}.uiEnhancerOptions"
+            }
+        }
+    });
+
+    /*******************************************************************************
+     * originalEnhancerOptions
+     *
+     * A grade component for pageEnhancer to keep track of the original user options
+     *******************************************************************************/
+    fluid.defaults("fluid.originalEnhancerOptions", {
+        gradeNames: ["fluid.littleComponent", "autoInit"]
+    });
+
+    fluid.originalEnhancerOptions.preInit = function (that) {
+        fluid.staticEnvironment.originalEnhancerOptions = that;
+    };
+
+})(jQuery, fluid_1_5);
+/*
+Copyright 2009 University of Toronto
+Copyright 2010-2011 OCAD University
+Copyright 2011 Lucendo Development Ltd.
+
+Licensed under the Educational Community License (ECL), Version 2.0 or the New
+BSD license. You may not use this file except in compliance with one these
+Licenses.
+
+You may obtain a copy of the ECL 2.0 License and BSD License at
+https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
+*/
+
+// Declare dependencies
+/*global fluid_1_5:true, jQuery*/
+
+// JSLint options
+/*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
+
+var fluid_1_5 = fluid_1_5 || {};
+
+(function ($, fluid) {
+
     /*********************
      * UI Options Inline *
      *********************/
 
     /**
-     * An UI Options top-level component that reflects the collaboration between uiOptionsLoader
-     * and templateLoader. This component is the only UI Options component that is intended to be
+     * An UI Options top-level component that reflects the collaboration between uiOptionsLoader,
+     * templateLoader and messageLoader. This component is the only UI Options component that is intended to be
      * called by the outside world.
      *
      * @param {Object} options
@@ -26949,11 +26980,14 @@ var fluid_1_5 = fluid_1_5 || {};
         gradeNames: ["fluid.viewComponent", "autoInit"],
         components: {
             uiOptionsLoader: {
+                priority: "last",
                 type: "fluid.uiOptions.loader"
             },
             templateLoader: {
-                priority: "first",
-                type: "fluid.uiOptions.templateLoader"
+                type: "fluid.uiOptions.resourceLoader"
+            },
+            messageLoader: {
+                type: "fluid.uiOptions.resourceLoader"
             }
         },
         container: "{that}.container",
@@ -26962,8 +26996,15 @@ var fluid_1_5 = fluid_1_5 || {};
             removeSource: true,
             target: "{that templateLoader}.options"
         }, {
-            source: "{that}.options.prefix",
-            target: "{that templatePath}.options.value"
+            source: "{that}.options.messageLoader.options",
+            removeSource: true,
+            target: "{that messageLoader}.options"
+        }, {
+            source: "{that}.options.templatePrefix",
+            target: "{that > templateLoader > resourcePath}.options.value"
+        }, {
+            source: "{that}.options.messagePrefix",
+            target: "{that > messageLoader > resourcePath}.options.value"
         }, {
             source: "{that}.options.uiOptionsLoader.options",
             removeSource: true,
@@ -26978,7 +27019,7 @@ var fluid_1_5 = fluid_1_5 || {};
             target: "{that > uiOptionsLoader}.container"
         }]
     });
-    
+
     fluid.defaults("fluid.uiOptions.transformDefaultPanelsOptions", {
         gradeNames: ["fluid.uiOptions.inline", "autoInit"],
         distributeOptions: [{
@@ -27014,34 +27055,32 @@ var fluid_1_5 = fluid_1_5 || {};
 
     /**
      * A configurable component that works in conjunction with or without the UI Options template path
-     * component (fluid.uiOptionsTemplatePath) to allow users to set either the location of their own
+     * component (fluid.uiOptionsResourcePath) to allow users to set either the location of their own
      * templates or the templates that are relative to the path defined in the UI Options template path
      * component.
      *
      * @param {Object} options
      */
 
-    fluid.defaults("fluid.uiOptions.templateLoader", {
+    fluid.defaults("fluid.uiOptions.resourceLoader", {
         gradeNames: ["fluid.eventedComponent", "autoInit"],
-        finalInitFunction: "fluid.uiOptions.templateLoader.resolveTemplates",
-        templates: {
-            uiOptions: "%prefix/FatPanelUIOptions.html"
-        },
+        finalInitFunction: "fluid.uiOptions.resourceLoader.resolveTemplates",
+        templates: {},
         // Unsupported, non-API option
         components: {
-            templatePath: {
-                type: "fluid.uiOptions.templatePath"
+            resourcePath: {
+                type: "fluid.uiOptions.resourcePath"
             }
         },
         invokers: {
             transformURL: {
                 funcName: "fluid.stringTemplate",
-                args: [ "{arguments}.0", { "prefix/" : "{templateLoader}.templatePath.options.value"} ]
+                args: [ "{arguments}.0", { "prefix/" : "{that}.resourcePath.options.value"} ]
             }
         }
     });
 
-    fluid.uiOptions.templateLoader.resolveTemplates = function (that) {
+    fluid.uiOptions.resourceLoader.resolveTemplates = function (that) {
         var mapped = fluid.transform(that.options.templates, that.transformURL);
 
         that.resources = fluid.transform(mapped, function (url) {
@@ -27059,7 +27098,7 @@ var fluid_1_5 = fluid_1_5 || {};
      * @param {Object} options
      */
 
-    fluid.defaults("fluid.uiOptions.templatePath", {
+    fluid.defaults("fluid.uiOptions.resourcePath", {
         gradeNames: ["fluid.littleComponent", "autoInit"],
         value: "../html/"
     });
@@ -27070,13 +27109,21 @@ var fluid_1_5 = fluid_1_5 || {};
 
     fluid.defaults("fluid.uiOptions.loader", {
         gradeNames: ["fluid.viewComponent", "autoInit"],
-        resources: "{templateLoader}.resources",
+        templateResources: "{templateLoader}.resources",
+        messageResources: "{messageLoader}.resources",
         events: {
             // These two are events private to uiOptions
             onUIOptionsTemplateReady: null, // templates are loaded - construct UIOptions itself
-            onUIOptionsComponentReady: null, // UIOptions is loaded - construct its subcomponents
+            onUIOptionsComponentReady: null, // UIOptions templates are loaded
             // This is a public event which users outside the component can subscribe to - the argument
             // supplied is UIOptions.loader itself
+            onUIOptionsMessageReady: null,  // UIOptions message json files are loaded
+            onCreateUIOptionsReady: {
+                events: {
+                    templateLoaded: "onUIOptionsTemplateReady",
+                    messageLoaded: "onUIOptionsMessageReady"
+                }
+            },
             onReady: null
         },
         listeners: {
@@ -27094,10 +27141,13 @@ var fluid_1_5 = fluid_1_5 || {};
             uiOptions: {
                 type: "fluid.uiOptions",
                 container: "{loader}.container",
-                createOnEvent: "onUIOptionsTemplateReady",
+                createOnEvent: "onCreateUIOptionsReady",
                 options: {
                     events: {
                         "onUIOptionsComponentReady": "{loader}.events.onUIOptionsComponentReady"
+                    },
+                    members: {
+                        msgBundle: "{loader}.msgBundle"
                     }
                 }
             }
@@ -27105,8 +27155,20 @@ var fluid_1_5 = fluid_1_5 || {};
     });
 
     fluid.uiOptions.loader.init = function (that) {
-        fluid.fetchResources(that.options.resources, function () {
+        fluid.fetchResources(that.options.templateResources, function () {
             that.events.onUIOptionsTemplateReady.fire();
+        });
+
+        // Load message json files and create message resolver
+        fluid.fetchResources(that.options.messageResources, function () {
+            var completeMessage;
+            fluid.each(that.options.messageResources, function (oneResource) {
+                var message = JSON.parse(oneResource.resourceText);
+                completeMessage = $.extend({}, completeMessage, message);
+            });
+            var parentResolver = fluid.messageResolver({messageBase: completeMessage});
+            that.msgBundle = fluid.messageResolver({messageBase: {}, parents: [parentResolver]});
+            that.events.onUIOptionsMessageReady.fire();
         });
     };
 
@@ -27121,11 +27183,6 @@ var fluid_1_5 = fluid_1_5 || {};
      */
     fluid.defaults("fluid.uiOptions", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.settingsGetter", "fluid.uiOptions.settingsSetter", "fluid.uiOptions.rootModel", "autoInit"],
-        components: {
-            eventBinder: {
-                type: "fluid.uiOptions.eventBinder"
-            }
-        },
         invokers: {
             /**
              * Updates the change applier and fires modelChanged on subcomponent fluid.uiOptions.controls
@@ -27135,7 +27192,7 @@ var fluid_1_5 = fluid_1_5 || {};
              */
             updateModel: {
                 funcName: "fluid.fireSourcedChange",
-                args: ["{that}.applier", "selections", "{arguments}.0", "{arguments}.1"]
+                args: ["{that}.applier", "", "{arguments}.0", "{arguments}.1"]
             }
         },
         selectors: {
@@ -27185,34 +27242,6 @@ var fluid_1_5 = fluid_1_5 || {};
         set(userSettings);
     };
 
-    fluid.defaults("fluid.uiOptions.rootModel", {
-        gradeNames: ["fluid.littleComponent", "autoInit"],
-        members: {
-            // TODO: This information is supposed to be generated from the JSON
-            // schema describing various preferences. For now it's kept in top
-            // level uiOptions to avoid further duplication.
-            rootModel: {}
-        }
-    });
-
-    fluid.defaults("fluid.uiOptions.rootModel.starter", {
-        gradeNames: ["fluid.uiOptions.rootModel", "autoInit"],
-        members: {
-            // TODO: This information is supposed to be generated from the JSON
-            // schema describing various preferences. For now it's kept in top
-            // level uiOptions to avoid further duplication.
-            rootModel: {
-                textFont: "default",          // key from classname map
-                theme: "default",             // key from classname map
-                textSize: 1,                  // in points
-                lineSpace: 1,               // in ems
-                toc: false,                   // boolean
-                links: false,                 // boolean
-                inputsLarger: false           // boolean
-            }
-        }
-    });
-
     fluid.defaults("fluid.uiOptions.uiEnhancerRelay", {
         gradeNames: ["autoInit", "fluid.eventedComponent"],
         listeners: {
@@ -27233,7 +27262,7 @@ var fluid_1_5 = fluid_1_5 || {};
             },
             updateEnhancerModel: {
                 funcName: "fluid.uiOptions.uiEnhancerRelay.updateEnhancerModel",
-                args: ["{uiEnhancer}", "{fluid.uiOptions}.model.selections"]
+                args: ["{uiEnhancer}", "{fluid.uiOptions}.model"]
             }
         }
     });
@@ -27286,9 +27315,9 @@ var fluid_1_5 = fluid_1_5 || {};
          * Saves the current model and fires onSave
          */
         that.save = function () {
-            that.events.onSave.fire(that.model.selections);
+            that.events.onSave.fire(that.model);
 
-            var savedSelections = fluid.copy(that.model.selections);
+            var savedSelections = fluid.copy(that.model);
             that.setSettings(savedSelections);
         };
 
@@ -27314,7 +27343,7 @@ var fluid_1_5 = fluid_1_5 || {};
             that.fetch();
         };
 
-        that.applier.modelChanged.addListener("selections", function (newModel, oldModel, changeRequest) {
+        that.applier.modelChanged.addListener("*", function (newModel, oldModel, changeRequest) {
             that.events.modelChanged.fire(newModel, oldModel, changeRequest[0].source);
             if (that.options.autoSave) {
                 that.events.onAutoSave.fire();
@@ -27332,25 +27361,6 @@ var fluid_1_5 = fluid_1_5 || {};
             }, 1);
         });
     };
-
-    /***********************************************
-     * Base grade panels
-     ***********************************************/
-
-    fluid.defaults("fluid.uiOptions.panels", {
-        gradeNames: ["fluid.rendererComponent", "fluid.uiOptions.modelRelay", "autoInit"],
-        strings: {},
-        parentBundle: "{uioMsgBundle}"
-    });
-
-    /******************************************************
-     * UI Options Event binder:                           *
-     * Binds events between UI Options and the UIEnhancer *
-     ******************************************************/
-
-    fluid.defaults("fluid.uiOptions.eventBinder", {
-        gradeNames: ["fluid.eventedComponent", "autoInit"]
-    });
 
     /**********************
      * UI Options Preview *
@@ -27376,7 +27386,7 @@ var fluid_1_5 = fluid_1_5 || {};
                 funcName: "fluid.uiOptions.preview.updateModel",
                 args: [
                     "{preview}",
-                    "{uiOptions}.model.selections"
+                    "{uiOptions}.model"
                 ]
             }
         },
@@ -27391,13 +27401,13 @@ var fluid_1_5 = fluid_1_5 || {};
         templateUrl: "%prefix/UIOptionsPreview.html"
     });
 
-    fluid.uiOptions.preview.updateModel = function (that, selections) {
+    fluid.uiOptions.preview.updateModel = function (that, model) {
         /**
          * SetTimeout is temp fix for http://issues.fluidproject.org/browse/FLUID-2248
          */
         setTimeout(function () {
             if (that.enhancer) {
-                that.enhancer.updateModel(selections);
+                that.enhancer.updateModel(model);
             }
         }, 0);
     };
@@ -27409,7 +27419,6 @@ var fluid_1_5 = fluid_1_5 || {};
             that.events.onReady.fire();
         });
         that.container.attr("src", templateUrl);
-
     };
 
 })(jQuery, fluid_1_5);
@@ -27434,6 +27443,14 @@ var fluid_1_5 = fluid_1_5 || {};
 
 
 (function ($, fluid) {
+
+    /***********************************************
+     * Base grade panels
+     ***********************************************/
+
+    fluid.defaults("fluid.uiOptions.panels", {
+        gradeNames: ["fluid.rendererComponent", "fluid.uiOptions.modelRelay", "autoInit"]
+    });
 
     /********************************
      * UI Options Text Field Slider *
@@ -27462,6 +27479,13 @@ var fluid_1_5 = fluid_1_5 || {};
      */
     fluid.defaults("fluid.uiOptions.panels.textSize", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        preferenceMap: {
+            "fluid.uiOptions.textSize": {
+                "model.value": "default",
+                "range.min": "minimum",
+                "range.max": "maximum"
+            }
+        },
         // The default model values represent both the expected format as well as the setting to be applied in the absence of values passed down to the component.
         // i.e. from the settings store, or specific defaults derived from schema.
         // Note: Except for being passed down to its subcomponent, these default values are not contributed and shared out
@@ -27504,37 +27528,52 @@ var fluid_1_5 = fluid_1_5 || {};
      */
     fluid.defaults("fluid.uiOptions.panels.textFont", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        preferenceMap: {
+            "fluid.uiOptions.textFont": {
+                "model.value": "default",
+                "controlValues.textFont": "enum"
+            }
+        },
         selectors: {
             textFont: ".flc-uiOptions-text-font",
             label: ".flc-uiOptions-text-font-label"
         },
         strings: {
-            textFont: "{uioMsgBundle}.options.messageBase.textFont"
+            textFont: {
+                expander: {
+                    func: "fluid.uiOptions.panels.textFont.lookupMsg",
+                    args: ["{that}.options.parentBundle", "textFont", "{that}.options.controlValues.textFont"]
+                }
+            }
         },
-        produceTree: "fluid.uiOptions.panels.textFont.produceTree",
-        classnameMap: null, // must be supplied by implementors
-        controlValues: {
-            textFont: ["default", "times", "comic", "arial", "verdana"]
-        }
-    });
-    
-    fluid.uiOptions.panels.textFont.produceTree = function (that) {
-        // render drop down list box
-        return {
+        protoTree: {
             label: {messagekey: "textFontLabel"},
             textFont: {
-                optionnames: that.options.strings.textFont,
-                optionlist: that.options.controlValues.textFont,
+                optionnames: "{that}.options.strings.textFont",
+                optionlist: "{that}.options.controlValues.textFont",
                 selection: "${value}",
                 decorators: {
                     type: "fluid",
                     func: "fluid.uiOptions.selectDecorator",
                     options: {
-                        styles: that.options.classnameMap.textFont
+                        styles: "{that}.options.classnameMap.textFont"
                     }
                 }
             }
-        };
+        },
+        classnameMap: null, // must be supplied by implementors
+        controlValues: {
+            textFont: ["default", "times", "comic", "arial", "verdana"]
+        }
+    });
+
+    fluid.uiOptions.panels.textFont.lookupMsg = function (messageResolver, prefix, values) {
+        var messages = [];
+        fluid.each(values, function (value, key) {
+            var looked = messageResolver.lookup([prefix + "." + value]);
+            messages.push(looked ? looked.template : looked);
+        });
+        return messages;
     };
 
     /*************************
@@ -27546,6 +27585,13 @@ var fluid_1_5 = fluid_1_5 || {};
      */
     fluid.defaults("fluid.uiOptions.panels.lineSpace", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        preferenceMap: {
+            "fluid.uiOptions.lineSpace": {
+                "model.value": "default",
+                "range.min": "minimum",
+                "range.max": "maximum"
+            }
+        },
         // The default model values represent both the expected format as well as the setting to be applied in the absence of values passed down to the component.
         // i.e. from the settings store, or specific defaults derived from schema.
         // Note: Except for being passed down to its subcomponent, these default values are not contributed and shared out
@@ -27588,6 +27634,12 @@ var fluid_1_5 = fluid_1_5 || {};
      */
     fluid.defaults("fluid.uiOptions.panels.contrast", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        preferenceMap: {
+            "fluid.uiOptions.contrast": {
+                "model.value": "default",
+                "controlValues.theme": "enum"
+            }
+        },
         listeners: {
             afterRender: "{that}.style"
         },
@@ -27598,10 +27650,29 @@ var fluid_1_5 = fluid_1_5 || {};
             label: ".flc-uiOptions-contrast-label"
         },
         strings: {
-            theme: "{uioMsgBundle}.options.messageBase.theme"
+            theme: {
+                expander: {
+                    func: "fluid.uiOptions.panels.contrast.lookupMsg",
+                    args: ["{that}.options.parentBundle", "contrast"]
+                }
+            }
         },
         repeatingSelectors: ["themeRow"],
-        produceTree: "fluid.uiOptions.panels.contrast.produceTree",
+        protoTree: {
+            label: {messagekey: "contrastLabel"},
+            expander: {
+                type: "fluid.renderer.selection.inputs",
+                rowID: "themeRow",
+                labelID: "themeLabel",
+                inputID: "themeInput",
+                selectID: "theme-radio",
+                tree: {
+                    optionnames: "{that}.options.strings.theme",
+                    optionlist: "{that}.options.controlValues.theme",
+                    selection: "${value}"
+                }
+            }
+        },
         controlValues: {
             theme: ["default", "bw", "wb", "by", "yb", "lgdg"]
         },
@@ -27618,6 +27689,11 @@ var fluid_1_5 = fluid_1_5 || {};
         }
     });
 
+    fluid.uiOptions.panels.contrast.lookupMsg = function (messageResolver, value) {
+        var looked = messageResolver.lookup([value]);
+        return looked ? looked.template : looked;
+    };
+
     fluid.uiOptions.panels.contrast.style = function (labels, strings, markup, theme, style) {
         fluid.each(labels, function (label, index) {
             label = $(label);
@@ -27626,24 +27702,6 @@ var fluid_1_5 = fluid_1_5 || {};
             }));
             label.addClass(style[theme[index]]);
         });
-    };
-    
-    fluid.uiOptions.panels.contrast.produceTree = function (that) {
-        return {
-            label: {messagekey: "contrastLabel"},
-            expander: {
-                type: "fluid.renderer.selection.inputs",
-                rowID: "themeRow",
-                labelID: "themeLabel",
-                inputID: "themeInput",
-                selectID: "theme-radio",
-                tree: {
-                    optionnames: that.options.strings.theme,
-                    optionlist: that.options.controlValues.theme,
-                    selection: "${value}"
-                }
-            }
-        };
     };
 
     /******************************
@@ -27655,6 +27713,11 @@ var fluid_1_5 = fluid_1_5 || {};
      */
     fluid.defaults("fluid.uiOptions.panels.layoutControls", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        preferenceMap: {
+            "fluid.uiOptions.tableOfContents": {
+                "model.toc": "default"
+            }
+        },
         selectors: {
             toc: ".flc-uiOptions-toc",
             label: ".flc-uiOptions-toc-label",
@@ -27675,6 +27738,14 @@ var fluid_1_5 = fluid_1_5 || {};
      */
     fluid.defaults("fluid.uiOptions.panels.linksControls", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        preferenceMap: {
+            "fluid.uiOptions.emphasizeLinks": {
+                "model.links": "default"
+            },
+            "fluid.uiOptions.inputsLarger": {
+                "model.inputsLarger": "default"
+            }
+        },
         selectors: {
             links: ".flc-uiOptions-links",
             inputsLarger: ".flc-uiOptions-inputs-larger",
@@ -27714,169 +27785,6 @@ var fluid_1_5 = fluid_1_5 || {};
             $(option).addClass(styles.preview + " " + styles[fluid.value(option)]);
         });
     };
-
-    /************************************************************************
-     * The grade that contains shared options by all default settings panels
-     ************************************************************************/
-    
-    fluid.defaults("fluid.uiOptions.defaultPanel", {
-        gradeNames: ["fluid.eventedComponent", "autoInit"],
-        mergePolicy: {
-            sourceApplier: "nomerge"
-        },
-        sourceApplier: "{fluid.uiOptions}.applier",
-        listeners: {
-            "{uiOptions}.events.onUIOptionsRefresh": "{fluid.uiOptions.panels}.refreshView"
-        }
-    });
-
-    /*********************************************************************************************************
-     * Starter Settings Panels
-     *
-     * A collection of all the default UIO setting panels.
-     *********************************************************************************************************/
-    fluid.defaults("fluid.uiOptions.starterPanels", {
-        gradeNames: ["fluid.uiOptions", "autoInit"],
-        selectors: {
-            textSize: ".flc-uiOptions-text-size",
-            textFont: ".flc-uiOptions-text-font",
-            lineSpace: ".flc-uiOptions-line-space",
-            contrast: ".flc-uiOptions-contrast",
-            textControls: ".flc-uiOptions-text-controls",
-            layoutControls: ".flc-uiOptions-layout-controls",
-            linksControls: ".flc-uiOptions-links-controls"
-        },
-        components: {
-            textSize: {
-                type: "fluid.uiOptions.panels.textSize",
-                container: "{uiOptions}.dom.textSize",
-                createOnEvent: "onUIOptionsMarkupReady",
-                options: {
-                    gradeNames: "fluid.uiOptions.defaultPanel",
-                    rules: {
-                        "selections.textSize": "value"
-                    },
-                    model: {
-                        value: "{fluid.uiOptions.rootModel}.rootModel.textSize"
-                    },
-                    resources: {
-                        template: "{templateLoader}.resources.textSize"
-                    }
-                }
-            },
-            lineSpace: {
-                type: "fluid.uiOptions.panels.lineSpace",
-                container: "{uiOptions}.dom.lineSpace",
-                createOnEvent: "onUIOptionsMarkupReady",
-                options: {
-                    gradeNames: "fluid.uiOptions.defaultPanel",
-                    rules: {
-                        "selections.lineSpace": "value"
-                    },
-                    model: {
-                        value: "{fluid.uiOptions.rootModel}.rootModel.lineSpace"
-                    },
-                    resources: {
-                        template: "{templateLoader}.resources.lineSpace"
-                    }
-                }
-            },
-            textFont: {
-                type: "fluid.uiOptions.panels.textFont",
-                container: "{uiOptions}.dom.textFont",
-                createOnEvent: "onUIOptionsMarkupReady",
-                options: {
-                    gradeNames: "fluid.uiOptions.defaultPanel",
-                    classnameMap: "{uiEnhancer}.options.classnameMap",
-                    rules: {
-                        "selections.textFont": "value"
-                    },
-                    model: {
-                        value: "{fluid.uiOptions.rootModel}.rootModel.textFont"
-                    },
-                    resources: {
-                        template: "{templateLoader}.resources.textFont"
-                    }
-                }
-            },
-            contrast: {
-                type: "fluid.uiOptions.panels.contrast",
-                container: "{uiOptions}.dom.contrast",
-                createOnEvent: "onUIOptionsMarkupReady",
-                options: {
-                    gradeNames: "fluid.uiOptions.defaultPanel",
-                    classnameMap: "{uiEnhancer}.options.classnameMap",
-                    rules: {
-                        "selections.theme": "value"
-                    },
-                    model: {
-                        value: "{fluid.uiOptions.rootModel}.rootModel.theme"
-                    },
-                    resources: {
-                        template: "{templateLoader}.resources.contrast"
-                    }
-                }
-            },
-            layoutControls: {
-                type: "fluid.uiOptions.panels.layoutControls",
-                container: "{uiOptions}.dom.layoutControls",
-                createOnEvent: "onUIOptionsMarkupReady",
-                options: {
-                    gradeNames: "fluid.uiOptions.defaultPanel",
-                    rules: {
-                        "selections.toc": "toc"
-                    },
-                    model: {
-                        toc: "{fluid.uiOptions.rootModel}.rootModel.toc"
-                    },
-                    resources: {
-                        template: "{templateLoader}.resources.layoutControls"
-                    }
-                }
-            },
-            linksControls: {
-                type: "fluid.uiOptions.panels.linksControls",
-                container: "{uiOptions}.dom.linksControls",
-                createOnEvent: "onUIOptionsMarkupReady",
-                options: {
-                    gradeNames: "fluid.uiOptions.defaultPanel",
-                    rules: {
-                        "selections.links": "links",
-                        "selections.inputsLarger": "inputsLarger"
-                    },
-                    model: {
-                        links: "{fluid.uiOptions.rootModel}.rootModel.links",
-                        inputsLarger: "{fluid.uiOptions.rootModel}.rootModel.inputsLarger"
-                    },
-                    resources: {
-                        template: "{templateLoader}.resources.linksControls"
-                    }
-                }
-            }
-        }
-    });
-
-    /******************************
-     * Starter Template Loader
-     ******************************/
-
-    /**
-     * A template loader component that specifies the templates used by starterPanels
-     *
-     * @param {Object} options
-     */
-
-    fluid.defaults("fluid.uiOptions.starterTemplateLoader", {
-        gradeNames: ["fluid.uiOptions.templateLoader", "autoInit"],
-        templates: {
-            textSize: "%prefix/UIOptionsTemplate-textSize.html",
-            textFont: "%prefix/UIOptionsTemplate-textFont.html",
-            lineSpace: "%prefix/UIOptionsTemplate-lineSpace.html",
-            contrast: "%prefix/UIOptionsTemplate-contrast.html",
-            layoutControls: "%prefix/UIOptionsTemplate-layout.html",
-            linksControls: "%prefix/UIOptionsTemplate-links.html"
-        }
-    });
 
 })(jQuery, fluid_1_5);
 /*
@@ -27968,7 +27876,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 // Declare dependencies
 /*global fluid_1_5:true, jQuery*/
 
-// JSLint options 
+// JSLint options
 /*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
 
 var fluid_1_5 = fluid_1_5 || {};
@@ -27978,10 +27886,10 @@ var fluid_1_5 = fluid_1_5 || {};
     fluid.defaults("fluid.uiOptions.enactors", {
         gradeNames: ["fluid.modelComponent", "fluid.eventedComponent", "fluid.uiOptions.modelRelay", "autoInit"]
     });
-    
+
     /**********************************************************************************
      * styleElements
-     * 
+     *
      * Adds or removes the classname to/from the elements based upon the model value.
      * This component is used as a grade by emphasizeLinks & inputsLarger
      **********************************************************************************/
@@ -28001,7 +27909,7 @@ var fluid_1_5 = fluid_1_5 || {};
                 funcName: "fluid.uiOptions.enactors.styleElements.handleStyle",
                 args: ["{arguments}.0", {expander: {func: "{that}.getElements"}}, "{that}"]
             },
-            
+
             // Must be supplied by implementors
             getElements: "fluid.uiOptions.enactors.getElements"
         },
@@ -28012,7 +27920,7 @@ var fluid_1_5 = fluid_1_5 || {};
             }
         }
     });
-    
+
     fluid.uiOptions.enactors.styleElements.applyStyle = function (elements, cssClass) {
         elements.addClass(cssClass);
     };
@@ -28034,60 +27942,15 @@ var fluid_1_5 = fluid_1_5 || {};
             that.handleStyle(newModel.value);
         });
     };
-    
-    /*******************************************************************************
-     * emphasizeLinks
-     * 
-     * The enactor to emphasize links in the container according to the value
-     *******************************************************************************/
 
-    // Note that the implementors need to provide the container for this view component
-    fluid.defaults("fluid.uiOptions.enactors.emphasizeLinks", {
-        gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors.styleElements", "autoInit"],
-        cssClass: null,  // Must be supplied by implementors
-        invokers: {
-            getElements: {
-                funcName: "fluid.uiOptions.enactors.emphasizeLinks.getLinks",
-                args: "{that}.container"
-            }
-        }
-    });
-    
-    fluid.uiOptions.enactors.emphasizeLinks.getLinks = function (container) {
-        return $("a", container);
-    };
-    
-    /*******************************************************************************
-     * inputsLarger
-     * 
-     * The enactor to enlarge inputs in the container according to the value
-     *******************************************************************************/
-
-    // Note that the implementors need to provide the container for this view component
-    fluid.defaults("fluid.uiOptions.enactors.inputsLarger", {
-        gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors.styleElements", "autoInit"],
-        cssClass: null,  // Must be supplied by implementors
-        invokers: {
-            getElements: {
-                funcName: "fluid.uiOptions.enactors.inputsLarger.getInputs",
-                args: "{that}.container"
-            }
-        }
-    });
-    
-    fluid.uiOptions.enactors.inputsLarger.getInputs = function (container) {
-        return $("input, button", container);
-    };
-    
     /*******************************************************************************
      * ClassSwapper
      *
      * Has a hash of classes it cares about and will remove all those classes from
      * its container before setting the new class.
-     * This component tends to be used as a grade by textFont and theme
+     * This component tends to be used as a grade by textFont and contrast
      *******************************************************************************/
-    
-    // Note that the implementors need to provide the container for this view component
+
     fluid.defaults("fluid.uiOptions.enactors.classSwapper", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
         classes: {},  // Must be supplied by implementors
@@ -28116,19 +27979,19 @@ var fluid_1_5 = fluid_1_5 || {};
             }
         }
     });
-    
+
     fluid.uiOptions.enactors.classSwapper.clearClasses = function (container, classStr) {
         container.removeClass(classStr);
     };
-    
+
     fluid.uiOptions.enactors.classSwapper.swap = function (value, that) {
         that.clearClasses();
         that.container.addClass(that.options.classes[value]);
     };
-    
+
     fluid.uiOptions.enactors.classSwapper.joinClassStr = function (classes) {
         var classStr = "";
-        
+
         fluid.each(classes, function (oneClassName) {
             if (oneClassName) {
                 classStr += classStr ? " " + oneClassName : oneClassName;
@@ -28136,17 +27999,103 @@ var fluid_1_5 = fluid_1_5 || {};
         });
         return classStr;
     };
-    
+
     fluid.uiOptions.enactors.classSwapper.finalInit = function (that) {
         that.applier.modelChanged.addListener("value", function (newModel) {
             that.swap(newModel.value);
         });
     };
-    
+
+    /*******************************************************************************
+     * emphasizeLinks
+     *
+     * The enactor to emphasize links in the container according to the value
+     *******************************************************************************/
+
+    // Note that the implementors need to provide the container for this view component
+    fluid.defaults("fluid.uiOptions.enactors.emphasizeLinks", {
+        gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors.styleElements", "autoInit"],
+        preferenceMap: {
+            "fluid.uiOptions.emphasizeLinks": {
+                "model.value": "default"
+            }
+        },
+        cssClass: null,  // Must be supplied by implementors
+        invokers: {
+            getElements: {
+                funcName: "fluid.uiOptions.enactors.emphasizeLinks.getLinks",
+                args: "{that}.container"
+            }
+        }
+    });
+
+    fluid.uiOptions.enactors.emphasizeLinks.getLinks = function (container) {
+        return $("a", container);
+    };
+
+    /*******************************************************************************
+     * inputsLarger
+     *
+     * The enactor to enlarge inputs in the container according to the value
+     *******************************************************************************/
+
+    // Note that the implementors need to provide the container for this view component
+    fluid.defaults("fluid.uiOptions.enactors.inputsLarger", {
+        gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors.styleElements", "autoInit"],
+        preferenceMap: {
+            "fluid.uiOptions.inputsLarger": {
+                "model.value": "default"
+            }
+        },
+        cssClass: null,  // Must be supplied by implementors
+        invokers: {
+            getElements: {
+                funcName: "fluid.uiOptions.enactors.inputsLarger.getInputs",
+                args: "{that}.container"
+            }
+        }
+    });
+
+    fluid.uiOptions.enactors.inputsLarger.getInputs = function (container) {
+        return $("input, button", container);
+    };
+
+    /*******************************************************************************
+     * textFont
+     *
+     * The enactor to change the font face used according to the value
+     *******************************************************************************/
+    // Note that the implementors need to provide the container for this view component
+    fluid.defaults("fluid.uiOptions.enactors.textFont", {
+        gradeNames: ["fluid.uiOptions.enactors.classSwapper", "autoInit"],
+        preferenceMap: {
+            "fluid.uiOptions.textFont": {
+                "model.value": "default"
+            }
+        }
+    });
+
+    /*******************************************************************************
+     * contrast
+     *
+     * The enactor to change the contrast theme according to the value
+     *******************************************************************************/
+    // Note that the implementors need to provide the container for this view component
+    fluid.defaults("fluid.uiOptions.enactors.contrast", {
+        gradeNames: ["fluid.uiOptions.enactors.classSwapper", "autoInit"],
+        preferenceMap: {
+            "fluid.uiOptions.contrast": {
+                "model.value": "default"
+            }
+        }
+    });
+
+
+
     /*******************************************************************************
      * Functions shared by textSize and lineSpace
      *******************************************************************************/
-    
+
     /**
      * return "font-size" in px
      * @param (Object) container
@@ -28168,10 +28117,15 @@ var fluid_1_5 = fluid_1_5 || {};
      *
      * Sets the text size on the container to the multiple provided.
      *******************************************************************************/
-    
+
     // Note that the implementors need to provide the container for this view component
     fluid.defaults("fluid.uiOptions.enactors.textSize", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
+        preferenceMap: {
+            "fluid.uiOptions.textSize": {
+                "model.value": "default"
+            }
+        },
         fontSizeMap: {},  // must be supplied by implementors
         invokers: {
             set: {
@@ -28198,14 +28152,14 @@ var fluid_1_5 = fluid_1_5 || {};
             }
         }
     });
-    
+
     fluid.uiOptions.enactors.textSize.set = function (times, that) {
         // Calculating the initial size here rather than using a members expand because the "font-size"
         // cannot be detected on hidden containers such as fat paenl iframe.
         if (!that.initialSize) {
             that.initialSize = that.getTextSizeInEm();
         }
-        
+
         if (that.initialSize) {
             var targetSize = times * that.initialSize;
             that.container.css("font-size", targetSize + "em");
@@ -28218,15 +28172,15 @@ var fluid_1_5 = fluid_1_5 || {};
      * @param (Object) fontSizeMap: the mapping between the font size string values ("small", "medium" etc) to px values
      */
     fluid.uiOptions.enactors.textSize.getTextSizeInEm = function (textSizeInPx, px2emFactor) {
-        // retrieve fontSize in px, convert and return in em 
+        // retrieve fontSize in px, convert and return in em
         return Math.round(textSizeInPx / px2emFactor * 10000) / 10000;
     };
-    
+
     /**
      * Return the base font size used for converting text size from px to em
      */
     fluid.uiOptions.enactors.textSize.getPx2EmFactor = function (container, fontSizeMap) {
-        // The base font size for converting text size to em is the computed font size of the container's 
+        // The base font size for converting text size to em is the computed font size of the container's
         // parent element unless the container itself has been the DOM root element "HTML"
         // The reference to this algorithm: http://clagnut.com/blog/348/
         if (container.get(0).tagName !== "HTML") {
@@ -28240,16 +28194,21 @@ var fluid_1_5 = fluid_1_5 || {};
             that.set(newModel.value);
         });
     };
-    
+
     /*******************************************************************************
      * lineSpace
      *
      * Sets the line space on the container to the multiple provided.
      *******************************************************************************/
-    
+
     // Note that the implementors need to provide the container for this view component
     fluid.defaults("fluid.uiOptions.enactors.lineSpace", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
+        preferenceMap: {
+            "fluid.uiOptions.lineSpace": {
+                "model.value": "default"
+            }
+        },
         fontSizeMap: {},  // must be supplied by implementors
         invokers: {
             set: {
@@ -28276,26 +28235,26 @@ var fluid_1_5 = fluid_1_5 || {};
             }
         }
     });
-    
+
     // Return "line-height" css value
     fluid.uiOptions.enactors.lineSpace.getLineHeight = function (container) {
         var lineHeight;
-        
+
         // A work-around of jQuery + IE bug - http://bugs.jquery.com/ticket/2671
         if (container[0].currentStyle) {
             lineHeight = container[0].currentStyle.lineHeight;
         } else {
             lineHeight = container.css("line-height");
         }
-        
+
         return lineHeight;
     };
-    
-    // Interprets browser returned "line-height" value, either a string "normal", a number with "px" suffix or "undefined" 
-    // into a numeric value in em. 
+
+    // Interprets browser returned "line-height" value, either a string "normal", a number with "px" suffix or "undefined"
+    // into a numeric value in em.
     // Return 0 when the given "lineHeight" argument is "undefined" (http://issues.fluidproject.org/browse/FLUID-4500).
     fluid.uiOptions.enactors.lineSpace.numerizeLineHeight = function (lineHeight, fontSize) {
-        // Handel the given "lineHeight" argument is "undefined", which occurs when firefox detects 
+        // Handel the given "lineHeight" argument is "undefined", which occurs when firefox detects
         // "line-height" css value on a hidden container. (http://issues.fluidproject.org/browse/FLUID-4500)
         if (!lineHeight) {
             return 0;
@@ -28306,12 +28265,12 @@ var fluid_1_5 = fluid_1_5 || {};
         if (lineHeight === "normal") {
             return 1.2;
         }
-        
+
         // Continuing the work-around of jQuery + IE bug - http://bugs.jquery.com/ticket/2671
         if (lineHeight.match(/[0-9]$/)) {
             return lineHeight;
         }
-        
+
         return Math.round(parseFloat(lineHeight) / fontSize * 100) / 100;
     };
 
@@ -28321,7 +28280,7 @@ var fluid_1_5 = fluid_1_5 || {};
         if (!that.initialSize) {
             that.initialSize = that.numerizeLineHeight();
         }
-        
+
         // that.initialSize === 0 when the browser returned "lineHeight" css value is undefined,
         // which occurs when firefox detects "line-height" value on a hidden container.
         // @ See numerizeLineHeight() & http://issues.fluidproject.org/browse/FLUID-4500
@@ -28330,22 +28289,27 @@ var fluid_1_5 = fluid_1_5 || {};
             that.container.css("line-height", targetLineSpace);
         }
     };
-    
+
     fluid.uiOptions.enactors.lineSpace.finalInit = function (that) {
         that.applier.modelChanged.addListener("value", function (newModel) {
             that.set(newModel.value);
         });
     };
-    
+
     /*******************************************************************************
      * tableOfContents
      *
      * To create and show/hide table of contents
      *******************************************************************************/
-    
+
     // Note that the implementors need to provide the container for this view component
     fluid.defaults("fluid.uiOptions.enactors.tableOfContents", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
+        preferenceMap: {
+            "fluid.uiOptions.tableOfContents": {
+                "model.value": "default"
+            }
+        },
         tocTemplate: null,  // must be supplied by implementors
         components: {
             tableOfContents: {
@@ -28363,7 +28327,7 @@ var fluid_1_5 = fluid_1_5 || {};
                                         url: "{fluid.uiOptions.enactors.tableOfContents}.options.tocTemplate"
                                     }
                                 }
-                            } 
+                            }
                         }
                     },
                     listeners: {
@@ -28390,7 +28354,7 @@ var fluid_1_5 = fluid_1_5 || {};
             }
         }
     });
-    
+
     fluid.uiOptions.enactors.tableOfContents.applyToc = function (value, that) {
         var async = false;
         if (value) {
@@ -28409,18 +28373,61 @@ var fluid_1_5 = fluid_1_5 || {};
             that.events.onLateRefreshRelay.fire(that);
         }
     };
-    
+
     fluid.uiOptions.enactors.tableOfContents.finalInit = function (that) {
         that.applier.modelChanged.addListener("value", function (newModel) {
             that.applyToc(newModel.value);
         });
     };
-    
+
+    /*******************************************************************************
+     * The demands blocks that hook up tableOfContents enactor with other enactors
+     * which need to re-apply their actions on the links inside table of contents
+     *******************************************************************************/
+
+    fluid.defaults("fluid.uiOptions.tocWithEmphasizeLinks", {
+        gradeNames: ["fluid.eventedComponent", "autoInit"],
+        listeners: {
+            afterTocRender: {
+                listener: "{uiEnhancer}.emphasizeLinks.handleStyle",
+                args: "{uiEnhancer}.model.links"
+            },
+            onLateRefreshRelay: {
+                listener: "{uiEnhancer}.emphasizeLinks.handleStyle",
+                args: "{uiEnhancer}.model.links"
+            }
+        }
+    });
+
+    fluid.defaults("fluid.uiOptions.tocWithInputsLarger", {
+        gradeNames: ["fluid.eventedComponent", "autoInit"],
+        listeners: {
+            afterTocRender: {
+                listener: "{uiEnhancer}.inputsLarger.handleStyle",
+                args: "{uiEnhancer}.model.inputsLarger"
+            },
+            onLateRefreshRelay: {
+                listener: "{uiEnhancer}.inputsLarger.handleStyle",
+                args: "{uiEnhancer}.model.inputsLarger"
+            }
+        }
+    });
+
+    fluid.demands("fluid.uiOptions.enactors.tableOfContents", "fluid.uiOptions.enactors.emphasizeLinks", {
+        options: {
+            gradeNames: "fluid.uiOptions.tocWithEmphasizeLinks"
+        }
+    });
+
+    fluid.demands("fluid.uiOptions.enactors.tableOfContents", "fluid.uiOptions.enactors.inputsLarger", {
+        options: {
+            gradeNames: "fluid.uiOptions.tocWithInputsLarger"
+        }
+    });
+
 })(jQuery, fluid_1_5);
 /*
-Copyright 2009 University of Toronto
-Copyright 2010-2011 OCAD University
-Copyright 2011 Lucendo Development Ltd.
+Copyright 2013 OCAD University
 
 Licensed under the Educational Community License (ECL), Version 2.0 or the New
 BSD license. You may not use this file except in compliance with one these
@@ -28433,7 +28440,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 // Declare dependencies
 /*global fluid_1_5:true, jQuery*/
 
-// JSLint options 
+// JSLint options
 /*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
 
 var fluid_1_5 = fluid_1_5 || {};
@@ -28441,12 +28448,36 @@ var fluid_1_5 = fluid_1_5 || {};
 (function ($, fluid) {
 
     /*******************************************************************************
+     * Starter Root Model
+     *
+     * Provides the default values for the starter enhancer/panels models
+     *******************************************************************************/
+
+    fluid.defaults("fluid.uiOptions.rootModel.starter", {
+        gradeNames: ["fluid.uiOptions.rootModel", "autoInit"],
+        members: {
+            // TODO: This information is supposed to be generated from the JSON
+            // schema describing various preferences. For now it's kept in top
+            // level uiOptions to avoid further duplication.
+            rootModel: {
+                textFont: "default",          // key from classname map
+                theme: "default",             // key from classname map
+                textSize: 1,                  // in points
+                lineSpace: 1,               // in ems
+                toc: false,                   // boolean
+                links: false,                 // boolean
+                inputsLarger: false           // boolean
+            }
+        }
+    });
+
+    /*******************************************************************************
      * CSSClassEnhancerBase
      *
-     * Provides the map between the settings and css classes to be applied. 
+     * Provides the map between the settings and css classes to be applied.
      * Used as a UIEnhancer base grade that can be pulled in as requestd.
      *******************************************************************************/
-    
+
     fluid.defaults("fluid.uiEnhancer.cssClassEnhancerBase", {
         gradeNames: ["fluid.littleComponent", "autoInit"],
         classnameMap: {
@@ -28463,7 +28494,7 @@ var fluid_1_5 = fluid_1_5 || {};
                 "wb": "fl-theme-uio-wb fl-theme-wb",
                 "by": "fl-theme-uio-by fl-theme-by",
                 "yb": "fl-theme-uio-yb fl-theme-yb",
-                "lgdg": "fl-theme-uio-lgdg fl-theme-lgdg"                
+                "lgdg": "fl-theme-uio-lgdg fl-theme-lgdg"
             },
             "links": "fl-link-enhanced",
             "inputsLarger": "fl-text-larger"
@@ -28473,10 +28504,10 @@ var fluid_1_5 = fluid_1_5 || {};
     /*******************************************************************************
      * BrowserTextEnhancerBase
      *
-     * Provides the default font size translation between the strings and actual pixels. 
+     * Provides the default font size translation between the strings and actual pixels.
      * Used as a UIEnhancer base grade that can be pulled in as requestd.
      *******************************************************************************/
-    
+
     fluid.defaults("fluid.uiEnhancer.browserTextEnhancerBase", {
         gradeNames: ["fluid.littleComponent", "autoInit"],
         fontSizeMap: {
@@ -28491,35 +28522,12 @@ var fluid_1_5 = fluid_1_5 || {};
     });
 
     /*******************************************************************************
-     * UI Enhancer                                                                 *
-     *                                                                             *
-     * Works in conjunction with FSS to transform the page based on user settings. *
-     *******************************************************************************/
-    
-    fluid.defaults("fluid.uiEnhancer", {
-        gradeNames: ["fluid.viewComponent", "autoInit"],
-        invokers: {
-            updateModel: {
-                funcName: "fluid.uiEnhancer.updateModel",
-                args: ["{arguments}.0", "{uiEnhancer}.applier"]
-            }
-        },
-        events: {
-            onAsyncEnactorReady: null
-        }
-    });
-
-    fluid.uiEnhancer.updateModel = function (newModel, applier) {
-        applier.requestChange("", newModel);
-    };
-
-    /*******************************************************************************
      * UI Enhancer Starter Enactors
      *
-     * A grade component for UIEnhancer. It is a collection of default UI Enhancer 
+     * A grade component for UIEnhancer. It is a collection of default UI Enhancer
      * action ants.
      *******************************************************************************/
-    
+
     fluid.defaults("fluid.uiEnhancer.starterEnactors", {
         gradeNames: ["fluid.uiEnhancer", "fluid.uiEnhancer.cssClassEnhancerBase", "fluid.uiEnhancer.browserTextEnhancerBase", "autoInit"],
         components: {
@@ -28538,7 +28546,7 @@ var fluid_1_5 = fluid_1_5 || {};
                 }
             },
             textFont: {
-                type: "fluid.uiOptions.enactors.classSwapper",
+                type: "fluid.uiOptions.enactors.textFont",
                 container: "{uiEnhancer}.container",
                 options: {
                     classes: "{uiEnhancer}.options.classnameMap.textFont",
@@ -28565,8 +28573,8 @@ var fluid_1_5 = fluid_1_5 || {};
                     }
                 }
             },
-            theme: {
-                type: "fluid.uiOptions.enactors.classSwapper",
+            contrast: {
+                type: "fluid.uiOptions.enactors.contrast",
                 container: "{uiEnhancer}.container",
                 options: {
                     classes: "{uiEnhancer}.options.classnameMap.theme",
@@ -28610,88 +28618,210 @@ var fluid_1_5 = fluid_1_5 || {};
             tableOfContents: {
                 type: "fluid.uiOptions.enactors.tableOfContents",
                 container: "{uiEnhancer}.container",
-                createOnEvent: "onCreateToc",
+                // createOnEvent: "onCreateToc",
                 options: {
                     tocTemplate: "{uiEnhancer}.options.tocTemplate",
                     sourceApplier: "{uiEnhancer}.applier",
                     rules: {
                         "toc": "value"
                     },
-                    listeners: {
-                        afterTocRender: "{uiEnhancer}.events.onAsyncEnactorReady",
-                        onLateRefreshRelay: "{uiEnhancer}.events.onAsyncEnactorReady"
-                    },
                     model: {
                         toc: "{fluid.uiOptions.rootModel}.rootModel.toc"
                     }
                 }
             }
-        },
-        events: {
-            onCreateToc: null
-        },
-        listeners: {
-            onAsyncEnactorReady: [{
-                listener: "{that}.emphasizeLinks.handleStyle",
-                args: "{that}.model.links"
-            }, {
-                listener: "{that}.inputsLarger.handleStyle",
-                args: "{that}.model.inputsLarger"
-            }]
-        },
-        finalInitFunction: "fluid.uiEnhancer.starterEnactors.finalInit"
+        }
     });
 
-    fluid.uiEnhancer.starterEnactors.finalInit = function (that) {
-        $(document).ready(function () {
-            that.events.onCreateToc.fire();
-            
-            // Directly calling toc apply function rather than firing a model change request
-            // is because the modelRelay component prevents the relay on the unchanged value.
-            that.tableOfContents.applyToc(that.model.toc);
-        });
-    };
-    
-    /*******************************************************************************
-     * PageEnhancer                                                                *
-     *                                                                             *
-     * A UIEnhancer wrapper that concerns itself with the entire page.             *
-     *******************************************************************************/
-    fluid.pageEnhancer = function (uiEnhancerOptions) {
-        var that = fluid.initLittleComponent("fluid.pageEnhancer");
-        // This hack is required to resolve FLUID-4409 - much improved framework support is required
-        that.options.originalUserOptions = fluid.copy(uiEnhancerOptions);
-        that.uiEnhancerOptions = uiEnhancerOptions;
-        fluid.initDependents(that);
-        that.uiEnhancer.updateModel(that.getSettings());
-        fluid.staticEnvironment.uiEnhancer = that.uiEnhancer;
-        return that;
-    };
+    /************************************************************************
+     * The grade that contains shared options by all default settings panels
+     ************************************************************************/
 
-    fluid.defaults("fluid.pageEnhancer", {
-        gradeNames: ["fluid.originalEnhancerOptions", "fluid.uiOptions.rootModel", "fluid.uiOptions.settingsGetter"],
+    fluid.defaults("fluid.uiOptions.defaultPanel", {
+        gradeNames: ["fluid.eventedComponent", "autoInit"],
+        mergePolicy: {
+            sourceApplier: "nomerge"
+        },
+        sourceApplier: "{fluid.uiOptions}.applier",
+        listeners: {
+            "{uiOptions}.events.onUIOptionsRefresh": "{fluid.uiOptions.panels}.refreshView"
+        },
+        strings: {},
+        parentBundle: "{loader}.msgBundle"
+    });
+
+    /*********************************************************************************************************
+     * Starter Settings Panels
+     *
+     * A collection of all the default UIO setting panels.
+     *********************************************************************************************************/
+    fluid.defaults("fluid.uiOptions.starterPanels", {
+        gradeNames: ["fluid.uiOptions", "autoInit"],
+        selectors: {
+            textSize: ".flc-uiOptions-text-size",
+            textFont: ".flc-uiOptions-text-font",
+            lineSpace: ".flc-uiOptions-line-space",
+            contrast: ".flc-uiOptions-contrast",
+            textControls: ".flc-uiOptions-text-controls",
+            layoutControls: ".flc-uiOptions-layout-controls",
+            linksControls: ".flc-uiOptions-links-controls"
+        },
         components: {
-            uiEnhancer: {
-                type: "fluid.uiEnhancer",
-                container: "body",
-                options: "{pageEnhancer}.uiEnhancerOptions"
+            textSize: {
+                type: "fluid.uiOptions.panels.textSize",
+                container: "{uiOptions}.dom.textSize",
+                createOnEvent: "onUIOptionsMarkupReady",
+                options: {
+                    gradeNames: "fluid.uiOptions.defaultPanel",
+                    rules: {
+                        "textSize": "value"
+                    },
+                    model: {
+                        value: "{fluid.uiOptions.rootModel}.rootModel.textSize"
+                    },
+                    resources: {
+                        template: "{templateLoader}.resources.textSize"
+                    }
+                }
+            },
+            lineSpace: {
+                type: "fluid.uiOptions.panels.lineSpace",
+                container: "{uiOptions}.dom.lineSpace",
+                createOnEvent: "onUIOptionsMarkupReady",
+                options: {
+                    gradeNames: "fluid.uiOptions.defaultPanel",
+                    rules: {
+                        "lineSpace": "value"
+                    },
+                    model: {
+                        value: "{fluid.uiOptions.rootModel}.rootModel.lineSpace"
+                    },
+                    resources: {
+                        template: "{templateLoader}.resources.lineSpace"
+                    }
+                }
+            },
+            textFont: {
+                type: "fluid.uiOptions.panels.textFont",
+                container: "{uiOptions}.dom.textFont",
+                createOnEvent: "onUIOptionsMarkupReady",
+                options: {
+                    gradeNames: "fluid.uiOptions.defaultPanel",
+                    classnameMap: "{uiEnhancer}.options.classnameMap",
+                    rules: {
+                        "textFont": "value"
+                    },
+                    model: {
+                        value: "{fluid.uiOptions.rootModel}.rootModel.textFont"
+                    },
+                    resources: {
+                        template: "{templateLoader}.resources.textFont"
+                    }
+                }
+            },
+            contrast: {
+                type: "fluid.uiOptions.panels.contrast",
+                container: "{uiOptions}.dom.contrast",
+                createOnEvent: "onUIOptionsMarkupReady",
+                options: {
+                    gradeNames: "fluid.uiOptions.defaultPanel",
+                    classnameMap: "{uiEnhancer}.options.classnameMap",
+                    rules: {
+                        "theme": "value"
+                    },
+                    model: {
+                        value: "{fluid.uiOptions.rootModel}.rootModel.theme"
+                    },
+                    resources: {
+                        template: "{templateLoader}.resources.contrast"
+                    }
+                }
+            },
+            layoutControls: {
+                type: "fluid.uiOptions.panels.layoutControls",
+                container: "{uiOptions}.dom.layoutControls",
+                createOnEvent: "onUIOptionsMarkupReady",
+                options: {
+                    gradeNames: "fluid.uiOptions.defaultPanel",
+                    rules: {
+                        "toc": "toc"
+                    },
+                    model: {
+                        toc: "{fluid.uiOptions.rootModel}.rootModel.toc"
+                    },
+                    resources: {
+                        template: "{templateLoader}.resources.layoutControls"
+                    }
+                }
+            },
+            linksControls: {
+                type: "fluid.uiOptions.panels.linksControls",
+                container: "{uiOptions}.dom.linksControls",
+                createOnEvent: "onUIOptionsMarkupReady",
+                options: {
+                    gradeNames: "fluid.uiOptions.defaultPanel",
+                    rules: {
+                        "links": "links",
+                        "inputsLarger": "inputsLarger"
+                    },
+                    model: {
+                        links: "{fluid.uiOptions.rootModel}.rootModel.links",
+                        inputsLarger: "{fluid.uiOptions.rootModel}.rootModel.inputsLarger"
+                    },
+                    resources: {
+                        template: "{templateLoader}.resources.linksControls"
+                    }
+                }
             }
         }
     });
-    
-    /*******************************************************************************
-     * originalEnhancerOptions
+
+    /******************************
+     * Starter Template Loader
+     ******************************/
+
+    /**
+     * A template loader component that expands the resources blocks for loading templates used by starterPanels
      *
-     * A grade component for pageEnhancer to keep track of the original user options
-     *******************************************************************************/
-    fluid.defaults("fluid.originalEnhancerOptions", {
-        gradeNames: ["fluid.littleComponent", "autoInit"]
+     * @param {Object} options
+     */
+
+    fluid.defaults("fluid.uiOptions.starterTemplateLoader", {
+        gradeNames: ["fluid.uiOptions.resourceLoader", "autoInit"],
+        templates: {
+            uiOptions: "%prefix/FatPanelUIOptions.html",
+            textSize: "%prefix/UIOptionsTemplate-textSize.html",
+            textFont: "%prefix/UIOptionsTemplate-textFont.html",
+            lineSpace: "%prefix/UIOptionsTemplate-lineSpace.html",
+            contrast: "%prefix/UIOptionsTemplate-contrast.html",
+            layoutControls: "%prefix/UIOptionsTemplate-layout.html",
+            linksControls: "%prefix/UIOptionsTemplate-links.html"
+        }
     });
-    
-    fluid.originalEnhancerOptions.preInit = function (that) {
-        fluid.staticEnvironment.originalEnhancerOptions = that;
-    };
-    
+
+    /******************************
+     * Starter Message Loader
+     ******************************/
+
+    /**
+     * A message loader component that expands the resources blocks for loading messages for starter panels
+     *
+     * @param {Object} options
+     */
+
+    fluid.defaults("fluid.uiOptions.starterMessageLoader", {
+        gradeNames: ["fluid.uiOptions.resourceLoader", "autoInit"],
+        templates: {
+            uiOptions: "%prefix/uiOptions.json",
+            textSize: "%prefix/textSize.json",
+            textFont: "%prefix/textFont.json",
+            lineSpace: "%prefix/lineSpace.json",
+            contrast: "%prefix/contrast.json",
+            layoutControls: "%prefix/tableOfContents.json",
+            linksControls: "%prefix/links.json"
+        }
+    });
+
 })(jQuery, fluid_1_5);
 /*
 Copyright 2011 OCAD University
@@ -28708,7 +28838,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 // Declare dependencies
 /*global fluid_1_5:true, jQuery, window*/
 
-// JSLint options 
+// JSLint options
 /*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
 
 var fluid_1_5 = fluid_1_5 || {};
@@ -28716,9 +28846,9 @@ var fluid_1_5 = fluid_1_5 || {};
 (function ($, fluid) {
 
     fluid.registerNamespace("fluid.dom");
-    
+
     fluid.dom.getDocumentHeight = function (dokkument) {
-        var body = $("body", dokkument)[0]; 
+        var body = $("body", dokkument)[0];
         return body.offsetHeight;
     };
 
@@ -28757,24 +28887,27 @@ var fluid_1_5 = fluid_1_5 || {};
             slidingPanel: {
                 type: "fluid.slidingPanel",
                 container: "{fatPanel}.container",
+                createOnEvent: "afterRender",
                 options: {
+                    members: {
+                        msgBundle: "{uiOptionsLoader}.msgBundle"
+                    },
                     invokers: {
                         operateShow: {
                             funcName: "fluid.uiOptions.fatPanel.showPanel"
                         },
                         operateHide: {
                             funcName: "fluid.uiOptions.fatPanel.hidePanel"
-                        } 
+                        }
                     }
-                },
-                createOnEvent: "afterRender"
+                }
             },
             iframeRenderer: {
                 type: "fluid.uiOptions.fatPanel.renderIframe",
                 container: "{fatPanel}.dom.iframe",
                 options: {
                     markupProps: {
-                        src: "%prefix/FatPanelUIOptionsFrame.html"
+                        src: "%templatePrefix/FatPanelUIOptionsFrame.html"
                     },
                     events: {
                         afterRender: "{fatPanel}.events.afterRender"
@@ -28785,7 +28918,7 @@ var fluid_1_5 = fluid_1_5 || {};
                             container: "{iframeRenderer}.renderUIOContainer",
                             createOnEvent: "afterRender",
                             options: {
-                                gradeNames: ["fluid.uiEnhancer.starterEnactors"],
+                                gradeNames: ["{pageEnhancer}.options.gradeNames"],
                                 jQuery: "{iframeRenderer}.jQuery",
                                 tocTemplate: "{pageEnhancer}.options.tocTemplate",
                                 events: {
@@ -28817,13 +28950,12 @@ var fluid_1_5 = fluid_1_5 || {};
             source: "{that}.options.outerEnhancerOptions",
             removeSource: true,
             target: "{that iframeEnhancer}.options"
-        }, 
-        {
-            source: "{that}.options.prefix",
-            target: "{that > iframeRenderer}.options.prefix"
+        }, {
+            source: "{that}.options.templatePrefix",
+            target: "{that > iframeRenderer}.options.templatePrefix"
         }]
     });
-    
+
     fluid.uiOptions.fatPanel.hideReset = function (fatPanel) {
         fatPanel.locate("reset").hide();
     };
@@ -28840,19 +28972,19 @@ var fluid_1_5 = fluid_1_5 || {};
             containerFlex: "fl-container-flex",
             container: "fl-uiOptions-fatPanel-iframe"
         },
-        prefix: "./",
+        templatePrefix: "./",
         markupProps: {
             "class": "flc-iframe",
-            src: "%prefix/uiOptionsIframe.html"
+            src: "%templatePrefix/uiOptionsIframe.html"
         }
     });
-    
+
     fluid.uiOptions.fatPanel.renderIframe.finalInit = function (that) {
         var styles = that.options.styles;
-        // TODO: get earlier access to templateLoader, 
-        that.options.markupProps.src = fluid.stringTemplate(that.options.markupProps.src, {"prefix/": that.options.prefix});
+        // TODO: get earlier access to templateLoader,
+        that.options.markupProps.src = fluid.stringTemplate(that.options.markupProps.src, {"templatePrefix/": that.options.templatePrefix});
         that.iframeSrc = that.options.markupProps.src;
-        
+
         // Create iframe and append to container
         that.iframe = $("<iframe/>");
         that.iframe.load(function () {
@@ -28864,7 +28996,7 @@ var fluid_1_5 = fluid_1_5 || {};
             that.jQuery(that.iframeDocument).ready(that.events.afterRender.fire);
         });
         that.iframe.attr(that.options.markupProps);
-        
+
         that.iframe.addClass(styles.containerFlex);
         that.iframe.addClass(styles.container);
         that.iframe.hide();
@@ -28876,17 +29008,17 @@ var fluid_1_5 = fluid_1_5 || {};
         uiOptions.events.onUIOptionsRefresh.fire();
         uiOptions.events.onSignificantDOMChange.fire();
     };
-    
+
     fluid.uiOptions.fatPanel.bindEvents = function (uiOptions, iframeEnhancer, fatPanel) {
         // TODO: This binding should be done declaratively - needs ginger world in order to bind onto slidingPanel
         // which is a child of this component - and also uiOptionsLoader which is another child
         fatPanel.slidingPanel.events.afterPanelShow.addListener(function () {
             iframeEnhancer.events.onIframeVisible.fire(iframeEnhancer);
             fluid.uiOptions.fatPanel.updateView(uiOptions);
-        });  
-    
+        });
+
         uiOptions.events.onUIOptionsRefresh.addListener(function () {
-            iframeEnhancer.updateModel(uiOptions.model.selections);
+            iframeEnhancer.updateModel(uiOptions.model);
         });
         uiOptions.events.onReset.addListener(function (uiOptions) {
             fluid.uiOptions.fatPanel.updateView(uiOptions);
@@ -28900,17 +29032,16 @@ var fluid_1_5 = fluid_1_5 || {};
             panel.css({height: ""});
             iframe.animate(attrs, 400);
         });
-        
+
         // Re-apply text size and line space to iframe content since these initial css values are not detectable
         // when the iframe is hidden.
         iframeEnhancer.events.onIframeVisible.addListener(function () {
-            iframeEnhancer.textSize.set(iframeEnhancer.model.textSize);
-            iframeEnhancer.lineSpace.set(iframeEnhancer.model.lineSpace);
+            iframeEnhancer.applier.requestChange("", iframeEnhancer.model);
         });
 
         fatPanel.slidingPanel.events.afterPanelHide.addListener(function () {
             fatPanel.iframeRenderer.iframe.height(0);
-            
+
             // Prevent the hidden UIO panel from being keyboard and screen reader accessible
             fatPanel.iframeRenderer.iframe.hide();
         });
@@ -28928,7 +29059,7 @@ var fluid_1_5 = fluid_1_5 || {};
     fluid.uiOptions.fatPanel.hidePanel = function (panel, callback) {
         $(panel).animate({height: 0}, {duration: 400, complete: callback});
     };
-    
+
     // no activity - the kickback to the updateView listener will automatically trigger the
     // DOMChangeListener above. This ordering is preferable to avoid causing the animation to
     // jump by refreshing the view inside the iframe
@@ -28937,10 +29068,10 @@ var fluid_1_5 = fluid_1_5 || {};
         // react synchronously to being shown
         setTimeout(callback, 1);
     };
-    
+
     /*************************************************************
-     * fluid.uiOptions.fatPanelLoader: 
-     * 
+     * fluid.uiOptions.fatPanelLoader:
+     *
      * Define the loader that are specifically for the fat panel.
      *************************************************************/
     fluid.defaults("fluid.uiOptions.fatPanelLoader", {
@@ -28997,7 +29128,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 // Declare dependencies
 /*global fluid_1_5:true, jQuery*/
 
-// JSLint options 
+// JSLint options
 /*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
 
 var fluid_1_5 = fluid_1_5 || {};
@@ -29027,7 +29158,7 @@ var fluid_1_5 = fluid_1_5 || {};
             }
         }
     });
-    
+
 })(jQuery, fluid_1_5);/*
 Copyright 2011 OCAD University
 Copyright 2011 Lucendo Development Ltd.
@@ -29043,7 +29174,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 // Declare dependencies
 /*global fluid_1_5:true, jQuery*/
 
-// JSLint options 
+// JSLint options
 /*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
 
 var fluid_1_5 = fluid_1_5 || {};
@@ -29088,7 +29219,7 @@ var fluid_1_5 = fluid_1_5 || {};
             target: "{that enhancer}.options"
         }]
     });
-    
+
 })(jQuery, fluid_1_5);/*
 Copyright 2011 OCAD University
 Copyright 2011 Lucendo Development Ltd.
@@ -29104,7 +29235,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 // Declare dependencies
 /*global fluid_1_5:true, jQuery*/
 
-// JSLint options 
+// JSLint options
 /*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
 
 var fluid_1_5 = fluid_1_5 || {};
@@ -29113,17 +29244,27 @@ var fluid_1_5 = fluid_1_5 || {};
     /**********************
      * Sliding Panel *
      *********************/
-     
+
     fluid.defaults("fluid.slidingPanel", {
-        gradeNames: ["fluid.viewComponent", "autoInit"],             
+        gradeNames: ["fluid.viewComponent", "autoInit"],
         selectors: {
             panel: ".flc-slidingPanel-panel",
             toggleButton: ".flc-slidingPanel-toggleButton"
         },
         strings: {
-            showText: "{uioMsgBundle}.options.messageBase.slidingPanelShowText",
-            hideText: "{uioMsgBundle}.options.messageBase.slidingPanelHideText"            
-        },          
+            showText: {
+                expander: {
+                    func: "fluid.slidingPanel.lookupMsg",
+                    args: ["{that}.msgBundle", "slidingPanelShowText"]
+                }
+            },
+            hideText: {
+                expander: {
+                    func: "fluid.slidingPanel.lookupMsg",
+                    args: ["{that}.msgBundle", "slidingPanelHideText"]
+                }
+            }
+        },
         events: {
             onPanelHide: null,
             onPanelShow: null,
@@ -29149,15 +29290,20 @@ var fluid_1_5 = fluid_1_5 || {};
             }
         }
     });
-    
+
+    fluid.slidingPanel.lookupMsg = function (messageResolver, value) {
+        var looked = messageResolver.lookup([value]);
+        return looked ? looked.template : looked;
+    };
+
     fluid.slidingPanel.slideUp = function (element, callback, duration) {
         $(element).slideUp(duration || "400", callback);
     };
-    
+
     fluid.slidingPanel.slideDown = function (element, callback, duration) {
         $(element).slideDown(duration || "400", callback);
     };
-    
+
     fluid.slidingPanel.finalInit = function (that) {
         fluid.each(that.options.methods, function (method, methodName) {
             that[methodName] = function () {
@@ -29167,22 +29313,811 @@ var fluid_1_5 = fluid_1_5 || {};
                 that["operate" + method.name](that.locate("panel"), that.events["afterPanel" + method.name].fire);
             };
         });
-        
+
         that.togglePanel = function () {
             that[that.model.isShowing ? "hidePanel" : "showPanel"]();
         };
-        
+
         that.setPanelHeight = function (newHeight) {
             that.locate("panel").height(newHeight);
         };
-        
+
         that.refreshView = function () {
-            that.locate("toggleButton").text(that.options.strings[that.model.isShowing ? "hideText" : "showText"]);         
+            that.locate("toggleButton").text(that.options.strings[that.model.isShowing ? "hideText" : "showText"]);
         };
-    
-        that.locate("toggleButton").click(that.togglePanel);        
-        
+
+        that.locate("toggleButton").click(that.togglePanel);
+
         that.refreshView();
-    };    
+    };
+
+})(jQuery, fluid_1_5);/*
+Copyright 2013 OCAD University
+
+Licensed under the Educational Community License (ECL), Version 2.0 or the New
+BSD license. You may not use this file except in compliance with one these
+Licenses.
+
+You may obtain a copy of the ECL 2.0 License and BSD License at
+https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
+*/
+
+// Declare dependencies
+/*global fluid_1_5:true, jQuery*/
+
+// JSLint options
+/*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
+
+var fluid_1_5 = fluid_1_5 || {};
+
+(function ($, fluid) {
+
+    "use strict";
+
+    fluid.registerNamespace("fluid.uiOptions.schemas");
+
+    fluid.uiOptions.schemas.merge = function (target, source) {
+        if (!target) {
+            target = {
+                type: "object",
+                properties: {}
+            };
+        }
+        source = source.properties || source;
+        $.extend(true, target.properties, source);
+        return target;
+    };
+
+    fluid.defaults("fluid.uiOptions.primaryBuilder", {
+        gradeNames: ["fluid.littleComponent", "autoInit", "{that}.buildPrimary"],
+        schemaIndex: {
+            expander: {
+                func: "fluid.indexDefaults",
+                args: ["schemaIndex", {
+                    gradeNames: "fluid.uiOptions.schemas",
+                    indexFunc: "fluid.uiOptions.primaryBuilder.defaultSchemaIndexer"
+                }]
+            }
+        },
+        primarySchema: {},
+        typeFilter: [],
+        invokers: {
+            buildPrimary: {
+                funcName: "fluid.uiOptions.primaryBuilder.buildPrimary",
+                args: [
+                    "{that}.options.schemaIndex",
+                    "{that}.options.typeFilter",
+                    "{that}.options.primarySchema"
+                ]
+            }
+        }
+    });
+
+    fluid.uiOptions.primaryBuilder.buildPrimary = function (schemaIndex, typeFilter, primarySchema) {
+        var suppliedPrimaryGradeName = "fluid.uiOptions.schemas.suppliedPrimary" + fluid.allocateGuid();
+        fluid.defaults(suppliedPrimaryGradeName, {
+            gradeNames: ["autoInit", "fluid.uiOptions.schemas"],
+            schema: fluid.filterKeys(primarySchema.properties || primarySchema,
+                typeFilter, false)
+        });
+        var primary = [suppliedPrimaryGradeName];
+        fluid.each(typeFilter, function merge(type) {
+            var schemaGrades = schemaIndex[type];
+            if (schemaGrades) {
+                primary.push.apply(primary, schemaGrades);
+            }
+        });
+        return primary;
+    };
+
+    fluid.uiOptions.primaryBuilder.defaultSchemaIndexer = function (defaults) {
+        if (defaults.schema) {
+            return fluid.keys(defaults.schema.properties);
+        }
+    };
+
+    fluid.defaults("fluid.uiOptions.schemas", {
+        gradeNames: ["autoInit", "fluid.littleComponent"],
+        mergePolicy: {
+            schema: fluid.uiOptions.schemas.merge
+        }
+    });
+
+})(jQuery, fluid_1_5);
+/*
+Copyright 2013 OCAD University
+
+Licensed under the Educational Community License (ECL), Version 2.0 or the New
+BSD license. You may not use this file except in compliance with one these
+Licenses.
+
+You may obtain a copy of the ECL 2.0 License and BSD License at
+https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
+*/
+
+// Declare dependencies
+/*global fluid_1_5:true, jQuery*/
+
+// JSLint options
+/*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
+
+var fluid_1_5 = fluid_1_5 || {};
+
+
+(function ($, fluid) {
+
+    fluid.registerNamespace("fluid.uiOptions");
+
+    /*******************************************************************************
+     * Base auxiliary schema grade
+     *******************************************************************************/
+
+    fluid.defaults("fluid.uiOptions.auxSchema", {
+        gradeNames: ["fluid.littleComponent", "autoInit"],
+        auxiliarySchema: {}
+    });
+
+    /**
+     * Look up the value on the given source object by using the path.
+     * Takes a template string containing tokens in the form of "@source-path-to-value".
+     * Returns a value (any type) or undefined if the path is not found.
+     *
+     * @param {object}    root       an object to retrieve the returned value from
+     * @param {String}    pathRef    a string that the path to the requested value is embedded into
+     *
+     * Example:
+     * 1. Parameters:
+     * source:
+     * {
+     *     path1: {
+     *         path2: "here"
+     *     }
+     * }
+     *
+     * template: "@path1.path2"
+     *
+     * 2. Return: "here"
+     */
+    fluid.uiOptions.expandSchemaValue = function (root, pathRef) {
+        if (pathRef.charAt(0) !== "@") {
+            return pathRef;
+        }
+
+        return fluid.get(root, pathRef.substring(1));
+    };
+
+    fluid.uiOptions.addAtPath = function (root, path, object) {
+        var existingObject = fluid.get(root, path);
+        fluid.set(root, path, $.extend(true, {}, existingObject, object));
+
+        return root;
+    };
+
+    fluid.uiOptions.rearrangeDirect = function (root, toPath, sourcePath) {
+        var result = {};
+        var sourceValue = fluid.get(root, sourcePath);
+        if (sourceValue) {
+            fluid.set(result, toPath, sourceValue);
+        }
+        return result;
+    };
+
+    fluid.uiOptions.expandSchemaComponents = function (auxSchema, type, prefKey, componentConfig, index, commonOptions, mappedDefaults) {
+        var components = {};
+        var rootModel = {};
+
+        type = type + "s";
+
+        var componentName = componentConfig.type;
+        var memberName = componentName.replace(new RegExp("\\.", 'g'),  "_");
+        var flattenedPrefKey = prefKey.replace(new RegExp("\\.", 'g'),  "_");
+
+        if (componentName) {
+            var instance = {
+                type: componentName
+            };
+
+            var selectors = fluid.uiOptions.rearrangeDirect(componentConfig, memberName, "container");
+            var templates = fluid.uiOptions.rearrangeDirect(componentConfig, memberName, "template");
+            var messages = fluid.uiOptions.rearrangeDirect(componentConfig, memberName, "message");
+
+            var componentOptions = fluid.copy(componentConfig);
+            delete componentOptions.type;
+            delete componentOptions.container;
+            delete componentOptions.template;
+            delete componentOptions.message;
+
+            instance.options = $.extend(true, {}, componentOptions);
+
+            var preferenceMap = fluid.defaults(componentName).preferenceMap;
+
+            var map = preferenceMap[prefKey];
+            fluid.each(map, function (PrimaryPath, internalPath) {
+                var prefSchema = mappedDefaults[prefKey];
+                if (prefSchema) {
+                    if (internalPath.indexOf("model.") === 0) {
+                        var internalModelName = internalPath.slice(6);
+                        fluid.set(instance, ["options", "rules", flattenedPrefKey], internalModelName);
+                        fluid.set(instance, ["options", "model", internalModelName], prefSchema[PrimaryPath]);
+                        fluid.set(rootModel, ["members", "rootModel", flattenedPrefKey], prefSchema[PrimaryPath]);
+                    } else {
+                        fluid.set(instance, "options." + internalPath, prefSchema[PrimaryPath]);
+                    }
+                }
+            });
+
+            // Merge common options
+            if (commonOptions) {
+                fluid.each(commonOptions, function (value, key) {
+                    value = fluid.stringTemplate(value, {
+                        prefKey: memberName
+                    });
+                    fluid.set(instance, key, value);
+                });
+            }
+
+            components[memberName] = instance;
+        }
+
+        fluid.uiOptions.addAtPath(auxSchema, [type, "components"], components);
+        fluid.uiOptions.addAtPath(auxSchema, [type, "selectors"], selectors);
+        fluid.uiOptions.addAtPath(auxSchema, ["templateLoader", "templates"], templates);
+        fluid.uiOptions.addAtPath(auxSchema, ["messageLoader", "templates"], messages);
+        fluid.uiOptions.addAtPath(auxSchema, "rootModel", rootModel);
+
+        return auxSchema;
+    };
+
+    fluid.uiOptions.expandSchemaDirectOption = function (auxSchema, type, targetPath) {
+        var value = auxSchema[type];
+        if (value) {
+            delete auxSchema[type];
+            fluid.set(auxSchema, targetPath, value);
+        }
+    };
+
+    /**
+     * Expands a all "@" path references from an auxiliary schema.
+     * Note that you cannot chain "@" paths.
+     *
+     *  @param {object} schemaToExpand the shcema which will be expanded
+     *  @param {object} altSource an alternative look up object. This is primarily used for the internal recursive call.
+     *  @return {object} an expaneded version of the schema.
+     */
+    fluid.uiOptions.expandSchemaImpl = function (schemaToExpand, altSource) {
+        var expandedSchema = fluid.copy(schemaToExpand);
+        altSource = altSource || expandedSchema;
+
+        fluid.each(expandedSchema, function (value, key) {
+            if (typeof value === "object") {
+                expandedSchema[key] = fluid.uiOptions.expandSchemaImpl(value, altSource);
+            } else if (typeof value === "string") {
+                var expandedVal = fluid.uiOptions.expandSchemaValue(altSource, value);
+                if (expandedVal !== undefined) {
+                    expandedSchema[key] = expandedVal;
+                } else {
+                    delete expandedSchema[key];
+                }
+            }
+        });
+        return expandedSchema;
+    };
+
+    fluid.uiOptions.expandSchema = function (schemaToExpand, defaultNamespace, indexes, topCommonOptions, elementCommonOptions, mappedDefaults) {
+        var auxSchema = fluid.uiOptions.expandSchemaImpl(schemaToExpand);
+        auxSchema.namespace = auxSchema.namespace || defaultNamespace;
+
+        fluid.each(auxSchema, function (category, prefName) {
+            var type = "panel";
+            if (category[type]) {
+                fluid.uiOptions.expandSchemaComponents(auxSchema, type, category.type, category[type], fluid.get(indexes, type), fluid.get(elementCommonOptions, type), mappedDefaults);
+            }
+            type = "enactor";
+            if (category[type]) {
+                fluid.uiOptions.expandSchemaComponents(auxSchema, type, category.type, category[type], fluid.get(indexes, type), fluid.get(elementCommonOptions, type), mappedDefaults);
+            }
+
+            type = "template";
+            if (prefName === type) {
+                fluid.set(auxSchema, ["templateLoader", "templates", "uiOptions"], auxSchema[type]);
+                delete auxSchema[type];
+            }
+
+            type = "templatePrefix";
+            if (prefName === type) {
+                fluid.uiOptions.expandSchemaDirectOption(auxSchema, type, "templatePrefix.templatePrefix");
+            }
+
+            type = "message";
+            if (prefName === type) {
+                fluid.set(auxSchema, ["messageLoader", "templates", "uiOptions"], auxSchema[type]);
+                delete auxSchema[type];
+            }
+
+            type = "messagePrefix";
+            if (prefName === type) {
+                fluid.uiOptions.expandSchemaDirectOption(auxSchema, type, "messagePrefix.messagePrefix");
+            }
+        });
+
+        // Add top common options
+        fluid.each(topCommonOptions, function (topOptions, type) {
+            var typeObject = fluid.get(auxSchema, type);
+
+            if (typeObject) {
+                auxSchema[type] = $.extend(true, topOptions, typeObject);
+            }
+        });
+
+        return auxSchema;
+    };
+
+    fluid.defaults("fluid.uiOptions.auxBuilder", {
+        gradeNames: ["fluid.uiOptions.auxSchema", "autoInit"],
+        defaultNamespace: "fluid.uiOptions.create",
+        mergePolicy: {
+            elementCommonOptions: "noexpand"
+        },
+        topCommonOptions: {
+            panels: {
+                gradeNames: ["fluid.uiOptions", "autoInit"]
+            },
+            enactors: {
+                gradeNames: ["fluid.uiEnhancer", "autoInit"]
+            },
+            templateLoader: {
+                gradeNames: ["fluid.uiOptions.resourceLoader", "autoInit"]
+            },
+            messageLoader: {
+                gradeNames: ["fluid.uiOptions.resourceLoader", "autoInit"]
+            },
+            rootModel: {
+                gradeNames: ["fluid.uiOptions.rootModel", "autoInit"]
+            },
+            templatePrefix: {
+                gradeNames: ["fluid.littleComponent", "autoInit"]
+            },
+            messagePrefix: {
+                gradeNames: ["fluid.littleComponent", "autoInit"]
+            }
+        },
+        elementCommonOptions: {
+            panel: {
+                "createOnEvent": "onUIOptionsMarkupReady",
+                "container": "{uiOptions}.dom.%prefKey",
+                "options.gradeNames": "fluid.uiOptions.defaultPanel",
+                "options.resources.template": "{templateLoader}.resources.%prefKey"
+            },
+            enactor: {
+                "container": "{uiEnhancer}.container",
+                "options.sourceApplier": "{uiEnhancer}.applier"
+            }
+        },
+        indexes: {
+            panel: {
+                expander: {
+                    func: "fluid.indexDefaults",
+                    args: ["panelsIndex", {
+                        gradeNames: "fluid.uiOptions.panels",
+                        indexFunc: "fluid.uiOptions.auxBuilder.prefMapIndexer"
+                    }]
+                }
+            },
+            enactor: {
+                expander: {
+                    func: "fluid.indexDefaults",
+                    args: ["enactorsIndex", {
+                        gradeNames: "fluid.uiOptions.enactors",
+                        indexFunc: "fluid.uiOptions.auxBuilder.prefMapIndexer"
+                    }]
+                }
+            }
+        },
+        mappedDefaults: {},
+        expandedAuxSchema: {
+            expander: {
+                func: "fluid.uiOptions.expandSchema",
+                args: [
+                    "{that}.options.auxiliarySchema",
+                    "{that}.options.defaultNamespace",
+                    "{that}.options.indexes",
+                    "{that}.options.topCommonOptions",
+                    "{that}.options.elementCommonOptions",
+                    "{that}.options.mappedDefaults"
+                ]
+            }
+        }
+    });
+
+    fluid.uiOptions.auxBuilder.prefMapIndexer = function (defaults) {
+        return fluid.keys(defaults.preferenceMap);
+    };
+
+})(jQuery, fluid_1_5);
+/*
+Copyright 2013 OCAD University
+
+Licensed under the Educational Community License (ECL), Version 2.0 or the New
+BSD license. You may not use this file except in compliance with one these
+Licenses.
+
+You may obtain a copy of the ECL 2.0 License and BSD License at
+https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
+*/
+
+// Declare dependencies
+/*global fluid_1_5:true*/
+
+// JSLint options
+/*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
+
+var fluid_1_5 = fluid_1_5 || {};
+
+(function (fluid) {
+
+    /*******************************************************************************
+     * Starter auxiliary schema grade
+     *
+     * Contains the settings for 7 preferences: text size, line space, text font,
+     * contrast, table of contents, inputs larger and emphasize links
+     *******************************************************************************/
+
+    fluid.defaults("fluid.uiOptions.auxSchema.starter", {
+        gradeNames: ["fluid.uiOptions.auxSchema", "autoInit"],
+        auxiliarySchema: {
+            "namespace": "fluid.uiOptions.constructed", // The author of the auxiliary schema will provide this and will be the component to call to initialize the constructed UIO.
+            "templatePrefix": "../../../components/uiOptions/html/",  // The common path to settings panel templates. The template defined in "panels" element will take precedence over this definition.
+            "template": "%prefix/FatPanelUIOptions.html",
+            "messagePrefix": "../../../components/uiOptions/messages/",  // The common path to settings panel templates. The template defined in "panels" element will take precedence over this definition.
+            "message": "%prefix/uiOptions.json",
+            "textSize": {
+                "type": "fluid.uiOptions.textSize",
+                "enactor": {
+                    "type": "fluid.uiOptions.enactors.textSize"
+                },
+                "panel": {
+                    "type": "fluid.uiOptions.panels.textSize",
+                    "container": ".flc-uiOptions-text-size",  // the css selector in the template where the panel is rendered
+                    "template": "%prefix/UIOptionsTemplate-textSize.html",
+                    "message": "%prefix/textSize.json"
+                }
+            },
+            "lineSpace": {
+                "type": "fluid.uiOptions.lineSpace",
+                "enactor": {
+                    "type": "fluid.uiOptions.enactors.lineSpace",
+                    "fontSizeMap": {
+                        "xx-small": "9px",
+                        "x-small": "11px",
+                        "small": "13px",
+                        "medium": "15px",
+                        "large": "18px",
+                        "x-large": "23px",
+                        "xx-large": "30px"
+                    }
+                },
+                "panel": {
+                    "type": "fluid.uiOptions.panels.lineSpace",
+                    "container": ".flc-uiOptions-line-space",  // the css selector in the template where the panel is rendered
+                    "template": "%prefix/UIOptionsTemplate-lineSpace.html",
+                    "message": "%prefix/lineSpace.json"
+                }
+            },
+            "textFont": {
+                "type": "fluid.uiOptions.textFont",
+                "classes": {
+                    "default": "",
+                    "times": "fl-font-uio-times",
+                    "comic": "fl-font-uio-comic-sans",
+                    "arial": "fl-font-uio-arial",
+                    "verdana": "fl-font-uio-verdana"
+                },
+                "enactor": {
+                    "type": "fluid.uiOptions.enactors.textFont",
+                    "classes": "@textFont.classes"
+                },
+                "panel": {
+                    "type": "fluid.uiOptions.panels.textFont",
+                    "container": ".flc-uiOptions-text-font",  // the css selector in the template where the panel is rendered
+                    "classnameMap": {"textFont": "@textFont.classes"},
+                    "template": "%prefix/UIOptionsTemplate-textFont.html",
+                    "message": "%prefix/textFont.json"
+                }
+            },
+            "contrast": {
+                "type": "fluid.uiOptions.contrast",
+                "classes": {
+                    "default": "fl-theme-uio-default",
+                    "bw": "fl-theme-uio-bw fl-theme-bw",
+                    "wb": "fl-theme-uio-wb fl-theme-wb",
+                    "by": "fl-theme-uio-by fl-theme-by",
+                    "yb": "fl-theme-uio-yb fl-theme-yb",
+                    "lgdg": "fl-theme-uio-lgdg fl-theme-lgdg"
+
+                },
+                "enactor": {
+                    "type": "fluid.uiOptions.enactors.contrast",
+                    "classes": "@contrast.classes"
+                },
+                "panel": {
+                    "type": "fluid.uiOptions.panels.contrast",
+                    "container": ".flc-uiOptions-contrast",  // the css selector in the template where the panel is rendered
+                    "classnameMap": {"theme": "@contrast.classes"},
+                    "template": "%prefix/UIOptionsTemplate-contrast.html",
+                    "message": "%prefix/contrast.json"
+                }
+            },
+            "tableOfContents": {
+                "type": "fluid.uiOptions.tableOfContents",
+                "enactor": {
+                    "type": "fluid.uiOptions.enactors.tableOfContents",
+                    "tocTemplate": "../../../components/tableOfContents/html/TableOfContents.html"
+                },
+                "panel": {
+                    "type": "fluid.uiOptions.panels.layoutControls",
+                    "container": ".flc-uiOptions-layout-controls",  // the css selector in the template where the panel is rendered
+                    "template": "%prefix/UIOptionsTemplate-layout.html",
+                    "message": "%prefix/tableOfContents.json"
+                }
+            },
+            "emphasizeLinks": {
+                "type": "fluid.uiOptions.emphasizeLinks",
+                "enactor": {
+                    "type": "fluid.uiOptions.enactors.emphasizeLinks",
+                    "cssClass": "fl-link-enhanced"
+                },
+                "panel": {
+                    "type": "fluid.uiOptions.panels.linksControls",
+                    "container": ".flc-uiOptions-links-controls",  // the css selector in the template where the panel is rendered
+                    "template": "%prefix/UIOptionsTemplate-links.html",
+                    "message": "%prefix/links.json"
+                }
+            },
+            "inputsLarger": {
+                "type": "fluid.uiOptions.inputsLarger",
+                "enactor": {
+                    "type": "fluid.uiOptions.enactors.inputsLarger",
+                    "cssClass": "fl-text-larger"
+                },
+                "panel": {
+                    "type": "fluid.uiOptions.panels.linksControls"
+                }
+            }
+        }
+    });
+
+    /*******************************************************************************
+     * Starter primary schema grades
+     *
+     * Contains the settings for 7 preferences: text size, line space, text font,
+     * contrast, table of contents, inputs larger and emphasize links
+     *******************************************************************************/
+
+    fluid.defaults("fluid.uiOptions.schemas.textSize", {
+        gradeNames: ["autoInit", "fluid.uiOptions.schemas"],
+        schema: {
+            "fluid.uiOptions.textSize": {
+                "type": "number",
+                "default": 1,
+                "minimum": 1,
+                "maximum": 2,
+                "divisibleBy": 0.1
+            }
+        }
+    });
+
+    fluid.defaults("fluid.uiOptions.schemas.lineSpace", {
+        gradeNames: ["autoInit", "fluid.uiOptions.schemas"],
+        schema: {
+            "fluid.uiOptions.lineSpace": {
+                "type": "number",
+                "default": 1,
+                "minimum": 1,
+                "maximum": 2,
+                "divisibleBy": 0.1
+            }
+        }
+    });
+
+    fluid.defaults("fluid.uiOptions.schemas.textFont", {
+        gradeNames: ["autoInit", "fluid.uiOptions.schemas"],
+        schema: {
+            "fluid.uiOptions.textFont": {
+                "type": "string",
+                "default": "",
+                "enum": ["default", "times", "comic", "arial", "verdana"]
+            }
+        }
+    });
+
+    fluid.defaults("fluid.uiOptions.schemas.contrast", {
+        gradeNames: ["autoInit", "fluid.uiOptions.schemas"],
+        schema: {
+            "fluid.uiOptions.contrast": {
+                "type": "string",
+                "default": "default",
+                "enum": ["default", "bw", "wb", "by", "yb", "lgdg"]
+            }
+        }
+    });
+
+    fluid.defaults("fluid.uiOptions.schemas.tableOfContents", {
+        gradeNames: ["autoInit", "fluid.uiOptions.schemas"],
+        schema: {
+            "fluid.uiOptions.tableOfContents": {
+                "type": "boolean",
+                "default": false
+            }
+        }
+    });
+
+    fluid.defaults("fluid.uiOptions.schemas.emphasizeLinks", {
+        gradeNames: ["autoInit", "fluid.uiOptions.schemas"],
+        schema: {
+            "fluid.uiOptions.emphasizeLinks": {
+                "type": "boolean",
+                "default": false
+            }
+        }
+    });
+
+    fluid.defaults("fluid.uiOptions.schemas.inputsLarger", {
+        gradeNames: ["autoInit", "fluid.uiOptions.schemas"],
+        schema: {
+            "fluid.uiOptions.inputsLarger": {
+                "type": "boolean",
+                "default": false
+            }
+        }
+    });
+})(fluid_1_5);
+/*
+Copyright 2013 OCAD University
+
+Licensed under the Educational Community License (ECL), Version 2.0 or the New
+BSD license. You may not use this file except in compliance with one these
+Licenses.
+
+You may obtain a copy of the ECL 2.0 License and BSD License at
+https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
+*/
+
+// Declare dependencies
+/*global fluid_1_5:true, jQuery*/
+
+// JSLint options
+/*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
+
+var fluid_1_5 = fluid_1_5 || {};
+
+
+(function ($, fluid) {
+    fluid.registerNamespace("fluid.uiOptions");
+
+    fluid.defaults("fluid.uiOptions.builder", {
+        gradeNames: ["fluid.eventedComponent", "fluid.uiOptions.auxBuilder", "autoInit"],
+        mergePolicy: {
+            auxSchema: "expandedAuxSchema"
+        },
+        assembledUIOGrade: {
+            expander: {
+                func: "fluid.uiOptions.builder.generateGrade",
+                args: ["uio", "{that}.options.auxSchema.namespace", {
+                    gradeNames: ["fluid.viewComponent", "autoInit", "fluid.uiOptions.assembler.uio"],
+                    componentGrades: "{that}.options.constructedGrades"
+                }]
+            }
+        },
+        assembledUIEGrade: {
+            expander: {
+                func: "fluid.uiOptions.builder.generateGrade",
+                args: ["uie", "{that}.options.auxSchema.namespace", {
+                    gradeNames: ["fluid.viewComponent", "autoInit", "fluid.uiOptions.assembler.uie"],
+                    componentGrades: "{that}.options.constructedGrades"
+                }]
+            }
+        },
+        constructedGrades: {
+            expander: {
+                func: "fluid.uiOptions.builder.constructGrades",
+                args: ["{that}.options.auxSchema", ["enactors", "messages", "panels", "rootModel", "templateLoader", "messageLoader", "templatePrefix", "messagePrefix"]]
+            }
+        },
+        mappedDefaults: "{primaryBuilder}.options.schema.properties",
+        components: {
+            primaryBuilder: {
+                type: "fluid.uiOptions.primaryBuilder",
+                options: {
+                    typeFilter: {
+                        expander: {
+                            func: "fluid.uiOptions.builder.parseAuxSchema",
+                            args: "{builder}.options.auxiliarySchema"
+                        }
+                    },
+                }
+            }
+        }
+
+    });
+
+    fluid.defaults("fluid.uiOptions.assembler.uie", {
+        gradeNames: ["autoInit", "fluid.viewComponent", "fluid.originalEnhancerOptions"],
+        components: {
+            store: {
+                type: "fluid.globalSettingsStore"
+            },
+            enhancer: {
+                type: "fluid.uiEnhancer",
+                container: "body",
+                options: {
+                    gradeNames: ["{fluid.uiOptions.assembler.uie}.options.componentGrades.enactors", "{fluid.uiOptions.assembler.uie}.options.componentGrades.rootModel"],
+                    listeners: {
+                        onCreate: {
+                            listener: "fluid.set",
+                            args: [fluid.staticEnvironment, "uiEnhancer", "{that}"]
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    fluid.defaults("fluid.uiOptions.assembler.uio", {
+        gradeNames: ["autoInit", "fluid.viewComponent", "fluid.uiOptions.assembler.uie"],
+        components: {
+            uiOptions: {
+                type: "fluid.uiOptions.fatPanel",
+                container: "{fluid.uiOptions.assembler.uio}.container",
+                priority: "last",
+                options: {
+                    gradeNames: ["{fluid.uiOptions.assembler.uio}.options.componentGrades.templatePrefix", "{fluid.uiOptions.assembler.uio}.options.componentGrades.messagePrefix", "{fluid.uiOptions.assembler.uio}.options.componentGrades.messages"],
+                    templateLoader: {
+                        options: {
+                            gradeNames: ["{fluid.uiOptions.assembler.uio}.options.componentGrades.templateLoader"]
+                        }
+                    },
+                    messageLoader: {
+                        options: {
+                            gradeNames: ["{fluid.uiOptions.assembler.uio}.options.componentGrades.messageLoader"]
+                        }
+                    },
+                    uiOptions: {
+                        options: {
+                            gradeNames: ["{fluid.uiOptions.assembler.uio}.options.componentGrades.panels", "{fluid.uiOptions.assembler.uio}.options.componentGrades.rootModel"]
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    fluid.uiOptions.builder.generateGrade = function (name, namespace, options) {
+        var gradeNameTemplate = "%namespace.%name";
+        var gradeName = fluid.stringTemplate(gradeNameTemplate, {name: name, namespace: namespace});
+        fluid.defaults(gradeName, options);
+        return gradeName;
+    };
+
+    fluid.uiOptions.builder.constructGrades = function (auxSchema, gradeCategories) {
+        var constructedGrades = {};
+        fluid.each(gradeCategories, function (category) {
+            var gradeOpts = auxSchema[category];
+            if (fluid.get(gradeOpts, "gradeNames")) {
+                constructedGrades[category] = fluid.uiOptions.builder.generateGrade(category, auxSchema.namespace, gradeOpts);
+            }
+        });
+        return constructedGrades;
+    };
+
+    fluid.uiOptions.builder.parseAuxSchema = function (auxSchema) {
+        var auxTypes = [];
+        fluid.each(auxSchema, function parse(field) {
+            var type = field.type;
+            if (type) {
+                auxTypes.push(type);
+            }
+        });
+        return auxTypes;
+    };
 
 })(jQuery, fluid_1_5);
