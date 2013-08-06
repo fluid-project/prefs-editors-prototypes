@@ -1,0 +1,7 @@
+.flc-iframe	{
+	display: block !important;
+}
+
+body, #myUIOptions, .flc-uiOptions-iframe, .flc-iframe {
+	height: 100% !important;
+}
