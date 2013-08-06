@@ -4,8 +4,8 @@
 	        "type": "number",
 	        "default": 1,
 	        "minimum": 1,
-	        "maximum": 2,
-	        "divisibleBy": 0.1
+	        "maximum": 5,
+	        "divisibleBy": 0.2
 	    }/* ,
 	    "fluid.uiOptions.textFont": {
 	        "type": "string",
@@ -29,7 +29,7 @@
 	    },
 	    range: {
 	        min: 1,
-	        max: 2
+	        max: 5
 	    },
 	    selectors: {
 	        lineSpace: ".flc-uiOptions-line-space",
@@ -52,7 +52,7 @@
 	    },
 	    sliderOptions: {
 	        orientation: "horizontal",
-	        step: 0.1,
+	        step: 0.2,
 	        range: "min"
 	    }
 	});
