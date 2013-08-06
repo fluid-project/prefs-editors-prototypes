@@ -10,10 +10,15 @@
     <h1>Speak text</h1>
 
     <div class="preference">
-        <label for="preferenceSwitch"> On/Off </label>
-        <input id="preferenceSwitch" class="toggle" type="checkbox"/>
+        <h2><span class="speakText-onoff-label heading-text"></span></h2>
+        <div class="fl-uiOptions-onoff">
+            <input type="checkbox" id="preferenceSwitch" class="speakText-onoff-value fl-force-left" />
+            <label for="preferenceSwitch">
+                <span class="fl-uiOptions-switch" data-checkboxStateOn="ON" data-checkboxStateOff="OFF"></span>
+            </label>
+        </div>
 
-        <div id="more-options" class="more-options"> more options </div>
+        <div id="more-options"> more options </div>
 
         <div id="expanded-top">
             <h4>Screen reader</h4>
@@ -29,7 +34,6 @@
                         <option>Chinese (中文)</option>
                     </select>
                 </form>
-
             </div>
         </div>
 
@@ -54,25 +58,65 @@
                     </select>
                 </form>
             </div>
+
             <div>
-                <input id="announce-uppercase" class="toggle" type="checkbox"/>
-                <label for="announce-uppercase"> Announce uppercase letters </label>
+                <h2><span class="ann-upcase-label heading-text"></span></h2>
+                <div class="fl-uiOptions-onoff">
+                    <input type="checkbox" id="announce-uppercase" class="ann-upcase-value fl-force-left" />
+                    <label for="announce-uppercase">
+                        <span class="fl-uiOptions-switch" data-checkboxStateOn="ON" data-checkboxStateOff="OFF">
+                        </span>
+                    </label>
+                </div>
             </div>
+
             <div>
-                <input id="provide-instructions" class="toggle" type="checkbox"/>
-                <label for="provide-instructions"> Provide instructions on how to interact with a focused element </label> <br> <br>
+                <h2><span class="ann-instructions-label heading-text"></span></h2>
+                <div class="fl-uiOptions-onoff">
+                    <input type="checkbox" id="announce-instructions" class="ann-instructions-value fl-force-left" />
+                    <label for="announce-instructions">
+                        <span class="fl-uiOptions-switch" data-checkboxStateOn="ON" data-checkboxStateOff="OFF">
+                        </span>
+                    </label>
+                </div>
             </div>
             <div>
                 <label> Read-back </label> <br>
-                <input id="echo-letter" class="toggle" type="checkbox"/>
-                <label for="echo-letter"> Echo letter after typed </label> <br>
-                <input id="echo-word" class="toggle" type="checkbox"/>
-                <label for="echo-word"> Echo word after typed </label>
+                <div>
+                    <h2><span class="echo-letter-label heading-text"></span></h2>
+                    <div class="fl-uiOptions-onoff">
+                        <input type="checkbox" id="echo-letter" class="echo-letter-value fl-force-left" />
+                        <label for="echo-letter">
+                            <span class="fl-uiOptions-switch" data-checkboxStateOn="ON" data-checkboxStateOff="OFF">
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <h2><span class="echo-word-label heading-text"></span></h2>
+                    <div class="fl-uiOptions-onoff">
+                        <input type="checkbox" id="echo-word" class="echo-word-value fl-force-left" />
+                        <label for="echo-word">
+                            <span class="fl-uiOptions-switch" data-checkboxStateOn="ON" data-checkboxStateOff="OFF">
+                            </span>
+                        </label>
+                    </div>
+                </div>
             </div>
-            <div>
-                <h4> Braille </h4>
-                <label for="braille-on-off"> Output to available device </label>
-                <input id="braille-on-off" class="toggle" type="checkbox"/>
+            <div
+>               <h4> Braille </h4>
+                <div>
+                    <h2><span class="braille-label heading-text"></span></h2>
+                    <div class="fl-uiOptions-onoff">
+                        <input type="checkbox" id="braille" class="braille-value fl-force-left" />
+                        <label for="braille">
+                            <span class="fl-uiOptions-switch" data-checkboxStateOn="ON" data-checkboxStateOff="OFF">
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
             </div>
         </div>
 
