@@ -20,6 +20,13 @@
 	        "minimum": 1,
 	        "maximum": 2,
 	        "divisibleBy": 0.1
+	    },
+	    "fluid.uiOptions.magnifier": {
+	        "type": "number",
+	        "default": 1,
+	        "minimum": 1,
+	        "maximum": 2,
+	        "divisibleBy": 0.1
 	    }
 	    /* ,
 	    "fluid.uiOptions.textFont": {
@@ -92,6 +99,45 @@
 	    },
 	    protoTree: {
 	        label: {messagekey: "cursorSizeLabel"},
+	        multiplier: {messagekey: "multiplier"},
+	        textSize: {
+	            decorators: {
+	                type: "fluid",
+	                func: "fluid.uiOptions.textfieldSlider"
+	            }
+	        }
+	    },
+	    sliderOptions: {
+	        orientation: "horizontal",
+	        step: 0.1,
+	        range: "min"
+	    }
+	});
+	
+	fluid.defaults("fluid.uiOptions.panels.magnifier", {
+	    gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+	    preferenceMap: {
+	        "fluid.uiOptions.magnifier": {
+	            "model.value": "default",
+	            "range.min": "minimum",
+	            "range.max": "maximum"
+	        }
+	    },
+	    range: {
+	        min: 1,
+	        max: 2
+	    },
+	    selectors: {
+	        textSize: ".flc-uiOptions-magnifier",
+	        label: ".flc-uiOptions-magnifier-label",
+	        magnifierOFF: ".fl-icon-magnifierOFF",
+	        magnifierMAX: ".fl-icon-magnifierMAX",
+	        multiplier: ".flc-uiOptions-multiplier"
+	    },
+	    protoTree: {
+	        label: {messagekey: "magnifierLabel"},
+	        magnifierOFF: {messagekey: "magnifierOFF"},
+	        magnifierMAX: {messagekey: "magnifierMAX"},
 	        multiplier: {messagekey: "multiplier"},
 	        textSize: {
 	            decorators: {
@@ -197,6 +243,27 @@
 	                "container": ".flc-uiOptions-cursor-size",  // the css selector in the template where the panel is rendered
 	                "template": "%prefix/UIOptionsTemplate-cursorSize.html",
 	                "message": "%prefix/cursorSize.json"
+	            }
+	        },
+	        "magnifier": {
+	            "type": "fluid.uiOptions.magnifier",
+	            /*"enactor": {
+	                "type": "fluid.uiOptions.enactors.textSize",
+	                "fontSizeMap": {
+	                    "xx-small": "9px",
+	                    "x-small": "11px",
+	                    "small": "13px",
+	                    "medium": "15px",
+	                    "large": "18px",
+	                    "x-large": "23px",
+	                    "xx-large": "30px"
+	                }
+	            },*/
+	            "panel": {
+	                "type": "fluid.uiOptions.panels.magnifier",
+	                "container": ".flc-uiOptions-magnifier",  // the css selector in the template where the panel is rendered
+	                "template": "%prefix/UIOptionsTemplate-magnifier.html",
+	                "message": "%prefix/magnifier.json"
 	            }
 	        },
 	        "lineSpace": {
