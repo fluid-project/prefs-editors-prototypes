@@ -13,6 +13,13 @@
 	        "minimum": 1,
 	        "maximum": 2,
 	        "divisibleBy": 0.1
+	    },
+	    "fluid.uiOptions.cursorSize": {
+	        "type": "number",
+	        "default": 1,
+	        "minimum": 1,
+	        "maximum": 2,
+	        "divisibleBy": 0.1
 	    }
 	    /* ,
 	    "fluid.uiOptions.textFont": {
@@ -50,6 +57,41 @@
 	        label: {messagekey: "textSizeLabel"},
 	        smallIcon: {messagekey: "textSizeSmallIcon"},
 	        largeIcon: {messagekey: "textSizelargeIcon"},
+	        multiplier: {messagekey: "multiplier"},
+	        textSize: {
+	            decorators: {
+	                type: "fluid",
+	                func: "fluid.uiOptions.textfieldSlider"
+	            }
+	        }
+	    },
+	    sliderOptions: {
+	        orientation: "horizontal",
+	        step: 0.1,
+	        range: "min"
+	    }
+	});
+	
+	fluid.defaults("fluid.uiOptions.panels.cursorSize", {
+	    gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+	    preferenceMap: {
+	        "fluid.uiOptions.cursorSize": {
+	            "model.value": "default",
+	            "range.min": "minimum",
+	            "range.max": "maximum"
+	        }
+	    },
+	    range: {
+	        min: 1,
+	        max: 2
+	    },
+	    selectors: {
+	        textSize: ".flc-uiOptions-cursor-size",
+	        label: ".flc-uiOptions-cursor-size-label",
+	        multiplier: ".flc-uiOptions-multiplier"
+	    },
+	    protoTree: {
+	        label: {messagekey: "cursorSizeLabel"},
 	        multiplier: {messagekey: "multiplier"},
 	        textSize: {
 	            decorators: {
@@ -135,7 +177,28 @@
 	                "template": "%prefix/UIOptionsTemplate-textSize.html",
 	                "message": "%prefix/textSize.json"
 	            }
-	        } ,
+	        },
+	        "cursorSize": {
+	            "type": "fluid.uiOptions.cursorSize",
+	            /*"enactor": {
+	                "type": "fluid.uiOptions.enactors.textSize",
+	                "fontSizeMap": {
+	                    "xx-small": "9px",
+	                    "x-small": "11px",
+	                    "small": "13px",
+	                    "medium": "15px",
+	                    "large": "18px",
+	                    "x-large": "23px",
+	                    "xx-large": "30px"
+	                }
+	            },*/
+	            "panel": {
+	                "type": "fluid.uiOptions.panels.cursorSize",
+	                "container": ".flc-uiOptions-cursor-size",  // the css selector in the template where the panel is rendered
+	                "template": "%prefix/UIOptionsTemplate-cursorSize.html",
+	                "message": "%prefix/cursorSize.json"
+	            }
+	        },
 	        "lineSpace": {
 	            "type": "fluid.uiOptions.lineSpace",
 	            "enactor": {
