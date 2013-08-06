@@ -553,8 +553,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             var imgs = that.locate("images");
             fluid.each(imgs, function (img, index) {
                 var img = $(img);
-                // XXX img.attr("alt") won't work for the divs with role="img"
                 var alt = img.attr("alt");
+                if (!alt) {
+                    alt = img.attr("aria-label");
+                }
                 var altSpan = $("<span>");
                 altSpan.text(alt);
                 var altIconSpan = $("<span></span>");
