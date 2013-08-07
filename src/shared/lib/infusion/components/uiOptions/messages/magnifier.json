@@ -1,6 +1,6 @@
 {
-    "magnifierLabel": "Magnification",
+    "magnifierLabel": "Magnifier",
     "magnifierOFF": "OFF",
-    "magnifierMAX": "300x",
+    "magnifierMAX": "maximum",
     "multiplier": "times"
 }
