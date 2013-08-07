@@ -8,8 +8,8 @@
 
 @font-face {
 	font-family: 'DemoLogos';
-    src: url('fonts/Demo-DiscoveryTool-Logos.eot'), 
-         url('fonts/Demo-DiscoveryTool-Logos.ttf');	
+    src: url('fonts/Demo-Content-Logos.eot'), 
+         url('fonts/Demo-Content-Logos.ttf');	
 }
 
 body {
@@ -260,21 +260,26 @@ article h2 {
     border: none;
 }
 
+.fl-header-title {
+	font-size: 1.2em;
+    font-weight: bold;
+}
+
 /* Font Icons */
 
 .fl-icon-tree, .fl-icon-atom {
     font-family: 'DemoLogos';    
 }
 .fl-icon-tree:before {
-	content: "\e000";
-	font-size: 2em;
-	color: darkbrown;
-}
-.fl-icon-tree:after {
 	content: "\e001";
 	font-size: 2em;
-	margin-left: -0.6em;	
-	color: green;
+	color: limegreen;
+}
+.fl-icon-tree:after {
+	content: "\e000";
+	font-size: 2em;
+	margin-left: -1.5em;	
+	color: SaddleBrown;
 }
 .fl-icon-atom:before {
 	content: "\e002";
@@ -405,6 +410,14 @@ div[role="img"] {
 
 .fl-theme-bw .fl-icon-atom:before,
 .fl-theme-bw .fl-icon-tree:after,
-.fl-theme-bw .fl-icon-tree:before, {
+.fl-theme-bw .fl-icon-tree:before {
     border-color: #000;
+    color: #000;
+}
+
+.fl-theme-lgdg .fl-icon-atom:before,
+.fl-theme-lgdg .fl-icon-tree:after,
+.fl-theme-lgdg .fl-icon-tree:before {
+    border-color: #BDBDBB;
+    color: #BDBDBB;
 }
