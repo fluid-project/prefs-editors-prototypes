@@ -117,7 +117,7 @@
 	        // The preference-specific information:
 	        "textSize": {
 	            "type": "fluid.uiOptions.textSize",
-	            /*"enactor": {
+	            "enactor": {
 	                "type": "fluid.uiOptions.enactors.textSize",
 	                "fontSizeMap": {
 	                    "xx-small": "9px",
@@ -128,7 +128,7 @@
 	                    "x-large": "23px",
 	                    "xx-large": "30px"
 	                }
-	            },*/
+	            },
 	            "panel": {
 	                "type": "fluid.uiOptions.panels.textSize",
 	                "container": ".flc-uiOptions-text-size",  // the css selector in the template where the panel is rendered
@@ -180,7 +180,7 @@
 	        },
 	        "lineSpace": {
 	            "type": "fluid.uiOptions.lineSpace",
-	            /*"enactor": {
+	            "enactor": {
 	                "type": "fluid.uiOptions.enactors.lineSpace",
 	                "fontSizeMap": {
 	                    "xx-small": "9px",
@@ -191,7 +191,7 @@
 	                    "x-large": "23px",
 	                    "xx-large": "30px"
 	                }
-	            },*/
+	            },
 	            "panel": {
 	                "type": "fluid.uiOptions.panels.lineSpace",
 	                "container": ".flc-uiOptions-line-space",  // the css selector in the template where the panel is rendered
