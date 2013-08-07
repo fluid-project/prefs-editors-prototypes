@@ -117,8 +117,8 @@
 }
 
 @-webkit-keyframes checkshrink { /* Safari and Chrome */
-    from {height: 1.3em; width: 1.3em;}
-    to {height: 1.2em; width: 1.2em;}
+    from { height: 2em;   width: 2em;   margin-left: 4.0em; top: -1.2em; background-color: rgb(54, 60, 64, 0); opacity: 0; }
+    to { height: 1.1em; width: 1.1em; margin-left: 4.6em; top: -0.6em; background-color: rgb(54, 60, 64, 1); opacity: 1; }        
 }
 
 
@@ -270,8 +270,6 @@
 .fl-theme-bw .fl-uiOptions-panel .fl-icon-check,
 .fl-theme-lgdg .fl-uiOptions-panel .fl-icon-check {
     border: 2px solid;
-    position: relative;	
-    top: -0.9em;    
 }
 
 .fl-theme-bw .fl-uiOptions input:focus + label,  
