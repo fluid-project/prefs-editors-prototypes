@@ -39,13 +39,22 @@
     padding-top: 2em;
 }
 
-/* text overlay */
-.fl-discoveryTool-altText {
+/* more-text display */
+.fl-discoveryTool-moreText {
     background-color: lightgrey;
 }
-.fl-discoveryTool-altTextIcon:before {
-    font-family: 'DiscoveryToolIcons';
+details[open] summary {
+    float: left;
+}
+details summary::-webkit-details-marker {
+    display:none;
+}
+details summary:before {
     content: "\e013";
+    font-family: 'DiscoveryToolIcons';
+    background-color: lightgrey;
+    font-size: 2em;
+    float: left;
 }
 
 /* Panels */

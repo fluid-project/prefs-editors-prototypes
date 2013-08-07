@@ -289,12 +289,6 @@ article h2 {
 }
 
 /* Images */
-details {
-    padding-bottom: 1em;
-    display: block;
-    display: none;
-}
-
 div[role="img"] {
     background-repeat: no-repeat;
     background-size: contain; 

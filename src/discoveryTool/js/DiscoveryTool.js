@@ -514,13 +514,12 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
         selectors: {
             content: ".flc-uiOptions-content",
-            altTexts: ".flc-discoveryTool-altText",
-            altTextText: ".flc-discoveryTool-altTextText",
+            moreTexts: ".flc-discoveryTool-moreText-details",
             images: "img, [role~='img']"
         },
         styles: {
-            altText: "fl-discoveryTool-altText",
-            altTextIcon: "fl-discoveryTool-altTextIcon",
+            moreText: "fl-discoveryTool-moreText",
+//            altTextIcon: "fl-discoveryTool-altTextIcon",
             hidden: "fl-hidden"
         },
         model: {
@@ -533,13 +532,24 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             set: {
                 funcName: "gpii.discoveryTool.enactors.showAltText.set",
                 args: ["{arguments}.0", "{that}"]
+            },
+            buildMoreTextMarkup: {
+                funcName: "gpii.discoveryTool.enactors.showAltText.buildMoreTextMarkup",
+                args: ["{that}", "{arguments}.0"]
             }
         },
         members: {
             docScannedForImages: false
-        },
-        altTextDivTemplate: "<div class='flc-discoveryTool-altText'></div>"
+        }//,
+        //altTextDivTemplate: "<div class='flc-discoveryTool-altText'></div>"
     });
+
+    gpii.discoveryTool.enactors.showAltText.buildMoreTextMarkup = function (that, text) {
+        var container = $("<div class='flc-discoveryTool-moreText-details fl-fix'><details><summary></summary></details></div>");
+        container.addClass(that.options.styles.moreText);
+        $("details", container).append(text);
+        return container;
+    };
 
     gpii.discoveryTool.enactors.showAltText.finalInit = function (that) {
         that.applier.modelChanged.addListener("value", function (newModel, oldModel) {
@@ -557,18 +567,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 if (!alt) {
                     alt = img.attr("aria-label");
                 }
-                var altSpan = $("<span>");
-                altSpan.text(alt);
-                var altIconSpan = $("<span></span>");
-                altIconSpan.addClass(that.options.styles.altTextIcon);
-                var altDiv = $(that.options.altTextDivTemplate);
-                altDiv.addClass(that.options.styles.altText);
-                altDiv.append(altIconSpan).append(altSpan);
-                img.after(altDiv);
+
+                var details = that.buildMoreTextMarkup(alt);
+                img.after(details);
+
             });
             that.docScannedForImages = true;
         }
-        that.dom.fastLocate("altTexts").toggleClass(that.options.styles.hidden, !value)
+        that.dom.fastLocate("moreTexts").toggleClass(that.options.styles.hidden, !value)
     };
 
     /************************
