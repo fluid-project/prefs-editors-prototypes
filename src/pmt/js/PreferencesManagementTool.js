@@ -7,14 +7,14 @@
 	        "default": 1,
 	        "minimum": 1,
 	        "maximum": 5,
-	        "divisibleBy": 0.2
+	        "divisibleBy": 0.5
 	    },
 	    "fluid.uiOptions.textSize": {
 	        "type": "number",
 	        "default": 1,
 	        "minimum": 1,
-	        "maximum": 2,
-	        "divisibleBy": 0.1
+	        "maximum": 10,
+	        "divisibleBy": 1
 	    }/*,
 	    "fluid.uiOptions.cursorSize": {
 	        "type": "number",
@@ -43,7 +43,7 @@
 	        // The preference-specific information:
 	        "textSize": {
 	            "type": "fluid.uiOptions.textSize",
-	            "enactor": {
+	            /*"enactor": {
 	                "type": "fluid.uiOptions.enactors.textSize",
 	                "fontSizeMap": {
 	                    "xx-small": "9px",
@@ -54,7 +54,7 @@
 	                    "x-large": "23px",
 	                    "xx-large": "30px"
 	                }
-	            },
+	            },*/
 	            "panel": {
 	                "type": "fluid.uiOptions.panels.textSize",
 	                "container": ".flc-uiOptions-text-size",  // the css selector in the template where the panel is rendered
@@ -106,7 +106,7 @@
 	        },*/
 	        "lineSpace": {
 	            "type": "fluid.uiOptions.lineSpace",
-	            "enactor": {
+	            /*"enactor": {
 	                "type": "fluid.uiOptions.enactors.lineSpace",
 	                "fontSizeMap": {
 	                    "xx-small": "9px",
@@ -117,7 +117,7 @@
 	                    "x-large": "23px",
 	                    "xx-large": "30px"
 	                }
-	            },
+	            },*/
 	            "panel": {
 	                "type": "fluid.uiOptions.panels.lineSpace",
 	                "container": ".flc-uiOptions-line-space",  // the css selector in the template where the panel is rendered
