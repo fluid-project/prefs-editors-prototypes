@@ -75,15 +75,15 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             options: {
                 listeners: {
                     onCreate: {
-                        listener: "gpii.discoveryTool.addFontIcon",
+                        listener: "gpii.discoveryTool.addDiscoveryIcon",
                         args: "{that}.dom.toggleButton"
                     },
                     onPanelHide: {
-                        listener: "gpii.discoveryTool.addFontIcon",
+                        listener: "gpii.discoveryTool.addDiscoveryIcon",
                         args: "{that}.dom.toggleButton"
                     },
                     onPanelShow: {
-                        listener: "gpii.discoveryTool.removeFontIcon",
+                        listener: "gpii.discoveryTool.removeDiscoveryIcon",
                         args: "{that}.dom.toggleButton"
                     }
                 }
@@ -91,15 +91,12 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
 
-    gpii.discoveryTool.addFontIcon = function (toggleButton) {
-        toggleButton.addClass("fl-icon-discover").attr({
-            "aria-label": "Discover",
-            "role": "presentation"
-        });
+    gpii.discoveryTool.addDiscoveryIcon = function (toggleButton) {
+        toggleButton.after("<span class=\"fl-icon-discover\" role=\"presentation\" aria-label=\"Discover\"></span>")
     };
 
-    gpii.discoveryTool.removeFontIcon = function (toggleButton) {
-        toggleButton.removeClass("fl-icon-discover").removeAttr("aria-label").removeAttr("role");
+    gpii.discoveryTool.removeDiscoveryIcon = function (toggleButton) {
+        toggleButton.next("span").remove();
     };
 
     fluid.defaults("gpii.discoveryTool.defaultPanel", {
