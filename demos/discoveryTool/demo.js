@@ -58,37 +58,10 @@ var demo = demo || {};
             },
             uiOptions: {
                 options: {
-                    gradeNames: ["gpii.discoveryTool.panels", "gpii.discoveryTool.rootModel", "fluid.uiOptions.uiEnhancerRelay"],
-                    selectors: {
-                        trySomethingNew: ".flc-discoveryTool-try"
-                    },
-                    components: {
-                        trySomethingNew: {
-                            type: "gpii.discoveryTool.trySomethingNew",
-                            container: "{that}.dom.trySomethingNew",
-                            createOnEvent: "onUIOptionsComponentReady",
-                            options: {
-                                presetComponents: {
-                                    expander: {
-                                        func: "demo.getSubcomponents",
-                                        args: ["{uiOptions}.modelTransformer"]
-                                    }
-                                }
-
-                            }
-                        }
-                    }
+                    gradeNames: ["gpii.discoveryTool.panels", "gpii.discoveryTool.rootModel", "fluid.uiOptions.uiEnhancerRelay"]
                 }
             }
         });
-    };
-
-    demo.getSubcomponents = function (component) {
-        var subComponents = [];
-        fluid.each(component.options.components, function (opts, memberName) {
-            subComponents.push(fluid.get(component, memberName));
-        });
-        return subComponents;
     };
 
     fluid.demands("fluid.uiOptions.fatPanel.renderIframe", ["gpii.discoveryTool"], {

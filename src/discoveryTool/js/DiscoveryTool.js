@@ -248,6 +248,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     fluid.defaults("gpii.discoveryTool.panels", {
         gradeNames: ["fluid.uiOptions", "autoInit"],
         selectors: {
+            trySomethingNew: ".flc-discoveryTool-try",
             highContrast: ".flc-discoveryTool-highContrast",
             lowContrast: ".flc-discoveryTool-lowContrast",
             increaseSize: ".flc-discoveryTool-increaseSize",
@@ -255,6 +256,20 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             spoken: ".flc-discoveryTool-spoken"
         },
         components: {
+            trySomethingNew: {
+                type: "gpii.discoveryTool.trySomethingNew",
+                container: "{that}.dom.trySomethingNew",
+                createOnEvent: "onUIOptionsComponentReady",
+                options: {
+                    presetComponents: {
+                        expander: {
+                            func: "gpii.discoveryTool.panels.getSubcomponents",
+                            args: ["{uiOptions}.modelTransformer"]
+                        }
+                    }
+
+                }
+            },
             modelTransformer: {
                 type: "gpii.discoveryTool.modelTransformer",
                 options: {
@@ -281,6 +296,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             }
         }
     });
+
+    gpii.discoveryTool.panels.getSubcomponents = function (component) {
+        var subComponents = [];
+        fluid.each(component.options.components, function (opts, memberName) {
+            subComponents.push(fluid.get(component, memberName));
+        });
+        return subComponents;
+    };
 
     fluid.defaults("gpii.discoveryTool.togglePanel", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
