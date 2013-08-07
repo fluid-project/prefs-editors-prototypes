@@ -88,6 +88,13 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     }
                 }
             }
+        },
+        listeners: {
+            afterRender: {
+                listener: "gpii.discoveryTool.initHideFuncs",
+                args: "{that}",
+                priority: "last"
+            }
         }
     });
 
@@ -99,6 +106,22 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         toggleButton.next("label").remove();
     };
 
+    // Hide the discovery tool when clicking outside of the discovery tool panel
+    gpii.discoveryTool.initHideFuncs = function (that) {
+        $("html").click(function () {
+            if (that.slidingPanel.model.isShowing) {
+                that.slidingPanel.togglePanel();
+            }
+        });
+
+        that.container.click(function (event) {
+            event.stopPropagation();
+        });
+    };
+
+    /*************
+     * The base grade component for each individual panel
+     *************/
     fluid.defaults("gpii.discoveryTool.defaultPanel", {
         gradeNames: ["fluid.uiOptions.defaultPanel", "autoInit"],
         sourceApplier: "{modelTransformer}.applier"
