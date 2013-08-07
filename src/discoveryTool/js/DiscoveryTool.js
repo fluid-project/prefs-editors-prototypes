@@ -509,9 +509,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         strings: {
             label: "Try Something New" // TODO: convert to message bundle
         },
+        styles: {
+            hover: "fl-discoveryTool-hover"
+        },
         events: {
             onHover: null,
             afterHover: null,
+            onFocus: null,
+            onBlur: null,
             afterActivate: null
         },
         presetComponents: [],
@@ -532,17 +537,57 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 "method": "mouseleave",
                 "args": ["{that}.events.afterHover.fire"]
             },
+            "onCreate.focus": {
+                "this": "{that}.container",
+                "method": "focus",
+                "args": ["{that}.events.onFocus.fire"]
+            },
+            "onCreate.blur": {
+                "this": "{that}.container",
+                "method": "blur",
+                "args": ["{that}.events.onBlur.fire"]
+            },
             "afterActivate.preventDefault": {
                 listener: "gpii.discoveryTool.trySomethingNew.preventDefault"
             },
             "afterActivate.activate": {
                 listener: "{that}.randomizeSelection"
+            },
+            "onFocus.startCycle": {
+                listener: "{that}.cycle.start"
+            },
+            "onBlur.stopCycle": {
+                listener: "{that}.cycle.stop"
+            },
+            "onHover.startCycle": {
+                listener: "{that}.cycle.start"
+            },
+            "afterHover.stopCycle": {
+                listener: "{that}.cycle.stop"
             }
         },
         invokers: {
             randomizeSelection: {
                 funcName: "gpii.discoveryTool.trySomethingNew.randomizeSelection",
                 args: ["{that}.options.presetComponents", "{that}.options.numSelections"]
+            }
+        },
+        components: {
+            cycle: {
+                type: "gpii.discoveryTool.cycle",
+                options: {
+                    items: "{trySomethingNew}.options.presetComponents",
+                    listeners: {
+                        "on.toggleClass": {
+                            funcName: "gpii.discoveryTool.trySomethingNew.toggleClass",
+                            args: ["{arguments}.0.container", "{trySomethingNew}.options.styles.hover"]
+                        },
+                        "off.toggleClass": {
+                            funcName: "gpii.discoveryTool.trySomethingNew.toggleClass",
+                            args: ["{arguments}.0.container", "{trySomethingNew}.options.styles.hover"]
+                        }
+                    }
+                }
             }
         }
     });
@@ -554,7 +599,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     gpii.discoveryTool.trySomethingNew.randomizeSelection = function (presetComponents, numSelections) {
         var components = fluid.copy(presetComponents);
         var toSelect = [];
-        var numSelections = Math.min(numSelections || 0, components.length);
+        numSelections = Math.min(numSelections || 0, components.length);
 
         for (var i = 0; i < numSelections; i++) {
             var randIndex = Math.floor(Math.random() * (components.length));
@@ -569,6 +614,58 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             that.applier.requestChange("enabled", true);
             that.refreshView();
         });
+    };
+
+    gpii.discoveryTool.trySomethingNew.toggleClass = function (elm, className) {
+        $(elm).toggleClass(className);
+    };
+
+    fluid.defaults("gpii.discoveryTool.cycle", {
+        gradeNames: ["fluid.modelComponent", "fluid.eventedComponent", "autoInit"],
+        speed: "500",
+        items: [],
+        events: {
+            on: null,
+            off: null
+        },
+        model: {
+            enabled: false
+        },
+        listeners: {
+            "onCreate.cycle": {
+                listener: "{that}.run"
+            },
+            "onCreate.modelChangedListener": {
+                listener: "{that}.applier.modelChanged.addListener",
+                args: ["*", "{that}.run"]
+            }
+        },
+        invokers: {
+            start: {
+                func: "{that}.applier.requestChange",
+                args: ["enabled", true]
+            },
+            stop: {
+                func: "{that}.applier.requestChange",
+                args: ["enabled", false]
+            },
+            run: {
+                funcName: "gpii.discoveryTool.cycle.run",
+                args: ["{that}.options.items", 0, "{that}.options.speed", "{that}.model", "{that}.events.on.fire", "{that}.events.off.fire"]
+            }
+        }
+    });
+
+    gpii.discoveryTool.cycle.run = function (items, index, speed, model, callbackOn, callbackOff) {
+        var numItems = items.length;
+        if (model.enabled && numItems) {
+            var boundIndex = index%numItems;
+            callbackOn(items[boundIndex], boundIndex);
+            setTimeout(function () {
+                callbackOff(items[boundIndex], boundIndex);
+                gpii.discoveryTool.cycle.run(items, ++index, speed, model, callbackOn, callbackOff);
+            }, speed);
+        }
     };
 
 })(jQuery, fluid);

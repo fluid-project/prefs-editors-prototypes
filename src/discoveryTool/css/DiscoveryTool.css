@@ -57,8 +57,8 @@
 /* Labels */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel label {
     border: none;
-    box-shadow: none;  
-    text-transform: lowercase;  
+    box-shadow: none;
+    text-transform: lowercase;
     color: #ffffff;
     display: block;
     font-size: 1.4em;
@@ -70,8 +70,10 @@
 /* Panel states */
 
 /* Preference set hover */
-.fl-uiOptions-discoveryTool .fl-uiOptions-panel label .fl-discoveryTool-panel-icon:hover { box-shadow: 3px 3px 1px #4f4f4f;}
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel label .fl-discoveryTool-panel-icon:hover,
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel .fl-discoveryTool-hover label .fl-discoveryTool-panel-icon { box-shadow: 3px 3px 1px #4f4f4f;}
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel label:hover .fl-icon-text,
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel .fl-discoveryTool-hover label .fl-icon-text,
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:focus ~ label .fl-icon-text { text-shadow: 2px 2px #4f4f4f; }
 
 /* Preference set enabled / checked. */
@@ -102,18 +104,18 @@
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:checked + label div.fl-icon-check {
     visibility: visible;
     animation: checkshrink 1s linear;
-    -webkit-animation: checkshrink 1s linear; /* Safari and Chrome */    
+    -webkit-animation: checkshrink 1s linear; /* Safari and Chrome */
 }
 
 /* Checkbox animation */
 @keyframes checkshrink {
     from { height: 2em;   width: 2em;   margin-left: 4.0em; top: -1.2em; background-color: rgb(54, 60, 64, 0); opacity: 0; }
-    to { height: 1.1em; width: 1.1em; margin-left: 4.6em; top: -0.6em; background-color: rgb(54, 60, 64, 1); opacity: 1; }        
+    to { height: 1.1em; width: 1.1em; margin-left: 4.6em; top: -0.6em; background-color: rgb(54, 60, 64, 1); opacity: 1; }
 }
 
 @-webkit-keyframes checkshrink { /* Safari and Chrome */
     from { height: 2em;   width: 2em;   margin-left: 4.0em; top: -1.2em; background-color: rgb(54, 60, 64, 0); opacity: 0; }
-    to { height: 1.1em; width: 1.1em; margin-left: 4.6em; top: -0.6em; background-color: rgb(54, 60, 64, 1); opacity: 1; }        
+    to { height: 1.1em; width: 1.1em; margin-left: 4.6em; top: -0.6em; background-color: rgb(54, 60, 64, 1); opacity: 1; }
 }
 
 
@@ -123,9 +125,9 @@
     font-size: 1.2em;
     width: 6.7em;
     height: 6.7em;
-    border-radius: 0.4em; 
+    border-radius: 0.4em;
     border: none;
-    background: none;   
+    background: none;
 }
 
 .fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel .fl-discoveryTool-try:hover {
@@ -206,46 +208,56 @@
 .fl-discoveryTool-icon-high-contrast:after        {content: "\e016";}
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:focus + label span.fl-discoveryTool-icon-high-contrast:before, /* applied when keyboard focused */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:checked:focus + label span.fl-discoveryTool-icon-high-contrast:before, /* applied when focused and checked*/
-.fl-discoveryTool-icon-high-contrast:hover:before {content: "\e004";}
+.fl-discoveryTool-icon-high-contrast:hover:before,
+.fl-discoveryTool-icon-high-contrast.fl-discoveryTool-hover:before {content: "\e004";}
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:focus + label span.fl-discoveryTool-icon-high-contrast:after, /* applied when keyboard focused */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:checked:focus + label span.fl-discoveryTool-icon-high-contrast:after, /* applied when focused and checked*/
-.fl-discoveryTool-icon-high-contrast:hover:after  {content: "\e010";}
+.fl-discoveryTool-icon-high-contrast:hover:after,
+.fl-discoveryTool-icon-high-contrast.fl-discoveryTool-hover:after  {content: "\e010";}
 
 .fl-discoveryTool-icon-low-contrast:before       {content: "\e006";}
 .fl-discoveryTool-icon-low-contrast:after        {content: "\e012";}
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:focus + label span.fl-discoveryTool-icon-low-contrast:before, /* applied when keyboard focused */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:checked:focus + label span.fl-discoveryTool-icon-low-contrast:before, /* applied when focused and checked*/
-.fl-discoveryTool-icon-low-contrast:hover:before {content: "\e003";}
+.fl-discoveryTool-icon-low-contrast:hover:before,
+.fl-discoveryTool-icon-low-contrast.fl-discoveryTool-hover:before {content: "\e003";}
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:focus + label span.fl-discoveryTool-icon-low-contrast:after, /* applied when keyboard focused */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:checked:focus + label span.fl-discoveryTool-icon-low-contrast:after, /* applied when focused and checked*/
-.fl-discoveryTool-icon-low-contrast:hover:after  {content: "\e00f";}
+.fl-discoveryTool-icon-low-contrast:hover:after,
+.fl-discoveryTool-icon-low-contrast.fl-discoveryTool-hover:after  {content: "\e00f";}
 
 .fl-discoveryTool-icon-simplify:before       {content: "\e009";}
 .fl-discoveryTool-icon-simplify:after        {content: "\e015";}
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:focus + label span.fl-discoveryTool-icon-simplify:before, /* applied when keyboard focused */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:checked:focus + label span.fl-discoveryTool-icon-simplify:before, /* applied when focused and checked*/
-.fl-discoveryTool-icon-simplify:hover:before {content: "\e002";}
+.fl-discoveryTool-icon-simplify:hover:before,
+.fl-discoveryTool-icon-simplify.fl-discoveryTool-hover:before {content: "\e002";}
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:focus + label span.fl-discoveryTool-icon-simplify:after, /* applied when keyboard focused */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:checked:focus + label span.fl-discoveryTool-icon-simplify:after, /* applied when focused and checked*/
-.fl-discoveryTool-icon-simplify:hover:after  {content: "\e00e";}
+.fl-discoveryTool-icon-simplify:hover:after,
+.fl-discoveryTool-icon-simplify.fl-discoveryTool-hover:after  {content: "\e00e";}
 
 .fl-discoveryTool-icon-increase-size:before       {content: "\e00b";}
 .fl-discoveryTool-icon-increase-size:after        {content: "\e017";}
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:focus + label span.fl-discoveryTool-icon-increase-size:before, /* applied when keyboard focused */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:checked:focus + label span.fl-discoveryTool-icon-increase-size:before, /* applied when focused and checked*/
-.fl-discoveryTool-icon-increase-size:hover:before {content: "\e005";}
+.fl-discoveryTool-icon-increase-size:hover:before,
+.fl-discoveryTool-icon-increase-size.fl-discoveryTool-hover:before {content: "\e005";}
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:focus + label span.fl-discoveryTool-icon-increase-size:after, /* applied when keyboard focused */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:checked:focus + label span.fl-discoveryTool-icon-increase-size:after, /* applied when focused and checked */
-.fl-discoveryTool-icon-increase-size:hover:after  {content: "\e011";}
+.fl-discoveryTool-icon-increase-size:hover:after,
+.fl-discoveryTool-icon-increase-size.fl-discoveryTool-hover:after  {content: "\e011";}
 
 .fl-discoveryTool-icon-speak:before       {content: "\e008";}
 .fl-discoveryTool-icon-speak:after        {content: "\e014";}
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:focus + label span.fl-discoveryTool-icon-speak:before, /* applied when keyboard focused */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:checked:focus + label span.fl-discoveryTool-icon-speak:before, /* applied when focused and checked*/
-.fl-discoveryTool-icon-speak:hover:before {content: "\e001";}
+.fl-discoveryTool-icon-speak:hover:before,
+.fl-discoveryTool-icon-speak.fl-discoveryTool-hover:before {content: "\e001";}
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:focus + label span.fl-discoveryTool-icon-speak:after, /* applied when keyboard focused */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:checked:focus + label span.fl-discoveryTool-icon-speak:after, /* applied when focused and checked*/
-.fl-discoveryTool-icon-speak:hover:after  {content: "\e00d";}
+.fl-discoveryTool-icon-speak:hover:after,
+.fl-discoveryTool-icon-speak.fl-discoveryTool-hover:after  {content: "\e00d";}
 
 /* Theming for high and low contrast */
 
@@ -267,13 +279,15 @@
     border: 2px solid;
 }
 
-.fl-theme-bw .fl-uiOptions input:focus + label,  
+.fl-theme-bw .fl-uiOptions input:focus + label,
 .fl-theme-lgdg .fl-uiOptions input:focus + label {
     outline: none;
     border: 0.2em solid #00AAFF;
 }
 
 .fl-theme-bw .fl-uiOptions-panel label:hover .fl-icon-text,
+.fl-theme-bw .fl-uiOptions-panel .fl-discoveryTool-hover label .fl-icon-text,
 .fl-theme-bw .fl-uiOptions-panel input:focus ~ label .fl-icon-text,
 .fl-theme-lgdg .fl-uiOptions-panel label:hover .fl-icon-text,
+.fl-theme-lgdg .fl-uiOptions-panel .fl-discoveryTool-hover label .fl-icon-text,
 .fl-theme-lgdg .fl-uiOptions-panel input:focus ~ label .fl-icon-text  { text-shadow: none; }
