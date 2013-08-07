@@ -28789,13 +28789,33 @@ var fluid_1_5 = fluid_1_5 || {};
     fluid.defaults("fluid.uiOptions.starterTemplateLoader", {
         gradeNames: ["fluid.uiOptions.resourceLoader", "autoInit"],
         templates: {
-            uiOptions: "%prefix/FatPanelUIOptions.html",
             textSize: "%prefix/UIOptionsTemplate-textSize.html",
             textFont: "%prefix/UIOptionsTemplate-textFont.html",
             lineSpace: "%prefix/UIOptionsTemplate-lineSpace.html",
             contrast: "%prefix/UIOptionsTemplate-contrast.html",
             layoutControls: "%prefix/UIOptionsTemplate-layout.html",
             linksControls: "%prefix/UIOptionsTemplate-links.html"
+        }
+    });
+
+    fluid.defaults("fluid.uiOptions.starterFatPanelTemplateLoader", {
+        gradeNames: ["fluid.uiOptions.starterTemplateLoader", "autoInit"],
+        templates: {
+            uiOptions: "%prefix/FatPanelUIOptions.html"
+        }
+    });
+
+    fluid.defaults("fluid.uiOptions.starterFullPreviewTemplateLoader", {
+        gradeNames: ["fluid.uiOptions.starterTemplateLoader", "autoInit"],
+        templates: {
+            uiOptions: "%prefix/FullPreviewUIOptions.html"
+        }
+    });
+
+    fluid.defaults("fluid.uiOptions.starterFullNoPreviewTemplateLoader", {
+        gradeNames: ["fluid.uiOptions.starterTemplateLoader", "autoInit"],
+        templates: {
+            uiOptions: "%prefix/FullNoPreviewUIOptions.html"
         }
     });
 
@@ -29141,13 +29161,6 @@ var fluid_1_5 = fluid_1_5 || {};
     fluid.defaults("fluid.uiOptions.fullNoPreview", {
         gradeNames: ["fluid.uiOptions.inline", "autoInit"],
         container: "{fullNoPreview}.container",
-        templateLoader: {
-            options: {
-                templates: {
-                    uiOptions: "%prefix/FullNoPreviewUIOptions.html"
-                }
-            }
-        },
         uiOptions: {
             options: {
                 listeners: {
@@ -29188,13 +29201,6 @@ var fluid_1_5 = fluid_1_5 || {};
         gradeNames: ["fluid.uiOptions.inline", "autoInit"],
         container: "{fullPreview}.container",
         outerPreviewEnhancerOptions: "{originalEnhancerOptions}.options.originalUserOptions",
-        templateLoader: {
-            options: {
-                templates: {
-                    uiOptions: "%prefix/FullPreviewUIOptions.html"
-                }
-            }
-        },
         uiOptions: {
             options: {
                 components: {
@@ -29356,6 +29362,14 @@ var fluid_1_5 = fluid_1_5 || {};
 
     fluid.registerNamespace("fluid.uiOptions.schemas");
 
+    /**
+     * A custom merge policy that merges primary schema blocks and
+     * places them in the right location (consistent with the JSON schema
+     * format).
+     * @param  {JSON} target A base for merging the options.
+     * @param  {JSON} source Options being merged.
+     * @return {JSON}        Updated target.
+     */
     fluid.uiOptions.schemas.merge = function (target, source) {
         if (!target) {
             target = {
@@ -29363,13 +29377,20 @@ var fluid_1_5 = fluid_1_5 || {};
                 properties: {}
             };
         }
+        // We can handle both schema blocks in options directly and also inside
+        // the |properties| field.
         source = source.properties || source;
         $.extend(true, target.properties, source);
         return target;
     };
 
+    /*******************************************************************************
+     * Primary builder grade
+     *******************************************************************************/
+
     fluid.defaults("fluid.uiOptions.primaryBuilder", {
         gradeNames: ["fluid.littleComponent", "autoInit", "{that}.buildPrimary"],
+        // An index of all schema grades registered with the framework.
         schemaIndex: {
             expander: {
                 func: "fluid.indexDefaults",
@@ -29380,8 +29401,12 @@ var fluid_1_5 = fluid_1_5 || {};
             }
         },
         primarySchema: {},
+        // A list of all necessarry top level preference names.
         typeFilter: [],
         invokers: {
+            // An invoker used to generate a set of grades that comprise a
+            // final version of the primary schema to be used by the UIOptions
+            // builder.
             buildPrimary: {
                 funcName: "fluid.uiOptions.primaryBuilder.buildPrimary",
                 args: [
@@ -29393,14 +29418,28 @@ var fluid_1_5 = fluid_1_5 || {};
         }
     });
 
+    /**
+     * An invoker method that builds a list of grades that comprise a final
+     * version of the primary schema.
+     * @param  {JSON}  schemaIndex   A global index of all schema grades
+     *                               registered with the framework.
+     * @param  {Array} typeFilter    A list of all necessarry top level
+     *                               preference names.
+     * @param  {JSON}  primarySchema Primary schema provided as an option to
+     *                               the primary builder.
+     * @return {Array}               A list of schema grades.
+     */
     fluid.uiOptions.primaryBuilder.buildPrimary = function (schemaIndex, typeFilter, primarySchema) {
         var suppliedPrimaryGradeName = "fluid.uiOptions.schemas.suppliedPrimary" + fluid.allocateGuid();
+        // Create a grade that has a primary schema passed as an option inclosed.
         fluid.defaults(suppliedPrimaryGradeName, {
             gradeNames: ["autoInit", "fluid.uiOptions.schemas"],
             schema: fluid.filterKeys(primarySchema.properties || primarySchema,
                 typeFilter, false)
         });
         var primary = [suppliedPrimaryGradeName];
+        // Lookup all available schema grades from the index that match the
+        // top level preference name.
         fluid.each(typeFilter, function merge(type) {
             var schemaGrades = schemaIndex[type];
             if (schemaGrades) {
@@ -29410,12 +29449,21 @@ var fluid_1_5 = fluid_1_5 || {};
         return primary;
     };
 
+    /**
+     * An index function that indexes all shcema grades based on their
+     * preference name.
+     * @param  {JSON}   defaults Registered defaults for a schema grade.
+     * @return {String}          A preference name.
+     */
     fluid.uiOptions.primaryBuilder.defaultSchemaIndexer = function (defaults) {
         if (defaults.schema) {
             return fluid.keys(defaults.schema.properties);
         }
     };
 
+    /*******************************************************************************
+     * Base primary schema grade
+     *******************************************************************************/
     fluid.defaults("fluid.uiOptions.schemas", {
         gradeNames: ["autoInit", "fluid.littleComponent"],
         mergePolicy: {
@@ -29509,8 +29557,9 @@ var fluid_1_5 = fluid_1_5 || {};
         type = type + "s";
 
         var componentName = componentConfig.type;
-        var memberName = componentName.replace(new RegExp("\\.", 'g'),  "_");
-        var flattenedPrefKey = prefKey.replace(new RegExp("\\.", 'g'),  "_");
+        var regexp = new RegExp("\\.", 'g');
+        var memberName = componentName.replace(regexp,  "_");
+        var flattenedPrefKey = prefKey.replace(regexp,  "_");
 
         if (componentName) {
             var instance = {
@@ -30036,12 +30085,16 @@ var fluid_1_5 = fluid_1_5 || {};
                     },
                 }
             }
-        }
-
+        },
+        distributeOptions: [{
+            source: "{that}.options.primarySchema",
+            removeSource: true,
+            target: "{that > primaryBuilder}.options.primarySchema"
+        }]
     });
 
     fluid.defaults("fluid.uiOptions.assembler.uie", {
-        gradeNames: ["autoInit", "fluid.viewComponent", "fluid.originalEnhancerOptions"],
+        gradeNames: ["autoInit", "fluid.viewComponent"],
         components: {
             store: {
                 type: "fluid.globalSettingsStore"
@@ -30050,7 +30103,13 @@ var fluid_1_5 = fluid_1_5 || {};
                 type: "fluid.uiEnhancer",
                 container: "body",
                 options: {
-                    gradeNames: ["{fluid.uiOptions.assembler.uie}.options.componentGrades.enactors", "{fluid.uiOptions.assembler.uie}.options.componentGrades.rootModel"],
+                    gradeNames: ["{fluid.uiOptions.assembler.uie}.options.componentGrades.enactors",  "fluid.originalEnhancerOptions"],
+                    originalUserOptions: {
+                        expander: {
+                            func: "fluid.copy",
+                            args: ["{that}.options"]
+                        }
+                    },
                     listeners: {
                         onCreate: {
                             listener: "fluid.set",
@@ -30083,7 +30142,7 @@ var fluid_1_5 = fluid_1_5 || {};
                     },
                     uiOptions: {
                         options: {
-                            gradeNames: ["{fluid.uiOptions.assembler.uio}.options.componentGrades.panels", "{fluid.uiOptions.assembler.uio}.options.componentGrades.rootModel"]
+                            gradeNames: ["{fluid.uiOptions.assembler.uio}.options.componentGrades.panels", "{fluid.uiOptions.assembler.uio}.options.componentGrades.rootModel", "fluid.uiOptions.uiEnhancerRelay"]
                         }
                     }
                 }
