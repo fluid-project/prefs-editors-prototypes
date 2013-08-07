@@ -291,3 +291,12 @@ details summary:before {
 .fl-theme-bw .fl-uiOptions-panel input:focus ~ label .fl-icon-text,
 .fl-theme-lgdg .fl-uiOptions-panel label:hover .fl-icon-text,
 .fl-theme-lgdg .fl-uiOptions-panel input:focus ~ label .fl-icon-text  { text-shadow: none; }
+
+.fl-theme-bw .fl-discoveryTool-moreText,
+.fl-theme-bw details summary:before {
+    background-color: #FFFFFF;
+}
+.fl-theme-lgdg .fl-discoveryTool-moreText,
+.fl-theme-lgdg details summary:before {
+    background-color: #555555;
+}

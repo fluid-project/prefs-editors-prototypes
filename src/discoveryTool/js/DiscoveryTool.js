@@ -519,7 +519,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         },
         styles: {
             moreText: "fl-discoveryTool-moreText",
-//            altTextIcon: "fl-discoveryTool-altTextIcon",
             hidden: "fl-hidden"
         },
         model: {
