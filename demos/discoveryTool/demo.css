@@ -1,9 +1,16 @@
 /* Demo content */
-@font-face {
+/*@font-face {
     font-family: 'DemoIcons'; 
     src:url('fonts/Demo-CK12.eot?#iefix') format('embedded-opentype'), 
          url('fonts/Demo-CK12.eot'), 
          url('fonts/Demo-CK12.ttf');
+}*/
+
+@font-face {
+    font-family: 'DemoIcons'; 
+    src:url('fonts/Demo-Content-Icons.eot?#iefix') format('embedded-opentype'), 
+         url('fonts/Demo-Content-Icons.eot'), 
+         url('fonts/Demo-Content-Icons.ttf');
 }
 
 body {
@@ -259,42 +266,42 @@ article h2 {
     font-family: 'DemoIcons';    
 }
 .fl-icon-search:before {
-	content: "\ea06";
+	content: "\e008";
 }
 .fl-icon-prev:before {
-	content: "\a000";
+	content: "\e000";
     font-size: 0.9em;	
 }
 .fl-icon-next:before {
-	content: "\a001";
+	content: "\e001";
     font-size: 0.9em;	
 }
 .fl-icon-thumbsUp:before {
-	content: "\a002";
+	content: "\e002";
     font-size: 2em;	
 }
 .fl-icon-thumbsDown:before {
-	content: "\a003";
+	content: "\e003";
     font-size: 2em;	
 }
 .fl-icon-arrow:before {
-	content: "\a004";
+	content: "\e004";
 	font-size: 0.6em;
 }
 .fl-icon-light:before {
-	content: "\a007";
+	content: "\e006";
 }
 .fl-icon-book:before {
-	content: "\e008";
+	content: "\e007";
 }
 
 .fl-icon-discover:before {
     color: #fff;
-    content: "\e01a";
+    content: "\e00a";
 }
 
 .fl-icon-discover:after {
-    content: "\e01b";
+    content: "\e009";
     position: relative;
     left: 15em;
 }
