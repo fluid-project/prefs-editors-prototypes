@@ -8,9 +8,9 @@
 
 <body>
     <div class="preference">
-        <h2><label for="preferenceSwitch" class="speakText-onoff-label heading-text">Speak Text</label for="preferenceSwitch"></h2>
+        <h2><label for="preferenceSwitch" class=" gpii-screenReaderTTSEnabled-label">Speak Text</label></h2>
         <div class="fl-uiOptions-onoff">
-            <input type="checkbox" id="preferenceSwitch" class="gpii-screenReaderTTSEnabled speakText-onoff-value fl-force-left" />
+            <input type="checkbox" id="preferenceSwitch" class="gpii-screenReaderTTSEnabled"/>
             <label for="preferenceSwitch">
                 <span class="fl-uiOptions-switch" data-checkboxStateOn="ON" data-checkboxStateOff="OFF"></span>
             </label>
@@ -21,26 +21,26 @@
         <div id="expanded-top">
             <h4>Screen reader</h4>
             <div>
-                <h2><label class="flc-languages-label" for="languages">Language</label></h2>
-                <select class="gpii-auditoryOutLanguage flc-languages fl-inputs" id="languages"></select>
+                <h2><label class="gpii-auditoryOutLanguage-label" for="languages">Language</label></h2>
+                <select class="gpii-auditoryOutLanguage fl-inputs" id="languages"></select>
             </div>
         </div>
 
         <div>
-            <h2><label class="flc-speech-rate-label" for="speech-rate">Speech rate</label></h2>
-            <select class="gpii-speechRate flc-speech-rate fl-inputs" id="speech-rate"></select>
+            <h2><label class="gpii-speechRate-label" for="speech-rate">Speech rate</label></h2>
+            <select class="gpii-speechRate fl-inputs" id="speech-rate"></select>
         </div>
 
         <div id="expanded-bottom">
             <div>
-                <h2><label class="flc-punctuation-label" for="punctuation">Punctuation verbosity</label></h2>
-                <select class="gpii-punctuationVerbosity flc-punctuation fl-inputs" id="punctuation"></select>
+                <h2><label class="gpii-punctuationVerbosity-label" for="punctuation">Punctuation verbosity</label></h2>
+                <select class="gpii-punctuationVerbosity fl-inputs" id="punctuation"></select>
             </div>
 
             <div>
-                <h2><span class="ann-upcase-label heading-text"></span></h2>
+                <h2><span class="gpii-announceCapitals-label"></span></h2>
                 <div class="fl-uiOptions-onoff">
-                    <input type="checkbox" id="announce-uppercase" class="gpii-announceCapitals ann-upcase-value fl-force-left" />
+                    <input type="checkbox" id="announce-uppercase" class="gpii-announceCapitals" />
                     <label for="announce-uppercase">
                         <span class="fl-uiOptions-switch" data-checkboxStateOn="ON" data-checkboxStateOff="OFF">
                         </span>
@@ -50,9 +50,9 @@
             </div>
 
             <div>
-                <h2><span class="ann-instructions-label heading-text"></span></h2>
+                <h2><span class="gpii-speakTutorialMessages-label"></span></h2>
                 <div class="fl-uiOptions-onoff">
-                    <input type="checkbox" id="announce-instructions" class="gpii-speakTutorialMessages ann-instructions-value fl-force-left" />
+                    <input type="checkbox" id="announce-instructions" class="gpii-speakTutorialMessages" />
                     <label for="announce-instructions">
                         <span class="fl-uiOptions-switch" data-checkboxStateOn="ON" data-checkboxStateOff="OFF">
                         </span>
@@ -63,9 +63,9 @@
             <div>
                 <label> Read-back </label> <br>
                 <div>
-                    <h2><span class="echo-letter-label heading-text"></span></h2>
+                    <h2><span class="gpii-keyEcho-label"></span></h2>
                     <div class="fl-uiOptions-onoff">
-                        <input type="checkbox" id="echo-letter" class="gpii-keyEcho echo-letter-value fl-force-left" />
+                        <input type="checkbox" id="echo-letter" class="gpii-keyEcho" />
                         <label for="echo-letter">
                             <span class="fl-uiOptions-switch" data-checkboxStateOn="ON" data-checkboxStateOff="OFF">
                             </span>
@@ -75,9 +75,9 @@
                 </div>
 
                 <div>
-                    <h2><span class="echo-word-label heading-text"></span></h2>
+                    <h2><span class="gpii-wordEcho-label"></span></h2>
                     <div class="fl-uiOptions-onoff">
-                        <input type="checkbox" id="echo-word" class="gpii-wordEcho echo-word-value fl-force-left" />
+                        <input type="checkbox" id="echo-word" class="gpii-wordEcho" />
                         <label for="echo-word">
                             <span class="fl-uiOptions-switch" data-checkboxStateOn="ON" data-checkboxStateOff="OFF">
                             </span>
@@ -87,9 +87,10 @@
                 </div>
             </div>
             <div>
-                <h2><label for="braille" class="braille-label heading-text">Braille</label></h2>
+                <h2><label for="braille" class="gpii-screenReaderBrailleOutput-label">Braille</label></h2>
+                <div class="gpii-screenReaderBrailleOutput-description"></div>
                 <div class="fl-uiOptions-onoff">
-                    <input type="checkbox" id="braille" class="gpii-screenReaderBrailleOutput braille-value fl-force-left" />
+                    <input type="checkbox" id="braille" class="gpii-screenReaderBrailleOutput" />
                     <label for="braille">
                         <span class="fl-uiOptions-switch" data-checkboxStateOn="ON" data-checkboxStateOff="OFF">
                         </span>
