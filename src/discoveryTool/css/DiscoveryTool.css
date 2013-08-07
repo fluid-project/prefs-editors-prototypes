@@ -78,7 +78,7 @@ details summary:before {
     border: none;
     box-shadow: none;  
     text-transform: lowercase;  
-    color: #C8CCCE;
+    color: #ffffff;
     display: block;
     font-size: 1.4em;
     position:relative;
@@ -90,7 +90,8 @@ details summary:before {
 
 /* Preference set hover */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel label .fl-discoveryTool-panel-icon:hover { box-shadow: 3px 3px 1px #4f4f4f;}
-.fl-uiOptions-discoveryTool .fl-uiOptions-panel label:hover {color: #fff; }
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel label:hover .fl-icon-text,
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel input:focus ~ label .fl-icon-text { text-shadow: 2px 2px #4f4f4f; }
 
 /* Preference set enabled / checked. */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:checked + label .fl-discoveryTool-panel-icon {
@@ -101,12 +102,6 @@ details summary:before {
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:focus + label .fl-discoveryTool-panel-icon {
 	border: 3px solid #ffcc00;
 }
-
-/* Preference set focused - text label*/
-.fl-uiOptions-discoveryTool .fl-uiOptions-panel input:focus ~ label {
-	color: #fff;
-}
-
 
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel .fl-icon-check {
     visibility: hidden;
@@ -291,3 +286,8 @@ details summary:before {
     outline: none;
     border: 0.2em solid #00AAFF;
 }
+
+.fl-theme-bw .fl-uiOptions-panel label:hover .fl-icon-text,
+.fl-theme-bw .fl-uiOptions-panel input:focus ~ label .fl-icon-text,
+.fl-theme-lgdg .fl-uiOptions-panel label:hover .fl-icon-text,
+.fl-theme-lgdg .fl-uiOptions-panel input:focus ~ label .fl-icon-text  { text-shadow: none; }
