@@ -60,7 +60,7 @@
                 "panel": {
                     "type": "speakText.panel",
                     "container": ".gpii-speak-text-group", // container for the speakText panel, holding all speakText adjusters
-                    "template": "../../src/shared/adjusters/html/speakText.html", // same as above
+                    "template": "../../src/shared/adjusters/html/speakTextTemplate.html", // same as above
                     "message": "" //"%prefix/screenReaderTTSEnabled.json"
                 }
             },
@@ -133,10 +133,12 @@
                 "model.speechRate": "default"
             },
             "auditoryOutLanguage": {
-                "model.auditoryOutLanguage": "default"
+                "model.auditoryOutLanguage": "default",
+                "controlValues.auditoryOutLanguage": "enum"
             },
             "punctuationVerbosity": {
-                "model.punctuationVerbosity": "default"
+                "model.punctuationVerbosity": "default",
+                "controlValues.punctuationVerbosity": "enum"
             },
             "announceCapitals": {
                 "model.announceCapitals": "default"
@@ -170,8 +172,14 @@
         protoTree: {
             screenReaderTTSEnabled: "${screenReaderTTSEnabled}",
             speechRate: "${speechRate}",
-            auditoryOutLanguage: "${auditoryOutLanguage}",
-            punctuationVerbosity: "${punctuationVerbosity}",
+            auditoryOutLanguage: {
+                selection: "${auditoryOutLanguage}",
+                optionlist: "{that}.options.controlValues.auditoryOutLanguage"
+            },
+            punctuationVerbosity: {
+                selection: "${punctuationVerbosity}",
+                optionlist: "{that}.options.controlValues.punctuationVerbosity"
+            },
             announceCapitals: "${announceCapitals}",
             speakTutorialMessages: "${speakTutorialMessages}",
             keyEcho: "${keyEcho}",
