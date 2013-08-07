@@ -53,7 +53,6 @@
             "templatePrefix": "../../src/shared/lib/infusion/components/uiOptions/html/",
             "messagePrefix": "",
             "template": "./speakTextFrame.html", //main template for all three groups (speakText, incSize, highContrast)
-            "message": "", // same as above
 
             "screenReaderTTSEnabled": {
                 "type": "screenReaderTTSEnabled",
@@ -61,7 +60,7 @@
                     "type": "speakText.panel",
                     "container": ".gpii-speak-text-group", // container for the speakText panel, holding all speakText adjusters
                     "template": "../../src/shared/adjusters/html/speakTextTemplate.html", // same as above
-                    "message": "" //"%prefix/screenReaderTTSEnabled.json"
+                    "message": "../../src/shared/adjusters/messages/speakText.json"
                 }
             },
 
@@ -166,7 +165,17 @@
             speakTutorialMessages: ".gpii-speakTutorialMessages",
             keyEcho: ".gpii-keyEcho",
             wordEcho: ".gpii-wordEcho",
-            screenReaderBrailleOutput: ".gpii-screenReaderBrailleOutput"
+            screenReaderBrailleOutput: ".gpii-screenReaderBrailleOutput",
+
+            screenReaderTTSEnabledLabel: ".gpii-screenReaderTTSEnabled-label",
+            speechRateLabel: ".gpii-speechRate-label",
+            auditoryOutLanguageLabel: ".gpii-auditoryOutLanguage-label",
+            punctuationVerbosityLabel: ".gpii-punctuationVerbosity-label",
+            announceCapitalsLabel: ".gpii-announceCapitals-label",
+            speakTutorialMessagesLabel: ".gpii-speakTutorialMessages-label",
+            keyEchoLabel: ".gpii-keyEcho-label",
+            wordEchoLabel: ".gpii-wordEcho-label",
+            screenReaderBrailleOutputLabel: ".gpii-screenReaderBrailleOutput-label"
         },
 
         protoTree: {
@@ -184,7 +193,17 @@
             speakTutorialMessages: "${speakTutorialMessages}",
             keyEcho: "${keyEcho}",
             wordEcho: "${wordEcho}",
-            screenReaderBrailleOutput: "${screenReaderBrailleOutput}"
+            screenReaderBrailleOutput: "${screenReaderBrailleOutput}",
+
+            screenReaderTTSEnabledLabel: {messagekey: "screenReaderTTSEnabledLabel"},
+            speechRateLabel: {messagekey: "speechRateLabel"},
+            auditoryOutLanguageLabel: {messagekey: "auditoryOutLanguageLabel"},
+            punctuationVerbosityLabel: {messagekey: "punctuationVerbosityLabel"},
+            announceCapitalsLabel: {messagekey: "announceCapitalsLabel"},
+            speakTutorialMessagesLabel: {messagekey: "speakTutorialMessagesLabel"},
+            keyEchoLabel: {messagekey: "keyEchoLabel"},
+            wordEchoLabel: {messagekey: "wordEchoLabel"},
+            screenReaderBrailleOutputLabel: {messagekey: "screenReaderBrailleOutputLabel"}
         }
     });
 

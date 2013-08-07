@@ -1,0 +1,11 @@
+{
+    "screenReaderTTSEnabledLabel": "Speak text",
+    "speechRateLabel": "Speech rate",
+    "auditoryOutLanguageLabel": "Language",
+    "punctuationVerbosityLabel": "Punctuation verbosity",
+    "announceCapitalsLabel": "Announce uppercase letters",
+    "speakTutorialMessagesLabel": "Provide instructions on how to interact with a focused element",
+    "keyEchoLabel": "Echo letter after typed",
+    "wordEchoLabel": "Echo word after typed",
+    "screenReaderBrailleOutputLabel": "Braille"
+}
