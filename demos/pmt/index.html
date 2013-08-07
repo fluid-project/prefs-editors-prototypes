@@ -8,22 +8,25 @@
     <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/framework/fss/css/fss-layout.css" />
     <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/framework/fss/css/fss-text.css" />
     <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/components/uiOptions/css/fss/fss-theme-bw-uio.css" />
-    <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/components/uiOptions/css/fss/fss-theme-wb-uio.css" />    
+    <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/components/uiOptions/css/fss/fss-theme-wb-uio.css" />
     <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/components/uiOptions/css/fss/fss-theme-lgdg-uio.css" />
-    <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/components/uiOptions/css/fss/fss-theme-dglg-uio.css" />    
+    <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/components/uiOptions/css/fss/fss-theme-dglg-uio.css" />
 
     <link rel="stylesheet" type="text/css" href="demo.css" />
 
     <script type="text/javascript" src="../../src/shared/lib/infusion/MyInfusion.js"></script>
     <script type="text/javascript" src="../../src/pmt/js/PreferencesManagementTool.js"></script>
-    
+
 <script type="text/javascript">
     $(document).ready(function () {
     	//fluid.uiOptions.constructed.uio(".flc-uiOpions-fatPanel");
 
-    	var uioBuilder = fluid.videoPlayer.myBuilder();
-    	fluid.invokeGlobalFunction(uioBuilder.options.assembledUIOGrade, ["#myUIOptions"]);
-    	
+        var uioBuilder = fluid.uiOptions.builder({
+            primarySchema: fluid.uiOptions.pmt.primarySchema,
+            auxiliarySchema: fluid.uiOptions.pmt.auxiliarySchema
+        });
+        fluid.invokeGlobalFunction(uioBuilder.options.assembledUIOGrade, ["#myUIOptions"]);
+
     	//fluid.uiOptions.constructed.uie();
     })
 </script>
@@ -33,14 +36,14 @@
 
 	<!-- This div should be placed where the Table of Contents is to be displayed -->
     <div class="flc-toc-tocContainer"> </div>
- 
+
     <h1>Customize Your Presentation Settings</h1>
- 
+
     <!-- This is the div that will contain the UI Options component -->
     <div id="myUIOptions">
     	<div class="flc-uiOptions-iframe">
-    	</div> 
+        </div>
     </div>
-    
+
 </body>
 </html>
