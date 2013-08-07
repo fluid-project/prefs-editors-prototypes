@@ -92,11 +92,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     });
 
     gpii.discoveryTool.addDiscoveryIcon = function (toggleButton) {
-        toggleButton.after("<span class=\"fl-icon-discover\" role=\"presentation\" aria-label=\"Discover\"></span>")
+        toggleButton.after("<label class=\"fl-icon-discover\" role=\"presentation\" aria-label=\"Discover\"></label>")
     };
 
     gpii.discoveryTool.removeDiscoveryIcon = function (toggleButton) {
-        toggleButton.next("span").remove();
+        toggleButton.next("label").remove();
     };
 
     fluid.defaults("gpii.discoveryTool.defaultPanel", {
