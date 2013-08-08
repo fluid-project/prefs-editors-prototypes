@@ -20,7 +20,7 @@ var demo = demo || {};
 
     fluid.staticEnvironment["gpii--discoveryTool--demo"] = fluid.typeTag("gpii.discoveryTool.demo");
 
-    var pathToTemplates = "../../src/shared/lib/infusion/components/uiOptions/html/";
+    var pathToTemplates = "../../src/discoveryTool/html/";
     var pathToTocTemplate = "../../src/shared/lib/infusion/components/tableOfContents/html/TableOfContents.html";
 
     demo.initSettingsStore = function () {
@@ -50,7 +50,7 @@ var demo = demo || {};
 
     demo.initFatPanel = function (container) {
         gpii.discoveryTool(container, {
-            prefix: pathToTemplates,
+            templatePrefix: pathToTemplates,
             templateLoader: {
                 options: {
                     gradeNames: ["gpii.discoveryTool.templateLoader"]

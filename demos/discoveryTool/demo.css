@@ -400,12 +400,14 @@ div[role="img"] {
     background: none;
 }
 
-.fl-theme-bw .fl-panelBar {
-	background-color: #000 !important;
+.fl-theme-bw .fl-panelBar button,
+.fl-theme-lgdg .fl-panelBar button {
+	border: none;
 }
-.fl-theme-bw .fl-panelBar button {
-	color: #fff !important;
-	background-color: #000 !important;
+
+/* Add padding to bottom of simplified content so it's not obscured by the DT panel bar */
+.fl-uiOptions-content-simplified {
+    padding-bottom: 4em;
 }
 
 .fl-theme-bw .fl-icon-atom:before,
