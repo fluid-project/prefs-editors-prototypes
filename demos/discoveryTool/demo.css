@@ -286,12 +286,8 @@ article h2 {
 }
 .fl-icon-atom:before {
 	content: "\e002";
-	font-size: 4em;
+	font-size: 6em;
 	float: left;
-	border: 0.1em solid #ddd;
-	border-radius: 1em;
-	width: 1.5em;
-	height: 1.5em;	
 	text-align: center;
 	margin-bottom: 0.15em;
 }
