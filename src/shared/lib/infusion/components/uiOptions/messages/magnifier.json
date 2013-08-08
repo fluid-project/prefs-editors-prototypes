@@ -4,11 +4,11 @@
     "magnifierMAX": "maximum",
     "multiplier": "times",
     "magnifierPositionLabel": "Position",
-    "magnifierPosition.default": "default",
-    "magnifierPosition.lens": "lens",
-    "magnifierPosition.fullscreen": "fullscreen",
-    "magnifierPosition.dockedtop": "dockedtop",
-    "magnifierPosition.dockedbottom": "dockedbottom",
-    "magnifierPosition.dockedleft": "dockedleft",
-    "magnifierPosition.dockedright": "dockedright"
+    "magnifierPosition.default": "Default",
+    "magnifierPosition.lens": "Lens",
+    "magnifierPosition.fullscreen": "Full-screen",
+    "magnifierPosition.dockedtop": "Docked top",
+    "magnifierPosition.dockedbottom": "Docked bottom",
+    "magnifierPosition.dockedleft": "Docked left",
+    "magnifierPosition.dockedright": "Docked right"
 }
