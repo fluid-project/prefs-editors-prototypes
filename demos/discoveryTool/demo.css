@@ -123,12 +123,11 @@ a:focus {
     border-width: 1px;
     border-radius: 3px
     box-shadow: 0 1px 0 0 #D4D4D4, 0 1px 0 0 #FFFFFF inset;
-    height: 1.65em;
-    width: 1.65em;  
     display: block;  
     float: left;
     text-align: center;
     margin-top: 2px;
+    padding: 0.3em 0.7em;
 }
 
 .main-content header #prevNext a {
@@ -200,7 +199,7 @@ a:focus {
 .main-content #article-filter {
     float: left;
     padding-right: 7em;
-    height: 5em;
+    height: 6em;
     border-right: 1px dotted #56544D;
 }
 .main-content .article-tab {
@@ -209,8 +208,7 @@ a:focus {
     font-size: 0.8em;
     text-align: center;
     border-right: 1px dotted #56544D;
-    margin-bottom: 0.5em;
-    height: 5em;    
+    height: 6.5em;    
     width: 6.5em;
 }
 .main-content .article-tab span {
@@ -277,6 +275,7 @@ article h2 {
 	content: "\e001";
 	font-size: 2em;
 	color: limegreen;
+	text-shadow: 1px 1px 2px #000;
 }
 .fl-icon-tree:after {
 	content: "\e000";
@@ -304,7 +303,7 @@ article h2 {
 }
 .fl-icon-next:before {
 	content: "\a001";
-    font-size: 0.9em;	
+    font-size: 0.9em;
 }
 .fl-icon-thumbsUp:before {
 	content: "\a002";
