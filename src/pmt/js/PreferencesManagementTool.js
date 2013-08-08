@@ -2,13 +2,13 @@
 	fluid.registerNamespace("fluid.uiOptions.pmt");
 
 	fluid.uiOptions.pmt.primarySchema = {
-	    "fluid.uiOptions.lineSpace": {
+	    /*"fluid.uiOptions.lineSpace": {
 	        "type": "number",
 	        "default": 1,
 	        "minimum": 1,
 	        "maximum": 5,
 	        "divisibleBy": 0.5
-	    },
+	    },*/
 	    "fluid.uiOptions.textSize": {
 	        "type": "number",
 	        "default": 1,
@@ -34,12 +34,12 @@
 	        "type": "string",
 	        "default": "",
 	        "enum": ["default", "lens", "fullscreen", "dockedtop", "dockedbottom", "dockedleft", "dockedright"]
-	    },
+	    }/*,
 	    "fluid.uiOptions.textFont": {
 	        "type": "string",
 	        "default": "",
 	        "enum": ["default", "times", "comic", "arial", "verdana"]
-	    }
+	    }*/
 	};
 	
 	fluid.defaults("fluid.uiOptions.panels.cursorSize", {
@@ -251,7 +251,7 @@
 	                "message": "%prefix/magnifier.json"
 	            }
 	        },
-	        "lineSpace": {
+	        /*"lineSpace": {
 	            "type": "fluid.uiOptions.lineSpace",
 	            "enactor": {
 	                "type": "fluid.uiOptions.enactors.lineSpace",
@@ -292,6 +292,6 @@
                     "template": "%prefix/UIOptionsTemplate-textFont.html",
                     "message": "%prefix/textFont.json"
                 }
-            }
+            }*/
 	    };
 })(jQuery, fluid);
