@@ -29,6 +29,16 @@
 	        "minimum": 1,
 	        "maximum": 10,
 	        "divisibleBy": 1
+	    },
+	    "fluid.uiOptions.magnifierPosition": {
+	        "type": "string",
+	        "default": "default",
+	        "enum": ["default", "lens", "fullscreen", "dockedtop", "dockedbottom", "dockedleft", "dockedright"]
+	    },
+	    "fluid.uiOptions.textFont": {
+	        "type": "string",
+	        "default": "",
+	        "enum": ["default", "times", "comic", "arial", "verdana"]
 	    }
 	};
 	
@@ -105,7 +115,49 @@
 			range: "min"
 		}
 	});
-		
+	
+	fluid.defaults("fluid.uiOptions.panels.magnifierPosition", {
+        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        preferenceMap: {
+            "fluid.uiOptions.magnifierPosition": {
+                "model.value": "default",
+                "controlValues.magnifierPosition": "enum"
+            }
+        },
+        selectors: {
+        	magnifierPosition: ".flc-uiOptions-magnifier-position",
+            label: ".flc-uiOptions-magnifier-position-label"
+        },
+        strings: {
+        	magnifierPosition: {
+                expander: {
+                    func: "fluid.uiOptions.panels.magnifierPosition.lookupMsg",
+                    args: ["{that}.options.parentBundle", "magnifierPosition", "{that}.options.controlValues.magnifierPosition"]
+                }
+            }
+        },
+        protoTree: {
+            label: {messagekey: "magnifierPositionLabel"},
+            magnifierPosition: {
+                optionnames: "{that}.options.strings.magnifierPosition",
+                optionlist: "{that}.options.controlValues.magnifierPosition",
+                selection: "${value}"
+            }
+        },
+        controlValues: {
+        	magnifierPosition: ["default", "lens", "fullscreen", "dockedtop", "dockedbottom", "dockedleft", "dockedright"]
+        }
+    });
+	
+	fluid.uiOptions.panels.magnifierPosition.lookupMsg = function (messageResolver, prefix, values) {
+        var messages = [];
+        fluid.each(values, function (value, key) {
+            var looked = messageResolver.lookup([prefix + "." + value]);
+            messages.push(looked ? looked.template : looked);
+        });
+        return messages;
+    };
+    
 	fluid.uiOptions.pmt.auxiliarySchema = {
 	        // The global values:
 	        "namespace": "fluid.uiOptions.constructed",
@@ -178,6 +230,27 @@
 	                "message": "%prefix/magnifier.json"
 	            }
 	        },
+	        "magnifierPosition": {
+	            "type": "fluid.uiOptions.magnifierPosition",
+	            /*"enactor": {
+	                "type": "fluid.uiOptions.enactors.textSize",
+	                "fontSizeMap": {
+	                    "xx-small": "9px",
+	                    "x-small": "11px",
+	                    "small": "13px",
+	                    "medium": "15px",
+	                    "large": "18px",
+	                    "x-large": "23px",
+	                    "xx-large": "30px"
+	                }
+	            },*/
+	            "panel": {
+	                "type": "fluid.uiOptions.panels.magnifierPosition",
+	                "container": ".flc-uiOptions-magnifier-position",  // the css selector in the template where the panel is rendered
+	                "template": "%prefix/UIOptionsTemplate-magnifierPosition.html",
+	                "message": "%prefix/magnifier.json"
+	            }
+	        },
 	        "lineSpace": {
 	            "type": "fluid.uiOptions.lineSpace",
 	            "enactor": {
@@ -198,6 +271,27 @@
 	                "template": "%prefix/UIOptionsTemplate-lineSpace.html",
 	                "message": "%prefix/lineSpace.json"
 	            }
-	        }
+	        },
+	        "textFont": {
+                "type": "fluid.uiOptions.textFont",
+                "classes": {
+                    "default": "",
+                    "times": "fl-font-uio-times",
+                    "comic": "fl-font-uio-comic-sans",
+                    "arial": "fl-font-uio-arial",
+                    "verdana": "fl-font-uio-verdana"
+                },
+                "enactor": {
+                    "type": "fluid.uiOptions.enactors.textFont",
+                    "classes": "@textFont.classes"
+                },
+                "panel": {
+                    "type": "fluid.uiOptions.panels.textFont",
+                    "container": ".flc-uiOptions-text-font",  // the css selector in the template where the panel is rendered
+                    "classnameMap": {"textFont": "@textFont.classes"},
+                    "template": "%prefix/UIOptionsTemplate-textFont.html",
+                    "message": "%prefix/textFont.json"
+                }
+            }
 	    };
 })(jQuery, fluid);

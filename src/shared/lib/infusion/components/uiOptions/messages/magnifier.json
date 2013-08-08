@@ -2,5 +2,13 @@
     "magnifierLabel": "Magnifier",
     "magnifierOFF": "OFF",
     "magnifierMAX": "maximum",
-    "multiplier": "times"
+    "multiplier": "times",
+    "magnifierPositionLabel": "Position",
+    "magnifierPosition.default": "default",
+    "magnifierPosition.lens": "lens",
+    "magnifierPosition.fullscreen": "fullscreen",
+    "magnifierPosition.dockedtop": "dockedtop",
+    "magnifierPosition.dockedbottom": "dockedbottom",
+    "magnifierPosition.dockedleft": "dockedleft",
+    "magnifierPosition.dockedright": "dockedright"
 }
