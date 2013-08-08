@@ -527,6 +527,12 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         events: {
             settingChanged: null
         },
+        listeners: {
+            onCreate: {
+                listener: "{that}.set",
+                args: ["{that}.model.value"]
+            }
+        },
         invokers: {
             scanDocForImages: {
                 funcName: "gpii.discoveryTool.enactors.showMoreText.scanDocForImages",
