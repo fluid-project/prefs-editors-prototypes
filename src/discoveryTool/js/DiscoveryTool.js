@@ -62,7 +62,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 links: false,
                 inputsLarger: false,
                 simplifyContent: false,
-                showAltText: false,
+                showMoreText: false,
                 selfVoicing: false
             }
         }
@@ -105,7 +105,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 links: false,
                 inputsLarger: false,
                 simplifyContent: false,
-                showAltText: false,
+                showMoreText: false,
                 selfVoicing: false
             }
         },
@@ -133,7 +133,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 simplifyContent: true
             },
             moreText: {
-                showAltText: true
+                showMoreText: true
             },
             spoken: {
                 selfVoicing: true
@@ -310,7 +310,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                         "links": "convertedModel.links",
                         "inputsLarger": "convertedModel.inputsLarger",
                         "simplifyContent": "convertedModel.simplifyContent",
-                        "showAltText": "convertedModel.showAltText",
+                        "showMoreText": "convertedModel.showMoreText",
                         "selfVoicing": "convertedModel.selfVoicing"
                     }
                 }
@@ -506,11 +506,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     });
 
     /**********************************************************************************
-     * showAltText enactor
+     * showMoreText enactor
      **********************************************************************************/
 
     // Note that the implementors need to provide the container for this view component
-    fluid.defaults("gpii.discoveryTool.enactors.showAltText", {
+    fluid.defaults("gpii.discoveryTool.enactors.showMoreText", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
         selectors: {
             content: ".flc-uiOptions-content",
@@ -528,50 +528,64 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             settingChanged: null
         },
         invokers: {
-            set: {
-                funcName: "gpii.discoveryTool.enactors.showAltText.set",
-                args: ["{arguments}.0", "{that}"]
+            scanDocForImages: {
+                funcName: "gpii.discoveryTool.enactors.showMoreText.scanDocForImages",
+                args: ["{that}"]
             },
+            getMoreText: "gpii.discoveryTool.enactors.showMoreText.getAltText",
             buildMoreTextMarkup: {
-                funcName: "gpii.discoveryTool.enactors.showAltText.buildMoreTextMarkup",
+                funcName: "gpii.discoveryTool.enactors.showMoreText.buildMoreTextMarkup",
                 args: ["{that}", "{arguments}.0"]
+            },
+            set: {
+                funcName: "gpii.discoveryTool.enactors.showMoreText.set",
+                args: ["{arguments}.0", "{that}"]
             }
         },
         members: {
             docScannedForImages: false
-        }//,
-        //altTextDivTemplate: "<div class='flc-discoveryTool-altText'></div>"
+        }
     });
 
-    gpii.discoveryTool.enactors.showAltText.buildMoreTextMarkup = function (that, text) {
+    gpii.discoveryTool.enactors.showMoreText.scanDocForImages = function (that) {
+        var imgs = that.locate("images");
+        fluid.each(imgs, function (img, index) {
+            var img = $(img);
+            var alt = that.getMoreText(img);
+            if (alt) {
+                var details = that.buildMoreTextMarkup(alt);
+                img.after(details);
+            }
+        });
+        that.docScannedForImages = true;
+    };
+
+    gpii.discoveryTool.enactors.showMoreText.getAltText = function (img) {
+        var alt = img.attr("alt");
+        if (!alt) {
+            // some images are actually <div role="image">s with background images
+            alt = img.attr("aria-label");
+        }
+        return alt;
+    };
+
+    gpii.discoveryTool.enactors.showMoreText.buildMoreTextMarkup = function (that, text) {
         var container = $("<div class='flc-discoveryTool-moreText-details fl-fix'><details><summary></summary></details></div>");
         container.addClass(that.options.styles.moreText);
         $("details", container).append(text);
         return container;
     };
 
-    gpii.discoveryTool.enactors.showAltText.finalInit = function (that) {
+    gpii.discoveryTool.enactors.showMoreText.finalInit = function (that) {
         that.applier.modelChanged.addListener("value", function (newModel, oldModel) {
             if (newModel.value !== oldModel.value) {
                 that.set(newModel.value);
             }
         });
     };
-    gpii.discoveryTool.enactors.showAltText.set = function (value, that) {
+    gpii.discoveryTool.enactors.showMoreText.set = function (value, that) {
         if (!that.docScannedForImages) {
-            var imgs = that.locate("images");
-            fluid.each(imgs, function (img, index) {
-                var img = $(img);
-                var alt = img.attr("alt");
-                if (!alt) {
-                    alt = img.attr("aria-label");
-                }
-
-                var details = that.buildMoreTextMarkup(alt);
-                img.after(details);
-
-            });
-            that.docScannedForImages = true;
+            that.scanDocForImages();
         }
         that.dom.fastLocate("moreTexts").toggleClass(that.options.styles.hidden, !value)
     };
@@ -610,15 +624,15 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 }
             },
             moreText: {
-                type: "gpii.discoveryTool.enactors.showAltText",
+                type: "gpii.discoveryTool.enactors.showMoreText",
                 container: "{uiEnhancer}.container",
                 options: {
                     sourceApplier: "{uiEnhancer}.applier",
                     rules: {
-                        "showAltText": "value"
+                        "showMoreText": "value"
                     },
                     model: {
-                        value: "{fluid.uiOptions.rootModel}.rootModel.showAltText"
+                        value: "{fluid.uiOptions.rootModel}.rootModel.showMoreText"
                     }
                 }
             },
