@@ -1,7 +1,7 @@
 var demo = demo || {};
 (function ($, fluid) {
 
-    demo.initWithSchema = function (container, compOpts, uioType, template) {
+    demo.initWithSchema = function (container, compOpts, uioType) {
     	var uioBuilder = fluid.uiOptions.builder({
             primarySchema: fluid.uiOptions.pmt.primarySchema,
             auxiliarySchema: fluid.uiOptions.pmt.auxiliarySchema
@@ -18,11 +18,11 @@ var demo = demo || {};
     };
 
     demo.initFullWithPreview = function (container, options) {
-        return demo.initWithSchema(container, options, "fluid.uiOptions.fullPreview", "%prefix/FullPreviewUIOptions.html");
+        return demo.initWithSchema(container, options, "fluid.uiOptions.fullPreview");
     };
 
     demo.initFullNoPreview = function (container, options) {
-        return demo.initWithSchema(container, options, "fluid.uiOptions.fullNoPreview", "%prefix/FullNoPreviewUIOptions.html");
+        return demo.initWithSchema(container, options, "fluid.uiOptions.fullNoPreview");
     };
 
 })(jQuery, fluid);

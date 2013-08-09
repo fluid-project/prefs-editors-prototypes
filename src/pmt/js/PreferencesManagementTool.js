@@ -161,8 +161,8 @@
 	fluid.uiOptions.pmt.auxiliarySchema = {
 	        // The global values:
 	        "namespace": "fluid.uiOptions.constructed",
-	        "templatePrefix": "../../src/pmt/html/", // The common path to settings panel templates
-	        "template": "%prefix/FullPreviewUIOptions.html",
+	        "templatePrefix": "../../src/shared/lib/infusion/components/uiOptions/html/", // The common path to settings panel templates
+	        "template": "../../src/pmt/html/PMTUIOptions.html",
 	        "messagePrefix": "../../src/shared/lib/infusion/components/uiOptions/messages/",
 	        "message": "%prefix/uiOptions.json",
 
