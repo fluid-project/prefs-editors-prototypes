@@ -76,24 +76,18 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         },
         slidingPanel: {
             options: {
-                discoverIcon: {
-                    expander: {
-                        func: "{discoveryTool}.locate", 
-                        args: "discoverIcon"
-                    }
-                },
                 listeners: {
                     onCreate: {
                         listener: "gpii.discoveryTool.showDiscoveryIcon",
-                        args: "{that}.options.discoverIcon"
+                        args: "{discoveryTool}.dom.discoverIcon"
                     },
                     onPanelHide: {
                         listener: "gpii.discoveryTool.showDiscoveryIcon",
-                        args: "{that}.options.discoverIcon"
+                        args: "{discoveryTool}.dom.discoverIcon"
                     },
                     onPanelShow: {
                         listener: "gpii.discoveryTool.hideDiscoveryIcon",
-                        args: "{that}.options.discoverIcon"
+                        args: "{discoveryTool}.dom.discoverIcon"
                     }
                 }
             }
