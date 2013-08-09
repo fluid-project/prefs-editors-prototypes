@@ -391,7 +391,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     fluid.defaults("gpii.discoveryTool.enactors.simplifiedContent", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
         selectors: {
-            content: ".flc-uiOptions-content"
+            elementsToHide: "header, footer, aside, nav, .flc-uiOptions-simplify-hide"
         },
         styles: {
             simplified: "fl-uiOptions-content-simplified"
@@ -417,35 +417,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     });
 
     gpii.discoveryTool.enactors.simplifiedContent.set = function (value, that) {
-        var contentContainer = that.container.find(that.options.selectors.content);
-        var simplified = contentContainer.hasClass(that.options.styles.simplified);
-
-        if (!that.initialContent || !that.article) {
-            that.initialContent = contentContainer.html();
-            var articleDom = contentContainer.find("article").clone();
-            $("aside", articleDom).remove();
-            $("img", articleDom).css("float", "none");
-            $("figure", articleDom).css("float", "none");
-            var article = articleDom.html();
-            that.article = article ? article : that.initialContent;
-            that.origBg = $("body").css("background-image");
-        }
-
-        if (value) {
-            if (!simplified) {
-                $("body").css("background-image", "none");
-                contentContainer.html(that.article);
-                contentContainer.addClass(that.options.styles.simplified);
-                that.events.settingChanged.fire();
-            }
-        } else {
-            if (simplified) {
-                $("body").css("background-image", that.origBg);
-                contentContainer.html(that.initialContent);
-                contentContainer.removeClass(that.options.styles.simplified);
-                that.events.settingChanged.fire();
-            }
-        }
+        that.locate("elementsToHide").toggle(!value);
     };
 
     gpii.discoveryTool.enactors.simplifiedContent.finalInit = function (that) {
