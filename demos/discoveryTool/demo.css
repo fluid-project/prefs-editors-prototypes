@@ -6,6 +6,12 @@
          url('fonts/Demo-CK12.ttf');
 }
 
+@font-face {
+	font-family: 'DemoLogos';
+    src: url('fonts/Demo-Content-Logos.eot'), 
+         url('fonts/Demo-Content-Logos.ttf');	
+}
+
 body {
     background-color: #F9F9F5;
     color: #5C5C5C;
@@ -37,7 +43,7 @@ a:focus {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 0.5em;
+    padding: 0.25em;
 }
 
 #main-header #main-header-content {
@@ -48,6 +54,7 @@ a:focus {
     float:right;    
     text-align: right;
     margin-right: 2em;
+    margin-top: 0.5em;
     width: 50%;
 }
 
@@ -116,12 +123,11 @@ a:focus {
     border-width: 1px;
     border-radius: 3px
     box-shadow: 0 1px 0 0 #D4D4D4, 0 1px 0 0 #FFFFFF inset;
-    height: 1.65em;
-    width: 1.65em;  
     display: block;  
     float: left;
     text-align: center;
     margin-top: 2px;
+    padding: 0.3em 0.7em;
 }
 
 .main-content header #prevNext a {
@@ -193,7 +199,7 @@ a:focus {
 .main-content #article-filter {
     float: left;
     padding-right: 7em;
-    height: 5em;
+    height: 6em;
     border-right: 1px dotted #56544D;
 }
 .main-content .article-tab {
@@ -202,8 +208,7 @@ a:focus {
     font-size: 0.8em;
     text-align: center;
     border-right: 1px dotted #56544D;
-    margin-bottom: 0.5em;
-    height: 5em;    
+    height: 6.5em;    
     width: 6.5em;
 }
 .main-content .article-tab span {
@@ -253,7 +258,38 @@ article h2 {
     border: none;
 }
 
+.fl-header-title {
+	font-size: 1.2em;
+    font-weight: bold;
+    position: relative;
+    top: -0.25em;    
+    color: green;
+}
+
 /* Font Icons */
+
+.fl-icon-tree, .fl-icon-atom {
+    font-family: 'DemoLogos';    
+}
+.fl-icon-tree:before {
+	content: "\e001";
+	font-size: 2em;
+	color: limegreen;
+	text-shadow: 1px 1px 2px #000;
+}
+.fl-icon-tree:after {
+	content: "\e000";
+	font-size: 2em;
+	margin-left: -1.5em;	
+	color: SaddleBrown;
+}
+.fl-icon-atom:before {
+	content: "\e002";
+	font-size: 6em;
+	float: left;
+	text-align: center;
+	margin-bottom: 0.15em;
+}
 
 .fl-icon-search, .fl-icon-prev, .fl-icon-next, .fl-icon-thumbsUp, .fl-icon-thumbsDown, .fl-icon-arrow, .fl-icon-light, .fl-icon-book {
     font-family: 'DemoIcons';    
@@ -267,7 +303,7 @@ article h2 {
 }
 .fl-icon-next:before {
 	content: "\a001";
-    font-size: 0.9em;	
+    font-size: 0.9em;
 }
 .fl-icon-thumbsUp:before {
 	content: "\a002";
@@ -287,6 +323,59 @@ article h2 {
 .fl-icon-book:before {
 	content: "\e008";
 }
+
+/* Images */
+details {
+    padding-bottom: 1em;
+    display: block;
+    display: none;
+}
+
+div[role="img"] {
+    background-repeat: no-repeat;
+    background-size: contain; 
+    margin-bottom: 1em;
+}
+
+#storm { 
+    background-image:url('images/storm.png'); 
+    height: 20em;    
+}
+.fl-theme-bw #storm { background-image:url('images/storm_bw.png'); }
+.fl-theme-lgdg #storm { background-image:url('images/storm_lgdg.png'); }
+
+#structure { 
+    background-image:url('images/atomic_structure.svg'); 
+    height: 25em;  
+}
+.fl-theme-bw #structure { background-image:url('images/atomic_structure_bw.svg'); }
+.fl-theme-lgdg #structure { background-image:url('images/atomic_structure_lgdg.svg'); }
+
+#sorbital { 
+    background-image:url('images/sorbital.png'); 
+    width: 15em;
+    height: 15em;
+    margin-right: 1em;
+}
+.fl-theme-bw #sorbital { background-image:url('images/sorbital_bw.png'); }
+.fl-theme-lgdg #sorbital { background-image:url('images/sorbital_lgdg.png'); }
+
+#porbital { 
+    background-image:url('images/porbital.png'); 
+    width: 19.7em;
+    height: 15em;    
+}
+.fl-theme-bw #porbital { background-image:url('images/porbital_bw.png'); }
+.fl-theme-lgdg #porbital { background-image:url('images/porbital_lgdg.png'); }
+
+#energylevels { 
+    background-image:url('images/energy_levels.svg'); 
+    width: 19.7em;
+    height: 15em;    
+}
+.fl-theme-bw #energylevels { background-image:url('images/energy_levels_bw.svg'); }
+.fl-theme-lgdg #energylevels { background-image:url('images/energy_levels_lgdg.svg'); }
+
 
 /* Theming */
 
@@ -309,10 +398,26 @@ article h2 {
     background: none;
 }
 
-.fl-theme-bw .fl-panelBar {
-	background-color: #000 !important;
+.fl-theme-bw .fl-panelBar button,
+.fl-theme-lgdg .fl-panelBar button {
+	border: none;
 }
-.fl-theme-bw .fl-panelBar button {
-	color: #fff !important;
-	background-color: #000 !important;
+
+/* Add padding to bottom of simplified content so it's not obscured by the DT panel bar */
+.fl-uiOptions-content-simplified {
+    padding-bottom: 4em;
+}
+
+.fl-theme-bw .fl-icon-atom:before,
+.fl-theme-bw .fl-icon-tree:after,
+.fl-theme-bw .fl-icon-tree:before {
+    border-color: #000;
+    color: #000;
+}
+
+.fl-theme-lgdg .fl-icon-atom:before,
+.fl-theme-lgdg .fl-icon-tree:after,
+.fl-theme-lgdg .fl-icon-tree:before {
+    border-color: #BDBDBB;
+    color: #BDBDBB;
 }

@@ -36,6 +36,7 @@
 
 .fl-uiOptions-discoveryTool .fl-uiOptions {
     font-family: 'OpenSans',"Myriad Pro", Helvetica, Arial, sans-serif;
+    padding-top: 2em;
 }
 
 /* Panels */
@@ -59,7 +60,7 @@
     border: none;
     box-shadow: none;  
     text-transform: lowercase;  
-    color: #C8CCCE;
+    color: #ffffff;
     display: block;
     font-size: 1.4em;
     position:relative;
@@ -71,7 +72,8 @@
 
 /* Preference set hover */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel label .fl-discoveryTool-panel-icon:hover { box-shadow: 3px 3px 1px #4f4f4f;}
-.fl-uiOptions-discoveryTool .fl-uiOptions-panel label:hover {color: #fff; }
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel label:hover .fl-icon-text,
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel input:focus ~ label .fl-icon-text { text-shadow: 2px 2px #4f4f4f; }
 
 /* Preference set enabled / checked. */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:checked + label .fl-discoveryTool-panel-icon {
@@ -82,12 +84,6 @@
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:focus + label .fl-discoveryTool-panel-icon {
 	border: 3px solid #ffcc00;
 }
-
-/* Preference set focused - text label*/
-.fl-uiOptions-discoveryTool .fl-uiOptions-panel input:focus ~ label {
-	color: #fff;
-}
-
 
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel .fl-icon-check {
     visibility: hidden;
@@ -181,9 +177,6 @@
 .fl-discoveryTool-panel-icon:before{
 	position:relative;
 	left: 0.1em;
-}
-
-.fl-discoveryTool-panel-icon:before {
 	color: #fff;
 }
 
@@ -239,77 +232,35 @@
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:checked:focus + label span.fl-discoveryTool-icon-speak:after, /* applied when focused and checked*/
 .fl-discoveryTool-icon-speak:hover:after  {content: "\e00d";}
 
-/* High Contrast Theme */
+/* Theming for high and low contrast */
 
-.fl-theme-uio-bw, .fl-theme-uio-bw *, .fl-preview-theme.fl-theme-uio-bw {
-	background-color: #000 !important;  /* !important needed to override FSS-UIO themeing. See FLUID-5097. */
-}
-
-.fl-theme-bw.fl-uiOptions-discoveryTool .fl-uiOptions-panel .fl-icon-text {	
-	color: #fff !important; /* !important needed to override FSS-UIO themeing. See FLUID-5097. */
-	background: #000 !important; /* !important needed to override FSS-UIO themeing. See FLUID-5097. */ ;
-}
-
-.fl-theme-bw .fl-icon-discover, .fl-theme-bw .fl-icon-arrow, .fl-theme-bw .fl-icon-check, .fl-theme-bw .fl-discoveryTool-panel-icon {
-    font-family: 'DiscoveryToolIcons' !important; /* !important needed to override FSS-UIO themeing. See FLUID-5097. */
-}
-
-/* "Try something new" option */
-.fl-theme-bw .fl-uiOptions-panels li.fl-uiOptions-panel .fl-discoveryTool-try {
-	margin: 7px;
-	background-color: #000 !important; /* !important needed to override FSS-UIO themeing. See FLUID-5097. */
-	border: 3px solid #fff !important; /* !important needed to override FSS-UIO themeing. See FLUID-5097. */
-	color: #fff !important;
-	width: 6.4em;
-	height: 6.4em;
-}
-
-.fl-theme-bw .fl-uiOptions-panels li.fl-uiOptions-panel .fl-discoveryTool-try:focus {
-	border: 10px solid #fff !important; /* !important needed to override FSS-UIO themeing. See FLUID-5097. */
+.fl-theme-bw .fl-icon-discover, .fl-theme-bw .fl-icon-arrow, .fl-theme-bw .fl-icon-check, .fl-theme-bw .fl-discoveryTool-panel-icon,
+.fl-theme-lgdg .fl-icon-discover, .fl-theme-lgdg .fl-icon-arrow, .fl-theme-lgdg .fl-icon-check, .fl-theme-lgdg .fl-discoveryTool-panel-icon {
+    font-family: 'DiscoveryToolIcons' !important;
 }
 
 .fl-theme-bw .fl-icon-arrow:after { color: #fff; }
+.fl-theme-bw .fl-discoveryTool-panel-icon:before { color: #000; }
+.fl-theme-bw .fl-discoveryTool-panel-icon:after { color: #fff; }
 
+.fl-theme-lgdg .fl-icon-arrow:after { color: #555; }
+.fl-theme-lgdg .fl-discoveryTool-panel-icon:before { color: #bdbdbb; }
+.fl-theme-lgdg .fl-discoveryTool-panel-icon:after { color: #555; }
 
-/* Discovery Tool presets */
-.fl-theme-bw .fl-discoveryTool-panel-icon{
-    border: 3px solid #fff !important;
-    margin: 7px;
-}
-
-.fl-theme-bw .icon-discover:before {color: #000;}
-.fl-theme-bw .fl-discoveryTool-panel-icon:before {color: #000;}
-.fl-theme-bw  .fl-discoveryTool-panel-icon:after {color: #fff;}
-
-/* Preference set hover */
-.fl-theme-bw .fl-uiOptions-panel label .fl-discoveryTool-panel-icon:hover { box-shadow: none;}
-.fl-theme-bw .fl-uiOptions-panel .fl-uiOptions-panel .fl-icon-text:hover {color: #fff; }
-
-/* Preference set enabled / checked. */
-.fl-theme-bw .fl-uiOptions-panel input:checked + label .fl-discoveryTool-panel-icon { background-color: #fff !important;}
-.fl-theme-bw .fl-uiOptions-panel input:checked + label .fl-discoveryTool-panel-icon:after  { color: #000;}
-.fl-theme-bw .fl-uiOptions-panel input:checked + label .fl-discoveryTool-panel-icon:before { color: #fff;}
-
-/* Preference set focused - icon*/ 
-.fl-theme-bw .fl-uiOptions-panel input:focus + label .fl-discoveryTool-panel-icon {
-	border: 10px solid #fff !important;
-	margin: 0;
-}
-
-.fl-theme-bw .fl-uiOptions input:focus + label, .fl-theme-bw .fl-uiOptions .fl-choice input:focus ~ label,
-.fl-theme-bw .fl-focus:focus, .fl-theme-uio-bw .fl-focus *:focus, .fl-theme-uio-bw.fl-focus *:focus, .fl-theme-uio-bw .selectable,
-.fl-theme-bw .fl-uiOptions-discoveryTool .fl-uiOptions-panel .fl-focus *:focus {
-	outline: 0 !important; /* !important needed to override FSS-UIO themeing. See FLUID-5097. */
-}
-
-/* Preference set focused - text label*/ 
-.fl-theme-bw .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:focus ~ label {color: #fff;}
-
-/* Checkmark icon */
-.fl-theme-bw.fl-uiOptions-discoveryTool .fl-uiOptions-panel .fl-icon-check {
-    background-color: #fff !important; /* !important needed to override FSS-UIO themeing. See FLUID-5097. */
-    border: 3px solid #000;
-    color: #000 !important;
+.fl-theme-bw .fl-uiOptions-panel .fl-icon-check,
+.fl-theme-lgdg .fl-uiOptions-panel .fl-icon-check {
+    border: 2px solid;
     position: relative;	
-    top: -0.9em;
+    top: -0.9em;    
 }
+
+.fl-theme-bw .fl-uiOptions input:focus + label,  
+.fl-theme-lgdg .fl-uiOptions input:focus + label {
+    outline: none;
+    border: 0.2em solid #00AAFF;
+}
+
+.fl-theme-bw .fl-uiOptions-panel label:hover .fl-icon-text,
+.fl-theme-bw .fl-uiOptions-panel input:focus ~ label .fl-icon-text,
+.fl-theme-lgdg .fl-uiOptions-panel label:hover .fl-icon-text,
+.fl-theme-lgdg .fl-uiOptions-panel input:focus ~ label .fl-icon-text  { text-shadow: none; }
