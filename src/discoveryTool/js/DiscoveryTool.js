@@ -89,6 +89,12 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 }
             }
         },
+        invokers: {
+            hideToolPanel: {
+                funcName: "gpii.discoveryTool.hideToolPanel",
+                args: "{that}.slidingPanel"
+            }
+        },
         listeners: {
             afterRender: {
                 listener: "gpii.discoveryTool.initHideFuncs",
@@ -98,6 +104,12 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
 
+    gpii.discoveryTool.hideToolPanel = function (slidingPanel) {
+        if (slidingPanel.model.isShowing) {
+            slidingPanel.togglePanel();
+        }
+    };
+
     gpii.discoveryTool.addDiscoveryIcon = function (toggleButton) {
         toggleButton.after("<label class=\"fl-icon-discover\" role=\"presentation\" aria-label=\"Discover\"></label>")
     };
@@ -106,17 +118,40 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         toggleButton.next("label").remove();
     };
 
-    // Hide the discovery tool when clicking outside of the discovery tool panel
+    gpii.discoveryTool.bindHideKey = function (elements, hideFunc) {
+        if (!elements) {
+            return;
+        }
+
+        var keybindingOpts = {
+            additionalBindings: [{
+                key: $.ui.keyCode.ESCAPE,
+                activateHandler: hideFunc
+            }]
+        };
+
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].fluid("tabbable");
+            fluid.activatable(elements[i], null, keybindingOpts);
+
+        };
+    };
+
+    // Hide the discovery tool when clicking outside of the discovery tool panel or pressing escape
     gpii.discoveryTool.initHideFuncs = function (that) {
-        $("html").click(function () {
-            if (that.slidingPanel.model.isShowing) {
-                that.slidingPanel.togglePanel();
-            }
+        var html = $("html");
+
+        html.click(function () {
+            that.hideToolPanel();
         });
 
         that.container.click(function (event) {
             event.stopPropagation();
         });
+
+        var iframeHtml = that.iframeRenderer.iframe.contents().find("html");
+        // Bind hide function onto the main page and the iframe for discovery tool
+        gpii.discoveryTool.bindHideKey([html, iframeHtml], that.hideToolPanel);
     };
 
     /*************
