@@ -405,24 +405,24 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         invokers: {
             set: {
                 funcName: "gpii.discoveryTool.enactors.simplifiedContent.set",
-                args: ["{arguments}.0", "{that}"]
+                args: ["{that}.model.value", "{that}.dom.elementsToHide"]
             }
         },
         listeners: {
             onCreate: {
                 listener: "{that}.set",
-                args: ["{that}.model.value"]
+                args: ["{that}.model.value", "{that}.dom.elementsToHide"]
             }
         }
     });
 
-    gpii.discoveryTool.enactors.simplifiedContent.set = function (value, that) {
-        that.locate("elementsToHide").toggle(!value);
+    gpii.discoveryTool.enactors.simplifiedContent.set = function (value, els) {
+        els.toggle(!value);
     };
 
     gpii.discoveryTool.enactors.simplifiedContent.finalInit = function (that) {
         that.applier.modelChanged.addListener("value", function (newModel) {
-            that.set(newModel.value);
+            that.set();
         });
     };
     gpii.discoveryTool.updateToc = function (tocEnactor) {
