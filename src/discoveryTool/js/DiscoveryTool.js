@@ -76,30 +76,28 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         },
         slidingPanel: {
             options: {
-                listeners: {
-                    onCreate: {
-                        listener: "gpii.discoveryTool.showDiscoveryIcon",
-                        args: "{discoveryTool}.dom.discoverIcon"
+                invokers: {
+                    showDiscoveryIcon: {
+                        "this": "{discoveryTool}.dom.discoverIcon",
+                        method: "show"
                     },
-                    onPanelHide: {
-                        listener: "gpii.discoveryTool.showDiscoveryIcon",
-                        args: "{discoveryTool}.dom.discoverIcon"
-                    },
-                    onPanelShow: {
-                        listener: "gpii.discoveryTool.hideDiscoveryIcon",
-                        args: "{discoveryTool}.dom.discoverIcon"
+                    hideDiscoveryIcon: {
+                        "this": "{discoveryTool}.dom.discoverIcon",
+                        method: "hide"
                     }
+                },
+                listeners: {
+                    onCreate: "{that}.showDiscoveryIcon",
+                    onPanelHide: "{that}.showDiscoveryIcon",
+                    onPanelShow: "{that}.hideDiscoveryIcon"
                 }
             }
         },
         invokers: {
-            hideToolPanel: {
-                funcName: "gpii.discoveryTool.hideToolPanel",
-                args: "{that}.slidingPanel"
-            },
+            hideToolPanel: "{slidingPanel}.hidePanel",
             hideToolPanelInIframe: {
                 funcName: "gpii.discoveryTool.hideToolPanelInIframe",
-                args: ["{that}.hideToolPanel", {expander: {func: "{that}.slidingPanel.locate", args: "toggleButton"}}]
+                args: ["{that}.hideToolPanel", "{slidingPanel}.dom.toggleButton"]
             }
         },
         listeners: {
@@ -111,26 +109,12 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
 
-    gpii.discoveryTool.hideToolPanel = function (slidingPanel) {
-        if (slidingPanel.model.isShowing) {
-            slidingPanel.togglePanel();
-        }
-    };
-
     // Pressing escape inside the discovery tool does:
     // 1. Hide the tool panel;
     // 2. Move focus to "show/hide" button
     gpii.discoveryTool.hideToolPanelInIframe = function (genericHideFunc, elementToFocus) {
         genericHideFunc();
         elementToFocus.focus();
-    };
-
-    gpii.discoveryTool.showDiscoveryIcon = function (discoverIcon) {
-        discoverIcon.show();
-    };
-
-    gpii.discoveryTool.hideDiscoveryIcon = function (discoverIcon) {
-        discoverIcon.hide();
     };
 
     gpii.discoveryTool.bindHideKey = function (element, hideFunc) {
