@@ -71,20 +71,29 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      ****************/
     fluid.defaults("gpii.discoveryTool", {
         gradeNames: ["fluid.uiOptions.fatPanel", "autoInit"],
+        selectors: {
+            discoverIcon: ".flc-icon-discover"
+        },
         slidingPanel: {
             options: {
+                discoverIcon: {
+                    expander: {
+                        func: "{discoveryTool}.locate", 
+                        args: "discoverIcon"
+                    }
+                },
                 listeners: {
                     onCreate: {
-                        listener: "gpii.discoveryTool.addDiscoveryIcon",
-                        args: "{that}.dom.toggleButton"
+                        listener: "gpii.discoveryTool.showDiscoveryIcon",
+                        args: "{that}.options.discoverIcon"
                     },
                     onPanelHide: {
-                        listener: "gpii.discoveryTool.addDiscoveryIcon",
-                        args: "{that}.dom.toggleButton"
+                        listener: "gpii.discoveryTool.showDiscoveryIcon",
+                        args: "{that}.options.discoverIcon"
                     },
                     onPanelShow: {
-                        listener: "gpii.discoveryTool.removeDiscoveryIcon",
-                        args: "{that}.dom.toggleButton"
+                        listener: "gpii.discoveryTool.hideDiscoveryIcon",
+                        args: "{that}.options.discoverIcon"
                     }
                 }
             }
@@ -93,6 +102,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             hideToolPanel: {
                 funcName: "gpii.discoveryTool.hideToolPanel",
                 args: "{that}.slidingPanel"
+            },
+            hideToolPanelInIframe: {
+                funcName: "gpii.discoveryTool.hideToolPanelInIframe",
+                args: ["{that}.hideToolPanel", {expander: {func: "{that}.slidingPanel.locate", args: "toggleButton"}}]
             }
         },
         listeners: {
@@ -110,16 +123,24 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     };
 
-    gpii.discoveryTool.addDiscoveryIcon = function (toggleButton) {
-        toggleButton.after("<label class=\"fl-icon-discover\" role=\"presentation\" aria-label=\"Discover\"></label>")
+    // Pressing escape inside the discovery tool does:
+    // 1. Hide the tool panel;
+    // 2. Move focus to "show/hide" button
+    gpii.discoveryTool.hideToolPanelInIframe = function (genericHideFunc, elementToFocus) {
+        genericHideFunc();
+        elementToFocus.focus();
     };
 
-    gpii.discoveryTool.removeDiscoveryIcon = function (toggleButton) {
-        toggleButton.next("label").remove();
+    gpii.discoveryTool.showDiscoveryIcon = function (discoverIcon) {
+        discoverIcon.show();
     };
 
-    gpii.discoveryTool.bindHideKey = function (elements, hideFunc) {
-        if (!elements) {
+    gpii.discoveryTool.hideDiscoveryIcon = function (discoverIcon) {
+        discoverIcon.hide();
+    };
+
+    gpii.discoveryTool.bindHideKey = function (element, hideFunc) {
+        if (!element) {
             return;
         }
 
@@ -130,11 +151,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             }]
         };
 
-        for (var i = 0; i < elements.length; i++) {
-            elements[i].fluid("tabbable");
-            fluid.activatable(elements[i], null, keybindingOpts);
-
-        };
+        element.fluid("tabbable");
+        fluid.activatable(element, null, keybindingOpts);
     };
 
     // Hide the discovery tool when clicking outside of the discovery tool panel or pressing escape
@@ -150,8 +168,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         });
 
         var iframeHtml = that.iframeRenderer.iframe.contents().find("html");
+
         // Bind hide function onto the main page and the iframe for discovery tool
-        gpii.discoveryTool.bindHideKey([html, iframeHtml], that.hideToolPanel);
+        gpii.discoveryTool.bindHideKey(html, that.hideToolPanel);
+        gpii.discoveryTool.bindHideKey(iframeHtml, that.hideToolPanelInIframe);
     };
 
     /*************
