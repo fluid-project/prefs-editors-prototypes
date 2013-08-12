@@ -36,6 +36,15 @@
             components: {
                 uiOptions: {
                     options: {
+                        uiOptions: {
+                            options: {
+                                listeners: {
+                                    onSave: {
+                                        listener: "console.log"
+                                    }
+                                }
+                            }
+                        },
                         preview: {
                             options: {
                                 templateUrl: "uiOptionsPreview.html"
