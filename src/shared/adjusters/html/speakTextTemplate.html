@@ -1,21 +1,26 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../src/shared/adjusters/css/style.css" />
     <script type="text/javascript" src="../../lib/infusion/MyInfusion.js"></script>
     <title>Speak text</title>
 </head>
 
 <body>
     <div class="preference">
-        <h2><label for="preferenceSwitch" class=" gpii-screenReaderTTSEnabled-label">Speak Text</label></h2>
-        <div class="fl-uiOptions-onoff">
+        <div id="speak-text">
+            <label for="preferenceSwitch" class=" gpii-screenReaderTTSEnabled-label">Speak Text</label>
+        </div>
+        <div id="speak-text-onoff" class="fl-uiOptions-onoff">
             <input type="checkbox" id="preferenceSwitch" class="gpii-screenReaderTTSEnabled"/>
             <label for="preferenceSwitch">
-                <span class="fl-uiOptions-switch" data-checkboxStateOn="ON" data-checkboxStateOff="OFF"></span>
+                <span class="fl-uiOptions-switch" data-checkboxStateOn="ON" data-checkboxStateOff="OFF">
+                    <span class="fl-uiOptions-switch-inner"></span>
+                </span>
             </label>
         </div>
 
+        <br><br><br>
         <div id="more-options"> more options </div>
 
         <div id="expanded-top">
@@ -24,7 +29,7 @@
                 <label class="gpii-auditoryOutLanguage-label" for="languages"></label><br>
                 <select class="gpii-auditoryOutLanguage fl-inputs" id="languages"></select>
             </div>
-        </div>
+        </div> <br>
 
         <div>
             <label class="gpii-speechRate-label" for="speech-rate"></label><br>
@@ -35,44 +40,29 @@
             <div>
                 <label class="gpii-punctuationVerbosity-label" for="punctuation"></label><br>
                 <select class="gpii-punctuationVerbosity fl-inputs" id="punctuation"></select>
-            </div>
+            </div> <br>
 
-            <div>
-                <label for="announce-uppercase"><span class="gpii-announceCapitals-label"></span></label>
-                <div class="fl-uiOptions-onoff">
-                    <input type="checkbox" id="announce-uppercase" class="gpii-announceCapitals" />
-                </div>
-            </div>
+            <input type="checkbox" id="announce-uppercase" class="gpii-announceCapitals css-checkbox" />
+            <label for="announce-uppercase" class="css-label"><span class="gpii-announceCapitals-label"></span></label><br>
 
-            <div>
-                <label for="announce-instructions"><span class="gpii-speakTutorialMessages-label"></span></label>
-                <div class="fl-uiOptions-onoff">
-                    <input type="checkbox" id="announce-instructions" class="gpii-speakTutorialMessages" />
-                </div>
-            </div>
-            <div>
-                <br> <label> Read-back </label> <br>
-                <div>
-                    <label for="echo-letter"><span class="gpii-keyEcho-label"></span></label>
-                    <div class="fl-uiOptions-onoff">
-                        <input type="checkbox" id="echo-letter" class="gpii-keyEcho" />
-                    </div>
-                </div>
+            <input type="checkbox" id="announce-instructions" class="gpii-speakTutorialMessages css-checkbox" />
+            <label for="announce-instructions" class="css-label"><span class="gpii-speakTutorialMessages-label"></span></label><br><br>
 
-                <div>
-                    <label for="echo-word"><span class="gpii-wordEcho-label"></span></label>
-                    <div class="fl-uiOptions-onoff">
-                        <input type="checkbox" id="echo-word" class="gpii-wordEcho" />
-                    </div>
-                </div>
-            </div>
+            <label> Read-back </label> <br>
+            <input type="checkbox" id="echo-letter" class="gpii-keyEcho css-checkbox" />
+            <label for="echo-letter" class="css-label"><span class="gpii-keyEcho-label"></span></label><br>
+
+            <input type="checkbox" id="echo-word" class="gpii-wordEcho css-checkbox" />
+            <label for="echo-word" class="css-label"><span class="gpii-wordEcho-label"></span></label>
+
             <div>
                 <h2><label for="braille" class="gpii-screenReaderBrailleOutput-label"></label></h2>
                 <div class="gpii-screenReaderBrailleOutput-description"></div>
-                <div class="fl-uiOptions-onoff">
+                <div id="braille-onoff" class="fl-uiOptions-onoff">
                     <input type="checkbox" id="braille" class="gpii-screenReaderBrailleOutput" />
                     <label for="braille">
                         <span class="fl-uiOptions-switch" data-checkboxStateOn="ON" data-checkboxStateOff="OFF">
+                            <span class="fl-uiOptions-switch-inner"></span>
                         </span>
                     </label>
                 </div>
@@ -99,6 +89,7 @@
         };
 
         $("#preferenceSwitch").change(function () {
+            alert("something happened");
             if ($(this).attr("checked")) {
                 $("#more-options").text("more options")
                 $("#speech-rate").slideDown();
@@ -111,6 +102,7 @@
         });
 
         $("#more-options").click(function () {
+            alert("something happened");
             $("#expanded-top").toggle(400);
             $("#expanded-bottom").toggle(400);
             $(this).text(moreOrLessOptions($(this).text()));

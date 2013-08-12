@@ -1,23 +1,74 @@
-.expand-panel {
+/*.expand-panel {
     display: none;
 }
 
 #speech-rate {
 	display: none;
 }
-
+*/
 #more-options {
-	display: none;
-	cursor: hand;
+    cursor:pointer;
+    /*float:left;*/
+	/*display: none;*/
 }
 
+#speak-text {
+    font-size:175%;
+    float: left;
+}
+
+#speak-text-onoff {
+    font-size:80%;
+    float:left;
+    margin-left:130px;
+}
+
+#braille-onoff {
+    font-size:80%;
+}
+
+.dropdown {
+    border: 1px solid blue;"
+}
+
+input[type=checkbox].css-checkbox {
+                              position: absolute;
+                            overflow: hidden;
+                            clip: rect(0 0 0 0);
+                            height:1px;
+                            width:1px;
+                            margin:-1px;
+                            padding:0;
+                            border:0;
+                        }
+
+                        input[type=checkbox].css-checkbox + label.css-label {
+                            padding-left:20px;
+                            height:15px;
+                            display:inline-block;
+                            line-height:15px;
+                            background-repeat:no-repeat;
+                            background-position: 0 0;
+                            font-size:15px;
+                            vertical-align:middle;
+                            cursor:pointer;
+                        }
+
+                        input[type=checkbox].css-checkbox:checked + label.css-label {
+                            background-position: 0 -15px;
+                        }
+
+                          .css-label{ background-image:url(../images/lite-cyan-check.png); }
+
+
+/*
 #expanded-top {
 	display: none;
 }
 
 #expanded-bottom {
 	display: none;
-}
+}*/
 
 .onoffswitch {
     position: relative; width: 90px;
@@ -31,7 +82,7 @@
     border: 2px solid #999999; border-radius: 20px;
 }
 .onoffswitch-inner {
-    width: 200%; margin-left: -100%;
+    width: 50%; margin-left: -100%;
     -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
     -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
 }
@@ -57,13 +108,13 @@
     border: 2px solid #999999; border-radius: 20px;
     position: absolute; top: 0; bottom: 0; right: 56px;
     -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
-    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
+    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s;
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
     margin-left: 0;
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
-    right: 0px; 
+    right: 0px;
 }
 
 body {
