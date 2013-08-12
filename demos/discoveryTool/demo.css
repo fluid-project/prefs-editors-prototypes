@@ -1,11 +1,3 @@
-/* Demo content */
-/*@font-face {
-    font-family: 'DemoIcons'; 
-    src:url('fonts/Demo-CK12.eot?#iefix') format('embedded-opentype'), 
-         url('fonts/Demo-CK12.eot'), 
-         url('fonts/Demo-CK12.ttf');
-}*/
-
 @font-face {
     font-family: 'DemoIcons'; 
     src:url('fonts/Demo-Content-Icons.eot?#iefix') format('embedded-opentype'), 
@@ -244,7 +236,7 @@ article h2 {
 .fl-panelBar {
     text-align: right;
     background-color: #6f7b80;
-    padding: 1em;
+    padding: 0.2em 1em;
 }
 .fl-panelBar button {
     background-color: #6f7b80;
@@ -331,15 +323,17 @@ article h2 {
 	content: "\e007";
 }
 
-.fl-icon-discover:before {
-    color: #fff;
-    content: "\e00a";
-}
-
 .fl-icon-discover:after {
     content: "\e009";
     position: relative;
-    left: 15em;
+    left: -1.16em;
+    color: #fff;
+    font-size: 2em;
+}
+
+.fl-icon-discover {
+	position:relative;
+	right: -1.9em;
 }
 
 /* Images */
