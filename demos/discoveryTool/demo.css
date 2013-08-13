@@ -135,7 +135,11 @@ a:focus {
     font-weight: normal;
 }    
 .main-content header #prevNext a:focus {
+    outline: none;
+}
+.main-content header #prevNext a:focus span {
     color: #2795B6;
+    border: 2px solid #2795B6;     
 }
 
 .main-content header #prevNext .fl-icon-prev {
@@ -305,7 +309,7 @@ article h2 {
     font-size: 0.9em;	
 }
 .fl-icon-next:before {
-	content: "\a001";
+	content: "\e001";
     font-size: 0.9em;
 }
 .fl-icon-thumbsUp:before {
