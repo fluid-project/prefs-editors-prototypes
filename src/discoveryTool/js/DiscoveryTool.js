@@ -23,13 +23,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     /**
      * These paths will need to be customized for the integration
      */
-    fluid.demands("fluid.uiOptions.templateLoader", ["gpii.discoveryTool"], {
-        options: {
-            templates: {
-                uiOptions: "../html/DiscoveryTool.html"
-            }
-        }
-    });
     fluid.defaults("gpii.discoveryTool.templateLoader", {
         gradeNames: ["fluid.uiOptions.resourceLoader", "autoInit"],
         templates: {
@@ -39,6 +32,13 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             simplify: "%prefix/SimplifyPanelTemplate.html",
             spoken: "%prefix/SpokenPanelTemplate.html",
             uiOptions: "%prefix/DiscoveryTool.html"
+        }
+    });
+
+    fluid.defaults("gpii.discoveryTool.messageLoader", {
+        gradeNames: ["fluid.uiOptions.resourceLoader", "autoInit"],
+        templates: {
+            uiOptions: "%prefix/DiscoveryTool.json"
         }
     });
 
@@ -70,9 +70,94 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * An instance of a Fat Panel UIO
      ****************/
     fluid.defaults("gpii.discoveryTool", {
-        gradeNames: ["fluid.uiOptions.fatPanel", "autoInit"]
+        gradeNames: ["fluid.uiOptions.fatPanel", "autoInit"],
+        selectors: {
+            discoverIcon: ".flc-icon-discover"
+        },
+        keyBinding: {
+            hideTool: $.ui.keyCode.ESCAPE
+        },
+        slidingPanel: {
+            options: {
+                invokers: {
+                    showDiscoveryIcon: {
+                        "this": "{discoveryTool}.dom.discoverIcon",
+                        method: "show"
+                    },
+                    hideDiscoveryIcon: {
+                        "this": "{discoveryTool}.dom.discoverIcon",
+                        method: "hide"
+                    }
+                },
+                listeners: {
+                    onCreate: "{that}.showDiscoveryIcon",
+                    onPanelHide: "{that}.showDiscoveryIcon",
+                    onPanelShow: "{that}.hideDiscoveryIcon"
+                }
+            }
+        },
+        invokers: {
+            hideToolPanel: "{slidingPanel}.hidePanel",
+            hideToolPanelInIframe: {
+                funcName: "gpii.discoveryTool.hideToolPanelInIframe",
+                args: ["{that}.hideToolPanel", "{slidingPanel}.dom.toggleButton"]
+            }
+        },
+        listeners: {
+            afterRender: {
+                listener: "gpii.discoveryTool.initHideFuncs",
+                args: "{that}",
+                priority: "last"
+            }
+        }
     });
 
+    // Pressing escape inside the discovery tool does:
+    // 1. Hide the tool panel;
+    // 2. Move focus to "show/hide" button
+    gpii.discoveryTool.hideToolPanelInIframe = function (genericHideFunc, elementToFocus) {
+        genericHideFunc();
+        elementToFocus.focus();
+    };
+
+    gpii.discoveryTool.bindHideKey = function (key, element, hideFunc) {
+        if (!element) {
+            return;
+        }
+
+        var keybindingOpts = {
+            additionalBindings: [{
+                key: key,
+                activateHandler: hideFunc
+            }]
+        };
+
+        element.fluid("tabbable");
+        fluid.activatable(element, null, keybindingOpts);
+    };
+
+    // Hide the discovery tool when clicking outside of the discovery tool panel or pressing escape
+    gpii.discoveryTool.initHideFuncs = function (that) {
+        var html = $("html");
+
+        html.click(function () {
+            that.hideToolPanel();
+        });
+
+        that.container.click(function (event) {
+            event.stopPropagation();
+        });
+
+        var iframeHtml = that.iframeRenderer.iframe.contents().find("html");
+
+        // Bind hide function onto the main page and the iframe for discovery tool
+        gpii.discoveryTool.bindHideKey(that.options.keyBinding.hideTool, html, that.hideToolPanel);
+        gpii.discoveryTool.bindHideKey(that.options.keyBinding.hideTool, iframeHtml, that.hideToolPanelInIframe);
+    };
+
+    /*************
+     * The base grade component for each individual panel
+     *************/
     fluid.defaults("gpii.discoveryTool.defaultPanel", {
         gradeNames: ["fluid.uiOptions.defaultPanel", "autoInit"],
         sourceApplier: "{modelTransformer}.applier"

@@ -21,6 +21,7 @@ var demo = demo || {};
     fluid.staticEnvironment["gpii--discoveryTool--demo"] = fluid.typeTag("gpii.discoveryTool.demo");
 
     var pathToTemplates = "../../src/discoveryTool/html/";
+    var pathToMessages = "../../src/discoveryTool/messages/";
     var pathToTocTemplate = "../../src/shared/lib/infusion/components/tableOfContents/html/TableOfContents.html";
 
     demo.initSettingsStore = function () {
@@ -51,9 +52,15 @@ var demo = demo || {};
     demo.initFatPanel = function (container) {
         gpii.discoveryTool(container, {
             templatePrefix: pathToTemplates,
+            messagePrefix: pathToMessages,
             templateLoader: {
                 options: {
                     gradeNames: ["gpii.discoveryTool.templateLoader"]
+                }
+            },
+            messageLoader: {
+                options: {
+                    gradeNames: ["gpii.discoveryTool.messageLoader"]
                 }
             },
             uiOptions: {
@@ -68,19 +75,6 @@ var demo = demo || {};
         options: {
             markupProps: {
                 src: "../../src/discoveryTool/html/FatPanelUIOptionsFrame.html"
-            }
-        }
-    });
-
-    fluid.demands("fluid.uiOptions.templateLoader", ["gpii.discoveryTool", "gpii.discoveryTool.demo"], {
-        options: {
-            templates: {
-                uiOptions: "../../src/discoveryTool/html/DiscoveryTool.html",
-                highContrast: "../../src/discoveryTool/html/HighContrastPanelTemplate.html",
-                lowContrast: "../../src/discoveryTool/html/LowContrastPanelTemplate.html",
-                increaseSize: "../../src/discoveryTool/html/IncreaseSizePanelTemplate.html",
-                simplify: "../../src/discoveryTool/html/SimplifyPanelTemplate.html",
-                spoken: "../../src/discoveryTool/html/SpokenPanelTemplate.html"
             }
         }
     });
