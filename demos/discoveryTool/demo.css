@@ -1,9 +1,8 @@
-/* Demo content */
 @font-face {
     font-family: 'DemoIcons'; 
-    src:url('fonts/Demo-CK12.eot?#iefix') format('embedded-opentype'), 
-         url('fonts/Demo-CK12.eot'), 
-         url('fonts/Demo-CK12.ttf');
+    src:url('fonts/Demo-Content-Icons.eot?#iefix') format('embedded-opentype'), 
+         url('fonts/Demo-Content-Icons.eot'), 
+         url('fonts/Demo-Content-Icons.ttf');
 }
 
 @font-face {
@@ -237,7 +236,7 @@ article h2 {
 .fl-panelBar {
     text-align: right;
     background-color: #6f7b80;
-    padding: 1em;
+    padding: 0.2em 1em;
 }
 .fl-panelBar button {
     background-color: #6f7b80;
@@ -291,14 +290,14 @@ article h2 {
 	margin-bottom: 0.15em;
 }
 
-.fl-icon-search, .fl-icon-prev, .fl-icon-next, .fl-icon-thumbsUp, .fl-icon-thumbsDown, .fl-icon-arrow, .fl-icon-light, .fl-icon-book {
+.fl-icon-search, .fl-icon-prev, .fl-icon-next, .fl-icon-thumbsUp, .fl-icon-thumbsDown, .fl-icon-arrow, .fl-icon-light, .fl-icon-book, .fl-icon-discover {
     font-family: 'DemoIcons';    
 }
 .fl-icon-search:before {
-	content: "\ea06";
+	content: "\e008";
 }
 .fl-icon-prev:before {
-	content: "\a000";
+	content: "\e000";
     font-size: 0.9em;	
 }
 .fl-icon-next:before {
@@ -306,22 +305,35 @@ article h2 {
     font-size: 0.9em;
 }
 .fl-icon-thumbsUp:before {
-	content: "\a002";
+	content: "\e002";
     font-size: 2em;	
 }
 .fl-icon-thumbsDown:before {
-	content: "\a003";
+	content: "\e003";
     font-size: 2em;	
 }
 .fl-icon-arrow:before {
-	content: "\a004";
+	content: "\e004";
 	font-size: 0.6em;
 }
 .fl-icon-light:before {
-	content: "\a007";
+	content: "\e006";
 }
 .fl-icon-book:before {
-	content: "\e008";
+	content: "\e007";
+}
+
+.fl-icon-discover:after {
+    content: "\e009";
+    position: relative;
+    left: -1.16em;
+    color: #fff;
+    font-size: 2em;
+}
+
+.fl-icon-discover {
+	position:relative;
+	right: -1.9em;
 }
 
 /* Images */

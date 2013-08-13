@@ -21,6 +21,7 @@ var demo = demo || {};
     fluid.staticEnvironment["gpii--discoveryTool--demo"] = fluid.typeTag("gpii.discoveryTool.demo");
 
     var pathToTemplates = "../../src/discoveryTool/html/";
+    var pathToMessages = "../../src/discoveryTool/messages/";
     var pathToTocTemplate = "../../src/shared/lib/infusion/components/tableOfContents/html/TableOfContents.html";
 
     demo.initSettingsStore = function () {
@@ -51,9 +52,15 @@ var demo = demo || {};
     demo.intiDiscoveryTool = function (container) {
         return gpii.discoveryTool(container, {
             templatePrefix: pathToTemplates,
+            messagePrefix: pathToMessages,
             templateLoader: {
                 options: {
                     gradeNames: ["gpii.discoveryTool.templateLoader"]
+                }
+            },
+            messageLoader: {
+                options: {
+                    gradeNames: ["gpii.discoveryTool.messageLoader"]
                 }
             },
             uiOptions: {
