@@ -74,6 +74,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         selectors: {
             discoverIcon: ".flc-icon-discover"
         },
+        keyBinding: {
+            hideTool: $.ui.keyCode.ESCAPE
+        },
         slidingPanel: {
             options: {
                 invokers: {
@@ -117,14 +120,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         elementToFocus.focus();
     };
 
-    gpii.discoveryTool.bindHideKey = function (element, hideFunc) {
+    gpii.discoveryTool.bindHideKey = function (key, element, hideFunc) {
         if (!element) {
             return;
         }
 
         var keybindingOpts = {
             additionalBindings: [{
-                key: $.ui.keyCode.ESCAPE,
+                key: key,
                 activateHandler: hideFunc
             }]
         };
@@ -148,8 +151,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         var iframeHtml = that.iframeRenderer.iframe.contents().find("html");
 
         // Bind hide function onto the main page and the iframe for discovery tool
-        gpii.discoveryTool.bindHideKey(html, that.hideToolPanel);
-        gpii.discoveryTool.bindHideKey(iframeHtml, that.hideToolPanelInIframe);
+        gpii.discoveryTool.bindHideKey(that.options.keyBinding.hideTool, html, that.hideToolPanel);
+        gpii.discoveryTool.bindHideKey(that.options.keyBinding.hideTool, iframeHtml, that.hideToolPanelInIframe);
     };
 
     /*************
