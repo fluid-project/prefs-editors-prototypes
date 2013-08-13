@@ -31,7 +31,7 @@ a {
 a:hover {
     text-decoration: underline;
 }
-a:focus, button:focus {
+a:focus {
     color: #2795B6;
     outline: 2px solid #2795B6;    
 }
