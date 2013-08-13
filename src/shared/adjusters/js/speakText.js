@@ -204,7 +204,40 @@
             keyEchoLabel: {messagekey: "keyEchoLabel"},
             wordEchoLabel: {messagekey: "wordEchoLabel"},
             screenReaderBrailleOutputLabel: {messagekey: "screenReaderBrailleOutputLabel"}
-        }
+        },
+
+        finalInitFunction: "speakText.finalInit"
     });
+
+    speakText.finalInit = function (that) {
+        var flag = true;
+        that.applier.modelChanged.addListener("screenReaderTTSEnabled", function () {
+            if (that.model.screenReaderTTSEnabled) {
+                $("#more-options").text("more options")
+                $(".speech-rate").slideDown();
+                $("#more-options").slideDown();
+            } else {
+                $(".speech-rate").slideUp();
+                $("#more-options").slideUp();
+                $("#expanded-top").slideUp();
+                $("#expanded-bottom").slideUp();
+            }
+            if (flag) {
+                $("#more-options").click(function () {
+                    $("#expanded-top").toggle(400);
+                    $("#expanded-bottom").toggle(400);
+                    $(this).text(moreOrLessOptions($(this).text()));
+                    flag = false;
+                });
+            }
+        });
+    };
+
+    function moreOrLessOptions(currentValue) {
+        if (currentValue == "more options") {
+            return "less options";
+        }
+        return "more options";
+    }
 
 })(fluid);

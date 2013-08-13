@@ -34,7 +34,7 @@
         <div>
             <label class="gpii-speechRate-label" for="speech-rate"></label><br>
             <select class="gpii-speechRate fl-inputs" id="speech-rate"></select>
-        </div>
+        </div><br>
 
         <div id="expanded-bottom">
             <div>
@@ -70,44 +70,5 @@
         </div>
 
     </div>
-    <script>
-        function slideExpandedUp() {
-            $("#expanded-top").slideUp();
-            $("#expanded-bottom").slideUp();
-        };
-
-        function slideExpandedDown() {
-            $("#expanded-top").slideDown();
-            $("#expanded-bottom").slideDown();
-        };
-
-        function moreOrLessOptions(currentValue) {
-            if (currentValue == "more options") {
-                return "less options";
-            }
-            return "more options";
-        };
-
-        $("#preferenceSwitch").change(function () {
-            alert("something happened");
-            if ($(this).attr("checked")) {
-                $("#more-options").text("more options")
-                $("#speech-rate").slideDown();
-                $("#more-options").slideDown();
-            } else {
-                $("#speech-rate").slideUp();
-                $("#more-options").slideUp();
-                slideExpandedUp();
-            };
-        });
-
-        $("#more-options").click(function () {
-            alert("something happened");
-            $("#expanded-top").toggle(400);
-            $("#expanded-bottom").toggle(400);
-            $(this).text(moreOrLessOptions($(this).text()));
-        });
-    </script>
-
 </body>
 </html>
