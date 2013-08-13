@@ -232,6 +232,10 @@ article h2 {
     margin: 1em 0; 
 }
 
+.demo-orbitals {
+	width: 45%;
+}
+
 /* Discovery Tool */
 .fl-panelBar {
     text-align: right;
@@ -351,7 +355,7 @@ div[role="img"] {
 
 #storm { 
     background-image:url('images/storm.png'); 
-    height: 20em;    
+    height: 18em;
 }
 .fl-theme-bw #storm { background-image:url('images/storm_bw.png'); }
 .fl-theme-lgdg #storm { background-image:url('images/storm_lgdg.png'); }
@@ -433,3 +437,40 @@ div[role="img"] {
     border-color: #BDBDBB;
     color: #BDBDBB;
 }
+
+/* Simplify Content */
+.fl-simplify {
+	background: #fff;
+}
+
+.fl-simplify #main,
+.fl-simplify #main #content{
+	border: 0;
+    box-shadow: none;
+    margin-left: 0;
+    padding: 0;
+}
+
+.fl-simplify .main-content {
+	width: 590px;
+}
+
+.fl-simplify #main {
+	margin-right: 50px;
+	margin-left: 50px;
+}
+
+.fl-simplify #storm,
+.fl-simplify #structure,
+.fl-simplify #energylevels,
+.fl-simplify #porbital,
+.fl-simplify #sorbital {
+	width: 100%;
+	background-size: 100% auto;
+}
+
+.fl-simplify .demo-orbitals {width: 100%;}
+.fl-simplify #sorbital 		{height: 24.2em;}
+.fl-simplify #porbital 		{height: 18.5em;}
+.fl-simplify #structure 	{height: 25.4em;}
+.fl-simplify #energylevels 	{height: 26em;  }
