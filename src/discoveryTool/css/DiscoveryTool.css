@@ -67,6 +67,11 @@
     line-height: 1.2;
 }
 
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel label .fl-icon-text {
+    margin-top: -1.8em;
+}
+
+
 /* Panel states */
 
 /* Preference set hover */
@@ -91,33 +96,46 @@
     background-color: #363c40;
     color: #fff;
     border-radius: 1em;
-    height: 1.1em;
-    width: 1.1em;
     font-size: 1.2em;
-    margin-left: 4.6em;
     display: inline-block;
     position:relative;
-    top: -0.6em;
-    vertical-align: middle;
+    
+    /* large checkmark, start of transition */
+    height: 2em;   
+    width: 2em;   
+    margin-left: 4.25em; 
+    top: -1.2em; 
+    background-color: rgb(54, 60, 64, 0); 
+    opacity: 0;    
 }
 
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:checked + label div.fl-icon-check {
     visibility: visible;
-    animation: checkshrink 1s linear;
-    -webkit-animation: checkshrink 1s linear; /* Safari and Chrome */
+    
+    /* small checkmark */
+    height: 1.1em; 
+    width: 1.1em; 
+    margin-left: 4.6em; 
+    top: -0.6em; 
+    background-color: rgb(54, 60, 64, 1); 
+    opacity: 1;    
+
+    -moz-transition: width 0.75s, height 0.75s, margin-left 0.75s, top 0.75s, background-color 0.75s, opacity 0.75s;
+    -webkit-transition: width 0.75s, height 0.75s, margin-left 0.75s, top 0.75s, background-color 0.75s, opacity 0.75s;   
+    -o-transition: width 0.75s, height 0.75s, margin-left 0.75s, top 0.75s, background-color 0.75s, opacity 0.75s;   
+    transition: width 0.75s, height 0.75s, margin-left 0.75s, top 0.75s, background-color 0.75s, opacity 0.75s;   
+}
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel input:checked + label div.fl-icon-check:before {
+     bottom: 0.6em;
+     -moz-transition: bottom 0.75s;
+    -webkit-transition: bottom 0.75s;
+    -o-transition: bottom 0.75s;
+    transition: bottom 0.75s;
 }
 
-/* Checkbox animation */
-@keyframes checkshrink {
-    from { height: 2em;   width: 2em;   margin-left: 4.0em; top: -1.2em; background-color: rgb(54, 60, 64, 0); opacity: 0; }
-    to { height: 1.1em; width: 1.1em; margin-left: 4.6em; top: -0.6em; background-color: rgb(54, 60, 64, 1); opacity: 1; }
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel input:checked + label .fl-icon-text {
+    margin-top: -0.85em;
 }
-
-@-webkit-keyframes checkshrink { /* Safari and Chrome */
-    from { height: 2em;   width: 2em;   margin-left: 4.0em; top: -1.2em; background-color: rgb(54, 60, 64, 0); opacity: 0; }
-    to { height: 1.1em; width: 1.1em; margin-left: 4.6em; top: -0.6em; background-color: rgb(54, 60, 64, 1); opacity: 1; }
-}
-
 
 /* Try something new */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel .fl-discoveryTool-try {
@@ -152,14 +170,13 @@
 
 .fl-icon-arrow:after {
     content: "\e019";
-    color: #C8CCCE;
 }
 
 .fl-icon-check:before {
 	font-size: 0.4em;
     content: "\e018";
     position: relative;
-    bottom:0.6em;
+    bottom:-0.3em;
 }
 
 .fl-discoveryTool-checkbox {
@@ -171,11 +188,6 @@
     padding: 0;
     position: absolute;
     width: 1px;
-}
-
-.fl-icon-text {
-	position:relative;
-	top: -0.6em; /* shift text up since Checkmark icon is shifted upward. */
 }
 
 .fl-discoveryTool-panel-icon{
