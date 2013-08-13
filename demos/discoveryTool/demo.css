@@ -31,8 +31,9 @@ a {
 a:hover {
     text-decoration: underline;
 }
-a:focus {
+a:focus, button:focus {
     color: #2795B6;
+    outline: 2px solid #2795B6;    
 }
 
 #main-header {
@@ -245,6 +246,9 @@ article h2 {
     font-weight: bold;
     cursor: pointer;
 }
+.fl-panelBar button:focus {
+    outline: 2px solid #fff;
+} 
 
 .fl-uiOptions-discoveryTool  {
     position: fixed;
