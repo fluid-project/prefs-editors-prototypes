@@ -356,6 +356,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 container: "{that}.dom.trySomethingNew",
                 createOnEvent: "onUIOptionsComponentReady",
                 options: {
+                    strings: {
+                        label: {
+                            expander: {
+                                func: "gpii.discoveryTool.trySomethingNew.lookupMsg",
+                                args: ["{uiOptions}.msgBundle", "trySomethingNewText"]
+                            }
+                        }
+                    },
                     presetComponents: {
                         expander: {
                             func: "gpii.discoveryTool.panels.getSubcomponents",
@@ -593,11 +601,12 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
     fluid.defaults("gpii.discoveryTool.trySomethingNew", {
         gradeNames: ["fluid.viewComponent", "autoInit"],
+        finalInitFunction: "console.log",
         selectors: {
-            label: "flc-discoveryTool-tryLabel"
+            label: ".flc-discoveryTool-tryLabel"
         },
         strings: {
-            label: "Try Something New" // TODO: convert to message bundle
+            label: "Try Something New"
         },
         styles: {
             hover: "fl-discoveryTool-hover"
@@ -612,6 +621,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         presetComponents: [],
         numSelections: 2,
         listeners: {
+            "onCreate.setLabel": {
+                "this": "{that}.dom.label",
+                "method": "html",
+                "args": ["{that}.options.strings.label"]
+            },
             "onCreate.click": {
                 "this": "{that}.container",
                 "method": "click",
@@ -681,6 +695,13 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             }
         }
     });
+
+    // should move this to somewhere reusable, possibly in infusion
+    // similar code in settingsPanels.js
+    gpii.discoveryTool.trySomethingNew.lookupMsg = function (messageResolver, value) {
+        var looked = messageResolver.lookup([value]);
+        return looked ? looked.template : looked;
+    };
 
     gpii.discoveryTool.trySomethingNew.preventDefault = function (event) {
         event.preventDefault();
