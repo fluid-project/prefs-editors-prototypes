@@ -451,13 +451,35 @@ div[role="img"] {
     padding: 0;
 }
 
-.fl-simplify .main-content {
-	width: 590px;
+
+@media all and (max-width: 639px) {
+	.fl-simplify #main {
+		margin-right: 0;
+		margin-left: 0;
+	}
+	.fl-simplify .main-content {
+		padding-left: 10px;
+		padding-right: 10px;
+	}	
 }
 
-.fl-simplify #main {
-	margin-right: 50px;
-	margin-left: 50px;
+@media all and (min-width: 640px) {
+	.fl-simplify #main {
+		margin-right: 50px;
+		margin-left: 50px;
+	}
+}
+
+@media all and (max-width:589px) {
+	.fl-simplify .main-content {
+		width: 100%;
+	}	
+}
+
+@media all and (min-width: 590px) {
+	.fl-simplify .main-content {
+		width: 590px;
+	}		
 }
 
 .fl-simplify #storm,
