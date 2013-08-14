@@ -253,6 +253,7 @@ article h2 {
 .fl-panelBar button:focus {
     outline: 2px solid #fff;
 } 
+.fl-panelBar button::-moz-focus-inner {border:0;}
 
 .fl-uiOptions-discoveryTool  {
     position: fixed;
@@ -331,7 +332,7 @@ article h2 {
 	content: "\e007";
 }
 
-.fl-icon-discover:after {
+.fl-icon-discover:before {
     content: "\e009";
     position: relative;
     left: -1.16em;
@@ -399,6 +400,13 @@ div[role="img"] {
 
 /* Theming */
 
+.fl-theme-bw a:focus {
+    outline-color: #000;    
+}
+.fl-theme-lgdg a:focus {
+    outline-color: #bdbdbb;    
+}
+
 .fl-theme-bw #main,
 .fl-theme-lgdg #main,
 .fl-theme-bw #main #content,
@@ -422,6 +430,13 @@ div[role="img"] {
 .fl-theme-lgdg .fl-panelBar button {
 	border: none;
 }
+.fl-theme-bw .fl-panelBar button:focus {
+    outline-color: #fff;
+} 
+.fl-theme-lgdg .fl-panelBar button:focus {
+    outline-color: #555;
+} 
+
 
 /* Add padding to bottom of simplified content so it's not obscured by the DT panel bar */
 .fl-uiOptions-content-simplified {
@@ -434,10 +449,16 @@ div[role="img"] {
     border-color: #000;
     color: #000;
 }
+.fl-theme-bw .fl-icon-discover:before {
+    color: #fff;
+}
 
 .fl-theme-lgdg .fl-icon-atom:before,
 .fl-theme-lgdg .fl-icon-tree:after,
 .fl-theme-lgdg .fl-icon-tree:before {
     border-color: #BDBDBB;
     color: #BDBDBB;
+}
+.fl-theme-lgdg .fl-icon-discover:before {
+    color: #555;
 }
