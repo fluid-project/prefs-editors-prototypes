@@ -31,9 +31,9 @@ a {
 a:hover {
     text-decoration: underline;
 }
-a:focus {
+.fl-focus *:focus {
     color: #2795B6;
-    outline: 2px solid #2795B6;    
+    outline-color: #2795B6;    
 }
 
 #main-header {
@@ -252,6 +252,7 @@ article h2 {
 }
 .fl-panelBar button:focus {
     outline: 2px solid #fff;
+    color: #fff;
 } 
 .fl-panelBar button::-moz-focus-inner {border:0;}
 
@@ -399,13 +400,6 @@ div[role="img"] {
 
 
 /* Theming */
-
-.fl-theme-bw a:focus {
-    outline-color: #000;    
-}
-.fl-theme-lgdg a:focus {
-    outline-color: #bdbdbb;    
-}
 
 .fl-theme-bw #main,
 .fl-theme-lgdg #main,
