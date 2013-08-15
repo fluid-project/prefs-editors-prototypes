@@ -28,6 +28,12 @@
          url('../fonts/GPII-DiscoveryTool.eot'),
          url('../fonts/GPII-DiscoveryTool.ttf');
 }
+@font-face {
+    font-family: 'MoreText';
+    src:url('../fonts/GPII-DiscoveryTool-MoreText.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/GPII-DiscoveryTool-MoreText.eot'),
+         url('../fonts/GPII-DiscoveryTool-MoreText.ttf');
+}
 
 .fl-uiOptions-discoveryTool {
     background-color: #6f7b80;
@@ -50,8 +56,8 @@ details summary::-webkit-details-marker {
     display:none;
 }
 details summary:before {
-    content: "\e013";
-    font-family: 'DiscoveryToolIcons';
+    content: "\e007";
+    font-family: 'MoreText';
     background-color: lightgrey;
     font-size: 2em;
 }
