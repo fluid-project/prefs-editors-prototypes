@@ -6,6 +6,10 @@
                 "type": "boolean",
                 "default": false
             },
+            "screenReaderSwitch": {
+                "type": "boolean",
+                "default": true
+            },
             "speechRate": {
                 "type": "number",
                 "default": 0,
@@ -59,8 +63,15 @@
                 "panel": {
                     "type": "speakText.panel",
                     "container": ".gpii-speak-text-group", // container for the speakText panel, holding all speakText adjusters
-                    "template": "../../src/shared/adjusters/html/speakTextTemplate.html", // same as above
+                    "template": "../../src/shared/adjusters/html/newestSpeakText.html", // same as above
                     "message": "../../src/shared/adjusters/messages/speakText.json"
+                }
+            },
+
+            "screenReaderSwitch": {
+                "type": "screenReaderSwitch",
+                "panel": {
+                    "type": "speakText.panel"
                 }
             },
 
@@ -128,6 +139,9 @@
             "screenReaderTTSEnabled": {
                 "model.screenReaderTTSEnabled": "default"
             },
+            "screenReaderSwitch": {
+                "model.screenReaderSwitch": "default"
+            },
             "speechRate": {
                 "model.speechRate": "default"
             },
@@ -158,6 +172,7 @@
 
         selectors: {
             screenReaderTTSEnabled: ".gpii-screenReaderTTSEnabled",
+            screenReaderSwitch: ".gpii-screenReaderSwitch",
             speechRate: ".gpii-speechRate",
             auditoryOutLanguage: ".gpii-auditoryOutLanguage",
             punctuationVerbosity: ".gpii-punctuationVerbosity",
@@ -168,6 +183,7 @@
             screenReaderBrailleOutput: ".gpii-screenReaderBrailleOutput",
 
             screenReaderTTSEnabledLabel: ".gpii-screenReaderTTSEnabled-label",
+            screenReaderSwitchLabel: ".gpii-screenReaderSwitch-label",
             speechRateLabel: ".gpii-speechRate-label",
             auditoryOutLanguageLabel: ".gpii-auditoryOutLanguage-label",
             punctuationVerbosityLabel: ".gpii-punctuationVerbosity-label",
@@ -180,6 +196,7 @@
 
         protoTree: {
             screenReaderTTSEnabled: "${screenReaderTTSEnabled}",
+            screenReaderSwitch: "${screenReaderSwitch}",
             speechRate: "${speechRate}",
             auditoryOutLanguage: {
                 selection: "${auditoryOutLanguage}",
@@ -196,6 +213,7 @@
             screenReaderBrailleOutput: "${screenReaderBrailleOutput}",
 
             screenReaderTTSEnabledLabel: {messagekey: "screenReaderTTSEnabledLabel"},
+            screenReaderSwitchLabel: {messagekey: "screenReaderSwitchLabel"},
             speechRateLabel: {messagekey: "speechRateLabel"},
             auditoryOutLanguageLabel: {messagekey: "auditoryOutLanguageLabel"},
             punctuationVerbosityLabel: {messagekey: "punctuationVerbosityLabel"},
@@ -209,35 +227,37 @@
         finalInitFunction: "speakText.finalInit"
     });
 
-    speakText.finalInit = function (that) {
-        var flag = true;
+    var flag = true;
+
+    speakText.finalInit = function (that) {        
         that.applier.modelChanged.addListener("screenReaderTTSEnabled", function () {
             if (that.model.screenReaderTTSEnabled) {
-                $("#more-options").text("more options")
+                $("#more-options").text("+ more");
                 $(".speech-rate").slideDown();
                 $("#more-options").slideDown();
+
+                if (flag) {
+                    $("#more-options").click(function () {
+                        $("#expanded-top").toggle(400);
+                        $("#expanded-bottom").toggle(400);
+                        $(this).text(moreOrLessOptions($(this).text()));
+                    });
+                    flag = false;
+                };
             } else {
                 $(".speech-rate").slideUp();
                 $("#more-options").slideUp();
                 $("#expanded-top").slideUp();
                 $("#expanded-bottom").slideUp();
             }
-            if (flag) {
-                $("#more-options").click(function () {
-                    $("#expanded-top").toggle(400);
-                    $("#expanded-bottom").toggle(400);
-                    $(this).text(moreOrLessOptions($(this).text()));
-                    flag = false;
-                });
-            }
         });
     };
 
     function moreOrLessOptions(currentValue) {
-        if (currentValue == "more options") {
-            return "less options";
+        if (currentValue == "+ more") {
+            return "- less";
         }
-        return "more options";
+        return "+ more";
     }
 
 })(fluid);

@@ -1,6 +1,6 @@
 {
     "screenReaderTTSEnabledLabel": "speak text",
-    "screenReaderSwitchLabel": "Screen Reader",
+    "screenReaderSwitchLabel": "Screen reader",
     "speechRateLabel": "Words spoken per minute",
     "auditoryOutLanguageLabel": "Language",
     "punctuationVerbosityLabel": "Annuounce",

@@ -1,11 +1,17 @@
+.preference {
+    margin-left: 40px;
+}
+
 #speech-rate {
 	display: none;
 }
 
 #more-options {
     cursor:pointer;
-    /*float:left;*/
 	display: none;
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 110px;
 }
 
 #expanded-top {
@@ -16,19 +22,21 @@
 	display: none;
 }
 
-#speak-text {
-    font-size:175%;
+.switch {
+    font-size:135%;
     float: left;
 }
 
-#speak-text-onoff {
-    font-size:80%;
+#screen-reader-onoff {
+    font-size:70%;
     float:left;
-    margin-left:130px;
+    margin-left:30px;
 }
 
 #braille-onoff {
-    font-size:80%;
+    font-size:70%;
+    float:left;
+    margin-left:125px;
 }
 
 .onoffswitch {
@@ -78,35 +86,6 @@
     right: 0px;
 }
 
-input[type=checkbox].css-checkbox {
-                            position: absolute;
-                            overflow: hidden;
-                            clip: rect(0 0 0 0);
-                            height:1px;
-                            width:1px;
-                            margin:-1px;
-                            padding:0;
-                            border:0;
-                        }
-
-                        input[type=checkbox].css-checkbox + label.css-label {
-                            padding-left:20px;
-                            height:15px;
-                            display:inline-block;
-                            line-height:15px;
-                            background-repeat:no-repeat;
-                            background-position: 0 0;
-                            font-size:15px;
-                            vertical-align:middle;
-                            cursor:pointer;
-                        }
-
-                        input[type=checkbox].css-checkbox:checked + label.css-label {
-                            background-position: 0 -15px;
-                        }
-
-                          .css-label{ background-image:url(../images/lite-cyan-check.png); }
-
 select {
     padding:4px;
     margin: 0;
@@ -121,18 +100,78 @@ select {
     border:4px;
     border-style:solid;
     border-color:#ff4400;
-    /*display: inline-block;*/
+    display: inline-block;
     -webkit-appearance:none;
     -moz-appearance:none;
     appearance:none;
     cursor:pointer;
 }
 
-/* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. 
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-    select {padding-right:18px}
+
+html{
+    background:#ECEFEF;
 }
 
+input[type=checkbox] {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height:1px;
+    width:1px;
+    margin:-1px;
+    padding:0;
+    border:0;
+}
+
+input[type=checkbox] + label.main-checkbox-label {
+    background: url('../images/speakTextOff.png') no-repeat;
+    background-size:350px 90px;
+    padding-left:30px;
+    cursor:pointer;
+    font-size: 23px;
+    text-align: center;
+    padding-left: 3px;
+    color:white;
+    display:inline-block;
+    line-height:90px;
+    height: 90px;
+    width:350px;
+}
+
+input[type=checkbox]:checked + label.main-checkbox-label {
+    background: url('../images/speakTextOn.png') no-repeat;
+    background-size:350px 90px;
+    padding-left:30px;
+    cursor:pointer;
+    font-size: 23px;
+    font-weight:bold;
+    text-align: center;
+    padding-left: 3px;
+    display:inline-block;
+    line-height:90px;
+    height: 90px;
+    width:350px;
+}
+
+input[type=checkbox] + label.checkbox-label {
+    background: url('../images/checkboxOff.png') no-repeat;
+    background-size:20px 20px;
+    padding-left:30px;
+    cursor:pointer;
+    font-size: 15px;
+    display:inline-block;
+    line-height:25px;
+    width: 250px;
+    vertical-align: center;
+}
+
+input[type=checkbox]:checked + label.checkbox-label {
+    background: url('../images/checkboxOn.png') no-repeat;
+    background-size:20px 20px;
+    padding-left:30px;
+    cursor:pointer;
+    width: 250px;
+}
 
 body {
     -webkit-user-select: none;
