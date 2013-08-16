@@ -49,7 +49,7 @@ var demo = demo || {};
         });
     };
 
-    demo.intiDiscoveryTool = function (container) {
+    demo.initDiscoveryTool = function (container) {
         return gpii.discoveryTool(container, {
             templatePrefix: pathToTemplates,
             messagePrefix: pathToMessages,
