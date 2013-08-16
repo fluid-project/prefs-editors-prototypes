@@ -164,15 +164,12 @@
 }
 
 .fl-discoveryTool-panel-icon:before{
-	position:relative;
-	left: 0.1em;
 	color: #fff;
 }
 
 .fl-discoveryTool-panel-icon:after{
 	color: #333;
-	position: relative;
-	left: -0.9em;
+	margin-left: -1em;
 }
 
 /* Preference Set Icons */
