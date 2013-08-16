@@ -1,25 +1,45 @@
 .preference {
-    margin-left: 40px;
+    margin-left: 45px;
 }
 
 #speech-rate {
-	display: none;
+    display: none;
+}
+
+#speechRate {
+    text-align: center;
+    border: none;
+    width: 200px;
+    font-size: 23px;
+}
+
+#speechRateMinus {
+    font-size: 50px;
+}
+
+#speechRatePlus {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+textarea:focus, input:focus{
+    outline: 0;
 }
 
 #more-options {
     cursor:pointer;
-	display: none;
+    display: none;
     font-size: 15px;
     font-weight: bold;
-    margin-left: 110px;
+    margin-left: 100px;
 }
 
 #expanded-top {
-	display: none;
+    display: none;
 }
 
 #expanded-bottom {
-	display: none;
+    display: none;
 }
 
 .switch {

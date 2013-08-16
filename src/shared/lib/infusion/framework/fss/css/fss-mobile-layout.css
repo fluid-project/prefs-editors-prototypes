@@ -57,7 +57,7 @@ img {border:none;}
 }
 .fl-navbar .fl-table-cell:not(h1) {
     width:1px;
-    white-space:nowrap;
+    /*white-space:nowrap;*/
 }
 
 .fl-navbar .fl-table-cell:first-child {

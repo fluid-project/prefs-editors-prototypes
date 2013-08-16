@@ -12,9 +12,9 @@
             },
             "speechRate": {
                 "type": "number",
-                "default": 0,
+                "default": 130,
                 "minimum": 0,
-                "maximum": 100,
+                // "maximum": 100,
                 "divisibleBy": 10
             },
             "auditoryOutLanguage": {
@@ -143,7 +143,9 @@
                 "model.screenReaderSwitch": "default"
             },
             "speechRate": {
-                "model.speechRate": "default"
+                "model.speechRate": "default",
+                "model.minimum": "minimum",
+                "model.divisibleBy": "divisibleBy"
             },
             "auditoryOutLanguage": {
                 "model.auditoryOutLanguage": "default",
@@ -185,6 +187,8 @@
             screenReaderTTSEnabledLabel: ".gpii-screenReaderTTSEnabled-label",
             screenReaderSwitchLabel: ".gpii-screenReaderSwitch-label",
             speechRateLabel: ".gpii-speechRate-label",
+            speechRateMinus: ".gpii-speechRate-minus",
+            speechRatePlus: ".gpii-speechRate-plus",
             auditoryOutLanguageLabel: ".gpii-auditoryOutLanguage-label",
             punctuationVerbosityLabel: ".gpii-punctuationVerbosity-label",
             announceCapitalsLabel: ".gpii-announceCapitals-label",
@@ -215,6 +219,8 @@
             screenReaderTTSEnabledLabel: {messagekey: "screenReaderTTSEnabledLabel"},
             screenReaderSwitchLabel: {messagekey: "screenReaderSwitchLabel"},
             speechRateLabel: {messagekey: "speechRateLabel"},
+            speechRateMinus: {messagekey: "speechRateMinus"},
+            speechRatePlus: {messagekey: "speechRatePlus"},
             auditoryOutLanguageLabel: {messagekey: "auditoryOutLanguageLabel"},
             punctuationVerbosityLabel: {messagekey: "punctuationVerbosityLabel"},
             announceCapitalsLabel: {messagekey: "announceCapitalsLabel"},
@@ -229,11 +235,11 @@
 
     var flag = true;
 
-    speakText.finalInit = function (that) {        
+    speakText.finalInit = function (that) {
         that.applier.modelChanged.addListener("screenReaderTTSEnabled", function () {
             if (that.model.screenReaderTTSEnabled) {
                 $("#more-options").text("+ more");
-                $(".speech-rate").slideDown();
+                $("#speech-rate").slideDown();
                 $("#more-options").slideDown();
 
                 if (flag) {
@@ -242,13 +248,46 @@
                         $("#expanded-bottom").toggle(400);
                         $(this).text(moreOrLessOptions($(this).text()));
                     });
+
+                    $(".gpii-speechRate-minus").click(function () {
+                        var newValue = parseInt(that.model.speechRate) - that.model.divisibleBy;
+                        if (newValue >= that.model.minimum) {
+                            that.applier.requestChange("speechRate", newValue);
+                        }
+                    });
+
+                    $(".gpii-speechRate-plus").click(function () {
+                        var newValue = parseInt(that.model.speechRate) + that.model.divisibleBy;
+                        that.applier.requestChange("speechRate", newValue);
+                    });
+
+                    $("#speechRate").keydown(function(event) {
+                        // Allow only backspace and delete
+                        if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 37 || event.keyCode == 39 || event.keyCode == 35 || event.keyCode == 36) {
+                            // let it happen, don't do anything
+                        }
+                        else {
+                            // Ensure that it is a number and stop the keypress
+                            if ((event.keyCode < 48 || event.keyCode > 57 ) && (event.keyCode < 96 || event.keyCode > 105 )) {
+                                event.preventDefault();
+                            }
+                        }
+                    });
+
                     flag = false;
                 };
             } else {
-                $(".speech-rate").slideUp();
+                $("#speech-rate").slideUp();
                 $("#more-options").slideUp();
                 $("#expanded-top").slideUp();
                 $("#expanded-bottom").slideUp();
+            }
+        });
+
+        that.applier.modelChanged.addListener("speechRate", function () {
+            $("#speechRate").val(that.model.speechRate);
+            if (!$("#speechRate").val()) {
+                that.applier.requestChange("speechRate", 0);
             }
         });
     };
