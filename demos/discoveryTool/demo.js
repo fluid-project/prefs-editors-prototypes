@@ -29,21 +29,23 @@ var demo = demo || {};
     };
 
     demo.initPageEnhancer = function (customThemeName) {
-        return fluid.pageEnhancer({
-            gradeNames: ["gpii.discoveryTool.enactorSet"],
-            tocTemplate: pathToTocTemplate,
-            classnameMap: {
-                theme: {
-                    "default": customThemeName
-                }
-            },
-            events: {
-                simplifyContentChanged: null
-            },
-            listeners: {
-                simplifyContentChanged: {
-                    listener: "gpii.discoveryTool.updateToc",
-                    args: "{that}.tableOfContents"
+        fluid.pageEnhancer({
+            uiEnhancer: {
+                gradeNames: ["gpii.discoveryTool.enactorSet"],
+                tocTemplate: pathToTocTemplate,
+                classnameMap: {
+                    theme: {
+                        "default": customThemeName
+                    }
+                },
+                events: {
+                    simplifyContentChanged: null
+                },
+                listeners: {
+                    simplifyContentChanged: {
+                        listener: "gpii.discoveryTool.updateToc",
+                        args: "{that}.tableOfContents"
+                    }
                 }
             }
         });
@@ -54,19 +56,13 @@ var demo = demo || {};
             templatePrefix: pathToTemplates,
             messagePrefix: pathToMessages,
             templateLoader: {
-                options: {
-                    gradeNames: ["gpii.discoveryTool.templateLoader"]
-                }
+                gradeNames: ["gpii.discoveryTool.templateLoader"]
             },
             messageLoader: {
-                options: {
-                    gradeNames: ["gpii.discoveryTool.messageLoader"]
-                }
+                gradeNames: ["gpii.discoveryTool.messageLoader"]
             },
             uiOptions: {
-                options: {
-                    gradeNames: ["gpii.discoveryTool.panels", "gpii.discoveryTool.rootModel", "fluid.uiOptions.uiEnhancerRelay"]
-                }
+                gradeNames: ["gpii.discoveryTool.panels", "gpii.discoveryTool.rootModel", "fluid.uiOptions.uiEnhancerRelay"]
             }
         });
     };
