@@ -29,7 +29,7 @@ var demo = demo || {};
     };
 
     demo.initPageEnhancer = function (customThemeName) {
-        fluid.pageEnhancer({
+        return fluid.pageEnhancer({
             uiEnhancer: {
                 gradeNames: ["gpii.discoveryTool.enactorSet"],
                 tocTemplate: pathToTocTemplate,

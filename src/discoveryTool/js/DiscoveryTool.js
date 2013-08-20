@@ -77,53 +77,51 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             hideTool: $.ui.keyCode.ESCAPE
         },
         slidingPanel: {
-            options: {
-                strings: {
-                    showLabel: {
-                        expander: {
-                            func: "gpii.discoveryTool.lookupMsg",
-                            args: ["{slidingPanel}.msgBundle", "slidingPanelShowLabel"]
-                        }
-                    },
-                    hideLabel: {
-                        expander: {
-                            func: "gpii.discoveryTool.lookupMsg",
-                            args: ["{slidingPanel}.msgBundle", "slidingPanelHideLabel"]
-                        }
-                    }                    
+            strings: {
+                showLabel: {
+                    expander: {
+                        func: "gpii.discoveryTool.lookupMsg",
+                        args: ["{slidingPanel}.msgBundle", "slidingPanelShowLabel"]
+                    }
                 },
-                invokers: {
-                    showDiscoveryIcon: {
-                        "this": "{discoveryTool}.dom.discoverIcon",
-                        method: "show"
-                    },
-                    hideDiscoveryIcon: {
-                        "this": "{discoveryTool}.dom.discoverIcon",
-                        method: "hide"
-                    },
-                    setLabel: {
-                        "this": "{that}.dom.toggleButton",
-                        method: "attr",
-                        args: ["aria-label", "{arguments}.0"]
-                    },
+                hideLabel: {
+                    expander: {
+                        func: "gpii.discoveryTool.lookupMsg",
+                        args: ["{slidingPanel}.msgBundle", "slidingPanelHideLabel"]
+                    }
+                }                    
+            },
+            invokers: {
+                showDiscoveryIcon: {
+                    "this": "{discoveryTool}.dom.discoverIcon",
+                    method: "show"
                 },
-                listeners: {
-                    "onCreate.showIcon": "{that}.showDiscoveryIcon",
-                    "onCreate.showLabel": {
-                        listener: "{that}.setLabel",                    
-                        args: "{that}.options.strings.showLabel"
-                    },
-                    "onPanelHide.showIcon": "{that}.showDiscoveryIcon",
-                    "onPanelHide.showLabel": {
-                        listener: "{that}.setLabel",                    
-                        args: "{that}.options.strings.showLabel"
-                    },
-                    "onPanelShow.showIcon": "{that}.hideDiscoveryIcon",
-                    "onPanelShow.showLabel": {
-                        listener: "{that}.setLabel",                    
-                        args: "{that}.options.strings.hideLabel"
-                    },                    
+                hideDiscoveryIcon: {
+                    "this": "{discoveryTool}.dom.discoverIcon",
+                    method: "hide"
+                },
+                setLabel: {
+                    "this": "{that}.dom.toggleButton",
+                    method: "attr",
+                    args: ["aria-label", "{arguments}.0"]
                 }
+            },
+            listeners: {
+                "onCreate.showIcon": "{that}.showDiscoveryIcon",
+                "onCreate.showLabel": {
+                    listener: "{that}.setLabel",                    
+                    args: "{that}.options.strings.showLabel"
+                },
+                "onPanelHide.showIcon": "{that}.showDiscoveryIcon",
+                "onPanelHide.showLabel": {
+                    listener: "{that}.setLabel",                    
+                    args: "{that}.options.strings.showLabel"
+                },
+                "onPanelShow.showIcon": "{that}.hideDiscoveryIcon",
+                "onPanelShow.showLabel": {
+                    listener: "{that}.setLabel",                    
+                    args: "{that}.options.strings.hideLabel"
+                },                    
             }
         },
         invokers: {
@@ -185,8 +183,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         gpii.discoveryTool.bindHideKey(that.options.keyBinding.hideTool, iframeHtml, that.hideToolPanelInIframe);
     };
     
-    // should move this to somewhere reusable, possibly in infusion
-    // similar code in settingsPanels.js
+    // Currently this code is duplicated from SlidingPanel.js
+    // FLUID-5119 filed to move it to the framework, after which this should be removed in favour of the
+    // generalized code.
     gpii.discoveryTool.lookupMsg = function (messageResolver, value) {
         var looked = messageResolver.lookup([value]);
         return looked ? looked.template : looked;
@@ -406,7 +405,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                             }
                         }
                     },
-                    presetComponents: {
+                    presetPanels: {
                         expander: {
                             func: "gpii.discoveryTool.panels.getSubcomponents",
                             args: ["{uiOptions}.modelTransformer"]
@@ -659,7 +658,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             onBlur: null,
             afterActivate: null
         },
-        presetComponents: [],
+        presetPanels: [],
         numSelections: 2,
         listeners: {
             "onCreate.setLabel": {
@@ -714,14 +713,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         invokers: {
             randomizeSelection: {
                 funcName: "gpii.discoveryTool.trySomethingNew.randomizeSelection",
-                args: ["{that}.options.presetComponents", "{that}.options.numSelections"]
+                args: ["{that}.options.presetPanels", "{that}.options.numSelections"]
             }
         },
         components: {
             cycle: {
                 type: "gpii.discoveryTool.cycle",
                 options: {
-                    items: "{trySomethingNew}.options.presetComponents",
+                    items: "{trySomethingNew}.options.presetPanels",
                     listeners: {
                         "on.toggleClass": {
                             funcName: "gpii.discoveryTool.trySomethingNew.toggleClass",
@@ -741,10 +740,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         event.preventDefault();
     };
 
-    gpii.discoveryTool.trySomethingNew.randomizeSelection = function (presetComponents, numSelections) {
-        var components = fluid.copy(presetComponents);
+    gpii.discoveryTool.trySomethingNew.randomizeSelection = function (presetPanels, numSelections) {
+        var components = fluid.copy(presetPanels);
         var toSelect = [];
-        numSelections = Math.min(numSelections || 0, components.length);
+        numSelections = Math.min(numSelections, components.length);
 
         for (var i = 0; i < numSelections; i++) {
             var randIndex = Math.floor(Math.random() * (components.length));
@@ -765,6 +764,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         $(elm).toggleClass(className);
     };
 
+    /*
+     * Cycles through an array of items, one at a time based on the specified speed.
+     * The items can be anything. When the cycle is started, each item will gain "focus"
+     * one after another. As an item gains focus it fires the "on" event. Before the next
+     * item is focused the current one will fire the "off" event. No two items will be
+     * focused at the same time. The cycle will wrap around the array and continue until
+     * stopped.
+     */
     fluid.defaults("gpii.discoveryTool.cycle", {
         gradeNames: ["fluid.modelComponent", "fluid.eventedComponent", "autoInit"],
         speed: "500",
