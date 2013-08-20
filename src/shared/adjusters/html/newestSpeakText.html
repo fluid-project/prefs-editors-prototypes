@@ -7,10 +7,15 @@
 </head>
 
 <body>
-    <div>
-        <input type="checkbox" id="preferenceSwitch" class="gpii-screenReaderTTSEnabled"/>
-        <label for="preferenceSwitch" class="gpii-screenReaderTTSEnabled-label main-checkbox-label"></label>
-    </div><br>
+    <div id="prompt-message">
+        <label id="prompt-message-label" for="star" class="gpii-addOrRemovePreference-label pref-checkbox-label" style="color:black; font-size:13px; font-weight:bold;"></label>
+    </div>
+    <input type="checkbox" id="star" class="gpii-addOrRemovePreference"/>
+    <label for="star" class="gpii-addOrRemovePreference-label pref-checkbox-label"></label>
+
+    <input type="checkbox" id="preferenceSwitch" class="gpii-screenReaderTTSEnabled"/>
+    <label for="preferenceSwitch" class="gpii-screenReaderTTSEnabled-label main-checkbox-label"></label>
+    <br><br>
     <div class="preference">
         <div id="expanded-top">
             <div>
@@ -38,11 +43,14 @@
                 <label class="gpii-auditoryOutLanguage-label" for="languages"></label><br>
                 <select class="gpii-auditoryOutLanguage fl-inputs" id="languages"></select>
             </div><br>
-            <div>
-                <label class="gpii-punctuationVerbosity-label" for="punctuation"></label><br>
-                <div class="gpii-punctuationVerbosity-description"></div>
-                <select class="gpii-punctuationVerbosity fl-inputs" id="punctuation"></select>
-            </div> <br>
+
+
+            <div class="gpii-punctuationVerbosity-description"></div><br>
+
+            <div class="gpii-punctuationVerbosity-row">
+                <input type="radio" class="gpii-punctuationVerbosity" name="punctuationVerbosity" id="some" value="some" />
+                <label class="gpii-punctuationVerbosity-label" for="some"></label>
+            </div><br>
 
             <input type="checkbox" id="announce-uppercase" class="gpii-announceCapitals" />
             <label for="announce-uppercase" class="checkbox-label"><span class="gpii-announceCapitals-label"></span></label><br>
@@ -59,7 +67,6 @@
 
             <div>
                 <h3><label for="braille" class="gpii-screenReaderBrailleOutput-label switch"></label></h3>
-                <div class="gpii-screenReaderBrailleOutput-description"></div>
                 <div id="braille-onoff" class="fl-uiOptions-onoff">
                     <input type="checkbox" id="braille" class="gpii-screenReaderBrailleOutput" />
                     <label for="braille">
@@ -67,8 +74,9 @@
                             <span class="fl-uiOptions-switch-inner"></span>
                         </span>
                     </label>
-                </div>
-            </div><br><br><br><br>
+                </div><br><br>
+                <div class="gpii-screenReaderBrailleOutput-description"></div>
+            </div><br><br>
         </div>
         <div id="more-options">+ more</div>
     </div>

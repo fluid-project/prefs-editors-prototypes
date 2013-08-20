@@ -2,6 +2,39 @@
     margin-left: 45px;
 }
 
+.gpii-punctuationVerbosity-description {
+    font-size: 15px;
+}
+
+.gpii-screenReaderBrailleOutput-description {
+    font-size: 15px;
+}
+
+#prompt-message {
+    display:none;
+    background: url('../images/balloon-empty.png') no-repeat;
+    height: 25px;
+    width: 200px;
+    background-size:200px 25px;
+    position: fixed;
+    top: 55px;
+    margin-left: 238px;
+    cursor: pointer;
+    text-align: center;
+}
+/*
+#prompt-message-label {
+    color:black;
+    font-size:12px;
+    font-weight:bold;
+    border: 1px solid #888;
+}*/
+
+.gpii-addOrRemovePreference-label {
+    display: none;
+    color:transparent;
+}
+
 #speech-rate {
     display: none;
 }
@@ -59,53 +92,6 @@ textarea:focus, input:focus{
     margin-left:125px;
 }
 
-.onoffswitch {
-    position: relative; width: 90px;
-    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
-}
-.onoffswitch-checkbox {
-    display: none;
-}
-.onoffswitch-label {
-    display: block; overflow: hidden; cursor: pointer;
-    border: 2px solid #999999; border-radius: 20px;
-}
-.onoffswitch-inner {
-    width: 50%; margin-left: -100%;
-    -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
-    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
-}
-.onoffswitch-inner:before, .onoffswitch-inner:after {
-    float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
-    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
-    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
-}
-.onoffswitch-inner:before {
-    content: "ON";
-    padding-left: 10px;
-    background-color: #2FCCFF; color: #FFFFFF;
-}
-.onoffswitch-inner:after {
-    content: "OFF";
-    padding-right: 10px;
-    background-color: #EEEEEE; color: #999999;
-    text-align: right;
-}
-.onoffswitch-switch {
-    width: 18px; margin: 6px;
-    background: #FFFFFF;
-    border: 2px solid #999999; border-radius: 20px;
-    position: absolute; top: 0; bottom: 0; right: 56px;
-    -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
-    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s;
-}
-.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
-    margin-left: 0;
-}
-.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
-    right: 0px;
-}
-
 select {
     padding:4px;
     margin: 0;
@@ -141,6 +127,26 @@ input[type=checkbox] {
     margin:-1px;
     padding:0;
     border:0;
+}
+
+input[type=checkbox] + label.pref-checkbox-label {
+    background: url('../images/star-dark.png') no-repeat;
+    height: 21px;
+    width: 21px;
+    background-size:21px 21px;
+    position: absolute;
+    margin-left: 329px;
+    cursor: pointer;
+}
+
+input[type=checkbox]:checked + label.pref-checkbox-label {
+    background: url('../images/star-light.png') no-repeat;
+    height: 21px;
+    width: 21px;
+    background-size:21px 21px;
+    position: absolute;
+    margin-left: 329px;
+    cursor: pointer;
 }
 
 input[type=checkbox] + label.main-checkbox-label {
@@ -195,4 +201,52 @@ input[type=checkbox]:checked + label.checkbox-label {
 
 body {
     -webkit-user-select: none;
+}
+
+
+.onoffswitch {
+    position: relative; width: 90px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 20px;
+}
+.onoffswitch-inner {
+    width: 50%; margin-left: -100%;
+    -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
+    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "ON";
+    padding-left: 10px;
+    background-color: #2FCCFF; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+    content: "OFF";
+    padding-right: 10px;
+    background-color: #EEEEEE; color: #999999;
+    text-align: right;
+}
+.onoffswitch-switch {
+    width: 18px; margin: 6px;
+    background: #FFFFFF;
+    border: 2px solid #999999; border-radius: 20px;
+    position: absolute; top: 0; bottom: 0; right: 56px;
+    -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
+    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px;
 }

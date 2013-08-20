@@ -10,5 +10,6 @@
     "speakTutorialMessagesLabel": "Instructions when focused on an interactive (eg. button)",
     "keyEchoLabel": "Echo letter after typed",
     "wordEchoLabel": "Echo word after typed",
-    "screenReaderBrailleOutputLabel": "Braille"
+    "screenReaderBrailleOutputLabel": "Braille",
+    "screenReaderBrailleOutputDescription": "Output to available device"
 }
