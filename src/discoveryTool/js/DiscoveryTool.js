@@ -231,9 +231,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     },
                     resources: {
                         template: "{templateLoader}.resources.highContrast"
-                    },
-                    listeners: {
-                        afterDisabled: "{that}.refreshView"
                     }
                 }
             },
@@ -253,15 +250,22 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                         // All of the listeners for toggling the contrasts are inside of
                         // lowContrast because the highContrast component has to be created
                         // before the IoC reference will resolve correctly.
-                        "{highContrast}.events.afterEnabled": {
+                        "{highContrast}.events.afterEnabled": [{
                             listener: "{that}.applier.requestChange",
-                            args: ["enabled", false]
-                        },
-                        "afterEnabled": {
+                            args: ["enabled", false],
+                            namespace: "disableLowContrast"
+                        }, {
+                            listener: "{that}.refreshView",
+                            namespace: "refreshLowContrast"
+                        }],
+                        "afterEnabled.disableHighContrast": {
                             listener: "{highContrast}.applier.requestChange",
                             args: ["enabled", false]
                         },
-                        afterDisabled: "{that}.refreshView"
+                        "afterEnabled.refreshHighContrast": {
+                            listener: "{highContrast}.refreshView",
+                            priority: "last"
+                        }
                     }
                 }
             },
