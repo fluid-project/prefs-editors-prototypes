@@ -752,15 +752,24 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             off: null
         },
         model: {
-            enabled: false
+            enabled: false,
+            inStep: false
         },
         listeners: {
             "onCreate.cycle": {
-                listener: "{that}.run"
+                listener: "{that}.step"
             },
-            "onCreate.modelChangedListener": {
+            "onCreate.modelChangedListenerEnabled": {
                 listener: "{that}.applier.modelChanged.addListener",
-                args: ["*", "{that}.run"]
+                args: ["enabled", "{that}.step"]
+            },
+            "on.setModel": {
+                listener: "{that}.applier.requestChange",
+                args: ["inStep", true]
+            },
+            "off.setModel": {
+                listener: "{that}.applier.requestChange",
+                args: ["inStep", false]
             }
         },
         invokers: {
@@ -772,21 +781,21 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 func: "{that}.applier.requestChange",
                 args: ["enabled", false]
             },
-            run: {
-                funcName: "gpii.discoveryTool.cycle.run",
+            step: {
+                funcName: "gpii.discoveryTool.cycle.step",
                 args: ["{that}.options.items", 0, "{that}.options.speed", "{that}.model", "{that}.events.on.fire", "{that}.events.off.fire"]
             }
         }
     });
 
-    gpii.discoveryTool.cycle.run = function (items, index, speed, model, callbackOn, callbackOff) {
+    gpii.discoveryTool.cycle.step = function (items, index, speed, model, callbackOn, callbackOff) {
         var numItems = items.length;
-        if (model.enabled && numItems) {
+        if (model.enabled && !model.inStep && numItems) {
             var boundIndex = index%numItems;
             callbackOn(items[boundIndex], boundIndex);
             setTimeout(function () {
                 callbackOff(items[boundIndex], boundIndex);
-                gpii.discoveryTool.cycle.run(items, ++index, speed, model, callbackOn, callbackOff);
+                gpii.discoveryTool.cycle.step(items, ++index, speed, model, callbackOn, callbackOff);
             }, speed);
         }
     };
