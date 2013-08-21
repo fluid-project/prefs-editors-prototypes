@@ -255,7 +255,7 @@ article h2 {
 .fl-uiOptions-discoveryTool iframe {
     width: 100%;
     border: none;
-    margin-bottom: -1em; /* For GPII-173 */
+    margin-bottom: -15px; /* For GPII-173 */
 }
 
 .fl-header-title {
