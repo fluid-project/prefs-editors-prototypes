@@ -148,6 +148,7 @@
 .fl-icon-text {
 	position:relative;
 	top: -0.6em; /* shift text up since Checkmark icon is shifted upward. */
+	display: inline;
 }
 
 .fl-discoveryTool-panel-icon{
