@@ -31,9 +31,9 @@
 
 .fl-uiOptions-discoveryTool {
     background-color: #6f7b80;
+    overflow-x: auto;    
     overflow-y: hidden;
     white-space: nowrap;
-    overflow-x: auto;    
 }
 
 .fl-uiOptions-discoveryTool .fl-uiOptions {
@@ -43,7 +43,7 @@
 
 /* Panels */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panels {
-    text-align: center;        
+    text-align: center;
     margin: 0;
 }
 
