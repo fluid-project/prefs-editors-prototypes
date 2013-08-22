@@ -43,9 +43,8 @@
 
 /* Panels */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panels {
-    margin: 0;
-    width: 100%;
     text-align: center;        
+    margin: 0;
 }
 
 .fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel {
@@ -255,32 +254,3 @@
 .fl-theme-bw .fl-uiOptions-panel input:focus ~ label .fl-icon-text,
 .fl-theme-lgdg .fl-uiOptions-panel label:hover .fl-icon-text,
 .fl-theme-lgdg .fl-uiOptions-panel input:focus ~ label .fl-icon-text  { text-shadow: none; }
-
-
-/* Responsive design: if narrow screen, preferences should scroll not wrap */
-
-/* Desktops and laptops
-@media only screen and (min-width: 60.05em) {
-
-    .fl-uiOptions-discoveryTool .fl-uiOptions-panels {
-        width: 100%;
-        text-align: center;        
-    }
-
-}
-
-@media only screen and (max-width: 60em) {
-
-    .fl-uiOptions-discoveryTool .flc-uiOptions-controls {
-        width: 100%;
-        overflow-x: auto;        
-    }
-    
-    .fl-uiOptions-discoveryTool .fl-uiOptions-panels {
-        width: 150%;
-    }
-
-    .fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel {
-        text-align: center;
-    }
-} */
