@@ -483,7 +483,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             elementsToHide: "header, footer, aside, nav, .flc-uiOptions-simplify-hide"
         },
         styles: {
-            simplified: "fl-uiOptions-content-simplified"
+            simplified: "fl-simplify"
         },
         model: {
             value: false
@@ -494,19 +494,22 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         invokers: {
             set: {
                 funcName: "gpii.discoveryTool.enactors.simplifiedContent.set",
-                args: ["{that}.model.value", "{that}.dom.elementsToHide"]
+                args: ["{that}.model.value", "{that}.dom.elementsToHide", "{that}"]
             }
         },
         listeners: {
-            onCreate: {
-                listener: "{that}.set",
-                args: ["{that}.model.value", "{that}.dom.elementsToHide"]
-            }
+            onCreate: "{that}.set"
         }
     });
 
-    gpii.discoveryTool.enactors.simplifiedContent.set = function (value, els) {
+    gpii.discoveryTool.enactors.simplifiedContent.set = function (value, els, that) {
         els.toggle(!value);
+
+        if (value) {
+            that.container.addClass(that.options.styles.simplified);
+        } else {
+            that.container.removeClass(that.options.styles.simplified);
+        }
     };
 
     gpii.discoveryTool.enactors.simplifiedContent.finalInit = function (that) {
