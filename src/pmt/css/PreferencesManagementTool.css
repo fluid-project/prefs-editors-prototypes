@@ -28,3 +28,17 @@
 .fl-uiOptions .ui-slider-range {
     background-color: #17a9b8;
 }
+
+.headerImage {
+	position: relative; 
+   	width: 100%; /* for IE 6 */
+}
+
+.headerTitle {
+	position: absolute; 
+   	top: 20px; 
+   	left: 0; 
+   	width: 100%;
+   	color: white;
+   	text-align: center;
+}
