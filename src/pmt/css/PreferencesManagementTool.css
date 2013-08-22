@@ -42,3 +42,7 @@
    	color: white;
    	text-align: center;
 }
+
+.fl-uiOptions label {
+    font-size: 0.8em;
+}
