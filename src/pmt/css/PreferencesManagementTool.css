@@ -46,3 +46,7 @@
 .fl-uiOptions label {
     font-size: 0.8em;
 }
+
+.fl-uiOptions .fl-slider a {
+    box-shadow: none;
+}
