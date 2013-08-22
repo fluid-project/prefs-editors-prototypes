@@ -50,3 +50,27 @@
 .fl-uiOptions .fl-slider a {
     box-shadow: none;
 }
+
+.flc-uiOptions-plus-minus-numerical-minus, .flc-uiOptions-plus-minus-numerical-plus {
+	width: 10% !important;
+	height: 25px !important;
+	font-size: 20px !important;
+	cursor: pointer;
+	text-align: center !important;
+	background-color: white;
+	margin-left: 2px !important;
+	margin-right: 2px !important;
+}
+
+.flc-uiOptions-plus-minus-numerical-widget {
+	width: 100% !important;
+	background-color: #FFFFFF;
+    height: 25px;
+}
+
+.flc-uiOptions-plus-minus-numerical-value {
+	width: 76% !important;
+	border: none !important;
+	height: 25px !important;
+	text-align: center !important;
+}
