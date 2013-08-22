@@ -53,6 +53,27 @@
 	        "message": "%prefix/uiOptions.json",
 
 	        // The preference-specific information:
+	        "textSize": {
+	            "type": "fluid.uiOptions.textSize",
+	            "enactor": {
+	                "type": "fluid.uiOptions.enactors.textSize",
+	                "fontSizeMap": {
+	                    "xx-small": "9px",
+	                    "x-small": "11px",
+	                    "small": "13px",
+	                    "medium": "15px",
+	                    "large": "18px",
+	                    "x-large": "23px",
+	                    "xx-large": "30px"
+	                }
+	            },
+	            "panel": {
+	                "type": "fluid.uiOptions.panels.textSize",
+	                "container": ".flc-uiOptions-text-size",  // the css selector in the template where the panel is rendered
+	                "template": "%prefix/UIOptionsTemplate-plusMinusNumerical.html",
+	                "message": "%prefix/textSize.json"
+	            }
+	        },
 	        "cursorSize": {
 	            "type": "fluid.uiOptions.cursorSize",
 	            "enactor": {
@@ -74,27 +95,7 @@
 	                "message": "%prefix/cursorSize.json"
 	            }
 	        },
-	        /*"textSize": {
-	            "type": "fluid.uiOptions.textSize",
-	            "enactor": {
-	                "type": "fluid.uiOptions.enactors.textSize",
-	                "fontSizeMap": {
-	                    "xx-small": "9px",
-	                    "x-small": "11px",
-	                    "small": "13px",
-	                    "medium": "15px",
-	                    "large": "18px",
-	                    "x-large": "23px",
-	                    "xx-large": "30px"
-	                }
-	            },
-	            "panel": {
-	                "type": "fluid.uiOptions.panels.textSize",
-	                "container": ".flc-uiOptions-text-size",  // the css selector in the template where the panel is rendered
-	                "template": "%prefix/UIOptionsTemplate-textSize.html",
-	                "message": "%prefix/textSize.json"
-	            }
-	        },
+	        /*
 	        "magnifier": {
 	            "type": "fluid.uiOptions.magnifier",
 	            "enactor": {

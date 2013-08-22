@@ -1,5 +1,41 @@
 (function ($, fluid) {
 
+	fluid.defaults("fluid.uiOptions.panels.textSize", {
+        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        preferenceMap: {
+            "fluid.uiOptions.textSize": {
+                "model.value": "default",
+                "range.min": "minimum",
+                "range.max": "maximum"
+            }
+        },
+        // The default model values represent both the expected format as well as the setting to be applied in the absence of values passed down to the component.
+        // i.e. from the settings store, or specific defaults derived from schema.
+        // Note: Except for being passed down to its subcomponent, these default values are not contributed and shared out
+        range: {
+            min: 1,
+            max: 2
+        },
+        selectors: {
+            textSize: ".flc-uiOptions-plus-minus-numerical",
+            label: ".flc-uiOptions-plus-minus-numerical-label"
+        },
+        protoTree: {
+            label: {messagekey: "textSizeLabel"},
+            textSize: {
+                decorators: {
+                    type: "fluid",
+                    func: "fluid.uiOptions.textfieldSlider"
+                }
+            }
+        },
+        sliderOptions: {
+            orientation: "horizontal",
+            step: 0.1,
+            range: "min"
+        }
+    });
+	
 	fluid.defaults("fluid.uiOptions.panels.cursorSize", {
 		gradeNames: ["fluid.uiOptions.panels", "autoInit"],
 		preferenceMap: {
