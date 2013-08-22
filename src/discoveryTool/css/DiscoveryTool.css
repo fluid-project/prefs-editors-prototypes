@@ -141,19 +141,8 @@ details summary:before {
 }
 
 /* Font Icons */
-.fl-icon-discover, .fl-icon-arrow, .fl-icon-check {
+.fl-icon-arrow, .fl-icon-check {
     font-family: 'DiscoveryToolIcons';
-}
-
-.icon-discover:before {
-    color: #fff;
-    content: "\e01a";
-}
-
-.icon-discover:after {
-    content: "\e01b";
-    position: relative;
-    left: -1.2em;
 }
 
 .fl-icon-arrow:after {
@@ -198,15 +187,12 @@ details summary:before {
 }
 
 .fl-discoveryTool-panel-icon:before{
-	position:relative;
-	left: 0.1em;
 	color: #fff;
 }
 
 .fl-discoveryTool-panel-icon:after{
 	color: #333;
-	position: relative;
-	left: -0.9em;
+	margin-left: -1em;
 }
 
 /* Preference Set Icons */
@@ -266,8 +252,8 @@ details summary:before {
 
 /* Theming for high and low contrast */
 
-.fl-theme-bw .fl-icon-discover, .fl-theme-bw .fl-icon-arrow, .fl-theme-bw .fl-icon-check, .fl-theme-bw .fl-discoveryTool-panel-icon,
-.fl-theme-lgdg .fl-icon-discover, .fl-theme-lgdg .fl-icon-arrow, .fl-theme-lgdg .fl-icon-check, .fl-theme-lgdg .fl-discoveryTool-panel-icon {
+.fl-theme-bw .fl-icon-arrow, .fl-theme-bw .fl-icon-check, .fl-theme-bw .fl-discoveryTool-panel-icon,
+.fl-theme-lgdg .fl-icon-arrow, .fl-theme-lgdg .fl-icon-check, .fl-theme-lgdg .fl-discoveryTool-panel-icon {
     font-family: 'DiscoveryToolIcons' !important;
 }
 

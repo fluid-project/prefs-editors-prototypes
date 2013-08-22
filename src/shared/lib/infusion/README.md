@@ -1,11 +1,11 @@
 
 The version of Infusion included in this folder was created using a custom build from commit
 
-    c9914b9c609d4b3ba614977d47859fe5c951e335
+    b452d86d52e97c2e75ecd40cc42e145e68b5dd91
 
-of the Infusion FLUID-4907 branch
+of the Infusion master branch
 
-    https://github.com/jobara/infusion/tree/FLUID-4907
+    https://github.com/fluid-project/infusion
 
 using the command line
 

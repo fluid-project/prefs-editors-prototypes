@@ -23,13 +23,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     /**
      * These paths will need to be customized for the integration
      */
-    fluid.demands("fluid.uiOptions.templateLoader", ["gpii.discoveryTool"], {
-        options: {
-            templates: {
-                uiOptions: "../html/DiscoveryTool.html"
-            }
-        }
-    });
     fluid.defaults("gpii.discoveryTool.templateLoader", {
         gradeNames: ["fluid.uiOptions.resourceLoader", "autoInit"],
         templates: {
@@ -40,6 +33,13 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             moreText: "%prefix/MoreTextPanelTemplate.html",
             spoken: "%prefix/SpokenPanelTemplate.html",
             uiOptions: "%prefix/DiscoveryTool.html"
+        }
+    });
+
+    fluid.defaults("gpii.discoveryTool.messageLoader", {
+        gradeNames: ["fluid.uiOptions.resourceLoader", "autoInit"],
+        templates: {
+            uiOptions: "%prefix/DiscoveryTool.json"
         }
     });
 
@@ -73,9 +73,94 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * An instance of a Fat Panel UIO
      ****************/
     fluid.defaults("gpii.discoveryTool", {
-        gradeNames: ["fluid.uiOptions.fatPanel", "autoInit"]
+        gradeNames: ["fluid.uiOptions.fatPanel", "autoInit"],
+        selectors: {
+            discoverIcon: ".flc-icon-discover"
+        },
+        keyBinding: {
+            hideTool: $.ui.keyCode.ESCAPE
+        },
+        slidingPanel: {
+            options: {
+                invokers: {
+                    showDiscoveryIcon: {
+                        "this": "{discoveryTool}.dom.discoverIcon",
+                        method: "show"
+                    },
+                    hideDiscoveryIcon: {
+                        "this": "{discoveryTool}.dom.discoverIcon",
+                        method: "hide"
+                    }
+                },
+                listeners: {
+                    onCreate: "{that}.showDiscoveryIcon",
+                    onPanelHide: "{that}.showDiscoveryIcon",
+                    onPanelShow: "{that}.hideDiscoveryIcon"
+                }
+            }
+        },
+        invokers: {
+            hideToolPanel: "{slidingPanel}.hidePanel",
+            hideToolPanelInIframe: {
+                funcName: "gpii.discoveryTool.hideToolPanelInIframe",
+                args: ["{that}.hideToolPanel", "{slidingPanel}.dom.toggleButton"]
+            }
+        },
+        listeners: {
+            afterRender: {
+                listener: "gpii.discoveryTool.initHideFuncs",
+                args: "{that}",
+                priority: "last"
+            }
+        }
     });
 
+    // Pressing escape inside the discovery tool does:
+    // 1. Hide the tool panel;
+    // 2. Move focus to "show/hide" button
+    gpii.discoveryTool.hideToolPanelInIframe = function (genericHideFunc, elementToFocus) {
+        genericHideFunc();
+        elementToFocus.focus();
+    };
+
+    gpii.discoveryTool.bindHideKey = function (key, element, hideFunc) {
+        if (!element) {
+            return;
+        }
+
+        var keybindingOpts = {
+            additionalBindings: [{
+                key: key,
+                activateHandler: hideFunc
+            }]
+        };
+
+        element.fluid("tabbable");
+        fluid.activatable(element, null, keybindingOpts);
+    };
+
+    // Hide the discovery tool when clicking outside of the discovery tool panel or pressing escape
+    gpii.discoveryTool.initHideFuncs = function (that) {
+        var html = $("html");
+
+        html.click(function () {
+            that.hideToolPanel();
+        });
+
+        that.container.click(function (event) {
+            event.stopPropagation();
+        });
+
+        var iframeHtml = that.iframeRenderer.iframe.contents().find("html");
+
+        // Bind hide function onto the main page and the iframe for discovery tool
+        gpii.discoveryTool.bindHideKey(that.options.keyBinding.hideTool, html, that.hideToolPanel);
+        gpii.discoveryTool.bindHideKey(that.options.keyBinding.hideTool, iframeHtml, that.hideToolPanelInIframe);
+    };
+
+    /*************
+     * The base grade component for each individual panel
+     *************/
     fluid.defaults("gpii.discoveryTool.defaultPanel", {
         gradeNames: ["fluid.uiOptions.defaultPanel", "autoInit"],
         sourceApplier: "{modelTransformer}.applier"
@@ -155,9 +240,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     },
                     resources: {
                         template: "{templateLoader}.resources.highContrast"
-                    },
-                    listeners: {
-                        afterDisabled: "{that}.refreshView"
                     }
                 }
             },
@@ -177,15 +259,22 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                         // All of the listeners for toggling the contrasts are inside of
                         // lowContrast because the highContrast component has to be created
                         // before the IoC reference will resolve correctly.
-                        "{highContrast}.events.afterEnabled": {
+                        "{highContrast}.events.afterEnabled": [{
                             listener: "{that}.applier.requestChange",
-                            args: ["enabled", false]
-                        },
-                        "afterEnabled": {
+                            args: ["enabled", false],
+                            namespace: "disableLowContrast"
+                        }, {
+                            listener: "{that}.refreshView",
+                            namespace: "refreshLowContrast"
+                        }],
+                        "afterEnabled.disableHighContrast": {
                             listener: "{highContrast}.applier.requestChange",
                             args: ["enabled", false]
                         },
-                        afterDisabled: "{that}.refreshView"
+                        "afterEnabled.refreshHighContrast": {
+                            listener: "{highContrast}.refreshView",
+                            priority: "last"
+                        }
                     }
                 }
             },
@@ -416,7 +505,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     fluid.defaults("gpii.discoveryTool.enactors.simplifiedContent", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
         selectors: {
-            content: ".flc-uiOptions-content"
+            elementsToHide: "header, footer, aside, nav, .flc-uiOptions-simplify-hide"
         },
         styles: {
             simplified: "fl-uiOptions-content-simplified"
@@ -430,54 +519,24 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         invokers: {
             set: {
                 funcName: "gpii.discoveryTool.enactors.simplifiedContent.set",
-                args: ["{arguments}.0", "{that}"]
+                args: ["{that}.model.value", "{that}.dom.elementsToHide"]
             }
         },
         listeners: {
             onCreate: {
                 listener: "{that}.set",
-                args: ["{that}.model.value"]
+                args: ["{that}.model.value", "{that}.dom.elementsToHide"]
             }
         }
     });
 
-    gpii.discoveryTool.enactors.simplifiedContent.set = function (value, that) {
-        var contentContainer = that.container.find(that.options.selectors.content);
-        var simplified = contentContainer.hasClass(that.options.styles.simplified);
-
-        if (!that.initialContent || !that.article) {
-            that.initialContent = contentContainer.html();
-            var articleDom = contentContainer.find("article").clone();
-            $("aside", articleDom).remove();
-            $("img", articleDom).css("float", "none");
-            $("figure", articleDom).css("float", "none");
-            var article = articleDom.html();
-            that.article = article ? article : that.initialContent;
-            that.origBg = $("body").css("background-image");
-        }
-
-        if (value) {
-            if (!simplified) {
-                $("body").css("background-image", "none");
-                contentContainer.html(that.article);
-                contentContainer.addClass(that.options.styles.simplified);
-                that.events.settingChanged.fire();
-            }
-        } else {
-            if (simplified) {
-                $("body").css("background-image", that.origBg);
-                contentContainer.html(that.initialContent);
-                contentContainer.removeClass(that.options.styles.simplified);
-                that.events.settingChanged.fire();
-            }
-        }
+    gpii.discoveryTool.enactors.simplifiedContent.set = function (value, els) {
+        els.toggle(!value);
     };
 
     gpii.discoveryTool.enactors.simplifiedContent.finalInit = function (that) {
-        that.applier.modelChanged.addListener("value", function (newModel, oldModel) {
-            if (newModel.value !== oldModel.value) {
-                that.set(newModel.value);
-            }
+        that.applier.modelChanged.addListener("value", function (newModel) {
+            that.set();
         });
     };
     gpii.discoveryTool.updateToc = function (tocEnactor) {
