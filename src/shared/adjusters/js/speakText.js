@@ -27,8 +27,8 @@
             },
             "punctuationVerbosity": {
                 "type": "string",
-                "default": "none",
-                "enum": ["none", "some"]
+                "default": "none"
+                // "enum": ["none", "some", "most", "all"]
             },
             "announceCapitals": {
                 "type": "boolean",
@@ -103,9 +103,9 @@
                 "type": "punctuationVerbosity",
                 "panel": {
                     "type": "speakText.panel",
-                    "container": ".gpii-speak-text-group",
+                    // "container": ".gpii-speak-text-group",
                     "template": "../../src/shared/adjusters/html/newestSpeakText.html", // same as above
-                    "message": "../../src/shared/adjusters/messages/speakText.json"
+                    // "message": "../../src/shared/adjusters/messages/speakText.json"
                 }
             },
 
@@ -198,6 +198,7 @@
             punctuationVerbosityRow: ".gpii-punctuationVerbosity-row",
             punctuationVerbosityLabel: ".gpii-punctuationVerbosity-label",
             punctuationVerbosityInput: ".gpii-punctuationVerbosity",
+            punctuationVerbosityBigLabel: ".gpii-punctuationVerbosity-bigLabel",
 
             announceCapitals: ".gpii-announceCapitals",
             speakTutorialMessages: ".gpii-speakTutorialMessages",
@@ -220,23 +221,14 @@
             screenReaderBrailleOutputLabel: ".gpii-screenReaderBrailleOutput-label",
 
             screenReaderBrailleOutputDescription: ".gpii-screenReaderBrailleOutput-description",
-            punctuationVerbosityDescription: ".gpii-punctuationVerbosity-description"
+
+            // moreOptions: ".more-options"
         },
 
         repeatingSelectors: ["punctuationVerbosityRow"],
 
         protoTree: {
-            addOrRemovePreference: "${addOrRemovePreference}",
-            screenReaderTTSEnabled: "${screenReaderTTSEnabled}",
-            screenReaderSwitch: "${screenReaderSwitch}",
-            speechRate: "${speechRate}",
-            auditoryOutLanguage: {
-                selection: "${auditoryOutLanguage}",
-                optionlist: "{that}.options.controlValues.auditoryOutLanguage"
-            },
             expander: {
-                // selection: "${punctuationVerbosity}",
-                // optionlist: "{that}.options.controlValues.punctuationVerbosity"
                 type: "fluid.renderer.selection.inputs",
                 rowID: "punctuationVerbosityRow",
                 labelID: "punctuationVerbosityLabel",
@@ -248,6 +240,15 @@
                     selection: "${value}"
                 },
             },
+            addOrRemovePreference: "${addOrRemovePreference}",
+            screenReaderTTSEnabled: "${screenReaderTTSEnabled}",
+            screenReaderSwitch: "${screenReaderSwitch}",
+            speechRate: "${speechRate}",
+            auditoryOutLanguage: {
+                selection: "${auditoryOutLanguage}",
+                optionlist: "{that}.options.controlValues.auditoryOutLanguage"
+            },
+
             announceCapitals: "${announceCapitals}",
             speakTutorialMessages: "${speakTutorialMessages}",
             keyEcho: "${keyEcho}",
@@ -261,7 +262,7 @@
             speechRateMinus: {messagekey: "speechRateMinus"},
             speechRatePlus: {messagekey: "speechRatePlus"},
             auditoryOutLanguageLabel: {messagekey: "auditoryOutLanguageLabel"},
-            punctuationVerbosityLabel: {messagekey: "punctuationVerbosityLabel"},
+            punctuationVerbosityBigLabel: {messagekey: "punctuationVerbosityLabel"},
             announceCapitalsLabel: {messagekey: "announceCapitalsLabel"},
             speakTutorialMessagesLabel: {messagekey: "speakTutorialMessagesLabel"},
             keyEchoLabel: {messagekey: "keyEchoLabel"},
@@ -276,6 +277,22 @@
             punctuationVerbosity: ["none", "some", "most", "all"]
         },
 
+        // strings: {
+        //     moreText: {
+        //         expander: {
+        //             func: "lookupMsg",
+        //             args: ["{that}.msgBundle", "moreOptionsMoreText"]
+        //         }
+        //     },
+
+        //     lessText: {
+        //         expander: {
+        //             func: "lookupMsg",
+        //             args: ["{that}.msgBundle", "moreOptionsLessText"]
+        //         }
+        //     }
+        // },
+
         finalInitFunction: "speakText.finalInit"
     });
 
@@ -284,12 +301,13 @@
     speakText.finalInit = function (that) {
         that.applier.modelChanged.addListener("screenReaderTTSEnabled", function () {
             if (that.model.screenReaderTTSEnabled) {
-                $("#more-options").text("+ more");
+                $(".more-options").text("+ more");
+                // that.locate("moreOptions").text(that.options.strings.moreText);
                 $("#speech-rate").slideDown();
-                $("#more-options").slideDown();
+                $(".more-options").slideDown();
 
                 if (flag) {
-                    $("#more-options").click(function () {
+                    $(".more-options").click(function () {
                         $("#expanded-top").toggle(400);
                         $("#expanded-bottom").toggle(400);
                         $(".gpii-addOrRemovePreference-label").toggle();
@@ -309,12 +327,10 @@
                     });
 
                     $("#speechRate").keydown(function(event) {
-                        // Allow only backspace and delete
                         if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 37 || event.keyCode == 39 || event.keyCode == 35 || event.keyCode == 36) {
                             // let it happen, don't do anything
                         }
                         else {
-                            // Ensure that it is not a number and stop the keypress
                             if ((event.keyCode < 48 || event.keyCode > 57 ) && (event.keyCode < 96 || event.keyCode > 105 )) {
                                 event.preventDefault();
                             }
@@ -331,7 +347,7 @@
                 };
             } else {
                 $("#speech-rate").slideUp();
-                $("#more-options").slideUp();
+                $(".more-options").slideUp();
                 $("#expanded-top").slideUp();
                 $("#expanded-bottom").slideUp();
                 $(".gpii-addOrRemovePreference-label").hide();
@@ -357,6 +373,11 @@
             }
         });
     };
+
+    // lookupMsg = function (messageResolver, value) {
+    //     var looked = messageResolver.lookup([value]);
+    //     return looked ? looked.template : looked;
+    // };
 
     function moreOrLessOptions(currentValue) {
         if (currentValue == "+ more") {

@@ -20,7 +20,7 @@
 }
 
 .fl-uiOptions label {
-    /*text-transform: lowercase;*/
+    text-transform: lowercase;
     font-size: 1.2em;
 }
 
@@ -54,7 +54,7 @@
 
 .fl-uiOptions select#theme { font-weight:bold; text-transform: uppercase; }
 
-/*
+/* 
     Had to add !importants in order for this style to still show up when another contrast theme has been selected
     It should be removed when we have an Infusion Theme
 */
@@ -76,36 +76,36 @@
     font-size: 1.1em;
 }
 
-.fl-uiOptions .fl-uiOptions-layout div,
+.fl-uiOptions .fl-uiOptions-layout div, 
 .fl-uiOptions .fl-uiOptions-links div {
     margin-left: 25px;
 }
 
 /* Slider specifics */
-.fl-uiOptions .fl-slider {
+.fl-uiOptions .fl-slider {    
     border: 1px solid #b3b3b3;
-    border-radius: 0.3em;
+    border-radius: 0.3em;   
     background-color: #dad6d3;
     padding: 0;
     position: relative;
     height: 1em;
     margin-top: 0;
-    margin-left: 0.5em;
+    margin-left: 0.5em;    
 }
 
 .fl-uiOptions .fl-slider a {
-    position:absolute;
-    display:block;
-    top:0;
+    position:absolute; 
+    display:block; 
+    top:0; 
     left:0;
     height: 2.2em;
     width: 2.2em;
     margin-top: -0.75em;
     margin-left: -0.4em;
     background-color: #fff;
-    border: 1px solid #b3b3b3;
+    border: 1px solid #b3b3b3;  
     border-radius: 2em;
-    box-shadow: 4px 2px 3px rgba(0,0,0,0.3);
+    box-shadow: 4px 2px 3px rgba(0,0,0,0.3);    
     background-image: -o-linear-gradient(right top, rgb(255,255,255) 46%, rgb(233,234,234) 73%);
     background-image: -moz-linear-gradient(right top, rgb(255,255,255) 46%, rgb(233,234,234) 73%);
     background-image: -webkit-linear-gradient(right top, rgb(255,255,255) 46%, rgb(233,234,234) 73%);
@@ -116,23 +116,23 @@
         left bottom,
         color-stop(0.46, rgb(255,255,255)),
         color-stop(0.73, rgb(233,234,234))
-    );
-    background-image: linear-gradient(right top, rgb(255,255,255) 46%, rgb(233,234,234) 73%);
+    );    
+    background-image: linear-gradient(right top, rgb(255,255,255) 46%, rgb(233,234,234) 73%);   
 }
 .fl-uiOptions .fl-slider a:active { outline: none; }
 
 .fl-uiOptions .fl-slider-horz {
-    width:11em;
+    width:11em; 
 }
 
 .fl-uiOptions .fl-slider-input {
     margin-left: 1em;
-    float:left;
+    float:left; 
 }
 
-.fl-uiOptions .ui-slider-range {
-    background-color: #62bb3d;
-    height: 100%;
+.fl-uiOptions .ui-slider-range { 
+    background-color: #62bb3d; 
+    height: 100%;   
 }
 
 .fl-uiOptions .fl-inputs div[class*='fl-icon-'] {
@@ -143,11 +143,11 @@
 /* Theme radio buttons */
 .fl-uiOptions .fl-choice {
     display: inline;
-    float: left;
+    float: left;    
 }
 
 .fl-uiOptions .fl-choice label {
-    margin-right: 5px;
+    margin-right: 5px;  
     border: 1px solid black;
     border-radius: 5px;
     height: 3em;
@@ -170,20 +170,20 @@
 /* ON/OFF Switch for checkboxes */
 
 /* The container for the toggle, which is also a label for the hidden checkbox. */
-.fl-uiOptions .fl-uiOptions-onoff .fl-uiOptions-switch {
+.fl-uiOptions .fl-uiOptions-onoff .fl-uiOptions-switch { 
     border-radius:50px;
-    border: 1px solid #D7DCDD;
+    border: 1px solid #776D67;
     width: 5em;
     height: 2em;
-    background-color: #FFFFFF;
+    background-color: #E6E6E6;
     box-shadow: 1em 1.1em 0 0 rgba(250,250,250,0.53) inset;
     overflow:hidden;
     vertical-align: middle;
     display:inline-block;
     transition-duration: 0.2s;
     transition-property: padding-left, width, background-color, margin-left;
-    font-size: 1.1em;
-    font-weight: 700;
+    font-size: 1.2em;
+    font-weight: 600;
 }
 
 /* Hide input */
@@ -199,14 +199,14 @@
 }
 
 .fl-uiOptions .fl-uiOptions-onoff input:focus + label {
-    outline: 1px solid black;
+    outline: 2px solid black;
 }
 
 .fl-uiOptions .fl-uiOptions-onoff input:checked + label .fl-uiOptions-switch {
     padding-left: 3em;
     width: 2em;
-    background-color: rgb(23, 169, 184);
-    box-shadow: -1em 1.1em 0.1em 0 rgba(172, 216, 92, 0.00) inset;
+    background-color: #2da750;
+    box-shadow: -1em 1.1em 0.1em 0 rgba(172, 216, 92, 0.63) inset;
 }
 
 /* With data attributes defining the on/off text, localizing the templates is easier */
@@ -220,13 +220,13 @@
 /* The "on" portion of the toggle and the knob. */
 .fl-uiOptions .fl-uiOptions-onoff input + label .fl-uiOptions-switch:before {
     color: #fff;
-    border: 1px solid rgb(0, 55, 85);
-    border-radius: 150px;
+    border: 1px solid #776D67;
+    border-radius: 50px;
     float:left;
-    width:1.9em;
+    width:1.9em; 
     height: 1.9em; /* Width and height of the knob. */
-    text-indent:-2.07em;
-    line-height:1.9em;
+    text-indent:-1.6em;
+    line-height:1.7em;
     text-shadow: 1px 1px 1px #000;
     background-color: #fff;
     background-image: -o-linear-gradient(bottom, rgb(205,204,202) 0%, rgb(244,244,244) 100%);
@@ -240,37 +240,37 @@
         color-stop(0, rgb(205,204,202)),
         color-stop(1, rgb(244,244,244))
     );
-    background-image: linear-gradient(bottom, rgb(205,204,202) 0%, rgb(244,244,244) 100%);
-    box-shadow: 0.1em 0.1em 0.0em #444;
+    background-image: linear-gradient(bottom, rgb(205,204,202) 0%, rgb(244,244,244) 100%);  
+    box-shadow: 0.2em 0.2em 0.5em #888;
 }
 
 /* The "off" portion of the toggle. */
 .fl-uiOptions .fl-uiOptions-onoff input + label .fl-uiOptions-switch:after {
     float:left;
     position:relative;
-    top: -0.76em;
+    top: 0.36em;    
     left: 0.5em;
 }
 
 /* The dark inner circle to the toggle knob. */
 .fl-uiOptions .fl-uiOptions-onoff .fl-uiOptions-switch-inner {
-    border: 0.1px solid #493A30;
+    border: 1px solid #493A30;
     border-radius: 50px;
-    width: 0.9em;
-    height: 0.9em;
+    width: 1em;
+    height: 1em;
     position:relative;
-    left:-1.45em;
-    top:0.52em;
+    left:-2.85em;
+    top:0.46em;
 
-    background-color: #617796;
+    background-color: #675243;
     box-shadow: 0 -0.2em 0.3em 0.05em rgba(250, 250, 250, 0.3) inset;
 
     display:inline-block;
 }
 
 .fl-uiOptions .fl-uiOptions-onoff input:checked + label .fl-uiOptions-switch .fl-uiOptions-switch-inner {
-    top:-1.5em;
-    left: 0.56em;
+    top:-1.6em;
+    left: 0.46em;
 }
 
 /* FLUID-4966: Fix horizontal scroll bar */
@@ -291,7 +291,7 @@
     -webkit-font-smoothing: antialiased;
     float:left;
     margin: 0.2em 0.3em 0 0;
-    font-size: 1.5em;
+    font-size: 1.5em; 
 }
 
 /* control icons */
@@ -319,10 +319,10 @@
     content: "\e003";
 }
 
-.fl-uiOptions .fl-choice .fl-indicator {
-    font-family: 'InfusionIcons' !important;
+.fl-uiOptions .fl-choice .fl-indicator {    
+    font-family: 'InfusionIcons' !important; 
     font-size: 1.3em;
-    margin: -0.75em 0 0 0.75em;
+    margin: -0.75em 0 0 0.75em;   
     height: 1em;
 }
 
@@ -355,7 +355,7 @@
     content: "\e011";
 }
 .fl-uiOptions .fl-icon-toc:before {
-	content: "\e012";
+    content: "\e012";
 }
 
 /* Theming */
@@ -365,11 +365,11 @@
 .fl-theme-yb .ui-slider-horizontal .ui-slider-handle,
 .fl-theme-lgdg .ui-slider-horizontal .ui-slider-handle { margin-top: -5px; }
 
-.fl-theme-bw .fl-uiOptions .fl-slider { background: none; background-color:#000;}
+.fl-theme-bw .fl-uiOptions .fl-slider { background: none; background-color:#000;} 
 .fl-theme-bw .fl-uiOptions .fl-slider a,
 .fl-theme-bw .fl-uiOptions .fl-slider a:hover {border:1px solid #000; background-color:#fff;}
 
-.fl-theme-wb .fl-uiOptions .fl-slider { background: none; background-color:#fff;}
+.fl-theme-wb .fl-uiOptions .fl-slider { background: none; background-color:#fff;} 
 .fl-theme-wb .fl-uiOptions .fl-slider a,
 .fl-theme-wb .fl-uiOptions .fl-slider a:hover {border:1px solid #fff; background-color:#000;}
 
@@ -423,7 +423,7 @@
 .fl-uiOptions .fl-choice label.fl-theme-bw .fl-crossout {
     background-color: #FFFFFF !important;
     border-color: #000000 !important;
-    color: #000000 !important;
+    color: #000000 !important;  
 }
 .fl-uiOptions .fl-choice label.fl-theme-wb,
 .fl-uiOptions .fl-choice label.fl-theme-wb span,
@@ -459,7 +459,7 @@
 .fl-uiOptions .fl-choice label.fl-theme-uio-default .fl-crossout {
     background-color: #FFFFFF !important;
     border-color: #433F3D !important;
-    color: #433F3D !important;
+    color: #433F3D !important;  
 }
 
 .fl-theme-bw .fl-uiOptions input:focus + label,
