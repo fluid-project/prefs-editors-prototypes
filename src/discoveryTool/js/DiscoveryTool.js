@@ -217,7 +217,17 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             }
         },
         invokers: {
-            convertModel: "gpii.discoveryTool.modelTransformer.convertModel"
+            convertModel: "gpii.discoveryTool.modelTransformer.convertModel",
+            relayConvertedModel: {
+                funcName: "gpii.discoveryTool.modelTransformer.relayConvertedModel",
+                args: ["{that}", "{arguments}.0"]
+            }
+        },
+        listeners: {
+            "{loader}.events.onUIOptionsComponentReady": {
+                listener: "{that}.applier.modelChanged.addListener",
+                args: ["panelSelections", "{that}.relayConvertedModel"]
+            }
         },
         components: {
             highContrast: {
@@ -314,12 +324,12 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             }
         }
     });
-    gpii.discoveryTool.modelTransformer.finalInit = function (that) {
-        that.applier.modelChanged.addListener("panelSelections", function (newModel, oldModel, request) {
-            var convertedModel = that.convertModel(that, newModel.panelSelections);
-            that.applier.requestChange("convertedModel", convertedModel);
-        });
+
+    gpii.discoveryTool.modelTransformer.relayConvertedModel = function (that, newModel) {
+        var convertedModel = that.convertModel(that, newModel.panelSelections);
+        that.applier.requestChange("convertedModel", convertedModel);
     };
+
     gpii.discoveryTool.modelTransformer.convertModel = function (that, sourceModel) {
         var result = fluid.copy(that.options.rootModel);
 
