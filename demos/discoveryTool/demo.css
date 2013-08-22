@@ -252,9 +252,12 @@ article h2 {
     width: 100%;    
 }
 
-.fl-uiOptions-discoveryTool iframe {
-    width: 100%;
+.fl-uiOptions-discoveryTool .fl-uiOptions-fatPanel-iframe {
     border: none;
+}
+
+.fl-uiOptions-fatPanel-iframe html {
+    overflow: hidden;
 }
 
 .fl-header-title {
