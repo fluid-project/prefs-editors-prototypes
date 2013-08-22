@@ -53,7 +53,28 @@
 	        "message": "%prefix/uiOptions.json",
 
 	        // The preference-specific information:
-	        "textSize": {
+	        "cursorSize": {
+	            "type": "fluid.uiOptions.cursorSize",
+	            "enactor": {
+	                "type": "fluid.uiOptions.enactors.textSize",
+	                "fontSizeMap": {
+	                    "xx-small": "9px",
+	                    "x-small": "11px",
+	                    "small": "13px",
+	                    "medium": "15px",
+	                    "large": "18px",
+	                    "x-large": "23px",
+	                    "xx-large": "30px"
+	                }
+	            },
+	            "panel": {
+	                "type": "fluid.uiOptions.panels.cursorSize",
+	                "container": ".flc-uiOptions-cursor-size",  // the css selector in the template where the panel is rendered
+	                "template": "%prefix/UIOptionsTemplate-cursorSize.html",
+	                "message": "%prefix/cursorSize.json"
+	            }
+	        },
+	        /*"textSize": {
 	            "type": "fluid.uiOptions.textSize",
 	            "enactor": {
 	                "type": "fluid.uiOptions.enactors.textSize",
@@ -74,30 +95,9 @@
 	                "message": "%prefix/textSize.json"
 	            }
 	        },
-	        "cursorSize": {
-	            "type": "fluid.uiOptions.cursorSize",
-	            /*"enactor": {
-	                "type": "fluid.uiOptions.enactors.textSize",
-	                "fontSizeMap": {
-	                    "xx-small": "9px",
-	                    "x-small": "11px",
-	                    "small": "13px",
-	                    "medium": "15px",
-	                    "large": "18px",
-	                    "x-large": "23px",
-	                    "xx-large": "30px"
-	                }
-	            },*/
-	            "panel": {
-	                "type": "fluid.uiOptions.panels.cursorSize",
-	                "container": ".flc-uiOptions-cursor-size",  // the css selector in the template where the panel is rendered
-	                "template": "%prefix/UIOptionsTemplate-cursorSize.html",
-	                "message": "%prefix/cursorSize.json"
-	            }
-	        },
 	        "magnifier": {
 	            "type": "fluid.uiOptions.magnifier",
-	            /*"enactor": {
+	            "enactor": {
 	                "type": "fluid.uiOptions.enactors.textSize",
 	                "fontSizeMap": {
 	                    "xx-small": "9px",
@@ -108,7 +108,7 @@
 	                    "x-large": "23px",
 	                    "xx-large": "30px"
 	                }
-	            },*/
+	            },
 	            "panel": {
 	                "type": "fluid.uiOptions.panels.magnifier",
 	                "container": ".flc-uiOptions-magnifier",  // the css selector in the template where the panel is rendered
@@ -118,7 +118,7 @@
 	        },
 	        "magnifierPosition": {
 	            "type": "fluid.uiOptions.magnifierPosition",
-	            /*"enactor": {
+	            "enactor": {
 	                "type": "fluid.uiOptions.enactors.textSize",
 	                "fontSizeMap": {
 	                    "xx-small": "9px",
@@ -129,14 +129,14 @@
 	                    "x-large": "23px",
 	                    "xx-large": "30px"
 	                }
-	            },*/
+	            },
 	            "panel": {
 	                "type": "fluid.uiOptions.panels.magnifierPosition",
 	                "container": ".flc-uiOptions-magnifier-position",  // the css selector in the template where the panel is rendered
 	                "template": "%prefix/UIOptionsTemplate-magnifierPosition.html",
 	                "message": "%prefix/magnifier.json"
 	            }
-	        },
+	        },*/
 	        /*"lineSpace": {
 	            "type": "fluid.uiOptions.lineSpace",
 	            "enactor": {
