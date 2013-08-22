@@ -17,22 +17,14 @@
             max: 2
         },
         selectors: {
-            textSize: ".flc-uiOptions-plus-minus-numerical",
-            label: ".flc-uiOptions-plus-minus-numerical-label"
+            minus: ".flc-uiOptions-plus-minus-numerical-minus",
+            label: ".flc-uiOptions-plus-minus-numerical-label",
+            plus: ".flc-uiOptions-plus-minus-numerical-plus",
         },
         protoTree: {
+            minus: "-",
             label: {messagekey: "textSizeLabel"},
-            textSize: {
-                decorators: {
-                    type: "fluid",
-                    func: "fluid.uiOptions.textfieldSlider"
-                }
-            }
-        },
-        sliderOptions: {
-            orientation: "horizontal",
-            step: 0.1,
-            range: "min"
+            plus: "+"
         }
     });
 	
