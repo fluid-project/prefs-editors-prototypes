@@ -489,7 +489,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             value: false
         },
         events: {
-            settingChanged: null
+            settingChanged: null,
+            afterApplySimplify: null,
+            afterRemoveSimplify: null
         },
         invokers: {
             set: {
@@ -502,13 +504,23 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
 
-    gpii.discoveryTool.enactors.simplifiedContent.set = function (value, els, that) {
-        els.toggle(!value);
+    gpii.discoveryTool.enactors.simplifiedContent.applySimplify = function (value, els, that) {
+        els.hide();
+        that.container.addClass(that.options.styles.simplified);
+        that.events.afterApplySimplify.fire();
+    };
 
+    gpii.discoveryTool.enactors.simplifiedContent.resetSimplify = function (value, els, that) {
+        els.show();
+        that.container.removeClass(that.options.styles.simplified);
+        that.events.afterRemoveSimplify.fire();
+    };
+
+    gpii.discoveryTool.enactors.simplifiedContent.set = function (value, els, that) {
         if (value) {
-            that.container.addClass(that.options.styles.simplified);
+            gpii.discoveryTool.enactors.simplifiedContent.applySimplify(value, els, that);
         } else {
-            that.container.removeClass(that.options.styles.simplified);
+            gpii.discoveryTool.enactors.simplifiedContent.resetSimplify(value, els, that);
         }
     };
 
