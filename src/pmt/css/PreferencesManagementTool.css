@@ -6,3 +6,25 @@
 .adjusterGroupTitle {
 	margin: 5px;
 }
+
+.fl-uiOptions-category {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.fl-uiOptions .fl-slider-horz {
+    width: 15em;
+}
+
+.fl-uiOptions label::first-letter {
+    text-transform: capitalize;
+}
+
+.fl-uiOptions .fl-slider a {
+    background: radial-gradient(circle 14.5px at 14.5px 50%, #566374 6px, white 8px);
+    border: 1px solid #566374;
+}
+
+.fl-uiOptions .ui-slider-range {
+    background-color: #17a9b8;
+}
