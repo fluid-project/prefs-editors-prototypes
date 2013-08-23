@@ -37,15 +37,6 @@ var demo = demo || {};
                     theme: {
                         "default": customThemeName
                     }
-                },
-                events: {
-                    simplifyContentChanged: null
-                },
-                listeners: {
-                    simplifyContentChanged: {
-                        listener: "gpii.discoveryTool.updateToc",
-                        args: "{that}.tableOfContents"
-                    }
                 }
             }
         });

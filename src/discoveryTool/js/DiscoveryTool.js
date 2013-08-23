@@ -506,12 +506,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 funcName: "gpii.discoveryTool.enactors.simplifiedContent.set",
                 args: ["{that}.model.value", "{that}.dom.elementsToHide"]
             }
-        },
-        listeners: {
-            onCreate: {
-                listener: "{that}.set",
-                args: ["{that}.model.value", "{that}.dom.elementsToHide"]
-            }
         }
     });
 
@@ -523,19 +517,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         that.applier.modelChanged.addListener("value", function (newModel) {
             that.set();
         });
-    };
-    gpii.discoveryTool.updateToc = function (tocEnactor) {
-        if (tocEnactor.tableOfContents) {
-            gpii.discoveryTool.regenerateToc(tocEnactor.tableOfContents);
-        }
-    };
-    gpii.discoveryTool.regenerateToc = function (that) {
-        var headings = that.filterHeadings(that.locate("headings"), that.options.selectors.exclude);
-        that.anchorInfo = fluid.transform(headings, function (heading) {
-            return that.headingTextToAnchor(heading);
-        });
-        var headingsModel = that.modelBuilder.assembleModel(headings, that.anchorInfo);
-        that.applier.requestChange("", headingsModel);
     };
 
     /************************
@@ -555,6 +536,20 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     fluid.defaults("gpii.discoveryTool.enactorSet", {
         gradeNames: ["fluid.uiEnhancer.starterEnactors", "autoInit"],
         components: {
+            tableOfContents: {
+                options: {
+                    components: {
+                        tableOfContents: {
+                            options: {
+                                selectors: {
+                                    // Only look for headings thare within the simplified text, since the ToC is only rendered on simplify.
+                                    headings: ":header:visible:not(.flc-toc-tocContainer :header, header :header, footer :header, aside :header, nav :header, .flc-uiOptions-simplify-hide :header)"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             simplify: {
                 type: "gpii.discoveryTool.enactors.simplifiedContent",
                 container: "{uiEnhancer}.container",
@@ -565,9 +560,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     },
                     model: {
                         value: "{fluid.uiOptions.rootModel}.rootModel.simplifyContent"
-                    },
-                    listeners: {
-                        settingChanged: "{uiEnhancer}.events.simplifyContentChanged"
                     }
                 }
             },
