@@ -1,3 +1,28 @@
+@font-face {
+	font-family: 'cursor-pointer-icon';
+	src:url('../fonts/cursor-pointer-icon.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.fl-icon-cursor-icons {
+	float: left;
+	font-family: 'cursor-pointer-icon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+.fl-icon-small-cursor:before {
+	content: "\e000";
+}
+.fl-icon-big-cursor:before {
+	content: "\f000";
+}
+
 .preference {
 	background:#ECEFEF;
 	width: 340px;
