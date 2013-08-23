@@ -77,22 +77,51 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             hideTool: $.ui.keyCode.ESCAPE
         },
         slidingPanel: {
-            options: {
-                invokers: {
-                    showDiscoveryIcon: {
-                        "this": "{discoveryTool}.dom.discoverIcon",
-                        method: "show"
-                    },
-                    hideDiscoveryIcon: {
-                        "this": "{discoveryTool}.dom.discoverIcon",
-                        method: "hide"
+            strings: {
+                showLabel: {
+                    expander: {
+                        func: "gpii.discoveryTool.lookupMsg",
+                        args: ["{slidingPanel}.msgBundle", "slidingPanelShowLabel"]
                     }
                 },
-                listeners: {
-                    onCreate: "{that}.showDiscoveryIcon",
-                    onPanelHide: "{that}.showDiscoveryIcon",
-                    onPanelShow: "{that}.hideDiscoveryIcon"
+                hideLabel: {
+                    expander: {
+                        func: "gpii.discoveryTool.lookupMsg",
+                        args: ["{slidingPanel}.msgBundle", "slidingPanelHideLabel"]
+                    }
+                }                    
+            },
+            invokers: {
+                showDiscoveryIcon: {
+                    "this": "{discoveryTool}.dom.discoverIcon",
+                    method: "show"
+                },
+                hideDiscoveryIcon: {
+                    "this": "{discoveryTool}.dom.discoverIcon",
+                    method: "hide"
+                },
+                setLabel: {
+                    "this": "{that}.dom.toggleButton",
+                    method: "attr",
+                    args: ["aria-label", "{arguments}.0"]
                 }
+            },
+            listeners: {
+                "onCreate.showIcon": "{that}.showDiscoveryIcon",
+                "onCreate.showLabel": {
+                    listener: "{that}.setLabel",                    
+                    args: "{that}.options.strings.showLabel"
+                },
+                "onPanelHide.showIcon": "{that}.showDiscoveryIcon",
+                "onPanelHide.showLabel": {
+                    listener: "{that}.setLabel",                    
+                    args: "{that}.options.strings.showLabel"
+                },
+                "onPanelShow.showIcon": "{that}.hideDiscoveryIcon",
+                "onPanelShow.showLabel": {
+                    listener: "{that}.setLabel",                    
+                    args: "{that}.options.strings.hideLabel"
+                },                    
             }
         },
         invokers: {
@@ -153,6 +182,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         gpii.discoveryTool.bindHideKey(that.options.keyBinding.hideTool, html, that.hideToolPanel);
         gpii.discoveryTool.bindHideKey(that.options.keyBinding.hideTool, iframeHtml, that.hideToolPanelInIframe);
     };
+    
+    // Currently this code is duplicated from SlidingPanel.js
+    // FLUID-5119 filed to move it to the framework, after which this should be removed in favour of the
+    // generalized code.
+    gpii.discoveryTool.lookupMsg = function (messageResolver, value) {
+        var looked = messageResolver.lookup([value]);
+        return looked ? looked.template : looked;
+    };    
 
     /*************
      * The base grade component for each individual panel
@@ -363,7 +400,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     strings: {
                         label: {
                             expander: {
-                                func: "gpii.discoveryTool.trySomethingNew.lookupMsg",
+                                func: "gpii.discoveryTool.lookupMsg",
                                 args: ["{uiOptions}.msgBundle", "trySomethingNewText"]
                             }
                         }
@@ -698,14 +735,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             }
         }
     });
-
-    // Currently this code is duplicated from SlidingPanel.js
-    // FLUID-5119 filed to move it to the framework, after which this should be removed in favour of the
-    // generalized code.
-    gpii.discoveryTool.trySomethingNew.lookupMsg = function (messageResolver, value) {
-        var looked = messageResolver.lookup([value]);
-        return looked ? looked.template : looked;
-    };
 
     gpii.discoveryTool.trySomethingNew.preventDefault = function (event) {
         event.preventDefault();
