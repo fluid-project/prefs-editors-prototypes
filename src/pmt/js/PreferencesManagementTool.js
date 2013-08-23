@@ -95,7 +95,6 @@
 	                "message": "%prefix/cursorSize.json"
 	            }
 	        },
-	        /*
 	        "magnifier": {
 	            "type": "fluid.uiOptions.magnifier",
 	            "enactor": {
@@ -113,10 +112,11 @@
 	            "panel": {
 	                "type": "fluid.uiOptions.panels.magnifier",
 	                "container": ".flc-uiOptions-magnifier",  // the css selector in the template where the panel is rendered
-	                "template": "%prefix/UIOptionsTemplate-magnifier.html",
+	                "template": "%prefix/UIOptionsTemplate-plusMinusNumerical.html",
 	                "message": "%prefix/magnifier.json"
 	            }
 	        },
+	        /*
 	        "magnifierPosition": {
 	            "type": "fluid.uiOptions.magnifierPosition",
 	            "enactor": {

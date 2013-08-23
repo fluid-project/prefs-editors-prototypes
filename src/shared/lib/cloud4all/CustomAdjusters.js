@@ -104,30 +104,17 @@
 			min: 1,
 			max: 10
 		},
-		selectors: {
-			textSize: ".flc-uiOptions-magnifier",
-			label: ".flc-uiOptions-magnifier-label",
-			magnifierOFF: ".fl-icon-magnifierOFF",
-			magnifierMAX: ".fl-icon-magnifierMAX",
-			multiplier: ".flc-uiOptions-multiplier"
-		},
-		protoTree: {
-			label: {messagekey: "magnifierLabel"},
-			magnifierOFF: {messagekey: "magnifierOFF"},
-			magnifierMAX: {messagekey: "magnifierMAX"},
-			multiplier: {messagekey: "multiplier"},
-			textSize: {
-				decorators: {
-					type: "fluid",
-					func: "fluid.uiOptions.textfieldSlider"
-				}
-			}
-		},
-		sliderOptions: {
-			orientation: "horizontal",
-			step: 1,
-			range: "min"
-		}
+        selectors: {
+            minus: ".flc-uiOptions-plus-minus-numerical-minus",
+            label: ".flc-uiOptions-plus-minus-numerical-label",
+            plus: ".flc-uiOptions-plus-minus-numerical-plus",
+            valueText: ".flc-uiOptions-plus-minus-numerical-value .fl-inputs"
+        },
+        protoTree: {
+            minus: "-",
+            label: {messagekey: "magnifierLabel"},
+            plus: "+"
+        }
 	});
 	
 	fluid.defaults("fluid.uiOptions.panels.magnifierPosition", {
