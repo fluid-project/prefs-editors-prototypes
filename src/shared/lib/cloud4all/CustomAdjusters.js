@@ -37,6 +37,7 @@
 		that.events.modelChanged.addListener(
 			function(newValue)
 			{
+				// TODO: this id will be found multiple times. Need to employ the that.locate() solution.
 				$("#textSizeValue").val(newValue);
 			}
 		);
