@@ -27,8 +27,8 @@
             },
             "punctuationVerbosity": {
                 "type": "string",
-                "default": "none"
-                // "enum": ["none", "some", "most", "all"]
+                "default": "none",
+                "enum": ["none", "some", "most", "all"]
             },
             "announceCapitals": {
                 "type": "boolean",
@@ -103,9 +103,13 @@
                 "type": "punctuationVerbosity",
                 "panel": {
                     "type": "speakText.panel",
-                    // "container": ".gpii-speak-text-group",
-                    "template": "../../src/shared/adjusters/html/newestSpeakText.html", // same as above
-                    // "message": "../../src/shared/adjusters/messages/speakText.json"
+                    "classnameMap": {"punctuationVerbosity": "@punctuationVerbosity.classes"},
+                },
+                "classes": {
+                    "none": "radioButton-left",
+                    "some": "radioButton-middle radioButton-second",
+                    "most": "radioButton-middle radioButton-third",
+                    "all": "radioButton-right"
                 }
             },
 
@@ -168,7 +172,7 @@
                 "controlValues.auditoryOutLanguage": "enum"
             },
             "punctuationVerbosity": {
-                "model.value": "default",
+                "model.punctuationVerbosity": "default",
                 "controlValues.punctuationVerbosity": "enum"
             },
             "announceCapitals": {
@@ -196,9 +200,8 @@
             auditoryOutLanguage: ".gpii-auditoryOutLanguage",
 
             punctuationVerbosityRow: ".gpii-punctuationVerbosity-row",
-            punctuationVerbosityLabel: ".gpii-punctuationVerbosity-label",
+            punctuationVerbosityOptionLabel: ".gpii-punctuationVerbosity-option-label",
             punctuationVerbosityInput: ".gpii-punctuationVerbosity",
-            punctuationVerbosityBigLabel: ".gpii-punctuationVerbosity-bigLabel",
 
             announceCapitals: ".gpii-announceCapitals",
             speakTutorialMessages: ".gpii-speakTutorialMessages",
@@ -231,15 +234,16 @@
             expander: {
                 type: "fluid.renderer.selection.inputs",
                 rowID: "punctuationVerbosityRow",
-                labelID: "punctuationVerbosityLabel",
-                inputID: "punctuationVerbosity",
-                selectID: "theme-radio",
+                labelID: "punctuationVerbosityOptionLabel",
+                inputID: "punctuationVerbosityInput",
+                selectID: "punctuationVerbosity-selection",
                 tree: {
                     optionnames: "{that}.options.controlValues.punctuationVerbosity",
                     optionlist: "{that}.options.controlValues.punctuationVerbosity",
-                    selection: "${value}"
-                },
+                    selection: "${punctuationVerbosity}"
+                }
             },
+
             addOrRemovePreference: "${addOrRemovePreference}",
             screenReaderTTSEnabled: "${screenReaderTTSEnabled}",
             screenReaderSwitch: "${screenReaderSwitch}",
@@ -262,7 +266,7 @@
             speechRateMinus: {messagekey: "speechRateMinus"},
             speechRatePlus: {messagekey: "speechRatePlus"},
             auditoryOutLanguageLabel: {messagekey: "auditoryOutLanguageLabel"},
-            punctuationVerbosityBigLabel: {messagekey: "punctuationVerbosityLabel"},
+            punctuationVerbosityLabel: {messagekey: "punctuationVerbosityLabel"},
             announceCapitalsLabel: {messagekey: "announceCapitalsLabel"},
             speakTutorialMessagesLabel: {messagekey: "speakTutorialMessagesLabel"},
             keyEchoLabel: {messagekey: "keyEchoLabel"},
@@ -271,10 +275,6 @@
 
             screenReaderBrailleOutputDescription: {messagekey: "screenReaderBrailleOutputDescription"},
             punctuationVerbosityDescription: {messagekey: "punctuationVerbosityDescription"}
-        },
-
-        controlValues: {
-            punctuationVerbosity: ["none", "some", "most", "all"]
         },
 
         // strings: {
@@ -293,7 +293,22 @@
         //     }
         // },
 
-        finalInitFunction: "speakText.finalInit"
+        finalInitFunction: "speakText.finalInit",
+
+        listeners: {
+            afterRender: "{that}.style"
+        },
+
+        invokers: {
+            style: {
+                funcName: "speakText.panel.punctuationVerbosityStyle",
+                args: [
+                    "{that}.dom.punctuationVerbosityOptionLabel",
+                    "{that}.options.controlValues.punctuationVerbosity",
+                    "{that}.options.classnameMap.punctuationVerbosity"
+                ]
+            }
+        }
     });
 
     var flag = true;
@@ -384,6 +399,16 @@
             return "- less";
         }
         return "+ more";
-    }
+    };
+
+    speakText.panel.punctuationVerbosityStyle = function (labels, values, classes) {
+        fluid.each(labels, function (label, index) {
+            $(label).addClass(classes[values[index]]);
+        });
+
+        // FIXME: This is probably not the best idea, but it works for now.
+        var contents = $(".gpii-punctuationVerbosity-row").contents()
+        $(".gpii-punctuationVerbosity-row").replaceWith(contents);
+    };
 
 })(fluid);
