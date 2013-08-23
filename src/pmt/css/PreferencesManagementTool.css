@@ -62,8 +62,8 @@
 }
 
 .headerTitle {
-	position: absolute; 
-   	top: 20px; 
+	//position: absolute; 
+   	//top: 20px; 
    	left: 0; 
    	width: 100%;
    	color: white;
@@ -105,4 +105,47 @@
 	border: none !important;
 	height: 25px !important;
 	text-align: center !important;
+}
+
+input[type=checkbox] {
+    position: absolute;
+    display: none;
+    clip: rect(0 0 0 0);
+    height:1px;
+    width:1px;
+    margin:-1px;
+    padding:0;
+    border:0;
+}
+
+input[type=checkbox] + label.headerTitle {
+    background: url('../images/increaseSizeHeader.png') no-repeat;
+    background-size:330px 90px;
+    //padding-left:30px;
+    cursor:pointer;
+    margin: 5px;
+    font-size: 23px;
+    text-align: center;
+    //padding-left: 3px;
+    color:white;
+    display:inline-block;
+    line-height:90px;
+    height: 90px;
+    width:330px;
+}
+
+input[type=checkbox]:checked + label.headerTitle {
+    background: url('../images/increaseSizeHeaderChecked.png') no-repeat;
+    background-size:330px 90px;
+    //padding-left:30px;
+    cursor:pointer;
+    margin: 5px;
+    font-size: 23px;
+    text-align: center;
+    //padding-left: 3px;
+    color:white;
+    display:inline-block;
+    line-height:90px;
+    height: 90px;
+    width:330px;
 }
