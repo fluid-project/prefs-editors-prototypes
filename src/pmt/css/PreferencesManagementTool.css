@@ -87,6 +87,11 @@
 	background-color: white;
 	margin-left: 2px !important;
 	margin-right: 2px !important;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
 }
 
 .flc-uiOptions-plus-minus-numerical-widget {
