@@ -41,6 +41,17 @@
 	fluid.uiOptions.panels.textSize.finalInit = function(that){
         that.events.afterRender.addListener(function () {
         	that.locate("valueText").val(that.locate("valueText").val() + " " + that.options.metricUnit);
+        	
+        	// need to catch this also because afterRender is not triggered when user edits the
+        	// text field manually, so " pt" is not appended to value.
+			that.locate("valueText").change(
+					function()
+					{
+			        	//that.locate("valueText").val(that.locate("valueText").val() + " " + that.options.metricUnit);
+						that.applier.requestChange("value", that.locate("valueText").val());
+						that.refreshView();
+					}
+			);
         });
 		plusMinusAdjusterFinalInit(that);
 	}
