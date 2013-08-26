@@ -25,11 +25,11 @@ var demo = demo || {};
     var pathToTocTemplate = "../../src/shared/lib/infusion/components/tableOfContents/html/TableOfContents.html";
 
     demo.initSettingsStore = function () {
-        fluid.globalSettingsStore();
+        return fluid.globalSettingsStore();
     };
 
     demo.initPageEnhancer = function (customThemeName) {
-        fluid.pageEnhancer({
+        return fluid.pageEnhancer({
             uiEnhancer: {
                 gradeNames: ["gpii.discoveryTool.enactorSet"],
                 tocTemplate: pathToTocTemplate,
@@ -51,8 +51,8 @@ var demo = demo || {};
         });
     };
 
-    demo.initFatPanel = function (container) {
-        gpii.discoveryTool(container, {
+    demo.initDiscoveryTool = function (container) {
+        return gpii.discoveryTool(container, {
             templatePrefix: pathToTemplates,
             messagePrefix: pathToMessages,
             templateLoader: {
