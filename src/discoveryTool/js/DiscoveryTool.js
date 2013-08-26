@@ -17,7 +17,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
 (function ($, fluid) {
 
-    fluid.staticEnvironment["gpii--discoveryTool"] = fluid.typeTag("gpii.discoveryTool");
     fluid.registerNamespace("gpii.discoveryTool");
 
     /**
@@ -78,22 +77,51 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             hideTool: $.ui.keyCode.ESCAPE
         },
         slidingPanel: {
-            options: {
-                invokers: {
-                    showDiscoveryIcon: {
-                        "this": "{discoveryTool}.dom.discoverIcon",
-                        method: "show"
-                    },
-                    hideDiscoveryIcon: {
-                        "this": "{discoveryTool}.dom.discoverIcon",
-                        method: "hide"
+            strings: {
+                showLabel: {
+                    expander: {
+                        func: "gpii.discoveryTool.lookupMsg",
+                        args: ["{slidingPanel}.msgBundle", "slidingPanelShowLabel"]
                     }
                 },
-                listeners: {
-                    onCreate: "{that}.showDiscoveryIcon",
-                    onPanelHide: "{that}.showDiscoveryIcon",
-                    onPanelShow: "{that}.hideDiscoveryIcon"
+                hideLabel: {
+                    expander: {
+                        func: "gpii.discoveryTool.lookupMsg",
+                        args: ["{slidingPanel}.msgBundle", "slidingPanelHideLabel"]
+                    }
+                }                    
+            },
+            invokers: {
+                showDiscoveryIcon: {
+                    "this": "{discoveryTool}.dom.discoverIcon",
+                    method: "show"
+                },
+                hideDiscoveryIcon: {
+                    "this": "{discoveryTool}.dom.discoverIcon",
+                    method: "hide"
+                },
+                setLabel: {
+                    "this": "{that}.dom.toggleButton",
+                    method: "attr",
+                    args: ["aria-label", "{arguments}.0"]
                 }
+            },
+            listeners: {
+                "onCreate.showIcon": "{that}.showDiscoveryIcon",
+                "onCreate.showLabel": {
+                    listener: "{that}.setLabel",                    
+                    args: "{that}.options.strings.showLabel"
+                },
+                "onPanelHide.showIcon": "{that}.showDiscoveryIcon",
+                "onPanelHide.showLabel": {
+                    listener: "{that}.setLabel",                    
+                    args: "{that}.options.strings.showLabel"
+                },
+                "onPanelShow.showIcon": "{that}.hideDiscoveryIcon",
+                "onPanelShow.showLabel": {
+                    listener: "{that}.setLabel",                    
+                    args: "{that}.options.strings.hideLabel"
+                },                    
             }
         },
         invokers: {
@@ -154,6 +182,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         gpii.discoveryTool.bindHideKey(that.options.keyBinding.hideTool, html, that.hideToolPanel);
         gpii.discoveryTool.bindHideKey(that.options.keyBinding.hideTool, iframeHtml, that.hideToolPanelInIframe);
     };
+    
+    // Currently this code is duplicated from SlidingPanel.js
+    // FLUID-5119 filed to move it to the framework, after which this should be removed in favour of the
+    // generalized code.
+    gpii.discoveryTool.lookupMsg = function (messageResolver, value) {
+        var looked = messageResolver.lookup([value]);
+        return looked ? looked.template : looked;
+    };    
 
     /*************
      * The base grade component for each individual panel
@@ -348,6 +384,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     fluid.defaults("gpii.discoveryTool.panels", {
         gradeNames: ["fluid.uiOptions", "autoInit"],
         selectors: {
+            trySomethingNew: ".flc-discoveryTool-try",
             highContrast: ".flc-discoveryTool-highContrast",
             lowContrast: ".flc-discoveryTool-lowContrast",
             increaseSize: ".flc-discoveryTool-increaseSize",
@@ -355,6 +392,28 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             spoken: ".flc-discoveryTool-spoken"
         },
         components: {
+            trySomethingNew: {
+                type: "gpii.discoveryTool.trySomethingNew",
+                container: "{that}.dom.trySomethingNew",
+                createOnEvent: "onUIOptionsComponentReady",
+                options: {
+                    strings: {
+                        label: {
+                            expander: {
+                                func: "gpii.discoveryTool.lookupMsg",
+                                args: ["{uiOptions}.msgBundle", "trySomethingNewText"]
+                            }
+                        }
+                    },
+                    presetPanels: {
+                        expander: {
+                            func: "gpii.discoveryTool.panels.getSubcomponents",
+                            args: ["{uiOptions}.modelTransformer"]
+                        }
+                    }
+
+                }
+            },
             modelTransformer: {
                 type: "gpii.discoveryTool.modelTransformer",
                 options: {
@@ -381,6 +440,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             }
         }
     });
+
+    gpii.discoveryTool.panels.getSubcomponents = function (component) {
+        var subComponents = [];
+        fluid.each(component.options.components, function (opts, memberName) {
+            subComponents.push(fluid.get(component, memberName));
+        });
+        return subComponents;
+    };
 
     fluid.defaults("gpii.discoveryTool.togglePanel", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
@@ -424,10 +491,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
 
-    fluid.defaults("gpii.discoveryTool.enactors.highContrast", {
-        gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"]
-    });
-
     /************************
      * Low Contrast:
      *
@@ -442,10 +505,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         selectors: {
             toggle: ".flc-discoveryTool-lowContrast-choice"
         }
-    });
-
-    fluid.defaults("gpii.discoveryTool.enactors.lowContrast", {
-        gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"]
     });
 
     /************************
@@ -576,5 +635,198 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             }
         }
     });
+
+    /**************************************
+     * gpii.discoveryTool.trySomethingNew *
+     ***************************************/
+
+    fluid.defaults("gpii.discoveryTool.trySomethingNew", {
+        gradeNames: ["fluid.viewComponent", "autoInit"],
+        selectors: {
+            label: ".flc-discoveryTool-tryLabel"
+        },
+        strings: {
+            label: "Try Something New"
+        },
+        styles: {
+            hover: "fl-discoveryTool-hover"
+        },
+        events: {
+            onHover: null,
+            afterHover: null,
+            onFocus: null,
+            onBlur: null,
+            afterActivate: null
+        },
+        presetPanels: [],
+        numSelections: 2,
+        listeners: {
+            "onCreate.setLabel": {
+                "this": "{that}.dom.label",
+                "method": "html",
+                "args": ["{that}.options.strings.label"]
+            },
+            "onCreate.click": {
+                "this": "{that}.container",
+                "method": "click",
+                "args": ["{that}.events.afterActivate.fire"]
+            },
+            "onCreate.mouseenter": {
+                "this": "{that}.container",
+                "method": "mouseenter",
+                "args": ["{that}.events.onHover.fire"]
+            },
+            "onCreate.mouseleave": {
+                "this": "{that}.container",
+                "method": "mouseleave",
+                "args": ["{that}.events.afterHover.fire"]
+            },
+            "onCreate.focus": {
+                "this": "{that}.container",
+                "method": "focus",
+                "args": ["{that}.events.onFocus.fire"]
+            },
+            "onCreate.blur": {
+                "this": "{that}.container",
+                "method": "blur",
+                "args": ["{that}.events.onBlur.fire"]
+            },
+            "afterActivate.preventDefault": {
+                listener: "gpii.discoveryTool.trySomethingNew.preventDefault"
+            },
+            "afterActivate.activate": {
+                listener: "{that}.randomizeSelection"
+            },
+            "onFocus.startCycle": {
+                listener: "{that}.cycle.start"
+            },
+            "onBlur.stopCycle": {
+                listener: "{that}.cycle.stop"
+            },
+            "onHover.startCycle": {
+                listener: "{that}.cycle.start"
+            },
+            "afterHover.stopCycle": {
+                listener: "{that}.cycle.stop"
+            }
+        },
+        invokers: {
+            randomizeSelection: {
+                funcName: "gpii.discoveryTool.trySomethingNew.randomizeSelection",
+                args: ["{that}.options.presetPanels", "{that}.options.numSelections"]
+            }
+        },
+        components: {
+            cycle: {
+                type: "gpii.discoveryTool.cycle",
+                options: {
+                    items: "{trySomethingNew}.options.presetPanels",
+                    listeners: {
+                        "on.toggleClass": {
+                            funcName: "gpii.discoveryTool.trySomethingNew.toggleClass",
+                            args: ["{arguments}.0.container", "{trySomethingNew}.options.styles.hover"]
+                        },
+                        "off.toggleClass": {
+                            funcName: "gpii.discoveryTool.trySomethingNew.toggleClass",
+                            args: ["{arguments}.0.container", "{trySomethingNew}.options.styles.hover"]
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    gpii.discoveryTool.trySomethingNew.preventDefault = function (event) {
+        event.preventDefault();
+    };
+
+    gpii.discoveryTool.trySomethingNew.randomizeSelection = function (presetPanels, numSelections) {
+        var components = fluid.copy(presetPanels);
+        var toSelect = [];
+        numSelections = Math.min(numSelections, components.length);
+
+        for (var i = 0; i < numSelections; i++) {
+            var randIndex = Math.floor(Math.random() * (components.length));
+            toSelect = toSelect.concat(components.splice(randIndex, 1));
+        }
+
+        fluid.each(components, function (that) {
+            that.applier.requestChange("enabled", false);
+            that.refreshView();
+        });
+        fluid.each(toSelect, function (that) {
+            that.applier.requestChange("enabled", true);
+            that.refreshView();
+        });
+    };
+
+    gpii.discoveryTool.trySomethingNew.toggleClass = function (elm, className) {
+        $(elm).toggleClass(className);
+    };
+
+    /*
+     * Cycles through an array of items, one at a time based on the specified speed.
+     * The items can be anything. When the cycle is started, each item will gain "focus"
+     * one after another. As an item gains focus it fires the "on" event. Before the next
+     * item is focused the current one will fire the "off" event. No two items will be
+     * focused at the same time. The cycle will wrap around the array and continue until
+     * stopped.
+     */
+    fluid.defaults("gpii.discoveryTool.cycle", {
+        gradeNames: ["fluid.modelComponent", "fluid.eventedComponent", "autoInit"],
+        speed: "500",
+        items: [],
+        events: {
+            on: null,
+            off: null
+        },
+        model: {
+            enabled: false,
+            inStep: false
+        },
+        listeners: {
+            "onCreate.cycle": {
+                listener: "{that}.step"
+            },
+            "onCreate.modelChangedListenerEnabled": {
+                listener: "{that}.applier.modelChanged.addListener",
+                args: ["enabled", "{that}.step"]
+            },
+            "on.setModel": {
+                listener: "{that}.applier.requestChange",
+                args: ["inStep", true]
+            },
+            "off.setModel": {
+                listener: "{that}.applier.requestChange",
+                args: ["inStep", false]
+            }
+        },
+        invokers: {
+            start: {
+                func: "{that}.applier.requestChange",
+                args: ["enabled", true]
+            },
+            stop: {
+                func: "{that}.applier.requestChange",
+                args: ["enabled", false]
+            },
+            step: {
+                funcName: "gpii.discoveryTool.cycle.step",
+                args: ["{that}.options.items", 0, "{that}.options.speed", "{that}.model", "{that}.events.on.fire", "{that}.events.off.fire"]
+            }
+        }
+    });
+
+    gpii.discoveryTool.cycle.step = function (items, index, speed, model, callbackOn, callbackOff) {
+        var numItems = items.length;
+        if (model.enabled && !model.inStep && numItems) {
+            var boundIndex = index%numItems;
+            callbackOn(items[boundIndex], boundIndex);
+            setTimeout(function () {
+                callbackOff(items[boundIndex], boundIndex);
+                gpii.discoveryTool.cycle.step(items, ++index, speed, model, callbackOn, callbackOff);
+            }, speed);
+        }
+    };
 
 })(jQuery, fluid);
