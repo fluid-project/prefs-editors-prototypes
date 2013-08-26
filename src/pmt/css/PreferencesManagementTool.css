@@ -17,10 +17,16 @@
 	-webkit-font-smoothing: antialiased;
 }
 .fl-icon-small-cursor:before {
+	font-size: 0.8em !important;
 	content: "\e000";
 }
 .fl-icon-big-cursor:before {
-	content: "\f000";
+	font-size: 1.9em !important;
+	content: "\e000";
+}
+
+.fl-icon-big-cursor {
+	margin-top: -0.5em !important;
 }
 
 .preference {
