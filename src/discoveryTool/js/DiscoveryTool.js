@@ -490,8 +490,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         },
         events: {
             settingChanged: null,
-            afterApplySimplify: null,
-            afterRemoveSimplify: null
+            onApplySimplify: null,
+            onRemoveSimplify: null
         },
         invokers: {
             set: {
@@ -500,27 +500,35 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             }
         },
         listeners: {
-            onCreate: "{that}.set"
+            onCreate: "{that}.set",
+            "onApplySimplify.applyCss": {
+                "this": "{that}.container",
+                method: "addClass",
+                args: "{that}.options.styles.simplified"
+            },
+            "onRemoveSimplify.removeCss": {
+                "this": "{that}.container",
+                method: "removeClass",
+                args: "{that}.options.styles.simplified"
+            }
         }
     });
 
-    gpii.discoveryTool.enactors.simplifiedContent.applySimplify = function (value, els, that) {
+    gpii.discoveryTool.enactors.simplifiedContent.applySimplify = function (els, that) {
         els.hide();
-        that.container.addClass(that.options.styles.simplified);
-        that.events.afterApplySimplify.fire();
+        that.events.onApplySimplify.fire();
     };
 
-    gpii.discoveryTool.enactors.simplifiedContent.resetSimplify = function (value, els, that) {
+    gpii.discoveryTool.enactors.simplifiedContent.resetSimplify = function (els, that) {
         els.show();
-        that.container.removeClass(that.options.styles.simplified);
-        that.events.afterRemoveSimplify.fire();
+        that.events.onRemoveSimplify.fire();
     };
 
     gpii.discoveryTool.enactors.simplifiedContent.set = function (value, els, that) {
         if (value) {
-            gpii.discoveryTool.enactors.simplifiedContent.applySimplify(value, els, that);
+            gpii.discoveryTool.enactors.simplifiedContent.applySimplify(els, that);
         } else {
-            gpii.discoveryTool.enactors.simplifiedContent.resetSimplify(value, els, that);
+            gpii.discoveryTool.enactors.simplifiedContent.resetSimplify(els, that);
         }
     };
 
