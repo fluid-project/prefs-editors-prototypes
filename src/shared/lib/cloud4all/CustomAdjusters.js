@@ -20,42 +20,16 @@
             minus: ".flc-uiOptions-plus-minus-numerical-minus",
             label: ".flc-uiOptions-plus-minus-numerical-label",
             plus: ".flc-uiOptions-plus-minus-numerical-plus",
-            valueText: ".flc-uiOptions-plus-minus-numerical-value .fl-inputs"
+            valueText: ".flc-uiOptions-plus-minus-numerical-value"
         },
         protoTree: {
             minus: "-",
             label: {messagekey: "textSizeLabel"},
-            plus: "+"
-        },
-        events: {
-            modelChanged: null
-        },
-        finalInitFunction: "fluid.uiOptions.panels.textSize.finalInit"
+            plus: "+",
+
+            valueText: "${value}"
+        }
     });
-	
-	fluid.uiOptions.panels.textSize.finalInit = function (that) {
-		that.events.modelChanged.addListener(
-			function(newValue)
-			{
-				// TODO: this id will be found multiple times. Need to employ the that.locate() solution.
-				$("#textSizeValue").val(newValue);
-			}
-		);
-		
-		that.applier.modelChanged.addListener("value", function () {
-			that.events.modelChanged.fire(that.model.value);
-			/*setTimeout(function(){
-				that.locate("valueText").val(that.model.value);
-				$("#textSizeValue").val(that.model.value);
-				//var i=0;
-			}, 0);*/
-			//$("#textSizeValue").val(that.model.value);
-            //$("#speechRate").val(that.model.speechRate);
-            /*if (!$("#textSizeValue").val()) {
-                that.applier.requestChange("", 0);
-            }*/
-        });
-	}
 	
 	fluid.defaults("fluid.uiOptions.panels.cursorSize", {
 		gradeNames: ["fluid.uiOptions.panels", "autoInit"],
@@ -109,12 +83,14 @@
             minus: ".flc-uiOptions-plus-minus-numerical-minus",
             label: ".flc-uiOptions-plus-minus-numerical-label",
             plus: ".flc-uiOptions-plus-minus-numerical-plus",
-            valueText: ".flc-uiOptions-plus-minus-numerical-value .fl-inputs"
+            valueText: ".flc-uiOptions-plus-minus-numerical-value"
         },
         protoTree: {
             minus: "-",
             label: {messagekey: "magnifierLabel"},
-            plus: "+"
+            plus: "+",
+
+            valueText: "${value}"
         }
 	});
 	
