@@ -41,7 +41,6 @@
 	fluid.uiOptions.panels.textSize.finalInit = function(that){
         that.events.afterRender.addListener(function () {
         	that.locate("valueText").val(that.locate("valueText").val() + " " + that.options.metricUnit);
-        	var i=0;
         });
 		plusMinusAdjusterFinalInit(that);
 	}
@@ -117,7 +116,16 @@
         }
 	});
 	
-	fluid.uiOptions.panels.magnifier.finalInit = plusMinusAdjusterFinalInit; 
+	fluid.uiOptions.panels.magnifier.finalInit = function(that){
+        that.events.afterRender.addListener(function () {
+        	if(that.locate("valueText").val() == that.options.range.min)
+    		{
+        		that.locate("valueText").val("OFF");
+    		}
+        });
+
+        plusMinusAdjusterFinalInit(that); 
+	}
 
 	fluid.defaults("fluid.uiOptions.panels.magnifierPosition", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
@@ -166,7 +174,7 @@
 			that.locate("minus").click(
 					function()
 					{
-						var newValue =  parseFloat(that.locate("valueText").val()) - parseFloat(that.options.range.divisibleBy);
+						var newValue =  parseFloat(that.model.value) - parseFloat(that.options.range.divisibleBy);
 						if(newValue >= parseFloat(that.options.range.min))
 						{
 							//that.locate("valueText").val(newValue);
@@ -179,7 +187,7 @@
 			that.locate("plus").click(
 					function()
 					{
-						var newValue =  parseFloat(that.locate("valueText").val()) + parseFloat(that.options.range.divisibleBy);
+						var newValue =  parseFloat(that.model.value) + parseFloat(that.options.range.divisibleBy);
 						//that.locate("valueText").val(newValue);
 						that.applier.requestChange("value", newValue);
 						that.refreshView();
