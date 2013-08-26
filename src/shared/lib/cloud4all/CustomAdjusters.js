@@ -40,16 +40,10 @@
 	
 	fluid.uiOptions.panels.textSize.finalInit = function(that){
         that.events.afterRender.addListener(function () {
-        	// need to catch this also because afterRender is not triggered when user edits the
-        	// text field manually, so " pt" is not appended to value.
-			that.locate("valueText").change(
-					function()
-					{
-			        	//that.locate("valueText").val(that.locate("valueText").val() + " " + that.options.metricUnit);
-						that.applier.requestChange("value", that.locate("valueText").val());
-						that.refreshView();
-					}
-			);
+			if(that.options.metricUnit)
+			{
+				that.locate("valueText").val(that.locate("valueText").val() + that.options.metricUnit);
+			}
         });
 		plusMinusAdjusterFinalInit(that);
 	}
@@ -108,6 +102,9 @@
 			max: 10,
             divisibleBy: 1
 		},
+
+		metricUnit: "%",
+        
         selectors: {
             minus: ".flc-uiOptions-plus-minus-numerical-minus",
             label: ".flc-uiOptions-plus-minus-numerical-label",
@@ -130,6 +127,13 @@
         	if(that.locate("valueText").val() == that.options.range.min)
     		{
         		that.locate("valueText").val("OFF");
+    		}
+        	else
+    		{
+    			if(that.options.metricUnit)
+    			{
+    				that.locate("valueText").val(that.locate("valueText").val() + that.options.metricUnit);
+    			}
     		}
         });
 
@@ -180,11 +184,6 @@
 
 	function plusMinusAdjusterFinalInit(that) {
 		that.events.afterRender.addListener(function () {
-			if(that.options.metricUnit)
-			{
-				that.locate("valueText").val(that.locate("valueText").val() + that.options.metricUnit);
-			}
-        	
 			that.locate("minus").click(
 					function()
 					{
@@ -208,6 +207,16 @@
 					}
 			);
 
+			// need to catch this also because afterRender is not triggered when user edits the
+        	// text field manually, so " pt" is not appended to value.
+			that.locate("valueText").change(
+					function()
+					{
+			        	//that.locate("valueText").val(that.locate("valueText").val() + " " + that.options.metricUnit);
+						that.applier.requestChange("value", that.locate("valueText").val());
+						that.refreshView();
+					}
+			);
 		});
 	};
     

@@ -25,10 +25,10 @@
 	    },
 	    "fluid.uiOptions.magnifier": {
 	        "type": "number",
-	        "default": 1,
-	        "minimum": 1,
-	        "maximum": 10,
-	        "divisibleBy": 1
+	        "default": 100,
+	        "minimum": 100,
+	        "maximum": 1000,
+	        "divisibleBy": 50
 	    },
 	    "fluid.uiOptions.magnifierPosition": {
 	        "type": "string",
