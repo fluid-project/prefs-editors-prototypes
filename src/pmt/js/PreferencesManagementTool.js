@@ -11,9 +11,9 @@
 	    },*/
 	    "fluid.uiOptions.textSize": {
 	        "type": "number",
-	        "default": 1,
+	        "default": 12,
 	        "minimum": 1,
-	        "maximum": 10,
+	        "maximum": 1000,
 	        "divisibleBy": 1
 	    },
 	    "fluid.uiOptions.cursorSize": {

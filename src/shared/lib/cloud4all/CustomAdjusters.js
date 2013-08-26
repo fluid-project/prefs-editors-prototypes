@@ -35,7 +35,11 @@
         finalInitFunction: "fluid.uiOptions.panels.textSize.finalInit"
     });
 	
-	fluid.uiOptions.panels.textSize.finalInit = plusMinusAdjusterFinalInit; 
+	fluid.uiOptions.panels.textSize.finalInit = plusMinusAdjusterFinalInit;
+	
+	fluid.uiOptions.enactors.textSize.set = function (sizeInPx, that) {
+        that.container.css("font-size", sizeInPx + "px");
+    };
 		
 	fluid.defaults("fluid.uiOptions.panels.cursorSize", {
 		gradeNames: ["fluid.uiOptions.panels", "autoInit"],
