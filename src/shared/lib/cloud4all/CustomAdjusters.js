@@ -6,7 +6,9 @@
             "fluid.uiOptions.textSize": {
                 "model.value": "default",
                 "range.min": "minimum",
-                "range.max": "maximum"
+                "range.max": "maximum",
+                "model.divisibleBy": "divisibleBy",
+                "model.min": "minimum"
             }
         },
         // The default model values represent both the expected format as well as the setting to be applied in the absence of values passed down to the component.
@@ -28,9 +30,13 @@
             plus: "+",
 
             valueText: "${value}"
-        }
+        },
+        
+        finalInitFunction: "fluid.uiOptions.panels.textSize.finalInit"
     });
 	
+	fluid.uiOptions.panels.textSize.finalInit = plusMinusAdjusterFinalInit; 
+		
 	fluid.defaults("fluid.uiOptions.panels.cursorSize", {
 		gradeNames: ["fluid.uiOptions.panels", "autoInit"],
 		preferenceMap: {
@@ -72,7 +78,9 @@
 			"fluid.uiOptions.magnifier": {
 				"model.value": "default",
 				"range.min": "minimum",
-				"range.max": "maximum"
+				"range.max": "maximum",
+                "model.divisibleBy": "divisibleBy",
+                "model.min": "minimum"
 			}
 		},
 		range: {
@@ -90,10 +98,14 @@
             label: {messagekey: "magnifierLabel"},
             plus: "+",
 
-            valueText: "${value}"
+            valueText: "${value}",
+            
+            finalInitFunction: "fluid.uiOptions.panels.magnifier.finalInit"
         }
 	});
 	
+	fluid.uiOptions.panels.magnifier.finalInit = plusMinusAdjusterFinalInit; 
+
 	fluid.defaults("fluid.uiOptions.panels.magnifierPosition", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
@@ -135,4 +147,29 @@
         });
         return messages;
     };
+
+	function plusMinusAdjusterFinalInit(that) {
+		that.events.afterRender.addListener(function () {
+			that.locate("minus").click(
+					function()
+					{
+						var newValue =  parseFloat(that.locate("valueText").val()) - parseFloat(that.model.divisibleBy);
+						if(newValue >= parseFloat(that.model.min))
+						{
+							that.locate("valueText").val(newValue);
+						}
+					}
+			);
+			
+			that.locate("plus").click(
+					function()
+					{
+						var newValue =  parseFloat(that.locate("valueText").val()) + parseFloat(that.model.divisibleBy);
+						that.locate("valueText").val(newValue);
+					}
+			);
+
+		});
+	};
+    
 })(jQuery, fluid);
