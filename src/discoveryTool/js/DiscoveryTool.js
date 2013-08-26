@@ -89,7 +89,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                         func: "gpii.discoveryTool.lookupMsg",
                         args: ["{slidingPanel}.msgBundle", "slidingPanelHideLabel"]
                     }
-                }                    
+                }
             },
             invokers: {
                 showDiscoveryIcon: {
@@ -109,19 +109,19 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             listeners: {
                 "onCreate.showIcon": "{that}.showDiscoveryIcon",
                 "onCreate.showLabel": {
-                    listener: "{that}.setLabel",                    
+                    listener: "{that}.setLabel",
                     args: "{that}.options.strings.showLabel"
                 },
                 "onPanelHide.showIcon": "{that}.showDiscoveryIcon",
                 "onPanelHide.showLabel": {
-                    listener: "{that}.setLabel",                    
+                    listener: "{that}.setLabel",
                     args: "{that}.options.strings.showLabel"
                 },
                 "onPanelShow.showIcon": "{that}.hideDiscoveryIcon",
                 "onPanelShow.showLabel": {
-                    listener: "{that}.setLabel",                    
+                    listener: "{that}.setLabel",
                     args: "{that}.options.strings.hideLabel"
-                },                    
+                },
             }
         },
         invokers: {
@@ -156,7 +156,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         var keybindingOpts = {
             additionalBindings: [{
                 key: key,
-                activateHandler: hideFunc
+                activateHandler: function () {
+                    hideFunc();
+                    return false;
+                }
             }]
         };
 
@@ -182,14 +185,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         gpii.discoveryTool.bindHideKey(that.options.keyBinding.hideTool, html, that.hideToolPanel);
         gpii.discoveryTool.bindHideKey(that.options.keyBinding.hideTool, iframeHtml, that.hideToolPanelInIframe);
     };
-    
+
     // Currently this code is duplicated from SlidingPanel.js
     // FLUID-5119 filed to move it to the framework, after which this should be removed in favour of the
     // generalized code.
     gpii.discoveryTool.lookupMsg = function (messageResolver, value) {
         var looked = messageResolver.lookup([value]);
         return looked ? looked.template : looked;
-    };    
+    };
 
     /*************
      * The base grade component for each individual panel
