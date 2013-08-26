@@ -7,8 +7,7 @@
                 "model.value": "default",
                 "range.min": "minimum",
                 "range.max": "maximum",
-                "model.divisibleBy": "divisibleBy",
-                "model.min": "minimum"
+                "range.divisibleBy": "divisibleBy"
             }
         },
         // The default model values represent both the expected format as well as the setting to be applied in the absence of values passed down to the component.
@@ -16,7 +15,8 @@
         // Note: Except for being passed down to its subcomponent, these default values are not contributed and shared out
         range: {
             min: 1,
-            max: 2
+            max: 2,
+            divisibleBy: 1
         },
         selectors: {
             minus: ".flc-uiOptions-plus-minus-numerical-minus",
@@ -79,13 +79,13 @@
 				"model.value": "default",
 				"range.min": "minimum",
 				"range.max": "maximum",
-                "model.divisibleBy": "divisibleBy",
-                "model.min": "minimum"
+                "range.divisibleBy": "divisibleBy"
 			}
 		},
 		range: {
 			min: 1,
-			max: 10
+			max: 10,
+            divisibleBy: 1
 		},
         selectors: {
             minus: ".flc-uiOptions-plus-minus-numerical-minus",
@@ -153,10 +153,12 @@
 			that.locate("minus").click(
 					function()
 					{
-						var newValue =  parseFloat(that.locate("valueText").val()) - parseFloat(that.model.divisibleBy);
-						if(newValue >= parseFloat(that.model.min))
+						var newValue =  parseFloat(that.locate("valueText").val()) - parseFloat(that.options.range.divisibleBy);
+						if(newValue >= parseFloat(that.options.range.min))
 						{
-							that.locate("valueText").val(newValue);
+							//that.locate("valueText").val(newValue);
+							that.applier.requestChange("value", newValue);
+							that.refreshView();
 						}
 					}
 			);
@@ -164,8 +166,10 @@
 			that.locate("plus").click(
 					function()
 					{
-						var newValue =  parseFloat(that.locate("valueText").val()) + parseFloat(that.model.divisibleBy);
-						that.locate("valueText").val(newValue);
+						var newValue =  parseFloat(that.locate("valueText").val()) + parseFloat(that.options.range.divisibleBy);
+						//that.locate("valueText").val(newValue);
+						that.applier.requestChange("value", newValue);
+						that.refreshView();
 					}
 			);
 
