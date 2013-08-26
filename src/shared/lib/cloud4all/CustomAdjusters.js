@@ -18,6 +18,9 @@
             max: 2,
             divisibleBy: 1
         },
+        
+        metricUnit: "pt",
+        
         selectors: {
             minus: ".flc-uiOptions-plus-minus-numerical-minus",
             label: ".flc-uiOptions-plus-minus-numerical-label",
@@ -35,7 +38,13 @@
         finalInitFunction: "fluid.uiOptions.panels.textSize.finalInit"
     });
 	
-	fluid.uiOptions.panels.textSize.finalInit = plusMinusAdjusterFinalInit;
+	fluid.uiOptions.panels.textSize.finalInit = function(that){
+        that.events.afterRender.addListener(function () {
+        	that.locate("valueText").val(that.locate("valueText").val() + " " + that.options.metricUnit);
+        	var i=0;
+        });
+		plusMinusAdjusterFinalInit(that);
+	}
 	
 	fluid.uiOptions.enactors.textSize.set = function (sizeInPx, that) {
         that.container.css("font-size", sizeInPx + "px");
