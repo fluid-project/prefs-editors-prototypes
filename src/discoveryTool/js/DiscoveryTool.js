@@ -263,7 +263,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             }
         },
         listeners: {
-            "{loader}.events.onUIOptionsComponentReady": {
+            "{uiOptions}.events.onReady": {
                 listener: "{that}.applier.modelChanged.addListener",
                 args: ["panelSelections", "{that}.relayConvertedModel"]
             }
@@ -408,13 +408,13 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             trySomethingNew: {
                 type: "gpii.discoveryTool.trySomethingNew",
                 container: "{that}.dom.trySomethingNew",
-                createOnEvent: "onUIOptionsComponentReady",
+                createOnEvent: "onReady",
                 options: {
                     strings: {
                         label: {
                             expander: {
                                 func: "gpii.discoveryTool.lookupMsg",
-                                args: ["{uiOptions}.msgBundle", "trySomethingNewText"]
+                                args: ["{uiOptionsLoader}.msgBundle", "trySomethingNewText"]
                             }
                         }
                     },
