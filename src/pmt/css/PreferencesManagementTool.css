@@ -24,9 +24,17 @@
 	font-size: 1.9em !important;
 	content: "\e000";
 }
-
+.fl-icon-small-cursor {
+	width: 30px;
+	text-align: right;
+	padding-top: 0.25em;
+}
 .fl-icon-big-cursor {
+	width: 35px;
 	margin-top: -0.5em !important;
+}
+.flc-uiOptions-cursor-size .fl-inputs, .flc-uiOptions-cursor-size .fl-inputs .fl-force-left {
+	//width:90%;
 }
 
 .preference {
@@ -45,7 +53,8 @@
 }
 
 .fl-uiOptions .fl-slider-horz {
-    width: 15em;
+    width: 200px;
+    margin: 2px !important;
 }
 
 .fl-uiOptions label::first-letter {
@@ -53,7 +62,7 @@
 }
 
 .fl-uiOptions .fl-slider a {
-    background: radial-gradient(circle 14.5px at 14.5px 50%, #566374 6px, white 8px);
+    //background: radial-gradient(circle 14.5px at 14.5px 50%, #566374 6px, white 8px);
     border: 1px solid #566374;
 }
 
