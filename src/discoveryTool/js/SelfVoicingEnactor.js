@@ -85,6 +85,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         });
     };
 
+    gpii.discoveryTool.enactors.selfVoicing.bindEvent = function (element, eventName, eventHandler) {
+        if (element.addEventListener) {
+            element.addEventListener(eventName, eventHandler);
+        } else if (element.attachEvent) {
+            element.attachEvent(eventName, eventHandler);
+        }
+    };
+
     gpii.discoveryTool.enactors.selfVoicing.attachAudio = function (that) {
         that.audio = $(that.options.markup);
         that.audio.attr("id", that.options.audioSelector.substr(1));
@@ -92,18 +100,18 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         $(that.options.audioSelector).remove();
         $("body").append(that.audio);
         var audioElement = that.audio[0];
-        audioElement.addEventListener("canplaythrough", function () {
+        gpii.discoveryTool.enactors.selfVoicing.bindEvent(audioElement, "canplaythrough", function () {
             if (!that.model.value) {
                 return;
             }
             that.speaking = true;
             audioElement.play();
         });
-        audioElement.addEventListener("ended", function () {
+        gpii.discoveryTool.enactors.selfVoicing.bindEvent(audioElement, "ended", function () {
             that.speaking = false;
             that.events.afterAnnounce.fire();
         });
-        audioElement.addEventListener("error", function () {
+        gpii.discoveryTool.enactors.selfVoicing.bindEvent(audioElement, "error", function () {
             that.speaking = false;
             if (!that.model.value) {
                 return;
