@@ -183,12 +183,6 @@
     width: 1px;
 }
 
-.fl-icon-text {
-	position:relative;
-	top: -0.6em; /* shift text up since Checkmark icon is shifted upward. */
-	display: inline;
-}
-
 .fl-discoveryTool-panel-icon{
 	font-family: 'DiscoveryToolIcons';
 	font-size: 4.6em;
