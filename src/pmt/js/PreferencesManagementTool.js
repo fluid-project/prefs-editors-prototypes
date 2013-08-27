@@ -181,4 +181,20 @@
                 }
             }*/
 	    };
+	
+	
+	// veeeeeeeeeery ugly hack until we hool to onReady event of UIO !!!
+	setTimeout(function(){
+		//alert("aaa");
+		$("#preferenceSwitch").change(function(){
+			//alert("aaa");
+			if(this.checked) {
+		        $(".increaseSizePreferenceGroup").slideDown();
+		    }
+			else
+			{
+		        $(".increaseSizePreferenceGroup").slideUp();
+			}
+		});
+	}, 1000);
 })(jQuery, fluid);

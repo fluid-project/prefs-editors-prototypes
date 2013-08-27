@@ -167,3 +167,7 @@ input[type=checkbox]:checked + label.headerTitle {
     height: 90px;
     width:330px;
 }
+
+.increaseSizePreferenceGroup {
+	display: none;
+}
