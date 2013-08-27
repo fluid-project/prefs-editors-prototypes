@@ -86,8 +86,8 @@
 
 .flc-uiOptions-plus-minus-numerical-minus, .flc-uiOptions-plus-minus-numerical-plus {
 	width: 10% !important;
-	height: 25px !important;
-	font-size: 20px !important;
+	//height: 2em !important;
+	//font-size: 1em !important;
 	cursor: pointer;
 	text-align: center !important;
 	background-color: white;
@@ -98,18 +98,20 @@
 	-moz-user-select: none;
 	-o-user-select: none;
 	user-select: none;
+	padding-top: 0.25em;
 }
 
 .flc-uiOptions-plus-minus-numerical-widget {
 	width: 100% !important;
 	background-color: #FFFFFF;
-    height: 25px;
+	display: table;
+    //height: 2em;
 }
 
 .flc-uiOptions-plus-minus-numerical-value {
 	width: 76% !important;
 	border: none !important;
-	height: 25px !important;
+	//height: 2em !important;
 	text-align: center !important;
 }
 
