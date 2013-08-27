@@ -107,7 +107,7 @@
 	-moz-user-select: none;
 	-o-user-select: none;
 	user-select: none;
-	//padding-top: 0.05em;
+	padding-top: 0.05em;
 }
 
 .flc-uiOptions-plus-minus-numerical-widget {
