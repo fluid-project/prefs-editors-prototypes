@@ -31,12 +31,14 @@
 
 .fl-uiOptions-discoveryTool {
     background-color: #6f7b80;
-    overflow: hidden;
+    overflow-x: auto;    
+    overflow-y: hidden;
+    white-space: nowrap;
 }
 
 .fl-uiOptions-discoveryTool .fl-uiOptions {
     font-family: 'OpenSans',"Myriad Pro", Helvetica, Arial, sans-serif;
-    padding-top: 2em;
+    padding-top: 1em;
 }
 
 /* Panels */
@@ -144,6 +146,8 @@
     width: 6.7em;
     height: 6.7em;
     border-radius: 0.4em;
+    margin-left: 1em;
+    white-space: normal;
     border: none;
     background: none;
 }
