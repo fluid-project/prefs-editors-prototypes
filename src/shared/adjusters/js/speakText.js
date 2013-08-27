@@ -27,8 +27,8 @@
             },
             "punctuationVerbosity": {
                 "type": "string",
-                "default": "none"
-                // "enum": ["none", "some", "most", "all"]
+                "default": "none",
+                "enum": ["none", "some", "most", "all"]
             },
             "announceCapitals": {
                 "type": "boolean",
@@ -57,90 +57,124 @@
         gradeNames: ["fluid.uiOptions.auxSchema", "autoInit"],
         auxiliarySchema: {
             "namespace": "gpii.adjusters.speakText",
-            "templatePrefix": "../../src/shared/lib/infusion/components/uiOptions/html/",
-            "messagePrefix": "",
-            "template": "./speakTextFrame.html", //main template for all three groups (speakText, incSize, highContrast)
+            "templatePrefix": "../../src/shared/adjusters/html/",
+            "messagePrefix": "../../src/shared/adjusters/messages/",
+            "template": "%prefix/newestSpeakText.html",
 
             "screenReaderTTSEnabled": {
                 "type": "screenReaderTTSEnabled",
                 "panel": {
-                    "type": "speakText.panel",
-                    "container": ".gpii-speak-text-group", // container for the speakText panel, holding all speakText adjusters
-                    "template": "../../src/shared/adjusters/html/newestSpeakText.html", // same as above
-                    "message": "../../src/shared/adjusters/messages/speakText.json"
+                    "type": "speakText.panels.screenReaderTTSEnabled",
+                    "template": "%prefix/speakTextTemplate-screenReaderTTSEnabled.html",
+                    "container": ".speakText-screenReaderTTSEnabled",
+                    "message": "%prefix/speakText.json"
                 }
             },
 
             "addOrRemovePreference": {
                 "type": "addOrRemovePreference",
                 "panel": {
-                    "type": "speakText.panel"
+                    "type": "speakText.panels.addOrRemovePreference",
+                    "template": "%prefix/speakTextTemplate-addOrRemovePreference.html",
+                    "container": ".speakText-addOrRemovePreference",
+                    "message": "%prefix/speakText.json"
                 }
             },
 
             "screenReaderSwitch": {
                 "type": "screenReaderSwitch",
                 "panel": {
-                    "type": "speakText.panel"
+                    "type": "speakText.panels.screenReaderSwitch",
+                    "template": "%prefix/speakTextTemplate-screenReaderSwitch.html",
+                    "container": ".speakText-screenReaderSwitch",
+                    "message": "%prefix/speakText.json"
                 }
             },
 
             "speechRate": {
                 "type": "speechRate",
                 "panel": {
-                    "type": "speakText.panel"
+                    "type": "speakText.panels.speechRate",
+                    "template": "%prefix/speakTextTemplate-speechRate.html",
+                    "container": ".speakText-speechRate",
+                    "message": "%prefix/speakText.json"
                 }
             },
 
             "auditoryOutLanguage": {
                 "type": "auditoryOutLanguage",
                 "panel": {
-                    "type": "speakText.panel"
+                    "type": "speakText.panels.auditoryOutLanguage",
+                    "template": "%prefix/speakTextTemplate-auditoryOutLanguage.html",
+                    "container": ".speakText-auditoryOutLanguage",
+                    "message": "%prefix/speakText.json"
                 }
             },
 
             "punctuationVerbosity": {
                 "type": "punctuationVerbosity",
                 "panel": {
-                    "type": "speakText.panel",
-                    // "container": ".gpii-speak-text-group",
-                    "template": "../../src/shared/adjusters/html/newestSpeakText.html", // same as above
-                    // "message": "../../src/shared/adjusters/messages/speakText.json"
+                    "type": "speakText.panels.punctuationVerbosity",
+                    "classnameMap": {"punctuationVerbosity": "@punctuationVerbosity.classes"},
+                    "template": "%prefix/speakTextTemplate-punctuationVerbosity.html",
+                    "container": ".speakText-punctuationVerbosity",
+                    "message": "%prefix/speakText.json"
+                },
+                "classes": {
+                    "none": "radioButton-left",
+                    "some": "radioButton-middle radioButton-second",
+                    "most": "radioButton-middle radioButton-third",
+                    "all": "radioButton-right"
                 }
             },
 
             "announceCapitals": {
                 "type": "announceCapitals",
                 "panel": {
-                    "type": "speakText.panel"
+                    "type": "speakText.panels.announceCapitals",
+                    "template": "%prefix/speakTextTemplate-announceCapitals.html",
+                    "container": ".speakText-announceCapitals",
+                    "message": "%prefix/speakText.json"
                 }
             },
 
             "speakTutorialMessages": {
                 "type": "speakTutorialMessages",
                 "panel": {
-                    "type": "speakText.panel"
+                    "type": "speakText.panels.speakTutorialMessages",
+                    "template": "%prefix/speakTextTemplate-speakTutorialMessages.html",
+                    "container": ".speakText-speakTutorialMessages",
+                    "message": "%prefix/speakText.json"
                 }
             },
 
             "keyEcho": {
                 "type": "keyEcho",
                 "panel": {
-                    "type": "speakText.panel"
+                    "type": "speakText.panels.keyEcho",
+                    "template": "%prefix/speakTextTemplate-keyEcho.html",
+                    "container": ".speakText-keyEcho",
+                    "message": "%prefix/speakText.json"
                 }
             },
 
             "wordEcho": {
                 "type": "wordEcho",
                 "panel": {
-                    "type": "speakText.panel"
+                    "type": "speakText.panels.wordEcho",
+                    "template": "%prefix/speakTextTemplate-wordEcho.html",
+                    "container": ".speakText-wordEcho",
+                    "message": "%prefix/speakText.json"
                 }
             },
 
             "screenReaderBrailleOutput": {
                 "type": "screenReaderBrailleOutput",
                 "panel": {
-                    "type": "speakText.panel"
+                    "type": "speakText.panels.screenReaderBrailleOutput",
+                    "template": "%prefix/speakTextTemplate-screenReaderBrailleOutput.html",
+                    "container": ".speakText-screenReaderBrailleOutput",
+                    "message": "%prefix/speakText.json"
                 }
             }
         }
@@ -148,242 +182,52 @@
 
     fluid.defaults("speakText.panel", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
-        preferenceMap: {
-            "addOrRemovePreference": {
-                "model.addOrRemovePreference": "default"
+        components: {
+            screenReaderTTSEnabled: {
+                type: "speakText.panels.screenReaderTTSEnabled",
+                container: ".speakText-screenReaderTTSEnabled-element"
             },
-            "screenReaderTTSEnabled": {
-                "model.screenReaderTTSEnabled": "default"
+            addOrRemovePreference: {
+                type: "speakText.panels.addOrRemovePreference",
+                container: ".speakText-addOrRemovePreference-element"
             },
-            "screenReaderSwitch": {
-                "model.screenReaderSwitch": "default"
+            screenReaderSwitch: {
+                type: "speakText.panels.screenReaderSwitch",
+                container: ".speakText-screenReaderSwitch-element"
             },
-            "speechRate": {
-                "model.speechRate": "default",
-                "model.minimum": "minimum",
-                "model.divisibleBy": "divisibleBy"
+            speechRate: {
+                type: "speakText.panels.speechRate",
+                container: ".speakText-speechRate-element"
             },
-            "auditoryOutLanguage": {
-                "model.auditoryOutLanguage": "default",
-                "controlValues.auditoryOutLanguage": "enum"
-            },
-            "punctuationVerbosity": {
-                "model.value": "default",
-                "controlValues.punctuationVerbosity": "enum"
-            },
-            "announceCapitals": {
-                "model.announceCapitals": "default"
-            },
-            "speakTutorialMessages": {
-                "model.speakTutorialMessages": "default"
-            },
-            "keyEcho": {
-                "model.keyEcho": "default"
-            },
-            "wordEcho": {
-                "model.wordEcho": "default"
-            },
-            "screenReaderBrailleOutput": {
-                "model.screenReaderBrailleOutput": "default"
-            }
-        },
-
-        selectors: {
-            addOrRemovePreference: ".gpii-addOrRemovePreference",
-            screenReaderTTSEnabled: ".gpii-screenReaderTTSEnabled",
-            screenReaderSwitch: ".gpii-screenReaderSwitch",
-            speechRate: ".gpii-speechRate",
-            auditoryOutLanguage: ".gpii-auditoryOutLanguage",
-
-            punctuationVerbosityRow: ".gpii-punctuationVerbosity-row",
-            punctuationVerbosityLabel: ".gpii-punctuationVerbosity-label",
-            punctuationVerbosityInput: ".gpii-punctuationVerbosity",
-            punctuationVerbosityBigLabel: ".gpii-punctuationVerbosity-bigLabel",
-
-            announceCapitals: ".gpii-announceCapitals",
-            speakTutorialMessages: ".gpii-speakTutorialMessages",
-            keyEcho: ".gpii-keyEcho",
-            wordEcho: ".gpii-wordEcho",
-            screenReaderBrailleOutput: ".gpii-screenReaderBrailleOutput",
-
-            addOrRemovePreferenceLabel: ".gpii-addOrRemovePreference-label",
-            screenReaderTTSEnabledLabel: ".gpii-screenReaderTTSEnabled-label",
-            screenReaderSwitchLabel: ".gpii-screenReaderSwitch-label",
-            speechRateLabel: ".gpii-speechRate-label",
-            speechRateMinus: ".gpii-speechRate-minus",
-            speechRatePlus: ".gpii-speechRate-plus",
-            auditoryOutLanguageLabel: ".gpii-auditoryOutLanguage-label",
-            punctuationVerbosityLabel: ".gpii-punctuationVerbosity-label",
-            announceCapitalsLabel: ".gpii-announceCapitals-label",
-            speakTutorialMessagesLabel: ".gpii-speakTutorialMessages-label",
-            keyEchoLabel: ".gpii-keyEcho-label",
-            wordEchoLabel: ".gpii-wordEcho-label",
-            screenReaderBrailleOutputLabel: ".gpii-screenReaderBrailleOutput-label",
-
-            screenReaderBrailleOutputDescription: ".gpii-screenReaderBrailleOutput-description",
-
-            // moreOptions: ".more-options"
-        },
-
-        repeatingSelectors: ["punctuationVerbosityRow"],
-
-        protoTree: {
-            expander: {
-                type: "fluid.renderer.selection.inputs",
-                rowID: "punctuationVerbosityRow",
-                labelID: "punctuationVerbosityLabel",
-                inputID: "punctuationVerbosity",
-                selectID: "theme-radio",
-                tree: {
-                    optionnames: "{that}.options.controlValues.punctuationVerbosity",
-                    optionlist: "{that}.options.controlValues.punctuationVerbosity",
-                    selection: "${value}"
-                },
-            },
-            addOrRemovePreference: "${addOrRemovePreference}",
-            screenReaderTTSEnabled: "${screenReaderTTSEnabled}",
-            screenReaderSwitch: "${screenReaderSwitch}",
-            speechRate: "${speechRate}",
             auditoryOutLanguage: {
-                selection: "${auditoryOutLanguage}",
-                optionlist: "{that}.options.controlValues.auditoryOutLanguage"
+                type: "speakText.panels.auditoryOutLanguage",
+                container: ".speakText-auditoryOutLanguage-element"
             },
-
-            announceCapitals: "${announceCapitals}",
-            speakTutorialMessages: "${speakTutorialMessages}",
-            keyEcho: "${keyEcho}",
-            wordEcho: "${wordEcho}",
-            screenReaderBrailleOutput: "${screenReaderBrailleOutput}",
-
-            addOrRemovePreferenceLabel: {messagekey: "addOrRemovePreferenceLabelOff"},
-            screenReaderTTSEnabledLabel: {messagekey: "screenReaderTTSEnabledLabel"},
-            screenReaderSwitchLabel: {messagekey: "screenReaderSwitchLabel"},
-            speechRateLabel: {messagekey: "speechRateLabel"},
-            speechRateMinus: {messagekey: "speechRateMinus"},
-            speechRatePlus: {messagekey: "speechRatePlus"},
-            auditoryOutLanguageLabel: {messagekey: "auditoryOutLanguageLabel"},
-            punctuationVerbosityBigLabel: {messagekey: "punctuationVerbosityLabel"},
-            announceCapitalsLabel: {messagekey: "announceCapitalsLabel"},
-            speakTutorialMessagesLabel: {messagekey: "speakTutorialMessagesLabel"},
-            keyEchoLabel: {messagekey: "keyEchoLabel"},
-            wordEchoLabel: {messagekey: "wordEchoLabel"},
-            screenReaderBrailleOutputLabel: {messagekey: "screenReaderBrailleOutputLabel"},
-
-            screenReaderBrailleOutputDescription: {messagekey: "screenReaderBrailleOutputDescription"},
-            punctuationVerbosityDescription: {messagekey: "punctuationVerbosityDescription"}
-        },
-
-        controlValues: {
-            punctuationVerbosity: ["none", "some", "most", "all"]
-        },
-
-        // strings: {
-        //     moreText: {
-        //         expander: {
-        //             func: "lookupMsg",
-        //             args: ["{that}.msgBundle", "moreOptionsMoreText"]
-        //         }
-        //     },
-
-        //     lessText: {
-        //         expander: {
-        //             func: "lookupMsg",
-        //             args: ["{that}.msgBundle", "moreOptionsLessText"]
-        //         }
-        //     }
-        // },
-
-        finalInitFunction: "speakText.finalInit"
-    });
-
-    var flag = true;
-
-    speakText.finalInit = function (that) {
-        that.applier.modelChanged.addListener("screenReaderTTSEnabled", function () {
-            if (that.model.screenReaderTTSEnabled) {
-                $(".more-options").text("+ more");
-                // that.locate("moreOptions").text(that.options.strings.moreText);
-                $("#speech-rate").slideDown();
-                $(".more-options").slideDown();
-
-                if (flag) {
-                    $(".more-options").click(function () {
-                        $("#expanded-top").toggle(400);
-                        $("#expanded-bottom").toggle(400);
-                        $(".gpii-addOrRemovePreference-label").toggle();
-                        $(this).text(moreOrLessOptions($(this).text()));
-                    });
-
-                    $(".gpii-speechRate-minus").click(function () {
-                        var newValue = parseInt(that.model.speechRate) - that.model.divisibleBy;
-                        if (newValue >= that.model.minimum) {
-                            that.applier.requestChange("speechRate", newValue);
-                        }
-                    });
-
-                    $(".gpii-speechRate-plus").click(function () {
-                        var newValue = parseInt(that.model.speechRate) + that.model.divisibleBy;
-                        that.applier.requestChange("speechRate", newValue);
-                    });
-
-                    $("#speechRate").keydown(function(event) {
-                        if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 37 || event.keyCode == 39 || event.keyCode == 35 || event.keyCode == 36) {
-                            // let it happen, don't do anything
-                        }
-                        else {
-                            if ((event.keyCode < 48 || event.keyCode > 57 ) && (event.keyCode < 96 || event.keyCode > 105 )) {
-                                event.preventDefault();
-                            }
-                        }
-                    });
-
-                    $(".gpii-addOrRemovePreference-label").hover(function () {
-                        $("#prompt-message").show();
-                    }, function () {
-                        $("#prompt-message").hide();
-                    });
-
-                    flag = false;
-                };
-            } else {
-                $("#speech-rate").slideUp();
-                $(".more-options").slideUp();
-                $("#expanded-top").slideUp();
-                $("#expanded-bottom").slideUp();
-                $(".gpii-addOrRemovePreference-label").hide();
+            punctuationVerbosity: {
+                type: "speakText.panels.punctuationVerbosity",
+                container: ".speakText-punctuationVerbosity-element"
+            },
+            announceCapitals: {
+                type: "speakText.panels.announceCapitals",
+                container: ".speakText-announceCapitals-element"
+            },
+            speakTutorialMessages: {
+                type: "speakText.panels.speakTutorialMessages",
+                container: ".speakText-speakTutorialMessages-element"
+            },
+            wordEcho: {
+                type: "speakText.panels.wordEcho",
+                container: ".speakText-wordEcho-element"
+            },
+            keyEcho: {
+                type: "speakText.panels.keyEcho",
+                container: ".speakText-keyEcho-element"
+            },
+            screenReaderBrailleOutput: {
+                type: "speakText.panels.screenReaderBrailleOutput",
+                container: ".speakText-screenReaderBrailleOutput-element"
             }
-        });
-
-        that.applier.modelChanged.addListener("addOrRemovePreference", function () {
-            if (that.model.addOrRemovePreference) {
-                $.getJSON('../../src/shared/adjusters/messages/speakText.json', function (data) {
-                $(".gpii-addOrRemovePreference-label").text(data["addOrRemovePreferenceLabelOn"]);
-            });
-            } else {
-                 $.getJSON('../../src/shared/adjusters/messages/speakText.json', function (data) {
-                 $(".gpii-addOrRemovePreference-label").text(data["addOrRemovePreferenceLabelOff"])
-            });
-            }
-        });
-
-        that.applier.modelChanged.addListener("speechRate", function () {
-            $("#speechRate").val(that.model.speechRate);
-            if (!$("#speechRate").val()) {
-                that.applier.requestChange("speechRate", 0);
-            }
-        });
-    };
-
-    // lookupMsg = function (messageResolver, value) {
-    //     var looked = messageResolver.lookup([value]);
-    //     return looked ? looked.template : looked;
-    // };
-
-    function moreOrLessOptions(currentValue) {
-        if (currentValue == "+ more") {
-            return "- less";
         }
-        return "+ more";
-    }
+    });
 
 })(fluid);
