@@ -42,7 +42,7 @@
         that.events.afterRender.addListener(function () {
 			if(that.options.metricUnit)
 			{
-				that.locate("valueText").val(that.locate("valueText").val() + that.options.metricUnit);
+				that.locate("valueText").val(that.model.value + that.options.metricUnit);
 			}
         });
 		plusMinusAdjusterFinalInit(that);
@@ -132,7 +132,7 @@
     		{
     			if(that.options.metricUnit)
     			{
-    				that.locate("valueText").val(that.locate("valueText").val() + that.options.metricUnit);
+    				that.locate("valueText").val(that.model.value + that.options.metricUnit);
     			}
     		}
         });
@@ -213,7 +213,7 @@
 					function()
 					{
 			        	//that.locate("valueText").val(that.locate("valueText").val() + " " + that.options.metricUnit);
-						that.applier.requestChange("value", that.locate("valueText").val());
+						that.applier.requestChange("value", parseFloat(that.locate("valueText").val()));
 						that.refreshView();
 					}
 			);
