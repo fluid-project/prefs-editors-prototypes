@@ -257,10 +257,9 @@ article h2 {
 .fl-uiOptions-discoveryTool .fl-uiOptions-fatPanel-iframe {
     border: none;
 }
-
-.fl-uiOptions-fatPanel-iframe html {
-    overflow: hidden;
-}
+iframe::-webkit-scrollbar {  
+    display: none;
+} 
 
 .fl-header-title {
 	font-size: 1.2em;
