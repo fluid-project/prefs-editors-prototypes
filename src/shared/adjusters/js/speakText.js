@@ -163,9 +163,12 @@
                 "model.screenReaderSwitch": "default"
             },
             "speechRate": {
-                "model.speechRate": "default",
-                "model.minimum": "minimum",
-                "model.divisibleBy": "divisibleBy"
+                "model.value": "default", /* WARNING
+                A temporary solution is to store "default" in model.VALUE
+                With the separation into smaller components this actually
+                won't be an issue */
+                "controlValues.speechRate.min": "minimum",
+                "controlValues.speechRate.step": "divisibleBy"
             },
             "auditoryOutLanguage": {
                 "model.auditoryOutLanguage": "default",
@@ -247,7 +250,16 @@
             addOrRemovePreference: "${addOrRemovePreference}",
             screenReaderTTSEnabled: "${screenReaderTTSEnabled}",
             screenReaderSwitch: "${screenReaderSwitch}",
-            speechRate: "${speechRate}",
+            speechRate: {
+                decorators: {
+                    type: "fluid",
+                    func: "gpii.uiOptions.textfieldStepper",
+                    options: {
+                        range: "{that}.options.controlValues.speechRate",
+                        path: "value"
+                    }
+                }
+            },
             auditoryOutLanguage: {
                 selection: "${auditoryOutLanguage}",
                 optionlist: "{that}.options.controlValues.auditoryOutLanguage"
@@ -329,29 +341,6 @@
                         $(this).text(moreOrLessOptions($(this).text()));
                     });
 
-                    $(".gpii-speechRate-minus").click(function () {
-                        var newValue = parseInt(that.model.speechRate) - that.model.divisibleBy;
-                        if (newValue >= that.model.minimum) {
-                            that.applier.requestChange("speechRate", newValue);
-                        }
-                    });
-
-                    $(".gpii-speechRate-plus").click(function () {
-                        var newValue = parseInt(that.model.speechRate) + that.model.divisibleBy;
-                        that.applier.requestChange("speechRate", newValue);
-                    });
-
-                    $("#speechRate").keydown(function(event) {
-                        if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 37 || event.keyCode == 39 || event.keyCode == 35 || event.keyCode == 36) {
-                            // let it happen, don't do anything
-                        }
-                        else {
-                            if ((event.keyCode < 48 || event.keyCode > 57 ) && (event.keyCode < 96 || event.keyCode > 105 )) {
-                                event.preventDefault();
-                            }
-                        }
-                    });
-
                     $(".gpii-addOrRemovePreference-label").hover(function () {
                         $("#prompt-message").show();
                     }, function () {
@@ -378,13 +367,6 @@
                  $.getJSON('../../src/shared/adjusters/messages/speakText.json', function (data) {
                  $(".gpii-addOrRemovePreference-label").text(data["addOrRemovePreferenceLabelOff"])
             });
-            }
-        });
-
-        that.applier.modelChanged.addListener("speechRate", function () {
-            $("#speechRate").val(that.model.speechRate);
-            if (!$("#speechRate").val()) {
-                that.applier.requestChange("speechRate", 0);
             }
         });
     };
