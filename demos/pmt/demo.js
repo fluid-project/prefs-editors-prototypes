@@ -25,4 +25,17 @@ var demo = demo || {};
         return demo.initWithSchema(container, options, "fluid.uiOptions.fullNoPreview");
     };
 
+    demo.initFinishedEvent = function(){
+		//alert("aaa");
+		$("#preferenceSwitch").change(function(){
+			//alert("aaa");
+			if(this.checked) {
+		        $(".increaseSizePreferenceGroup").slideDown();
+		    }
+			else
+			{
+		        $(".increaseSizePreferenceGroup").slideUp();
+			}
+		});
+	}
 })(jQuery, fluid);
