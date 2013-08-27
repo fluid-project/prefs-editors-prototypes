@@ -48,8 +48,8 @@
 		plusMinusAdjusterFinalInit(that);
 	}
 	
-	fluid.uiOptions.enactors.textSize.set = function (sizeInPx, that) {
-        that.container.css("font-size", sizeInPx + "px");
+	fluid.uiOptions.enactors.textSize.set = function (sizeInPt, that) {
+        that.container.css("font-size", sizeInPt + "pt");
     };
 		
 	fluid.defaults("fluid.uiOptions.panels.cursorSize", {

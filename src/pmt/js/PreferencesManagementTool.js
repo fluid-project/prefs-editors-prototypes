@@ -11,7 +11,7 @@
 	    },*/
 	    "fluid.uiOptions.textSize": {
 	        "type": "number",
-	        "default": 14,
+	        "default": 12,
 	        "minimum": 1,
 	        "maximum": 1000,
 	        "divisibleBy": 1
