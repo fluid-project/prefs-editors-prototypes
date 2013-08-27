@@ -258,10 +258,12 @@ article h2 {
     line-height: 0; /* For GPII-173 */   
 }
 
-.fl-uiOptions-discoveryTool iframe {
-    width: 100%;
+.fl-uiOptions-discoveryTool .fl-uiOptions-fatPanel-iframe {
     border: none;
 }
+iframe::-webkit-scrollbar {  
+    display: none;
+} 
 
 .fl-header-title {
 	font-size: 1.2em;
