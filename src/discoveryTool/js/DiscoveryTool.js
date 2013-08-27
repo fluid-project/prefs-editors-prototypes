@@ -156,9 +156,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         var keybindingOpts = {
             additionalBindings: [{
                 key: key,
-                activateHandler: function () {
+                activateHandler: function (event) {
                     hideFunc();
-                    return false;
+                    event.preventDefault();
                 }
             }]
         };
