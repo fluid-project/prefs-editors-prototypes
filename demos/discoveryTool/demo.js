@@ -25,48 +25,35 @@ var demo = demo || {};
     var pathToTocTemplate = "../../src/shared/lib/infusion/components/tableOfContents/html/TableOfContents.html";
 
     demo.initSettingsStore = function () {
-        fluid.globalSettingsStore();
+        return fluid.globalSettingsStore();
     };
 
     demo.initPageEnhancer = function (customThemeName) {
-        fluid.pageEnhancer({
-            gradeNames: ["gpii.discoveryTool.enactorSet"],
-            tocTemplate: pathToTocTemplate,
-            classnameMap: {
-                theme: {
-                    "default": customThemeName
-                }
-            },
-            events: {
-                simplifyContentChanged: null
-            },
-            listeners: {
-                simplifyContentChanged: {
-                    listener: "gpii.discoveryTool.updateToc",
-                    args: "{that}.tableOfContents"
+        return fluid.pageEnhancer({
+            uiEnhancer: {
+                gradeNames: ["gpii.discoveryTool.enactorSet"],
+                tocTemplate: pathToTocTemplate,
+                classnameMap: {
+                    theme: {
+                        "default": customThemeName
+                    }
                 }
             }
         });
     };
 
-    demo.initFatPanel = function (container) {
-        gpii.discoveryTool(container, {
+    demo.initDiscoveryTool = function (container) {
+        return gpii.discoveryTool(container, {
             templatePrefix: pathToTemplates,
             messagePrefix: pathToMessages,
             templateLoader: {
-                options: {
-                    gradeNames: ["gpii.discoveryTool.templateLoader"]
-                }
+                gradeNames: ["gpii.discoveryTool.templateLoader"]
             },
             messageLoader: {
-                options: {
-                    gradeNames: ["gpii.discoveryTool.messageLoader"]
-                }
+                gradeNames: ["gpii.discoveryTool.messageLoader"]
             },
             uiOptions: {
-                options: {
-                    gradeNames: ["gpii.discoveryTool.panels", "gpii.discoveryTool.rootModel", "fluid.uiOptions.uiEnhancerRelay"]
-                }
+                gradeNames: ["gpii.discoveryTool.panels", "gpii.discoveryTool.rootModel", "fluid.uiOptions.uiEnhancerRelay"]
             }
         });
     };
