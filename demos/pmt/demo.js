@@ -26,15 +26,15 @@ var demo = demo || {};
     };
 
     demo.initFinishedEvent = function(){
-		//alert("aaa");
+    	// hide it on startup
+        $(".fl-uiOptions-category").slideUp(0);
 		$("#preferenceSwitch").change(function(){
-			//alert("aaa");
 			if(this.checked) {
-		        $(".increaseSizePreferenceGroup").slideDown();
+		        $(".fl-uiOptions-category").slideDown();
 		    }
 			else
 			{
-		        $(".increaseSizePreferenceGroup").slideUp();
+		        $(".fl-uiOptions-category").slideUp();
 			}
 		});
 	}

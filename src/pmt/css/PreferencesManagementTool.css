@@ -169,5 +169,9 @@ input[type=checkbox]:checked + label.headerTitle {
 }
 
 .increaseSizePreferenceGroup {
-	display: none;
+	padding-top: 100px;
+}
+
+.fl-uiOptions-category {
+	overflow: hidden;
 }
