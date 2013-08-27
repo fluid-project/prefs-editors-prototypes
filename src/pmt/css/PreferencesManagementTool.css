@@ -130,7 +130,7 @@ input[type=checkbox] + label.headerTitle {
     //padding-left:30px;
     cursor:pointer;
     margin: 5px;
-    font-size: 23px;
+    font-size: 1.5em;
     text-align: center;
     //padding-left: 3px;
     color:white;
@@ -146,7 +146,7 @@ input[type=checkbox]:checked + label.headerTitle {
     //padding-left:30px;
     cursor:pointer;
     margin: 5px;
-    font-size: 23px;
+    font-size: 1.5em;
     text-align: center;
     //padding-left: 3px;
     color:white;
