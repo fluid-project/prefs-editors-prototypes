@@ -121,7 +121,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 "onPanelShow.showLabel": {
                     listener: "{that}.setLabel",
                     args: "{that}.options.strings.hideLabel"
-                },
+                }
             }
         },
         invokers: {
@@ -555,24 +555,51 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             elementsToHide: "header, footer, aside, nav, .flc-uiOptions-simplify-hide"
         },
         styles: {
-            simplified: "fl-uiOptions-content-simplified"
+            simplified: "fl-simplify"
         },
         model: {
             value: false
         },
         events: {
-            settingChanged: null
+            settingChanged: null,
+            onApplySimplify: null,
+            onRemoveSimplify: null
         },
         invokers: {
             set: {
                 funcName: "gpii.discoveryTool.enactors.simplifiedContent.set",
-                args: ["{that}.model.value", "{that}.dom.elementsToHide"]
+                args: ["{that}.model.value", "{that}"]
+            }
+        },
+        listeners: {
+            onCreate: "{that}.set",
+            "onApplySimplify.applyCss": {
+                "this": "{that}.container",
+                method: "addClass",
+                args: "{that}.options.styles.simplified"
+            },
+            "onApplySimplify.hideElements": {
+                "this": "{that}.dom.elementsToHide",
+                method: "hide"
+            },
+            "onRemoveSimplify.removeCss": {
+                "this": "{that}.container",
+                method: "removeClass",
+                args: "{that}.options.styles.simplified"
+            },
+            "onRemoveSimplify.showElements": {
+                "this": "{that}.dom.elementsToHide",
+                method: "show"
             }
         }
     });
 
-    gpii.discoveryTool.enactors.simplifiedContent.set = function (value, els) {
-        els.toggle(!value);
+    gpii.discoveryTool.enactors.simplifiedContent.set = function (value, that) {
+        if (value) {
+            that.events.onApplySimplify.fire();
+        } else {
+            that.events.onRemoveSimplify.fire();
+        }
     };
 
     gpii.discoveryTool.enactors.simplifiedContent.finalInit = function (that) {
@@ -825,7 +852,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     gpii.discoveryTool.cycle.step = function (items, index, speed, model, callbackOn, callbackOff) {
         var numItems = items.length;
         if (model.enabled && !model.inStep && numItems) {
-            var boundIndex = index%numItems;
+            var boundIndex = index % numItems;
             callbackOn(items[boundIndex], boundIndex);
             setTimeout(function () {
                 callbackOff(items[boundIndex], boundIndex);
