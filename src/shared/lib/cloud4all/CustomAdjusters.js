@@ -27,6 +27,9 @@
             plus: ".flc-uiOptions-plus-minus-numerical-plus",
             valueText: ".flc-uiOptions-plus-minus-numerical-value"
         },
+        events: {
+        	minRangeReached: null
+        },
         protoTree: {
             minus: "-",
             label: {messagekey: "textSizeLabel"},
@@ -111,6 +114,9 @@
             plus: ".flc-uiOptions-plus-minus-numerical-plus",
             valueText: ".flc-uiOptions-plus-minus-numerical-value"
         },
+        events: {
+        	minRangeReached: null
+        },
         protoTree: {
             minus: "-",
             label: {messagekey: "magnifierLabel"},
@@ -183,7 +189,30 @@
     };
 
 	function plusMinusAdjusterFinalInit(that) {
+		that.applier.modelChanged.addListener("value", function(newValue)
+		{
+			if(newValue.value == that.options.range.min)
+			{
+				that.options.minRangeReached = true;
+			}
+			else
+			{
+				that.options.minRangeReached = false;			
+			}
+		});
+		
+		that.events.minRangeReached.addListener(function () {
+			that.locate("minus").css("color", "lightGray");
+		});
+		
 		that.events.afterRender.addListener(function () {
+			
+			// if we've reached min range
+			if(that.options.minRangeReached)
+			{	// fire event
+				that.events.minRangeReached.fire();
+			}
+
 			that.locate("minus").click(
 					function()
 					{
@@ -212,9 +241,17 @@
 			that.locate("valueText").change(
 					function()
 					{
+						var newValue = parseFloat(that.locate("valueText").val()); 
+						// if we are below range
+						if(newValue < parseFloat(that.options.range.min))
+						{	// set it to min
+							newValue = parseFloat(that.options.range.min);
+						}
+						
 			        	//that.locate("valueText").val(that.locate("valueText").val() + " " + that.options.metricUnit);
-						that.applier.requestChange("value", parseFloat(that.locate("valueText").val()));
+						that.applier.requestChange("value", newValue);
 						that.refreshView();
+						
 					}
 			);
 			
