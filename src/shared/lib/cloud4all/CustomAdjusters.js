@@ -42,12 +42,6 @@
     });
 	
 	fluid.uiOptions.panels.textSize.finalInit = function(that){
-        that.events.afterRender.addListener(function () {
-			if(that.options.metricUnit)
-			{
-				that.locate("valueText").val(that.model.value + that.options.metricUnit);
-			}
-        });
 		plusMinusAdjusterFinalInit(that);
 	}
 	
@@ -129,19 +123,9 @@
 	});
 	
 	fluid.uiOptions.panels.magnifier.finalInit = function(that){
-        that.events.afterRender.addListener(function () {
-        	if(that.locate("valueText").val() == that.options.range.min)
-    		{
-        		that.locate("valueText").val("OFF");
-    		}
-        	else
-    		{
-    			if(that.options.metricUnit)
-    			{
-    				that.locate("valueText").val(that.model.value + that.options.metricUnit);
-    			}
-    		}
-        });
+		that.events.minRangeReached.addListener(function () {
+    		that.locate("valueText").val("OFF");
+		});
 
         plusMinusAdjusterFinalInit(that); 
 	}
@@ -206,7 +190,12 @@
 		});
 		
 		that.events.afterRender.addListener(function () {
-			
+			// append metric unit if there is one
+			if(that.options.metricUnit)
+			{
+				that.locate("valueText").val(that.model.value + that.options.metricUnit);
+			}
+
 			// if we've reached min range
 			if(that.options.minRangeReached)
 			{	// fire event
