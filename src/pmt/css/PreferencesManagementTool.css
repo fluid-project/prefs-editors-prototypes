@@ -1,13 +1,13 @@
 @font-face {
-	font-family: 'cursor-pointer-icon';
-	src:url('../fonts/cursor-pointer-icon.ttf') format('truetype');
+	font-family: 'adjuster-icons-aug-27';
+	src:url('../fonts/adjuster-icons-aug-27.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
 
 .fl-icon-cursor-icons {
 	float: left;
-	font-family: 'cursor-pointer-icon';
+	font-family: 'adjuster-icons-aug-27';
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
@@ -18,11 +18,11 @@
 }
 .fl-icon-small-cursor:before {
 	font-size: 0.8em !important;
-	content: "\e000";
+	content: "\e00e";
 }
 .fl-icon-big-cursor:before {
 	font-size: 1.9em !important;
-	content: "\e000";
+	content: "\e00f";
 }
 .fl-icon-small-cursor {
 	width: 30px;
