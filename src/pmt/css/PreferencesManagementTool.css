@@ -130,7 +130,6 @@ input[type=checkbox]:checked + label.headerTitle {
 /*
 	The slider's style
 */
-
 .fl-uiOptions .fl-slider-horz {
     width: 200px;
     margin: 2px !important;
@@ -152,7 +151,6 @@ input[type=checkbox]:checked + label.headerTitle {
 /*
 	The plusMinusAdjuster style
 */
-
 .flc-uiOptions-plus-minus-numerical-minus, .flc-uiOptions-plus-minus-numerical-plus {
 	width: 10% !important;
 	//height: 2em !important;
@@ -184,7 +182,6 @@ input[type=checkbox]:checked + label.headerTitle {
 	text-align: center !important;
 	font-size: 1.5em !important;
 }
-
 
 /*
 	Style for sliding to work
