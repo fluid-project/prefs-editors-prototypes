@@ -298,13 +298,6 @@ iframe::-webkit-scrollbar {
 	text-align: center;
 	margin-bottom: 0.15em;
 }
-#main-header #main-header-content div.fl-discoveryTool-moreText {
-    float: none;
-    display: inline;
-}
-#main-header #main-header-content div.fl-discoveryTool-moreText details {
-    display: inherit;
-}
 
 .fl-icon-search, .fl-icon-prev, .fl-icon-next, .fl-icon-thumbsUp, .fl-icon-thumbsDown, .fl-icon-arrow, .fl-icon-light, .fl-icon-book, .fl-icon-discover {
     font-family: 'DemoIcons';    
@@ -360,6 +353,16 @@ div[role="img"] {
 }
 
 /* More Text */
+#main-header #main-header-content div.fl-discoveryTool-moreText {
+    float: none;
+    display: inline;
+}
+#main-header #main-header-content div.fl-discoveryTool-moreText.fl-hidden {
+    display: none;
+}
+#main-header #main-header-content div.fl-discoveryTool-moreText details {
+    display: inherit;
+}
 div.main-content-image + .fl-discoveryTool-moreText {
     top: -1em; /* because these elements have a bottom margin of 1em */
 }
