@@ -573,12 +573,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
         selectors: {
             content: ".flc-uiOptions-content",
-            moreTexts: ".flc-discoveryTool-moreText-details",
+            moreTexts: ".flc-discoveryTool-moreText-container",
             images: "img, [role~='img']",
-            details: "details" // selector of element in 'markup.moreText' where text should be inserted
+            textEl: "details" // selector of element in 'markup.moreText' where text should be inserted
         },
         styles: {
-            moreText: "fl-discoveryTool-moreText",
             hidden: "fl-hidden"
         },
         model: {
@@ -601,7 +600,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             getMoreText: "gpii.discoveryTool.enactors.showMoreText.getAltText",
             buildMoreTextMarkup: {
                 funcName: "gpii.discoveryTool.enactors.showMoreText.buildMoreTextMarkup",
-                args: ["{that}", "{arguments}.0"]
+                args: ["{that}.options.markup.moreText", "{that}.options.selectors.textEl", "{arguments}.0"]
             },
             set: {
                 funcName: "gpii.discoveryTool.enactors.showMoreText.set",
@@ -612,17 +611,16 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             moreTextMarkupAdded: false
         },
         markup: {
-            moreText: "<div class='flc-discoveryTool-moreText-details fl-fix'><details><summary></summary></details></div>"
+            moreText: "<div class='flc-discoveryTool-moreText-container fl-discoveryTool-moreText fl-fix'><details><summary></summary></details></div>"
         }
     });
 
     gpii.discoveryTool.enactors.showMoreText.addMoreTextMarkup = function (imgs, getMoreTextfunc, buildMoreTextMarkupFunc) {
-        fluid.each(imgs, function (img, index) {
+        fluid.each(imgs, function (img) {
             img = $(img);
-            var alt = getMoreTextfunc(img);
-            if (alt) {
-                var details = buildMoreTextMarkupFunc(alt);
-                img.after(details);
+            var text = getMoreTextfunc(img);
+            if (text) {
+                img.after(buildMoreTextMarkupFunc(text));
             }
         });
     };
@@ -631,10 +629,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         return img.attr("alt") || img.attr("aria-label");
     };
 
-    gpii.discoveryTool.enactors.showMoreText.buildMoreTextMarkup = function (that, text) {
-        var container = $(that.options.markup.moreText);
-        container.addClass(that.options.styles.moreText);
-        $(that.options.selectors.details, container).append(text);
+    gpii.discoveryTool.enactors.showMoreText.buildMoreTextMarkup = function (markup, textElSelector, text) {
+        var container = $(markup);
+        var textEl = $(textElSelector, container);
+        if (textEl.length < 1) { // in case the textEl _is_ the container
+            container.append(text);
+        } else {
+            textEl.append(text);
+        }
         return container;
     };
 
