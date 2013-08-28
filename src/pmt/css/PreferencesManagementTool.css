@@ -1,3 +1,6 @@
+/*
+	Font icons
+*/
 @font-face {
 	font-family: 'adjuster-icons-aug-27';
 	src:url('../fonts/adjuster-icons-aug-27.ttf') format('truetype');
@@ -6,47 +9,11 @@
 }
 
 /*
-	
+	General preferences styling
 */
-.fl-adjuster-icons {
-	float: left;
-	font-family: 'adjuster-icons-aug-27';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	-webkit-font-smoothing: antialiased;
-}
-.fl-icon-small-cursor:before {
-	font-size: 0.8em !important;
-	content: "\e00e";
-}
-.fl-icon-big-cursor:before {
-	font-size: 1.9em !important;
-	content: "\e00f";
-}
-.fl-icon-small-cursor {
-	width: 30px;
-	text-align: right;
-	padding-top: 0.25em;
-}
-.fl-icon-big-cursor {
-	width: 35px;
-	margin-top: -0.5em !important;
-}
-.flc-uiOptions-cursor-size .fl-inputs, .flc-uiOptions-cursor-size .fl-inputs .fl-force-left {
-	//width:90%;
-}
-
 .preference {
 	background:#ECEFEF;
 	width: 340px;
-}
-
-.adjusterGroupTitle {
-	margin: 5px;
 }
 
 .fl-uiOptions-category {
@@ -55,28 +22,25 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-.fl-uiOptions .fl-slider-horz {
-    width: 200px;
-    margin: 2px !important;
-}
-
 .fl-uiOptions label::first-letter {
     text-transform: capitalize;
 }
 
-.fl-uiOptions .fl-slider a {
-    //background: radial-gradient(circle 14.5px at 14.5px 50%, #566374 6px, white 8px);
-    border: 1px solid #566374;
+.fl-uiOptions label {
+    font-size: 0.8em;
 }
 
-.fl-uiOptions .ui-slider-range {
-    background-color: #17a9b8;
-}
-
+/*
+	Header's styling
+*/
 .headerImage {
 	position: relative; 
    	width: 100%; /* for IE 6 */
    	font-family: 'Roboto Slab', serif;
+}
+
+.adjusterGroupTitle {
+	margin: 5px;
 }
 
 .headerTitle {
@@ -86,46 +50,6 @@
    	width: 100%;
    	color: white;
    	text-align: center;
-}
-
-.fl-uiOptions label {
-    font-size: 0.8em;
-}
-
-.fl-uiOptions .fl-slider a {
-    box-shadow: none;
-}
-
-.flc-uiOptions-plus-minus-numerical-minus, .flc-uiOptions-plus-minus-numerical-plus {
-	width: 10% !important;
-	//height: 2em !important;
-	font-size: 1.5em !important;
-	cursor: pointer;
-	text-align: center !important;
-	background-color: white;
-	margin-left: 2px !important;
-	margin-right: 2px !important;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-o-user-select: none;
-	user-select: none;
-	padding-top: 0.05em;
-}
-
-.flc-uiOptions-plus-minus-numerical-widget {
-	width: 100% !important;
-	background-color: #FFFFFF;
-	display: table;
-    //height: 2em;
-}
-
-.flc-uiOptions-plus-minus-numerical-value {
-	width: 76% !important;
-	border: none !important;
-	//height: 2em !important;
-	text-align: center !important;
-	font-size: 1.5em !important;
 }
 
 input[type=checkbox] {
@@ -171,6 +95,100 @@ input[type=checkbox]:checked + label.headerTitle {
     width:330px;
 }
 
+/*
+	The adjusters' font icons
+*/
+.fl-adjuster-icons {
+	float: left;
+	font-family: 'adjuster-icons-aug-27';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+.fl-icon-small-cursor:before {
+	font-size: 0.8em !important;
+	content: "\e00e";
+}
+.fl-icon-big-cursor:before {
+	font-size: 1.9em !important;
+	content: "\e00f";
+}
+.fl-icon-small-cursor {
+	width: 30px;
+	text-align: right;
+	padding-top: 0.25em;
+}
+.fl-icon-big-cursor {
+	width: 35px;
+	margin-top: -0.5em !important;
+}
+
+/*
+	The slider's style
+*/
+
+.fl-uiOptions .fl-slider-horz {
+    width: 200px;
+    margin: 2px !important;
+}
+
+.fl-uiOptions .fl-slider a {
+    //background: radial-gradient(circle 14.5px at 14.5px 50%, #566374 6px, white 8px);
+    border: 1px solid #566374;
+}
+
+.fl-uiOptions .ui-slider-range {
+    background-color: #17a9b8;
+}
+
+.fl-uiOptions .fl-slider a {
+    box-shadow: none;
+}
+
+/*
+	The plusMinusAdjuster style
+*/
+
+.flc-uiOptions-plus-minus-numerical-minus, .flc-uiOptions-plus-minus-numerical-plus {
+	width: 10% !important;
+	//height: 2em !important;
+	font-size: 1.5em !important;
+	cursor: pointer;
+	text-align: center !important;
+	background-color: white;
+	margin-left: 2px !important;
+	margin-right: 2px !important;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	padding-top: 0.05em;
+}
+
+.flc-uiOptions-plus-minus-numerical-widget {
+	width: 100% !important;
+	background-color: #FFFFFF;
+	display: table;
+    //height: 2em;
+}
+
+.flc-uiOptions-plus-minus-numerical-value {
+	width: 76% !important;
+	border: none !important;
+	//height: 2em !important;
+	text-align: center !important;
+	font-size: 1.5em !important;
+}
+
+
+/*
+	Style for sliding to work
+*/
 .increaseSizePreferenceGroup {
 	padding-top: 100px;
 }
