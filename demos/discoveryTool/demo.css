@@ -233,6 +233,10 @@ article h2 {
     margin: 1em 0; 
 }
 
+.demo-orbitals {
+	width: 45%;
+}
+
 /* Discovery Tool */
 .fl-panelBar {
     text-align: right;
@@ -255,10 +259,12 @@ article h2 {
     line-height: 0; /* For GPII-173 */   
 }
 
-.fl-uiOptions-discoveryTool iframe {
-    width: 100%;
+.fl-uiOptions-discoveryTool .fl-uiOptions-fatPanel-iframe {
     border: none;
 }
+iframe::-webkit-scrollbar {  
+    display: none;
+} 
 
 .fl-header-title {
 	font-size: 1.2em;
@@ -360,7 +366,7 @@ div.main-content-image + .fl-discoveryTool-moreText {
 
 #storm { 
     background-image:url('images/storm.png'); 
-    height: 20em;    
+    height: 18em;
 }
 .fl-theme-bw #storm { background-image:url('images/storm_bw.png'); }
 .fl-theme-lgdg #storm { background-image:url('images/storm_lgdg.png'); }
@@ -442,3 +448,62 @@ div.main-content-image + .fl-discoveryTool-moreText {
     border-color: #BDBDBB;
     color: #BDBDBB;
 }
+
+/* Simplify Content */
+.fl-simplify {
+	background: #fff;
+}
+
+.fl-simplify #main,
+.fl-simplify #main #content{
+	border: 0;
+    box-shadow: none;
+    margin-left: 0;
+    padding: 0;
+}
+
+
+@media all and (max-width: 639px) {
+	.fl-simplify #main {
+		margin-right: 0;
+		margin-left: 0;
+	}
+	.fl-simplify .main-content {
+		padding-left: 10px;
+		padding-right: 10px;
+	}	
+}
+
+@media all and (min-width: 640px) {
+	.fl-simplify #main {
+		margin-right: 50px;
+		margin-left: 50px;
+	}
+}
+
+@media all and (max-width:589px) {
+	.fl-simplify .main-content {
+		width: 100%;
+	}	
+}
+
+@media all and (min-width: 590px) {
+	.fl-simplify .main-content {
+		width: 590px;
+	}		
+}
+
+.fl-simplify #storm,
+.fl-simplify #structure,
+.fl-simplify #energylevels,
+.fl-simplify #porbital,
+.fl-simplify #sorbital {
+	width: 100%;
+	background-size: 100% auto;
+}
+
+.fl-simplify .demo-orbitals {width: 100%;}
+.fl-simplify #sorbital 		{height: 24.2em;}
+.fl-simplify #porbital 		{height: 18.5em;}
+.fl-simplify #structure 	{height: 25.4em;}
+.fl-simplify #energylevels 	{height: 26em;  }
