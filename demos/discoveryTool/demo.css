@@ -232,7 +232,7 @@ article h2 {
     margin: 1em 0; 
 }
 
-.demo-orbitals {
+.demo-sorbital, .demo-porbital {
 	width: 45%;
 }
 
@@ -495,7 +495,7 @@ div[role="img"] {
 	background-size: 100% auto;
 }
 
-.fl-simplify .demo-orbitals {width: 100%;}
+.fl-simplify .demo-sorbital, .fl-simplify .demo-porbital {width: 100%;}
 .fl-simplify #sorbital 		{height: 24.2em;}
 .fl-simplify #porbital 		{height: 18.5em;}
 .fl-simplify #structure 	{height: 25.4em;}
