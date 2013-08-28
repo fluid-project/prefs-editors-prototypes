@@ -193,3 +193,17 @@ input[type=checkbox]:checked + label.headerTitle {
 .fl-uiOptions-category {
 	overflow: hidden;
 }
+
+.fl-uiOptions-category-hidden {
+	overflow: hidden;
+}
+
+/*
+	Style for more/less
+*/
+.moreLess{
+	width:100% !important;
+	text-align: center;
+	cursor: pointer;
+	padding-bottom: 5px !important;
+}

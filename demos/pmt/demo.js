@@ -28,13 +28,27 @@ var demo = demo || {};
     demo.initFinishedEvent = function(){
     	// hide it on startup
         $(".fl-uiOptions-category").slideUp(0);
-		$("#preferenceSwitch").change(function(){
+        $(".fl-uiOptions-category-hidden").slideUp(0);
+
+        $("#preferenceSwitch").change(function(){
 			if(this.checked) {
 		        $(".fl-uiOptions-category").slideDown();
 		    }
 			else
 			{
 		        $(".fl-uiOptions-category").slideUp();
+			}
+		});
+
+        $(".moreLess").click(function(){
+        	if (!$('.fl-uiOptions-category-hidden').is(':visible')) {
+		        $(".fl-uiOptions-category-hidden").slideDown();
+		        $(".moreLess").text("- less");
+		    }
+			else
+			{
+		        $(".fl-uiOptions-category-hidden").slideUp();
+		        $(".moreLess").text("+ more");
 			}
 		});
 	}
