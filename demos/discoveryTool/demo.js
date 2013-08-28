@@ -74,4 +74,13 @@ var demo = demo || {};
             }
         }
     });
+
+    fluid.demands("gpii.discoveryTool.enactors.showMoreText", "gpii.discoveryTool.demo", {
+        options: {
+            selectors: {
+                // exclude the next/previous, thumbs buttons from the 'more text' functionality
+                images: "img:not('.fl-icon-next, .fl-icon-prev, .fl-icon-thumbsUp, .fl-icon-thumbsDown'), [role~='img']:not('.fl-icon-next, .fl-icon-prev, .fl-icon-thumbsUp, .fl-icon-thumbsDown'), ",
+            }
+        }
+    });
 })(jQuery, fluid);
