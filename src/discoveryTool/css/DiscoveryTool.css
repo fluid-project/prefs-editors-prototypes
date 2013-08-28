@@ -47,19 +47,55 @@
 
 /* more-text display */
 .fl-discoveryTool-moreText {
-    background-color: lightgrey;
+    position: relative;
+    padding-top: 3em; /* to make room for the T above the text */
 }
-details[open] summary {
+.fl-discoveryTool-moreText details {
+    display: block;
+    background-color: #cccccc;
+}
+.fl-discoveryTool-moreText details[open] summary {
     float: left;
 }
-details summary::-webkit-details-marker {
+.fl-discoveryTool-moreText details summary { /* to position the T above the text */
+    position: absolute;
+    top: 0em;
+}
+.fl-discoveryTool-moreText details summary::-webkit-details-marker {
     display:none;
 }
-details summary:before {
+.fl-discoveryTool-moreText details summary:before {
     content: "\e007";
     font-family: 'MoreText';
-    background-color: lightgrey;
+    color: #FFFFFF;
+    background-color: #4f4f4f;
     font-size: 2em;
+    border-radius: 0.5em;
+}
+.fl-discoveryTool-moreText details summary:focus:before {
+    border: 2px solid #4f4f4f;
+    color: #4f4f4f;
+    background-color: #ffffff;
+}
+.fl-theme-uio-bw .fl-discoveryTool-moreText details summary:before,
+.fl-theme-uio-bw .fl-discoveryTool-moreText details {
+    color: #ffffff !important;
+    background-color: #000000 !important;
+}
+.fl-theme-uio-lgdg .fl-discoveryTool-moreText details summary:before,
+.fl-theme-uio-lgdg .fl-discoveryTool-moreText details {
+    background-color: #BDBDBB !important;
+    color: #555555 !important;
+}
+.fl-theme-uio-bw .fl-discoveryTool-moreText details summary:focus:before {
+    border: 2px solid #000000 !important;
+    color: #000000 !important;
+    background-color: #ffffff !important;
+}
+.fl-theme-uio-lgdg .fl-discoveryTool-moreText details summary:focus:before {
+    border: 2px solid #BDBDBB !important;
+    color: #BDBDBB !important;
+    background-color: #555555 !important;
 }
 
 /* Panels */
@@ -282,12 +318,3 @@ details summary:before {
 .fl-theme-bw .fl-uiOptions-panel input:focus ~ label .fl-icon-text,
 .fl-theme-lgdg .fl-uiOptions-panel label:hover .fl-icon-text,
 .fl-theme-lgdg .fl-uiOptions-panel input:focus ~ label .fl-icon-text  { text-shadow: none; }
-
-.fl-theme-bw .fl-discoveryTool-moreText,
-.fl-theme-bw details summary:before {
-    background-color: #FFFFFF;
-}
-.fl-theme-lgdg .fl-discoveryTool-moreText,
-.fl-theme-lgdg details summary:before {
-    background-color: #555555;
-}

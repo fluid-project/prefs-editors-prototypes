@@ -43,6 +43,7 @@ a:focus {
     top: 0;
     width: 100%;
     padding: 0.25em;
+    z-index: 999; /* to ensure it is above the more-text details in FF */
 }
 
 #main-header #main-header-content {
@@ -291,6 +292,13 @@ article h2 {
 	text-align: center;
 	margin-bottom: 0.15em;
 }
+#main-header #main-header-content div.fl-discoveryTool-moreText {
+    float: none;
+    display: inline;
+}
+#main-header #main-header-content div.fl-discoveryTool-moreText details {
+    display: inherit;
+}
 
 .fl-icon-search, .fl-icon-prev, .fl-icon-next, .fl-icon-thumbsUp, .fl-icon-thumbsDown, .fl-icon-arrow, .fl-icon-light, .fl-icon-book, .fl-icon-discover {
     font-family: 'DemoIcons';    
@@ -343,6 +351,11 @@ div[role="img"] {
     background-repeat: no-repeat;
     background-size: contain; 
     margin-bottom: 1em;
+}
+
+/* More Text */
+div.main-content-image + .fl-discoveryTool-moreText {
+    top: -1em; /* because these elements have a bottom margin of 1em */
 }
 
 #storm { 
