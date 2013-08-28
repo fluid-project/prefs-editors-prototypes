@@ -31,10 +31,10 @@
 	        "divisibleBy": 50
 	    },
 	    "fluid.uiOptions.magnifierPosition": {
-	        "type": "string",
-	        "default": "",
+            "type": "string",
+            "default": "",
 	        "enum": ["default", "lens", "fullscreen", "dockedtop", "dockedbottom", "dockedleft", "dockedright"]
-	    }/*,
+        }/*,
 	    "fluid.uiOptions.textFont": {
 	        "type": "string",
 	        "default": "",
@@ -117,26 +117,24 @@
 	            }
 	        },
 	        "magnifierPosition": {
-	            "type": "fluid.uiOptions.magnifierPosition",
-	            "enactor": {
-	                "type": "fluid.uiOptions.enactors.textSize",
-	                "fontSizeMap": {
-	                    "xx-small": "9px",
-	                    "x-small": "11px",
-	                    "small": "13px",
-	                    "medium": "15px",
-	                    "large": "18px",
-	                    "x-large": "23px",
-	                    "xx-large": "30px"
-	                }
-	            },
-	            "panel": {
-	                "type": "fluid.uiOptions.panels.magnifierPosition",
-	                "container": ".flc-uiOptions-magnifier-position",  // the css selector in the template where the panel is rendered
-	                "template": "%prefix/UIOptionsTemplate-magnifierPosition.html",
-	                "message": "%prefix/magnifier.json"
-	            }
-	        },
+                "type": "fluid.uiOptions.magnifierPosition",
+                "classes": {
+                    "default": "fl-theme-uio-default",
+                    "bw": "fl-theme-uio-bw fl-theme-bw",
+                    "wb": "fl-theme-uio-wb fl-theme-wb",
+                    "by": "fl-theme-uio-by fl-theme-by",
+                    "yb": "fl-theme-uio-yb fl-theme-yb",
+                    "lgdg": "fl-theme-uio-lgdg fl-theme-lgdg"
+
+                },
+                "panel": {
+                    "type": "fluid.uiOptions.panels.magnifierPosition",
+                    "container": ".flc-uiOptions-magnifierPosition",  // the css selector in the template where the panel is rendered
+                    "classnameMap": {"magnifierPosition": "@magnifierPosition.classes"},
+                    "template": "%prefix/UIOptionsTemplate-magnifierPosition.html",
+                    "message": "%prefix/magnifier.json"
+                }
+            },
 	        /*"lineSpace": {
 	            "type": "fluid.uiOptions.lineSpace",
 	            "enactor": {

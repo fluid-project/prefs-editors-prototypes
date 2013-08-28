@@ -138,9 +138,14 @@
                 "controlValues.magnifierPosition": "enum"
             }
         },
+        listeners: {
+            afterRender: "{that}.style"
+        },
         selectors: {
-        	magnifierPosition: ".flc-uiOptions-magnifier-position",
-            label: ".flc-uiOptions-magnifier-position-label"
+            magnifierPositionRow: ".flc-uiOptions-magnifierPositionRow",
+            magnifierPositionLabel: ".flc-uiOptions-magnifierPosition-label",
+            magnifierPositionInput: ".flc-uiOptions-magnifierPositionInput",
+            label: ".flc-uiOptions-magnifierPosition-heading"
         },
         strings: {
         	magnifierPosition: {
@@ -150,19 +155,38 @@
                 }
             }
         },
+        repeatingSelectors: ["magnifierPositionRow"],
         protoTree: {
             label: {messagekey: "magnifierPositionLabel"},
-            magnifierPosition: {
-                optionnames: "{that}.options.strings.magnifierPosition",
-                optionlist: "{that}.options.controlValues.magnifierPosition",
-                selection: "${value}"
+            expander: {
+                type: "fluid.renderer.selection.inputs",
+                rowID: "magnifierPositionRow",
+                labelID: "magnifierPositionLabel",
+                inputID: "magnifierPositionInput",
+                selectID: "magnifierPosition-radio",
+                tree: {
+                    optionnames: "{that}.options.strings.magnifierPosition",
+                    optionlist: "{that}.options.controlValues.magnifierPosition",
+                    selection: "${value}"
+                }
             }
         },
         controlValues: {
-        	magnifierPosition: ["default", "lens", "fullscreen", "dockedtop", "dockedbottom", "dockedleft", "dockedright"]
+            magnifierPosition: ["default", "lens", "fullscreen", "dockedtop", "dockedbottom", "dockedleft", "dockedright"]
+        },
+        markup: {
+            label: "<span class=\"fl-preview-A\">A</span><span class=\"fl-hidden-accessible\">%magnifierPosition</span><div class=\"fl-crossout\"></div>"
+        },
+        invokers: {
+            style: {
+                funcName: "fluid.uiOptions.panels.magnifierPosition.style",
+                args: ["{that}.dom.magnifierPositionLabel", "{that}.options.strings.magnifierPosition",
+                    "{that}.options.markup.label", "{that}.options.controlValues.magnifierPosition",
+                    "{that}.options.classnameMap.magnifierPosition"]
+            }
         }
     });
-	
+
 	fluid.uiOptions.panels.magnifierPosition.lookupMsg = function (messageResolver, prefix, values) {
         var messages = [];
         fluid.each(values, function (value, key) {
@@ -170,6 +194,16 @@
             messages.push(looked ? looked.template : looked);
         });
         return messages;
+    };
+
+    fluid.uiOptions.panels.magnifierPosition.style = function (labels, strings, markup, magnifierPosition, style) {
+        fluid.each(labels, function (label, index) {
+            label = $(label);
+            label.html(fluid.stringTemplate(markup, {
+                magnifierPosition: strings[index]
+            }));
+            label.addClass(style[magnifierPosition[index]]);
+        });
     };
 
 	function plusMinusAdjusterFinalInit(that) {
