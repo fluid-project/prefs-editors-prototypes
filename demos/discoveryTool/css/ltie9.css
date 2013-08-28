@@ -1,0 +1,49 @@
+#storm {
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+    src='images/storm.png',
+    sizingMethod='scale');
+    height: 18em;
+    width: 25em;
+}
+.fl-theme-bw #storm {
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+    src='images/storm_bw.png',
+    sizingMethod='scale');
+}
+.fl-theme-lgdg #storm {
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+    src='images/storm_lgdg.png',
+    sizingMethod='scale');
+ }
+
+#sorbital {
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+    src='images/sorbital.png',
+    sizingMethod='scale');
+}
+.fl-theme-bw #sorbital {
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+    src='images/sorbital_bw.png',
+    sizingMethod='scale');
+}
+.fl-theme-lgdg #sorbital {
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+    src='images/sorbital_lgdg.png',
+    sizingMethod='scale');
+}
+
+#porbital {
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+    src='images/porbital.png',
+    sizingMethod='scale');
+}
+.fl-theme-bw #porbital {
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+    src='images/porbital_bw.png',
+    sizingMethod='scale');
+}
+.fl-theme-lgdg #porbital {
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+    src='images/porbital_lgdg.png',
+    sizingMethod='scale');
+}
