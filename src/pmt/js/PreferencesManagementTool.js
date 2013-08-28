@@ -116,7 +116,6 @@
 	                "message": "%prefix/magnifier.json"
 	            }
 	        },
-	        /*
 	        "magnifierPosition": {
 	            "type": "fluid.uiOptions.magnifierPosition",
 	            "enactor": {
@@ -137,7 +136,7 @@
 	                "template": "%prefix/UIOptionsTemplate-magnifierPosition.html",
 	                "message": "%prefix/magnifier.json"
 	            }
-	        },*/
+	        },
 	        /*"lineSpace": {
 	            "type": "fluid.uiOptions.lineSpace",
 	            "enactor": {
