@@ -134,7 +134,7 @@
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
             "fluid.uiOptions.magnifierPosition": {
-                "model.value": "default",
+                "model.value": "",
                 "controlValues.magnifierPosition": "enum"
             }
         },
@@ -172,7 +172,7 @@
             }
         },
         controlValues: {
-            magnifierPosition: ["default", "lens", "fullscreen", "dockedtop", "dockedbottom", "dockedleft", "dockedright"]
+            magnifierPosition: ["lens", "fullscreen", "dockedtop", "dockedbottom", "dockedleft", "dockedright"]
         },
         markup: {
             label: "<span class=\"fl-preview-A\">A</span><span class=\"fl-hidden-accessible\">%magnifierPosition</span><div class=\"fl-crossout\"></div>"

@@ -33,7 +33,7 @@
 	    "fluid.uiOptions.magnifierPosition": {
             "type": "string",
             "default": "",
-	        "enum": ["default", "lens", "fullscreen", "dockedtop", "dockedbottom", "dockedleft", "dockedright"]
+	        "enum": ["lens", "fullscreen", "dockedtop", "dockedbottom", "dockedleft", "dockedright"]
         }/*,
 	    "fluid.uiOptions.textFont": {
 	        "type": "string",
