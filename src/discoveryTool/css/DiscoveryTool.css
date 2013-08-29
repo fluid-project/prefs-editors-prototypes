@@ -73,7 +73,6 @@
     margin-top: -1.8em;
 }
 
-
 /* Panel states */
 
 /* Preference set hover */
@@ -281,7 +280,10 @@
     border: 2px solid;
 }
 
-
+.fl-theme-bw .fl-uiOptions-panel label,
+.fl-theme-lgdg .fl-uiOptions-panel label,
+.fl-theme-bw .fl-uiOptions-panels li.fl-uiOptions-panel .fl-discoveryTool-try,
+.fl-theme-lgdg .fl-uiOptions-panels li.fl-uiOptions-panel .fl-discoveryTool-try { padding-top: 4px; }
 .fl-theme-bw .fl-uiOptions-panel input:focus + label .fl-discoveryTool-panel-icon { outline: 4px solid #fff; box-shadow: none; }
 .fl-theme-lgdg .fl-uiOptions-panel input:focus + label .fl-discoveryTool-panel-icon { outline: 4px solid #555; box-shadow: none; }
 
