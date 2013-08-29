@@ -9,13 +9,49 @@
         },
         selectors: {
             screenReaderTTSEnabled: ".gpii-screenReaderTTSEnabled",
-            screenReaderTTSEnabledLabel: ".gpii-screenReaderTTSEnabled-label"
+            screenReaderTTSEnabledLabel: ".gpii-screenReaderTTSEnabled-label",
+            expandedTop: ".expanded-top",
+            expandedBottom: ".expanded-bottom",
+            moreOptions: ".more-options-label"
         },
         protoTree: {
             screenReaderTTSEnabled: "${screenReaderTTSEnabled}",
             screenReaderTTSEnabledLabel: {messagekey: "screenReaderTTSEnabledLabel"}
-        }
+        },
+
+        finalInitFunction: "speakText.panels.screenReaderTTSEnabled.finalInit"
     });
+
+
+    var flag = true;
+
+    speakText.panels.screenReaderTTSEnabled.finalInit = function (that) {
+        that.applier.modelChanged.addListener("screenReaderTTSEnabled", function () {
+            if (that.model.screenReaderTTSEnabled) {
+                $(".speech-rate").slideDown(400);
+                $(".more-options").slideDown(400);
+                $("#more-options-checkbox").change(function () {
+                    if ($("#more-options-checkbox").is(":checked")) {
+                        $(".expanded-top").slideDown(400);
+                        $(".expanded-bottom").slideDown(400);
+                    } else {
+                        $(".expanded-top").slideUp(400);
+                        $(".expanded-bottom").slideUp(400);
+                    }
+                })
+            } else {
+                $(".speech-rate").slideUp(400);
+                $(".more-options").slideUp(400);
+                $(".expanded-top").slideUp(400);
+                $(".expanded-bottom").slideUp(400);
+                $("#more-options-checkbox").attr('checked', false);
+            }
+        });
+    }
+
+    function moreOrLessOptions(currentValue) {
+        return (currentValue == "+ more") ? "- less" : "+ more"
+    };
 
     fluid.defaults("speakText.panels.addOrRemovePreference", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],

@@ -12,16 +12,10 @@
     font-size: 15px;
 }
 
-#surrounding-div {
-    border: 3px solid black;
-    width: 700px;
-    position: relative;
-    text-align: left;
-}
 
 #prompt-message {
     display:none;
-    background: url('../images/balloon-empty.png') no-repeat;
+    background: url('../images/baloon-empty.png') no-repeat;
     text-align: center;
     height: 25px;
     width: auto;
@@ -39,7 +33,7 @@
     color:transparent;
 }
 
-#speech-rate {
+.speech-rate {
     display: none;
 }
 
@@ -71,11 +65,11 @@ textarea:focus, input:focus{
     margin-left: 100px;
 }
 
-#expanded-top {
+.expanded-top {
     display: none;
 }
 
-#expanded-bottom {
+.expanded-bottom {
     display: none;
 }
 
@@ -188,8 +182,8 @@ input[type=checkbox] {
     position: absolute;
     overflow: hidden;
     clip: rect(0 0 0 0);
-    height:1px;
-    width:1px;
+    height:0px;
+    width:0px;
     margin:-1px;
     padding:0;
     border:0;
@@ -267,6 +261,10 @@ input[type=checkbox]:checked + label.checkbox-label {
     padding-left:30px;
     cursor:pointer;
     width: 250px;
+}
+
+input[type=checkbox] + label.more-options-label {
+    cursor: pointer;
 }
 
 body {

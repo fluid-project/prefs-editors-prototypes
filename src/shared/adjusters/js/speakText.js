@@ -180,54 +180,127 @@
         }
     });
 
-    fluid.defaults("speakText.panel", {
-        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
-        components: {
-            screenReaderTTSEnabled: {
-                type: "speakText.panels.screenReaderTTSEnabled",
-                container: ".speakText-screenReaderTTSEnabled-element"
-            },
-            addOrRemovePreference: {
-                type: "speakText.panels.addOrRemovePreference",
-                container: ".speakText-addOrRemovePreference-element"
-            },
-            screenReaderSwitch: {
-                type: "speakText.panels.screenReaderSwitch",
-                container: ".speakText-screenReaderSwitch-element"
-            },
-            speechRate: {
-                type: "speakText.panels.speechRate",
-                container: ".speakText-speechRate-element"
-            },
-            auditoryOutLanguage: {
-                type: "speakText.panels.auditoryOutLanguage",
-                container: ".speakText-auditoryOutLanguage-element"
-            },
-            punctuationVerbosity: {
-                type: "speakText.panels.punctuationVerbosity",
-                container: ".speakText-punctuationVerbosity-element"
-            },
-            announceCapitals: {
-                type: "speakText.panels.announceCapitals",
-                container: ".speakText-announceCapitals-element"
-            },
-            speakTutorialMessages: {
-                type: "speakText.panels.speakTutorialMessages",
-                container: ".speakText-speakTutorialMessages-element"
-            },
-            wordEcho: {
-                type: "speakText.panels.wordEcho",
-                container: ".speakText-wordEcho-element"
-            },
-            keyEcho: {
-                type: "speakText.panels.keyEcho",
-                container: ".speakText-keyEcho-element"
-            },
-            screenReaderBrailleOutput: {
-                type: "speakText.panels.screenReaderBrailleOutput",
-                container: ".speakText-screenReaderBrailleOutput-element"
-            }
-        }
-    });
+    // fluid.defaults("fluid.uiOptions.defaultPanel", {
+    //     gradeNames: ["fluid.eventedComponent", "autoInit"],
+    //     mergePolicy: {
+    //         sourceApplier: "nomerge"
+    //     },
+    //     sourceApplier: "{fluid.uiOptions}.applier",
+    //     listeners: {
+    //         "{uiOptions}.events.onUIOptionsRefresh": "{fluid.uiOptions.panels}.refreshView"
+    //     },
+    //     strings: {},
+    //     parentBundle: "{uiOptionsLoader}.msgBundle"
+    // });
+
+    // fluid.defaults("speakText.panel", {
+    //     gradeNames: ["fluid.uiOptions", "autoInit"],
+    //     selectors: {
+    //         screenReaderTTSEnabled: ".speakText-screenReaderTTSEnabled",
+    //         addOrRemovePreference: ".speakText-addOrRemovePreference",
+    //         screenReaderSwitch: ".speakText-screenReaderSwitch",
+    //         speechRate: ".speakText-speechRate",
+    //         auditoryOutLanguage: ".speakText-auditoryOutLanguage",
+    //         punctuationVerbosity: ".speakText-punctuationVerbosity",
+    //         announceCapitals: ".speakText-announceCapitals",
+    //         speakTutorialMessages: ".speakText-speakTutorialMessages",
+    //         wordEcho: ".speakText-wordEcho",
+    //         keyEcho: ".speakText-keyEcho",
+    //         screenReaderBrailleOutput: ".speakText-screenReaderBrailleOutput"
+    //     },
+    //     components: {
+    //         screenReaderTTSEnabled: {
+    //             type: "speakText.panels.screenReaderTTSEnabled",
+    //             container: ".speakText-screenReaderTTSEnabled-element",
+    //             createOnEvent: "onUIOptionsMarkupReady",
+    //             options: {
+    //                 gradeNames: "fluid.uiOptions.defaultPanel",
+    //                 model: {
+    //                     screenReaderTTSEnabled: "{fluid.uiOptions.rootModel}.rootModel.screenReaderTTSEnabled"
+    //                 }
+    //             }
+    //         },
+    //         addOrRemovePreference: {
+    //             type: "speakText.panels.addOrRemovePreference",
+    //             container: ".speakText-addOrRemovePreference-element",
+    //             createOnEvent: "onUIOptionsMarkupReady",
+    //             options: {
+    //                 gradeNames: "fluid.uiOptions.defaultPanel"
+    //             }
+    //         },
+    //         screenReaderSwitch: {
+    //             type: "speakText.panels.screenReaderSwitch",
+    //             container: ".speakText-screenReaderSwitch-element",
+    //             createOnEvent: "onUIOptionsMarkupReady",
+    //             options: {
+    //                 gradeNames: "fluid.uiOptions.defaultPanel"
+    //             }
+    //         },
+    //         speechRate: {
+    //             type: "speakText.panels.speechRate",
+    //             container: ".speakText-speechRate-element",
+    //             createOnEvent: "onUIOptionsMarkupReady",
+    //             options: {
+    //                 gradeNames: "fluid.uiOptions.defaultPanel"
+    //             }
+    //         },
+    //         auditoryOutLanguage: {
+    //             type: "speakText.panels.auditoryOutLanguage",
+    //             container: ".speakText-auditoryOutLanguage-element",
+    //             createOnEvent: "onUIOptionsMarkupReady",
+    //             options: {
+    //                 gradeNames: "fluid.uiOptions.defaultPanel"
+    //             }
+    //         },
+    //         punctuationVerbosity: {
+    //             type: "speakText.panels.punctuationVerbosity",
+    //             container: ".speakText-punctuationVerbosity-element",
+    //             createOnEvent: "onUIOptionsMarkupReady",
+    //             options: {
+    //                 gradeNames: "fluid.uiOptions.defaultPanel"
+    //             }
+    //         },
+    //         announceCapitals: {
+    //             type: "speakText.panels.announceCapitals",
+    //             container: ".speakText-announceCapitals-element",
+    //             createOnEvent: "onUIOptionsMarkupReady",
+    //             options: {
+    //                 gradeNames: "fluid.uiOptions.defaultPanel"
+    //             }
+    //         },
+    //         speakTutorialMessages: {
+    //             type: "speakText.panels.speakTutorialMessages",
+    //             container: ".speakText-speakTutorialMessages-element",
+    //             createOnEvent: "onUIOptionsMarkupReady",
+    //             options: {
+    //                 gradeNames: "fluid.uiOptions.defaultPanel"
+    //             }
+    //         },
+    //         wordEcho: {
+    //             type: "speakText.panels.wordEcho",
+    //             container: ".speakText-wordEcho-element",
+    //             createOnEvent: "onUIOptionsMarkupReady",
+    //             options: {
+    //                 gradeNames: "fluid.uiOptions.defaultPanel"
+    //             }
+    //         },
+    //         keyEcho: {
+    //             type: "speakText.panels.keyEcho",
+    //             container: ".speakText-keyEcho-element",
+    //             createOnEvent: "onUIOptionsMarkupReady",
+    //             options: {
+    //                 gradeNames: "fluid.uiOptions.defaultPanel"
+    //             }
+    //         },
+    //         screenReaderBrailleOutput: {
+    //             type: "speakText.panels.screenReaderBrailleOutput",
+    //             container: ".speakText-screenReaderBrailleOutput-element",
+    //             createOnEvent: "onUIOptionsMarkupReady",
+    //             options: {
+    //                 gradeNames: "fluid.uiOptions.defaultPanel"
+    //             }
+    //         }
+    //     }
+    // });
 
 })(fluid);
