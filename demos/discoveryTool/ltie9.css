@@ -47,3 +47,37 @@
     src='images/porbital_lgdg.png',
     sizingMethod='scale');
 }
+
+#structure {
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+    src='images/atomic_structure.png',
+    sizingMethod='scale');
+    width: 25em;
+    height: 25em;
+}
+.fl-theme-bw #structure {
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+    src='images/atomic_structure_bw.png',
+    sizingMethod='scale');
+ }
+.fl-theme-lgdg #structure {
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+    src='images/atomic_structure_lgdg.png',
+    sizingMethod='scale');
+}
+
+#energylevels {
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+    src='images/energy_levels.png',
+    sizingMethod='scale');
+}
+.fl-theme-bw #energylevels {
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+    src='images/energy_levels_bw.png',
+    sizingMethod='scale');
+}
+.fl-theme-lgdg #energylevels {
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+    src='images/energy_levels_lgdg.png',
+    sizingMethod='scale');
+}
