@@ -43,14 +43,15 @@
 .headerImage {
 	font-family: 'increase-size';
 	-webkit-font-smoothing: antialiased;
-	width: 0;
-   	height:0;
+	width: 330;
+   	height:90;
 	float: left;
 	line-height: 1;
 	margin:5px;
     cursor:default;
 	font-size: 90px !important;
 	color: #566374;
+	background-color: white;
 }
 input[type=checkbox] + .headerImage:before {
 	content: "\e000";
