@@ -281,11 +281,9 @@
     border: 2px solid;
 }
 
-.fl-theme-bw .fl-uiOptions input:focus + label,
-.fl-theme-lgdg .fl-uiOptions input:focus + label {
-    outline: none;
-    border: 0.2em solid #00AAFF;
-}
+
+.fl-theme-bw .fl-uiOptions-panel input:focus + label .fl-discoveryTool-panel-icon { outline: 4px solid #fff; box-shadow: none; }
+.fl-theme-lgdg .fl-uiOptions-panel input:focus + label .fl-discoveryTool-panel-icon { outline: 4px solid #555; box-shadow: none; }
 
 .fl-theme-bw .fl-uiOptions-panel label:hover .fl-icon-text,
 .fl-theme-bw .fl-uiOptions-panel .fl-discoveryTool-hover label .fl-icon-text,
