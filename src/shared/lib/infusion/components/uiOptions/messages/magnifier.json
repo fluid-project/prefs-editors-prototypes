@@ -10,5 +10,6 @@
     "magnifierPosition.dockedtop": "Docked top",
     "magnifierPosition.dockedbottom": "Docked bottom",
     "magnifierPosition.dockedleft": "Docked left",
-    "magnifierPosition.dockedright": "Docked right"
+    "magnifierPosition.dockedright": "Docked right",
+    "magnifierFollowsLabel": "Magnifier follows"
 }

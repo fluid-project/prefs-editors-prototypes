@@ -34,6 +34,11 @@
             "type": "string",
             "default": "",
 	        "enum": ["lens", "fullscreen", "dockedtop", "dockedbottom", "dockedleft", "dockedright"]
+        },
+	    "fluid.uiOptions.magnifierFollows": {
+            "type": "string",
+            "default": "",
+	        "enum": ["mousecursor", "textcursor", "keyboardfocus"]
         }/*,
 	    "fluid.uiOptions.textFont": {
 	        "type": "string",
@@ -132,6 +137,25 @@
                     "container": ".flc-uiOptions-magnifierPosition",  // the css selector in the template where the panel is rendered
                     "classnameMap": {"magnifierPosition": "@magnifierPosition.classes"},
                     "template": "%prefix/UIOptionsTemplate-magnifierPosition.html",
+                    "message": "%prefix/magnifier.json"
+                }
+            },
+	        "magnifierFollows": {
+                "type": "fluid.uiOptions.magnifierFollows",
+                "classes": {
+                    "default": "fl-theme-uio-default",
+                    "bw": "fl-theme-uio-bw fl-theme-bw",
+                    "wb": "fl-theme-uio-wb fl-theme-wb",
+                    "by": "fl-theme-uio-by fl-theme-by",
+                    "yb": "fl-theme-uio-yb fl-theme-yb",
+                    "lgdg": "fl-theme-uio-lgdg fl-theme-lgdg"
+
+                },
+                "panel": {
+                    "type": "fluid.uiOptions.panels.magnifierFollows",
+                    "container": ".flc-uiOptions-magnifierFollows",  // the css selector in the template where the panel is rendered
+                    "classnameMap": {"magnifierFollows": "@magnifierFollows.classes"},
+                    "template": "%prefix/UIOptionsTemplate-magnifierFollows.html",
                     "message": "%prefix/magnifier.json"
                 }
             },
