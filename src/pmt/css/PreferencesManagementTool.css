@@ -49,10 +49,15 @@
 	line-height: 1;
 	margin:5px;
     cursor:default;
-}
-.headerImage:before {
 	font-size: 90px !important;
+	color: #566374;
+}
+input[type=checkbox] + .headerImage:before {
 	content: "\e000";
+}
+
+input[type=checkbox]:checked + .headerImage:before {
+	content: "\e001";
 }
 
 .adjusterGroupTitle {
@@ -80,7 +85,7 @@ input[type=checkbox], input[type=radio] {
     border:0;
 }
 
-input[type=checkbox] + label.headerTitle {
+input[type=checkbox] + .headerImage + label.headerTitle {
     //background: url('../images/increaseSizeHeader.png') no-repeat;
     background-size:330px 90px;
     //padding-left:30px;
@@ -96,8 +101,8 @@ input[type=checkbox] + label.headerTitle {
     width:330px;
 }
 
-input[type=checkbox]:checked + label.headerTitle {
-    background: url('../images/increaseSizeHeaderChecked.png') no-repeat;
+input[type=checkbox]:checked + .headerImage + label.headerTitle {
+    //background: url('../images/increaseSizeHeaderChecked.png') no-repeat;
     background-size:330px 90px;
     //padding-left:30px;
     cursor:pointer;
