@@ -8,6 +8,13 @@
 	font-style: normal;
 }
 
+@font-face {
+	font-family: 'increase-size';
+	src:url('../fonts/increase-size.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
 /*
 	General preferences styling
 */
@@ -34,9 +41,18 @@
 	Header's styling
 */
 .headerImage {
-	position: relative; 
-   	width: 100%; /* for IE 6 */
-   	font-family: 'Roboto Slab', serif;
+	font-family: 'increase-size';
+	-webkit-font-smoothing: antialiased;
+	width: 0;
+   	height:0;
+	float: left;
+	line-height: 1;
+	margin:5px;
+    cursor:default;
+}
+.headerImage:before {
+	font-size: 90px !important;
+	content: "\e000";
 }
 
 .adjusterGroupTitle {
@@ -44,7 +60,8 @@
 }
 
 .headerTitle {
-	//position: absolute; 
+	font-family: 'Roboto Slab', serif;
+	position: absolute; 
    	//top: 20px; 
    	left: 0; 
    	width: 100%;
@@ -64,7 +81,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 input[type=checkbox] + label.headerTitle {
-    background: url('../images/increaseSizeHeader.png') no-repeat;
+    //background: url('../images/increaseSizeHeader.png') no-repeat;
     background-size:330px 90px;
     //padding-left:30px;
     cursor:pointer;
