@@ -70,7 +70,7 @@ var demo = demo || {};
         options: {
             selectors: {
                 // exclude the next/previous, thumbs buttons from the 'more text' functionality
-                images: "img:not('.fl-icon-next, .fl-icon-prev, .fl-icon-thumbsUp, .fl-icon-thumbsDown'), [role~='img']:not('.fl-icon-next, .fl-icon-prev, .fl-icon-thumbsUp, .fl-icon-thumbsDown'), ",
+                images: "img:not('.fl-icon-next, .fl-icon-prev, .fl-icon-thumbsUp, .fl-icon-thumbsDown'), [role~='img']:not('.fl-icon-next, .fl-icon-prev, .fl-icon-thumbsUp, .fl-icon-thumbsDown')"
             }
         }
     });

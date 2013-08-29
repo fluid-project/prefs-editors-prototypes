@@ -695,10 +695,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
 
-    gpii.discoveryTool.enactors.showMoreText.addMoreTextMarkup = function (imgs, getMoreTextfunc, buildMoreTextMarkupFunc) {
+    gpii.discoveryTool.enactors.showMoreText.addMoreTextMarkup = function (imgs, getMoreTextFunc, buildMoreTextMarkupFunc) {
         fluid.each(imgs, function (img) {
             img = $(img);
-            var text = getMoreTextfunc(img);
+            var text = getMoreTextFunc(img);
             if (text) {
                 img.after(buildMoreTextMarkupFunc(text));
             }
