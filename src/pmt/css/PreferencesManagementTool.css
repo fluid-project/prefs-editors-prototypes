@@ -226,11 +226,10 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
 	Style for magnifier position font icons
 */
 .fl-magnifierPosition-uio-icon {
-	height: 4.8em !important;
-	width: 6em !important;
+	height: 5.1em !important;
+	width: 6.3em !important;
 	border: none !important;
 	padding: 0 !important;
-	margin-top: -2px !important;
 	cursor: pointer;
 }
 
