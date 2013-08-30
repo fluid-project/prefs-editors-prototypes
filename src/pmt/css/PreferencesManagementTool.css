@@ -8,13 +8,6 @@
 	font-style: normal;
 }
 
-@font-face {
-	font-family: 'increase-size';
-	src:url('../fonts/increase-size.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
-
 /*
 	General preferences styling
 */
@@ -228,3 +221,24 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
 	cursor: pointer;
 	padding-bottom: 5px !important;
 }
+
+/*
+	Style for magnifier position font icons
+*/
+.fl-magnifierPosition-uio-icon {
+	height: 4.8em !important;
+	width: 6em !important;
+	border: none !important;
+	padding: 0 !important;
+	margin-top: -2px !important;
+	cursor: pointer;
+}
+
+.fl-magnifierPosition-uio-icon:before {
+	font-size: 5em !important;
+}
+	
+.fl-magnifierPosition-uio-lens > .fl-magnifierPosition-uio-icon:before {
+	content: "\e00a";
+} 
+

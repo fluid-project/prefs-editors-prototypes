@@ -124,12 +124,12 @@
 	        "magnifierPosition": {
                 "type": "fluid.uiOptions.magnifierPosition",
                 "classes": {
-                    "default": "fl-theme-uio-default",
-                    "bw": "fl-theme-uio-bw fl-theme-bw",
-                    "wb": "fl-theme-uio-wb fl-theme-wb",
-                    "by": "fl-theme-uio-by fl-theme-by",
-                    "yb": "fl-theme-uio-yb fl-theme-yb",
-                    "lgdg": "fl-theme-uio-lgdg fl-theme-lgdg"
+                    "lens": "fl-magnifierPosition-uio-lens fl-magnifierPosition-uio-icon",
+                    "fullscreen": "fl-magnifierPosition-uio-icon",
+                    "dockedtop": "fl-magnifierPosition-uio-icon",
+                    "dockedbottom": "fl-magnifierPosition-uio-icon",
+                    "dockedleft": "fl-magnifierPosition-uio-icon",
+                    "dockedright": "fl-theme-uio-lgdg fl-theme-lgdg"
 
                 },
                 "panel": {

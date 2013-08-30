@@ -175,7 +175,7 @@
             magnifierPosition: ["lens", "fullscreen", "dockedtop", "dockedbottom", "dockedleft", "dockedright"]
         },
         markup: {
-            label: "<span class=\"fl-hidden-accessible\">%magnifierPosition</span><div class=\"fl-crossout\"></div>"
+            label: "<div class=\"fl-adjuster-icons fl-magnifierPosition-uio-icon\"></div><span class=\"fl-hidden-accessible\">%magnifierPosition</span><div class=\"fl-crossout\"></div>"
         },
         invokers: {
             style: {
