@@ -25,7 +25,7 @@ var demo = demo || {};
     var pathToTocTemplate = "../../src/shared/lib/infusion/components/tableOfContents/html/TableOfContents.html";
 
     demo.initSettingsStore = function () {
-        return fluid.globalSettingsStore();
+        return gpii.discoveryTool.gpiiSettingsStore();
     };
 
     demo.initPageEnhancer = function (customThemeName) {
