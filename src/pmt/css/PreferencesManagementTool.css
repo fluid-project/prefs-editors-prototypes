@@ -225,7 +225,7 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
 /*
 	Style for magnifier position font icons
 */
-.fl-magnifierPosition-uio-icon {
+.fl-magnifierPosition-uio-icon-label {
 	height: 5.1em !important;
 	width: 6.3em !important;
 	border: none !important;
@@ -233,8 +233,18 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
 	cursor: pointer;
 }
 
+.fl-magnifierPosition-uio-icon {
+	height: 0 !important;
+	width: 0 !important;
+}
+
 .fl-magnifierPosition-uio-icon:before {
 	font-size: 5em !important;
+}
+	
+.fl-magnifierPosition-uio-background:before {
+	font-size: 4.8em !important;
+	content: "\e00b" !important;
 }
 	
 .fl-magnifierPosition-uio-lens > .fl-magnifierPosition-uio-icon:before {
