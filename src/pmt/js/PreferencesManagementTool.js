@@ -126,10 +126,10 @@
                 "classes": {
                     "lens": "fl-magnifierPosition-uio-lens fl-magnifierPosition-uio-icon-label",
                     "fullscreen": "fl-magnifierPosition-uio-fullscreen fl-magnifierPosition-uio-icon-label",
-                    "dockedtop": "fl-magnifierPosition-uio-icon-label",
-                    "dockedbottom": "fl-magnifierPosition-uio-icon-label",
-                    "dockedleft": "fl-magnifierPosition-uio-icon-label",
-                    "dockedright": "fl-magnifierPosition-uio-icon-label"
+                    "dockedtop": "fl-magnifierPosition-uio-top fl-magnifierPosition-uio-icon-label",
+                    "dockedbottom": "fl-magnifierPosition-uio-bottom fl-magnifierPosition-uio-icon-label",
+                    "dockedleft": "fl-magnifierPosition-uio-left fl-magnifierPosition-uio-icon-label",
+                    "dockedright": "fl-magnifierPosition-uio-right fl-magnifierPosition-uio-icon-label"
 
                 },
                 "panel": {
