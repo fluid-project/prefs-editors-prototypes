@@ -262,9 +262,22 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
 	font-size: 5em !important;
 	content: "\e008" !important;
 }
-	
+
 .fl-magnifierPosition-uio-lens > .fl-magnifierPosition-uio-icon:before {
 	content: "\e00a";
+} 
+
+.fl-magnifierPosition-uio-fullscreen > .fl-magnifierPosition-uio-icon-main {
+	opacity:0.5;
+	position: relative;
+	top: 0.15em;
+	left: 0.15em;
+}
+
+.fl-magnifierPosition-uio-fullscreen > .fl-magnifierPosition-uio-icon-main:before {
+	content: "\e009";
+	font-size: 4.7em !important;
+	color: #00a9bd;
 } 
 
 /*
@@ -281,4 +294,5 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
  	top: 0.4em;
     height: 1em !important;
     margin: -0.75em 0 0 2.15em !important;
+    z-index: 1;
 }
