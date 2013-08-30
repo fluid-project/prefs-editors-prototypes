@@ -33,7 +33,7 @@
 	    "fluid.uiOptions.magnifierPosition": {
             "type": "string",
             "default": "",
-	        "enum": ["lens", "fullscreen", "dockedtop", "dockedbottom", "dockedleft", "dockedright"]
+	        "enum": ["lens", "dockedleft", "dockedtop", "fullscreen", "dockedright", "dockedbottom"]
         },
 	    "fluid.uiOptions.magnifierFollows": {
             "type": "string",
@@ -129,7 +129,7 @@
                     "dockedtop": "fl-magnifierPosition-uio-icon-label",
                     "dockedbottom": "fl-magnifierPosition-uio-icon-label",
                     "dockedleft": "fl-magnifierPosition-uio-icon-label",
-                    "dockedright": "fl-theme-uio-lgdg fl-theme-lgdg"
+                    "dockedright": "fl-magnifierPosition-uio-icon-label"
 
                 },
                 "panel": {

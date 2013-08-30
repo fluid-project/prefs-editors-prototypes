@@ -172,7 +172,7 @@
             }
         },
         controlValues: {
-            magnifierPosition: ["lens", "fullscreen", "dockedtop", "dockedbottom", "dockedleft", "dockedright"]
+            magnifierPosition: ["lens", "dockedleft", "dockedtop", "fullscreen", "dockedright", "dockedbottom"]
         },
         markup: {
             label: "<div class=\"fl-adjuster-icons fl-magnifierPosition-uio-icon fl-magnifierPosition-uio-icon-main\"></div>" +
