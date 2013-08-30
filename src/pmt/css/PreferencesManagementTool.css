@@ -2,8 +2,15 @@
 	Font icons
 */
 @font-face {
-	font-family: 'adjuster-icons-aug-27';
-	src:url('../fonts/adjuster-icons-aug-27.ttf') format('truetype');
+	font-family: 'icons-no-frames-aug-29';
+	src:url('../fonts/icons-no-frames-aug-29.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'increase-size';
+	src:url('../fonts/increase-size.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -34,9 +41,22 @@
 	Header's styling
 */
 .headerImage {
-	position: relative; 
-   	width: 100%; /* for IE 6 */
-   	font-family: 'Roboto Slab', serif;
+	-webkit-font-smoothing: antialiased;
+	width: 330;
+   	height:90;
+   	margin-top: 4px !important;
+	margin:5px;
+    cursor:default;
+	font-size: 90px !important;
+	color: #566374;
+	background-color: white;
+}
+input[type=checkbox] + .headerImage:before {
+	content: "\e00d";
+}
+
+input[type=checkbox]:checked + .headerImage:before {
+	content: "\e00e";
 }
 
 .adjusterGroupTitle {
@@ -44,7 +64,8 @@
 }
 
 .headerTitle {
-	//position: absolute; 
+	font-family: 'Roboto Slab', serif;
+	position: absolute; 
    	//top: 20px; 
    	left: 0; 
    	width: 100%;
@@ -63,8 +84,8 @@ input[type=checkbox], input[type=radio] {
     border:0;
 }
 
-input[type=checkbox] + label.headerTitle {
-    background: url('../images/increaseSizeHeader.png') no-repeat;
+input[type=checkbox] + .headerImage + label.headerTitle {
+    //background: url('../images/increaseSizeHeader.png') no-repeat;
     background-size:330px 90px;
     //padding-left:30px;
     cursor:pointer;
@@ -79,8 +100,8 @@ input[type=checkbox] + label.headerTitle {
     width:330px;
 }
 
-input[type=checkbox]:checked + label.headerTitle {
-    background: url('../images/increaseSizeHeaderChecked.png') no-repeat;
+input[type=checkbox]:checked + .headerImage + label.headerTitle {
+    //background: url('../images/increaseSizeHeaderChecked.png') no-repeat;
     background-size:330px 90px;
     //padding-left:30px;
     cursor:pointer;
@@ -100,7 +121,7 @@ input[type=checkbox]:checked + label.headerTitle {
 */
 .fl-adjuster-icons {
 	float: left;
-	font-family: 'adjuster-icons-aug-27';
+	font-family: 'icons-no-frames-aug-29';
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
@@ -111,11 +132,11 @@ input[type=checkbox]:checked + label.headerTitle {
 }
 .fl-icon-small-cursor:before {
 	font-size: 0.8em !important;
-	content: "\e00e";
+	content: "\e000";
 }
 .fl-icon-big-cursor:before {
 	font-size: 1.9em !important;
-	content: "\e00f";
+	content: "\e000";
 }
 .fl-icon-small-cursor {
 	width: 30px;
