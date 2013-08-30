@@ -176,7 +176,8 @@
         },
         markup: {
             label: "<div class=\"fl-adjuster-icons fl-magnifierPosition-uio-icon\"></div>" +
-            		"<div class=\"fl-adjuster-icons fl-magnifierPosition-uio-icon fl-magnifierPosition-uio-background\"></div>" +
+		    		"<div class=\"fl-adjuster-icons fl-magnifierPosition-uio-icon fl-magnifierPosition-uio-frame\"></div>" +
+		    		"<div class=\"fl-adjuster-icons fl-magnifierPosition-uio-icon fl-magnifierPosition-uio-background\"></div>" +
             		"<span class=\"fl-hidden-accessible\">%magnifierPosition</span>" +
             		"<div class=\"fl-crossout\"></div>"
         },
