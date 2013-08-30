@@ -226,22 +226,30 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
 	Style for magnifier position font icons
 */
 .fl-magnifierPosition-uio-icon-label {
-	height: 5.1em !important;
+	height: 4.7em !important;
 	width: 6.3em !important;
 	border: none !important;
 	padding: 0 !important;
 	cursor: pointer;
+	background-color: white;
 }
 
 .fl-magnifierPosition-uio-icon {
 	height: 0 !important;
 	width: 0 !important;
+	color: #636c7c;
+	margin-top: -2px;
 }
 
 .fl-magnifierPosition-uio-icon:before {
 	font-size: 5em !important;
 }
-	
+
+.fl-magnifierPosition-uio-background {
+	height: 5.1em !important;
+	width: 6.3em !important;
+}
+
 .fl-magnifierPosition-uio-background:before {
 	font-size: 4.8em !important;
 	content: "\e00b" !important;
