@@ -52,11 +52,11 @@
 	background-color: white;
 }
 input[type=checkbox] + .headerImage:before {
-	content: "\e00d";
+	content: "\e00e";
 }
 
 input[type=checkbox]:checked + .headerImage:before {
-	content: "\e00e";
+	content: "\e00d";
 }
 
 .adjusterGroupTitle {
