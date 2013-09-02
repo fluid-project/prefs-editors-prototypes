@@ -342,8 +342,8 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
 	Style for magnifier follows font icons
 */
 .fl-magnifierFollows-uio-icon-label {
-	height: 4.7em !important;
-	width: 3.9em !important;
+	height: 7.7em !important;
+	width: 6.5em !important;
 	border: none !important;
 	padding: 0 !important;
 	cursor: pointer;
@@ -353,7 +353,7 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
 }
 
 .fl-magnifierFollows-uio-icon {
-	font-size: 4.7em !important;
+	font-size: 7.7em !important;
 	color: #636c7c;
 }
 
@@ -379,9 +379,9 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
 	background-color: #636C7C;
     border-radius: 3px 3px 3px 3px;
     color: #FFFFFF;
-    font-size: 0.7em;
-    margin-left: 3.7em;
-    margin-top: 4.85em;
+    font-size: 1.2em;
+    margin-left: 3.6em;
+    margin-top: 4.7em;
     position: absolute;
     width: 1.5em;
 }
