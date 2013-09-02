@@ -380,10 +380,10 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
     border-radius: 3px 3px 3px 3px;
     color: #FFFFFF;
     font-size: 1.2em;
-    margin-left: 3.6em;
-    margin-top: 4.7em;
-    position: absolute;
-    width: 1.5em;
+    margin-left: 3.65em;
+    margin-top: -1.7em;
+    //position: absolute;
+    //width: 1.5em;
 }
 
 input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio-icon-check {
