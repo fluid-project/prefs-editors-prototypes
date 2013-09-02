@@ -143,13 +143,9 @@
 	        "magnifierFollows": {
                 "type": "fluid.uiOptions.magnifierFollows",
                 "classes": {
-                    "default": "fl-theme-uio-default",
-                    "bw": "fl-theme-uio-bw fl-theme-bw",
-                    "wb": "fl-theme-uio-wb fl-theme-wb",
-                    "by": "fl-theme-uio-by fl-theme-by",
-                    "yb": "fl-theme-uio-yb fl-theme-yb",
-                    "lgdg": "fl-theme-uio-lgdg fl-theme-lgdg"
-
+                    "mousecursor": "fl-magnifierFollows-uio-mouseCursor fl-magnifierFollows-uio-icon-label",
+                    "textcursor": "fl-magnifierFollows-uio-textCursor fl-magnifierFollows-uio-icon-label",
+                    "keyboardfocus": "fl-magnifierFollows-uio-keyboardFocus fl-magnifierFollows-uio-icon-label",
                 },
                 "panel": {
                     "type": "fluid.uiOptions.panels.magnifierFollows",

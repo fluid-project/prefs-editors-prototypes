@@ -257,7 +257,10 @@
         	magnifierFollows: ["mousecursor", "textcursor", "keyboardfocus"]
         },
         markup: {
-            label: "<span class=\"fl-hidden-accessible\">%magnifierFollows</span><div class=\"fl-crossout\"></div>"
+            label: 	"<div class=\"fl-adjuster-icons fl-magnifierFollows-uio-icon\"></div>" +
+            		"<div class=\"fl-adjuster-icons fl-magnifierFollows-uio-icon-check\"></div>" +
+            		"<span class=\"fl-hidden-accessible\">%magnifierFollows</span>" +
+            		"<div class=\"fl-crossout\"></div>"
         },
         invokers: {
             style: {

@@ -337,3 +337,61 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
     margin: -0.75em 0 0 2.15em !important;
     z-index: 1;
 }
+
+/*
+	Style for magnifier follows font icons
+*/
+.fl-magnifierFollows-uio-icon-label {
+	height: 4.7em !important;
+	width: 3.9em !important;
+	border: none !important;
+	padding: 0 !important;
+	cursor: pointer;
+	background-color: white;
+	margin-bottom: 0.5em !important;
+	margin-right: 0.5em !important;	
+}
+
+.fl-magnifierFollows-uio-icon {
+	font-size: 4.7em !important;
+	color: #636c7c;
+}
+
+.fl-magnifierFollows-uio-mouseCursor > .fl-magnifierFollows-uio-icon {
+}
+
+.fl-magnifierFollows-uio-mouseCursor > .fl-magnifierFollows-uio-icon:before {
+	content: "\e003";
+}
+
+.fl-magnifierFollows-uio-textCursor > .fl-magnifierFollows-uio-icon:before {
+	content: "\e004";
+}
+
+.fl-magnifierFollows-uio-keyboardFocus > .fl-magnifierFollows-uio-icon:before {
+	content: "\e006";
+}
+
+/*
+	Style for magnifier follows checked font icons
+*/
+.fl-magnifierFollows-uio-icon-check {
+	background-color: #636C7C;
+    border-radius: 3px 3px 3px 3px;
+    color: #FFFFFF;
+    font-size: 0.7em;
+    margin-left: 3.7em;
+    margin-top: 4.85em;
+    position: absolute;
+    width: 1.5em;
+}
+
+input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio-icon-check {
+    padding-bottom: 0.2em;
+    padding-top: 0.2em;
+    border: 1px solid;
+}
+
+input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio-icon-check:before {
+	content: "\e002";
+}
