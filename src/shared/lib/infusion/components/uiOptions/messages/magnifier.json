@@ -11,5 +11,8 @@
     "magnifierPosition.dockedbottom": "Docked bottom",
     "magnifierPosition.dockedleft": "Docked left",
     "magnifierPosition.dockedright": "Docked right",
-    "magnifierFollowsLabel": "Magnifier follows"
+    "magnifierFollowsLabel": "Magnifier follows",
+    "magnifierFollows.mousecursor": "Mouse cursor",
+    "magnifierFollows.textcursor": "Text cursor",
+    "magnifierFollows.keyboardfocus": "Keyboard focus"
 }

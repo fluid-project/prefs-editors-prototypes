@@ -395,3 +395,15 @@ input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio
 input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio-icon-check:before {
 	content: "\e002";
 }
+
+/*
+	Style for magnifier follows legend
+*/
+.fl-magnifierFollows-legend {
+	line-height: 1.1em;
+	color: #566374;
+}
+
+.fl-magnifierFollows-legend::first-letter {
+    text-transform: capitalize;
+}
