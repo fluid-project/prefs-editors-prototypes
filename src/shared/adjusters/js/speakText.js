@@ -141,17 +141,17 @@
             "speakTutorialMessages": {
                 "type": "speakTutorialMessages",
                 "panel": {
-                    "type": "speakText.panels.speakTutorialMessages",
-                    "template": "%prefix/speakTextTemplate-speakTutorialMessages.html",
-                    "container": ".speakText-speakTutorialMessages",
-                    "message": "%prefix/speakText.json"
+                    "type": "speakText.panels.BigPanel",
+                    // "template": "%prefix/speakTextTemplate-speakTutorialMessages.html",
+                    // "container": ".speakText-speakTutorialMessages",
+                    // "message": "%prefix/speakText.json"
                 }
             },
 
             "keyEcho": {
                 "type": "keyEcho",
                 "panel": {
-                    "type": "speakText.panels.keyEcho",
+                    "type": "speakText.panels.BigPanel",
                     "template": "%prefix/speakTextTemplate-keyEcho.html",
                     "container": ".speakText-keyEcho",
                     "message": "%prefix/speakText.json"
@@ -161,7 +161,7 @@
             "wordEcho": {
                 "type": "wordEcho",
                 "panel": {
-                    "type": "speakText.panels.wordEcho",
+                    "type": "speakText.panels.BigPanel",
                     "template": "%prefix/speakTextTemplate-wordEcho.html",
                     "container": ".speakText-wordEcho",
                     "message": "%prefix/speakText.json"
@@ -180,6 +180,7 @@
         }
     });
 
+
     // fluid.defaults("fluid.uiOptions.defaultPanel", {
     //     gradeNames: ["fluid.eventedComponent", "autoInit"],
     //     mergePolicy: {
@@ -194,7 +195,7 @@
     // });
 
     // fluid.defaults("speakText.panel", {
-    //     gradeNames: ["fluid.uiOptions", "autoInit"],
+    //     gradeNames: ["fluid.uiOptions.panels", "autoInit"],
     //     selectors: {
     //         screenReaderTTSEnabled: ".speakText-screenReaderTTSEnabled",
     //         addOrRemovePreference: ".speakText-addOrRemovePreference",

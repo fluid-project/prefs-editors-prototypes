@@ -22,36 +22,22 @@
         finalInitFunction: "speakText.panels.screenReaderTTSEnabled.finalInit"
     });
 
-
-    var flag = true;
-
     speakText.panels.screenReaderTTSEnabled.finalInit = function (that) {
         that.applier.modelChanged.addListener("screenReaderTTSEnabled", function () {
             if (that.model.screenReaderTTSEnabled) {
-                $(".speech-rate").slideDown(400);
-                $(".more-options").slideDown(400);
-                $("#more-options-checkbox").change(function () {
-                    if ($("#more-options-checkbox").is(":checked")) {
-                        $(".expanded-top").slideDown(400);
-                        $(".expanded-bottom").slideDown(400);
-                    } else {
-                        $(".expanded-top").slideUp(400);
-                        $(".expanded-bottom").slideUp(400);
-                    }
-                })
+                $(".more-options-label").text("+ more");// When screenReaderTTSEnabled is added to the big panel, it should be: 
+                // that.locate("moreOptionsLabel").text(that.options.strings.lessText);
+                $(".speech-rate").slideDown(600);
+                $(".more-options").slideDown(600);
             } else {
-                $(".speech-rate").slideUp(400);
-                $(".more-options").slideUp(400);
-                $(".expanded-top").slideUp(400);
-                $(".expanded-bottom").slideUp(400);
-                $("#more-options-checkbox").attr('checked', false);
+                $(".speech-rate").slideUp(600);
+                $(".more-options").slideUp(600);
+                $(".expanded-top").slideUp(600);
+                $(".expanded-bottom").slideUp(600);
+                $(".more-options-checkbox").attr('checked', false);
             }
         });
     }
-
-    function moreOrLessOptions(currentValue) {
-        return (currentValue == "+ more") ? "- less" : "+ more"
-    };
 
     fluid.defaults("speakText.panels.addOrRemovePreference", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
@@ -91,19 +77,31 @@
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
             "speechRate": {
-                "model.speechRate": "default",
-                "model.minimum": "minimum",
-                "model.divisibleBy": "divisibleBy"
+                "model.value": "default", /* WARNING
+                A temporary solution is to store "default" in model.VALUE
+                With the separation into smaller components this actually
+                won't be an issue */
+                "controlValues.speechRate.min": "minimum",
+                "controlValues.speechRate.step": "divisibleBy"
             }
         },
         selectors: {
             speechRate: ".gpii-speechRate",
             speechRateLabel: ".gpii-speechRate-label",
             speechRateMinus: ".gpii-speechRate-minus",
-            speechRatePlus: ".gpii-speechRate-plus"
+            speechRatePlus: ".gpii-speechRate-plus",
         },
         protoTree: {
-            speechRate: "${speechRate}",
+            speechRate: {
+                decorators: {
+                    type: "fluid",
+                    func: "gpii.uiOptions.textfieldStepper",
+                    options: {
+                        range: "{that}.options.controlValues.speechRate",
+                        path: "value"
+                    }
+                }
+            },
             speechRateLabel: {messagekey: "speechRateLabel"},
             speechRateMinus: {messagekey: "speechRateMinus"},
             speechRatePlus: {messagekey: "speechRatePlus"}
@@ -186,7 +184,7 @@
         fluid.each(labels, function (label, index) {
             $(label).addClass(classes[values[index]]);
         });
-        
+
         // FIXME: This is probably not the best idea, but it works for now.
         var contents = $(".gpii-punctuationVerbosity-row").contents()
         $(".gpii-punctuationVerbosity-row").replaceWith(contents);
@@ -261,6 +259,97 @@
         }
     });
 
+    fluid.defaults("speakText.panels.BigPanel", {
+        gradeNames: ["fluid.uiOptions.panels", "speakText.panels.keyEcho", "speakText.panels.wordEcho", "speakText.panels.speakTutorialMessages",  "autoInit"],
+        model: {
+            moreOptions: false
+        },
+        strings: {
+            moreText: {
+                expander: {
+                    func: "speakText.showMoreText"
+                }
+            },
+            lessText: {
+                expander: {
+                    func: "speakText.showLessText"
+                }
+            }
+        },
+        selectors: {
+            moreOptions: ".more-options-checkbox",
+            moreOptionsLabel: ".more-options-label"
+        },
+        protoTree: {
+            // screenReaderTTSEnabled: "${screenReaderTTSEnabled}",
+            // screenReaderTTSEnabledLabel: {messagekey: "screenReaderTTSEnabledLabel"},
+
+            keyEcho: "${keyEcho}",
+            keyEchoLabel: {messagekey: "keyEchoLabel"},
+
+            wordEcho: "${wordEcho}",
+            wordEchoLabel: {messagekey: "wordEchoLabel"},
+
+            speakTutorialMessages: "${speakTutorialMessages}",
+            speakTutorialMessagesLabel: {messagekey: "speakTutorialMessagesLabel"},
+
+            moreOptions: "${moreOptions}",
+            moreOptionsLabel: {messagekey: "moreOptions"}
+        },
+        // listeners: {
+        //     afterRender: "{that}.style"
+        // },
+        // invokers: {
+        //     style: {
+        //         funcName: "speakText.panels.BigPanel.someFunction",
+        //         args: ["{that}"]
+        //     }
+        // },
+
+        finalInitFunction: "speakText.panels.BigPanel.finalInit"
+    });
+
+    speakText.showMoreText = function () {
+        return "- less";
+    }
+
+    speakText.showLessText = function () {
+        return "+ more";
+    }
+
+    speakText.panels.BigPanel.finalInit = function (that) {
+        something = that;
+
+        that.applier.modelChanged.addListener("screenReaderTTSEnabled", function () {
+            if (that.model.screenReaderTTSEnabled) {
+                that.locate("moreOptionsLabel").text("+ more");
+                // When screenReaderTTSEnabled is added to the big panel, it should be:
+                // that.locate("moreOptionsLabel").text(that.options.strings.lessText);
+                $(".speech-rate").slideDown(600);
+                $(".more-options").slideDown(600);
+            } else {
+                $(".speech-rate").slideUp(600);
+                $(".more-options").slideUp(600);
+                $(".expanded-top").slideUp(600);
+                $(".expanded-bottom").slideUp(600);
+                $(".more-options-checkbox").attr('checked', false);
+            }
+        });
+
+        that.applier.modelChanged.addListener("moreOptions", function () {
+            if (that.model.moreOptions) {
+                $(".expanded-top").slideDown(600);
+                $(".expanded-bottom").slideDown(600);
+                that.locate("moreOptionsLabel").text(that.options.strings.moreText);
+            } else {
+                $(".expanded-top").slideUp(600);
+                $(".expanded-bottom").slideUp(600);
+                that.locate("moreOptionsLabel").text(that.options.strings.lessText);
+            }
+        });
+
+    }
+
     fluid.defaults("speakText.panels.screenReaderBrailleOutput", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
@@ -279,5 +368,6 @@
             screenReaderBrailleOutputDescription: {messagekey: "screenReaderBrailleOutputDescription"},
         }
     });
+
 
 })(fluid);
