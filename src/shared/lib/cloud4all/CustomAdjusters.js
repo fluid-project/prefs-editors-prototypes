@@ -21,6 +21,20 @@
         
         metricUnit: "pt",
         
+        components: {
+            preview: {
+                type: "fluid.uiOptions.preview",
+                createOnEvent: "onReady",
+                container: ".flc-uiOptions-preview-per-setting-frame"
+            }
+        },
+        
+        uiOptionsLoader: {
+            preview: {
+                templateUrl: "uiOptionsTextPreview.html"
+            }
+        },
+        
         selectors: {
             minus: ".flc-uiOptions-plus-minus-numerical-minus",
             label: ".flc-uiOptions-plus-minus-numerical-label",
@@ -28,7 +42,8 @@
             valueText: ".flc-uiOptions-plus-minus-numerical-value"
         },
         events: {
-        	minRangeReached: null
+        	minRangeReached: null,
+        	onReady: null
         },
         protoTree: {
             minus: "-",
@@ -42,6 +57,16 @@
     });
 	
 	fluid.uiOptions.panels.textSize.finalInit = function(that){
+		that.events.afterRender.addListener(
+			function(){
+				var thePreviewFrame = $(".flc-uiOptions-text-size > .flc-uiOptions-plus-minus-numerical > .flc-uiOptions-preview-per-setting-frame"); 
+				thePreviewFrame.attr("src", that.options.uiOptionsLoader.preview.templateUrl);
+				thePreviewFrame.load(function(){
+					thePreviewFrame.contents().find("html").css("font-size", that.model.value + "pt");
+				});
+			}
+		);
+		
 		plusMinusAdjusterFinalInit(that);
 	}
 	

@@ -407,3 +407,10 @@ input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio
 .fl-magnifierFollows-legend::first-letter {
     text-transform: capitalize;
 }
+
+/*
+	Style for preview-per-setting iframe
+*/
+.flc-uiOptions-preview-per-setting-frame {
+	width: 100% !important;
+}
