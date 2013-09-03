@@ -808,6 +808,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
 
+    fluid.demands("gpii.discoveryTool.enactors.selfVoicing", ["fluid.uiOptions.fatPanel.renderIframe"], {
+        funcName: "fluid.emptySubcomponent"
+    });
+
     /**************************************
      * gpii.discoveryTool.trySomethingNew *
      ***************************************/

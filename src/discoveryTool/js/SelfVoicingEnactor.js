@@ -29,25 +29,16 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             value: false
         },
         listeners: {
-            "onCreate": [
-                "{that}.attachAudio", {
-                    listener: "{that}.announce",
-                    args: "{that}.options.strings.loaded"
-                }
-            ],
-            afterAnnounce: "{that}.announceNext"
+            "afterAnnounce.next": "{that}.announceNext"
         },
         events: {
-            afterAnnounce: null
+            afterAnnounce: null,
+            onError: null
         },
         invokers: {
             handleSelfVoicing: {
                 funcName: "gpii.discoveryTool.enactors.selfVoicing.handleSelfVoicing",
                 args: "{that}"
-            },
-            attachAudio: {
-                funcName: "gpii.discoveryTool.enactors.selfVoicing.attachAudio",
-                args: ["{that}"]
             },
             announce: {
                 funcName: "gpii.discoveryTool.enactors.selfVoicing.announce",
@@ -69,10 +60,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             current: "fl-selfVoicing-current"
         },
 
-        // HTML5 Audio configuration
-        audioSelector: "#selfVoicer-audio",
-        markup: '<audio type="audio/x-wav"></audio>',
-
         // Fireworks Server
         ttsUrl: "http://tts.idrc.ocadu.ca?q=%text",
 
@@ -80,43 +67,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     });
 
     gpii.discoveryTool.enactors.selfVoicing.finalInit = function (that) {
-        that.applier.modelChanged.addListener("value", function () {
-            that.handleSelfVoicing();
-        });
-    };
-
-    gpii.discoveryTool.enactors.selfVoicing.bindEvent = function (element, eventName, eventHandler) {
-        if (element.addEventListener) {
-            element.addEventListener(eventName, eventHandler);
-        } else if (element.attachEvent) {
-            element.attachEvent(eventName, eventHandler);
-        }
-    };
-
-    gpii.discoveryTool.enactors.selfVoicing.attachAudio = function (that) {
-        that.audio = $(that.options.markup);
-        that.audio.attr("id", that.options.audioSelector.substr(1));
-        that.audio.hide();
-        $(that.options.audioSelector).remove();
-        $("body").append(that.audio);
-        var audioElement = that.audio[0];
-        gpii.discoveryTool.enactors.selfVoicing.bindEvent(audioElement, "canplaythrough", function () {
-            if (!that.model.value) {
-                return;
+        that.applier.modelChanged.addListener("value", function (newModel, oldModel) {
+            if (newModel.value !== oldModel.value) {
+                that.handleSelfVoicing();
             }
-            that.speaking = true;
-            audioElement.play();
-        });
-        gpii.discoveryTool.enactors.selfVoicing.bindEvent(audioElement, "ended", function () {
-            that.speaking = false;
-            that.events.afterAnnounce.fire();
-        });
-        gpii.discoveryTool.enactors.selfVoicing.bindEvent(audioElement, "error", function () {
-            that.speaking = false;
-            if (!that.model.value) {
-                return;
-            }
-            setTimeout(that.events.afterAnnounce.fire, 500);
         });
     };
 
@@ -131,16 +85,21 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
     gpii.discoveryTool.enactors.selfVoicing.announce = function (that, text) {
         if (!that.model.value) {return;}
-        if (that.speaking) {
-            setTimeout(function () {
-                that.announce(text);
-            }, 500)
-            return;
-        }
-        that.audio.attr("src", fluid.stringTemplate(that.options.ttsUrl, {
+        var audioURL = fluid.stringTemplate(that.options.ttsUrl, {
             lang: that.options.lang,
             text: text
-        }));
+        });
+        that.currentAnnouncement = new buzz.sound(audioURL);
+        that.currentAnnouncement.bind("ended", function () {
+            that.speaking = false;
+            that.events.afterAnnounce.fire();
+        });
+        that.currentAnnouncement.bind("error", function () {
+            that.speaking = false;
+            that.events.onError.fire();
+        });
+        that.speaking = true;
+        that.currentAnnouncement.play();
     };
 
     var fullTrim = function (string) {
@@ -185,7 +144,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 return node;
             }
         });
-        if (!next && !that.currentElement.parentNode.nodeName !== "HTML") {
+        if (!next && that.currentElement.parentNode.nodeName !== "HTML") {
             that.seen.push(that.currentElement);
             next = that.currentElement.parentNode;
         }
