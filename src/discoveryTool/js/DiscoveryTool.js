@@ -132,6 +132,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     listener: "{that}.setLabel",
                     args: "{that}.options.strings.showLabel"
                 },
+                "onCreate.showLabel": {
+                    listener: "{that}.setExpanded",
+                    args: "false"
+                },                
                 "onPanelHide.showIcon": "{that}.showDiscoveryIcon",
                 "onPanelHide.showLabel": {
                     listener: "{that}.setLabel",
