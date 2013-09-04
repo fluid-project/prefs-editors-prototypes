@@ -413,7 +413,7 @@ input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio
 }
 
 /*
-	Style for preview-per-setting iframe
+	Style for preview-per-setting iframe and content
 */
 .flc-uiOptions-preview-per-setting-frame {
 	width: 100% !important;
@@ -464,4 +464,20 @@ input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio
 	vertical-align: middle; 
 	text-align: center; 
 	padding: 10px;
+}
+
+.flc-uiOptions-preview-per-setting-div-inner div {
+	display: table-cell; 
+	vertical-align: middle; 
+	text-align: center; 
+	padding: 10px;
+	float: none;
+}
+
+.flc-uiOptions-preview-per-setting-cursor:before {
+	content: "\e001";
+}
+
+.flc-uiOptions-preview-per-setting-cursor {
+	font-size: 2em;
 }
