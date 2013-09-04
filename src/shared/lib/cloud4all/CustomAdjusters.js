@@ -53,15 +53,13 @@
     });
 	
 	fluid.uiOptions.panels.textSize.finalInit = function(that){
-		/*that.events.afterRender.addListener(
-			function(){*/
-				/*var thePreviewFrame = $(".flc-uiOptions-text-size > .flc-uiOptions-plus-minus-numerical > .flc-uiOptions-preview-per-setting-frame"); 
-				thePreviewFrame.attr("src", that.options.uiOptionsLoader.preview.templateUrl);
-				thePreviewFrame.load(function(){
-					thePreviewFrame.contents().find("html").css("font-size", that.model.value + "pt");
-				});*/
-			/*}
-		);*/
+		that.events.afterRender.addListener(
+			function(){
+				$(that.options.components.preview.container).load(function(){
+					$(that.options.components.preview.container).contents().find("html").css("font-size", that.model.value + "pt");
+				});
+			}
+		);
 		
 		plusMinusAdjusterFinalInit(that);
 	}
