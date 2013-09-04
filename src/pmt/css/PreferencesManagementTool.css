@@ -30,6 +30,10 @@
     font-size: 0.8em;
 }
 
+.fl-uiOptions-fullPreview h2 {
+	display: table-cell !important;
+}
+
 /*
 	Header's styling
 */
@@ -423,6 +427,14 @@ input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio
     margin-bottom: 0.5em;
 }
 
-.flc-uiOptions-preview-per-setting-container:before {
+.flc-uiOptions-preview-per-setting-eye:before {
 	content: "\e00c";
+}
+
+.flc-uiOptions-preview-per-setting-eye-background {
+	background-color: #000000;
+    height: 0.34em;
+    margin-left: 0.1em;
+    margin-top: 0.1em;
+    width: 0.5em;
 }
