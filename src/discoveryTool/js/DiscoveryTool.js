@@ -134,7 +134,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 },
                 "onCreate.showLabel": {
                     listener: "{that}.setExpanded",
-                    args: "false"
+                    args: "{that}.model.isShowing"
                 },                
                 "onPanelHide.showIcon": "{that}.showDiscoveryIcon",
                 "onPanelHide.showLabel": {
@@ -143,7 +143,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 },
                 "onPanelHide.showExpanded": {
                     listener: "{that}.setExpanded",
-                    args: "false"
+                    args: ["{that}.model.isShowing"
                 },                
                 "onPanelShow.showIcon": "{that}.hideDiscoveryIcon",
                 "onPanelShow.showLabel": {
