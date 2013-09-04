@@ -420,3 +420,35 @@ input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio
 .fl-magnifierFollows-legend::first-letter {
     text-transform: capitalize;
 }
+
+/*
+	Style for "Add to my preferences" star font icon
+*/
+.fl-adjuster-icons-additional {
+	font-family: 'font-icons-sept-3';
+}
+
+.addToMyPreferencesStar:before {
+	content: "\e000";
+}
+
+.addToMyPreferencesStar {
+	margin-left: 19.7em;
+    margin-top: 0.5em;
+    color: #6b7281;
+  	position: absolute;
+}
+
+input:checked + .addToMyPreferencesStar {
+    color: #fae80b;
+}
+
+.addToMyPreferencesLabel {
+	height: 1.1em !important;
+    position: absolute;
+    width: 1.1em !important;
+    cursor: pointer;
+	margin-left: 19.7em;
+    margin-top: 0.5em;
+    font-size: 1em !important;
+}
