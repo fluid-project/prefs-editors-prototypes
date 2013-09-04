@@ -824,7 +824,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
 
-    // Removes the selvVoicing enactor from the fatPanel iFrame
+    // Removes the selfVoicing enactor from the fatPanel iFrame
     fluid.demands("gpii.discoveryTool.enactors.selfVoicing", ["fluid.uiOptions.fatPanel.renderIframe"], {
         funcName: "fluid.emptySubcomponent"
     });
