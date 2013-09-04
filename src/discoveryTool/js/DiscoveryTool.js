@@ -143,7 +143,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 },
                 "onPanelHide.showExpanded": {
                     listener: "{that}.setExpanded",
-                    args: ["{that}.model.isShowing"
+                    args: "false"
                 },                
                 "onPanelShow.showIcon": "{that}.hideDiscoveryIcon",
                 "onPanelShow.showLabel": {
