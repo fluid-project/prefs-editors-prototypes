@@ -35,7 +35,7 @@
         });
         fluid.invokeGlobalFunction(uioBuilder.options.assembledUIOGrade, ["#myUIOptions"]); */
 
-        demo.initFullWithPreview("#myUIOptions", {
+        demo.initFullNoPreview("#myUIOptions", {
             components: {
                 uiOptions: {
                     options: {
@@ -51,12 +51,12 @@
                                     
                                 }
                             }
-                        },
+                        }/* ,
                         preview: {
                             options: {
                                 templateUrl: "uiOptionsPreview.html"
                             }
-                        }
+                        } */
                     }
                 }
             }

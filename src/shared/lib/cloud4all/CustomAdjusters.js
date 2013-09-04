@@ -24,14 +24,11 @@
         components: {
             preview: {
                 type: "fluid.uiOptions.preview",
-                createOnEvent: "onReady",
-                container: ".flc-uiOptions-preview-per-setting-frame"
-            }
-        },
-        
-        uiOptionsLoader: {
-            preview: {
-                templateUrl: "uiOptionsTextPreview.html"
+                createOnEvent: "afterRender",
+                container: ".flc-uiOptions-text-size .flc-uiOptions-preview-per-setting-frame",
+                options: {
+                    templateUrl: "uiOptionsTextPreview.html"
+                }
             }
         },
         
@@ -42,8 +39,7 @@
             valueText: ".flc-uiOptions-plus-minus-numerical-value"
         },
         events: {
-        	minRangeReached: null,
-        	onReady: null
+        	minRangeReached: null
         },
         protoTree: {
             minus: "-",
@@ -57,15 +53,15 @@
     });
 	
 	fluid.uiOptions.panels.textSize.finalInit = function(that){
-		that.events.afterRender.addListener(
-			function(){
-				var thePreviewFrame = $(".flc-uiOptions-text-size > .flc-uiOptions-plus-minus-numerical > .flc-uiOptions-preview-per-setting-frame"); 
+		/*that.events.afterRender.addListener(
+			function(){*/
+				/*var thePreviewFrame = $(".flc-uiOptions-text-size > .flc-uiOptions-plus-minus-numerical > .flc-uiOptions-preview-per-setting-frame"); 
 				thePreviewFrame.attr("src", that.options.uiOptionsLoader.preview.templateUrl);
 				thePreviewFrame.load(function(){
 					thePreviewFrame.contents().find("html").css("font-size", that.model.value + "pt");
-				});
-			}
-		);
+				});*/
+			/*}
+		);*/
 		
 		plusMinusAdjusterFinalInit(that);
 	}
@@ -87,6 +83,16 @@
 			min: 1,
 			max: 5
 		},
+		components: {
+            preview: {
+                type: "fluid.uiOptions.preview",
+                createOnEvent: "afterRender",
+                container: ".flc-uiOptions-cursor-size .flc-uiOptions-preview-per-setting-frame",
+                options: {
+                    templateUrl: "uiOptionsCursorPreview.html"
+                }
+            }
+        },
 		selectors: {
 			textSize: ".flc-uiOptions-cursor-size",
 			label: ".flc-uiOptions-cursor-size-label",
@@ -126,6 +132,17 @@
 		},
 
 		metricUnit: "%",
+        
+		components: {
+            preview: {
+                type: "fluid.uiOptions.preview",
+                createOnEvent: "afterRender",
+                container: ".flc-uiOptions-magnifier .flc-uiOptions-preview-per-setting-frame",
+                options: {
+                    templateUrl: "uiOptionsTextPreview.html"
+                }
+            }
+        },
         
         selectors: {
             minus: ".flc-uiOptions-plus-minus-numerical-minus",
