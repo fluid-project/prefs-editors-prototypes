@@ -29,6 +29,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             lowContrast: "%prefix/LowContrastPanelTemplate.html",
             increaseSize: "%prefix/IncreaseSizePanelTemplate.html",
             simplify: "%prefix/SimplifyPanelTemplate.html",
+            moreText: "%prefix/MoreTextPanelTemplate.html",
             spoken: "%prefix/SpokenPanelTemplate.html",
             uiOptions: "%prefix/DiscoveryTool.html"
         }
@@ -49,6 +50,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 lowContrast: false,
                 increaseSize: false,
                 simplify: false,
+                moreText: false,
                 spoken: false,
 
                 textFont: "default",
@@ -59,6 +61,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 links: false,
                 inputsLarger: false,
                 simplifyContent: false,
+                showMoreText: false,
                 selfVoicing: false
             }
         }
@@ -214,6 +217,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 lowContrast: false,
                 increaseSize: false,
                 simplify: false,
+                moreText: false,
                 spoken: false
             },
             convertedModel: {
@@ -225,6 +229,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 links: false,
                 inputsLarger: false,
                 simplifyContent: false,
+                showMoreText: false,
                 selfVoicing: false
             }
         },
@@ -251,6 +256,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 toc: true,
                 simplifyContent: true
             },
+            moreText: {
+                showMoreText: true
+            },
             spoken: {
                 selfVoicing: true
             }
@@ -263,7 +271,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             }
         },
         listeners: {
-            "{loader}.events.onUIOptionsComponentReady": {
+            "{uiOptions}.events.onReady": {
                 listener: "{that}.applier.modelChanged.addListener",
                 args: ["panelSelections", "{that}.relayConvertedModel"]
             }
@@ -347,6 +355,20 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     }
                 }
             },
+            moreText: {
+                type: "gpii.discoveryTool.panels.moreText",
+                container: "{uiOptions}.dom.moreText",
+                createOnEvent: "{uiOptions}.events.onUIOptionsMarkupReady",
+                options: {
+                    gradeNames: "gpii.discoveryTool.defaultPanel",
+                    rules: {
+                        "panelSelections.moreText": "enabled"
+                    },
+                    resources: {
+                        template: "{templateLoader}.resources.moreText"
+                    }
+                }
+            },
             spoken: {
                 type: "gpii.discoveryTool.panels.spoken",
                 container: "{uiOptions}.dom.spoken",
@@ -402,19 +424,20 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             lowContrast: ".flc-discoveryTool-lowContrast",
             increaseSize: ".flc-discoveryTool-increaseSize",
             simplify: ".flc-discoveryTool-simplify",
+            moreText: ".flc-discoveryTool-moreText",
             spoken: ".flc-discoveryTool-spoken"
         },
         components: {
             trySomethingNew: {
                 type: "gpii.discoveryTool.trySomethingNew",
                 container: "{that}.dom.trySomethingNew",
-                createOnEvent: "onUIOptionsComponentReady",
+                createOnEvent: "onReady",
                 options: {
                     strings: {
                         label: {
                             expander: {
                                 func: "gpii.discoveryTool.lookupMsg",
-                                args: ["{uiOptions}.msgBundle", "trySomethingNewText"]
+                                args: ["{uiOptionsLoader}.msgBundle", "trySomethingNewText"]
                             }
                         }
                     },
@@ -437,6 +460,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                         "lowContrast": "panelSelections.lowContrast",
                         "increaseSize": "panelSelections.increaseSize",
                         "simplify": "panelSelections.simplify",
+                        "moreText": "panelSelections.moreText",
                         "spoken": "panelSelections.spoken",
 
                         "textFont": "convertedModel.textFont",
@@ -447,6 +471,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                         "links": "convertedModel.links",
                         "inputsLarger": "convertedModel.inputsLarger",
                         "simplifyContent": "convertedModel.simplifyContent",
+                        "showMoreText": "convertedModel.showMoreText",
                         "selfVoicing": "convertedModel.selfVoicing"
                     }
                 }
@@ -608,6 +633,108 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         });
     };
 
+    /***********************
+     * More Text
+     ***********************/
+    fluid.defaults("gpii.discoveryTool.panels.moreText", {
+        gradeNames: ["gpii.discoveryTool.togglePanel", "autoInit"],
+        // this is being ignored - ??
+        selectors: {
+            toggle: ".flc-discoveryTool-moreText-choice"
+        }
+    });
+
+    /**********************************************************************************
+     * showMoreText enactor
+     **********************************************************************************/
+
+    // Note that the implementors need to provide the container for this view component
+    fluid.defaults("gpii.discoveryTool.enactors.showMoreText", {
+        gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
+        selectors: {
+            content: ".flc-uiOptions-content",
+            moreTexts: ".flc-discoveryTool-moreText-container",
+            images: "img, [role~='img']",
+            textEl: "details" // selector of element in 'markup.moreText' where text should be inserted
+        },
+        styles: {
+            hidden: "fl-hidden"
+        },
+        model: {
+            value: false
+        },
+        events: {
+            settingChanged: null
+        },
+        listeners: {
+            onCreate: {
+                listener: "{that}.set",
+                args: ["{that}.model.value"]
+            }
+        },
+        invokers: {
+            addMoreTextMarkup: {
+                funcName: "gpii.discoveryTool.enactors.showMoreText.addMoreTextMarkup",
+                args: ["{that}.dom.images", "{that}.getMoreText", "{that}.buildMoreTextMarkup"]
+            },
+            getMoreText: "gpii.discoveryTool.enactors.showMoreText.getAltText",
+            buildMoreTextMarkup: {
+                funcName: "gpii.discoveryTool.enactors.showMoreText.buildMoreTextMarkup",
+                args: ["{that}.options.markup.moreText", "{that}.options.selectors.textEl", "{arguments}.0"]
+            },
+            set: {
+                funcName: "gpii.discoveryTool.enactors.showMoreText.set",
+                args: ["{arguments}.0", "{that}"]
+            }
+        },
+        members: {
+            moreTextMarkupAdded: false
+        },
+        markup: {
+            moreText: "<div class='flc-discoveryTool-moreText-container fl-discoveryTool-moreText fl-fix'><details><summary></summary></details></div>"
+        }
+    });
+
+    gpii.discoveryTool.enactors.showMoreText.addMoreTextMarkup = function (imgs, getMoreTextFunc, buildMoreTextMarkupFunc) {
+        fluid.each(imgs, function (img) {
+            img = $(img);
+            var text = getMoreTextFunc(img);
+            if (text) {
+                img.after(buildMoreTextMarkupFunc(text));
+            }
+        });
+    };
+
+    gpii.discoveryTool.enactors.showMoreText.getAltText = function (img) {
+        return img.attr("alt") || img.attr("aria-label");
+    };
+
+    gpii.discoveryTool.enactors.showMoreText.buildMoreTextMarkup = function (markup, textElSelector, text) {
+        var container = $(markup);
+        var textEl = $(textElSelector, container);
+        if (textEl.length < 1) { // in case the textEl _is_ the container
+            container.append(text);
+        } else {
+            textEl.append(text);
+        }
+        return container;
+    };
+
+    gpii.discoveryTool.enactors.showMoreText.finalInit = function (that) {
+        that.applier.modelChanged.addListener("value", function (newModel, oldModel) {
+            if (newModel.value !== oldModel.value) {
+                that.set(newModel.value);
+            }
+        });
+    };
+    gpii.discoveryTool.enactors.showMoreText.set = function (value, that) {
+        if (!that.moreTextMarkupAdded) {
+            that.addMoreTextMarkup();
+            that.moreTextMarkupAdded = true;
+        }
+        that.dom.fastLocate("moreTexts").toggleClass(that.options.styles.hidden, !value);
+    };
+
     /************************
      * Spoken
      *********************/
@@ -649,6 +776,19 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     },
                     model: {
                         value: "{fluid.uiOptions.rootModel}.rootModel.simplifyContent"
+                    }
+                }
+            },
+            moreText: {
+                type: "gpii.discoveryTool.enactors.showMoreText",
+                container: "{uiEnhancer}.container",
+                options: {
+                    sourceApplier: "{uiEnhancer}.applier",
+                    rules: {
+                        "showMoreText": "value"
+                    },
+                    model: {
+                        value: "{fluid.uiOptions.rootModel}.rootModel.showMoreText"
                     }
                 }
             },

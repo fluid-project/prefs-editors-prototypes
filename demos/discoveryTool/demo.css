@@ -44,6 +44,7 @@ a:hover {
     top: 0;
     width: 100%;
     padding: 0.25em;
+    z-index: 999; /* to ensure it is above the more-text details in FF */
 }
 
 #main-header #main-header-content {
@@ -355,16 +356,25 @@ iframe::-webkit-scrollbar {
 }
 
 /* Images */
-details {
-    padding-bottom: 1em;
-    display: block;
-    display: none;
-}
-
 div[role="img"] {
     background-repeat: no-repeat;
     background-size: contain; 
     margin-bottom: 1em;
+}
+
+/* More Text */
+#main-header #main-header-content div.fl-discoveryTool-moreText {
+    float: none;
+    display: inline;
+}
+#main-header #main-header-content div.fl-discoveryTool-moreText.fl-hidden {
+    display: none;
+}
+#main-header #main-header-content div.fl-discoveryTool-moreText details {
+    display: inherit;
+}
+div.main-content-image + .fl-discoveryTool-moreText {
+    top: -1em; /* because these elements have a bottom margin of 1em */
 }
 
 #storm { 
