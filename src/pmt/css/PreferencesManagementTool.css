@@ -8,6 +8,13 @@
 	font-style: normal;
 }
 
+@font-face {
+	font-family: 'font-icons-sept-3';
+	src:url('../fonts/font-icons-sept-3.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
 /*
 	General preferences styling
 */
@@ -123,6 +130,12 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
 	line-height: 1;
 	-webkit-font-smoothing: antialiased;
 }
+
+.fl-adjuster-icons-additional > .fl-magnifierPosition-uio-icon-main {
+	font-family: 'font-icons-sept-3';
+	margin-top: 0em;
+}
+
 .fl-icon-small-cursor:before {
 	font-size: 0.8em !important;
 	content: "\e000";
@@ -281,7 +294,7 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
 }
 
 .fl-magnifierPosition-uio-top > .fl-magnifierPosition-uio-icon-main:before {
-	content: "\e005";
+	content: "\e001";
 }
 
 .fl-magnifierPosition-uio-bottom > .fl-magnifierPosition-uio-icon-main {
@@ -293,7 +306,7 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
 }
 
 .fl-magnifierPosition-uio-bottom > .fl-magnifierPosition-uio-icon-main:before {
-	content: "\e005";
+	content: "\e004";
 }
 
 .fl-magnifierPosition-uio-left > .fl-magnifierPosition-uio-icon-main {
@@ -305,7 +318,7 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
 }
 
 .fl-magnifierPosition-uio-left > .fl-magnifierPosition-uio-icon-main:before {
-	content: "\e005";
+	content: "\e003";
 }
 
 .fl-magnifierPosition-uio-right > .fl-magnifierPosition-uio-icon-main {
@@ -318,7 +331,7 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
 }
 
 .fl-magnifierPosition-uio-right > .fl-magnifierPosition-uio-icon-main:before {
-	content: "\e005";
+	content: "\e002";
 }
 
 /*
