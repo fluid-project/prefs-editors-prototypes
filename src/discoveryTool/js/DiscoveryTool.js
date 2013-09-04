@@ -132,7 +132,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     listener: "{that}.setLabel",
                     args: "{that}.options.strings.showLabel"
                 },
-                "onCreate.showLabel": {
+                "onCreate.showExpanded": {
                     listener: "{that}.setExpanded",
                     args: "{that}.model.isShowing"
                 },                
