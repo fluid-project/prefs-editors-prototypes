@@ -19,6 +19,18 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
     fluid.registerNamespace("gpii.discoveryTool");
 
+    // Used for graceful degradation instead of progressive enhancement,
+    // since we do not know ahead of time which enactors will be used. (e.g. if/when we switch to schema.)
+    // Currently just checking if wav files are supported as that is the only file type that is returned from
+    // the tts server. In the future should switch to "buzz.isSupported", when the tts server returns other
+    // supported file types.
+    gpii.discoveryTool.isHTML5AudioNotSupported = function () {
+        return !buzz.isWAVSupported();
+    };
+    fluid.enhance.check({
+        "fluid.HTML5Audio.NotSupported": "gpii.discoveryTool.isHTML5AudioNotSupported"
+    });
+
     /**
      * These paths will need to be customized for the integration
      */
@@ -479,10 +491,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
 
+    // Will only add those subcompoents that have the grade "gpii.discoveryTool.defaultPanel"
     gpii.discoveryTool.panels.getSubcomponents = function (component) {
         var subComponents = [];
         fluid.each(component.options.components, function (opts, memberName) {
-            subComponents.push(fluid.get(component, memberName));
+            var subComponent = fluid.get(component, memberName);
+            if (fluid.hasGrade(subComponent.options, "gpii.discoveryTool.defaultPanel")) {
+                subComponents.push(subComponent);
+            }
         });
         return subComponents;
     };
@@ -806,6 +822,19 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 }
             }
         }
+    });
+
+    // Removes the selfVoicing enactor from the fatPanel iFrame
+    fluid.demands("gpii.discoveryTool.enactors.selfVoicing", ["fluid.uiOptions.fatPanel.renderIframe"], {
+        funcName: "fluid.emptySubcomponent"
+    });
+
+    // Removes the selfVoicing enactor and the spoken panel from when HTML5Audio is not supported
+    fluid.demands("gpii.discoveryTool.enactors.selfVoicing", ["fluid.HTML5Audio.NotSupported"], {
+        funcName: "fluid.emptySubcomponent"
+    });
+    fluid.demands("gpii.discoveryTool.panels.spoken", ["fluid.HTML5Audio.NotSupported"], {
+        funcName: "fluid.emptySubcomponent"
     });
 
     /**************************************
