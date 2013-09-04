@@ -31,8 +31,9 @@ a {
 a:hover {
     text-decoration: underline;
 }
-a:focus {
+.fl-focus *:focus {
     color: #2795B6;
+    outline-color: #2795B6;    
 }
 
 #main-header {
@@ -135,7 +136,11 @@ a:focus {
     font-weight: normal;
 }    
 .main-content header #prevNext a:focus {
+    outline: none;
+}
+.main-content header #prevNext a:focus span {
     color: #2795B6;
+    border: 2px solid #2795B6;     
 }
 
 .main-content header #prevNext .fl-icon-prev {
@@ -251,6 +256,11 @@ article h2 {
     font-weight: bold;
     cursor: pointer;
 }
+.fl-panelBar button:focus {
+    outline: 2px solid #fff;
+    color: #fff;
+} 
+.fl-panelBar button::-moz-focus-inner {border:0;}
 
 .fl-uiOptions-discoveryTool  {
     position: fixed;
@@ -310,7 +320,7 @@ iframe::-webkit-scrollbar {
     font-size: 0.9em;	
 }
 .fl-icon-next:before {
-	content: "\a001";
+	content: "\e001";
     font-size: 0.9em;
 }
 .fl-icon-thumbsUp:before {
@@ -332,7 +342,7 @@ iframe::-webkit-scrollbar {
 	content: "\e007";
 }
 
-.fl-icon-discover:after {
+.fl-icon-discover:before {
     content: "\e009";
     position: relative;
     left: -1.16em;
@@ -432,6 +442,13 @@ div.main-content-image + .fl-discoveryTool-moreText {
 .fl-theme-lgdg .fl-panelBar button {
 	border: none;
 }
+.fl-theme-bw .fl-panelBar button:focus {
+    outline-color: #fff;
+} 
+.fl-theme-lgdg .fl-panelBar button:focus {
+    outline-color: #555;
+} 
+
 
 /* Add padding to bottom of simplified content so it's not obscured by the DT panel bar */
 .fl-uiOptions-content-simplified {
@@ -444,12 +461,18 @@ div.main-content-image + .fl-discoveryTool-moreText {
     border-color: #000;
     color: #000;
 }
+.fl-theme-bw .fl-icon-discover:before {
+    color: #fff;
+}
 
 .fl-theme-lgdg .fl-icon-atom:before,
 .fl-theme-lgdg .fl-icon-tree:after,
 .fl-theme-lgdg .fl-icon-tree:before {
     border-color: #BDBDBB;
     color: #BDBDBB;
+}
+.fl-theme-lgdg .fl-icon-discover:before {
+    color: #555;
 }
 
 /* Simplify Content */
