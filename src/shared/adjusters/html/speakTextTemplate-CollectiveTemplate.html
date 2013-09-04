@@ -1,0 +1,85 @@
+<div id="prompt-message">
+    <label id="prompt-message-label" for="star" class="gpii-addOrRemovePreference-label pref-checkbox-label" style="color:black; font-size:13px; font-weight:bold;"></label>
+</div>
+<input type="checkbox" id="star" class="gpii-addOrRemovePreference"/>
+<label for="star" class="gpii-addOrRemovePreference-label pref-checkbox-label"></label>
+
+<input type="checkbox" id="preferenceSwitch" class="gpii-speakTextPresetButton"/>
+<label for="preferenceSwitch" class="gpii-speakTextPresetButton-label main-checkbox-label"></label><br><br>
+
+<div class="preference">
+    <div class="fully-expanded">
+        <h3><label for="screenReaderTTSEnabled" class="gpii-screenReaderTTSEnabled-label switch"></label></h3>
+        <div id="screen-reader-onoff" class="fl-uiOptions-onoff">
+            <input type="checkbox" id="screenReaderTTSEnabled" class="gpii-screenReaderTTSEnabled"/>
+            <label for="screenReaderTTSEnabled">
+                <span class="fl-uiOptions-switch" data-checkboxStateOn="ON" data-checkboxStateOff="OFF">
+                    <span class="fl-uiOptions-switch-inner"></span>
+                </span>
+            </label>
+        </div><br><br>
+    </div>
+
+    <div id="speech-rate">
+        <div class="gpii-speechRate">
+            <label class="gpii-speechRate-label" for="speech-rate-input" id="speechRateLabel"></label><br>
+            <label class="gpii-textfieldStepper-decrement gpii-speechRate-minus" id="speechRateMinus"></label>
+            <input type="text" class="gpii-textfieldStepper-field fl-inputs" id="speechRate"/>
+            <label class="gpii-textfieldStepper-increment gpii-speechRate-plus" id="speechRatePlus"></label>
+        </div>
+    </div>
+
+    <div class="fully-expanded">
+        <div class="speakText-auditoryOutLanguage-element">
+            <label class="gpii-auditoryOutLanguage-label" for="languages"></label><br>
+            <select class="gpii-auditoryOutLanguage fl-inputs" id="languages"></select>
+        </div><br>
+        <div class="speakText-punctuationVerbosity-element">
+            <label class="gpii-punctuationVerbosity-label"></label>
+            <div class="punctuationVerbosity-container">
+                <div class="gpii-punctuationVerbosity-row">
+                    <input type="radio" class="gpii-punctuationVerbosity" name="punctuationVerbosity" id="radioButton-option" value="some" />
+                    <label class="gpii-punctuationVerbosity-option-label" for="radioButton-option"></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="speakText-announceCapitals-element">
+            <input type="checkbox" id="announce-uppercase" class="gpii-announceCapitals" />
+            <label for="announce-uppercase" class="checkbox-label"><span class="gpii-announceCapitals-label"></span></label>
+        </div>
+
+        <div class="speakText-speakTutorialMessages-element">
+            <input type="checkbox" id="announce-instructions" class="gpii-speakTutorialMessages" />
+            <label for="announce-instructions" class="checkbox-label long-lined-label"><span class="gpii-speakTutorialMessages-label"></span></label>
+        </div>
+
+        <div class="speakText-keyEcho-element">
+            <input type="checkbox" id="echo-letter" class="gpii-keyEcho" />
+            <label for="echo-letter" class="checkbox-label"><span class="gpii-keyEcho-label"></span></label><br>
+        </div>
+
+        <div class="speakText-wordEcho-element">
+            <input type="checkbox" id="echo-word" class="gpii-wordEcho" />
+            <label for="echo-word" class="checkbox-label"><span class="gpii-wordEcho-label"></span></label>
+        </div>
+
+        <div class="speakText-screenReaderBrailleOutput-element">
+            <h3><label for="braille" class="gpii-screenReaderBrailleOutput-label switch"></label></h3>
+            <div id="braille-onoff" class="fl-uiOptions-onoff">
+                <input type="checkbox" id="braille" class="gpii-screenReaderBrailleOutput" />
+                <label for="braille">
+                    <span class="fl-uiOptions-switch" data-checkboxStateOn="ON" data-checkboxStateOff="OFF">
+                        <span class="fl-uiOptions-switch-inner"></span>
+                    </span>
+                </label>
+            </div><br><br>
+            <div class="gpii-screenReaderBrailleOutput-description"></div>
+        </div>
+    </div>
+
+    <div class="more-options">
+        <input type="checkbox" class="more-options-checkbox"/>
+        <label for="moreOptions" class="more-options-label">+ more</label>
+    </div>
+</div>

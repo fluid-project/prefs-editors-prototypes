@@ -2,15 +2,15 @@
     fluid.defaults("speakText.primarySchema", {
         gradeNames: ["fluid.uiOptions.schemas", "autoInit"],
         schema: {
-            "addOrRemovePreference": {
-                "type": "boolean",
-                "default": false
-            },
+            // "addOrRemovePreference": {
+            //     "type": "boolean",
+            //     "default": false
+            // },
+            // "screenReaderTTSEnabled": {
+            //     "type": "boolean",
+            //     "default": false
+            // },
             "screenReaderTTSEnabled": {
-                "type": "boolean",
-                "default": false
-            },
-            "screenReaderSwitch": {
                 "type": "boolean",
                 "default": true
             },
@@ -64,29 +64,9 @@
             "screenReaderTTSEnabled": {
                 "type": "screenReaderTTSEnabled",
                 "panel": {
-                    "type": "speakText.panels.screenReaderTTSEnabled",
+                    "type": "speakText.panels.BigPanel",
                     "template": "%prefix/speakTextTemplate-screenReaderTTSEnabled.html",
                     "container": ".speakText-screenReaderTTSEnabled",
-                    "message": "%prefix/speakText.json"
-                }
-            },
-
-            "addOrRemovePreference": {
-                "type": "addOrRemovePreference",
-                "panel": {
-                    "type": "speakText.panels.addOrRemovePreference",
-                    "template": "%prefix/speakTextTemplate-addOrRemovePreference.html",
-                    "container": ".speakText-addOrRemovePreference",
-                    "message": "%prefix/speakText.json"
-                }
-            },
-
-            "screenReaderSwitch": {
-                "type": "screenReaderSwitch",
-                "panel": {
-                    "type": "speakText.panels.screenReaderSwitch",
-                    "template": "%prefix/speakTextTemplate-screenReaderSwitch.html",
-                    "container": ".speakText-screenReaderSwitch",
                     "message": "%prefix/speakText.json"
                 }
             },
@@ -94,7 +74,7 @@
             "speechRate": {
                 "type": "speechRate",
                 "panel": {
-                    "type": "speakText.panels.speechRate",
+                    "type": "speakText.panels.BigPanel",
                     "template": "%prefix/speakTextTemplate-speechRate.html",
                     "container": ".speakText-speechRate",
                     "message": "%prefix/speakText.json"
@@ -104,17 +84,17 @@
             "auditoryOutLanguage": {
                 "type": "auditoryOutLanguage",
                 "panel": {
-                    "type": "speakText.panels.auditoryOutLanguage",
-                    "template": "%prefix/speakTextTemplate-auditoryOutLanguage.html",
-                    "container": ".speakText-auditoryOutLanguage",
-                    "message": "%prefix/speakText.json"
+                    "type": "speakText.panels.BigPanel",
+                    // "template": "%prefix/speakTextTemplate-auditoryOutLanguage.html",
+                    // "container": ".speakText-auditoryOutLanguage",
+                    // "message": "%prefix/speakText.json"
                 }
             },
 
             "punctuationVerbosity": {
                 "type": "punctuationVerbosity",
                 "panel": {
-                    "type": "speakText.panels.punctuationVerbosity",
+                    "type": "speakText.panels.BigPanel",
                     "classnameMap": {"punctuationVerbosity": "@punctuationVerbosity.classes"},
                     "template": "%prefix/speakTextTemplate-punctuationVerbosity.html",
                     "container": ".speakText-punctuationVerbosity",
@@ -131,7 +111,7 @@
             "announceCapitals": {
                 "type": "announceCapitals",
                 "panel": {
-                    "type": "speakText.panels.announceCapitals",
+                    "type": "speakText.panels.BigPanel",
                     "template": "%prefix/speakTextTemplate-announceCapitals.html",
                     "container": ".speakText-announceCapitals",
                     "message": "%prefix/speakText.json"
@@ -151,10 +131,7 @@
             "keyEcho": {
                 "type": "keyEcho",
                 "panel": {
-                    "type": "speakText.panels.BigPanel",
-                    "template": "%prefix/speakTextTemplate-keyEcho.html",
-                    "container": ".speakText-keyEcho",
-                    "message": "%prefix/speakText.json"
+                    "type": "speakText.panels.BigPanel"
                 }
             },
 
@@ -162,7 +139,7 @@
                 "type": "wordEcho",
                 "panel": {
                     "type": "speakText.panels.BigPanel",
-                    "template": "%prefix/speakTextTemplate-wordEcho.html",
+                    "template": "%prefix/speakTextTemplate-CollectiveTemplate.html",
                     "container": ".speakText-wordEcho",
                     "message": "%prefix/speakText.json"
                 }
@@ -171,10 +148,7 @@
             "screenReaderBrailleOutput": {
                 "type": "screenReaderBrailleOutput",
                 "panel": {
-                    "type": "speakText.panels.screenReaderBrailleOutput",
-                    "template": "%prefix/speakTextTemplate-screenReaderBrailleOutput.html",
-                    "container": ".speakText-screenReaderBrailleOutput",
-                    "message": "%prefix/speakText.json"
+                    "type": "speakText.panels.BigPanel"
                 }
             }
         }
@@ -199,7 +173,7 @@
     //     selectors: {
     //         screenReaderTTSEnabled: ".speakText-screenReaderTTSEnabled",
     //         addOrRemovePreference: ".speakText-addOrRemovePreference",
-    //         screenReaderSwitch: ".speakText-screenReaderSwitch",
+    //         screenReaderTTSEnabled: ".speakText-screenReaderTTSEnabled",
     //         speechRate: ".speakText-speechRate",
     //         auditoryOutLanguage: ".speakText-auditoryOutLanguage",
     //         punctuationVerbosity: ".speakText-punctuationVerbosity",
@@ -229,9 +203,9 @@
     //                 gradeNames: "fluid.uiOptions.defaultPanel"
     //             }
     //         },
-    //         screenReaderSwitch: {
-    //             type: "speakText.panels.screenReaderSwitch",
-    //             container: ".speakText-screenReaderSwitch-element",
+    //         screenReaderTTSEnabled: {
+    //             type: "speakText.panels.screenReaderTTSEnabled",
+    //             container: ".speakText-screenReaderTTSEnabled-element",
     //             createOnEvent: "onUIOptionsMarkupReady",
     //             options: {
     //                 gradeNames: "fluid.uiOptions.defaultPanel"

@@ -1,7 +1,8 @@
 {
     "addOrRemovePreferenceLabelOff": "Add to my preferences",
     "addOrRemovePreferenceLabelOn": "Remove from my preferences",
-    "screenReaderTTSEnabledLabel": "speak text",
+    "speakTextPresetButtonLabel": "speak text",
+    "screenReaderTTSEnabledLabel": "Screen Reader",
     "screenReaderSwitchLabel": "Screen Reader",
     "speechRateLabel": "Words spoken per minute",
     "speechRateMinus": "-",
@@ -14,6 +15,7 @@
     "wordEchoLabel": "Echo word after typed",
     "screenReaderBrailleOutputLabel": "Braille",
     "screenReaderBrailleOutputDescription": "Output to available device",
-    "moreOptionsMoreText": "+ more",
-    "moreOptionsLessText": "- less"
+    "moreOptionsMoreText": "+ moreeeeeeeeeeee",
+    "moreOptionsLessText": "- lesssssssssssss",
+    "moreOptions": "+ more"
 }

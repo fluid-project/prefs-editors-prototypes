@@ -33,7 +33,7 @@
     color:transparent;
 }
 
-.speech-rate {
+#speech-rate {
     position: relative;
     display: none;
 }
@@ -72,13 +72,11 @@ textarea:focus, input:focus {
     margin-left: 100px;
 }
 
-.expanded-top {
-    display: none;
-    height: 55px;
-    padding-bottom: -50px;
+#screenReaderSwitch-div {
+    height: 60px;
 }
 
-.expanded-bottom {
+.fully-expanded {
     display: none;
 }
 
@@ -213,12 +211,6 @@ input[type=checkbox] + label.pref-checkbox-label {
 
 input[type=checkbox]:checked + label.pref-checkbox-label {
     background: url('../images/star-light.png') no-repeat;
-    height: 21px;
-    width: 21px;
-    background-size:21px 21px;
-    position: absolute;
-    margin-left: 329px;
-    cursor: pointer;
 }
 
 input[type=checkbox] + label.main-checkbox-label {
