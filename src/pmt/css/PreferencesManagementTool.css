@@ -414,3 +414,15 @@ input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio
 .flc-uiOptions-preview-per-setting-frame {
 	width: 100% !important;
 }
+
+.flc-uiOptions-preview-per-setting-container {
+	background-color: #d3dfdf;
+	border: 1px solid #beced1;
+	color: #B8C9CC;
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+.flc-uiOptions-preview-per-setting-container:before {
+	content: "\e00c";
+}
