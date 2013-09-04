@@ -417,6 +417,7 @@ input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio
 */
 .flc-uiOptions-preview-per-setting-frame {
 	width: 100% !important;
+	margin-top: -1em;
 }
 
 .flc-uiOptions-preview-per-setting-container {
@@ -437,4 +438,30 @@ input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio
     margin-left: 0.1em;
     margin-top: 0.1em;
     width: 0.5em;
+}
+
+.flc-uiOptions-preview-per-setting-body {
+	width: 100% !important;
+	height: 100% !important;
+	margin: 0;
+}
+
+.flc-uiOptions-preview-per-setting-div {
+	width: 100%; 
+	height: 100%; 
+	position: relative;
+}
+
+.flc-uiOptions-preview-per-setting-div-inner { 
+	position: absolute; 
+	display: table; 
+	width: 100%; 
+	height: 100%; 
+}
+
+.flc-uiOptions-preview-per-setting-div-inner p {
+	display: table-cell; 
+	vertical-align: middle; 
+	text-align: center; 
+	padding: 10px;
 }
