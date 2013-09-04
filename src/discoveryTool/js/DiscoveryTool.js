@@ -119,6 +119,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     "this": "{that}.dom.toggleButton",
                     method: "attr",
                     args: ["aria-label", "{arguments}.0"]
+                },
+                setExpanded: {
+                    "this": "{that}.dom.panel",
+                    method: "attr",
+                    args: ["aria-expanded", "{arguments}.0"]
                 }
             },
             listeners: {
@@ -127,16 +132,28 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     listener: "{that}.setLabel",
                     args: "{that}.options.strings.showLabel"
                 },
+                "onCreate.showExpanded": {
+                    listener: "{that}.setExpanded",
+                    args: "{that}.model.isShowing"
+                },                
                 "onPanelHide.showIcon": "{that}.showDiscoveryIcon",
                 "onPanelHide.showLabel": {
                     listener: "{that}.setLabel",
                     args: "{that}.options.strings.showLabel"
                 },
+                "onPanelHide.showExpanded": {
+                    listener: "{that}.setExpanded",
+                    args: "false"
+                },                
                 "onPanelShow.showIcon": "{that}.hideDiscoveryIcon",
                 "onPanelShow.showLabel": {
                     listener: "{that}.setLabel",
                     args: "{that}.options.strings.hideLabel"
-                }
+                },
+                "onPanelShow.showExpanded": {
+                    listener: "{that}.setExpanded",
+                    args: "true"
+                }                
             }
         },
         invokers: {
