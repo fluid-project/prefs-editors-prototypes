@@ -11,6 +11,11 @@
 /*
 	General preferences styling
 */
+
+body {
+	transform-origin: 0 0 0;	
+}
+
 .preference {
 	background:#ECEFEF;
 	width: 340px;
