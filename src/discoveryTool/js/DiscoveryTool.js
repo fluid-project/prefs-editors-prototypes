@@ -135,7 +135,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 "onCreate.showExpanded": {
                     listener: "{that}.setExpanded",
                     args: "{that}.model.isShowing"
-                },                
+                },
                 "onPanelHide.showIcon": "{that}.showDiscoveryIcon",
                 "onPanelHide.showLabel": {
                     listener: "{that}.setLabel",
@@ -144,7 +144,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 "onPanelHide.showExpanded": {
                     listener: "{that}.setExpanded",
                     args: "false"
-                },                
+                },
                 "onPanelShow.showIcon": "{that}.hideDiscoveryIcon",
                 "onPanelShow.showLabel": {
                     listener: "{that}.setLabel",
@@ -153,7 +153,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 "onPanelShow.showExpanded": {
                     listener: "{that}.setExpanded",
                     args: "true"
-                }                
+                }
             }
         },
         invokers: {
@@ -195,7 +195,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             }]
         };
 
-        element.fluid("tabbable");
         fluid.activatable(element, null, keybindingOpts);
     };
 
