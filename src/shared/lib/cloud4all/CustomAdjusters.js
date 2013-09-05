@@ -49,6 +49,13 @@
             valueText: "${value}"
         },
         
+        invokers: {
+            updateAdjusterUI: {
+                funcName: "fluid.uiOptions.panels.updateAdjusterUI",
+                args: ["{that}"]
+            }
+        },
+        
         finalInitFunction: "fluid.uiOptions.panels.textSize.finalInit"
     });
 	
@@ -159,6 +166,13 @@
             valueText: "${value}",
             
             finalInitFunction: "fluid.uiOptions.panels.magnifier.finalInit"
+        },
+        
+        invokers: {
+            updateAdjusterUI: {
+                funcName: "fluid.uiOptions.panels.updateAdjusterUI",
+                args: ["{that}"]
+            }
         }
 	});
 	
@@ -332,7 +346,24 @@
         });
     };
     
-    
+	fluid.uiOptions.panels.updateAdjusterUI = function (that) {
+		// append metric unit if there is one
+		if(that.options.metricUnit)
+		{
+			that.locate("valueText").val(that.model.value + that.options.metricUnit);
+		}
+
+		// if we've reached min range
+		if(that.model.value == that.options.range.min)
+		{	// set style
+			that.locate("minus").css("color", "lightGray");
+			that.events.minRangeReached.fire();
+		}
+		else
+		{	// recover style
+			that.locate("minus").css("color", "black");
+		}
+	};
     
 	function plusMinusAdjusterFinalInit(that) {
 		that.applier.modelChanged.addListener("value", function(newValue)
@@ -347,22 +378,8 @@
 			}
 		});
 		
-		that.events.minRangeReached.addListener(function () {
-			that.locate("minus").css("color", "lightGray");
-		});
-		
 		that.events.afterRender.addListener(function () {
-			// append metric unit if there is one
-			if(that.options.metricUnit)
-			{
-				that.locate("valueText").val(that.model.value + that.options.metricUnit);
-			}
-
-			// if we've reached min range
-			if(that.options.minRangeReached)
-			{	// fire event
-				that.events.minRangeReached.fire();
-			}
+			that.updateAdjusterUI();
 
 			that.locate("minus").click(
 					function()
@@ -372,7 +389,7 @@
 						{
 							//that.locate("valueText").val(newValue);
 							that.applier.requestChange("value", newValue);
-							that.refreshView();
+							that.updateAdjusterUI();
 						}
 					}
 			);
@@ -381,9 +398,9 @@
 					function()
 					{
 						var newValue =  parseFloat(that.model.value) + parseFloat(that.options.range.divisibleBy);
-						//that.locate("valueText").val(newValue);
 						that.applier.requestChange("value", newValue);
-						that.refreshView();
+						that.updateAdjusterUI();
+						//that.locate("valueText").val(newValue);
 					}
 			);
 
@@ -401,7 +418,7 @@
 						
 			        	//that.locate("valueText").val(that.locate("valueText").val() + " " + that.options.metricUnit);
 						that.applier.requestChange("value", newValue);
-						that.refreshView();
+						that.updateAdjusterUI();
 						
 					}
 			);
