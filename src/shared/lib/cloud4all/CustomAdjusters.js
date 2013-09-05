@@ -127,6 +127,51 @@
 		}
 	});
 
+	fluid.defaults("fluid.uiOptions.enactors.cursorSize", {
+        gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
+        preferenceMap: {
+            "fluid.uiOptions.cursorSize": {
+                "model.value": "default"
+            }
+        },
+        invokers: {
+            set: {
+                funcName: "fluid.uiOptions.enactors.cursorSize.set",
+                args: ["{arguments}.0", "{that}"]
+            }
+        },
+        listeners: {
+            onCreate: {
+                listener: "{that}.set",
+                args: "{that}.model.value"
+            }
+        }
+    });
+
+    fluid.uiOptions.enactors.cursorSize.set = function (times, that) {
+    	//alert("fluid.uiOptions.enactors.cursorSize.set");
+    	
+		//that.locate("valueText").val("aaa");
+		$(".flc-uiOptions-cursor-size .flc-uiOptions-preview-per-setting-frame").contents().find("html").css("font-size", times + "em");
+		
+        // Calculating the initial size here rather than using a members expand because the "font-size"
+        // cannot be detected on hidden containers such as fat paenl iframe.
+        /*if (!that.initialSize) {
+            that.initialSize = that.getTextSizeInEm();
+        }
+
+        if (that.initialSize) {
+            var targetSize = times * that.initialSize;
+            that.container.css("font-size", targetSize + "em");
+        }*/
+    };
+    
+    fluid.uiOptions.enactors.cursorSize.finalInit = function (that) {
+        that.applier.modelChanged.addListener("value", function (newModel) {
+            that.set(newModel.value);
+        });
+    };
+    
 	fluid.defaults("fluid.uiOptions.panels.magnifier", {
 		gradeNames: ["fluid.uiOptions.panels", "autoInit"],
 		preferenceMap: {

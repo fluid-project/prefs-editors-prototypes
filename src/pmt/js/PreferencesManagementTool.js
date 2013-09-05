@@ -82,16 +82,7 @@
 	        "cursorSize": {
 	            "type": "fluid.uiOptions.cursorSize",
 	            "enactor": {
-	                "type": "fluid.uiOptions.enactors.textSize",
-	                "fontSizeMap": {
-	                    "xx-small": "9px",
-	                    "x-small": "11px",
-	                    "small": "13px",
-	                    "medium": "15px",
-	                    "large": "18px",
-	                    "x-large": "23px",
-	                    "xx-large": "30px"
-	                }
+	                "type": "fluid.uiOptions.enactors.cursorSize"
 	            },
 	            "panel": {
 	                "type": "fluid.uiOptions.panels.cursorSize",
