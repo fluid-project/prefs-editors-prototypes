@@ -21,45 +21,39 @@ var demo = demo || {};
     fluid.staticEnvironment["gpii--discoveryTool--demo"] = fluid.typeTag("gpii.discoveryTool.demo");
 
     var pathToTemplates = "../../src/discoveryTool/html/";
+    var pathToMessages = "../../src/discoveryTool/messages/";
     var pathToTocTemplate = "../../src/shared/lib/infusion/components/tableOfContents/html/TableOfContents.html";
 
     demo.initSettingsStore = function () {
-        fluid.globalSettingsStore();
+        return fluid.globalSettingsStore();
     };
 
     demo.initPageEnhancer = function (customThemeName) {
-        fluid.pageEnhancer({
-            gradeNames: ["gpii.discoveryTool.enactorSet"],
-            tocTemplate: pathToTocTemplate,
-            classnameMap: {
-                theme: {
-                    "default": customThemeName
-                }
-            },
-            events: {
-                simplifyContentChanged: null
-            },
-            listeners: {
-                simplifyContentChanged: {
-                    listener: "gpii.discoveryTool.updateToc",
-                    args: "{that}.tableOfContents"
+        return fluid.pageEnhancer({
+            uiEnhancer: {
+                gradeNames: ["gpii.discoveryTool.enactorSet"],
+                tocTemplate: pathToTocTemplate,
+                classnameMap: {
+                    theme: {
+                        "default": customThemeName
+                    }
                 }
             }
         });
     };
 
-    demo.initFatPanel = function (container) {
-        gpii.discoveryTool(container, {
+    demo.initDiscoveryTool = function (container) {
+        return gpii.discoveryTool(container, {
             templatePrefix: pathToTemplates,
+            messagePrefix: pathToMessages,
             templateLoader: {
-                options: {
-                    gradeNames: ["gpii.discoveryTool.templateLoader"]
-                }
+                gradeNames: ["gpii.discoveryTool.templateLoader"]
+            },
+            messageLoader: {
+                gradeNames: ["gpii.discoveryTool.messageLoader"]
             },
             uiOptions: {
-                options: {
-                    gradeNames: ["gpii.discoveryTool.panels", "gpii.discoveryTool.rootModel", "fluid.uiOptions.uiEnhancerRelay"]
-                }
+                gradeNames: ["gpii.discoveryTool.panels", "gpii.discoveryTool.rootModel", "fluid.uiOptions.uiEnhancerRelay"]
             }
         });
     };
@@ -72,17 +66,12 @@ var demo = demo || {};
         }
     });
 
-    fluid.demands("fluid.uiOptions.templateLoader", ["gpii.discoveryTool", "gpii.discoveryTool.demo"], {
+    fluid.demands("gpii.discoveryTool.enactors.showMoreText", "gpii.discoveryTool.demo", {
         options: {
-            templates: {
-                uiOptions: "../../src/discoveryTool/html/DiscoveryTool.html",
-                highContrast: "../../src/discoveryTool/html/HighContrastPanelTemplate.html",
-                lowContrast: "../../src/discoveryTool/html/LowContrastPanelTemplate.html",
-                increaseSize: "../../src/discoveryTool/html/IncreaseSizePanelTemplate.html",
-                simplify: "../../src/discoveryTool/html/SimplifyPanelTemplate.html",
-                spoken: "../../src/discoveryTool/html/SpokenPanelTemplate.html"
+            selectors: {
+                // exclude the next/previous, thumbs buttons from the 'more text' functionality
+                images: "img:not('.fl-icon-next, .fl-icon-prev, .fl-icon-thumbsUp, .fl-icon-thumbsDown'), [role~='img']:not('.fl-icon-next, .fl-icon-prev, .fl-icon-thumbsUp, .fl-icon-thumbsDown')"
             }
         }
     });
-
 })(jQuery, fluid);
