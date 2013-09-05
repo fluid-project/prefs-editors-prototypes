@@ -15,7 +15,7 @@
         // Note: Except for being passed down to its subcomponent, these default values are not contributed and shared out
         range: {
             min: 1,
-            max: 2,
+            max: 1000,
             divisibleBy: 1
         },
         
@@ -80,12 +80,14 @@
 			"fluid.uiOptions.cursorSize": {
 				"model.value": "default",
 				"range.min": "minimum",
-				"range.max": "maximum"
+				"range.max": "maximum",
+                "range.divisibleBy": "divisibleBy"
 			}
 		},
 		range: {
 			min: 1,
-			max: 5
+			max: 5,
+            divisibleBy: 0.2
 		},
 		components: {
             preview: {
@@ -114,7 +116,7 @@
 		},
 		sliderOptions: {
 			orientation: "horizontal",
-			step: 0.5,
+			step: 0.2,
 			range: "min"
 		}
 	});
@@ -161,9 +163,9 @@
 			}
 		},
 		range: {
-			min: 1,
-			max: 10,
-            divisibleBy: 1
+			min: 100,
+			max: 10000,
+            divisibleBy: 50
 		},
 
 		metricUnit: "%",

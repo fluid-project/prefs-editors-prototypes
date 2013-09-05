@@ -21,13 +21,13 @@
 	        "default": 1,
 	        "minimum": 1,
 	        "maximum": 5,
-	        "divisibleBy": 0.5
+	        "divisibleBy": 0.2
 	    },
 	    "fluid.uiOptions.magnifier": {
 	        "type": "number",
 	        "default": 100,
 	        "minimum": 100,
-	        "maximum": 1000,
+	        "maximum": 10000,
 	        "divisibleBy": 50
 	    },
 	    "fluid.uiOptions.magnifierPosition": {
