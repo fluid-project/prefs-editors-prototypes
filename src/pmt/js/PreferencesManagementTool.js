@@ -61,16 +61,7 @@
 	        "textSize": {
 	            "type": "fluid.uiOptions.textSize",
 	            "enactor": {
-	                "type": "fluid.uiOptions.enactors.textSize",
-	                "fontSizeMap": {
-	                    "xx-small": "9px",
-	                    "x-small": "11px",
-	                    "small": "13px",
-	                    "medium": "15px",
-	                    "large": "18px",
-	                    "x-large": "23px",
-	                    "xx-large": "30px"
-	                }
+	                "type": "fluid.uiOptions.enactors.textSize"
 	            },
 	            "panel": {
 	                "type": "fluid.uiOptions.panels.textSize",

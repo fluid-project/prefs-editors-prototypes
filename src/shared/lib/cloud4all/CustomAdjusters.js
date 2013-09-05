@@ -203,7 +203,14 @@
                 funcName: "fluid.uiOptions.panels.updateAdjusterUI",
                 args: ["{that}"]
             }
-        }
+        },
+        
+        outerPreviewEnhancerOptions: "{originalEnhancerOptions}.options.originalUserOptions",
+        distributeOptions: [{
+            source: "{that}.options.outerPreviewEnhancerOptions",
+            removeSource: true,
+            target: "{that preview enhancer}.options"
+        }]
 	});
 	
 	fluid.defaults("fluid.uiOptions.enactors.magnifier", {
@@ -228,7 +235,8 @@
     });
 
     fluid.uiOptions.enactors.magnifier.set = function (times, that) {
-		$(".flc-uiOptions-magnifier .flc-uiOptions-preview-per-setting-frame").contents().find("html").css("transform", "scale(" + times/100 + ")");
+		//$(".flc-uiOptions-magnifier .flc-uiOptions-preview-per-setting-frame").contents().find("html").css("transform", "scale(" + times/100 + ")");
+        that.container.css("transform", "scale(" + times/100 + ")");
     };
     
     fluid.uiOptions.enactors.magnifier.finalInit = function (that) {
