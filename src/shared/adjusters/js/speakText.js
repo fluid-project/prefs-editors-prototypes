@@ -101,7 +101,7 @@
                 "type": "announceCapitals",
                 "panel": {
                     "type": "speakText.panels.BigPanel",
-                    "template": "%prefix/speakTextTemplate-CollectiveTemplate.html",
+                    "template": "%prefix/speakTextCollectiveTemplate.html",
                     "container": ".speakText-wordEcho",
                     "message": "%prefix/speakText.json"
                 }
