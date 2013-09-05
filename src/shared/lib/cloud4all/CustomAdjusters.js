@@ -56,7 +56,14 @@
             }
         },
         
-        finalInitFunction: "fluid.uiOptions.panels.textSize.finalInit"
+        finalInitFunction: "fluid.uiOptions.panels.textSize.finalInit",
+        
+        outerPreviewEnhancerOptions: "{originalEnhancerOptions}.options.originalUserOptions",
+        distributeOptions: [{
+            source: "{that}.options.outerPreviewEnhancerOptions",
+            removeSource: true,
+            target: "{that preview enhancer}.options"
+        }]
     });
 	
 	fluid.uiOptions.panels.textSize.finalInit = function(that){
