@@ -28,6 +28,12 @@
          url('../fonts/GPII-DiscoveryTool.eot'),
          url('../fonts/GPII-DiscoveryTool.ttf');
 }
+@font-face {
+    font-family: 'MoreText';
+    src:url('../fonts/GPII-DiscoveryTool-MoreText.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/GPII-DiscoveryTool-MoreText.eot'),
+         url('../fonts/GPII-DiscoveryTool-MoreText.ttf');
+}
 
 .fl-uiOptions-discoveryTool {
     background-color: #6f7b80;
@@ -39,6 +45,59 @@
 .fl-uiOptions-discoveryTool .fl-uiOptions {
     font-family: 'OpenSans',"Myriad Pro", Helvetica, Arial, sans-serif;
     padding-top: 1em;
+}
+
+/* more-text display */
+.fl-discoveryTool-moreText {
+    position: relative;
+    padding-top: 3em; /* to make room for the T above the text */
+}
+.fl-discoveryTool-moreText details {
+    display: block;
+    background-color: #cccccc;
+}
+.fl-discoveryTool-moreText details[open] summary {
+    float: left;
+}
+.fl-discoveryTool-moreText details summary { /* to position the T above the text */
+    position: absolute;
+    top: 0em;
+}
+.fl-discoveryTool-moreText details summary::-webkit-details-marker {
+    display:none;
+}
+.fl-discoveryTool-moreText details summary:before {
+    content: "\e007";
+    font-family: 'MoreText';
+    color: #FFFFFF;
+    background-color: #4f4f4f;
+    font-size: 2em;
+    border-radius: 0.5em;
+}
+.fl-discoveryTool-moreText details summary:focus:before {
+    border: 2px solid #4f4f4f;
+    color: #4f4f4f;
+    background-color: #ffffff;
+}
+.fl-theme-uio-bw .fl-discoveryTool-moreText details summary:before,
+.fl-theme-uio-bw .fl-discoveryTool-moreText details {
+    color: #ffffff !important;
+    background-color: #000000 !important;
+}
+.fl-theme-uio-lgdg .fl-discoveryTool-moreText details summary:before,
+.fl-theme-uio-lgdg .fl-discoveryTool-moreText details {
+    background-color: #BDBDBB !important;
+    color: #555555 !important;
+}
+.fl-theme-uio-bw .fl-discoveryTool-moreText details summary:focus:before {
+    border: 2px solid #000000 !important;
+    color: #000000 !important;
+    background-color: #ffffff !important;
+}
+.fl-theme-uio-lgdg .fl-discoveryTool-moreText details summary:focus:before {
+    border: 2px solid #BDBDBB !important;
+    color: #BDBDBB !important;
+    background-color: #555555 !important;
 }
 
 /* Panels */
@@ -72,7 +131,6 @@
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel label .fl-icon-text {
     margin-top: -1.8em;
 }
-
 
 /* Panel states */
 
@@ -217,6 +275,15 @@
 .fl-discoveryTool-icon-high-contrast:hover:after,
 .fl-discoveryTool-hover .fl-discoveryTool-icon-high-contrast:after  {content: "\e010";}
 
+.fl-discoveryTool-icon-moreText:before       {content: "\e007";}
+.fl-discoveryTool-icon-moreText:after        {content: "\e013";}
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel input:focus + label span.fl-discoveryTool-icon-moreText:before, /* applied when keyboard focused */
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel input:checked:focus + label span.fl-discoveryTool-icon-moreText:before, /* applied when focused and checked*/
+.fl-discoveryTool-icon-moreText:hover:before {content: "\e000";}
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel input:focus + label span.fl-discoveryTool-icon-moreText:after, /* applied when keyboard focused */
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel input:checked:focus + label span.fl-discoveryTool-icon-moreText:after, /* applied when focused and checked*/
+.fl-discoveryTool-icon-moreText:hover:after  {content: "\e00c";}
+
 .fl-discoveryTool-icon-low-contrast:before       {content: "\e006";}
 .fl-discoveryTool-icon-low-contrast:after        {content: "\e012";}
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:focus + label span.fl-discoveryTool-icon-low-contrast:before, /* applied when keyboard focused */
@@ -281,11 +348,12 @@
     border: 2px solid;
 }
 
-.fl-theme-bw .fl-uiOptions input:focus + label,
-.fl-theme-lgdg .fl-uiOptions input:focus + label {
-    outline: none;
-    border: 0.2em solid #00AAFF;
-}
+.fl-theme-bw .fl-uiOptions-panel label,
+.fl-theme-lgdg .fl-uiOptions-panel label,
+.fl-theme-bw .fl-uiOptions-panels li.fl-uiOptions-panel .fl-discoveryTool-try,
+.fl-theme-lgdg .fl-uiOptions-panels li.fl-uiOptions-panel .fl-discoveryTool-try { padding-top: 4px; }
+.fl-theme-bw .fl-uiOptions-panel input:focus + label .fl-discoveryTool-panel-icon { outline: 4px solid #fff; box-shadow: none; }
+.fl-theme-lgdg .fl-uiOptions-panel input:focus + label .fl-discoveryTool-panel-icon { outline: 4px solid #555; box-shadow: none; }
 
 .fl-theme-bw .fl-uiOptions-panel label:hover .fl-icon-text,
 .fl-theme-bw .fl-uiOptions-panel .fl-discoveryTool-hover label .fl-icon-text,
