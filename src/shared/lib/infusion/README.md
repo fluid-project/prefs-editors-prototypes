@@ -1,15 +1,15 @@
 
 The version of Infusion included in this folder was created using a custom build from commit
 
-    c9914b9c609d4b3ba614977d47859fe5c951e335
+    68cbc4df42046554258cb0014dbb5b17da14df23
 
-of the Infusion FLUID-4907 branch
+of the Infusion master branch
 
-    https://github.com/jobara/infusion/tree/FLUID-4907
+    https://github.com/fluid-project/infusion
 
 using the command line
 
-    ant -lib lib/rhino customBuild -Dinclude="uiOptions" -DnoMinify="true"
+    ant -lib lib/rhino customBuild -Dinclude="uiOptions, enhancement" -DnoMinify="true"
 
 The following directories were stripped out of the build since they contain code that is included in the MyInfusion.js file:
 
@@ -17,6 +17,7 @@ The following directories were stripped out of the build since they contain code
     src/shared/lib/infusion/components/tabs/
     src/shared/lib/infusion/components/uiOptions/js/
     src/shared/lib/infusion/framework/core/
+    src/shared/lib/infusion/framework/enhancement/
     src/shared/lib/infusion/framework/renderer/
     src/shared/lib/infusion/lib/fastXmlPull/
     src/shared/lib/infusion/lib/jquery/core/

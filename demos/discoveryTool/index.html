@@ -8,36 +8,38 @@
     <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/framework/fss/css/fss-layout.css" />
     <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/framework/fss/css/fss-text.css" />
     <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/components/uiOptions/css/fss/fss-theme-bw-uio.css" />
-    <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/components/uiOptions/css/fss/fss-theme-wb-uio.css" />    
+    <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/components/uiOptions/css/fss/fss-theme-wb-uio.css" />
     <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/components/uiOptions/css/fss/fss-theme-lgdg-uio.css" />
-    <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/components/uiOptions/css/fss/fss-theme-dglg-uio.css" />    
+    <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/components/uiOptions/css/fss/fss-theme-dglg-uio.css" />
 
+    <link rel="stylesheet" type="text/css" href="../../src/discoveryTool/css/DiscoveryTool.css" />
     <link rel="stylesheet" type="text/css" href="demo.css" />
 
     <script type="text/javascript" src="../../src/shared/lib/infusion/MyInfusion.js"></script>
+    <script type="text/javascript" src="../../src/shared/lib/buzz/js/buzz.js"></script>
     <script type="text/javascript" src="../../src/discoveryTool/js/SelfVoicingEnactor.js"></script>
     <script type="text/javascript" src="../../src/discoveryTool/js/DiscoveryTool.js"></script>
 
     <script type="text/javascript" src="demo.js"></script>
 </head>
 
-<body class="discovery-tool-demo">
+<body class="discovery-tool-demo fl-focus">
 
     <script type="text/javascript">
         $(document).ready(function () {
             demo.initSettingsStore();
             demo.initPageEnhancer("discovery-tool-theme");
-            demo.initFatPanel(".flc-uiOptions-fatPanel");
+            demo.initDiscoveryTool(".flc-uiOptions-discoveryTool");
         })
     </script>
 
     <div class="flc-toc-tocContainer toc"> </div>
 
-    <div class="flc-uiOptions-content">
+    <div>
         <header id="main-header">
             <div id="main-header-content">
-                <img src="images/logo_ck12.png" alt="ck-12 logo" />
-
+                <span class="fl-icon-tree" aria-label="Generic Logo" role="img"></span>
+				<span class="fl-header-title">Richmond Open Learning</span>
                 <div>
                     <input type="search" placeholder="SEARCH" /> <span class="fl-icon-search" role="presentation"></span><a href="#" class="subjects">Subjects</a>
                 </div>
@@ -46,22 +48,22 @@
 
         <section class="main-content">
             <header class="fl-clearfix">
-                <img src="images/electrons.png" alt="Image of electrons" />
+                <span class="fl-icon-atom" aria-label="Graphic of an atom" role="img"></span>
                 <h1>Electrons</h1>
 
                 <div id="breadcrumbs">
-                    <a href="#">Physical Science</a> > 
+                    <a href="#">Physical Science</a> >
                     <a href="#">Electrons</a>
                 </div>
 
                 <div id="prevNext">
-                    <a href="#"><span class="fl-icon-prev" aria-label="Previous" role="image"></span></a>  
-                    <a href="#"><span class="fl-icon-next" aria-label="Next" role="image"></span></a>
+                    <a href="#"><span class="fl-icon-prev" aria-label="Previous" role="img"></span></a>
+                    <a href="#"><span class="fl-icon-next" aria-label="Next" role="img"></span></a>
                 </div>
             </header>
 
             <div id="main">
-                <div id="article-filters" class="fl-clearfix">
+                <div id="article-filters" class="flc-uiOptions-simplify-hide fl-clearfix">
                     <div id="article-filter">
                         <span class="fl-font-size-130">Read</span><br>
                         Basic
@@ -76,18 +78,17 @@
                     </div>
                 </div>
 
-                <div id="helpful" class="fl-clearfix">
+                <div id="helpful" class="flc-uiOptions-simplify-hide fl-clearfix">
                     <h1>Electrons</h1>
 
                     <div>
                         Was this helpful?
-                        <span class="fl-icon-thumbsUp" aria-label="Yes, thumbs up" role="image"></span>
-                        <span class="fl-icon-thumbsDown" aria-label="No, thumbs down" role="image"></span>
+                        <span class="fl-icon-thumbsUp" aria-label="Yes, thumbs up" role="img"></span>
+                        <span class="fl-icon-thumbsDown" aria-label="No, thumbs down" role="img"></span>
                     </div>
                 </div>
-                <div class="resource-tools">
+                <div class="flc-uiOptions-simplify-hide resource-tools">
                     <menu type="toolbar" class="tools">
-                        <li><a href="#">Add to FlexBook</a></li>
                         <li><a href="#">Make a Copy</a></li>
                         <li><a href="#">Details</a></li>
                         <li><a href="#">Resources</a></li>
@@ -98,8 +99,7 @@
 
                 <article id="content">
                 <section>
-                <div id="storm" role="img" aria-label="Photo of stormy sky, with lightning striking over a city."></div>
-                <details>Photo of stormy sky, with lightning striking over a city.</details>
+                <div id="storm" role="img" class="main-content-image" aria-label="Photo of stormy sky, with lightning striking over a city."></div>
                 <p>Watch out! Lightning is extremely dangerous. A single bolt of lightning can carry a billion volts of electricity. That’s enough energy to light a 100-watt light bulb—for three months! As impressive as it is, lightning is nothing more than a sudden flow of extremely tiny particles. What are the particles that flow in a lightning bolt? The answer is electrons.</p>
                 </section>
 
@@ -122,16 +122,14 @@
                     <h2>Where Are Electrons?</h2>
 
                     <p>Unlike protons and neutrons, which are located inside the nucleus at the center of the atom, electrons are found outside the nucleus. Because opposite electric charges attract each other, negative electrons are attracted to the positive nucleus. This force of attraction keeps electrons constantly moving through the otherwise empty space around the nucleus. The Figure shown below is a common way to represent the structure of an atom. It shows the electron as a particle orbiting the nucleus, similar to the way that planets orbit the sun.</p>
-                    <h3>Model of Atomic Structure</h3>             
-                    <div id="structure" role="img" aria-label="Model of atomic structure" aria-describedby="structure-descrip"></div>                    
+                    <h3>Model of Atomic Structure</h3>
+                    <div id="structure" role="img" class="main-content-image" aria-label="Model of atomic structure: This image illustrates atomic structure: a cluster of three neutrons (labelled '2') and three protons (labelled '3') are surrounded by two rings of electrons (labelled '1'). The inner ring has two electrons on it and the outer ring has one." aria-describedby="structure-descrip"></div>
                     <ol id="structure-descrip">
                         <li>Electron</li>
                         <li>Neutron</li>
-                        <li>Proton</li>                                                
+                        <li>Proton</li>
                     </ol>
-                    <details>This image illustrates atomic structure: a cluster of three neutrons (labelled "2") and three protons (labelled "3") are surrounded by two rings of electrons (labelled "1"). The inner ring has two electrons on it and the outer ring has one.</details>                           
-                </section>  
-    
+                </section>
                 <section>
                     <h2>Orbitals</h2>
 
@@ -139,26 +137,24 @@
 
                     <p>http://www.youtube.com/watch?v=K-jNgq16jEY (1:37)</P>
                     <p>VIDEO PLAYER HERE</p>
-                    
+
                     <div class="fl-clearfix">
-                        <div class="fl-force-left" style="width: 45%">                    
+                        <div class="fl-force-left demo-orbitals">
                         <h3>S Orbital</h3>
-                        <div id="sorbital" role="img" aria-label="Image showing an S orbital" aria-describedby="sorb-descrip"></div>
-                        <details id="sorb-descrip">An image of an S Orbital: a multi-coloured set of rings made of small dots, radiating out from a red coloured centre. The rings closest to the centre are red and close together, the rings further out from the centre are pink and a bit more spaced apart, and the outer-most rings are blue and have more space between them.</details>                        
-                        </div>                        
-                        
-                        <div class="fl-force-left" style="width: 45%">
-                        <h3>P Orbital</h3>                                              
-                        <div id="porbital" role="img" aria-label="Image showing a P orbital" aria-describedby="porb-descrip"></div>
-                        <details id="porb-descrip">An image of an P Orbital: two red coloured centres surrounded by rings, pressed together. The rings closest to each centre are red and close together, the rings further out from each centre are pink and a bit more spaced apart, and the outer-most rings are blue and have more space between them. Where the two meet the rings are bright blue and flattened together.</details>  
+                        <div id="sorbital" role="img" class="main-content-image" aria-label="An image of an S Orbital: a multi-coloured set of rings made of small dots, radiating out from a red coloured centre. The rings closest to the centre are red and close together, the rings further out from the centre are pink and a bit more spaced apart, and the outer-most rings are blue and have more space between them."></div>
+                        </div>
+
+                        <div class="fl-force-left demo-orbitals">
+                        <h3>P Orbital</h3>
+                        <div id="porbital" role="img" class="main-content-image" aria-label="An image of an P Orbital: two red coloured centres surrounded by rings, pressed together. The rings closest to each centre are red and close together, the rings further out from each centre are pink and a bit more spaced apart, and the outer-most rings are blue and have more space between them. Where the two meet the rings are bright blue and flattened together."></div>
                         </div>
                     </div>
-                
+
                     <p><strong>Q:</strong> How many electrons can there be in each type of orbital shown above?</p>
                     <p><strong>A:</strong> There can be a maximum of two electrons in any orbital, regardless of its shape.</p>
                     <p><strong>Q:</strong> Where is the nucleus in each orbital?</p>
                     <p><strong>A:</strong> The nucleus is at the center of each orbital. It is in the middle of the sphere in the S orbital and in the pinched part of the P orbital.</p>
-                </section> 
+                </section>
 
                 <section>
                     <h2>What’s Your Energy Level?</h2>
@@ -170,19 +166,18 @@
 
 <p>Electrons at the outermost energy level of an atom are called valence electrons. They determine many of the properties of an element. That’s because these electrons are involved in chemical reactions with other atoms. Atoms may share or transfer valence electrons. Shared electrons bind atoms together to form chemical compounds.</p>
 
-<p>You can see all of these ideas in action at the following URL (scroll down to the animation at the bottom of the Web page): http://www.brooklyn.cuny.edu/bc/ahp/SDPS/SD.PS.electrons.html</p>                 
-                    
-                    <h3>Energy Levels and Electrons</h3>                   
-                    <div id="energylevels" role="img" aria-label="Graphic showing energy levels and electrons" aria-describedby="energy-descrip"></div>         
-                    <div id="energy-descrip">          
+<p>You can see all of these ideas in action at the following URL (scroll down to the animation at the bottom of the Web page): http://www.brooklyn.cuny.edu/bc/ahp/SDPS/SD.PS.electrons.html</p>
+
+                    <h3>Energy Levels and Electrons</h3>
+                    <div id="energylevels" role="img" class="main-content-image" aria-label="Graphic showing energy levels and electrons: This diagram shows a circle (labelled '1') surrounded by three rings, labelled moving outward from the centre '2', '3' and '4'."></div>
+                    <div id="energy-descrip">
                     <ol>
                         <li><strong>Nucleus</strong> - contains protons and neutrons</li>
                         <li><strong>1st energy level</strong> - can hold a maximum of 2 electrons in one orbital</li>
                         <li><strong>2nd energy level</strong> - can hold a maximum of 8 electrons over 4 different orbitals</li>
-                        <li><strong>3rd energy level</strong> - can hold a maximum of 18 electrons distributed over 9 different orbitals</li>                                                
+                        <li><strong>3rd energy level</strong> - can hold a maximum of 18 electrons distributed over 9 different orbitals</li>
                     </ol>
-                    <details>This diagram shows a circle (labelled "1") surrounded by three rings, labelled moving outward from the centre "2", "3" and "4".</details>                    
-                    </div>                     
+                    </div>
                     <p><strong>Q:</strong> How many electrons can there be in each type of orbital shown above?</p>
                     <p><strong>A:</strong> There can be a maximum of two electrons in any orbital, regardless of its shape.</p>
                     <p><strong>Q:</strong> Where is the nucleus in each orbital?</p>
@@ -242,19 +237,20 @@
         </section>
     </div>
 
-    <!-- BEGIN markup for fat-panel UI Options -->
-    <div class="flc-uiOptions-fatPanel fl-uiOptions-discoveryTool">
+    <!-- BEGIN markup for discoveryTool -->
+    <div class="flc-uiOptions-discoveryTool fl-uiOptions-discoveryTool">
 
-        <!-- This div is for the sliding panel that shows and hides the UI Options controls -->
+        <!-- This div is for the sliding panel that shows and hides the discoveryTool controls -->
         <div class="fl-panelBar fl-inverted-color">
             <!-- button id="reset" class="flc-uiOptions-reset fl-uiOptions-reset"><span class="fl-icon-undo"></span> Reset</button -->
-            <button id="show-hide" class="flc-slidingPanel-toggleButton fl-uiOptions-showHide"> Show/Hide</button>
+            <button id="show-hide" class="flc-slidingPanel-toggleButton fl-uiOptions-showHide" aria-label="" aria-controls="dtpanel"></button>
+            <label for="show-hide" class="flc-icon-discover fl-icon-discover" role="presentation" aria-label="Discover"></label>
         </div>
 
         <!-- This is the div that will contain the UI Options component -->
-        <div class="flc-slidingPanel-panel flc-uiOptions-iframe"></div>
+        <div class="flc-slidingPanel-panel flc-uiOptions-iframe" role="region" id="dtpanel" aria-expanded=""></div>
 
     </div>
-    <!-- END markup for fat-panel UI Options -->
+    <!-- END markup for discoveryTool -->
 </body>
 </html>
