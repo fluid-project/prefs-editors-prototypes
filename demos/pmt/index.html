@@ -19,7 +19,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="../../src/pmt/css/PreferencesManagementTool.css" />
-	
+
     <script type="text/javascript" src="../../src/shared/lib/infusion/MyInfusion.js"></script>
     <script type="text/javascript" src="../../src/shared/lib/cloud4all/CustomAdjusters.js"></script>
     <script type="text/javascript" src="../../src/pmt/js/PreferencesManagementTool.js"></script>
@@ -36,33 +36,17 @@
         fluid.invokeGlobalFunction(uioBuilder.options.assembledUIOGrade, ["#myUIOptions"]); */
 
         demo.initFullNoPreview("#myUIOptions", {
-            components: {
-                uiOptions: {
-                    options: {
-                        uiOptions: {
-                            options: {
-                                listeners: {
-                                    onSave: {
-                                        listener: "console.log"
-                                    },
-                                    onUIOptionsComponentReady: {
-                                        listener: demo.initFinishedEvent
-                                    }
-                                    
-                                }
-                            }
-                        }/* ,
-                        preview: {
-                            options: {
-                                templateUrl: "uiOptionsPreview.html"
-                            }
-                        } */
+            uiOptions: {
+                listeners: {
+                    onSave: {
+                        listener: "console.log"
+                    },
+                    onReady: {
+                        listener: demo.initFinishedEvent
                     }
                 }
             }
         });
-        
-    	//fluid.uiOptions.constructed.uie();
     })
 </script>
 

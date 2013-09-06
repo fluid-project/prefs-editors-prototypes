@@ -1,9 +1,14 @@
-/* Demo content */
 @font-face {
     font-family: 'DemoIcons'; 
-    src:url('fonts/Demo-CK12.eot?#iefix') format('embedded-opentype'), 
-         url('fonts/Demo-CK12.eot'), 
-         url('fonts/Demo-CK12.ttf');
+    src:url('fonts/Demo-Content-Icons.eot?#iefix') format('embedded-opentype'), 
+         url('fonts/Demo-Content-Icons.eot'), 
+         url('fonts/Demo-Content-Icons.ttf');
+}
+
+@font-face {
+	font-family: 'DemoLogos';
+    src: url('fonts/Demo-Content-Logos.eot'), 
+         url('fonts/Demo-Content-Logos.ttf');	
 }
 
 body {
@@ -26,8 +31,9 @@ a {
 a:hover {
     text-decoration: underline;
 }
-a:focus {
+.fl-focus *:focus {
     color: #2795B6;
+    outline-color: #2795B6;    
 }
 
 #main-header {
@@ -37,7 +43,8 @@ a:focus {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 0.5em;
+    padding: 0.25em;
+    z-index: 999; /* to ensure it is above the more-text details in FF */
 }
 
 #main-header #main-header-content {
@@ -48,6 +55,7 @@ a:focus {
     float:right;    
     text-align: right;
     margin-right: 2em;
+    margin-top: 0.5em;
     width: 50%;
 }
 
@@ -116,12 +124,11 @@ a:focus {
     border-width: 1px;
     border-radius: 3px
     box-shadow: 0 1px 0 0 #D4D4D4, 0 1px 0 0 #FFFFFF inset;
-    height: 1.65em;
-    width: 1.65em;  
     display: block;  
     float: left;
     text-align: center;
     margin-top: 2px;
+    padding: 0.3em 0.7em;
 }
 
 .main-content header #prevNext a {
@@ -129,7 +136,11 @@ a:focus {
     font-weight: normal;
 }    
 .main-content header #prevNext a:focus {
+    outline: none;
+}
+.main-content header #prevNext a:focus span {
     color: #2795B6;
+    border: 2px solid #2795B6;     
 }
 
 .main-content header #prevNext .fl-icon-prev {
@@ -193,7 +204,7 @@ a:focus {
 .main-content #article-filter {
     float: left;
     padding-right: 7em;
-    height: 5em;
+    height: 6em;
     border-right: 1px dotted #56544D;
 }
 .main-content .article-tab {
@@ -202,8 +213,7 @@ a:focus {
     font-size: 0.8em;
     text-align: center;
     border-right: 1px dotted #56544D;
-    margin-bottom: 0.5em;
-    height: 5em;    
+    height: 6.5em;    
     width: 6.5em;
 }
 .main-content .article-tab span {
@@ -232,7 +242,8 @@ article h2 {
 .fl-panelBar {
     text-align: right;
     background-color: #6f7b80;
-    padding: 1em;
+    padding: 0.2em 1em;
+    line-height: 1.3;
 }
 .fl-panelBar button {
     background-color: #6f7b80;
@@ -241,69 +252,130 @@ article h2 {
     font-weight: bold;
     cursor: pointer;
 }
+.fl-panelBar button:focus {
+    outline: 2px solid #fff;
+    color: #fff;
+} 
+.fl-panelBar button::-moz-focus-inner {border:0;}
 
 .fl-uiOptions-discoveryTool  {
     position: fixed;
     bottom: 0;
     width: 100%;    
+    line-height: 0; /* For GPII-173 */   
 }
 
-.fl-uiOptions-discoveryTool iframe {
-    width: 100%;
+.fl-uiOptions-discoveryTool .fl-uiOptions-fatPanel-iframe {
     border: none;
+}
+iframe::-webkit-scrollbar {  
+    display: none;
+} 
+
+.fl-header-title {
+	font-size: 1.2em;
+    font-weight: bold;
+    position: relative;
+    top: -0.25em;    
+    color: green;
 }
 
 /* Font Icons */
 
-.fl-icon-search, .fl-icon-prev, .fl-icon-next, .fl-icon-thumbsUp, .fl-icon-thumbsDown, .fl-icon-arrow, .fl-icon-light, .fl-icon-book {
+.fl-icon-tree, .fl-icon-atom {
+    font-family: 'DemoLogos';    
+}
+.fl-icon-tree:before {
+	content: "\e001";
+	font-size: 2em;
+	color: limegreen;
+	text-shadow: 1px 1px 2px #000;
+}
+.fl-icon-tree:after {
+	content: "\e000";
+	font-size: 2em;
+	margin-left: -1.5em;	
+	color: SaddleBrown;
+}
+.fl-icon-atom:before {
+	content: "\e002";
+	font-size: 6em;
+	float: left;
+	text-align: center;
+	margin-bottom: 0.15em;
+}
+
+.fl-icon-search, .fl-icon-prev, .fl-icon-next, .fl-icon-thumbsUp, .fl-icon-thumbsDown, .fl-icon-arrow, .fl-icon-light, .fl-icon-book, .fl-icon-discover {
     font-family: 'DemoIcons';    
 }
 .fl-icon-search:before {
-	content: "\ea06";
+	content: "\e008";
 }
 .fl-icon-prev:before {
-	content: "\a000";
+	content: "\e000";
     font-size: 0.9em;	
 }
 .fl-icon-next:before {
-	content: "\a001";
-    font-size: 0.9em;	
+	content: "\e001";
+    font-size: 0.9em;
 }
 .fl-icon-thumbsUp:before {
-	content: "\a002";
+	content: "\e002";
     font-size: 2em;	
 }
 .fl-icon-thumbsDown:before {
-	content: "\a003";
+	content: "\e003";
     font-size: 2em;	
 }
 .fl-icon-arrow:before {
-	content: "\a004";
+	content: "\e004";
 	font-size: 0.6em;
 }
 .fl-icon-light:before {
-	content: "\a007";
+	content: "\e006";
 }
 .fl-icon-book:before {
-	content: "\e008";
+	content: "\e007";
+}
+
+.fl-icon-discover:before {
+    content: "\e009";
+    position: relative;
+    left: -1.16em;
+    color: #fff;
+    font-size: 2em;
+}
+
+.fl-icon-discover {
+	position:relative;
+	right: -1.9em;
 }
 
 /* Images */
-details {
-    padding-bottom: 1em;
-    display: block;
-    display: none;
-}
-
 div[role="img"] {
     background-repeat: no-repeat;
     background-size: contain; 
     margin-bottom: 1em;
 }
 
+/* More Text */
+#main-header #main-header-content div.fl-discoveryTool-moreText {
+    float: none;
+    display: inline;
+}
+#main-header #main-header-content div.fl-discoveryTool-moreText.fl-hidden {
+    display: none;
+}
+#main-header #main-header-content div.fl-discoveryTool-moreText details {
+    display: inherit;
+}
+div.main-content-image + .fl-discoveryTool-moreText {
+    top: -1em; /* because these elements have a bottom margin of 1em */
+}
+
 #storm { 
     background-image:url('images/storm.png'); 
-    height: 20em;    
+    height: 18em;
 }
 .fl-theme-bw #storm { background-image:url('images/storm_bw.png'); }
 .fl-theme-lgdg #storm { background-image:url('images/storm_lgdg.png'); }
@@ -366,8 +438,94 @@ div[role="img"] {
 .fl-theme-lgdg .fl-panelBar button {
 	border: none;
 }
+.fl-theme-bw .fl-panelBar button:focus {
+    outline-color: #fff;
+} 
+.fl-theme-lgdg .fl-panelBar button:focus {
+    outline-color: #555;
+} 
+
 
 /* Add padding to bottom of simplified content so it's not obscured by the DT panel bar */
 .fl-uiOptions-content-simplified {
     padding-bottom: 4em;
 }
+
+.fl-theme-bw .fl-icon-atom:before,
+.fl-theme-bw .fl-icon-tree:after,
+.fl-theme-bw .fl-icon-tree:before {
+    border-color: #000;
+    color: #000;
+}
+.fl-theme-bw .fl-icon-discover:before {
+    color: #fff;
+}
+
+.fl-theme-lgdg .fl-icon-atom:before,
+.fl-theme-lgdg .fl-icon-tree:after,
+.fl-theme-lgdg .fl-icon-tree:before {
+    border-color: #BDBDBB;
+    color: #BDBDBB;
+}
+.fl-theme-lgdg .fl-icon-discover:before {
+    color: #555;
+}
+
+/* Simplify Content */
+.fl-simplify {
+	background: #fff;
+}
+
+.fl-simplify #main,
+.fl-simplify #main #content{
+	border: 0;
+    box-shadow: none;
+    margin-left: 0;
+    padding: 0;
+}
+
+
+@media all and (max-width: 639px) {
+	.fl-simplify #main {
+		margin-right: 0;
+		margin-left: 0;
+	}
+	.fl-simplify .main-content {
+		padding-left: 10px;
+		padding-right: 10px;
+	}	
+}
+
+@media all and (min-width: 640px) {
+	.fl-simplify #main {
+		margin-right: 50px;
+		margin-left: 50px;
+	}
+}
+
+@media all and (max-width:589px) {
+	.fl-simplify .main-content {
+		width: 100%;
+	}	
+}
+
+@media all and (min-width: 590px) {
+	.fl-simplify .main-content {
+		width: 590px;
+	}		
+}
+
+.fl-simplify #storm,
+.fl-simplify #structure,
+.fl-simplify #energylevels,
+.fl-simplify #porbital,
+.fl-simplify #sorbital {
+	width: 100%;
+	background-size: 100% auto;
+}
+
+.fl-simplify .demo-orbitals {width: 100%;}
+.fl-simplify #sorbital 		{height: 24.2em;}
+.fl-simplify #porbital 		{height: 18.5em;}
+.fl-simplify #structure 	{height: 25.4em;}
+.fl-simplify #energylevels 	{height: 26em;  }

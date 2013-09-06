@@ -7,11 +7,7 @@ var demo = demo || {};
             auxiliarySchema: fluid.uiOptions.pmt.auxiliarySchema
         });
         var baseOpts = {
-            components: {
-                uiOptions: {
-                    type: uioType
-                }
-            }
+            uioType: uioType
         };
         $.extend(true, baseOpts, compOpts);
         return fluid.invokeGlobalFunction(uioBuilder.options.assembledUIOGrade, [container, baseOpts]);
