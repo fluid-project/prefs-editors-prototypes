@@ -74,6 +74,10 @@
         that.container.css("font-size", sizeInPt + "pt");
     };
 		
+    fluid.demands("fluid.uiOptions.enactors.textSize", ["fluid.uiOptions.panels.magnifier"], {
+        funcName: "fluid.emptySubcomponent"
+    });
+    
 	fluid.defaults("fluid.uiOptions.panels.cursorSize", {
 		gradeNames: ["fluid.uiOptions.panels", "autoInit"],
 		preferenceMap: {
