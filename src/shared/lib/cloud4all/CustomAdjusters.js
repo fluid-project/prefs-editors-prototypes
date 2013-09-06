@@ -18,9 +18,9 @@
             max: 1000,
             divisibleBy: 1
         },
-        
+
         metricUnit: "pt",
-        
+
         components: {
             preview: {
                 type: "fluid.uiOptions.preview",
@@ -31,7 +31,7 @@
                 }
             }
         },
-        
+
         selectors: {
             minus: ".flc-uiOptions-plus-minus-numerical-minus",
             label: ".flc-uiOptions-plus-minus-numerical-label",
@@ -48,16 +48,16 @@
 
             valueText: "${value}"
         },
-        
+
         invokers: {
             updateAdjusterUI: {
                 funcName: "fluid.uiOptions.panels.updateAdjusterUI",
                 args: ["{that}"]
             }
         },
-        
+
         finalInitFunction: "fluid.uiOptions.panels.textSize.finalInit",
-        
+
         outerPreviewEnhancerOptions: "{originalEnhancerOptions}.options.originalUserOptions",
         distributeOptions: [{
             source: "{that}.options.outerPreviewEnhancerOptions",
@@ -65,15 +65,15 @@
             target: "{that preview enhancer}.options"
         }]
     });
-	
+
 	fluid.uiOptions.panels.textSize.finalInit = function(that){
 		plusMinusAdjusterFinalInit(that);
 	}
-	
+
 	fluid.uiOptions.enactors.textSize.set = function (sizeInPt, that) {
         that.container.css("font-size", sizeInPt + "pt");
     };
-		
+
 	fluid.defaults("fluid.uiOptions.panels.cursorSize", {
 		gradeNames: ["fluid.uiOptions.panels", "autoInit"],
 		preferenceMap: {
@@ -145,13 +145,13 @@
     fluid.uiOptions.enactors.cursorSize.set = function (times, that) {
 		$(".flc-uiOptions-cursor-size .flc-uiOptions-preview-per-setting-frame").contents().find("html").css("font-size", times + "em");
     };
-    
+
     fluid.uiOptions.enactors.cursorSize.finalInit = function (that) {
         that.applier.modelChanged.addListener("value", function (newModel) {
             that.set(newModel.value);
         });
     };
-    
+
 	fluid.defaults("fluid.uiOptions.panels.magnifier", {
 		gradeNames: ["fluid.uiOptions.panels", "autoInit"],
 		preferenceMap: {
@@ -169,7 +169,7 @@
 		},
 
 		metricUnit: "%",
-        
+
 		components: {
             preview: {
                 type: "fluid.uiOptions.preview",
@@ -180,7 +180,7 @@
                 }
             }
         },
-        
+
         selectors: {
             minus: ".flc-uiOptions-plus-minus-numerical-minus",
             label: ".flc-uiOptions-plus-minus-numerical-label",
@@ -196,17 +196,17 @@
             plus: "+",
 
             valueText: "${value}",
-            
+
             finalInitFunction: "fluid.uiOptions.panels.magnifier.finalInit"
         },
-        
+
         invokers: {
             updateAdjusterUI: {
                 funcName: "fluid.uiOptions.panels.updateAdjusterUI",
                 args: ["{that}"]
             }
         },
-        
+
         outerPreviewEnhancerOptions: "{originalEnhancerOptions}.options.originalUserOptions",
         distributeOptions: [{
             source: "{that}.options.outerPreviewEnhancerOptions",
@@ -214,7 +214,7 @@
             target: "{that preview enhancer}.options"
         }]
 	});
-	
+
 	fluid.defaults("fluid.uiOptions.enactors.magnifier", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
         preferenceMap: {
@@ -240,19 +240,19 @@
 		//$(".flc-uiOptions-magnifier .flc-uiOptions-preview-per-setting-frame").contents().find("html").css("transform", "scale(" + times/100 + ")");
         that.container.css("transform", "scale(" + times/100 + ")");
     };
-    
+
     fluid.uiOptions.enactors.magnifier.finalInit = function (that) {
         that.applier.modelChanged.addListener("value", function (newModel) {
             that.set(newModel.value);
         });
     };
-    
+
 	fluid.uiOptions.panels.magnifier.finalInit = function(that){
 		that.events.minRangeReached.addListener(function () {
     		that.locate("valueText").val("OFF");
 		});
 
-        plusMinusAdjusterFinalInit(that); 
+        plusMinusAdjusterFinalInit(that);
 	}
 
 	fluid.defaults("fluid.uiOptions.panels.magnifierPosition", {
@@ -335,8 +335,8 @@
         });
     };
 
-    
-    
+
+
     fluid.defaults("fluid.uiOptions.panels.magnifierFollows", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
@@ -416,7 +416,7 @@
             label.addClass(style[magnifierFollows[index]]);
         });
     };
-    
+
 	fluid.uiOptions.panels.updateAdjusterUI = function (that) {
 		// append metric unit if there is one
 		if(that.options.metricUnit)
@@ -435,7 +435,7 @@
 			that.locate("minus").css("color", "black");
 		}
 	};
-    
+
 	function plusMinusAdjusterFinalInit(that) {
 		that.applier.modelChanged.addListener("value", function(newValue)
 		{
@@ -445,10 +445,10 @@
 			}
 			else
 			{
-				that.options.minRangeReached = false;			
+				that.options.minRangeReached = false;
 			}
 		});
-		
+
 		that.events.afterRender.addListener(function () {
 			that.updateAdjusterUI();
 
@@ -464,7 +464,7 @@
 						}
 					}
 			);
-			
+
 			that.locate("plus").click(
 					function()
 					{
@@ -480,20 +480,20 @@
 			that.locate("valueText").change(
 					function()
 					{
-						var newValue = parseFloat(that.locate("valueText").val()); 
+						var newValue = parseFloat(that.locate("valueText").val());
 						// if we are below range
 						if(newValue < parseFloat(that.options.range.min))
 						{	// set it to min
 							newValue = parseFloat(that.options.range.min);
 						}
-						
+
 			        	//that.locate("valueText").val(that.locate("valueText").val() + " " + that.options.metricUnit);
 						that.applier.requestChange("value", newValue);
 						that.updateAdjusterUI();
-						
+
 					}
 			);
-			
+
 			// prevent non numeric values
 			that.locate("valueText").keydown(function(event) {
                 // Allow only backspace and delete
@@ -509,5 +509,5 @@
             });
 		});
 	};
-    
+
 })(jQuery, fluid);
