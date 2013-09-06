@@ -290,8 +290,8 @@
                 inputID: "magnifierPositionInput",
                 selectID: "magnifierPosition-radio",
                 tree: {
-                    optionnames: "{that}.options.strings.magnifierPosition",
-                    optionlist: "{that}.options.controlValues.magnifierPosition",
+                    optionnames: "${{that}.options.strings.magnifierPosition}",
+                    optionlist: "${{that}.options.controlValues.magnifierPosition}",
                     selection: "${value}"
                 }
             }
@@ -372,8 +372,8 @@
                 inputID: "magnifierFollowsInput",
                 selectID: "magnifierFollows-radio",
                 tree: {
-                    optionnames: "{that}.options.strings.magnifierFollows",
-                    optionlist: "{that}.options.controlValues.magnifierFollows",
+                    optionnames: "${{that}.options.strings.magnifierFollows}",
+                    optionlist: "${{that}.options.controlValues.magnifierFollows}",
                     selection: "${value}"
                 }
             }
