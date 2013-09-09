@@ -434,7 +434,7 @@ input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio
 }
 
 .addToMyPreferencesStar {
-	margin-left: 19.7em;
+	margin-left: calc(330px - 1em);
     margin-top: 0.5em;
     color: #6b7281;
   	position: absolute;
@@ -449,7 +449,7 @@ input:checked + .addToMyPreferencesStar {
     position: absolute;
     width: 1.1em !important;
     cursor: pointer;
-	margin-left: 19.7em;
+	margin-left: calc(330px - 1em);
     margin-top: 0.5em;
     font-size: 1em !important;
 }
