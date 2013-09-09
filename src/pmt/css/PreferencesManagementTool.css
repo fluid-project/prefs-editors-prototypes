@@ -35,6 +35,7 @@
 
 .fl-uiOptions label {
     font-size: 0.8em;
+    text-transform: none !important;
 }
 
 /*
@@ -452,3 +453,32 @@ input:checked + .addToMyPreferencesStar {
     margin-top: 0.5em;
     font-size: 1em !important;
 }
+
+/*
+	Style for tooltips
+*/
+[title]:after{
+	color:#fff;
+	background:#333;
+	background:rgba(51,51,51,0.75);
+	padding:5px;
+	position:absolute;
+	left:-9999px;
+	opacity:0;
+	bottom:100%;
+	white-space:nowrap;
+	-webkit-transition:0.25s linear opacity;
+}
+[title]:hover:after{
+	left:0px;
+	opacity:1;
+}
+
+.addToMyPreferencesLabel[title]:after {
+	content:"Add to my preferences";
+}
+
+input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after {
+	content:"Remove from my preferences";
+}
+
