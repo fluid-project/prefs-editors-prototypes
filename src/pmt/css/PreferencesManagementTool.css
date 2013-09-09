@@ -475,10 +475,10 @@ input:checked + .addToMyPreferencesStar {
 }
 
 .addToMyPreferencesLabel[title]:after {
-	content:"Add to my preferences";
+	content:attr(tooltip-unchecked);
 }
 
 input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after {
-	content:"Remove from my preferences";
+	content:attr(tooltip-checked);
 }
 
