@@ -57,8 +57,8 @@
                 "type": "screenReaderTTSEnabled",
                 "panel": {
                     "type": "speakText.panels.BigPanel",
-                    "template": "%prefix/speakTextTemplate-screenReaderTTSEnabled.html",
-                    "container": ".speakText-screenReaderTTSEnabled",
+                    "template": "%prefix/speakTextCollectiveTemplate.html",
+                    "container": ".speakText-collectiveContainer",
                     "message": "%prefix/speakText.json"
                 }
             },
@@ -66,10 +66,7 @@
             "speechRate": {
                 "type": "speechRate",
                 "panel": {
-                    "type": "speakText.panels.BigPanel",
-                    "template": "%prefix/speakTextTemplate-speechRate.html",
-                    "container": ".speakText-speechRate",
-                    "message": "%prefix/speakText.json"
+                    "type": "speakText.panels.BigPanel"
                 }
             },
 
@@ -85,9 +82,6 @@
                 "panel": {
                     "type": "speakText.panels.BigPanel",
                     "classnameMap": {"punctuationVerbosity": "@punctuationVerbosity.classes"},
-                    "template": "%prefix/speakTextTemplate-punctuationVerbosity.html",
-                    "container": ".speakText-punctuationVerbosity",
-                    "message": "%prefix/speakText.json"
                 },
                 "classes": {
                     "none": "radioButton-left",
@@ -100,10 +94,7 @@
             "announceCapitals": {
                 "type": "announceCapitals",
                 "panel": {
-                    "type": "speakText.panels.BigPanel",
-                    "template": "%prefix/speakTextCollectiveTemplate.html",
-                    "container": ".speakText-wordEcho",
-                    "message": "%prefix/speakText.json"
+                    "type": "speakText.panels.BigPanel"
                 }
             },
 

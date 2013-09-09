@@ -170,6 +170,25 @@
         }
     });
 
+    fluid.defaults("speakText.panels.screenReaderBrailleOutput", {
+        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        preferenceMap: {
+            "screenReaderBrailleOutput": {
+                "model.screenReaderBrailleOutput": "default"
+            }
+        },
+        selectors: {
+            screenReaderBrailleOutput: ".gpii-screenReaderBrailleOutput",
+            screenReaderBrailleOutputLabel: ".gpii-screenReaderBrailleOutput-label",
+            screenReaderBrailleOutputDescription: ".gpii-screenReaderBrailleOutput-description",
+        },
+        protoTree: {
+            screenReaderBrailleOutput: "${screenReaderBrailleOutput}",
+            screenReaderBrailleOutputLabel: {messagekey: "screenReaderBrailleOutputLabel"},
+            screenReaderBrailleOutputDescription: {messagekey: "screenReaderBrailleOutputDescription"},
+        }
+    });
+
     fluid.defaults("speakText.panels.BigPanel", {
         gradeNames: ["fluid.uiOptions.panels", "speakText.panels.keyEcho", "speakText.panels.wordEcho", "speakText.panels.speakTutorialMessages", "speakText.panels.speakTutorialMessages", "speakText.panels.screenReaderTTSEnabled", "speakText.panels.announceCapitals", "speakText.panels.punctuationVerbosity", "speakText.panels.screenReaderBrailleOutput", "speakText.panels.auditoryOutLanguage", "speakText.panels.speechRate", "autoInit"],
         model: {
@@ -197,8 +216,16 @@
             addOrRemovePreferenceLabel: ".gpii-addOrRemovePreference-label",
 
             moreOptions: ".more-options-checkbox",
-            moreOptionsLabel: ".more-options-label"
+            moreOptionsLabel: ".more-options-label",
+
+            speechRateSelector: ".speech-rate-class",
+            moreOptionsDiv: ".more-options",
+
+            fullyExpanded: ".fully-expanded"
         },
+
+        selectorsToIgnore: ["moreOptionsDiv", "speechRateSelector", "fullyExpanded"],
+
         protoTree: {
             screenReaderTTSEnabled: "${screenReaderTTSEnabled}",
             screenReaderTTSEnabledLabel: {messagekey: "screenReaderTTSEnabledLabel"},
@@ -263,15 +290,6 @@
             moreOptions: "${moreOptions}",
             moreOptionsLabel: {messagekey: "moreOptions"}
         },
-        // listeners: {
-        //     afterRender: "{that}.style"
-        // },
-        // invokers: {
-        //     style: {
-        //         funcName: "speakText.panels.BigPanel.someFunction",
-        //         args: ["{that}"]
-        //     }
-        // },
 
         finalInitFunction: "speakText.panels.BigPanel.finalInit"
     });
@@ -286,49 +304,29 @@
 
     speakText.panels.BigPanel.finalInit = function (that) {
         something = that;
-        
+
         that.applier.modelChanged.addListener("speakTextPresetButton", function () {
             if (that.model.speakTextPresetButton) {
-                that.locate("moreOptionsLabel").text("+ more");
-                $("#speech-rate").slideDown(600);
-                $(".more-options").slideDown(600);
+                that.locate("moreOptionsLabel").text(that.options.strings.lessText);
+                that.locate("speechRateSelector").slideDown(600);
+                that.locate("moreOptionsDiv").slideDown(600);
             } else {
-                $("#speech-rate").slideUp(600);
-                $(".more-options").slideUp(600);
-                $(".fully-expanded").slideUp(600);
+                that.locate("speechRateSelector").slideUp(600);
+                that.locate("moreOptionsDiv").slideUp(600);
+                that.locate("fullyExpanded").slideUp(600);
                 that.locate("moreOptions").attr('checked', false);
             }
         });
 
         that.applier.modelChanged.addListener("moreOptions", function () {
             if (that.model.moreOptions) {
-                $(".fully-expanded").slideDown(600);
+                that.locate("fullyExpanded").slideDown(700);
                 that.locate("moreOptionsLabel").text(that.options.strings.moreText);
             } else {
-                $(".fully-expanded").slideUp(600);
+                that.locate("fullyExpanded").slideUp(700);
                 that.locate("moreOptionsLabel").text(that.options.strings.lessText);
             }
         });
-    }
-
-    fluid.defaults("speakText.panels.screenReaderBrailleOutput", {
-        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
-        preferenceMap: {
-            "screenReaderBrailleOutput": {
-                "model.screenReaderBrailleOutput": "default"
-            }
-        },
-        selectors: {
-            screenReaderBrailleOutput: ".gpii-screenReaderBrailleOutput",
-            screenReaderBrailleOutputLabel: ".gpii-screenReaderBrailleOutput-label",
-            screenReaderBrailleOutputDescription: ".gpii-screenReaderBrailleOutput-description",
-        },
-        protoTree: {
-            screenReaderBrailleOutput: "${screenReaderBrailleOutput}",
-            screenReaderBrailleOutputLabel: {messagekey: "screenReaderBrailleOutputLabel"},
-            screenReaderBrailleOutputDescription: {messagekey: "screenReaderBrailleOutputDescription"},
-        }
-    });
-
+    };
 
 })(fluid);

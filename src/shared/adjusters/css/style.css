@@ -33,7 +33,7 @@
     color:transparent;
 }
 
-#speech-rate {
+.speech-rate-class {
     position: relative;
     display: none;
 }
@@ -43,7 +43,7 @@
     border: none;
     width: 200px;
     font-size: 23px;
-    display: inline;
+    display: inline !important;
 }
 
 #speechRateLabel {
