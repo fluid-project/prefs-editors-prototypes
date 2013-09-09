@@ -18,6 +18,9 @@
                 }
             }
         },
+        resources: {
+            template: "../../src/shared/adjusters/html/speakTextTemplate-keyEcho.html"
+        },
         selectors: {
             speakTextPresetButton: ".gpii-speakTextPresetButton",
             speakTextPresetButtonLabel: ".gpii-speakTextPresetButton-label",
@@ -104,8 +107,13 @@
         finalInitFunction: "speakText.panels.CollectivePanel.finalInit"
     });
 
+
     speakText.panels.CollectivePanel.finalInit = function (that) {
-        something = that;
+        fluid.fetchResources(that.options.resources, function () {
+            setTimeout(function () {
+                speakText.panels.CollectivePanel.finishInit(that);
+            }, 1);
+        });
 
         that.applier.modelChanged.addListener("speakTextPresetButton", function () {
             if (that.model.speakTextPresetButton) {
@@ -129,8 +137,14 @@
                 that.locate("moreOptionsLabel").text(that.options.strings.lessText);
             }
         });
+
+        hook = that;
     };
 
+    speakText.panels.CollectivePanel.finishInit = function (that) {
+        // that.container.append(that.options.resources.template.resourceText);
+        that.container.append('<div class="speakText-keyEcho-element"><input type="checkbox" id="echo-letter" class="gpii-keyEcho" /><label for="echo-letter" class="checkbox-label"><span class="gpii-keyEcho-label"></span></label><br></div>');
+    }
 
     //FIXME: These functions should extract data from speakText.json
     speakText.showMoreText = function () {
