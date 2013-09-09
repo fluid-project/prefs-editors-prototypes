@@ -458,9 +458,7 @@ input:checked + .addToMyPreferencesStar {
 	Style for tooltips
 */
 [title]:after{
-	color:#fff;
-	background:#333;
-	background:rgba(51,51,51,0.75);
+	background-color: #f4e413;
 	padding:5px;
 	position:absolute;
 	left:-9999px;
@@ -468,6 +466,9 @@ input:checked + .addToMyPreferencesStar {
 	bottom:100%;
 	white-space:nowrap;
 	-webkit-transition:0.25s linear opacity;
+	border: 1px solid black;
+    border-radius: 3px 3px 3px 3px;
+    font-size: 0.8em;
 }
 [title]:hover:after{
 	left:0px;
