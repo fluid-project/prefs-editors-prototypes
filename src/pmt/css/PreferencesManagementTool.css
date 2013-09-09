@@ -483,3 +483,13 @@ input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after 
 	content:attr(tooltip-checked);
 }
 
+.flc-uiOptions-magnifierPosition-label[title] {
+	position:relative;
+}
+
+.flc-uiOptions-magnifierPosition-label[title]:after {
+	content: attr(tooltip);
+	line-height: 1em !important;
+	font-size: 1em;
+	white-space:normal;
+}

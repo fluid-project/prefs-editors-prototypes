@@ -207,6 +207,7 @@
                 magnifierPosition: strings[index]
             }));
             label.addClass(style[magnifierPosition[index]]);
+            label.attr("tooltip", strings[index]);
         });
     };
 
