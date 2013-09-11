@@ -136,7 +136,8 @@
                 "type": "fluid.uiOptions.contrast",
                 "panel": {
                     "type": "fluid.uiOptions.panels.contrast",
-                    "container": ".flc-uiOptions-contrastPanel"
+                    "container": ".flc-uiOptions-contrast",
+                    "template": "%prefix/UIOptionsTemplate-contrastNew.html",
                 }
             },
 	        /*"lineSpace": {

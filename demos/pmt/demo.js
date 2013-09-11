@@ -28,11 +28,11 @@ var demo = demo || {};
 
         $("#preferenceSwitchIncreaseSize").change(function(){
 			if(this.checked) {
-		        $(".fl-uiOptions-category").slideDown();
+		        $(".flc-uiOptions-increaseSizePanel .fl-uiOptions-category").slideDown();
 		    }
 			else
 			{
-		        $(".fl-uiOptions-category").slideUp();
+		        $(".flc-uiOptions-increaseSizePanel .fl-uiOptions-category").slideUp();
 			}
 		});
 

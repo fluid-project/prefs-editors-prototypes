@@ -454,8 +454,35 @@
 		},
 		protoTree: {
 			valueCheckbox: "${value}"
-		}
+		},
+		
+		finalInitFunction: "fluid.uiOptions.panels.contrast.finalInit"
 	});
+    
+    fluid.uiOptions.panels.contrast.finalInit = function (that) {
+        that.applier.modelChanged.addListener("value", function (that) {
+        	if(that.value)
+    		{
+        		$(".flc-uiOptions-contrast .fl-uiOptions-category").slideDown();
+    		}
+        	else
+    		{
+        		$(".flc-uiOptions-contrast .fl-uiOptions-category").slideUp();
+    		}
+        });
+        
+        // need this in order not to always show content on save.
+        that.events.afterRender.addListener(function (that) {
+        	if(that.model.value)
+    		{
+        		$(".flc-uiOptions-contrast .fl-uiOptions-category").slideDown(0);
+    		}
+        	else
+    		{
+        		$(".flc-uiOptions-contrast .fl-uiOptions-category").slideUp(0);
+    		}
+        });
+    };
     
 	function plusMinusAdjusterFinalInit(that) {
 		that.applier.modelChanged.addListener("value", function(newValue)
