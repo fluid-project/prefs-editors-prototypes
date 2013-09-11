@@ -169,6 +169,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 args: "{that}",
                 priority: "last"
             }
+        },
+        distributeOptions: {
+            source: "{that}.options.iframeHtml",
+            removeSource: true,
+            target: "{that > iframeRenderer}.options.markupProps.src"
         }
     });
 
@@ -684,7 +689,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     fluid.defaults("gpii.discoveryTool.enactors.showMoreText", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
         selectors: {
-            content: ".flc-uiOptions-content",
             moreTexts: ".flc-discoveryTool-moreText-container",
             images: "img, [role~='img']",
             textEl: "details" // selector of element in 'markup.moreText' where text should be inserted

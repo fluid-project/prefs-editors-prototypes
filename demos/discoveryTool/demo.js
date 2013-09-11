@@ -54,23 +54,16 @@ var demo = demo || {};
             },
             uiOptions: {
                 gradeNames: ["gpii.discoveryTool.panels", "gpii.discoveryTool.rootModel", "fluid.uiOptions.uiEnhancerRelay"]
-            }
+            },
+            iframeHtml: "../../src/discoveryTool/html/FatPanelUIOptionsFrame.html"
         });
     };
-
-    fluid.demands("fluid.uiOptions.fatPanel.renderIframe", ["gpii.discoveryTool"], {
-        options: {
-            markupProps: {
-                src: "../../src/discoveryTool/html/FatPanelUIOptionsFrame.html"
-            }
-        }
-    });
 
     fluid.demands("gpii.discoveryTool.enactors.showMoreText", "gpii.discoveryTool.demo", {
         options: {
             selectors: {
-                // exclude the next/previous, thumbs buttons from the 'more text' functionality
-                images: "img:not('.fl-icon-next, .fl-icon-prev, .fl-icon-thumbsUp, .fl-icon-thumbsDown'), [role~='img']:not('.fl-icon-next, .fl-icon-prev, .fl-icon-thumbsUp, .fl-icon-thumbsDown')"
+                // content/article images, excluding the next/previous, thumbs buttons from the 'more text' functionality
+                images: "article img:not('.fl-icon-next, .fl-icon-prev, .fl-icon-thumbsUp, .fl-icon-thumbsDown'), article [role~='img']:not('.fl-icon-next, .fl-icon-prev, .fl-icon-thumbsUp, .fl-icon-thumbsDown')"
             }
         }
     });
