@@ -66,7 +66,7 @@ input[type=checkbox]:checked + .headerImage:before {
 
 .headerTitle {
 	font-family: 'Roboto Slab', serif;
-	position: absolute; 
+	//position: absolute; 
    	//top: 20px; 
    	left: 0; 
    	width: 100%;
@@ -91,6 +91,7 @@ input[type=checkbox] + .headerImage + label.headerTitle {
     //padding-left:30px;
     cursor:pointer;
     margin: 5px;
+    margin-top: -95px;
     font-size: 1.5em;
     text-align: center;
     //padding-left: 3px;
@@ -107,7 +108,8 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
     //padding-left:30px;
     cursor:pointer;
     margin: 5px;
-    font-size: 1.5em;
+    margin-top: -95px;
+	font-size: 1.5em;
     text-align: center;
     //padding-left: 3px;
     color:white;
