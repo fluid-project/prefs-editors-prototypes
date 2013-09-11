@@ -39,6 +39,10 @@
             "type": "string",
             "default": "",
 	        "enum": ["mousecursor", "textcursor", "keyboardfocus"]
+        },
+	    "fluid.uiOptions.contrast": {
+            "type": "boolean",
+            "default": false
         }/*,
 	    "fluid.uiOptions.textFont": {
 	        "type": "string",
@@ -153,6 +157,13 @@
                     "classnameMap": {"magnifierFollows": "@magnifierFollows.classes"},
                     "template": "%prefix/UIOptionsTemplate-magnifierFollows.html",
                     "message": "%prefix/magnifier.json"
+                }
+            },
+	        "contrast": {
+                "type": "fluid.uiOptions.contrast",
+                "panel": {
+                    "type": "fluid.uiOptions.panels.contrast",
+                    "container": ".flc-uiOptions-contrastPanel"
                 }
             },
 	        /*"lineSpace": {

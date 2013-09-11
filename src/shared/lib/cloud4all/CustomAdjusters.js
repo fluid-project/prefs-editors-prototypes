@@ -293,7 +293,20 @@
         });
     };
     
-    
+    fluid.defaults("fluid.uiOptions.panels.contrast", {
+		gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+		preferenceMap: {
+			"fluid.uiOptions.contrast": {
+				"model.value": "default"
+			}
+		},
+		selectors: {
+            valueCheckbox: ".flc-uiOptions-constrastInput"
+		},
+		protoTree: {
+			valueCheckbox: "${value}"
+		}
+	});
     
 	function plusMinusAdjusterFinalInit(that) {
 		that.applier.modelChanged.addListener("value", function(newValue)
