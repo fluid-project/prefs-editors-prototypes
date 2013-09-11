@@ -26,7 +26,7 @@ var demo = demo || {};
         $(".fl-uiOptions-category").slideUp(0);
         $(".fl-uiOptions-category-hidden").slideUp(0);
 
-        $("#preferenceSwitch").change(function(){
+        $("#preferenceSwitchIncreaseSize").change(function(){
 			if(this.checked) {
 		        $(".fl-uiOptions-category").slideDown();
 		    }

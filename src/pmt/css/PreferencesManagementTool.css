@@ -8,6 +8,13 @@
 	font-style: normal;
 }
 
+@font-face {
+	font-family: 'font-icons-sept-3';
+	src:url('../fonts/font-icons-sept-3.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
 /*
 	General preferences styling
 */
@@ -37,6 +44,7 @@ body {
 
 .fl-uiOptions-fullPreview h2 {
 	display: table-cell !important;
+    text-transform: none !important;
 }
 
 /*
@@ -67,7 +75,7 @@ input[type=checkbox]:checked + .headerImage:before {
 
 .headerTitle {
 	font-family: 'Roboto Slab', serif;
-	position: absolute; 
+	//position: absolute; 
    	//top: 20px; 
    	left: 0; 
    	width: 100%;
@@ -92,6 +100,7 @@ input[type=checkbox] + .headerImage + label.headerTitle {
     //padding-left:30px;
     cursor:pointer;
     margin: 5px;
+    margin-top: -95px;
     font-size: 1.5em;
     text-align: center;
     //padding-left: 3px;
@@ -108,7 +117,8 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
     //padding-left:30px;
     cursor:pointer;
     margin: 5px;
-    font-size: 1.5em;
+    margin-top: -95px;
+	font-size: 1.5em;
     text-align: center;
     //padding-left: 3px;
     color:white;
@@ -132,6 +142,12 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
 	line-height: 1;
 	-webkit-font-smoothing: antialiased;
 }
+
+.fl-adjuster-icons-additional > .fl-magnifierPosition-uio-icon-main {
+	font-family: 'font-icons-sept-3';
+	margin-top: 0em;
+}
+
 .fl-icon-small-cursor:before {
 	font-size: 0.8em !important;
 	content: "\e000";
@@ -290,7 +306,7 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
 }
 
 .fl-magnifierPosition-uio-top > .fl-magnifierPosition-uio-icon-main:before {
-	content: "\e005";
+	content: "\e001";
 }
 
 .fl-magnifierPosition-uio-bottom > .fl-magnifierPosition-uio-icon-main {
@@ -302,7 +318,7 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
 }
 
 .fl-magnifierPosition-uio-bottom > .fl-magnifierPosition-uio-icon-main:before {
-	content: "\e005";
+	content: "\e004";
 }
 
 .fl-magnifierPosition-uio-left > .fl-magnifierPosition-uio-icon-main {
@@ -314,7 +330,7 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
 }
 
 .fl-magnifierPosition-uio-left > .fl-magnifierPosition-uio-icon-main:before {
-	content: "\e005";
+	content: "\e003";
 }
 
 .fl-magnifierPosition-uio-right > .fl-magnifierPosition-uio-icon-main {
@@ -327,7 +343,7 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
 }
 
 .fl-magnifierPosition-uio-right > .fl-magnifierPosition-uio-icon-main:before {
-	content: "\e005";
+	content: "\e002";
 }
 
 /*
@@ -485,4 +501,76 @@ input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio
 
 .flc-uiOptions-preview-per-setting-cursor {
 	font-size: 2em;
+}
+
+/*
+	Style for "Add to my preferences" star font icon
+*/
+.fl-adjuster-icons-additional {
+	font-family: 'font-icons-sept-3';
+}
+
+.addToMyPreferencesStar:before {
+	content: "\e000";
+}
+
+.addToMyPreferencesStar {
+	margin-left: calc(330px - 1em);
+    margin-top: 0.5em;
+    color: #6b7281;
+  	position: absolute;
+}
+
+input:checked + .addToMyPreferencesStar {
+    color: #fae80b;
+}
+
+.addToMyPreferencesLabel {
+	height: 1.1em !important;
+    position: absolute;
+    width: 1.1em !important;
+    cursor: pointer;
+	margin-left: calc(330px - 1em);
+    margin-top: 0.5em;
+    font-size: 1em !important;
+}
+
+/*
+	Style for tooltips
+*/
+[title]:after{
+	background-color: #f4e413;
+	padding:5px;
+	position:absolute;
+	left:-9999px;
+	opacity:0;
+	bottom:100%;
+	white-space:nowrap;
+	-webkit-transition:0.25s linear opacity;
+	border: 1px solid black;
+    border-radius: 3px 3px 3px 3px;
+    font-size: 0.8em;
+}
+[title]:hover:after{
+	left:0px;
+	opacity:1;
+}
+
+.addToMyPreferencesLabel[title]:after {
+	content:attr(tooltip-unchecked);
+}
+
+input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after {
+	content:attr(tooltip-checked);
+}
+
+.flc-uiOptions-magnifierPosition-label[title] {
+	position:relative;
+}
+
+.flc-uiOptions-magnifierPosition-label[title]:after {
+	content: attr(tooltip);
+	line-height: 1em !important;
+	font-size: 1em;
+	white-space:normal;
 }
