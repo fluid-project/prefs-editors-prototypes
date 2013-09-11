@@ -62,8 +62,8 @@ var demo = demo || {};
     fluid.demands("gpii.discoveryTool.enactors.showMoreText", "gpii.discoveryTool.demo", {
         options: {
             selectors: {
-                // content/article images, excluding the next/previous, thumbs buttons from the 'more text' functionality
-                images: "article img:not('.fl-icon-next, .fl-icon-prev, .fl-icon-thumbsUp, .fl-icon-thumbsDown'), article [role~='img']:not('.fl-icon-next, .fl-icon-prev, .fl-icon-thumbsUp, .fl-icon-thumbsDown')"
+                // content of article images only
+                images: "article img, article [role~='img']"
             }
         }
     });
