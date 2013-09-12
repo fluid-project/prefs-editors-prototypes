@@ -574,3 +574,11 @@ input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after 
 	font-size: 1em;
 	white-space:normal;
 }
+
+/*
+	Style for contrast
+*/
+.flc-uiOptions-contrast-theme {
+	color: yellow;
+	background-color: black;
+}

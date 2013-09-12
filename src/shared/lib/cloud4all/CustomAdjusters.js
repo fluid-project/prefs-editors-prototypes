@@ -450,13 +450,32 @@
 			}
 		},
 		selectors: {
-            valueCheckbox: ".flc-uiOptions-constrastInput"
+            valueCheckbox: ".flc-uiOptions-constrastInput",
+            headingLabel: ".flc-uiOptions-contrast-label"	
 		},
 		protoTree: {
-			valueCheckbox: "${value}"
+			valueCheckbox: "${value}",
+            headingLabel: {messagekey: "contrast"}
 		},
+		components: {
+            preview: {
+                type: "fluid.uiOptions.preview",
+                createOnEvent: "afterRender",
+                container: ".flc-uiOptions-contrast .flc-uiOptions-preview-per-setting-frame",
+                options: {
+                    templateUrl: "uiOptionsContrastPreview.html"
+                }
+            }
+        },
+        
+        outerPreviewEnhancerOptions: "{originalEnhancerOptions}.options.originalUserOptions",
+        distributeOptions: [{
+            source: "{that}.options.outerPreviewEnhancerOptions",
+            removeSource: true,
+            target: "{that preview enhancer}.options"
+        }],
 		
-		finalInitFunction: "fluid.uiOptions.panels.contrast.finalInit"
+        finalInitFunction: "fluid.uiOptions.panels.contrast.finalInit"
 	});
     
     fluid.uiOptions.panels.contrast.finalInit = function (that) {
@@ -481,6 +500,44 @@
     		{
         		$(".flc-uiOptions-contrast .fl-uiOptions-category").slideUp(0);
     		}
+        });
+    };
+    
+    fluid.defaults("fluid.uiOptions.enactors.contrast", {
+        gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
+        preferenceMap: {
+            "fluid.uiOptions.contrast": {
+                "model.value": "default"
+            }
+        },
+        invokers: {
+            set: {
+                funcName: "fluid.uiOptions.enactors.contrast.set",
+                args: ["{arguments}.0", "{that}"]
+            }
+        },
+        listeners: {
+            onCreate: {
+                listener: "{that}.set",
+                args: "{that}.model.value"
+            }
+        }
+    });
+
+    fluid.uiOptions.enactors.contrast.set = function (value, that) {
+    	if(value)
+		{
+    		that.container.addClass("flc-uiOptions-contrast-theme");
+		}
+    	else
+		{
+    		that.container.removeClass("flc-uiOptions-contrast-theme");
+		}
+    };
+
+    fluid.uiOptions.enactors.contrast.finalInit = function (that) {
+        that.applier.modelChanged.addListener("value", function (newModel) {
+            that.set(newModel.value);
         });
     };
     

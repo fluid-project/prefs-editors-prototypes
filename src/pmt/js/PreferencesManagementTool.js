@@ -134,10 +134,14 @@
             },
 	        "contrast": {
                 "type": "fluid.uiOptions.contrast",
+	            "enactor": {
+	                "type": "fluid.uiOptions.enactors.contrast"
+	            },
                 "panel": {
                     "type": "fluid.uiOptions.panels.contrast",
                     "container": ".flc-uiOptions-contrast",
                     "template": "%prefix/UIOptionsTemplate-contrastNew.html",
+	                "message": "%prefix/contrastNew.json"
                 }
             },
 	        /*"lineSpace": {
