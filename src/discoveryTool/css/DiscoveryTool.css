@@ -230,6 +230,7 @@
 
 .fl-icon-arrow:after {
     content: "\e019";
+    font-size: 0.7em;
 }
 
 .fl-icon-check:before {
