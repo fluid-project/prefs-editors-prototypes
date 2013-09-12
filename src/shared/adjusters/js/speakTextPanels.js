@@ -106,11 +106,7 @@
         fluid.each(labels, function (label, index) {
             $(label).addClass(classes[values[index]]);
         });
-
-        // FIXME: This is probably not the best idea, but it works for now.
-        var contents = $(".gpii-punctuationVerbosity-row").contents()
-        $(".gpii-punctuationVerbosity-row").replaceWith(contents);
-    }
+    };
 
 
     fluid.defaults("speakText.panels.announceCapitals", {

@@ -18,9 +18,16 @@
                 }
             }
         },
-        resources: {
-            keyEcho: {
-                url: "../../src/shared/adjusters/html/speakTextTemplate-keyEcho.html"
+        events: {
+            modelChanged: null
+        },
+        listeners: {
+            afterRender: "{that}.activateCombobox"
+        },
+        invokers: {
+            activateCombobox: {
+                funcName: "speakText.panels.CollectivePanel.activateCombobox",
+                args: ["{that}"]
             }
         },
         selectors: {
@@ -109,12 +116,14 @@
         finalInitFunction: "speakText.panels.CollectivePanel.finalInit"
     });
 
+    speakText.panels.CollectivePanel.activateCombobox = function (that) {
+        $("#auditoryOutLanguage").combobox();
+        $("#auditoryOutLanguage").change(function (event, newValue) {
+            that.applier.requestChange("auditoryOutLanguage", newValue);
+        });
+    };
 
     speakText.panels.CollectivePanel.finalInit = function (that) {
-        fluid.fetchResources(that.options.resources, function () {
-            that.container.append(that.options.resources.keyEcho.resourceText);
-        });
-
         that.applier.modelChanged.addListener("speakTextPresetButton", function () {
             if (that.model.speakTextPresetButton) {
                 that.locate("moreOptionsLabel").text(that.options.strings.lessText);
@@ -141,7 +150,7 @@
         hook = that;
     };
 
-    // FIXME: These functions should extract data from speakText.json
+    // FIXME: These two functions should extract data from speakText.json
     speakText.showMoreText = function () {
         return "- less";
     }

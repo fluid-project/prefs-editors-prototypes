@@ -4,12 +4,12 @@
     /*font-family: 'Open Sans', sans-serif;*/
 }
 
-.gpii-punctuationVerbosity-description {
+.gpii-screenReaderBrailleOutput-description {
     font-size: 15px;
 }
 
-.gpii-screenReaderBrailleOutput-description {
-    font-size: 15px;
+.gpii-punctuationVerbosity-row {
+    display: inline;
 }
 
 
