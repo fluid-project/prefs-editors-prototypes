@@ -136,7 +136,8 @@
 
 /* Preference set hover */
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel label .fl-discoveryTool-panel-icon:hover,
-.fl-uiOptions-discoveryTool .fl-uiOptions-panel .fl-discoveryTool-hover label .fl-discoveryTool-panel-icon { box-shadow: 3px 3px 1px #4f4f4f;}
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel .fl-discoveryTool-hover label .fl-discoveryTool-panel-icon,
+.fl-uiOptions-discoveryTool .fl-uiOptions-panel label:hover .fl-discoveryTool-panel-icon { box-shadow: 3px 3px 1px #4f4f4f;}
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel label:hover .fl-icon-text,
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel .fl-discoveryTool-hover label .fl-icon-text,
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:focus ~ label .fl-icon-text { text-shadow: 2px 2px #4f4f4f; }
