@@ -620,3 +620,8 @@ input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after 
 	background-color: black !important;
 	color: yellow !important;
 }
+
+ .flc-uiOptions-contrast-theme [title]:after{
+	background-color: black !important;
+	border: 1px solid yellow !important;
+}
