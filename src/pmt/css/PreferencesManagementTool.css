@@ -450,12 +450,12 @@ input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio
 }
 
 .flc-uiOptions-preview-per-setting-eye {
-	position: relative;
-    z-index: 2;
-    background-color: transparent !important;
 }
 
 .flc-uiOptions-preview-per-setting-eye:before {
+	position: relative;
+    z-index: 2;
+    background-color: transparent !important;
 	content: "\e00c";
 }
 
