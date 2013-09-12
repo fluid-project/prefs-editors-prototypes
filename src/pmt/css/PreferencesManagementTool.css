@@ -449,6 +449,10 @@ input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio
     margin-bottom: 0.5em;
 }
 
+.flc-uiOptions-preview-per-setting-eye {
+	position: relative;
+}
+
 .flc-uiOptions-preview-per-setting-eye:before {
 	content: "\e00c";
 }
