@@ -23,8 +23,8 @@ var demo = demo || {};
 
     demo.initFinishedEvent = function(){
     	// hide it on startup
-        $(".fl-uiOptions-category").slideUp(0);
-        $(".fl-uiOptions-category-hidden").slideUp(0);
+        $(".flc-uiOptions-increaseSizePanel .fl-uiOptions-category").slideUp(0);
+        $(".flc-uiOptions-increaseSizePanel .fl-uiOptions-category-hidden").slideUp(0);
 
         $("#preferenceSwitchIncreaseSize").change(function(){
 			if(this.checked) {
