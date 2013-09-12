@@ -376,7 +376,9 @@
 .fl-theme-bw  .fl-uiOptions-panel label .fl-discoveryTool-panel-icon:hover,
 .fl-theme-lgdg .fl-uiOptions-panel label .fl-discoveryTool-panel-icon:hover,
 .fl-theme-bw .fl-uiOptions-panel .fl-discoveryTool-hover label .fl-discoveryTool-panel-icon,
-.fl-theme-lgdg .fl-uiOptions-panel .fl-discoveryTool-hover label .fl-discoveryTool-panel-icon { box-shadow: 3px 3px 0 #4f4f4f;}
+.fl-theme-lgdg .fl-uiOptions-panel .fl-discoveryTool-hover label .fl-discoveryTool-panel-icon,
+.fl-theme-bw .fl-uiOptions-panel label:hover .fl-discoveryTool-panel-icon,
+.fl-theme-lgdg .fl-uiOptions-panel label:hover .fl-discoveryTool-panel-icon { box-shadow: 3px 3px 0 #4f4f4f;}
 
 .fl-theme-lgdg .fl-uiOptions-panel .fl-discoveryTool-try {
 	font-weight:normal !important;
