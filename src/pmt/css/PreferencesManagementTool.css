@@ -610,3 +610,13 @@ input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after 
 .flc-uiOptions-contrast-theme .addToMyPreferencesLabel {
 	background-color: transparent !important;
 }
+
+.flc-uiOptions-contrast-theme .addToMyPreferencesStar {
+	background-color: yellow !important;
+	color: black !important;
+}
+
+.flc-uiOptions-contrast-theme input:checked + .addToMyPreferencesStar {
+	background-color: black !important;
+	color: yellow !important;
+}
