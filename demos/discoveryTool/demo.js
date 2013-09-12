@@ -18,8 +18,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 var demo = demo || {};
 (function ($, fluid) {
 
-    fluid.staticEnvironment["gpii--discoveryTool--demo"] = fluid.typeTag("gpii.discoveryTool.demo");
-
     var pathToTemplates = "../../src/discoveryTool/html/";
     var pathToMessages = "../../src/discoveryTool/messages/";
     var pathToTocTemplate = "../../src/shared/lib/infusion/components/tableOfContents/html/TableOfContents.html";
@@ -37,7 +35,8 @@ var demo = demo || {};
                     theme: {
                         "default": customThemeName
                     }
-                }
+                },
+                moreTextSelector: "article img, article [role~='img']"
             }
         });
     };
@@ -59,12 +58,4 @@ var demo = demo || {};
         });
     };
 
-    fluid.demands("gpii.discoveryTool.enactors.showMoreText", "gpii.discoveryTool.demo", {
-        options: {
-            selectors: {
-                // content of article images only
-                images: "article img, article [role~='img']"
-            }
-        }
-    });
 })(jQuery, fluid);

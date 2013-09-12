@@ -841,6 +841,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     }
                 }
             }
+        },
+        distributeOptions: {
+            source: "{that}.options.moreTextSelector",
+            removeSource: true,
+            target: "{that > moreText}.options.selectors.images"
         }
     });
 
