@@ -451,6 +451,8 @@ input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio
 
 .flc-uiOptions-preview-per-setting-eye {
 	position: relative;
+    z-index: 2;
+    background-color: transparent !important;
 }
 
 .flc-uiOptions-preview-per-setting-eye:before {
@@ -458,11 +460,13 @@ input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio
 }
 
 .flc-uiOptions-preview-per-setting-eye-background {
+	position: relative;
 	background-color: #000000;
     height: 0.34em;
     margin-left: 0.1em;
     margin-top: 0.1em;
     width: 0.5em;
+    z-index: 1;
 }
 
 .flc-uiOptions-preview-per-setting-body {
@@ -585,4 +589,9 @@ input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after 
 .flc-uiOptions-contrast-theme {
 	color: yellow;
 	background-color: black;
+}
+
+.flc-uiOptions-default-theme {
+	color: black;
+	background-color: #D3DFDF;
 }
