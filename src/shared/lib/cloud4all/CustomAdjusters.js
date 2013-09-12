@@ -118,7 +118,19 @@
 			orientation: "horizontal",
 			step: 0.2,
 			range: "min"
-		}
+		},
+		
+		outerPreviewEnhancerOptions: "{originalEnhancerOptions}.options.originalUserOptions",
+        emptyComponentType: "fluid.emptySubcomponent",
+        distributeOptions: [{
+            source: "{that}.options.outerPreviewEnhancerOptions",
+            removeSource: true,
+            target: "{that preview enhancer}.options"
+        }, {
+            source: "{that}.options.emptyComponentType",
+            removeSource: true,
+            target: "{that preview enhancer textSize}.type"
+        }]
 	});
 
 	fluid.defaults("fluid.uiOptions.enactors.cursorSize", {
@@ -143,7 +155,7 @@
     });
 
     fluid.uiOptions.enactors.cursorSize.set = function (times, that) {
-		$(".flc-uiOptions-cursor-size .flc-uiOptions-preview-per-setting-frame").contents().find("html").css("font-size", times + "em");
+		that.container.find(".flc-uiOptions-preview-per-setting-cursor").css("font-size", times + "em");
     };
 
     fluid.uiOptions.enactors.cursorSize.finalInit = function (that) {
@@ -469,10 +481,15 @@
         },
         
         outerPreviewEnhancerOptions: "{originalEnhancerOptions}.options.originalUserOptions",
+        emptyComponentType: "fluid.emptySubcomponent",
         distributeOptions: [{
             source: "{that}.options.outerPreviewEnhancerOptions",
             removeSource: true,
             target: "{that preview enhancer}.options"
+        }, {
+            source: "{that}.options.emptyComponentType",
+            removeSource: true,
+            target: "{that preview enhancer textSize}.type"
         }],
 		
         finalInitFunction: "fluid.uiOptions.panels.contrast.finalInit"
