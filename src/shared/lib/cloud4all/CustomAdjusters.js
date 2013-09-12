@@ -544,11 +544,11 @@
     fluid.uiOptions.enactors.contrast.set = function (value, that) {
     	if(value)
 		{
-    		that.container.addClass("flc-uiOptions-contrast-theme");
+    		that.container.addClass("flc-uiOptions-contrast-theme fl-theme-uio-yb fl-theme-yb");
 		}
     	else
 		{
-    		that.container.removeClass("flc-uiOptions-contrast-theme");
+    		that.container.removeClass("flc-uiOptions-contrast-theme fl-theme-uio-yb fl-theme-yb");
 		}
     };
 
