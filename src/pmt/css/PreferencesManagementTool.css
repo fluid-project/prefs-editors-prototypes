@@ -26,6 +26,7 @@ body {
 .preference {
 	background:#ECEFEF;
 	width: 340px;
+	min-height: 100px;
 }
 
 .fl-uiOptions-category {
