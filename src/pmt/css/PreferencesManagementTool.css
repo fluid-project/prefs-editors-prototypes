@@ -90,12 +90,12 @@ body {
 	content: "\e00a" !important;
 }
 
-input[type=checkbox] + .headerImage + .headerTitle + .headerImageTick{
+input[type=checkbox] ~ .headerImageTick{
 	display: none;
 }
 
-input[type=checkbox]:checked + .headerImage + .headerTitle + .headerImageTick{
-	display: inherit;
+input[type=checkbox]:checked ~ .headerImageTick{
+	display: block;
 }
 
 input[type=checkbox] + .headerImage:before {
