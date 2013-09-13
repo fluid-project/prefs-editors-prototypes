@@ -35,6 +35,12 @@
          url('../fonts/GPII-DiscoveryTool-MoreText.ttf');
 }
 
+@font-face {
+    font-family: 'RobotoSlab';
+    src:url('../fonts/RobotoSlab-Regular.ttf');
+}
+
+
 .fl-uiOptions-discoveryTool {
     background-color: #6f7b80;
     overflow-x: auto;    
@@ -181,17 +187,17 @@
     background-color: rgb(54, 60, 64, 1); 
     opacity: 1;    
 
-    -moz-transition: width 0.75s, height 0.75s, margin-left 0.75s, top 0.75s, background-color 0.75s, opacity 0.75s;
-    -webkit-transition: width 0.75s, height 0.75s, margin-left 0.75s, top 0.75s, background-color 0.75s, opacity 0.75s;   
-    -o-transition: width 0.75s, height 0.75s, margin-left 0.75s, top 0.75s, background-color 0.75s, opacity 0.75s;   
-    transition: width 0.75s, height 0.75s, margin-left 0.75s, top 0.75s, background-color 0.75s, opacity 0.75s;   
+    -moz-transition: width 0.4s, height 0.4s, margin-left 0.4s, top 0.4s, background-color 0.4s, opacity 0.4s;
+    -webkit-transition: width 0.4s, height 0.4s, margin-left 0.4s, top 0.4s, background-color 0.4s, opacity 0.4s;   
+    -o-transition: width 0.4s, height 0.4s, margin-left 0.4s, top 0.4s, background-color 0.4s, opacity 0.4s;   
+    transition: width 0.4s, height 0.4s, margin-left 0.4s, top 0.4s, background-color 0.4s, opacity 0.4s;   
 }
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:checked + label div.fl-icon-check:before {
      bottom: 0.6em;
-     -moz-transition: bottom 0.75s;
-    -webkit-transition: bottom 0.75s;
-    -o-transition: bottom 0.75s;
-    transition: bottom 0.75s;
+     -moz-transition: bottom 0.4s;
+    -webkit-transition: bottom 0.4s;
+    -o-transition: bottom 0.4s;
+    transition: bottom 0.4s;
 }
 
 .fl-uiOptions-discoveryTool .fl-uiOptions-panel input:checked + label .fl-icon-text {
@@ -209,10 +215,12 @@
     white-space: normal;
     border: none;
     background: none;
+    text-transform: lowercase;
 }
 
 .fl-uiOptions-discoveryTool .fl-uiOptions-panels li.fl-uiOptions-panel .fl-discoveryTool-try:hover {
 	background-color: #363C3F;
+	cursor:pointer;
 }
 
 /* Font Icons */
@@ -222,6 +230,7 @@
 
 .fl-icon-arrow:after {
     content: "\e019";
+    font-size: 0.7em;
 }
 
 .fl-icon-check:before {
@@ -364,3 +373,28 @@
 .fl-theme-lgdg .fl-uiOptions-panel label:hover .fl-icon-text,
 .fl-theme-lgdg .fl-uiOptions-panel .fl-discoveryTool-hover label .fl-icon-text,
 .fl-theme-lgdg .fl-uiOptions-panel input:focus ~ label .fl-icon-text  { text-shadow: none; }
+
+.fl-theme-bw  .fl-uiOptions-panel label .fl-discoveryTool-panel-icon:hover,
+.fl-theme-lgdg .fl-uiOptions-panel label .fl-discoveryTool-panel-icon:hover,
+.fl-theme-bw .fl-uiOptions-panel .fl-discoveryTool-hover label .fl-discoveryTool-panel-icon,
+.fl-theme-lgdg .fl-uiOptions-panel .fl-discoveryTool-hover label .fl-discoveryTool-panel-icon,
+.fl-theme-bw .fl-uiOptions-panel label:hover .fl-discoveryTool-panel-icon,
+.fl-theme-lgdg .fl-uiOptions-panel label:hover .fl-discoveryTool-panel-icon { box-shadow: 3px 3px 0 #4f4f4f;}
+
+.fl-theme-lgdg .fl-uiOptions-panel .fl-discoveryTool-try {
+	font-weight:normal !important;
+}
+
+/* Checked State for High Contrast */
+.fl-theme-bw .fl-uiOptions-panel input:checked + label .fl-discoveryTool-panel-icon        { background-color: #fff !important; }
+.fl-theme-bw .fl-uiOptions-panel input:checked + label .fl-discoveryTool-panel-icon:before { color: #fff; }
+.fl-theme-bw .fl-uiOptions-panel input:checked + label .fl-discoveryTool-panel-icon:after  { color: #000; }
+
+/* Checked State for Low Contrast */
+.fl-theme-lgdg .fl-uiOptions-panel input:checked + label .fl-discoveryTool-panel-icon        { background-color: #555 !important; }
+.fl-theme-lgdg .fl-uiOptions-panel input:checked + label .fl-discoveryTool-panel-icon:before { color: #555; }
+.fl-theme-lgdg .fl-uiOptions-panel input:checked + label .fl-discoveryTool-panel-icon:after  { color: #bdbdbb; }
+.fl-theme-lgdg {
+	 font-family: 'RobotoSlab' !important;
+}
+
