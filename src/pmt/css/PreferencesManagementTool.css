@@ -667,6 +667,13 @@ input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after 
 	color: black !important;
 }
 
+.flc-uiOptions-contrast-theme .fl-magnifierPosition-uio-background {
+	background-color: transparent !important;
+}
+
+.flc-uiOptions-contrast-theme .fl-indicator {
+	background-color: transparent !important;
+}
 
 /*
 	Style for sept-12 font icons
