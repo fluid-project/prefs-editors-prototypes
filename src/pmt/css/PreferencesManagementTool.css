@@ -56,6 +56,11 @@ body {
     text-transform: none !important;
 }
 
+h2 > label {
+	width: 240px !important;
+    word-wrap: break-word;	
+}
+
 /*
 	Header's styling
 */
