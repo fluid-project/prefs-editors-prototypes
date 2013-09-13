@@ -76,13 +76,13 @@ body {
 }
 
 .headerImageTick {
-	font-size: 1.6em !important;
-    margin-left: calc(330px - 1.5em);
-    margin-top: calc(100px - 1.8em);
+	font-size: 20px !important;
+    margin-left: 300px;
+    margin-top: 60px;
     position: absolute;
     background-color: white;
     border-radius: 50%;
-    padding: 0.1em;
+    padding: 2px;
     color: #566374;
 }
 
@@ -556,10 +556,11 @@ input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio
 }
 
 .addToMyPreferencesStar {
-	margin-left: calc(330px - 1em);
-    margin-top: 0.5em;
+	margin-left: 310px;
+    margin-top: 10px;
     color: #6b7281;
   	position: absolute;
+    font-size: 16px;
 }
 
 input:checked + .addToMyPreferencesStar {
@@ -567,13 +568,12 @@ input:checked + .addToMyPreferencesStar {
 }
 
 .addToMyPreferencesLabel {
-	height: 1.1em !important;
+	height: 16px !important;
     position: absolute;
-    width: 1.1em !important;
+    width: 16px !important;
     cursor: pointer;
-	margin-left: calc(330px - 1em);
-    margin-top: 0.5em;
-    font-size: 1em !important;
+	margin-left: 310px;
+    margin-top: 10px;
 }
 
 /*
@@ -590,7 +590,7 @@ input:checked + .addToMyPreferencesStar {
 	-webkit-transition:0.25s linear opacity;
 	border: 1px solid black;
     border-radius: 3px 3px 3px 3px;
-    font-size: 0.8em;
+    font-size: 12px;
 }
 [title]:hover:after{
 	left:0px;
