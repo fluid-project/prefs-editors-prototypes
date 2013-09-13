@@ -400,34 +400,39 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
 	Style for magnifier follows font icons
 */
 .fl-magnifierFollows-uio-icon-label {
-	height: 7.7em !important;
+	height: 7.8em !important;
 	width: 6.5em !important;
 	border: none !important;
 	padding: 0 !important;
 	cursor: pointer;
-	background-color: white;
+	background-color: #636c7c;
 	margin-bottom: 0.5em !important;
-	margin-right: 0.5em !important;	
+	margin-right: 0.5em !important;
 }
 
 .fl-magnifierFollows-uio-icon {
-	font-size: 7.7em !important;
-	color: #636c7c;
+	font-size: 6.8em !important;
+	margin-bottom: 0.2em !important;
+	color: white;
+}
+
+.flc-uiOptions-magnifierFollowsRow{
+	margin-bottom: 1em !important;
 }
 
 .fl-magnifierFollows-uio-mouseCursor > .fl-magnifierFollows-uio-icon {
 }
 
 .fl-magnifierFollows-uio-mouseCursor > .fl-magnifierFollows-uio-icon:before {
-	content: "\e003";
+	content: "\e007";
 }
 
 .fl-magnifierFollows-uio-textCursor > .fl-magnifierFollows-uio-icon:before {
-	content: "\e004";
+	content: "\e000";
 }
 
 .fl-magnifierFollows-uio-keyboardFocus > .fl-magnifierFollows-uio-icon:before {
-	content: "\e006";
+	content: "\e008";
 }
 
 /*
@@ -435,23 +440,27 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
 */
 .fl-magnifierFollows-uio-icon-check {
 	background-color: #636C7C;
-    border-radius: 3px 3px 3px 3px;
+    border-radius: 6px 6px 6px 6px;
     color: #FFFFFF;
     font-size: 1.2em;
-    margin-left: 3.65em;
-    margin-top: -1.7em;
-    //position: absolute;
-    //width: 1.5em;
+    margin-left: 3.6em;
+    margin-top: 4.7em;
+    position: absolute;
+    width: 1.2em;
+    height: 1.2em;
+	border: 3px double #636C7C;
+    padding-right: 0.1em;
+    padding-top: 0.1em;
+    background-color: white;
 }
 
 input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio-icon-check {
-    padding-bottom: 0.2em;
-    padding-top: 0.2em;
-    border: 1px solid;
+	border: 2px solid;
+    background-color: 636C7C;
 }
 
 input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio-icon-check:before {
-	content: "\e002";
+	content: "\e00a";
 }
 
 /*
