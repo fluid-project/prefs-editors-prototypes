@@ -258,6 +258,7 @@
     fluid.uiOptions.enactors.magnifier.set = function (times, that) {
 		//$(".flc-uiOptions-magnifier .flc-uiOptions-preview-per-setting-frame").contents().find("html").css("transform", "scale(" + times/100 + ")");
         that.container.css("transform", "scale(" + times/100 + ")");
+        that.container.css("-webkit-transform", "scale(" + times/100 + ")");
     };
 
     fluid.uiOptions.enactors.magnifier.finalInit = function (that) {
