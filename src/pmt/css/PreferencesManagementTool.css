@@ -69,12 +69,37 @@ body {
 	color: #566374;
 	background-color: white;
 }
-input[type=checkbox] + .headerImage:before {
-	content: "\e00e";
+
+.headerImage {
+	color: white;
+	background-color: #566374;	
 }
 
-input[type=checkbox]:checked + .headerImage:before {
-	content: "\e00d";
+.headerImageTick {
+	font-size: 1.6em !important;
+    margin-left: calc(330px - 1.5em);
+    margin-top: calc(100px - 1.8em);
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    padding: 0.1em;
+    color: #566374;
+}
+
+.headerImageTick:before {
+	content: "\e00a" !important;
+}
+
+input[type=checkbox] + .headerImage + .headerTitle + .headerImageTick{
+	display: none;
+}
+
+input[type=checkbox]:checked + .headerImage + .headerTitle + .headerImageTick{
+	display: inherit;
+}
+
+input[type=checkbox] + .headerImage:before {
+	content: "\e003";
 }
 
 .adjusterGroupTitle {
@@ -633,6 +658,12 @@ input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after 
 	border: 1px solid yellow !important;
 }
 
+.flc-uiOptions-contrast-theme .headerImage {
+	background-color: yellow !important;
+	color: black !important;
+}
+
+
 /*
 	Style for sept-12 font icons
 */
@@ -643,39 +674,6 @@ input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after 
 /*
 	Style for contrast header
 */
-.flc-uiOptions-contrast > .headerImage {
-	color: white;
-	background-color: #566374;	
-}
-
 .flc-uiOptions-contrast > .headerImage:before {
 	content: "\e002" !important;
-}
-
-.flc-uiOptions-contrast > .headerImageTick {
-	font-size: 1.6em !important;
-    margin-left: calc(330px - 1.5em);
-    margin-top: calc(100px - 1.8em);
-    position: absolute;
-    background-color: white;
-    border-radius: 50%;
-    padding: 0.1em;
-    color: #566374;
-}
-
-.flc-uiOptions-contrast > .headerImageTick:before {
-	content: "\e00a" !important;
-}
-
-.flc-uiOptions-contrast > input[type=checkbox] + .headerImage + .headerTitle + .headerImageTick{
-	display: none;
-}
-
-.flc-uiOptions-contrast > input[type=checkbox]:checked + .headerImage + .headerTitle + .headerImageTick{
-	display: inherit;
-}
-
-.flc-uiOptions-contrast-theme .flc-uiOptions-contrast > .headerImage {
-	background-color: yellow !important;
-	color: black !important;
 }
