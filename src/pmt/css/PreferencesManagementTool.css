@@ -536,12 +536,16 @@ input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio
 	float: none;
 }
 
-.flc-uiOptions-preview-per-setting-cursor:before {
-	content: "\e001";
+.flc-uiOptions-preview-per-setting-cursor1:before {
+	content: "\e006";
 }
 
-.flc-uiOptions-preview-per-setting-cursor {
-	font-size: 2em;
+.flc-uiOptions-preview-per-setting-cursor2:before {
+	content: "\e005";
+}
+
+.flc-uiOptions-preview-per-setting-cursor3:before {
+	content: "\e001";
 }
 
 /*
