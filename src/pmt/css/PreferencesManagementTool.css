@@ -445,19 +445,18 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
 	Style for magnifier follows checked font icons
 */
 .fl-magnifierFollows-uio-icon-check {
-	background-color: #636C7C;
+	background-color: #FFFFFF;
+    border: 3px double #636C7C;
     border-radius: 6px 6px 6px 6px;
     color: #FFFFFF;
     font-size: 1.2em;
-    margin-left: 3.6em;
-    margin-top: 4.7em;
-    position: absolute;
-    width: 1.2em;
     height: 1.2em;
-	border: 3px double #636C7C;
+    margin-left: 3.6em;
+    margin-top: -2.1em;
     padding-right: 0.1em;
     padding-top: 0.1em;
-    background-color: white;
+    position: relative;
+    width: 1.2em;
 }
 
 input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio-icon-check {
