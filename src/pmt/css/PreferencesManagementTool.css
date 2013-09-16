@@ -69,11 +69,10 @@ h2 > label {
 .headerImage {
 	-webkit-font-smoothing: antialiased;
 	width: 330;
-   	height:90;
+   	//height:90;
    	margin-top: 4px !important;
 	margin:5px;
     cursor:default;
-	font-size: 90px !important;
 	color: #566374;
 	background-color: white;
 }
@@ -81,13 +80,18 @@ h2 > label {
 .headerImage {
 	color: white;
 	background-color: #566374;	
+	clear: both;
+}
+
+.headerImage:before {
+	font-size: 90px !important;
 }
 
 .headerImageTick {
 	font-size: 20px !important;
     margin-left: 300px;
-    margin-top: 60px;
-    position: absolute;
+    margin-top: -40px;
+    position: relative;
     background-color: white;
     border-radius: 50%;
     padding: 2px;
@@ -121,7 +125,20 @@ input[type=checkbox] + .headerImage:before {
    	left: 0; 
    	width: 100%;
    	color: white;
-   	text-align: center;
+   	text-align: left;
+   	font-size: 1.8em !important;
+    margin: -90px 0 0;
+    display: inline;
+    line-height: 90px;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: left;
+    //font-size: 1.5em;
+    min-height: 90px;
+    //line-height: 90px;
+    width: 240px;
+    word-wrap: break-word;
+    padding-left: 90px;
 }
 
 input[type=checkbox], input[type=radio] {
@@ -133,34 +150,6 @@ input[type=checkbox], input[type=radio] {
     margin:-1px;
     padding:0;
     border:0;
-}
-
-input[type=checkbox] + .headerImage + label.headerTitle {
-    background-size: 330px 90px;
-    color: #FFFFFF;
-    cursor: pointer;
-    display: inline;
-    float: left;
-    font-size: 1.5em;
-    height: 90px;
-    line-height: 90px;
-    margin: -95px 5px 5px;
-    text-align: center;
-    width: 330px;
-}
-
-input[type=checkbox]:checked + .headerImage + label.headerTitle {
-    background-size: 330px 90px;
-    color: #FFFFFF;
-    cursor: pointer;
-    display: inline;
-    float: left;
-    font-size: 1.5em;
-    height: 90px;
-    line-height: 90px;
-    margin: -95px 5px 5px;
-    text-align: center;
-    width: 330px;
 }
 
 /*
