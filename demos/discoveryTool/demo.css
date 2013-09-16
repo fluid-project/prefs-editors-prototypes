@@ -476,6 +476,15 @@ div.main-content-image + .fl-discoveryTool-moreText {
 .fl-theme-lgdg .fl-icon-discover:before { color: #555; }
 .fl-theme-lgdg .fl-icon-tree:before { text-shadow: 1px 1px 0 #000; }
 
+.fl-theme-lgdg #main-header {
+    box-shadow: 0 3px 0 #BDBDBB;
+}
+
+.fl-theme-bw #main-header {
+    box-shadow: 0 3px 0 #000;
+}
+
+
 /* Low an High Contrast Prev and Next buttons */
 .fl-theme-lgdg .fl-icon-prev,
 .fl-theme-bw .fl-icon-prev { margin-right: 3px;}
@@ -509,6 +518,7 @@ div.main-content-image + .fl-discoveryTool-moreText {
 	color: #fff !important;
 	border: 2px solid #fff !important;
 }
+
 
 /* Simplify Content */
 .fl-simplify {
