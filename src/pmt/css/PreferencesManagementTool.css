@@ -134,37 +134,31 @@ input[type=checkbox], input[type=radio] {
 }
 
 input[type=checkbox] + .headerImage + label.headerTitle {
-    //background: url('../images/increaseSizeHeader.png') no-repeat;
-    background-size:330px 90px;
-    //padding-left:30px;
-    cursor:pointer;
-    margin: 5px;
-    margin-top: -95px;
+    background-size: 330px 90px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline;
+    float: left;
     font-size: 1.5em;
-    text-align: center;
-    //padding-left: 3px;
-    color:white;
-    display:inline-block;
-    line-height:90px;
     height: 90px;
-    width:330px;
+    line-height: 90px;
+    margin: -95px 5px 5px;
+    text-align: center;
+    width: 330px;
 }
 
 input[type=checkbox]:checked + .headerImage + label.headerTitle {
-    //background: url('../images/increaseSizeHeaderChecked.png') no-repeat;
-    background-size:330px 90px;
-    //padding-left:30px;
-    cursor:pointer;
-    margin: 5px;
-    margin-top: -95px;
-	font-size: 1.5em;
-    text-align: center;
-    //padding-left: 3px;
-    color:white;
-    display:inline-block;
-    line-height:90px;
+    background-size: 330px 90px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline;
+    float: left;
+    font-size: 1.5em;
     height: 90px;
-    width:330px;
+    line-height: 90px;
+    margin: -95px 5px 5px;
+    text-align: center;
+    width: 330px;
 }
 
 /*
@@ -244,6 +238,7 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
 	-o-user-select: none;
 	user-select: none;
 	padding-top: 0.05em;
+	float: left;
 }
 
 .flc-uiOptions-plus-minus-numerical-widget {
@@ -284,6 +279,7 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
 	text-align: center;
 	cursor: pointer;
 	padding-bottom: 5px !important;
+	padding-top: 20px;
 }
 
 /*
@@ -412,7 +408,7 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
 	padding: 0 !important;
 	cursor: pointer;
 	background-color: #636c7c;
-	margin-bottom: 0.5em !important;
+	margin-bottom: 1.5em !important;
 	margin-right: 0.5em !important;
 }
 
@@ -453,13 +449,13 @@ input[type=checkbox]:checked + .headerImage + label.headerTitle {
     height: 1.2em;
     margin-left: 3.6em;
     margin-top: -2.1em;
-    padding-right: 0.1em;
-    padding-top: 0.1em;
     position: relative;
     width: 1.2em;
 }
 
 input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio-icon-check {
+    padding-right: 0.1em;
+    padding-top: 0.1em;
 	border: 2px solid;
     background-color: 636C7C;
 }
@@ -579,6 +575,7 @@ input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio
     color: #6b7281;
   	position: absolute;
     font-size: 16px;
+    display: table;
 }
 
 input:checked + .addToMyPreferencesStar {
@@ -586,12 +583,13 @@ input:checked + .addToMyPreferencesStar {
 }
 
 .addToMyPreferencesLabel {
-	height: 16px !important;
+	height: 17px !important;
     position: absolute;
-    width: 16px !important;
+    width: 17px !important;
     cursor: pointer;
 	margin-left: 310px;
     margin-top: 10px;
+    display: table;
 }
 
 /*
