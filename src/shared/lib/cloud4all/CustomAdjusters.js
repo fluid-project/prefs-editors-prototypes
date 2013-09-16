@@ -448,12 +448,14 @@
 		// if we've reached min range
 		if(that.model.value == that.options.range.min)
 		{	// set style
-			that.locate("minus").css("color", "lightGray");
+			//that.locate("minus").css("color", "lightGray");
+			that.locate("minus").addClass("flc-uiOptions-plus-minus-numerical-min-reached");
 			that.events.minRangeReached.fire();
 		}
 		else
 		{	// recover style
-			that.locate("minus").css("color", "black");
+			//that.locate("minus").css("color", "black");
+			that.locate("minus").removeClass("flc-uiOptions-plus-minus-numerical-min-reached");
 		}
 	};
 
