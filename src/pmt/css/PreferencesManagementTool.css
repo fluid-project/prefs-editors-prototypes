@@ -51,9 +51,11 @@ body {
     font-size: 0.8em;
 }
 
-.fl-uiOptions-fullPreview h2 {
-	display: table-cell !important;
-    text-transform: none !important;
+h2 {
+    border-top: 2px solid #dddddd;
+    margin-bottom: 5px;
+	//display: table-cell !important;
+    //text-transform: none !important;
 }
 
 h2 > label {
