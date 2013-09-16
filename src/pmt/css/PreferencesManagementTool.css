@@ -181,12 +181,12 @@ input[type=checkbox], input[type=radio] {
 	content: "\e000";
 }
 .fl-icon-small-cursor {
-	width: 30px;
+	width: 1em;
 	text-align: right;
 	padding-top: 0.25em;
 }
 .fl-icon-big-cursor {
-	width: 35px;
+	width: 1em;
 	margin-top: -0.5em !important;
 }
 
@@ -194,8 +194,9 @@ input[type=checkbox], input[type=radio] {
 	The slider's style
 */
 .fl-uiOptions .fl-slider-horz {
-    width: 200px;
+    width: calc(330 * 0.8px - 2em);
     margin: 2px !important;
+    margin-bottom: 0.7em !important;
 }
 
 .fl-uiOptions .fl-slider a {
