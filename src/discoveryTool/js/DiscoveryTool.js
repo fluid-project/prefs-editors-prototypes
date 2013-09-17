@@ -19,6 +19,18 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
     fluid.registerNamespace("gpii.discoveryTool");
 
+    // Used for graceful degradation instead of progressive enhancement,
+    // since we do not know ahead of time which enactors will be used. (e.g. if/when we switch to schema.)
+    // Currently just checking if wav files are supported as that is the only file type that is returned from
+    // the tts server. In the future should switch to "buzz.isSupported", when the tts server returns other
+    // supported file types.
+    gpii.discoveryTool.isHTML5AudioNotSupported = function () {
+        return !buzz.isWAVSupported();
+    };
+    fluid.enhance.check({
+        "fluid.HTML5Audio.NotSupported": "gpii.discoveryTool.isHTML5AudioNotSupported"
+    });
+
     /**
      * These paths will need to be customized for the integration
      */
@@ -107,6 +119,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     "this": "{that}.dom.toggleButton",
                     method: "attr",
                     args: ["aria-label", "{arguments}.0"]
+                },
+                setExpanded: {
+                    "this": "{that}.dom.panel",
+                    method: "attr",
+                    args: ["aria-expanded", "{arguments}.0"]
                 }
             },
             listeners: {
@@ -115,15 +132,27 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     listener: "{that}.setLabel",
                     args: "{that}.options.strings.showLabel"
                 },
+                "onCreate.showExpanded": {
+                    listener: "{that}.setExpanded",
+                    args: "{that}.model.isShowing"
+                },
                 "onPanelHide.showIcon": "{that}.showDiscoveryIcon",
                 "onPanelHide.showLabel": {
                     listener: "{that}.setLabel",
                     args: "{that}.options.strings.showLabel"
                 },
+                "onPanelHide.showExpanded": {
+                    listener: "{that}.setExpanded",
+                    args: "false"
+                },
                 "onPanelShow.showIcon": "{that}.hideDiscoveryIcon",
                 "onPanelShow.showLabel": {
                     listener: "{that}.setLabel",
                     args: "{that}.options.strings.hideLabel"
+                },
+                "onPanelShow.showExpanded": {
+                    listener: "{that}.setExpanded",
+                    args: "true"
                 }
             }
         },
@@ -140,6 +169,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 args: "{that}",
                 priority: "last"
             }
+        },
+        distributeOptions: {
+            source: "{that}.options.iframeHtml",
+            removeSource: true,
+            target: "{that > iframeRenderer}.options.markupProps.src"
         }
     });
 
@@ -166,7 +200,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             }]
         };
 
-        element.fluid("tabbable");
         fluid.activatable(element, null, keybindingOpts);
     };
 
@@ -479,10 +512,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
 
+    // Will only add those subcompoents that have the grade "gpii.discoveryTool.defaultPanel"
     gpii.discoveryTool.panels.getSubcomponents = function (component) {
         var subComponents = [];
         fluid.each(component.options.components, function (opts, memberName) {
-            subComponents.push(fluid.get(component, memberName));
+            var subComponent = fluid.get(component, memberName);
+            if (fluid.hasGrade(subComponent.options, "gpii.discoveryTool.defaultPanel")) {
+                subComponents.push(subComponent);
+            }
         });
         return subComponents;
     };
@@ -652,7 +689,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     fluid.defaults("gpii.discoveryTool.enactors.showMoreText", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
         selectors: {
-            content: ".flc-uiOptions-content",
             moreTexts: ".flc-discoveryTool-moreText-container",
             images: "img, [role~='img']",
             textEl: "details" // selector of element in 'markup.moreText' where text should be inserted
@@ -805,7 +841,25 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     }
                 }
             }
+        },
+        distributeOptions: {
+            source: "{that}.options.moreTextSelector",
+            removeSource: true,
+            target: "{that > moreText}.options.selectors.images"
         }
+    });
+
+    // Removes the selfVoicing enactor from the fatPanel iFrame
+    fluid.demands("gpii.discoveryTool.enactors.selfVoicing", ["fluid.uiOptions.fatPanel.renderIframe"], {
+        funcName: "fluid.emptySubcomponent"
+    });
+
+    // Removes the selfVoicing enactor and the spoken panel from when HTML5Audio is not supported
+    fluid.demands("gpii.discoveryTool.enactors.selfVoicing", ["fluid.HTML5Audio.NotSupported"], {
+        funcName: "fluid.emptySubcomponent"
+    });
+    fluid.demands("gpii.discoveryTool.panels.spoken", ["fluid.HTML5Audio.NotSupported"], {
+        funcName: "fluid.emptySubcomponent"
     });
 
     /**************************************

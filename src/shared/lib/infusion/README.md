@@ -9,7 +9,7 @@ of the Infusion master branch
 
 using the command line
 
-    ant -lib lib/rhino customBuild -Dinclude="uiOptions" -DnoMinify="true"
+    ant -lib lib/rhino customBuild -Dinclude="uiOptions, enhancement" -DnoMinify="true"
 
 The following directories were stripped out of the build since they contain code that is included in the MyInfusion.js file:
 
@@ -17,6 +17,7 @@ The following directories were stripped out of the build since they contain code
     src/shared/lib/infusion/components/tabs/
     src/shared/lib/infusion/components/uiOptions/js/
     src/shared/lib/infusion/framework/core/
+    src/shared/lib/infusion/framework/enhancement/
     src/shared/lib/infusion/framework/renderer/
     src/shared/lib/infusion/lib/fastXmlPull/
     src/shared/lib/infusion/lib/jquery/core/
