@@ -58,8 +58,7 @@
 	        "namespace": "fluid.uiOptions.constructed",
 	        "templatePrefix": "../../src/shared/lib/infusion/components/uiOptions/html/", // The common path to settings panel templates
 	        "template": "../../src/pmt/html/PMTUIOptions.html",
-	        "messagePrefix": "../../src/shared/lib/infusion/components/uiOptions/messages/",
-	        "message": "%prefix/uiOptions.json",
+	        "messagePrefix": "../../src/shared/adjusters/messages/",
 
 	        // The preference-specific information:
 	        "textSize": {
@@ -70,7 +69,7 @@
 	            "panel": {
 	                "type": "fluid.uiOptions.panels.textSize",
 	                "container": ".flc-uiOptions-text-size",  // the css selector in the template where the panel is rendered
-	                "template": "%prefix/UIOptionsTemplate-plusMinusNumerical.html",
+	                "template": "../../src/shared/adjusters/html/UIOptionsTemplate-plusMinusNumerical.html",
 	                "message": "%prefix/textSize.json"
 	            }
 	        },
@@ -82,7 +81,7 @@
 	            "panel": {
 	                "type": "fluid.uiOptions.panels.cursorSize",
 	                "container": ".flc-uiOptions-cursor-size",  // the css selector in the template where the panel is rendered
-	                "template": "%prefix/UIOptionsTemplate-cursorSize.html",
+	                "template": "../../src/shared/adjusters/html/UIOptionsTemplate-cursorSize.html",
 	                "message": "%prefix/cursorSize.json"
 	            }
 	        },
@@ -94,7 +93,7 @@
 	            "panel": {
 	                "type": "fluid.uiOptions.panels.magnifier",
 	                "container": ".flc-uiOptions-magnifier",  // the css selector in the template where the panel is rendered
-	                "template": "%prefix/UIOptionsTemplate-plusMinusNumerical.html",
+	                "template": "../../src/shared/adjusters/html/UIOptionsTemplate-plusMinusNumerical.html",
 	                "message": "%prefix/magnifier.json"
 	            }
 	        },
@@ -113,7 +112,7 @@
                     "type": "fluid.uiOptions.panels.magnifierPosition",
                     "container": ".flc-uiOptions-magnifierPosition",  // the css selector in the template where the panel is rendered
                     "classnameMap": {"magnifierPosition": "@magnifierPosition.classes"},
-                    "template": "%prefix/UIOptionsTemplate-magnifierPosition.html",
+                    "template": "../../src/shared/adjusters/html/UIOptionsTemplate-magnifierPosition.html",
                     "message": "%prefix/magnifier.json"
                 }
             },
@@ -128,7 +127,7 @@
                     "type": "fluid.uiOptions.panels.magnifierFollows",
                     "container": ".flc-uiOptions-magnifierFollows",  // the css selector in the template where the panel is rendered
                     "classnameMap": {"magnifierFollows": "@magnifierFollows.classes"},
-                    "template": "%prefix/UIOptionsTemplate-magnifierFollows.html",
+                    "template": "../../src/shared/adjusters/html/UIOptionsTemplate-magnifierFollows.html",
                     "message": "%prefix/magnifier.json"
                 }
             },
@@ -140,7 +139,7 @@
                 "panel": {
                     "type": "fluid.uiOptions.panels.contrast",
                     "container": ".flc-uiOptions-contrast",
-                    "template": "%prefix/UIOptionsTemplate-contrastNew.html",
+                    "template": "../../src/shared/adjusters/html/UIOptionsTemplate-contrastNew.html",
 	                "message": "%prefix/contrastNew.json"
                 }
             },
