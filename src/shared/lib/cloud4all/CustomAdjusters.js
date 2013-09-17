@@ -27,7 +27,7 @@
                 createOnEvent: "afterRender",
                 container: ".flc-uiOptions-text-size .flc-uiOptions-preview-per-setting-frame",
                 options: {
-                    templateUrl: "uiOptionsTextPreview.html"
+                    templateUrl: "../../src/shared/preview/html/uiOptionsTextPreview.html"
                 }
             }
         },
@@ -95,7 +95,7 @@
                 createOnEvent: "afterRender",
                 container: ".flc-uiOptions-cursor-size .flc-uiOptions-preview-per-setting-frame",
                 options: {
-                    templateUrl: "uiOptionsCursorPreview.html"
+                    templateUrl: "../../src/shared/preview/html/uiOptionsCursorPreview.html"
                 }
             }
         },
@@ -190,7 +190,7 @@
                 createOnEvent: "afterRender",
                 container: ".flc-uiOptions-magnifier .flc-uiOptions-preview-per-setting-frame",
                 options: {
-                    templateUrl: "uiOptionsTextPreview.html"
+                    templateUrl: "../../src/shared/preview/html/uiOptionsTextPreview.html"
                 }
             }
         },
@@ -480,7 +480,7 @@
                 createOnEvent: "afterRender",
                 container: ".flc-uiOptions-contrast .flc-uiOptions-preview-per-setting-frame",
                 options: {
-                    templateUrl: "uiOptionsContrastPreview.html"
+                    templateUrl: "../../src/shared/preview/html/uiOptionsContrastPreview.html"
                 }
             }
         },
