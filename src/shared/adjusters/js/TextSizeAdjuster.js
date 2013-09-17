@@ -50,8 +50,8 @@
         },
 
         invokers: {
-            updateAdjusterUI: {
-                funcName: "fluid.uiOptions.panels.updateAdjusterUI",
+        	updatePlusMinusAdjusterUI: {
+                funcName: "fluid.uiOptions.panels.updatePlusMinusAdjusterUI",
                 args: ["{that}"]
             }
         },

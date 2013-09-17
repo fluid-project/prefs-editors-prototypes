@@ -1,6 +1,6 @@
 (function ($, fluid) {
 	
-	fluid.uiOptions.panels.updateAdjusterUI = function (that) {
+	fluid.uiOptions.panels.updatePlusMinusAdjusterUI = function (that) {
 		// append metric unit if there is one
 		if(that.options.metricUnit)
 		{
@@ -35,7 +35,7 @@
 		});
 
 		that.events.afterRender.addListener(function () {
-			that.updateAdjusterUI();
+			that.updatePlusMinusAdjusterUI();
 
 			that.locate("minus").click(
 					function()
@@ -45,7 +45,7 @@
 						{
 							//that.locate("valueText").val(newValue);
 							that.applier.requestChange("value", newValue);
-							that.updateAdjusterUI();
+							that.updatePlusMinusAdjusterUI();
 						}
 					}
 			);
@@ -55,7 +55,7 @@
 					{
 						var newValue =  parseFloat(that.model.value) + parseFloat(that.options.range.divisibleBy);
 						that.applier.requestChange("value", newValue);
-						that.updateAdjusterUI();
+						that.updatePlusMinusAdjusterUI();
 						//that.locate("valueText").val(newValue);
 					}
 			);
@@ -74,7 +74,7 @@
 
 			        	//that.locate("valueText").val(that.locate("valueText").val() + " " + that.options.metricUnit);
 						that.applier.requestChange("value", newValue);
-						that.updateAdjusterUI();
+						that.updatePlusMinusAdjusterUI();
 
 					}
 			);
