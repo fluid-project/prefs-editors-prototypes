@@ -24,10 +24,12 @@
           minLength: 0,
           source: $.proxy( this, "_source" )
         })
+        .focus(function () {
+          $(this).select();
+        })
         .tooltip({
           tooltipClass: "ui-state-highlight"
         });
-
 
       this._on( this.input, {
         autocompleteselect: function( event, ui ) {
@@ -38,7 +40,6 @@
           var newValue = $("#auditoryOutLanguage").val();
           $("#auditoryOutLanguage").trigger('change', newValue);
         },
-
         autocompletechange: "_removeIfInvalid"
       });
     },
@@ -49,7 +50,7 @@
       
       $( "<a>" )
         .attr( "tabIndex", -1 )
-        .attr( "title", "Show All Items" )
+        .attr( "title", "Show All Languages" )
         .tooltip()
         .appendTo( this.wrapper )
         .button({
@@ -62,6 +63,9 @@
         .addClass( "custom-combobox-toggle ui-corner-right" )
         .mousedown(function() {
           wasOpen = input.autocomplete( "widget" ).is( ":visible" );
+        })
+        .focus(function () {
+          input.select();
         })
         .click(function() {
           input.focus();
@@ -88,8 +92,8 @@
       }) );
     },
 
-    _removeIfInvalid: function( event, ui ) {
 
+    _removeIfInvalid: function( event, ui ) {
       // Selected an item, nothing to do
       if ( ui.item ) {
         return;
@@ -114,7 +118,7 @@
       // Remove invalid value
       this.input
         .val( "" )
-        .attr( "title", value + " didn't match any item" )
+        .attr( "title", value + " didn't match any language" )
         .tooltip( "open" );
       this.element.val( "" );
       this._delay(function() {
@@ -131,5 +135,5 @@
 })( jQuery );
 
 $(function() {
-  $( "#combobox" ).combobox();
+  $.noConflict(); //switch namespace to version 1.9.1 of jQuery's. Should be unnecessary after version update.
 });

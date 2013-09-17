@@ -1,6 +1,6 @@
 .preference {
     margin-left: 45px;
-    /*font-family: 'Roboto Slab', serif;*/
+    font-family: 'Roboto Slab', serif;
     /*font-family: 'Open Sans', sans-serif;*/
 }
 
@@ -123,7 +123,7 @@ input[type="radio"] + label.radioButton-middle {
     position: relative;
     display:inline;
     font-size: 15px;
-    padding-top: 31px;
+    padding-top: 29px;
     padding-right: 10px;
     padding-left: 10px;
 }
@@ -231,16 +231,7 @@ input[type=checkbox] + label.main-checkbox-label {
 input[type=checkbox]:checked + label.main-checkbox-label {
     background: url('../images/speakTextOn.png') no-repeat;
     background-size:350px 90px;
-    padding-left:30px;
-    cursor:pointer;
-    font-size: 23px;
     font-weight:bold;
-    text-align: center;
-    padding-left: 3px;
-    display:inline-block;
-    line-height:90px;
-    height: 90px;
-    width:350px;
 }
 
 input[type=checkbox] + label.checkbox-label {
@@ -275,7 +266,60 @@ body {
     -webkit-user-select: none;
 }
 
+.ui-menu-item {
+    width: 40% !important;
+}
+
+.ui-corner-all {
+    width: 229px !important;
+}
+
+.ui-menu .ui-menu-item a {
+    font-size: 75%;
+    width: 200px !important;
+}
+
+.ui-widget {
+    font-family: 'Roboto Slab', serif;
+}
+
+.ui-widget-content.ui-widget::selection { 
+    background: yellow; /*Safari*/
+}
+
+.ui-widget-content::-moz-selection {
+    background: yellow; /* Firefox */
+}
+
+.ui-widget .ui-widget-content {
+    font-family: 'Open Sans', sans-serif;
+    height: 33px;
+    border: solid 2px;
+    border-color: #D5E1E2;
+    padding-left: 10px;
+}
+
+.ui-widget .ui-button {
+    height: 35px;
+    width: 20px;
+    margin-bottom: 3px;
+    margin-left: -4px;
+    border: solid 2px;
+    border-color: #D5E1E2;
+}
+
+.ui-autocomplete {
+    cursor: pointer;
+    border: solid 2px;
+    border-color: #D5E1E2;
+    max-height: 150px;
+    overflow-y: auto;
+    overflow-x: hidden; /* prevent horizontal scrollbar */
+    padding-right: 15px; /* add padding to account for vertical scrollbar */
+}
+
 .fl-uiOptions .fl-uiOptions-onoff .fl-uiOptions-switch {
+    font-family: Arial;
     border-radius:50px;
     border: 1px solid #D7DCDD;
     width: 5em;

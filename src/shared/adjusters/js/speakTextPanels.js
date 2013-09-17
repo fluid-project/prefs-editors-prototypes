@@ -9,10 +9,6 @@
         selectors: {
             screenReaderTTSEnabled: ".gpii-screenReaderTTSEnabled",
             screenReaderTTSEnabledLabel: ".gpii-screenReaderTTSEnabled-label"
-        },
-        protoTree: {
-            screenReaderTTSEnabled: "${screenReaderTTSEnabled}",
-            screenReaderTTSEnabledLabel: {messagekey: "screenReaderTTSEnabledLabel"}
         }
     });
 
@@ -33,21 +29,6 @@
             speechRateLabel: ".gpii-speechRate-label",
             speechRateMinus: ".gpii-speechRate-minus",
             speechRatePlus: ".gpii-speechRate-plus",
-        },
-        protoTree: {
-            speechRate: {
-                decorators: {
-                    type: "fluid",
-                    func: "gpii.uiOptions.textfieldStepper",
-                    options: {
-                        range: "{that}.options.controlValues.speechRate",
-                        path: "value"
-                    }
-                }
-            },
-            speechRateLabel: {messagekey: "speechRateLabel"},
-            speechRateMinus: {messagekey: "speechRateMinus"},
-            speechRatePlus: {messagekey: "speechRatePlus"}
         }
     });
 
@@ -62,13 +43,6 @@
         selectors: {
             auditoryOutLanguage: ".gpii-auditoryOutLanguage",
             auditoryOutLanguageLabel: ".gpii-auditoryOutLanguage-label"
-        },
-        protoTree: {
-            auditoryOutLanguage: {
-                selection: "${auditoryOutLanguage}",
-                optionlist: "{that}.options.controlValues.auditoryOutLanguage"
-            },
-            auditoryOutLanguageLabel: {messagekey: "auditoryOutLanguageLabel"}
         }
     });
 
