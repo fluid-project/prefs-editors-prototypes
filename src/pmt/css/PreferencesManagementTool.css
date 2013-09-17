@@ -90,8 +90,8 @@ h2 > label {
 .headerImageTick {
 	font-size: 20px !important;
     margin-left: 300px;
-    margin-top: -40px;
-    position: relative;
+    margin-top: -30px;
+    //position: relative;
     background-color: white;
     border-radius: 50%;
     padding: 2px;
@@ -102,11 +102,11 @@ h2 > label {
 	content: "\e00a" !important;
 }
 
-input[type=checkbox] ~ .headerImageTick{
+input[type=checkbox] + .headerImage > .headerImageTick{
 	display: none;
 }
 
-input[type=checkbox]:checked ~ .headerImageTick{
+input[type=checkbox]:checked + .headerImage > .headerImageTick{
 	display: block;
 }
 
@@ -139,6 +139,10 @@ input[type=checkbox] + .headerImage:before {
     width: 240px;
     word-wrap: break-word;
     padding-left: 90px;
+}
+
+.headerClickableLabel {
+   	color: transparent !important;
 }
 
 input[type=checkbox], input[type=radio] {
