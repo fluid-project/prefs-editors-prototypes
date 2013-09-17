@@ -660,6 +660,11 @@ input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after 
 	color: black !important;
 }
 
+.flc-uiOptions-contrast-theme .headerClickableLabel {
+	background-color: transparent !important;
+	color: transparent !important;
+}
+
 .flc-uiOptions-contrast-theme .addToMyPreferencesLabel {
 	background-color: transparent !important;
 }
