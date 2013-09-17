@@ -23,7 +23,14 @@ var demo = demo || {};
     var pathToTocTemplate = "../../src/shared/lib/infusion/components/tableOfContents/html/TableOfContents.html";
 
     demo.initSettingsStore = function () {
-        return gpii.discoveryTool.gpiiSettingsStore();
+        // return fluid.globalSettingsStore();
+
+        return gpii.discoveryTool.gpiiSettingsStore({
+            settingsStore: {
+                urlToGet: "http://172.16.2.184:8080/user/andrei",
+                urlToSave: "http://172.16.2.184:8080/user/testDT"
+            }
+        });
     };
 
     demo.initPageEnhancer = function (customThemeName) {

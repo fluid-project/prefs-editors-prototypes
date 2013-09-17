@@ -26,75 +26,70 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      */
     fluid.defaults("gpii.discoveryTool.gpiiStore", {
         gradeNames: ["fluid.uiOptions.dataSource", "autoInit"],
-        url: "http://preferences.gpii.net/user/discoveryTool-user-1",
-        isProcessing: false
-    });
-
-    fluid.demands("fluid.uiOptions.dataSource.get", "gpii.discoveryTool.gpiiStore", {
-        funcName: "gpii.discoveryTool.gpiiStore.get",
-        args: ["{that}.options"]
-    });
-
-    fluid.demands("fluid.uiOptions.dataSource.set", "gpii.discoveryTool.gpiiStore", {
-        funcName: "gpii.discoveryTool.gpiiStore.set",
-        args: ["{arguments}.0", "{that}.options"]
+        urlToGet: "http://preferences.gpii.net/user/discoveryTool-user-1",
+        urlToSave: "http://preferences.gpii.net/user/discoveryTool-user-1",
+        gpiiEntry: "http://registry.gpii.org/applications/gpii.discoveryTool",
+        invokers: {
+            get: {
+                funcName: "gpii.discoveryTool.gpiiStore.get",
+                args: ["{that}.options"]
+            },
+            set: {
+                funcName: "gpii.discoveryTool.gpiiStore.set",
+                args: ["{arguments}.0", "{that}.options"]
+            }
+        }
     });
 
     gpii.discoveryTool.gpiiStore.get = function (settings) {
-        if (settings.isProcessing) {
-            console.log("get rejected");
-            return;
-        }
-        settings.isProcessing = true;
-
         $.ajax({
-            url: settings.url,
+            url: settings.urlToGet,
             type: "GET",
             dataType: "json",
             success: function (data) {
                 console.log("GET: Success");
                 console.log(data);
-                settings.isProcessing = false;
                 return data;
             },
             error: function () {
                 console.log("GET: Error at retrieving from GPII");
-                settings.isProcessing = false;
                 return;
             }
         });
     };
 
     gpii.discoveryTool.gpiiStore.set = function (model, settings) {
-        if (settings.isProcessing) {
-            console.log("post rejected");
-            return;
-        }
-        settings.isProcessing = true;
-
         $.ajax({
-            url: settings.url,
+            url: settings.urlToSave,
             type: "POST",
-            data: JSON.stringify(model),
+            data: {
+                "settings.gpiiEntry": [{
+                    value: JSON.stringify(model)
+                }]
+            },
             contentType: "application/json",
             success: function (data) {
                 console.log("POST: Saved to GPII server");
-                settings.isProcessing = false;
             },
             error: function () {
                 console.log("POST: Error at saving to GPII server");
-                settings.isProcessing = false;
                 return;
             }
         });
     };
 
     fluid.defaults("gpii.discoveryTool.gpiiSettingsStore", {
-        gradeNames: ["autoInit", "fluid.globalSettingsStore"]
-    });
-
-    fluid.demands("fluid.uiOptions.store", ["fluid.globalSettingsStore", "gpii.discoveryTool.gpiiSettingsStore"], {
-        funcName: "gpii.discoveryTool.gpiiStore"
+        gradeNames: ["autoInit", "fluid.globalSettingsStore"],
+        storeType: "gpii.discoveryTool.gpiiStore",
+        distributeOptions: [{
+            source: "{that}.options.storeType",
+            removeSource: true,
+            target: "{that > settingsStore}.type"
+        }, {
+            source: "{that}.options.settingsStore",
+            removeSource: true,
+            target: "{that > settingsStore}.options"
+        }]
     });
 
 })(jQuery, fluid);
