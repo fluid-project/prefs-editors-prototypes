@@ -54,8 +54,6 @@ body {
 h2 {
     border-top: 2px solid #dddddd;
     margin-bottom: 5px;
-	//display: table-cell !important;
-    //text-transform: none !important;
 }
 
 h2 > label {
@@ -69,19 +67,10 @@ h2 > label {
 .headerImage {
 	-webkit-font-smoothing: antialiased;
 	width: 330;
-   	//height:90;
-   	margin-top: 4px !important;
-	margin:5px;
-    cursor:default;
-	color: #566374;
-	background-color: white;
-	position: absolute;
-}
-
-.headerImage {
+	margin:5px !important;
 	color: white;
 	background-color: #566374;	
-	clear: both;
+	position: absolute;
 }
 
 .headerImage:before {
@@ -92,7 +81,6 @@ h2 > label {
 	font-size: 20px !important;
     margin-left: 300px;
     margin-top: -30px;
-    //position: relative;
     background-color: white;
     border-radius: 50%;
     padding: 2px;
@@ -111,18 +99,16 @@ input[type=checkbox]:checked + .headerImage > .headerImageTick{
 	display: block;
 }
 
-input[type=checkbox] + .headerImage:before {
+.flc-uiOptions-increaseSizePanel > .headerImage:before {
 	content: "\e003";
 }
 
-.adjusterGroupTitle {
-	margin: 5px;
+.flc-uiOptions-contrast > .headerImage:before {
+	content: "\e002";
 }
 
 .headerTitle {
 	font-family: 'Roboto Slab', serif;
-	//position: absolute; 
-   	//top: 20px; 
    	left: 0; 
    	width: 100%;
    	color: white;
@@ -133,9 +119,7 @@ input[type=checkbox] + .headerImage:before {
     line-height: 90px;
     color: #FFFFFF;
     float: left;
-    //font-size: 1.5em;
     min-height: 90px;
-    //line-height: 90px;
     width: 240px;
     word-wrap: break-word;
     padding-left: 90px;
@@ -179,6 +163,9 @@ input[type=checkbox], input[type=radio] {
 	margin-top: 0em;
 }
 
+/*
+	The cursor size font icons
+*/
 .fl-icon-small-cursor:before {
 	font-size: 0.8em !important;
 	content: "\e000";
@@ -224,7 +211,6 @@ input[type=checkbox], input[type=radio] {
 */
 .flc-uiOptions-plus-minus-numerical-minus, .flc-uiOptions-plus-minus-numerical-plus {
 	width: 10% !important;
-	//height: 2em !important;
 	font-size: 1.5em !important;
 	cursor: pointer;
 	text-align: center !important;
@@ -244,13 +230,11 @@ input[type=checkbox], input[type=radio] {
 	width: 100% !important;
 	background-color: #FFFFFF;
 	display: table;
-    //height: 2em;
 }
 
 .flc-uiOptions-plus-minus-numerical-value {
 	width: 76% !important;
 	border: none !important;
-	//height: 2em !important;
 	text-align: center !important;
 	font-size: 1.5em !important;
 	margin-top: 1px !important;
@@ -349,37 +333,12 @@ input[type=checkbox], input[type=radio] {
 	content: "\e001";
 }
 
-.fl-magnifierPosition-uio-bottom > .fl-magnifierPosition-uio-icon-main {
-	//transform:rotateX(180deg);
-	//-ms-transform:rotate(180deg); /* IE 9 */
-	//-webkit-transform:rotate(180deg); /* Safari and Chrome */
-	//position: relative;
-	//top: 5em;
-}
-
 .fl-magnifierPosition-uio-bottom > .fl-magnifierPosition-uio-icon-main:before {
 	content: "\e004";
 }
 
-.fl-magnifierPosition-uio-left > .fl-magnifierPosition-uio-icon-main {
-	//transform:rotate(270deg) scaleX(0.8) scaleY(1.24);
-	//-ms-transform:rotate(270deg) scaleX(0.78) scaleY(1.24); /* IE 9 */
-	//-webkit-transform:rotate(270deg) scaleX(0.78) scaleY(1.24); /* Safari and Chrome */
-	//position: relative;
-	//top: 5.05em;
-}
-
 .fl-magnifierPosition-uio-left > .fl-magnifierPosition-uio-icon-main:before {
 	content: "\e003";
-}
-
-.fl-magnifierPosition-uio-right > .fl-magnifierPosition-uio-icon-main {
-	//transform:rotate(90deg) scaleX(0.81) scaleY(1.24);
-	//-ms-transform:rotate(270deg) scaleX(0.78) scaleY(1.24); /* IE 9 */
-	//-webkit-transform:rotate(270deg) scaleX(0.78) scaleY(1.24); /* Safari and Chrome */
-	//position: relative;
-	//left: 6.3em;
-	//top: 0.07em;
 }
 
 .fl-magnifierPosition-uio-right > .fl-magnifierPosition-uio-icon-main:before {
@@ -425,9 +384,6 @@ input[type=checkbox], input[type=radio] {
 
 .flc-uiOptions-magnifierFollowsRow{
 	margin-bottom: 1em !important;
-}
-
-.fl-magnifierFollows-uio-mouseCursor > .fl-magnifierFollows-uio-icon {
 }
 
 .fl-magnifierFollows-uio-mouseCursor > .fl-magnifierFollows-uio-icon:before {
@@ -495,9 +451,6 @@ input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio
 	color: #B8C9CC;
     font-size: 2em;
     margin-bottom: 0.5em;
-}
-
-.flc-uiOptions-preview-per-setting-eye {
 }
 
 .flc-uiOptions-preview-per-setting-eye:before {
@@ -734,11 +687,4 @@ input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after 
 */
 .fl-adjuster-icons-sept-12 {
 	font-family: 'sept-12';
-}
-
-/*
-	Style for contrast header
-*/
-.flc-uiOptions-contrast > .headerImage:before {
-	content: "\e002" !important;
 }
