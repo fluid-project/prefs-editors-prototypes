@@ -75,6 +75,7 @@ h2 > label {
     cursor:default;
 	color: #566374;
 	background-color: white;
+	position: absolute;
 }
 
 .headerImage {
@@ -131,7 +132,6 @@ input[type=checkbox] + .headerImage:before {
     display: inline;
     line-height: 90px;
     color: #FFFFFF;
-    cursor: pointer;
     float: left;
     //font-size: 1.5em;
     min-height: 90px;
@@ -142,7 +142,10 @@ input[type=checkbox] + .headerImage:before {
 }
 
 .headerClickableLabel {
-   	color: transparent !important;
+    cursor: pointer;
+	color: transparent !important;
+    margin: 5px !important;
+    position: relative !important;
 }
 
 input[type=checkbox], input[type=radio] {
