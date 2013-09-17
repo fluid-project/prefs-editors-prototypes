@@ -2,13 +2,7 @@
 	fluid.registerNamespace("fluid.uiOptions.pmt");
 
 	fluid.uiOptions.pmt.primarySchema = {
-	    /*"fluid.uiOptions.lineSpace": {
-	        "type": "number",
-	        "default": 1,
-	        "minimum": 1,
-	        "maximum": 5,
-	        "divisibleBy": 0.5
-	    },*/
+	    
 	    "fluid.uiOptions.textSize": {
 	        "type": "number",
 	        "default": 12,
@@ -43,15 +37,8 @@
 	    "fluid.uiOptions.contrast": {
             "type": "boolean",
             "default": false
-        }/*,
-	    "fluid.uiOptions.textFont": {
-	        "type": "string",
-	        "default": "",
-	        "enum": ["default", "times", "comic", "arial", "verdana"]
-	    }*/
+        }
 	};
-	
-	
     
 	fluid.uiOptions.pmt.auxiliarySchema = {
 	        // The global values:
@@ -142,48 +129,6 @@
                     "template": "../../src/shared/adjusters/html/UIOptionsTemplate-contrastNew.html",
 	                "message": "%prefix/contrastNew.json"
                 }
-            },
-	        /*"lineSpace": {
-	            "type": "fluid.uiOptions.lineSpace",
-	            "enactor": {
-	                "type": "fluid.uiOptions.enactors.lineSpace",
-	                "fontSizeMap": {
-	                    "xx-small": "9px",
-	                    "x-small": "11px",
-	                    "small": "13px",
-	                    "medium": "15px",
-	                    "large": "18px",
-	                    "x-large": "23px",
-	                    "xx-large": "30px"
-	                }
-	            },
-	            "panel": {
-	                "type": "fluid.uiOptions.panels.lineSpace",
-	                "container": ".flc-uiOptions-line-space",  // the css selector in the template where the panel is rendered
-	                "template": "%prefix/UIOptionsTemplate-lineSpace.html",
-	                "message": "%prefix/lineSpace.json"
-	            }
-	        },
-	        "textFont": {
-                "type": "fluid.uiOptions.textFont",
-                "classes": {
-                    "default": "",
-                    "times": "fl-font-uio-times",
-                    "comic": "fl-font-uio-comic-sans",
-                    "arial": "fl-font-uio-arial",
-                    "verdana": "fl-font-uio-verdana"
-                },
-                "enactor": {
-                    "type": "fluid.uiOptions.enactors.textFont",
-                    "classes": "@textFont.classes"
-                },
-                "panel": {
-                    "type": "fluid.uiOptions.panels.textFont",
-                    "container": ".flc-uiOptions-text-font",  // the css selector in the template where the panel is rendered
-                    "classnameMap": {"textFont": "@textFont.classes"},
-                    "template": "%prefix/UIOptionsTemplate-textFont.html",
-                    "message": "%prefix/textFont.json"
-                }
-            }*/
+            }
 	    };
 })(jQuery, fluid);
