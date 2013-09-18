@@ -61,10 +61,6 @@
             source: "{that}.options.outerPreviewEnhancerOptions",
             removeSource: true,
             target: "{that preview enhancer}.options"
-        }, {
-            source: "{that}.options.emptyComponentType",
-            removeSource: true,
-            target: "{that preview enhancer textSize}.type"
         }]
 	});
 

@@ -35,7 +35,7 @@
         }, {
             source: "{that}.options.emptyComponentType",
             removeSource: true,
-            target: "{that preview enhancer textSize}.type"
+            target: "{that preview enhancer magnifier}.type"
         }],
 		
         finalInitFunction: "fluid.uiOptions.panels.contrast.finalInit"
