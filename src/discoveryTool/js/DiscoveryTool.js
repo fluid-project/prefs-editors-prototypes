@@ -109,11 +109,13 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             invokers: {
                 showDiscoveryIcon: {
                     "this": "{discoveryTool}.dom.discoverIcon",
-                    method: "show"
+                    method: "show",
+                    args: [0]
                 },
                 hideDiscoveryIcon: {
                     "this": "{discoveryTool}.dom.discoverIcon",
-                    method: "hide"
+                    method: "hide",
+                    args: [0]
                 },
                 setLabel: {
                     "this": "{that}.dom.toggleButton",
