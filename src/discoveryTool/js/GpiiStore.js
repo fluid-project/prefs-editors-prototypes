@@ -42,20 +42,24 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     });
 
     gpii.discoveryTool.gpiiStore.get = function (settings) {
+        var gpiiModel;
+
         $.ajax({
             url: settings.urlToGet,
             type: "GET",
             dataType: "json",
+            async: false,
             success: function (data) {
+                gpiiModel = fluid.get(data, [settings.gpiiEntry, 0, "value"]);
                 console.log("GET: Success");
-                console.log(data);
-                return data;
+                console.log(gpiiModel);
             },
             error: function () {
                 console.log("GET: Error at retrieving from GPII");
-                return;
             }
         });
+
+        return gpiiModel;
     };
 
     gpii.discoveryTool.gpiiStore.set = function (model, settings) {
