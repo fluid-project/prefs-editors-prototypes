@@ -152,11 +152,11 @@
 
     // FIXME: These two functions should extract data from speakText.json
     speakText.showMoreText = function () {
-        return "- less";
+        return "less";
     }
 
     speakText.showLessText = function () {
-        return "+ more";
+        return "more";
     }
 
 })(fluid);

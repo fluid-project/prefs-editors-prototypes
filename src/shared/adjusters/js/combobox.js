@@ -135,5 +135,5 @@
 })( jQuery );
 
 $(function() {
-  $.noConflict(); //switch namespace to version 1.9.1 of jQuery's. Should be unnecessary after version update.
+  $.noConflict(); //switch namespace to version 1.9.1 of jQuery. Should be unnecessary after version update.
 });
