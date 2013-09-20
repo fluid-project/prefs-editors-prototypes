@@ -27,8 +27,7 @@ var demo = demo || {};
 
         return gpii.discoveryTool.gpiiSettingsStore({
             settingsStore: {
-                urlToGet: "http://172.16.2.184:8080/user/testDT",
-                urlToSave: "http://172.16.2.184:8080/user/testDT"
+                url: "http://localhost:8080/user/testDT"
             }
         });
     };

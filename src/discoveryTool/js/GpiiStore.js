@@ -15,6 +15,31 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 // JSLint options
 /*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
 
+/**
+ * CORS (http://enable-cors.org/) enabled GPII server is required for using gpiiStore to send cross-origin ajax requests.
+ * 
+ * The configuration to enable CORS:
+ *
+ * -- The GPII nginx web server config file (could be /etc/nginx/conf.d/default.conf) needs to contain:
+
+    location / {
+        if ($request_method = 'OPTIONS') {
+
+            add_header 'Access-Control-Allow-Origin' '*';
+            add_header 'Access-Control-Allow-Headers' 'Content-Type,X-CORS-REQUEST';
+            add_header 'Access-Control-Allow-Methods' 'POST, GET, OPTIONS';
+            add_header 'Content-Type' 'text/plain charset=UTF-8';
+            add_header 'Content-Length' 0;
+
+            return 204;
+        }
+    }
+
+    add_header 'Access-Control-Allow-Origin' '*';
+    add_header 'Access-Control-Allow-Headers' 'Content-Type';
+    add_header 'Access-Control-Allow-Methods' 'POST, GET, OPTIONS';
+ */
+
 (function ($, fluid) {
 
     fluid.registerNamespace("gpii.discoveryTool");
@@ -26,8 +51,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      */
     fluid.defaults("gpii.discoveryTool.gpiiStore", {
         gradeNames: ["fluid.uiOptions.dataSource", "autoInit"],
-        urlToGet: "http://preferences.gpii.net/user/discoveryTool-user-1",
-        urlToSave: "http://preferences.gpii.net/user/discoveryTool-user-1",
+        url: "http://preferences.gpii.net/user/discoveryTool-user-1",
         gpiiEntry: "http://registry.gpii.org/applications/gpii.discoveryTool",
         invokers: {
             get: {
@@ -45,17 +69,16 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         var gpiiModel;
 
         $.ajax({
-            url: settings.urlToGet,
+            url: settings.url,
             type: "GET",
             dataType: "json",
             async: false,
             success: function (data) {
                 gpiiModel = fluid.get(data, [settings.gpiiEntry, 0, "value"]);
-                console.log("GET: Success");
-                console.log(gpiiModel);
             },
-            error: function () {
-                console.log("GET: Error at retrieving from GPII");
+            error: function (jqXHR, textStatus, errorThrown) {
+                fluid.log("GET: Error at retrieving from GPII! Test status: " + textStatus);
+                fluid.log(errorThrown);
             }
         });
 
@@ -63,21 +86,26 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     };
 
     gpii.discoveryTool.gpiiStore.set = function (model, settings) {
+        var dataToSave = {};
+
+        dataToSave[settings.gpiiEntry] = [{
+            value: model
+        }];
+
         $.ajax({
-            url: settings.urlToSave,
+            url: settings.url,
             type: "POST",
-            data: {
-                "settings.gpiiEntry": [{
-                    value: JSON.stringify(model)
-                }]
-            },
             contentType: "application/json",
+            headers: {
+                'X-CORS-REQUEST': 'pingpong'
+            },
+            dataType: "json",
+            data: JSON.stringify(dataToSave),
             success: function (data) {
-                console.log("POST: Saved to GPII server");
+                fluid.log("POST: Saved to GPII server");
             },
             error: function () {
-                console.log("POST: Error at saving to GPII server");
-                return;
+                fluid.log("POST: Error at saving to GPII server");
             }
         });
     };
