@@ -18,7 +18,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 // GPII store is for connecting the discovery tool with the GPII server.
 // The discovery tool uses the cookie store by default, rather than the
 // GPII store.
-// To activate the GPII store in the discovery tool, refer to
+// To activate the GPII store in the discovery tool, refer to comments in
+// http://issues.gpii.net/browse/GPII-185
 
 (function ($, fluid) {
 
