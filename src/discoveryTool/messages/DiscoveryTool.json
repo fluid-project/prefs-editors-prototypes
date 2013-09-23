@@ -1,6 +1,6 @@
 {
     "slidingPanelShowText": "doesn't make sense",
-    "slidingPanelHideText": "-",
+    "slidingPanelHideText": "—",
     "slidingPanelShowLabel": "Doesn't make sense? Open display preferences panel",
     "slidingPanelHideLabel": "Close Panel",        
     "trySomethingNewText": "Try Something New"

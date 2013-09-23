@@ -89,8 +89,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             discoverIcon: ".flc-icon-discover"
         },
         styles: {
-            expandShowButton: "fl-expand-toggle-button",
-            iconSize: "fl-icon-size"
+            expandShowButton: "fl-expand-toggle-button"
         },
         keyBinding: {
             hideTool: $.ui.keyCode.ESCAPE
@@ -131,16 +130,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     method: "removeClass",
                     args: "{discoveryTool}.options.styles.expandShowButton"
                 },
-                applyIconSize: {
-                    "this": "{that}.dom.toggleButton",
-                    method: "addClass",
-                    args: "{discoveryTool}.options.styles.iconSize"
-                },
-                removeIconSize: {
-                    "this": "{that}.dom.toggleButton",
-                    method: "removeClass",
-                    args: "{discoveryTool}.options.styles.iconSize"
-                },
                 setLabel: {
                     "this": "{that}.dom.toggleButton",
                     method: "attr",
@@ -164,7 +153,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     args: "{that}.model.isShowing"
                 },
                 "onPanelHide.expandShowButton": "{that}.expandShowButton",
-                "onPanelHide.removeIconSize": "{that}.removeIconSize",
                 "onPanelHide.showIcon": "{that}.showDiscoveryIcon",
                 "onPanelHide.showLabel": {
                     listener: "{that}.setLabel",
@@ -175,7 +163,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     args: "false"
                 },
                 "onPanelShow.normalizeShowButton": "{that}.normalizeShowButton",
-                "onPanelShow.applyIconSize": "{that}.applyIconSize",
                 "onPanelShow.showIcon": "{that}.hideDiscoveryIcon",
                 "onPanelShow.showLabel": {
                     listener: "{that}.setLabel",
