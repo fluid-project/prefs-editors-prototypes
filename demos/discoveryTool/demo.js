@@ -22,12 +22,14 @@ var demo = demo || {};
     var pathToMessages = "../../src/discoveryTool/messages/";
     var pathToTocTemplate = "../../src/shared/lib/infusion/components/tableOfContents/html/TableOfContents.html";
 
-    demo.initSettingsStore = function () {
-        // return fluid.globalSettingsStore();
+    demo.initCookieStore = function () {
+        return fluid.globalSettingsStore();
+    };
 
+    demo.initGpiiStore = function (gpiiServerURL) {
         return gpii.discoveryTool.gpiiSettingsStore({
             settingsStore: {
-                url: "http://localhost:8080/user/testDT"
+                url: gpiiServerURL
             }
         });
     };

@@ -15,30 +15,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 // JSLint options
 /*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
 
-/**
- * CORS (http://enable-cors.org/) enabled GPII server is required for using gpiiStore to send cross-origin ajax requests.
- * 
- * The configuration to enable CORS:
- *
- * -- The GPII nginx web server config file (could be /etc/nginx/conf.d/default.conf) needs to contain:
-
-    location / {
-        if ($request_method = 'OPTIONS') {
-
-            add_header 'Access-Control-Allow-Origin' '*';
-            add_header 'Access-Control-Allow-Headers' 'Content-Type,X-CORS-REQUEST';
-            add_header 'Access-Control-Allow-Methods' 'POST, GET, OPTIONS';
-            add_header 'Content-Type' 'text/plain charset=UTF-8';
-            add_header 'Content-Length' 0;
-
-            return 204;
-        }
-    }
-
-    add_header 'Access-Control-Allow-Origin' '*';
-    add_header 'Access-Control-Allow-Headers' 'Content-Type';
-    add_header 'Access-Control-Allow-Methods' 'POST, GET, OPTIONS';
- */
+// GPII store is for connecting the discovery tool with the GPII server.
+// The discovery tool uses the cookie store by default, rather than the
+// GPII store.
+// To activate the GPII store in the discovery tool, refer to
 
 (function ($, fluid) {
 
