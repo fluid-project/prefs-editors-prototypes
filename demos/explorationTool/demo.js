@@ -18,8 +18,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 var demo = demo || {};
 (function ($, fluid) {
 
-    var pathToTemplates = "../../src/discoveryTool/html/";
-    var pathToMessages = "../../src/discoveryTool/messages/";
+    var pathToTemplates = "../../src/explorationTool/html/";
+    var pathToMessages = "../../src/explorationTool/messages/";
     var pathToTocTemplate = "../../src/shared/lib/infusion/components/tableOfContents/html/TableOfContents.html";
 
     demo.initSettingsStore = function () {
@@ -29,7 +29,7 @@ var demo = demo || {};
     demo.initPageEnhancer = function (customThemeName) {
         return fluid.pageEnhancer({
             uiEnhancer: {
-                gradeNames: ["gpii.discoveryTool.enactorSet"],
+                gradeNames: ["gpii.explorationTool.enactorSet"],
                 tocTemplate: pathToTocTemplate,
                 classnameMap: {
                     theme: {
@@ -41,20 +41,20 @@ var demo = demo || {};
         });
     };
 
-    demo.initDiscoveryTool = function (container) {
-        return gpii.discoveryTool(container, {
+    demo.initExplorationTool = function (container) {
+        return gpii.explorationTool(container, {
             templatePrefix: pathToTemplates,
             messagePrefix: pathToMessages,
             templateLoader: {
-                gradeNames: ["gpii.discoveryTool.templateLoader"]
+                gradeNames: ["gpii.explorationTool.templateLoader"]
             },
             messageLoader: {
-                gradeNames: ["gpii.discoveryTool.messageLoader"]
+                gradeNames: ["gpii.explorationTool.messageLoader"]
             },
             uiOptions: {
-                gradeNames: ["gpii.discoveryTool.panels", "gpii.discoveryTool.rootModel", "fluid.uiOptions.uiEnhancerRelay"]
+                gradeNames: ["gpii.explorationTool.panels", "gpii.explorationTool.rootModel", "fluid.uiOptions.uiEnhancerRelay"]
             },
-            iframeHtml: "../../src/discoveryTool/html/FatPanelUIOptionsFrame.html"
+            iframeHtml: "../../src/explorationTool/html/FatPanelUIOptionsFrame.html"
         });
     };
 

@@ -17,24 +17,24 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
 (function ($, fluid) {
 
-    fluid.registerNamespace("gpii.discoveryTool");
+    fluid.registerNamespace("gpii.explorationTool");
 
     // Used for graceful degradation instead of progressive enhancement,
     // since we do not know ahead of time which enactors will be used. (e.g. if/when we switch to schema.)
     // Currently just checking if wav files are supported as that is the only file type that is returned from
     // the tts server. In the future should switch to "buzz.isSupported", when the tts server returns other
     // supported file types.
-    gpii.discoveryTool.isHTML5AudioNotSupported = function () {
+    gpii.explorationTool.isHTML5AudioNotSupported = function () {
         return !buzz.isWAVSupported();
     };
     fluid.enhance.check({
-        "fluid.HTML5Audio.NotSupported": "gpii.discoveryTool.isHTML5AudioNotSupported"
+        "fluid.HTML5Audio.NotSupported": "gpii.explorationTool.isHTML5AudioNotSupported"
     });
 
     /**
      * These paths will need to be customized for the integration
      */
-    fluid.defaults("gpii.discoveryTool.templateLoader", {
+    fluid.defaults("gpii.explorationTool.templateLoader", {
         gradeNames: ["fluid.uiOptions.resourceLoader", "autoInit"],
         templates: {
             highContrast: "%prefix/HighContrastPanelTemplate.html",
@@ -43,18 +43,18 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             simplify: "%prefix/SimplifyPanelTemplate.html",
             moreText: "%prefix/MoreTextPanelTemplate.html",
             spoken: "%prefix/SpokenPanelTemplate.html",
-            uiOptions: "%prefix/DiscoveryTool.html"
+            uiOptions: "%prefix/ExplorationTool.html"
         }
     });
 
-    fluid.defaults("gpii.discoveryTool.messageLoader", {
+    fluid.defaults("gpii.explorationTool.messageLoader", {
         gradeNames: ["fluid.uiOptions.resourceLoader", "autoInit"],
         templates: {
-            uiOptions: "%prefix/DiscoveryTool.json"
+            uiOptions: "%prefix/ExplorationTool.json"
         }
     });
 
-    fluid.defaults("gpii.discoveryTool.rootModel", {
+    fluid.defaults("gpii.explorationTool.rootModel", {
         gradeNames: ["fluid.uiOptions.rootModel", "autoInit"],
         members: {
             rootModel: {
@@ -80,13 +80,13 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     });
 
     /*****************
-     * The Discovery Tool
+     * The Exploration Tool
      * An instance of a Fat Panel UIO
      ****************/
-    fluid.defaults("gpii.discoveryTool", {
+    fluid.defaults("gpii.explorationTool", {
         gradeNames: ["fluid.uiOptions.fatPanel", "autoInit"],
         selectors: {
-            discoverIcon: ".flc-icon-discover"
+            explorationIcon: ".flc-icon-explorationTool"
         },
         keyBinding: {
             hideTool: $.ui.keyCode.ESCAPE
@@ -95,25 +95,25 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             strings: {
                 showLabel: {
                     expander: {
-                        func: "gpii.discoveryTool.lookupMsg",
+                        func: "gpii.explorationTool.lookupMsg",
                         args: ["{slidingPanel}.msgBundle", "slidingPanelShowLabel"]
                     }
                 },
                 hideLabel: {
                     expander: {
-                        func: "gpii.discoveryTool.lookupMsg",
+                        func: "gpii.explorationTool.lookupMsg",
                         args: ["{slidingPanel}.msgBundle", "slidingPanelHideLabel"]
                     }
                 }
             },
             invokers: {
-                showDiscoveryIcon: {
-                    "this": "{discoveryTool}.dom.discoverIcon",
+                showExplorationIcon: {
+                    "this": "{explorationTool}.dom.explorationIcon",
                     method: "show",
                     args: [0]
                 },
-                hideDiscoveryIcon: {
-                    "this": "{discoveryTool}.dom.discoverIcon",
+                hideExplorationIcon: {
+                    "this": "{explorationTool}.dom.explorationIcon",
                     method: "hide",
                     args: [0]
                 },
@@ -129,7 +129,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 }
             },
             listeners: {
-                "onCreate.showIcon": "{that}.showDiscoveryIcon",
+                "onCreate.showIcon": "{that}.showExplorationIcon",
                 "onCreate.showLabel": {
                     listener: "{that}.setLabel",
                     args: "{that}.options.strings.showLabel"
@@ -138,7 +138,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     listener: "{that}.setExpanded",
                     args: "{that}.model.isShowing"
                 },
-                "onPanelHide.showIcon": "{that}.showDiscoveryIcon",
+                "onPanelHide.showIcon": "{that}.showExplorationIcon",
                 "onPanelHide.showLabel": {
                     listener: "{that}.setLabel",
                     args: "{that}.options.strings.showLabel"
@@ -147,7 +147,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     listener: "{that}.setExpanded",
                     args: "false"
                 },
-                "onPanelShow.showIcon": "{that}.hideDiscoveryIcon",
+                "onPanelShow.showIcon": "{that}.hideExplorationIcon",
                 "onPanelShow.showLabel": {
                     listener: "{that}.setLabel",
                     args: "{that}.options.strings.hideLabel"
@@ -161,13 +161,13 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         invokers: {
             hideToolPanel: "{slidingPanel}.hidePanel",
             hideToolPanelInIframe: {
-                funcName: "gpii.discoveryTool.hideToolPanelInIframe",
+                funcName: "gpii.explorationTool.hideToolPanelInIframe",
                 args: ["{that}.hideToolPanel", "{slidingPanel}.dom.toggleButton"]
             }
         },
         listeners: {
             afterRender: {
-                listener: "gpii.discoveryTool.initHideFuncs",
+                listener: "gpii.explorationTool.initHideFuncs",
                 args: "{that}",
                 priority: "last"
             }
@@ -179,15 +179,15 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
 
-    // Pressing escape inside the discovery tool does:
+    // Pressing escape inside the exploration tool does:
     // 1. Hide the tool panel;
     // 2. Move focus to "show/hide" button
-    gpii.discoveryTool.hideToolPanelInIframe = function (genericHideFunc, elementToFocus) {
+    gpii.explorationTool.hideToolPanelInIframe = function (genericHideFunc, elementToFocus) {
         genericHideFunc();
         elementToFocus.focus();
     };
 
-    gpii.discoveryTool.bindHideKey = function (key, element, hideFunc) {
+    gpii.explorationTool.bindHideKey = function (key, element, hideFunc) {
         if (!element) {
             return;
         }
@@ -205,8 +205,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         fluid.activatable(element, null, keybindingOpts);
     };
 
-    // Hide the discovery tool when clicking outside of the discovery tool panel or pressing escape
-    gpii.discoveryTool.initHideFuncs = function (that) {
+    // Hide the exploration tool when clicking outside of the exploration tool panel or pressing escape
+    gpii.explorationTool.initHideFuncs = function (that) {
         var html = $("html");
 
         html.click(function () {
@@ -219,15 +219,15 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
         var iframeHtml = that.iframeRenderer.iframe.contents().find("html");
 
-        // Bind hide function onto the main page and the iframe for discovery tool
-        gpii.discoveryTool.bindHideKey(that.options.keyBinding.hideTool, html, that.hideToolPanel);
-        gpii.discoveryTool.bindHideKey(that.options.keyBinding.hideTool, iframeHtml, that.hideToolPanelInIframe);
+        // Bind hide function onto the main page and the iframe for exploration tool
+        gpii.explorationTool.bindHideKey(that.options.keyBinding.hideTool, html, that.hideToolPanel);
+        gpii.explorationTool.bindHideKey(that.options.keyBinding.hideTool, iframeHtml, that.hideToolPanelInIframe);
     };
 
     // Currently this code is duplicated from SlidingPanel.js
     // FLUID-5119 filed to move it to the framework, after which this should be removed in favour of the
     // generalized code.
-    gpii.discoveryTool.lookupMsg = function (messageResolver, value) {
+    gpii.explorationTool.lookupMsg = function (messageResolver, value) {
         var looked = messageResolver.lookup([value]);
         return looked ? looked.template : looked;
     };
@@ -235,7 +235,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     /*************
      * The base grade component for each individual panel
      *************/
-    fluid.defaults("gpii.discoveryTool.defaultPanel", {
+    fluid.defaults("gpii.explorationTool.defaultPanel", {
         gradeNames: ["fluid.uiOptions.defaultPanel", "autoInit"],
         sourceApplier: "{modelTransformer}.applier"
     });
@@ -244,7 +244,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * A component that transforms the panels' boolean models into UIO model values
      * and relays the changes
      *************/
-    fluid.defaults("gpii.discoveryTool.modelTransformer", {
+    fluid.defaults("gpii.explorationTool.modelTransformer", {
         gradeNames: ["fluid.modelComponent", "fluid.uiOptions.modelRelay", "autoInit"],
         model: {
             panelSelections: {
@@ -299,9 +299,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             }
         },
         invokers: {
-            convertModel: "gpii.discoveryTool.modelTransformer.convertModel",
+            convertModel: "gpii.explorationTool.modelTransformer.convertModel",
             relayConvertedModel: {
-                funcName: "gpii.discoveryTool.modelTransformer.relayConvertedModel",
+                funcName: "gpii.explorationTool.modelTransformer.relayConvertedModel",
                 args: ["{that}", "{arguments}.0"]
             }
         },
@@ -313,12 +313,12 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         },
         components: {
             highContrast: {
-                type: "gpii.discoveryTool.panels.highContrast",
+                type: "gpii.explorationTool.panels.highContrast",
                 container: "{uiOptions}.dom.highContrast",
                 createOnEvent: "{uiOptions}.events.onUIOptionsMarkupReady",
                 priority: "first",
                 options: {
-                    gradeNames: "gpii.discoveryTool.defaultPanel",
+                    gradeNames: "gpii.explorationTool.defaultPanel",
                     rules: { // "externalModelKey": "internalModelKey"
                         "panelSelections.highContrast": "enabled"
                     },
@@ -328,11 +328,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 }
             },
             lowContrast: {
-                type: "gpii.discoveryTool.panels.lowContrast",
+                type: "gpii.explorationTool.panels.lowContrast",
                 container: "{uiOptions}.dom.lowContrast",
                 createOnEvent: "{uiOptions}.events.onUIOptionsMarkupReady",
                 options: {
-                    gradeNames: "gpii.discoveryTool.defaultPanel",
+                    gradeNames: "gpii.explorationTool.defaultPanel",
                     rules: {
                         "panelSelections.lowContrast": "enabled"
                     },
@@ -363,11 +363,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 }
             },
             increaseSize: {
-                type: "gpii.discoveryTool.panels.increaseSize",
+                type: "gpii.explorationTool.panels.increaseSize",
                 container: "{uiOptions}.dom.increaseSize",
                 createOnEvent: "{uiOptions}.events.onUIOptionsMarkupReady",
                 options: {
-                    gradeNames: "gpii.discoveryTool.defaultPanel",
+                    gradeNames: "gpii.explorationTool.defaultPanel",
                     rules: {
                         "panelSelections.increaseSize": "enabled"
                     },
@@ -377,11 +377,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 }
             },
             simplify: {
-                type: "gpii.discoveryTool.panels.simplify",
+                type: "gpii.explorationTool.panels.simplify",
                 container: "{uiOptions}.dom.simplify",
                 createOnEvent: "{uiOptions}.events.onUIOptionsMarkupReady",
                 options: {
-                    gradeNames: "gpii.discoveryTool.defaultPanel",
+                    gradeNames: "gpii.explorationTool.defaultPanel",
                     rules: {
                         "panelSelections.simplify": "enabled"
                     },
@@ -391,11 +391,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 }
             },
             moreText: {
-                type: "gpii.discoveryTool.panels.moreText",
+                type: "gpii.explorationTool.panels.moreText",
                 container: "{uiOptions}.dom.moreText",
                 createOnEvent: "{uiOptions}.events.onUIOptionsMarkupReady",
                 options: {
-                    gradeNames: "gpii.discoveryTool.defaultPanel",
+                    gradeNames: "gpii.explorationTool.defaultPanel",
                     rules: {
                         "panelSelections.moreText": "enabled"
                     },
@@ -405,11 +405,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 }
             },
             spoken: {
-                type: "gpii.discoveryTool.panels.spoken",
+                type: "gpii.explorationTool.panels.spoken",
                 container: "{uiOptions}.dom.spoken",
                 createOnEvent: "{uiOptions}.events.onUIOptionsMarkupReady",
                 options: {
-                    gradeNames: "gpii.discoveryTool.defaultPanel",
+                    gradeNames: "gpii.explorationTool.defaultPanel",
                     rules: {
                         "panelSelections.spoken": "enabled"
                     },
@@ -421,24 +421,24 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
 
-    gpii.discoveryTool.modelTransformer.relayConvertedModel = function (that, newModel) {
+    gpii.explorationTool.modelTransformer.relayConvertedModel = function (that, newModel) {
         var convertedModel = that.convertModel(that, newModel.panelSelections);
         that.applier.requestChange("convertedModel", convertedModel);
     };
 
-    gpii.discoveryTool.modelTransformer.convertModel = function (that, sourceModel) {
+    gpii.explorationTool.modelTransformer.convertModel = function (that, sourceModel) {
         var result = fluid.copy(that.options.rootModel);
 
         var mergedMapping = {};
         fluid.each(that.options.rootModel, function (rootValue, rootKey) {
             fluid.each(sourceModel, function (modelValue, modelKey) {
-                gpii.discoveryTool.modelTransformer.transformModel(modelValue, modelKey, rootKey, that.options.mapping, mergedMapping);
+                gpii.explorationTool.modelTransformer.transformModel(modelValue, modelKey, rootKey, that.options.mapping, mergedMapping);
             });
         });
         $.extend(result, mergedMapping);
         return result;
     };
-    gpii.discoveryTool.modelTransformer.transformModel = function (modelValue, modelKey, rootKey, mapping, mergedMapping) {
+    gpii.explorationTool.modelTransformer.transformModel = function (modelValue, modelKey, rootKey, mapping, mergedMapping) {
         if (modelValue) {
             var previousValue = mergedMapping[rootKey];
             var newValue = mapping[modelKey][rootKey];
@@ -451,34 +451,34 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     /***********
      * The set of all panels
      **********/
-    fluid.defaults("gpii.discoveryTool.panels", {
+    fluid.defaults("gpii.explorationTool.panels", {
         gradeNames: ["fluid.uiOptions", "autoInit"],
         selectors: {
-            trySomethingNew: ".flc-discoveryTool-try",
-            highContrast: ".flc-discoveryTool-highContrast",
-            lowContrast: ".flc-discoveryTool-lowContrast",
-            increaseSize: ".flc-discoveryTool-increaseSize",
-            simplify: ".flc-discoveryTool-simplify",
-            moreText: ".flc-discoveryTool-moreText",
-            spoken: ".flc-discoveryTool-spoken"
+            trySomethingNew: ".flc-explorationTool-try",
+            highContrast: ".flc-explorationTool-highContrast",
+            lowContrast: ".flc-explorationTool-lowContrast",
+            increaseSize: ".flc-explorationTool-increaseSize",
+            simplify: ".flc-explorationTool-simplify",
+            moreText: ".flc-explorationTool-moreText",
+            spoken: ".flc-explorationTool-spoken"
         },
         components: {
             trySomethingNew: {
-                type: "gpii.discoveryTool.trySomethingNew",
+                type: "gpii.explorationTool.trySomethingNew",
                 container: "{that}.dom.trySomethingNew",
                 createOnEvent: "onReady",
                 options: {
                     strings: {
                         label: {
                             expander: {
-                                func: "gpii.discoveryTool.lookupMsg",
+                                func: "gpii.explorationTool.lookupMsg",
                                 args: ["{uiOptionsLoader}.msgBundle", "trySomethingNewText"]
                             }
                         }
                     },
                     presetPanels: {
                         expander: {
-                            func: "gpii.discoveryTool.panels.getSubcomponents",
+                            func: "gpii.explorationTool.panels.getSubcomponents",
                             args: ["{uiOptions}.modelTransformer"]
                         }
                     }
@@ -486,7 +486,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 }
             },
             modelTransformer: {
-                type: "gpii.discoveryTool.modelTransformer",
+                type: "gpii.explorationTool.modelTransformer",
                 options: {
                     sourceApplier: "{panels}.applier",
                     rootModel: "{panels}.rootModel",
@@ -514,23 +514,23 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
 
-    // Will only add those subcompoents that have the grade "gpii.discoveryTool.defaultPanel"
-    gpii.discoveryTool.panels.getSubcomponents = function (component) {
+    // Will only add those subcompoents that have the grade "gpii.explorationTool.defaultPanel"
+    gpii.explorationTool.panels.getSubcomponents = function (component) {
         var subComponents = [];
         fluid.each(component.options.components, function (opts, memberName) {
             var subComponent = fluid.get(component, memberName);
-            if (fluid.hasGrade(subComponent.options, "gpii.discoveryTool.defaultPanel")) {
+            if (fluid.hasGrade(subComponent.options, "gpii.explorationTool.defaultPanel")) {
                 subComponents.push(subComponent);
             }
         });
         return subComponents;
     };
 
-    fluid.defaults("gpii.discoveryTool.togglePanel", {
+    fluid.defaults("gpii.explorationTool.togglePanel", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
-        finalInitFunction: "gpii.discoveryTool.togglePanel.finalInit",
+        finalInitFunction: "gpii.explorationTool.togglePanel.finalInit",
         selectors: {
-            toggle: ".flc-discoveryTool-togglePanel.toggle"
+            toggle: ".flc-explorationTool-togglePanel.toggle"
         },
         events: {
             afterDisabled: null,
@@ -544,7 +544,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
 
-    gpii.discoveryTool.togglePanel.finalInit = function (that) {
+    gpii.explorationTool.togglePanel.finalInit = function (that) {
         that.applier.modelChanged.addListener("enabled", function (newModel, oldModel) {
             if (newModel.enabled !== oldModel.enabled) {
                 that.events[newModel.enabled ? "afterEnabled" : "afterDisabled"].fire(that);
@@ -555,54 +555,54 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     /************************
      * High Contrast:
      *
-     * The Discovery Tool 'high contrast' option will set:
+     * The Exploration Tool 'high contrast' option will set:
      * - black on white
      * - emphasize links
      * - inputs larger
      * - sans serif font or monospaced font
      *********************/
-    fluid.defaults("gpii.discoveryTool.panels.highContrast", {
-        gradeNames: ["gpii.discoveryTool.togglePanel", "autoInit"],
+    fluid.defaults("gpii.explorationTool.panels.highContrast", {
+        gradeNames: ["gpii.explorationTool.togglePanel", "autoInit"],
         selectors: {
-            toggle: ".flc-discoveryTool-highContrast-choice"
+            toggle: ".flc-explorationTool-highContrast-choice"
         }
     });
 
     /************************
      * Low Contrast:
      *
-     * The Discovery Tool 'low contrast' option will set:
+     * The Exploration Tool 'low contrast' option will set:
      * - light grey on dark grey
      * - emphasize links
      * - inputs larger
      * - sans serif font or monospaced font
      *********************/
-    fluid.defaults("gpii.discoveryTool.panels.lowContrast", {
-        gradeNames: ["gpii.discoveryTool.togglePanel", "autoInit"],
+    fluid.defaults("gpii.explorationTool.panels.lowContrast", {
+        gradeNames: ["gpii.explorationTool.togglePanel", "autoInit"],
         selectors: {
-            toggle: ".flc-discoveryTool-lowContrast-choice"
+            toggle: ".flc-explorationTool-lowContrast-choice"
         }
     });
 
     /************************
      * Increase Size
      *********************/
-    fluid.defaults("gpii.discoveryTool.panels.increaseSize", {
-        gradeNames: ["gpii.discoveryTool.togglePanel", "autoInit"],
+    fluid.defaults("gpii.explorationTool.panels.increaseSize", {
+        gradeNames: ["gpii.explorationTool.togglePanel", "autoInit"],
         // this is being ignored - ??
         selectors: {
-            toggle: ".flc-discoveryTool-increaseSize-choice"
+            toggle: ".flc-explorationTool-increaseSize-choice"
         }
     });
 
     /************************
      * Simplify
      *********************/
-    fluid.defaults("gpii.discoveryTool.panels.simplify", {
-        gradeNames: ["gpii.discoveryTool.togglePanel", "autoInit"],
+    fluid.defaults("gpii.explorationTool.panels.simplify", {
+        gradeNames: ["gpii.explorationTool.togglePanel", "autoInit"],
         // this is being ignored - ??
         selectors: {
-            toggle: ".flc-discoveryTool-simplify-choice"
+            toggle: ".flc-explorationTool-simplify-choice"
         }
     });
 
@@ -613,7 +613,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      **********************************************************************************/
 
     // Note that the implementors need to provide the container for this view component
-    fluid.defaults("gpii.discoveryTool.enactors.simplifiedContent", {
+    fluid.defaults("gpii.explorationTool.enactors.simplifiedContent", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
         selectors: {
             elementsToHide: "header, footer, aside, nav, .flc-uiOptions-simplify-hide"
@@ -631,7 +631,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         },
         invokers: {
             set: {
-                funcName: "gpii.discoveryTool.enactors.simplifiedContent.set",
+                funcName: "gpii.explorationTool.enactors.simplifiedContent.set",
                 args: ["{that}.model.value", "{that}"]
             }
         },
@@ -658,7 +658,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
 
-    gpii.discoveryTool.enactors.simplifiedContent.set = function (value, that) {
+    gpii.explorationTool.enactors.simplifiedContent.set = function (value, that) {
         if (value) {
             that.events.onApplySimplify.fire();
         } else {
@@ -666,7 +666,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     };
 
-    gpii.discoveryTool.enactors.simplifiedContent.finalInit = function (that) {
+    gpii.explorationTool.enactors.simplifiedContent.finalInit = function (that) {
         that.applier.modelChanged.addListener("value", function (newModel) {
             that.set();
         });
@@ -675,11 +675,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     /***********************
      * More Text
      ***********************/
-    fluid.defaults("gpii.discoveryTool.panels.moreText", {
-        gradeNames: ["gpii.discoveryTool.togglePanel", "autoInit"],
+    fluid.defaults("gpii.explorationTool.panels.moreText", {
+        gradeNames: ["gpii.explorationTool.togglePanel", "autoInit"],
         // this is being ignored - ??
         selectors: {
-            toggle: ".flc-discoveryTool-moreText-choice"
+            toggle: ".flc-explorationTool-moreText-choice"
         }
     });
 
@@ -688,10 +688,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      **********************************************************************************/
 
     // Note that the implementors need to provide the container for this view component
-    fluid.defaults("gpii.discoveryTool.enactors.showMoreText", {
+    fluid.defaults("gpii.explorationTool.enactors.showMoreText", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
         selectors: {
-            moreTexts: ".flc-discoveryTool-moreText-container",
+            moreTexts: ".flc-explorationTool-moreText-container",
             images: "img, [role~='img']",
             textEl: "details" // selector of element in 'markup.moreText' where text should be inserted
         },
@@ -712,16 +712,16 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         },
         invokers: {
             addMoreTextMarkup: {
-                funcName: "gpii.discoveryTool.enactors.showMoreText.addMoreTextMarkup",
+                funcName: "gpii.explorationTool.enactors.showMoreText.addMoreTextMarkup",
                 args: ["{that}.dom.images", "{that}.getMoreText", "{that}.buildMoreTextMarkup"]
             },
-            getMoreText: "gpii.discoveryTool.enactors.showMoreText.getAltText",
+            getMoreText: "gpii.explorationTool.enactors.showMoreText.getAltText",
             buildMoreTextMarkup: {
-                funcName: "gpii.discoveryTool.enactors.showMoreText.buildMoreTextMarkup",
+                funcName: "gpii.explorationTool.enactors.showMoreText.buildMoreTextMarkup",
                 args: ["{that}.options.markup.moreText", "{that}.options.selectors.textEl", "{arguments}.0"]
             },
             set: {
-                funcName: "gpii.discoveryTool.enactors.showMoreText.set",
+                funcName: "gpii.explorationTool.enactors.showMoreText.set",
                 args: ["{arguments}.0", "{that}"]
             }
         },
@@ -729,11 +729,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             moreTextMarkupAdded: false
         },
         markup: {
-            moreText: "<div class='flc-discoveryTool-moreText-container fl-discoveryTool-moreText fl-fix'><details><summary></summary></details></div>"
+            moreText: "<div class='flc-explorationTool-moreText-container fl-explorationTool-moreText fl-fix'><details><summary></summary></details></div>"
         }
     });
 
-    gpii.discoveryTool.enactors.showMoreText.addMoreTextMarkup = function (imgs, getMoreTextFunc, buildMoreTextMarkupFunc) {
+    gpii.explorationTool.enactors.showMoreText.addMoreTextMarkup = function (imgs, getMoreTextFunc, buildMoreTextMarkupFunc) {
         fluid.each(imgs, function (img) {
             img = $(img);
             var text = getMoreTextFunc(img);
@@ -743,11 +743,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         });
     };
 
-    gpii.discoveryTool.enactors.showMoreText.getAltText = function (img) {
+    gpii.explorationTool.enactors.showMoreText.getAltText = function (img) {
         return img.attr("alt") || img.attr("aria-label");
     };
 
-    gpii.discoveryTool.enactors.showMoreText.buildMoreTextMarkup = function (markup, textElSelector, text) {
+    gpii.explorationTool.enactors.showMoreText.buildMoreTextMarkup = function (markup, textElSelector, text) {
         var container = $(markup);
         var textEl = $(textElSelector, container);
         if (textEl.length < 1) { // in case the textEl _is_ the container
@@ -758,14 +758,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         return container;
     };
 
-    gpii.discoveryTool.enactors.showMoreText.finalInit = function (that) {
+    gpii.explorationTool.enactors.showMoreText.finalInit = function (that) {
         that.applier.modelChanged.addListener("value", function (newModel, oldModel) {
             if (newModel.value !== oldModel.value) {
                 that.set(newModel.value);
             }
         });
     };
-    gpii.discoveryTool.enactors.showMoreText.set = function (value, that) {
+    gpii.explorationTool.enactors.showMoreText.set = function (value, that) {
         if (!that.moreTextMarkupAdded) {
             that.addMoreTextMarkup();
             that.moreTextMarkupAdded = true;
@@ -776,18 +776,18 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     /************************
      * Spoken
      *********************/
-    fluid.defaults("gpii.discoveryTool.panels.spoken", {
-        gradeNames: ["gpii.discoveryTool.togglePanel", "autoInit"],
+    fluid.defaults("gpii.explorationTool.panels.spoken", {
+        gradeNames: ["gpii.explorationTool.togglePanel", "autoInit"],
         // this is being ignored - ??
         selectors: {
-            toggle: ".flc-discoveryTool-spoken-choice"
+            toggle: ".flc-explorationTool-spoken-choice"
         }
     });
 
     /*************************
      * Set of all enactors
      **************************/
-    fluid.defaults("gpii.discoveryTool.enactorSet", {
+    fluid.defaults("gpii.explorationTool.enactorSet", {
         gradeNames: ["fluid.uiEnhancer.starterEnactors", "autoInit"],
         components: {
             tableOfContents: {
@@ -805,7 +805,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 }
             },
             simplify: {
-                type: "gpii.discoveryTool.enactors.simplifiedContent",
+                type: "gpii.explorationTool.enactors.simplifiedContent",
                 container: "{uiEnhancer}.container",
                 options: {
                     sourceApplier: "{uiEnhancer}.applier",
@@ -818,7 +818,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 }
             },
             moreText: {
-                type: "gpii.discoveryTool.enactors.showMoreText",
+                type: "gpii.explorationTool.enactors.showMoreText",
                 container: "{uiEnhancer}.container",
                 options: {
                     sourceApplier: "{uiEnhancer}.applier",
@@ -831,7 +831,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 }
             },
             selfVoicing: {
-                type: "gpii.discoveryTool.enactors.selfVoicing",
+                type: "gpii.explorationTool.enactors.selfVoicing",
                 container: "{uiEnhancer}.container",
                 options: {
                     sourceApplier: "{uiEnhancer}.applier",
@@ -852,32 +852,32 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     });
 
     // Removes the selfVoicing enactor from the fatPanel iFrame
-    fluid.demands("gpii.discoveryTool.enactors.selfVoicing", ["fluid.uiOptions.fatPanel.renderIframe"], {
+    fluid.demands("gpii.explorationTool.enactors.selfVoicing", ["fluid.uiOptions.fatPanel.renderIframe"], {
         funcName: "fluid.emptySubcomponent"
     });
 
     // Removes the selfVoicing enactor and the spoken panel from when HTML5Audio is not supported
-    fluid.demands("gpii.discoveryTool.enactors.selfVoicing", ["fluid.HTML5Audio.NotSupported"], {
+    fluid.demands("gpii.explorationTool.enactors.selfVoicing", ["fluid.HTML5Audio.NotSupported"], {
         funcName: "fluid.emptySubcomponent"
     });
-    fluid.demands("gpii.discoveryTool.panels.spoken", ["fluid.HTML5Audio.NotSupported"], {
+    fluid.demands("gpii.explorationTool.panels.spoken", ["fluid.HTML5Audio.NotSupported"], {
         funcName: "fluid.emptySubcomponent"
     });
 
     /**************************************
-     * gpii.discoveryTool.trySomethingNew *
+     * gpii.explorationTool.trySomethingNew *
      ***************************************/
 
-    fluid.defaults("gpii.discoveryTool.trySomethingNew", {
+    fluid.defaults("gpii.explorationTool.trySomethingNew", {
         gradeNames: ["fluid.viewComponent", "autoInit"],
         selectors: {
-            label: ".flc-discoveryTool-tryLabel"
+            label: ".flc-explorationTool-tryLabel"
         },
         strings: {
             label: "Try Something New"
         },
         styles: {
-            hover: "fl-discoveryTool-hover"
+            hover: "fl-explorationTool-hover"
         },
         events: {
             onHover: null,
@@ -920,7 +920,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 "args": ["{that}.events.onBlur.fire"]
             },
             "afterActivate.preventDefault": {
-                listener: "gpii.discoveryTool.trySomethingNew.preventDefault"
+                listener: "gpii.explorationTool.trySomethingNew.preventDefault"
             },
             "afterActivate.activate": {
                 listener: "{that}.randomizeSelection"
@@ -940,22 +940,22 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         },
         invokers: {
             randomizeSelection: {
-                funcName: "gpii.discoveryTool.trySomethingNew.randomizeSelection",
+                funcName: "gpii.explorationTool.trySomethingNew.randomizeSelection",
                 args: ["{that}.options.presetPanels", "{that}.options.numSelections"]
             }
         },
         components: {
             cycle: {
-                type: "gpii.discoveryTool.cycle",
+                type: "gpii.explorationTool.cycle",
                 options: {
                     items: "{trySomethingNew}.options.presetPanels",
                     listeners: {
                         "on.toggleClass": {
-                            funcName: "gpii.discoveryTool.trySomethingNew.toggleClass",
+                            funcName: "gpii.explorationTool.trySomethingNew.toggleClass",
                             args: ["{arguments}.0.container", "{trySomethingNew}.options.styles.hover"]
                         },
                         "off.toggleClass": {
-                            funcName: "gpii.discoveryTool.trySomethingNew.toggleClass",
+                            funcName: "gpii.explorationTool.trySomethingNew.toggleClass",
                             args: ["{arguments}.0.container", "{trySomethingNew}.options.styles.hover"]
                         }
                     }
@@ -964,11 +964,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
 
-    gpii.discoveryTool.trySomethingNew.preventDefault = function (event) {
+    gpii.explorationTool.trySomethingNew.preventDefault = function (event) {
         event.preventDefault();
     };
 
-    gpii.discoveryTool.trySomethingNew.randomizeSelection = function (presetPanels, numSelections) {
+    gpii.explorationTool.trySomethingNew.randomizeSelection = function (presetPanels, numSelections) {
         var components = fluid.copy(presetPanels);
         var toSelect = [];
         numSelections = Math.min(numSelections, components.length);
@@ -988,7 +988,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         });
     };
 
-    gpii.discoveryTool.trySomethingNew.toggleClass = function (elm, className) {
+    gpii.explorationTool.trySomethingNew.toggleClass = function (elm, className) {
         $(elm).toggleClass(className);
     };
 
@@ -1000,7 +1000,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * focused at the same time. The cycle will wrap around the array and continue until
      * stopped.
      */
-    fluid.defaults("gpii.discoveryTool.cycle", {
+    fluid.defaults("gpii.explorationTool.cycle", {
         gradeNames: ["fluid.modelComponent", "fluid.eventedComponent", "autoInit"],
         speed: "500",
         items: [],
@@ -1039,20 +1039,20 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 args: ["enabled", false]
             },
             step: {
-                funcName: "gpii.discoveryTool.cycle.step",
+                funcName: "gpii.explorationTool.cycle.step",
                 args: ["{that}.options.items", 0, "{that}.options.speed", "{that}.model", "{that}.events.on.fire", "{that}.events.off.fire"]
             }
         }
     });
 
-    gpii.discoveryTool.cycle.step = function (items, index, speed, model, callbackOn, callbackOff) {
+    gpii.explorationTool.cycle.step = function (items, index, speed, model, callbackOn, callbackOff) {
         var numItems = items.length;
         if (model.enabled && !model.inStep && numItems) {
             var boundIndex = index % numItems;
             callbackOn(items[boundIndex], boundIndex);
             setTimeout(function () {
                 callbackOff(items[boundIndex], boundIndex);
-                gpii.discoveryTool.cycle.step(items, ++index, speed, model, callbackOn, callbackOff);
+                gpii.explorationTool.cycle.step(items, ++index, speed, model, callbackOn, callbackOff);
             }, speed);
         }
     };
