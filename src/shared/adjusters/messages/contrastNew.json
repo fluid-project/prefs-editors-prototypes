@@ -1,4 +1,6 @@
 {
     "contrast": "contrast",
-    "addContrast": "add contrast"
+    "addContrast": "add contrast",
+    "tooltipChecked": "remove from my preferences",
+    "tooltipUnchecked": "add to my preferences"
 }

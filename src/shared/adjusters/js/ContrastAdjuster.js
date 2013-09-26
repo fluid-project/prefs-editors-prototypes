@@ -10,12 +10,14 @@
 		selectors: {
             valueCheckbox: ".flc-uiOptions-constrastInput",
             headingLabel: ".flc-uiOptions-contrast-label",
-            panelLabel: ".headerTitle"
+            panelLabel: ".headerTitle",
+            addToMyPreferencesLabel: ".addToMyPreferencesLabel"
 		},
 		protoTree: {
 			valueCheckbox: "${value}",
             headingLabel: {messagekey: "contrast"},
-            panelLabel: {messagekey: "addContrast"}
+            panelLabel: {messagekey: "addContrast"},
+            addToMyPreferencesLabel: " "
 		},
 		components: {
             preview: {
@@ -65,7 +67,12 @@
     		{
         		$(".flc-uiOptions-contrast .fl-uiOptions-category").slideUp(0);
     		}
+
+        	var checkedTooltip = that.options.parentBundle.lookup(["tooltipChecked"]);
+        	that.locate("addToMyPreferencesLabel").attr("tooltip-checked", checkedTooltip ? checkedTooltip.template : checkedTooltip);
+
+        	var uncheckedTooltip = that.options.parentBundle.lookup(["tooltipUnchecked"]);
+        	that.locate("addToMyPreferencesLabel").attr("tooltip-unchecked", uncheckedTooltip ? uncheckedTooltip.template : uncheckedTooltip);
         });
     };
-	
 })(jQuery, fluid);
