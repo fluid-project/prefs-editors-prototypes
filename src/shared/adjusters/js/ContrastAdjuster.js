@@ -9,11 +9,13 @@
 		},
 		selectors: {
             valueCheckbox: ".flc-uiOptions-constrastInput",
-            headingLabel: ".flc-uiOptions-contrast-label"	
+            headingLabel: ".flc-uiOptions-contrast-label",
+            panelLabel: ".headerTitle"
 		},
 		protoTree: {
 			valueCheckbox: "${value}",
-            headingLabel: {messagekey: "contrast"}
+            headingLabel: {messagekey: "contrast"},
+            panelLabel: {messagekey: "addContrast"}
 		},
 		components: {
             preview: {
