@@ -23,7 +23,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * The enactor that enables self voicing in the user interface options.
      *******************************************************************************/
 
-    fluid.defaults("gpii.discoveryTool.enactors.selfVoicing", {
+    fluid.defaults("gpii.explorationTool.enactors.selfVoicing", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
         model: {
             value: false
@@ -37,15 +37,15 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         },
         invokers: {
             handleSelfVoicing: {
-                funcName: "gpii.discoveryTool.enactors.selfVoicing.handleSelfVoicing",
+                funcName: "gpii.explorationTool.enactors.selfVoicing.handleSelfVoicing",
                 args: "{that}"
             },
             announce: {
-                funcName: "gpii.discoveryTool.enactors.selfVoicing.announce",
+                funcName: "gpii.explorationTool.enactors.selfVoicing.announce",
                 args: ["{that}", "{arguments}.0"]
             },
             announceNext: {
-                funcName: "gpii.discoveryTool.enactors.selfVoicing.announceNext",
+                funcName: "gpii.explorationTool.enactors.selfVoicing.announceNext",
                 args: "{that}"
             }
         },
@@ -66,7 +66,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         lang: "en"
     });
 
-    gpii.discoveryTool.enactors.selfVoicing.finalInit = function (that) {
+    gpii.explorationTool.enactors.selfVoicing.finalInit = function (that) {
         that.applier.modelChanged.addListener("value", function (newModel, oldModel) {
             if (newModel.value !== oldModel.value) {
                 that.handleSelfVoicing();
@@ -74,7 +74,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         });
     };
 
-    gpii.discoveryTool.enactors.selfVoicing.handleSelfVoicing = function (that) {
+    gpii.explorationTool.enactors.selfVoicing.handleSelfVoicing = function (that) {
         if (that.model.value) {
             that.announce(that.options.strings.loaded);
         } else {
@@ -83,7 +83,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     };
 
-    gpii.discoveryTool.enactors.selfVoicing.announce = function (that, text) {
+    gpii.explorationTool.enactors.selfVoicing.announce = function (that, text) {
         if (!that.model.value) {return;}
         var audioURL = fluid.stringTemplate(that.options.ttsUrl, {
             lang: that.options.lang,
@@ -107,7 +107,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         return string.replace(/\s{2,}/gi, " ");
     };
 
-    gpii.discoveryTool.enactors.selfVoicing.announceNext = function (that) {
+    gpii.explorationTool.enactors.selfVoicing.announceNext = function (that) {
         var announcement = "";
         that.currentElement = that.currentElement ||
             document.activeElement;
