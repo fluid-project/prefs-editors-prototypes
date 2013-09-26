@@ -530,7 +530,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         finalInitFunction: "gpii.explorationTool.togglePanel.finalInit",
         selectors: {
-            toggle: ".flc-explorationTool.togglePanel.toggle",
+            toggle: ".flc-explorationTool.togglePanel-toggle",
             label: ".flc-explorationTool.togglePanel.label-text"
         },
         events: {
@@ -567,7 +567,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         gradeNames: ["gpii.explorationTool.togglePanel", "autoInit"],
         selectors: {
             toggle: ".flc-explorationTool-highContrast-choice",
-            label: ".flc-explorationTool-highContrast-string"
+            label: ".flc-explorationTool-highContrast-labelText"
         },
         protoTree: {
             toggle: "${enabled}",
@@ -589,7 +589,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         gradeNames: ["gpii.explorationTool.togglePanel", "autoInit"],
         selectors: {
             toggle: ".flc-explorationTool-lowContrast-choice",
-            label: ".flc-explorationTool-lowContrast-string"
+            label: ".flc-explorationTool-lowContrast-labelText"
         },
         protoTree: {
             toggle: "${enabled}",
@@ -605,7 +605,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         // this is being ignored - ??
         selectors: {
             toggle: ".flc-explorationTool-increaseSize-choice",
-            label: ".flc-explorationTool-increaseSize-string"
+            label: ".flc-explorationTool-increaseSize-labelText"
         },
         protoTree: {
             toggle: "${enabled}",
@@ -621,7 +621,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         // this is being ignored - ??
         selectors: {
             toggle: ".flc-explorationTool-simplify-choice",
-            label: ".flc-explorationTool-simplify-string"
+            label: ".flc-explorationTool-simplify-labelText"
         },
         protoTree: {
             toggle: "${enabled}",
@@ -703,7 +703,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         // this is being ignored - ??
         selectors: {
             toggle: ".flc-explorationTool-moreText-choice",
-            label: ".flc-explorationTool-moreText-string"
+            label: ".flc-explorationTool-moreText-labelText"
         },
         protoTree: {
             toggle: "${enabled}",
@@ -809,7 +809,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         // this is being ignored - ??
         selectors: {
             toggle: ".flc-explorationTool-spoken-choice",
-            label: ".flc-explorationTool-spoken-string"
+            label: ".flc-explorationTool-spoken-labelText"
         },
         protoTree: {
             toggle: "${enabled}",
