@@ -3,5 +3,11 @@
     "slidingPanelHideText": "-",
     "slidingPanelShowLabel": "Doesn't make sense? Open display preferences panel",
     "slidingPanelHideLabel": "Close Panel",        
-    "trySomethingNewText": "Try Something New"
+    "trySomethingNewText": "Try Something New",
+    "highContrastLabel": "More Contrast",
+    "lowContrastLabel": "Less Contrast",
+    "increaseSizeLabel": "Enlarge",
+    "simplifyLabel": "Simplify",
+    "moreTextLabel": "Extra Words",
+    "spokenLabel": "Speak"
 }
