@@ -21,5 +21,5 @@ var demo = demo || {};
         return demo.initWithSchema(container, options, "fluid.uiOptions.fullNoPreview");
     };
 
-    demo.initFinishedEvent = setupPMTSliders;
+    demo.initFinishedEvent = setupPMT;
 })(jQuery, fluid);

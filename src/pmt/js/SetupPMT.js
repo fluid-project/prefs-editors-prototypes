@@ -1,4 +1,4 @@
-function setupPMTSliders(that){
+function setupPMT(that){
 	// hide it on startup
     $(".flc-uiOptions-increaseSizePanel .fl-uiOptions-category-hidden").slideUp(0);
     $(".flc-uiOptions-increaseSizePanel .fl-uiOptions-category").slideUp(0);
