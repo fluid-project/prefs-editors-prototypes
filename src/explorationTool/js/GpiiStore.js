@@ -23,30 +23,30 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
 (function ($, fluid) {
 
-    fluid.registerNamespace("gpii.discoveryTool");
+    fluid.registerNamespace("gpii.explorationTool");
 
     /**
      * gpiiStore Subcomponent that uses GPII server for persistence.
      * It sends request to the GPII server to save and retrieve model information
      * @param {Object} options
      */
-    fluid.defaults("gpii.discoveryTool.gpiiStore", {
+    fluid.defaults("gpii.explorationTool.gpiiStore", {
         gradeNames: ["fluid.uiOptions.dataSource", "autoInit"],
-        url: "http://preferences.gpii.net/user/discoveryTool-user-1",
-        gpiiEntry: "http://registry.gpii.org/applications/gpii.discoveryTool",
+        url: "http://preferences.gpii.net/user/explorationTool-user-1",
+        gpiiEntry: "http://registry.gpii.org/applications/gpii.explorationTool",
         invokers: {
             get: {
-                funcName: "gpii.discoveryTool.gpiiStore.get",
+                funcName: "gpii.explorationTool.gpiiStore.get",
                 args: ["{that}.options"]
             },
             set: {
-                funcName: "gpii.discoveryTool.gpiiStore.set",
+                funcName: "gpii.explorationTool.gpiiStore.set",
                 args: ["{arguments}.0", "{that}.options"]
             }
         }
     });
 
-    gpii.discoveryTool.gpiiStore.get = function (settings) {
+    gpii.explorationTool.gpiiStore.get = function (settings) {
         var gpiiModel;
 
         $.ajax({
@@ -66,7 +66,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         return gpiiModel;
     };
 
-    gpii.discoveryTool.gpiiStore.set = function (model, settings) {
+    gpii.explorationTool.gpiiStore.set = function (model, settings) {
         var dataToSave = {};
 
         dataToSave[settings.gpiiEntry] = [{
@@ -91,9 +91,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         });
     };
 
-    fluid.defaults("gpii.discoveryTool.gpiiSettingsStore", {
+    fluid.defaults("gpii.explorationTool.gpiiSettingsStore", {
         gradeNames: ["autoInit", "fluid.globalSettingsStore"],
-        storeType: "gpii.discoveryTool.gpiiStore",
+        storeType: "gpii.explorationTool.gpiiStore",
         distributeOptions: [{
             source: "{that}.options.storeType",
             removeSource: true,

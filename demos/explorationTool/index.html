@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/components/uiOptions/css/fss/fss-theme-lgdg-uio.css" />
     <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/components/uiOptions/css/fss/fss-theme-dglg-uio.css" />
 
-    <link rel="stylesheet" type="text/css" href="../../src/discoveryTool/css/DiscoveryTool.css" />
+    <link rel="stylesheet" type="text/css" href="../../src/explorationTool/css/ExplorationTool.css" />
     <link rel="stylesheet" type="text/css" href="demo.css" />
     <!--[if lt IE 9]>
         <link rel="stylesheet" type="text/css" href="ltie9.css" />
@@ -24,20 +24,21 @@
     <![endif]-->
 
     <script type="text/javascript" src="../../src/shared/lib/buzz/js/buzz.js"></script>
-    <script type="text/javascript" src="../../src/discoveryTool/js/SelfVoicingEnactor.js"></script>
-    <script type="text/javascript" src="../../src/discoveryTool/js/GpiiStore.js"></script>
-    <script type="text/javascript" src="../../src/discoveryTool/js/DiscoveryTool.js"></script>
+    <script type="text/javascript" src="../../src/explorationTool/js/SelfVoicingEnactor.js"></script>
+    <script type="text/javascript" src="../../src/explorationTool/js/GpiiStore.js"></script>
+    <script type="text/javascript" src="../../src/explorationTool/js/ExplorationTool.js"></script>
 
     <script type="text/javascript" src="demo.js"></script>
 </head>
 
-<body class="discovery-tool-demo fl-focus">
+<body class="exploration-tool-demo fl-focus">
 
     <script type="text/javascript">
         $(document).ready(function () {
-            demo.initCookieStore();
-            demo.initPageEnhancer("discovery-tool-theme");
-            demo.initDiscoveryTool(".flc-uiOptions-discoveryTool");
+            // demo.initCookieStore();
+            demo.initGpiiStore("http://localhost:8080/user/testDT");
+            demo.initPageEnhancer("exploration-tool-theme");
+            demo.initExplorationTool(".flc-uiOptions-explorationTool");
         })
     </script>
 
@@ -54,25 +55,25 @@
             </div>
         </header>
 
-        <!-- BEGIN markup for discoveryTool -->
-        <!-- The discoveryTool is placed after the header in the DOM to enable the desired tab order. This
+        <!-- BEGIN markup for explorationTool -->
+        <!-- The explorationTool is placed after the header in the DOM to enable the desired tab order. This
         could not be achieved through setting the tabindex alone, as the tabindex of the items in the
         iframe are calculated separately from those of the parent page. Meaning that the tab focus would jump
         back to the top of the page. -->
-        <div class="flc-uiOptions-discoveryTool fl-uiOptions-discoveryTool">
+        <div class="flc-uiOptions-explorationTool fl-uiOptions-explorationTool">
 
-            <!-- This div is for the sliding panel that shows and hides the discoveryTool controls -->
+            <!-- This div is for the sliding panel that shows and hides the explorationTool controls -->
             <div class="fl-panelBar fl-inverted-color">
                 <!-- button id="reset" class="flc-uiOptions-reset fl-uiOptions-reset"><span class="fl-icon-undo"></span> Reset</button -->
                 <button id="show-hide" class="flc-slidingPanel-toggleButton fl-uiOptions-showHide" aria-label="" aria-controls="dtpanel"></button>
-                <label for="show-hide" class="flc-icon-discover fl-icon-discover" role="presentation" aria-label="Discover"></label>
+                <label for="show-hide" class="flc-icon-explorationTool fl-icon-explorationTool" role="presentation" aria-label="Discover"></label>
             </div>
 
             <!-- This is the div that will contain the UI Options component -->
             <div class="flc-slidingPanel-panel flc-uiOptions-iframe" role="region" id="dtpanel" aria-expanded=""></div>
 
         </div>
-        <!-- END markup for discoveryTool -->
+        <!-- END markup for explorationTool -->
 
         <section class="main-content">
             <header class="fl-clearfix">
