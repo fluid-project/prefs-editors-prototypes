@@ -66,7 +66,9 @@
 
 	fluid.uiOptions.panels.magnifier.finalInit = function(that){
 		that.events.minRangeReached.addListener(function () {
-    		that.locate("valueText").val("OFF");
+			var offText = that.options.parentBundle.lookup(["magnifierOFF"]);
+	        
+    		that.locate("valueText").val((offText ? offText.template : offText));
 		});
 
 		fluid.uiOptions.panels.plusMinusAdjusterFinalInit(that);
