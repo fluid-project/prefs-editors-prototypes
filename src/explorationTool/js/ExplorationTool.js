@@ -530,7 +530,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         finalInitFunction: "gpii.explorationTool.togglePanel.finalInit",
         selectors: {
-            toggle: ".flc-explorationTool-togglePanel.toggle"
+            toggle: ".flc-explorationTool.togglePanel.toggle",
+            label: ".flc-explorationTool.togglePanel.label-text"
         },
         events: {
             afterDisabled: null,
@@ -540,7 +541,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             enabled: false
         },
         protoTree: {
-            toggle: "${enabled}"
+            toggle: "${enabled}",
+            label: ""
         }
     });
 
@@ -564,8 +566,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     fluid.defaults("gpii.explorationTool.panels.highContrast", {
         gradeNames: ["gpii.explorationTool.togglePanel", "autoInit"],
         selectors: {
-            toggle: ".flc-explorationTool-highContrast-choice"
+            toggle: ".flc-explorationTool-highContrast-choice",
+            label: ".flc-explorationTool-highContrast-string"
+        },
+        protoTree: {
+            toggle: "${enabled}",
+            label: {messagekey: "highContrastLabel"}
         }
+        
     });
 
     /************************
@@ -580,7 +588,12 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     fluid.defaults("gpii.explorationTool.panels.lowContrast", {
         gradeNames: ["gpii.explorationTool.togglePanel", "autoInit"],
         selectors: {
-            toggle: ".flc-explorationTool-lowContrast-choice"
+            toggle: ".flc-explorationTool-lowContrast-choice",
+            label: ".flc-explorationTool-lowContrast-string"
+        },
+        protoTree: {
+            toggle: "${enabled}",
+            label: {messagekey: "lowContrastLabel"}
         }
     });
 
@@ -591,7 +604,12 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         gradeNames: ["gpii.explorationTool.togglePanel", "autoInit"],
         // this is being ignored - ??
         selectors: {
-            toggle: ".flc-explorationTool-increaseSize-choice"
+            toggle: ".flc-explorationTool-increaseSize-choice",
+            label: ".flc-explorationTool-increaseSize-string"
+        },
+        protoTree: {
+            toggle: "${enabled}",
+            label: {messagekey: "increaseSizeLabel"}
         }
     });
 
@@ -602,8 +620,13 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         gradeNames: ["gpii.explorationTool.togglePanel", "autoInit"],
         // this is being ignored - ??
         selectors: {
-            toggle: ".flc-explorationTool-simplify-choice"
-        }
+            toggle: ".flc-explorationTool-simplify-choice",
+            label: ".flc-explorationTool-simplify-string"
+        },
+        protoTree: {
+            toggle: "${enabled}",
+            label: {messagekey: "simplifyLabel"}
+        }  
     });
 
     /**********************************************************************************
@@ -679,8 +702,13 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         gradeNames: ["gpii.explorationTool.togglePanel", "autoInit"],
         // this is being ignored - ??
         selectors: {
-            toggle: ".flc-explorationTool-moreText-choice"
-        }
+            toggle: ".flc-explorationTool-moreText-choice",
+            label: ".flc-explorationTool-moreText-string"
+        },
+        protoTree: {
+            toggle: "${enabled}",
+            label: {messagekey: "moreTextLabel"}
+        }  
     });
 
     /**********************************************************************************
@@ -780,7 +808,12 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         gradeNames: ["gpii.explorationTool.togglePanel", "autoInit"],
         // this is being ignored - ??
         selectors: {
-            toggle: ".flc-explorationTool-spoken-choice"
+            toggle: ".flc-explorationTool-spoken-choice",
+            label: ".flc-explorationTool-spoken-string"
+        },
+        protoTree: {
+            toggle: "${enabled}",
+            label: {messagekey: "spokenLabel"}
         }
     });
 
