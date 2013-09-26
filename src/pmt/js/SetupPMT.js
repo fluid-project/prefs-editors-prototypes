@@ -1,3 +1,5 @@
+var language = "en";
+
 function setupPMT(that){
 	// hide it on startup
     $(".flc-uiOptions-increaseSizePanel .fl-uiOptions-category-hidden").slideUp(0);
@@ -29,4 +31,10 @@ function setupPMT(that){
 	        $(".moreLess").text("+ " + (moreText ? moreText.template : moreText));
 		}
 	});
+    
+    $(".fl-uiOptions-language-select").change (function () {
+    	language = $(this).val();
+    	
+    	that.events.onUIOptionsRefresh.fire();
+    }); 
 }

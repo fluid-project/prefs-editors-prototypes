@@ -45,7 +45,7 @@
 	        "namespace": "fluid.uiOptions.constructed",
 	        "templatePrefix": "../../src/shared/adjusters/html/", // The common path to settings panel templates
 	        "template": "../../src/pmt/html/PMTUIOptions.html",
-	        "messagePrefix": "../../src/shared/adjusters/messages/",
+	        "messagePrefix": "../../src/shared/adjusters/messages/" + language + "/",
 	        "message": "%prefix/pmt.json",
 	        	
 	        // The preference-specific information:
