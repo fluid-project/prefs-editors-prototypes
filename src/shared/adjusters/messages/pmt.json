@@ -1,4 +1,6 @@
 {
     "more": "more",
-    "less": "less"    
+    "less": "less",
+    "tooltipChecked": "remove from my preferences",
+    "tooltipUnchecked": "add to my preferences"  
 }
