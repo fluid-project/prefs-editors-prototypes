@@ -1,4 +1,4 @@
-function setupPMTSliders(){
+function setupPMTSliders(that){
 	// hide it on startup
     $(".flc-uiOptions-increaseSizePanel .fl-uiOptions-category-hidden").slideUp(0);
     $(".flc-uiOptions-increaseSizePanel .fl-uiOptions-category").slideUp(0);
@@ -16,12 +16,17 @@ function setupPMTSliders(){
     $(".moreLess").click(function(){
     	if (!$('.fl-uiOptions-category-hidden').is(':visible')) {
 	        $(".fl-uiOptions-category-hidden").slideDown();
-	        $(".moreLess").text("- less");
+
+	        // TODO: ugly way of acquiring access to messages
+	        var lessText = that.fluid_uiOptions_panels_contrast.options.parentBundle.lookup(["less"]);
+	        $(".moreLess").text("- " + (lessText ? lessText.template : lessText));
 	    }
 		else
 		{
 	        $(".fl-uiOptions-category-hidden").slideUp();
-	        $(".moreLess").text("+ more");
+
+	        var moreText = that.fluid_uiOptions_panels_contrast.options.parentBundle.lookup(["more"]);
+	        $(".moreLess").text("+ " + (moreText ? moreText.template : moreText));
 		}
 	});
 }
