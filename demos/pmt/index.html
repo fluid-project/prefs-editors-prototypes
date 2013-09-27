@@ -19,13 +19,13 @@
 	<!-- Needed fonts from Google -->
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-	
+
 	<!-- All styling for PMT is here -->
     <link rel="stylesheet" type="text/css" href="../../src/shared/adjusters/css/style.css" />
 
 	<!-- The Infusion Library -->
     <script type="text/javascript" src="../../src/shared/lib/infusion/MyInfusion.js"></script>
-    
+
     <!-- The custom adjusters JS files -->
     <script type="text/javascript" src="../../src/shared/adjusters/js/ContrastAdjuster.js"></script>
     <script type="text/javascript" src="../../src/shared/adjusters/js/PlusMinusAdjuster.js"></script>
@@ -40,71 +40,17 @@
     <script type="text/javascript" src="../../src/shared/enactors/js/TextSizeEnactor.js"></script>
     <script type="text/javascript" src="../../src/shared/enactors/js/CursorSizeEnactor.js"></script>
     <script type="text/javascript" src="../../src/shared/enactors/js/MagnifierEnactor.js"></script>
-    
+
     <!-- PMT-specific files -->
-    <script type="text/javascript" src="../../src/pmt/js/SetupPMT.js"></script>
     <script type="text/javascript" src="../../src/pmt/js/PMTUIOSchema.js"></script>
+    <script type="text/javascript" src="../../src/pmt/js/PMT.js"></script>
 
 	<!-- The demo script -->
     <script type="text/javascript" src="demo.js"></script>
-    
+
 <script type="text/javascript">
     $(document).ready(function () {
-    	demo.initFullNoPreview("#myUIOptions", {
-            uiOptions: {
-                listeners: {
-                    onSave: {
-                        listener: "console.log"
-                    },
-                    onReady: {
-                        listener: demo.initFinishedEvent,
-                        args: "{that}"
-                    }
-                },
-                
-    	        selectors: {
-    	        	increaseSizeHeader: ".flc-uiOptions-increaseSizePanel > .headerTitle, .flc-uiOptions-increaseSizePanel > .headerImage > .headerTitle",
-   	        		addToMyPreferencesStar: ".addToMyPreferencesLabel",
- 	   	        	languageLabel: ".fl-uiOptions-language-label",
- 	   	        	saveButton: ".flc-uiOptions-save",
- 	   	        	resetButton: ".flc-uiOptions-reset",
- 	   	        	cancelButton: ".flc-uiOptions-cancel",
- 	   	        	moreLess: ".moreLess",
-    	        },
-    	        strings: {
-    	            increaseSizeHeader: {
-    	                expander: {
-    	                    func: "fluid.uiOptions.pmt.auxiliarySchema.lookupMsg",
-    	                    args: ["{uiOptionsLoader}.msgBundle", "increaseSizeHeader"]
-    	                }
-    	            }/* ,
-    	            addToMyPreferencesLabel: {
-    	                expander: {
-    	                    func: "fluid.uiOptions.pmt.auxiliarySchema.lookupMsg",
-    	                    args: ["{that}.uiOptionsLoader.msgBundle", "increaseSizeHeader"]
-    	                }
-    	            } */
-    	        },
-    	        /* listeners: {
-    	        	"onCreate.setIncreaseSizeHeader": {
-                        listener: "{that}.setIncreaseSizeHeader",
-                        args: ["{that}.options.strings.increaseSizeHeader"]
-                    }
-    	        },
-    	        invokers: {
-    	        	setIncreaseSizeHeader: {
-                        "this": "{that}.dom.increaseSizeHeader",
-                        method: "text",
-                        args: ["{arguments}.0"]
-                    }
-    	        } */
-            }
-        });
-    	
-    	fluid.uiOptions.pmt.auxiliarySchema.lookupMsg = function (messageResolver, value) {
-    	    var looked = messageResolver.lookup([value]);
-    	    return looked ? looked.template : looked;
-    	};
+    	demo.initPMT("#myUIOptions");
     })
 </script>
 
