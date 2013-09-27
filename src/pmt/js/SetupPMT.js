@@ -19,8 +19,7 @@ function setupPMT(that){
     	if (!$('.fl-uiOptions-category-hidden').is(':visible')) {
 	        $(".fl-uiOptions-category-hidden").slideDown();
 
-	        // TODO: ugly way of acquiring access to messages
-	        var lessText = that.fluid_uiOptions_panels_contrast.options.parentBundle.lookup(["less"]);
+	        var lessText = that.options.msgBundle.lookup(["less"]);
 	        $(".moreLess").text("- " + (lessText ? lessText.template : lessText));
 	    }
 		else
@@ -38,11 +37,14 @@ function setupPMT(that){
     	that.events.onUIOptionsRefresh.fire();
     }); 
     
+    // TODO: is this the correct way? Could it be more declaratively?
     that.locate("increaseSizeHeader").text(that.options.strings.increaseSizeHeader);
-    that.locate("addToMyPreferencesStar").attr("tooltip-checked", that.options.msgBundle.options.parents[0].messageBase.tooltipChecked);
-    that.locate("addToMyPreferencesStar").attr("tooltip-unchecked", that.options.msgBundle.options.parents[0].messageBase.tooltipUnchecked);
-    that.locate("languageLabel").text(that.options.msgBundle.options.parents[0].messageBase.languageLabel);
-    that.locate("saveButton").attr("value", that.options.msgBundle.options.parents[0].messageBase.saveButtonText);
-    that.locate("resetButton").attr("value", that.options.msgBundle.options.parents[0].messageBase.resetButtonText);
-    that.locate("cancelButton").attr("value", that.options.msgBundle.options.parents[0].messageBase.cancelButtonText);
+    
+    that.locate("addToMyPreferencesStar").attr("tooltip-checked", that.options.msgBundle.lookup(["tooltipChecked"]).template);
+    that.locate("addToMyPreferencesStar").attr("tooltip-unchecked", that.options.msgBundle.lookup(["tooltipUnchecked"]).template);
+    that.locate("languageLabel").text(that.options.msgBundle.lookup(["languageLabel"]).template);
+    that.locate("saveButton").attr("value", that.options.msgBundle.lookup(["saveButtonText"]).template);
+    that.locate("resetButton").attr("value", that.options.msgBundle.lookup(["resetButtonText"]).template);
+    that.locate("cancelButton").attr("value", that.options.msgBundle.lookup(["cancelButtonText"]).template);
+    that.locate("moreLess").text("+ " + that.options.msgBundle.lookup(["more"]).template);
 }
