@@ -62,8 +62,6 @@
                     }
                 },
                 
-                msgBundle: "{uiOptionsLoader}.msgBundle",
-                
     	        selectors: {
     	        	increaseSizeHeader: ".flc-uiOptions-increaseSizePanel > .headerTitle, .flc-uiOptions-increaseSizePanel > .headerImage > .headerTitle",
    	        		addToMyPreferencesStar: ".addToMyPreferencesLabel",
@@ -77,7 +75,7 @@
     	            increaseSizeHeader: {
     	                expander: {
     	                    func: "fluid.uiOptions.pmt.auxiliarySchema.lookupMsg",
-    	                    args: ["{that}.uiOptionsLoader.msgBundle", "increaseSizeHeader"]
+    	                    args: ["{uiOptionsLoader}.msgBundle", "increaseSizeHeader"]
     	                }
     	            }/* ,
     	            addToMyPreferencesLabel: {
