@@ -73,6 +73,13 @@
 
         	var uncheckedTooltip = that.options.parentBundle.lookup(["tooltipUnchecked"]);
         	that.locate("addToMyPreferencesLabel").attr("tooltip-unchecked", uncheckedTooltip ? uncheckedTooltip.template : uncheckedTooltip);
+
+        	// Not very elegant solution
+        	var previewframe = that.preview;
+        	var previewText = that.options.parentBundle.lookup(["contrastPreviewText"]).template;
+        	that.preview.events.onReady.addListener(function () {
+        		previewframe.container.contents().find('body').find('.flc-uiOptions-preview-per-setting-label').text(previewText);
+            });
         });
     };
 })(jQuery, fluid);
