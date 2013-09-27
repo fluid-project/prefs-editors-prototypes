@@ -22,8 +22,16 @@ var demo = demo || {};
     var pathToMessages = "../../src/explorationTool/messages/";
     var pathToTocTemplate = "../../src/shared/lib/infusion/components/tableOfContents/html/TableOfContents.html";
 
-    demo.initSettingsStore = function () {
+    demo.initCookieStore = function () {
         return fluid.globalSettingsStore();
+    };
+
+    demo.initGpiiStore = function (gpiiServerURL) {
+        return gpii.explorationTool.gpiiSettingsStore({
+            settingsStore: {
+                url: gpiiServerURL
+            }
+        });
     };
 
     demo.initPageEnhancer = function (customThemeName) {
