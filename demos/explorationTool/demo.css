@@ -249,35 +249,28 @@ article h2 {
     line-height: 1.3;
     width:100%;
     height: 2.5em;
-	overflow:hidden;
-	margin-bottom: 3px;
+    overflow:hidden;
 }
 
-.fl-panelBar:hover {
-	border-top: 3px solid #FFCC00;
-	border-bottom: 3px solid #FFCC00;
-	margin-bottom: 0;	
-}
 .fl-panelBar a {
+	box-sizing:border-box;
+	-moz-box-sizing:border-box; /* Firefox */
+    width: 100%;
+    height: 100%;
+	position: relative; /* This makes link clickable on top of the sibling span. */
 	border: 0;
     color: white;
     font-weight: bold;
     cursor: pointer;
-    width: 100%;
     text-align: right;
 	display: inline-block;
-	padding: 0.6em 3em 0 0;
-	position: relative;
-	right: 3em;
-	height: 1.8em;
+	padding: 0.7em 3em 0 0;
 }
 .fl-panelBar a:focus {
-    outline: 2px solid #fff;
+    border: 0.2em dashed #FFCC00;
     color: #fff;
-}
-
-.fl-panelBar a:hover {
-    text-decoration: none;
+    padding: 0.5em 2.8em 0 0;
+    outline: none;
 }
 
 .fl-panelBar a::-moz-focus-inner {border:0;}
@@ -300,6 +293,7 @@ article h2 {
     -ms-transform:rotate(-10deg); /* IE 9 */
     -webkit-transform:rotate(-10deg); /* Safari and Chrome */
 }
+
 
 /* The Discovery Tool Panel */
 
@@ -478,12 +472,19 @@ div.main-content-image + .fl-explorationTool-moreText {
 .fl-theme-lgdg .fl-panelBar a {
 	border: none;
 	background-color: transparent !important;
+	text-decoration: none !important;
+	/*height: 2em;
+	padding: 0.5em 3em 0em 0em;
+	padding: 0.7em 3em 0 0;*/
 }
-.fl-theme-bw .fl-panelBar a:focus { outline-color: #fff; } 
-.fl-theme-lgdg .fl-panelBar a:focus { outline-color: #555; } 
-.fl-theme-lgdg .fl-panelBar a,
-.fl-theme-bw .fl-panelBar a { text-decoration: none !important; }
 
+.fl-theme-lgdg .fl-panelBar a:focus,
+.fl-theme-bw .fl-panelBar a:focus {
+	outline: none !important;
+}
+
+.fl-theme-lgdg .fl-panelBar a:focus { border: 0.2em dashed #555 !important; } 
+.fl-theme-bw .fl-panelBar a:focus {	border: 0.2em dashed #fff !important; } 
 
 /* Contrast theming for Simplified content mode */
 .fl-uiOptions-content-simplified {
