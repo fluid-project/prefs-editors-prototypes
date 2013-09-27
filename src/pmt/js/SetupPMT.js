@@ -37,4 +37,6 @@ function setupPMT(that){
     	
     	that.events.onUIOptionsRefresh.fire();
     }); 
+    
+    that.locate("increaseSizeHeader").text(that.options.strings.increaseSizeHeader);
 }

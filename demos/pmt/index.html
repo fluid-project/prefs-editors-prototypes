@@ -60,9 +60,41 @@
                         listener: demo.initFinishedEvent,
                         args: "{that}"
                     }
-                }
+                },
+                
+                "msgBundle": "{uiOptionsLoader}.msgBundle",
+                
+    	        selectors: {
+    	        	increaseSizeHeader: ".flc-uiOptions-increaseSizePanel > .headerTitle, .flc-uiOptions-increaseSizePanel > .headerImage > .headerTitle"
+    	        },
+    	        strings: {
+    	            increaseSizeHeader: {
+    	                expander: {
+    	                    func: "fluid.uiOptions.pmt.auxiliarySchema.lookupMsg",
+    	                    args: ["{that}.uiOptionsLoader.msgBundle", "increaseSizeHeader"]
+    	                }
+    	            }
+    	        },
+    	        /* listeners: {
+    	        	"onCreate.setIncreaseSizeHeader": {
+                        listener: "{that}.setIncreaseSizeHeader",
+                        args: ["{that}.options.strings.increaseSizeHeader"]
+                    }
+    	        },
+    	        invokers: {
+    	        	setIncreaseSizeHeader: {
+                        "this": "{that}.dom.increaseSizeHeader",
+                        method: "text",
+                        args: ["{arguments}.0"]
+                    }
+    	        } */
             }
         });
+    	
+    	fluid.uiOptions.pmt.auxiliarySchema.lookupMsg = function (messageResolver, value) {
+    	    var looked = messageResolver.lookup([value]);
+    	    return looked ? looked.template : looked;
+    	};
     })
 </script>
 
