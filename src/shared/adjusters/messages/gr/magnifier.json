@@ -1,0 +1,18 @@
+{
+    "magnifierLabel": "Μεγέθυνση",
+    "magnifierOFF": "Απενεργοποιημένο",
+    "magnifierMAX": "μέγιστο",
+    "multiplier": "φορές",
+    "magnifierPositionLabel": "Θέση μεγεθυντικού φακού",
+    "magnifierPosition.default": "Προεπιλογή",
+    "magnifierPosition.lens": "Φακός",
+    "magnifierPosition.fullscreen": "Πλήρης οθόνη",
+    "magnifierPosition.dockedtop": "Επάνω",
+    "magnifierPosition.dockedbottom": "Κάτω",
+    "magnifierPosition.dockedleft": "Αριστερά",
+    "magnifierPosition.dockedright": "Δεξιά",
+    "magnifierFollowsLabel": "Ο μεγεθυντικός φακός ακολουθεί",
+    "magnifierFollows.mousecursor": "Κέρσορα ποντικιού",
+    "magnifierFollows.textcursor": "Κέρσορα κειμένου",
+    "magnifierFollows.keyboardfocus": "Φόκους πληκτρολογίου"
+}
