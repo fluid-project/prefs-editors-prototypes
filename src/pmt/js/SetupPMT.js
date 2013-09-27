@@ -39,4 +39,10 @@ function setupPMT(that){
     }); 
     
     that.locate("increaseSizeHeader").text(that.options.strings.increaseSizeHeader);
+    that.locate("addToMyPreferencesStar").attr("tooltip-checked", that.options.msgBundle.options.parents[0].messageBase.tooltipChecked);
+    that.locate("addToMyPreferencesStar").attr("tooltip-unchecked", that.options.msgBundle.options.parents[0].messageBase.tooltipUnchecked);
+    that.locate("languageLabel").text(that.options.msgBundle.options.parents[0].messageBase.languageLabel);
+    that.locate("saveButton").attr("value", that.options.msgBundle.options.parents[0].messageBase.saveButtonText);
+    that.locate("resetButton").attr("value", that.options.msgBundle.options.parents[0].messageBase.resetButtonText);
+    that.locate("cancelButton").attr("value", that.options.msgBundle.options.parents[0].messageBase.cancelButtonText);
 }

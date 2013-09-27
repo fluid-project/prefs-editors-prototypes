@@ -3,5 +3,10 @@
     "less": "less",
     "tooltipChecked": "remove from my preferences",
     "tooltipUnchecked": "add to my preferences",
-    "increaseSizeHeader": "increase size" 
+    "increaseSizeHeader": "increase size",
+    "languageLabel": "language",
+    "saveButtonText": "save and apply",
+    "resetButtonText": "reset",
+    "cancelButtonText": "cancel"
+    
 }

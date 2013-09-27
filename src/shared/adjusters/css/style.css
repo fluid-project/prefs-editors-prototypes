@@ -29,6 +29,7 @@
 body {
 	transform-origin: 0 0 0;
 	-webkit-transform-origin: 0 0 0;
+	margin:20px;
 }
 
 .preference {
@@ -688,4 +689,16 @@ input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after 
 */
 .fl-adjuster-icons-sept-12 {
 	font-family: 'sept-12';
+}
+
+/*
+	Style for language controls
+*/
+.fl-uiOptions-language-label {
+	font-size: 1em !important;
+	text-transform: capitalize !important;
+}
+
+.fl-uiOptions-language {
+	text-align: right;
 }

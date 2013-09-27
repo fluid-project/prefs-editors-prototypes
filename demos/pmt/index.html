@@ -62,10 +62,15 @@
                     }
                 },
                 
-                "msgBundle": "{uiOptionsLoader}.msgBundle",
+                msgBundle: "{uiOptionsLoader}.msgBundle",
                 
     	        selectors: {
-    	        	increaseSizeHeader: ".flc-uiOptions-increaseSizePanel > .headerTitle, .flc-uiOptions-increaseSizePanel > .headerImage > .headerTitle"
+    	        	increaseSizeHeader: ".flc-uiOptions-increaseSizePanel > .headerTitle, .flc-uiOptions-increaseSizePanel > .headerImage > .headerTitle",
+   	        		addToMyPreferencesStar: ".addToMyPreferencesLabel",
+ 	   	        	languageLabel: ".fl-uiOptions-language-label",
+ 	   	        	saveButton: ".flc-uiOptions-save",
+ 	   	        	resetButton: ".flc-uiOptions-reset",
+ 	   	        	cancelButton: ".flc-uiOptions-cancel",
     	        },
     	        strings: {
     	            increaseSizeHeader: {
@@ -73,7 +78,13 @@
     	                    func: "fluid.uiOptions.pmt.auxiliarySchema.lookupMsg",
     	                    args: ["{that}.uiOptionsLoader.msgBundle", "increaseSizeHeader"]
     	                }
-    	            }
+    	            }/* ,
+    	            addToMyPreferencesLabel: {
+    	                expander: {
+    	                    func: "fluid.uiOptions.pmt.auxiliarySchema.lookupMsg",
+    	                    args: ["{that}.uiOptionsLoader.msgBundle", "increaseSizeHeader"]
+    	                }
+    	            } */
     	        },
     	        /* listeners: {
     	        	"onCreate.setIncreaseSizeHeader": {
@@ -100,11 +111,6 @@
 
 </head>
 <body>
-
-	<!-- This div should be placed where the Table of Contents is to be displayed -->
-    <div class="flc-toc-tocContainer"> </div>
-
-    <h1>Customize Your Presentation Settings</h1>
 
     <!-- This is the div that will contain the UI Options component -->
     <div id="myUIOptions">
