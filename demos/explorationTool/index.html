@@ -25,6 +25,7 @@
 
     <script type="text/javascript" src="../../src/shared/lib/buzz/js/buzz.js"></script>
     <script type="text/javascript" src="../../src/explorationTool/js/SelfVoicingEnactor.js"></script>
+    <script type="text/javascript" src="../../src/explorationTool/js/GpiiStore.js"></script>
     <script type="text/javascript" src="../../src/explorationTool/js/ExplorationTool.js"></script>
 
     <script type="text/javascript" src="demo.js"></script>
@@ -34,7 +35,7 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            demo.initSettingsStore();
+            demo.initCookieStore();
             demo.initPageEnhancer("exploration-tool-theme");
             demo.initExplorationTool(".flc-uiOptions-explorationTool");
         })
