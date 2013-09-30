@@ -152,17 +152,15 @@
                 that.locate("moreOptionsLabel").text(that.options.strings.lessText);
             }
         });
-
-        hook = that;
     };
 
     // FIXME: These two functions should extract data from speakText.json
     speakText.showMoreText = function () {
         return "less";
-    }
+    };
 
     speakText.showLessText = function () {
         return "more";
-    }
+    };
 
 })(fluid);

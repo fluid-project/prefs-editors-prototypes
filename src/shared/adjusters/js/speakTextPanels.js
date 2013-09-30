@@ -28,7 +28,7 @@
             speechRate: ".gpii-speechRate",
             speechRateLabel: ".gpii-speechRate-label",
             speechRateMinus: ".gpii-speechRate-minus",
-            speechRatePlus: ".gpii-speechRate-plus",
+            speechRatePlus: ".gpii-speechRate-plus"
         }
     });
 
@@ -150,12 +150,12 @@
         selectors: {
             screenReaderBrailleOutput: ".gpii-screenReaderBrailleOutput",
             screenReaderBrailleOutputLabel: ".gpii-screenReaderBrailleOutput-label",
-            screenReaderBrailleOutputDescription: ".gpii-screenReaderBrailleOutput-description",
+            screenReaderBrailleOutputDescription: ".gpii-screenReaderBrailleOutput-description"
         },
         protoTree: {
             screenReaderBrailleOutput: "${screenReaderBrailleOutput}",
             screenReaderBrailleOutputLabel: {messagekey: "screenReaderBrailleOutputLabel"},
-            screenReaderBrailleOutputDescription: {messagekey: "screenReaderBrailleOutputDescription"},
+            screenReaderBrailleOutputDescription: {messagekey: "screenReaderBrailleOutputDescription"}
         }
     });
 

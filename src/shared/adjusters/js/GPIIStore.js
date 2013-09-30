@@ -41,9 +41,9 @@ gpii = fluid.registerNamespace("gpii");
     gpii.pcp.store.set = function (settings, userToken, dict) {
         var gpiiSettings = {};
 
-        fluid.each(settings, function(value, key) {
-            if(key.indexOf("registry*gpii") !== -1) {
-                key = "http://" + key.replace(/\*/g,'.');
+        fluid.each(settings, function (value, key) {
+            if (key.indexOf("registry*gpii") !== -1) {
+                key = "http://" + key.replace(/\*/g, '.');
                 gpiiSettings[key] = value;
             }
         });

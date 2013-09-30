@@ -30,7 +30,7 @@ var fluid_1_5 = fluid_1_5 || {};
             }
         },
         selectors: {
-            textfield: ".gpii-textfieldStepper-field",
+            textfield: ".gpii-textfieldStepper-field"
         },
         events: {
             modelChanged: null,
@@ -104,7 +104,7 @@ var fluid_1_5 = fluid_1_5 || {};
 
         that.applier.modelChanged.addListener("value", function (newModel) {
             if (typeof newModel.value !== "number") {
-                that.applier.requestChange("value", parseInt(newModel.value));
+                that.applier.requestChange("value", parseInt(newModel.value, 10));
             }
         });
     };

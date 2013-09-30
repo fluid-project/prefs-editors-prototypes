@@ -81,7 +81,7 @@
                 "type": "punctuationVerbosity",
                 "panel": {
                     "type": "speakText.panels.CollectivePanel",
-                    "classnameMap": {"punctuationVerbosity": "@punctuationVerbosity.classes"},
+                    "classnameMap": {"punctuationVerbosity": "@punctuationVerbosity.classes"}
                 },
                 "classes": {
                     "none": "radioButton-left",
