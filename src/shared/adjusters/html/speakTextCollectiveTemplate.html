@@ -1,11 +1,11 @@
-<div id="prompt-message">
-    <label id="prompt-message-label" for="star" class="gpii-addOrRemovePreference-label pref-checkbox-label" style="color:black; font-size:13px; font-weight:bold;"></label>
-</div>
-<input type="checkbox" id="star" class="gpii-addOrRemovePreference"/>
-<label for="star" class="gpii-addOrRemovePreference-label pref-checkbox-label"></label>
+<input type="checkbox" id="addToMyPreferencesSpeakText"/>
+<div class="fl-adjuster-icons-additional addToMyPreferencesStar"></div>
+<label class="addToMyPreferencesLabel" for="addToMyPreferencesSpeakText" tooltip-checked="Remove from my preferences" tooltip-unchecked="Add to my preferences" title=""></label>
 
-<input type="checkbox" id="preferenceSwitch" class="gpii-speakTextPresetButton"/>
-<label for="preferenceSwitch" class="gpii-speakTextPresetButton-label main-checkbox-label"></label><br><br>
+<input type="checkbox" id="presetButton" class="gpii-speakTextPresetButton"/>
+<label for="presetButton" class="gpii-speakTextPresetButton-label preset-button-label"></label>
+<label for="presetButton" class="white-baloon-icon"></label>
+<label for="presetButton" class="white-tick-icon"></label><br><br><br><br><br>
 
 <div class="preference">
     <div class="fully-expanded">
@@ -22,7 +22,7 @@
 
     <div id="speech-rate" class="speech-rate-class">
         <div class="gpii-speechRate">
-            <label class="gpii-speechRate-label" for="speech-rate-input" id="speechRateLabel"></label><br>
+            <label class="gpii-speechRate-label speak-text-label" for="speech-rate-input" id="speechRateLabel"></label><br>
             <label class="gpii-textfieldStepper-decrement gpii-speechRate-minus" id="speechRateMinus"></label>
             <input type="text" class="gpii-textfieldStepper-field fl-inputs" id="speechRate"/>
             <label class="gpii-textfieldStepper-increment gpii-speechRate-plus" id="speechRatePlus"></label>
@@ -31,38 +31,39 @@
 
     <div class="fully-expanded">
         <div class="speakText-auditoryOutLanguage-element ui-widget">
-          <label class="gpii-auditoryOutLanguage-label"></label><br>
+          <label class="gpii-auditoryOutLanguage-label speak-text-label"></label><br>
           <select class="gpii-auditoryOutLanguage"></select>
         </div><br>
 
+        <div class="speak-text-label"> Announce </div>
         <div class="speakText-punctuationVerbosity-element">
-            <label class="gpii-punctuationVerbosity-label"></label>
+            <label class="gpii-punctuationVerbosity-label speak-text-description"></label>
             <div class="punctuationVerbosity-container">
                 <div class="gpii-punctuationVerbosity-row">
                     <input type="radio" class="gpii-punctuationVerbosity" name="punctuationVerbosity" id="radioButton-option" value="some" />
                     <label class="gpii-punctuationVerbosity-option-label" for="radioButton-option"></label>
                 </div>
             </div>
-        </div>
+        </div><br>
 
         <div class="speakText-announceCapitals-element">
             <input type="checkbox" id="announce-uppercase" class="gpii-announceCapitals" />
-            <label for="announce-uppercase" class="checkbox-label"><span class="gpii-announceCapitals-label"></span></label>
+            <label for="announce-uppercase" class="checkbox-label"><span class="gpii-announceCapitals-label checkbox-span"></span></label>
         </div>
 
         <div class="speakText-speakTutorialMessages-element">
             <input type="checkbox" id="announce-instructions" class="gpii-speakTutorialMessages" />
-            <label for="announce-instructions" class="checkbox-label long-lined-label"><span class="gpii-speakTutorialMessages-label"></span></label>
-        </div>
-
+            <label for="announce-instructions" class="checkbox-label"><span class="gpii-speakTutorialMessages-label checkbox-span"></span></label>
+        </div><br>
+        <div class="speak-text-label"> Read-back </div>
         <div class="speakText-keyEcho-element">
             <input type="checkbox" id="echo-letter" class="gpii-keyEcho" />
-            <label for="echo-letter" class="checkbox-label"><span class="gpii-keyEcho-label"></span></label><br>
+            <label for="echo-letter" class="checkbox-label"><span class="gpii-keyEcho-label checkbox-span"></span></label><br>
         </div>
 
         <div class="speakText-wordEcho-element">
             <input type="checkbox" id="echo-word" class="gpii-wordEcho" />
-            <label for="echo-word" class="checkbox-label"><span class="gpii-wordEcho-label"></span></label>
+            <label for="echo-word" class="checkbox-label"><span class="gpii-wordEcho-label checkbox-span"></span></label>
         </div>
 
         <div class="speakText-screenReaderBrailleOutput-element">
@@ -75,12 +76,12 @@
                     </span>
                 </label>
             </div><br><br>
-            <div class="gpii-screenReaderBrailleOutput-description"></div>
+            <div class="gpii-screenReaderBrailleOutput-description speak-text-description"></div>
         </div>
     </div>
 
     <div class="more-options">
-        <span class="more-options-icon"></span>
+        <label for="moreOptions" class="more-options-icon"></label>
         <input type="checkbox" class="more-options-checkbox"/>
         <label for="moreOptions" class="more-options-label"></label>
     </div>

@@ -34,19 +34,21 @@
             speakTextPresetButton: ".gpii-speakTextPresetButton",
             speakTextPresetButtonLabel: ".gpii-speakTextPresetButton-label",
 
+            speakTextTickIcon: ".white-tick-icon",
+
             addOrRemovePreference: ".gpii-addOrRemovePreference",
             addOrRemovePreferenceLabel: ".gpii-addOrRemovePreference-label",
 
             moreOptions: ".more-options-checkbox",
             moreOptionsLabel: ".more-options-label",
+            moreOptionsDiv: ".more-options",
 
             speechRateSelector: ".speech-rate-class",
-            moreOptionsDiv: ".more-options",
 
             fullyExpanded: ".fully-expanded"
         },
 
-        selectorsToIgnore: ["moreOptionsDiv", "speechRateSelector", "fullyExpanded"],
+        selectorsToIgnore: ["moreOptionsDiv", "speechRateSelector", "fullyExpanded", "speakTextTickIcon"],
 
         protoTree: {
             screenReaderTTSEnabled: "${screenReaderTTSEnabled}",
@@ -117,6 +119,8 @@
     });
 
     speakText.panels.CollectivePanel.activateCombobox = function (that) {
+        that.locate("speakTextTickIcon").hide();
+
         $("#auditoryOutLanguage").combobox();
         $("#auditoryOutLanguage").change(function (event, newValue) {
             that.applier.requestChange("auditoryOutLanguage", newValue);
@@ -126,10 +130,12 @@
     speakText.panels.CollectivePanel.finalInit = function (that) {
         that.applier.modelChanged.addListener("speakTextPresetButton", function () {
             if (that.model.speakTextPresetButton) {
+                that.locate("speakTextTickIcon").show();
                 that.locate("moreOptionsLabel").text(that.options.strings.lessText);
                 that.locate("speechRateSelector").slideDown(600);
                 that.locate("moreOptionsDiv").slideDown(600);
             } else {
+                that.locate("speakTextTickIcon").hide();
                 that.locate("speechRateSelector").slideUp(600);
                 that.locate("moreOptionsDiv").slideUp(600);
                 that.locate("fullyExpanded").slideUp(600);
