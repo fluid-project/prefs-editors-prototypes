@@ -1,6 +1,3 @@
-// var fluid = fluid || {};
-
-// var fluid = require("infusion"),
 gpii = fluid.registerNamespace("gpii");
 
 (function ($, fluid) {
