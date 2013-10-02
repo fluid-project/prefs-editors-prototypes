@@ -120,16 +120,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     method: "hide",
                     args: [0]
                 },
-                expandShowButton: {
-                    "this": "{that}.dom.toggleButton",
-                    method: "addClass",
-                    args: "{discoveryTool}.options.styles.expandShowButton"
-                },
-                normalizeShowButton: {
-                    "this": "{that}.dom.toggleButton",
-                    method: "removeClass",
-                    args: "{discoveryTool}.options.styles.expandShowButton"
-                },
                 setLabel: {
                     "this": "{that}.dom.toggleButton",
                     method: "attr",

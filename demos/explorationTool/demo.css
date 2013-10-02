@@ -273,6 +273,10 @@ article h2 {
     outline: none;
 }
 
+.fl-panelBar a:hover {
+    text-decoration: none;
+}
+
 .fl-panelBar a::-moz-focus-inner {border:0;}
 
 .fl-panelBar span.fl-icon-explorationTool {
