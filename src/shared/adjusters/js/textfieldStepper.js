@@ -58,7 +58,6 @@ var fluid_1_5 = fluid_1_5 || {};
     });
 
     gpii.textfieldStepper.finalInit = function (that) {
-
         that.applier.modelChanged.addListener("value", function (newModel) {
             that.events.modelChanged.fire(newModel.value);
         });
