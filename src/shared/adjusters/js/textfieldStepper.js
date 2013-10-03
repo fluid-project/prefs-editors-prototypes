@@ -83,25 +83,49 @@ var fluid_1_5 = fluid_1_5 || {};
             modelChanged: null
         },
         listeners: {
-            onCreate: {
-                listener: "gpii.textfieldStepper.buttons.init",
-                args: "{that}"
+            onCreate: [ {
+                "this": "{that}.dom.inc",
+                "method": "click",
+                "args": ["{that}.increaseValue"]
+            }, {
+                "this": "{that}.dom.dec",
+                "method": "click",
+                "args": ["{that}.decreaseValue"]
+            }, {
+                funcName: "gpii.textfieldStepper.buttons.parseInt",
+                args: ["{that}"]
+            }]
+        },
+        invokers: {
+            increaseValue: {
+                funcName: "gpii.textfieldStepper.buttons.increaseValue",
+                args: ["{that}"]
+            },
+            decreaseValue: {
+                funcName: "gpii.textfieldStepper.buttons.decreaseValue",
+                args: ["{that}"]
             }
         },
         range: {} // should be used to specify the min, max range and step e.g. {min: 0, max: 100, step: 5}
     });
 
-    gpii.textfieldStepper.buttons.init = function (that) {
-        that.locate("inc").click(function () {
-            var newValue = that.model.value + that.options.range.step;
-            that.applier.requestChange("value", newValue);
-        });
+    gpii.textfieldStepper.buttons.alterValue = function (that, operation) {
+        var currentValue = that.model.value;
+        var step = that.options.range.step;
+        var newValue = operation == "+" ? currentValue + step : currentValue - step;
 
-        that.locate("dec").click(function () {
-            var newValue = that.model.value - that.options.range.step;
-            that.applier.requestChange("value", newValue);
-        });
+        that.applier.requestChange("value", newValue);
+    };
 
+    gpii.textfieldStepper.buttons.increaseValue = function (that) {
+        gpii.textfieldStepper.buttons.alterValue(that, "+");
+    };
+
+    gpii.textfieldStepper.buttons.decreaseValue = function (that) {
+        gpii.textfieldStepper.buttons.alterValue(that, "-");
+    };
+
+    gpii.textfieldStepper.buttons.parseInt = function (that) {
         that.applier.modelChanged.addListener("value", function (newModel) {
             if (typeof newModel.value !== "number") {
                 that.applier.requestChange("value", parseInt(newModel.value, 10));
