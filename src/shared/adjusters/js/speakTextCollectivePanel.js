@@ -1,35 +1,29 @@
 (function (fluid) {
     fluid.defaults("speakText.panels.CollectivePanel", {
         gradeNames: ["fluid.uiOptions.panels", "speakText.panels.keyEcho", "speakText.panels.wordEcho", "speakText.panels.speakTutorialMessages", "speakText.panels.speakTutorialMessages", "speakText.panels.screenReaderTTSEnabled", "speakText.panels.announceCapitals", "speakText.panels.punctuationVerbosity", "speakText.panels.screenReaderBrailleOutput", "speakText.panels.auditoryOutLanguage", "speakText.panels.speechRate", "autoInit"],
+        
+        partiallyExpandedSlideSpeed: 600,
+        fullyExpandedSlideSpeed: 700,
+
         model: {
             speakTextPresetButton: false,
             addOrRemovePreference: false,
             moreOptions: false
         },
-        strings: {
-            moreText: {
-                expander: {
-                    func: "speakText.showMoreText"
-                }
-            },
-            lessText: {
-                expander: {
-                    func: "speakText.showLessText"
-                }
-            }
-        },
-        events: {
-            modelChanged: null
-        },
+
+        messageResources: "{messageLoader}.resources",
+
         listeners: {
-            afterRender: "{that}.activateCombobox"
-        },
-        invokers: {
-            activateCombobox: {
-                funcName: "speakText.panels.CollectivePanel.activateCombobox",
+            onCreate: {
+                listener: "speakText.panels.CollectivePanel.addResourcesAndAnimation",
+                args: "{that}"
+            },
+            afterRender: {
+                listener: "speakText.panels.CollectivePanel.activateCombobox",
                 args: ["{that}"]
             }
         },
+
         selectors: {
             speakTextPresetButton: ".gpii-speakTextPresetButton",
             speakTextPresetButtonLabel: ".gpii-speakTextPresetButton-label",
@@ -113,10 +107,47 @@
 
             moreOptions: "${moreOptions}",
             moreOptionsLabel: {messagekey: "moreOptions"}
-        },
-
-        finalInitFunction: "speakText.panels.CollectivePanel.finalInit"
+        }
     });
+
+    speakText.panels.CollectivePanel.addResourcesAndAnimation = function (that) {
+        fluid.fetchResources(that.options.messageResources, function () {
+            var completeMessage;
+            fluid.each(that.options.messageResources, function (oneResource) {
+                var message = JSON.parse(oneResource.resourceText);
+                completeMessage = $.extend({}, completeMessage, message);
+            });
+            that.msgBundle = fluid.messageResolver({messageBase: completeMessage});
+        });
+
+        that.applier.modelChanged.addListener("speakTextPresetButton", function (newModel, oldModel, changeRequest) {
+            if (newModel.speakTextPresetButton) {
+                hook_newModel = newModel;
+                that.locate("speakTextTickIcon").show();
+                that.locate("moreOptionsLabel").text(that.msgBundle.messageBase.moreText);
+                that.locate("speechRateSelector").slideDown(that.options.partiallyExpandedSlideSpeed);
+                that.locate("moreOptionsDiv").slideDown(that.options.partiallyExpandedSlideSpeed);
+            } else {
+                that.locate("speakTextTickIcon").hide();
+                that.locate("speechRateSelector").slideUp(that.options.partiallyExpandedSlideSpeed);
+                that.locate("moreOptionsDiv").slideUp(that.options.partiallyExpandedSlideSpeed);
+                that.locate("fullyExpanded").slideUp(that.options.partiallyExpandedSlideSpeed);
+                that.locate("moreOptions").attr('checked', false);
+            }
+        });
+
+        that.applier.modelChanged.addListener("moreOptions", function (newModel, oldModel, changeRequest) {
+            if (newModel.moreOptions) {
+                that.locate("fullyExpanded").slideDown(that.options.fullyExpandedSlideSpeed);
+                that.locate("moreOptionsLabel").text(that.msgBundle.messageBase.lessText);
+            } else {
+                that.locate("fullyExpanded").slideUp(that.options.fullyExpandedSlideSpeed);
+                that.locate("moreOptionsLabel").text(that.msgBundle.messageBase.moreText);
+            }
+        });
+
+        hook = that;
+    };
 
     speakText.panels.CollectivePanel.activateCombobox = function (that) {
         that.locate("speakTextTickIcon").hide();
@@ -125,42 +156,6 @@
         $("#auditoryOutLanguage").change(function (event, newValue) {
             that.applier.requestChange("auditoryOutLanguage", newValue);
         });
-    };
-
-    speakText.panels.CollectivePanel.finalInit = function (that) {
-        that.applier.modelChanged.addListener("speakTextPresetButton", function () {
-            if (that.model.speakTextPresetButton) {
-                that.locate("speakTextTickIcon").show();
-                that.locate("moreOptionsLabel").text(that.options.strings.lessText);
-                that.locate("speechRateSelector").slideDown(600);
-                that.locate("moreOptionsDiv").slideDown(600);
-            } else {
-                that.locate("speakTextTickIcon").hide();
-                that.locate("speechRateSelector").slideUp(600);
-                that.locate("moreOptionsDiv").slideUp(600);
-                that.locate("fullyExpanded").slideUp(600);
-                that.locate("moreOptions").attr('checked', false);
-            }
-        });
-
-        that.applier.modelChanged.addListener("moreOptions", function () {
-            if (that.model.moreOptions) {
-                that.locate("fullyExpanded").slideDown(700);
-                that.locate("moreOptionsLabel").text(that.options.strings.moreText);
-            } else {
-                that.locate("fullyExpanded").slideUp(700);
-                that.locate("moreOptionsLabel").text(that.options.strings.lessText);
-            }
-        });
-    };
-
-    // FIXME: These two functions should extract data from speakText.json
-    speakText.showMoreText = function () {
-        return "less";
-    };
-
-    speakText.showLessText = function () {
-        return "more";
     };
 
 })(fluid);

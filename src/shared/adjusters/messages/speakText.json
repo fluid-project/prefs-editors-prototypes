@@ -15,5 +15,6 @@
     "wordEchoLabel": "Echo word after typed",
     "screenReaderBrailleOutputLabel": "Braille",
     "screenReaderBrailleOutputDescription": "Output to available device",
-    "moreOptions": "+ more"
+    "moreText": "more",
+    "lessText": "less"
 }
