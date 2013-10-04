@@ -85,6 +85,12 @@
     color: #4f4f4f;
     background-color: #ffffff;
 }
+
+.fl-theme-uio-bw .fl-explorationTool-moreText details,
+.fl-theme-uio-lgdg .fl-explorationTool-moreText details {
+    margin-top: 1em;
+}
+    
 .fl-theme-uio-bw .fl-explorationTool-moreText details summary:before,
 .fl-theme-uio-bw .fl-explorationTool-moreText details {
     color: #ffffff !important;
