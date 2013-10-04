@@ -120,28 +120,32 @@
             that.msgBundle = fluid.messageResolver({messageBase: completeMessage});
         });
 
-        that.applier.modelChanged.addListener("speakTextPresetButton", function (newModel, oldModel, changeRequest) {
+        that.applier.modelChanged.addListener("speakTextPresetButton", function (newModel) {
+            var speed = that.options.partiallyExpandedSlideSpeed;
+
             if (newModel.speakTextPresetButton) {
                 hook_newModel = newModel;
                 that.locate("speakTextTickIcon").show();
                 that.locate("moreOptionsLabel").text(that.msgBundle.messageBase.moreText);
-                that.locate("speechRateSelector").slideDown(that.options.partiallyExpandedSlideSpeed);
-                that.locate("moreOptionsDiv").slideDown(that.options.partiallyExpandedSlideSpeed);
+                that.locate("speechRateSelector").slideDown(speed);
+                that.locate("moreOptionsDiv").slideDown(speed);
             } else {
                 that.locate("speakTextTickIcon").hide();
-                that.locate("speechRateSelector").slideUp(that.options.partiallyExpandedSlideSpeed);
-                that.locate("moreOptionsDiv").slideUp(that.options.partiallyExpandedSlideSpeed);
-                that.locate("fullyExpanded").slideUp(that.options.partiallyExpandedSlideSpeed);
+                that.locate("speechRateSelector").slideUp(speed);
+                that.locate("moreOptionsDiv").slideUp(speed);
+                that.locate("fullyExpanded").slideUp(speed);
                 that.locate("moreOptions").attr('checked', false);
             }
         });
 
-        that.applier.modelChanged.addListener("moreOptions", function (newModel, oldModel, changeRequest) {
+        that.applier.modelChanged.addListener("moreOptions", function (newModel) {
+            var speed = that.options.fullyExpandedSlideSpeed;
+
             if (newModel.moreOptions) {
-                that.locate("fullyExpanded").slideDown(that.options.fullyExpandedSlideSpeed);
+                that.locate("fullyExpanded").slideDown(speed);
                 that.locate("moreOptionsLabel").text(that.msgBundle.messageBase.lessText);
             } else {
-                that.locate("fullyExpanded").slideUp(that.options.fullyExpandedSlideSpeed);
+                that.locate("fullyExpanded").slideUp(speed);
                 that.locate("moreOptionsLabel").text(that.msgBundle.messageBase.moreText);
             }
         });
