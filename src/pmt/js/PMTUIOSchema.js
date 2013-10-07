@@ -1,91 +1,91 @@
 (function ($, fluid) {
-	fluid.registerNamespace("fluid.uiOptions.pmt");
+    fluid.registerNamespace("fluid.uiOptions.pmt");
 
-	fluid.uiOptions.pmt.primarySchema = {
-	    
-	    "fluid.uiOptions.textSize": {
-	        "type": "number",
-	        "default": 12,
-	        "minimum": 1,
-	        "maximum": 1000,
-	        "divisibleBy": 1
-	    },
-	    "fluid.uiOptions.cursorSize": {
-	        "type": "number",
-	        "default": 1,
-	        "minimum": 1,
-	        "maximum": 5,
-	        "divisibleBy": 0.2
-	    },
-	    "fluid.uiOptions.magnifier": {
-	        "type": "number",
-	        "default": 100,
-	        "minimum": 100,
-	        "maximum": 10000,
-	        "divisibleBy": 50
-	    },
-	    "fluid.uiOptions.magnifierPosition": {
+    fluid.uiOptions.pmt.primarySchema = {
+
+        "fluid.uiOptions.textSize": {
+            "type": "number",
+            "default": 12,
+            "minimum": 1,
+            "maximum": 1000,
+            "divisibleBy": 1
+        },
+        "fluid.uiOptions.cursorSize": {
+            "type": "number",
+            "default": 1,
+            "minimum": 1,
+            "maximum": 5,
+            "divisibleBy": 0.2
+        },
+        "fluid.uiOptions.magnifier": {
+            "type": "number",
+            "default": 100,
+            "minimum": 100,
+            "maximum": 10000,
+            "divisibleBy": 50
+        },
+        "fluid.uiOptions.magnifierPosition": {
             "type": "string",
             "default": "",
-	        "enum": ["lens", "dockedleft", "dockedtop", "fullscreen", "dockedright", "dockedbottom"]
+            "enum": ["lens", "dockedleft", "dockedtop", "fullscreen", "dockedright", "dockedbottom"]
         },
-	    "fluid.uiOptions.magnifierFollows": {
+        "fluid.uiOptions.magnifierFollows": {
             "type": "string",
             "default": "",
-	        "enum": ["mousecursor", "textcursor", "keyboardfocus"]
+            "enum": ["mousecursor", "textcursor", "keyboardfocus"]
         },
-	    "fluid.uiOptions.contrast": {
+        "fluid.uiOptions.contrast": {
             "type": "boolean",
             "default": false
         }
-	};
-    
-	fluid.uiOptions.pmt.auxiliarySchema = {
-	        // The global values:
-	        "namespace": "fluid.uiOptions.constructed",
-	        "templatePrefix": "../../src/shared/adjusters/html/", // The common path to settings panel templates
-	        "template": "../../src/pmt/html/PMTUIOptions.html",
-	        "messagePrefix": "../../src/shared/adjusters/messages/" + language + "/",
-	        "message": "%prefix/pmt.json",
-	        	
-	        // The preference-specific information:
-	        "textSize": {
-	            "type": "fluid.uiOptions.textSize",
-	            "enactor": {
-	                "type": "fluid.uiOptions.enactors.textSize"
-	            },
-	            "panel": {
-	                "type": "fluid.uiOptions.panels.textSize",
-	                "container": ".flc-uiOptions-text-size",  // the css selector in the template where the panel is rendered
-	                "template": "%prefix/UIOptionsTemplate-plusMinusNumerical.html",
-	                "message": "%prefix/textSize.json"
-	            }
-	        },
-	        "cursorSize": {
-	            "type": "fluid.uiOptions.cursorSize",
-	            "enactor": {
-	                "type": "fluid.uiOptions.enactors.cursorSize"
-	            },
-	            "panel": {
-	                "type": "fluid.uiOptions.panels.cursorSize",
-	                "container": ".flc-uiOptions-cursor-size",  // the css selector in the template where the panel is rendered
-	                "template": "%prefix/UIOptionsTemplate-cursorSize.html",
-	                "message": "%prefix/cursorSize.json"
-	            }
-	        },
-	        "magnifier": {
-	            "type": "fluid.uiOptions.magnifier",
-	            "enactor": {
-	                "type": "fluid.uiOptions.enactors.magnifier"
-	            },
-	            "panel": {
-	                "type": "fluid.uiOptions.panels.magnifier",
-	                "container": ".flc-uiOptions-magnifier",  // the css selector in the template where the panel is rendered
-	                "template": "%prefix/UIOptionsTemplate-plusMinusNumerical.html",
-	                "message": "%prefix/magnifier.json"
-	            }
-	        },
-	        "magnifierPosition": {
+    };
+
+    fluid.uiOptions.pmt.auxiliarySchema = {
+            // The global values:
+            "namespace": "fluid.uiOptions.constructed",
+            "templatePrefix": "../../src/shared/adjusters/html/", // The common path to settings panel templates
+            "template": "../../src/pmt/html/PMTUIOptions.html",
+            "messagePrefix": "../../src/shared/adjusters/messages/en/",
+            "message": "%prefix/pmt.json",
+
+            // The preference-specific information:
+            "textSize": {
+                "type": "fluid.uiOptions.textSize",
+                "enactor": {
+                    "type": "fluid.uiOptions.enactors.textSize"
+                },
+                "panel": {
+                    "type": "fluid.uiOptions.panels.textSize",
+                    "container": ".flc-uiOptions-text-size",  // the css selector in the template where the panel is rendered
+                    "template": "%prefix/UIOptionsTemplate-plusMinusNumerical.html",
+                    "message": "%prefix/textSize.json"
+                }
+            },
+            "cursorSize": {
+                "type": "fluid.uiOptions.cursorSize",
+                "enactor": {
+                    "type": "fluid.uiOptions.enactors.cursorSize"
+                },
+                "panel": {
+                    "type": "fluid.uiOptions.panels.cursorSize",
+                    "container": ".flc-uiOptions-cursor-size",  // the css selector in the template where the panel is rendered
+                    "template": "%prefix/UIOptionsTemplate-cursorSize.html",
+                    "message": "%prefix/cursorSize.json"
+                }
+            },
+            "magnifier": {
+                "type": "fluid.uiOptions.magnifier",
+                "enactor": {
+                    "type": "fluid.uiOptions.enactors.magnifier"
+                },
+                "panel": {
+                    "type": "fluid.uiOptions.panels.magnifier",
+                    "container": ".flc-uiOptions-magnifier",  // the css selector in the template where the panel is rendered
+                    "template": "%prefix/UIOptionsTemplate-plusMinusNumerical.html",
+                    "message": "%prefix/magnifier.json"
+                }
+            },
+            "magnifierPosition": {
                 "type": "fluid.uiOptions.magnifierPosition",
                 "classes": {
                     "lens": "fl-magnifierPosition-uio-lens fl-magnifierPosition-uio-icon-label",
@@ -104,7 +104,7 @@
                     "message": "%prefix/magnifier.json"
                 }
             },
-	        "magnifierFollows": {
+            "magnifierFollows": {
                 "type": "fluid.uiOptions.magnifierFollows",
                 "classes": {
                     "mousecursor": "fl-magnifierFollows-uio-mouseCursor fl-magnifierFollows-uio-icon-label",
@@ -119,17 +119,17 @@
                     "message": "%prefix/magnifier.json"
                 }
             },
-	        "contrast": {
+            "contrast": {
                 "type": "fluid.uiOptions.contrast",
-	            "enactor": {
-	                "type": "fluid.uiOptions.enactors.contrast"
-	            },
+                "enactor": {
+                    "type": "fluid.uiOptions.enactors.contrast"
+                },
                 "panel": {
                     "type": "fluid.uiOptions.panels.contrast",
                     "container": ".flc-uiOptions-contrast",
                     "template": "%prefix/UIOptionsTemplate-contrastNew.html",
-	                "message": "%prefix/contrastNew.json"
+                    "message": "%prefix/contrastNew.json"
                 }
             }
-	    };
+        };
 })(jQuery, fluid);
