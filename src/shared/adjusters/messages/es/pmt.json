@@ -1,0 +1,12 @@
+{
+    "more": "+ más",
+    "less": "- menos",
+    "tooltipChecked": "eliminar de mis preferencias",
+    "tooltipUnchecked": "añadir a mis preferencias",
+    "increaseSizeHeader": "aumentar el tamaño",
+    "languageLabel": "idioma",
+    "saveButtonText": "guarder y aplicar",
+    "resetButtonText": "reiniciar",
+    "cancelButtonText": "cancelar"
+
+}

@@ -1,0 +1,18 @@
+{
+    "magnifierLabel": "Magnificador",
+    "magnifierOFF": "Apagado",
+    "magnifierMAX": "Máximo",
+    "multiplier": "número de veces",
+    "magnifierPositionLabel": "Posición del magnificador",
+    "magnifierPosition.default": "Opción por defecto",
+    "magnifierPosition.lens": "Lupa",
+    "magnifierPosition.fullscreen": "Pantalla completa",
+    "magnifierPosition.dockedtop": "Anclado en marco superior",
+    "magnifierPosition.dockedbottom": "Anclado en marco inferior",
+    "magnifierPosition.dockedleft": "Anclado a la izquierda",
+    "magnifierPosition.dockedright": "Anclado a la derecha",
+    "magnifierFollowsLabel": "Seguimiento del magnificador",
+    "magnifierFollows.mousecursor": "Puntero del ratón",
+    "magnifierFollows.textcursor": "Cursor del texto",
+    "magnifierFollows.keyboardfocus": "Foco del teclado"
+}
