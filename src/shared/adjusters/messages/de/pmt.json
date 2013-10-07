@@ -1,6 +1,6 @@
 {
-    "more": "mehr",
-    "less": "weniger",
+    "more": "+ mehr",
+    "less": "- weniger",
     "tooltipChecked": "Präferenz entfernen",
     "tooltipUnchecked": "Präferenz hinzufügen",
     "increaseSizeHeader": "vergrößern",
