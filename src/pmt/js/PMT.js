@@ -11,7 +11,8 @@
                 onToggleIncreaseSizeAdjusters: null,
                 onToggleIncreaseSizeExtraAdjusters: null,
                 onShowExtraAdjuster: null,
-                onHideExtraAdjuster: null
+                onHideExtraAdjuster: null,
+                onSelectLanguage: null
             },
             listeners: {
                onSave: {
@@ -99,9 +100,15 @@
                     "this": "{that}.dom.moreLess",
                     "method": "text",
                     "args": ["{that}.options.strings.more"]
-               }
-               // TODO: bind handler for language selection to trigger language change
-
+               },
+               "onReady.bindEventSelectLanguage": {
+                   "this": "{that}.dom.languageSelect",
+                   "method": "change",
+                   "args": ["{that}.events.onSelectLanguage.fire"]
+              },
+              "onSelectLanguage.selectLanguage": {
+                   "listener": "{that}.selectLanguage"
+              }
             },
             invokers: {
                 toggleIncreaseSizeExtraAdjusters: {
@@ -111,7 +118,13 @@
                          "{that}.events.onShowExtraAdjuster.fire",
                          "{that}.events.onHideExtraAdjuster.fire"
                      ]
-                }
+                },
+                selectLanguage: {
+                    "funcName": "fluid.uiOptions.pmt.selectLanguage",
+                    "args": [
+                        "{that}.dom.languageSelect"
+                    ]
+               }
             },
             selectors: {
                 increaseSizeHeader: ".flc-uiOptions-increaseSizePanel .headerTitle",
@@ -191,6 +204,10 @@
         } else {
             showEvent();
         }
+    };
+
+    fluid.uiOptions.pmt.selectLanguage = function (language) {
+    	demo.instantiateUIO("#myUIOptions", undefined, "fluid.uiOptions.pmt", language.val());
     };
 
     fluid.uiOptions.pmt.lookupMsg = function (messageResolver, value) {
