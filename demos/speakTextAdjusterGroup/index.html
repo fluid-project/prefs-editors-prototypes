@@ -20,27 +20,21 @@
         <script type="text/javascript" src="../../src/shared/adjusters/js/textfieldStepper.js"></script>
         <script type="text/javascript" src="../../src/shared/adjusters/js/speakText.js"></script>
 
+        <script type="text/javascript" src="../../src/shared/adjusters/js/PCP.js"></script>
+
+        <script type="text/javascript" src="demo.js"></script>
+
         <title>Speak Text Demo</title>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                demo.initGPII(".flc-uiOptions");
+            });
+        </script>
     </head>
     <body>
         <h1>Demo of the Speak Text adjuster group</h1>
 
         <div class="flc-uiOptions"></div>
-
-        <script>
-            fluid.defaults("gpii.speakText.myBuilder", {
-                gradeNames: ["fluid.uiOptions.builder", "speakText.auxSchema", "autoInit"],
-                components: {
-                    primaryBuilder: {
-                        options: {
-                            gradeNames: ["speakText.primarySchema"]
-                        }
-                    }
-                }
-            });
-            var uioBuilder = gpii.speakText.myBuilder();
-
-            fluid.invokeGlobalFunction(uioBuilder.options.assembledUIOGrade, [".flc-uiOptions", {components: {uiOptions: {type: "fluid.uiOptions.fullNoPreview"}}}]);
-        </script>
     </body>
 </html>

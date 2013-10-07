@@ -1,6 +1,6 @@
 {
-    "addOrRemovePreferenceLabelOff": "Add to my preferences",
-    "addOrRemovePreferenceLabelOn": "Remove from my preferences",
+    "tooltipUnchecked": "Add to my preferences",
+    "tooltipChecked": "Remove from my preferences",
     "speakTextPresetButtonLabel": "speak text",
     "screenReaderTTSEnabledLabel": "Screen Reader",
     "screenReaderSwitchLabel": "Screen Reader",

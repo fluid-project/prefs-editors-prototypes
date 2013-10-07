@@ -1,49 +1,17 @@
 (function (fluid) {
     fluid.defaults("speakText.panels.CollectivePanel", {
         gradeNames: ["fluid.uiOptions.panels", "speakText.panels.keyEcho", "speakText.panels.wordEcho", "speakText.panels.speakTutorialMessages", "speakText.panels.speakTutorialMessages", "speakText.panels.screenReaderTTSEnabled", "speakText.panels.announceCapitals", "speakText.panels.punctuationVerbosity", "speakText.panels.screenReaderBrailleOutput", "speakText.panels.auditoryOutLanguage", "speakText.panels.speechRate", "autoInit"],
-        
-        partiallyExpandedSlideSpeed: 600,
-        fullyExpandedSlideSpeed: 700,
-
-        model: {
-            speakTextPresetButton: false,
-            addOrRemovePreference: false,
-            moreOptions: false
-        },
-
         messageResources: "{messageLoader}.resources",
-
         listeners: {
-            onCreate: {
-                listener: "speakText.panels.CollectivePanel.addResourcesAndAnimation",
-                args: "{that}"
-            },
             afterRender: {
                 listener: "speakText.panels.CollectivePanel.activateCombobox",
                 args: ["{that}"]
             }
         },
-
-        selectors: {
-            speakTextPresetButton: ".gpii-speakTextPresetButton",
-            speakTextPresetButtonLabel: ".gpii-speakTextPresetButton-label",
-
-            speakTextTickIcon: ".white-tick-icon",
-
-            addOrRemovePreference: ".gpii-addOrRemovePreference",
-            addOrRemovePreferenceLabel: ".gpii-addOrRemovePreference-label",
-
-            moreOptions: ".more-options-checkbox",
-            moreOptionsLabel: ".more-options-label",
-            moreOptionsDiv: ".more-options",
-
-            speechRateSelector: ".speech-rate-class",
-
-            fullyExpanded: ".fully-expanded"
-        },
-
-        selectorsToIgnore: ["moreOptionsDiv", "speechRateSelector", "fullyExpanded", "speakTextTickIcon"],
-
+        // selectors: {
+        //     speakTextTickIcon: ".white-tick-icon",
+        // },
+        // selectorsToIgnore: ["speakTextTickIcon"],
         protoTree: {
             screenReaderTTSEnabled: "${screenReaderTTSEnabled}",
             screenReaderTTSEnabledLabel: {messagekey: "screenReaderTTSEnabledLabel"},
@@ -67,7 +35,7 @@
 
             auditoryOutLanguage: {
                 selection: "${auditoryOutLanguage}",
-                optionlist: "{that}.options.controlValues.auditoryOutLanguage"
+                optionlist: "${{that}.options.controlValues.auditoryOutLanguage}"
             },
             auditoryOutLanguageLabel: {messagekey: "auditoryOutLanguageLabel"},
 
@@ -78,8 +46,8 @@
                 inputID: "punctuationVerbosityInput",
                 selectID: "punctuationVerbosity-selection",
                 tree: {
-                    optionnames: "{that}.options.controlValues.punctuationVerbosity",
-                    optionlist: "{that}.options.controlValues.punctuationVerbosity",
+                    optionnames: "${{that}.options.controlValues.punctuationVerbosity}",
+                    optionlist: "${{that}.options.controlValues.punctuationVerbosity}",
                     selection: "${punctuationVerbosity}"
                 }
             },
@@ -100,62 +68,11 @@
 
             screenReaderBrailleOutput: "${screenReaderBrailleOutput}",
             screenReaderBrailleOutputLabel: {messagekey: "screenReaderBrailleOutputLabel"},
-            screenReaderBrailleOutputDescription: {messagekey: "screenReaderBrailleOutputDescription"},
-
-            speakTextPresetButton: "${speakTextPresetButton}",
-            speakTextPresetButtonLabel: {messagekey: "speakTextPresetButtonLabel"},
-
-            moreOptions: "${moreOptions}",
-            moreOptionsLabel: {messagekey: "moreOptions"}
+            screenReaderBrailleOutputDescription: {messagekey: "screenReaderBrailleOutputDescription"}
         }
     });
 
-    speakText.panels.CollectivePanel.addResourcesAndAnimation = function (that) {
-        fluid.fetchResources(that.options.messageResources, function () {
-            var completeMessage;
-            fluid.each(that.options.messageResources, function (oneResource) {
-                var message = JSON.parse(oneResource.resourceText);
-                completeMessage = $.extend({}, completeMessage, message);
-            });
-            that.msgBundle = fluid.messageResolver({messageBase: completeMessage});
-        });
-
-        that.applier.modelChanged.addListener("speakTextPresetButton", function (newModel) {
-            var speed = that.options.partiallyExpandedSlideSpeed;
-
-            if (newModel.speakTextPresetButton) {
-                hook_newModel = newModel;
-                that.locate("speakTextTickIcon").show();
-                that.locate("moreOptionsLabel").text(that.msgBundle.messageBase.moreText);
-                that.locate("speechRateSelector").slideDown(speed);
-                that.locate("moreOptionsDiv").slideDown(speed);
-            } else {
-                that.locate("speakTextTickIcon").hide();
-                that.locate("speechRateSelector").slideUp(speed);
-                that.locate("moreOptionsDiv").slideUp(speed);
-                that.locate("fullyExpanded").slideUp(speed);
-                that.locate("moreOptions").attr('checked', false);
-            }
-        });
-
-        that.applier.modelChanged.addListener("moreOptions", function (newModel) {
-            var speed = that.options.fullyExpandedSlideSpeed;
-
-            if (newModel.moreOptions) {
-                that.locate("fullyExpanded").slideDown(speed);
-                that.locate("moreOptionsLabel").text(that.msgBundle.messageBase.lessText);
-            } else {
-                that.locate("fullyExpanded").slideUp(speed);
-                that.locate("moreOptionsLabel").text(that.msgBundle.messageBase.moreText);
-            }
-        });
-
-        hook = that;
-    };
-
     speakText.panels.CollectivePanel.activateCombobox = function (that) {
-        that.locate("speakTextTickIcon").hide();
-
         $("#auditoryOutLanguage").combobox();
         $("#auditoryOutLanguage").change(function (event, newValue) {
             that.applier.requestChange("auditoryOutLanguage", newValue);

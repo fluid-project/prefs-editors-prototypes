@@ -1,7 +1,9 @@
 (function (fluid) {
-    fluid.defaults("speakText.primarySchema", {
-        gradeNames: ["fluid.uiOptions.schemas", "autoInit"],
-        schema: {
+    // fluid.defaults("speakText.primarySchema", {
+    //     gradeNames: ["fluid.uiOptions.schemas", "autoInit"],
+
+    fluid.registerNamespace("gpii.speakText");
+    gpii.speakText.primarySchema = {
             "screenReaderTTSEnabled": {
                 "type": "boolean",
                 "default": true
@@ -42,12 +44,9 @@
                 "type": "boolean",
                 "default": false
             }
-        }
-    });
+        };
 
-    fluid.defaults("speakText.auxSchema", {
-        gradeNames: ["fluid.uiOptions.auxSchema", "autoInit"],
-        auxiliarySchema: {
+        gpii.speakText.auxiliarySchema = {
             "namespace": "gpii.adjusters.speakText",
             "templatePrefix": "../../src/shared/adjusters/html/",
             "messagePrefix": "../../src/shared/adjusters/messages/",
@@ -125,8 +124,6 @@
                     "type": "speakText.panels.CollectivePanel"
                 }
             }
-        }
-    });
-
+        };
 
 })(fluid);
