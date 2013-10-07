@@ -15,9 +15,12 @@
                 onSelectLanguage: null
             },
             listeners: {
-               onSave: {
-                   listener: "console.log"
-               },
+                onSave: {
+                    listener: "console.log"
+                },
+                onReady: {
+                    listener: "{that}.setDefaultLanguage"
+                },
                "onReady.hideIncreaseSizeAdjusters": {
                     "this": "{that}.dom.increaseSizeAdjusters",
                     "method": "hide",
@@ -124,7 +127,13 @@
                     "args": [
                         "{that}.dom.languageSelect"
                     ]
-               }
+               },
+               setDefaultLanguage: {
+                   "funcName": "fluid.uiOptions.pmt.setDefaultLanguage",
+                   "args": [
+                    	"{that}.dom.languageSelect"
+                   ]
+              }
             },
             selectors: {
                 increaseSizeHeader: ".flc-uiOptions-increaseSizePanel .headerTitle",
@@ -208,6 +217,10 @@
 
     fluid.uiOptions.pmt.selectLanguage = function (language) {
     	demo.instantiateUIO("#myUIOptions", undefined, "fluid.uiOptions.pmt", language.val());
+    };
+
+    fluid.uiOptions.pmt.setDefaultLanguage = function (language) {
+		language.val(defaultLanguage).change();
     };
 
     fluid.uiOptions.pmt.lookupMsg = function (messageResolver, value) {

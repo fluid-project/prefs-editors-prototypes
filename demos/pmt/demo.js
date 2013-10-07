@@ -1,5 +1,6 @@
 var demo = demo || {};
 var uioBuilder;
+var defaultLanguage;
 
 (function ($, fluid) {
 
@@ -8,7 +9,15 @@ var uioBuilder;
             primarySchema: fluid.uiOptions.pmt.primarySchema,
             auxiliarySchema: fluid.uiOptions.pmt.auxiliarySchema
         });
-        demo.instantiateUIO(container, compOpts, "fluid.uiOptions.pmt", "en");
+        
+    	/* get browser default lang */
+		if (navigator.userLanguage) {
+			defaultLanguage = navigator.userLanguage.substring(0,2).toLowerCase();
+		} else {
+			defaultLanguage = navigator.language.substring(0,2).toLowerCase();
+		}
+
+        demo.instantiateUIO(container, compOpts, "fluid.uiOptions.pmt", defaultLanguage);
     };
     
     demo.instantiateUIO = function (container, compOpts, uioType, language) {
