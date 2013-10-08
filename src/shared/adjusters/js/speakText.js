@@ -1,129 +1,210 @@
-(function (fluid) {
-    // fluid.defaults("speakText.primarySchema", {
-    //     gradeNames: ["fluid.uiOptions.schemas", "autoInit"],
-
-    fluid.registerNamespace("gpii.speakText");
-    gpii.speakText.primarySchema = {
-            "screenReaderTTSEnabled": {
-                "type": "boolean",
-                "default": true
+(function ($, fluid) {
+    fluid.defaults("gpii.speakText", {
+        gradeNames: ["fluid.uiOptions.fullNoPreview", "autoInit"],
+        uiOptions: {
+            partiallyExpandedSlideSpeed: 500,
+            fullyExpandedSlideSpeed: 600,
+            events: {
+                onToggleSpeakTextAdjusters: null,
+                onShowAdjusters: null,
+                onHidePartialAdjusters: null,
+                onHideAllAdjusters: null,
+                onToggleSpeakTextExtraAdjusters: null,
+                onShowExtraAdjuster: null,
+                onHideExtraAdjuster: null,
+                onHideSpeakTextTickIcon: null
             },
-            "speechRate": {
-                "type": "number",
-                "default": 130,
-                "minimum": 0,
-                "divisibleBy": 10
-            },
-            "auditoryOutLanguage": {
-                "type": "string",
-                "default": "English",
-                "enum": ["English", "French (français)", "Afrikaans (Afrikaans)", "Ainu (アイヌ イタク/Aynu itak)", "Akan (akan)", "Albanian (shqip / gjuha shqipe)", "Aleut (Unangam tunuu)", "Amharic (ኣማርኛ (amarəñña))", "Apache (Ndéé)", "Arabic ((al arabiya) العربية)", "Aragonese (Fabla)", "Aramaic (ܠܫܢܐ ܤܘܪܝܝܐ)", "Aranese (Aranés)", "Arapaho (Hinono'eitiit)", "Argobba (ዓርጎባ (Äynū)", "Armenian (Հայերէն (Hayeren))", "Aromanian ((Vlach) Armãneashti)", "Arrernte (Arrernte angkentye)", "Assamese (অসমীয়া (asamīẏa))", "Asturian (Asturianu)", "Avar (магIарул)", "Awngi (አውጚ)", "Aymara (aymar aru)", "Azerbaijani (Azərbaycan dili)", "Balinese (Basa Bali)", "Balkar (малкъар/балкъар)", "Baluchi (بلوچی)", "Bambara (Bamanankan)", "Bashkir (башҡорт теле)", "Bassa (ɓasaá)", "Basque (euskara)", "Beja (Badāwīyä / بداوية)", "Belarusian (Беларуская мова)", "Bemba (iciBemba)", "Bengali (বাংলা (baɛṅlā))", "Berber (Tamazight)", "Bhojpuri (भोजपुरी (bʰojpurī))", "Blin (ብሊን (bi.li.nə))", "Blackfoot (ᑯᖾᖹ)", "Bosnian (Bosanski)", "Breton (ar brezhoneg)", "Buginese (ᨅᨔ ᨕᨘᨁᨗ (basa ugi))", "Buhid (buhid)", "Bulgarian (български)", "Burmese (bama saka)", "Buryat (буряад хэлэн)", "Carrier (ᑐᑊᘁᗕᑋᗸ (Dulkw’ahke))", "Catalan (català)", "Cayuga (Goyogo̱hó:nǫ’)", "Cebuano (Sinugboanon)", "Chagatai (جغتای)", "Chaha (ቸሃ)", "Chamorro (chamoru)", "Chechen (Нохчийн мотт)", "Cherokee (ᏣᎳᎩ (tsalagi))", "Cheyenne (Tsėhesenėstsestotse)", "Chichewa (Chicheŵa)", "Chickasaw (Chikasha)", "Chinese (中文 (zhōngwén))", "Chinese ((Cantonese) 廣東話)", "Chinese ((Dungan) хуэйзў йүян)", "Chinese ((Gan) 赣语 (gànyŭ))", "Chinese ((Hakka) 客家話)", "Chinese ((Mandarin) 普通話", "Chinese ((Shanghainese) 上海闲话)", "Chinese ((Taiwanese) 台語 (dai5-ngi2))", "Chinese ((Teochew) 潮州話 (Diojiu Ue))", "Chinese ((Xiang) 湘语 (xiāngyŭ))", "Chipewyan (Dëne Sųłiné / ᑌᓀᓲᒢᕄᓀ)", "Choctaw (Chahta Anumpa)", "Comanche (numu tekwapu)", "Cornish (Kernewek)", "Corsican (corsu)", "Cree (ᓀᐦᐃᔭᐍᐏᐣ (Nēhiyawēwin))", "Creek (Maskoki / Mvskokē empunakv)", "Croatian (Hrvatski)", "Czech (čeština / český jazyk)", "Dakota (Dakȟótiyapi - Yankton Dakota)", "Dakhótiyapi (- Santee Dakota)", "Dangme (adangbɛ)", "Danish (dansk)", "Dargwa (дарган мез (dargan mez))", "Dari (درى)", "Dinka (Thuɔŋjäŋ)", "Dungan (хуэйзў йүян (xuejzu jyjan))", "Dutch (Nederlands)", "Dzongkha (/)", "Bhutanese (རྫོང་ཁ (dzongkha))", "Erzya (эрзянь кель (erzjaņ keļ))", "Estonian (eesti keel)", "Esperanto (Esperanto)", "Ewe (Eʋegbe)", "Eyak (I·ya·q)", "Faroese (Føroyskt)", "Fijian (Vakaviti)", "Finnish (suomi / suomen kieli)", "Flemish (Vlaams)", "Fon (fɔngbè)", "Frisian ((West) Frysk)", "Friulan (furlan / marilenghe)", "Fula (fulfulde)", "Ga (Gã)", "Galician (Galego)", "Ganda (LùGáànda)", "Ge'ez (ግዕዝ (gəʿəz))", "Genoese (zeneize / zeneisei)", "Georgian (ქართული (kʻartʻuli))", "German (Deutsch)", "Godoberi (ГъибдилӀи мицци)", "Gooniyandi (Guniandi)", "Greek (ελληνικά (ellēniká))", "Greenlandic (Kalaallisut)", "Guernsey (Norman Dgèrnésiais)", "Guarani (Avañe'ẽ)", "Gujarati (ગુજરાતી (gujarātī))", "Gwich'in (Gwich'in)", "Haida (Xaat Kíl)", "Haitian (Creole Kreyòl ayisyen)", "Hän (Häł gołan)", "Harari (ሃራሪ)", "Hausa ((ḥawsa) حَوْسَ)", "Hawaiian (ʻōlelo Hawaiʻi)", "Hebrew ((ivrit) עברית / עִבְרִית)", "Herero (Otjiherero)", "Hindi (हिन्दी (hindī))", "Hungarian (magyar / magyar nyelv)", "Icelandic (Íslenska)", "Igbo (igbo)", "Ilocano (ilokano)", "Indonesian (Bahasa Indonesia)", "Ingush (гӀалгӀай мотт / ġalġay mott)", "Inuktitut (ᐃᓄᒃᑎᑐᑦ (inuktitut))", "Iñupiaq (Inupiatun)", "Irish ((Gaelic) Gaeilge)", "Italian (italiano)", "Japanese (日本語 (nihongo))", "Javanese (basa Jawa)", "Jersey (Norman Jèrriais)", "Kabardian (къэбэрдеибзэ)", "Kabyle (Taqbaylit)", "Kaingang (kanhgág)", "Kannada (ಕನ್ನಡ)", "Kanuri (kanuri)", "Kapampangan (Kapampangan)", "Karakalpak (қарақалпақ тили)", "Karelian (Karjalan kieli)", "Kashmiri (कॉशुर / كٲشُر)", "Kashubian (kaszëbsczi)", "Kazakh (Қазақ тілі)", "Khakas (Хакас тілі)", "Khmer (ភាសាខ្មែរ)", "Khoekhoe (Khoekhoegowab)", "Kikuyu (Gĩkũyũ)", "Kinyarwanda (Ikinyarwanda)", "Kiribati (taetae ni Kiribati)", "Kirundi (íkiRǔndi)", "Komi (коми кыв (komi kyv))", "Kongo (kikongo)", "Konkani (कोंकणी (kōṅkaṇī))", "Korean (한국어 (han-guk-eo))", "Kumyk (Къумукъ тил (Qumuq til))", "Kurdish (Kurdí / کوردی / к’öрди)", "Kven (Kainun kieli)", "Kwanyama (kuanyama)", "Kyrgyz (قىرعىز (kyrgyz))", "Ladin (Ladin)", "Ladino (djudeo-espanyol)", "Lahnda (ਲਹਿੰਦੀ (lhĩdī))", "Lakota (Lakȟótiyapi)", "Lao (ພາສາລາວ (pháasaa láo))", "Latin (Lingua Latina)", "Latvian (latviešu valoda)", "Laz (ლაზური ნენა / Lazuri nena)", "Lezgian (лезги чӀал (lezgi čʼal))", "Limburgish (Lèmburgs)", "Lingala (lingála)", "Lithuanian (lietuvių kalba)", "Livonian (Līvõ kēļ)", "Lombard (Lombard / Lumbaart)", "Low (German/Low Saxon Plattdüütsch)", "Luo (Dholuo)", "Luxembourgish (Lëtzebuergesch)", "Maasai/Maa (ɔl Maa)", "Macedonian (македонски)", "Maldivian (ދިވެހި (dhivehi))", "Maithili (मैथिली (mɛtʰilī))", "Malagasy (Fiteny Malagasy)", "Malay (Bahasa melayu)", "Malayalam (മലയാളം (malayāḷam))", "Maltese (Malti)", "Manipuri (মৈইতৈইলোন)", "Mansi (Маньси (Man'si))", "Manx (Gaelg/Gailck (Vanninagh))", "Māori (te Reo Māori)", "Marathi (मराठी (marāṭhī))", "Mari/Cheremis (марий йылме)", "Marshallese (Kajin M̧ajeļ)", "Menominee (Mamaceqtaw)", "Mirandese (lhéngua mirandesa)", "Mohawk (Kanien'keha)", "Moksha (мокшень кяль (mokšeņ kjaļ))", "Moldovan (лимба молдовеняскэ)", "Mongolian (монгол (mongol))", "Montagnais (Innu-Aimun)", "Nahuatl (nāhuatl / nawatlahtolli)", "Naskapi (ᓇᔅᑲᐱ (naskapi) / Innu Aimun)", "Nauru (Ekakairũ Naoero)", "Navajo (Diné Bizaad / Dinék'ehjí)", "Occitan (Occitan)", "Oshiwambo (OshiWambo)", "Nepali (नेपाली (nēpālī))", "Newari (नेपाल भाषा (nepāl bʰāṣā))", "Niuean (ko e vagahau Niuē / faka-Niue)", "Nogai (ногай тили (nogay tili))", "Noongar (Nyungaa-wangka)", "Northern (Sotho Sesotho sa Leboa)", "Norwegian (Norsk)", "Nyamwezi (kinyamwezi)", "Nyoro (runyoro)", "Ojibwe (ᐊᓂᔑᓇᐯᒧᐏᐣ)", "O'odham (O'odham ñiok)", "Oriya (ଓଡ଼ିଆ (ōṛiyā))", "Oromo (Afaan Oromo)", "Ossetian (ирон ӕвзаг (iron ævzag))", "Palauan (tekoi ra Belau)", "Pali (पालि (pāli))", "Papiamento (Papiamentu)", "Pashto ((paṧto) پښتو)", "Persian ((fārsī) فارسى)", "Piedmontese (Piemonteis)", "Polish (polski)", "Portuguese (português)", "Punjabi (ਪੰਜਾਬੀ / ﺏﺎﺠﻨﭘ (panjābi))", "Quechua (Qhichwa)", "Raga (Raga)", "Rapanui (rapanui / pepito ote henua)", "Rarotongan (Māori Kūki 'Āirani)", "Romanian (limba română / român)", "Romansh (rumantsch)", "Romani (रोमानो (romānī))", "Rotuman (Faeag Rotuma)", "Russian (Русский язык (Russkij jazyk))", "Ruthenian (Rusyn / Русин)", "Sámi ((Inari) anarâškielâ)", "Sámi ((Kildin) Кӣллт са̄мь кӣлл)", "Sámi ((Lule) julevsámegiella)", "Sámi ((North) davvisámegiella)", "Sámi ((Pite) bidumsámegiella)", "Sámi ((Skolt) Sääˊmǩiõll)", "Sámi ((South) Åarjelsaemien gïele)", "Sámi ((Ter) Са̄мь кӣлл)", "Sámi ((Ume) Ubmejensámien giella)", "Santali (संथाली (sãtʰālī))", "Samoan (Gagana Samoa)", "Sango (Yângâ tî Sängö)", "Sanskrit (संस्कृतम् (saṃskṛtam))", "Sardinian (Limba Sarda / sardu)", "Sark (Norman Sèrtchais / Serquiaise)", "Scots (Scoats leid / Lallans)", "Scottish (Gaelic Gàidhlig)", "Selkup (шӧльӄумыт әты (šöļǩumyt ǝty))", "Serbian (српски)", "Shavante (aʼuwẽ mreme)", "Shawnee (Sawanwa)", "Shona (chiShona)", "Shor (Шор тили (Šor tili))", "Sicilian (sicilianu)", "Sidamo (Sidámo 'Afó)", "Silesian (ślůnsko godka / ślůnski)", "Sindhi ((sindhī) سنڌي)", "Sinhala (සිංහල (sĩhala))", "Silt'e (ስልጥኘ)", "Slovak (slovenčina)", "Slovenian (slovenščina)", "Somali (af Soomaali)", "Soninke (soninkanxaane)", "Sorbian ((Lower) dolnoserbski)", "Sorbian ((Upper) hornjoserbsce)", "Southern (Sotho seSotho)", "South (Slavey ᑌᓀ ᒐ (dene tha))", "Spanish (español / castellano)", "Sundanese (Basa Sunda)", "Svan (ლუშნუ ნინ (lušnu nin))", "Swabish (Schwäbisch)", "Swahili (Kiswahili)", "Swati (siSwati)", "Swedish (Svenska)", "Swiss (German Schwyzerdütsch)", "Syriac ((Lishana Suryaya) ܠܫܵܢܵܐ ܣܘܪܝܝܐ)", "Tabassaran (табасаран чIал)", "Tagalog (Tagalog)", "Tahitian (te reo tahiti)", "Tai (Nüa ᥖᥭᥰᥖᥬᥳᥑᥨᥒᥰ)", "Tajik (тоҷики / toçikī / تاجيكي)", "Tamil (தமிழ் (tamiḻ))", "Tatar (татарча)", "Telugu (తెలుగు (telugu))", "Tetum (Tetun, Lia-Tetun)", "Thai (ภาษาไทย (paasaa-tai))", "Tibetan (pö-gay)", "Tigre (ትግረ (tigre))", "Tigrinya (ትግርኛ (təgərəña))", "Tlingit (Lingít)", "Tok (Pisin Tok Pisin)", "Tonga (chiTonga)", "Tongan (Faka-Tonga / lea fakatonga)", "Tsez (цез мец (cez mec))", "Tsonga (xiTsonga)", "Tswana (Setswana)", "Tumbuka (chiTumbuka)", "Turkish (Türkçe)", "Turkmen (түркmенче (türkmençe))", "Tuscarora (Sgarooreh’ / Skarù∙rę’)", "Tuvaluan (Te 'gana Tūvalu)", "Tuvan (Тыва дыл / Tyva dyl)", "Twi (twi)", "Udmurt (удмурт кыл (udmurt kyl))", "Ukrainian (Українська (Ukrajins'ka))", "Urdu ((urdū) اردو)", "Uyghur (Уйғур /ئۇيغۇر (ujġgur)", "Uzbek (أۇزبېك ﺗﻴﻠی)", "Venda (tshiVenḓa)", "Venetian (vèneto)", "Veps (vepsän kel’)", "Vietnamese (tiếng việt (㗂越))", "Võro (võro kiilʼ)", "Votic (Vadjaa tšeeli)", "Walloon (walon)", "Waray-Waray (Wáray-Wáray)", "Welsh (Cymraeg / Y Gymraeg)", "Wiradjuri (Wirraayjuurray)", "Wolof (Wollof)", "Xamtanga (ኃምታጛ)", "Xhosa (isiXhosa)", "Yi (ꆇꉙ)", "Yiddish ((Yidish) ײִדיש)", "Yindjibarndi (Indjibandi)", "Yolngu (Yolŋu matha)", "Yoruba (Yorùbá)", "Yupik (Yup'ik/Юпик)", "Ungazighmiistun (Siberian Yupik)", "Yup'igtun (Central Alaskan Yupik)", "Zhuang (Vaƅcueŋƅ / Vahcuengh)", "Zulu (isiZulu)", "Zuñi (Shiwi'ma)"]
-            },
-            "punctuationVerbosity": {
-                "type": "string",
-                "default": "none",
-                "enum": ["none", "some", "most", "all"]
-            },
-            "announceCapitals": {
-                "type": "boolean",
-                "default": false
-            },
-            "speakTutorialMessages": {
-                "type": "boolean",
-                "default": false
-            },
-            "keyEcho": {
-                "type": "boolean",
-                "default": false
-            },
-            "wordEcho": {
-                "type": "boolean",
-                "default": false
-            },
-            "screenReaderBrailleOutput": {
-                "type": "boolean",
-                "default": false
-            }
-        };
-
-        gpii.speakText.auxiliarySchema = {
-            "namespace": "gpii.adjusters.speakText",
-            "templatePrefix": "../../src/shared/adjusters/html/",
-            "messagePrefix": "../../src/shared/adjusters/messages/",
-            "template": "%prefix/newestSpeakText.html",
-
-            "screenReaderTTSEnabled": {
-                "type": "screenReaderTTSEnabled",
-                "panel": {
-                    "type": "speakText.panels.CollectivePanel",
-                    "template": "%prefix/speakTextCollectiveTemplate.html",
-                    "container": ".speakText-collectiveContainer",
-                    "message": "%prefix/speakText.json"
-                }
-            },
-
-            "speechRate": {
-                "type": "speechRate",
-                "panel": {
-                    "type": "speakText.panels.CollectivePanel"
-                }
-            },
-
-            "auditoryOutLanguage": {
-                "type": "auditoryOutLanguage",
-                "panel": {
-                    "type": "speakText.panels.CollectivePanel"
-                }
-            },
-
-            "punctuationVerbosity": {
-                "type": "punctuationVerbosity",
-                "panel": {
-                    "type": "speakText.panels.CollectivePanel",
-                    "classnameMap": {"punctuationVerbosity": "@punctuationVerbosity.classes"}
+            listeners: {
+                "onReady.setATTRaddToMyPreferencesStar": {
+                     "this": "{that}.dom.addToMyPreferencesStar",
+                     "method": "attr",
+                     "args": [{
+                         "tooltip-checked": "{that}.options.strings.tooltipChecked",
+                         "tooltip-unchecked": "{that}.options.strings.tooltipUnchecked",
+                     }]
                 },
-                "classes": {
-                    "none": "radioButton-left",
-                    "some": "radioButton-middle radioButton-second",
-                    "most": "radioButton-middle radioButton-third",
-                    "all": "radioButton-right"
+                "onHideSpeakTextTickIcon": {
+                    "this": "{that}.dom.speakTextTickIcon",
+                    "method": "hide"
+                },
+                "onReady.hideWhiteTickIcon": {
+                    "listener": "{that}.hideWhiteTickIcon"
+                },
+                "onReady.bindEventPreferenceSwitchSpeakText": {
+                    "this": "{that}.dom.preferencesSwitchSpeakText",
+                    "method": "change",
+                    "args": ["{that}.events.onToggleSpeakTextAdjusters.fire"]
+                },
+                "onToggleSpeakTextAdjusters.toggleSpeakTextAdjusters": {
+                    "listener": "{that}.toggleSpeakTextAdjusters"
+                },
+                "onReady.setTextSpeakTextHeader": {
+                    "this": "{that}.dom.speakTextHeader",
+                    "method": "text",
+                    "args": ["{that}.options.strings.speakTextHeader"]
+                },
+                "onReady.setTextMoreText": {
+                     "this": "{that}.dom.moreLess",
+                     "method": "text",
+                     "args": ["{that}.options.strings.moreText"]
+                },
+                "onReady.bindEventMoreLess": {
+                    "this": "{that}.dom.moreLess",
+                    "method": "click",
+                    "args": ["{that}.events.onToggleSpeakTextExtraAdjusters.fire"]
+                },
+                "onToggleSpeakTextExtraAdjusters.toggleSpeakTextExtraAdjusters": {
+                    "listener": "{that}.toggleSpeakTextExtraAdjusters"
+                },
+                "onShowAdjusters.showPartialAdjusters": {
+                    "this": "{that}.dom.speakTextPartialAdjusters",
+                    "method": "slideDown",
+                    "args": ["{that}.options.partiallyExpandedSlideSpeed"]
+                },
+                "onShowAdjusters.showWhiteTickIcon": {
+                    "this": "{that}.dom.speakTextTickIcon",
+                    "method": "show"
+                },
+                "onShowAdjusters.setTextMoreText": {
+                     "this": "{that}.dom.moreLess",
+                     "method": "text",
+                     "args": ["{that}.options.strings.moreText"]
+                },
+                "onHidePartialAdjusters.hideAdjusters": {
+                    "this": "{that}.dom.speakTextPartialAdjusters",
+                    "method": "slideUp",
+                    "args": ["{that}.options.partiallyExpandedSlideSpeed"]
+                },
+                "onHidePartialAdjusters.hideTick": {
+                    "listener": "{that}.hideWhiteTickIcon"
+                },
+                "onHideAllAdjusters.hidePartial": {
+                    "this": "{that}.dom.speakTextPartialAdjusters",
+                    "method": "slideUp",
+                    "args": ["{that}.options.partiallyExpandedSlideSpeed"]
+                },
+                "onHideAllAdjusters.hideExtra": {
+                    "this": "{that}.dom.speakTextExtraAdjusters",
+                    "method": "slideUp",
+                    "args": ["{that}.options.partiallyExpandedSlideSpeed"]
+                },
+                "onHideAllAdjusters.hideTick": {
+                    "listener": "{that}.hideWhiteTickIcon"
+                },
+                "onShowExtraAdjuster.show": {
+                     "this": "{that}.dom.speakTextExtraAdjusters",
+                     "method": "slideToggle",
+                     "args": ["{that}.options.fullyExpandedSlideSpeed"]
+                },
+                "onHideExtraAdjuster.hide": {
+                     "this": "{that}.dom.speakTextExtraAdjusters",
+                     "method": "slideToggle",
+                     "args": ["{that}.options.fullyExpandedSlideSpeed"]
+                },
+                "onShowExtraAdjuster.setLessText": {
+                     "this": "{that}.dom.moreLess",
+                     "method": "text",
+                     "args": ["{that}.options.strings.lessText"]
+                },
+                "onHideExtraAdjuster.setMoreText": {
+                     "this": "{that}.dom.moreLess",
+                     "method": "text",
+                     "args": ["{that}.options.strings.moreText"]
                 }
             },
-
-            "announceCapitals": {
-                "type": "announceCapitals",
-                "panel": {
-                    "type": "speakText.panels.CollectivePanel"
+            invokers: {
+                toggleSpeakTextAdjusters: {
+                    "funcName": "gpii.speakText.toggleSpeakTextAdjusters",
+                    "args": [
+                        "{that}.dom.speakTextPartialAdjusters",
+                        "{that}.dom.speakTextExtraAdjusters",
+                        "{that}.events.onShowAdjusters.fire",
+                        "{that}.events.onHidePartialAdjusters.fire",
+                        "{that}.events.onHideAllAdjusters.fire"
+                    ]
+                },
+                toggleSpeakTextExtraAdjusters: {
+                    "funcName": "gpii.speakText.toggleSpeakTextExtraAdjusters",
+                     "args": [
+                         "{that}.dom.speakTextExtraAdjusters",
+                         "{that}.events.onShowExtraAdjuster.fire",
+                         "{that}.events.onHideExtraAdjuster.fire"
+                     ]
+                },
+                hideWhiteTickIcon: {
+                    "funcName": "gpii.speakText.hideWhiteTickIcon",
+                    "args": ["{that}.events.onHideSpeakTextTickIcon.fire"]
                 }
             },
-
-            "speakTutorialMessages": {
-                "type": "speakTutorialMessages",
-                "panel": {
-                    "type": "speakText.panels.CollectivePanel"
-                }
+            selectors: {
+                addToMyPreferencesStar: ".addToMyPreferencesLabel",
+                preferencesSwitchSpeakText: "#presetButton",
+                speakTextPartialAdjusters: ".partially-expanded",
+                moreLess: ".more-options-label",
+                speakTextExtraAdjusters: ".fully-expanded",
+                speakTextHeader: ".gpii-speakTextPresetButton-label",
+                speakTextTickIcon: ".white-tick-icon",
             },
-
-            "keyEcho": {
-                "type": "keyEcho",
-                "panel": {
-                    "type": "speakText.panels.CollectivePanel"
-                }
-            },
-
-            "wordEcho": {
-                "type": "wordEcho",
-                "panel": {
-                    "type": "speakText.panels.CollectivePanel"
-                }
-            },
-
-            "screenReaderBrailleOutput": {
-                "type": "screenReaderBrailleOutput",
-                "panel": {
-                    "type": "speakText.panels.CollectivePanel"
+            strings: {
+                speakTextHeader: {
+                    expander: {
+                        func: "gpii.speakText.lookupMsg",
+                        args: ["{uiOptionsLoader}.msgBundle", "speakTextPresetButtonLabel"]
+                    }
+                },
+                moreText: {
+                    expander: {
+                        func: "gpii.speakText.lookupMsg",
+                        args: ["{uiOptionsLoader}.msgBundle", "moreText"]
+                    }
+                },
+                lessText: {
+                    expander: {
+                        func: "gpii.speakText.lookupMsg",
+                        args: ["{uiOptionsLoader}.msgBundle", "lessText"]
+                    }
+                },
+                tooltipChecked: {
+                    expander: {
+                        func: "gpii.speakText.lookupMsg",
+                        args: ["{uiOptionsLoader}.msgBundle", "tooltipChecked"]
+                    }
+                },
+                tooltipUnchecked: {
+                    expander: {
+                        func: "gpii.speakText.lookupMsg",
+                        args: ["{uiOptionsLoader}.msgBundle", "tooltipUnchecked"]
+                    }
                 }
             }
-        };
+        }
+    });
 
-})(fluid);
+    gpii.speakText.toggleSpeakTextAdjusters = function (partial, extra, showEvent, hidePartialEvent, hideAllEvent) {
+        if (extra.is(":visible")) {
+            hideAllEvent();
+        } else if (partial.is(":visible")) {
+            hidePartialEvent();
+        } else {
+            showEvent();
+        }
+    }
+
+    gpii.speakText.toggleSpeakTextExtraAdjusters = function (elm, showEvent, hideEvent) {
+        if (elm.is(":visible")) {
+            hideEvent();
+        } else {
+            showEvent();
+        }
+    };
+
+    gpii.speakText.hideWhiteTickIcon = function (hideEvent) {
+        hideEvent();
+    }
+
+    gpii.speakText.lookupMsg = function (messageResolver, value) {
+        var looked = messageResolver.lookup([value]);
+        return looked ? looked.template : looked;
+    };
+
+})(jQuery, fluid);
