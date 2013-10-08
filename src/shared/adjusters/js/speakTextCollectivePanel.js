@@ -8,10 +8,6 @@
                 args: ["{that}"]
             }
         },
-        // selectors: {
-        //     speakTextTickIcon: ".white-tick-icon",
-        // },
-        // selectorsToIgnore: ["speakTextTickIcon"],
         protoTree: {
             screenReaderTTSEnabled: "${screenReaderTTSEnabled}",
             screenReaderTTSEnabledLabel: {messagekey: "screenReaderTTSEnabledLabel"},
