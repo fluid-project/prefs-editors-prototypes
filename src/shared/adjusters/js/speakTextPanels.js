@@ -79,12 +79,8 @@
     speakText.panels.punctuationVerbosity.punctuationVerbosityStyle = function (labels, values, classes) {
         fluid.each(labels, function (label, index) {
             $(label).addClass(classes[values[index]]);
+            $(label).append('<span></span>');
         });
-
-        $(".radioButton-left").append('<span class="left"></span>');
-        $(".radioButton-second").append('<span class="second"></span>');
-        $(".radioButton-third").append('<span class="third"></span>');
-        $(".radioButton-right").append('<span class="right"></span>');
     };
 
 

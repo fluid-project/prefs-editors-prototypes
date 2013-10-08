@@ -131,11 +131,11 @@ div.punctuationVerbosity-container {
     padding-left: 5px;
 }
 
-input[type="radio"] + label.radioButton-left > span.left {
+input[type="radio"] + label.radioButton-left > span {
     font-family: 'radioButtonIcons';
 }
 
-input[type="radio"] + label.radioButton-left > span.left:before {
+input[type="radio"] + label.radioButton-left > span:before {
     font-size: 150%;
     position: absolute;
     margin-top: -30px;
@@ -148,7 +148,7 @@ input[type="radio"] + label.radioButton-left > span.left:before {
     content: "\e001";
 }
 
-input[type="radio"]:checked + label.radioButton-left > span.left:before {
+input[type="radio"]:checked + label.radioButton-left > span:before {
     color: #566273;
     border: solid white;
     background-color: white;
@@ -156,11 +156,11 @@ input[type="radio"]:checked + label.radioButton-left > span.left:before {
     border-width: thin medium;
 }
 
-input[type="radio"] + label.radioButton-second > span.second {
+input[type="radio"] + label.radioButton-second > span {
     font-family: 'radioButtonIcons';
 }
 
-input[type="radio"] + label.radioButton-second > span.second:before {
+input[type="radio"] + label.radioButton-second > span:before {
     font-size: 150%;
     position: absolute;
     margin-top: -30px;
@@ -173,7 +173,7 @@ input[type="radio"] + label.radioButton-second > span.second:before {
     content: "\e001";
 }
 
-input[type="radio"]:checked + label.radioButton-second > span.second:before {
+input[type="radio"]:checked + label.radioButton-second > span:before {
     color: #566273;
     border: solid white;
     background-color: white;
@@ -181,11 +181,11 @@ input[type="radio"]:checked + label.radioButton-second > span.second:before {
     border-width: thin medium;
 }
 
-input[type="radio"] + label.radioButton-third > span.third {
+input[type="radio"] + label.radioButton-third > span {
     font-family: 'radioButtonIcons';
 }
 
-input[type="radio"] + label.radioButton-third > span.third:before {
+input[type="radio"] + label.radioButton-third > span:before {
     font-size: 150%;
     position: absolute;
     margin-top: -30px;
@@ -198,7 +198,7 @@ input[type="radio"] + label.radioButton-third > span.third:before {
     content: "\e001";
 }
 
-input[type="radio"]:checked + label.radioButton-third > span.third:before {
+input[type="radio"]:checked + label.radioButton-third > span:before {
     color: #566273;
     border: solid white;
     background-color: white;
@@ -206,11 +206,11 @@ input[type="radio"]:checked + label.radioButton-third > span.third:before {
     border-width: thin medium;
 }
 
-input[type="radio"] + label.radioButton-right > span.right {
+input[type="radio"] + label.radioButton-right > span {
     font-family: 'radioButtonIcons';
 }
 
-input[type="radio"] + label.radioButton-right > span.right:before {
+input[type="radio"] + label.radioButton-right > span:before {
     font-size: 150%;
     position: absolute;
     margin-top: -30px;
@@ -223,7 +223,7 @@ input[type="radio"] + label.radioButton-right > span.right:before {
     content: "\e001";
 }
 
-input[type="radio"]:checked + label.radioButton-right > span.right:before {
+input[type="radio"]:checked + label.radioButton-right > span:before {
     color: #566273;
     border: solid white;
     background-color: white;
@@ -326,10 +326,6 @@ input[type=checkbox] + label.preset-button-label {
     background-color: #556273;
     width: 200px;
     height: 60px;
-}
-
-input[type=checkbox]:checked + label.preset-button-label {
-    font-weight:bold;
 }
 
 input[type=checkbox] + label.checkbox-label {

@@ -16,12 +16,12 @@
             },
             listeners: {
                 "onReady.setATTRaddToMyPreferencesStar": {
-                     "this": "{that}.dom.addToMyPreferencesStar",
-                     "method": "attr",
-                     "args": [{
-                         "tooltip-checked": "{that}.options.strings.tooltipChecked",
-                         "tooltip-unchecked": "{that}.options.strings.tooltipUnchecked",
-                     }]
+                    "this": "{that}.dom.addToMyPreferencesStar",
+                    "method": "attr",
+                    "args": [{
+                        "tooltip-checked": "{that}.options.strings.tooltipChecked",
+                        "tooltip-unchecked": "{that}.options.strings.tooltipUnchecked"
+                    }]
                 },
                 "onHideSpeakTextTickIcon": {
                     "this": "{that}.dom.speakTextTickIcon",
@@ -44,9 +44,9 @@
                     "args": ["{that}.options.strings.speakTextHeader"]
                 },
                 "onReady.setTextMoreText": {
-                     "this": "{that}.dom.moreLess",
-                     "method": "text",
-                     "args": ["{that}.options.strings.moreText"]
+                    "this": "{that}.dom.moreLess",
+                    "method": "text",
+                    "args": ["{that}.options.strings.moreText"]
                 },
                 "onReady.bindEventMoreLess": {
                     "this": "{that}.dom.moreLess",
@@ -65,15 +65,25 @@
                     "this": "{that}.dom.speakTextTickIcon",
                     "method": "show"
                 },
+                "onShowAdjusters.setHeaderTextBold": {
+                    "this": "{that}.dom.speakTextHeader",
+                    "method": "css",
+                    "args": ["font-weight", "bold"]
+                },
                 "onShowAdjusters.setTextMoreText": {
-                     "this": "{that}.dom.moreLess",
-                     "method": "text",
-                     "args": ["{that}.options.strings.moreText"]
+                    "this": "{that}.dom.moreLess",
+                    "method": "text",
+                    "args": ["{that}.options.strings.moreText"]
                 },
                 "onHidePartialAdjusters.hideAdjusters": {
                     "this": "{that}.dom.speakTextPartialAdjusters",
                     "method": "slideUp",
                     "args": ["{that}.options.partiallyExpandedSlideSpeed"]
+                },
+                "onHidePartialAdjusters.setHeaderTextNormal": {
+                    "this": "{that}.dom.speakTextHeader",
+                    "method": "css",
+                    "args": ["font-weight", "normal"]
                 },
                 "onHidePartialAdjusters.hideTick": {
                     "listener": "{that}.hideWhiteTickIcon"
@@ -88,28 +98,33 @@
                     "method": "slideUp",
                     "args": ["{that}.options.partiallyExpandedSlideSpeed"]
                 },
+                "onHideAllAdjusters.setHeaderTextNormal": {
+                    "this": "{that}.dom.speakTextHeader",
+                    "method": "css",
+                    "args": ["font-weight", "normal"]
+                },
                 "onHideAllAdjusters.hideTick": {
                     "listener": "{that}.hideWhiteTickIcon"
                 },
                 "onShowExtraAdjuster.show": {
-                     "this": "{that}.dom.speakTextExtraAdjusters",
-                     "method": "slideToggle",
-                     "args": ["{that}.options.fullyExpandedSlideSpeed"]
+                    "this": "{that}.dom.speakTextExtraAdjusters",
+                    "method": "slideToggle",
+                    "args": ["{that}.options.fullyExpandedSlideSpeed"]
                 },
                 "onHideExtraAdjuster.hide": {
-                     "this": "{that}.dom.speakTextExtraAdjusters",
-                     "method": "slideToggle",
-                     "args": ["{that}.options.fullyExpandedSlideSpeed"]
+                    "this": "{that}.dom.speakTextExtraAdjusters",
+                    "method": "slideToggle",
+                    "args": ["{that}.options.fullyExpandedSlideSpeed"]
                 },
                 "onShowExtraAdjuster.setLessText": {
-                     "this": "{that}.dom.moreLess",
-                     "method": "text",
-                     "args": ["{that}.options.strings.lessText"]
+                    "this": "{that}.dom.moreLess",
+                    "method": "text",
+                    "args": ["{that}.options.strings.lessText"]
                 },
                 "onHideExtraAdjuster.setMoreText": {
-                     "this": "{that}.dom.moreLess",
-                     "method": "text",
-                     "args": ["{that}.options.strings.moreText"]
+                    "this": "{that}.dom.moreLess",
+                    "method": "text",
+                    "args": ["{that}.options.strings.moreText"]
                 }
             },
             invokers: {
@@ -125,11 +140,11 @@
                 },
                 toggleSpeakTextExtraAdjusters: {
                     "funcName": "gpii.speakText.toggleSpeakTextExtraAdjusters",
-                     "args": [
-                         "{that}.dom.speakTextExtraAdjusters",
-                         "{that}.events.onShowExtraAdjuster.fire",
-                         "{that}.events.onHideExtraAdjuster.fire"
-                     ]
+                    "args": [
+                        "{that}.dom.speakTextExtraAdjusters",
+                        "{that}.events.onShowExtraAdjuster.fire",
+                        "{that}.events.onHideExtraAdjuster.fire"
+                    ]
                 },
                 hideWhiteTickIcon: {
                     "funcName": "gpii.speakText.hideWhiteTickIcon",
@@ -143,7 +158,7 @@
                 moreLess: ".more-options-label",
                 speakTextExtraAdjusters: ".fully-expanded",
                 speakTextHeader: ".gpii-speakTextPresetButton-label",
-                speakTextTickIcon: ".white-tick-icon",
+                speakTextTickIcon: ".white-tick-icon"
             },
             strings: {
                 speakTextHeader: {
@@ -188,7 +203,7 @@
         } else {
             showEvent();
         }
-    }
+    };
 
     gpii.speakText.toggleSpeakTextExtraAdjusters = function (elm, showEvent, hideEvent) {
         if (elm.is(":visible")) {
@@ -200,7 +215,7 @@
 
     gpii.speakText.hideWhiteTickIcon = function (hideEvent) {
         hideEvent();
-    }
+    };
 
     gpii.speakText.lookupMsg = function (messageResolver, value) {
         var looked = messageResolver.lookup([value]);
