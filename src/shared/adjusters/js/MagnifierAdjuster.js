@@ -43,9 +43,7 @@
             label: {messagekey: "magnifierLabel"},
             plus: "+",
 
-            valueText: "${value}",
-
-            finalInitFunction: "fluid.uiOptions.panels.magnifier.finalInit"
+            valueText: "${value}"
         },
         strings: {
         	magnifierOFF: {
@@ -69,6 +67,8 @@
             }
         },
 
+        finalInitFunction: "fluid.uiOptions.panels.plusMinusAdjusterFinalInit",
+        
         outerPreviewEnhancerOptions: "{originalEnhancerOptions}.options.originalUserOptions",
         emptyComponentType: "fluid.emptySubcomponent",
         distributeOptions: [{
@@ -77,9 +77,4 @@
             target: "{that preview enhancer}.options"
         }]
 	});
-
-	fluid.uiOptions.panels.magnifier.finalInit = function(that){
-		fluid.uiOptions.panels.plusMinusAdjusterFinalInit(that);
-	}
-	
 })(jQuery, fluid);
