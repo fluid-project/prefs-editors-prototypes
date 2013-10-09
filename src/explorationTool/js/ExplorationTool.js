@@ -78,6 +78,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             }
         }
     });
+    
+    gpii.explorationTool.preventDefault = function (event) {
+        event.preventDefault();
+    };
 
     /*****************
      * The Exploration Tool
@@ -141,7 +145,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     listener: "{that}.setExpanded",
                     args: "{that}.model.isShowing"
                 },
-				"onPanelHide.showIcon": "{that}.showExplorationIcon",
+                "onPanelHide.showIcon": "{that}.showExplorationIcon",
                 "onPanelHide.showLabel": {
                     listener: "{that}.setLabel",
                     args: "{that}.options.strings.showLabel"
@@ -150,7 +154,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     listener: "{that}.setExpanded",
                     args: "false"
                 },
-				"onPanelShow.showIcon": "{that}.hideExplorationIcon",
+                "onPanelShow.showIcon": "{that}.hideExplorationIcon",
                 "onPanelShow.showLabel": {
                     listener: "{that}.setLabel",
                     args: "{that}.options.strings.hideLabel"
@@ -158,7 +162,13 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 "onPanelShow.showExpanded": {
                     listener: "{that}.setExpanded",
                     args: "true"
-                }
+                },
+                "onCreate.preventDefault":{
+                   /* FLUID-5177: Declaring a function to handle click since slidingPanel does not pass the dom event. */
+                   "this": "{that}.dom.toggleButton",
+                   method: "click",
+                   args: "{that}.preventDefault"
+               }
             }
         },
         invokers: {
@@ -166,6 +176,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             hideToolPanelInIframe: {
                 funcName: "gpii.explorationTool.hideToolPanelInIframe",
                 args: ["{that}.hideToolPanel", "{slidingPanel}.dom.toggleButton"]
+            },
+            preventDefault: {
+                funcName: "gpii.explorationTool.preventDefault"
             }
         },
         listeners: {
@@ -956,7 +969,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 "args": ["{that}.events.onBlur.fire"]
             },
             "afterActivate.preventDefault": {
-                listener: "gpii.explorationTool.trySomethingNew.preventDefault"
+               listener: "gpii.explorationTool.preventDefault"
             },
             "afterActivate.activate": {
                 listener: "{that}.randomizeSelection"
@@ -999,10 +1012,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             }
         }
     });
-
-    gpii.explorationTool.trySomethingNew.preventDefault = function (event) {
-        event.preventDefault();
-    };
 
     gpii.explorationTool.trySomethingNew.randomizeSelection = function (presetPanels, numSelections) {
         var components = fluid.copy(presetPanels);
