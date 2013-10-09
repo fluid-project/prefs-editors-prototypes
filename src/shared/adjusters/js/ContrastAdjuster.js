@@ -11,7 +11,7 @@
             valueCheckbox: ".flc-uiOptions-constrastInput",
             headingLabel: ".flc-uiOptions-contrast-label",
             panelLabel: ".headerTitle",
-            addToMyPreferencesLabel: ".addToMyPreferencesLabel"
+            addToMyPreferencesLabel: ".addToMyPreferencesLabel"		            
 		},
 		protoTree: {
 			valueCheckbox: "${value}",
@@ -46,28 +46,7 @@
 	});
     
     fluid.uiOptions.panels.contrast.finalInit = function (that) {
-        that.applier.modelChanged.addListener("value", function (that) {
-        	if(that.value)
-    		{
-        		$(".flc-uiOptions-contrast .fl-uiOptions-category").slideDown();
-    		}
-        	else
-    		{
-        		$(".flc-uiOptions-contrast .fl-uiOptions-category").slideUp();
-    		}
-        });
-        
-        // need this in order not to always show content on save.
         that.events.afterRender.addListener(function (that) {
-        	if(that.model.value)
-    		{
-        		$(".flc-uiOptions-contrast .fl-uiOptions-category").slideDown(0);
-    		}
-        	else
-    		{
-        		$(".flc-uiOptions-contrast .fl-uiOptions-category").slideUp(0);
-    		}
-
         	var checkedTooltip = that.options.parentBundle.lookup(["tooltipChecked"]);
         	that.locate("addToMyPreferencesLabel").attr("tooltip-checked", checkedTooltip ? checkedTooltip.template : checkedTooltip);
 
