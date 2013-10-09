@@ -12,8 +12,7 @@
 				onToggleIncreaseSizeExtraAdjusters: null,
 				onShowExtraAdjuster: null,
 				onHideExtraAdjuster: null,
-				onSelectLanguage: null,
-				onToggleContrastAdjusters: null
+				onSelectLanguage: null
 			},
 			listeners: {
 				onSave: {
@@ -112,20 +111,6 @@
 				},
 				"onSelectLanguage.selectLanguage": {
 					"listener": "{that}.selectLanguage"
-				},
-				"onReady.bindEventPreferenceSwitchContrast": {
-					"this": "{that}.dom.preferenceSwitchContrast",
-					"method": "change",
-					"args": ["{that}.events.onToggleContrastAdjusters.fire"]
-				},
-				"onToggleContrastAdjusters.showHide": {
-					"this": "{that}.dom.contrastAdjusters",
-					"method": "slideToggle"
-				},
-				"onReady.hideContrastAdjusters": {
-					"this": "{that}.dom.contrastAdjusters",
-					"method": "hide",
-					"args": [0]
 				}
 			},
 			invokers: {
@@ -161,9 +146,7 @@
 				resetButton: ".flc-uiOptions-reset",
 				cancelButton: ".flc-uiOptions-cancel",
 				moreLess: ".moreLess",
-				languageSelect: ".fl-uiOptions-language-select",
-	            contrastAdjusters: ".flc-uiOptions-contrast .fl-uiOptions-category",
-	            preferenceSwitchContrast: ".flc-uiOptions-constrastInput"
+				languageSelect: ".fl-uiOptions-language-select"
 			},
 			strings: {
 				increaseSizeHeader: {

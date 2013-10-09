@@ -7,11 +7,36 @@
 				"model.value": "default"
 			}
 		},
+		events: {
+			onToggleContrastAdjusters: null
+		},
+		listeners: {
+			"afterRender.bindEventPreferenceSwitchContrast": {
+				"this": "{that}.dom.valueCheckbox",
+				"method": "change",
+				"args": ["{that}.events.onToggleContrastAdjusters.fire"]
+			},
+			"onToggleContrastAdjusters.showHide": {
+				"this": "{that}.dom.contrastAdjusters",
+				"method": "slideToggle"
+			},
+			"onToggleContrastAdjusters.printMsg": {
+				"this": "console",
+				"method": "log",
+				"args": ["{that}.dom.contrastAdjusters"]
+			},
+			"afterRender.hideContrastAdjusters": {
+				"this": "{that}.dom.contrastAdjusters",
+				"method": "hide",
+				"args": [0]
+			}
+		},
 		selectors: {
             valueCheckbox: ".flc-uiOptions-constrastInput",
             headingLabel: ".flc-uiOptions-contrast-label",
             panelLabel: ".headerTitle",
-            addToMyPreferencesLabel: ".addToMyPreferencesLabel"		            
+            addToMyPreferencesLabel: ".addToMyPreferencesLabel",
+            contrastAdjusters: ".flc-uiOptions-contrast .fl-uiOptions-category"         
 		},
 		protoTree: {
 			valueCheckbox: "${value}",
