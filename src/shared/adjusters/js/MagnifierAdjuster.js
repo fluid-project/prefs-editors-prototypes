@@ -47,7 +47,21 @@
 
             finalInitFunction: "fluid.uiOptions.panels.magnifier.finalInit"
         },
-
+        strings: {
+        	magnifierOFF: {
+				expander: {
+					func: "fluid.uiOptions.pmt.lookupMsg",
+					args: ["{uiOptionsLoader}.msgBundle", "magnifierOFF"]
+				}
+			}
+        },
+        listeners: {
+        	"minRangeReached.setValueText": {
+				"this": "{that}.dom.valueText",
+				"method": "val",
+				"args": ["{that}.options.strings.magnifierOFF"]
+        	}
+        },
         invokers: {
             updatePlusMinusAdjusterUI: {
                 funcName: "fluid.uiOptions.panels.updatePlusMinusAdjusterUI",
@@ -65,12 +79,6 @@
 	});
 
 	fluid.uiOptions.panels.magnifier.finalInit = function(that){
-		that.events.minRangeReached.addListener(function () {
-			var offText = that.options.parentBundle.lookup(["magnifierOFF"]);
-	        
-    		that.locate("valueText").val((offText ? offText.template : offText));
-		});
-
 		fluid.uiOptions.panels.plusMinusAdjusterFinalInit(that);
 	}
 	
