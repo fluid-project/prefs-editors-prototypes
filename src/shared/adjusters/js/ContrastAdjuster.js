@@ -25,7 +25,30 @@
                 createOnEvent: "afterRender",
                 container: ".flc-uiOptions-contrast .flc-uiOptions-preview-per-setting-frame",
                 options: {
-                    templateUrl: "../../src/shared/preview/html/uiOptionsContrastPreview.html"
+                    templateUrl: "../../src/shared/preview/html/uiOptionsContrastPreview.html",
+                    events: {
+                    	onPreviewLoad: null
+                    },
+                    listeners: {
+                    	"onReady.bindEventPreviewLoad": {
+							"this": "{that}.container",
+							"method": "ready",
+							"args": "{that}.events.onPreviewLoad.fire"
+						},
+						"onPreviewLoad.setPreviewText": {
+							"this": "{that}.dom.previewText",
+							"method": "text",
+							"args": ["kjsdahfksdfhflksdj"]
+						},
+                    	"onReady.printPreviewText": {
+							"this": "console",
+							"method": "log",
+							"args": ["{that}.dom.previewText"]
+                    	}
+                    },
+                    selectors: {
+                    	previewText: ".flc-uiOptions-preview-per-setting-label"
+                    }
                 }
             }
         },
@@ -47,12 +70,6 @@
     
     fluid.uiOptions.panels.contrast.finalInit = function (that) {
         that.events.afterRender.addListener(function (that) {
-        	var checkedTooltip = that.options.parentBundle.lookup(["tooltipChecked"]);
-        	that.locate("addToMyPreferencesLabel").attr("tooltip-checked", checkedTooltip ? checkedTooltip.template : checkedTooltip);
-
-        	var uncheckedTooltip = that.options.parentBundle.lookup(["tooltipUnchecked"]);
-        	that.locate("addToMyPreferencesLabel").attr("tooltip-unchecked", uncheckedTooltip ? uncheckedTooltip.template : uncheckedTooltip);
-
         	// Not very elegant solution
         	var previewframe = that.preview;
         	var previewText = that.options.parentBundle.lookup(["contrastPreviewText"]).template;
