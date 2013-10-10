@@ -133,6 +133,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     "this": "{that}.dom.panel",
                     method: "attr",
                     args: ["aria-expanded", "{arguments}.0"]
+                },
+                preventDefault: {
+                    funcName: "gpii.explorationTool.preventDefault"
                 }
             },
             listeners: {
@@ -163,12 +166,12 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     listener: "{that}.setExpanded",
                     args: "true"
                 },
-                "onCreate.preventDefault":{
-                   /* FLUID-5177: Declaring a function to handle click since slidingPanel does not pass the dom event. */
-                   "this": "{that}.dom.toggleButton",
-                   method: "click",
-                   args: "{that}.preventDefault"
-               }
+                "onCreate.preventDefault": {
+                    /* FLUID-5177: Declaring a function to handle click since slidingPanel does not pass the dom event. */
+                    "this": "{that}.dom.toggleButton",
+                    method: "click",
+                    args: "{that}.preventDefault"
+                }
             }
         },
         invokers: {
@@ -176,9 +179,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             hideToolPanelInIframe: {
                 funcName: "gpii.explorationTool.hideToolPanelInIframe",
                 args: ["{that}.hideToolPanel", "{slidingPanel}.dom.toggleButton"]
-            },
-            preventDefault: {
-                funcName: "gpii.explorationTool.preventDefault"
             }
         },
         listeners: {
@@ -969,7 +969,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 "args": ["{that}.events.onBlur.fire"]
             },
             "afterActivate.preventDefault": {
-               listener: "gpii.explorationTool.preventDefault"
+                listener: "gpii.explorationTool.preventDefault"
             },
             "afterActivate.activate": {
                 listener: "{that}.randomizeSelection"
