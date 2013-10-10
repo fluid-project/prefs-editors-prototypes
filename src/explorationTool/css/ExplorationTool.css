@@ -395,7 +395,9 @@
 .fl-theme-lgdg .fl-uiOptions-panel input:checked + label .fl-explorationTool-panel-icon        { background-color: #555 !important; }
 .fl-theme-lgdg .fl-uiOptions-panel input:checked + label .fl-explorationTool-panel-icon:before { color: #555; }
 .fl-theme-lgdg .fl-uiOptions-panel input:checked + label .fl-explorationTool-panel-icon:after  { color: #bdbdbb; }
-.fl-theme-lgdg {
-	 font-family: 'RobotoSlab' !important;
-}
 
+/* Different Font for Low Contrast */
+.fl-theme-lgdg .fl-uiOptions-panels .fl-uiOptions-panel .fl-icon-text,
+.fl-theme-lgdg .fl-uiOptions-panels .fl-uiOptions-panel .fl-explorationTool-try .flc-explorationTool-tryLabel{
+     font-family: 'RobotoSlab' !important;
+}
