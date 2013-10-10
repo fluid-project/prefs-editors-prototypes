@@ -78,6 +78,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             }
         }
     });
+    
+    gpii.explorationTool.preventDefault = function (event) {
+        event.preventDefault();
+    };
 
     /*****************
      * The Exploration Tool
@@ -87,6 +91,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         gradeNames: ["fluid.uiOptions.fatPanel", "autoInit"],
         selectors: {
             explorationIcon: ".flc-icon-explorationTool"
+        },
+        styles: {
+            expandShowButton: "fl-expand-toggle-button"
         },
         keyBinding: {
             hideTool: $.ui.keyCode.ESCAPE
@@ -126,6 +133,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     "this": "{that}.dom.panel",
                     method: "attr",
                     args: ["aria-expanded", "{arguments}.0"]
+                },
+                preventDefault: {
+                    funcName: "gpii.explorationTool.preventDefault"
                 }
             },
             listeners: {
@@ -155,6 +165,12 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 "onPanelShow.showExpanded": {
                     listener: "{that}.setExpanded",
                     args: "true"
+                },
+                "onCreate.preventDefault": {
+                    /* FLUID-5177: Declaring a function to handle click since slidingPanel does not pass the dom event. */
+                    "this": "{that}.dom.toggleButton",
+                    method: "click",
+                    args: "{that}.preventDefault"
                 }
             }
         },
@@ -953,7 +969,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 "args": ["{that}.events.onBlur.fire"]
             },
             "afterActivate.preventDefault": {
-                listener: "gpii.explorationTool.trySomethingNew.preventDefault"
+                listener: "gpii.explorationTool.preventDefault"
             },
             "afterActivate.activate": {
                 listener: "{that}.randomizeSelection"
@@ -996,10 +1012,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             }
         }
     });
-
-    gpii.explorationTool.trySomethingNew.preventDefault = function (event) {
-        event.preventDefault();
-    };
 
     gpii.explorationTool.trySomethingNew.randomizeSelection = function (presetPanels, numSelections) {
         var components = fluid.copy(presetPanels);
