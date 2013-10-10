@@ -28,7 +28,8 @@
 			"afterRender.setContrastAdjusters": {
 				listener: "fluid.uiOptions.panels.contrast.setContrastAdjusters",
 				args: ["{that}.dom.contrastAdjusters", "{that}.model.value"]
-			}
+			},
+			"onCreate.init": "fluid.uiOptions.panels.contrast.init"
 		},
 		selectors: {
             valueCheckbox: ".flc-uiOptions-constrastInput",
@@ -88,12 +89,10 @@
             source: "{that}.options.emptyComponentType",
             removeSource: true,
             target: "{that preview enhancer magnifier}.type"
-        }],
-		
-        finalInitFunction: "fluid.uiOptions.panels.contrast.finalInit"
+        }]
 	});
     
-    fluid.uiOptions.panels.contrast.finalInit = function (that) {
+    fluid.uiOptions.panels.contrast.init = function (that) {
         that.events.afterRender.addListener(function (that) {
         	// Not very elegant solution
         	var previewframe = that.preview;
