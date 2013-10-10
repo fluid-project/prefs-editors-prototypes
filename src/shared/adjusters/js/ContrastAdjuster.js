@@ -36,8 +36,9 @@
             headingLabel: ".flc-uiOptions-contrast-label",
             panelLabel: ".headerTitle",
             addToMyPreferencesLabel: ".addToMyPreferencesLabel",
-            contrastAdjusters: ".flc-uiOptions-contrast .fl-uiOptions-category"         
+            contrastAdjusters: ".fl-uiOptions-category"         
 		},
+        selectorsToIgnore: ["contrastAdjusters"],
 		protoTree: {
 			valueCheckbox: "${value}",
             headingLabel: {messagekey: "contrast"},
