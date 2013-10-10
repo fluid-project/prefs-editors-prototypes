@@ -104,7 +104,7 @@ input[type=checkbox]:checked + .headerImage > .headerImageTick{
 	content: "\e003";
 }
 
-.flc-uiOptions-contrast > .headerImage:before {
+.flc-uiOptions-contrastPanel > .headerImage:before {
 	content: "\e002";
 }
 
@@ -249,7 +249,7 @@ input[type=checkbox], input[type=radio] {
 /*
 	Style for sliding to work
 */
-.increaseSizePreferenceGroup {
+.increaseSizePreferenceGroup, .contrastPreferenceGroup {
 	padding-top: 100px;
 }
 

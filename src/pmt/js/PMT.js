@@ -12,7 +12,8 @@
 				onToggleIncreaseSizeExtraAdjusters: null,
 				onShowExtraAdjuster: null,
 				onHideExtraAdjuster: null,
-				onSelectLanguage: null
+				onSelectLanguage: null,
+				onToggleContrastAdjusters: null
 			},
 			listeners: {
 				onSave: {
@@ -111,7 +112,32 @@
 				},
 				"onSelectLanguage.selectLanguage": {
 					"listener": "{that}.selectLanguage"
+				},
+				"onReady.setTextContrastHeader": {
+					"this": "{that}.dom.contrastHeader",
+					"method": "text",
+					"args": ["{that}.options.strings.contrastHeader"]
+				},
+				"onReady.bindEventPreferenceSwitchContrast": {
+					"this": "{that}.dom.preferenceSwitchContrast",
+					"method": "change",
+					"args": ["{that}.events.onToggleContrastAdjusters.fire"]
+				},
+				"onToggleContrastAdjusters.showHide": {
+					"this": "{that}.dom.contrastAdjusters",
+					"method": "slideToggle"
+				},
+				"onToggleContrastAdjusters.printMsg": {
+					"this": "console",
+					"method": "log",
+					"args": ["{that}.dom.preferenceSwitchContrast"]
+				},
+				"onReady.hideContrastAdjusters": {
+					"this": "{that}.dom.contrastAdjusters",
+					"method": "hide",
+					"args": [0]
 				}
+
 			},
 			invokers: {
 				toggleIncreaseSizeExtraAdjusters: {
@@ -137,7 +163,7 @@
 			},
 			selectors: {
 				increaseSizeHeader: ".flc-uiOptions-increaseSizePanel .headerTitle",
-				increaseSizeAdjusters: ".flc-uiOptions-increaseSizePanel .fl-uiOptions-category",
+				increaseSizeAdjusters: ".flc-uiOptions-increaseSizePanel > .increaseSizePreferenceGroup > .fl-uiOptions-category",
 				increaseSizeExtraAdjusters: ".flc-uiOptions-increaseSizePanel .fl-uiOptions-category-hidden",
 				preferenceSwitchIncreaseSize: "#preferenceSwitchIncreaseSize",
 				addToMyPreferencesStar: ".addToMyPreferencesLabel",
@@ -146,7 +172,10 @@
 				resetButton: ".flc-uiOptions-reset",
 				cancelButton: ".flc-uiOptions-cancel",
 				moreLess: ".moreLess",
-				languageSelect: ".fl-uiOptions-language-select"
+				languageSelect: ".fl-uiOptions-language-select",
+				preferenceSwitchContrast: ".flc-uiOptions-constrastInput",
+	            contrastAdjusters: ".flc-uiOptions-contrastPanel > .contrastPreferenceGroup > .fl-uiOptions-category",
+	            contrastHeader: ".flc-uiOptions-contrastPanel .headerTitle",
 			},
 			strings: {
 				increaseSizeHeader: {
@@ -201,6 +230,12 @@
 					expander: {
 						func: "fluid.uiOptions.pmt.lookupMsg",
 						args: ["{uiOptionsLoader}.msgBundle", "less"]
+					}
+				},
+				contrastHeader: {
+					expander: {
+						func: "fluid.uiOptions.pmt.lookupMsg",
+						args: ["{uiOptionsLoader}.msgBundle", "addContrast"]
 					}
 				}
 			}
