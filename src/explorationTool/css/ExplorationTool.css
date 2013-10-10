@@ -141,7 +141,7 @@
 }
 
 .fl-uiOptions-explorationTool .fl-uiOptions-panel label .fl-icon-text {
-    margin-top: -1.8em;
+    margin-top: 0.4em;
 }
 
 /* Panel states */
@@ -177,9 +177,9 @@
     height: 2em;   
     width: 2em;   
     margin-left: 4.25em; 
-    top: -1.2em; 
+    top: -2.2em;
     background-color: rgb(54, 60, 64, 0); 
-    opacity: 0;    
+    opacity: 0;
 }
 
 .fl-uiOptions-explorationTool .fl-uiOptions-panel input:checked + label div.fl-icon-check {
@@ -188,8 +188,7 @@
     /* small checkmark */
     height: 1.1em; 
     width: 1.1em; 
-    margin-left: 4.6em; 
-    top: -0.6em; 
+    margin-left: 4.6em;
     background-color: rgb(54, 60, 64, 1); 
     opacity: 1;    
 
@@ -204,10 +203,6 @@
     -webkit-transition: bottom 0.4s;
     -o-transition: bottom 0.4s;
     transition: bottom 0.4s;
-}
-
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:checked + label .fl-icon-text {
-    margin-top: -0.85em;
 }
 
 /* Try something new */
