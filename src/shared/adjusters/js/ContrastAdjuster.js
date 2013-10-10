@@ -25,10 +25,9 @@
 				"method": "log",
 				"args": ["{that}.dom.contrastAdjusters"]
 			},
-			"afterRender.hideContrastAdjusters": {
-				"this": "{that}.dom.contrastAdjusters",
-				"method": "hide",
-				"args": [0]
+			"afterRender.setContrastAdjusters": {
+				listener: "fluid.uiOptions.panels.contrast.setContrastAdjusters",
+				args: ["{that}.dom.contrastAdjusters", "{that}.model.value"]
 			}
 		},
 		selectors: {
@@ -103,5 +102,9 @@
         		previewframe.container.contents().find('body').find('.flc-uiOptions-preview-per-setting-label').text(previewText);
             });
         });
+    };
+
+    fluid.uiOptions.panels.contrast.setContrastAdjusters = function (contrastAdjuster, flag) {
+    	contrastAdjuster[flag ? "show" : "hide"]();
     };
 })(jQuery, fluid);
