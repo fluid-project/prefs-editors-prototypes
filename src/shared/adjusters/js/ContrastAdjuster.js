@@ -72,18 +72,33 @@
                     	onPreviewLoad: null
                     },
                     listeners: {
-                    	"onCreate.init": "fluid.uiOptions.panels.contrast.initPreview"
+                    	"onReady.setEnhancerText": {
+                            listener: "{enhancer}.setText"
+                        }
                     },
-                    selectors: {
-                    	previewText: ".flc-uiOptions-preview-per-setting-label"
-                    },
-                    strings: {
-                    	previewText: {
-                    		expander: {
-            					func: "fluid.uiOptions.pmt.lookupMsg",
-            					args: ["{uiOptionsLoader}.msgBundle", "contrastPreviewText"]
-            				}
-                    	}
+                    components: {
+                    	enhancer: {
+                            options: {
+                                selectors: {
+                                    previewText: ".flc-uiOptions-preview-per-setting-label"
+                                },
+                                strings: {
+                                    previewText: {
+                                        expander: {
+                                            func: "fluid.uiOptions.pmt.lookupMsg",
+                                            args: ["{uiOptionsLoader}.msgBundle", "contrastPreviewText"]
+                                        }
+                                    }
+                                },
+                                invokers: {
+	                                setText: {
+	                                    "this": "{that}.dom.previewText",
+	                                    "method": "text",
+	                                    "args": ["{that}.options.strings.previewText"]
+	                                }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -103,10 +118,10 @@
 	});
     
 	fluid.uiOptions.panels.contrast.initPreview = function (that) {
-		that.events.onReady.addListener(function () {
+		/*that.events.onReady.addListener(function () {
 			var p = that.locate("previewText", that.enhancerContainer);
 			p.text(that.options.strings.previewText);
-		});
+		});*/
 	}
 
 	fluid.uiOptions.panels.contrast.setContrastAdjusters = function (contrastAdjuster, flag) {
