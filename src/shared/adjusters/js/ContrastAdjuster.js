@@ -78,6 +78,9 @@
                     },
                     components: {
                     	enhancer: {
+                    		type: "fluid.uiEnhancer",
+                            container: "{preview}.enhancerContainer",
+                            createOnEvent: "onReady",
                             options: {
                                 selectors: {
                                     previewText: ".flc-uiOptions-preview-per-setting-label"
