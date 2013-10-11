@@ -20,14 +20,17 @@
 				"this": "{that}.dom.contrastAdjusters",
 				"method": "slideToggle"
 			},
-			"onToggleContrastAdjusters.printMsg": {
-				"this": "console",
-				"method": "log",
-				"args": ["{that}.dom.contrastAdjusters"]
-			},
 			"afterRender.setContrastAdjusters": {
 				listener: "fluid.uiOptions.panels.contrast.setContrastAdjusters",
 				args: ["{that}.dom.contrastAdjusters", "{that}.model.value"]
+			},
+			"afterRender.setATTRaddToMyPreferencesLabel": {
+				"this": "{that}.dom.addToMyPreferencesLabel",
+				"method": "attr",
+				"args": [{
+					"tooltip-checked": "{that}.options.strings.tooltipChecked",
+					"tooltip-unchecked": "{that}.options.strings.tooltipUnchecked",
+				}]
 			},
 			"onCreate.init": "fluid.uiOptions.panels.contrast.init"
 		},
@@ -44,6 +47,20 @@
             headingLabel: {messagekey: "contrast"},
             panelLabel: {messagekey: "addContrast"},
             addToMyPreferencesLabel: " "
+		},
+		strings: {
+			tooltipChecked: {
+				expander: {
+					func: "fluid.uiOptions.pmt.lookupMsg",
+					args: ["{uiOptionsLoader}.msgBundle", "tooltipChecked"]
+				}
+			},
+			tooltipUnchecked: {
+				expander: {
+					func: "fluid.uiOptions.pmt.lookupMsg",
+					args: ["{uiOptionsLoader}.msgBundle", "tooltipUnchecked"]
+				}
+			}
 		},
 		components: {
             preview: {
@@ -65,12 +82,7 @@
 							"this": "{that}.dom.previewText",
 							"method": "text",
 							"args": ["kjsdahfksdfhflksdj"]
-						},
-                    	"onReady.printPreviewText": {
-							"this": "console",
-							"method": "log",
-							"args": ["{that}.dom.previewText"]
-                    	}
+						}
                     },
                     selectors: {
                     	previewText: ".flc-uiOptions-preview-per-setting-label"
