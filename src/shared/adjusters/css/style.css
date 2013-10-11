@@ -286,6 +286,7 @@ input[type=checkbox] + label.checkbox-label {
 }
 
 .white-baloon-icon {
+    position: absolute;
     font-family: 'presetButtonPackage';
 }
 
@@ -300,7 +301,6 @@ input[type=checkbox] + label.checkbox-label {
 }
 
 .white-tick-icon {
-    position: absolute;
     font-family: 'presetButtonPackage';
 }
 
@@ -416,7 +416,7 @@ div.ui-tooltip-content: {
 .ui-widget .ui-button {
     height: 35px;
     width: 20px;
-    margin-bottom: 2px;
+    margin-bottom: 3px;
     margin-left: -4px;
     border: 2px;
     border-style: solid solid solid none;

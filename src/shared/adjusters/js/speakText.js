@@ -4,6 +4,10 @@
         uiOptions: {
             partiallyExpandedSlideSpeed: 500,
             fullyExpandedSlideSpeed: 600,
+            model: {
+                partialAdjustersVisibility: false,
+                extraAdjustersVisibility: false
+            },
             events: {
                 onToggleSpeakTextAdjusters: null,
                 onShowAdjusters: null,
@@ -23,7 +27,7 @@
                         "tooltip-unchecked": "{that}.options.strings.tooltipUnchecked"
                     }]
                 },
-                "onHideSpeakTextTickIcon": {
+                "onHideSpeakTextTickIcon.hideTick": {
                     "this": "{that}.dom.speakTextTickIcon",
                     "method": "hide"
                 },
@@ -131,8 +135,7 @@
                 toggleSpeakTextAdjusters: {
                     "funcName": "gpii.speakText.toggleSpeakTextAdjusters",
                     "args": [
-                        "{that}.dom.speakTextPartialAdjusters",
-                        "{that}.dom.speakTextExtraAdjusters",
+                        "{that}",
                         "{that}.events.onShowAdjusters.fire",
                         "{that}.events.onHidePartialAdjusters.fire",
                         "{that}.events.onHideAllAdjusters.fire"
@@ -141,13 +144,13 @@
                 toggleSpeakTextExtraAdjusters: {
                     "funcName": "gpii.speakText.toggleSpeakTextExtraAdjusters",
                     "args": [
-                        "{that}.dom.speakTextExtraAdjusters",
+                        "{that}",
                         "{that}.events.onShowExtraAdjuster.fire",
                         "{that}.events.onHideExtraAdjuster.fire"
                     ]
                 },
                 hideWhiteTickIcon: {
-                    "funcName": "gpii.speakText.hideWhiteTickIcon",
+                    "funcName": "gpii.speakText.fireHideEvent",
                     "args": ["{that}.events.onHideSpeakTextTickIcon.fire"]
                 }
             },
@@ -195,25 +198,33 @@
         }
     });
 
-    gpii.speakText.toggleSpeakTextAdjusters = function (partial, extra, showEvent, hidePartialEvent, hideAllEvent) {
-        if (extra.is(":visible")) {
+    gpii.speakText.toggleSpeakTextAdjusters = function (that, showEvent, hidePartialEvent, hideAllEvent) {
+        var partialVisible = that.model.partialAdjustersVisibility;
+        var extraVisible = that.model.extraAdjustersVisibility;
+        if (extraVisible) {
+            that.applier.requestChange("partialAdjustersVisibility", false);
+            that.applier.requestChange("extraAdjustersVisibility", false);
             hideAllEvent();
-        } else if (partial.is(":visible")) {
+        } else if (partialVisible != extraVisible) {
+            that.applier.requestChange("partialAdjustersVisibility", false);
             hidePartialEvent();
         } else {
+            that.applier.requestChange("partialAdjustersVisibility", true);
             showEvent();
         }
     };
 
-    gpii.speakText.toggleSpeakTextExtraAdjusters = function (elm, showEvent, hideEvent) {
-        if (elm.is(":visible")) {
+    gpii.speakText.toggleSpeakTextExtraAdjusters = function (that, showEvent, hideEvent) {
+        if (that.model.extraAdjustersVisibility) {
+            that.applier.requestChange("extraAdjustersVisibility", false);
             hideEvent();
         } else {
+            that.applier.requestChange("extraAdjustersVisibility", true);
             showEvent();
         }
     };
 
-    gpii.speakText.hideWhiteTickIcon = function (hideEvent) {
+    gpii.speakText.fireHideEvent = function (hideEvent) {
         hideEvent();
     };
 

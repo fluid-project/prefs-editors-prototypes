@@ -37,7 +37,8 @@ var fluid_1_5 = fluid_1_5 || {};
             afterRender: null
         },
         listeners: {
-            modelChanged: "{that}.refreshView"
+            modelChanged: "{that}.refreshView",
+            onCreate: "gpii.textfieldStepper.attachListenerAndRefreshView"
         },
         model: {
             value: null
@@ -53,11 +54,10 @@ var fluid_1_5 = fluid_1_5 || {};
                 args: ["{that}"]
             }
         },
-        finalInitFunction: "gpii.textfieldStepper.finalInit",
         renderOnInit: true
     });
 
-    gpii.textfieldStepper.finalInit = function (that) {
+    gpii.textfieldStepper.attachListenerAndRefreshView = function (that) {
         that.applier.modelChanged.addListener("value", function (newModel) {
             that.events.modelChanged.fire(newModel.value);
         });
@@ -97,31 +97,23 @@ var fluid_1_5 = fluid_1_5 || {};
         },
         invokers: {
             increaseValue: {
-                funcName: "gpii.textfieldStepper.buttons.increaseValue",
-                args: ["{that}"]
+                funcName: "gpii.textfieldStepper.buttons.alterValue",
+                args: ["{that}", +1]
             },
             decreaseValue: {
-                funcName: "gpii.textfieldStepper.buttons.decreaseValue",
-                args: ["{that}"]
+                funcName: "gpii.textfieldStepper.buttons.alterValue",
+                args: ["{that}", -1]
             }
         },
         range: {} // should be used to specify the min, max range and step e.g. {min: 0, max: 100, step: 5}
     });
 
-    gpii.textfieldStepper.buttons.alterValue = function (that, operation) {
+    gpii.textfieldStepper.buttons.alterValue = function (that, multiplier) {
         var currentValue = that.model.value;
         var step = that.options.range.step;
-        var newValue = operation === "+" ? currentValue + step : currentValue - step;
+        var newValue = currentValue + multiplier * step
 
         that.applier.requestChange("value", newValue);
-    };
-
-    gpii.textfieldStepper.buttons.increaseValue = function (that) {
-        gpii.textfieldStepper.buttons.alterValue(that, "+");
-    };
-
-    gpii.textfieldStepper.buttons.decreaseValue = function (that) {
-        gpii.textfieldStepper.buttons.alterValue(that, "-");
     };
 
     gpii.textfieldStepper.buttons.parseInt = function (that) {
