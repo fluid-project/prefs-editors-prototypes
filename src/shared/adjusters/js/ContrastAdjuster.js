@@ -68,14 +68,6 @@
                 container: ".flc-uiOptions-contrast .flc-uiOptions-preview-per-setting-frame",
                 options: {
                     templateUrl: "../../src/shared/preview/html/uiOptionsContrastPreview.html",
-                    events: {
-                        onPreviewLoad: null
-                    },
-                    listeners: {
-                        "onReady.setEnhancerText": {
-                            listener: "{enhancer}.setText"
-                        }
-                    },
                     components: {
                         enhancer: {
                             type: "fluid.uiEnhancer",
@@ -93,9 +85,9 @@
                                         }
                                     }
                                 },
-                                invokers: {
-                                    setText: {
-                                        "this": "{that}.dom.previewText",
+                                listeners: {
+                                    "onCreate.setText": {
+                                    	"this": "{that}.dom.previewText",
                                         "method": "text",
                                         "args": ["{that}.options.strings.previewText"]
                                     }
@@ -120,13 +112,6 @@
         }]
     });
     
-    fluid.uiOptions.panels.contrast.initPreview = function (that) {
-        /*that.events.onReady.addListener(function () {
-            var p = that.locate("previewText", that.enhancerContainer);
-            p.text(that.options.strings.previewText);
-        });*/
-    }
-
     fluid.uiOptions.panels.contrast.setContrastAdjusters = function (contrastAdjuster, flag) {
         contrastAdjuster[flag ? "show" : "hide"]();
     };
