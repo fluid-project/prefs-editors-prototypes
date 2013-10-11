@@ -72,7 +72,7 @@
                     	onPreviewLoad: null
                     },
                     listeners: {
-                    	"onCreate.init": "fluid.uiOptions.preview.init"
+                    	"onCreate.init": "fluid.uiOptions.panels.contrast.initPreview"
                     },
                     selectors: {
                     	previewText: ".flc-uiOptions-preview-per-setting-label"
@@ -102,7 +102,7 @@
         }]
 	});
     
-	fluid.uiOptions.preview.init = function (that) {
+	fluid.uiOptions.panels.contrast.initPreview = function (that) {
 		that.events.onReady.addListener(function () {
 			var p = that.locate("previewText", that.enhancerContainer);
 			p.text(that.options.strings.previewText);
