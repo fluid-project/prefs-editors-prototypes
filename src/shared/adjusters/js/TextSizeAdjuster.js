@@ -48,15 +48,15 @@
 
             valueText: "${value}"
         },
-
+        listeners: {
+        	"onCreate.init": "fluid.uiOptions.panels.plusMinusAdjusterFinalInit"
+        },
         invokers: {
         	updatePlusMinusAdjusterUI: {
                 funcName: "fluid.uiOptions.panels.updatePlusMinusAdjusterUI",
                 args: ["{that}"]
             }
         },
-
-        finalInitFunction: "fluid.uiOptions.panels.plusMinusAdjusterFinalInit",
 
         outerPreviewEnhancerOptions: "{originalEnhancerOptions}.options.originalUserOptions",
         emptyComponentType: "fluid.emptySubcomponent",

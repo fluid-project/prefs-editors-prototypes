@@ -58,7 +58,8 @@
 				"this": "{that}.dom.valueText",
 				"method": "val",
 				"args": ["{that}.options.strings.magnifierOFF"]
-        	}
+        	},
+        	"onCreate.init": "fluid.uiOptions.panels.plusMinusAdjusterFinalInit"
         },
         invokers: {
             updatePlusMinusAdjusterUI: {
@@ -66,8 +67,6 @@
                 args: ["{that}"]
             }
         },
-
-        finalInitFunction: "fluid.uiOptions.panels.plusMinusAdjusterFinalInit",
         
         outerPreviewEnhancerOptions: "{originalEnhancerOptions}.options.originalUserOptions",
         emptyComponentType: "fluid.emptySubcomponent",
