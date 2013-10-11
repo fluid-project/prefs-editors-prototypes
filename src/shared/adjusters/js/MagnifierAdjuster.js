@@ -1,24 +1,24 @@
 (function ($, fluid) {
-	
-	fluid.defaults("fluid.uiOptions.panels.magnifier", {
-		gradeNames: ["fluid.uiOptions.panels", "autoInit"],
-		preferenceMap: {
-			"fluid.uiOptions.magnifier": {
-				"model.value": "default",
-				"range.min": "minimum",
-				"range.max": "maximum",
+    
+    fluid.defaults("fluid.uiOptions.panels.magnifier", {
+        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        preferenceMap: {
+            "fluid.uiOptions.magnifier": {
+                "model.value": "default",
+                "range.min": "minimum",
+                "range.max": "maximum",
                 "range.divisibleBy": "divisibleBy"
-			}
-		},
-		range: {
-			min: 100,
-			max: 10000,
+            }
+        },
+        range: {
+            min: 100,
+            max: 10000,
             divisibleBy: 50
-		},
+        },
 
-		metricUnit: "%",
+        metricUnit: "%",
 
-		components: {
+        components: {
             preview: {
                 type: "fluid.uiOptions.preview",
                 createOnEvent: "afterRender",
@@ -36,7 +36,7 @@
             valueText: ".flc-uiOptions-plus-minus-numerical-value"
         },
         events: {
-        	minRangeReached: null
+            minRangeReached: null
         },
         protoTree: {
             minus: "-",
@@ -46,20 +46,20 @@
             valueText: "${value}"
         },
         strings: {
-        	magnifierOFF: {
-				expander: {
-					func: "fluid.uiOptions.pmt.lookupMsg",
-					args: ["{uiOptionsLoader}.msgBundle", "magnifierOFF"]
-				}
-			}
+            magnifierOFF: {
+                expander: {
+                    func: "fluid.uiOptions.pmt.lookupMsg",
+                    args: ["{uiOptionsLoader}.msgBundle", "magnifierOFF"]
+                }
+            }
         },
         listeners: {
-        	"minRangeReached.setValueText": {
-				"this": "{that}.dom.valueText",
-				"method": "val",
-				"args": ["{that}.options.strings.magnifierOFF"]
-        	},
-        	"onCreate.init": "fluid.uiOptions.panels.plusMinusAdjusterFinalInit"
+            "minRangeReached.setValueText": {
+                "this": "{that}.dom.valueText",
+                "method": "val",
+                "args": ["{that}.options.strings.magnifierOFF"]
+            },
+            "onCreate.init": "fluid.uiOptions.panels.plusMinusAdjusterFinalInit"
         },
         invokers: {
             updatePlusMinusAdjusterUI: {
@@ -75,5 +75,5 @@
             removeSource: true,
             target: "{that preview enhancer}.options"
         }]
-	});
+    });
 })(jQuery, fluid);

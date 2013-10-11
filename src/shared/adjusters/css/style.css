@@ -1,41 +1,41 @@
 /*
-	Font icons
+    Font icons
 */
 @font-face {
-	font-family: 'icons-no-frames-aug-29';
-	src:url('../fonts/icons-no-frames-aug-29.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
+    font-family: 'icons-no-frames-aug-29';
+    src:url('../fonts/icons-no-frames-aug-29.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-	font-family: 'font-icons-sept-3';
-	src:url('../fonts/font-icons-sept-3.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
+    font-family: 'font-icons-sept-3';
+    src:url('../fonts/font-icons-sept-3.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-	font-family: 'sept-12';
-	src:url('../fonts/sept-12.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
+    font-family: 'sept-12';
+    src:url('../fonts/sept-12.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 /*
-	General preferences styling
+    General preferences styling
 */
 
 body {
-	transform-origin: 0 0 0;
-	-webkit-transform-origin: 0 0 0;
-	margin:20px;
+    transform-origin: 0 0 0;
+    -webkit-transform-origin: 0 0 0;
+    margin:20px;
 }
 
 .preference {
-	background:#ECEFEF;
-	width: 340px;
-	min-height: 100px;
+    background:#ECEFEF;
+    width: 340px;
+    min-height: 100px;
 }
 
 .fl-uiOptions-category {
@@ -58,28 +58,28 @@ h2 {
 }
 
 h2 > label {
-	width: 240px !important;
-    word-wrap: break-word;	
+    width: 240px !important;
+    word-wrap: break-word;    
 }
 
 /*
-	Header's styling
+    Header's styling
 */
 .headerImage {
-	-webkit-font-smoothing: antialiased;
-	width: 330;
-	margin:5px !important;
-	color: white;
-	background-color: #566374;	
-	position: absolute;
+    -webkit-font-smoothing: antialiased;
+    width: 330;
+    margin:5px !important;
+    color: white;
+    background-color: #566374;    
+    position: absolute;
 }
 
 .headerImage:before {
-	font-size: 90px !important;
+    font-size: 90px !important;
 }
 
 .headerImageTick {
-	font-size: 20px !important;
+    font-size: 20px !important;
     margin-left: 300px;
     margin-top: -30px;
     background-color: white;
@@ -89,32 +89,32 @@ h2 > label {
 }
 
 .headerImageTick:before {
-	content: "\e00a" !important;
+    content: "\e00a" !important;
 }
 
 input[type=checkbox] + .headerImage > .headerImageTick{
-	display: none;
+    display: none;
 }
 
 input[type=checkbox]:checked + .headerImage > .headerImageTick{
-	display: block;
+    display: block;
 }
 
 .flc-uiOptions-increaseSizePanel > .headerImage:before {
-	content: "\e003";
+    content: "\e003";
 }
 
 .flc-uiOptions-contrast > .headerImage:before {
-	content: "\e002";
+    content: "\e002";
 }
 
 .headerTitle {
-	font-family: 'Roboto Slab', serif;
-   	left: 0; 
-   	width: 100%;
-   	color: white;
-   	text-align: left;
-   	font-size: 1.8em !important;
+    font-family: 'Roboto Slab', serif;
+       left: 0; 
+       width: 100%;
+       color: white;
+       text-align: left;
+       font-size: 1.8em !important;
     margin: -90px 0 0;
     display: inline;
     line-height: 90px;
@@ -128,7 +128,7 @@ input[type=checkbox]:checked + .headerImage > .headerImageTick{
 
 .headerClickableLabel {
     cursor: pointer;
-	color: transparent !important;
+    color: transparent !important;
     margin: 5px !important;
     position: relative !important;
 }
@@ -145,48 +145,48 @@ input[type=checkbox], input[type=radio] {
 }
 
 /*
-	The adjusters' font icons
+    The adjusters' font icons
 */
 .fl-adjuster-icons {
-	float: left;
-	font-family: 'icons-no-frames-aug-29';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	-webkit-font-smoothing: antialiased;
+    float: left;
+    font-family: 'icons-no-frames-aug-29';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
 }
 
 .fl-adjuster-icons-additional > .fl-magnifierPosition-uio-icon-main {
-	font-family: 'font-icons-sept-3';
-	margin-top: 0em;
+    font-family: 'font-icons-sept-3';
+    margin-top: 0em;
 }
 
 /*
-	The cursor size font icons
+    The cursor size font icons
 */
 .fl-icon-small-cursor:before {
-	font-size: 0.8em !important;
-	content: "\e000";
+    font-size: 0.8em !important;
+    content: "\e000";
 }
 .fl-icon-big-cursor:before {
-	font-size: 1.9em !important;
-	content: "\e000";
+    font-size: 1.9em !important;
+    content: "\e000";
 }
 .fl-icon-small-cursor {
-	width: 1em;
-	text-align: right;
-	padding-top: 0.25em;
+    width: 1em;
+    text-align: right;
+    padding-top: 0.25em;
 }
 .fl-icon-big-cursor {
-	width: 1em;
-	margin-top: -0.5em !important;
+    width: 1em;
+    margin-top: -0.5em !important;
 }
 
 /*
-	The slider's style
+    The slider's style
 */
 .fl-uiOptions .fl-slider-horz {
     width: calc(330 * 0.8px - 2em);
@@ -208,146 +208,146 @@ input[type=checkbox], input[type=radio] {
 }
 
 /*
-	The plusMinusAdjuster style
+    The plusMinusAdjuster style
 */
 .flc-uiOptions-plus-minus-numerical-minus, .flc-uiOptions-plus-minus-numerical-plus {
-	width: 10% !important;
-	font-size: 1.5em !important;
-	cursor: pointer;
-	text-align: center !important;
-	background-color: white;
-	margin-left: 2px !important;
-	margin-right: 2px !important;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-o-user-select: none;
-	user-select: none;
-	padding-top: 0.05em;
-	float: left;
+    width: 10% !important;
+    font-size: 1.5em !important;
+    cursor: pointer;
+    text-align: center !important;
+    background-color: white;
+    margin-left: 2px !important;
+    margin-right: 2px !important;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    padding-top: 0.05em;
+    float: left;
 }
 
 .flc-uiOptions-plus-minus-numerical-widget {
-	width: 100% !important;
-	background-color: #FFFFFF;
-	display: table;
+    width: 100% !important;
+    background-color: #FFFFFF;
+    display: table;
 }
 
 .flc-uiOptions-plus-minus-numerical-value {
-	width: 76% !important;
-	border: none !important;
-	text-align: center !important;
-	font-size: 1.5em !important;
-	margin-top: 1px !important;
-	margin-bottom: 2px !important;
+    width: 76% !important;
+    border: none !important;
+    text-align: center !important;
+    font-size: 1.5em !important;
+    margin-top: 1px !important;
+    margin-bottom: 2px !important;
 }
 
 .flc-uiOptions-plus-minus-numerical-min-reached {
-	color: #D3D3D3 !important;
+    color: #D3D3D3 !important;
 }
 
 /*
-	Style for sliding to work
+    Style for sliding to work
 */
 .increaseSizePreferenceGroup {
-	padding-top: 100px;
+    padding-top: 100px;
 }
 
 .fl-uiOptions-category {
-	overflow: hidden;
+    overflow: hidden;
 }
 
 .fl-uiOptions-category-hidden {
-	overflow: hidden;
+    overflow: hidden;
 }
 
 /*
-	Style for more/less
+    Style for more/less
 */
 .moreLess{
-	width:100% !important;
-	text-align: center;
-	cursor: pointer;
-	padding-bottom: 5px !important;
-	padding-top: 20px;
+    width:100% !important;
+    text-align: center;
+    cursor: pointer;
+    padding-bottom: 5px !important;
+    padding-top: 20px;
 }
 
 /*
-	Style for magnifier position font icons
+    Style for magnifier position font icons
 */
 .fl-magnifierPosition-uio-icon-label {
-	height: 4.7em !important;
-	width: 6.3em !important;
-	border: none !important;
-	padding: 0 !important;
-	cursor: pointer;
-	background-color: white;
-	margin-bottom: 0.5em !important;
-	margin-right: 0.5em !important;
+    height: 4.7em !important;
+    width: 6.3em !important;
+    border: none !important;
+    padding: 0 !important;
+    cursor: pointer;
+    background-color: white;
+    margin-bottom: 0.5em !important;
+    margin-right: 0.5em !important;
 }
 
 .fl-magnifierPosition-uio-icon {
-	height: 0 !important;
-	width: 0 !important;
-	color: #636c7c;
-	margin-top: -2px;
+    height: 0 !important;
+    width: 0 !important;
+    color: #636c7c;
+    margin-top: -2px;
 }
 
 .fl-magnifierPosition-uio-icon:before {
-	font-size: 5em !important;
+    font-size: 5em !important;
 }
 
 .fl-magnifierPosition-uio-background {
-	height: 4.9em !important;
-	width: 6.3em !important;
-	padding-top: 2px;
+    height: 4.9em !important;
+    width: 6.3em !important;
+    padding-top: 2px;
 }
 
 .fl-magnifierPosition-uio-background:before {
-	font-size: 4.8em !important;
-	content: "\e00b" !important;
+    font-size: 4.8em !important;
+    content: "\e00b" !important;
 }
-	
+    
 .fl-magnifierPosition-uio-fullscreen > .fl-magnifierPosition-uio-frame:before {
-	font-size: 5em !important;
-	content: "\e008" !important;
+    font-size: 5em !important;
+    content: "\e008" !important;
 }
 
 .fl-magnifierPosition-uio-lens > .fl-magnifierPosition-uio-icon:before {
-	content: "\e00a";
+    content: "\e00a";
 } 
 
 .fl-magnifierPosition-uio-fullscreen > .fl-magnifierPosition-uio-icon-main {
-	opacity:0.5;
-	position: relative;
-	top: 0.15em;
-	left: 0.15em;
+    opacity:0.5;
+    position: relative;
+    top: 0.15em;
+    left: 0.15em;
 }
 
 .fl-magnifierPosition-uio-fullscreen > .fl-magnifierPosition-uio-icon-main:before {
-	content: "\e009";
-	font-size: 4.7em !important;
-	color: #00a9bd;
+    content: "\e009";
+    font-size: 4.7em !important;
+    color: #00a9bd;
 }
 
 .fl-magnifierPosition-uio-top > .fl-magnifierPosition-uio-icon-main:before {
-	content: "\e001";
+    content: "\e001";
 }
 
 .fl-magnifierPosition-uio-bottom > .fl-magnifierPosition-uio-icon-main:before {
-	content: "\e004";
+    content: "\e004";
 }
 
 .fl-magnifierPosition-uio-left > .fl-magnifierPosition-uio-icon-main:before {
-	content: "\e003";
+    content: "\e003";
 }
 
 .fl-magnifierPosition-uio-right > .fl-magnifierPosition-uio-icon-main:before {
-	content: "\e002";
+    content: "\e002";
 }
 
 /*
-	Style for magnifier position indicator
+    Style for magnifier position indicator
 */
 .fl-uiOptions .fl-icon-indicator:before, .fl-uiOptions .fl-choice input:checked + div:before {
     content: "\e007";
@@ -355,55 +355,55 @@ input[type=checkbox], input[type=radio] {
 .fl-uiOptions .fl-choice .fl-indicator {
     font-family: 'icons-no-frames-aug-29' !important;
     font-size: 0.8em;
- 	color: #636c7c;
- 	position: relative;
- 	top: 0.4em;
+     color: #636c7c;
+     position: relative;
+     top: 0.4em;
     height: 1em !important;
     margin: -0.75em 0 0 2.15em !important;
     z-index: 11;
 }
 
 /*
-	Style for magnifier follows font icons
+    Style for magnifier follows font icons
 */
 .fl-magnifierFollows-uio-icon-label {
-	height: 7.8em !important;
-	width: 6.5em !important;
-	border: none !important;
-	padding: 0 !important;
-	cursor: pointer;
-	background-color: #636c7c;
-	margin-bottom: 1.5em !important;
-	margin-right: 0.5em !important;
+    height: 7.8em !important;
+    width: 6.5em !important;
+    border: none !important;
+    padding: 0 !important;
+    cursor: pointer;
+    background-color: #636c7c;
+    margin-bottom: 1.5em !important;
+    margin-right: 0.5em !important;
 }
 
 .fl-magnifierFollows-uio-icon {
-	font-size: 6.8em !important;
-	padding-bottom: 0.2em !important;
-	color: white;
+    font-size: 6.8em !important;
+    padding-bottom: 0.2em !important;
+    color: white;
 }
 
 .flc-uiOptions-magnifierFollowsRow{
-	margin-bottom: 1em !important;
+    margin-bottom: 1em !important;
 }
 
 .fl-magnifierFollows-uio-mouseCursor > .fl-magnifierFollows-uio-icon:before {
-	content: "\e007";
+    content: "\e007";
 }
 
 .fl-magnifierFollows-uio-textCursor > .fl-magnifierFollows-uio-icon:before {
-	content: "\e000";
+    content: "\e000";
 }
 
 .fl-magnifierFollows-uio-keyboardFocus > .fl-magnifierFollows-uio-icon:before {
-	content: "\e008";
+    content: "\e008";
 }
 
 /*
-	Style for magnifier follows checked font icons
+    Style for magnifier follows checked font icons
 */
 .fl-magnifierFollows-uio-icon-check {
-	background-color: #FFFFFF;
+    background-color: #FFFFFF;
     border: 3px double #636C7C;
     border-radius: 6px 6px 6px 6px;
     color: #FFFFFF;
@@ -418,20 +418,20 @@ input[type=checkbox], input[type=radio] {
 input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio-icon-check {
     padding-right: 0.1em;
     padding-top: 0.1em;
-	border: 2px solid;
+    border: 2px solid;
     background-color: 636C7C;
 }
 
 input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio-icon-check:before {
-	content: "\e00a";
+    content: "\e00a";
 }
 
 /*
-	Style for magnifier follows legend
+    Style for magnifier follows legend
 */
 .fl-magnifierFollows-legend {
-	line-height: 1.1em;
-	color: #566374;
+    line-height: 1.1em;
+    color: #566374;
 }
 
 .fl-magnifierFollows-legend::first-letter {
@@ -439,31 +439,31 @@ input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio
 }
 
 /*
-	Style for preview-per-setting iframe and content
+    Style for preview-per-setting iframe and content
 */
 .flc-uiOptions-preview-per-setting-frame {
-	width: 100% !important;
-	margin-top: -1em;
+    width: 100% !important;
+    margin-top: -1em;
 }
 
 .flc-uiOptions-preview-per-setting-container {
-	background-color: #d3dfdf;
-	border: 1px solid #beced1;
-	color: #B8C9CC;
+    background-color: #d3dfdf;
+    border: 1px solid #beced1;
+    color: #B8C9CC;
     font-size: 2em;
     margin-bottom: 0.5em;
 }
 
 .flc-uiOptions-preview-per-setting-eye:before {
-	position: relative;
+    position: relative;
     z-index: 2;
     background-color: transparent !important;
-	content: "\e00c";
+    content: "\e00c";
 }
 
 .flc-uiOptions-preview-per-setting-eye-background {
-	position: relative;
-	background-color: #000000;
+    position: relative;
+    background-color: #000000;
     height: 0.34em;
     margin-left: 0.1em;
     margin-top: 0.1em;
@@ -472,67 +472,67 @@ input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio
 }
 
 .flc-uiOptions-preview-per-setting-body {
-	width: 100% !important;
-	height: 100% !important;
-	margin: 0;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0;
 }
 
 .flc-uiOptions-preview-per-setting-div {
-	width: 100%; 
-	height: 100%; 
-	position: relative;
+    width: 100%; 
+    height: 100%; 
+    position: relative;
 }
 
 .flc-uiOptions-preview-per-setting-div-inner { 
-	position: absolute; 
-	display: table; 
-	width: 100%; 
-	height: 100%; 
+    position: absolute; 
+    display: table; 
+    width: 100%; 
+    height: 100%; 
 }
 
 .flc-uiOptions-preview-per-setting-div-inner p {
-	display: table-cell; 
-	vertical-align: middle; 
-	text-align: center; 
-	padding: 10px;
+    display: table-cell; 
+    vertical-align: middle; 
+    text-align: center; 
+    padding: 10px;
 }
 
 .flc-uiOptions-preview-per-setting-div-inner div {
-	display: table-cell; 
-	vertical-align: middle; 
-	text-align: center; 
-	padding: 10px;
-	float: none;
+    display: table-cell; 
+    vertical-align: middle; 
+    text-align: center; 
+    padding: 10px;
+    float: none;
 }
 
 .flc-uiOptions-preview-per-setting-cursor1:before {
-	content: "\e006";
+    content: "\e006";
 }
 
 .flc-uiOptions-preview-per-setting-cursor2:before {
-	content: "\e005";
+    content: "\e005";
 }
 
 .flc-uiOptions-preview-per-setting-cursor3:before {
-	content: "\e001";
+    content: "\e001";
 }
 
 /*
-	Style for "Add to my preferences" star font icon
+    Style for "Add to my preferences" star font icon
 */
 .fl-adjuster-icons-additional {
-	font-family: 'font-icons-sept-3';
+    font-family: 'font-icons-sept-3';
 }
 
 .addToMyPreferencesStar:before {
-	content: "\e000";
+    content: "\e000";
 }
 
 .addToMyPreferencesStar {
-	margin-left: 310px;
+    margin-left: 310px;
     margin-top: 10px;
     color: #6b7281;
-  	position: absolute;
+      position: absolute;
     font-size: 16px;
     display: table;
     padding: 2px;
@@ -544,128 +544,128 @@ input:checked + .addToMyPreferencesStar {
 }
 
 .addToMyPreferencesLabel {
-	height: 17px !important;
+    height: 17px !important;
     position: absolute;
     width: 17px !important;
     cursor: pointer;
-	margin-left: 310px;
+    margin-left: 310px;
     margin-top: 10px;
     display: table;
     padding: 2px;
 }
 
 /*
-	Style for tooltips
+    Style for tooltips
 */
 [title]:after{
-	background-color: #f4e413;
-	padding:5px;
-	position:absolute;
-	left:-9999px;
-	opacity:0;
-	bottom:100%;
-	white-space:nowrap;
-	-webkit-transition:0.25s linear opacity;
-	border: 1px solid black;
+    background-color: #f4e413;
+    padding:5px;
+    position:absolute;
+    left:-9999px;
+    opacity:0;
+    bottom:100%;
+    white-space:nowrap;
+    -webkit-transition:0.25s linear opacity;
+    border: 1px solid black;
     border-radius: 3px 3px 3px 3px;
     font-size: 12px;
     z-index: 10;
 }
 [title]:hover:after{
-	left:0px;
-	opacity:1;
+    left:0px;
+    opacity:1;
 }
 
 .addToMyPreferencesLabel[title]:after {
-	content:attr(tooltip-unchecked);
+    content:attr(tooltip-unchecked);
 }
 
 input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after {
-	content:attr(tooltip-checked);
+    content:attr(tooltip-checked);
 }
 
 .flc-uiOptions-magnifierPosition-label[title] {
-	position:relative;
+    position:relative;
 }
 
 .flc-uiOptions-magnifierPosition-label[title]:after {
-	content: attr(tooltip);
-	line-height: 1em !important;
-	font-size: 1em;
-	white-space:normal;
+    content: attr(tooltip);
+    line-height: 1em !important;
+    font-size: 1em;
+    white-space:normal;
 }
 
 /*
-	Style for contrast
+    Style for contrast
 */
 .flc-uiOptions-contrast-theme {
-	color: yellow;
-	background-color: black;
+    color: yellow;
+    background-color: black;
 }
 
 .flc-uiOptions-default-theme {
-	color: black;
-	background-color: #D3DFDF;
+    color: black;
+    background-color: #D3DFDF;
 }
 
 .flc-uiOptions-contrast-theme .headerImage {
-	background-color: black !important;
-	color: yellow !important;
+    background-color: black !important;
+    color: yellow !important;
 }
 
 .flc-uiOptions-contrast-theme .headerTitle {
-	background-color: transparent !important;
-	color: black !important;
+    background-color: transparent !important;
+    color: black !important;
 }
 
 .flc-uiOptions-contrast-theme .headerClickableLabel {
-	background-color: transparent !important;
-	color: transparent !important;
+    background-color: transparent !important;
+    color: transparent !important;
 }
 
 .flc-uiOptions-contrast-theme .addToMyPreferencesLabel {
-	background-color: transparent !important;
+    background-color: transparent !important;
 }
 
 .flc-uiOptions-contrast-theme .addToMyPreferencesStar {
-	background-color: yellow !important;
-	color: black !important;
+    background-color: yellow !important;
+    color: black !important;
 }
 
 .flc-uiOptions-contrast-theme input:checked + .addToMyPreferencesStar {
-	background-color: black !important;
-	color: yellow !important;
+    background-color: black !important;
+    color: yellow !important;
 }
 
  .flc-uiOptions-contrast-theme [title]:after{
-	background-color: black !important;
-	border: 1px solid yellow !important;
+    background-color: black !important;
+    border: 1px solid yellow !important;
 }
 
 .flc-uiOptions-contrast-theme .headerImage {
-	background-color: yellow !important;
-	color: black !important;
+    background-color: yellow !important;
+    color: black !important;
 }
 
 .flc-uiOptions-contrast-theme .fl-magnifierPosition-uio-background {
-	background-color: transparent !important;
+    background-color: transparent !important;
 }
 
 .flc-uiOptions-contrast-theme .fl-indicator {
-	background-color: transparent !important;
+    background-color: transparent !important;
 }
 
 .flc-uiOptions-contrast-theme .flc-uiOptions-plus-minus-numerical-widget {
-	width: calc(100% - 2px) !important;
-	border: 1px solid !important;
+    width: calc(100% - 2px) !important;
+    border: 1px solid !important;
 }
 
 .flc-uiOptions-contrast-theme .flc-uiOptions-plus-minus-numerical-value {
-	margin-bottom: 1px !important;
+    margin-bottom: 1px !important;
 }
 
 .flc-uiOptions-contrast-theme .flc-uiOptions-plus-minus-numerical-min-reached {
-	color: gray !important;
+    color: gray !important;
 }
 
 .fl-theme-yb .fl-uiOptions input:focus + label, .fl-theme-yb .fl-uiOptions .fl-choice input:focus ~ label {
@@ -677,28 +677,28 @@ input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after 
 }
 
 .flc-uiOptions-contrast-theme .fl-magnifierFollows-uio-icon {
-	border: 1px solid;
+    border: 1px solid;
 }
 
 .flc-uiOptions-contrast-theme .fl-magnifierFollows-uio-icon-check {
-	margin-top: -1.9em;
+    margin-top: -1.9em;
 }
 
 /*
-	Style for sept-12 font icons
+    Style for sept-12 font icons
 */
 .fl-adjuster-icons-sept-12 {
-	font-family: 'sept-12';
+    font-family: 'sept-12';
 }
 
 /*
-	Style for language controls
+    Style for language controls
 */
 .fl-uiOptions-language-label {
-	font-size: 1em !important;
-	text-transform: capitalize !important;
+    font-size: 1em !important;
+    text-transform: capitalize !important;
 }
 
 .fl-uiOptions-language {
-	text-align: right;
+    text-align: right;
 }

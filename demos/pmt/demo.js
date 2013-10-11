@@ -10,12 +10,12 @@ var defaultLanguage;
             auxiliarySchema: fluid.uiOptions.pmt.auxiliarySchema
         });
         
-    	/* get browser default lang */
-		if (navigator.userLanguage) {
-			defaultLanguage = navigator.userLanguage.substring(0,2).toLowerCase();
-		} else {
-			defaultLanguage = navigator.language.substring(0,2).toLowerCase();
-		}
+        /* get browser default lang */
+        if (navigator.userLanguage) {
+            defaultLanguage = navigator.userLanguage.substring(0,2).toLowerCase();
+        } else {
+            defaultLanguage = navigator.language.substring(0,2).toLowerCase();
+        }
 
         demo.instantiateUIO(container, compOpts, "fluid.uiOptions.pmt", defaultLanguage);
     };

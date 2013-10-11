@@ -1,6 +1,6 @@
 (function ($, fluid) {
 
-	fluid.defaults("fluid.uiOptions.enactors.cursorSize", {
+    fluid.defaults("fluid.uiOptions.enactors.cursorSize", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
         preferenceMap: {
             "fluid.uiOptions.cursorSize": {
@@ -22,9 +22,9 @@
     });
 
     fluid.uiOptions.enactors.cursorSize.set = function (times, that) {
-		that.container.find(".flc-uiOptions-preview-per-setting-cursor1").css("font-size", times + "em");
-		that.container.find(".flc-uiOptions-preview-per-setting-cursor2").css("font-size", times + "em");
-		that.container.find(".flc-uiOptions-preview-per-setting-cursor3").css("font-size", times + "em");
+        that.container.find(".flc-uiOptions-preview-per-setting-cursor1").css("font-size", times + "em");
+        that.container.find(".flc-uiOptions-preview-per-setting-cursor2").css("font-size", times + "em");
+        that.container.find(".flc-uiOptions-preview-per-setting-cursor3").css("font-size", times + "em");
     };
 
     fluid.uiOptions.enactors.cursorSize.finalInit = function (that) {

@@ -1,6 +1,6 @@
 (function ($, fluid) {
-	
-	fluid.defaults("fluid.uiOptions.panels.textSize", {
+    
+    fluid.defaults("fluid.uiOptions.panels.textSize", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
             "fluid.uiOptions.textSize": {
@@ -39,7 +39,7 @@
             valueText: ".flc-uiOptions-plus-minus-numerical-value"
         },
         events: {
-        	minRangeReached: null
+            minRangeReached: null
         },
         protoTree: {
             minus: "-",
@@ -49,10 +49,10 @@
             valueText: "${value}"
         },
         listeners: {
-        	"onCreate.init": "fluid.uiOptions.panels.plusMinusAdjusterFinalInit"
+            "onCreate.init": "fluid.uiOptions.panels.plusMinusAdjusterFinalInit"
         },
         invokers: {
-        	updatePlusMinusAdjusterUI: {
+            updatePlusMinusAdjusterUI: {
                 funcName: "fluid.uiOptions.panels.updatePlusMinusAdjusterUI",
                 args: ["{that}"]
             }
@@ -70,5 +70,5 @@
             target: "{that preview enhancer magnifier}.type"
         }]
     });
-	
+    
 })(jQuery, fluid);

@@ -1,6 +1,6 @@
 (function ($, fluid) {
-	
-	fluid.uiOptions.enactors.textSize.set = function (sizeInPt, that) {
+    
+    fluid.uiOptions.enactors.textSize.set = function (sizeInPt, that) {
         that.container.css("font-size", sizeInPt + "pt");
     };
     

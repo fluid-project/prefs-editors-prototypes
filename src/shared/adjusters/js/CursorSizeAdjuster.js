@@ -1,21 +1,21 @@
 (function ($, fluid) {
-	
-	fluid.defaults("fluid.uiOptions.panels.cursorSize", {
-		gradeNames: ["fluid.uiOptions.panels", "autoInit"],
-		preferenceMap: {
-			"fluid.uiOptions.cursorSize": {
-				"model.value": "default",
-				"range.min": "minimum",
-				"range.max": "maximum",
+    
+    fluid.defaults("fluid.uiOptions.panels.cursorSize", {
+        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        preferenceMap: {
+            "fluid.uiOptions.cursorSize": {
+                "model.value": "default",
+                "range.min": "minimum",
+                "range.max": "maximum",
                 "range.divisibleBy": "divisibleBy"
-			}
-		},
-		range: {
-			min: 1,
-			max: 5,
+            }
+        },
+        range: {
+            min: 1,
+            max: 5,
             divisibleBy: 0.2
-		},
-		components: {
+        },
+        components: {
             preview: {
                 type: "fluid.uiOptions.preview",
                 createOnEvent: "afterRender",
@@ -25,28 +25,28 @@
                 }
             }
         },
-		selectors: {
-			textSize: ".flc-uiOptions-cursor-size",
-			label: ".flc-uiOptions-cursor-size-label",
-			multiplier: ".flc-uiOptions-multiplier"
-		},
-		protoTree: {
-			label: {messagekey: "cursorSizeLabel"},
-			multiplier: {messagekey: "multiplier"},
-			textSize: {
-				decorators: {
-					type: "fluid",
-					func: "fluid.uiOptions.textfieldSlider"
-				}
-			}
-		},
-		sliderOptions: {
-			orientation: "horizontal",
-			step: 0.2,
-			range: "min"
-		},
-		
-		outerPreviewEnhancerOptions: "{originalEnhancerOptions}.options.originalUserOptions",
+        selectors: {
+            textSize: ".flc-uiOptions-cursor-size",
+            label: ".flc-uiOptions-cursor-size-label",
+            multiplier: ".flc-uiOptions-multiplier"
+        },
+        protoTree: {
+            label: {messagekey: "cursorSizeLabel"},
+            multiplier: {messagekey: "multiplier"},
+            textSize: {
+                decorators: {
+                    type: "fluid",
+                    func: "fluid.uiOptions.textfieldSlider"
+                }
+            }
+        },
+        sliderOptions: {
+            orientation: "horizontal",
+            step: 0.2,
+            range: "min"
+        },
+        
+        outerPreviewEnhancerOptions: "{originalEnhancerOptions}.options.originalUserOptions",
         emptyComponentType: "fluid.emptySubcomponent",
         distributeOptions: [{
             source: "{that}.options.outerPreviewEnhancerOptions",
@@ -60,6 +60,6 @@
             removeSource: true,
             target: "{that preview enhancer magnifier}.type"
         }]
-	});
-	
+    });
+    
 })(jQuery, fluid);

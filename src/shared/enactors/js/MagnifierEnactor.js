@@ -1,6 +1,6 @@
 (function ($, fluid) {
-	
-	fluid.defaults("fluid.uiOptions.enactors.magnifier", {
+    
+    fluid.defaults("fluid.uiOptions.enactors.magnifier", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
         preferenceMap: {
             "fluid.uiOptions.magnifier": {
@@ -22,7 +22,7 @@
     });
 
     fluid.uiOptions.enactors.magnifier.set = function (times, that) {
-		//$(".flc-uiOptions-magnifier .flc-uiOptions-preview-per-setting-frame").contents().find("html").css("transform", "scale(" + times/100 + ")");
+        //$(".flc-uiOptions-magnifier .flc-uiOptions-preview-per-setting-frame").contents().find("html").css("transform", "scale(" + times/100 + ")");
         that.container.css("transform", "scale(" + times/100 + ")");
         that.container.css("-webkit-transform", "scale(" + times/100 + ")");
     };
@@ -32,5 +32,5 @@
             that.set(newModel.value);
         });
     };
-	
+    
 })(jQuery, fluid);

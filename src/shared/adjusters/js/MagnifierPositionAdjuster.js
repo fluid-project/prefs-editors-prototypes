@@ -1,6 +1,6 @@
 (function ($, fluid) {
-	
-	fluid.defaults("fluid.uiOptions.panels.magnifierPosition", {
+    
+    fluid.defaults("fluid.uiOptions.panels.magnifierPosition", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
             "fluid.uiOptions.magnifierPosition": {
@@ -18,7 +18,7 @@
             label: ".flc-uiOptions-magnifierPosition-heading"
         },
         strings: {
-        	magnifierPosition: {
+            magnifierPosition: {
                 expander: {
                     func: "fluid.uiOptions.panels.magnifierPosition.lookupMsg",
                     args: ["{that}.options.parentBundle", "magnifierPosition", "{that}.options.controlValues.magnifierPosition"]
@@ -46,10 +46,10 @@
         },
         markup: {
             label: "<div class=\"fl-adjuster-icons fl-magnifierPosition-uio-icon fl-magnifierPosition-uio-icon-main\"></div>" +
-		    		"<div class=\"fl-adjuster-icons fl-magnifierPosition-uio-icon fl-magnifierPosition-uio-frame\"></div>" +
-		    		"<div class=\"fl-adjuster-icons fl-magnifierPosition-uio-icon fl-magnifierPosition-uio-background\"></div>" +
-            		"<span class=\"fl-hidden-accessible\">%magnifierPosition</span>" +
-            		"<div class=\"fl-crossout\"></div>"
+                    "<div class=\"fl-adjuster-icons fl-magnifierPosition-uio-icon fl-magnifierPosition-uio-frame\"></div>" +
+                    "<div class=\"fl-adjuster-icons fl-magnifierPosition-uio-icon fl-magnifierPosition-uio-background\"></div>" +
+                    "<span class=\"fl-hidden-accessible\">%magnifierPosition</span>" +
+                    "<div class=\"fl-crossout\"></div>"
         },
         invokers: {
             style: {
@@ -61,7 +61,7 @@
         }
     });
 
-	fluid.uiOptions.panels.magnifierPosition.lookupMsg = function (messageResolver, prefix, values) {
+    fluid.uiOptions.panels.magnifierPosition.lookupMsg = function (messageResolver, prefix, values) {
         var messages = [];
         fluid.each(values, function (value, key) {
             var looked = messageResolver.lookup([prefix + "." + value]);
@@ -80,5 +80,5 @@
             label.attr("tooltip", strings[index]);
         });
     };
-	
+    
 })(jQuery, fluid);

@@ -1,6 +1,6 @@
 (function ($, fluid) {
-	
-	fluid.defaults("fluid.uiOptions.panels.magnifierFollows", {
+    
+    fluid.defaults("fluid.uiOptions.panels.magnifierFollows", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
             "fluid.uiOptions.magnifierFollows": {
@@ -12,13 +12,13 @@
             afterRender: "{that}.style"
         },
         selectors: {
-        	magnifierFollowsRow: ".flc-uiOptions-magnifierFollowsRow",
-        	magnifierFollowsLabel: ".flc-uiOptions-magnifierFollows-label",
-        	magnifierFollowsInput: ".flc-uiOptions-magnifierFollowsInput",
+            magnifierFollowsRow: ".flc-uiOptions-magnifierFollowsRow",
+            magnifierFollowsLabel: ".flc-uiOptions-magnifierFollows-label",
+            magnifierFollowsInput: ".flc-uiOptions-magnifierFollowsInput",
             label: ".flc-uiOptions-magnifierFollows-heading"
         },
         strings: {
-        	magnifierFollows: {
+            magnifierFollows: {
                 expander: {
                     func: "fluid.uiOptions.panels.magnifierFollows.lookupMsg",
                     args: ["{that}.options.parentBundle", "magnifierFollows", "{that}.options.controlValues.magnifierFollows"]
@@ -42,14 +42,14 @@
             }
         },
         controlValues: {
-        	magnifierFollows: ["mousecursor", "textcursor", "keyboardfocus"]
+            magnifierFollows: ["mousecursor", "textcursor", "keyboardfocus"]
         },
         markup: {
-            label: 	"<div class=\"fl-adjuster-icons fl-adjuster-icons-sept-12 fl-magnifierFollows-uio-icon\"></div>" +
-            		"<div class=\"fl-adjuster-icons fl-adjuster-icons-sept-12 fl-magnifierFollows-uio-icon-check\"></div>" +
-            		/*"%magnifierFollows" +*/
-            		"<div class=\"fl-magnifierFollows-legend\">%magnifierFollows</div>" +
-            		"<div class=\"fl-crossout\"></div>"
+            label:     "<div class=\"fl-adjuster-icons fl-adjuster-icons-sept-12 fl-magnifierFollows-uio-icon\"></div>" +
+                    "<div class=\"fl-adjuster-icons fl-adjuster-icons-sept-12 fl-magnifierFollows-uio-icon-check\"></div>" +
+                    /*"%magnifierFollows" +*/
+                    "<div class=\"fl-magnifierFollows-legend\">%magnifierFollows</div>" +
+                    "<div class=\"fl-crossout\"></div>"
         },
         invokers: {
             style: {
@@ -61,7 +61,7 @@
         }
     });
 
-	fluid.uiOptions.panels.magnifierFollows.lookupMsg = function (messageResolver, prefix, values) {
+    fluid.uiOptions.panels.magnifierFollows.lookupMsg = function (messageResolver, prefix, values) {
         var messages = [];
         fluid.each(values, function (value, key) {
             var looked = messageResolver.lookup([prefix + "." + value]);
@@ -74,10 +74,10 @@
         fluid.each(labels, function (label, index) {
             label = $(label);
             label.html(fluid.stringTemplate(markup, {
-            	magnifierFollows: strings[index]
+                magnifierFollows: strings[index]
             }));
             label.addClass(style[magnifierFollows[index]]);
         });
     };
-	
+    
 })(jQuery, fluid);

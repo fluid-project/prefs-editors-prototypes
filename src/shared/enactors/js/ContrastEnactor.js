@@ -1,6 +1,6 @@
 (function ($, fluid) {
-	
-	fluid.defaults("fluid.uiOptions.enactors.contrast", {
+    
+    fluid.defaults("fluid.uiOptions.enactors.contrast", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
         preferenceMap: {
             "fluid.uiOptions.contrast": {
@@ -22,16 +22,16 @@
     });
 
     fluid.uiOptions.enactors.contrast.set = function (value, that) {
-    	if(value)
-		{
-    		that.container.addClass("flc-uiOptions-contrast-theme fl-theme-uio-yb fl-theme-yb");
-    		that.container.removeClass("flc-uiOptions-default-theme fl-theme-uio-default");
-		}
-    	else
-		{
-    		that.container.removeClass("flc-uiOptions-contrast-theme fl-theme-uio-yb fl-theme-yb");
-    		that.container.addClass("flc-uiOptions-default-theme fl-theme-uio-default");
-		}
+        if(value)
+        {
+            that.container.addClass("flc-uiOptions-contrast-theme fl-theme-uio-yb fl-theme-yb");
+            that.container.removeClass("flc-uiOptions-default-theme fl-theme-uio-default");
+        }
+        else
+        {
+            that.container.removeClass("flc-uiOptions-contrast-theme fl-theme-uio-yb fl-theme-yb");
+            that.container.addClass("flc-uiOptions-default-theme fl-theme-uio-default");
+        }
     };
 
     fluid.uiOptions.enactors.contrast.finalInit = function (that) {
@@ -39,5 +39,5 @@
             that.set(newModel.value);
         });
     };
-	
+    
 })(jQuery, fluid);
