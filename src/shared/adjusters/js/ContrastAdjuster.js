@@ -31,8 +31,7 @@
 					"tooltip-checked": "{that}.options.strings.tooltipChecked",
 					"tooltip-unchecked": "{that}.options.strings.tooltipUnchecked",
 				}]
-			},
-			"onCreate.init": "fluid.uiOptions.panels.contrast.init"
+			}
 		},
 		selectors: {
             valueCheckbox: ".flc-uiOptions-constrastInput",
@@ -73,19 +72,18 @@
                     	onPreviewLoad: null
                     },
                     listeners: {
-                    	"onReady.bindEventPreviewLoad": {
-							"this": "{that}.container",
-							"method": "ready",
-							"args": "{that}.events.onPreviewLoad.fire"
-						},
-						"onPreviewLoad.setPreviewText": {
-							"this": "{that}.dom.previewText",
-							"method": "text",
-							"args": ["kjsdahfksdfhflksdj"]
-						}
+                    	"onCreate.init": "fluid.uiOptions.preview.init"
                     },
                     selectors: {
                     	previewText: ".flc-uiOptions-preview-per-setting-label"
+                    },
+                    strings: {
+                    	previewText: {
+                    		expander: {
+            					func: "fluid.uiOptions.pmt.lookupMsg",
+            					args: ["{uiOptionsLoader}.msgBundle", "contrastPreviewText"]
+            				}
+                    	}
                     }
                 }
             }
@@ -104,18 +102,14 @@
         }]
 	});
     
-    fluid.uiOptions.panels.contrast.init = function (that) {
-        that.events.afterRender.addListener(function (that) {
-        	// Not very elegant solution
-        	var previewframe = that.preview;
-        	var previewText = that.options.parentBundle.lookup(["contrastPreviewText"]).template;
-        	that.preview.events.onReady.addListener(function () {
-        		previewframe.container.contents().find('body').find('.flc-uiOptions-preview-per-setting-label').text(previewText);
-            });
-        });
-    };
+	fluid.uiOptions.preview.init = function (that) {
+		that.events.onReady.addListener(function () {
+			var p = that.locate("previewText", that.enhancerContainer);
+			p.text(that.options.strings.previewText);
+		});
+	}
 
-    fluid.uiOptions.panels.contrast.setContrastAdjusters = function (contrastAdjuster, flag) {
+	fluid.uiOptions.panels.contrast.setContrastAdjusters = function (contrastAdjuster, flag) {
     	contrastAdjuster[flag ? "show" : "hide"]();
     };
 })(jQuery, fluid);
