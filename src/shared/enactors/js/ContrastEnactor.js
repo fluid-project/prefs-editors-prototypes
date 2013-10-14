@@ -1,15 +1,15 @@
 (function ($, fluid) {
     
-    fluid.defaults("fluid.uiOptions.enactors.contrast", {
+    fluid.defaults("gpii.uiOptions.enactors.contrast", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
         preferenceMap: {
-            "fluid.uiOptions.contrast": {
+            "gpii.uiOptions.contrast": {
                 "model.value": "default"
             }
         },
         invokers: {
             set: {
-                funcName: "fluid.uiOptions.enactors.contrast.set",
+                funcName: "gpii.uiOptions.enactors.contrast.set",
                 args: ["{arguments}.0", "{that}"]
             }
         },
@@ -21,7 +21,7 @@
         }
     });
 
-    fluid.uiOptions.enactors.contrast.set = function (value, that) {
+    gpii.uiOptions.enactors.contrast.set = function (value, that) {
         if(value)
         {
             that.container.addClass("flc-uiOptions-contrast-theme fl-theme-uio-yb fl-theme-yb");
@@ -34,7 +34,7 @@
         }
     };
 
-    fluid.uiOptions.enactors.contrast.finalInit = function (that) {
+    gpii.uiOptions.enactors.contrast.finalInit = function (that) {
         that.applier.modelChanged.addListener("value", function (newModel) {
             that.set(newModel.value);
         });

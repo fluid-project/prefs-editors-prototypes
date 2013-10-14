@@ -6,15 +6,15 @@ var defaultLanguage;
 
     demo.initPMT = function (container, compOpts) {
         uioBuilder = fluid.uiOptions.builder({
-            primarySchema: fluid.uiOptions.pmt.primarySchema,
-            auxiliarySchema: fluid.uiOptions.pmt.auxiliarySchema
+            primarySchema: gpii.uiOptions.pmt.primarySchema,
+            auxiliarySchema: gpii.uiOptions.pmt.auxiliarySchema
         });
         
         /* get browser default lang */
         var language = navigator.userLanguage || navigator.language;
         defaultLanguage = language.substring(0,2).toLowerCase();
 
-        demo.instantiateUIO(container, compOpts, "fluid.uiOptions.pmt", defaultLanguage);
+        demo.instantiateUIO(container, compOpts, "gpii.uiOptions.pmt", defaultLanguage);
     };
     
     demo.instantiateUIO = function (container, compOpts, uioType, language) {

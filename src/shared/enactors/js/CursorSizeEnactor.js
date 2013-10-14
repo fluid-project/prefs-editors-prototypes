@@ -1,15 +1,15 @@
 (function ($, fluid) {
 
-    fluid.defaults("fluid.uiOptions.enactors.cursorSize", {
+    fluid.defaults("gpii.uiOptions.enactors.cursorSize", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
         preferenceMap: {
-            "fluid.uiOptions.cursorSize": {
+            "gpii.uiOptions.cursorSize": {
                 "model.value": "default"
             }
         },
         invokers: {
             set: {
-                funcName: "fluid.uiOptions.enactors.cursorSize.set",
+                funcName: "gpii.uiOptions.enactors.cursorSize.set",
                 args: ["{arguments}.0", "{that}"]
             }
         },
@@ -21,13 +21,13 @@
         }
     });
 
-    fluid.uiOptions.enactors.cursorSize.set = function (times, that) {
+    gpii.uiOptions.enactors.cursorSize.set = function (times, that) {
         that.container.find(".flc-uiOptions-preview-per-setting-cursor1").css("font-size", times + "em");
         that.container.find(".flc-uiOptions-preview-per-setting-cursor2").css("font-size", times + "em");
         that.container.find(".flc-uiOptions-preview-per-setting-cursor3").css("font-size", times + "em");
     };
 
-    fluid.uiOptions.enactors.cursorSize.finalInit = function (that) {
+    gpii.uiOptions.enactors.cursorSize.finalInit = function (that) {
         that.applier.modelChanged.addListener("value", function (newModel) {
             that.set(newModel.value);
         });

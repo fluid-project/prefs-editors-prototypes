@@ -1,9 +1,9 @@
 (function ($, fluid) {
     
-    fluid.defaults("fluid.uiOptions.panels.magnifierPosition", {
+    fluid.defaults("gpii.uiOptions.panels.magnifierPosition", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
-            "fluid.uiOptions.magnifierPosition": {
+            "gpii.uiOptions.magnifierPosition": {
                 "model.value": "",
                 "controlValues.magnifierPosition": "enum"
             }
@@ -20,7 +20,7 @@
         strings: {
             magnifierPosition: {
                 expander: {
-                    func: "fluid.uiOptions.panels.magnifierPosition.lookupMsg",
+                    func: "gpii.uiOptions.panels.magnifierPosition.lookupMsg",
                     args: ["{that}.options.parentBundle", "magnifierPosition", "{that}.options.controlValues.magnifierPosition"]
                 }
             }
@@ -53,7 +53,7 @@
         },
         invokers: {
             style: {
-                funcName: "fluid.uiOptions.panels.magnifierPosition.style",
+                funcName: "gpii.uiOptions.panels.magnifierPosition.style",
                 args: ["{that}.dom.magnifierPositionLabel", "{that}.options.strings.magnifierPosition",
                     "{that}.options.markup.label", "{that}.options.controlValues.magnifierPosition",
                     "{that}.options.classnameMap.magnifierPosition"]
@@ -61,7 +61,7 @@
         }
     });
 
-    fluid.uiOptions.panels.magnifierPosition.lookupMsg = function (messageResolver, prefix, values) {
+    gpii.uiOptions.panels.magnifierPosition.lookupMsg = function (messageResolver, prefix, values) {
         var messages = [];
         fluid.each(values, function (value, key) {
             var looked = messageResolver.lookup([prefix + "." + value]);
@@ -70,7 +70,7 @@
         return messages;
     };
 
-    fluid.uiOptions.panels.magnifierPosition.style = function (labels, strings, markup, magnifierPosition, style) {
+    gpii.uiOptions.panels.magnifierPosition.style = function (labels, strings, markup, magnifierPosition, style) {
         fluid.each(labels, function (label, index) {
             label = $(label);
             label.html(fluid.stringTemplate(markup, {

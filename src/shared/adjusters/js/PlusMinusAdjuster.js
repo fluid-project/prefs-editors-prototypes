@@ -1,6 +1,6 @@
 (function ($, fluid) {
     
-    fluid.uiOptions.panels.updatePlusMinusAdjusterUI = function (that) {
+	gpii.uiOptions.panels.updatePlusMinusAdjusterUI = function (that) {
         // append metric unit if there is one
         if(that.options.metricUnit)
         {
@@ -21,7 +21,7 @@
         }
     };
     
-    fluid.uiOptions.panels.plusMinusAdjusterFinalInit = function (that) {
+    gpii.uiOptions.panels.plusMinusAdjusterFinalInit = function (that) {
         that.applier.modelChanged.addListener("value", function(newValue)
         {
             if(newValue.value == that.options.range.min)

@@ -1,9 +1,9 @@
 (function ($, fluid) {
     
-    fluid.defaults("fluid.uiOptions.panels.cursorSize", {
+    fluid.defaults("gpii.uiOptions.panels.cursorSize", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
-            "fluid.uiOptions.cursorSize": {
+            "gpii.uiOptions.cursorSize": {
                 "model.value": "default",
                 "range.min": "minimum",
                 "range.max": "maximum",

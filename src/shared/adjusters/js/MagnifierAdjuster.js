@@ -1,9 +1,9 @@
 (function ($, fluid) {
     
-    fluid.defaults("fluid.uiOptions.panels.magnifier", {
+    fluid.defaults("gpii.uiOptions.panels.magnifier", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
-            "fluid.uiOptions.magnifier": {
+            "gpii.uiOptions.magnifier": {
                 "model.value": "default",
                 "range.min": "minimum",
                 "range.max": "maximum",
@@ -48,7 +48,7 @@
         strings: {
             magnifierOFF: {
                 expander: {
-                    func: "fluid.uiOptions.pmt.lookupMsg",
+                    func: "gpii.uiOptions.pmt.lookupMsg",
                     args: ["{uiOptionsLoader}.msgBundle", "magnifierOFF"]
                 }
             }
@@ -59,11 +59,11 @@
                 "method": "val",
                 "args": ["{that}.options.strings.magnifierOFF"]
             },
-            "onCreate.init": "fluid.uiOptions.panels.plusMinusAdjusterFinalInit"
+            "onCreate.init": "gpii.uiOptions.panels.plusMinusAdjusterFinalInit"
         },
         invokers: {
             updatePlusMinusAdjusterUI: {
-                funcName: "fluid.uiOptions.panels.updatePlusMinusAdjusterUI",
+                funcName: "gpii.uiOptions.panels.updatePlusMinusAdjusterUI",
                 args: ["{that}"]
             }
         },

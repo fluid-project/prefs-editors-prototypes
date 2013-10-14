@@ -1,9 +1,9 @@
 (function ($, fluid) {
     
-    fluid.defaults("fluid.uiOptions.panels.magnifierFollows", {
+    fluid.defaults("gpii.uiOptions.panels.magnifierFollows", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
-            "fluid.uiOptions.magnifierFollows": {
+            "gpii.uiOptions.magnifierFollows": {
                 "model.value": "",
                 "controlValues.magnifierFollows": "enum"
             }
@@ -20,7 +20,7 @@
         strings: {
             magnifierFollows: {
                 expander: {
-                    func: "fluid.uiOptions.panels.magnifierFollows.lookupMsg",
+                    func: "gpii.uiOptions.panels.magnifierFollows.lookupMsg",
                     args: ["{that}.options.parentBundle", "magnifierFollows", "{that}.options.controlValues.magnifierFollows"]
                 }
             }
@@ -53,7 +53,7 @@
         },
         invokers: {
             style: {
-                funcName: "fluid.uiOptions.panels.magnifierFollows.style",
+                funcName: "gpii.uiOptions.panels.magnifierFollows.style",
                 args: ["{that}.dom.magnifierFollowsLabel", "{that}.options.strings.magnifierFollows",
                     "{that}.options.markup.label", "{that}.options.controlValues.magnifierFollows",
                     "{that}.options.classnameMap.magnifierFollows"]
@@ -61,7 +61,7 @@
         }
     });
 
-    fluid.uiOptions.panels.magnifierFollows.lookupMsg = function (messageResolver, prefix, values) {
+    gpii.uiOptions.panels.magnifierFollows.lookupMsg = function (messageResolver, prefix, values) {
         var messages = [];
         fluid.each(values, function (value, key) {
             var looked = messageResolver.lookup([prefix + "." + value]);
@@ -70,7 +70,7 @@
         return messages;
     };
 
-    fluid.uiOptions.panels.magnifierFollows.style = function (labels, strings, markup, magnifierFollows, style) {
+    gpii.uiOptions.panels.magnifierFollows.style = function (labels, strings, markup, magnifierFollows, style) {
         fluid.each(labels, function (label, index) {
             label = $(label);
             label.html(fluid.stringTemplate(markup, {

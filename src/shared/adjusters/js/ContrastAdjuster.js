@@ -1,9 +1,9 @@
 (function ($, fluid) {
     
-    fluid.defaults("fluid.uiOptions.panels.contrast", {
+    fluid.defaults("gpii.uiOptions.panels.contrast", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
-            "fluid.uiOptions.contrast": {
+            "gpii.uiOptions.contrast": {
                 "model.value": "default"
             }
         },
@@ -21,7 +21,7 @@
                 "method": "slideToggle"
             },
             "afterRender.setContrastAdjusters": {
-                listener: "fluid.uiOptions.panels.contrast.setContrastAdjusters",
+                listener: "gpii.uiOptions.panels.contrast.setContrastAdjusters",
                 args: ["{that}.dom.contrastAdjusters", "{that}.model.value"]
             },
             "afterRender.setATTRaddToMyPreferencesLabel": {
@@ -50,13 +50,13 @@
         strings: {
             tooltipChecked: {
                 expander: {
-                    func: "fluid.uiOptions.pmt.lookupMsg",
+                    func: "gpii.uiOptions.pmt.lookupMsg",
                     args: ["{uiOptionsLoader}.msgBundle", "tooltipChecked"]
                 }
             },
             tooltipUnchecked: {
                 expander: {
-                    func: "fluid.uiOptions.pmt.lookupMsg",
+                    func: "gpii.uiOptions.pmt.lookupMsg",
                     args: ["{uiOptionsLoader}.msgBundle", "tooltipUnchecked"]
                 }
             }
@@ -80,7 +80,7 @@
                                 strings: {
                                     previewText: {
                                         expander: {
-                                            func: "fluid.uiOptions.pmt.lookupMsg",
+                                            func: "gpii.uiOptions.pmt.lookupMsg",
                                             args: ["{uiOptionsLoader}.msgBundle", "contrastPreviewText"]
                                         }
                                     }
@@ -112,7 +112,7 @@
         }]
     });
     
-    fluid.uiOptions.panels.contrast.setContrastAdjusters = function (contrastAdjuster, flag) {
+    gpii.uiOptions.panels.contrast.setContrastAdjusters = function (contrastAdjuster, flag) {
         contrastAdjuster[flag ? "show" : "hide"]();
     };
 })(jQuery, fluid);

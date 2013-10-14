@@ -1,9 +1,9 @@
 (function ($, fluid) {
     
-    fluid.defaults("fluid.uiOptions.panels.textSize", {
+    fluid.defaults("gpii.uiOptions.panels.textSize", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
-            "fluid.uiOptions.textSize": {
+            "gpii.uiOptions.textSize": {
                 "model.value": "default",
                 "range.min": "minimum",
                 "range.max": "maximum",
@@ -49,11 +49,11 @@
             valueText: "${value}"
         },
         listeners: {
-            "onCreate.init": "fluid.uiOptions.panels.plusMinusAdjusterFinalInit"
+            "onCreate.init": "gpii.uiOptions.panels.plusMinusAdjusterFinalInit"
         },
         invokers: {
             updatePlusMinusAdjusterUI: {
-                funcName: "fluid.uiOptions.panels.updatePlusMinusAdjusterUI",
+                funcName: "gpii.uiOptions.panels.updatePlusMinusAdjusterUI",
                 args: ["{that}"]
             }
         },

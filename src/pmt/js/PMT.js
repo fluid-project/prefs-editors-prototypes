@@ -4,7 +4,7 @@
 
 //perhaps a gpii namespace should be used
 (function ($, fluid) {
-    fluid.defaults("fluid.uiOptions.pmt", {
+    fluid.defaults("gpii.uiOptions.pmt", {
         gradeNames: ["fluid.uiOptions.fullNoPreview", "autoInit"],
         uiOptions: {
             events: {
@@ -115,7 +115,7 @@
             },
             invokers: {
                 toggleIncreaseSizeExtraAdjusters: {
-                    "funcName": "fluid.uiOptions.pmt.toggleIncreaseSizeExtraAdjusters",
+                    "funcName": "gpii.uiOptions.pmt.toggleIncreaseSizeExtraAdjusters",
                     "args": [
                              "{that}.dom.increaseSizeExtraAdjusters",
                              "{that}.events.onShowExtraAdjuster.fire",
@@ -123,13 +123,13 @@
                              ]
                 },
                 selectLanguage: {
-                    "funcName": "fluid.uiOptions.pmt.selectLanguage",
+                    "funcName": "gpii.uiOptions.pmt.selectLanguage",
                     "args": [
                              "{that}.dom.languageSelect"
                              ]
                 },
                 setDefaultLanguage: {
-                    "funcName": "fluid.uiOptions.pmt.setDefaultLanguage",
+                    "funcName": "gpii.uiOptions.pmt.setDefaultLanguage",
                     "args": [
                              "{that}.dom.languageSelect"
                              ]
@@ -151,55 +151,55 @@
             strings: {
                 increaseSizeHeader: {
                     expander: {
-                        func: "fluid.uiOptions.pmt.lookupMsg",
+                        func: "gpii.uiOptions.pmt.lookupMsg",
                         args: ["{uiOptionsLoader}.msgBundle", "increaseSizeHeader"]
                     }
                 },
                 tooltipChecked: {
                     expander: {
-                        func: "fluid.uiOptions.pmt.lookupMsg",
+                        func: "gpii.uiOptions.pmt.lookupMsg",
                         args: ["{uiOptionsLoader}.msgBundle", "tooltipChecked"]
                     }
                 },
                 tooltipUnchecked: {
                     expander: {
-                        func: "fluid.uiOptions.pmt.lookupMsg",
+                        func: "gpii.uiOptions.pmt.lookupMsg",
                         args: ["{uiOptionsLoader}.msgBundle", "tooltipUnchecked"]
                     }
                 },
                 languageLabel: {
                     expander: {
-                        func: "fluid.uiOptions.pmt.lookupMsg",
+                        func: "gpii.uiOptions.pmt.lookupMsg",
                         args: ["{uiOptionsLoader}.msgBundle", "languageLabel"]
                     }
                 },
                 saveButtonText: {
                     expander: {
-                        func: "fluid.uiOptions.pmt.lookupMsg",
+                        func: "gpii.uiOptions.pmt.lookupMsg",
                         args: ["{uiOptionsLoader}.msgBundle", "saveButtonText"]
                     }
                 },
                 resetButtonText: {
                     expander: {
-                        func: "fluid.uiOptions.pmt.lookupMsg",
+                        func: "gpii.uiOptions.pmt.lookupMsg",
                         args: ["{uiOptionsLoader}.msgBundle", "resetButtonText"]
                     }
                 },
                 cancelButtonText: {
                     expander: {
-                        func: "fluid.uiOptions.pmt.lookupMsg",
+                        func: "gpii.uiOptions.pmt.lookupMsg",
                         args: ["{uiOptionsLoader}.msgBundle", "cancelButtonText"]
                     }
                 },
                 more: {
                     expander: {
-                        func: "fluid.uiOptions.pmt.lookupMsg",
+                        func: "gpii.uiOptions.pmt.lookupMsg",
                         args: ["{uiOptionsLoader}.msgBundle", "more"]
                     }
                 },
                 less: {
                     expander: {
-                        func: "fluid.uiOptions.pmt.lookupMsg",
+                        func: "gpii.uiOptions.pmt.lookupMsg",
                         args: ["{uiOptionsLoader}.msgBundle", "less"]
                     }
                 }
@@ -207,7 +207,7 @@
         }
     });
 
-    fluid.uiOptions.pmt.toggleIncreaseSizeExtraAdjusters = function (elm, showEvent, hideEvent) {
+    gpii.uiOptions.pmt.toggleIncreaseSizeExtraAdjusters = function (elm, showEvent, hideEvent) {
         if (elm.is(":visible")) {
             hideEvent();
         } else {
@@ -215,15 +215,15 @@
         }
     };
 
-    fluid.uiOptions.pmt.selectLanguage = function (language) {
-        demo.instantiateUIO("#myUIOptions", undefined, "fluid.uiOptions.pmt", language.val());
+    gpii.uiOptions.pmt.selectLanguage = function (language) {
+        demo.instantiateUIO("#myUIOptions", undefined, "gpii.uiOptions.pmt", language.val());
     };
 
-    fluid.uiOptions.pmt.setDefaultLanguage = function (language) {
+    gpii.uiOptions.pmt.setDefaultLanguage = function (language) {
         language.val(defaultLanguage).change();
     };
 
-    fluid.uiOptions.pmt.lookupMsg = function (messageResolver, value) {
+    gpii.uiOptions.pmt.lookupMsg = function (messageResolver, value) {
         var looked = messageResolver.lookup([value]);
         return looked ? looked.template : looked;
     };
