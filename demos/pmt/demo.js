@@ -11,11 +11,8 @@ var defaultLanguage;
         });
         
         /* get browser default lang */
-        if (navigator.userLanguage) {
-            defaultLanguage = navigator.userLanguage.substring(0,2).toLowerCase();
-        } else {
-            defaultLanguage = navigator.language.substring(0,2).toLowerCase();
-        }
+        var language = navigator.userLanguage || navigator.language;
+        defaultLanguage = language.substring(0,2).toLowerCase();
 
         demo.instantiateUIO(container, compOpts, "fluid.uiOptions.pmt", defaultLanguage);
     };
