@@ -3,7 +3,7 @@
 	fluid.defaults("gpii.uiOptions.enactors.textSize", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
         preferenceMap: {
-            "gpii.uiOptions.textSize": {
+            "http://registry.gpii.org/common/fontSize": {
                 "model.value": "default"
             }
         },

@@ -3,38 +3,38 @@
 
     gpii.uiOptions.pmt.primarySchema = {
 
-        "gpii.uiOptions.textSize": {
+        "http://registry.gpii.org/common/fontSize": {
             "type": "number",
             "default": 12,
             "minimum": 1,
             "maximum": 1000,
             "divisibleBy": 1
         },
-        "gpii.uiOptions.cursorSize": {
+        "http://registry.gpii.org/common/cursorSize": {
             "type": "number",
             "default": 1,
             "minimum": 1,
             "maximum": 5,
             "divisibleBy": 0.2
         },
-        "gpii.uiOptions.magnifier": {
+        "http://registry.gpii.org/common/magnification": {
             "type": "number",
             "default": 100,
             "minimum": 100,
             "maximum": 10000,
             "divisibleBy": 50
         },
-        "gpii.uiOptions.magnifierPosition": {
+        "http://registry.gpii.org/common/magnificationPosition": {
             "type": "string",
             "default": "",
             "enum": ["lens", "dockedleft", "dockedtop", "fullscreen", "dockedright", "dockedbottom"]
         },
-        "gpii.uiOptions.magnifierFollows": {
+        "http://registry.gpii.org/common/tracking": {
             "type": "string",
             "default": "",
             "enum": ["mousecursor", "textcursor", "keyboardfocus"]
         },
-        "gpii.uiOptions.contrast": {
+        "http://registry.gpii.org/common/display.screenEnhancement.highContrast": {
             "type": "boolean",
             "default": false
         }
@@ -50,7 +50,7 @@
 
             // The preference-specific information:
             "textSize": {
-                "type": "gpii.uiOptions.textSize",
+                "type": "http://registry.gpii.org/common/fontSize",
                 "enactor": {
                     "type": "gpii.uiOptions.enactors.textSize"
                 },
@@ -62,7 +62,7 @@
                 }
             },
             "cursorSize": {
-                "type": "gpii.uiOptions.cursorSize",
+                "type": "http://registry.gpii.org/common/cursorSize",
                 "enactor": {
                     "type": "gpii.uiOptions.enactors.cursorSize"
                 },
@@ -74,7 +74,7 @@
                 }
             },
             "magnifier": {
-                "type": "gpii.uiOptions.magnifier",
+                "type": "http://registry.gpii.org/common/magnification",
                 "enactor": {
                     "type": "gpii.uiOptions.enactors.magnifier"
                 },
@@ -86,7 +86,7 @@
                 }
             },
             "magnifierPosition": {
-                "type": "gpii.uiOptions.magnifierPosition",
+                "type": "http://registry.gpii.org/common/magnificationPosition",
                 "classes": {
                     "lens": "fl-magnifierPosition-uio-lens fl-magnifierPosition-uio-icon-label",
                     "fullscreen": "fl-magnifierPosition-uio-fullscreen fl-magnifierPosition-uio-icon-label",
@@ -105,7 +105,7 @@
                 }
             },
             "magnifierFollows": {
-                "type": "gpii.uiOptions.magnifierFollows",
+                "type": "http://registry.gpii.org/common/tracking",
                 "classes": {
                     "mousecursor": "fl-magnifierFollows-uio-mouseCursor fl-magnifierFollows-uio-icon-label",
                     "textcursor": "fl-magnifierFollows-uio-textCursor fl-magnifierFollows-uio-icon-label",
@@ -120,7 +120,7 @@
                 }
             },
             "contrast": {
-                "type": "gpii.uiOptions.contrast",
+                "type": "http://registry.gpii.org/common/display.screenEnhancement.highContrast",
                 "enactor": {
                     "type": "gpii.uiOptions.enactors.contrast"
                 },

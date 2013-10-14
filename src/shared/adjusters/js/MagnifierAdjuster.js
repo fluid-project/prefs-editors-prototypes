@@ -3,7 +3,7 @@
     fluid.defaults("gpii.uiOptions.panels.magnifier", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
-            "gpii.uiOptions.magnifier": {
+            "http://registry.gpii.org/common/magnification": {
                 "model.value": "default",
                 "range.min": "minimum",
                 "range.max": "maximum",

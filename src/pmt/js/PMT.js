@@ -15,6 +15,9 @@
                 onSelectLanguage: null
             },
             listeners: {
+            	onSave: {
+            		listener: "console.log"
+            	},
                 onReady: {
                     listener: "{that}.setDefaultLanguage"
                 },

@@ -3,7 +3,7 @@
     fluid.defaults("gpii.uiOptions.enactors.magnifier", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
         preferenceMap: {
-            "gpii.uiOptions.magnifier": {
+            "http://registry.gpii.org/common/magnification": {
                 "model.value": "default"
             }
         },

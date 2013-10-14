@@ -3,7 +3,7 @@
     fluid.defaults("gpii.uiOptions.enactors.cursorSize", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
         preferenceMap: {
-            "gpii.uiOptions.cursorSize": {
+            "http://registry.gpii.org/common/cursorSize": {
                 "model.value": "default"
             }
         },

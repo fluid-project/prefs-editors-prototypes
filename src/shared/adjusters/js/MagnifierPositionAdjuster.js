@@ -3,7 +3,7 @@
     fluid.defaults("gpii.uiOptions.panels.magnifierPosition", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
-            "gpii.uiOptions.magnifierPosition": {
+            "http://registry.gpii.org/common/magnificationPosition": {
                 "model.value": "",
                 "controlValues.magnifierPosition": "enum"
             }

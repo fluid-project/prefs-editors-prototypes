@@ -3,7 +3,7 @@
     fluid.defaults("gpii.uiOptions.panels.textSize", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
-            "gpii.uiOptions.textSize": {
+            "http://registry.gpii.org/common/fontSize": {
                 "model.value": "default",
                 "range.min": "minimum",
                 "range.max": "maximum",

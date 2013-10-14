@@ -3,7 +3,7 @@
     fluid.defaults("gpii.uiOptions.panels.cursorSize", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
-            "gpii.uiOptions.cursorSize": {
+            "http://registry.gpii.org/common/cursorSize": {
                 "model.value": "default",
                 "range.min": "minimum",
                 "range.max": "maximum",

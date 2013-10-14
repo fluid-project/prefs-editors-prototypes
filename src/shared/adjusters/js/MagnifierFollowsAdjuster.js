@@ -3,7 +3,7 @@
     fluid.defaults("gpii.uiOptions.panels.magnifierFollows", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
-            "gpii.uiOptions.magnifierFollows": {
+            "http://registry.gpii.org/common/tracking": {
                 "model.value": "",
                 "controlValues.magnifierFollows": "enum"
             }

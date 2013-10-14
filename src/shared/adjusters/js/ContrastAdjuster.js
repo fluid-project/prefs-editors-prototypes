@@ -3,7 +3,7 @@
     fluid.defaults("gpii.uiOptions.panels.contrast", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
-            "gpii.uiOptions.contrast": {
+            "http://registry.gpii.org/common/display.screenEnhancement.highContrast": {
                 "model.value": "default"
             }
         },
