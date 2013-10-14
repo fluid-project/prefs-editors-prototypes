@@ -8,36 +8,35 @@
             }
         },
         invokers: {
-            set: {
-                funcName: "gpii.uiOptions.enactors.contrast.set",
-                args: ["{arguments}.0", "{that}"]
+            toggleDefaultTheme: {
+            	"this": "{that}.container",
+                "method": "toggleClass",
+                "args": ["flc-uiOptions-default-theme fl-theme-uio-default", "!{that}.model.value"]
+            },
+            toggleContrastTheme: {
+            	"this": "{that}.container",
+                "method": "toggleClass",
+                "args": ["flc-uiOptions-contrast-theme fl-theme-uio-yb fl-theme-yb", "{that}.model.value"]
             }
         },
         listeners: {
-            onCreate: {
-                listener: "{that}.set",
+            "onCreate.toggleDefaultTheme": {
+                listener: "{that}.toggleDefaultTheme",
+                args: "!{that}.model.value"
+            },
+            "onCreate.toggleContrastTheme": {
+                listener: "{that}.toggleContrastTheme",
                 args: "{that}.model.value"
+            },
+            "onCreate.init": {
+                listener: "{that}.applier.modelChanged.addListener",
+                args: ["value", "{that}.toggleDefaultTheme"]
+            },
+            "onCreate.init": {
+                listener: "{that}.applier.modelChanged.addListener",
+                args: ["value", "{that}.toggleContrastTheme"]
             }
+
         }
     });
-
-    gpii.uiOptions.enactors.contrast.set = function (value, that) {
-        if(value)
-        {
-            that.container.addClass("flc-uiOptions-contrast-theme fl-theme-uio-yb fl-theme-yb");
-            that.container.removeClass("flc-uiOptions-default-theme fl-theme-uio-default");
-        }
-        else
-        {
-            that.container.removeClass("flc-uiOptions-contrast-theme fl-theme-uio-yb fl-theme-yb");
-            that.container.addClass("flc-uiOptions-default-theme fl-theme-uio-default");
-        }
-    };
-
-    gpii.uiOptions.enactors.contrast.finalInit = function (that) {
-        that.applier.modelChanged.addListener("value", function (newModel) {
-            that.set(newModel.value);
-        });
-    };
-    
 })(jQuery, fluid);
