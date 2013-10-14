@@ -1,7 +1,7 @@
 (function ($, fluid) {
     
     fluid.defaults("gpii.uiOptions.panels.contrast", {
-        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        gradeNames: ["fluid.uiOptions.panels", "gpii.uiOptions.pmt.previewPerSettingEnhanced", "autoInit"],
         preferenceMap: {
             "http://registry.gpii.org/common/display.screenEnhancement.highContrast": {
                 "model.value": "default"
@@ -99,8 +99,6 @@
             }
         },
         
-        outerPreviewEnhancerOptions: "{originalEnhancerOptions}.options.originalUserOptions",
-        emptyComponentType: "fluid.emptySubcomponent",
         distributeOptions: [{
             source: "{that}.options.outerPreviewEnhancerOptions",
             removeSource: true,

@@ -227,4 +227,9 @@
         var looked = messageResolver.lookup([value]);
         return looked ? looked.template : looked;
     };
+    
+    fluid.defaults("gpii.uiOptions.pmt.previewPerSettingEnhanced", {
+        outerPreviewEnhancerOptions: "{originalEnhancerOptions}.options.originalUserOptions",
+        emptyComponentType: "fluid.emptySubcomponent",
+    });
 })(jQuery, fluid);
