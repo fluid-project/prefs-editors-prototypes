@@ -1,9 +1,11 @@
+/*global defaultLanguage:true, demo:true, fluid, jQuery, navigator, uioBuilder:true, gpii*/
+/*jslint white: true, funcinvoke: true, undef: true, newcap: true, regexp: true, browser: true, forin: true, continue: true, maxerr: 100, indent: 4 */
+
 var demo = demo || {};
 var uioBuilder;
 var defaultLanguage;
 
 (function ($, fluid) {
-
     demo.initPMT = function (container, compOpts) {
         uioBuilder = fluid.uiOptions.builder({
             primarySchema: gpii.uiOptions.pmt.primarySchema,
@@ -12,7 +14,7 @@ var defaultLanguage;
         
         /* get browser default lang */
         var language = navigator.userLanguage || navigator.language;
-        defaultLanguage = language.substring(0,2).toLowerCase();
+        defaultLanguage = language.substring(0, 2).toLowerCase();
 
         demo.instantiateUIO(container, compOpts, "gpii.uiOptions.pmt", defaultLanguage);
     };

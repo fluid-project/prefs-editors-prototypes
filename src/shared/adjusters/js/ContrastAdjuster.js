@@ -1,3 +1,6 @@
+/*global fluid, jQuery, gpii*/
+/*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
+
 (function ($, fluid) {
     
     fluid.defaults("gpii.uiOptions.panels.contrast", {
@@ -29,7 +32,7 @@
                 "method": "attr",
                 "args": [{
                     "tooltip-checked": "{that}.options.strings.tooltipChecked",
-                    "tooltip-unchecked": "{that}.options.strings.tooltipUnchecked",
+                    "tooltip-unchecked": "{that}.options.strings.tooltipUnchecked"
                 }]
             }
         },
@@ -87,7 +90,7 @@
                                 },
                                 listeners: {
                                     "onCreate.setText": {
-                                    	"this": "{that}.dom.previewText",
+                                        "this": "{that}.dom.previewText",
                                         "method": "text",
                                         "args": ["{that}.options.strings.previewText"]
                                     }

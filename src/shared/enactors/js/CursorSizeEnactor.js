@@ -1,3 +1,6 @@
+/*global fluid, jQuery, gpii*/
+/*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
+
 (function ($, fluid) {
 
     fluid.defaults("gpii.uiOptions.enactors.cursorSize", {
@@ -8,7 +11,7 @@
             }
         },
         selectors: {
-        	cursorDiv: ".flc-uiOptions-preview-per-setting-cursor-div"
+            cursorDiv: ".flc-uiOptions-preview-per-setting-cursor-div"
         },
         invokers: {
             set: {
@@ -25,7 +28,7 @@
     });
 
     gpii.uiOptions.enactors.cursorSize.set = function (times, that) {
-    	that.locate("cursorDiv").css("font-size", times + "em");
+        that.locate("cursorDiv").css("font-size", times + "em");
     };
 
 })(jQuery, fluid);

@@ -2,7 +2,9 @@
  * Insert copyright
  */
 
-//perhaps a gpii namespace should be used
+/*global defaultLanguage, demo, fluid, jQuery, gpii*/
+/*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
+
 (function ($, fluid) {
     fluid.defaults("gpii.uiOptions.pmt", {
         gradeNames: ["fluid.uiOptions.fullNoPreview", "autoInit"],
@@ -15,9 +17,9 @@
                 onSelectLanguage: null
             },
             listeners: {
-            	onSave: {
-            		listener: "console.log"
-            	},
+                onSave: {
+                    listener: "console.log"
+                },
                 onReady: {
                     listener: "{that}.setDefaultLanguage"
                 },
@@ -41,7 +43,7 @@
                     "method": "attr",
                     "args": [{
                         "tooltip-checked": "{that}.options.strings.tooltipChecked",
-                        "tooltip-unchecked": "{that}.options.strings.tooltipUnchecked",
+                        "tooltip-unchecked": "{that}.options.strings.tooltipUnchecked"
                     }]
                 },
                 "onReady.setTextlanguageLabel": {
@@ -117,22 +119,22 @@
                 toggleIncreaseSizeExtraAdjusters: {
                     "funcName": "gpii.uiOptions.pmt.toggleIncreaseSizeExtraAdjusters",
                     "args": [
-                             "{that}.dom.increaseSizeExtraAdjusters",
-                             "{that}.events.onShowExtraAdjuster.fire",
-                             "{that}.events.onHideExtraAdjuster.fire"
-                             ]
+                        "{that}.dom.increaseSizeExtraAdjusters",
+                        "{that}.events.onShowExtraAdjuster.fire",
+                        "{that}.events.onHideExtraAdjuster.fire"
+                    ]
                 },
                 selectLanguage: {
                     "funcName": "gpii.uiOptions.pmt.selectLanguage",
                     "args": [
-                             "{that}.dom.languageSelect"
-                             ]
+                        "{that}.dom.languageSelect"
+                    ]
                 },
                 setDefaultLanguage: {
                     "funcName": "gpii.uiOptions.pmt.setDefaultLanguage",
                     "args": [
-                             "{that}.dom.languageSelect"
-                             ]
+                        "{that}.dom.languageSelect"
+                    ]
                 }
             },
             selectors: {
@@ -230,6 +232,6 @@
     
     fluid.defaults("gpii.uiOptions.pmt.previewPerSettingEnhanced", {
         outerPreviewEnhancerOptions: "{originalEnhancerOptions}.options.originalUserOptions",
-        emptyComponentType: "fluid.emptySubcomponent",
+        emptyComponentType: "fluid.emptySubcomponent"
     });
 })(jQuery, fluid);

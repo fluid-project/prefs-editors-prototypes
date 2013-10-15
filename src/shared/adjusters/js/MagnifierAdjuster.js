@@ -1,3 +1,6 @@
+/*global fluid, jQuery*/
+/*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
+
 (function ($, fluid) {
     
     fluid.defaults("gpii.uiOptions.panels.magnifier", {
