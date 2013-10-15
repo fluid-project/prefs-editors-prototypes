@@ -20,7 +20,7 @@
             "onCreate.init": {
                 listener: "{that}.applier.modelChanged.addListener",
                 args: ["value", "{that}.set"]
-            },
+            }
         }
     });
 

@@ -1,7 +1,7 @@
 (function ($, fluid) {
     
 	fluid.defaults("gpii.uiOptions.enactors.textSize", {
-        gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
+        gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "fluid.uiOptions.enactors.textSize", "autoInit"],
         preferenceMap: {
             "http://registry.gpii.org/common/fontSize": {
                 "model.value": "default"
@@ -14,21 +14,15 @@
             }
         },
         listeners: {
-            onCreate: {
-                listener: "{that}.set",
-                args: "{that}.model.value"
+        	"onCreate.init": {
+                listener: "{that}.applier.modelChanged.addListener",
+                args: ["value", "{that}.set"]
             }
         }
     });
 
 	gpii.uiOptions.enactors.textSize.set = function (sizeInPt, that) {
         that.container.css("font-size", sizeInPt + "pt");
-    };
-    
-    gpii.uiOptions.enactors.textSize.finalInit = function (that) {
-        that.applier.modelChanged.addListener("value", function (newModel) {
-            that.set(newModel.value);
-        });
     };
     
 })(jQuery, fluid);
