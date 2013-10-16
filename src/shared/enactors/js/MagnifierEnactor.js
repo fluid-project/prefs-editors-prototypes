@@ -35,7 +35,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "onCreate.init": {
                 listener: "{that}.applier.modelChanged.addListener",
                 args: ["value", "{that}.set"]
-            },
+            }
         }
     });
 

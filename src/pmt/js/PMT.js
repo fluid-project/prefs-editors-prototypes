@@ -10,7 +10,7 @@ You may obtain a copy of the License at
 https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
-/*global demo, fluid, jQuery, gpii*/
+/*global fluid, gpii, jQuery, navigator*/
 /*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
 
 (function ($, fluid) {
@@ -21,7 +21,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 onToggleIncreaseSizeAdjusters: null,
                 onToggleIncreaseSizeExtraAdjusters: null,
                 onShowExtraAdjuster: null,
-                onHideExtraAdjuster: null,
+                onHideExtraAdjuster: null
             },
             listeners: {
                 onSave: {
@@ -125,7 +125,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 saveButton: ".flc-uiOptions-save",
                 resetButton: ".flc-uiOptions-reset",
                 cancelButton: ".flc-uiOptions-cancel",
-                moreLess: ".moreLess",
+                moreLess: ".moreLess"
             },
             strings: {
                 increaseSizeHeader: {
@@ -188,10 +188,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     };
 
-    gpii.uiOptions.getDefaultLanguage = function() {
-    	var language = navigator.userLanguage || navigator.language;
-        defaultLanguage = language.substring(0, 2).toLowerCase();
-        return defaultLanguage; 
+    gpii.uiOptions.getDefaultLanguage = function () {
+        return (navigator.userLanguage || navigator.language).substring(0, 2).toLowerCase(); 
     };
     
     gpii.uiOptions.pmt.lookupMsg = function (messageResolver, value) {
