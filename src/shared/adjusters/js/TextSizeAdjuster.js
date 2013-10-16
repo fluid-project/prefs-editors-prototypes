@@ -1,3 +1,14 @@
+/*
+ * !!!!! DEPRECATED !!!!!
+ * 
+ * Will use Alex's version of textFieldStepper as in,
+ * 
+ * https://github.com/radmanovi4/prefsEditors/blob/divide-and-conquer/src/shared/adjusters/js/textfieldStepper.js
+ *
+ * This file will be removed once merging with Astea's work takes place.
+ * 
+ */
+
 /*!
 Cloud4all Preferences Management Tools
 
