@@ -1,3 +1,16 @@
+/*!
+Cloud4all Preferences Management Tools
+
+Copyright 2013 Astea
+
+Licensed under the New BSD license. You may not use this file except in
+compliance with this License.
+
+You may obtain a copy of the License at
+https://github.com/GPII/prefsEditors/LICENSE.txt
+*/
+
+
 (function ($, fluid) {
     fluid.defaults("gpii.speakText", {
         gradeNames: ["fluid.uiOptions.fullNoPreview", "autoInit"],
@@ -129,9 +142,17 @@
                     "this": "{that}.dom.moreLess",
                     "method": "text",
                     "args": ["{that}.options.strings.moreText"]
+                },
+
+                "onCreate.TESTER": {
+                    "listener": "TESTER"
                 }
             },
             invokers: {
+                TESTER: {
+                    "funcName": "TESTER",
+                    "args": ["{that}"]
+                },
                 toggleSpeakTextAdjusters: {
                     "funcName": "gpii.speakText.toggleSpeakTextAdjusters",
                     "args": [
@@ -163,6 +184,7 @@
                 speakTextHeader: ".gpii-speakTextPresetButton-label",
                 speakTextTickIcon: ".white-tick-icon"
             },
+            selectorsToIgnore: ["speakTextPartialAdjusters", "speakTextExtraAdjusters"],
             strings: {
                 speakTextHeader: {
                     expander: {
@@ -198,9 +220,14 @@
         }
     });
 
+    TESTER = function (that) {
+        hookec = that;
+    }
+
     gpii.speakText.toggleSpeakTextAdjusters = function (that, showEvent, hidePartialEvent, hideAllEvent) {
         var partialVisible = that.model.partialAdjustersVisibility;
         var extraVisible = that.model.extraAdjustersVisibility;
+
         if (extraVisible) {
             that.applier.requestChange("partialAdjustersVisibility", false);
             that.applier.requestChange("extraAdjustersVisibility", false);
