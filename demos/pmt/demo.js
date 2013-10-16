@@ -10,15 +10,14 @@ You may obtain a copy of the License at
 https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
-/*global demo:true, fluid, jQuery, navigator, uioBuilder:true, gpii*/
+/*global demo:true, fluid, jQuery, navigator, gpii*/
 /*jslint white: true, funcinvoke: true, undef: true, newcap: true, regexp: true, browser: true, forin: true, continue: true, maxerr: 100, indent: 4 */
 
 var demo = demo || {};
-var uioBuilder;
 
 (function ($, fluid) {
     demo.initPMT = function (container, compOpts) {
-        uioBuilder = fluid.uiOptions.builder({
+        demo.uioBuilder = fluid.uiOptions.builder({
             primarySchema: gpii.uiOptions.pmt.primarySchema,
             auxiliarySchema: gpii.uiOptions.pmt.auxiliarySchema
         });
@@ -38,6 +37,6 @@ var uioBuilder;
             }
         };
         $.extend(true, baseOpts, compOpts);
-        fluid.invokeGlobalFunction(uioBuilder.options.assembledUIOGrade, [container, baseOpts]);
+        fluid.invokeGlobalFunction(demo.uioBuilder.options.assembledUIOGrade, [container, baseOpts]);
     };
 })(jQuery, fluid);
