@@ -82,10 +82,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.speakTextTickIcon",
                     "method": "show"
                 },
-                "onShowAdjusters.setHeaderTextBold": {
+                "onShowAdjusters.setHeaderTextBold.addBoldClass": {
                     "this": "{that}.dom.speakTextHeader",
-                    "method": "css",
-                    "args": ["font-weight", "bold"]
+                    "method": "addClass",
+                    "args": ["{that}.options.styles.boldText"]
+                },
+                "onShowAdjusters.setHeaderTextBold.removeNormalClass": {
+                    "this": "{that}.dom.speakTextHeader",
+                    "method": "removeClass",
+                    "args": ["{that}.options.styles.normalText"]
                 },
                 "onShowAdjusters.setTextMoreText": {
                     "this": "{that}.dom.moreLess",
@@ -97,10 +102,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "slideUp",
                     "args": ["{that}.options.partiallyExpandedSlideSpeed"]
                 },
-                "onHidePartialAdjusters.setHeaderTextNormal": {
+                "onHidePartialAdjusters.setHeaderTextNormal.addNormalClass": {
                     "this": "{that}.dom.speakTextHeader",
-                    "method": "css",
-                    "args": ["font-weight", "normal"]
+                    "method": "addClass",
+                    "args": ["{that}.options.styles.normalText"]
+                },
+                "onHidePartialAdjusters.setHeaderTextNormal.removeBoldClass": {
+                    "this": "{that}.dom.speakTextHeader",
+                    "method": "removeClass",
+                    "args": ["{that}.options.styles.boldText"]
                 },
                 "onHidePartialAdjusters.hideTick": {
                     "listener": "{that}.hideWhiteTickIcon"
@@ -115,10 +125,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "slideUp",
                     "args": ["{that}.options.partiallyExpandedSlideSpeed"]
                 },
-                "onHideAllAdjusters.setHeaderTextNormal": {
+                "onHideAllAdjusters.setHeaderTextNormal.addNormalClass": {
                     "this": "{that}.dom.speakTextHeader",
-                    "method": "css",
-                    "args": ["font-weight", "normal"]
+                    "method": "addClass",
+                    "args": ["{that}.options.styles.normalText"]
+                },
+                "onHideAllAdjusters.setHeaderTextNormal.removeBoldClass": {
+                    "this": "{that}.dom.speakTextHeader",
+                    "method": "removeClass",
+                    "args": ["{that}.options.styles.boldText"]
                 },
                 "onHideAllAdjusters.hideTick": {
                     "listener": "{that}.hideWhiteTickIcon"
@@ -207,6 +222,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         args: ["{uiOptionsLoader}.msgBundle", "tooltipUnchecked"]
                     }
                 }
+            },
+            styles: {
+                boldText: "bold-font-weight",
+                normalText: "normal-font-weight"
             }
         }
     });
