@@ -10,12 +10,11 @@ You may obtain a copy of the License at
 https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
-/*global defaultLanguage:true, demo:true, fluid, jQuery, navigator, uioBuilder:true, gpii*/
+/*global demo:true, fluid, jQuery, navigator, uioBuilder:true, gpii*/
 /*jslint white: true, funcinvoke: true, undef: true, newcap: true, regexp: true, browser: true, forin: true, continue: true, maxerr: 100, indent: 4 */
 
 var demo = demo || {};
 var uioBuilder;
-var defaultLanguage;
 
 (function ($, fluid) {
     demo.initPMT = function (container, compOpts) {
@@ -24,11 +23,7 @@ var defaultLanguage;
             auxiliarySchema: gpii.uiOptions.pmt.auxiliarySchema
         });
         
-        /* get browser default lang */
-        var language = navigator.userLanguage || navigator.language;
-        defaultLanguage = language.substring(0, 2).toLowerCase();
-
-        demo.instantiateUIO(container, compOpts, "gpii.uiOptions.pmt", defaultLanguage);
+        demo.instantiateUIO(container, compOpts, "gpii.uiOptions.pmt", gpii.uiOptions.getDefaultLanguage());
     };
     
     demo.instantiateUIO = function (container, compOpts, uioType, language) {

@@ -10,7 +10,7 @@ You may obtain a copy of the License at
 https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
-/*global defaultLanguage, demo, fluid, jQuery, gpii*/
+/*global demo, fluid, jQuery, gpii*/
 /*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
 
 (function ($, fluid) {
@@ -22,14 +22,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 onToggleIncreaseSizeExtraAdjusters: null,
                 onShowExtraAdjuster: null,
                 onHideExtraAdjuster: null,
-                onSelectLanguage: null
             },
             listeners: {
                 onSave: {
                     listener: "console.log"
-                },
-                onReady: {
-                    listener: "{that}.setDefaultLanguage"
                 },
                 "onReady.hideIncreaseSizeAdjusters": {
                     "this": "{that}.dom.increaseSizeAdjusters",
@@ -53,11 +49,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         "tooltip-checked": "{that}.options.strings.tooltipChecked",
                         "tooltip-unchecked": "{that}.options.strings.tooltipUnchecked"
                     }]
-                },
-                "onReady.setTextlanguageLabel": {
-                    "this": "{that}.dom.languageLabel",
-                    "method": "text",
-                    "args": ["{that}.options.strings.languageLabel"]
                 },
                 "onReady.setATTRsaveButton": {
                     "this": "{that}.dom.saveButton",
@@ -113,14 +104,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.moreLess",
                     "method": "text",
                     "args": ["{that}.options.strings.more"]
-                },
-                "onReady.bindEventSelectLanguage": {
-                    "this": "{that}.dom.languageSelect",
-                    "method": "change",
-                    "args": ["{that}.events.onSelectLanguage.fire"]
-                },
-                "onSelectLanguage.selectLanguage": {
-                    "listener": "{that}.selectLanguage"
                 }
             },
             invokers: {
@@ -131,18 +114,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         "{that}.events.onShowExtraAdjuster.fire",
                         "{that}.events.onHideExtraAdjuster.fire"
                     ]
-                },
-                selectLanguage: {
-                    "funcName": "gpii.uiOptions.pmt.selectLanguage",
-                    "args": [
-                        "{that}.dom.languageSelect"
-                    ]
-                },
-                setDefaultLanguage: {
-                    "funcName": "gpii.uiOptions.pmt.setDefaultLanguage",
-                    "args": [
-                        "{that}.dom.languageSelect"
-                    ]
                 }
             },
             selectors: {
@@ -151,12 +122,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 increaseSizeExtraAdjusters: ".flc-uiOptions-increaseSizePanel .fl-uiOptions-category-hidden",
                 preferenceSwitchIncreaseSize: "#preferenceSwitchIncreaseSize",
                 addToMyPreferencesStar: ".addToMyPreferencesLabel",
-                languageLabel: ".fl-uiOptions-language-label",
                 saveButton: ".flc-uiOptions-save",
                 resetButton: ".flc-uiOptions-reset",
                 cancelButton: ".flc-uiOptions-cancel",
                 moreLess: ".moreLess",
-                languageSelect: ".fl-uiOptions-language-select"
             },
             strings: {
                 increaseSizeHeader: {
@@ -175,12 +144,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     expander: {
                         func: "gpii.uiOptions.pmt.lookupMsg",
                         args: ["{uiOptionsLoader}.msgBundle", "tooltipUnchecked"]
-                    }
-                },
-                languageLabel: {
-                    expander: {
-                        func: "gpii.uiOptions.pmt.lookupMsg",
-                        args: ["{uiOptionsLoader}.msgBundle", "languageLabel"]
                     }
                 },
                 saveButtonText: {
@@ -225,14 +188,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     };
 
-    gpii.uiOptions.pmt.selectLanguage = function (language) {
-        demo.instantiateUIO("#myUIOptions", undefined, "gpii.uiOptions.pmt", language.val());
+    gpii.uiOptions.getDefaultLanguage = function() {
+    	var language = navigator.userLanguage || navigator.language;
+        defaultLanguage = language.substring(0, 2).toLowerCase();
+        return defaultLanguage; 
     };
-
-    gpii.uiOptions.pmt.setDefaultLanguage = function (language) {
-        language.val(defaultLanguage).change();
-    };
-
+    
     gpii.uiOptions.pmt.lookupMsg = function (messageResolver, value) {
         var looked = messageResolver.lookup([value]);
         return looked ? looked.template : looked;
