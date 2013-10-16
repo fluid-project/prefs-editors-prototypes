@@ -25,7 +25,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         invokers: {
             set: {
                 funcName: "gpii.uiOptions.enactors.textSize.set",
-                args: ["{arguments}.0", "{that}"]
+                args: ["{arguments}.0", "{that}.container"]
             }
         },
         listeners: {
@@ -37,7 +37,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
 	gpii.uiOptions.enactors.textSize.set = function (sizeInPt, that) {
-        that.container.css("font-size", sizeInPt + "pt");
+        that.css("font-size", sizeInPt + "pt");
     };
     
 })(jQuery, fluid);
