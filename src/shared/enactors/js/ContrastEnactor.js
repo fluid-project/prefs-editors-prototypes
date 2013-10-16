@@ -43,15 +43,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 listener: "{that}.toggleContrastTheme",
                 args: "{that}.model.value"
             },
-            "onCreate.init": [
+            "onCreate.toggleTheme": [
                 {
                     listener: "{that}.applier.modelChanged.addListener",
                     args: ["value", "{that}.toggleDefaultTheme"]
-	            },
-	            {
-	                listener: "{that}.applier.modelChanged.addListener",
-	                args: ["value", "{that}.toggleContrastTheme"]
-	            }
+                },
+                {
+                    listener: "{that}.applier.modelChanged.addListener",
+                    args: ["value", "{that}.toggleContrastTheme"]
+                }
             ]
 
         }
