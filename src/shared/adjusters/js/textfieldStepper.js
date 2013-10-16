@@ -94,18 +94,20 @@ var fluid_1_5 = fluid_1_5 || {};
             modelChanged: null
         },
         listeners: {
-            onCreate: [ {
+            "onCreate.incClick": {
                 "this": "{that}.dom.inc",
                 "method": "click",
                 "args": ["{that}.increaseValue"]
-            }, {
+            },
+            "onCreate.decClick": {
                 "this": "{that}.dom.dec",
                 "method": "click",
                 "args": ["{that}.decreaseValue"]
-            }, {
-                funcName: "gpii.textfieldStepper.buttons.parseInt",
-                args: ["{that}"]
-            }]
+            },
+            "onCreate.parseInt": {
+                "funcName": "gpii.textfieldStepper.buttons.parseInt",
+                "args": ["{that}"]
+            }
         },
         invokers: {
             increaseValue: {

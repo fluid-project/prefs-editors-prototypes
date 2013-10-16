@@ -142,17 +142,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.moreLess",
                     "method": "text",
                     "args": ["{that}.options.strings.moreText"]
-                },
-
-                "onCreate.TESTER": {
-                    "listener": "TESTER"
                 }
             },
             invokers: {
-                TESTER: {
-                    "funcName": "TESTER",
-                    "args": ["{that}"]
-                },
                 toggleSpeakTextAdjusters: {
                     "funcName": "gpii.speakText.toggleSpeakTextAdjusters",
                     "args": [
@@ -184,7 +176,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 speakTextHeader: ".gpii-speakTextPresetButton-label",
                 speakTextTickIcon: ".white-tick-icon"
             },
-            selectorsToIgnore: ["speakTextPartialAdjusters", "speakTextExtraAdjusters"],
             strings: {
                 speakTextHeader: {
                     expander: {
@@ -219,10 +210,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         }
     });
-
-    TESTER = function (that) {
-        hookec = that;
-    }
 
     gpii.speakText.toggleSpeakTextAdjusters = function (that, showEvent, hidePartialEvent, hideAllEvent) {
         var partialVisible = that.model.partialAdjustersVisibility;
