@@ -25,25 +25,22 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         invokers: {
             set: {
                 funcName: "gpii.uiOptions.enactors.magnifier.set",
-                args: ["{arguments}.0", "{that}"]
+                args: ["{that}.model.value", "{that}"]
             }
         },
         listeners: {
             onCreate: {
-                listener: "{that}.set",
-                args: "{that}.model.value"
-            }
+                listener: "{that}.set"
+            },
+            "onCreate.init": {
+                listener: "{that}.applier.modelChanged.addListener",
+                args: ["value", "{that}.set"]
+            },
         }
     });
 
     gpii.uiOptions.enactors.magnifier.set = function (times, that) {
         that.container.css({"transform": "scale(" + times / 100 + ")", "-webkit-transform": "scale(" + times / 100 + ")"});
-    };
-
-    gpii.uiOptions.enactors.magnifier.finalInit = function (that) {
-        that.applier.modelChanged.addListener("value", function (newModel) {
-            that.set(newModel.value);
-        });
     };
     
 })(jQuery, fluid);
