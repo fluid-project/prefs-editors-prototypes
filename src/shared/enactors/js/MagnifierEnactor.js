@@ -25,7 +25,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         invokers: {
             set: {
                 funcName: "gpii.uiOptions.enactors.magnifier.set",
-                args: ["{that}.model.value", "{that}"]
+                args: ["{that}.model.value", "{that}.container"]
             }
         },
         listeners: {
@@ -40,7 +40,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     gpii.uiOptions.enactors.magnifier.set = function (times, that) {
-        that.container.css({"transform": "scale(" + times / 100 + ")", "-webkit-transform": "scale(" + times / 100 + ")"});
+        that.css({"transform": "scale(" + times / 100 + ")", "-webkit-transform": "scale(" + times / 100 + ")"});
     };
     
 })(jQuery, fluid);
