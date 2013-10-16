@@ -55,12 +55,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             addToMyPreferencesLabel: ".addToMyPreferencesLabel",
             contrastAdjusters: ".fl-uiOptions-category"         
         },
-        selectorsToIgnore: ["contrastAdjusters"],
+        selectorsToIgnore: ["contrastAdjusters", "addToMyPreferencesLabel"],
         protoTree: {
             valueCheckbox: "${value}",
             headingLabel: {messagekey: "contrast"},
-            panelLabel: {messagekey: "addContrast"},
-            addToMyPreferencesLabel: " "
+            panelLabel: {messagekey: "addContrast"}
         },
         strings: {
             tooltipChecked: {
