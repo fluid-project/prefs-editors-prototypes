@@ -205,7 +205,7 @@
             that.applier.requestChange("partialAdjustersVisibility", false);
             that.applier.requestChange("extraAdjustersVisibility", false);
             hideAllEvent();
-        } else if (partialVisible != extraVisible) {
+        } else if (partialVisible && !extraVisible) {
             that.applier.requestChange("partialAdjustersVisibility", false);
             hidePartialEvent();
         } else {
