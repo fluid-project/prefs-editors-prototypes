@@ -26,12 +26,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             toggleDefaultTheme: {
                 "this": "{that}.container",
                 "method": "toggleClass",
-                "args": ["flc-uiOptions-default-theme fl-theme-uio-default", "!{that}.model.value"]
+                "args": ["fl-uiOptions-default-theme fl-theme-uio-default", "!{that}.model.value"]
             },
             toggleContrastTheme: {
                 "this": "{that}.container",
                 "method": "toggleClass",
-                "args": ["flc-uiOptions-contrast-theme fl-theme-uio-yb fl-theme-yb", "{that}.model.value"]
+                "args": ["fl-uiOptions-contrast-theme fl-theme-uio-yb fl-theme-yb", "{that}.model.value"]
             }
         },
         listeners: {

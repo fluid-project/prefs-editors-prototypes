@@ -210,7 +210,7 @@ input[type=checkbox], input[type=radio] {
 /*
     The plusMinusAdjuster style
 */
-.flc-uiOptions-plus-minus-numerical-minus, .flc-uiOptions-plus-minus-numerical-plus {
+.fl-uiOptions-plus-minus-numerical-minus, .fl-uiOptions-plus-minus-numerical-plus {
     width: 10% !important;
     font-size: 1.5em !important;
     cursor: pointer;
@@ -227,13 +227,13 @@ input[type=checkbox], input[type=radio] {
     float: left;
 }
 
-.flc-uiOptions-plus-minus-numerical-widget {
+.fl-uiOptions-plus-minus-numerical-widget {
     width: 100% !important;
     background-color: #FFFFFF;
     display: table;
 }
 
-.flc-uiOptions-plus-minus-numerical-value {
+.fl-uiOptions-plus-minus-numerical-value {
     width: 76% !important;
     border: none !important;
     text-align: center !important;
@@ -242,7 +242,7 @@ input[type=checkbox], input[type=radio] {
     margin-bottom: 2px !important;
 }
 
-.flc-uiOptions-plus-minus-numerical-min-reached {
+.fl-uiOptions-plus-minus-numerical-min-reached {
     color: #D3D3D3 !important;
 }
 
@@ -383,7 +383,7 @@ input[type=checkbox], input[type=radio] {
     color: white;
 }
 
-.flc-uiOptions-magnifierFollowsRow{
+.fl-uiOptions-magnifierFollowsRow{
     margin-bottom: 1em !important;
 }
 
@@ -441,12 +441,12 @@ input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio
 /*
     Style for preview-per-setting iframe and content
 */
-.flc-uiOptions-preview-per-setting-frame {
+.fl-uiOptions-preview-per-setting-frame {
     width: 100% !important;
     margin-top: -1em;
 }
 
-.flc-uiOptions-preview-per-setting-container {
+.fl-uiOptions-preview-per-setting-container {
     background-color: #d3dfdf;
     border: 1px solid #beced1;
     color: #B8C9CC;
@@ -454,14 +454,14 @@ input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio
     margin-bottom: 0.5em;
 }
 
-.flc-uiOptions-preview-per-setting-eye:before {
+.fl-uiOptions-preview-per-setting-eye:before {
     position: relative;
     z-index: 2;
     background-color: transparent !important;
     content: "\e00c";
 }
 
-.flc-uiOptions-preview-per-setting-eye-background {
+.fl-uiOptions-preview-per-setting-eye-background {
     position: relative;
     background-color: #000000;
     height: 0.34em;
@@ -471,33 +471,33 @@ input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio
     z-index: 1;
 }
 
-.flc-uiOptions-preview-per-setting-body {
+.fl-uiOptions-preview-per-setting-body {
     width: 100% !important;
     height: 100% !important;
     margin: 0;
 }
 
-.flc-uiOptions-preview-per-setting-div {
+.fl-uiOptions-preview-per-setting-div {
     width: 100%; 
     height: 100%; 
     position: relative;
 }
 
-.flc-uiOptions-preview-per-setting-div-inner { 
+.fl-uiOptions-preview-per-setting-div-inner { 
     position: absolute; 
     display: table; 
     width: 100%; 
     height: 100%; 
 }
 
-.flc-uiOptions-preview-per-setting-div-inner p {
+.fl-uiOptions-preview-per-setting-div-inner p {
     display: table-cell; 
     vertical-align: middle; 
     text-align: center; 
     padding: 10px;
 }
 
-.flc-uiOptions-preview-per-setting-div-inner div {
+.fl-uiOptions-preview-per-setting-div-inner div {
     display: table-cell; 
     vertical-align: middle; 
     text-align: center; 
@@ -505,15 +505,15 @@ input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio
     float: none;
 }
 
-.flc-uiOptions-preview-per-setting-cursor1:before {
+.fl-uiOptions-preview-per-setting-cursor1:before {
     content: "\e006";
 }
 
-.flc-uiOptions-preview-per-setting-cursor2:before {
+.fl-uiOptions-preview-per-setting-cursor2:before {
     content: "\e005";
 }
 
-.flc-uiOptions-preview-per-setting-cursor3:before {
+.fl-uiOptions-preview-per-setting-cursor3:before {
     content: "\e001";
 }
 
@@ -584,11 +584,11 @@ input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after 
     content:attr(tooltip-checked);
 }
 
-.flc-uiOptions-magnifierPosition-label[title] {
+.fl-uiOptions-magnifierPosition-label[title] {
     position:relative;
 }
 
-.flc-uiOptions-magnifierPosition-label[title]:after {
+.fl-uiOptions-magnifierPosition-label[title]:after {
     content: attr(tooltip);
     line-height: 1em !important;
     font-size: 1em;
@@ -598,73 +598,73 @@ input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after 
 /*
     Style for contrast
 */
-.flc-uiOptions-contrast-theme {
+.fl-uiOptions-contrast-theme {
     color: yellow;
     background-color: black;
 }
 
-.flc-uiOptions-default-theme {
+.fl-uiOptions-default-theme {
     color: black;
     background-color: #D3DFDF;
 }
 
-.flc-uiOptions-contrast-theme .headerImage {
+.fl-uiOptions-contrast-theme .headerImage {
     background-color: black !important;
     color: yellow !important;
 }
 
-.flc-uiOptions-contrast-theme .headerTitle {
+.fl-uiOptions-contrast-theme .headerTitle {
     background-color: transparent !important;
     color: black !important;
 }
 
-.flc-uiOptions-contrast-theme .headerClickableLabel {
+.fl-uiOptions-contrast-theme .headerClickableLabel {
     background-color: transparent !important;
     color: transparent !important;
 }
 
-.flc-uiOptions-contrast-theme .addToMyPreferencesLabel {
+.fl-uiOptions-contrast-theme .addToMyPreferencesLabel {
     background-color: transparent !important;
 }
 
-.flc-uiOptions-contrast-theme .addToMyPreferencesStar {
+.fl-uiOptions-contrast-theme .addToMyPreferencesStar {
     background-color: yellow !important;
     color: black !important;
 }
 
-.flc-uiOptions-contrast-theme input:checked + .addToMyPreferencesStar {
+.fl-uiOptions-contrast-theme input:checked + .addToMyPreferencesStar {
     background-color: black !important;
     color: yellow !important;
 }
 
- .flc-uiOptions-contrast-theme [title]:after{
+ .fl-uiOptions-contrast-theme [title]:after{
     background-color: black !important;
     border: 1px solid yellow !important;
 }
 
-.flc-uiOptions-contrast-theme .headerImage {
+.fl-uiOptions-contrast-theme .headerImage {
     background-color: yellow !important;
     color: black !important;
 }
 
-.flc-uiOptions-contrast-theme .fl-magnifierPosition-uio-background {
+.fl-uiOptions-contrast-theme .fl-magnifierPosition-uio-background {
     background-color: transparent !important;
 }
 
-.flc-uiOptions-contrast-theme .fl-indicator {
+.fl-uiOptions-contrast-theme .fl-indicator {
     background-color: transparent !important;
 }
 
-.flc-uiOptions-contrast-theme .flc-uiOptions-plus-minus-numerical-widget {
+.fl-uiOptions-contrast-theme .fl-uiOptions-plus-minus-numerical-widget {
     width: calc(100% - 2px) !important;
     border: 1px solid !important;
 }
 
-.flc-uiOptions-contrast-theme .flc-uiOptions-plus-minus-numerical-value {
+.fl-uiOptions-contrast-theme .fl-uiOptions-plus-minus-numerical-value {
     margin-bottom: 1px !important;
 }
 
-.flc-uiOptions-contrast-theme .flc-uiOptions-plus-minus-numerical-min-reached {
+.fl-uiOptions-contrast-theme .fl-uiOptions-plus-minus-numerical-min-reached {
     color: gray !important;
 }
 
@@ -676,11 +676,11 @@ input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after 
     outline: 2px solid #FFFF00 !important;
 }
 
-.flc-uiOptions-contrast-theme .fl-magnifierFollows-uio-icon {
+.fl-uiOptions-contrast-theme .fl-magnifierFollows-uio-icon {
     border: 1px solid;
 }
 
-.flc-uiOptions-contrast-theme .fl-magnifierFollows-uio-icon-check {
+.fl-uiOptions-contrast-theme .fl-magnifierFollows-uio-icon-check {
     margin-top: -1.9em;
 }
 

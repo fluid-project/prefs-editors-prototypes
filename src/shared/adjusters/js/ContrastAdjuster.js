@@ -53,7 +53,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             headingLabel: ".flc-uiOptions-contrast-label",
             panelLabel: ".headerTitle",
             addToMyPreferencesLabel: ".addToMyPreferencesLabel",
-            contrastAdjusters: ".fl-uiOptions-category"         
+            contrastAdjusters: ".flc-uiOptions-category"         
         },
         selectorsToIgnore: ["contrastAdjusters", "addToMyPreferencesLabel"],
         protoTree: {

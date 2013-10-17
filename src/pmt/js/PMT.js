@@ -118,8 +118,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             selectors: {
                 increaseSizeHeader: ".flc-uiOptions-increaseSizePanel .headerTitle",
-                increaseSizeAdjusters: ".flc-uiOptions-increaseSizePanel .fl-uiOptions-category",
-                increaseSizeExtraAdjusters: ".flc-uiOptions-increaseSizePanel .fl-uiOptions-category-hidden",
+                increaseSizeAdjusters: ".flc-uiOptions-increaseSizePanel .flc-uiOptions-category",
+                increaseSizeExtraAdjusters: ".flc-uiOptions-increaseSizePanel .flc-uiOptions-category-hidden",
                 preferenceSwitchIncreaseSize: "#preferenceSwitchIncreaseSize",
                 addToMyPreferencesStar: ".addToMyPreferencesLabel",
                 saveButton: ".flc-uiOptions-save",
