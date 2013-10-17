@@ -14,7 +14,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 /*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
 
 (function ($, fluid) {
-    
+
     fluid.defaults("gpii.uiOptions.enactors.contrast", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
         preferenceMap: {
@@ -22,38 +22,30 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "model.value": "default"
             }
         },
+        styles: {
+            defaultTheme: "fl-theme-uio-default",
+            contrastTheme: "fl-theme-uio-yb"
+        },
         invokers: {
-            toggleDefaultTheme: {
-                "this": "{that}.container",
-                "method": "toggleClass",
-                "args": ["fl-uiOptions-default-theme fl-theme-uio-default", "!{that}.model.value"]
-            },
-            toggleContrastTheme: {
-                "this": "{that}.container",
-                "method": "toggleClass",
-                "args": ["fl-uiOptions-contrast-theme fl-theme-uio-yb fl-theme-yb", "{that}.model.value"]
+            toggleContrast: {
+                funcName: "gpii.uiOptions.enactors.contrast.toggleContrast",
+                args: ["{that}.container", "{that}.options.styles.defaultTheme", "{that}.options.styles.contrastTheme", "{that}.model.value"]
             }
         },
         listeners: {
             "onCreate.toggleDefaultTheme": {
-                listener: "{that}.toggleDefaultTheme",
-                args: "!{that}.model.value"
+                listener: "{that}.toggleContrast"
             },
-            "onCreate.toggleContrastTheme": {
-                listener: "{that}.toggleContrastTheme",
-                args: "{that}.model.value"
-            },
-            "onCreate.toggleTheme": [
-                {
-                    listener: "{that}.applier.modelChanged.addListener",
-                    args: ["value", "{that}.toggleDefaultTheme"]
-                },
-                {
-                    listener: "{that}.applier.modelChanged.addListener",
-                    args: ["value", "{that}.toggleContrastTheme"]
-                }
-            ]
+            "onCreate.toggleTheme": {
+                listener: "{that}.applier.modelChanged.addListener",
+                args: ["value", "{that}.toggleContrast"]
+            }
 
         }
     });
+
+    gpii.uiOptions.enactors.contrast.toggleContrast = function (elm, originalClass, contrastClass, enableContrast) {
+        elm.toggleClass(originalClass, !enableContrast);
+        elm.toggleClass(contrastClass, enableContrast);
+    };
 })(jQuery, fluid);

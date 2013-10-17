@@ -598,77 +598,77 @@ input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after 
 /*
     Style for contrast
 */
-.fl-uiOptions-contrast-theme {
+.fl-theme-uio-yb {
     color: yellow;
     background-color: black;
 }
 
-.fl-uiOptions-default-theme {
+.fl-theme-uio-default {
     color: black;
     background-color: #D3DFDF;
 }
 
-.fl-uiOptions-contrast-theme .headerImage {
+.fl-theme-uio-yb .headerImage {
     background-color: black !important;
     color: yellow !important;
 }
 
-.fl-uiOptions-contrast-theme .headerTitle {
+.fl-theme-uio-yb .headerTitle {
     background-color: transparent !important;
     color: black !important;
 }
 
-.fl-uiOptions-contrast-theme .headerClickableLabel {
+.fl-theme-uio-yb .headerClickableLabel {
     background-color: transparent !important;
     color: transparent !important;
 }
 
-.fl-uiOptions-contrast-theme .addToMyPreferencesLabel {
+.fl-theme-uio-yb .addToMyPreferencesLabel {
     background-color: transparent !important;
 }
 
-.fl-uiOptions-contrast-theme .addToMyPreferencesStar {
+.fl-theme-uio-yb .addToMyPreferencesStar {
     background-color: yellow !important;
     color: black !important;
 }
 
-.fl-uiOptions-contrast-theme input:checked + .addToMyPreferencesStar {
+.fl-theme-uio-yb input:checked + .addToMyPreferencesStar {
     background-color: black !important;
     color: yellow !important;
 }
 
- .fl-uiOptions-contrast-theme [title]:after{
+ .fl-theme-uio-yb [title]:after{
     background-color: black !important;
     border: 1px solid yellow !important;
 }
 
-.fl-uiOptions-contrast-theme .headerImage {
+.fl-theme-uio-yb .headerImage {
     background-color: yellow !important;
     color: black !important;
 }
 
-.fl-uiOptions-contrast-theme .fl-magnifierPosition-uio-background {
+.fl-theme-uio-yb .fl-magnifierPosition-uio-background {
     background-color: transparent !important;
 }
 
-.fl-uiOptions-contrast-theme .fl-indicator {
+.fl-theme-uio-yb .fl-indicator {
     background-color: transparent !important;
 }
 
-.fl-uiOptions-contrast-theme .fl-uiOptions-plus-minus-numerical-widget {
+.fl-theme-uio-yb .fl-uiOptions-plus-minus-numerical-widget {
     width: calc(100% - 2px) !important;
     border: 1px solid !important;
 }
 
-.fl-uiOptions-contrast-theme .fl-uiOptions-plus-minus-numerical-value {
+.fl-theme-uio-yb .fl-uiOptions-plus-minus-numerical-value {
     margin-bottom: 1px !important;
 }
 
-.fl-uiOptions-contrast-theme .fl-uiOptions-plus-minus-numerical-min-reached {
+.fl-theme-uio-yb .fl-uiOptions-plus-minus-numerical-min-reached {
     color: gray !important;
 }
 
-.fl-theme-yb .fl-uiOptions input:focus + label, .fl-theme-yb .fl-uiOptions .fl-choice input:focus ~ label {
+.fl-theme-uio-yb .fl-uiOptions input:focus + label, .fl-theme-uio-yb .fl-uiOptions .fl-choice input:focus ~ label {
     outline: none !important;
 }
 
@@ -676,11 +676,11 @@ input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after 
     outline: 2px solid #FFFF00 !important;
 }
 
-.fl-uiOptions-contrast-theme .fl-magnifierFollows-uio-icon {
+.fl-theme-uio-yb .fl-magnifierFollows-uio-icon {
     border: 1px solid;
 }
 
-.fl-uiOptions-contrast-theme .fl-magnifierFollows-uio-icon-check {
+.fl-theme-uio-yb .fl-magnifierFollows-uio-icon-check {
     margin-top: -1.9em;
 }
 
