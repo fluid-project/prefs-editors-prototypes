@@ -74,7 +74,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 addToMyPreferencesStar: ".addToMyPreferencesLabel",
                 saveButton: ".flc-uiOptions-save",
                 resetButton: ".flc-uiOptions-reset",
-                cancelButton: ".flc-uiOptions-cancel",
+                cancelButton: ".flc-uiOptions-cancel"
             },
             strings: {
                 increaseSizeHeader: {
@@ -115,99 +115,99 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             components: {
-            	increaseSizeExtraAdjustersComponent: {
-            		type: "fluid.rendererComponent",
-            		container: "{uiOptions}.container",
-            		createOnEvent: "onReady",
-            		options: {
-                		gradeNames: ["fluid.uiOptions.panels", "autoInit"],
-	            		model: {
-	            			increaseSizeExtraAdjustersEnabled: false
-	            		},
-	            		selectors: {
-	                        increaseSizeExtraAdjusters: ".flc-uiOptions-increaseSizePanel .flc-uiOptions-category-hidden",
-	            			preferenceSwitchIncreaseSizeExtra: "#preferenceSwitchIncreaseSizeExtra",
-	                        moreLess: ".moreLess"
-	            		},
-	            		protoTree: {
-	            			preferenceSwitchIncreaseSizeExtra: "${increaseSizeExtraAdjustersEnabled}"
-	            		},
-	                    events: {
-	                        onShowExtraAdjuster: null,
-	                        onHideExtraAdjuster: null
-	                    },
-	            		listeners: {
-	            			"onCreate.bindEventPreferenceSwitchIncreaseSizeExtra": {
-	                            "this": "{that}.dom.preferenceSwitchIncreaseSizeExtra",
-	                            "method": "change",
-	                            "args": ["{that}.updateModelValue"]
-	                        },
-	                        "onCreate.setTextMoreLess": {
-	                            "this": "{that}.dom.moreLess",
-	                            "method": "text",
-	                            "args": ["{that}.options.strings.more"]
-	                        },
-	                        "onShowExtraAdjuster.show": {
-	                            "this": "{that}.dom.increaseSizeExtraAdjusters",
-	                            "method": "slideToggle"
-	                        },
-	                        "onHideExtraAdjuster.hide": {
-	                            "this": "{that}.dom.increaseSizeExtraAdjusters",
-	                            "method": "slideToggle"
-	                        },
-	                        "onShowExtraAdjuster.setLessText": {
-	                            "this": "{that}.dom.moreLess",
-	                            "method": "text",
-	                            "args": ["{that}.options.strings.less"]
-	                        },
-	                        "onHideExtraAdjuster.setMoreText": {
-	                            "this": "{that}.dom.moreLess",
-	                            "method": "text",
-	                            "args": ["{that}.options.strings.more"]
-	                        },
-	                        "onCreate.hideIncreaseSizeExtraAdjusters": {
-	                            "this": "{that}.dom.increaseSizeExtraAdjusters",
-	                            "method": "hide",
-	                            "args": [0]
-	                        },
-	            			"onCreate.init": {
-	                            listener: "{that}.applier.modelChanged.addListener",
-	                            args: ["increaseSizeExtraAdjustersEnabled", "{that}.toggleIncreaseSizeExtraAdjusters"]
-	                        }
-	            		},
-	            		invokers: {
-	            			toggleIncreaseSizeExtraAdjusters: {
-	                            "funcName": "gpii.uiOptions.pmt.toggleIncreaseSizeExtraAdjusters",
-	                            "args": [
-	                                "{that}.model.increaseSizeExtraAdjustersEnabled",
-	                                "{that}.events.onShowExtraAdjuster.fire",
-	                                "{that}.events.onHideExtraAdjuster.fire"
-	                            ]
-	                        },
-	                        updateModelValue: {
-	                        	"funcName": "gpii.uiOptions.pmt.updateIncreaseSizeExtraAdjustersModelValue",
-	                            "args": [
-	                                     "{that}",
-	 	                                "{that}.dom.preferenceSwitchIncreaseSizeExtra"
-	 	                            ]
-	                        }
-	                    },
-	                    strings: {
-	                        more: {
-	                            expander: {
-	                                func: "gpii.uiOptions.pmt.lookupMsg",
-	                                args: ["{uiOptionsLoader}.msgBundle", "more"]
-	                            }
-	                        },
-	                        less: {
-	                            expander: {
-	                                func: "gpii.uiOptions.pmt.lookupMsg",
-	                                args: ["{uiOptionsLoader}.msgBundle", "less"]
-	                            }
-	                        }
-	                    }
-            		}
-            	}
+                increaseSizeExtraAdjustersComponent: {
+                    type: "fluid.rendererComponent",
+                    container: "{uiOptions}.container",
+                    createOnEvent: "onReady",
+                    options: {
+                        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+                        model: {
+                            increaseSizeExtraAdjustersEnabled: false
+                        },
+                        selectors: {
+                            increaseSizeExtraAdjusters: ".flc-uiOptions-increaseSizePanel .flc-uiOptions-category-hidden",
+                            preferenceSwitchIncreaseSizeExtra: "#preferenceSwitchIncreaseSizeExtra",
+                            moreLess: ".moreLess"
+                        },
+                        protoTree: {
+                            preferenceSwitchIncreaseSizeExtra: "${increaseSizeExtraAdjustersEnabled}"
+                        },
+                        events: {
+                            onShowExtraAdjuster: null,
+                            onHideExtraAdjuster: null
+                        },
+                        listeners: {
+                            "onCreate.bindEventPreferenceSwitchIncreaseSizeExtra": {
+                                "this": "{that}.dom.preferenceSwitchIncreaseSizeExtra",
+                                "method": "change",
+                                "args": ["{that}.updateModelValue"]
+                            },
+                            "onCreate.setTextMoreLess": {
+                                "this": "{that}.dom.moreLess",
+                                "method": "text",
+                                "args": ["{that}.options.strings.more"]
+                            },
+                            "onShowExtraAdjuster.show": {
+                                "this": "{that}.dom.increaseSizeExtraAdjusters",
+                                "method": "slideToggle"
+                            },
+                            "onHideExtraAdjuster.hide": {
+                                "this": "{that}.dom.increaseSizeExtraAdjusters",
+                                "method": "slideToggle"
+                            },
+                            "onShowExtraAdjuster.setLessText": {
+                                "this": "{that}.dom.moreLess",
+                                "method": "text",
+                                "args": ["{that}.options.strings.less"]
+                            },
+                            "onHideExtraAdjuster.setMoreText": {
+                                "this": "{that}.dom.moreLess",
+                                "method": "text",
+                                "args": ["{that}.options.strings.more"]
+                            },
+                            "onCreate.hideIncreaseSizeExtraAdjusters": {
+                                "this": "{that}.dom.increaseSizeExtraAdjusters",
+                                "method": "hide",
+                                "args": [0]
+                            },
+                            "onCreate.init": {
+                                listener: "{that}.applier.modelChanged.addListener",
+                                args: ["increaseSizeExtraAdjustersEnabled", "{that}.toggleIncreaseSizeExtraAdjusters"]
+                            }
+                        },
+                        invokers: {
+                            toggleIncreaseSizeExtraAdjusters: {
+                                "funcName": "gpii.uiOptions.pmt.toggleIncreaseSizeExtraAdjusters",
+                                "args": [
+                                    "{that}.model.increaseSizeExtraAdjustersEnabled",
+                                    "{that}.events.onShowExtraAdjuster.fire",
+                                    "{that}.events.onHideExtraAdjuster.fire"
+                                ]
+                            },
+                            updateModelValue: {
+                                "funcName": "gpii.uiOptions.pmt.updateIncreaseSizeExtraAdjustersModelValue",
+                                "args": [
+                                    "{that}",
+                                    "{that}.dom.preferenceSwitchIncreaseSizeExtra"
+                                ]
+                            }
+                        },
+                        strings: {
+                            more: {
+                                expander: {
+                                    func: "gpii.uiOptions.pmt.lookupMsg",
+                                    args: ["{uiOptionsLoader}.msgBundle", "more"]
+                                }
+                            },
+                            less: {
+                                expander: {
+                                    func: "gpii.uiOptions.pmt.lookupMsg",
+                                    args: ["{uiOptionsLoader}.msgBundle", "less"]
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     });
