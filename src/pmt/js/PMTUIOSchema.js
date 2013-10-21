@@ -64,15 +64,37 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "message": "%prefix/pmt.json",
 
         // The preference-specific information:
+        "contrast": {
+            "type": "http://registry.gpii.org/common/display.screenEnhancement.highContrast",
+            "enactor": {
+                "type": "gpii.uiOptions.enactors.contrast"
+            },
+            "panel": {
+                "type": "gpii.uiOptions.panels.contrast",
+                "container": ".flc-uiOptions-contrast",
+                "template": "%prefix/UIOptionsTemplate-contrastNew.html",
+                "message": "%prefix/contrastNew.json"
+            }
+        },
+        "increaseSize": {
+            "type": "increaseSize",
+            /*"enactor": {
+                "type": "gpii.uiOptions.enactors.contrast"
+            },*/
+            "panel": {
+                "type": "gpii.uiOptions.panels.increaseSize",
+                "container": ".flc-uiOptions-increaseSizePanel",
+                "template": "%prefix/UIOptionsTemplate-increaseSize.html",
+                "message": "%prefix/increaseSize.json"
+            }
+        },
         "textSize": {
             "type": "http://registry.gpii.org/common/fontSize",
             "enactor": {
                 "type": "gpii.uiOptions.enactors.textSize"
             },
             "panel": {
-                "type": "gpii.uiOptions.panels.textSize",
-                "container": ".flc-uiOptions-text-size",  // the css selector in the template where the panel is rendered
-                "template": "%prefix/UIOptionsTemplate-plusMinusNumerical.html",
+                "type": "gpii.uiOptions.panels.increaseSize",
                 "message": "%prefix/textSize.json"
             }
         },
@@ -82,9 +104,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.uiOptions.enactors.cursorSize"
             },
             "panel": {
-                "type": "gpii.uiOptions.panels.cursorSize",
-                "container": ".flc-uiOptions-cursor-size",  // the css selector in the template where the panel is rendered
-                "template": "%prefix/UIOptionsTemplate-cursorSize.html",
+                "type": "gpii.uiOptions.panels.increaseSize",
                 "message": "%prefix/cursorSize.json"
             }
         },
@@ -94,9 +114,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.uiOptions.enactors.magnifier"
             },
             "panel": {
-                "type": "gpii.uiOptions.panels.magnifier",
-                "container": ".flc-uiOptions-magnifier",  // the css selector in the template where the panel is rendered
-                "template": "%prefix/UIOptionsTemplate-plusMinusNumerical.html",
+                "type": "gpii.uiOptions.panels.increaseSize",
                 "message": "%prefix/magnifier.json"
             }
         },
@@ -112,10 +130,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
             },
             "panel": {
-                "type": "gpii.uiOptions.panels.magnifierPosition",
-                "container": ".flc-uiOptions-magnifierPosition",  // the css selector in the template where the panel is rendered
+                "type": "gpii.uiOptions.panels.increaseSize",
                 "classnameMap": {"magnifierPosition": "@magnifierPosition.classes"},
-                "template": "%prefix/UIOptionsTemplate-magnifierPosition.html",
                 "message": "%prefix/magnifier.json"
             }
         },
@@ -127,23 +143,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "keyboardfocus": "fl-magnifierFollows-uio-keyboardFocus fl-magnifierFollows-uio-icon-label"
             },
             "panel": {
-                "type": "gpii.uiOptions.panels.magnifierFollows",
-                "container": ".flc-uiOptions-magnifierFollows",  // the css selector in the template where the panel is rendered
+                "type": "gpii.uiOptions.panels.increaseSize",
                 "classnameMap": {"magnifierFollows": "@magnifierFollows.classes"},
-                "template": "%prefix/UIOptionsTemplate-magnifierFollows.html",
                 "message": "%prefix/magnifier.json"
-            }
-        },
-        "contrast": {
-            "type": "http://registry.gpii.org/common/display.screenEnhancement.highContrast",
-            "enactor": {
-                "type": "gpii.uiOptions.enactors.contrast"
-            },
-            "panel": {
-                "type": "gpii.uiOptions.panels.contrast",
-                "container": ".flc-uiOptions-contrast",
-                "template": "%prefix/UIOptionsTemplate-contrastNew.html",
-                "message": "%prefix/contrastNew.json"
             }
         }
     };

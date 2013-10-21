@@ -30,16 +30,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         gradeNames: ["fluid.uiOptions.panels", "gpii.uiOptions.pmt.previewPerSettingEnhanced", "autoInit"],
         preferenceMap: {
             "http://registry.gpii.org/common/fontSize": {
-                "model.value": "default",
-                "range.min": "minimum",
-                "range.max": "maximum",
-                "range.divisibleBy": "divisibleBy"
+                "model.fontSize": "default",
+                "textSize.min": "minimum",
+                "textSize.max": "maximum",
+                "textSize.divisibleBy": "divisibleBy"
             }
         },
         // The default model values represent both the expected format as well as the setting to be applied in the absence of values passed down to the component.
         // i.e. from the settings store, or specific defaults derived from schema.
         // Note: Except for being passed down to its subcomponent, these default values are not contributed and shared out
-        range: {
+        textSize: {
             min: 1,
             max: 1000,
             divisibleBy: 1
@@ -47,7 +47,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
         metricUnit: "pt",
 
-        components: {
+        /*components: {
             preview: {
                 type: "fluid.uiOptions.preview",
                 createOnEvent: "afterRender",
@@ -56,23 +56,23 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     templateUrl: "../../src/shared/preview/html/uiOptionsTextPreview.html"
                 }
             }
-        },
+        },*/
 
         selectors: {
-            minus: ".flc-uiOptions-plus-minus-numerical-minus",
-            label: ".flc-uiOptions-plus-minus-numerical-label",
-            plus: ".flc-uiOptions-plus-minus-numerical-plus",
-            valueText: ".flc-uiOptions-plus-minus-numerical-value"
+            textSizeMinus: ".flc-uiOptions-plus-minus-numerical-minus",
+            textSizeLabel: ".flc-uiOptions-plus-minus-numerical-label",
+            textSizePlus: ".flc-uiOptions-plus-minus-numerical-plus",
+            textSizeValueText: ".flc-uiOptions-plus-minus-numerical-value"
         },
         events: {
             minRangeReached: null
         },
         protoTree: {
-            minus: "-",
-            label: {messagekey: "textSizeLabel"},
-            plus: "+",
+            textSizeMinus: "-",
+            textSizeLabel: {messagekey: "textSizeLabel"},
+            textSizePlus: "+",
 
-            valueText: "${value}"
+            textSizeValueText: "${fontSize}"
         },
         listeners: {
             "onCreate.init": "gpii.uiOptions.panels.plusMinusAdjusterFinalInit"
@@ -82,7 +82,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 funcName: "gpii.uiOptions.panels.updatePlusMinusAdjusterUI",
                 args: ["{that}"]
             }
-        },
+        }/*,
 
         distributeOptions: [{
             source: "{that}.options.outerPreviewEnhancerOptions",
@@ -92,7 +92,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             source: "{that}.options.emptyComponentType",
             removeSource: true,
             target: "{that preview enhancer magnifier}.type"
-        }]
+        }]*/
     });
     
 })(jQuery, fluid);

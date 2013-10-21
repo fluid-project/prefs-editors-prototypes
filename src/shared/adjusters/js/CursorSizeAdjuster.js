@@ -30,7 +30,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             max: 5,
             divisibleBy: 0.2
         },
-        components: {
+        /*components: {
             preview: {
                 type: "fluid.uiOptions.preview",
                 createOnEvent: "afterRender",
@@ -39,7 +39,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     templateUrl: "../../src/shared/preview/html/uiOptionsCursorPreview.html"
                 }
             }
-        },
+        },*/
         selectors: {
             textSize: ".flc-uiOptions-cursor-size",
             label: ".flc-uiOptions-cursor-size-label",
@@ -59,7 +59,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             orientation: "horizontal",
             step: 0.2,
             range: "min"
-        },
+        }/*,
         
         distributeOptions: [{
             source: "{that}.options.outerPreviewEnhancerOptions",
@@ -72,7 +72,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             source: "{that}.options.emptyComponentType",
             removeSource: true,
             target: "{that preview enhancer magnifier}.type"
-        }]
+        }]*/
     });
     
 })(jQuery, fluid);

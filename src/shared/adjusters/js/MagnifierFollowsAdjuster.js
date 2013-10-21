@@ -19,7 +19,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
             "http://registry.gpii.org/common/tracking": {
-                "model.value": "",
+                "model.magnifierFollows": "",
                 "controlValues.magnifierFollows": "enum"
             }
         },
@@ -30,7 +30,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierFollowsRow: ".flc-uiOptions-magnifierFollowsRow",
             magnifierFollowsLabel: ".flc-uiOptions-magnifierFollows-label",
             magnifierFollowsInput: ".flc-uiOptions-magnifierFollowsInput",
-            label: ".flc-uiOptions-magnifierFollows-heading"
+            magnifierFollowsLabel: ".flc-uiOptions-magnifierFollows-heading"
         },
         strings: {
             magnifierFollows: {
@@ -42,7 +42,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         repeatingSelectors: ["magnifierFollowsRow"],
         protoTree: {
-            label: {messagekey: "magnifierFollowsLabel"},
+            magnifierFollowsLabel: {messagekey: "magnifierFollowsLabel"},
             expander: {
                 type: "fluid.renderer.selection.inputs",
                 rowID: "magnifierFollowsRow",
@@ -52,7 +52,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 tree: {
                     optionnames: "${{that}.options.strings.magnifierFollows}",
                     optionlist: "${{that}.options.controlValues.magnifierFollows}",
-                    selection: "${value}"
+                    selection: "${magnifierFollows}"
                 }
             }
         },
@@ -60,7 +60,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierFollows: ["mousecursor", "textcursor", "keyboardfocus"]
         },
         markup: {
-            label:     "<div class=\"fl-adjuster-icons fl-adjuster-icons-sept-12 fl-magnifierFollows-uio-icon\"></div>" +
+            magnifierFollowsLabel:     "<div class=\"fl-adjuster-icons fl-adjuster-icons-sept-12 fl-magnifierFollows-uio-icon\"></div>" +
                     "<div class=\"fl-adjuster-icons fl-adjuster-icons-sept-12 fl-magnifierFollows-uio-icon-check\"></div>" +
                     /*"%magnifierFollows" +*/
                     "<div class=\"fl-magnifierFollows-legend\">%magnifierFollows</div>" +

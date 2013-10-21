@@ -19,7 +19,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         gradeNames: ["fluid.uiOptions.panels", "gpii.uiOptions.pmt.previewPerSettingEnhanced", "autoInit"],
         preferenceMap: {
             "http://registry.gpii.org/common/display.screenEnhancement.highContrast": {
-                "model.value": "default"
+                "model.contrast": "default"
             }
         },
         events: {
@@ -37,7 +37,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             "afterRender.setContrastAdjusters": {
                 listener: "gpii.uiOptions.panels.contrast.setContrastAdjusters",
-                args: ["{that}.dom.contrastAdjusters", "{that}.model.value"]
+                args: ["{that}.dom.contrastAdjusters", "{that}.model.contrast"]
             },
             "afterRender.setATTRaddToMyPreferencesLabel": {
                 "this": "{that}.dom.addToMyPreferencesLabel",
@@ -57,7 +57,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         selectorsToIgnore: ["contrastAdjusters", "addToMyPreferencesLabel"],
         protoTree: {
-            valueCheckbox: "${value}",
+            valueCheckbox: "${contrast}",
             headingLabel: {messagekey: "contrast"},
             panelLabel: {messagekey: "addContrast"}
         },
@@ -74,7 +74,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     args: ["{uiOptionsLoader}.msgBundle", "tooltipUnchecked"]
                 }
             }
-        },
+        }/*,
         components: {
             preview: {
                 type: "fluid.uiOptions.preview",
@@ -121,7 +121,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             source: "{that}.options.emptyComponentType",
             removeSource: true,
             target: "{that preview enhancer magnifier}.type"
-        }]
+        }]*/
     });
     
     gpii.uiOptions.panels.contrast.setContrastAdjusters = function (contrastAdjuster, flag) {

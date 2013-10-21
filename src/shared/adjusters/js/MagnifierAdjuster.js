@@ -30,13 +30,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         gradeNames: ["fluid.uiOptions.panels", "gpii.uiOptions.pmt.previewPerSettingEnhanced", "autoInit"],
         preferenceMap: {
             "http://registry.gpii.org/common/magnification": {
-                "model.value": "default",
-                "range.min": "minimum",
-                "range.max": "maximum",
-                "range.divisibleBy": "divisibleBy"
+                "model.magnification": "default",
+                "magnifier.min": "minimum",
+                "magnifier.max": "maximum",
+                "magnifier.divisibleBy": "divisibleBy"
             }
         },
-        range: {
+        magnifier: {
             min: 100,
             max: 10000,
             divisibleBy: 50
@@ -44,7 +44,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
         metricUnit: "%",
 
-        components: {
+        /*components: {
             preview: {
                 type: "fluid.uiOptions.preview",
                 createOnEvent: "afterRender",
@@ -53,23 +53,23 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     templateUrl: "../../src/shared/preview/html/uiOptionsTextPreview.html"
                 }
             }
-        },
+        },*/
 
         selectors: {
-            minus: ".flc-uiOptions-plus-minus-numerical-minus",
-            label: ".flc-uiOptions-plus-minus-numerical-label",
-            plus: ".flc-uiOptions-plus-minus-numerical-plus",
-            valueText: ".flc-uiOptions-plus-minus-numerical-value"
+            magnifierMinus: ".flc-uiOptions-plus-minus-numerical-minus",
+            magnifierLabel: ".flc-uiOptions-plus-minus-numerical-label",
+            magnifierPlus: ".flc-uiOptions-plus-minus-numerical-plus",
+            magnifierValueText: ".flc-uiOptions-plus-minus-numerical-value"
         },
         events: {
             minRangeReached: null
         },
         protoTree: {
-            minus: "-",
-            label: {messagekey: "magnifierLabel"},
-            plus: "+",
+            magnifierMinus: "-",
+            magnifierLabel: {messagekey: "magnifierLabel"},
+            magnifierPlus: "+",
 
-            valueText: "${value}"
+            magnifierValueText: "${magnification}"
         },
         strings: {
             magnifierOFF: {
@@ -92,12 +92,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 funcName: "gpii.uiOptions.panels.updatePlusMinusAdjusterUI",
                 args: ["{that}"]
             }
-        },
+        }/*,
         
         distributeOptions: [{
             source: "{that}.options.outerPreviewEnhancerOptions",
             removeSource: true,
             target: "{that preview enhancer}.options"
-        }]
+        }]*/
     });
 })(jQuery, fluid);
