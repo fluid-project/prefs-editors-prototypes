@@ -50,10 +50,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.bindEventPreferenceSwitchSpeakText": {
                     "this": "{that}.dom.preferencesSwitchSpeakText",
                     "method": "change",
-                    "args": ["{that}.events.onToggleSpeakTextAdjusters.fire"]
+                    "args": ["{that}.updateModelValue"]
                 },
-                "onToggleSpeakTextAdjusters.toggleSpeakTextAdjusters": {
-                    "listener": "{that}.toggleSpeakTextAdjusters"
+                "onCreate.addPartialVisibilityListener": {
+                    "listener": "{that}.applier.modelChanged.addListener",
+                    "args": ["partialAdjustersVisibility", "{that}.showHidePartial"]
+                },
+                "onCreate.addExtraVisibilityListener": {
+                    "listener": "{that}.applier.modelChanged.addListener",
+                    "args": ["extraAdjustersVisibility", "{that}.showHideExtra"]
                 },
                 "onReady.setTextSpeakTextHeader": {
                     "this": "{that}.dom.speakTextHeader",
@@ -68,10 +73,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.bindEventMoreLess": {
                     "this": "{that}.dom.moreLess",
                     "method": "click",
-                    "args": ["{that}.events.onToggleSpeakTextExtraAdjusters.fire"]
-                },
-                "onToggleSpeakTextExtraAdjusters.toggleSpeakTextExtraAdjusters": {
-                    "listener": "{that}.toggleSpeakTextExtraAdjusters"
+                    "args": ["{that}.updateExtraModelValue"]
                 },
                 "onShowAdjusters.showPartialAdjusters": {
                     "this": "{that}.dom.speakTextPartialAdjusters",
@@ -115,11 +117,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onHidePartialAdjusters.hideTick": {
                     "listener": "{that}.hideWhiteTickIcon"
                 },
-                "onHideAllAdjusters.hidePartial": {
-                    "this": "{that}.dom.speakTextPartialAdjusters",
-                    "method": "slideUp",
-                    "args": ["{that}.options.partiallyExpandedSlideSpeed"]
-                },
                 "onHideAllAdjusters.hideExtra": {
                     "this": "{that}.dom.speakTextExtraAdjusters",
                     "method": "slideUp",
@@ -160,13 +157,32 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             invokers: {
-                toggleSpeakTextAdjusters: {
-                    "funcName": "gpii.speakText.toggleSpeakTextAdjusters",
-                    "args": [
-                        "{that}",
-                        "{that}.events.onShowAdjusters.fire",
-                        "{that}.events.onHidePartialAdjusters.fire",
-                        "{that}.events.onHideAllAdjusters.fire"
+                updateModelValue: {
+                    "funcName": "gpii.speakText.updateModelHeaderClicked",
+                    "args": ["{that}",
+                             "{that}.model.partialAdjustersVisibility",
+                             "{that}.model.extraAdjustersVisibility"
+                    ]
+                },
+                updateExtraModelValue: {
+                    "funcName": "gpii.speakText.updateModelMoreLessClicked",
+                    "args": ["{that}",
+                             "{that}.model.extraAdjustersVisibility"
+                    ]
+                },
+                showHidePartial: {
+                    "funcName": "gpii.speakText.showHidePartial",
+                    "args": ["{that}.model.partialAdjustersVisibility",
+                             "{that}.events.onShowAdjusters.fire",
+                             "{that}.events.onHidePartialAdjusters.fire",
+                             "{that}.events.onHideAllAdjusters.fire"
+                    ]
+                },
+                showHideExtra: {
+                    "funcName": "gpii.speakText.showHideExtra",
+                    "args": ["{that}.model.extraAdjustersVisibility",
+                             "{that}.events.onShowExtraAdjuster.fire",
+                             "{that}.events.onHideExtraAdjuster.fire"
                     ]
                 },
                 toggleSpeakTextExtraAdjusters: {
@@ -230,31 +246,34 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.speakText.toggleSpeakTextAdjusters = function (that, showEvent, hidePartialEvent, hideAllEvent) {
-        var partialVisible = that.model.partialAdjustersVisibility;
-        var extraVisible = that.model.extraAdjustersVisibility;
-
+    gpii.speakText.updateModelHeaderClicked = function (that, partialVisible, extraVisible) {
         if (extraVisible) {
             that.applier.requestChange("partialAdjustersVisibility", false);
             that.applier.requestChange("extraAdjustersVisibility", false);
-            hideAllEvent();
         } else if (partialVisible && !extraVisible) {
             that.applier.requestChange("partialAdjustersVisibility", false);
-            hidePartialEvent();
         } else {
             that.applier.requestChange("partialAdjustersVisibility", true);
-            showEvent();
         }
     };
 
-    gpii.speakText.toggleSpeakTextExtraAdjusters = function (that, showEvent, hideEvent) {
-        if (that.model.extraAdjustersVisibility) {
-            that.applier.requestChange("extraAdjustersVisibility", false);
-            hideEvent();
-        } else {
-            that.applier.requestChange("extraAdjustersVisibility", true);
+    gpii.speakText.updateModelMoreLessClicked = function (that, extraVisible) {
+        that.applier.requestChange("extraAdjustersVisibility", !extraVisible);
+    };
+
+    gpii.speakText.showHidePartial = function (state, showEvent, hidePartialEvent, hideExtraEvent) {
+        if (state) {
             showEvent();
+        } else {
+            hidePartialEvent();
         }
+    };
+
+    gpii.speakText.showHideExtra = function (state, showEvent, hideEvent) {
+        if (state)
+            showEvent();
+        else
+            hideEvent();
     };
 
     gpii.speakText.fireHideEvent = function (hideEvent) {
