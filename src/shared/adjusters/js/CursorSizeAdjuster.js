@@ -20,15 +20,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         preferenceMap: {
             "http://registry.gpii.org/common/cursorSize": {
                 "model.cursorSize": "default",
-                "range.min": "minimum",
-                "range.max": "maximum",
-                "range.divisibleBy": "divisibleBy"
+                "controlValues.cursorSize.min": "minimum",
+                "controlValues.cursorSize.max": "maximum",
+                "controlValues.cursorSize.divisibleBy": "divisibleBy"
             }
-        },
-        range: {
-            min: 1,
-            max: 5,
-            divisibleBy: 0.2
         },
         /*components: {
             preview: {
