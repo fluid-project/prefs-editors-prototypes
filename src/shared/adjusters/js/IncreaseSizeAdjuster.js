@@ -58,7 +58,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "afterRender.bindEventPreferenceSwitchIncreaseSizeExtra": {
                 "this": "{that}.dom.preferenceSwitchIncreaseSizeExtra",
                 "method": "change",
-                "args": ["{that}.updateModelValue"]
+                "args": ["{that}.toggleIncreaseSizeExtraAdjusters"]
             },
             "afterRender.setTextMoreLess": {
                 "this": "{that}.dom.moreLess",
@@ -83,14 +83,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "text",
                 "args": ["{that}.options.strings.more"]
             },
-            "afterRender.hideIncreaseSizeExtraAdjusters": {
-                "this": "{that}.dom.increaseSizeExtraAdjusters",
-                "method": "hide",
-                "args": [0]
-            },
-            "afterRender.init": {
-                listener: "{that}.applier.modelChanged.addListener",
-                args: ["increaseSizeExtraAdjustersEnabled", "{that}.toggleIncreaseSizeExtraAdjusters"]
+            "afterRender.toggleIncreaseSizeExtraAdjusters": {
+                listener: "{that}.toggleIncreaseSizeExtraAdjusters"
             }
         },
         selectors: {
@@ -102,7 +96,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             preferenceSwitchIncreaseSizeExtra: "#preferenceSwitchIncreaseSizeExtra",
             moreLess: ".moreLess"
         },
-        selectorsToIgnore: ["increaseSizeHeader", "increaseSizeAdjusters", "preferenceSwitchIncreaseSize", "addToMyPreferencesStar", "increaseSizeExtraAdjusters", "preferenceSwitchIncreaseSizeExtra", "moreLess"],
+        selectorsToIgnore: ["increaseSizeHeader", "increaseSizeAdjusters", "preferenceSwitchIncreaseSize", "addToMyPreferencesStar", "increaseSizeExtraAdjusters", "moreLess"],
         strings: {
             increaseSizeHeader: {
                 expander: {
@@ -136,10 +130,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         model: {
-            increaseSizeExtraAdjustersEnabled: false
+            increaseSizeExtraAdjustersEnabledSwitch: false
         },
         protoTree: {
-            preferenceSwitchIncreaseSizeExtra: "${increaseSizeExtraAdjustersEnabled}",
+            preferenceSwitchIncreaseSizeExtra: "${increaseSizeExtraAdjustersEnabledSwitch}",
             cursorSizeLabel: {messagekey: "cursorSizeLabel"},
             multiplier: {messagekey: "multiplier"},
             cursorSize: {
@@ -195,31 +189,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             toggleIncreaseSizeExtraAdjusters: {
                 "funcName": "gpii.uiOptions.panels.increaseSize.toggleIncreaseSizeExtraAdjusters",
                 "args": [
-                    "{that}.model.increaseSizeExtraAdjustersEnabled",
+                    "{that}.model.increaseSizeExtraAdjustersEnabledSwitch",
                     "{that}.events.onShowExtraAdjuster.fire",
                     "{that}.events.onHideExtraAdjuster.fire"
-                ]
-            },
-            updateModelValue: {
-                "funcName": "gpii.uiOptions.panels.increaseSize.updateIncreaseSizeExtraAdjustersModelValue",
-                "args": [
-                    "{that}",
-                    "{that}.dom.preferenceSwitchIncreaseSizeExtra"
                 ]
             }
         }
     });
     
-    gpii.uiOptions.panels.increaseSize.toggleIncreaseSizeExtraAdjusters = function (increaseSizeExtraAdjustersEnabled, showEvent, hideEvent) {
-        if (increaseSizeExtraAdjustersEnabled) {
-            hideEvent();
-        } else {
+    gpii.uiOptions.panels.increaseSize.toggleIncreaseSizeExtraAdjusters = function (increaseSizeExtraAdjustersEnabledSwitch, showEvent, hideEvent) {
+        if (increaseSizeExtraAdjustersEnabledSwitch) {
             showEvent();
+        } else {
+            hideEvent();
         }
-    };
-
-    gpii.uiOptions.panels.increaseSize.updateIncreaseSizeExtraAdjustersModelValue = function (that, elm) {
-        that.applier.requestChange("increaseSizeExtraAdjustersEnabled", !elm.is(":checked"));
     };
 
 })(jQuery, fluid);
