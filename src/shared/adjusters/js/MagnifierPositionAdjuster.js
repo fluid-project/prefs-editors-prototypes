@@ -30,7 +30,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierPositionRow: ".flc-uiOptions-magnifierPositionRow",
             magnifierPositionLabel: ".flc-uiOptions-magnifierPosition-label",
             magnifierPositionInput: ".flc-uiOptions-magnifierPositionInput",
-            label: ".flc-uiOptions-magnifierPosition-heading"
+            magnifierPositionHeading: ".flc-uiOptions-magnifierPosition-heading"
         },
         strings: {
             magnifierPosition: {

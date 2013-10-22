@@ -41,8 +41,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },*/
         selectors: {
-            textSize: ".flc-uiOptions-cursor-size",
-            label: ".flc-uiOptions-cursor-size-label",
+            cursorSize: ".flc-uiOptions-cursor-size",
+            cursorSizeLabel: ".flc-uiOptions-cursor-size-label",
             multiplier: ".flc-uiOptions-multiplier"
         },
         sliderOptions: {

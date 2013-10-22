@@ -30,7 +30,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierFollowsRow: ".flc-uiOptions-magnifierFollowsRow",
             magnifierFollowsLabel: ".flc-uiOptions-magnifierFollows-label",
             magnifierFollowsInput: ".flc-uiOptions-magnifierFollowsInput",
-            magnifierFollowsLabel: ".flc-uiOptions-magnifierFollows-heading"
+            magnifierFollowsHeading: ".flc-uiOptions-magnifierFollows-heading"
         },
         strings: {
             magnifierFollows: {
@@ -45,7 +45,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierFollows: ["mousecursor", "textcursor", "keyboardfocus"]
         },
         markup: {
-            magnifierFollowsLabel:     "<div class=\"fl-adjuster-icons fl-adjuster-icons-sept-12 fl-magnifierFollows-uio-icon\"></div>" +
+            label:     "<div class=\"fl-adjuster-icons fl-adjuster-icons-sept-12 fl-magnifierFollows-uio-icon\"></div>" +
                     "<div class=\"fl-adjuster-icons fl-adjuster-icons-sept-12 fl-magnifierFollows-uio-icon-check\"></div>" +
                     /*"%magnifierFollows" +*/
                     "<div class=\"fl-magnifierFollows-legend\">%magnifierFollows</div>" +

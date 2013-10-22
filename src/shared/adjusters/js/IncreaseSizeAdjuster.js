@@ -143,7 +143,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             valueCheckbox: "${contrast}",
             headingLabel: {messagekey: "contrast"},
             panelLabel: {messagekey: "addContrast"},
-            label: {messagekey: "cursorSizeLabel"},
+            cursorSizeLabel: {messagekey: "cursorSizeLabel"},
             multiplier: {messagekey: "multiplier"},
             textSize: {
                 decorators: {
@@ -156,8 +156,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierPlus: "+",
 
             magnifierValueText: "${magnification}",
-            magnifierFollowsLabel: {messagekey: "magnifierFollowsLabel"},
-            expander: {
+            magnifierFollowsHeading: {messagekey: "magnifierFollowsLabel"},
+            expander: [{
                 type: "fluid.renderer.selection.inputs",
                 rowID: "magnifierFollowsRow",
                 labelID: "magnifierFollowsLabel",
@@ -168,9 +168,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     optionlist: "${{that}.options.controlValues.magnifierFollows}",
                     selection: "${magnifierFollows}"
                 }
-            },
-            label: {messagekey: "magnifierPositionLabel"},
-            expander: {
+            }, {
                 type: "fluid.renderer.selection.inputs",
                 rowID: "magnifierPositionRow",
                 labelID: "magnifierPositionLabel",
@@ -181,7 +179,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     optionlist: "${{that}.options.controlValues.magnifierPosition}",
                     selection: "${magnifierPosition}"
                 }
-            },
+            }],
+            magnifierPositionHeading: {messagekey: "magnifierPositionLabel"},
             textSizeMinus: "-",
             textSizeLabel: {messagekey: "textSizeLabel"},
             textSizePlus: "+",
