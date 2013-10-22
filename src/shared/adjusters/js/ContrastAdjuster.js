@@ -56,11 +56,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             contrastAdjusters: ".flc-uiOptions-category"         
         },
         selectorsToIgnore: ["contrastAdjusters", "addToMyPreferencesLabel"],
-        protoTree: {
-            valueCheckbox: "${contrast}",
-            headingLabel: {messagekey: "contrast"},
-            panelLabel: {messagekey: "addContrast"}
-        },
         strings: {
             tooltipChecked: {
                 expander: {

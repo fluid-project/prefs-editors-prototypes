@@ -19,7 +19,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         gradeNames: ["fluid.uiOptions.panels", "gpii.uiOptions.pmt.previewPerSettingEnhanced", "autoInit"],
         preferenceMap: {
             "http://registry.gpii.org/common/cursorSize": {
-                "model.value": "default",
+                "model.cursorSize": "default",
                 "range.min": "minimum",
                 "range.max": "maximum",
                 "range.divisibleBy": "divisibleBy"
@@ -44,16 +44,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             textSize: ".flc-uiOptions-cursor-size",
             label: ".flc-uiOptions-cursor-size-label",
             multiplier: ".flc-uiOptions-multiplier"
-        },
-        protoTree: {
-            label: {messagekey: "cursorSizeLabel"},
-            multiplier: {messagekey: "multiplier"},
-            textSize: {
-                decorators: {
-                    type: "fluid",
-                    func: "fluid.uiOptions.textfieldSlider"
-                }
-            }
         },
         sliderOptions: {
             orientation: "horizontal",

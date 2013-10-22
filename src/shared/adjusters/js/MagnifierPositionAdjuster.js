@@ -19,7 +19,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
             "http://registry.gpii.org/common/magnificationPosition": {
-                "model.value": "",
+                "model.magnifierPosition": "",
                 "controlValues.magnifierPosition": "enum"
             }
         },
@@ -41,21 +41,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         repeatingSelectors: ["magnifierPositionRow"],
-        protoTree: {
-            label: {messagekey: "magnifierPositionLabel"},
-            expander: {
-                type: "fluid.renderer.selection.inputs",
-                rowID: "magnifierPositionRow",
-                labelID: "magnifierPositionLabel",
-                inputID: "magnifierPositionInput",
-                selectID: "magnifierPosition-radio",
-                tree: {
-                    optionnames: "${{that}.options.strings.magnifierPosition}",
-                    optionlist: "${{that}.options.controlValues.magnifierPosition}",
-                    selection: "${value}"
-                }
-            }
-        },
         controlValues: {
             magnifierPosition: ["lens", "dockedleft", "dockedtop", "fullscreen", "dockedright", "dockedbottom"]
         },

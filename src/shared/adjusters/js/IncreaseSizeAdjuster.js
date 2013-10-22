@@ -103,9 +103,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             moreLess: ".moreLess"
         },
         selectorsToIgnore: ["increaseSizeHeader", "increaseSizeAdjusters", "preferenceSwitchIncreaseSize", "addToMyPreferencesStar", "increaseSizeExtraAdjusters", "preferenceSwitchIncreaseSizeExtra", "moreLess"],
-        /*protoTree: {
-            increaseSizeHeader: {messagekey: "increaseSizeHeader"}
-        },*/
         strings: {
             increaseSizeHeader: {
                 expander: {
@@ -142,7 +139,54 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             increaseSizeExtraAdjustersEnabled: false
         },
         protoTree: {
-            preferenceSwitchIncreaseSizeExtra: "${increaseSizeExtraAdjustersEnabled}"
+            preferenceSwitchIncreaseSizeExtra: "${increaseSizeExtraAdjustersEnabled}",
+            valueCheckbox: "${contrast}",
+            headingLabel: {messagekey: "contrast"},
+            panelLabel: {messagekey: "addContrast"},
+            label: {messagekey: "cursorSizeLabel"},
+            multiplier: {messagekey: "multiplier"},
+            textSize: {
+                decorators: {
+                    type: "fluid",
+                    func: "fluid.uiOptions.textfieldSlider"
+                }
+            },
+            magnifierMinus: "-",
+            magnifierLabel: {messagekey: "magnifierLabel"},
+            magnifierPlus: "+",
+
+            magnifierValueText: "${magnification}",
+            magnifierFollowsLabel: {messagekey: "magnifierFollowsLabel"},
+            expander: {
+                type: "fluid.renderer.selection.inputs",
+                rowID: "magnifierFollowsRow",
+                labelID: "magnifierFollowsLabel",
+                inputID: "magnifierFollowsInput",
+                selectID: "magnifierFollows-radio",
+                tree: {
+                    optionnames: "${{that}.options.strings.magnifierFollows}",
+                    optionlist: "${{that}.options.controlValues.magnifierFollows}",
+                    selection: "${magnifierFollows}"
+                }
+            },
+            label: {messagekey: "magnifierPositionLabel"},
+            expander: {
+                type: "fluid.renderer.selection.inputs",
+                rowID: "magnifierPositionRow",
+                labelID: "magnifierPositionLabel",
+                inputID: "magnifierPositionInput",
+                selectID: "magnifierPosition-radio",
+                tree: {
+                    optionnames: "${{that}.options.strings.magnifierPosition}",
+                    optionlist: "${{that}.options.controlValues.magnifierPosition}",
+                    selection: "${magnifierPosition}"
+                }
+            },
+            textSizeMinus: "-",
+            textSizeLabel: {messagekey: "textSizeLabel"},
+            textSizePlus: "+",
+
+            textSizeValueText: "${fontSize}"
         },
         invokers: {
             toggleIncreaseSizeExtraAdjusters: {

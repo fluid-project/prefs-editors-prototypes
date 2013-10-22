@@ -67,13 +67,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         events: {
             minRangeReached: null
         },
-        protoTree: {
-            textSizeMinus: "-",
-            textSizeLabel: {messagekey: "textSizeLabel"},
-            textSizePlus: "+",
-
-            textSizeValueText: "${fontSize}"
-        },
         listeners: {
             "onCreate.init": "gpii.uiOptions.panels.plusMinusAdjusterFinalInit"
         },

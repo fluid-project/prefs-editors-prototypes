@@ -41,21 +41,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         repeatingSelectors: ["magnifierFollowsRow"],
-        protoTree: {
-            magnifierFollowsLabel: {messagekey: "magnifierFollowsLabel"},
-            expander: {
-                type: "fluid.renderer.selection.inputs",
-                rowID: "magnifierFollowsRow",
-                labelID: "magnifierFollowsLabel",
-                inputID: "magnifierFollowsInput",
-                selectID: "magnifierFollows-radio",
-                tree: {
-                    optionnames: "${{that}.options.strings.magnifierFollows}",
-                    optionlist: "${{that}.options.controlValues.magnifierFollows}",
-                    selection: "${magnifierFollows}"
-                }
-            }
-        },
         controlValues: {
             magnifierFollows: ["mousecursor", "textcursor", "keyboardfocus"]
         },

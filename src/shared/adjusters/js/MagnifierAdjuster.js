@@ -64,13 +64,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         events: {
             minRangeReached: null
         },
-        protoTree: {
-            magnifierMinus: "-",
-            magnifierLabel: {messagekey: "magnifierLabel"},
-            magnifierPlus: "+",
-
-            magnifierValueText: "${magnification}"
-        },
         strings: {
             magnifierOFF: {
                 expander: {
