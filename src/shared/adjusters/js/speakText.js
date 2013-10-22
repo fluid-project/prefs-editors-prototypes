@@ -10,238 +10,72 @@ You may obtain a copy of the License at
 https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
-
 (function ($, fluid) {
     fluid.defaults("gpii.speakText", {
         gradeNames: ["fluid.uiOptions.fullNoPreview", "autoInit"],
         uiOptions: {
-            partiallyExpandedSlideSpeed: 500,
-            fullyExpandedSlideSpeed: 600,
-            model: {
-                partialAdjustersVisibility: false,
-                extraAdjustersVisibility: false
-            },
-            events: {
-                onToggleSpeakTextAdjusters: null,
-                onShowAdjusters: null,
-                onHidePartialAdjusters: null,
-                onHideAllAdjusters: null,
-                onToggleSpeakTextExtraAdjusters: null,
-                onShowExtraAdjuster: null,
-                onHideExtraAdjuster: null,
-                onHideSpeakTextTickIcon: null
+            selectors: {
+                saveAndApply: ".flc-uiOptions-save",
+                resetAndApply: ".flc-uiOptions-reset",
+                cancel: ".flc-uiOptions-cancel"
             },
             listeners: {
-                "onReady.setATTRaddToMyPreferencesStar": {
-                    "this": "{that}.dom.addToMyPreferencesStar",
-                    "method": "attr",
-                    "args": [{
-                        "tooltip-checked": "{that}.options.strings.tooltipChecked",
-                        "tooltip-unchecked": "{that}.options.strings.tooltipUnchecked"
-                    }]
+                "onReady.setSaveAndApplyText": {
+                    "this": "{that}.dom.saveAndApply",
+                    "method": "prop",
+                    "args": ["value", "{that}.options.strings.saveAndApply"]
                 },
-                "onHideSpeakTextTickIcon.hideTick": {
-                    "this": "{that}.dom.speakTextTickIcon",
-                    "method": "hide"
+                "onReady.setResetAndApplyText": {
+                    "this": "{that}.dom.resetAndApply",
+                    "method": "prop",
+                    "args": ["value", "{that}.options.strings.resetAndApply"]
                 },
-                "onReady.hideWhiteTickIcon": {
-                    "listener": "{that}.hideWhiteTickIcon"
+                "onReady.setCancelText": {
+                    "this": "{that}.dom.cancel",
+                    "method": "prop",
+                    "args": ["value", "{that}.options.strings.cancel"]
                 },
-                "onReady.bindEventPreferenceSwitchSpeakText": {
-                    "this": "{that}.dom.preferencesSwitchSpeakText",
-                    "method": "change",
-                    "args": ["{that}.updateModelValue"]
-                },
-                "onCreate.addPartialVisibilityListener": {
-                    "listener": "{that}.applier.modelChanged.addListener",
-                    "args": ["partialAdjustersVisibility", "{that}.showHidePartial"]
-                },
-                "onCreate.addExtraVisibilityListener": {
-                    "listener": "{that}.applier.modelChanged.addListener",
-                    "args": ["extraAdjustersVisibility", "{that}.showHideExtra"]
-                },
-                "onReady.setTextSpeakTextHeader": {
-                    "this": "{that}.dom.speakTextHeader",
-                    "method": "text",
-                    "args": ["{that}.options.strings.speakTextHeader"]
-                },
-                "onReady.setTextMoreText": {
-                    "this": "{that}.dom.moreLess",
-                    "method": "text",
-                    "args": ["{that}.options.strings.moreText"]
-                },
-                "onReady.bindEventMoreLess": {
-                    "this": "{that}.dom.moreLess",
+                "onReady.onSaveVisibilityActualisation": {
+                    "this": "{that}.dom.saveAndApply",
                     "method": "click",
-                    "args": ["{that}.updateExtraModelValue"]
+                    "args": ["{that}.updateModelAllHidden"]
                 },
-                "onShowAdjusters.showPartialAdjusters": {
-                    "this": "{that}.dom.speakTextPartialAdjusters",
-                    "method": "slideDown",
-                    "args": ["{that}.options.partiallyExpandedSlideSpeed"]
+                "onReady.onResetVisibilityActualisation": {
+                    "this": "{that}.dom.resetAndApply",
+                    "method": "click",
+                    "args": ["{that}.updateModelAllHidden"]
                 },
-                "onShowAdjusters.showWhiteTickIcon": {
-                    "this": "{that}.dom.speakTextTickIcon",
-                    "method": "show"
-                },
-                "onShowAdjusters.setHeaderTextBold.addBoldClass": {
-                    "this": "{that}.dom.speakTextHeader",
-                    "method": "addClass",
-                    "args": ["{that}.options.styles.boldText"]
-                },
-                "onShowAdjusters.setHeaderTextBold.removeNormalClass": {
-                    "this": "{that}.dom.speakTextHeader",
-                    "method": "removeClass",
-                    "args": ["{that}.options.styles.normalText"]
-                },
-                "onShowAdjusters.setTextMoreText": {
-                    "this": "{that}.dom.moreLess",
-                    "method": "text",
-                    "args": ["{that}.options.strings.moreText"]
-                },
-                "onHidePartialAdjusters.hideAdjusters": {
-                    "this": "{that}.dom.speakTextPartialAdjusters",
-                    "method": "slideUp",
-                    "args": ["{that}.options.partiallyExpandedSlideSpeed"]
-                },
-                "onHidePartialAdjusters.setHeaderTextNormal.addNormalClass": {
-                    "this": "{that}.dom.speakTextHeader",
-                    "method": "addClass",
-                    "args": ["{that}.options.styles.normalText"]
-                },
-                "onHidePartialAdjusters.setHeaderTextNormal.removeBoldClass": {
-                    "this": "{that}.dom.speakTextHeader",
-                    "method": "removeClass",
-                    "args": ["{that}.options.styles.boldText"]
-                },
-                "onHidePartialAdjusters.hideTick": {
-                    "listener": "{that}.hideWhiteTickIcon"
-                },
-                "onHideAllAdjusters.hideExtra": {
-                    "this": "{that}.dom.speakTextExtraAdjusters",
-                    "method": "slideUp",
-                    "args": ["{that}.options.partiallyExpandedSlideSpeed"]
-                },
-                "onHideAllAdjusters.setHeaderTextNormal.addNormalClass": {
-                    "this": "{that}.dom.speakTextHeader",
-                    "method": "addClass",
-                    "args": ["{that}.options.styles.normalText"]
-                },
-                "onHideAllAdjusters.setHeaderTextNormal.removeBoldClass": {
-                    "this": "{that}.dom.speakTextHeader",
-                    "method": "removeClass",
-                    "args": ["{that}.options.styles.boldText"]
-                },
-                "onHideAllAdjusters.hideTick": {
-                    "listener": "{that}.hideWhiteTickIcon"
-                },
-                "onShowExtraAdjuster.show": {
-                    "this": "{that}.dom.speakTextExtraAdjusters",
-                    "method": "slideToggle",
-                    "args": ["{that}.options.fullyExpandedSlideSpeed"]
-                },
-                "onHideExtraAdjuster.hide": {
-                    "this": "{that}.dom.speakTextExtraAdjusters",
-                    "method": "slideToggle",
-                    "args": ["{that}.options.fullyExpandedSlideSpeed"]
-                },
-                "onShowExtraAdjuster.setLessText": {
-                    "this": "{that}.dom.moreLess",
-                    "method": "text",
-                    "args": ["{that}.options.strings.lessText"]
-                },
-                "onHideExtraAdjuster.setMoreText": {
-                    "this": "{that}.dom.moreLess",
-                    "method": "text",
-                    "args": ["{that}.options.strings.moreText"]
+                "onReady.onCancelVisibilityActualisation": {
+                    "this": "{that}.dom.cancel",
+                    "method": "click",
+                    "args": ["{that}.updateModelAllHidden"]
                 }
             },
             invokers: {
-                updateModelValue: {
-                    "funcName": "gpii.speakText.updateModelHeaderClicked",
-                    "args": ["{that}",
-                             "{that}.model.partialAdjustersVisibility",
-                             "{that}.model.extraAdjustersVisibility"
-                    ]
+                updateModelAllHidden: {
+                    "funcName": "gpii.speakText.updateModelAllHidden",
+                    "args": ["{speakText.panels.CollectivePanel}"]
                 },
-                updateExtraModelValue: {
-                    "funcName": "gpii.speakText.updateModelMoreLessClicked",
-                    "args": ["{that}",
-                             "{that}.model.extraAdjustersVisibility"
-                    ]
-                },
-                showHidePartial: {
-                    "funcName": "gpii.speakText.showHidePartial",
-                    "args": ["{that}.model.partialAdjustersVisibility",
-                             "{that}.events.onShowAdjusters.fire",
-                             "{that}.events.onHidePartialAdjusters.fire",
-                             "{that}.events.onHideAllAdjusters.fire"
-                    ]
-                },
-                showHideExtra: {
-                    "funcName": "gpii.speakText.showHideExtra",
-                    "args": ["{that}.model.extraAdjustersVisibility",
-                             "{that}.events.onShowExtraAdjuster.fire",
-                             "{that}.events.onHideExtraAdjuster.fire"
-                    ]
-                },
-                toggleSpeakTextExtraAdjusters: {
-                    "funcName": "gpii.speakText.toggleSpeakTextExtraAdjusters",
-                    "args": [
-                        "{that}",
-                        "{that}.events.onShowExtraAdjuster.fire",
-                        "{that}.events.onHideExtraAdjuster.fire"
-                    ]
-                },
-                hideWhiteTickIcon: {
-                    "funcName": "gpii.speakText.fireHideEvent",
-                    "args": ["{that}.events.onHideSpeakTextTickIcon.fire"]
-                }
-            },
-            selectors: {
-                addToMyPreferencesStar: ".addToMyPreferencesLabel",
-                preferencesSwitchSpeakText: "#presetButton",
-                speakTextPartialAdjusters: ".partially-expanded",
-                moreLess: ".more-options-label",
-                speakTextExtraAdjusters: ".fully-expanded",
-                speakTextHeader: ".gpii-speakTextPresetButton-label",
-                speakTextTickIcon: ".white-tick-icon"
             },
             strings: {
-                speakTextHeader: {
+                saveAndApply: {
                     expander: {
                         func: "gpii.speakText.lookupMsg",
-                        args: ["{uiOptionsLoader}.msgBundle", "speakTextPresetButtonLabel"]
+                        args: ["{uiOptionsLoader}.msgBundle", "saveAndApply"]
                     }
                 },
-                moreText: {
+                resetAndApply: {
                     expander: {
                         func: "gpii.speakText.lookupMsg",
-                        args: ["{uiOptionsLoader}.msgBundle", "moreText"]
+                        args: ["{uiOptionsLoader}.msgBundle", "resetAndApply"]
                     }
                 },
-                lessText: {
+                cancel: {
                     expander: {
                         func: "gpii.speakText.lookupMsg",
-                        args: ["{uiOptionsLoader}.msgBundle", "lessText"]
-                    }
-                },
-                tooltipChecked: {
-                    expander: {
-                        func: "gpii.speakText.lookupMsg",
-                        args: ["{uiOptionsLoader}.msgBundle", "tooltipChecked"]
-                    }
-                },
-                tooltipUnchecked: {
-                    expander: {
-                        func: "gpii.speakText.lookupMsg",
-                        args: ["{uiOptionsLoader}.msgBundle", "tooltipUnchecked"]
+                        args: ["{uiOptionsLoader}.msgBundle", "cancel"]
                     }
                 }
-            },
-            styles: {
-                boldText: "bold-font-weight",
-                normalText: "normal-font-weight"
             }
         }
     });
@@ -259,6 +93,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     gpii.speakText.updateModelMoreLessClicked = function (that, extraVisible) {
         that.applier.requestChange("extraAdjustersVisibility", !extraVisible);
+    };
+
+    gpii.speakText.updateModelAllHidden = function (panel) {
+        panel.applier.requestChange("partialAdjustersVisibility", false);
+        panel.applier.requestChange("extraAdjustersVisibility", false);
     };
 
     gpii.speakText.showHidePartial = function (state, showEvent, hidePartialEvent, hideExtraEvent) {
