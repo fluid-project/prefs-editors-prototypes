@@ -40,7 +40,6 @@
 }
 
 .preference {
-    /*display: none;*/
     padding-left: 40px;
     font-family: 'Roboto Slab', serif;
     background-color: #E5EFEF;
@@ -49,6 +48,7 @@
 
 .speak-text-label {
     font-size: 19px !important;
+    font-family: 'Roboto Slab', serif;
 }
 
 .speak-text-description {
@@ -309,6 +309,7 @@ input[type=checkbox] + label.checkbox-label {
 }
 
 .white-tick-icon {
+    display: none;
     font-family: 'presetButtonPackage';
 }
 

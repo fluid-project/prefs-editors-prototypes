@@ -82,11 +82,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 extraAdjustersVisibility: false
             },
             events: {
-                onToggleSpeakTextAdjusters: null,
-                onShowAdjusters: null,
+                onShowPartialAdjusters: null,
                 onHidePartialAdjusters: null,
-                onHideAllAdjusters: null,
-                onToggleSpeakTextExtraAdjusters: null,
                 onShowExtraAdjuster: null,
                 onHideExtraAdjuster: null,
                 onHideSpeakTextTickIcon: null
@@ -107,9 +104,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onHideSpeakTextTickIcon.hideTick": {
                     "this": "{that}.dom.speakTextTickIcon",
                     "method": "hide"
-                },
-                "afterRender.hideWhiteTickIcon": {
-                    "listener": "{that}.hideWhiteTickIcon"
                 },
                 "afterRender.bindEventPreferenceSwitchSpeakText": {
                     "this": "{that}.dom.preferencesSwitchSpeakText",
@@ -134,26 +128,26 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "click",
                     "args": ["{that}.updateExtraModelValue"]
                 },
-                "onShowAdjusters.showPartialAdjusters": {
+                "onShowPartialAdjusters.showPartialAdjusters": {
                     "this": "{that}.dom.speakTextPartialAdjusters",
                     "method": "slideDown",
                     "args": ["{that}.options.partiallyExpandedSlideSpeed"]
                 },
-                "onShowAdjusters.showWhiteTickIcon": {
+                "onShowPartialAdjusters.showWhiteTickIcon": {
                     "this": "{that}.dom.speakTextTickIcon",
                     "method": "show"
                 },
-                "onShowAdjusters.setHeaderTextBold.addBoldClass": {
+                "onShowPartialAdjusters.setHeaderTextBold.addBoldClass": {
                     "this": "{that}.dom.speakTextHeader",
                     "method": "addClass",
                     "args": ["{that}.options.styles.boldText"]
                 },
-                "onShowAdjusters.setHeaderTextBold.removeNormalClass": {
+                "onShowPartialAdjusters.setHeaderTextBold.removeNormalClass": {
                     "this": "{that}.dom.speakTextHeader",
                     "method": "removeClass",
                     "args": ["{that}.options.styles.normalText"]
                 },
-                "onShowAdjusters.setTextMoreText": {
+                "onShowPartialAdjusters.setTextMoreText": {
                     "this": "{that}.dom.moreLess",
                     "method": "text",
                     "args": ["{that}.options.strings.moreText"]
@@ -174,25 +168,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": ["{that}.options.styles.boldText"]
                 },
                 "onHidePartialAdjusters.hideTick": {
-                    "listener": "{that}.hideWhiteTickIcon"
-                },
-                "onHideAllAdjusters.hideExtra": {
-                    "this": "{that}.dom.speakTextExtraAdjusters",
-                    "method": "slideUp",
-                    "args": ["{that}.options.partiallyExpandedSlideSpeed"]
-                },
-                "onHideAllAdjusters.setHeaderTextNormal.addNormalClass": {
-                    "this": "{that}.dom.speakTextHeader",
-                    "method": "addClass",
-                    "args": ["{that}.options.styles.normalText"]
-                },
-                "onHideAllAdjusters.setHeaderTextNormal.removeBoldClass": {
-                    "this": "{that}.dom.speakTextHeader",
-                    "method": "removeClass",
-                    "args": ["{that}.options.styles.boldText"]
-                },
-                "onHideAllAdjusters.hideTick": {
-                    "listener": "{that}.hideWhiteTickIcon"
+                    "funcName": "{that}.events.onHideSpeakTextTickIcon.fire"
                 },
                 "onShowExtraAdjuster.show": {
                     "this": "{that}.dom.speakTextExtraAdjusters",
@@ -230,23 +206,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     ]
                 },
                 showHidePartial: {
-                    "funcName": "gpii.speakText.showHidePartial",
+                    "funcName": "gpii.speakText.showOrHideDependingOnState",
                     "args": ["{that}.model.partialAdjustersVisibility",
-                             "{that}.events.onShowAdjusters.fire",
-                             "{that}.events.onHidePartialAdjusters.fire",
-                             "{that}.events.onHideAllAdjusters.fire"
+                             "{that}.events.onShowPartialAdjusters.fire",
+                             "{that}.events.onHidePartialAdjusters.fire"
                     ]
                 },
                 showHideExtra: {
-                    "funcName": "gpii.speakText.showHideExtra",
+                    "funcName": "gpii.speakText.showOrHideDependingOnState",
                     "args": ["{that}.model.extraAdjustersVisibility",
                              "{that}.events.onShowExtraAdjuster.fire",
                              "{that}.events.onHideExtraAdjuster.fire"
                     ]
-                },
-                hideWhiteTickIcon: {
-                    "funcName": "gpii.speakText.fireHideEvent",
-                    "args": ["{that}.events.onHideSpeakTextTickIcon.fire"]
                 }
             },
             selectors: {

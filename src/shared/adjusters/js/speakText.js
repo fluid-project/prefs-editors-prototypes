@@ -100,23 +100,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         panel.applier.requestChange("extraAdjustersVisibility", false);
     };
 
-    gpii.speakText.showHidePartial = function (state, showEvent, hidePartialEvent, hideExtraEvent) {
-        if (state) {
-            showEvent();
-        } else {
-            hidePartialEvent();
-        }
-    };
-
-    gpii.speakText.showHideExtra = function (state, showEvent, hideEvent) {
-        if (state)
-            showEvent();
-        else
-            hideEvent();
-    };
-
-    gpii.speakText.fireHideEvent = function (hideEvent) {
-        hideEvent();
+    gpii.speakText.showOrHideDependingOnState = function (state, showEvent, hideEvent) {
+        state ? showEvent() : hideEvent()
     };
 
     gpii.speakText.lookupMsg = function (messageResolver, value) {
