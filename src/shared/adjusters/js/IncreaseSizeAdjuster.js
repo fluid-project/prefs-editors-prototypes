@@ -140,9 +140,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         protoTree: {
             preferenceSwitchIncreaseSizeExtra: "${increaseSizeExtraAdjustersEnabled}",
-            valueCheckbox: "${contrast}",
-            headingLabel: {messagekey: "contrast"},
-            panelLabel: {messagekey: "addContrast"},
             cursorSizeLabel: {messagekey: "cursorSizeLabel"},
             multiplier: {messagekey: "multiplier"},
             textSize: {
