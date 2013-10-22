@@ -31,12 +31,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         preferenceMap: {
             "http://registry.gpii.org/common/magnification": {
                 "model.magnification": "default",
-                "magnifier.min": "minimum",
-                "magnifier.max": "maximum",
-                "magnifier.divisibleBy": "divisibleBy"
+                "range.min": "minimum",
+                "range.max": "maximum",
+                "range.divisibleBy": "divisibleBy"
             }
         },
-        magnifier: {
+        range: {
             min: 100,
             max: 10000,
             divisibleBy: 50

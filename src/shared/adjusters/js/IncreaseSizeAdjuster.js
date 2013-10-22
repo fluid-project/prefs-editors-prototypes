@@ -142,7 +142,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             preferenceSwitchIncreaseSizeExtra: "${increaseSizeExtraAdjustersEnabled}",
             cursorSizeLabel: {messagekey: "cursorSizeLabel"},
             multiplier: {messagekey: "multiplier"},
-            textSize: {
+            cursorSize: {
                 decorators: {
                     type: "fluid",
                     func: "fluid.uiOptions.textfieldSlider"

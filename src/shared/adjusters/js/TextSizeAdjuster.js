@@ -31,15 +31,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         preferenceMap: {
             "http://registry.gpii.org/common/fontSize": {
                 "model.fontSize": "default",
-                "textSize.min": "minimum",
-                "textSize.max": "maximum",
-                "textSize.divisibleBy": "divisibleBy"
+                "range.min": "minimum",
+                "range.max": "maximum",
+                "range.divisibleBy": "divisibleBy"
             }
         },
         // The default model values represent both the expected format as well as the setting to be applied in the absence of values passed down to the component.
         // i.e. from the settings store, or specific defaults derived from schema.
         // Note: Except for being passed down to its subcomponent, these default values are not contributed and shared out
-        textSize: {
+        range: {
             min: 1,
             max: 1000,
             divisibleBy: 1
