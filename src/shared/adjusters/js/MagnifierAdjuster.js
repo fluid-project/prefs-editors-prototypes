@@ -56,10 +56,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },*/
 
         selectors: {
-            magnifierMinus: ".flc-uiOptions-plus-minus-numerical-minus",
-            magnifierLabel: ".flc-uiOptions-plus-minus-numerical-label",
-            magnifierPlus: ".flc-uiOptions-plus-minus-numerical-plus",
-            magnifierValueText: ".flc-uiOptions-plus-minus-numerical-value"
+            magnifierMinus: ".flc-uiOptions-plus-minus-numerical-minus-magnifier",
+            magnifierLabel: ".flc-uiOptions-plus-minus-numerical-label-magnifier",
+            magnifierPlus: ".flc-uiOptions-plus-minus-numerical-plus-magnifier",
+            magnifierValueText: ".flc-uiOptions-plus-minus-numerical-value-magnifier"
         },
         events: {
             minRangeReached: null
