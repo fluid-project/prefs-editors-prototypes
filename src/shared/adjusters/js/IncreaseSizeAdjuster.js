@@ -154,7 +154,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
             magnifierValueText: "${magnification}",
             magnifierFollowsHeading: {messagekey: "magnifierFollowsLabel"},
-            expander: [{
+            expander: {
                 type: "fluid.renderer.selection.inputs",
                 rowID: "magnifierFollowsRow",
                 labelID: "magnifierFollowsLabel",
@@ -165,7 +165,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     optionlist: "${{that}.options.controlValues.magnifierFollows}",
                     selection: "${magnifierFollows}"
                 }
-            }, {
+            }/*, {
                 type: "fluid.renderer.selection.inputs",
                 rowID: "magnifierPositionRow",
                 labelID: "magnifierPositionLabel",
@@ -176,7 +176,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     optionlist: "${{that}.options.controlValues.magnifierPosition}",
                     selection: "${magnifierPosition}"
                 }
-            }],
+            }*/,
             magnifierPositionHeading: {messagekey: "magnifierPositionLabel"},
             textSizeMinus: "-",
             textSizeLabel: {messagekey: "textSizeLabel"},
