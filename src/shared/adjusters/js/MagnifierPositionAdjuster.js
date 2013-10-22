@@ -24,7 +24,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         listeners: {
-            afterRender: "{that}.style"
+            afterRender: "{that}.magnifierPositionStyle"
         },
         selectors: {
             magnifierPositionRow: ".flc-uiOptions-magnifierPositionRow",
@@ -52,7 +52,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "<div class=\"fl-crossout\"></div>"
         },
         invokers: {
-            style: {
+            "magnifierPositionStyle": {
                 funcName: "gpii.uiOptions.panels.magnifierPosition.style",
                 args: ["{that}.dom.magnifierPositionLabel", "{that}.options.strings.magnifierPosition",
                     "{that}.options.markup.label", "{that}.options.controlValues.magnifierPosition",

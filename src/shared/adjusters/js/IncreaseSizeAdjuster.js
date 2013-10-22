@@ -158,29 +158,32 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
             magnifierValueText: "${magnification}",
             magnifierFollowsHeading: {messagekey: "magnifierFollowsLabel"},
-            expander: {
-                type: "fluid.renderer.selection.inputs",
-                rowID: "magnifierFollowsRow",
-                labelID: "magnifierFollowsLabel",
-                inputID: "magnifierFollowsInput",
-                selectID: "magnifierFollows-radio",
-                tree: {
-                    optionnames: "${{that}.options.strings.magnifierFollows}",
-                    optionlist: "${{that}.options.controlValues.magnifierFollows}",
-                    selection: "${magnifierFollows}"
-                }
-            }/*, {
-                type: "fluid.renderer.selection.inputs",
-                rowID: "magnifierPositionRow",
-                labelID: "magnifierPositionLabel",
-                inputID: "magnifierPositionInput",
-                selectID: "magnifierPosition-radio",
-                tree: {
-                    optionnames: "${{that}.options.strings.magnifierPosition}",
-                    optionlist: "${{that}.options.controlValues.magnifierPosition}",
-                    selection: "${magnifierPosition}"
-                }
-            }*/,
+            expander: [
+                {
+                    type: "fluid.renderer.selection.inputs",
+                    rowID: "magnifierFollowsRow",
+                    labelID: "magnifierFollowsLabel",
+                    inputID: "magnifierFollowsInput",
+                    selectID: "magnifierFollows-radio",
+                    tree: {
+                        optionnames: "${{that}.options.strings.magnifierFollows}",
+                        optionlist: "${{that}.options.controlValues.magnifierFollows}",
+                        selection: "${magnifierFollows}"
+                    }
+                }/*, 
+                {
+                    type: "fluid.renderer.selection.inputs",
+                    rowID: "magnifierPositionRow",
+                    labelID: "magnifierPositionLabel",
+                    inputID: "magnifierPositionInput",
+                    selectID: "magnifierPosition-radio",
+                    tree: {
+                        optionnames: "${{that}.options.strings.magnifierPosition}",
+                        optionlist: "${{that}.options.controlValues.magnifierPosition}",
+                        selection: "${magnifierPosition}"
+                    }
+                }*/
+            ],
             magnifierPositionHeading: {messagekey: "magnifierPositionLabel"},
             textSizeMinus: "-",
             textSizeLabel: {messagekey: "textSizeLabel"},

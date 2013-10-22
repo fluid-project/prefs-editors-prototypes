@@ -24,7 +24,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         listeners: {
-            afterRender: "{that}.style"
+            afterRender: "{that}.magnifierFollowsStyle"
         },
         selectors: {
             magnifierFollowsRow: ".flc-uiOptions-magnifierFollowsRow",
@@ -52,7 +52,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "<div class=\"fl-crossout\"></div>"
         },
         invokers: {
-            style: {
+            magnifierFollowsStyle: {
                 funcName: "gpii.uiOptions.panels.magnifierFollows.style",
                 args: ["{that}.dom.magnifierFollowsLabel", "{that}.options.strings.magnifierFollows",
                     "{that}.options.markup.label", "{that}.options.controlValues.magnifierFollows",
