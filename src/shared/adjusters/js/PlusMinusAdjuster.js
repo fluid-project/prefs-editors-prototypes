@@ -105,11 +105,18 @@
             });
             
             // Not very elegant solution
-            /*var previewframe = that.preview;
-            var previewText = that.options.parentBundle.lookup(["previewText"]).template;
-            that.preview.events.onReady.addListener(function () {
-                previewframe.container.contents().find('body').find('.flc-uiOptions-preview-per-setting-label').text(previewText);
-            });*/
+            var textSizePreviewFrame = that.textSizePreview;
+            var textSizePreviewText = that.options.parentBundle.lookup(["previewText"]).template;
+            textSizePreviewFrame.events.onReady.addListener(function () {
+                textSizePreviewFrame.container.contents().find('body').find('.flc-uiOptions-preview-per-setting-label').text(textSizePreviewText);
+            });
+            
+            var magnifierPreviewFrame = that.magnifierPreview;
+            var magnifierPreviewText = that.options.parentBundle.lookup(["previewText"]).template;
+            magnifierPreviewFrame.events.onReady.addListener(function () {
+                magnifierPreviewFrame.container.contents().find('body').find('.flc-uiOptions-preview-per-setting-label').text(magnifierPreviewText);
+            });
+
         });
     };
     

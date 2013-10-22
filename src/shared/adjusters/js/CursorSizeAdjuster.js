@@ -26,7 +26,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         components: {
-            preview: {
+            cursorSizePreview: {
                 type: "fluid.uiOptions.preview",
                 createOnEvent: "afterRender",
                 container: ".flc-uiOptions-cursor-size .flc-uiOptions-preview-per-setting-frame",
@@ -49,14 +49,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         distributeOptions: [{
             source: "{that}.options.outerPreviewEnhancerOptions",
             //removeSource: true,
-            target: "{that preview enhancer}.options"
+            target: "{that cursorSizePreview enhancer}.options"
         }, {
             source: "{that}.options.emptyComponentType",
-            target: "{that preview enhancer textSize}.type"
+            target: "{that cursorSizePreview enhancer textSize}.type"
         }, {
             source: "{that}.options.emptyComponentType",
             //removeSource: true,
-            target: "{that preview enhancer magnifier}.type"
+            target: "{that cursorSizePreview enhancer magnifier}.type"
         }]
     });
     
