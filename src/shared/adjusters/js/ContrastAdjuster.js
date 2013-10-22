@@ -74,7 +74,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     args: ["{uiOptionsLoader}.msgBundle", "tooltipUnchecked"]
                 }
             }
-        }/*,
+        },
         components: {
             preview: {
                 type: "fluid.uiOptions.preview",
@@ -115,13 +115,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         
         distributeOptions: [{
             source: "{that}.options.outerPreviewEnhancerOptions",
-            removeSource: true,
+            //removeSource: true,
             target: "{that preview enhancer}.options"
         }, {
             source: "{that}.options.emptyComponentType",
-            removeSource: true,
+            //removeSource: true,
             target: "{that preview enhancer magnifier}.type"
-        }]*/
+        }]
     });
     
     gpii.uiOptions.panels.contrast.setContrastAdjusters = function (contrastAdjuster, flag) {

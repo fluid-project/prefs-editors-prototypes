@@ -44,8 +44,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
         metricUnit: "%",
 
-        /*components: {
-            preview: {
+        components: {
+            magnifierPreview: {
                 type: "fluid.uiOptions.preview",
                 createOnEvent: "afterRender",
                 container: ".flc-uiOptions-magnifier .flc-uiOptions-preview-per-setting-frame",
@@ -53,7 +53,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     templateUrl: "../../src/shared/preview/html/uiOptionsTextPreview.html"
                 }
             }
-        },*/
+        },
 
         selectors: {
             magnifierMinus: ".flc-uiOptions-plus-minus-numerical-minus-magnifier",
@@ -85,12 +85,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 funcName: "gpii.uiOptions.panels.updatePlusMinusAdjusterUI",
                 args: ["{that}"]
             }
-        }/*,
+        },
         
         distributeOptions: [{
             source: "{that}.options.outerPreviewEnhancerOptions",
-            removeSource: true,
-            target: "{that preview enhancer}.options"
-        }]*/
+            //removeSource: true,
+            target: "{that magnifierPreview enhancer}.options"
+        }]
     });
 })(jQuery, fluid);

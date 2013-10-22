@@ -25,7 +25,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "controlValues.cursorSize.divisibleBy": "divisibleBy"
             }
         },
-        /*components: {
+        components: {
             preview: {
                 type: "fluid.uiOptions.preview",
                 createOnEvent: "afterRender",
@@ -34,7 +34,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     templateUrl: "../../src/shared/preview/html/uiOptionsCursorPreview.html"
                 }
             }
-        },*/
+        },
         selectors: {
             cursorSize: ".flc-uiOptions-cursor-size",
             cursorSizeLabel: ".flc-uiOptions-cursor-size-label",
@@ -44,20 +44,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             orientation: "horizontal",
             step: 0.2,
             range: "min"
-        }/*,
+        },
         
         distributeOptions: [{
             source: "{that}.options.outerPreviewEnhancerOptions",
-            removeSource: true,
+            //removeSource: true,
             target: "{that preview enhancer}.options"
         }, {
             source: "{that}.options.emptyComponentType",
             target: "{that preview enhancer textSize}.type"
         }, {
             source: "{that}.options.emptyComponentType",
-            removeSource: true,
+            //removeSource: true,
             target: "{that preview enhancer magnifier}.type"
-        }]*/
+        }]
     });
     
 })(jQuery, fluid);
