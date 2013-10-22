@@ -12,7 +12,7 @@
 (function ($, fluid) {
     
 	gpii.uiOptions.panels.updatePlusMinusAdjusterUI = function (that) {
-        // append metric unit if there is one
+        /*// append metric unit if there is one
         if(that.options.metricUnit)
         {
             that.locate("valueText").val(that.model.value + that.options.metricUnit);
@@ -29,11 +29,11 @@
         {    // recover style
             //that.locate("minus").css("color", "black");
             that.locate("minus").removeClass("fl-uiOptions-plus-minus-numerical-min-reached");
-        }
+        }*/
     };
     
     gpii.uiOptions.panels.plusMinusAdjusterFinalInit = function (that) {
-        that.applier.modelChanged.addListener("value", function(newValue)
+        /*that.applier.modelChanged.addListener("value", function(newValue)
         {
             if(newValue.value == that.options.range.min)
             {
@@ -117,7 +117,7 @@
                 magnifierPreviewFrame.container.contents().find('body').find('.flc-uiOptions-preview-per-setting-label').text(magnifierPreviewText);
             });
 
-        });
+        });*/
     };
     
 })(jQuery, fluid);

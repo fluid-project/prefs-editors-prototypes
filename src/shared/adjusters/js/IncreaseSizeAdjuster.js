@@ -148,7 +148,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     func: "fluid.uiOptions.textfieldSlider",
                     options: {
                         range: "{that}.options.controlValues.cursorSize",
-                        path: "cursorSize"
+                        path: "value"
                     }
                 }
             },
