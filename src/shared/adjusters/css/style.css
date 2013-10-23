@@ -100,11 +100,11 @@ input[type=checkbox]:checked + .headerImage > .headerImageTick{
     display: block;
 }
 
-.flc-uiOptions-increaseSizePanel > .headerImage:before {
+.gpii-prefsEditor-increaseSizePanel > .headerImage:before {
     content: "\e003";
 }
 
-.flc-uiOptions-contrast > .headerImage:before {
+.gpii-prefsEditor-contrast > .headerImage:before {
     content: "\e002";
 }
 
@@ -415,14 +415,14 @@ input[type=checkbox], input[type=radio] {
     width: 1.2em;
 }
 
-input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio-icon-check {
+input:checked + .gpii-prefsEditor-magnifierFollows-label > .fl-magnifierFollows-uio-icon-check {
     padding-right: 0.1em;
     padding-top: 0.1em;
     border: 2px solid;
     background-color: 636C7C;
 }
 
-input:checked + .flc-uiOptions-magnifierFollows-label > .fl-magnifierFollows-uio-icon-check:before {
+input:checked + .gpii-prefsEditor-magnifierFollows-label > .fl-magnifierFollows-uio-icon-check:before {
     content: "\e00a";
 }
 

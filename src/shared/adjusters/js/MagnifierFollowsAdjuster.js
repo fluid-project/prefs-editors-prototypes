@@ -28,7 +28,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         selectors: {
             magnifierFollowsRow: ".flc-uiOptions-magnifierFollowsRow",
-            magnifierFollowsLabel: ".flc-uiOptions-magnifierFollows-label",
+            magnifierFollowsLabel: ".gpii-prefsEditor-magnifierFollows-label",
             magnifierFollowsInput: ".flc-uiOptions-magnifierFollowsInput",
             magnifierFollowsHeading: ".flc-uiOptions-magnifierFollows-heading"
         },

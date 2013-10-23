@@ -71,7 +71,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             "panel": {
                 "type": "gpii.uiOptions.panels.contrast",
-                "container": ".flc-uiOptions-contrast",
+                "container": ".gpii-prefsEditor-contrast",
                 "template": "%prefix/UIOptionsTemplate-contrastNew.html",
                 "message": "%prefix/contrastNew.json"
             }
@@ -83,7 +83,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },*/
             "panel": {
                 "type": "gpii.uiOptions.panels.increaseSize",
-                "container": ".flc-uiOptions-increaseSizePanel",
+                "container": ".gpii-prefsEditor-increaseSizePanel",
                 "template": "%prefix/UIOptionsTemplate-increaseSize.html",
                 "message": "%prefix/increaseSize.json"
             }

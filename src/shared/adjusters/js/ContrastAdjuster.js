@@ -79,7 +79,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             preview: {
                 type: "fluid.uiOptions.preview",
                 createOnEvent: "afterRender",
-                container: ".flc-uiOptions-contrast .flc-uiOptions-preview-per-setting-frame",
+                container: ".gpii-prefsEditor-contrast .flc-uiOptions-preview-per-setting-frame",
                 options: {
                     templateUrl: "../../src/shared/preview/html/uiOptionsContrastPreview.html",
                     components: {
