@@ -45,7 +45,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierPosition: ["lens", "dockedleft", "dockedtop", "fullscreen", "dockedright", "dockedbottom"]
         },
         markup: {
-            label: "<div class=\"fl-adjuster-icons fl-magnifierPosition-uio-icon fl-magnifierPosition-uio-icon-main\"></div>" +
+            magnifierPositionLabel: "<div class=\"fl-adjuster-icons fl-magnifierPosition-uio-icon fl-magnifierPosition-uio-icon-main\"></div>" +
                     "<div class=\"fl-adjuster-icons fl-magnifierPosition-uio-icon fl-magnifierPosition-uio-frame\"></div>" +
                     "<div class=\"fl-adjuster-icons fl-magnifierPosition-uio-icon fl-magnifierPosition-uio-background\"></div>" +
                     "<span class=\"fl-hidden-accessible\">%magnifierPosition</span>"
@@ -54,7 +54,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "magnifierPositionStyle": {
                 funcName: "gpii.uiOptions.panels.magnifierPosition.style",
                 args: ["{that}.dom.magnifierPositionLabel", "{that}.options.strings.magnifierPosition",
-                    "{that}.options.markup.label", "{that}.options.controlValues.magnifierPosition",
+                    "{that}.options.markup.magnifierPositionLabel", "{that}.options.controlValues.magnifierPosition",
                     "{that}.options.classnameMap.magnifierPosition"]
             }
         }

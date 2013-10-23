@@ -45,7 +45,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierFollows: ["mousecursor", "textcursor", "keyboardfocus"]
         },
         markup: {
-            label:  "<div class=\"fl-adjuster-icons fl-adjuster-icons-sept-12 fl-magnifierFollows-uio-icon\"></div>" +
+            magnifierFollowsLabel:  "<div class=\"fl-adjuster-icons fl-adjuster-icons-sept-12 fl-magnifierFollows-uio-icon\"></div>" +
                     "<div class=\"fl-adjuster-icons fl-adjuster-icons-sept-12 fl-magnifierFollows-uio-icon-check\"></div>" +
                     /*"%magnifierFollows" +*/
                     "<div class=\"fl-magnifierFollows-legend\">%magnifierFollows</div>"
@@ -54,7 +54,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierFollowsStyle: {
                 funcName: "gpii.uiOptions.panels.magnifierFollows.style",
                 args: ["{that}.dom.magnifierFollowsLabel", "{that}.options.strings.magnifierFollows",
-                    "{that}.options.markup.label", "{that}.options.controlValues.magnifierFollows",
+                    "{that}.options.markup.magnifierFollowsLabel", "{that}.options.controlValues.magnifierFollows",
                     "{that}.options.classnameMap.magnifierFollows"]
             }
         }

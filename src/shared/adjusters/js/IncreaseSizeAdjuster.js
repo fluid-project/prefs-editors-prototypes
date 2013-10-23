@@ -15,6 +15,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     
+    gpii.uiOptions.panels.arrayMergePolicy = function (target, source) {
+        target = fluid.makeArray(target);
+        source = fluid.makeArray(source);
+        fluid.each(source, function (selector) {
+            if ($.inArray(selector, target) < 0) {
+                target.push(selector);
+            }
+        });
+        return target;
+    };
+    
     fluid.defaults("gpii.uiOptions.panels.increaseSize", {
         gradeNames: ["fluid.uiOptions.panels", "gpii.uiOptions.panels.textSize", "gpii.uiOptions.panels.cursorSize", "gpii.uiOptions.panels.magnifierFollows", "gpii.uiOptions.panels.magnifier", "gpii.uiOptions.panels.magnifierPosition", "autoInit"],
         mergePolicy: {
@@ -246,14 +257,4 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     };
 
-    gpii.uiOptions.panels.arrayMergePolicy = function (target, source) {
-        target = fluid.makeArray(target);
-        source = fluid.makeArray(source);
-        fluid.each(source, function (selector) {
-            if ($.inArray(selector, target) < 0) {
-                target.push(selector);
-            }
-        });
-        return target;
-    };
 })(jQuery, fluid);
