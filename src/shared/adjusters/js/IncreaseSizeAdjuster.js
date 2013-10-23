@@ -52,11 +52,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "slideUp",
                 "args": ["{arguments}.0"]
             },
-            "afterRender.console": {
-                "this": "console",
-                "method": "log",
-                "args": ["{that}.options.strings.increaseSizeHeader"]
-            },
             "afterRender.bindEventPreferenceSwitchIncreaseSizeExtra": {
                 "this": "{that}.dom.preferenceSwitchIncreaseSizeExtra",
                 "method": "change",
