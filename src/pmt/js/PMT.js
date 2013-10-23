@@ -75,6 +75,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
     
     fluid.defaults("gpii.uiOptions.pmt.previewPerSettingEnhanced", {
+        gradeNames: "fluid.littleComponent",
         outerPreviewEnhancerOptions: "{originalEnhancerOptions}.options.originalUserOptions",
         emptyComponentType: "fluid.emptySubcomponent"
     });
