@@ -87,11 +87,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "text",
                 "args": ["{that}.options.strings.more"]
             },
-            "afterRender.restoreIncreaseSizeAdjustersState": {
-                listener: "{that}.toggleIncreaseSizeAdjustersInstant"
-            },
             "afterRender.restoreIncreaseSizeExtraAdjusters": {
                 listener: "{that}.toggleIncreaseSizeExtraAdjustersInstant"
+            },
+            "afterRender.restoreIncreaseSizeAdjustersState": {
+                listener: "{that}.toggleIncreaseSizeAdjustersInstant"
             }
         },
         selectors: {
