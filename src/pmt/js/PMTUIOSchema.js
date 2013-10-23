@@ -94,8 +94,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.uiOptions.enactors.textSize"
             },
             "panel": {
-                "type": "gpii.uiOptions.panels.increaseSize",
-                "message": "%prefix/textSize.json"
+                "type": "gpii.uiOptions.panels.increaseSize"
             }
         },
         "cursorSize": {
@@ -104,8 +103,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.uiOptions.enactors.cursorSize"
             },
             "panel": {
-                "type": "gpii.uiOptions.panels.increaseSize",
-                "message": "%prefix/cursorSize.json"
+                "type": "gpii.uiOptions.panels.increaseSize"
             }
         },
         "magnifier": {
@@ -114,8 +112,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.uiOptions.enactors.magnifier"
             },
             "panel": {
-                "type": "gpii.uiOptions.panels.increaseSize",
-                "message": "%prefix/magnifier.json"
+                "type": "gpii.uiOptions.panels.increaseSize"
             }
         },
         "magnifierPosition": {
@@ -131,8 +128,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             "panel": {
                 "type": "gpii.uiOptions.panels.increaseSize",
-                "classnameMap": {"magnifierPosition": "@magnifierPosition.classes"},
-                "message": "%prefix/magnifier.json"
+                "classnameMap": {"magnifierPosition": "@magnifierPosition.classes"}
             }
         },
         "magnifierFollows": {
@@ -144,8 +140,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             "panel": {
                 "type": "gpii.uiOptions.panels.increaseSize",
-                "classnameMap": {"magnifierFollows": "@magnifierFollows.classes"},
-                "message": "%prefix/magnifier.json"
+                "classnameMap": {"magnifierFollows": "@magnifierFollows.classes"}
             }
         }
     };

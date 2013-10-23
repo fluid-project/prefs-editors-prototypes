@@ -1,4 +1,9 @@
 {
+    "increaseSizeHeader": "αύξηση μεγέθους",
+    "cursorSizeLabel": "Μέγεθος κέρσορα",
+    "textSizeSmallIcon": "icon of a small capital letter 'A'",
+    "textSizeLargeIcon": "icon of a large capital letter 'A'",
+    "multiplier": "times",
     "magnifierLabel": "Μεγέθυνση",
     "magnifierOFF": "Απενεργοποιημένο",
     "magnifierMAX": "μέγιστο",
@@ -14,5 +19,7 @@
     "magnifierFollowsLabel": "Ο μεγεθυντικός φακός ακολουθεί",
     "magnifierFollows.mousecursor": "Κέρσορα ποντικιού",
     "magnifierFollows.textcursor": "Κέρσορα κειμένου",
-    "magnifierFollows.keyboardfocus": "Φόκους πληκτρολογίου"
+    "magnifierFollows.keyboardfocus": "Φόκους πληκτρολογίου",
+    "textSizeLabel": "Μέγεθος κειμένου",
+    "previewText": "Έτσι θα εμφανίζεται το περισσότερο κείμενο."
 }

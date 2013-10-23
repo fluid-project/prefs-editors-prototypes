@@ -1,4 +1,9 @@
 {
+    "increaseSizeHeader": "vergrößern",
+    "cursorSizeLabel": "Zeigergröße",
+    "textSizeSmallIcon": "icon of a small capital letter 'A'",
+    "textSizeLargeIcon": "icon of a large capital letter 'A'",
+    "multiplier": "times",
     "magnifierLabel": "Vergrößerung",
     "magnifierOFF": "Aus",
     "magnifierMAX": "Maximum",
@@ -14,5 +19,7 @@
     "magnifierFollowsLabel": "Bildschirmlupe folgt",
     "magnifierFollows.mousecursor": "Mauszeiger",
     "magnifierFollows.textcursor": "Eingabezeiger",
-    "magnifierFollows.keyboardfocus": "Tastaturfokus"
+    "magnifierFollows.keyboardfocus": "Tastaturfokus",
+    "textSizeLabel": "Textgröße",
+    "previewText": "So wird Text meistens aussehen."
 }
