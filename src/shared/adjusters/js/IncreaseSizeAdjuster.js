@@ -18,16 +18,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.uiOptions.panels.increaseSize", {
         gradeNames: ["fluid.uiOptions.panels", "gpii.uiOptions.panels.textSize", "gpii.uiOptions.panels.cursorSize", "gpii.uiOptions.panels.magnifierFollows", "gpii.uiOptions.panels.magnifier", "gpii.uiOptions.panels.magnifierPosition", "autoInit"],
         events: {
-            onToggleIncreaseSizeAdjusters: null,
+            onShowAdjuster: null,
+            onHideAdjuster: null,
             onShowExtraAdjuster: null,
             onHideExtraAdjuster: null
         },
         listeners: {
-            "afterRender.hideIncreaseSizeAdjusters": {
-                "this": "{that}.dom.increaseSizeAdjusters",
-                "method": "hide",
-                "args": [0]
-            },
             "afterRender.setTextIncreaseSizeHeader": {
                 "this": "{that}.dom.increaseSizeHeader",
                 "method": "text",
@@ -44,11 +40,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "afterRender.bindEventPreferenceSwitchIncreaseSize": {
                 "this": "{that}.dom.preferenceSwitchIncreaseSize",
                 "method": "change",
-                "args": ["{that}.events.onToggleIncreaseSizeAdjusters.fire"]
+                "args": ["{that}.toggleIncreaseSizeAdjusters"]
             },
-            "onToggleIncreaseSizeAdjusters.showHide": {
+            "onShowAdjuster.show": {
                 "this": "{that}.dom.increaseSizeAdjusters",
-                "method": "slideToggle"
+                "method": "slideDown",
+                "args": ["{arguments}.0"]
+            },
+            "onHideAdjuster.hide": {
+                "this": "{that}.dom.increaseSizeAdjusters",
+                "method": "slideUp",
+                "args": ["{arguments}.0"]
             },
             "afterRender.console": {
                 "this": "console",
@@ -67,11 +69,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             "onShowExtraAdjuster.show": {
                 "this": "{that}.dom.increaseSizeExtraAdjusters",
-                "method": "slideToggle"
+                "method": "slideDown",
+                "args": ["{arguments}.0"]
             },
             "onHideExtraAdjuster.hide": {
                 "this": "{that}.dom.increaseSizeExtraAdjusters",
-                "method": "slideToggle"
+                "method": "slideUp",
+                "args": ["{arguments}.0"]
             },
             "onShowExtraAdjuster.setLessText": {
                 "this": "{that}.dom.moreLess",
@@ -83,8 +87,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "text",
                 "args": ["{that}.options.strings.more"]
             },
-            "afterRender.toggleIncreaseSizeExtraAdjusters": {
-                listener: "{that}.toggleIncreaseSizeExtraAdjusters"
+            "afterRender.restoreIncreaseSizeAdjustersState": {
+                listener: "{that}.toggleIncreaseSizeAdjustersInstant"
+            },
+            "afterRender.restoreIncreaseSizeExtraAdjusters": {
+                listener: "{that}.toggleIncreaseSizeExtraAdjustersInstant"
             }
         },
         selectors: {
@@ -96,7 +103,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             preferenceSwitchIncreaseSizeExtra: "#preferenceSwitchIncreaseSizeExtra",
             moreLess: ".moreLess"
         },
-        selectorsToIgnore: ["increaseSizeHeader", "increaseSizeAdjusters", "preferenceSwitchIncreaseSize", "addToMyPreferencesStar", "increaseSizeExtraAdjusters", "moreLess"],
+        selectorsToIgnore: ["increaseSizeHeader", "increaseSizeAdjusters", "addToMyPreferencesStar", "increaseSizeExtraAdjusters", "moreLess"],
         strings: {
             increaseSizeHeader: {
                 expander: {
@@ -130,9 +137,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         model: {
+            increaseSizeAdjustersEnabledSwitch: false,
             increaseSizeExtraAdjustersEnabledSwitch: false
         },
         protoTree: {
+            preferenceSwitchIncreaseSize: "${increaseSizeAdjustersEnabledSwitch}",
             preferenceSwitchIncreaseSizeExtra: "${increaseSizeExtraAdjustersEnabledSwitch}",
             cursorSizeLabel: {messagekey: "cursorSizeLabel"},
             multiplier: {messagekey: "multiplier"},
@@ -186,6 +195,32 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             textSizeValueText: "${fontSize}"
         },
         invokers: {
+            toggleIncreaseSizeAdjustersInstant: {
+                "funcName": "gpii.uiOptions.panels.increaseSize.toggleIncreaseSizeAdjusters",
+                "args": [
+                    "{that}.model.increaseSizeAdjustersEnabledSwitch",
+                    "{that}.events.onShowAdjuster.fire",
+                    "{that}.events.onHideAdjuster.fire",
+                    0
+                ]
+            },
+            toggleIncreaseSizeExtraAdjustersInstant: {
+                "funcName": "gpii.uiOptions.panels.increaseSize.toggleIncreaseSizeExtraAdjusters",
+                "args": [
+                    "{that}.model.increaseSizeExtraAdjustersEnabledSwitch",
+                    "{that}.events.onShowExtraAdjuster.fire",
+                    "{that}.events.onHideExtraAdjuster.fire",
+                    0
+                ]
+            },
+            toggleIncreaseSizeAdjusters: {
+                "funcName": "gpii.uiOptions.panels.increaseSize.toggleIncreaseSizeAdjusters",
+                "args": [
+                    "{that}.model.increaseSizeAdjustersEnabledSwitch",
+                    "{that}.events.onShowAdjuster.fire",
+                    "{that}.events.onHideAdjuster.fire"
+                ]
+            },
             toggleIncreaseSizeExtraAdjusters: {
                 "funcName": "gpii.uiOptions.panels.increaseSize.toggleIncreaseSizeExtraAdjusters",
                 "args": [
@@ -197,11 +232,19 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
     
-    gpii.uiOptions.panels.increaseSize.toggleIncreaseSizeExtraAdjusters = function (increaseSizeExtraAdjustersEnabledSwitch, showEvent, hideEvent) {
-        if (increaseSizeExtraAdjustersEnabledSwitch) {
-            showEvent();
+    gpii.uiOptions.panels.increaseSize.toggleIncreaseSizeAdjusters = function (increaseSizeAdjustersEnabledSwitch, showEvent, hideEvent, duration) {
+        if (increaseSizeAdjustersEnabledSwitch) {
+            showEvent(duration);
         } else {
-            hideEvent();
+            hideEvent(duration);
+        }
+    };
+
+    gpii.uiOptions.panels.increaseSize.toggleIncreaseSizeExtraAdjusters = function (increaseSizeExtraAdjustersEnabledSwitch, showEvent, hideEvent, duration) {
+        if (increaseSizeExtraAdjustersEnabledSwitch) {
+            showEvent(duration);
+        } else {
+            hideEvent(duration);
         }
     };
 
