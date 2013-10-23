@@ -265,6 +265,7 @@ input[type=checkbox], input[type=radio] {
     Style for more/less
 */
 .moreLess{
+	display: block;
     width:100% !important;
     text-align: center;
     cursor: pointer;
