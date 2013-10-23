@@ -48,8 +48,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             label:  "<div class=\"fl-adjuster-icons fl-adjuster-icons-sept-12 fl-magnifierFollows-uio-icon\"></div>" +
                     "<div class=\"fl-adjuster-icons fl-adjuster-icons-sept-12 fl-magnifierFollows-uio-icon-check\"></div>" +
                     /*"%magnifierFollows" +*/
-                    "<div class=\"fl-magnifierFollows-legend\">%magnifierFollows</div>" +
-                    "<div class=\"fl-crossout\"></div>"
+                    "<div class=\"fl-magnifierFollows-legend\">%magnifierFollows</div>"
         },
         invokers: {
             magnifierFollowsStyle: {

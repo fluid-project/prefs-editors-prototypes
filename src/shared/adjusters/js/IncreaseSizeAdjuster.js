@@ -160,6 +160,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierPlus: "+",
 
             magnifierValueText: "${magnification}",
+            repeatingSelectors: gpii.uiOptions.panels.arrayMergePolicy,
             magnifierFollowsHeading: {messagekey: "magnifierFollowsLabel"},
             expander: [
                 {
@@ -248,4 +249,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     };
 
+    gpii.uiOptions.panels.arrayMergePolicy = function (target, source) {
+        target = fluid.makeArray(target);
+        source = fluid.makeArray(source);
+        fluid.each(source, function (selector) {
+            if ($.inArray(selector, target) < 0) {
+                target.push(selector);
+            }
+        });
+        return target;
+    };
 })(jQuery, fluid);

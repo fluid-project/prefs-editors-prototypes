@@ -48,8 +48,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             label: "<div class=\"fl-adjuster-icons fl-magnifierPosition-uio-icon fl-magnifierPosition-uio-icon-main\"></div>" +
                     "<div class=\"fl-adjuster-icons fl-magnifierPosition-uio-icon fl-magnifierPosition-uio-frame\"></div>" +
                     "<div class=\"fl-adjuster-icons fl-magnifierPosition-uio-icon fl-magnifierPosition-uio-background\"></div>" +
-                    "<span class=\"fl-hidden-accessible\">%magnifierPosition</span>" +
-                    "<div class=\"fl-crossout\"></div>"
+                    "<span class=\"fl-hidden-accessible\">%magnifierPosition</span>"
         },
         invokers: {
             "magnifierPositionStyle": {
