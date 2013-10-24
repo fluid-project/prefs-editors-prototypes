@@ -16,11 +16,30 @@
     
     gpii.uiOptions.panels.plusMinus.onMinusClick = function (that, modelValue, range, modelValueName) {
         var newValue =  parseFloat(modelValue) - parseFloat(range.divisibleBy);
+        gpii.uiOptions.panels.plusMinus.updateBoundedValue(that, newValue, range, modelValueName);
+    };
+    
+    gpii.uiOptions.panels.plusMinus.updateBoundedValue = function(that, newValue, range, modelValueName)
+    {
         if(newValue >= parseFloat(range.min))
         {
             that.applier.requestChange(modelValueName, newValue);
-            that.refreshView();
         }
+        else
+        {
+            that.applier.requestChange(modelValueName, range.min);        
+        }
+
+        that.refreshView();
+    }
+    
+    gpii.uiOptions.panels.plusMinus.onPlusClick = function (that, modelValue, range, modelValueName) {
+        var newValue =  parseFloat(modelValue) + parseFloat(range.divisibleBy);
+        gpii.uiOptions.panels.plusMinus.updateBoundedValue(that, newValue, range, modelValueName);
+    };
+    
+    gpii.uiOptions.panels.plusMinus.onValueTextChange = function (that, elmValue, range, modelValueName) {
+        gpii.uiOptions.panels.plusMinus.updateBoundedValue(that, parseFloat(elmValue), range, modelValueName);
     };
     
 	gpii.uiOptions.panels.updatePlusMinusAdjusterUI = function (that) {
@@ -78,7 +97,6 @@
                         }
                     }
             );
-            -----------------------------------
 
             that.locate("plus").click(
                     function()
@@ -108,6 +126,7 @@
 
                     }
             );
+            -----------------------------------
 
             // prevent non numeric values
             that.locate("valueText").keydown(function(event) {

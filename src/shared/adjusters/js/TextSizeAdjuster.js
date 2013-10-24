@@ -84,6 +84,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "click",
                 "args": ["{that}.onMinusClick"]
             },
+            "afterRender.bindEventPlusClick": {
+                "this": "{that}.dom.textSizePlus",
+                "method": "click",
+                "args": ["{that}.onPlusClick"]
+            },
+            "afterRender.bindEventValueTextChange": {
+                "this": "{that}.dom.textSizeValueText",
+                "method": "change",
+                "args": ["{that}.onValueTextChange"]
+            },
             "afterRender.setMetricUnit": {
                 listener: "{that}.setMetricUnit"
             }
@@ -94,6 +104,27 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 args: [
                     "{that}",
                     "{that}.model.fontSize",
+                    "{that}.options.fontSize.range",
+                    "fontSize"
+                ]
+            },
+            onPlusClick: {
+                funcName: "gpii.uiOptions.panels.plusMinus.onPlusClick",
+                args: [
+                    "{that}",
+                    "{that}.model.fontSize",
+                    "{that}.options.fontSize.range",
+                    "fontSize"
+                ]
+            },
+            onValueTextChange: {
+                funcName: "gpii.uiOptions.panels.plusMinus.onValueTextChange",
+                args: [
+                    "{that}",
+                    {expander: {
+                        "this": "{that}.dom.textSizeValueText",
+                        "method": "val"
+                    }},
                     "{that}.options.fontSize.range",
                     "fontSize"
                 ]
