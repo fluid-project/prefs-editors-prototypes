@@ -16,7 +16,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         target = fluid.makeArray(target);
         source = fluid.makeArray(source);
         fluid.each(source, function (selector) {
-            if($.inArray(selector, target) < 0) {
+            if ($.inArray(selector, target) < 0) {
                 target.push(selector);
             }
         });

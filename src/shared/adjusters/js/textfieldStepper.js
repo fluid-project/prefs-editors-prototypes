@@ -125,7 +125,7 @@ var fluid_1_5 = fluid_1_5 || {};
     gpii.textfieldStepper.buttons.alterValue = function (that, multiplier) {
         var currentValue = that.model.value;
         var step = that.options.range.step;
-        var newValue = currentValue + multiplier * step
+        var newValue = currentValue + multiplier * step;
 
         that.applier.requestChange("value", newValue);
     };

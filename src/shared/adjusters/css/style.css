@@ -90,6 +90,10 @@
     font-weight: bold;
 }
 
+#speechRate.gpii-textfieldStepper-field::-moz-selection {
+    background-color: yellow;
+}
+
 textarea:focus, input:focus {
     outline: 0;
 }

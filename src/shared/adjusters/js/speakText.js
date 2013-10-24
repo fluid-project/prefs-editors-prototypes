@@ -55,7 +55,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 updateModelAllHidden: {
                     "funcName": "gpii.speakText.updateModelAllHidden",
                     "args": ["{speakText.panels.CollectivePanel}"]
-                },
+                }
             },
             strings: {
                 saveAndApply: {
@@ -101,7 +101,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
 
     gpii.speakText.showOrHideDependingOnState = function (state, showEvent, hideEvent) {
-        state ? showEvent() : hideEvent()
+        state ? showEvent() : hideEvent();
     };
 
     gpii.speakText.lookupMsg = function (messageResolver, value) {
