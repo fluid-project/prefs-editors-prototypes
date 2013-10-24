@@ -21,16 +21,24 @@
     
     gpii.uiOptions.panels.plusMinus.updateBoundedValue = function(that, newValue, range, modelValueName)
     {
+        var boundedValue;
+        
         if(newValue >= parseFloat(range.min))
         {
-            that.applier.requestChange(modelValueName, newValue);
+            boundedValue = newValue;
         }
         else
         {
-            that.applier.requestChange(modelValueName, range.min);        
+            boundedValue = range.min;
         }
-
+        
+        that.applier.requestChange(modelValueName, boundedValue);
         that.refreshView();
+
+        if (boundedValue === range.min)
+        {
+            that.events.minRangeReached.fire();
+        }
     }
     
     gpii.uiOptions.panels.plusMinus.onPlusClick = function (that, modelValue, range, modelValueName) {
@@ -40,6 +48,19 @@
     
     gpii.uiOptions.panels.plusMinus.onValueTextChange = function (that, elmValue, range, modelValueName) {
         gpii.uiOptions.panels.plusMinus.updateBoundedValue(that, parseFloat(elmValue), range, modelValueName);
+    };
+    
+    gpii.uiOptions.panels.plusMinus.onValueTextPreventNonNumeric = function (event) {
+        // Allow only backspace, delete and tab
+        if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 37 || event.keyCode == 39 || event.keyCode == 35 || event.keyCode == 36 || event.keyCode == 9) {
+            // let it happen, don't do anything
+        }
+        else {
+            // Ensure that it is a number and stop the keypress
+            if ((event.keyCode < 48 || event.keyCode > 57 ) && (event.keyCode < 96 || event.keyCode > 105 )) {
+                event.preventDefault();
+            }
+        }
     };
     
 	gpii.uiOptions.panels.updatePlusMinusAdjusterUI = function (that) {
@@ -52,7 +73,6 @@
         {
             that.locate("valueText").val(that.model.value + that.options.metricUnit);
         }
-        -----------------------------------
 
         // if we've reached min range
         if(that.model.value == that.options.range.min)
@@ -65,7 +85,9 @@
         {    // recover style
             //that.locate("minus").css("color", "black");
             that.locate("minus").removeClass("fl-uiOptions-plus-minus-numerical-min-reached");
-        }*/
+        }
+        -----------------------------------
+        */
     };
     
     gpii.uiOptions.panels.plusMinusAdjusterFinalInit = function (that) {
@@ -126,7 +148,6 @@
 
                     }
             );
-            -----------------------------------
 
             // prevent non numeric values
             that.locate("valueText").keydown(function(event) {
@@ -141,6 +162,7 @@
                     }
                 }
             });
+            -----------------------------------
             
             // Not very elegant solution
             var textSizePreviewFrame = that.textSizePreview;

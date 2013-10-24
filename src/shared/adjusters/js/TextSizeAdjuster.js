@@ -94,8 +94,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "change",
                 "args": ["{that}.onValueTextChange"]
             },
+            "afterRender.bindEventValueTextPreventNonNumeric": {
+                "this": "{that}.dom.textSizeValueText",
+                "method": "keydown",
+                "args": ["{that}.onValueTextPreventNonNumeric"]
+            },
             "afterRender.setMetricUnit": {
                 listener: "{that}.setMetricUnit"
+            },
+            "minRangeReached.setMinusStyle": {
+                listener: "{that}.setMinusStyle"
             }
         },
         invokers: {
@@ -129,6 +137,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "fontSize"
                 ]
             },
+            onValueTextPreventNonNumeric: {
+                funcName: "gpii.uiOptions.panels.plusMinus.onValueTextPreventNonNumeric",
+                args: [
+                    "{arguments}.0"
+                ]
+            },
             setMetricUnit: {
                 "this": "{that}.dom.textSizeValueText",
                 "method": "val",
@@ -138,6 +152,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         args: ["{that}.model.fontSize", "{that}.options.metricUnit"]
                     }
                 }
+            },
+            setMinusStyle: {
+                "this": "{that}.dom.textSizeMinus",
+                "method": "toggleClass",
+                "args": "fl-uiOptions-plus-minus-numerical-min-reached"                        
+
             }
         },
 
