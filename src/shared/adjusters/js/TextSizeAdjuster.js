@@ -27,23 +27,23 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
     
     fluid.defaults("gpii.uiOptions.panels.textSize", {
-        gradeNames: ["fluid.uiOptions.panels", "gpii.uiOptions.pmt.previewPerSettingEnhanced", "autoInit"],
+        gradeNames: ["fluid.uiOptions.panels", "gpii.uiOptions.panels.plusMinus", "gpii.uiOptions.pmt.previewPerSettingEnhanced", "autoInit"],
         preferenceMap: {
             "http://registry.gpii.org/common/fontSize": {
                 "model.fontSize": "default",
-                "range.min": "minimum",
-                "range.max": "maximum",
-                "range.divisibleBy": "divisibleBy"
+                "fontSize.range.min": "minimum",
+                "fontSize.range.max": "maximum",
+                "fontSize.range.divisibleBy": "divisibleBy"
             }
         },
         // The default model values represent both the expected format as well as the setting to be applied in the absence of values passed down to the component.
         // i.e. from the settings store, or specific defaults derived from schema.
         // Note: Except for being passed down to its subcomponent, these default values are not contributed and shared out
-        range: {
+        /*range: {
             min: 1,
             max: 1000,
             divisibleBy: 1
-        },
+        },*/
 
         metricUnit: "pt",
 
@@ -79,11 +79,25 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     }
                 }
             },
+            "afterRender.bindEventMinusClick": {
+                "this": "{that}.dom.textSizeMinus",
+                "method": "click",
+                "args": ["{that}.onMinusClick"]
+            },
             "afterRender.setMetricUnit": {
                 listener: "{that}.setMetricUnit"
             }
         },
         invokers: {
+            onMinusClick: {
+                funcName: "gpii.uiOptions.panels.plusMinus.onMinusClick",
+                args: [
+                    "{that}",
+                    "{that}.model.fontSize",
+                    "{that}.options.fontSize.range",
+                    "fontSize"
+                ]
+            },
             setMetricUnit: {
                 "this": "{that}.dom.textSizeValueText",
                 "method": "val",

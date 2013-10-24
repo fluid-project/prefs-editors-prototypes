@@ -10,9 +10,23 @@
  */
 
 (function ($, fluid) {
+    fluid.defaults("gpii.uiOptions.panels.plusMinus", {
+        gradeNames: ["fluid.uiOptions.panels", "autoInit"]
+    });
+    
+    gpii.uiOptions.panels.plusMinus.onMinusClick = function (that, modelValue, range, modelValueName) {
+        var newValue =  parseFloat(modelValue) - parseFloat(range.divisibleBy);
+        if(newValue >= parseFloat(range.min))
+        {
+            that.applier.requestChange(modelValueName, newValue);
+            that.refreshView();
+        }
+    };
     
 	gpii.uiOptions.panels.updatePlusMinusAdjusterUI = function (that) {
         /*// append metric unit if there is one
+        ------ DONE DECLARATIVELY----------
+        -----------------------------------
         
         ------ DONE DECLARATIVELY----------
         if(that.options.metricUnit)
@@ -51,6 +65,7 @@
         that.events.afterRender.addListener(function () {
             that.updatePlusMinusAdjusterUI();
 
+            ------ DONE DECLARATIVELY----------
             that.locate("minus").click(
                     function()
                     {
@@ -63,6 +78,7 @@
                         }
                     }
             );
+            -----------------------------------
 
             that.locate("plus").click(
                     function()

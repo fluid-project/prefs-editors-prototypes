@@ -36,11 +36,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "range.divisibleBy": "divisibleBy"
             }
         },
-        range: {
+        /*range: {
             min: 100,
             max: 10000,
             divisibleBy: 50
-        },
+        },*/
 
         metricUnit: "%",
 
