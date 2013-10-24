@@ -78,7 +78,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "val",
                 "args": ["{that}.options.strings.magnifierOFF"]
             },
-            "onCreate.init": "gpii.uiOptions.panels.plusMinusAdjusterFinalInit"
+            //"onCreate.init": "gpii.uiOptions.panels.plusMinusAdjusterFinalInit"
         },
         invokers: {
             updatePlusMinusAdjusterUI: {
