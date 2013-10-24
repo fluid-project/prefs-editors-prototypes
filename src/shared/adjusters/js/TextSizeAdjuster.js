@@ -88,16 +88,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             textSizeValueText: ".flc-uiOptions-plus-minus-numerical-value"
         },
         listeners: {
-            "afterRender.console": {
-                "this": "console",
-                "method": "log",
-                "args": {
-                    expander: {
-                        funcName: "gpii.uiOptions.concatStrings",
-                        args: ["{that}.model.fontSize", "{that}.options.textSizeMetricUnit"]
-                    }
-                }
-            },
             "afterRender.bindEventTextSizeMinusClick": {
                 "this": "{that}.dom.textSizeMinus",
                 "method": "click",
