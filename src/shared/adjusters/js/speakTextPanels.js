@@ -11,6 +11,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
 (function (fluid) {
+    
+    gpii.speakText.arrayMergePolicy = function (target, source) {
+        target = fluid.makeArray(target);
+        source = fluid.makeArray(source);
+        fluid.each(source, function (selector) {
+            if($.inArray(selector, target) < 0) {
+                target.push(selector);
+            }
+        });
+        return target;
+    };
+
     fluid.defaults("speakText.panels.screenReaderTTSEnabled", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
@@ -60,6 +72,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     fluid.defaults("speakText.panels.punctuationVerbosity", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        mergePolicy: {
+            repeatingSelectors: gpii.speakText.arrayMergePolicy
+        },
         preferenceMap: {
             "punctuationVerbosity": {
                 "model.punctuationVerbosity": "default",
