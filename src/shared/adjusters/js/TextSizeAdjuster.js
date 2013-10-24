@@ -37,7 +37,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
 
-        metricUnit: "pt",
+        textSizeMetricUnit: "pt",
+
+        events: {
+            textSizeMinRangeReached: null
+        },
 
         components: {
             textSizePreview: {
@@ -90,51 +94,63 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "args": {
                     expander: {
                         funcName: "gpii.uiOptions.concatStrings",
-                        args: ["{that}.model.fontSize", "{that}.options.metricUnit"]
+                        args: ["{that}.model.fontSize", "{that}.options.textSizeMetricUnit"]
                     }
                 }
             },
-            "afterRender.bindEventMinusClick": {
+            "afterRender.bindEventTextSizeMinusClick": {
                 "this": "{that}.dom.textSizeMinus",
                 "method": "click",
-                "args": ["{that}.onMinusClick"]
+                "args": ["{that}.onTextSizeMinusClick"]
             },
-            "afterRender.bindEventPlusClick": {
+            "afterRender.bindEventTextSizePlusClick": {
                 "this": "{that}.dom.textSizePlus",
                 "method": "click",
-                "args": ["{that}.onPlusClick"]
+                "args": ["{that}.onTextSizePlusClick"]
             },
-            "afterRender.bindEventValueTextChange": {
+            "afterRender.bindEventTextSizeValueTextChange": {
                 "this": "{that}.dom.textSizeValueText",
                 "method": "change",
-                "args": ["{that}.onValueTextChange"]
+                "args": ["{that}.onTextSizeValueTextChange"]
             },
-            "afterRender.bindEventValueTextPreventNonNumeric": {
+            "afterRender.bindEventTextSizeValueTextPreventNonNumeric": {
                 "this": "{that}.dom.textSizeValueText",
                 "method": "keydown",
                 "args": ["{that}.onValueTextPreventNonNumeric"]
+            },
+            "afterRender.setTextSizeMetricUnit": {
+                listener: "{that}.setTextSizeMetricUnit"
+            },
+            "afterRender.checkTextSizeInitialMinRange": {
+                listener: "{that}.checkTextSizeInitialMinRange"
+            },
+            "textSizeMinRangeReached.setTextSizeMinusStyle": {
+                listener: "{that}.setTextSizeMinusStyle"
             }
+
         },
         invokers: {
-            onMinusClick: {
+            onTextSizeMinusClick: {
                 funcName: "gpii.uiOptions.panels.plusMinus.onMinusClick",
                 args: [
                     "{that}",
                     "{that}.model.fontSize",
                     "{that}.options.fontSize.range",
-                    "fontSize"
+                    "fontSize",
+                    "{that}.events.textSizeMinRangeReached"
                 ]
             },
-            onPlusClick: {
+            onTextSizePlusClick: {
                 funcName: "gpii.uiOptions.panels.plusMinus.onPlusClick",
                 args: [
                     "{that}",
                     "{that}.model.fontSize",
                     "{that}.options.fontSize.range",
-                    "fontSize"
+                    "fontSize",
+                    "{that}.events.textSizeMinRangeReached"
                 ]
             },
-            onValueTextChange: {
+            onTextSizeValueTextChange: {
                 funcName: "gpii.uiOptions.panels.plusMinus.onValueTextChange",
                 args: [
                     "{that}",
@@ -143,24 +159,34 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         "method": "val"
                     }},
                     "{that}.options.fontSize.range",
-                    "fontSize"
+                    "fontSize",
+                    "{that}.events.textSizeMinRangeReached"
                 ]
             },
-            setMetricUnit: {
+            setTextSizeMetricUnit: {
                 "this": "{that}.dom.textSizeValueText",
                 "method": "val",
                 "args": {
                     expander: {
                         funcName: "gpii.uiOptions.concatStrings",
-                        args: ["{that}.model.fontSize", "{that}.options.metricUnit"]
+                        args: ["{that}.model.fontSize", "{that}.options.textSizeMetricUnit"]
                     }
                 }
             },
-            setMinusStyle: {
+            setTextSizeMinusStyle: {
                 "this": "{that}.dom.textSizeMinus",
                 "method": "toggleClass",
                 "args": "fl-uiOptions-plus-minus-numerical-min-reached"                        
 
+            },
+            checkTextSizeInitialMinRange: {
+                funcName: "gpii.uiOptions.panels.plusMinus.performMinRangeCheck",
+                args: [
+                    "{that}",
+                    "{that}.model.fontSize",
+                    "{that}.options.fontSize.range",
+                    "{that}.events.textSizeMinRangeReached"
+                ]
             }
         },
 

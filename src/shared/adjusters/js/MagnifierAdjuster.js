@@ -27,22 +27,21 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
     
     fluid.defaults("gpii.uiOptions.panels.magnifier", {
-        gradeNames: ["fluid.uiOptions.panels", "gpii.uiOptions.pmt.previewPerSettingEnhanced", "autoInit"],
+        gradeNames: ["fluid.uiOptions.panels", "gpii.uiOptions.panels.plusMinus", "gpii.uiOptions.pmt.previewPerSettingEnhanced", "autoInit"],
         preferenceMap: {
             "http://registry.gpii.org/common/magnification": {
                 "model.magnification": "default",
-                "range.min": "minimum",
-                "range.max": "maximum",
-                "range.divisibleBy": "divisibleBy"
+                "magnification.range.min": "minimum",
+                "magnification.range.max": "maximum",
+                "magnification.range.divisibleBy": "divisibleBy"
             }
         },
-        /*range: {
-            min: 100,
-            max: 10000,
-            divisibleBy: 50
-        },*/
 
-        metricUnit: "%",
+        magnifierMetricUnit: "%",
+
+        events: {
+            magnifierMinRangeReached: null
+        },
 
         components: {
             magnifierPreview: {
@@ -50,7 +49,34 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 createOnEvent: "afterRender",
                 container: ".flc-uiOptions-magnifier .flc-uiOptions-preview-per-setting-frame",
                 options: {
-                    templateUrl: "../../src/shared/preview/html/uiOptionsTextPreview.html"
+                    templateUrl: "../../src/shared/preview/html/uiOptionsTextPreview.html",
+                    components: {
+                        enhancer: {
+                            type: "fluid.uiEnhancer",
+                            container: "{magnifierPreview}.enhancerContainer",
+                            createOnEvent: "onReady",
+                            options: {
+                                selectors: {
+                                    previewText: ".flc-uiOptions-preview-per-setting-label"
+                                },
+                                strings: {
+                                    previewText: {
+                                        expander: {
+                                            func: "gpii.uiOptions.pmt.lookupMsg",
+                                            args: ["{uiOptionsLoader}.msgBundle", "previewText"]
+                                        }
+                                    }
+                                },
+                                listeners: {
+                                    "onCreate.setText": {
+                                        "this": "{that}.dom.previewText",
+                                        "method": "text",
+                                        "args": ["{that}.options.strings.previewText"]
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         },
@@ -61,9 +87,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierPlus: ".flc-uiOptions-plus-minus-numerical-plus-magnifier",
             magnifierValueText: ".flc-uiOptions-plus-minus-numerical-value-magnifier"
         },
-        events: {
-            minRangeReached: null
-        },
         strings: {
             magnifierOFF: {
                 expander: {
@@ -73,17 +96,99 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         listeners: {
-            "minRangeReached.setValueText": {
-                "this": "{that}.dom.valueText",
+            "magnifierMinRangeReached.setMagnifierValueText": {
+                "this": "{that}.dom.magnifierValueText",
                 "method": "val",
                 "args": ["{that}.options.strings.magnifierOFF"]
             },
-            //"onCreate.init": "gpii.uiOptions.panels.plusMinusAdjusterFinalInit"
+            "afterRender.bindEventMagnifierMinusClick": {
+                "this": "{that}.dom.magnifierMinus",
+                "method": "click",
+                "args": ["{that}.onMagnifierMinusClick"]
+            },
+            "afterRender.bindEventMagnifierPlusClick": {
+                "this": "{that}.dom.magnifierPlus",
+                "method": "click",
+                "args": ["{that}.onMagnifierPlusClick"]
+            },
+            "afterRender.bindEventMagnifierValueTextChange": {
+                "this": "{that}.dom.magnifierValueText",
+                "method": "change",
+                "args": ["{that}.onMagnifierValueTextChange"]
+            },
+            "afterRender.bindEventMagnifierValueTextPreventNonNumeric": {
+                "this": "{that}.dom.magnifierValueText",
+                "method": "keydown",
+                "args": ["{that}.onValueTextPreventNonNumeric"]
+            },
+            "afterRender.setMagnifierMetricUnit": {
+                listener: "{that}.setMagnifierMetricUnit"
+            },
+            "afterRender.checkMagnifierInitialMinRange": {
+                listener: "{that}.checkMagnifierInitialMinRange"
+            },
+            "magnifierMinRangeReached.setMagnifierMinusStyle": {
+                listener: "{that}.setMagnifierMinusStyle"
+            }
         },
         invokers: {
-            updatePlusMinusAdjusterUI: {
-                funcName: "gpii.uiOptions.panels.updatePlusMinusAdjusterUI",
-                args: ["{that}"]
+            onMagnifierMinusClick: {
+                funcName: "gpii.uiOptions.panels.plusMinus.onMinusClick",
+                args: [
+                    "{that}",
+                    "{that}.model.magnification",
+                    "{that}.options.magnification.range",
+                    "magnification",
+                    "{that}.events.magnifierMinRangeReached"
+                ]
+            },
+            onMagnifierPlusClick: {
+                funcName: "gpii.uiOptions.panels.plusMinus.onPlusClick",
+                args: [
+                    "{that}",
+                    "{that}.model.magnification",
+                    "{that}.options.magnification.range",
+                    "magnification",
+                    "{that}.events.magnifierMinRangeReached"
+                ]
+            },
+            onMagnifierValueTextChange: {
+                funcName: "gpii.uiOptions.panels.plusMinus.onValueTextChange",
+                args: [
+                    "{that}",
+                    {expander: {
+                        "this": "{that}.dom.magnifierValueText",
+                        "method": "val"
+                    }},
+                    "{that}.options.magnification.range",
+                    "magnification",
+                    "{that}.events.magnifierMinRangeReached"
+                ]
+            },
+            setMagnifierMetricUnit: {
+                "this": "{that}.dom.magnifierValueText",
+                "method": "val",
+                "args": {
+                    expander: {
+                        funcName: "gpii.uiOptions.concatStrings",
+                        args: ["{that}.model.magnification", "{that}.options.magnifierMetricUnit"]
+                    }
+                }
+            },
+            setMagnifierMinusStyle: {
+                "this": "{that}.dom.magnifierMinus",
+                "method": "toggleClass",
+                "args": "fl-uiOptions-plus-minus-numerical-min-reached"                        
+
+            },
+            checkMagnifierInitialMinRange: {
+                funcName: "gpii.uiOptions.panels.plusMinus.performMinRangeCheck",
+                args: [
+                    "{that}",
+                    "{that}.model.magnification",
+                    "{that}.options.magnification.range",
+                    "{that}.events.magnifierMinRangeReached"
+                ]
             }
         },
         
