@@ -36,14 +36,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "fontSize.range.divisibleBy": "divisibleBy"
             }
         },
-        // The default model values represent both the expected format as well as the setting to be applied in the absence of values passed down to the component.
-        // i.e. from the settings store, or specific defaults derived from schema.
-        // Note: Except for being passed down to its subcomponent, these default values are not contributed and shared out
-        /*range: {
-            min: 1,
-            max: 1000,
-            divisibleBy: 1
-        },*/
 
         metricUnit: "pt",
 
@@ -95,7 +87,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             minRangeReached: null
         },
         listeners: {
-            //"onCreate.init": "gpii.uiOptions.panels.plusMinusAdjusterFinalInit"
             "afterRender.console": {
                 "this": "console",
                 "method": "log",
