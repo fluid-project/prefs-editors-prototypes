@@ -83,9 +83,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             textSizePlus: ".flc-uiOptions-plus-minus-numerical-plus",
             textSizeValueText: ".flc-uiOptions-plus-minus-numerical-value"
         },
-        events: {
-            minRangeReached: null
-        },
         listeners: {
             "afterRender.console": {
                 "this": "console",
@@ -116,12 +113,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "this": "{that}.dom.textSizeValueText",
                 "method": "keydown",
                 "args": ["{that}.onValueTextPreventNonNumeric"]
-            },
-            "afterRender.setMetricUnit": {
-                listener: "{that}.setMetricUnit"
-            },
-            "minRangeReached.setMinusStyle": {
-                listener: "{that}.setMinusStyle"
             }
         },
         invokers: {
@@ -153,12 +144,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     }},
                     "{that}.options.fontSize.range",
                     "fontSize"
-                ]
-            },
-            onValueTextPreventNonNumeric: {
-                funcName: "gpii.uiOptions.panels.plusMinus.onValueTextPreventNonNumeric",
-                args: [
-                    "{arguments}.0"
                 ]
             },
             setMetricUnit: {

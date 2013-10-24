@@ -26,7 +26,26 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     fluid.defaults("gpii.uiOptions.panels.plusMinus", {
-        gradeNames: ["fluid.uiOptions.panels", "autoInit"]
+        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        events: {
+            minRangeReached: null
+        },
+        listeners: {
+            "afterRender.setMetricUnit": {
+                listener: "{that}.setMetricUnit"
+            },
+            "minRangeReached.setMinusStyle": {
+                listener: "{that}.setMinusStyle"
+            }
+        },
+        invokers: {
+            onValueTextPreventNonNumeric: {
+                funcName: "gpii.uiOptions.panels.plusMinus.onValueTextPreventNonNumeric",
+                args: [
+                    "{arguments}.0"
+                ]
+            }
+        }
     });
     
     gpii.uiOptions.panels.plusMinus.onMinusClick = function (that, modelValue, range, modelValueName) {
