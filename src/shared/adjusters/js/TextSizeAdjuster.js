@@ -80,6 +80,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             "afterRender.setMetricUnit": {
+                listener: "{that}.setMetricUnit"
+            }
+        },
+        invokers: {
+            setMetricUnit: {
                 "this": "{that}.dom.textSizeValueText",
                 "method": "val",
                 "args": {
@@ -88,12 +93,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         args: ["{that}.model.fontSize", "{that}.options.metricUnit"]
                     }
                 }
-            }
-        },
-        invokers: {
-            updatePlusMinusAdjusterUI: {
-                funcName: "gpii.uiOptions.panels.updatePlusMinusAdjusterUI",
-                args: ["{that}"]
             }
         },
 
