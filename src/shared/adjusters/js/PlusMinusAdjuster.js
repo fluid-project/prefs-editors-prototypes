@@ -13,10 +13,13 @@
     
 	gpii.uiOptions.panels.updatePlusMinusAdjusterUI = function (that) {
         /*// append metric unit if there is one
+        
+        ------ DONE DECLARATIVELY----------
         if(that.options.metricUnit)
         {
             that.locate("valueText").val(that.model.value + that.options.metricUnit);
         }
+        -----------------------------------
 
         // if we've reached min range
         if(that.model.value == that.options.range.min)

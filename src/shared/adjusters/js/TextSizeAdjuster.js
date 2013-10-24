@@ -68,7 +68,27 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             minRangeReached: null
         },
         listeners: {
-            "onCreate.init": "gpii.uiOptions.panels.plusMinusAdjusterFinalInit"
+            //"onCreate.init": "gpii.uiOptions.panels.plusMinusAdjusterFinalInit"
+            "afterRender.console": {
+                "this": "console",
+                "method": "log",
+                "args": {
+                    expander: {
+                        funcName: "gpii.uiOptions.concatStrings",
+                        args: ["{that}.model.fontSize", "{that}.options.metricUnit"]
+                    }
+                }
+            },
+            "afterRender.setMetricUnit": {
+                "this": "{that}.dom.textSizeValueText",
+                "method": "val",
+                "args": {
+                    expander: {
+                        funcName: "gpii.uiOptions.concatStrings",
+                        args: ["{that}.model.fontSize", "{that}.options.metricUnit"]
+                    }
+                }
+            }
         },
         invokers: {
             updatePlusMinusAdjusterUI: {
