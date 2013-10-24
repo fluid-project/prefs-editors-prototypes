@@ -53,7 +53,34 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 createOnEvent: "afterRender",
                 container: ".flc-uiOptions-text-size .flc-uiOptions-preview-per-setting-frame",
                 options: {
-                    templateUrl: "../../src/shared/preview/html/uiOptionsTextPreview.html"
+                    templateUrl: "../../src/shared/preview/html/uiOptionsTextPreview.html",
+                    components: {
+                        enhancer: {
+                            type: "fluid.uiEnhancer",
+                            container: "{textSizePreview}.enhancerContainer",
+                            createOnEvent: "onReady",
+                            options: {
+                                selectors: {
+                                    previewText: ".flc-uiOptions-preview-per-setting-label"
+                                },
+                                strings: {
+                                    previewText: {
+                                        expander: {
+                                            func: "gpii.uiOptions.pmt.lookupMsg",
+                                            args: ["{uiOptionsLoader}.msgBundle", "previewText"]
+                                        }
+                                    }
+                                },
+                                listeners: {
+                                    "onCreate.setText": {
+                                        "this": "{that}.dom.previewText",
+                                        "method": "text",
+                                        "args": ["{that}.options.strings.previewText"]
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         },

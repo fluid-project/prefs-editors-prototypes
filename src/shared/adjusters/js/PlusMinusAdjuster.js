@@ -63,7 +63,7 @@
         }
     };
     
-	gpii.uiOptions.panels.updatePlusMinusAdjusterUI = function (that) {
+    gpii.uiOptions.panels.updatePlusMinusAdjusterUI = function (that) {
         /*// append metric unit if there is one
         ------ DONE DECLARATIVELY----------
         -----------------------------------
