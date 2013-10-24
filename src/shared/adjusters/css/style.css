@@ -64,7 +64,7 @@
     font-size: 15px !important;
 }
 
-.speech-rate-class {
+.speakText-speechRate-element {
     position: relative;
     padding-top: 15px;
 }
@@ -103,10 +103,6 @@ textarea:focus, input:focus {
     font-size: 15px;
     font-weight: bold;
     margin-left: 90px;
-}
-
-#screenReaderSwitch-div {
-    height: 60px;
 }
 
 .partially-expanded {
