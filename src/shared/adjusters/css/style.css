@@ -65,7 +65,7 @@ h2 > label {
 /*
     Header's styling
 */
-.headerImage {
+.gpii-headerImage {
     -webkit-font-smoothing: antialiased;
     width: 330;
     margin:5px !important;
@@ -74,11 +74,11 @@ h2 > label {
     position: absolute;
 }
 
-.headerImage:before {
+.gpii-headerImage:before {
     font-size: 90px !important;
 }
 
-.headerImageTick {
+.gpii-headerImageTick {
     font-size: 20px !important;
     margin-left: 300px;
     margin-top: -30px;
@@ -88,33 +88,33 @@ h2 > label {
     color: #566374;
 }
 
-.headerImageTick:before {
+.gpii-headerImageTick:before {
     content: "\e00a" !important;
 }
 
-input[type=checkbox] + .headerImage > .headerImageTick{
+input[type=checkbox] + .gpii-headerImage > .gpii-headerImageTick{
     display: none;
 }
 
-input[type=checkbox]:checked + .headerImage > .headerImageTick{
+input[type=checkbox]:checked + .gpii-headerImage > .gpii-headerImageTick{
     display: block;
 }
 
-.gpii-prefsEditor-increaseSizePanel > .headerImage:before {
+.gpii-prefsEditor-increaseSizePanel > .gpii-headerImage:before {
     content: "\e003";
 }
 
-.gpii-prefsEditor-contrast > .headerImage:before {
+.gpii-prefsEditor-contrast > .gpii-headerImage:before {
     content: "\e002";
 }
 
 .gpii-headerTitle {
     font-family: 'Roboto Slab', serif;
-       left: 0; 
-       width: 100%;
-       color: white;
-       text-align: left;
-       font-size: 1.8em !important;
+    left: 0; 
+    width: 100%;
+    color: white;
+    text-align: left;
+    font-size: 1.8em !important;
     margin: -90px 0 0;
     display: inline;
     line-height: 90px;
@@ -126,7 +126,7 @@ input[type=checkbox]:checked + .headerImage > .headerImageTick{
     padding-left: 90px;
 }
 
-.headerClickableLabel {
+.gpii-headerClickableLabel {
     cursor: pointer;
     color: transparent !important;
     margin: 5px !important;
@@ -249,7 +249,7 @@ input[type=checkbox], input[type=radio] {
 /*
     Style for sliding to work
 */
-.increaseSizePreferenceGroup {
+.gpii-increaseSizePreferenceGroup {
     padding-top: 100px;
 }
 
@@ -416,14 +416,14 @@ input[type=checkbox], input[type=radio] {
     width: 1.2em;
 }
 
-input:checked + .gpii-prefsEditor-magnifierFollowsLabel > .gpii-increaseSize-magnifierFollowsIconCheck {
+input:checked + .gpii-increaseSize-magnifierFollowsLabel > .gpii-increaseSize-magnifierFollowsIconCheck {
     padding-right: 0.1em;
     padding-top: 0.1em;
     border: 2px solid;
     background-color: 636C7C;
 }
 
-input:checked + .gpii-prefsEditor-magnifierFollowsLabel > .gpii-increaseSize-magnifierFollowsIconCheck:before {
+input:checked + .gpii-increaseSize-magnifierFollowsLabel > .gpii-increaseSize-magnifierFollowsIconCheck:before {
     content: "\e00a";
 }
 
@@ -525,11 +525,11 @@ input:checked + .gpii-prefsEditor-magnifierFollowsLabel > .gpii-increaseSize-mag
     font-family: 'font-icons-sept-3';
 }
 
-.addToMyPreferencesStar:before {
+.gpii-addToMyPreferencesStar:before {
     content: "\e000";
 }
 
-.addToMyPreferencesStar {
+.gpii-addToMyPreferencesStar {
     margin-left: 310px;
     margin-top: 10px;
     color: #6b7281;
@@ -539,7 +539,7 @@ input:checked + .gpii-prefsEditor-magnifierFollowsLabel > .gpii-increaseSize-mag
     padding: 2px;
 }
 
-input:checked + .addToMyPreferencesStar {
+input:checked + .gpii-addToMyPreferencesStar {
     color: #fae80b;
     border-radius: 50%;
 }
@@ -581,7 +581,7 @@ input:checked + .addToMyPreferencesStar {
     content:attr(tooltip-unchecked);
 }
 
-input:checked + .addToMyPreferencesStar + .gpii-addToMyPreferencesLabel[title]:after {
+input:checked + .gpii-addToMyPreferencesStar + .gpii-addToMyPreferencesLabel[title]:after {
     content:attr(tooltip-checked);
 }
 
@@ -609,7 +609,7 @@ input:checked + .addToMyPreferencesStar + .gpii-addToMyPreferencesLabel[title]:a
     background-color: #D3DFDF;
 }
 
-.fl-theme-uio-yb .headerImage {
+.fl-theme-uio-yb .gpii-headerImage {
     background-color: black !important;
     color: yellow !important;
 }
@@ -619,7 +619,7 @@ input:checked + .addToMyPreferencesStar + .gpii-addToMyPreferencesLabel[title]:a
     color: black !important;
 }
 
-.fl-theme-uio-yb .headerClickableLabel {
+.fl-theme-uio-yb .gpii-headerClickableLabel {
     background-color: transparent !important;
     color: transparent !important;
 }
@@ -628,12 +628,12 @@ input:checked + .addToMyPreferencesStar + .gpii-addToMyPreferencesLabel[title]:a
     background-color: transparent !important;
 }
 
-.fl-theme-uio-yb .addToMyPreferencesStar {
+.fl-theme-uio-yb .gpii-addToMyPreferencesStar {
     background-color: yellow !important;
     color: black !important;
 }
 
-.fl-theme-uio-yb input:checked + .addToMyPreferencesStar {
+.fl-theme-uio-yb input:checked + .gpii-addToMyPreferencesStar {
     background-color: black !important;
     color: yellow !important;
 }
@@ -643,7 +643,7 @@ input:checked + .addToMyPreferencesStar + .gpii-addToMyPreferencesLabel[title]:a
     border: 1px solid yellow !important;
 }
 
-.fl-theme-uio-yb .headerImage {
+.fl-theme-uio-yb .gpii-headerImage {
     background-color: yellow !important;
     color: black !important;
 }
