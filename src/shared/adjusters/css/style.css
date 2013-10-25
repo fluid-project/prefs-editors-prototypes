@@ -38,7 +38,7 @@ body {
     min-height: 100px;
 }
 
-.fl-uiOptions-category {
+.gpii-category {
     width: 80%;
     margin: 0 auto;
     font-family: 'Open Sans', sans-serif;
@@ -147,7 +147,7 @@ input[type=checkbox], input[type=radio] {
 /*
     The adjusters' font icons
 */
-.fl-adjuster-icons {
+.gpii-adjusterIcons {
     float: left;
     font-family: 'icons-no-frames-aug-29';
     speak: none;
@@ -159,7 +159,7 @@ input[type=checkbox], input[type=radio] {
     -webkit-font-smoothing: antialiased;
 }
 
-.fl-adjuster-icons-additional > .fl-magnifierPosition-uio-icon-main {
+.gpii-adjusterIconsAdditional > .gpii-increaseSize-magnifierPositionIconMain {
     font-family: 'font-icons-sept-3';
     margin-top: 0em;
 }
@@ -167,20 +167,20 @@ input[type=checkbox], input[type=radio] {
 /*
     The cursor size font icons
 */
-.fl-icon-small-cursor:before {
+.gpii-increaseSize-iconSmallCursor:before {
     font-size: 0.8em !important;
     content: "\e000";
 }
-.fl-icon-big-cursor:before {
+.gpii-increaseSize-iconBigCursor:before {
     font-size: 1.9em !important;
     content: "\e000";
 }
-.fl-icon-small-cursor {
+.gpii-increaseSize-iconSmallCursor {
     width: 1em;
     text-align: right;
     padding-top: 0.25em;
 }
-.fl-icon-big-cursor {
+.gpii-increaseSize-iconBigCursor {
     width: 1em;
     margin-top: -0.5em !important;
 }
@@ -210,7 +210,7 @@ input[type=checkbox], input[type=radio] {
 /*
     The plusMinusAdjuster style
 */
-.fl-uiOptions-plus-minus-numerical-minus, .fl-uiOptions-plus-minus-numerical-plus {
+.gpii-increaseSize-plusMinusNumericalMinus, .gpii-increaseSize-plusMinusNumericalPlus {
     width: 10% !important;
     font-size: 1.5em !important;
     cursor: pointer;
@@ -227,13 +227,13 @@ input[type=checkbox], input[type=radio] {
     float: left;
 }
 
-.fl-uiOptions-plus-minus-numerical-widget {
+.gpii-increaseSize-plusMinusNumericalWidget {
     width: 100% !important;
     background-color: #FFFFFF;
     display: table;
 }
 
-.fl-uiOptions-plus-minus-numerical-value {
+.gpii-increaseSize-plusMinusNumericalValue {
     width: 76% !important;
     border: none !important;
     text-align: center !important;
@@ -242,7 +242,7 @@ input[type=checkbox], input[type=radio] {
     margin-bottom: 2px !important;
 }
 
-.fl-uiOptions-plus-minus-numerical-min-reached {
+.gpii-increasesize-plusMinusNumericalMinReached {
     color: #D3D3D3 !important;
 }
 
@@ -253,11 +253,11 @@ input[type=checkbox], input[type=radio] {
     padding-top: 100px;
 }
 
-.fl-uiOptions-category {
+.gpii-category {
     overflow: hidden;
 }
 
-.fl-uiOptions-category-hidden {
+.gpii-category-hidden {
     overflow: hidden;
 }
 
@@ -276,7 +276,7 @@ input[type=checkbox], input[type=radio] {
 /*
     Style for magnifier position font icons
 */
-.fl-magnifierPosition-uio-icon-label {
+.gpii-increaseSize-magnifierPositionIconLabel {
     height: 4.7em !important;
     width: 6.3em !important;
     border: none !important;
@@ -287,63 +287,63 @@ input[type=checkbox], input[type=radio] {
     margin-right: 0.5em !important;
 }
 
-.fl-magnifierPosition-uio-icon {
+.gpii-increaseSize-magnifierPositionIcon {
     height: 0 !important;
     width: 0 !important;
     color: #636c7c;
     margin-top: -2px;
 }
 
-.fl-magnifierPosition-uio-icon:before {
+.gpii-increaseSize-magnifierPositionIcon:before {
     font-size: 5em !important;
 }
 
-.fl-magnifierPosition-uio-background {
+.gpii-increaseSize-magnifierPositionBackground {
     height: 4.9em !important;
     width: 6.3em !important;
     padding-top: 2px;
 }
 
-.fl-magnifierPosition-uio-background:before {
+.gpii-increaseSize-magnifierPositionBackground:before {
     font-size: 4.8em !important;
     content: "\e00b" !important;
 }
     
-.fl-magnifierPosition-uio-fullscreen > .fl-magnifierPosition-uio-frame:before {
+.gpii-increaseSize-magnifierPositionFullscreen > .gpii-increaseSize-magnifierPositionFrame:before {
     font-size: 5em !important;
     content: "\e008" !important;
 }
 
-.fl-magnifierPosition-uio-lens > .fl-magnifierPosition-uio-icon:before {
+.gpii-increaseSize-magnifierPositionLens > .gpii-increaseSize-magnifierPositionIcon:before {
     content: "\e00a";
 } 
 
-.fl-magnifierPosition-uio-fullscreen > .fl-magnifierPosition-uio-icon-main {
+.gpii-increaseSize-magnifierPositionFullscreen > .gpii-increaseSize-magnifierPositionIconMain {
     opacity:0.5;
     position: relative;
     top: 0.15em;
     left: 0.15em;
 }
 
-.fl-magnifierPosition-uio-fullscreen > .fl-magnifierPosition-uio-icon-main:before {
+.gpii-increaseSize-magnifierPositionFullscreen > .gpii-increaseSize-magnifierPositionIconMain:before {
     content: "\e009";
     font-size: 4.7em !important;
     color: #00a9bd;
 }
 
-.fl-magnifierPosition-uio-top > .fl-magnifierPosition-uio-icon-main:before {
+.gpii-increaseSize-magnifierPositionTop > .gpii-increaseSize-magnifierPositionIconMain:before {
     content: "\e001";
 }
 
-.fl-magnifierPosition-uio-bottom > .fl-magnifierPosition-uio-icon-main:before {
+.gpii-increaseSize-magnifierPositionBottom > .gpii-increaseSize-magnifierPositionIconMain:before {
     content: "\e004";
 }
 
-.fl-magnifierPosition-uio-left > .fl-magnifierPosition-uio-icon-main:before {
+.gpii-increaseSize-magnifierPositionLeft > .gpii-increaseSize-magnifierPositionIconMain:before {
     content: "\e003";
 }
 
-.fl-magnifierPosition-uio-right > .fl-magnifierPosition-uio-icon-main:before {
+.gpii-increaseSize-magnifierPositionRight > .gpii-increaseSize-magnifierPositionIconMain:before {
     content: "\e002";
 }
 
@@ -367,7 +367,7 @@ input[type=checkbox], input[type=radio] {
 /*
     Style for magnifier follows font icons
 */
-.fl-magnifierFollows-uio-icon-label {
+.gpii-increaseSize-magnifierFollowsIconLabel {
     height: 7.8em !important;
     width: 6.5em !important;
     border: none !important;
@@ -378,32 +378,32 @@ input[type=checkbox], input[type=radio] {
     margin-right: 0.5em !important;
 }
 
-.fl-magnifierFollows-uio-icon {
+.gpii-increaseSize-magnifierFollowsIcon {
     font-size: 6.8em !important;
     padding-bottom: 0.2em !important;
     color: white;
 }
 
-.fl-uiOptions-magnifierFollowsRow{
+.gpii-increaseSize-magnifierFollowsRow{
     margin-bottom: 1em !important;
 }
 
-.fl-magnifierFollows-uio-mouseCursor > .fl-magnifierFollows-uio-icon:before {
+.gpii-increaseSize-magnifierFollowsMouseCursor > .gpii-increaseSize-magnifierFollowsIcon:before {
     content: "\e007";
 }
 
-.fl-magnifierFollows-uio-textCursor > .fl-magnifierFollows-uio-icon:before {
+.gpii-increaseSize-magnifierFollowsTextCursor > .gpii-increaseSize-magnifierFollowsIcon:before {
     content: "\e000";
 }
 
-.fl-magnifierFollows-uio-keyboardFocus > .fl-magnifierFollows-uio-icon:before {
+.gpii-increaseSize-magnifierFollowsKeyboardFocus > .gpii-increaseSize-magnifierFollowsIcon:before {
     content: "\e008";
 }
 
 /*
     Style for magnifier follows checked font icons
 */
-.fl-magnifierFollows-uio-icon-check {
+.gpii-increaseSize-magnifierFollowsIconCheck {
     background-color: #FFFFFF;
     border: 3px double #636C7C;
     border-radius: 6px 6px 6px 6px;
@@ -416,38 +416,38 @@ input[type=checkbox], input[type=radio] {
     width: 1.2em;
 }
 
-input:checked + .gpii-prefsEditor-magnifierFollowsLabel > .fl-magnifierFollows-uio-icon-check {
+input:checked + .gpii-prefsEditor-magnifierFollowsLabel > .gpii-increaseSize-magnifierFollowsIconCheck {
     padding-right: 0.1em;
     padding-top: 0.1em;
     border: 2px solid;
     background-color: 636C7C;
 }
 
-input:checked + .gpii-prefsEditor-magnifierFollowsLabel > .fl-magnifierFollows-uio-icon-check:before {
+input:checked + .gpii-prefsEditor-magnifierFollowsLabel > .gpii-increaseSize-magnifierFollowsIconCheck:before {
     content: "\e00a";
 }
 
 /*
     Style for magnifier follows legend
 */
-.fl-magnifierFollows-legend {
+.gpii-increaseSize-magnifierFollowsLegend {
     line-height: 1.1em;
     color: #566374;
 }
 
-.fl-magnifierFollows-legend::first-letter {
+.gpii-increaseSize-magnifierFollowsLegend::first-letter {
     text-transform: capitalize;
 }
 
 /*
     Style for preview-per-setting iframe and content
 */
-.fl-uiOptions-preview-per-setting-frame {
+.gpii-previewPerSettingFrame {
     width: 100% !important;
     margin-top: -1em;
 }
 
-.fl-uiOptions-preview-per-setting-container {
+.gpii-previewPerSettingContainer {
     background-color: #d3dfdf;
     border: 1px solid #beced1;
     color: #B8C9CC;
@@ -455,14 +455,14 @@ input:checked + .gpii-prefsEditor-magnifierFollowsLabel > .fl-magnifierFollows-u
     margin-bottom: 0.5em;
 }
 
-.fl-uiOptions-preview-per-setting-eye:before {
+.gpii-previewPerSettingEye:before {
     position: relative;
     z-index: 2;
     background-color: transparent !important;
     content: "\e00c";
 }
 
-.fl-uiOptions-preview-per-setting-eye-background {
+.gpii-previewPerSettingEyeBackground {
     position: relative;
     background-color: #000000;
     height: 0.34em;
@@ -472,33 +472,33 @@ input:checked + .gpii-prefsEditor-magnifierFollowsLabel > .fl-magnifierFollows-u
     z-index: 1;
 }
 
-.fl-uiOptions-preview-per-setting-body {
+.gpii-previewPerSettingBody {
     width: 100% !important;
     height: 100% !important;
     margin: 0;
 }
 
-.fl-uiOptions-preview-per-setting-div {
+.gpii-previewPerSettingDiv {
     width: 100%; 
     height: 100%; 
     position: relative;
 }
 
-.fl-uiOptions-preview-per-setting-div-inner { 
+.gpii-previewPerSettingDivInner { 
     position: absolute; 
     display: table; 
     width: 100%; 
     height: 100%; 
 }
 
-.fl-uiOptions-preview-per-setting-div-inner p {
+.gpii-previewPerSettingDivInner p {
     display: table-cell; 
     vertical-align: middle; 
     text-align: center; 
     padding: 10px;
 }
 
-.fl-uiOptions-preview-per-setting-div-inner div {
+.gpii-previewPerSettingDivInner div {
     display: table-cell; 
     vertical-align: middle; 
     text-align: center; 
@@ -506,22 +506,22 @@ input:checked + .gpii-prefsEditor-magnifierFollowsLabel > .fl-magnifierFollows-u
     float: none;
 }
 
-.fl-uiOptions-preview-per-setting-cursor1:before {
+.gpii-previewPerSettingCursor1:before {
     content: "\e006";
 }
 
-.fl-uiOptions-preview-per-setting-cursor2:before {
+.gpii-previewPerSettingCursor2:before {
     content: "\e005";
 }
 
-.fl-uiOptions-preview-per-setting-cursor3:before {
+.gpii-previewPerSettingCursor3:before {
     content: "\e001";
 }
 
 /*
     Style for "Add to my preferences" star font icon
 */
-.fl-adjuster-icons-additional {
+.gpii-adjusterIconsAdditional {
     font-family: 'font-icons-sept-3';
 }
 
@@ -585,11 +585,11 @@ input:checked + .addToMyPreferencesStar + .gpii-addToMyPreferencesLabel[title]:a
     content:attr(tooltip-checked);
 }
 
-.fl-uiOptions-magnifierPosition-label[title] {
+.gpii-increaseSize-magnifierPositionLabel[title] {
     position:relative;
 }
 
-.fl-uiOptions-magnifierPosition-label[title]:after {
+.gpii-increaseSize-magnifierPositionLabel[title]:after {
     content: attr(tooltip);
     line-height: 1em !important;
     font-size: 1em;
@@ -648,7 +648,7 @@ input:checked + .addToMyPreferencesStar + .gpii-addToMyPreferencesLabel[title]:a
     color: black !important;
 }
 
-.fl-theme-uio-yb .fl-magnifierPosition-uio-background {
+.fl-theme-uio-yb .gpii-increaseSize-magnifierPositionBackground {
     background-color: transparent !important;
 }
 
@@ -656,16 +656,16 @@ input:checked + .addToMyPreferencesStar + .gpii-addToMyPreferencesLabel[title]:a
     background-color: transparent !important;
 }
 
-.fl-theme-uio-yb .fl-uiOptions-plus-minus-numerical-widget {
+.fl-theme-uio-yb .gpii-increaseSize-plusMinusNumericalWidget {
     width: calc(100% - 2px) !important;
     border: 1px solid !important;
 }
 
-.fl-theme-uio-yb .fl-uiOptions-plus-minus-numerical-value {
+.fl-theme-uio-yb .gpii-increaseSize-plusMinusNumericalValue {
     margin-bottom: 1px !important;
 }
 
-.fl-theme-uio-yb .fl-uiOptions-plus-minus-numerical-min-reached {
+.fl-theme-uio-yb .gpii-increasesize-plusMinusNumericalMinReached {
     color: gray !important;
 }
 
@@ -677,17 +677,17 @@ input:checked + .addToMyPreferencesStar + .gpii-addToMyPreferencesLabel[title]:a
     outline: 2px solid #FFFF00 !important;
 }
 
-.fl-theme-uio-yb .fl-magnifierFollows-uio-icon {
+.fl-theme-uio-yb .gpii-increaseSize-magnifierFollowsIcon {
     border: 1px solid;
 }
 
-.fl-theme-uio-yb .fl-magnifierFollows-uio-icon-check {
+.fl-theme-uio-yb .gpii-increaseSize-magnifierFollowsIconCheck {
     margin-top: -1.9em;
 }
 
 /*
     Style for sept-12 font icons
 */
-.fl-adjuster-icons-sept-12 {
+.gpii-adjusterIcons-sept-12 {
     font-family: 'sept-12';
 }

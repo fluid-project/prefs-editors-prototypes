@@ -164,13 +164,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             setTextSizeMinusStyleAdd: {
                 "this": "{that}.dom.textSizeMinus",
                 "method": "addClass",
-                "args": "fl-uiOptions-plus-minus-numerical-min-reached"                        
+                "args": "gpii-increasesize-plusMinusNumericalMinReached"                        
 
             },
             setTextSizeMinusStyleRemove: {
                 "this": "{that}.dom.textSizeMinus",
                 "method": "removeClass",
-                "args": "fl-uiOptions-plus-minus-numerical-min-reached"                        
+                "args": "gpii-increasesize-plusMinusNumericalMinReached"                        
 
             },
             checkTextSizeInitialMinRange: {
