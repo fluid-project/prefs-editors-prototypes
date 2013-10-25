@@ -350,10 +350,10 @@ input[type=checkbox], input[type=radio] {
 /*
     Style for magnifier position indicator
 */
-.fl-uiOptions .fl-icon-indicator:before, .fl-uiOptions .fl-choice input:checked + div:before {
+.fl-uiOptions .gpii-choice input:checked + div:before {
     content: "\e007";
 }
-.fl-uiOptions .fl-choice .fl-indicator {
+.fl-uiOptions .gpii-choice .gpii-indicator {
     font-family: 'icons-no-frames-aug-29' !important;
     font-size: 0.8em;
      color: #636c7c;
@@ -652,7 +652,7 @@ input:checked + .gpii-addToMyPreferencesStar + .gpii-addToMyPreferencesLabel[tit
     background-color: transparent !important;
 }
 
-.fl-theme-uio-yb .fl-indicator {
+.fl-theme-uio-yb .gpii-indicator {
     background-color: transparent !important;
 }
 
@@ -669,7 +669,7 @@ input:checked + .gpii-addToMyPreferencesStar + .gpii-addToMyPreferencesLabel[tit
     color: gray !important;
 }
 
-.fl-theme-uio-yb .fl-uiOptions input:focus + label, .fl-theme-uio-yb .fl-uiOptions .fl-choice input:focus ~ label {
+.fl-theme-uio-yb .fl-uiOptions input:focus + label, .fl-theme-uio-yb .fl-uiOptions .gpii-choice input:focus ~ label {
     outline: none !important;
 }
 
