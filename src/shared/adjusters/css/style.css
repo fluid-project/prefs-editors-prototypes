@@ -1,0 +1,626 @@
+@font-face {
+    font-family: 'radioButtonIcons';
+    src: url('../fonts/blackDot.ttf') format('truetype'),
+         url('../fonts/blackDot.eot');
+}
+
+@font-face {
+    font-family: 'optionsIcons';
+    src: url('../fonts/icomoon.ttf') format('truetype'),
+         url('../fonts/icomoon.eot');
+}
+
+@font-face {
+    font-family: 'presetButtonPackage';
+    src: url('../fonts/presetButton.ttf') format('truetype'),
+         url('../fonts/presetButton.eot');
+}
+
+@font-face {
+    font-family: 'checkboxTick';
+    src: url('../fonts/tick.ttf') format('truetype'),
+         url('../fonts/tick.eot');
+}
+
+.bold-font-weight {
+    font-weight: bold;
+}
+
+.normal-font-weight {
+    font-weight: normal;
+}
+
+.more-options-icon {
+    font-family: 'optionsIcons'
+}
+
+.spacing-ensurer {
+    height: 65px;
+    width: 0px;
+}
+
+.speakText-screenReaderTTSEnabled-element {
+    padding-top: 1px;
+    height: 55px;
+}
+
+.more-options-icon:before {
+    content: "\e009";
+}
+
+.preference {
+    padding-left: 40px;
+    font-family: 'Roboto Slab', serif;
+    background-color: #E5EFEF;
+    width: 285px;
+}
+
+.speak-text-label {
+    font-size: 19px !important;
+    font-family: 'Roboto Slab', serif;
+}
+
+.speak-text-description {
+    font-size: 15px !important;
+}
+
+.speakText-speechRate-element {
+    position: relative;
+    padding-top: 15px;
+}
+
+#speechRate {
+    text-align: center;
+    border: none;
+    width: 200px;
+    font-size: 23px;
+    display: inline !important;
+}
+
+#speechRateLabel {
+    font-size: 85%;
+}
+
+#speechRateMinus {
+    font-size: 50px;
+}
+
+#speechRatePlus {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#speechRate.gpii-textfieldStepper-field::-moz-selection {
+    background-color: yellow;
+}
+
+textarea:focus, input:focus {
+    outline: 0;
+}
+
+.more-options {
+    padding-top: 20px;
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 90px;
+}
+
+.partially-expanded {
+    display: none;
+}
+
+.fully-expanded {
+    display: none;
+}
+
+.switch {
+    font-size:135%;
+    float: left;
+}
+
+#screen-reader-onoff {
+    font-size:70%;
+    float:left;
+    margin-left:37px;
+}
+
+#braille-onoff {
+    font-size:70%;
+    float:left;
+    margin-left:125px;
+}
+
+input[type="radio"] {
+    display:none;
+}
+
+input[type="radio"] + label {
+    font-family: 'Open Sans', sans-serif;
+    text-transform: capitalize;
+}
+
+div.punctuationVerbosity-container {
+    position: relative;
+    height: 55px;
+    width: 250px;
+    background-color: #CEDBDD;
+    border-radius: 4%;
+    padding-top: 10px;
+    padding-left: 5px;
+}
+
+input[type="radio"] + label.radioButton-left > span {
+    font-family: 'radioButtonIcons';
+}
+
+input[type="radio"] + label.radioButton-left > span:before {
+    font-size: 150%;
+    position: absolute;
+    margin-top: -30px;
+    margin-left: -30px;
+    color: white;
+    border: solid white;
+    background-color: white;
+    border-radius: 100%;
+    border-width: thin medium;
+    content: "\e001";
+}
+
+input[type="radio"]:checked + label.radioButton-left > span:before {
+    color: #566273;
+    border: solid white;
+    background-color: white;
+    border-radius: 100%;
+    border-width: thin medium;
+}
+
+input[type="radio"] + label.radioButton-second > span {
+    font-family: 'radioButtonIcons';
+}
+
+input[type="radio"] + label.radioButton-second > span:before {
+    font-size: 150%;
+    position: absolute;
+    margin-top: -30px;
+    margin-left: -33px;
+    color: white;
+    border: solid white;
+    background-color: white;
+    border-radius: 100%;
+    border-width: thin medium;
+    content: "\e001";
+}
+
+input[type="radio"]:checked + label.radioButton-second > span:before {
+    color: #566273;
+    border: solid white;
+    background-color: white;
+    border-radius: 100%;
+    border-width: thin medium;
+}
+
+input[type="radio"] + label.radioButton-third > span {
+    font-family: 'radioButtonIcons';
+}
+
+input[type="radio"] + label.radioButton-third > span:before {
+    font-size: 150%;
+    position: absolute;
+    margin-top: -30px;
+    margin-left: -31px;
+    color: white;
+    border: solid white;
+    background-color: white;
+    border-radius: 100%;
+    border-width: thin medium;
+    content: "\e001";
+}
+
+input[type="radio"]:checked + label.radioButton-third > span:before {
+    color: #566273;
+    border: solid white;
+    background-color: white;
+    border-radius: 100%;
+    border-width: thin medium;
+}
+
+input[type="radio"] + label.radioButton-right > span {
+    font-family: 'radioButtonIcons';
+}
+
+input[type="radio"] + label.radioButton-right > span:before {
+    font-size: 150%;
+    position: absolute;
+    margin-top: -30px;
+    margin-left: -21px;
+    color: white;
+    border: solid white;
+    background-color: white;
+    border-radius: 100%;
+    border-width: thin medium;
+    content: "\e001";
+}
+
+input[type="radio"]:checked + label.radioButton-right > span:before {
+    color: #566273;
+    border: solid white;
+    background-color: white;
+    border-radius: 100%;
+    border-width: thin medium;
+}
+
+input[type="radio"] + label.radioButton-left {
+    position: absolute;
+    margin-top: 30px;
+}
+
+input[type="radio"] + label.radioButton-second {
+    margin-left: 70px;
+    position: absolute;
+    margin-top: 30px;
+}
+
+input[type="radio"] + label.radioButton-third {
+    margin-left: 140px;
+    position: absolute;
+    margin-top: 30px;
+}
+
+input[type="radio"] + label.radioButton-right {
+    margin-left: 210px;
+    position: absolute;
+    margin-top: 30px;
+}
+
+input[type="radio"] + label {
+    font-size: 90%;
+}
+
+input[type=checkbox] {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height:0px;
+    width:0px;
+    margin:-1px;
+    padding:0;
+    border:0;
+}
+
+input[type=checkbox] + label.checkbox-label {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.presetButton-icon {
+    font-family: 'presetButton';
+    font-size: 600%!important;
+    position: absolute;
+    color: #566374;
+    z-index: 1;
+}
+
+.presetButton-icon:before {
+    content: "\e00d";
+}
+
+.white-baloon-icon {
+    position: absolute;
+    font-family: 'presetButtonPackage';
+}
+
+.white-baloon-icon:before {
+    content: "\e004";
+    position: absolute;
+    z-index: 4;
+    margin-top: 7px;
+    margin-left: 7px;
+    font-size: 70px;
+    color: white;
+}
+
+.white-tick-icon {
+    display: none;
+    font-family: 'presetButtonPackage';
+}
+
+.white-tick-icon:before {
+    content: "\e00a";
+    position: absolute;
+    z-index: 3;
+    margin-top: 53px;
+    margin-left: 288px;
+    font-size: 20px;
+    color: #566374;
+    border: 4px solid white;
+    border-radius: 100%;
+    background-color: white;
+}
+
+input[type=checkbox] + label.preset-button-label {
+    z-index: 2;
+    position: absolute;
+    padding-left: 125px;
+    padding-top: 33px;
+    color: white;
+    background-color: #556273;
+    width: 200px;
+    height: 60px;
+}
+
+input[type=checkbox] + label.checkbox-label {
+    margin-left: 25px;
+    text-indent: -1.2em;
+    font-family: 'checkboxTick';
+    display: inline-block;
+    width: 250px;
+}
+
+input[type=checkbox] + label.checkbox-label:before {
+    content: "\e00a";
+    color: transparent;
+    border: 1px solid #556273;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 75%;
+}
+
+input[type=checkbox]:checked + label.checkbox-label {
+    font-family: 'checkboxTick';
+}
+
+input[type=checkbox]:checked + label.checkbox-label:before {
+    content: "\e00a";
+    color: white;
+    background-color: #556273;
+}
+
+.checkbox-span {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 75%;
+    padding-left: 5px;
+}
+
+label.more-options-label {
+    cursor: pointer;
+}
+
+body {
+    -webkit-user-select: none;
+}
+
+.ui-menu-item {
+    width: 40% !important;
+}
+
+.ui-corner-all {
+    width: 229px !important;
+}
+
+.ui-menu .ui-menu-item a {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 80%;
+    width: 200px !important;
+}
+
+div.ui-tooltip-content: {
+    width: 20px;
+}
+
+.ui-widget {
+    font-family: 'Roboto Slab', serif;
+}
+
+.ui-widget-content.ui-widget::selection { 
+    background: yellow; /*Safari*/
+}
+
+.ui-widget-content::-moz-selection {
+    background: yellow; /* Firefox */
+}
+
+.ui-widget .ui-widget-content {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 90%;
+    height: 33px;
+    border: 2px;
+    border-color: #D5E1E2;
+    border-style: solid none solid solid;
+    padding-left: 10px;
+}
+
+.ui-autocomplete-input {
+    width: 219px;
+}
+
+.ui-widget .ui-button {
+    height: 35px;
+    width: 20px;
+    margin-bottom: 3px;
+    margin-left: -4px;
+    border: 2px;
+    border-style: solid solid solid none;
+    border-color: #D5E1E2;
+}
+
+.ui-menu .ui-menu-item a.ui-state-focus {
+    font-weight: bold !important;
+    border: none;
+    background: none;
+}
+
+.ui-autocomplete {
+    cursor: pointer;
+    border: solid 2px;
+    border-color: #D5E1E2;
+    max-height: 150px;
+    overflow-y: auto;
+    overflow-x: hidden; /* prevent horizontal scrollbar */
+    padding-right: 15px; /* add padding to account for vertical scrollbar */
+}
+
+.fl-uiOptions .fl-uiOptions-onoff .fl-uiOptions-switch {
+    font-family: Arial;
+    border-radius:50px;
+    border: 1px solid #D7DCDD;
+    width: 5em;
+    height: 2em;
+    background-color: #FFFFFF;
+    box-shadow: 1em 1.1em 0 0 rgba(250,250,250,0.53) inset;
+    overflow:hidden;
+    vertical-align: middle;
+    display:inline-block;
+    transition-duration: 0.2s;
+    transition-property: padding-left, width, background-color, margin-left;
+    font-size: 1.1em;
+    font-weight: 700;
+}
+
+.fl-uiOptions .fl-uiOptions-onoff input {
+    border: 0 none;
+    clip: rect(0px, 0px, 0px, 0px);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.fl-uiOptions .fl-uiOptions-onoff input:focus + label {
+    outline: 1px solid black;
+}
+
+.fl-uiOptions .fl-uiOptions-onoff input:checked + label .fl-uiOptions-switch {
+    padding-left: 3em;
+    width: 2em;
+    background-color: rgb(23, 169, 184);
+    box-shadow: -1em 1.1em 0.1em 0 rgba(172, 216, 92, 0.00) inset;
+}
+
+.fl-uiOptions .fl-uiOptions-onoff input + label [data-checkboxStateOn]:before {
+    content: attr(data-checkboxStateOn);
+}
+.fl-uiOptions .fl-uiOptions-onoff input + label [data-checkboxStateOff]:after {
+    content: attr(data-checkboxStateOff);
+}
+
+.fl-uiOptions .fl-uiOptions-onoff input + label .fl-uiOptions-switch:before {
+    color: #fff;
+    border: 1px solid rgb(0, 55, 85);
+    border-radius: 150px;
+    float:left;
+    width:1.9em;
+    height: 1.9em; /* Width and height of the knob. */
+    text-indent:-2.07em;
+    line-height:1.9em;
+    text-shadow: 1px 1px 1px #000;
+    background-color: #fff;
+    background-image: -o-linear-gradient(bottom, rgb(205,204,202) 0%, rgb(244,244,244) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(205,204,202) 0%, rgb(244,244,244) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(205,204,202) 0%, rgb(244,244,244) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(205,204,202) 0%, rgb(244,244,244) 100%);
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0, rgb(205,204,202)),
+        color-stop(1, rgb(244,244,244))
+    );
+    background-image: linear-gradient(bottom, rgb(205,204,202) 0%, rgb(244,244,244) 100%);
+    box-shadow: 0.1em 0.1em 0.0em #444;
+}
+
+.fl-uiOptions .fl-uiOptions-onoff input + label .fl-uiOptions-switch:after {
+    float:left;
+    position:relative;
+    top: -0.76em;
+    left: 0.5em;
+}
+
+.fl-uiOptions .fl-uiOptions-onoff .fl-uiOptions-switch-inner {
+    border: 0.1px solid #493A30;
+    border-radius: 50px;
+    width: 0.9em;
+    height: 0.9em;
+    position:relative;
+    left:-1.45em;
+    top:0.52em;
+
+    background-color: #617796;
+    box-shadow: 0 -0.2em 0.3em 0.05em rgba(250, 250, 250, 0.3) inset;
+
+    display:inline-block;
+}
+
+.fl-uiOptions .fl-uiOptions-onoff input:checked + label .fl-uiOptions-switch .fl-uiOptions-switch-inner {
+    top:-1.5em;
+    left: 0.56em;
+}
+
+.fl-uiOptions label {
+    text-transform: none;
+    font-size: 1.2em;
+}
+
+.fl-adjuster-icons-additional {
+    font-family: 'presetButtonPackage';
+}
+
+.addToMyPreferencesStar:before {
+    content: "\e00b";
+}
+
+.addToMyPreferencesStar {
+    margin-left: 300px;
+    margin-top: 1px;
+    color: rgb(107, 114, 129);
+    position: absolute;
+    z-index: 3;
+    font-size: 25px;
+}
+
+input:checked + .addToMyPreferencesStar {
+    color: #FAE80B;
+    border-radius: 50%;
+}
+
+.addToMyPreferencesLabel {
+    position: absolute;
+    height: 17px !important;
+    width: 17px !important;
+    cursor: pointer;
+    margin-left: 302px;
+    margin-top: 2px;
+    padding: 2px;
+    z-index: 4;
+}
+
+[title]:after{
+    background-color: #F4E413;
+    padding:5px;
+    position:absolute;
+    right: 0;
+    opacity:0;
+    bottom:100%;
+    white-space:nowrap;
+    -webkit-transition:0.25s linear opacity;
+    border: 1px solid black;
+    border-radius: 3px;
+    font-size: 12px;
+    z-index: 10;
+    float: right;
+    overflow: hidden;
+}
+[title]:hover:after{
+    opacity:2;
+}
+
+.addToMyPreferencesLabel[title]:after {
+    content:attr(tooltip-unchecked);
+    float: right;
+}
+
+input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after {
+    content:attr(tooltip-checked);
+    float: right;
+}
