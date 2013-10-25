@@ -29,7 +29,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         magnifierMetricUnit: "%",
 
         events: {
-            magnifierMinRangeReached: null
+            magnifierMinRangeReached: null,
+            magnifierMinRangeExited: null
         },
 
         components: {
@@ -116,8 +117,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "afterRender.checkMagnifierInitialMinRange": {
                 listener: "{that}.checkMagnifierInitialMinRange"
             },
-            "magnifierMinRangeReached.setMagnifierMinusStyle": {
-                listener: "{that}.setMagnifierMinusStyle"
+            "magnifierMinRangeReached.setMagnifierMinusStyleAdd": {
+                listener: "{that}.setMagnifierMinusStyleAdd"
+            },
+            "magnifierMinRangeExited.setMagnifierMinusStyleRemove": {
+                listener: "{that}.setMagnifierMinusStyleRemove"
             }
         },
         invokers: {
@@ -128,7 +132,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.model.magnification",
                     "{that}.options.magnification.range",
                     "magnification",
-                    "{that}.events.magnifierMinRangeReached"
+                    "{that}.events.magnifierMinRangeReached",
+                    "{that}.events.magnifierMinRangeExited",
+                    "{that}.refreshMagnifierValueText"
                 ]
             },
             onMagnifierPlusClick: {
@@ -138,7 +144,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.model.magnification",
                     "{that}.options.magnification.range",
                     "magnification",
-                    "{that}.events.magnifierMinRangeReached"
+                    "{that}.events.magnifierMinRangeReached",
+                    "{that}.events.magnifierMinRangeExited",
+                    "{that}.refreshMagnifierValueText"
                 ]
             },
             onMagnifierValueTextChange: {
@@ -151,10 +159,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     }},
                     "{that}.options.magnification.range",
                     "magnification",
-                    "{that}.events.magnifierMinRangeReached"
+                    "{that}.events.magnifierMinRangeReached",
+                    "{that}.events.magnifierMinRangeExited",
+                    "{that}.refreshMagnifierValueText"
                 ]
             },
-            setMagnifierMetricUnit: {
+            refreshMagnifierValueText: {
                 "this": "{that}.dom.magnifierValueText",
                 "method": "val",
                 "args": {
@@ -164,9 +174,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     }
                 }
             },
-            setMagnifierMinusStyle: {
+            setMagnifierMinusStyleAdd: {
                 "this": "{that}.dom.magnifierMinus",
-                "method": "toggleClass",
+                "method": "addClass",
+                "args": "fl-uiOptions-plus-minus-numerical-min-reached"                        
+
+            },
+            setMagnifierMinusStyleRemove: {
+                "this": "{that}.dom.magnifierMinus",
+                "method": "removeClass",
                 "args": "fl-uiOptions-plus-minus-numerical-min-reached"                        
 
             },
@@ -176,8 +192,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}",
                     "{that}.model.magnification",
                     "{that}.options.magnification.range",
-                    "{that}.events.magnifierMinRangeReached"
+                    "{that}.events.magnifierMinRangeReached",
+                    "{that}.events.magnifierMinRangeExited"
                 ]
+            },
+            setMagnifierMetricUnit: {
+                func: "{that}.refreshMagnifierValueText"
             }
         },
         

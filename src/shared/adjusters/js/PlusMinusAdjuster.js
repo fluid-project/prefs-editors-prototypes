@@ -26,12 +26,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
     
-    gpii.uiOptions.panels.plusMinus.onMinusClick = function (that, modelValue, range, modelValueName, minRangeReachedEvent) {
+    gpii.uiOptions.panels.plusMinus.onMinusClick = function (that, modelValue, range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText) {
         var newValue =  parseFloat(modelValue) - parseFloat(range.divisibleBy);
-        gpii.uiOptions.panels.plusMinus.updateBoundedValue(that, newValue, range, modelValueName, minRangeReachedEvent);
+        gpii.uiOptions.panels.plusMinus.updateBoundedValue(that, newValue, range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText);
     };
     
-    gpii.uiOptions.panels.plusMinus.updateBoundedValue = function (that, newValue, range, modelValueName, minRangeReachedEvent) {
+    gpii.uiOptions.panels.plusMinus.updateBoundedValue = function (that, newValue, range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText) {
         var boundedValue;
         
         if (newValue >= parseFloat(range.min)) {
@@ -41,22 +41,25 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
         
         that.applier.requestChange(modelValueName, boundedValue);
-        that.refreshView();
+        refreshValueText();
+        gpii.uiOptions.panels.plusMinus.performMinRangeCheck(that, boundedValue, range, minRangeReachedEvent, minRangeExitedEvent);
     }
     
-    gpii.uiOptions.panels.plusMinus.performMinRangeCheck = function (that, boundedValue, range, minRangeReachedEvent) {
+    gpii.uiOptions.panels.plusMinus.performMinRangeCheck = function (that, boundedValue, range, minRangeReachedEvent, minRangeExitedEvent) {
         if (boundedValue === range.min) {
             minRangeReachedEvent.fire();
+        } else {
+            minRangeExitedEvent.fire();
         }
     }
     
-    gpii.uiOptions.panels.plusMinus.onPlusClick = function (that, modelValue, range, modelValueName, minRangeReachedEvent) {
+    gpii.uiOptions.panels.plusMinus.onPlusClick = function (that, modelValue, range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText) {
         var newValue =  parseFloat(modelValue) + parseFloat(range.divisibleBy);
-        gpii.uiOptions.panels.plusMinus.updateBoundedValue(that, newValue, range, modelValueName, minRangeReachedEvent);
+        gpii.uiOptions.panels.plusMinus.updateBoundedValue(that, newValue, range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText);
     };
     
-    gpii.uiOptions.panels.plusMinus.onValueTextChange = function (that, elmValue, range, modelValueName, minRangeReachedEvent) {
-        gpii.uiOptions.panels.plusMinus.updateBoundedValue(that, parseFloat(elmValue), range, modelValueName, minRangeReachedEvent);
+    gpii.uiOptions.panels.plusMinus.onValueTextChange = function (that, elmValue, range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText) {
+        gpii.uiOptions.panels.plusMinus.updateBoundedValue(that, parseFloat(elmValue), range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText);
     };
     
     gpii.uiOptions.panels.plusMinus.onValueTextPreventNonNumeric = function (event) {

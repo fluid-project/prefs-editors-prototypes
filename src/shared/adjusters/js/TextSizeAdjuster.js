@@ -29,7 +29,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         textSizeMetricUnit: "pt",
 
         events: {
-            textSizeMinRangeReached: null
+            textSizeMinRangeReached: null,
+            textSizeMinRangeExited: null
         },
 
         components: {
@@ -103,10 +104,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "afterRender.checkTextSizeInitialMinRange": {
                 listener: "{that}.checkTextSizeInitialMinRange"
             },
-            "textSizeMinRangeReached.setTextSizeMinusStyle": {
-                listener: "{that}.setTextSizeMinusStyle"
+            "textSizeMinRangeReached.setTextSizeMinusStyleAdd": {
+                listener: "{that}.setTextSizeMinusStyleAdd"
+            },
+            "textSizeMinRangeExited.setTextSizeMinusStyleRemove": {
+                listener: "{that}.setTextSizeMinusStyleRemove"
             }
-
         },
         invokers: {
             onTextSizeMinusClick: {
@@ -116,7 +119,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.model.fontSize",
                     "{that}.options.fontSize.range",
                     "fontSize",
-                    "{that}.events.textSizeMinRangeReached"
+                    "{that}.events.textSizeMinRangeReached",
+                    "{that}.events.textSizeMinRangeExited",
+                    "{that}.refreshTextSizeValueText"
                 ]
             },
             onTextSizePlusClick: {
@@ -126,7 +131,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.model.fontSize",
                     "{that}.options.fontSize.range",
                     "fontSize",
-                    "{that}.events.textSizeMinRangeReached"
+                    "{that}.events.textSizeMinRangeReached",
+                    "{that}.events.textSizeMinRangeExited",
+                    "{that}.refreshTextSizeValueText"
                 ]
             },
             onTextSizeValueTextChange: {
@@ -139,10 +146,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     }},
                     "{that}.options.fontSize.range",
                     "fontSize",
-                    "{that}.events.textSizeMinRangeReached"
+                    "{that}.events.textSizeMinRangeReached",
+                    "{that}.events.textSizeMinRangeExited",
+                    "{that}.refreshTextSizeValueText"
                 ]
             },
-            setTextSizeMetricUnit: {
+            refreshTextSizeValueText: {
                 "this": "{that}.dom.textSizeValueText",
                 "method": "val",
                 "args": {
@@ -152,9 +161,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     }
                 }
             },
-            setTextSizeMinusStyle: {
+            setTextSizeMinusStyleAdd: {
                 "this": "{that}.dom.textSizeMinus",
-                "method": "toggleClass",
+                "method": "addClass",
+                "args": "fl-uiOptions-plus-minus-numerical-min-reached"                        
+
+            },
+            setTextSizeMinusStyleRemove: {
+                "this": "{that}.dom.textSizeMinus",
+                "method": "removeClass",
                 "args": "fl-uiOptions-plus-minus-numerical-min-reached"                        
 
             },
@@ -164,8 +179,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}",
                     "{that}.model.fontSize",
                     "{that}.options.fontSize.range",
-                    "{that}.events.textSizeMinRangeReached"
+                    "{that}.events.textSizeMinRangeReached",
+                    "{that}.events.textSizeMinRangeExited"
                 ]
+            },
+            setTextSizeMetricUnit: {
+                func: "{that}.refreshTextSizeValueText"
             }
         },
 
