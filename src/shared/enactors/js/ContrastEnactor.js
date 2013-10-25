@@ -23,8 +23,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         styles: {
-            defaultTheme: "fl-theme-uio-default gpii-theme-default",
-            contrastTheme: "fl-theme-uio-yb gpii-theme-yb"
+            defaultTheme: "fl-theme-uio-default gpii-prefsEditor-theme-default",
+            contrastTheme: "fl-theme-uio-yb gpii-prefsEditor-theme-yb"
         },
         invokers: {
             toggleContrast: {

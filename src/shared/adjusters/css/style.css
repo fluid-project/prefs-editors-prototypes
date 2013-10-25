@@ -32,13 +32,13 @@ body {
     margin:20px;
 }
 
-.gpii-preferenceGroup {
+.gpii-prefsEditor-preferenceGroup {
     background:#ECEFEF;
     width: 340px;
     min-height: 100px;
 }
 
-.gpii-category {
+.gpii-prefsEditor-category {
     width: 80%;
     margin: 0 auto;
     font-family: 'Open Sans', sans-serif;
@@ -65,7 +65,7 @@ h2 > label {
 /*
     Header's styling
 */
-.gpii-headerImage {
+.gpii-prefsEditor-headerImage {
     -webkit-font-smoothing: antialiased;
     width: 330;
     margin:5px !important;
@@ -74,11 +74,11 @@ h2 > label {
     position: absolute;
 }
 
-.gpii-headerImage:before {
+.gpii-prefsEditor-headerImage:before {
     font-size: 90px !important;
 }
 
-.gpii-headerImageTick {
+.gpii-prefsEditor-headerImageTick {
     font-size: 20px !important;
     margin-left: 300px;
     margin-top: -30px;
@@ -88,27 +88,27 @@ h2 > label {
     color: #566374;
 }
 
-.gpii-headerImageTick:before {
+.gpii-prefsEditor-headerImageTick:before {
     content: "\e00a" !important;
 }
 
-input[type=checkbox] + .gpii-headerImage > .gpii-headerImageTick{
+input[type=checkbox] + .gpii-prefsEditor-headerImage > .gpii-prefsEditor-headerImageTick{
     display: none;
 }
 
-input[type=checkbox]:checked + .gpii-headerImage > .gpii-headerImageTick{
+input[type=checkbox]:checked + .gpii-prefsEditor-headerImage > .gpii-prefsEditor-headerImageTick{
     display: block;
 }
 
-.gpii-prefsEditor-increaseSizePanel > .gpii-headerImage:before {
+.gpii-prefsEditor-increaseSizePanel > .gpii-prefsEditor-headerImage:before {
     content: "\e003";
 }
 
-.gpii-prefsEditor-contrast > .gpii-headerImage:before {
+.gpii-prefsEditor-contrast > .gpii-prefsEditor-headerImage:before {
     content: "\e002";
 }
 
-.gpii-headerTitle {
+.gpii-prefsEditor-headerTitle {
     font-family: 'Roboto Slab', serif;
     left: 0; 
     width: 100%;
@@ -126,7 +126,7 @@ input[type=checkbox]:checked + .gpii-headerImage > .gpii-headerImageTick{
     padding-left: 90px;
 }
 
-.gpii-headerClickableLabel {
+.gpii-prefsEditor-headerClickableLabel {
     cursor: pointer;
     color: transparent !important;
     margin: 5px !important;
@@ -147,7 +147,7 @@ input[type=checkbox], input[type=radio] {
 /*
     The adjusters' font icons
 */
-.gpii-adjusterIcons {
+.gpii-prefsEditor-adjusterIcons {
     float: left;
     font-family: 'icons-no-frames-aug-29';
     speak: none;
@@ -159,7 +159,7 @@ input[type=checkbox], input[type=radio] {
     -webkit-font-smoothing: antialiased;
 }
 
-.gpii-adjusterIconsAdditional > .gpii-increaseSize-magnifierPositionIconMain {
+.gpii-prefsEditor-adjusterIconsAdditional > .xrhstos1-magnifierPositionIconMain {
     font-family: 'font-icons-sept-3';
     margin-top: 0em;
 }
@@ -167,20 +167,20 @@ input[type=checkbox], input[type=radio] {
 /*
     The cursor size font icons
 */
-.gpii-increaseSize-iconSmallCursor:before {
+.xrhstos1-iconSmallCursor:before {
     font-size: 0.8em !important;
     content: "\e000";
 }
-.gpii-increaseSize-iconBigCursor:before {
+.xrhstos1-iconBigCursor:before {
     font-size: 1.9em !important;
     content: "\e000";
 }
-.gpii-increaseSize-iconSmallCursor {
+.xrhstos1-iconSmallCursor {
     width: 1em;
     text-align: right;
     padding-top: 0.25em;
 }
-.gpii-increaseSize-iconBigCursor {
+.xrhstos1-iconBigCursor {
     width: 1em;
     margin-top: -0.5em !important;
 }
@@ -188,13 +188,13 @@ input[type=checkbox], input[type=radio] {
 /*
     The slider's style
 */
-.gpii-prefsEditor .gpii-slider-horz {
+.gpii-prefsEditor .gpii-prefsEditor-slider-horz {
     width: calc(330 * 0.8px - 2em);
     margin: 2px !important;
     margin-bottom: 0.7em !important;
 }
 
-.gpii-prefsEditor .gpii-slider a {
+.gpii-prefsEditor .gpii-prefsEditor-slider a {
     //background: radial-gradient(circle 14.5px at 14.5px 50%, #566374 6px, white 8px);
     border: 1px solid #566374;
 }
@@ -203,14 +203,14 @@ input[type=checkbox], input[type=radio] {
     background-color: #17a9b8;
 }
 
-.gpii-prefsEditor .gpii-slider a {
+.gpii-prefsEditor .gpii-prefsEditor-slider a {
     box-shadow: none;
 }
 
 /*
     The plusMinusAdjuster style
 */
-.gpii-increaseSize-plusMinusNumericalMinus, .gpii-increaseSize-plusMinusNumericalPlus {
+.xrhstos1-plusMinusNumericalMinus, .xrhstos1-plusMinusNumericalPlus {
     width: 10% !important;
     font-size: 1.5em !important;
     cursor: pointer;
@@ -227,13 +227,13 @@ input[type=checkbox], input[type=radio] {
     float: left;
 }
 
-.gpii-increaseSize-plusMinusNumericalWidget {
+.xrhstos1-plusMinusNumericalWidget {
     width: 100% !important;
     background-color: #FFFFFF;
     display: table;
 }
 
-.gpii-increaseSize-plusMinusNumericalValue {
+.xrhstos1-plusMinusNumericalValue {
     width: 76% !important;
     border: none !important;
     text-align: center !important;
@@ -242,29 +242,29 @@ input[type=checkbox], input[type=radio] {
     margin-bottom: 2px !important;
 }
 
-.gpii-increasesize-plusMinusNumericalMinReached {
+.xrhstos1-plusMinusNumericalMinReached {
     color: #D3D3D3 !important;
 }
 
 /*
     Style for sliding to work
 */
-.gpii-increaseSizePreferenceGroup {
+.xrhstos1PreferenceGroup {
     padding-top: 100px;
 }
 
-.gpii-category {
+.gpii-prefsEditor-category {
     overflow: hidden;
 }
 
-.gpii-category-hidden {
+.gpii-prefsEditor-category-hidden {
     overflow: hidden;
 }
 
 /*
     Style for more/less
 */
-.gpii-moreLess{
+.gpii-prefsEditor-moreLess{
 	display: block;
     width:100% !important;
     text-align: center;
@@ -276,7 +276,7 @@ input[type=checkbox], input[type=radio] {
 /*
     Style for magnifier position font icons
 */
-.gpii-increaseSize-magnifierPositionIconLabel {
+.xrhstos1-magnifierPositionIconLabel {
     height: 4.7em !important;
     width: 6.3em !important;
     border: none !important;
@@ -287,73 +287,73 @@ input[type=checkbox], input[type=radio] {
     margin-right: 0.5em !important;
 }
 
-.gpii-increaseSize-magnifierPositionIcon {
+.xrhstos1-magnifierPositionIcon {
     height: 0 !important;
     width: 0 !important;
     color: #636c7c;
     margin-top: -2px;
 }
 
-.gpii-increaseSize-magnifierPositionIcon:before {
+.xrhstos1-magnifierPositionIcon:before {
     font-size: 5em !important;
 }
 
-.gpii-increaseSize-magnifierPositionBackground {
+.xrhstos1-magnifierPositionBackground {
     height: 4.9em !important;
     width: 6.3em !important;
     padding-top: 2px;
 }
 
-.gpii-increaseSize-magnifierPositionBackground:before {
+.xrhstos1-magnifierPositionBackground:before {
     font-size: 4.8em !important;
     content: "\e00b" !important;
 }
     
-.gpii-increaseSize-magnifierPositionFullscreen > .gpii-increaseSize-magnifierPositionFrame:before {
+.xrhstos1-magnifierPositionFullscreen > .xrhstos1-magnifierPositionFrame:before {
     font-size: 5em !important;
     content: "\e008" !important;
 }
 
-.gpii-increaseSize-magnifierPositionLens > .gpii-increaseSize-magnifierPositionIcon:before {
+.xrhstos1-magnifierPositionLens > .xrhstos1-magnifierPositionIcon:before {
     content: "\e00a";
 } 
 
-.gpii-increaseSize-magnifierPositionFullscreen > .gpii-increaseSize-magnifierPositionIconMain {
+.xrhstos1-magnifierPositionFullscreen > .xrhstos1-magnifierPositionIconMain {
     opacity:0.5;
     position: relative;
     top: 0.15em;
     left: 0.15em;
 }
 
-.gpii-increaseSize-magnifierPositionFullscreen > .gpii-increaseSize-magnifierPositionIconMain:before {
+.xrhstos1-magnifierPositionFullscreen > .xrhstos1-magnifierPositionIconMain:before {
     content: "\e009";
     font-size: 4.7em !important;
     color: #00a9bd;
 }
 
-.gpii-increaseSize-magnifierPositionTop > .gpii-increaseSize-magnifierPositionIconMain:before {
+.xrhstos1-magnifierPositionTop > .xrhstos1-magnifierPositionIconMain:before {
     content: "\e001";
 }
 
-.gpii-increaseSize-magnifierPositionBottom > .gpii-increaseSize-magnifierPositionIconMain:before {
+.xrhstos1-magnifierPositionBottom > .xrhstos1-magnifierPositionIconMain:before {
     content: "\e004";
 }
 
-.gpii-increaseSize-magnifierPositionLeft > .gpii-increaseSize-magnifierPositionIconMain:before {
+.xrhstos1-magnifierPositionLeft > .xrhstos1-magnifierPositionIconMain:before {
     content: "\e003";
 }
 
-.gpii-increaseSize-magnifierPositionRight > .gpii-increaseSize-magnifierPositionIconMain:before {
+.xrhstos1-magnifierPositionRight > .xrhstos1-magnifierPositionIconMain:before {
     content: "\e002";
 }
 
 /*
     Style for magnifier position indicator
 */
-.gpii-prefsEditor .gpii-choice input:checked + div:before {
+.gpii-prefsEditor .gpii-prefsEditor-choice input:checked + div:before {
     content: "\e007";
 }
-.gpii-prefsEditor .gpii-choice .gpii-indicator {
+.gpii-prefsEditor .gpii-prefsEditor-choice .gpii-prefsEditor-indicator {
     font-family: 'icons-no-frames-aug-29' !important;
     font-size: 0.8em;
      color: #636c7c;
@@ -367,7 +367,7 @@ input[type=checkbox], input[type=radio] {
 /*
     Style for magnifier follows font icons
 */
-.gpii-increaseSize-magnifierFollowsIconLabel {
+.xrhstos1-magnifierFollowsIconLabel {
     height: 7.8em !important;
     width: 6.5em !important;
     border: none !important;
@@ -378,32 +378,32 @@ input[type=checkbox], input[type=radio] {
     margin-right: 0.5em !important;
 }
 
-.gpii-increaseSize-magnifierFollowsIcon {
+.xrhstos1-magnifierFollowsIcon {
     font-size: 6.8em !important;
     padding-bottom: 0.2em !important;
     color: white;
 }
 
-.gpii-increaseSize-magnifierFollowsRow{
+.xrhstos1-magnifierFollowsRow{
     margin-bottom: 1em !important;
 }
 
-.gpii-increaseSize-magnifierFollowsMouseCursor > .gpii-increaseSize-magnifierFollowsIcon:before {
+.xrhstos1-magnifierFollowsMouseCursor > .xrhstos1-magnifierFollowsIcon:before {
     content: "\e007";
 }
 
-.gpii-increaseSize-magnifierFollowsTextCursor > .gpii-increaseSize-magnifierFollowsIcon:before {
+.xrhstos1-magnifierFollowsTextCursor > .xrhstos1-magnifierFollowsIcon:before {
     content: "\e000";
 }
 
-.gpii-increaseSize-magnifierFollowsKeyboardFocus > .gpii-increaseSize-magnifierFollowsIcon:before {
+.xrhstos1-magnifierFollowsKeyboardFocus > .xrhstos1-magnifierFollowsIcon:before {
     content: "\e008";
 }
 
 /*
     Style for magnifier follows checked font icons
 */
-.gpii-increaseSize-magnifierFollowsIconCheck {
+.xrhstos1-magnifierFollowsIconCheck {
     background-color: #FFFFFF;
     border: 3px double #636C7C;
     border-radius: 6px 6px 6px 6px;
@@ -416,38 +416,38 @@ input[type=checkbox], input[type=radio] {
     width: 1.2em;
 }
 
-input:checked + .gpii-increaseSize-magnifierFollowsLabel > .gpii-increaseSize-magnifierFollowsIconCheck {
+input:checked + .xrhstos1-magnifierFollowsLabel > .xrhstos1-magnifierFollowsIconCheck {
     padding-right: 0.1em;
     padding-top: 0.1em;
     border: 2px solid;
     background-color: 636C7C;
 }
 
-input:checked + .gpii-increaseSize-magnifierFollowsLabel > .gpii-increaseSize-magnifierFollowsIconCheck:before {
+input:checked + .xrhstos1-magnifierFollowsLabel > .xrhstos1-magnifierFollowsIconCheck:before {
     content: "\e00a";
 }
 
 /*
     Style for magnifier follows legend
 */
-.gpii-increaseSize-magnifierFollowsLegend {
+.xrhstos1-magnifierFollowsLegend {
     line-height: 1.1em;
     color: #566374;
 }
 
-.gpii-increaseSize-magnifierFollowsLegend::first-letter {
+.xrhstos1-magnifierFollowsLegend::first-letter {
     text-transform: capitalize;
 }
 
 /*
     Style for preview-per-setting iframe and content
 */
-.gpii-previewPerSettingFrame {
+.gpii-prefsEditor-previewPerSettingFrame {
     width: 100% !important;
     margin-top: -1em;
 }
 
-.gpii-previewPerSettingContainer {
+.gpii-prefsEditor-previewPerSettingContainer {
     background-color: #d3dfdf;
     border: 1px solid #beced1;
     color: #B8C9CC;
@@ -455,14 +455,14 @@ input:checked + .gpii-increaseSize-magnifierFollowsLabel > .gpii-increaseSize-ma
     margin-bottom: 0.5em;
 }
 
-.gpii-previewPerSettingEye:before {
+.gpii-prefsEditor-previewPerSettingEye:before {
     position: relative;
     z-index: 2;
     background-color: transparent !important;
     content: "\e00c";
 }
 
-.gpii-previewPerSettingEyeBackground {
+.gpii-prefsEditor-previewPerSettingEyeBackground {
     position: relative;
     background-color: #000000;
     height: 0.34em;
@@ -472,33 +472,33 @@ input:checked + .gpii-increaseSize-magnifierFollowsLabel > .gpii-increaseSize-ma
     z-index: 1;
 }
 
-.gpii-previewPerSettingBody {
+.gpii-prefsEditor-previewPerSettingBody {
     width: 100% !important;
     height: 100% !important;
     margin: 0;
 }
 
-.gpii-previewPerSettingDiv {
+.gpii-prefsEditor-previewPerSettingDiv {
     width: 100%; 
     height: 100%; 
     position: relative;
 }
 
-.gpii-previewPerSettingDivInner { 
+.gpii-prefsEditor-previewPerSettingDivInner { 
     position: absolute; 
     display: table; 
     width: 100%; 
     height: 100%; 
 }
 
-.gpii-previewPerSettingDivInner p {
+.gpii-prefsEditor-previewPerSettingDivInner p {
     display: table-cell; 
     vertical-align: middle; 
     text-align: center; 
     padding: 10px;
 }
 
-.gpii-previewPerSettingDivInner div {
+.gpii-prefsEditor-previewPerSettingDivInner div {
     display: table-cell; 
     vertical-align: middle; 
     text-align: center; 
@@ -506,30 +506,30 @@ input:checked + .gpii-increaseSize-magnifierFollowsLabel > .gpii-increaseSize-ma
     float: none;
 }
 
-.gpii-previewPerSettingCursor1:before {
+.gpii-prefsEditor-previewPerSettingCursor1:before {
     content: "\e006";
 }
 
-.gpii-previewPerSettingCursor2:before {
+.gpii-prefsEditor-previewPerSettingCursor2:before {
     content: "\e005";
 }
 
-.gpii-previewPerSettingCursor3:before {
+.gpii-prefsEditor-previewPerSettingCursor3:before {
     content: "\e001";
 }
 
 /*
     Style for "Add to my preferences" star font icon
 */
-.gpii-adjusterIconsAdditional {
+.gpii-prefsEditor-adjusterIconsAdditional {
     font-family: 'font-icons-sept-3';
 }
 
-.gpii-addToMyPreferencesStar:before {
+.gpii-prefsEditor-addToMyPreferencesStar:before {
     content: "\e000";
 }
 
-.gpii-addToMyPreferencesStar {
+.gpii-prefsEditor-addToMyPreferencesStar {
     margin-left: 310px;
     margin-top: 10px;
     color: #6b7281;
@@ -539,12 +539,12 @@ input:checked + .gpii-increaseSize-magnifierFollowsLabel > .gpii-increaseSize-ma
     padding: 2px;
 }
 
-input:checked + .gpii-addToMyPreferencesStar {
+input:checked + .gpii-prefsEditor-addToMyPreferencesStar {
     color: #fae80b;
     border-radius: 50%;
 }
 
-.gpii-addToMyPreferencesLabel {
+.gpii-prefsEditor-addToMyPreferencesLabel {
     height: 17px !important;
     position: absolute;
     width: 17px !important;
@@ -577,19 +577,19 @@ input:checked + .gpii-addToMyPreferencesStar {
     opacity:1;
 }
 
-.gpii-addToMyPreferencesLabel[title]:after {
+.gpii-prefsEditor-addToMyPreferencesLabel[title]:after {
     content:attr(tooltip-unchecked);
 }
 
-input:checked + .gpii-addToMyPreferencesStar + .gpii-addToMyPreferencesLabel[title]:after {
+input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-addToMyPreferencesLabel[title]:after {
     content:attr(tooltip-checked);
 }
 
-.gpii-increaseSize-magnifierPositionLabel[title] {
+.xrhstos1-magnifierPositionLabel[title] {
     position:relative;
 }
 
-.gpii-increaseSize-magnifierPositionLabel[title]:after {
+.xrhstos1-magnifierPositionLabel[title]:after {
     content: attr(tooltip);
     line-height: 1em !important;
     font-size: 1em;
@@ -599,95 +599,95 @@ input:checked + .gpii-addToMyPreferencesStar + .gpii-addToMyPreferencesLabel[tit
 /*
     Style for contrast
 */
-.gpii-theme-yb {
+.gpii-prefsEditor-theme-yb {
     color: yellow;
     background-color: black;
 }
 
-.gpii-theme-default {
+.gpii-prefsEditor-theme-default {
     color: black;
     background-color: #D3DFDF;
 }
 
-.gpii-theme-yb .gpii-headerImage {
+.gpii-prefsEditor-theme-yb .gpii-prefsEditor-headerImage {
     background-color: black !important;
     color: yellow !important;
 }
 
-.gpii-theme-yb .gpii-headerTitle {
+.gpii-prefsEditor-theme-yb .gpii-prefsEditor-headerTitle {
     background-color: transparent !important;
     color: black !important;
 }
 
-.gpii-theme-yb .gpii-headerClickableLabel {
+.gpii-prefsEditor-theme-yb .gpii-prefsEditor-headerClickableLabel {
     background-color: transparent !important;
     color: transparent !important;
 }
 
-.gpii-theme-yb .gpii-addToMyPreferencesLabel {
+.gpii-prefsEditor-theme-yb .gpii-prefsEditor-addToMyPreferencesLabel {
     background-color: transparent !important;
 }
 
-.gpii-theme-yb .gpii-addToMyPreferencesStar {
+.gpii-prefsEditor-theme-yb .gpii-prefsEditor-addToMyPreferencesStar {
     background-color: yellow !important;
     color: black !important;
 }
 
-.gpii-theme-yb input:checked + .gpii-addToMyPreferencesStar {
+.gpii-prefsEditor-theme-yb input:checked + .gpii-prefsEditor-addToMyPreferencesStar {
     background-color: black !important;
     color: yellow !important;
 }
 
- .gpii-theme-yb [title]:after{
+ .gpii-prefsEditor-theme-yb [title]:after{
     background-color: black !important;
     border: 1px solid yellow !important;
 }
 
-.gpii-theme-yb .gpii-headerImage {
+.gpii-prefsEditor-theme-yb .gpii-prefsEditor-headerImage {
     background-color: yellow !important;
     color: black !important;
 }
 
-.gpii-theme-yb .gpii-increaseSize-magnifierPositionBackground {
+.gpii-prefsEditor-theme-yb .xrhstos1-magnifierPositionBackground {
     background-color: transparent !important;
 }
 
-.gpii-theme-yb .gpii-indicator {
+.gpii-prefsEditor-theme-yb .gpii-prefsEditor-indicator {
     background-color: transparent !important;
 }
 
-.gpii-theme-yb .gpii-increaseSize-plusMinusNumericalWidget {
+.gpii-prefsEditor-theme-yb .xrhstos1-plusMinusNumericalWidget {
     width: calc(100% - 2px) !important;
     border: 1px solid !important;
 }
 
-.gpii-theme-yb .gpii-increaseSize-plusMinusNumericalValue {
+.gpii-prefsEditor-theme-yb .xrhstos1-plusMinusNumericalValue {
     margin-bottom: 1px !important;
 }
 
-.gpii-theme-yb .gpii-increasesize-plusMinusNumericalMinReached {
+.gpii-prefsEditor-theme-yb .xrhstos1-plusMinusNumericalMinReached {
     color: gray !important;
 }
 
-.gpii-theme-yb .gpii-prefsEditor input:focus + label, .gpii-theme-yb .gpii-prefsEditor .gpii-choice input:focus ~ label {
+.gpii-prefsEditor-theme-yb .gpii-prefsEditor input:focus + label, .gpii-prefsEditor-theme-yb .gpii-prefsEditor .gpii-prefsEditor-choice input:focus ~ label {
     outline: none !important;
 }
 
-.gpii-theme-yb .gpii-increaseSize-plusMinusNumericalValue:focus, .gpii-theme-yb .gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-theme-yb.gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-theme-yb .selectable {
+.gpii-prefsEditor-theme-yb .xrhstos1-plusMinusNumericalValue:focus, .gpii-prefsEditor-theme-yb .xrhstos1-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-yb.xrhstos1-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-yb .selectable {
     outline: 2px solid #FFFF00 !important;
 }
 
-.gpii-theme-yb .gpii-increaseSize-magnifierFollowsIcon {
+.gpii-prefsEditor-theme-yb .xrhstos1-magnifierFollowsIcon {
     border: 1px solid;
 }
 
-.gpii-theme-yb .gpii-increaseSize-magnifierFollowsIconCheck {
+.gpii-prefsEditor-theme-yb .xrhstos1-magnifierFollowsIconCheck {
     margin-top: -1.9em;
 }
 
 /*
     Style for sept-12 font icons
 */
-.gpii-adjusterIcons-sept-12 {
+.gpii-prefsEditor-adjusterIcons-sept-12 {
     font-family: 'sept-12';
 }

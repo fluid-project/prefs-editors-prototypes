@@ -45,9 +45,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierPosition: ["lens", "dockedleft", "dockedtop", "fullscreen", "dockedright", "dockedbottom"]
         },
         markup: {
-            magnifierPositionLabel: "<div class=\"gpii-adjusterIcons gpii-increaseSize-magnifierPositionIcon gpii-increaseSize-magnifierPositionIconMain\"></div>" +
-                    "<div class=\"gpii-adjusterIcons gpii-increaseSize-magnifierPositionIcon gpii-increaseSize-magnifierPositionFrame\"></div>" +
-                    "<div class=\"gpii-adjusterIcons gpii-increaseSize-magnifierPositionIcon gpii-increaseSize-magnifierPositionBackground\"></div>" +
+            magnifierPositionLabel: "<div class=\"gpii-prefsEditor-adjusterIcons xrhstos1-magnifierPositionIcon xrhstos1-magnifierPositionIconMain\"></div>" +
+                    "<div class=\"gpii-prefsEditor-adjusterIcons xrhstos1-magnifierPositionIcon xrhstos1-magnifierPositionFrame\"></div>" +
+                    "<div class=\"gpii-prefsEditor-adjusterIcons xrhstos1-magnifierPositionIcon xrhstos1-magnifierPositionBackground\"></div>" +
                     "<span class=\"fl-hidden-accessible\">%magnifierPosition</span>"
         },
         invokers: {
