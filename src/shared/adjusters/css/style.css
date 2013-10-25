@@ -32,7 +32,7 @@ body {
     margin:20px;
 }
 
-.preference {
+.gpii-preferenceGroup {
     background:#ECEFEF;
     width: 340px;
     min-height: 100px;
