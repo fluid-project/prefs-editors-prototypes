@@ -673,7 +673,7 @@ input:checked + .gpii-addToMyPreferencesStar + .gpii-addToMyPreferencesLabel[tit
     outline: none !important;
 }
 
-.gpii-theme-yb .fl-focus:focus, .gpii-theme-yb .fl-focus *:focus, .gpii-theme-yb.fl-focus *:focus, .gpii-theme-yb .selectable, .fl-theme-uio-by .fl-inverted-color .fl-focus:focus, .fl-theme-uio-by .fl-inverted-color .fl-focus *:focus, .fl-theme-uio-by.fl-inverted-color.fl-focus *:focus, .fl-theme-uio-by .fl-inverted-color .selectable {
+.gpii-theme-yb .gpii-increaseSize-plusMinusNumericalValue:focus, .gpii-theme-yb .gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-theme-yb.gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-theme-yb .selectable {
     outline: 2px solid #FFFF00 !important;
 }
 
