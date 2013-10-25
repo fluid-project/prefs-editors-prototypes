@@ -118,12 +118,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "magnifierPosition": {
             "type": "gpii.primarySchema.magnificationPosition",
             "classes": {
-                "lens": "xrhstos1-magnifierPositionLens xrhstos1-magnifierPositionIconLabel",
-                "fullscreen": "xrhstos1-magnifierPositionFullscreen xrhstos1-magnifierPositionIconLabel",
-                "dockedtop": "gpii-prefsEditor-adjusterIconsAdditional xrhstos1-magnifierPositionTop xrhstos1-magnifierPositionIconLabel",
-                "dockedbottom": "gpii-prefsEditor-adjusterIconsAdditional xrhstos1-magnifierPositionBottom xrhstos1-magnifierPositionIconLabel",
-                "dockedleft": "gpii-prefsEditor-adjusterIconsAdditional xrhstos1-magnifierPositionLeft xrhstos1-magnifierPositionIconLabel",
-                "dockedright": "gpii-prefsEditor-adjusterIconsAdditional xrhstos1-magnifierPositionRight xrhstos1-magnifierPositionIconLabel"
+                "lens": "gpii-increaseSize-magnifierPositionLens gpii-increaseSize-magnifierPositionIconLabel",
+                "fullscreen": "gpii-increaseSize-magnifierPositionFullscreen gpii-increaseSize-magnifierPositionIconLabel",
+                "dockedtop": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionTop gpii-increaseSize-magnifierPositionIconLabel",
+                "dockedbottom": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionBottom gpii-increaseSize-magnifierPositionIconLabel",
+                "dockedleft": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionLeft gpii-increaseSize-magnifierPositionIconLabel",
+                "dockedright": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionRight gpii-increaseSize-magnifierPositionIconLabel"
 
             },
             "panel": {
@@ -134,9 +134,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "magnifierFollows": {
             "type": "gpii.primarySchema.tracking",
             "classes": {
-                "mousecursor": "xrhstos1-magnifierFollowsMouseCursor xrhstos1-magnifierFollowsIconLabel",
-                "textcursor": "xrhstos1-magnifierFollowsTextCursor xrhstos1-magnifierFollowsIconLabel",
-                "keyboardfocus": "xrhstos1-magnifierFollowsKeyboardFocus xrhstos1-magnifierFollowsIconLabel"
+                "mousecursor": "gpii-increaseSize-magnifierFollowsMouseCursor gpii-increaseSize-magnifierFollowsIconLabel",
+                "textcursor": "gpii-increaseSize-magnifierFollowsTextCursor gpii-increaseSize-magnifierFollowsIconLabel",
+                "keyboardfocus": "gpii-increaseSize-magnifierFollowsKeyboardFocus gpii-increaseSize-magnifierFollowsIconLabel"
             },
             "panel": {
                 "type": "gpii.uiOptions.panels.increaseSize",

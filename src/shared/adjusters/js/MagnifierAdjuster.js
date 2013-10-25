@@ -177,13 +177,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             setMagnifierMinusStyleAdd: {
                 "this": "{that}.dom.magnifierMinus",
                 "method": "addClass",
-                "args": "xrhstos1-plusMinusNumericalMinReached"                        
+                "args": "gpii-increaseSize-plusMinusNumericalMinReached"                        
 
             },
             setMagnifierMinusStyleRemove: {
                 "this": "{that}.dom.magnifierMinus",
                 "method": "removeClass",
-                "args": "xrhstos1-plusMinusNumericalMinReached"                        
+                "args": "gpii-increaseSize-plusMinusNumericalMinReached"                        
 
             },
             checkMagnifierInitialMinRange: {

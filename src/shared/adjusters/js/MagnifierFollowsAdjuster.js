@@ -45,10 +45,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierFollows: ["mousecursor", "textcursor", "keyboardfocus"]
         },
         markup: {
-            magnifierFollowsLabel:  "<div class=\"gpii-prefsEditor-adjusterIcons gpii-prefsEditor-adjusterIcons-sept-12 xrhstos1-magnifierFollowsIcon\"></div>" +
-                    "<div class=\"gpii-prefsEditor-adjusterIcons gpii-prefsEditor-adjusterIcons-sept-12 xrhstos1-magnifierFollowsIconCheck\"></div>" +
+            magnifierFollowsLabel:  "<div class=\"gpii-prefsEditor-adjusterIcons gpii-prefsEditor-adjusterIcons-sept-12 gpii-increaseSize-magnifierFollowsIcon\"></div>" +
+                    "<div class=\"gpii-prefsEditor-adjusterIcons gpii-prefsEditor-adjusterIcons-sept-12 gpii-increaseSize-magnifierFollowsIconCheck\"></div>" +
                     /*"%magnifierFollows" +*/
-                    "<div class=\"xrhstos1-magnifierFollowsLegend\">%magnifierFollows</div>"
+                    "<div class=\"gpii-increaseSize-magnifierFollowsLegend\">%magnifierFollows</div>"
         },
         invokers: {
             magnifierFollowsStyle: {

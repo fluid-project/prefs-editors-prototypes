@@ -159,7 +159,7 @@ input[type=checkbox], input[type=radio] {
     -webkit-font-smoothing: antialiased;
 }
 
-.gpii-prefsEditor-adjusterIconsAdditional > .xrhstos1-magnifierPositionIconMain {
+.gpii-prefsEditor-adjusterIconsAdditional > .gpii-increaseSize-magnifierPositionIconMain {
     font-family: 'font-icons-sept-3';
     margin-top: 0em;
 }
@@ -167,20 +167,20 @@ input[type=checkbox], input[type=radio] {
 /*
     The cursor size font icons
 */
-.xrhstos1-iconSmallCursor:before {
+.gpii-increaseSize-iconSmallCursor:before {
     font-size: 0.8em !important;
     content: "\e000";
 }
-.xrhstos1-iconBigCursor:before {
+.gpii-increaseSize-iconBigCursor:before {
     font-size: 1.9em !important;
     content: "\e000";
 }
-.xrhstos1-iconSmallCursor {
+.gpii-increaseSize-iconSmallCursor {
     width: 1em;
     text-align: right;
     padding-top: 0.25em;
 }
-.xrhstos1-iconBigCursor {
+.gpii-increaseSize-iconBigCursor {
     width: 1em;
     margin-top: -0.5em !important;
 }
@@ -210,7 +210,7 @@ input[type=checkbox], input[type=radio] {
 /*
     The plusMinusAdjuster style
 */
-.xrhstos1-plusMinusNumericalMinus, .xrhstos1-plusMinusNumericalPlus {
+.gpii-increaseSize-plusMinusNumericalMinus, .gpii-increaseSize-plusMinusNumericalPlus {
     width: 10% !important;
     font-size: 1.5em !important;
     cursor: pointer;
@@ -227,13 +227,13 @@ input[type=checkbox], input[type=radio] {
     float: left;
 }
 
-.xrhstos1-plusMinusNumericalWidget {
+.gpii-increaseSize-plusMinusNumericalWidget {
     width: 100% !important;
     background-color: #FFFFFF;
     display: table;
 }
 
-.xrhstos1-plusMinusNumericalValue {
+.gpii-increaseSize-plusMinusNumericalValue {
     width: 76% !important;
     border: none !important;
     text-align: center !important;
@@ -242,14 +242,14 @@ input[type=checkbox], input[type=radio] {
     margin-bottom: 2px !important;
 }
 
-.xrhstos1-plusMinusNumericalMinReached {
+.gpii-increaseSize-plusMinusNumericalMinReached {
     color: #D3D3D3 !important;
 }
 
 /*
     Style for sliding to work
 */
-.xrhstos1PreferenceGroup {
+.gpii-increaseSizePreferenceGroup {
     padding-top: 100px;
 }
 
@@ -276,7 +276,7 @@ input[type=checkbox], input[type=radio] {
 /*
     Style for magnifier position font icons
 */
-.xrhstos1-magnifierPositionIconLabel {
+.gpii-increaseSize-magnifierPositionIconLabel {
     height: 4.7em !important;
     width: 6.3em !important;
     border: none !important;
@@ -287,63 +287,63 @@ input[type=checkbox], input[type=radio] {
     margin-right: 0.5em !important;
 }
 
-.xrhstos1-magnifierPositionIcon {
+.gpii-increaseSize-magnifierPositionIcon {
     height: 0 !important;
     width: 0 !important;
     color: #636c7c;
     margin-top: -2px;
 }
 
-.xrhstos1-magnifierPositionIcon:before {
+.gpii-increaseSize-magnifierPositionIcon:before {
     font-size: 5em !important;
 }
 
-.xrhstos1-magnifierPositionBackground {
+.gpii-increaseSize-magnifierPositionBackground {
     height: 4.9em !important;
     width: 6.3em !important;
     padding-top: 2px;
 }
 
-.xrhstos1-magnifierPositionBackground:before {
+.gpii-increaseSize-magnifierPositionBackground:before {
     font-size: 4.8em !important;
     content: "\e00b" !important;
 }
     
-.xrhstos1-magnifierPositionFullscreen > .xrhstos1-magnifierPositionFrame:before {
+.gpii-increaseSize-magnifierPositionFullscreen > .gpii-increaseSize-magnifierPositionFrame:before {
     font-size: 5em !important;
     content: "\e008" !important;
 }
 
-.xrhstos1-magnifierPositionLens > .xrhstos1-magnifierPositionIcon:before {
+.gpii-increaseSize-magnifierPositionLens > .gpii-increaseSize-magnifierPositionIcon:before {
     content: "\e00a";
 } 
 
-.xrhstos1-magnifierPositionFullscreen > .xrhstos1-magnifierPositionIconMain {
+.gpii-increaseSize-magnifierPositionFullscreen > .gpii-increaseSize-magnifierPositionIconMain {
     opacity:0.5;
     position: relative;
     top: 0.15em;
     left: 0.15em;
 }
 
-.xrhstos1-magnifierPositionFullscreen > .xrhstos1-magnifierPositionIconMain:before {
+.gpii-increaseSize-magnifierPositionFullscreen > .gpii-increaseSize-magnifierPositionIconMain:before {
     content: "\e009";
     font-size: 4.7em !important;
     color: #00a9bd;
 }
 
-.xrhstos1-magnifierPositionTop > .xrhstos1-magnifierPositionIconMain:before {
+.gpii-increaseSize-magnifierPositionTop > .gpii-increaseSize-magnifierPositionIconMain:before {
     content: "\e001";
 }
 
-.xrhstos1-magnifierPositionBottom > .xrhstos1-magnifierPositionIconMain:before {
+.gpii-increaseSize-magnifierPositionBottom > .gpii-increaseSize-magnifierPositionIconMain:before {
     content: "\e004";
 }
 
-.xrhstos1-magnifierPositionLeft > .xrhstos1-magnifierPositionIconMain:before {
+.gpii-increaseSize-magnifierPositionLeft > .gpii-increaseSize-magnifierPositionIconMain:before {
     content: "\e003";
 }
 
-.xrhstos1-magnifierPositionRight > .xrhstos1-magnifierPositionIconMain:before {
+.gpii-increaseSize-magnifierPositionRight > .gpii-increaseSize-magnifierPositionIconMain:before {
     content: "\e002";
 }
 
@@ -367,7 +367,7 @@ input[type=checkbox], input[type=radio] {
 /*
     Style for magnifier follows font icons
 */
-.xrhstos1-magnifierFollowsIconLabel {
+.gpii-increaseSize-magnifierFollowsIconLabel {
     height: 7.8em !important;
     width: 6.5em !important;
     border: none !important;
@@ -378,32 +378,32 @@ input[type=checkbox], input[type=radio] {
     margin-right: 0.5em !important;
 }
 
-.xrhstos1-magnifierFollowsIcon {
+.gpii-increaseSize-magnifierFollowsIcon {
     font-size: 6.8em !important;
     padding-bottom: 0.2em !important;
     color: white;
 }
 
-.xrhstos1-magnifierFollowsRow{
+.gpii-increaseSize-magnifierFollowsRow{
     margin-bottom: 1em !important;
 }
 
-.xrhstos1-magnifierFollowsMouseCursor > .xrhstos1-magnifierFollowsIcon:before {
+.gpii-increaseSize-magnifierFollowsMouseCursor > .gpii-increaseSize-magnifierFollowsIcon:before {
     content: "\e007";
 }
 
-.xrhstos1-magnifierFollowsTextCursor > .xrhstos1-magnifierFollowsIcon:before {
+.gpii-increaseSize-magnifierFollowsTextCursor > .gpii-increaseSize-magnifierFollowsIcon:before {
     content: "\e000";
 }
 
-.xrhstos1-magnifierFollowsKeyboardFocus > .xrhstos1-magnifierFollowsIcon:before {
+.gpii-increaseSize-magnifierFollowsKeyboardFocus > .gpii-increaseSize-magnifierFollowsIcon:before {
     content: "\e008";
 }
 
 /*
     Style for magnifier follows checked font icons
 */
-.xrhstos1-magnifierFollowsIconCheck {
+.gpii-increaseSize-magnifierFollowsIconCheck {
     background-color: #FFFFFF;
     border: 3px double #636C7C;
     border-radius: 6px 6px 6px 6px;
@@ -416,26 +416,26 @@ input[type=checkbox], input[type=radio] {
     width: 1.2em;
 }
 
-input:checked + .xrhstos1-magnifierFollowsLabel > .xrhstos1-magnifierFollowsIconCheck {
+input:checked + .gpii-increaseSize-magnifierFollowsLabel > .gpii-increaseSize-magnifierFollowsIconCheck {
     padding-right: 0.1em;
     padding-top: 0.1em;
     border: 2px solid;
     background-color: 636C7C;
 }
 
-input:checked + .xrhstos1-magnifierFollowsLabel > .xrhstos1-magnifierFollowsIconCheck:before {
+input:checked + .gpii-increaseSize-magnifierFollowsLabel > .gpii-increaseSize-magnifierFollowsIconCheck:before {
     content: "\e00a";
 }
 
 /*
     Style for magnifier follows legend
 */
-.xrhstos1-magnifierFollowsLegend {
+.gpii-increaseSize-magnifierFollowsLegend {
     line-height: 1.1em;
     color: #566374;
 }
 
-.xrhstos1-magnifierFollowsLegend::first-letter {
+.gpii-increaseSize-magnifierFollowsLegend::first-letter {
     text-transform: capitalize;
 }
 
@@ -585,11 +585,11 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
     content:attr(tooltip-checked);
 }
 
-.xrhstos1-magnifierPositionLabel[title] {
+.gpii-increaseSize-magnifierPositionLabel[title] {
     position:relative;
 }
 
-.xrhstos1-magnifierPositionLabel[title]:after {
+.gpii-increaseSize-magnifierPositionLabel[title]:after {
     content: attr(tooltip);
     line-height: 1em !important;
     font-size: 1em;
@@ -648,7 +648,7 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
     color: black !important;
 }
 
-.gpii-prefsEditor-theme-yb .xrhstos1-magnifierPositionBackground {
+.gpii-prefsEditor-theme-yb .gpii-increaseSize-magnifierPositionBackground {
     background-color: transparent !important;
 }
 
@@ -656,16 +656,16 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
     background-color: transparent !important;
 }
 
-.gpii-prefsEditor-theme-yb .xrhstos1-plusMinusNumericalWidget {
+.gpii-prefsEditor-theme-yb .gpii-increaseSize-plusMinusNumericalWidget {
     width: calc(100% - 2px) !important;
     border: 1px solid !important;
 }
 
-.gpii-prefsEditor-theme-yb .xrhstos1-plusMinusNumericalValue {
+.gpii-prefsEditor-theme-yb .gpii-increaseSize-plusMinusNumericalValue {
     margin-bottom: 1px !important;
 }
 
-.gpii-prefsEditor-theme-yb .xrhstos1-plusMinusNumericalMinReached {
+.gpii-prefsEditor-theme-yb .gpii-increaseSize-plusMinusNumericalMinReached {
     color: gray !important;
 }
 
@@ -673,15 +673,15 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
     outline: none !important;
 }
 
-.gpii-prefsEditor-theme-yb .xrhstos1-plusMinusNumericalValue:focus, .gpii-prefsEditor-theme-yb .xrhstos1-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-yb.xrhstos1-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-yb .selectable {
+.gpii-prefsEditor-theme-yb .gpii-increaseSize-plusMinusNumericalValue:focus, .gpii-prefsEditor-theme-yb .gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-yb.gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-yb .selectable {
     outline: 2px solid #FFFF00 !important;
 }
 
-.gpii-prefsEditor-theme-yb .xrhstos1-magnifierFollowsIcon {
+.gpii-prefsEditor-theme-yb .gpii-increaseSize-magnifierFollowsIcon {
     border: 1px solid;
 }
 
-.gpii-prefsEditor-theme-yb .xrhstos1-magnifierFollowsIconCheck {
+.gpii-prefsEditor-theme-yb .gpii-increaseSize-magnifierFollowsIconCheck {
     margin-top: -1.9em;
 }
 
