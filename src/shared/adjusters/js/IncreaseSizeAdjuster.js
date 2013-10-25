@@ -104,13 +104,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
-            increaseSizeHeader: ".headerTitle",
-            increaseSizeAdjusters: ".flc-uiOptions-category",
-            preferenceSwitchIncreaseSize: "#preferenceSwitchIncreaseSize",
-            addToMyPreferencesStar: ".addToMyPreferencesLabel",
-            increaseSizeExtraAdjusters: ".flc-uiOptions-category-hidden",
-            preferenceSwitchIncreaseSizeExtra: "#preferenceSwitchIncreaseSizeExtra",
-            moreLess: ".moreLess"
+            increaseSizeHeader: ".gpiic-headerTitle",
+            increaseSizeAdjusters: ".gpiic-category",
+            preferenceSwitchIncreaseSize: ".gpiic-increaseSize-preferenceSwitch",
+            addToMyPreferencesStar: ".gpiic-addToMyPreferencesLabel",
+            increaseSizeExtraAdjusters: ".gpiic-category-hidden",
+            preferenceSwitchIncreaseSizeExtra: ".gpiic-increaseSize-preferenceSwitchExtra",
+            moreLess: ".gpiic-moreLess"
         },
         selectorsToIgnore: ["increaseSizeHeader", "increaseSizeAdjusters", "addToMyPreferencesStar", "increaseSizeExtraAdjusters", "moreLess"],
         strings: {
@@ -153,7 +153,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             preferenceSwitchIncreaseSize: "${increaseSizeAdjustersEnabledSwitch}",
             preferenceSwitchIncreaseSizeExtra: "${increaseSizeExtraAdjustersEnabledSwitch}",
             cursorSizeLabel: {messagekey: "cursorSizeLabel"},
-            multiplier: {messagekey: "multiplier"},
             cursorSize: {
                 decorators: {
                     type: "fluid",

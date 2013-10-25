@@ -23,7 +23,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
-            cursorDiv: ".flc-uiOptions-preview-per-setting-cursor-div"
+            cursorDiv: ".gpiic-increaseSize-previewPerSettingCursorDiv"
         },
         invokers: {
             set: {

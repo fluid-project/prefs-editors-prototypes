@@ -47,7 +47,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                             createOnEvent: "onReady",
                             options: {
                                 selectors: {
-                                    previewText: ".flc-uiOptions-preview-per-setting-label"
+                                    previewText: ".gpiic-preview-per-setting-label"
                                 },
                                 strings: {
                                     previewText: {
@@ -72,10 +72,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
 
         selectors: {
-            magnifierMinus: ".flc-uiOptions-plus-minus-numerical-minus-magnifier",
-            magnifierLabel: ".flc-uiOptions-plus-minus-numerical-label-magnifier",
-            magnifierPlus: ".flc-uiOptions-plus-minus-numerical-plus-magnifier",
-            magnifierValueText: ".flc-uiOptions-plus-minus-numerical-value-magnifier"
+            magnifierMinus: ".gpiic-increaseSize-plusMinusNumericalMinusMagnifier",
+            magnifierLabel: ".gpiic-increaseSize-plusMinusNumericalLabelMagnifier",
+            magnifierPlus: ".gpiic-increaseSize-plusMinusNumericalPlusMagnifier",
+            magnifierValueText: ".gpiic-increaseSize-plusMinusNumericalValueMagnifier"
         },
         strings: {
             magnifierOFF: {

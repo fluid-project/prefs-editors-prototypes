@@ -29,16 +29,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             cursorSizePreview: {
                 type: "fluid.uiOptions.preview",
                 createOnEvent: "afterRender",
-                container: ".flc-uiOptions-cursor-size .flc-uiOptions-preview-per-setting-frame",
+                container: ".gpiic-increaseSize-cursor-size .flc-uiOptions-preview-per-setting-frame",
                 options: {
                     templateUrl: "../../src/shared/preview/html/uiOptionsCursorPreview.html"
                 }
             }
         },
         selectors: {
-            cursorSize: ".flc-uiOptions-cursor-size",
-            cursorSizeLabel: ".flc-uiOptions-cursor-size-label",
-            multiplier: ".flc-uiOptions-multiplier"
+            cursorSize: ".gpiic-increaseSize-cursor-size",
+            cursorSizeLabel: ".gpiic-increaseSize-cursor-size-label"
         },
         sliderOptions: {
             orientation: "horizontal",

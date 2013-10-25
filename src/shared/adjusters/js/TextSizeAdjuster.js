@@ -47,7 +47,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                             createOnEvent: "onReady",
                             options: {
                                 selectors: {
-                                    previewText: ".flc-uiOptions-preview-per-setting-label"
+                                    previewText: ".gpiic-preview-per-setting-label"
                                 },
                                 strings: {
                                     previewText: {
@@ -72,10 +72,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
 
         selectors: {
-            textSizeMinus: ".flc-uiOptions-plus-minus-numerical-minus",
-            textSizeLabel: ".flc-uiOptions-plus-minus-numerical-label",
-            textSizePlus: ".flc-uiOptions-plus-minus-numerical-plus",
-            textSizeValueText: ".flc-uiOptions-plus-minus-numerical-value"
+            textSizeMinus: ".gpiic-incresaeSize-plusMinusNumericalMinusTextSize",
+            textSizeLabel: ".gpiic-increaseSize-plusMinusNumericalLabelTextSize",
+            textSizePlus: ".gpiic-increaseSize-plusMinusNumericalPlusTextSize",
+            textSizeValueText: ".gpiic-increaseSize-plusMinusNumericalValueTextSize"
         },
         listeners: {
             "afterRender.bindEventTextSizeMinusClick": {

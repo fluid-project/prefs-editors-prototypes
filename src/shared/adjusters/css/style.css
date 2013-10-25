@@ -108,7 +108,7 @@ input[type=checkbox]:checked + .headerImage > .headerImageTick{
     content: "\e002";
 }
 
-.headerTitle {
+.gpii-headerTitle {
     font-family: 'Roboto Slab', serif;
        left: 0; 
        width: 100%;
@@ -264,7 +264,7 @@ input[type=checkbox], input[type=radio] {
 /*
     Style for more/less
 */
-.moreLess{
+.gpii-moreLess{
 	display: block;
     width:100% !important;
     text-align: center;
@@ -416,14 +416,14 @@ input[type=checkbox], input[type=radio] {
     width: 1.2em;
 }
 
-input:checked + .gpii-prefsEditor-magnifierFollows-label > .fl-magnifierFollows-uio-icon-check {
+input:checked + .gpii-prefsEditor-magnifierFollowsLabel > .fl-magnifierFollows-uio-icon-check {
     padding-right: 0.1em;
     padding-top: 0.1em;
     border: 2px solid;
     background-color: 636C7C;
 }
 
-input:checked + .gpii-prefsEditor-magnifierFollows-label > .fl-magnifierFollows-uio-icon-check:before {
+input:checked + .gpii-prefsEditor-magnifierFollowsLabel > .fl-magnifierFollows-uio-icon-check:before {
     content: "\e00a";
 }
 
@@ -544,7 +544,7 @@ input:checked + .addToMyPreferencesStar {
     border-radius: 50%;
 }
 
-.addToMyPreferencesLabel {
+.gpii-addToMyPreferencesLabel {
     height: 17px !important;
     position: absolute;
     width: 17px !important;
@@ -577,11 +577,11 @@ input:checked + .addToMyPreferencesStar {
     opacity:1;
 }
 
-.addToMyPreferencesLabel[title]:after {
+.gpii-addToMyPreferencesLabel[title]:after {
     content:attr(tooltip-unchecked);
 }
 
-input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after {
+input:checked + .addToMyPreferencesStar + .gpii-addToMyPreferencesLabel[title]:after {
     content:attr(tooltip-checked);
 }
 
@@ -614,7 +614,7 @@ input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after 
     color: yellow !important;
 }
 
-.fl-theme-uio-yb .headerTitle {
+.fl-theme-uio-yb .gpii-headerTitle {
     background-color: transparent !important;
     color: black !important;
 }
@@ -624,7 +624,7 @@ input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after 
     color: transparent !important;
 }
 
-.fl-theme-uio-yb .addToMyPreferencesLabel {
+.fl-theme-uio-yb .gpii-addToMyPreferencesLabel {
     background-color: transparent !important;
 }
 

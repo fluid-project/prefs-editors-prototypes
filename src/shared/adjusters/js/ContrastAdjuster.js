@@ -49,11 +49,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
-            valueCheckbox: ".flc-uiOptions-constrastInput",
-            headingLabel: ".flc-uiOptions-contrast-label",
-            panelLabel: ".headerTitle",
-            addToMyPreferencesLabel: ".addToMyPreferencesLabel",
-            contrastAdjusters: ".flc-uiOptions-category"         
+            valueCheckbox: ".gpiic-contrast-constrastInput",
+            headingLabel: ".gpiic-contrast-contrastLabel",
+            panelLabel: ".gpiic-headerTitle",
+            addToMyPreferencesLabel: ".gpiic-addToMyPreferencesLabel",
+            contrastAdjusters: ".gpiic-category"         
         },
         selectorsToIgnore: ["contrastAdjusters", "addToMyPreferencesLabel"],
         protoTree: {
@@ -89,7 +89,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                             createOnEvent: "onReady",
                             options: {
                                 selectors: {
-                                    previewText: ".flc-uiOptions-preview-per-setting-label"
+                                    previewText: ".gpiic-preview-per-setting-label"
                                 },
                                 strings: {
                                     previewText: {

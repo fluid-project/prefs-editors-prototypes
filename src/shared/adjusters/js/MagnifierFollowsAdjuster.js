@@ -27,10 +27,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             afterRender: "{that}.magnifierFollowsStyle"
         },
         selectors: {
-            magnifierFollowsRow: ".flc-uiOptions-magnifierFollowsRow",
-            magnifierFollowsLabel: ".gpii-prefsEditor-magnifierFollows-label",
-            magnifierFollowsInput: ".flc-uiOptions-magnifierFollowsInput",
-            magnifierFollowsHeading: ".flc-uiOptions-magnifierFollows-heading"
+            magnifierFollowsRow: ".gpiic-increaseSize-magnifierFollowsRow",
+            magnifierFollowsLabel: ".gpiic-increaseSize-magnifierFollowsLabel",
+            magnifierFollowsInput: ".gpiic-increaseSize-magnifierFollowsInput",
+            magnifierFollowsHeading: ".gpiic-increaseSize-magnifierFollowsHeading"
         },
         strings: {
             magnifierFollows: {
