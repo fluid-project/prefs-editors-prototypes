@@ -188,7 +188,7 @@ input[type=checkbox], input[type=radio] {
 /*
     The slider's style
 */
-.fl-uiOptions .fl-slider-horz {
+.fl-uiOptions .gpii-slider-horz {
     width: calc(330 * 0.8px - 2em);
     margin: 2px !important;
     margin-bottom: 0.7em !important;
