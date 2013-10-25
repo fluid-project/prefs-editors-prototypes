@@ -599,89 +599,89 @@ input:checked + .gpii-addToMyPreferencesStar + .gpii-addToMyPreferencesLabel[tit
 /*
     Style for contrast
 */
-.fl-theme-uio-yb {
+.gpii-theme-yb {
     color: yellow;
     background-color: black;
 }
 
-.fl-theme-uio-default {
+.gpii-theme-default {
     color: black;
     background-color: #D3DFDF;
 }
 
-.fl-theme-uio-yb .gpii-headerImage {
+.gpii-theme-yb .gpii-headerImage {
     background-color: black !important;
     color: yellow !important;
 }
 
-.fl-theme-uio-yb .gpii-headerTitle {
+.gpii-theme-yb .gpii-headerTitle {
     background-color: transparent !important;
     color: black !important;
 }
 
-.fl-theme-uio-yb .gpii-headerClickableLabel {
+.gpii-theme-yb .gpii-headerClickableLabel {
     background-color: transparent !important;
     color: transparent !important;
 }
 
-.fl-theme-uio-yb .gpii-addToMyPreferencesLabel {
+.gpii-theme-yb .gpii-addToMyPreferencesLabel {
     background-color: transparent !important;
 }
 
-.fl-theme-uio-yb .gpii-addToMyPreferencesStar {
+.gpii-theme-yb .gpii-addToMyPreferencesStar {
     background-color: yellow !important;
     color: black !important;
 }
 
-.fl-theme-uio-yb input:checked + .gpii-addToMyPreferencesStar {
+.gpii-theme-yb input:checked + .gpii-addToMyPreferencesStar {
     background-color: black !important;
     color: yellow !important;
 }
 
- .fl-theme-uio-yb [title]:after{
+ .gpii-theme-yb [title]:after{
     background-color: black !important;
     border: 1px solid yellow !important;
 }
 
-.fl-theme-uio-yb .gpii-headerImage {
+.gpii-theme-yb .gpii-headerImage {
     background-color: yellow !important;
     color: black !important;
 }
 
-.fl-theme-uio-yb .gpii-increaseSize-magnifierPositionBackground {
+.gpii-theme-yb .gpii-increaseSize-magnifierPositionBackground {
     background-color: transparent !important;
 }
 
-.fl-theme-uio-yb .gpii-indicator {
+.gpii-theme-yb .gpii-indicator {
     background-color: transparent !important;
 }
 
-.fl-theme-uio-yb .gpii-increaseSize-plusMinusNumericalWidget {
+.gpii-theme-yb .gpii-increaseSize-plusMinusNumericalWidget {
     width: calc(100% - 2px) !important;
     border: 1px solid !important;
 }
 
-.fl-theme-uio-yb .gpii-increaseSize-plusMinusNumericalValue {
+.gpii-theme-yb .gpii-increaseSize-plusMinusNumericalValue {
     margin-bottom: 1px !important;
 }
 
-.fl-theme-uio-yb .gpii-increasesize-plusMinusNumericalMinReached {
+.gpii-theme-yb .gpii-increasesize-plusMinusNumericalMinReached {
     color: gray !important;
 }
 
-.fl-theme-uio-yb .fl-uiOptions input:focus + label, .fl-theme-uio-yb .fl-uiOptions .gpii-choice input:focus ~ label {
+.gpii-theme-yb .fl-uiOptions input:focus + label, .gpii-theme-yb .fl-uiOptions .gpii-choice input:focus ~ label {
     outline: none !important;
 }
 
-.fl-theme-uio-yb .fl-focus:focus, .fl-theme-uio-yb .fl-focus *:focus, .fl-theme-uio-yb.fl-focus *:focus, .fl-theme-uio-yb .selectable, .fl-theme-uio-by .fl-inverted-color .fl-focus:focus, .fl-theme-uio-by .fl-inverted-color .fl-focus *:focus, .fl-theme-uio-by.fl-inverted-color.fl-focus *:focus, .fl-theme-uio-by .fl-inverted-color .selectable {
+.gpii-theme-yb .fl-focus:focus, .gpii-theme-yb .fl-focus *:focus, .gpii-theme-yb.fl-focus *:focus, .gpii-theme-yb .selectable, .fl-theme-uio-by .fl-inverted-color .fl-focus:focus, .fl-theme-uio-by .fl-inverted-color .fl-focus *:focus, .fl-theme-uio-by.fl-inverted-color.fl-focus *:focus, .fl-theme-uio-by .fl-inverted-color .selectable {
     outline: 2px solid #FFFF00 !important;
 }
 
-.fl-theme-uio-yb .gpii-increaseSize-magnifierFollowsIcon {
+.gpii-theme-yb .gpii-increaseSize-magnifierFollowsIcon {
     border: 1px solid;
 }
 
-.fl-theme-uio-yb .gpii-increaseSize-magnifierFollowsIconCheck {
+.gpii-theme-yb .gpii-increaseSize-magnifierFollowsIconCheck {
     margin-top: -1.9em;
 }
 
