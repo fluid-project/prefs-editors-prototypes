@@ -22,7 +22,7 @@ var demo = demo || {};
             auxiliarySchema: gpii.uiOptions.pmt.auxiliarySchema
         });
         
-        demo.instantiateUIO(container, compOpts, "gpii.uiOptions.pmt", gpii.uiOptions.getDefaultLanguage());
+        demo.instantiateUIO(container, compOpts, "gpii.uiOptions.pmt", gpii.getDefaultLanguage());
     };
     
     demo.instantiateUIO = function (container, compOpts, uioType, language) {

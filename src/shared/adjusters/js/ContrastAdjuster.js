@@ -64,13 +64,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         strings: {
             tooltipChecked: {
                 expander: {
-                    func: "gpii.uiOptions.pmt.lookupMsg",
+                    func: "gpii.lookupMsg",
                     args: ["{uiOptionsLoader}.msgBundle", "tooltipChecked"]
                 }
             },
             tooltipUnchecked: {
                 expander: {
-                    func: "gpii.uiOptions.pmt.lookupMsg",
+                    func: "gpii.lookupMsg",
                     args: ["{uiOptionsLoader}.msgBundle", "tooltipUnchecked"]
                 }
             }
@@ -94,7 +94,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                                 strings: {
                                     previewText: {
                                         expander: {
-                                            func: "gpii.uiOptions.pmt.lookupMsg",
+                                            func: "gpii.lookupMsg",
                                             args: ["{uiOptionsLoader}.msgBundle", "contrastPreviewText"]
                                         }
                                     }

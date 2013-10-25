@@ -45,19 +45,19 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             strings: {
                 saveButtonText: {
                     expander: {
-                        func: "gpii.uiOptions.pmt.lookupMsg",
+                        func: "gpii.lookupMsg",
                         args: ["{uiOptionsLoader}.msgBundle", "saveButtonText"]
                     }
                 },
                 resetButtonText: {
                     expander: {
-                        func: "gpii.uiOptions.pmt.lookupMsg",
+                        func: "gpii.lookupMsg",
                         args: ["{uiOptionsLoader}.msgBundle", "resetButtonText"]
                     }
                 },
                 cancelButtonText: {
                     expander: {
-                        func: "gpii.uiOptions.pmt.lookupMsg",
+                        func: "gpii.lookupMsg",
                         args: ["{uiOptionsLoader}.msgBundle", "cancelButtonText"]
                     }
                 }
@@ -65,16 +65,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.uiOptions.getDefaultLanguage = function () {
+    gpii.getDefaultLanguage = function () {
         return (navigator.userLanguage || navigator.language).substring(0, 2).toLowerCase(); 
     };
     
-    gpii.uiOptions.pmt.lookupMsg = function (messageResolver, value) {
+    gpii.lookupMsg = function (messageResolver, value) {
         var looked = messageResolver.lookup([value]);
         return looked ? looked.template : looked;
     };
     
-    gpii.uiOptions.concatStrings = function (s1, s2) {
+    gpii.concatStrings = function (s1, s2) {
         return s1 + s2; 
     };
     

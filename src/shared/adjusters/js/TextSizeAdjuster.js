@@ -52,7 +52,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                                 strings: {
                                     previewText: {
                                         expander: {
-                                            func: "gpii.uiOptions.pmt.lookupMsg",
+                                            func: "gpii.lookupMsg",
                                             args: ["{uiOptionsLoader}.msgBundle", "previewText"]
                                         }
                                     }
@@ -156,7 +156,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "val",
                 "args": {
                     expander: {
-                        funcName: "gpii.uiOptions.concatStrings",
+                        funcName: "gpii.concatStrings",
                         args: ["{that}.model.fontSize", "{that}.options.textSizeMetricUnit"]
                     }
                 }

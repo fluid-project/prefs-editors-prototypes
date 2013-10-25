@@ -116,31 +116,31 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         strings: {
             increaseSizeHeader: {
                 expander: {
-                    func: "gpii.uiOptions.pmt.lookupMsg",
+                    func: "gpii.lookupMsg",
                     args: ["{uiOptionsLoader}.msgBundle", "increaseSizeHeader"]
                 }
             },
             tooltipChecked: {
                 expander: {
-                    func: "gpii.uiOptions.pmt.lookupMsg",
+                    func: "gpii.lookupMsg",
                     args: ["{uiOptionsLoader}.msgBundle", "tooltipChecked"]
                 }
             },
             tooltipUnchecked: {
                 expander: {
-                    func: "gpii.uiOptions.pmt.lookupMsg",
+                    func: "gpii.lookupMsg",
                     args: ["{uiOptionsLoader}.msgBundle", "tooltipUnchecked"]
                 }
             },
             more: {
                 expander: {
-                    func: "gpii.uiOptions.pmt.lookupMsg",
+                    func: "gpii.lookupMsg",
                     args: ["{uiOptionsLoader}.msgBundle", "more"]
                 }
             },
             less: {
                 expander: {
-                    func: "gpii.uiOptions.pmt.lookupMsg",
+                    func: "gpii.lookupMsg",
                     args: ["{uiOptionsLoader}.msgBundle", "less"]
                 }
             }
