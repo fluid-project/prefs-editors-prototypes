@@ -1,0 +1,21 @@
+{
+    "increaseSizeHeader": "aumentar el tamaño",
+    "cursorSizeLabel": "Tamaño del puntero",
+    "magnifierLabel": "Magnificador",
+    "magnifierOFF": "Apagado",
+    "magnifierMAX": "Máximo",
+    "magnifierPositionLabel": "Posición del magnificador",
+    "magnifierPosition.default": "Opción por defecto",
+    "magnifierPosition.lens": "Lupa",
+    "magnifierPosition.fullscreen": "Pantalla completa",
+    "magnifierPosition.dockedtop": "Anclado en marco superior",
+    "magnifierPosition.dockedbottom": "Anclado en marco inferior",
+    "magnifierPosition.dockedleft": "Anclado a la izquierda",
+    "magnifierPosition.dockedright": "Anclado a la derecha",
+    "magnifierFollowsLabel": "Seguimiento del magnificador",
+    "magnifierFollows.mousecursor": "Puntero del ratón",
+    "magnifierFollows.textcursor": "Cursor del texto",
+    "magnifierFollows.keyboardfocus": "Foco del teclado",
+    "textSizeLabel": "Tamaño del texto",
+    "previewText": "Así es como se mostrará  la mayoría del texto."
+}
