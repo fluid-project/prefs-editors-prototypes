@@ -18,7 +18,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.uiOptions.panels.magnifier", {
         gradeNames: ["fluid.uiOptions.panels", "gpii.uiOptions.panels.plusMinus", "gpii.uiOptions.pmt.previewPerSettingEnhanced", "autoInit"],
         preferenceMap: {
-            "http://registry.gpii.org/common/magnification": {
+            "gpii.primarySchema.magnification": {
                 "model.magnification": "default",
                 "magnification.range.min": "minimum",
                 "magnification.range.max": "maximum",

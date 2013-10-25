@@ -18,7 +18,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.uiOptions.panels.textSize", {
         gradeNames: ["fluid.uiOptions.panels", "gpii.uiOptions.panels.plusMinus", "gpii.uiOptions.pmt.previewPerSettingEnhanced", "autoInit"],
         preferenceMap: {
-            "http://registry.gpii.org/common/fontSize": {
+            "gpii.primarySchema.fontSize": {
                 "model.fontSize": "default",
                 "fontSize.range.min": "minimum",
                 "fontSize.range.max": "maximum",

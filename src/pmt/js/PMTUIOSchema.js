@@ -16,40 +16,40 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
     fluid.registerNamespace("gpii.uiOptions.pmt");
 
-    gpii.uiOptions.pmt.primarySchema = {
+    gpii.primarySchema = {
 
-        "http://registry.gpii.org/common/fontSize": {
+        "gpii.primarySchema.fontSize": {
             "type": "number",
             "default": 12,
             "minimum": 1,
             "maximum": 1000,
             "divisibleBy": 1
         },
-        "http://registry.gpii.org/common/cursorSize": {
+        "gpii.primarySchema.cursorSize": {
             "type": "number",
             "default": 1,
             "minimum": 1,
             "maximum": 5,
             "divisibleBy": 0.2
         },
-        "http://registry.gpii.org/common/magnification": {
+        "gpii.primarySchema.magnification": {
             "type": "number",
             "default": 100,
             "minimum": 100,
             "maximum": 10000,
             "divisibleBy": 50
         },
-        "http://registry.gpii.org/common/magnificationPosition": {
+        "gpii.primarySchema.magnificationPosition": {
             "type": "string",
             "default": "",
             "enum": ["lens", "dockedleft", "dockedtop", "fullscreen", "dockedright", "dockedbottom"]
         },
-        "http://registry.gpii.org/common/tracking": {
+        "gpii.primarySchema.tracking": {
             "type": "string",
             "default": "",
             "enum": ["mousecursor", "textcursor", "keyboardfocus"]
         },
-        "http://registry.gpii.org/common/display.screenEnhancement.highContrast": {
+        "gpii.primarySchema.highContrast": {
             "type": "boolean",
             "default": false
         }
@@ -65,7 +65,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
         // The preference-specific information:
         "contrast": {
-            "type": "http://registry.gpii.org/common/display.screenEnhancement.highContrast",
+            "type": "gpii.primarySchema.highContrast",
             "enactor": {
                 "type": "gpii.uiOptions.enactors.contrast"
             },
@@ -89,7 +89,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         "textSize": {
-            "type": "http://registry.gpii.org/common/fontSize",
+            "type": "gpii.primarySchema.fontSize",
             "enactor": {
                 "type": "gpii.uiOptions.enactors.textSize"
             },
@@ -98,7 +98,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         "cursorSize": {
-            "type": "http://registry.gpii.org/common/cursorSize",
+            "type": "gpii.primarySchema.cursorSize",
             "enactor": {
                 "type": "gpii.uiOptions.enactors.cursorSize"
             },
@@ -107,7 +107,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         "magnifier": {
-            "type": "http://registry.gpii.org/common/magnification",
+            "type": "gpii.primarySchema.magnification",
             "enactor": {
                 "type": "gpii.uiOptions.enactors.magnifier"
             },
@@ -116,7 +116,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         "magnifierPosition": {
-            "type": "http://registry.gpii.org/common/magnificationPosition",
+            "type": "gpii.primarySchema.magnificationPosition",
             "classes": {
                 "lens": "fl-magnifierPosition-uio-lens fl-magnifierPosition-uio-icon-label",
                 "fullscreen": "fl-magnifierPosition-uio-fullscreen fl-magnifierPosition-uio-icon-label",
@@ -132,7 +132,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         "magnifierFollows": {
-            "type": "http://registry.gpii.org/common/tracking",
+            "type": "gpii.primarySchema.tracking",
             "classes": {
                 "mousecursor": "fl-magnifierFollows-uio-mouseCursor fl-magnifierFollows-uio-icon-label",
                 "textcursor": "fl-magnifierFollows-uio-textCursor fl-magnifierFollows-uio-icon-label",

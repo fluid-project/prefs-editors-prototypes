@@ -18,7 +18,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.uiOptions.panels.magnifierPosition", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
-            "http://registry.gpii.org/common/magnificationPosition": {
+            "gpii.primarySchema.magnificationPosition": {
                 "model.magnifierPosition": "",
                 "controlValues.magnifierPosition": "enum"
             }

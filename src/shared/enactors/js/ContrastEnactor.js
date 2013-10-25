@@ -18,7 +18,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.uiOptions.enactors.contrast", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
         preferenceMap: {
-            "http://registry.gpii.org/common/display.screenEnhancement.highContrast": {
+            "gpii.primarySchema.highContrast": {
                 "model.value": "default"
             }
         },

@@ -18,7 +18,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.uiOptions.panels.cursorSize", {
         gradeNames: ["fluid.uiOptions.panels", "gpii.uiOptions.pmt.previewPerSettingEnhanced", "autoInit"],
         preferenceMap: {
-            "http://registry.gpii.org/common/cursorSize": {
+            "gpii.primarySchema.cursorSize": {
                 "model.value": "default",
                 "controlValues.cursorSize.min": "minimum",
                 "controlValues.cursorSize.max": "maximum",

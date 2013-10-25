@@ -18,7 +18,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.uiOptions.enactors.magnifier", {
         gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
         preferenceMap: {
-            "http://registry.gpii.org/common/magnification": {
+            "gpii.primarySchema.magnification": {
                 "model.value": "default"
             }
         },

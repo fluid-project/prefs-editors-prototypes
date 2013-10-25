@@ -18,7 +18,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.uiOptions.panels.magnifierFollows", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
-            "http://registry.gpii.org/common/tracking": {
+            "gpii.primarySchema.tracking": {
                 "model.magnifierFollows": "",
                 "controlValues.magnifierFollows": "enum"
             }

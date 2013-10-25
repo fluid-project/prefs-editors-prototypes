@@ -18,7 +18,7 @@ var demo = demo || {};
 (function ($, fluid) {
     demo.initPMT = function (container, compOpts) {
         demo.uioBuilder = fluid.uiOptions.builder({
-            primarySchema: gpii.uiOptions.pmt.primarySchema,
+            primarySchema: gpii.primarySchema,
             auxiliarySchema: gpii.uiOptions.pmt.auxiliarySchema
         });
         
