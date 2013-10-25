@@ -194,7 +194,7 @@ input[type=checkbox], input[type=radio] {
     margin-bottom: 0.7em !important;
 }
 
-.fl-uiOptions .fl-slider a {
+.fl-uiOptions .gpii-slider a {
     //background: radial-gradient(circle 14.5px at 14.5px 50%, #566374 6px, white 8px);
     border: 1px solid #566374;
 }
@@ -203,7 +203,7 @@ input[type=checkbox], input[type=radio] {
     background-color: #17a9b8;
 }
 
-.fl-uiOptions .fl-slider a {
+.fl-uiOptions .gpii-slider a {
     box-shadow: none;
 }
 
