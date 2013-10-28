@@ -301,7 +301,7 @@ article h2 {
 
 /* The Discovery Tool Panel */
 
-.fl-uiOptions-explorationTool  {
+.fl-explorationTool  {
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -309,7 +309,7 @@ article h2 {
     z-index: 999; /* to ensure it is above the more-text details in FF */
 }
 
-.fl-uiOptions-explorationTool .fl-uiOptions-fatPanel-iframe {
+.fl-explorationTool .fl-prefsEditor-separatedPanel-iframe {
     border: none;
 }
 iframe::-webkit-scrollbar {
@@ -487,11 +487,11 @@ div.main-content-image + .fl-explorationTool-moreText {
 	outline: none !important;
 }
 
-.fl-theme-lgdg .fl-panelBar a:focus { border: 0.2em dashed #555 !important; } 
-.fl-theme-bw .fl-panelBar a:focus {	border: 0.2em dashed #fff !important; } 
+.fl-theme-lgdg .fl-panelBar a:focus { border: 0.2em dashed #555 !important; }
+.fl-theme-bw .fl-panelBar a:focus {	border: 0.2em dashed #fff !important; }
 
 /* Contrast theming for Simplified content mode */
-.fl-uiOptions-content-simplified {
+.fl-explorationTool-content-simplified {
     /* Add padding to bottom of simplified content so it's not obscured by the DT panel bar */
     padding-bottom: 4em;
 }
@@ -535,7 +535,7 @@ div.main-content-image + .fl-explorationTool-moreText {
     color: #fff !important;
     box-shadow: none;
 }
- 
+
 .fl-theme-lgdg .main-content header #prevNext span {
     background-color: #BDBDBB !important;
     border: 2px solid #555 !important;

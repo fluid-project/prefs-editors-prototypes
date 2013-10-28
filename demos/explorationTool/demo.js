@@ -59,10 +59,10 @@ var demo = demo || {};
             messageLoader: {
                 gradeNames: ["gpii.explorationTool.messageLoader"]
             },
-            uiOptions: {
-                gradeNames: ["gpii.explorationTool.panels", "gpii.explorationTool.rootModel", "fluid.uiOptions.uiEnhancerRelay"]
+            prefsEditor: {
+                gradeNames: ["gpii.explorationTool.panels", "gpii.explorationTool.rootModel", "fluid.prefs.uiEnhancerRelay"]
             },
-            iframeHtml: "../../src/explorationTool/html/FatPanelUIOptionsFrame.html"
+            iframeHtml: "../../src/explorationTool/html/SeparatedPanelFrame.html"
         });
     };
 

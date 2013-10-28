@@ -31,7 +31,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * @param {Object} options
      */
     fluid.defaults("gpii.explorationTool.gpiiStore", {
-        gradeNames: ["fluid.uiOptions.dataSource", "autoInit"],
+        gradeNames: ["fluid.prefs.dataSource", "autoInit"],
         url: "http://preferences.gpii.net/user/explorationTool-user-1",
         gpiiEntry: "http://registry.gpii.org/applications/gpii.explorationTool",
         invokers: {

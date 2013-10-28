@@ -41,14 +41,14 @@
 }
 
 
-.fl-uiOptions-explorationTool {
+.fl-explorationTool {
     background-color: #6f7b80;
-    overflow-x: auto;    
+    overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
 }
 
-.fl-uiOptions-explorationTool .fl-uiOptions {
+.fl-explorationTool .fl-prefsEditor {
     font-family: 'OpenSans',"Myriad Pro", Helvetica, Arial, sans-serif;
     padding-top: 1em;
 }
@@ -86,39 +86,39 @@
     background-color: #ffffff;
 }
 
-.fl-theme-uio-bw .fl-explorationTool-moreText details,
-.fl-theme-uio-lgdg .fl-explorationTool-moreText details {
+.fl-theme-prefsEditor-bw .fl-explorationTool-moreText details,
+.fl-theme-prefsEditor-lgdg .fl-explorationTool-moreText details {
     margin-top: 1em;
 }
-    
-.fl-theme-uio-bw .fl-explorationTool-moreText details summary:before,
-.fl-theme-uio-bw .fl-explorationTool-moreText details {
+
+.fl-theme-prefsEditor-bw .fl-explorationTool-moreText details summary:before,
+.fl-theme-prefsEditor-bw .fl-explorationTool-moreText details {
     color: #ffffff !important;
     background-color: #000000 !important;
 }
-.fl-theme-uio-lgdg .fl-explorationTool-moreText details summary:before,
-.fl-theme-uio-lgdg .fl-explorationTool-moreText details {
+.fl-theme-prefsEditor-lgdg .fl-explorationTool-moreText details summary:before,
+.fl-theme-prefsEditor-lgdg .fl-explorationTool-moreText details {
     background-color: #BDBDBB !important;
     color: #555555 !important;
 }
-.fl-theme-uio-bw .fl-explorationTool-moreText details summary:focus:before {
+.fl-theme-prefsEditor-bw .fl-explorationTool-moreText details summary:focus:before {
     border: 2px solid #000000 !important;
     color: #000000 !important;
     background-color: #ffffff !important;
 }
-.fl-theme-uio-lgdg .fl-explorationTool-moreText details summary:focus:before {
+.fl-theme-prefsEditor-lgdg .fl-explorationTool-moreText details summary:focus:before {
     border: 2px solid #BDBDBB !important;
     color: #BDBDBB !important;
     background-color: #555555 !important;
 }
 
 /* Panels */
-.fl-uiOptions-explorationTool .fl-uiOptions-panels {
+.fl-explorationTool .fl-prefsEditor-panels {
     text-align: center;
     margin: 0;
 }
 
-.fl-uiOptions-explorationTool .fl-uiOptions-panels li.fl-uiOptions-panel {
+.fl-explorationTool .fl-prefsEditor-panels li.fl-prefsEditor-panel {
     display: inline-block;
     width: 10em;
     padding:0;
@@ -128,7 +128,7 @@
 }
 
 /* Labels */
-.fl-uiOptions-explorationTool .fl-uiOptions-panel label {
+.fl-explorationTool .fl-prefsEditor-panel label {
     border: none;
     box-shadow: none;
     text-transform: lowercase;
@@ -140,31 +140,31 @@
     line-height: 1.2;
 }
 
-.fl-uiOptions-explorationTool .fl-uiOptions-panel label .fl-icon-text {
+.fl-explorationTool .fl-prefsEditor-panel label .fl-icon-text {
     margin-top: 0.4em;
 }
 
 /* Panel states */
 
 /* Preference set hover */
-.fl-uiOptions-explorationTool .fl-uiOptions-panel label .fl-explorationTool-panel-icon:hover,
-.fl-uiOptions-explorationTool .fl-uiOptions-panel .fl-explorationTool-hover label .fl-explorationTool-panel-icon,
-.fl-uiOptions-explorationTool .fl-uiOptions-panel label:hover .fl-explorationTool-panel-icon { box-shadow: 3px 3px 1px #4f4f4f;}
-.fl-uiOptions-explorationTool .fl-uiOptions-panel label:hover .fl-icon-text,
-.fl-uiOptions-explorationTool .fl-uiOptions-panel .fl-explorationTool-hover label .fl-icon-text,
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:focus ~ label .fl-icon-text { text-shadow: 2px 2px #4f4f4f; }
+.fl-explorationTool .fl-prefsEditor-panel label .fl-explorationTool-panel-icon:hover,
+.fl-explorationTool .fl-prefsEditor-panel .fl-explorationTool-hover label .fl-explorationTool-panel-icon,
+.fl-explorationTool .fl-prefsEditor-panel label:hover .fl-explorationTool-panel-icon { box-shadow: 3px 3px 1px #4f4f4f;}
+.fl-explorationTool .fl-prefsEditor-panel label:hover .fl-icon-text,
+.fl-explorationTool .fl-prefsEditor-panel .fl-explorationTool-hover label .fl-icon-text,
+.fl-explorationTool .fl-prefsEditor-panel input:focus ~ label .fl-icon-text { text-shadow: 2px 2px #4f4f4f; }
 
 /* Preference set enabled / checked. */
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:checked + label .fl-explorationTool-panel-icon {
+.fl-explorationTool .fl-prefsEditor-panel input:checked + label .fl-explorationTool-panel-icon {
     background-color: #ffcc00;
 }
 
 /* Preference set focused - icon*/
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:focus + label .fl-explorationTool-panel-icon {
+.fl-explorationTool .fl-prefsEditor-panel input:focus + label .fl-explorationTool-panel-icon {
 	border: 3px solid #ffcc00;
 }
 
-.fl-uiOptions-explorationTool .fl-uiOptions-panel .fl-icon-check {
+.fl-explorationTool .fl-prefsEditor-panel .fl-icon-check {
     visibility: hidden;
     background-color: #363c40;
     color: #fff;
@@ -172,32 +172,32 @@
     font-size: 1.2em;
     display: inline-block;
     position:relative;
-    
+
     /* large checkmark, start of transition */
-    height: 2em;   
-    width: 2em;   
-    margin-left: 4.25em; 
+    height: 2em;
+    width: 2em;
+    margin-left: 4.25em;
     top: -2.2em;
-    background-color: rgb(54, 60, 64, 0); 
+    background-color: rgb(54, 60, 64, 0);
     opacity: 0;
 }
 
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:checked + label div.fl-icon-check {
+.fl-explorationTool .fl-prefsEditor-panel input:checked + label div.fl-icon-check {
     visibility: visible;
-    
+
     /* small checkmark */
-    height: 1.1em; 
-    width: 1.1em; 
+    height: 1.1em;
+    width: 1.1em;
     margin-left: 4.6em;
-    background-color: rgb(54, 60, 64, 1); 
-    opacity: 1;    
+    background-color: rgb(54, 60, 64, 1);
+    opacity: 1;
 
     -moz-transition: width 0.4s, height 0.4s, margin-left 0.4s, top 0.4s, background-color 0.4s, opacity 0.4s;
-    -webkit-transition: width 0.4s, height 0.4s, margin-left 0.4s, top 0.4s, background-color 0.4s, opacity 0.4s;   
-    -o-transition: width 0.4s, height 0.4s, margin-left 0.4s, top 0.4s, background-color 0.4s, opacity 0.4s;   
-    transition: width 0.4s, height 0.4s, margin-left 0.4s, top 0.4s, background-color 0.4s, opacity 0.4s;   
+    -webkit-transition: width 0.4s, height 0.4s, margin-left 0.4s, top 0.4s, background-color 0.4s, opacity 0.4s;
+    -o-transition: width 0.4s, height 0.4s, margin-left 0.4s, top 0.4s, background-color 0.4s, opacity 0.4s;
+    transition: width 0.4s, height 0.4s, margin-left 0.4s, top 0.4s, background-color 0.4s, opacity 0.4s;
 }
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:checked + label div.fl-icon-check:before {
+.fl-explorationTool .fl-prefsEditor-panel input:checked + label div.fl-icon-check:before {
      bottom: 0.6em;
      -moz-transition: bottom 0.4s;
     -webkit-transition: bottom 0.4s;
@@ -206,7 +206,7 @@
 }
 
 /* Try something new */
-.fl-uiOptions-explorationTool .fl-uiOptions-panels li.fl-uiOptions-panel .fl-explorationTool-try {
+.fl-explorationTool .fl-prefsEditor-panels li.fl-prefsEditor-panel .fl-explorationTool-try {
     color: #ffcc00;
     font-size: 1.2em;
     width: 6.7em;
@@ -219,7 +219,7 @@
     text-transform: lowercase;
 }
 
-.fl-uiOptions-explorationTool .fl-uiOptions-panels li.fl-uiOptions-panel .fl-explorationTool-try:hover {
+.fl-explorationTool .fl-prefsEditor-panels li.fl-prefsEditor-panel .fl-explorationTool-try:hover {
 	background-color: #363C3F;
 	cursor:pointer;
 }
@@ -277,68 +277,68 @@
 /* Preference Set Icons */
 .fl-explorationTool-icon-high-contrast:before       {content: "\e00a";}
 .fl-explorationTool-icon-high-contrast:after        {content: "\e016";}
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:focus + label span.fl-explorationTool-icon-high-contrast:before, /* applied when keyboard focused */
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:checked:focus + label span.fl-explorationTool-icon-high-contrast:before, /* applied when focused and checked*/
-.fl-uiOptions-explorationTool .fl-uiOptions-panel label:hover .fl-explorationTool-icon-high-contrast:before,
+.fl-explorationTool .fl-prefsEditor-panel input:focus + label span.fl-explorationTool-icon-high-contrast:before, /* applied when keyboard focused */
+.fl-explorationTool .fl-prefsEditor-panel input:checked:focus + label span.fl-explorationTool-icon-high-contrast:before, /* applied when focused and checked*/
+.fl-explorationTool .fl-prefsEditor-panel label:hover .fl-explorationTool-icon-high-contrast:before,
 .fl-explorationTool-hover .fl-explorationTool-icon-high-contrast:before {content: "\e004";}
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:focus + label span.fl-explorationTool-icon-high-contrast:after, /* applied when keyboard focused */
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:checked:focus + label span.fl-explorationTool-icon-high-contrast:after, /* applied when focused and checked*/
-.fl-uiOptions-explorationTool .fl-uiOptions-panel label:hover .fl-explorationTool-icon-high-contrast:after,
+.fl-explorationTool .fl-prefsEditor-panel input:focus + label span.fl-explorationTool-icon-high-contrast:after, /* applied when keyboard focused */
+.fl-explorationTool .fl-prefsEditor-panel input:checked:focus + label span.fl-explorationTool-icon-high-contrast:after, /* applied when focused and checked*/
+.fl-explorationTool .fl-prefsEditor-panel label:hover .fl-explorationTool-icon-high-contrast:after,
 .fl-explorationTool-hover .fl-explorationTool-icon-high-contrast:after {content: "\e010";}
 
 .fl-explorationTool-icon-moreText:before       {content: "\e007";}
 .fl-explorationTool-icon-moreText:after        {content: "\e013";}
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:focus + label span.fl-explorationTool-icon-moreText:before, /* applied when keyboard focused */
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:checked:focus + label span.fl-explorationTool-icon-moreText:before, /* applied when focused and checked*/
-.fl-uiOptions-explorationTool .fl-uiOptions-panel label:hover .fl-explorationTool-icon-moreText:before,
+.fl-explorationTool .fl-prefsEditor-panel input:focus + label span.fl-explorationTool-icon-moreText:before, /* applied when keyboard focused */
+.fl-explorationTool .fl-prefsEditor-panel input:checked:focus + label span.fl-explorationTool-icon-moreText:before, /* applied when focused and checked*/
+.fl-explorationTool .fl-prefsEditor-panel label:hover .fl-explorationTool-icon-moreText:before,
 .fl-explorationTool-hover .fl-explorationTool-icon-moreText:before {content: "\e000";}
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:focus + label span.fl-explorationTool-icon-moreText:after, /* applied when keyboard focused */
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:checked:focus + label span.fl-explorationTool-icon-moreText:after, /* applied when focused and checked*/
-.fl-uiOptions-explorationTool .fl-uiOptions-panel label:hover .fl-explorationTool-icon-moreText:after,
+.fl-explorationTool .fl-prefsEditor-panel input:focus + label span.fl-explorationTool-icon-moreText:after, /* applied when keyboard focused */
+.fl-explorationTool .fl-prefsEditor-panel input:checked:focus + label span.fl-explorationTool-icon-moreText:after, /* applied when focused and checked*/
+.fl-explorationTool .fl-prefsEditor-panel label:hover .fl-explorationTool-icon-moreText:after,
 .fl-explorationTool-hover .fl-explorationTool-icon-moreText:after {content: "\e00c";}
 
 .fl-explorationTool-icon-low-contrast:before       {content: "\e006";}
 .fl-explorationTool-icon-low-contrast:after        {content: "\e012";}
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:focus + label span.fl-explorationTool-icon-low-contrast:before, /* applied when keyboard focused */
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:checked:focus + label span.fl-explorationTool-icon-low-contrast:before, /* applied when focused and checked*/
-.fl-uiOptions-explorationTool .fl-uiOptions-panel label:hover .fl-explorationTool-icon-low-contrast:before,
+.fl-explorationTool .fl-prefsEditor-panel input:focus + label span.fl-explorationTool-icon-low-contrast:before, /* applied when keyboard focused */
+.fl-explorationTool .fl-prefsEditor-panel input:checked:focus + label span.fl-explorationTool-icon-low-contrast:before, /* applied when focused and checked*/
+.fl-explorationTool .fl-prefsEditor-panel label:hover .fl-explorationTool-icon-low-contrast:before,
 .fl-explorationTool-hover .fl-explorationTool-icon-low-contrast:before {content: "\e003";}
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:focus + label span.fl-explorationTool-icon-low-contrast:after, /* applied when keyboard focused */
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:checked:focus + label span.fl-explorationTool-icon-low-contrast:after, /* applied when focused and checked*/
-.fl-uiOptions-explorationTool .fl-uiOptions-panel label:hover .fl-explorationTool-icon-low-contrast:after,
+.fl-explorationTool .fl-prefsEditor-panel input:focus + label span.fl-explorationTool-icon-low-contrast:after, /* applied when keyboard focused */
+.fl-explorationTool .fl-prefsEditor-panel input:checked:focus + label span.fl-explorationTool-icon-low-contrast:after, /* applied when focused and checked*/
+.fl-explorationTool .fl-prefsEditor-panel label:hover .fl-explorationTool-icon-low-contrast:after,
 .fl-explorationTool-hover .fl-explorationTool-icon-low-contrast:after  {content: "\e00f";}
 
 .fl-explorationTool-icon-simplify:before       {content: "\e009";}
 .fl-explorationTool-icon-simplify:after        {content: "\e015";}
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:focus + label span.fl-explorationTool-icon-simplify:before, /* applied when keyboard focused */
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:checked:focus + label span.fl-explorationTool-icon-simplify:before, /* applied when focused and checked*/
-.fl-uiOptions-explorationTool .fl-uiOptions-panel label:hover .fl-explorationTool-icon-simplify:before,
+.fl-explorationTool .fl-prefsEditor-panel input:focus + label span.fl-explorationTool-icon-simplify:before, /* applied when keyboard focused */
+.fl-explorationTool .fl-prefsEditor-panel input:checked:focus + label span.fl-explorationTool-icon-simplify:before, /* applied when focused and checked*/
+.fl-explorationTool .fl-prefsEditor-panel label:hover .fl-explorationTool-icon-simplify:before,
 .fl-explorationTool-hover .fl-explorationTool-icon-simplify:before {content: "\e002";}
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:focus + label span.fl-explorationTool-icon-simplify:after, /* applied when keyboard focused */
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:checked:focus + label span.fl-explorationTool-icon-simplify:after, /* applied when focused and checked*/
-.fl-uiOptions-explorationTool .fl-uiOptions-panel label:hover .fl-explorationTool-icon-simplify:after,
+.fl-explorationTool .fl-prefsEditor-panel input:focus + label span.fl-explorationTool-icon-simplify:after, /* applied when keyboard focused */
+.fl-explorationTool .fl-prefsEditor-panel input:checked:focus + label span.fl-explorationTool-icon-simplify:after, /* applied when focused and checked*/
+.fl-explorationTool .fl-prefsEditor-panel label:hover .fl-explorationTool-icon-simplify:after,
 .fl-explorationTool-hover .fl-explorationTool-icon-simplify:after  {content: "\e00e";}
 
 .fl-explorationTool-icon-increase-size:before       {content: "\e00b";}
 .fl-explorationTool-icon-increase-size:after        {content: "\e017";}
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:focus + label span.fl-explorationTool-icon-increase-size:before, /* applied when keyboard focused */
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:checked:focus + label span.fl-explorationTool-icon-increase-size:before, /* applied when focused and checked*/
-.fl-uiOptions-explorationTool .fl-uiOptions-panel label:hover .fl-explorationTool-icon-increase-size:before,
+.fl-explorationTool .fl-prefsEditor-panel input:focus + label span.fl-explorationTool-icon-increase-size:before, /* applied when keyboard focused */
+.fl-explorationTool .fl-prefsEditor-panel input:checked:focus + label span.fl-explorationTool-icon-increase-size:before, /* applied when focused and checked*/
+.fl-explorationTool .fl-prefsEditor-panel label:hover .fl-explorationTool-icon-increase-size:before,
 .fl-explorationTool-hover .fl-explorationTool-icon-increase-size:before {content: "\e005";}
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:focus + label span.fl-explorationTool-icon-increase-size:after, /* applied when keyboard focused */
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:checked:focus + label span.fl-explorationTool-icon-increase-size:after, /* applied when focused and checked */
-.fl-uiOptions-explorationTool .fl-uiOptions-panel label:hover .fl-explorationTool-icon-increase-size:after,
+.fl-explorationTool .fl-prefsEditor-panel input:focus + label span.fl-explorationTool-icon-increase-size:after, /* applied when keyboard focused */
+.fl-explorationTool .fl-prefsEditor-panel input:checked:focus + label span.fl-explorationTool-icon-increase-size:after, /* applied when focused and checked */
+.fl-explorationTool .fl-prefsEditor-panel label:hover .fl-explorationTool-icon-increase-size:after,
 .fl-explorationTool-hover .fl-explorationTool-icon-increase-size:after  {content: "\e011";}
 
 .fl-explorationTool-icon-speak:before       {content: "\e008";}
 .fl-explorationTool-icon-speak:after        {content: "\e014";}
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:focus + label span.fl-explorationTool-icon-speak:before, /* applied when keyboard focused */
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:checked:focus + label span.fl-explorationTool-icon-speak:before, /* applied when focused and checked*/
-.fl-uiOptions-explorationTool .fl-uiOptions-panel label:hover .fl-explorationTool-icon-speak:before,
+.fl-explorationTool .fl-prefsEditor-panel input:focus + label span.fl-explorationTool-icon-speak:before, /* applied when keyboard focused */
+.fl-explorationTool .fl-prefsEditor-panel input:checked:focus + label span.fl-explorationTool-icon-speak:before, /* applied when focused and checked*/
+.fl-explorationTool .fl-prefsEditor-panel label:hover .fl-explorationTool-icon-speak:before,
 .fl-explorationTool-hover .fl-explorationTool-icon-speak:before {content: "\e001";}
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:focus + label span.fl-explorationTool-icon-speak:after, /* applied when keyboard focused */
-.fl-uiOptions-explorationTool .fl-uiOptions-panel input:checked:focus + label span.fl-explorationTool-icon-speak:after, /* applied when focused and checked*/
-.fl-uiOptions-explorationTool .fl-uiOptions-panel label:hover .fl-explorationTool-icon-speak:after,
+.fl-explorationTool .fl-prefsEditor-panel input:focus + label span.fl-explorationTool-icon-speak:after, /* applied when keyboard focused */
+.fl-explorationTool .fl-prefsEditor-panel input:checked:focus + label span.fl-explorationTool-icon-speak:after, /* applied when focused and checked*/
+.fl-explorationTool .fl-prefsEditor-panel label:hover .fl-explorationTool-icon-speak:after,
 .fl-explorationTool-hover .fl-explorationTool-icon-speak:after  {content: "\e00d";}
 
 /* Theming for high and low contrast */
@@ -356,48 +356,48 @@
 .fl-theme-lgdg .fl-explorationTool-panel-icon:before { color: #bdbdbb; }
 .fl-theme-lgdg .fl-explorationTool-panel-icon:after { color: #555; }
 
-.fl-theme-bw .fl-uiOptions-panel .fl-icon-check,
-.fl-theme-lgdg .fl-uiOptions-panel .fl-icon-check {
+.fl-theme-bw .fl-prefsEditor-panel .fl-icon-check,
+.fl-theme-lgdg .fl-prefsEditor-panel .fl-icon-check {
     border: 2px solid;
 }
 
-.fl-theme-bw .fl-uiOptions-panel label,
-.fl-theme-lgdg .fl-uiOptions-panel label,
-.fl-theme-bw .fl-uiOptions-panels li.fl-uiOptions-panel .fl-explorationTool-try,
-.fl-theme-lgdg .fl-uiOptions-panels li.fl-uiOptions-panel .fl-explorationTool-try { padding-top: 4px; }
-.fl-theme-bw .fl-uiOptions-panel input:focus + label .fl-explorationTool-panel-icon { outline: 4px solid #fff; box-shadow: none; }
-.fl-theme-lgdg .fl-uiOptions-panel input:focus + label .fl-explorationTool-panel-icon { outline: 4px solid #555; box-shadow: none; }
+.fl-theme-bw .fl-prefsEditor-panel label,
+.fl-theme-lgdg .fl-prefsEditor-panel label,
+.fl-theme-bw .fl-prefsEditor-panels li.fl-prefsEditor-panel .fl-explorationTool-try,
+.fl-theme-lgdg .fl-prefsEditor-panels li.fl-prefsEditor-panel .fl-explorationTool-try { padding-top: 4px; }
+.fl-theme-bw .fl-prefsEditor-panel input:focus + label .fl-explorationTool-panel-icon { outline: 4px solid #fff; box-shadow: none; }
+.fl-theme-lgdg .fl-prefsEditor-panel input:focus + label .fl-explorationTool-panel-icon { outline: 4px solid #555; box-shadow: none; }
 
-.fl-theme-bw .fl-uiOptions-panel label:hover .fl-icon-text,
-.fl-theme-bw .fl-uiOptions-panel .fl-explorationTool-hover label .fl-icon-text,
-.fl-theme-bw .fl-uiOptions-panel input:focus ~ label .fl-icon-text,
-.fl-theme-lgdg .fl-uiOptions-panel label:hover .fl-icon-text,
-.fl-theme-lgdg .fl-uiOptions-panel .fl-explorationTool-hover label .fl-icon-text,
-.fl-theme-lgdg .fl-uiOptions-panel input:focus ~ label .fl-icon-text  { text-shadow: none; }
+.fl-theme-bw .fl-prefsEditor-panel label:hover .fl-icon-text,
+.fl-theme-bw .fl-prefsEditor-panel .fl-explorationTool-hover label .fl-icon-text,
+.fl-theme-bw .fl-prefsEditor-panel input:focus ~ label .fl-icon-text,
+.fl-theme-lgdg .fl-prefsEditor-panel label:hover .fl-icon-text,
+.fl-theme-lgdg .fl-prefsEditor-panel .fl-explorationTool-hover label .fl-icon-text,
+.fl-theme-lgdg .fl-prefsEditor-panel input:focus ~ label .fl-icon-text  { text-shadow: none; }
 
-.fl-theme-bw  .fl-uiOptions-panel label .fl-explorationTool-panel-icon:hover,
-.fl-theme-lgdg .fl-uiOptions-panel label .fl-explorationTool-panel-icon:hover,
-.fl-theme-bw .fl-uiOptions-panel .fl-explorationTool-hover label .fl-explorationTool-panel-icon,
-.fl-theme-lgdg .fl-uiOptions-panel .fl-explorationTool-hover label .fl-explorationTool-panel-icon,
-.fl-theme-bw .fl-uiOptions-panel label:hover .fl-explorationTool-panel-icon,
-.fl-theme-lgdg .fl-uiOptions-panel label:hover .fl-explorationTool-panel-icon { box-shadow: 3px 3px 0 #4f4f4f;}
+.fl-theme-bw  .fl-prefsEditor-panel label .fl-explorationTool-panel-icon:hover,
+.fl-theme-lgdg .fl-prefsEditor-panel label .fl-explorationTool-panel-icon:hover,
+.fl-theme-bw .fl-prefsEditor-panel .fl-explorationTool-hover label .fl-explorationTool-panel-icon,
+.fl-theme-lgdg .fl-prefsEditor-panel .fl-explorationTool-hover label .fl-explorationTool-panel-icon,
+.fl-theme-bw .fl-prefsEditor-panel label:hover .fl-explorationTool-panel-icon,
+.fl-theme-lgdg .fl-prefsEditor-panel label:hover .fl-explorationTool-panel-icon { box-shadow: 3px 3px 0 #4f4f4f;}
 
-.fl-theme-lgdg .fl-uiOptions-panel .fl-explorationTool-try {
+.fl-theme-lgdg .fl-prefsEditor-panel .fl-explorationTool-try {
 	font-weight:normal !important;
 }
 
 /* Checked State for High Contrast */
-.fl-theme-bw .fl-uiOptions-panel input:checked + label .fl-explorationTool-panel-icon        { background-color: #fff !important; }
-.fl-theme-bw .fl-uiOptions-panel input:checked + label .fl-explorationTool-panel-icon:before { color: #fff; }
-.fl-theme-bw .fl-uiOptions-panel input:checked + label .fl-explorationTool-panel-icon:after  { color: #000; }
+.fl-theme-bw .fl-prefsEditor-panel input:checked + label .fl-explorationTool-panel-icon        { background-color: #fff !important; }
+.fl-theme-bw .fl-prefsEditor-panel input:checked + label .fl-explorationTool-panel-icon:before { color: #fff; }
+.fl-theme-bw .fl-prefsEditor-panel input:checked + label .fl-explorationTool-panel-icon:after  { color: #000; }
 
 /* Checked State for Low Contrast */
-.fl-theme-lgdg .fl-uiOptions-panel input:checked + label .fl-explorationTool-panel-icon        { background-color: #555 !important; }
-.fl-theme-lgdg .fl-uiOptions-panel input:checked + label .fl-explorationTool-panel-icon:before { color: #555; }
-.fl-theme-lgdg .fl-uiOptions-panel input:checked + label .fl-explorationTool-panel-icon:after  { color: #bdbdbb; }
+.fl-theme-lgdg .fl-prefsEditor-panel input:checked + label .fl-explorationTool-panel-icon        { background-color: #555 !important; }
+.fl-theme-lgdg .fl-prefsEditor-panel input:checked + label .fl-explorationTool-panel-icon:before { color: #555; }
+.fl-theme-lgdg .fl-prefsEditor-panel input:checked + label .fl-explorationTool-panel-icon:after  { color: #bdbdbb; }
 
 /* Different Font for Low Contrast */
-.fl-theme-lgdg .fl-uiOptions-panels .fl-uiOptions-panel .fl-icon-text,
-.fl-theme-lgdg .fl-uiOptions-panels .fl-uiOptions-panel .fl-explorationTool-try .flc-explorationTool-tryLabel{
+.fl-theme-lgdg .fl-prefsEditor-panels .fl-prefsEditor-panel .fl-icon-text,
+.fl-theme-lgdg .fl-prefsEditor-panels .fl-prefsEditor-panel .fl-explorationTool-try .flc-explorationTool-tryLabel{
      font-family: 'RobotoSlab' !important;
 }
