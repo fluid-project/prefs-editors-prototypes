@@ -1,11 +1,11 @@
 
 The version of Infusion included in this folder was created using a custom build from commit
 
-    03927cf35e393ef467149a1c69eb4cd9d3bb0981
+    5b631da3519a797684a89a8fb494ca5a14ba2f22
 
-of the FLUID-5131 branch from
+of the Infusion master branch
 
-    https://github.com/jobara/infusion
+    https://github.com/fluid-project/infusion
 
 using the command line
 
@@ -13,9 +13,9 @@ using the command line
 
 The following directories were stripped out of the build since they contain code that is included in the MyInfusion.js file:
 
-    src/shared/lib/infusion/components/slidingPanel
+    src/shared/lib/infusion/components/slidingPanel/
     src/shared/lib/infusion/components/tableOfContents/js/
-    src/shared/lib/infusion/components/textfieldSlider
+    src/shared/lib/infusion/components/textfieldSlider/
     src/shared/lib/infusion/framework/core/
     src/shared/lib/infusion/framework/enhancement/
     src/shared/lib/infusion/framework/preferences/js/
@@ -24,3 +24,4 @@ The following directories were stripped out of the build since they contain code
     src/shared/lib/infusion/lib/jquery/core/
     src/shared/lib/infusion/lib/jquery/plugins/
     src/shared/lib/infusion/lib/jquery/ui/js/
+    src/shared/lib/infusion/lib/json/

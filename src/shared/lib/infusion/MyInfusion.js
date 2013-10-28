@@ -22538,21 +22538,12 @@ var fluid_1_5 = fluid_1_5 || {};
         gradeNames: ["fluid.viewComponent", "autoInit"],
         selectors: {
             panel: ".flc-slidingPanel-panel",
-            toggleButton: ".flc-slidingPanel-toggleButton"
+            toggleButton: ".flc-slidingPanel-toggleButton",
+            toggleButtonLabel: ".flc-slidingPanel-toggleButton"
         },
         strings: {
-            showText: {
-                expander: {
-                    func: "fluid.slidingPanel.lookupMsg",
-                    args: ["{that}.msgBundle", "slidingPanelShowText"]
-                }
-            },
-            hideText: {
-                expander: {
-                    func: "fluid.slidingPanel.lookupMsg",
-                    args: ["{that}.msgBundle", "slidingPanelHideText"]
-                }
-            }
+            showText: "show",
+            hideText: "hide"
         },
         events: {
             onPanelHide: null,
@@ -22560,67 +22551,85 @@ var fluid_1_5 = fluid_1_5 || {};
             afterPanelHide: null,
             afterPanelShow: null
         },
-        finalInitFunction: "fluid.slidingPanel.finalInit",
+        listeners: {
+            "onCreate.bindClick": {
+                "this": "{that}.dom.toggleButton",
+                "method": "click",
+                "args": ["{that}.togglePanel"]
+            },
+            "onCreate.bindModelChange": {
+                listener: "{that}.applier.modelChanged.addListener",
+                args: ["isShowing", "{that}.refreshView"]
+            },
+            "onCreate.setInitialState": {
+                listener: "{that}.refreshView"
+            },
+            "onPanelHide.setText": {
+                "this": "{that}.dom.toggleButtonLabel",
+                "method": "text",
+                "args": ["{that}.options.strings.showText"],
+                "priority": "first"
+            },
+            "onPanelShow.setText": {
+                "this": "{that}.dom.toggleButtonLabel",
+                "method": "text",
+                "args": ["{that}.options.strings.hideText"],
+                "priority": "first"
+            },
+            "onPanelHide.operate": {
+                listener: "{that}.operateHide"
+            },
+            "onPanelShow.operate": {
+                listener: "{that}.operateShow"
+            }
+        },
         invokers: {
-            operateHide: "fluid.slidingPanel.slideUp",
-            operateShow: "fluid.slidingPanel.slideDown"
+            operateHide: {
+                "this": "{that}.dom.panel",
+                "method": "slideUp",
+                "args": ["{that}.options.animationDurations.hide", "{that}.events.afterPanelHide.fire"]
+            },
+            operateShow: {
+                "this": "{that}.dom.panel",
+                "method": "slideDown",
+                "args": ["{that}.options.animationDurations.show", "{that}.events.afterPanelShow.fire"]
+            },
+            hidePanel: {
+                func: "{that}.applier.requestChange",
+                args: ["isShowing", false]
+            },
+            showPanel: {
+                func: "{that}.applier.requestChange",
+                args: ["isShowing", true]
+            },
+            togglePanel: {
+                funcName: "fluid.slidingPanel.togglePanel",
+                args: ["{that}"]
+            },
+            refreshView: {
+                funcName: "fluid.slidingPanel.refreshView",
+                args: ["{that}"]
+            }
         },
         model: {
             isShowing: false
         },
-        methods: {
-            showPanel: {
-                finalState: true,
-                name: "Show"
-            },
-            hidePanel: {
-                finalState: false,
-                name: "Hide"
-            }
+        animationDurations: {
+            hide: 400,
+            show: 400
         }
     });
 
-    fluid.slidingPanel.lookupMsg = function (messageResolver, value) {
-        var looked = messageResolver.lookup([value]);
-        return looked ? looked.template : looked;
+    fluid.slidingPanel.togglePanel = function (that) {
+        that.applier.requestChange("isShowing", !that.model.isShowing);
     };
 
-    fluid.slidingPanel.slideUp = function (element, callback, duration) {
-        $(element).slideUp(duration || "400", callback);
+    fluid.slidingPanel.refreshView = function (that) {
+        that.events[that.model.isShowing ? "onPanelShow" : "onPanelHide"].fire();
     };
 
-    fluid.slidingPanel.slideDown = function (element, callback, duration) {
-        $(element).slideDown(duration || "400", callback);
-    };
-
-    fluid.slidingPanel.finalInit = function (that) {
-        fluid.each(that.options.methods, function (method, methodName) {
-            that[methodName] = function () {
-                that.events["onPanel" + method.name].fire(that);
-                that.applier.requestChange("isShowing", method.finalState);
-                that.refreshView();
-                that["operate" + method.name](that.locate("panel"), that.events["afterPanel" + method.name].fire);
-            };
-        });
-
-        that.togglePanel = function () {
-            that[that.model.isShowing ? "hidePanel" : "showPanel"]();
-        };
-
-        that.setPanelHeight = function (newHeight) {
-            that.locate("panel").height(newHeight);
-        };
-
-        that.refreshView = function () {
-            that.locate("toggleButton").text(that.options.strings[that.model.isShowing ? "hideText" : "showText"]);
-        };
-
-        that.locate("toggleButton").click(that.togglePanel);
-
-        that.refreshView();
-    };
-
-})(jQuery, fluid_1_5);/*
+})(jQuery, fluid_1_5);
+/*
  * jQuery UI Draggable @VERSION
  *
  * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
@@ -27671,12 +27680,49 @@ var fluid_1_5 = fluid_1_5 || {};
 
 (function ($, fluid) {
 
+    /**********************
+     * stringBundle grade *
+     **********************/
+
+    fluid.defaults("fluid.prefs.stringBundle", {
+        gradeNames: ["fluid.littleComponent", "autoInit"],
+        members: {
+            stringBundle: {
+                expander: {
+                    funcName: "fluid.prefs.stringLookup",
+                    args: ["{that}.messageResolver", "{that}.options.stringArrayIndex"]
+                }
+            }
+        },
+        stringArrayIndex: {}
+    });
+
+    fluid.prefs.stringLookup = function (messageResolver, stringArrayIndex) {
+        var that = {id: fluid.allocateGuid()};
+        that.singleLookup = function (value) {
+            var looked = messageResolver.lookup([value]);
+            return fluid.get(looked, "template");
+        };
+        that.multiLookup = function (values) {
+            return fluid.transform(values, function (value) {
+                return that.singleLookup(value);
+            });
+        };
+        that.lookup = function (value) {
+            var values = fluid.get(stringArrayIndex, value) || value;
+            var lookupFn = fluid.isArrayable(values) ? "multiLookup" : "singleLookup";
+            return that[lookupFn](values);
+        };
+        that.resolvePathSegment = that.lookup;
+        return that;
+    };
+
     /***********************************************
      * Base grade panel
      ***********************************************/
 
     fluid.defaults("fluid.prefs.panel", {
-        gradeNames: ["fluid.rendererComponent", "fluid.prefs.modelRelay", "autoInit"]
+        gradeNames: ["fluid.rendererComponent", "fluid.prefs.stringBundle", "fluid.prefs.modelRelay", "autoInit"]
     });
 
     /***************************
@@ -28080,18 +28126,13 @@ var fluid_1_5 = fluid_1_5 || {};
             textFont: ".flc-prefsEditor-text-font",
             label: ".flc-prefsEditor-text-font-label"
         },
-        strings: {
-            textFont: {
-                expander: {
-                    func: "fluid.prefs.panel.lookupMsg",
-                    args: ["{that}.options.parentBundle", "textFont", "{that}.options.controlValues.textFont"]
-                }
-            }
+        stringArrayIndex: {
+            textFont: ["textFont-default", "textFont-times", "textFont-comic", "textFont-arial", "textFont-verdana"]
         },
         protoTree: {
             label: {messagekey: "textFontLabel"},
             textFont: {
-                optionnames: "${{that}.options.strings.textFont}",
+                optionnames: "${{that}.stringBundle.textFont}",
                 optionlist: "${{that}.options.controlValues.textFont}",
                 selection: "${value}",
                 decorators: {
@@ -28182,13 +28223,8 @@ var fluid_1_5 = fluid_1_5 || {};
             themeInput: ".flc-prefsEditor-themeInput",
             label: ".flc-prefsEditor-contrast-label"
         },
-        strings: {
-            theme: {
-                expander: {
-                    func: "fluid.prefs.panel.lookupMsg",
-                    args: ["{that}.options.parentBundle", "contrast", "{that}.options.controlValues.theme"]
-                }
-            }
+        stringArrayIndex: {
+            theme: ["contrast-default", "contrast-bw", "contrast-wb", "contrast-by", "contrast-yb", "contrast-lgdg"]
         },
         repeatingSelectors: ["themeRow"],
         protoTree: {
@@ -28200,7 +28236,7 @@ var fluid_1_5 = fluid_1_5 || {};
                 inputID: "themeInput",
                 selectID: "theme-radio",
                 tree: {
-                    optionnames: "${{that}.options.strings.theme}",
+                    optionnames: "${{that}.stringBundle.theme}",
                     optionlist: "${{that}.options.controlValues.theme}",
                     selection: "${value}"
                 }
@@ -28216,7 +28252,7 @@ var fluid_1_5 = fluid_1_5 || {};
             style: {
                 funcName: "fluid.prefs.panel.contrast.style",
                 args: [
-                    "{that}.dom.themeLabel", "{that}.options.strings.theme",
+                    "{that}.dom.themeLabel", "{that}.stringBundle.theme",
                     "{that}.options.markup.label", "{that}.options.controlValues.theme",
                     "{that}.options.classnameMap.theme"
                 ],
@@ -29492,15 +29528,28 @@ var fluid_1_5 = fluid_1_5 || {};
                 container: "{separatedPanel}.container",
                 createOnEvent: "onCreateSlidingPanelReady",
                 options: {
+                    gradeNames: ["fluid.prefs.stringBundle"],
                     members: {
-                        msgBundle: "{separatedPanel}.msgBundle"
+                        messageResolver: "{separatedPanel}.msgBundle"
+                    },
+                    strings: {
+                        showText: "{that}.stringBundle.slidingPanelShowText",
+                        hideText: "{that}.stringBundle.slidingPanelHideText"
                     },
                     invokers: {
                         operateShow: {
-                            funcName: "fluid.prefs.separatedPanel.showPanel"
+                            funcName: "fluid.prefs.separatedPanel.showPanel",
+                            args: ["{that}.dom.panel", "{that}.events.afterPanelShow.fire"],
+                            // override default implementation
+                            "this": null,
+                            "method": null
                         },
                         operateHide: {
-                            funcName: "fluid.prefs.separatedPanel.hidePanel"
+                            funcName: "fluid.prefs.separatedPanel.hidePanel",
+                            args: ["{that}.dom.panel", "{that}.events.afterPanelHide.fire"],
+                            // override default implementation
+                            "this": null,
+                            "method": null
                         }
                     }
                 }

@@ -35,7 +35,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * These paths will need to be customized for the integration
      */
     fluid.defaults("gpii.explorationTool.templateLoader", {
-        gradeNames: ["fluid.uiOptions.resourceLoader", "autoInit"],
+        gradeNames: ["fluid.prefs.resourceLoader", "autoInit"],
         templates: {
             highContrast: "%prefix/HighContrastPanelTemplate.html",
             lowContrast: "%prefix/LowContrastPanelTemplate.html",
@@ -43,19 +43,19 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             simplify: "%prefix/SimplifyPanelTemplate.html",
             moreText: "%prefix/MoreTextPanelTemplate.html",
             spoken: "%prefix/SpokenPanelTemplate.html",
-            uiOptions: "%prefix/ExplorationTool.html"
+            prefsEditor: "%prefix/ExplorationTool.html"
         }
     });
 
     fluid.defaults("gpii.explorationTool.messageLoader", {
-        gradeNames: ["fluid.uiOptions.resourceLoader", "autoInit"],
+        gradeNames: ["fluid.prefs.resourceLoader", "autoInit"],
         templates: {
-            uiOptions: "%prefix/ExplorationTool.json"
+            prefsEditor: "%prefix/ExplorationTool.json"
         }
     });
 
     fluid.defaults("gpii.explorationTool.rootModel", {
-        gradeNames: ["fluid.uiOptions.rootModel", "autoInit"],
+        gradeNames: ["fluid.prefs.rootModel", "autoInit"],
         members: {
             rootModel: {
                 highContrast: false,
@@ -78,7 +78,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             }
         }
     });
-    
+
     gpii.explorationTool.preventDefault = function (event) {
         event.preventDefault();
     };
@@ -88,7 +88,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * An instance of a Fat Panel UIO
      ****************/
     fluid.defaults("gpii.explorationTool", {
-        gradeNames: ["fluid.uiOptions.fatPanel", "autoInit"],
+        gradeNames: ["fluid.prefs.separatedPanel", "autoInit"],
         selectors: {
             explorationIcon: ".flc-icon-explorationTool"
         },
@@ -99,20 +99,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             hideTool: $.ui.keyCode.ESCAPE
         },
         slidingPanel: {
-            strings: {
-                showLabel: {
-                    expander: {
-                        func: "gpii.explorationTool.lookupMsg",
-                        args: ["{slidingPanel}.msgBundle", "slidingPanelShowLabel"]
-                    }
-                },
-                hideLabel: {
-                    expander: {
-                        func: "gpii.explorationTool.lookupMsg",
-                        args: ["{slidingPanel}.msgBundle", "slidingPanelHideLabel"]
-                    }
-                }
-            },
             invokers: {
                 showExplorationIcon: {
                     "this": "{explorationTool}.dom.explorationIcon",
@@ -167,7 +153,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     args: "true"
                 },
                 "onCreate.preventDefault": {
-                    /* FLUID-5177: Declaring a function to handle click since slidingPanel does not pass the dom event. */
                     "this": "{that}.dom.toggleButton",
                     method: "click",
                     args: "{that}.preventDefault"
@@ -240,19 +225,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         gpii.explorationTool.bindHideKey(that.options.keyBinding.hideTool, iframeHtml, that.hideToolPanelInIframe);
     };
 
-    // Currently this code is duplicated from SlidingPanel.js
-    // FLUID-5119 filed to move it to the framework, after which this should be removed in favour of the
-    // generalized code.
-    gpii.explorationTool.lookupMsg = function (messageResolver, value) {
-        var looked = messageResolver.lookup([value]);
-        return looked ? looked.template : looked;
-    };
-
     /*************
      * The base grade component for each individual panel
      *************/
-    fluid.defaults("gpii.explorationTool.defaultPanel", {
-        gradeNames: ["fluid.uiOptions.defaultPanel", "autoInit"],
+    fluid.defaults("gpii.explorationTool.prefsEditorConnections", {
+        gradeNames: ["fluid.prefs.prefsEditorConnections", "autoInit"],
         sourceApplier: "{modelTransformer}.applier"
     });
 
@@ -261,7 +238,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * and relays the changes
      *************/
     fluid.defaults("gpii.explorationTool.modelTransformer", {
-        gradeNames: ["fluid.modelComponent", "fluid.uiOptions.modelRelay", "autoInit"],
+        gradeNames: ["fluid.modelComponent", "fluid.prefs.modelRelay", "autoInit"],
         model: {
             panelSelections: {
                 highContrast: false,
@@ -322,19 +299,19 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             }
         },
         listeners: {
-            "{uiOptions}.events.onReady": {
+            "{prefsEditor}.events.onReady": {
                 listener: "{that}.applier.modelChanged.addListener",
                 args: ["panelSelections", "{that}.relayConvertedModel"]
             }
         },
         components: {
             highContrast: {
-                type: "gpii.explorationTool.panels.highContrast",
-                container: "{uiOptions}.dom.highContrast",
-                createOnEvent: "{uiOptions}.events.onUIOptionsMarkupReady",
+                type: "gpii.explorationTool.panel.highContrast",
+                container: "{prefsEditor}.dom.highContrast",
+                createOnEvent: "{prefsEditor}.events.onPrefsEditorMarkupReady",
                 priority: "first",
                 options: {
-                    gradeNames: "gpii.explorationTool.defaultPanel",
+                    gradeNames: "gpii.explorationTool.prefsEditorConnections",
                     rules: { // "externalModelKey": "internalModelKey"
                         "panelSelections.highContrast": "enabled"
                     },
@@ -344,11 +321,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 }
             },
             lowContrast: {
-                type: "gpii.explorationTool.panels.lowContrast",
-                container: "{uiOptions}.dom.lowContrast",
-                createOnEvent: "{uiOptions}.events.onUIOptionsMarkupReady",
+                type: "gpii.explorationTool.panel.lowContrast",
+                container: "{prefsEditor}.dom.lowContrast",
+                createOnEvent: "{prefsEditor}.events.onPrefsEditorMarkupReady",
                 options: {
-                    gradeNames: "gpii.explorationTool.defaultPanel",
+                    gradeNames: "gpii.explorationTool.prefsEditorConnections",
                     rules: {
                         "panelSelections.lowContrast": "enabled"
                     },
@@ -379,11 +356,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 }
             },
             increaseSize: {
-                type: "gpii.explorationTool.panels.increaseSize",
-                container: "{uiOptions}.dom.increaseSize",
-                createOnEvent: "{uiOptions}.events.onUIOptionsMarkupReady",
+                type: "gpii.explorationTool.panel.increaseSize",
+                container: "{prefsEditor}.dom.increaseSize",
+                createOnEvent: "{prefsEditor}.events.onPrefsEditorMarkupReady",
                 options: {
-                    gradeNames: "gpii.explorationTool.defaultPanel",
+                    gradeNames: "gpii.explorationTool.prefsEditorConnections",
                     rules: {
                         "panelSelections.increaseSize": "enabled"
                     },
@@ -393,11 +370,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 }
             },
             simplify: {
-                type: "gpii.explorationTool.panels.simplify",
-                container: "{uiOptions}.dom.simplify",
-                createOnEvent: "{uiOptions}.events.onUIOptionsMarkupReady",
+                type: "gpii.explorationTool.panel.simplify",
+                container: "{prefsEditor}.dom.simplify",
+                createOnEvent: "{prefsEditor}.events.onPrefsEditorMarkupReady",
                 options: {
-                    gradeNames: "gpii.explorationTool.defaultPanel",
+                    gradeNames: "gpii.explorationTool.prefsEditorConnections",
                     rules: {
                         "panelSelections.simplify": "enabled"
                     },
@@ -407,11 +384,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 }
             },
             moreText: {
-                type: "gpii.explorationTool.panels.moreText",
-                container: "{uiOptions}.dom.moreText",
-                createOnEvent: "{uiOptions}.events.onUIOptionsMarkupReady",
+                type: "gpii.explorationTool.panel.moreText",
+                container: "{prefsEditor}.dom.moreText",
+                createOnEvent: "{prefsEditor}.events.onPrefsEditorMarkupReady",
                 options: {
-                    gradeNames: "gpii.explorationTool.defaultPanel",
+                    gradeNames: "gpii.explorationTool.prefsEditorConnections",
                     rules: {
                         "panelSelections.moreText": "enabled"
                     },
@@ -421,11 +398,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 }
             },
             spoken: {
-                type: "gpii.explorationTool.panels.spoken",
-                container: "{uiOptions}.dom.spoken",
-                createOnEvent: "{uiOptions}.events.onUIOptionsMarkupReady",
+                type: "gpii.explorationTool.panel.spoken",
+                container: "{prefsEditor}.dom.spoken",
+                createOnEvent: "{prefsEditor}.events.onPrefsEditorMarkupReady",
                 options: {
-                    gradeNames: "gpii.explorationTool.defaultPanel",
+                    gradeNames: "gpii.explorationTool.prefsEditorConnections",
                     rules: {
                         "panelSelections.spoken": "enabled"
                     },
@@ -468,7 +445,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * The set of all panels
      **********/
     fluid.defaults("gpii.explorationTool.panels", {
-        gradeNames: ["fluid.uiOptions", "autoInit"],
+        gradeNames: ["fluid.prefs.prefsEditor", "autoInit"],
         selectors: {
             trySomethingNew: ".flc-explorationTool-try",
             highContrast: ".flc-explorationTool-highContrast",
@@ -484,18 +461,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 container: "{that}.dom.trySomethingNew",
                 createOnEvent: "onReady",
                 options: {
-                    strings: {
-                        label: {
-                            expander: {
-                                func: "gpii.explorationTool.lookupMsg",
-                                args: ["{uiOptionsLoader}.msgBundle", "trySomethingNewText"]
-                            }
-                        }
-                    },
                     presetPanels: {
                         expander: {
                             func: "gpii.explorationTool.panels.getSubcomponents",
-                            args: ["{uiOptions}.modelTransformer"]
+                            args: ["{prefsEditor}.modelTransformer"]
                         }
                     }
 
@@ -530,12 +499,12 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
 
-    // Will only add those subcompoents that have the grade "gpii.explorationTool.defaultPanel"
+    // Will only add those subcompoents that have the grade "gpii.explorationTool.prefsEditorConnections"
     gpii.explorationTool.panels.getSubcomponents = function (component) {
         var subComponents = [];
         fluid.each(component.options.components, function (opts, memberName) {
             var subComponent = fluid.get(component, memberName);
-            if (fluid.hasGrade(subComponent.options, "gpii.explorationTool.defaultPanel")) {
+            if (fluid.hasGrade(subComponent.options, "gpii.explorationTool.prefsEditorConnections")) {
                 subComponents.push(subComponent);
             }
         });
@@ -543,7 +512,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     };
 
     fluid.defaults("gpii.explorationTool.togglePanel", {
-        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
         finalInitFunction: "gpii.explorationTool.togglePanel.finalInit",
         selectors: {
             toggle: ".flc-explorationTool.togglePanel-toggle",
@@ -579,7 +548,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * - inputs larger
      * - sans serif font or monospaced font
      *********************/
-    fluid.defaults("gpii.explorationTool.panels.highContrast", {
+    fluid.defaults("gpii.explorationTool.panel.highContrast", {
         gradeNames: ["gpii.explorationTool.togglePanel", "autoInit"],
         selectors: {
             toggle: ".flc-explorationTool-highContrast-choice",
@@ -589,7 +558,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             toggle: "${enabled}",
             label: {messagekey: "highContrastLabel"}
         }
-        
     });
 
     /************************
@@ -601,7 +569,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * - inputs larger
      * - sans serif font or monospaced font
      *********************/
-    fluid.defaults("gpii.explorationTool.panels.lowContrast", {
+    fluid.defaults("gpii.explorationTool.panel.lowContrast", {
         gradeNames: ["gpii.explorationTool.togglePanel", "autoInit"],
         selectors: {
             toggle: ".flc-explorationTool-lowContrast-choice",
@@ -616,7 +584,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     /************************
      * Increase Size
      *********************/
-    fluid.defaults("gpii.explorationTool.panels.increaseSize", {
+    fluid.defaults("gpii.explorationTool.panel.increaseSize", {
         gradeNames: ["gpii.explorationTool.togglePanel", "autoInit"],
         // this is being ignored - ??
         selectors: {
@@ -632,7 +600,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     /************************
      * Simplify
      *********************/
-    fluid.defaults("gpii.explorationTool.panels.simplify", {
+    fluid.defaults("gpii.explorationTool.panel.simplify", {
         gradeNames: ["gpii.explorationTool.togglePanel", "autoInit"],
         // this is being ignored - ??
         selectors: {
@@ -642,7 +610,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         protoTree: {
             toggle: "${enabled}",
             label: {messagekey: "simplifyLabel"}
-        }  
+        }
     });
 
     /**********************************************************************************
@@ -653,9 +621,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
     // Note that the implementors need to provide the container for this view component
     fluid.defaults("gpii.explorationTool.enactors.simplifiedContent", {
-        gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
+        gradeNames: ["fluid.viewComponent", "fluid.prefs.enactors", "autoInit"],
         selectors: {
-            elementsToHide: "header, footer, aside, nav, .flc-uiOptions-simplify-hide"
+            elementsToHide: "header, footer, aside, nav, .flc-explorationTool-simplify-hide"
         },
         styles: {
             simplified: "fl-simplify"
@@ -671,7 +639,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         invokers: {
             set: {
                 funcName: "gpii.explorationTool.enactors.simplifiedContent.set",
-                args: ["{that}.model.value", "{that}"]
+                args: ["{that}.model.value", "{that}"],
+                dynamic: true
             }
         },
         listeners: {
@@ -714,7 +683,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     /***********************
      * More Text
      ***********************/
-    fluid.defaults("gpii.explorationTool.panels.moreText", {
+    fluid.defaults("gpii.explorationTool.panel.moreText", {
         gradeNames: ["gpii.explorationTool.togglePanel", "autoInit"],
         // this is being ignored - ??
         selectors: {
@@ -724,7 +693,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         protoTree: {
             toggle: "${enabled}",
             label: {messagekey: "moreTextLabel"}
-        }  
+        }
     });
 
     /**********************************************************************************
@@ -733,7 +702,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
     // Note that the implementors need to provide the container for this view component
     fluid.defaults("gpii.explorationTool.enactors.showMoreText", {
-        gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
+        gradeNames: ["fluid.viewComponent", "fluid.prefs.enactors", "autoInit"],
         selectors: {
             moreTexts: ".flc-explorationTool-moreText-container",
             images: "img, [role~='img']",
@@ -820,7 +789,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     /************************
      * Spoken
      *********************/
-    fluid.defaults("gpii.explorationTool.panels.spoken", {
+    fluid.defaults("gpii.explorationTool.panel.spoken", {
         gradeNames: ["gpii.explorationTool.togglePanel", "autoInit"],
         // this is being ignored - ??
         selectors: {
@@ -846,7 +815,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                             options: {
                                 selectors: {
                                     // Only look for headings thare within the simplified text, since the ToC is only rendered on simplify.
-                                    headings: ":header:visible:not(.flc-toc-tocContainer :header, header :header, footer :header, aside :header, nav :header, .flc-uiOptions-simplify-hide :header)"
+                                    headings: ":header:visible:not(.flc-toc-tocContainer :header, header :header, footer :header, aside :header, nav :header, .flc-explorationTool-simplify-hide :header)"
                                 }
                             }
                         }
@@ -862,7 +831,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                         "simplifyContent": "value"
                     },
                     model: {
-                        value: "{fluid.uiOptions.rootModel}.rootModel.simplifyContent"
+                        value: "{fluid.prefs.rootModel}.rootModel.simplifyContent"
                     }
                 }
             },
@@ -875,7 +844,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                         "showMoreText": "value"
                     },
                     model: {
-                        value: "{fluid.uiOptions.rootModel}.rootModel.showMoreText"
+                        value: "{fluid.prefs.rootModel}.rootModel.showMoreText"
                     }
                 }
             },
@@ -888,7 +857,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                         "selfVoicing": "value"
                     },
                     model: {
-                        value: "{fluid.uiOptions.rootModel}.rootModel.selfVoicing"
+                        value: "{fluid.prefs.rootModel}.rootModel.selfVoicing"
                     }
                 }
             }
@@ -900,8 +869,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
 
-    // Removes the selfVoicing enactor from the fatPanel iFrame
-    fluid.demands("gpii.explorationTool.enactors.selfVoicing", ["fluid.uiOptions.fatPanel.renderIframe"], {
+    // Removes the selfVoicing enactor from the seperatedPanel iFrame
+    fluid.demands("gpii.explorationTool.enactors.selfVoicing", ["fluid.prefs.seperatedPanel.renderIframe"], {
         funcName: "fluid.emptySubcomponent"
     });
 
@@ -909,7 +878,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     fluid.demands("gpii.explorationTool.enactors.selfVoicing", ["fluid.HTML5Audio.NotSupported"], {
         funcName: "fluid.emptySubcomponent"
     });
-    fluid.demands("gpii.explorationTool.panels.spoken", ["fluid.HTML5Audio.NotSupported"], {
+    fluid.demands("gpii.explorationTool.panel.spoken", ["fluid.HTML5Audio.NotSupported"], {
         funcName: "fluid.emptySubcomponent"
     });
 
@@ -941,7 +910,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             "onCreate.setLabel": {
                 "this": "{that}.dom.label",
                 "method": "html",
-                "args": ["{that}.options.strings.label"]
+                "args": ["{that}.stringBundle.label"]
             },
             "onCreate.click": {
                 "this": "{that}.container",
