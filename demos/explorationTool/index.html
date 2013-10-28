@@ -37,7 +37,7 @@
         $(document).ready(function () {
             demo.initCookieStore();
             demo.initPageEnhancer("exploration-tool-theme");
-            demo.initExplorationTool(".flc-uiOptions-explorationTool");
+            demo.initExplorationTool(".flc-explorationTool");
         })
     </script>
 
@@ -59,13 +59,12 @@
         could not be achieved through setting the tabindex alone, as the tabindex of the items in the
         iframe are calculated separately from those of the parent page. Meaning that the tab focus would jump
         back to the top of the page. -->
-        <div class="flc-uiOptions-explorationTool fl-uiOptions-explorationTool">
+        <div class="flc-explorationTool fl-explorationTool">
 
             <!-- This div is for the sliding panel that shows and hides the explorationTool controls -->
             <div class="fl-panelBar fl-inverted-color">
-                <!-- button id="reset" class="flc-uiOptions-reset fl-uiOptions-reset"><span class="fl-icon-undo"></span> Reset</button -->
                 <span for="show-hide" class="flc-icon-explorationTool fl-icon-explorationTool" role="presentation" aria-label="Discover"></span>
-                <a href="#" id="show-hide" class="flc-slidingPanel-toggleButton fl-uiOptions-showHide" aria-label="" aria-controls="dtpanel" role="button"></a>
+                <a href="#" id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide" aria-label="" aria-controls="dtpanel" role="button"></a>
             </div>
 
             <!-- This is the div that will contain the UI Options component -->
