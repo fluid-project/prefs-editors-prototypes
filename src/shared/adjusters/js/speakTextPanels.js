@@ -26,20 +26,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("speakText.panels.screenReaderTTSEnabled", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
-            "screenReaderTTSEnabled": {
+            "gpii.primarySchema.screenReaderTTSEnabled": {
                 "model.screenReaderTTSEnabled": "default"
             }
         },
         selectors: {
-            screenReaderTTSEnabled: ".gpii-screenReaderTTSEnabled",
-            screenReaderTTSEnabledLabel: ".gpii-screenReaderTTSEnabled-label"
+            screenReaderTTSEnabled: ".gpiic-speakText-screenReaderTTSEnabled",
+            screenReaderTTSEnabledLabel: ".gpiic-speakText-screenReaderTTSEnabled-label"
         }
     });
 
     fluid.defaults("speakText.panels.speechRate", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
-            "speechRate": {
+            "gpii.primarySchema.speechRate": {
                 "model.value": "default", /* WARNING
                 A temporary solution is to store "default" in model.VALUE
                 With the separation into smaller components this actually
@@ -49,24 +49,24 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
-            speechRate: ".gpii-speechRate",
-            speechRateLabel: ".gpii-speechRate-label",
-            speechRateMinus: ".gpii-speechRate-minus",
-            speechRatePlus: ".gpii-speechRate-plus"
+            speechRate: ".gpiic-speakText-speechRate",
+            speechRateLabel: ".gpiic-speakText-speechRate-label",
+            speechRateMinus: ".gpiic-speakText-speechRate-minus",
+            speechRatePlus: ".gpiic-speakText-speechRate-plus"
         }
     });
 
     fluid.defaults("speakText.panels.auditoryOutLanguage", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
-            "auditoryOutLanguage": {
+            "gpii.primarySchema.auditoryOutLanguage": {
                 "model.auditoryOutLanguage": "default",
                 "controlValues.auditoryOutLanguage": "enum"
             }
         },
         selectors: {
-            auditoryOutLanguage: ".gpii-auditoryOutLanguage",
-            auditoryOutLanguageLabel: ".gpii-auditoryOutLanguage-label"
+            auditoryOutLanguage: ".gpiic-speakText-auditoryOutLanguage",
+            auditoryOutLanguageLabel: ".gpiic-speakText-auditoryOutLanguage-label"
         }
     });
 
@@ -76,16 +76,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             repeatingSelectors: gpii.speakText.arrayMergePolicy
         },
         preferenceMap: {
-            "punctuationVerbosity": {
+            "gpii.primarySchema.punctuationVerbosity": {
                 "model.punctuationVerbosity": "default",
                 "controlValues.punctuationVerbosity": "enum"
             }
         },
         selectors: {
-            punctuationVerbosityRow: ".gpii-punctuationVerbosity-row",
-            punctuationVerbosityOptionLabel: ".gpii-punctuationVerbosity-option-label",
-            punctuationVerbosityInput: ".gpii-punctuationVerbosity",
-            punctuationVerbosityLabel: ".gpii-punctuationVerbosity-label"
+            punctuationVerbosityRow: ".gpiic-speakText-punctuationVerbosity-row",
+            punctuationVerbosityOptionLabel: ".gpiic-speakText-punctuationVerbosity-option-label",
+            punctuationVerbosityInput: ".gpiic-speakText-punctuationVerbosity",
+            punctuationVerbosityLabel: ".gpiic-speakText-punctuationVerbosity-label"
         },
         repeatingSelectors: ["punctuationVerbosityRow"],
         listeners: {
@@ -110,70 +110,69 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         });
     };
 
-
     fluid.defaults("speakText.panels.announceCapitals", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
-            "announceCapitals": {
+            "gpii.primarySchema.announceCapitals": {
                 "model.announceCapitals": "default"
             }
         },
         selectors: {
-            announceCapitals: ".gpii-announceCapitals",
-            announceCapitalsLabel: ".gpii-announceCapitals-label"
+            announceCapitals: ".gpiic-speakText-announceCapitals",
+            announceCapitalsLabel: ".gpiic-speakText-announceCapitals-label"
         }
     });
 
     fluid.defaults("speakText.panels.speakTutorialMessages", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
-            "speakTutorialMessages": {
+            "gpii.primarySchema.speakTutorialMessages": {
                 "model.speakTutorialMessages": "default"
             }
         },
         selectors: {
-            speakTutorialMessages: ".gpii-speakTutorialMessages",
-            speakTutorialMessagesLabel: ".gpii-speakTutorialMessages-label"
+            speakTutorialMessages: ".gpiic-speakText-speakTutorialMessages",
+            speakTutorialMessagesLabel: ".gpiic-speakText-speakTutorialMessages-label"
         }
     });
 
     fluid.defaults("speakText.panels.keyEcho", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
-            "keyEcho": {
+            "gpii.primarySchema.keyEcho": {
                 "model.keyEcho": "default"
             }
         },
         selectors: {
-            keyEcho: ".gpii-keyEcho",
-            keyEchoLabel: ".gpii-keyEcho-label"
+            keyEcho: ".gpiic-speakText-keyEcho",
+            keyEchoLabel: ".gpiic-speakText-keyEcho-label"
         }
     });
 
     fluid.defaults("speakText.panels.wordEcho", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
-            "wordEcho": {
+            "gpii.primarySchema.wordEcho": {
                 "model.wordEcho": "default"
             }
         },
         selectors: {
-            wordEcho: ".gpii-wordEcho",
-            wordEchoLabel: ".gpii-wordEcho-label"
+            wordEcho: ".gpiic-speakText-wordEcho",
+            wordEchoLabel: ".gpiic-speakText-wordEcho-label"
         }
     });
 
     fluid.defaults("speakText.panels.screenReaderBrailleOutput", {
         gradeNames: ["fluid.uiOptions.panels", "autoInit"],
         preferenceMap: {
-            "screenReaderBrailleOutput": {
+            "gpii.primarySchema.screenReaderBrailleOutput": {
                 "model.screenReaderBrailleOutput": "default"
             }
         },
         selectors: {
-            screenReaderBrailleOutput: ".gpii-screenReaderBrailleOutput",
-            screenReaderBrailleOutputLabel: ".gpii-screenReaderBrailleOutput-label",
-            screenReaderBrailleOutputDescription: ".gpii-screenReaderBrailleOutput-description"
+            screenReaderBrailleOutput: ".gpiic-speakText-screenReaderBrailleOutput",
+            screenReaderBrailleOutputLabel: ".gpiic-speakText-screenReaderBrailleOutput-label",
+            screenReaderBrailleOutputDescription: ".gpiic-speakText-screenReaderBrailleOutput-description"
         },
         protoTree: {
             screenReaderBrailleOutput: "${screenReaderBrailleOutput}",

@@ -87,8 +87,8 @@ var fluid_1_5 = fluid_1_5 || {};
     fluid.defaults("gpii.textfieldStepper.buttons", {
         gradeNames: ["fluid.viewComponent", "autoInit"],
         selectors: {
-            inc: ".gpii-textfieldStepper-increment",
-            dec: ".gpii-textfieldStepper-decrement"
+            inc: ".gpiic-speakText-textfieldStepper-increment",
+            dec: ".gpiic-speakText-textfieldStepper-decrement"
         },
         events: {
             modelChanged: null

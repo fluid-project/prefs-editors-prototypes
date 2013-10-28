@@ -15,7 +15,7 @@ var demo = demo || {};
 (function ($, fluid) {
     demo.initGPII = function (container, compOpts) {
         var uioBuilder = fluid.uiOptions.builder({
-            primarySchema: gpii.speakText.primarySchema,
+            primarySchema: gpii.primarySchema,
             auxiliarySchema: gpii.speakText.auxiliarySchema
         });
         var baseOpts = {

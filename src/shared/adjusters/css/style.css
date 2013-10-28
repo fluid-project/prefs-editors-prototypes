@@ -30,7 +30,7 @@
     font-weight: normal;
 }
 
-.more-options-icon {
+.gpii-speakText-moreOptionsIcon {
     font-family: 'optionsIcons'
 }
 
@@ -39,32 +39,32 @@
     width: 0px;
 }
 
-.speakText-screenReaderTTSEnabled-element {
+.gpii-speakText-screenReaderTTSEnabled-element {
     padding-top: 1px;
     height: 55px;
 }
 
-.more-options-icon:before {
+.gpii-speakText-moreOptionsIcon:before {
     content: "\e009";
 }
 
-.preference {
+.gpii-speakText-adjusters {
     padding-left: 40px;
     font-family: 'Roboto Slab', serif;
     background-color: #E5EFEF;
     width: 285px;
 }
 
-.speak-text-label {
+.gpii-speakText-label {
     font-size: 19px !important;
     font-family: 'Roboto Slab', serif;
 }
 
-.speak-text-description {
+.gpii-speakText-description {
     font-size: 15px !important;
 }
 
-.speakText-speechRate-element {
+.gpii-speakText-speechRate-element {
     position: relative;
     padding-top: 15px;
 }
@@ -75,10 +75,6 @@
     width: 200px;
     font-size: 23px;
     display: inline !important;
-}
-
-#speechRateLabel {
-    font-size: 85%;
 }
 
 #speechRateMinus {
@@ -98,33 +94,33 @@ textarea:focus, input:focus {
     outline: 0;
 }
 
-.more-options {
+.gpii-speakText-moreOptions {
     padding-top: 20px;
     font-size: 15px;
     font-weight: bold;
     margin-left: 90px;
 }
 
-.partially-expanded {
+.gpii-speakText-partially-expanded {
     display: none;
 }
 
-.fully-expanded {
+.gpii-speakText-fully-expanded {
     display: none;
 }
 
-.switch {
+.gpii-speakText-switch {
     font-size:135%;
     float: left;
 }
 
-#screen-reader-onoff {
+#gpii-speakText-screenReaderOnOff {
     font-size:70%;
     float:left;
     margin-left:37px;
 }
 
-#braille-onoff {
+#gpii-speakText-brailleOnOff {
     font-size:70%;
     float:left;
     margin-left:125px;
@@ -139,7 +135,7 @@ input[type="radio"] + label {
     text-transform: capitalize;
 }
 
-div.punctuationVerbosity-container {
+.gpii-speakText-punctuationVerbosity-container {
     position: relative;
     height: 55px;
     width: 250px;
@@ -287,7 +283,7 @@ input[type=checkbox] {
     border:0;
 }
 
-input[type=checkbox] + label.checkbox-label {
+input[type=checkbox] + label.gpii-speakText-checkboxLabel {
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -347,7 +343,7 @@ input[type=checkbox] + label.preset-button-label {
     height: 60px;
 }
 
-input[type=checkbox] + label.checkbox-label {
+input[type=checkbox] + label.gpii-speakText-checkboxLabel {
     margin-left: 25px;
     text-indent: -1.2em;
     font-family: 'checkboxTick';
@@ -355,7 +351,7 @@ input[type=checkbox] + label.checkbox-label {
     width: 250px;
 }
 
-input[type=checkbox] + label.checkbox-label:before {
+input[type=checkbox] + label.gpii-speakText-checkboxLabel:before {
     content: "\e00a";
     color: transparent;
     border: 1px solid #556273;
@@ -364,23 +360,23 @@ input[type=checkbox] + label.checkbox-label:before {
     font-size: 75%;
 }
 
-input[type=checkbox]:checked + label.checkbox-label {
+input[type=checkbox]:checked + label.gpii-speakText-checkboxLabel {
     font-family: 'checkboxTick';
 }
 
-input[type=checkbox]:checked + label.checkbox-label:before {
+input[type=checkbox]:checked + label.gpii-speakText-checkboxLabel:before {
     content: "\e00a";
     color: white;
     background-color: #556273;
 }
 
-.checkbox-span {
+.gpii-speakText-checkboxSpan {
     font-family: 'Open Sans', sans-serif;
     font-size: 75%;
     padding-left: 5px;
 }
 
-label.more-options-label {
+.gpiic-speakText-moreOptionsLabel {
     cursor: pointer;
 }
 
