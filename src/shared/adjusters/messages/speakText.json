@@ -1,0 +1,23 @@
+{
+    "tooltipUnchecked": "Add to my preferences",
+    "tooltipChecked": "Remove from my preferences",
+    "speakTextPresetButtonLabel": "speak text",
+    "screenReaderTTSEnabledLabel": "Screen Reader",
+    "screenReaderSwitchLabel": "Screen Reader",
+    "speechRateLabel": "Words spoken per minute",
+    "speechRateMinus": "-",
+    "speechRatePlus": "+",
+    "auditoryOutLanguageLabel": "Language",
+    "punctuationVerbosityLabel": "Punctuation marks",
+    "announceCapitalsLabel": "Uppercase letters",
+    "speakTutorialMessagesLabel": "Instructions when focused on an interactive (eg. button)",
+    "keyEchoLabel": "Echo letter after typed",
+    "wordEchoLabel": "Echo word after typed",
+    "screenReaderBrailleOutputLabel": "Braille",
+    "screenReaderBrailleOutputDescription": "Output to available device",
+    "moreText": "more",
+    "lessText": "less",
+    "saveAndApply": "Save and Apply",
+    "resetAndApply": "Reset and Apply",
+    "cancel": "Cancel"
+}
