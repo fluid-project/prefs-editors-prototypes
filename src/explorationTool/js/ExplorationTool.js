@@ -667,7 +667,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     });
 
     gpii.explorationTool.enactors.simplifiedContent.set = function (value, that) {
-        console.log(value);
         if (value) {
             that.events.onApplySimplify.fire();
         } else {
