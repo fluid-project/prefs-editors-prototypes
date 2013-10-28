@@ -1,7 +1,7 @@
 
 The version of Infusion included in this folder was created using a custom build from commit
 
-    68cbc4df42046554258cb0014dbb5b17da14df23
+    5b631da3519a797684a89a8fb494ca5a14ba2f22
 
 of the Infusion master branch
 
@@ -9,15 +9,16 @@ of the Infusion master branch
 
 using the command line
 
-    ant -lib lib/rhino customBuild -Dinclude="uiOptions, enhancement" -DnoMinify="true"
+    ant -lib lib/rhino/ customBuild -Dinclude="preferences, enhancement" -DnoMinify="true"
 
 The following directories were stripped out of the build since they contain code that is included in the MyInfusion.js file:
 
+    src/shared/lib/infusion/components/slidingPanel/
     src/shared/lib/infusion/components/tableOfContents/js/
-    src/shared/lib/infusion/components/tabs/
-    src/shared/lib/infusion/components/uiOptions/js/
+    src/shared/lib/infusion/components/textfieldSlider/
     src/shared/lib/infusion/framework/core/
     src/shared/lib/infusion/framework/enhancement/
+    src/shared/lib/infusion/framework/preferences/js/
     src/shared/lib/infusion/framework/renderer/
     src/shared/lib/infusion/lib/fastXmlPull/
     src/shared/lib/infusion/lib/jquery/core/
