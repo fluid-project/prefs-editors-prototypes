@@ -164,9 +164,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     }
                 }
             },
-            magnifierMinus: "-",
+            magnifierMinus: {messagekey: "minus"},
             magnifierLabel: {messagekey: "magnifierLabel"},
-            magnifierPlus: "+",
+            magnifierPlus: {messagekey: "plus"},
 
             magnifierValueText: "${magnification}",
             magnifierFollowsHeading: {messagekey: "magnifierFollowsLabel"},
@@ -197,9 +197,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             ],
             magnifierPositionHeading: {messagekey: "magnifierPositionLabel"},
-            textSizeMinus: "-",
+            textSizeMinus: {messagekey: "minus"},
             textSizeLabel: {messagekey: "textSizeLabel"},
-            textSizePlus: "+",
+            textSizePlus: {messagekey: "plus"},
 
             textSizeValueText: "${fontSize}"
         },

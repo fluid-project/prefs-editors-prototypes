@@ -6,6 +6,7 @@
     "languageLabel": "γλώσσα",
     "saveButtonText": "αποθήκευση και εφαρμογή",
     "resetButtonText": "αρχικοποίηση",
-    "cancelButtonText": "άκυρο"
-    
+    "cancelButtonText": "άκυρο",
+    "plus": "+",
+    "minus": "-"
 }
