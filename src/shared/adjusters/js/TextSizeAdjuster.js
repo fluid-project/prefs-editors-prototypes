@@ -26,8 +26,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
 
-        textSizeMetricUnit: "pt",
-
         events: {
             textSizeMinRangeReached: null,
             textSizeMinRangeExited: null
@@ -158,8 +156,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "val",
                 "args": {
                     expander: {
-                        funcName: "gpii.concatStrings",
-                        args: ["{that}.model.fontSize", "{that}.options.textSizeMetricUnit"]
+                        "this": "fluid",
+                        method: "stringTemplate",
+                        args: ["{that}.options.strings.fontSizeStringTemplate", ["{that}.model.fontSize"]]
                     }
                 }
             },
@@ -190,6 +189,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
 
+        strings: {
+            fontSizeStringTemplate: {
+                expander: {
+                    func: "gpii.lookupMsg",
+                    args: ["{uiOptionsLoader}.msgBundle", "fontSizeStringTemplate"]
+                }
+            }  
+        },
         distributeOptions: [{
             source: "{that}.options.outerPreviewEnhancerOptions",
             //removeSource: true,

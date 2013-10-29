@@ -26,8 +26,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
 
-        magnifierMetricUnit: "%",
-
         events: {
             magnifierMinRangeReached: null,
             magnifierMinRangeExited: null
@@ -84,6 +82,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 expander: {
                     func: "gpii.lookupMsg",
                     args: ["{uiOptionsLoader}.msgBundle", "magnifierOFF"]
+                }
+            },
+            magnifierStringTemplate: {
+                expander: {
+                    func: "gpii.lookupMsg",
+                    args: ["{uiOptionsLoader}.msgBundle", "magnifierStringTemplate"]
                 }
             }
         },
@@ -171,8 +175,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "val",
                 "args": {
                     expander: {
-                        funcName: "gpii.concatStrings",
-                        args: ["{that}.model.magnification", "{that}.options.magnifierMetricUnit"]
+                        "this": "fluid",
+                        method: "stringTemplate",
+                        args: ["{that}.options.strings.magnifierStringTemplate", ["{that}.model.magnification"]]
                     }
                 }
             },

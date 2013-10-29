@@ -17,5 +17,7 @@
     "magnifierFollows.textcursor": "Eingabezeiger",
     "magnifierFollows.keyboardfocus": "Tastaturfokus",
     "textSizeLabel": "Textgröße",
-    "previewText": "So wird Text meistens aussehen."
+    "previewText": "So wird Text meistens aussehen.",
+    "fontSizeStringTemplate" : "%0pt",
+    "magnifierStringTemplate" : "%0%"
 }
