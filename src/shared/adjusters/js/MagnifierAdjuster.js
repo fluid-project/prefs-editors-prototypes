@@ -37,7 +37,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierPreview: {
                 type: "fluid.uiOptions.preview",
                 createOnEvent: "afterRender",
-                container: ".flc-uiOptions-magnifier .flc-uiOptions-preview-per-setting-frame",
+                container: "{that}.dom.magnifierPreview",
                 options: {
                     templateUrl: "../../src/shared/preview/html/uiOptionsTextPreview.html",
                     components: {
@@ -75,8 +75,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierMinus: ".gpiic-increaseSize-plusMinusNumericalMinusMagnifier",
             magnifierLabel: ".gpiic-increaseSize-plusMinusNumericalLabelMagnifier",
             magnifierPlus: ".gpiic-increaseSize-plusMinusNumericalPlusMagnifier",
-            magnifierValueText: ".gpiic-increaseSize-plusMinusNumericalValueMagnifier"
+            magnifierValueText: ".gpiic-increaseSize-plusMinusNumericalValueMagnifier",
+            magnifierPreview: ".gpiic-increaseSize-previewPerSettingFrameMagnifier"
         },
+        selectorsToIgnore: ["magnifierPreview"],
         strings: {
             magnifierOFF: {
                 expander: {

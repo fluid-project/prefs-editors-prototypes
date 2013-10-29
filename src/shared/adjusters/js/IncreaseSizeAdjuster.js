@@ -29,7 +29,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.uiOptions.panels.increaseSize", {
         gradeNames: ["fluid.uiOptions.panels", "gpii.uiOptions.panels.textSize", "gpii.uiOptions.panels.cursorSize", "gpii.uiOptions.panels.magnifierFollows", "gpii.uiOptions.panels.magnifier", "gpii.uiOptions.panels.magnifierPosition", "autoInit"],
         mergePolicy: {
-            repeatingSelectors: gpii.uiOptions.panels.arrayMergePolicy
+            repeatingSelectors: gpii.uiOptions.panels.arrayMergePolicy,
+            selectorsToIgnore: gpii.uiOptions.panels.arrayMergePolicy
         },
         events: {
             onShowAdjuster: null,

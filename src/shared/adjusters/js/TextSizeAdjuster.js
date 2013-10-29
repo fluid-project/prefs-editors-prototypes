@@ -37,7 +37,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             textSizePreview: {
                 type: "fluid.uiOptions.preview",
                 createOnEvent: "afterRender",
-                container: ".flc-uiOptions-text-size .flc-uiOptions-preview-per-setting-frame",
+                container: "{that}.dom.textSizePreview",
                 options: {
                     templateUrl: "../../src/shared/preview/html/uiOptionsTextPreview.html",
                     components: {
@@ -70,13 +70,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             }
         },
-
         selectors: {
             textSizeMinus: ".gpiic-incresaeSize-plusMinusNumericalMinusTextSize",
             textSizeLabel: ".gpiic-increaseSize-plusMinusNumericalLabelTextSize",
             textSizePlus: ".gpiic-increaseSize-plusMinusNumericalPlusTextSize",
-            textSizeValueText: ".gpiic-increaseSize-plusMinusNumericalValueTextSize"
+            textSizeValueText: ".gpiic-increaseSize-plusMinusNumericalValueTextSize",
+            textSizePreview: ".gpiic-increaseSize-previewPerSettingFrameTextSize"
         },
+        selectorsToIgnore: ["textSizePreview"],
+
         listeners: {
             "afterRender.bindEventTextSizeMinusClick": {
                 "this": "{that}.dom.textSizeMinus",
