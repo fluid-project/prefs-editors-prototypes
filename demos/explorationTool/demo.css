@@ -1,0 +1,620 @@
+@font-face {
+    font-family: 'DemoIcons';
+    src:url('fonts/Demo-Content-Icons.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Demo-Content-Icons.eot'),
+         url('fonts/Demo-Content-Icons.ttf');
+}
+
+@font-face {
+	font-family: 'DemoLogos';
+    src: url('fonts/Demo-Content-Logos.eot'),
+         url('fonts/Demo-Content-Logos.ttf');
+}
+
+@font-face {
+    font-family: 'RobotoSlab';
+    src:url('fonts/RobotoSlab-Regular.ttf');
+}
+
+body {
+    background-color: #F9F9F5;
+    color: #5C5C5C;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-size: 1.2em;
+    line-height: 150%;
+}
+
+h1, h2, h3, h4, h5, h6, div, ul, ol, dt {
+    color: #56544D;
+}
+
+a {
+    cursor: pointer;
+    color: #00ABA4;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+.fl-focus *:focus {
+    color: #2795B6;
+    outline-color: #2795B6;
+}
+
+#main-header {
+    background-color: #FFFFFF;
+    box-shadow: 0 3px 2px #CCCCCC;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 0.25em;
+    z-index: 999; /* to ensure it is above the more-text details in FF */
+}
+
+#main-header #main-header-content {
+    max-width: 63em;
+    margin: 0 auto;
+}
+#main-header #main-header-content div {
+    float:right;
+    text-align: right;
+    margin-right: 2em;
+    margin-top: 0.5em;
+    width: 50%;
+}
+
+#main-header input {
+    background-color: #F2F2F1;
+    color: #56544D;
+    font-size: 0.875em;
+    padding: 0 0px 0 10px;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    height: 2.3em;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+    width: 50%;
+}
+
+#main-header input[type=search] { -webkit-appearance: textfield; }
+
+#main-header .subjects {
+    color: #666666;
+    text-transform: uppercase;
+    padding-left: 0.5em;
+    font-weight: bold;
+    font-size: 90%;
+}
+
+/* Main content */
+.main-content {
+    margin: 4em auto;
+    max-width: 60em;
+}
+
+.main-content header img {
+    float: left;
+    margin: 0.5em 0;
+}
+.main-content header h1 {
+    float: left;
+    margin-left: 1em;
+}
+
+.main-content header #breadcrumbs {
+    float: left;
+    margin-left: -6.15em;
+    margin-top: 4em;
+    background: linear-gradient(to bottom, #DDDDDD 0%, #E8E8E8 99%) repeat scroll 0 0 transparent;
+    border-bottom: 1px solid white;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) inset;
+    padding: 0px 20px 0px 10px;
+}
+.main-content header #breadcrumbs a:link {
+    color: #707070;
+}
+.main-content header #breadcrumbs a:focus {
+    color: #2795B6;
+}
+
+.main-content header #prevNext {
+    float: right;
+    margin-top: 2em;
+}
+
+.main-content header #prevNext span {
+    background: linear-gradient(-90deg, #F9F9F9, #EFEFEF) repeat scroll 0 0 transparent;
+    border-color: #CECECE #CECECE #939393;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px
+    box-shadow: 0 1px 0 0 #D4D4D4, 0 1px 0 0 #FFFFFF inset;
+    display: block;
+    float: left;
+    text-align: center;
+    margin-top: 2px;
+    padding: 0.3em 0.7em;
+}
+
+.main-content header #prevNext a {
+    color: #939393;
+    font-weight: normal;
+}
+.main-content header #prevNext a:focus {
+    outline: none;
+}
+.main-content header #prevNext a:focus span {
+    color: #2795B6;
+    border: 2px solid #2795B6;
+}
+
+.main-content header #prevNext .fl-icon-prev {
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+}
+.main-content header #prevNext .fl-icon-next {
+    border-bottom-right-radius: 3px;
+    border-left: none;
+    border-top-right-radius: 3px;
+}
+
+#main {
+    background-color: #fff;
+    padding: 0.75em;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+#main #helpful h1 {
+    float: left;
+    margin-top: 0.5em;
+    color: #00ABA4;
+}
+
+#main #helpful div {
+    float:right;
+    margin-top: 0.75em;
+}
+
+#main .resource-tools {
+    clear: both;
+    float: left;
+    width: 15%;
+}
+#main .resource-tools .tools {
+    margin: 0;
+    padding: 0;
+}
+#main .resource-tools .tools li:first-child {
+   /* box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.2); */
+}
+#main .resource-tools .tools li {
+    list-style: none;
+    border-top: 1px solid #DCDCDC;
+    margin-bottom: 0;
+    padding: 10px 0;
+}
+
+#main #content {
+    margin-left: 16%;
+    border: 1px solid #E0E0E0;
+    box-shadow: 0 0 5px #C5C5C5;
+    padding: 3em;
+}
+
+/* Article */
+.main-content #article-filters {
+    border-bottom: 1px solid #E6E6E6;
+    margin-top: -0.5em
+}
+.main-content #article-filter {
+    float: left;
+    padding-right: 7em;
+    height: 6em;
+    border-right: 1px dotted #56544D;
+}
+.main-content .article-tab {
+    float: left;
+    padding: 0.5em 1em;
+    font-size: 0.8em;
+    text-align: center;
+    border-right: 1px dotted #56544D;
+    height: 6.5em;
+    width: 6.5em;
+}
+.main-content .article-tab span {
+    display: block;
+    font-size: 2.5em;
+}
+
+.main-content section {
+    border-bottom: 1px solid #E6E6E6;
+    margin-bottom: 0.25em;
+    padding-bottom: 2em;
+}
+
+article h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 0 0.4em;
+    padding-top: 15px;
+}
+
+.main-content img {
+    margin: 1em 0;
+}
+
+/* Exploration Tool show/hide panel bar */
+.fl-panelBar {
+    background-color: #6f7b80;
+    line-height: 1.3;
+    width:100%;
+    height: 2.5em;
+    overflow:hidden;
+}
+
+.fl-panelBar a {
+	box-sizing:border-box;
+	-moz-box-sizing:border-box; /* Firefox */
+    width: 100%;
+    height: 100%;
+	position: relative; /* This makes link clickable on top of the sibling span. */
+	border: 0;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: right;
+	display: inline-block;
+	padding: 0.7em 3em 0 0;
+}
+.fl-panelBar a:focus {
+    border: 0.2em dashed #FFCC00;
+    color: #fff;
+    padding: 0.5em 2.8em 0 0;
+    outline: none;
+}
+
+.fl-panelBar a:hover {
+    text-decoration: none;
+}
+
+.fl-panelBar a::-moz-focus-inner {border:0;}
+
+.fl-panelBar span.fl-icon-explorationTool {
+    font-family: 'DemoIcons';
+    float:right;
+    position: relative;
+    right: 0.4em;
+}
+
+.fl-panelBar span.fl-icon-explorationTool:before {
+    content: "\e009";
+    color: #fff;
+    font-size: 2em;
+}
+
+.fl-panelBar:hover span.fl-icon-explorationTool {
+	transform:rotate(-10deg);
+    -ms-transform:rotate(-10deg); /* IE 9 */
+    -webkit-transform:rotate(-10deg); /* Safari and Chrome */
+}
+
+
+/* The Discovery Tool Panel */
+
+.fl-explorationTool  {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    line-height: 0; /* For GPII-173 */
+    z-index: 999; /* to ensure it is above the more-text details in FF */
+}
+
+.fl-explorationTool .fl-prefsEditor-separatedPanel-iframe {
+    border: none;
+}
+iframe::-webkit-scrollbar {
+    display: none;
+}
+
+.fl-header-title {
+	font-size: 1.2em;
+    font-weight: bold;
+    position: relative;
+    top: -0.25em;
+    color: green;
+}
+
+/* Font Icons */
+
+.fl-icon-tree, .fl-icon-atom {
+    font-family: 'DemoLogos';
+}
+.fl-icon-tree:before {
+	content: "\e001";
+	font-size: 2em;
+	color: limegreen;
+	text-shadow: 1px 1px 2px #000;
+}
+.fl-icon-tree:after {
+	content: "\e000";
+	font-size: 2em;
+	margin-left: -1.5em;
+	color: SaddleBrown;
+}
+.fl-icon-atom:before {
+	content: "\e002";
+	font-size: 6em;
+	float: left;
+	text-align: center;
+	margin-bottom: 0.15em;
+}
+
+.fl-icon-search, .fl-icon-prev, .fl-icon-next, .fl-icon-thumbsUp, .fl-icon-thumbsDown, .fl-icon-arrow, .fl-icon-light, .fl-icon-book {
+    font-family: 'DemoIcons';
+}
+.fl-icon-search:before {
+	content: "\e008";
+}
+.fl-icon-prev:before {
+	content: "\e000";
+    font-size: 0.9em;
+}
+.fl-icon-next:before {
+	content: "\e001";
+    font-size: 0.9em;
+}
+.fl-icon-thumbsUp:before {
+	content: "\e002";
+    font-size: 2em;
+}
+.fl-icon-thumbsDown:before {
+	content: "\e003";
+    font-size: 2em;
+}
+.fl-icon-arrow:before {
+	content: "\e004";
+	font-size: 0.6em;
+}
+.fl-icon-light:before {
+	content: "\e006";
+}
+.fl-icon-book:before {
+	content: "\e007";
+}
+
+/* Images */
+div[role="img"] {
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-bottom: 1em;
+}
+
+/* More Text */
+#main-header #main-header-content div.fl-explorationTool-moreText {
+    float: none;
+    display: inline;
+}
+#main-header #main-header-content div.fl-explorationTool-moreText.fl-hidden {
+    display: none;
+}
+#main-header #main-header-content div.fl-explorationTool-moreText details {
+    display: inherit;
+}
+div.main-content-image + .fl-explorationTool-moreText {
+    top: -1em; /* because these elements have a bottom margin of 1em */
+}
+
+#storm {
+    background-image:url('images/storm.png');
+    height: 18em;
+}
+.fl-theme-bw #storm { background-image:url('images/storm_bw.png'); }
+.fl-theme-lgdg #storm { background-image:url('images/storm_lgdg.png'); }
+
+#structure {
+    background-image:url('images/atomic_structure.svg');
+    height: 25em;
+}
+.fl-theme-bw #structure { background-image:url('images/atomic_structure_bw.svg'); }
+.fl-theme-lgdg #structure { background-image:url('images/atomic_structure_lgdg.svg'); }
+
+#sorbital {
+    background-image:url('images/sorbital.png');
+    width: 15em;
+    height: 15em;
+    margin-right: 1em;
+}
+.fl-theme-bw #sorbital { background-image:url('images/sorbital_bw.png'); }
+.fl-theme-lgdg #sorbital { background-image:url('images/sorbital_lgdg.png'); }
+
+#porbital {
+    background-image:url('images/porbital.png');
+    width: 19.7em;
+    height: 15em;
+}
+.fl-theme-bw #porbital { background-image:url('images/porbital_bw.png'); }
+.fl-theme-lgdg #porbital { background-image:url('images/porbital_lgdg.png'); }
+
+#energylevels {
+    background-image:url('images/energy_levels.svg');
+    width: 19.7em;
+    height: 15em;
+}
+.fl-theme-bw #energylevels { background-image:url('images/energy_levels_bw.svg'); }
+.fl-theme-lgdg #energylevels { background-image:url('images/energy_levels_lgdg.svg'); }
+
+
+/* Theming */
+
+.fl-theme-bw #main,
+.fl-theme-lgdg #main,
+.fl-theme-bw #main #content,
+.fl-theme-lgdg #main #content {
+    box-shadow: none;
+}
+
+.fl-theme-lgdg #main {
+	font-family: 'RobotoSlab';
+}
+
+.fl-theme-lgdg a { font-weight: normal !important; }
+
+.fl-theme-bw .main-content header #breadcrumbs,
+.fl-theme-lgdg .main-content header #breadcrumbs {
+    background: none;
+    box-shadow: none;
+    border-bottom: none;
+}
+
+.fl-theme-bw .main-content header #prevNext span,
+.fl-theme-lgdg .main-content header #prevNext span {
+    background: none;
+}
+
+/* Contrast theming for Panel Bar */
+.fl-theme-bw .fl-panelBar a,
+.fl-theme-lgdg .fl-panelBar a {
+	border: none;
+	background-color: transparent !important;
+	text-decoration: none !important;
+	/*height: 2em;
+	padding: 0.5em 3em 0em 0em;
+	padding: 0.7em 3em 0 0;*/
+}
+
+.fl-theme-lgdg .fl-panelBar a:focus,
+.fl-theme-bw .fl-panelBar a:focus {
+	outline: none !important;
+}
+
+.fl-theme-lgdg .fl-panelBar a:focus { border: 0.2em dashed #555 !important; }
+.fl-theme-bw .fl-panelBar a:focus {	border: 0.2em dashed #fff !important; }
+
+/* Contrast theming for Simplified content mode */
+.fl-explorationTool-content-simplified {
+    /* Add padding to bottom of simplified content so it's not obscured by the DT panel bar */
+    padding-bottom: 4em;
+}
+
+.fl-theme-bw .fl-icon-atom:before,
+.fl-theme-bw .fl-icon-tree:after,
+.fl-theme-bw .fl-icon-tree:before {
+    border-color: #000;
+    color: #000;
+}
+
+.fl-theme-bw .fl-panelBar span.fl-icon-explorationTool:before { color: #fff; }
+.fl-theme-bw .fl-icon-tree:before { text-shadow: none; }
+
+.fl-theme-lgdg .fl-icon-atom:before,
+.fl-theme-lgdg .fl-icon-tree:after,
+.fl-theme-lgdg .fl-icon-tree:before {
+    border-color: #BDBDBB;
+    color: #BDBDBB;
+}
+
+.fl-theme-lgdg .fl-panelBar span.fl-icon-explorationTool:before { color: #555; background-color:#BDBDBB; }
+.fl-theme-lgdg .fl-icon-tree:before { text-shadow: 1px 1px 0 #000; }
+
+.fl-theme-lgdg #main-header {
+    box-shadow: 0 3px 0 #BDBDBB;
+}
+
+.fl-theme-bw #main-header {
+    box-shadow: 0 3px 0 #000;
+}
+
+
+/* Low an High Contrast Prev and Next buttons */
+.fl-theme-lgdg .fl-icon-prev,
+.fl-theme-bw .fl-icon-prev { margin-right: 3px;}
+
+.fl-theme-bw .main-content header #prevNext span {
+    background-color: #000 !important;
+    border: 2px solid #fff !important;
+    color: #fff !important;
+    box-shadow: none;
+}
+
+.fl-theme-lgdg .main-content header #prevNext span {
+    background-color: #BDBDBB !important;
+    border: 2px solid #555 !important;
+    color: #555 !important;
+    box-shadow: none;
+}
+
+.fl-theme-bw   .main-content header #prevNext a:focus span { outline: 2px solid #000; }
+.fl-theme-lgdg .main-content header #prevNext a:focus span { outline: 2px solid #BDBDBB; }
+
+/* High and Low Contrast Search input */
+.fl-theme-lgdg #main-header input[type=search] {
+	background-color: #BDBDBB !important;
+	color: #555 !important;
+	border: 2px solid #555 !important;
+}
+
+.fl-theme-bw #main-header input[type=search] {
+	background-color: #000 !important;
+	color: #fff !important;
+	border: 2px solid #fff !important;
+}
+
+
+/* Simplify Content */
+.fl-simplify {
+	background: #fff;
+}
+
+.fl-simplify #main,
+.fl-simplify #main #content{
+	border: 0;
+    box-shadow: none;
+    margin-left: 0;
+    padding: 0;
+}
+
+
+@media all and (max-width: 639px) {
+	.fl-simplify #main {
+		margin-right: 0;
+		margin-left: 0;
+	}
+	.fl-simplify .main-content {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+}
+
+@media all and (min-width: 640px) {
+	.fl-simplify #main {
+		margin-right: 50px;
+		margin-left: 50px;
+	}
+}
+
+@media all and (max-width:589px) {
+	.fl-simplify .main-content {
+		width: 100%;
+	}
+}
+
+@media all and (min-width: 590px) {
+	.fl-simplify .main-content {
+		width: 590px;
+	}
+}
+
+.fl-simplify #storm,
+.fl-simplify #structure,
+.fl-simplify #energylevels,
+.fl-simplify #porbital,
+.fl-simplify #sorbital {
+	width: 100%;
+	background-size: 100% auto;
+}
+
+.fl-simplify .demo-orbitals {width: 100%;}
+.fl-simplify #sorbital 		{height: 24.2em;}
+.fl-simplify #porbital 		{height: 18.5em;}
+.fl-simplify #structure 	{height: 25.4em;}
+.fl-simplify #energylevels 	{height: 26em;  }
