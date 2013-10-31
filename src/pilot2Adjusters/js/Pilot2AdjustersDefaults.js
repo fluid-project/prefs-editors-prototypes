@@ -38,9 +38,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             selectors: {
-                saveButton: ".gpiic-prefsEditor-save",
-                resetButton: ".gpiic-prefsEditor-reset",
-                cancelButton: ".gpiic-prefsEditor-cancel"
+                saveButton: ".flc-prefsEditor-save",
+                resetButton: ".flc-prefsEditor-reset",
+                cancelButton: ".flc-prefsEditor-cancel"
             },
             strings: {
                 saveButtonText: {
