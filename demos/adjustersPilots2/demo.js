@@ -27,7 +27,7 @@ var demo = demo || {};
     
     demo.instantiatePrefs = function (container, compOpts, prefsType, language) {
         var baseOpts = {
-            uioType: prefsType,
+            prefsEditorType: prefsType,
             components: {
                 prefsEditorLoader: {
                     options: {

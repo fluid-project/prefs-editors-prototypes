@@ -48,6 +48,10 @@ body {
     text-transform: capitalize;
 }
 
+.gpii-uiOptions .headerTitle::first-letter {
+    text-transform: lowercase;
+}
+
 .gpii-prefsEditor label {
     font-size: 0.8em;
 }
@@ -403,27 +407,29 @@ input[type=checkbox], input[type=radio] {
 /*
     Style for magnifier follows checked font icons
 */
-.gpii-increaseSize-magnifierFollowsIconCheck {
+.gpii-increaseSize-iconCheck {
     background-color: #FFFFFF;
-    border: 3px double #636C7C;
+    border: 1px solid #636C7C;
     border-radius: 6px 6px 6px 6px;
     color: #FFFFFF;
     font-size: 1.2em;
     height: 1.2em;
-    margin-left: 3.6em;
-    margin-top: -2.1em;
     position: relative;
     width: 1.2em;
 }
 
-input:checked + .gpii-increaseSize-magnifierFollowsLabel > .gpii-increaseSize-magnifierFollowsIconCheck {
-    padding-right: 0.1em;
-    padding-top: 0.1em;
-    border: 2px solid;
+.gpii-increaseSize-magnifierFollowsIconCheck {
+    margin-left: 3.6em;
+    margin-top: -2.1em;
+}
+
+input:checked + label > .gpii-increaseSize-iconCheck,
+input:checked + label > div > label > .gpii-increaseSize-iconCheck {
     background-color: 636C7C;
 }
 
-input:checked + .gpii-increaseSize-magnifierFollowsLabel > .gpii-increaseSize-magnifierFollowsIconCheck:before {
+input:checked + label > .gpii-increaseSize-iconCheck:before,
+input:checked + label > div > label > .gpii-increaseSize-iconCheck:before {
     content: "\e00a";
 }
 
@@ -681,13 +687,40 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
     border: 1px solid;
 }
 
-.gpii-prefsEditor-theme-yb .gpii-increaseSize-magnifierFollowsIconCheck {
-    margin-top: -1.9em;
-}
-
 /*
     Style for sept-12 font icons
 */
 .gpii-prefsEditor-adjusterIcons-sept-12 {
     font-family: 'sept-12';
+}
+
+/*
+    Style for magnifier.invertColours adjuster
+*/
+.gpiic-increaseSize-magnifierInvertColours > .gpii-increaseSize-magnifierInvertColours-area > .gpii-increaseSize-magnifierInvertColoursIcon:before {
+    content: "\e002";
+    font-size: 70px !important;
+}
+
+.gpii-increaseSize-magnifierInvertColours-area {
+	cursor: pointer;
+	background-color: white;
+}
+
+.gpii-increasesize-magnifierInvertColoursDescription {
+	font-size: 1.2em !important;
+	width: 150px !important;
+}
+
+.gpii-iconCheckContainer {
+    display:table;
+	margin-left: 80px;
+    height: 70px;
+}
+
+.gpii-table-cell-valign-label {
+	cursor: inherit;
+	display: table-cell !important;
+	vertical-align: middle;
+	font-size: 1.2em !important;
 }
