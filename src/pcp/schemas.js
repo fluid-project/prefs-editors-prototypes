@@ -28,6 +28,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "default": 80,
             "minimum": 0,
             "divisibleBy": 10
+        },
+        "gpii.primarySchema.screenReaderBrailleOutput": {
+            "type": "boolean",
+            "default": false
         }
     };
 
@@ -63,6 +67,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "speakText.panel.volume",
                 "template": "%prefix/volumeTemplate.html",
                 "container": ".volume",
+                "message": "%prefix/speakText.json"
+            }
+        },
+        "screenReaderBrailleOutput": {
+            "type": "gpii.primarySchema.screenReaderBrailleOutput",
+            "panel": {
+                "type": "speakText.panel.screenReaderBrailleOutput",
+                "template": "%prefix/brailleTemplate.html",
+                "container": ".braille",
                 "message": "%prefix/speakText.json"
             }
         }

@@ -153,4 +153,17 @@ var fluid_1_5 = fluid_1_5 || {};
         path: "value"
     });
 
+
+    fluid.defaults("gpii.onOffSwitch", {
+        gradeNames: ["fluid.viewComponent", "autoInit"],
+        selectors: {
+            label: ".onoff-label",
+            input: ".onoff-input",
+            description: ".onoff-description"
+        }
+    });
+
+
+
+
 })(jQuery, fluid_1_5);

@@ -15,11 +15,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         gradeNames: ["fluid.prefs.fullNoPreview", "autoInit"],
         prefsEditor: {
             partiallyExpandedSlideSpeed: 500,
-            fullyExpandedSlideSpeed: 600,
 
             model: {
-                partialAdjustersVisibility: false,
-                // extraAdjustersVisibility: false
+                partialAdjustersVisibility: false
             },
             events: {
                 onShowPartialAdjusters: null,
@@ -127,7 +125,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 updateModelAllHidden: {
                     "funcName": "gpii.speakText.updateModelAllHidden",
-                    "args": ["{speakText.panel.CollectivePanel}"]
+                    "args": ["{that}"]
                 }
             },
             selectors: {
@@ -136,9 +134,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 speakTextHeader: ".gpii-speakTextPresetButton-label",
                 speakTextTickIcon: ".white-tick-icon",
 
-                saveAndApply: ".flc-uiOptions-save",
-                resetAndApply: ".flc-uiOptions-reset",
-                cancel: ".flc-uiOptions-cancel"
+                saveAndApply: ".flc-prefsEditor-save",
+                resetAndApply: ".flc-prefsEditor-reset",
+                cancel: ".flc-prefsEditor-cancel"
             },
             selectorsToIgnore: ["preferencesSwitchSpeakText", "speakTextPartialAdjusters", "speakTextHeader", "speakTextTickIcon",  "saveAndApply", "resetAndApply", "cancel"],
             styles: {
@@ -184,8 +182,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     };
 
-    gpii.speakText.updateModelAllHidden = function (panel) {
-        panel.applier.requestChange("partialAdjustersVisibility", false);
+    gpii.speakText.updateModelAllHidden = function (that) {
+        that.applier.requestChange("partialAdjustersVisibility", false);
     };
 
     gpii.speakText.showOrHideDependingOnState = function (that, showEvent, hideEvent) {

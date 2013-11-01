@@ -128,7 +128,7 @@ textarea:focus, input:focus {
 #gpii-speakText-brailleOnOff {
     font-size:70%;
     float:left;
-    margin-left:125px;
+    margin-left:87px;
 }
 
 input[type="radio"] {
@@ -459,7 +459,7 @@ div.ui-tooltip-content: {
     padding-right: 15px; /* add padding to account for vertical scrollbar */
 }
 
-.fl-uiOptions .fl-uiOptions-onoff .fl-uiOptions-switch {
+.fl-prefsEditor .fl-prefsEditor-onoff .fl-prefsEditor-switch {
     font-family: Arial;
     border-radius:50px;
     border: 1px solid #D7DCDD;
@@ -476,7 +476,7 @@ div.ui-tooltip-content: {
     font-weight: 700;
 }
 
-.fl-uiOptions .fl-uiOptions-onoff input {
+.fl-prefsEditor .fl-prefsEditor-onoff input {
     border: 0 none;
     clip: rect(0px, 0px, 0px, 0px);
     height: 1px;
@@ -487,25 +487,25 @@ div.ui-tooltip-content: {
     width: 1px;
 }
 
-.fl-uiOptions .fl-uiOptions-onoff input:focus + label {
+.fl-prefsEditor .fl-prefsEditor-onoff input:focus + label {
     outline: 1px solid black;
 }
 
-.fl-uiOptions .fl-uiOptions-onoff input:checked + label .fl-uiOptions-switch {
+.fl-prefsEditor .fl-prefsEditor-onoff input:checked + label .fl-prefsEditor-switch {
     padding-left: 3em;
     width: 2em;
     background-color: rgb(23, 169, 184);
     box-shadow: -1em 1.1em 0.1em 0 rgba(172, 216, 92, 0.00) inset;
 }
 
-.fl-uiOptions .fl-uiOptions-onoff input + label [data-checkboxStateOn]:before {
+.fl-prefsEditor .fl-prefsEditor-onoff input + label [data-checkboxStateOn]:before {
     content: attr(data-checkboxStateOn);
 }
-.fl-uiOptions .fl-uiOptions-onoff input + label [data-checkboxStateOff]:after {
+.fl-prefsEditor .fl-prefsEditor-onoff input + label [data-checkboxStateOff]:after {
     content: attr(data-checkboxStateOff);
 }
 
-.fl-uiOptions .fl-uiOptions-onoff input + label .fl-uiOptions-switch:before {
+.fl-prefsEditor .fl-prefsEditor-onoff input + label .fl-prefsEditor-switch:before {
     color: #fff;
     border: 1px solid rgb(0, 55, 85);
     border-radius: 150px;
@@ -531,14 +531,14 @@ div.ui-tooltip-content: {
     box-shadow: 0.1em 0.1em 0.0em #444;
 }
 
-.fl-uiOptions .fl-uiOptions-onoff input + label .fl-uiOptions-switch:after {
+.fl-prefsEditor .fl-prefsEditor-onoff input + label .fl-prefsEditor-switch:after {
     float:left;
     position:relative;
     top: -0.76em;
     left: 0.5em;
 }
 
-.fl-uiOptions .fl-uiOptions-onoff .fl-uiOptions-switch-inner {
+.fl-prefsEditor .fl-prefsEditor-onoff .fl-prefsEditor-switch-inner {
     border: 0.1px solid #493A30;
     border-radius: 50px;
     width: 0.9em;
@@ -553,12 +553,12 @@ div.ui-tooltip-content: {
     display:inline-block;
 }
 
-.fl-uiOptions .fl-uiOptions-onoff input:checked + label .fl-uiOptions-switch .fl-uiOptions-switch-inner {
+.fl-prefsEditor .fl-prefsEditor-onoff input:checked + label .fl-prefsEditor-switch .fl-prefsEditor-switch-inner {
     top:-1.5em;
     left: 0.56em;
 }
 
-.fl-uiOptions label {
+.fl-prefsEditor label {
     text-transform: none;
     font-size: 1.2em;
 }
