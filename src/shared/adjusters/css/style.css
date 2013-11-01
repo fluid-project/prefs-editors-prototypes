@@ -22,6 +22,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'icomoon';
+    src:url('../fonts/icomoon.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /*
     General preferences styling
 */
@@ -676,6 +683,10 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
 /*
     Style for magnifier.invertColours adjuster
 */
+.gpiic-increaseSize-magnifierInvertColours > .gpii-iconCheckAdjusterArea > .gpii-iconCheckAdjusterIcon {
+    font-family: 'icomoon';
+}
+
 .gpiic-increaseSize-magnifierInvertColours > .gpii-iconCheckAdjusterArea > .gpii-iconCheckAdjusterIcon:before {
     content: "\e002";
     font-size: 70px !important;
@@ -727,3 +738,23 @@ input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
 	width: 100%;
 	padding-right: 10px;
 }
+
+/*
+    Style for icomoon font icons
+*/
+.gpii-prefsEditor-adjusterIcons-icomoon {
+    font-family: 'icomoon';
+}
+
+/*
+    Style for showCrosshairs adjuster
+*/
+.gpiic-increaseSize-showCrosshairs > .gpii-iconCheckAdjusterArea > .gpii-iconCheckAdjusterIcon {
+    font-family: 'icomoon';
+}
+
+.gpiic-increaseSize-showCrosshairs > .gpii-iconCheckAdjusterArea > .gpii-iconCheckAdjusterIcon:before {
+    content: "\e00f";
+    font-size: 70px !important;
+}
+
