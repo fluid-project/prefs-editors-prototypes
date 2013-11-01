@@ -38,7 +38,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "panel": {
                 "type": "gpii.prefs.panel.magnifier.invertColours",
                 "container": ".gpiic-increaseSize-magnifierInvertColours",
-                "template": "%prefix/UIOptionsTemplate-magnifierInvertColours.html",
+                "template": "%prefix/UIOptionsTemplate-iconCheckAdjuster.html",
                 "message": "%prefix/magnifierInvertColours.json"
             }
         }        
