@@ -35,7 +35,7 @@ body {
 .gpii-prefsEditor-preferenceGroup {
     background:#ECEFEF;
     width: 340px;
-    min-height: 100px;
+    //min-height: 100px;
 }
 
 .gpii-prefsEditor-category {
@@ -410,12 +410,12 @@ input[type=checkbox], input[type=radio] {
 .gpii-increaseSize-iconCheck {
     background-color: #FFFFFF;
     border: 1px solid #636C7C;
-    border-radius: 6px 6px 6px 6px;
+    border-radius: 4px 4px 4px 4px;
     color: #FFFFFF;
-    font-size: 1.2em;
-    height: 1.2em;
+    font-size: calc(2.3em + 2px);
+    height: 1em;
     position: relative;
-    width: 1.2em;
+    width: calc(1em + 2px);
 }
 
 .gpii-increaseSize-magnifierFollowsIconCheck {
@@ -708,12 +708,11 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
 }
 
 .gpii-increasesize-magnifierInvertColoursDescription {
-	font-size: 1.2em !important;
-	width: 150px !important;
+	font-size: 1.5em !important;
 }
 
 .gpii-iconCheckContainer {
-    display:table;
+	display:table;
 	margin-left: 80px;
     height: 70px;
 }
@@ -722,5 +721,6 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
 	cursor: inherit;
 	display: table-cell !important;
 	vertical-align: middle;
-	font-size: 1.2em !important;
+	width: 100%;
+	padding-right: 10px;
 }
