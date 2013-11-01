@@ -17,7 +17,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "boolean",
             "default": true
         },
-        "gpii.primarySchema.speechRate": {
+        "gpii.primarySchema.wordsSpokenPerMinute": {
             "type": "number",
             "default": 130,
             "minimum": 0,
@@ -40,24 +40,30 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "screenReaderTTSEnabled": {
             "type": "gpii.primarySchema.screenReaderTTSEnabled",
             "panel": {
-                "type": "speakText.panel.CollectivePanel",
-                "template": "%prefix/speakTextCollectiveTemplate.html",
-                "container": ".speakText-collectiveContainer",
+                "type": "speakText.panel.screenReaderTTSEnabled",
+                "template": "%prefix/speakText.html",
+                "container": ".speakText",
                 "message": "%prefix/speakText.json"
             }
         },
 
-        "speechRate": {
-            "type": "gpii.primarySchema.speechRate",
+        "wordsSpokenPerMinute": {
+            "type": "gpii.primarySchema.wordsSpokenPerMinute",
             "panel": {
-                "type": "speakText.panel.CollectivePanel"
+                "type": "speakText.panel.wordsSpokenPerMinute",
+                "template": "%prefix/wordsSpokenPerMinute.html",
+                "container": ".words-spoken-per-minute",
+                "message": "%prefix/speakText.json"
             }
         },
 
         "volume": {
             "type": "gpii.primarySchema.volume",
             "panel": {
-                "type": "speakText.panel.CollectivePanel"
+                "type": "speakText.panel.volume",
+                "template": "%prefix/volumeTemplate.html",
+                "container": ".volume",
+                "message": "%prefix/speakText.json"
             }
         }
     };

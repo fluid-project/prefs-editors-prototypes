@@ -33,26 +33,47 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         selectors: {
             screenReaderTTSEnabled: ".gpiic-speakText-screenReaderTTSEnabled",
             screenReaderTTSEnabledLabel: ".gpiic-speakText-screenReaderTTSEnabled-label"
+        },
+        protoTree: {
+            screenReaderTTSEnabled: "${screenReaderTTSEnabled}",
+            screenReaderTTSEnabledLabel: {messagekey: "screenReaderTTSEnabledLabel"}
         }
     });
 
-    fluid.defaults("speakText.panel.speechRate", {
+    fluid.defaults("speakText.panel.wordsSpokenPerMinute", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
-            "gpii.primarySchema.speechRate": {
+            "gpii.primarySchema.wordsSpokenPerMinute": {
                 "model.value": "default", /* WARNING
                 A temporary solution is to store "default" in model.VALUE
                 With the separation into smaller components this actually
                 won't be an issue */
-                "controlValues.speechRate.min": "minimum",
-                "controlValues.speechRate.step": "divisibleBy"
+                "controlValues.wordsSpokenPerMinute.min": "minimum",
+                "controlValues.wordsSpokenPerMinute.step": "divisibleBy"
             }
         },
         selectors: {
-            speechRate: ".gpiic-speakText-speechRate",
-            speechRateLabel: ".gpiic-speakText-speechRate-label",
-            speechRateMinus: ".gpiic-speakText-speechRate-minus",
-            speechRatePlus: ".gpiic-speakText-speechRate-plus"
+            wordsSpokenPerMinute: ".gpiic-speakText-wordsSpokenPerMinute",
+            wordsSpokenPerMinuteLabel: ".gpiic-speakText-wordsSpokenPerMinute-label",
+            wordsSpokenPerMinuteMinus: ".gpiic-speakText-wordsSpokenPerMinute-minus",
+            wordsSpokenPerMinutePlus: ".gpiic-speakText-wordsSpokenPerMinute-plus"
+        },
+        protoTree: {
+            preferencesSwitchSpeakText: {messagekey: "speakTextPresetButtonLabel"},
+
+            wordsSpokenPerMinute: {
+                decorators: {
+                    type: "fluid",
+                    func: "gpii.uiOptions.textfieldStepper",
+                    options: {
+                        range: "{that}.options.controlValues.wordsSpokenPerMinute",
+                        path: "value"
+                    }
+                }
+            },
+            wordsSpokenPerMinuteLabel: {messagekey: "wordsSpokenPerMinuteLabel"},
+            wordsSpokenPerMinuteMinus: {messagekey: "wordsSpokenPerMinuteMinus"},
+            wordsSpokenPerMinutePlus: {messagekey: "wordsSpokenPerMinutePlus"}
         }
     });
 
@@ -60,7 +81,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.volume": {
-                "model.value2": "default",
+                "model.value": "default",
                 "controlValues.volume.min": "minimum",
                 "controlValues.volume.step": "divisibleBy"
             }
@@ -70,6 +91,21 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             volumeLabel: ".gpiic-speakText-volume-label",
             volumeMinus: ".gpiic-speakText-volume-minus",
             volumePlus: ".gpiic-speakText-volume-plus"
+        },
+        protoTree: {
+            volume: {
+                decorators: {
+                    type: "fluid",
+                    func: "gpii.uiOptions.textfieldStepper",
+                    options: {
+                        range: "{that}.options.controlValues.volume",
+                        path: "value"
+                    }
+                }
+            },
+            volumeLabel: {messagekey: "volumeLabel"},
+            volumeMinus: {messagekey: "wordsSpokenPerMinuteMinus"},
+            volumePlus: {messagekey: "wordsSpokenPerMinutePlus"}
         }
     });
 

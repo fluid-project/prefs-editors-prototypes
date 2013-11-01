@@ -14,12 +14,74 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.speakText", {
         gradeNames: ["fluid.prefs.fullNoPreview", "autoInit"],
         prefsEditor: {
-            selectors: {
-                saveAndApply: ".flc-uiOptions-save",
-                resetAndApply: ".flc-uiOptions-reset",
-                cancel: ".flc-uiOptions-cancel"
+            partiallyExpandedSlideSpeed: 500,
+            fullyExpandedSlideSpeed: 600,
+
+            model: {
+                partialAdjustersVisibility: false,
+                // extraAdjustersVisibility: false
+            },
+            events: {
+                onShowPartialAdjusters: null,
+                onHidePartialAdjusters: null,
+                onHideSpeakTextTickIcon: null
             },
             listeners: {
+                "onHideSpeakTextTickIcon.hideTick": {
+                    "this": "{that}.dom.speakTextTickIcon",
+                    "method": "hide"
+                },
+                "onReady.bindEventPreferenceSwitchSpeakText": {
+                    "this": "{that}.dom.preferencesSwitchSpeakText",
+                    "method": "change",
+                    "args": ["{that}.updateModelValue"]
+                },
+                "onCreate.addPartialVisibilityListener": {
+                    "listener": "{that}.applier.modelChanged.addListener",
+                    "args": ["partialAdjustersVisibility", "{that}.showHidePartial"]
+                },
+                "onReady.setTextSpeakTextHeader": {
+                    "this": "{that}.dom.speakTextHeader",
+                    "method": "text",
+                    "args": ["{that}.options.strings.speakTextHeader"]
+                },
+                "onShowPartialAdjusters.showPartialAdjusters": {
+                    "this": "{that}.dom.speakTextPartialAdjusters",
+                    "method": "slideDown",
+                    "args": ["{that}.options.partiallyExpandedSlideSpeed"]
+                },
+                "onShowPartialAdjusters.showWhiteTickIcon": {
+                    "this": "{that}.dom.speakTextTickIcon",
+                    "method": "show"
+                },
+                "onShowPartialAdjusters.setHeaderTextBold.addBoldClass": {
+                    "this": "{that}.dom.speakTextHeader",
+                    "method": "addClass",
+                    "args": ["{that}.options.styles.boldText"]
+                },
+                "onShowPartialAdjusters.setHeaderTextBold.removeNormalClass": {
+                    "this": "{that}.dom.speakTextHeader",
+                    "method": "removeClass",
+                    "args": ["{that}.options.styles.normalText"]
+                },
+                "onHidePartialAdjusters.hideAdjusters": {
+                    "this": "{that}.dom.speakTextPartialAdjusters",
+                    "method": "slideUp",
+                    "args": ["{that}.options.partiallyExpandedSlideSpeed"]
+                },
+                "onHidePartialAdjusters.setHeaderTextNormal.addNormalClass": {
+                    "this": "{that}.dom.speakTextHeader",
+                    "method": "addClass",
+                    "args": ["{that}.options.styles.normalText"]
+                },
+                "onHidePartialAdjusters.setHeaderTextNormal.removeBoldClass": {
+                    "this": "{that}.dom.speakTextHeader",
+                    "method": "removeClass",
+                    "args": ["{that}.options.styles.boldText"]
+                },
+                "onHidePartialAdjusters.hideTick": {
+                    "funcName": "{that}.events.onHideSpeakTextTickIcon.fire"
+                },
                 "onReady.setSaveAndApplyText": {
                     "this": "{that}.dom.saveAndApply",
                     "method": "prop",
@@ -52,12 +114,44 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             invokers: {
+                updateModelValue: {
+                    "funcName": "gpii.speakText.updateModelHeaderClicked",
+                    "args": ["{that}"]
+                },
+                showHidePartial: {
+                    "funcName": "gpii.speakText.showOrHideDependingOnState",
+                    "args": ["{that}",
+                             "{that}.events.onShowPartialAdjusters.fire",
+                             "{that}.events.onHidePartialAdjusters.fire"
+                        ]
+                },
                 updateModelAllHidden: {
                     "funcName": "gpii.speakText.updateModelAllHidden",
                     "args": ["{speakText.panel.CollectivePanel}"]
                 }
             },
+            selectors: {
+                preferencesSwitchSpeakText: "#presetButton",
+                speakTextPartialAdjusters: ".gpii-speakText-partially-expanded",
+                speakTextHeader: ".gpii-speakTextPresetButton-label",
+                speakTextTickIcon: ".white-tick-icon",
+
+                saveAndApply: ".flc-uiOptions-save",
+                resetAndApply: ".flc-uiOptions-reset",
+                cancel: ".flc-uiOptions-cancel"
+            },
+            selectorsToIgnore: ["preferencesSwitchSpeakText", "speakTextPartialAdjusters", "speakTextHeader", "speakTextTickIcon",  "saveAndApply", "resetAndApply", "cancel"],
+            styles: {
+                boldText: "bold-font-weight",
+                normalText: "normal-font-weight"
+            },
             strings: {
+                speakTextHeader: {
+                    expander: {
+                        func: "gpii.speakText.lookupMsg",
+                        args: ["{prefsEditorLoader}.msgBundle", "speakTextPresetButtonLabel"]
+                    }
+                },
                 saveAndApply: {
                     expander: {
                         func: "gpii.speakText.lookupMsg",
@@ -80,35 +174,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.speakText.updateModelHeaderClicked = function (that, partialVisibleNOTNEEDED) {
-        // if (extraVisible) {
-        //     that.applier.requestChange("partialAdjustersVisibility", false);
-        //     that.applier.requestChange("extraAdjustersVisibility", false);
-        // } else 
+    gpii.speakText.updateModelHeaderClicked = function (that) {
         var partialVisible = that.model.partialAdjustersVisibility;
-        // alert("vleze se v updateModelHeaderClicked i partialVisible e " + partialVisible);
-        // alert("v modela:" + that.model.partialAdjustersVisibility)
-        if (partialVisible) {
-            // alert("v modela:" + that.model.partialAdjustersVisibility)
-            that.applier.requestChange("partialAdjustersVisibility", false);
-            // alert("v modela:" + that.model.partialAdjustersVisibility)
-        } else {
-            // alert("v modela:" + that.model.partialAdjustersVisibility)
-            that.applier.requestChange("partialAdjustersVisibility", true);
-            // alert("v modela:" + that.model.partialAdjustersVisibility)
-        }
 
-        hook = that;
+        if (partialVisible) {
+            that.applier.requestChange("partialAdjustersVisibility", false);
+        } else {
+            that.applier.requestChange("partialAdjustersVisibility", true);
+        }
     };
 
-    // gpii.speakText.updateModelMoreLessClicked = function (that, extraVisible) {
-    //     that.applier.requestChange("extraAdjustersVisibility", !extraVisible);
-    // };
-
     gpii.speakText.updateModelAllHidden = function (panel) {
-        // alert("tuka se vlese nekak si")
         panel.applier.requestChange("partialAdjustersVisibility", false);
-        // panel.applier.requestChange("extraAdjustersVisibility", false);
     };
 
     gpii.speakText.showOrHideDependingOnState = function (that, showEvent, hideEvent) {
