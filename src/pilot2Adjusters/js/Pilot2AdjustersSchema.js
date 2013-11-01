@@ -20,6 +20,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "magnifier.invertColours": {
             "type": "boolean",
             "default": false
+        },
+        "showCrosshairs": {
+            "type": "boolean",
+            "default": false
         }
     };
 
@@ -41,6 +45,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "template": "%prefix/UIOptionsTemplate-iconCheckAdjuster.html",
                 "message": "%prefix/magnifierInvertColours.json"
             }
-        }        
+        },
+        "showCrosshairs": {
+            "type": "showCrosshairs",
+            /*"enactor": {
+                "type": "gpii.uiOptions.enactors.contrast"
+            },*/
+            "panel": {
+                "type": "gpii.prefs.panel.showCrosshairs",
+                "container": ".gpiic-increaseSize-showCrosshairs",
+                "template": "%prefix/UIOptionsTemplate-iconCheckAdjuster.html",
+                "message": "%prefix/showCrosshairs.json"
+            }
+        }
     };
 })(jQuery, fluid);
