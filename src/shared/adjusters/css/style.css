@@ -407,30 +407,9 @@ input[type=checkbox], input[type=radio] {
 /*
     Style for magnifier follows checked font icons
 */
-.gpii-increaseSize-iconCheck {
-    background-color: #FFFFFF;
-    border: 1px solid #636C7C;
-    border-radius: 4px 4px 4px 4px;
-    color: #FFFFFF;
-    font-size: calc(2.3em + 2px);
-    height: 1em;
-    position: relative;
-    width: calc(1em + 2px);
-}
-
 .gpii-increaseSize-magnifierFollowsIconCheck {
     margin-left: 3.6em;
     margin-top: -2.1em;
-}
-
-input:checked + label > .gpii-increaseSize-iconCheck,
-input:checked + label > div > label > .gpii-increaseSize-iconCheck {
-    background-color: 636C7C;
-}
-
-input:checked + label > .gpii-increaseSize-iconCheck:before,
-input:checked + label > div > label > .gpii-increaseSize-iconCheck:before {
-    content: "\e00a";
 }
 
 /*
@@ -697,21 +676,45 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
 /*
     Style for magnifier.invertColours adjuster
 */
-.gpiic-increaseSize-magnifierInvertColours > .gpii-increaseSize-magnifierInvertColours-area > .gpii-increaseSize-magnifierInvertColoursIcon:before {
+.gpiic-increaseSize-magnifierInvertColours > .gpii-iconCheckAdjusterArea > .gpii-iconCheckAdjusterIcon:before {
     content: "\e002";
     font-size: 70px !important;
 }
 
-.gpii-increaseSize-magnifierInvertColours-area {
+/*
+    Style for icon check adjuster
+*/
+.gpii-iconCheckAdjusterCheckIcon {
+    background-color: #FFFFFF;
+    border: 1px solid #636C7C;
+    border-radius: 4px 4px 4px 4px;
+    color: #FFFFFF;
+    font-size: calc(2.3em + 2px);
+    height: 1em;
+    position: relative;
+    width: calc(1em + 2px);
+}
+
+input:checked + label > .gpii-iconCheckAdjusterCheckIcon,
+input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon {
+    background-color: 636C7C;
+}
+
+input:checked + label > .gpii-iconCheckAdjusterCheckIcon:before,
+input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
+    content: "\e00a";
+}
+
+.gpii-iconCheckAdjusterArea {
 	cursor: pointer;
 	background-color: white;
 }
 
-.gpii-increasesize-magnifierInvertColoursDescription {
+.gpii-iconCheckAdjusterDescription {
 	font-size: 1.5em !important;
 }
 
-.gpii-iconCheckContainer {
+.gpii-iconCheckAdjusterContainer {
 	display:table;
 	margin-left: 80px;
     height: 70px;

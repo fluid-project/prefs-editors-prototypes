@@ -23,8 +23,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
-            preferenceSwitchMagnifierInvertColours: "#preferenceSwitchMagnifierInvertColours",
-            magnifierInvertColoursDescription: ".gpiic-increaseSize-magnifierInvertColours-description"
+            preferenceSwitchMagnifierInvertColours: "#preferenceSwitchIconCheckAdjuster",
+            magnifierInvertColoursDescription: ".gpiic-iconCheckAdjusterDescription"
         },
         protoTree: {
             preferenceSwitchMagnifierInvertColours: "${value}",
