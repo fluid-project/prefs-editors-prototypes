@@ -732,6 +732,7 @@ input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
 	cursor: pointer;
 	display: block;
 	background-color: white;
+	margin: 2px;
 }
 
 .gpii-iconCheckAdjusterDescription {
