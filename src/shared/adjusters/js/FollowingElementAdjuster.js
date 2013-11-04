@@ -18,34 +18,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.prefs.panel.followingElement", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         listeners: {
-            afterRender: "{that}.followingElementStyle",
-            "afterRender.setFollowingElementHeading": {
-                "this": "{that}.dom.followingElementHeading",
-                "method": "text",
-                "args": ["{that}.options.strings.followingElementHeading"]
-            }
+            afterRender: "{that}.followingElementStyle"
         },
         selectors: {
-            followingElementRow: ".gpiic-followingElementRow",
-            followingElementLabel: ".gpiic-followingElementLabel",
-            followingElementInput: ".gpiic-followingElementInput",
             followingElementHeading: ".gpiic-followingElementHeading"
         },
-        selectorsToIgnore: ["followingElementHeading"],
-        protoTree: {
-            expander: {
-                type: "fluid.renderer.selection.inputs",
-                rowID: "followingElementRow",
-                labelID: "followingElementLabel",
-                inputID: "followingElementInput",
-                selectID: "followingElement-radio",
-                tree: {
-                    optionnames: "${{that}.options.strings.followingElement}",
-                    optionlist: "${{that}.options.controlValues.followingElement}",
-                    selection: "${value}"
-                }
-            }
-        },
+
         strings: {
             followingElement: {
                 expander: {
@@ -54,7 +32,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             }
         },
-        repeatingSelectors: ["followingElementRow"],
         controlValues: {
             followingElement: ["mousecursor", "textcursor", "keyboardfocus"]
         },
@@ -67,17 +44,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "       <div class='gpii-prefsEditor-adjusterIcons gpii-prefsEditor-adjusterIcons-sept-12 gpii-iconCheckAdjusterCheckIcon'></div>" +
                     "   </label>" +
                     "</div>"
-        },
-        invokers: {
-            followingElementStyle: {
-                funcName: "gpii.prefs.panel.followingElement.style",
-                args: [
-                    "{that}.dom.followingElementLabel", "{that}.options.strings.followingElement",
-                    "{that}.options.markup.followingElementLabel", "{that}.options.controlValues.followingElement",
-                    "{that}.options.classnameMap.followingElement"
-                ],
-                dynamic: true
-            }
         }
     });
 

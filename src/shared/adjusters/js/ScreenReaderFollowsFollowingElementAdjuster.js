@@ -23,12 +23,36 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "controlValues.followingElement": "enum"
             }
         },
-        strings: {
-            followingElementHeading: {
-                expander: {
-                    func: "gpii.lookupMsg",
-                    args: ["{prefsEditorLoader}.msgBundle", "screenReaderFollowsLabel"]
+        selectors: {
+            screenReaderTrackingRow: ".gpiic-followingElementRow",
+            screenReaderTrackingLabel: ".gpiic-followingElementLabel",
+            screenReaderTrackingInput: ".gpiic-followingElementInput"
+        },
+        repeatingSelectors: ["screenReaderTrackingRow"],
+        protoTree: {
+            followingElementHeading: {messagekey: "screenReaderFollowsLabel"},
+            expander: {
+                type: "fluid.renderer.selection.inputs",
+                rowID: "screenReaderTrackingRow",
+                labelID: "screenReaderTrackingLabel",
+                inputID: "screenReaderTrackingInput",
+                selectID: "screenReaderTracking-radio",
+                tree: {
+                    optionnames: "${{that}.options.strings.followingElement}",
+                    optionlist: "${{that}.options.controlValues.followingElement}",
+                    selection: "${value}"
                 }
+            }
+        },
+        invokers: {
+            followingElementStyle: {
+                funcName: "gpii.prefs.panel.followingElement.style",
+                args: [
+                    "{that}.dom.screenReaderTrackingLabel", "{that}.options.strings.followingElement",
+                    "{that}.options.markup.followingElementLabel", "{that}.options.controlValues.followingElement",
+                    "{that}.options.classnameMap.followingElement"
+                ],
+                dynamic: true
             }
         }
     });

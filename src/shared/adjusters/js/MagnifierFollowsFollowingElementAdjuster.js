@@ -23,12 +23,36 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "controlValues.followingElement": "enum"
             }
         },
-        strings: {
-            followingElementHeading: {
-                expander: {
-                    func: "gpii.lookupMsg",
-                    args: ["{prefsEditorLoader}.msgBundle", "magnifierFollowsLabel"]
+        selectors: {
+            magnifierTrackingRow: ".gpiic-followingElementRow",
+            magnifierTrackingLabel: ".gpiic-followingElementLabel",
+            magnifierTrackingInput: ".gpiic-followingElementInput"
+        },
+        repeatingSelectors: ["magnifierTrackingRow"],
+        protoTree: {
+            followingElementHeading: {messagekey: "magnifierFollowsLabel"},
+            expander: {
+                type: "fluid.renderer.selection.inputs",
+                rowID: "magnifierTrackingRow",
+                labelID: "magnifierTrackingLabel",
+                inputID: "magnifierTrackingInput",
+                selectID: "magnifierTracking-radio",
+                tree: {
+                    optionnames: "${{that}.options.strings.followingElement}",
+                    optionlist: "${{that}.options.controlValues.followingElement}",
+                    selection: "${value}"
                 }
+            }
+        },
+        invokers: {
+            followingElementStyle: {
+                funcName: "gpii.prefs.panel.followingElement.style",
+                args: [
+                    "{that}.dom.magnifierTrackingLabel", "{that}.options.strings.followingElement",
+                    "{that}.options.markup.followingElementLabel", "{that}.options.controlValues.followingElement",
+                    "{that}.options.classnameMap.followingElement"
+                ],
+                dynamic: true
             }
         }
     });
