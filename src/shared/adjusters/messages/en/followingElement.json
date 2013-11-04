@@ -1,5 +1,6 @@
 {
-    "magnifierFollowsLabel": "Magnifier follows",
+    "magnifierFollowsLabel": "Magnifier location follows:",
+    "screenReaderFollowsLabel": "Screen reader follows:",
     "followingElement.mousecursor": "Mouse cursor",
     "followingElement.textcursor": "Text cursor",
     "followingElement.keyboardfocus": "Keyboard focus"
