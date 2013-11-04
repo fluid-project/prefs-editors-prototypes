@@ -25,7 +25,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "boolean",
             "default": false
         },
-        "followingElement": {
+        "magnifier.tracking": {
             "type": "string",
             "default": "",
             "enum": ["mousecursor", "textcursor", "keyboardfocus"]
@@ -63,22 +63,19 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "message": "%prefix/showCrosshairs.json"
             }
         },
-        "followingElement": {
-            "type": "followingElement",
+        "magnifierTracking": {
+            "type": "magnifier.tracking",
             "classes": {
                 "mousecursor": "gpii-followingElement-mouseCursorIcon",
                 "textcursor": "gpii-followingElement-textCursorIcon",
                 "keyboardfocus": "gpii-followingElement-keyboardFocusIcon"
-                /*"mousecursor": "gpii-increaseSize-magnifierFollowsMouseCursor gpii-increaseSize-magnifierFollowsIconLabel",
-                "textcursor": "gpii-increaseSize-magnifierFollowsTextCursor gpii-increaseSize-magnifierFollowsIconLabel",
-                "keyboardfocus": "gpii-increaseSize-magnifierFollowsKeyboardFocus gpii-increaseSize-magnifierFollowsIconLabel"*/
             },
             "panel": {
-                "type": "gpii.prefs.panel.followingElement",
+                "type": "gpii.prefs.panel.followingElement.magnifier",
                 "container": ".gpiic-increaseSize-magnifierFollows",
                 "template": "%prefix/UIOptionsTemplate-followingElement.html",
                 "message": "%prefix/followingElement.json",
-                "classnameMap": {"followingElement": "@followingElement.classes"}
+                "classnameMap": {"followingElement": "@magnifierTracking.classes"}
             }
         }
     };

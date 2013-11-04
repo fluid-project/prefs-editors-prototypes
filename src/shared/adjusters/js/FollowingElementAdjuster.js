@@ -17,14 +17,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     
     fluid.defaults("gpii.prefs.panel.followingElement", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
-        preferenceMap: {
-            "followingElement": {
-                "model.value": "",
-                "controlValues.followingElement": "enum"
-            }
-        },
         listeners: {
-            afterRender: "{that}.followingElementStyle"
+            afterRender: "{that}.followingElementStyle",
+            "afterRender.setFollowingElementHeading": {
+                "this": "{that}.dom.followingElementHeading",
+                "method": "text",
+                "args": ["{that}.options.strings.followingElementHeading"]
+            }
         },
         selectors: {
             followingElementRow: ".gpiic-followingElementRow",
@@ -32,8 +31,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             followingElementInput: ".gpiic-followingElementInput",
             followingElementHeading: ".gpiic-followingElementHeading"
         },
+        selectorsToIgnore: ["followingElementHeading"],
         protoTree: {
-            followingElementHeading: "asdsdfg",
             expander: {
                 type: "fluid.renderer.selection.inputs",
                 rowID: "followingElementRow",
