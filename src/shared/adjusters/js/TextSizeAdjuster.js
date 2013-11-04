@@ -26,8 +26,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
 
-        textSizeMetricUnit: "pt",
-
         events: {
             textSizeMinRangeReached: null,
             textSizeMinRangeExited: null
@@ -37,7 +35,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             textSizePreview: {
                 type: "fluid.prefs.preview",
                 createOnEvent: "afterRender",
-                container: ".flc-prefsEditor-text-size .flc-prefsEditor-preview-per-setting-frame",
+                container: "{that}.dom.textSizePreview",
                 options: {
                     templateUrl: "../../src/shared/preview/html/uiOptionsTextPreview.html",
                     components: {
@@ -69,13 +67,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             }
         },
-
         selectors: {
             textSizeMinus: ".gpiic-incresaeSize-plusMinusNumericalMinusTextSize",
             textSizeLabel: ".gpiic-increaseSize-plusMinusNumericalLabelTextSize",
             textSizePlus: ".gpiic-increaseSize-plusMinusNumericalPlusTextSize",
-            textSizeValueText: ".gpiic-increaseSize-plusMinusNumericalValueTextSize"
+            textSizeValueText: ".gpiic-increaseSize-plusMinusNumericalValueTextSize",
+            textSizePreview: ".gpiic-increaseSize-previewPerSettingFrameTextSize"
         },
+        selectorsToIgnore: ["textSizePreview"],
+
         listeners: {
             "afterRender.bindEventTextSizeMinusClick": {
                 "this": "{that}.dom.textSizeMinus",
@@ -155,8 +155,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "val",
                 "args": {
                     expander: {
-                        funcName: "gpii.concatStrings",
-                        args: ["{that}.model.fontSize", "{that}.options.textSizeMetricUnit"]
+                        "this": "fluid",
+                        method: "stringTemplate",
+                        args: ["{that}.stringBundle.fontSizeStringTemplate", ["{that}.model.fontSize"]]
                     }
                 }
             },
@@ -187,6 +188,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
 
+        // strings: {
+        //     fontSizeStringTemplate: "{that}.stringBundle.fontSizeStringTemplate"
+            // fontSizeStringTemplate: {
+            //     expander: {
+            //         func: "gpii.lookupMsg",
+            //         args: ["{uiOptionsLoader}.msgBundle", "fontSizeStringTemplate"]
+            //     }
+            // }  
+        // },
         distributeOptions: [{
             source: "{that}.options.outerPreviewEnhancerOptions",
             target: "{that textSizePreview enhancer}.options"

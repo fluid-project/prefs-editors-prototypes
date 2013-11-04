@@ -53,9 +53,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             headingLabel: ".gpiic-contrast-contrastLabel",
             panelLabel: ".gpiic-headerTitle",
             addToMyPreferencesLabel: ".gpiic-addToMyPreferencesLabel",
-            contrastAdjusters: ".gpiic-category"
+            contrastAdjusters: ".gpiic-category",
+            contrastPreview: ".gpiic-contrast-previewPerSettingFrameContrast"
         },
-        selectorsToIgnore: ["contrastAdjusters", "addToMyPreferencesLabel"],
+        selectorsToIgnore: ["contrastAdjusters", "addToMyPreferencesLabel", "contrastPreview"],
         protoTree: {
             valueCheckbox: "${contrast}",
             headingLabel: {messagekey: "contrast"},
@@ -72,7 +73,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             preview: {
                 type: "fluid.prefs.preview",
                 createOnEvent: "afterRender",
-                container: ".gpii-prefsEditor-contrast .flc-prefsEditor-preview-per-setting-frame",
+                container: "{that}.dom.contrastPreview",
                 options: {
                     templateUrl: "../../src/shared/preview/html/uiOptionsContrastPreview.html",
                     components: {

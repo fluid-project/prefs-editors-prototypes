@@ -104,7 +104,7 @@ input[type=checkbox]:checked + .gpii-prefsEditor-headerImage > .gpii-prefsEditor
     content: "\e003";
 }
 
-.gpii-prefsEditor-contrast > .gpii-prefsEditor-headerImage:before {
+.gpii-prefsEditor-contrastPanel > .gpii-prefsEditor-headerImage:before {
     content: "\e002";
 }
 

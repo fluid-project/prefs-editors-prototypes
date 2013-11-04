@@ -29,7 +29,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.uiOptions.panels.increaseSize", {
         gradeNames: ["fluid.prefs.panel", "gpii.uiOptions.panels.textSize", "gpii.uiOptions.panels.cursorSize", "gpii.uiOptions.panels.magnifierFollows", "gpii.uiOptions.panels.magnifier", "gpii.uiOptions.panels.magnifierPosition", "autoInit"],
         mergePolicy: {
-            repeatingSelectors: gpii.uiOptions.panels.arrayMergePolicy
+            repeatingSelectors: gpii.uiOptions.panels.arrayMergePolicy,
+            selectorsToIgnore: gpii.uiOptions.panels.arrayMergePolicy
         },
         events: {
             onShowAdjuster: null,
@@ -141,9 +142,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     }
                 }
             },
-            magnifierMinus: "-",
+            magnifierMinus: {messagekey: "minus"},
             magnifierLabel: {messagekey: "magnifierLabel"},
-            magnifierPlus: "+",
+            magnifierPlus: {messagekey: "plus"},
 
             magnifierValueText: "${magnification}",
             magnifierFollowsHeading: {messagekey: "magnifierFollowsLabel"},
@@ -174,9 +175,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             ],
             magnifierPositionHeading: {messagekey: "magnifierPositionLabel"},
-            textSizeMinus: "-",
+            textSizeMinus: {messagekey: "minus"},
             textSizeLabel: {messagekey: "textSizeLabel"},
-            textSizePlus: "+",
+            textSizePlus: {messagekey: "plus"},
 
             textSizeValueText: "${fontSize}"
         },

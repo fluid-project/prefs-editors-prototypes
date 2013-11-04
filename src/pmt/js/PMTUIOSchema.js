@@ -71,7 +71,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             "panel": {
                 "type": "gpii.uiOptions.panels.contrast",
-                "container": ".gpii-prefsEditor-contrast",
+                "container": ".gpii-prefsEditor-contrastPanel",
                 "template": "%prefix/UIOptionsTemplate-contrastNew.html",
                 "message": "%prefix/contrastNew.json"
             }

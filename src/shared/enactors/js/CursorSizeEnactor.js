@@ -39,8 +39,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.uiOptions.enactors.cursorSize.set = function (times, that) {
-        that.css("font-size", times + "em");
+    gpii.uiOptions.enactors.cursorSize.set = function (times, cursorDiv) {
+        cursorDiv.css("font-size", times + "em");
     };
 
 })(jQuery, fluid);

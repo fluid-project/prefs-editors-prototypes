@@ -17,5 +17,7 @@
     "magnifierFollows-textcursor": "Κέρσορα κειμένου",
     "magnifierFollows-keyboardfocus": "Φόκους πληκτρολογίου",
     "textSizeLabel": "Μέγεθος κειμένου",
-    "previewText": "Έτσι θα εμφανίζεται το περισσότερο κείμενο."
+    "previewText": "Έτσι θα εμφανίζεται το περισσότερο κείμενο.",
+    "fontSizeStringTemplate" : "%0πόντοι",
+    "magnifierStringTemplate" : "%0%"
 }

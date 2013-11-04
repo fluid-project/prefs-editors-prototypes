@@ -17,5 +17,7 @@
     "magnifierFollows-textcursor": "Cursor del texto",
     "magnifierFollows-keyboardfocus": "Foco del teclado",
     "textSizeLabel": "Tamaño del texto",
-    "previewText": "Así es como se mostrará  la mayoría del texto."
+    "previewText": "Así es como se mostrará  la mayoría del texto.",
+    "fontSizeStringTemplate" : "%0pt",
+    "magnifierStringTemplate" : "%0%"
 }

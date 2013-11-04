@@ -26,8 +26,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
 
-        magnifierMetricUnit: "%",
-
         events: {
             magnifierMinRangeReached: null,
             magnifierMinRangeExited: null
@@ -37,7 +35,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierPreview: {
                 type: "fluid.prefs.preview",
                 createOnEvent: "afterRender",
-                container: ".flc-prefsEditor-magnifier .flc-prefsEditor-preview-per-setting-frame",
+                container: "{that}.dom.magnifierPreview",
                 options: {
                     templateUrl: "../../src/shared/preview/html/uiOptionsTextPreview.html",
                     components: {
@@ -74,10 +72,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierMinus: ".gpiic-increaseSize-plusMinusNumericalMinusMagnifier",
             magnifierLabel: ".gpiic-increaseSize-plusMinusNumericalLabelMagnifier",
             magnifierPlus: ".gpiic-increaseSize-plusMinusNumericalPlusMagnifier",
-            magnifierValueText: ".gpiic-increaseSize-plusMinusNumericalValueMagnifier"
+            magnifierValueText: ".gpiic-increaseSize-plusMinusNumericalValueMagnifier",
+            magnifierPreview: ".gpiic-increaseSize-previewPerSettingFrameMagnifier"
         },
+        selectorsToIgnore: ["magnifierPreview"],
         strings: {
-            magnifierOFF: "{that}.stringBundle.magnifierOFF"
+            magnifierOFF: "{that}.stringBundle.magnifierOFF",
+            magnifierStringTemplate: "{that}.stringBundle.magnifierStringTemplate"
         },
         listeners: {
             "magnifierMinRangeReached.setMagnifierValueText": {
@@ -163,8 +164,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "val",
                 "args": {
                     expander: {
-                        funcName: "gpii.concatStrings",
-                        args: ["{that}.model.magnification", "{that}.options.magnifierMetricUnit"]
+                        "this": "fluid",
+                        method: "stringTemplate",
+                        args: ["{that}.options.strings.magnifierStringTemplate", ["{that}.model.magnification"]]
                     }
                 }
             },

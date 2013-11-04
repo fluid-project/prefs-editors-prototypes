@@ -29,7 +29,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             cursorSizePreview: {
                 type: "fluid.prefs.preview",
                 createOnEvent: "afterRender",
-                container: ".gpiic-increaseSize-cursor-size .flc-prefsEditor-preview-per-setting-frame",
+                container: "{that}.dom.cursorSizePreview",
                 options: {
                     templateUrl: "../../src/shared/preview/html/uiOptionsCursorPreview.html"
                 }
@@ -37,8 +37,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         selectors: {
             cursorSize: ".gpiic-increaseSize-cursor-size",
-            cursorSizeLabel: ".gpiic-increaseSize-cursor-size-label"
+            cursorSizeLabel: ".gpiic-increaseSize-cursor-size-label",
+            cursorSizePreview: ".gpiic-increaseSize-previewPerSettingFrameCursorSize"
         },
+        selectorsToIgnore: ["cursorSizePreview"],
         sliderOptions: {
             orientation: "horizontal",
             step: 0.2,
@@ -47,14 +49,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         
         distributeOptions: [{
             source: "{that}.options.outerPreviewEnhancerOptions",
-            //removeSource: true,
             target: "{that cursorSizePreview enhancer}.options"
         }, {
             source: "{that}.options.emptyComponentType",
             target: "{that cursorSizePreview enhancer textSize}.type"
         }, {
             source: "{that}.options.emptyComponentType",
-            //removeSource: true,
             target: "{that cursorSizePreview enhancer magnifier}.type"
         }]
     });

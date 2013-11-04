@@ -6,6 +6,7 @@
     "languageLabel": "idioma",
     "saveButtonText": "guardar y aplicar",
     "resetButtonText": "reiniciar",
-    "cancelButtonText": "cancelar"
-
+    "cancelButtonText": "cancelar",
+    "plus": "+",
+    "minus": "-"
 }
