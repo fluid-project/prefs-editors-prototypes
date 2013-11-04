@@ -97,6 +97,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 followingElement: strings[index]
             }));
             label.find(".gpiic-iconCheckAdjusterIcon").addClass(style[followingElement[index]]);
+            if (index === 0) {
+                label.addClass("gpii-iconCheckAdjusterAreaTopOnlyBorder");
+            } else if (index === labels.length - 1) {
+                label.addClass("gpii-iconCheckAdjusterAreaBottomOnlyBorder");
+            } else {
+                label.addClass("gpii-iconCheckAdjusterAreaNoBorder");
+            }
         });
     };
     

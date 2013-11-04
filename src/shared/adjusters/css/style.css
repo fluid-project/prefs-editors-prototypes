@@ -733,6 +733,7 @@ input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
 	display: block;
 	background-color: white;
 	margin: 2px;
+	border-radius: 5px;
 }
 
 .gpii-iconCheckAdjusterDescription {
@@ -792,3 +793,14 @@ input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
     content: "\e005";
 }
 
+.gpii-iconCheckAdjusterAreaNoBorder {
+	border-radius: 0px !important;
+}
+
+.gpii-iconCheckAdjusterAreaTopOnlyBorder {
+	border-radius: 5px 5px 0px 0px !important;
+}
+
+.gpii-iconCheckAdjusterAreaBottomOnlyBorder {
+	border-radius: 0px 0px 5px 5px !important;
+}
