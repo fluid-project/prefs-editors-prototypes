@@ -27,7 +27,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
     
     fluid.defaults("gpii.uiOptions.panels.increaseSize", {
-        gradeNames: ["fluid.uiOptions.panels", "gpii.uiOptions.panels.textSize", "gpii.uiOptions.panels.cursorSize", "gpii.uiOptions.panels.magnifierFollows", "gpii.uiOptions.panels.magnifier", "gpii.uiOptions.panels.magnifierPosition", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.uiOptions.panels.textSize", "gpii.uiOptions.panels.cursorSize", "gpii.uiOptions.panels.magnifierFollows", "gpii.uiOptions.panels.magnifier", "gpii.uiOptions.panels.magnifierPosition", "autoInit"],
         mergePolicy: {
             repeatingSelectors: gpii.uiOptions.panels.arrayMergePolicy
         },
@@ -113,37 +113,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             moreLess: ".gpiic-moreLess"
         },
         selectorsToIgnore: ["increaseSizeHeader", "increaseSizeAdjusters", "addToMyPreferencesStar", "increaseSizeExtraAdjusters", "moreLess"],
+        members: {
+            messageResolver: "{prefsEditorLoader}.msgBundle"
+        },
         strings: {
-            increaseSizeHeader: {
-                expander: {
-                    func: "gpii.lookupMsg",
-                    args: ["{uiOptionsLoader}.msgBundle", "increaseSizeHeader"]
-                }
-            },
-            tooltipChecked: {
-                expander: {
-                    func: "gpii.lookupMsg",
-                    args: ["{uiOptionsLoader}.msgBundle", "tooltipChecked"]
-                }
-            },
-            tooltipUnchecked: {
-                expander: {
-                    func: "gpii.lookupMsg",
-                    args: ["{uiOptionsLoader}.msgBundle", "tooltipUnchecked"]
-                }
-            },
-            more: {
-                expander: {
-                    func: "gpii.lookupMsg",
-                    args: ["{uiOptionsLoader}.msgBundle", "more"]
-                }
-            },
-            less: {
-                expander: {
-                    func: "gpii.lookupMsg",
-                    args: ["{uiOptionsLoader}.msgBundle", "less"]
-                }
-            }
+            increaseSizeHeader: "{that}.stringBundle.increaseSizeHeader",
+            tooltipChecked: "{that}.stringBundle.tooltipChecked",
+            tooltipUnchecked: "{that}.stringBundle.tooltipUnchecked",
+            more: "{that}.stringBundle.more",
+            less: "{that}.stringBundle.less"
         },
         model: {
             increaseSizeAdjustersEnabledSwitch: false,
@@ -156,7 +134,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             cursorSize: {
                 decorators: {
                     type: "fluid",
-                    func: "fluid.uiOptions.textfieldSlider",
+                    func: "fluid.prefs.textfieldSlider",
                     options: {
                         range: "{that}.options.controlValues.cursorSize",
                         path: "value"

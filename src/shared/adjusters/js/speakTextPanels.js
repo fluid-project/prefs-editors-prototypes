@@ -24,7 +24,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
 
     fluid.defaults("speakText.panels.screenReaderTTSEnabled", {
-        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "screenReaderTTSEnabled": {
                 "model.screenReaderTTSEnabled": "default"
@@ -37,7 +37,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("speakText.panels.speechRate", {
-        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "speechRate": {
                 "model.value": "default", /* WARNING
@@ -57,7 +57,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("speakText.panels.auditoryOutLanguage", {
-        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "auditoryOutLanguage": {
                 "model.auditoryOutLanguage": "default",
@@ -71,7 +71,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("speakText.panels.punctuationVerbosity", {
-        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
         mergePolicy: {
             repeatingSelectors: gpii.speakText.arrayMergePolicy
         },
@@ -112,7 +112,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 
     fluid.defaults("speakText.panels.announceCapitals", {
-        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "announceCapitals": {
                 "model.announceCapitals": "default"
@@ -125,7 +125,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("speakText.panels.speakTutorialMessages", {
-        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "speakTutorialMessages": {
                 "model.speakTutorialMessages": "default"
@@ -138,7 +138,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("speakText.panels.keyEcho", {
-        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "keyEcho": {
                 "model.keyEcho": "default"
@@ -151,7 +151,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("speakText.panels.wordEcho", {
-        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "wordEcho": {
                 "model.wordEcho": "default"
@@ -164,7 +164,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("speakText.panels.screenReaderBrailleOutput", {
-        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "screenReaderBrailleOutput": {
                 "model.screenReaderBrailleOutput": "default"

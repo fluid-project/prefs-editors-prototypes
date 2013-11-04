@@ -16,15 +16,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
 
     fluid.defaults("gpii.uiOptions.enactors.contrast", {
-        gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
+        gradeNames: ["fluid.viewComponent", "fluid.prefs.enactors", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.highContrast": {
                 "model.value": "default"
             }
         },
         styles: {
-            defaultTheme: "fl-theme-uio-default gpii-prefsEditor-theme-default",
-            contrastTheme: "fl-theme-uio-yb gpii-prefsEditor-theme-yb"
+            defaultTheme: "fl-theme-prefsEditor-default gpii-prefsEditor-theme-default",
+            contrastTheme: "fl-theme-prefsEditor-yb gpii-prefsEditor-theme-yb"
         },
         invokers: {
             toggleContrast: {

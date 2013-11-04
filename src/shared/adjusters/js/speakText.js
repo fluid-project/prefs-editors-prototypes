@@ -12,28 +12,32 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     fluid.defaults("gpii.speakText", {
-        gradeNames: ["fluid.uiOptions.fullNoPreview", "autoInit"],
-        uiOptions: {
+        gradeNames: ["fluid.prefs.fullNoPreview", "autoInit"],
+        prefsEditor: {
+            gradeNames: ["fluid.prefs.stringBundle"],
+            members: {
+                messageResolver: "{prefsEditorLoader}.msgBundle"
+            },
             selectors: {
-                saveAndApply: ".flc-uiOptions-save",
-                resetAndApply: ".flc-uiOptions-reset",
-                cancel: ".flc-uiOptions-cancel"
+                saveAndApply: ".flc-prefsEditor-save",
+                resetAndApply: ".flc-prefsEditor-reset",
+                cancel: ".flc-prefsEditor-cancel"
             },
             listeners: {
                 "onReady.setSaveAndApplyText": {
                     "this": "{that}.dom.saveAndApply",
                     "method": "prop",
-                    "args": ["value", "{that}.options.strings.saveAndApply"]
+                    "args": ["value", "{that}.stringBundle.saveAndApply"]
                 },
                 "onReady.setResetAndApplyText": {
                     "this": "{that}.dom.resetAndApply",
                     "method": "prop",
-                    "args": ["value", "{that}.options.strings.resetAndApply"]
+                    "args": ["value", "{that}.stringBundle.resetAndApply"]
                 },
                 "onReady.setCancelText": {
                     "this": "{that}.dom.cancel",
                     "method": "prop",
-                    "args": ["value", "{that}.options.strings.cancel"]
+                    "args": ["value", "{that}.stringBundle.cancel"]
                 },
                 "onReady.onSaveVisibilityActualisation": {
                     "this": "{that}.dom.saveAndApply",
@@ -57,26 +61,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": ["{speakText.panels.CollectivePanel}"]
                 }
             },
-            strings: {
-                saveAndApply: {
-                    expander: {
-                        func: "gpii.speakText.lookupMsg",
-                        args: ["{uiOptionsLoader}.msgBundle", "saveAndApply"]
-                    }
-                },
-                resetAndApply: {
-                    expander: {
-                        func: "gpii.speakText.lookupMsg",
-                        args: ["{uiOptionsLoader}.msgBundle", "resetAndApply"]
-                    }
-                },
-                cancel: {
-                    expander: {
-                        func: "gpii.speakText.lookupMsg",
-                        args: ["{uiOptionsLoader}.msgBundle", "cancel"]
-                    }
-                }
-            }
+            // strings: {
+            //     saveAndApply: "{that}.stringBundle.saveAndApply",
+            //     resetAndApply: "{that}.stringBundle.resetAndApply",
+            //     cancel: "{that}.stringBundle.cancel"
+            // }
         }
     });
 
@@ -104,9 +93,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         state ? showEvent() : hideEvent();
     };
 
-    gpii.speakText.lookupMsg = function (messageResolver, value) {
-        var looked = messageResolver.lookup([value]);
-        return looked ? looked.template : looked;
-    };
+    // gpii.speakText.lookupMsg = function (messageResolver, value) {
+    //     var looked = messageResolver.lookup([value]);
+    //     return looked ? looked.template : looked;
+    // };
 
 })(jQuery, fluid);

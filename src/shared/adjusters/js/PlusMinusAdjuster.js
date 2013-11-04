@@ -15,7 +15,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     fluid.defaults("gpii.uiOptions.panels.plusMinus", {
-        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
         invokers: {
             onValueTextPreventNonNumeric: {
                 funcName: "gpii.uiOptions.panels.plusMinus.onValueTextPreventNonNumeric",

@@ -16,7 +16,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
     
     fluid.defaults("gpii.uiOptions.panels.magnifierFollows", {
-        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.tracking": {
                 "model.magnifierFollows": "",
@@ -32,13 +32,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierFollowsInput: ".gpiic-increaseSize-magnifierFollowsInput",
             magnifierFollowsHeading: ".gpiic-increaseSize-magnifierFollowsHeading"
         },
+        members: {
+            messageResolver: "{prefsEditorLoader}.msgBundle"
+        },
+        stringArrayIndex: {
+            magnifierFollows: ["magnifierFollows-mousecursor", "magnifierFollows-textcursor", "magnifierFollows-keyboardfocus"]
+        },
         strings: {
-            magnifierFollows: {
-                expander: {
-                    func: "gpii.uiOptions.panels.magnifierFollows.lookupMsg",
-                    args: ["{that}.options.parentBundle", "magnifierFollows", "{that}.options.controlValues.magnifierFollows"]
-                }
-            }
+            magnifierFollows: "{that}.stringBundle.magnifierFollows"
         },
         repeatingSelectors: ["magnifierFollowsRow"],
         controlValues: {
@@ -59,15 +60,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         }
     });
-
-    gpii.uiOptions.panels.magnifierFollows.lookupMsg = function (messageResolver, prefix, values) {
-        var messages = [];
-        fluid.each(values, function (value, key) {
-            var looked = messageResolver.lookup([prefix + "." + value]);
-            messages.push(looked ? looked.template : looked);
-        });
-        return messages;
-    };
 
     gpii.uiOptions.panels.magnifierFollows.style = function (labels, strings, markup, magnifierFollows, style) {
         fluid.each(labels, function (label, index) {

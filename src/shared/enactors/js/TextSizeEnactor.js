@@ -16,7 +16,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
     
 	fluid.defaults("gpii.uiOptions.enactors.textSize", {
-        gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "fluid.uiOptions.enactors.textSize", "autoInit"],
+        gradeNames: ["fluid.viewComponent", "fluid.prefs.enactors", "fluid.prefs.enactors.textSize", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.fontSize": {
                 "model.value": "default"

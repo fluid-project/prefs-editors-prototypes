@@ -16,7 +16,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
     
     fluid.defaults("gpii.uiOptions.panels.magnifier", {
-        gradeNames: ["fluid.uiOptions.panels", "gpii.uiOptions.panels.plusMinus", "gpii.uiOptions.pmt.previewPerSettingEnhanced", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.uiOptions.panels.plusMinus", "gpii.uiOptions.pmt.previewPerSettingEnhanced", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.magnification": {
                 "model.magnification": "default",
@@ -35,9 +35,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
         components: {
             magnifierPreview: {
-                type: "fluid.uiOptions.preview",
+                type: "fluid.prefs.preview",
                 createOnEvent: "afterRender",
-                container: ".flc-uiOptions-magnifier .flc-uiOptions-preview-per-setting-frame",
+                container: ".flc-prefsEditor-magnifier .flc-prefsEditor-preview-per-setting-frame",
                 options: {
                     templateUrl: "../../src/shared/preview/html/uiOptionsTextPreview.html",
                     components: {
@@ -46,16 +46,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                             container: "{magnifierPreview}.enhancerContainer",
                             createOnEvent: "onReady",
                             options: {
-                                selectors: {
-                                    previewText: ".gpiic-preview-per-setting-label"
+                                gradeNames: ["fluid.prefs.stringBundle"],
+                                members: {
+                                    messageResolver: "{prefsEditorLoader}.msgBundle"
                                 },
                                 strings: {
-                                    previewText: {
-                                        expander: {
-                                            func: "gpii.lookupMsg",
-                                            args: ["{uiOptionsLoader}.msgBundle", "previewText"]
-                                        }
-                                    }
+                                    previewText: "{that}.stringBundle.previewText"
+                                },
+                                selectors: {
+                                    previewText: ".gpiic-preview-per-setting-label"
                                 },
                                 listeners: {
                                     "onCreate.setText": {
@@ -78,12 +77,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierValueText: ".gpiic-increaseSize-plusMinusNumericalValueMagnifier"
         },
         strings: {
-            magnifierOFF: {
-                expander: {
-                    func: "gpii.lookupMsg",
-                    args: ["{uiOptionsLoader}.msgBundle", "magnifierOFF"]
-                }
-            }
+            magnifierOFF: "{that}.stringBundle.magnifierOFF"
         },
         listeners: {
             "magnifierMinRangeReached.setMagnifierValueText": {

@@ -140,11 +140,11 @@ var fluid_1_5 = fluid_1_5 || {};
 
     fluid.defaults("gpii.uiOptions.textfieldStepper", {
         gradeNames: ["gpii.textfieldStepper", "autoInit"],
-        model: "{fluid.uiOptions.panels}.model",
-        range: "{fluid.uiOptions.panels}.options.range",
+        model: "{fluid.prefs.panel}.model",
+        range: "{fluid.prefs.panel}.options.range",
         listeners: {
             modelChanged: {
-                listener: "{fluid.uiOptions.panels}.applier.requestChange",
+                listener: "{fluid.prefs.panel}.applier.requestChange",
                 args: ["{that}.options.path", "{arguments}.0"]
             }
         },

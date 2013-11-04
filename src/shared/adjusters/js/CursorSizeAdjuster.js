@@ -16,7 +16,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
     
     fluid.defaults("gpii.uiOptions.panels.cursorSize", {
-        gradeNames: ["fluid.uiOptions.panels", "gpii.uiOptions.pmt.previewPerSettingEnhanced", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.uiOptions.pmt.previewPerSettingEnhanced", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.cursorSize": {
                 "model.value": "default",
@@ -27,9 +27,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         components: {
             cursorSizePreview: {
-                type: "fluid.uiOptions.preview",
+                type: "fluid.prefs.preview",
                 createOnEvent: "afterRender",
-                container: ".gpiic-increaseSize-cursor-size .flc-uiOptions-preview-per-setting-frame",
+                container: ".gpiic-increaseSize-cursor-size .flc-prefsEditor-preview-per-setting-frame",
                 options: {
                     templateUrl: "../../src/shared/preview/html/uiOptionsCursorPreview.html"
                 }

@@ -16,7 +16,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
     
     fluid.defaults("gpii.uiOptions.panels.magnifierPosition", {
-        gradeNames: ["fluid.uiOptions.panels", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.magnificationPosition": {
                 "model.magnifierPosition": "",
@@ -32,13 +32,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierPositionInput: ".gpiic-increaseSize-magnifierPositionInput",
             magnifierPositionHeading: ".gpiic-increaseSize-magnifierPositionHeading"
         },
+        members: {
+            messageResolver: "{prefsEditorLoader}.msgBundle"
+        },
+        stringArrayIndex: {
+            magnifierPosition: ["magnifierPosition-default", "magnifierPosition-lens", "magnifierPosition-fullscreen", "magnifierPosition-dockedtop", "magnifierPosition-dockedbottom", , "magnifierPosition-dockedleft", "magnifierPosition-dockedright"]
+        },
         strings: {
-            magnifierPosition: {
-                expander: {
-                    func: "gpii.uiOptions.panels.magnifierPosition.lookupMsg",
-                    args: ["{that}.options.parentBundle", "magnifierPosition", "{that}.options.controlValues.magnifierPosition"]
-                }
-            }
+            magnifierPosition: "{that}.stringBundle.magnifierPosition"
         },
         repeatingSelectors: ["magnifierPositionRow"],
         controlValues: {
@@ -55,21 +56,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 funcName: "gpii.uiOptions.panels.magnifierPosition.style",
                 args: ["{that}.dom.magnifierPositionLabel", "{that}.options.strings.magnifierPosition",
                     "{that}.options.markup.magnifierPositionLabel", "{that}.options.controlValues.magnifierPosition",
-                    "{that}.options.classnameMap.magnifierPosition"]
+                    "{that}.options.classnameMap.magnifierPosition", "{that}"]
             }
         }
     });
 
-    gpii.uiOptions.panels.magnifierPosition.lookupMsg = function (messageResolver, prefix, values) {
-        var messages = [];
-        fluid.each(values, function (value, key) {
-            var looked = messageResolver.lookup([prefix + "." + value]);
-            messages.push(looked ? looked.template : looked);
-        });
-        return messages;
-    };
-
-    gpii.uiOptions.panels.magnifierPosition.style = function (labels, strings, markup, magnifierPosition, style) {
+    gpii.uiOptions.panels.magnifierPosition.style = function (labels, strings, markup, magnifierPosition, style, that) {
         fluid.each(labels, function (label, index) {
             label = $(label);
             label.html(fluid.stringTemplate(markup, {

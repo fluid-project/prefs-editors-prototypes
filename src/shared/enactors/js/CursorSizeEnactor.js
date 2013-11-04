@@ -16,7 +16,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
 
     fluid.defaults("gpii.uiOptions.enactors.cursorSize", {
-        gradeNames: ["fluid.viewComponent", "fluid.uiOptions.enactors", "autoInit"],
+        gradeNames: ["fluid.viewComponent", "fluid.prefs.enactors", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.cursorSize": {
                 "model.value": "default"

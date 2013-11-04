@@ -16,7 +16,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
     
     fluid.defaults("gpii.uiOptions.panels.contrast", {
-        gradeNames: ["fluid.uiOptions.panels", "gpii.uiOptions.pmt.previewPerSettingEnhanced", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.uiOptions.pmt.previewPerSettingEnhanced", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.highContrast": {
                 "model.contrast": "default"
@@ -53,7 +53,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             headingLabel: ".gpiic-contrast-contrastLabel",
             panelLabel: ".gpiic-headerTitle",
             addToMyPreferencesLabel: ".gpiic-addToMyPreferencesLabel",
-            contrastAdjusters: ".gpiic-category"         
+            contrastAdjusters: ".gpiic-category"
         },
         selectorsToIgnore: ["contrastAdjusters", "addToMyPreferencesLabel"],
         protoTree: {
@@ -61,25 +61,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             headingLabel: {messagekey: "contrast"},
             panelLabel: {messagekey: "addContrast"}
         },
+        members: {
+            messageResolver: "{prefsEditorLoader}.msgBundle"
+        },
         strings: {
-            tooltipChecked: {
-                expander: {
-                    func: "gpii.lookupMsg",
-                    args: ["{uiOptionsLoader}.msgBundle", "tooltipChecked"]
-                }
-            },
-            tooltipUnchecked: {
-                expander: {
-                    func: "gpii.lookupMsg",
-                    args: ["{uiOptionsLoader}.msgBundle", "tooltipUnchecked"]
-                }
-            }
+            tooltipChecked: "{that}.stringBundle.tooltipChecked",
+            tooltipUnchecked: "{that}.stringBundle.tooltipUnchecked"
         },
         components: {
             preview: {
-                type: "fluid.uiOptions.preview",
+                type: "fluid.prefs.preview",
                 createOnEvent: "afterRender",
-                container: ".gpii-prefsEditor-contrast .flc-uiOptions-preview-per-setting-frame",
+                container: ".gpii-prefsEditor-contrast .flc-prefsEditor-preview-per-setting-frame",
                 options: {
                     templateUrl: "../../src/shared/preview/html/uiOptionsContrastPreview.html",
                     components: {
@@ -88,16 +81,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                             container: "{preview}.enhancerContainer",
                             createOnEvent: "onReady",
                             options: {
-                                selectors: {
-                                    previewText: ".gpiic-preview-per-setting-label"
+                                gradeNames: ["fluid.prefs.stringBundle"],
+                                members: {
+                                    messageResolver: "{prefsEditorLoader}.msgBundle"
                                 },
                                 strings: {
-                                    previewText: {
-                                        expander: {
-                                            func: "gpii.lookupMsg",
-                                            args: ["{uiOptionsLoader}.msgBundle", "contrastPreviewText"]
-                                        }
-                                    }
+                                    previewText: "{that}.stringBundle.contrastPreviewText"
+                                },
+                                selectors: {
+                                    previewText: ".gpiic-preview-per-setting-label"
                                 },
                                 listeners: {
                                     "onCreate.setText": {
@@ -115,11 +107,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         
         distributeOptions: [{
             source: "{that}.options.outerPreviewEnhancerOptions",
-            //removeSource: true,
             target: "{that preview enhancer}.options"
         }, {
             source: "{that}.options.emptyComponentType",
-            //removeSource: true,
             target: "{that preview enhancer magnifier}.type"
         }]
     });

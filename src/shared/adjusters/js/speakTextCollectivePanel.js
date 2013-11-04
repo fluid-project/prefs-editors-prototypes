@@ -12,7 +12,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function (fluid) {
     fluid.defaults("speakText.panels.CollectivePanel", {
-        gradeNames: ["fluid.uiOptions.panels", "speakText.panels.keyEcho", "speakText.panels.wordEcho", "speakText.panels.speakTutorialMessages", "speakText.panels.screenReaderTTSEnabled", "speakText.panels.announceCapitals", "speakText.panels.punctuationVerbosity", "speakText.panels.screenReaderBrailleOutput", "speakText.panels.auditoryOutLanguage", "speakText.panels.speechRate", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "speakText.panels.keyEcho", "speakText.panels.wordEcho", "speakText.panels.speakTutorialMessages", "speakText.panels.screenReaderTTSEnabled", "speakText.panels.announceCapitals", "speakText.panels.punctuationVerbosity", "speakText.panels.screenReaderBrailleOutput", "speakText.panels.auditoryOutLanguage", "speakText.panels.speechRate", "autoInit"],
         protoTree: {
             preferencesSwitchSpeakText: {messagekey: "speakTextPresetButtonLabel"},
 
@@ -230,37 +230,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             speakTextTickIcon: ".white-tick-icon"
         },
         selectorsToIgnore: ["addToMyPreferencesStar", "preferencesSwitchSpeakText", "speakTextPartialAdjusters", "moreLess", "speakTextExtraAdjusters", "speakTextHeader", "speakTextTickIcon"],
+        members: {
+            messageResolver: "{prefsEditorLoader}.msgBundle"
+        },
         strings: {
-            speakTextHeader: {
-                expander: {
-                    func: "gpii.speakText.lookupMsg",
-                    args: ["{uiOptionsLoader}.msgBundle", "speakTextPresetButtonLabel"]
-                }
-            },
-            moreText: {
-                expander: {
-                    func: "gpii.speakText.lookupMsg",
-                    args: ["{uiOptionsLoader}.msgBundle", "moreText"]
-                }
-            },
-            lessText: {
-                expander: {
-                    func: "gpii.speakText.lookupMsg",
-                    args: ["{uiOptionsLoader}.msgBundle", "lessText"]
-                }
-            },
-            tooltipChecked: {
-                expander: {
-                    func: "gpii.speakText.lookupMsg",
-                    args: ["{uiOptionsLoader}.msgBundle", "tooltipChecked"]
-                }
-            },
-            tooltipUnchecked: {
-                expander: {
-                    func: "gpii.speakText.lookupMsg",
-                    args: ["{uiOptionsLoader}.msgBundle", "tooltipUnchecked"]
-                }
-            }
+            speakTextHeader: "{that}.stringBundle.speakTextPresetButtonLabel",
+            moreText: "{that}.stringBundle.moreText",
+            lessText: "{that}.stringBundle.lessText",
+            tooltipChecked: "{that}.stringBundle.tooltipChecked",
+            tooltipUnchecked: "{that}.stringBundle.tooltipUnchecked"
         },
         styles: {
             boldText: "bold-font-weight",
