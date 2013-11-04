@@ -23,20 +23,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         return target;
     };
 
-    fluid.defaults("speakText.panel.screenReaderTTSEnabled", {
+    fluid.defaults("speakText.panel.speakText", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
-            "gpii.primarySchema.screenReaderTTSEnabled": {
-                "model.screenReaderTTSEnabled": "default"
+            "gpii.primarySchema.speakText": {
+                "model.speakText": "default"
             }
         },
         selectors: {
-            screenReaderTTSEnabled: ".gpiic-speakText-screenReaderTTSEnabled",
-            screenReaderTTSEnabledLabel: ".gpiic-speakText-screenReaderTTSEnabled-label"
+            speakText: ".gpiic-speakText-speakText",
+            speakTextLabel: ".gpiic-speakText-speakText-label"
         },
         protoTree: {
-            screenReaderTTSEnabled: "${screenReaderTTSEnabled}",
-            screenReaderTTSEnabledLabel: {messagekey: "screenReaderTTSEnabledLabel"}
+            speakText: "${speakText}",
+            speakTextLabel: {messagekey: "speakTextLabel"}
         }
     });
 
@@ -89,8 +89,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             wordsSpokenPerMinuteLabel: {messagekey: "wordsSpokenPerMinuteLabel"},
-            wordsSpokenPerMinuteMinus: {messagekey: "wordsSpokenPerMinuteMinus"},
-            wordsSpokenPerMinutePlus: {messagekey: "wordsSpokenPerMinutePlus"}
+            wordsSpokenPerMinuteMinus: {messagekey: "stepperMinus"},
+            wordsSpokenPerMinutePlus: {messagekey: "stepperPlus"}
         }
     });
 
@@ -121,8 +121,40 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             volumeLabel: {messagekey: "volumeLabel"},
-            volumeMinus: {messagekey: "wordsSpokenPerMinuteMinus"},
-            volumePlus: {messagekey: "wordsSpokenPerMinutePlus"}
+            volumeMinus: {messagekey: "stepperMinus"},
+            volumePlus: {messagekey: "stepperPlus"}
+        }
+    });
+
+    fluid.defaults("speakText.panel.universalVolume", {
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        preferenceMap: {
+            "gpii.primarySchema.universalVolume": {
+                "model.value": "default",
+                "controlValues.universalVolume.min": "minimum",
+                "controlValues.universalVolume.step": "divisibleBy"
+            }
+        },
+        selectors: {
+            universalVolume: ".gpiic-speakText-universalVolume",
+            universalVolumeLabel: ".gpiic-speakText-universalVolume-label",
+            universalVolumeMinus: ".gpiic-speakText-universalVolume-minus",
+            universalVolumePlus: ".gpiic-speakText-universalVolume-plus"
+        },
+        protoTree: {
+            universalVolume: {
+                decorators: {
+                    type: "fluid",
+                    func: "gpii.uiOptions.textfieldStepper",
+                    options: {
+                        range: "{that}.options.controlValues.universalVolume",
+                        path: "value"
+                    }
+                }
+            },
+            universalVolumeLabel: {messagekey: "universalVolumeLabel"},
+            universalVolumeMinus: {messagekey: "stepperMinus"},
+            universalVolumePlus: {messagekey: "stepperPlus"}
         }
     });
 

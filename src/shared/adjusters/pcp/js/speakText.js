@@ -15,14 +15,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         gradeNames: ["fluid.prefs.fullNoPreview", "autoInit"],
         prefsEditor: {
             partiallyExpandedSlideSpeed: 500,
+            fullyExpandedSlideSpeed: 500,
 
             model: {
-                partialAdjustersVisibility: false
+                partialAdjustersVisibility: false,
+                extraAdjustersVisibility: false
             },
             events: {
                 onShowPartialAdjusters: null,
                 onHidePartialAdjusters: null,
-                onHideSpeakTextTickIcon: null
+                onHideSpeakTextTickIcon: null,
+                onShowExtraAdjusters: null,
+                onHideExtraAdjusters: null
             },
             listeners: {
                 "onHideSpeakTextTickIcon.hideTick": {
@@ -114,7 +118,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             invokers: {
                 updateModelValue: {
                     "funcName": "gpii.speakText.updateModelHeaderClicked",
-                    "args": ["{that}"]
+                    "args": ["{that}",
+                             "{that}.model.partialAdjustersVisibility"
+                    ]
                 },
                 showHidePartial: {
                     "funcName": "gpii.speakText.showOrHideDependingOnState",
@@ -172,9 +178,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.speakText.updateModelHeaderClicked = function (that) {
+    gpii.speakText.updateModelHeaderClicked = function (that, partialVisible) {
         var partialVisible = that.model.partialAdjustersVisibility;
-
+        // alert("partial is " + partialVisible);
+        hook = that;
         if (partialVisible) {
             that.applier.requestChange("partialAdjustersVisibility", false);
         } else {

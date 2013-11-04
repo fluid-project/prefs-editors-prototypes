@@ -13,7 +13,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function (fluid) {
     fluid.registerNamespace("gpii.speakText");
     gpii.primarySchema = {
-        "gpii.primarySchema.screenReaderTTSEnabled": {
+        "gpii.primarySchema.speakText": {
             "type": "boolean",
             "default": true
         },
@@ -32,6 +32,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "gpii.primarySchema.screenReaderBrailleOutput": {
             "type": "boolean",
             "default": false
+        },
+
+        "gpii.primarySchema.universalVolume": {
+            "type": "number",
+            "default": 80,
+            "minimum": 0,
+            "divisibleBy": 10
         }
     };
 
@@ -41,10 +48,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "messagePrefix": "../../src/shared/adjusters/pcp/messages/",
         "template": "../../src/pcp/newestSpeakText.html",
 
-        "screenReaderTTSEnabled": {
-            "type": "gpii.primarySchema.screenReaderTTSEnabled",
+        "speakText": {
+            "type": "gpii.primarySchema.speakText",
             "panel": {
-                "type": "speakText.panel.screenReaderTTSEnabled",
+                "type": "speakText.panel.speakText",
                 "template": "%prefix/speakText.html",
                 "container": ".speakText",
                 "message": "%prefix/speakText.json"
@@ -70,12 +77,23 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "message": "%prefix/speakText.json"
             }
         },
+
         "screenReaderBrailleOutput": {
             "type": "gpii.primarySchema.screenReaderBrailleOutput",
             "panel": {
                 "type": "speakText.panel.screenReaderBrailleOutput",
                 "template": "%prefix/brailleTemplate.html",
                 "container": ".braille",
+                "message": "%prefix/speakText.json"
+            }
+        },
+
+        "universalVolume": {
+            "type": "gpii.primarySchema.universalVolume",
+            "panel": {
+                "type": "speakText.panel.universalVolume",
+                "template": "%prefix/universalVolumeTemplate.html",
+                "container": ".universalVolume",
                 "message": "%prefix/speakText.json"
             }
         }
