@@ -97,8 +97,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             label.html(fluid.stringTemplate(markup, {
                 followingElement: strings[index]
             }));
-            label.addClass(style[followingElement[index]]);
-            var i = 0;
+            label.find(".gpiic-iconCheckAdjusterIcon").addClass(style[followingElement[index]]);
         });
     };
     

@@ -66,9 +66,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "followingElement": {
             "type": "followingElement",
             "classes": {
-                "mousecursor": "",
-                "textcursor": "",
-                "keyboardfocus": ""
+                "mousecursor": "gpii-followingElement-mouseCursorIcon",
+                "textcursor": "gpii-followingElement-textCursorIcon",
+                "keyboardfocus": "gpii-followingElement-keyboardFocusIcon"
                 /*"mousecursor": "gpii-increaseSize-magnifierFollowsMouseCursor gpii-increaseSize-magnifierFollowsIconLabel",
                 "textcursor": "gpii-increaseSize-magnifierFollowsTextCursor gpii-increaseSize-magnifierFollowsIconLabel",
                 "keyboardfocus": "gpii-increaseSize-magnifierFollowsKeyboardFocus gpii-increaseSize-magnifierFollowsIconLabel"*/

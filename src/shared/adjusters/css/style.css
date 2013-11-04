@@ -771,3 +771,24 @@ input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
     font-size: 70px !important;
 }
 
+/*
+    Style for followingElement adjuster
+*/
+
+.gpii-followingElement-mouseCursorIcon, .gpii-followingElement-textCursorIcon, .gpii-followingElement-keyboardFocusIcon {
+    font-family: 'icomoon';
+    font-size: 70px !important;
+}
+
+.gpii-followingElement-mouseCursorIcon:before {
+    content: "\e007";
+}
+
+.gpii-followingElement-textCursorIcon:before {
+    content: "\e000";
+}
+
+.gpii-followingElement-keyboardFocusIcon:before {
+    content: "\e005";
+}
+
