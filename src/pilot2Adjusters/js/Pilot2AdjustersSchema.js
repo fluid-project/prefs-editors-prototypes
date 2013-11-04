@@ -68,34 +68,31 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "message": "%prefix/showCrosshairs.json"
             }
         },
-        "magnifierTracking": {
-            "type": "magnifier.tracking",
+        "followingElement": {
             "classes": {
                 "mousecursor": "gpii-followingElement-mouseCursorIcon",
                 "textcursor": "gpii-followingElement-textCursorIcon",
                 "keyboardfocus": "gpii-followingElement-keyboardFocusIcon"
-            },
+            }            
+        },
+        "magnifierTracking": {
+            "type": "magnifier.tracking",
             "panel": {
                 "type": "gpii.prefs.panel.followingElement.magnifier",
                 "container": ".gpiic-increaseSize-magnifierFollows",
                 "template": "%prefix/UIOptionsTemplate-followingElement.html",
                 "message": "%prefix/followingElement.json",
-                "classnameMap": {"followingElement": "@magnifierTracking.classes"}
+                "classnameMap": {"followingElement": "@followingElement.classes"}
             }
         },
         "screenReaderTracking": {
             "type": "screenReader.tracking",
-            "classes": {
-                "mousecursor": "gpii-followingElement-mouseCursorIcon",
-                "textcursor": "gpii-followingElement-textCursorIcon",
-                "keyboardfocus": "gpii-followingElement-keyboardFocusIcon"
-            },
             "panel": {
                 "type": "gpii.prefs.panel.followingElement.screenReader",
                 "container": ".gpiic-increaseSize-screenReaderFollows",
                 "template": "%prefix/UIOptionsTemplate-followingElement.html",
                 "message": "%prefix/followingElement.json",
-                "classnameMap": {"followingElement": "@screenReaderTracking.classes"}
+                "classnameMap": {"followingElement": "@followingElement.classes"}
             }
         }
     };
