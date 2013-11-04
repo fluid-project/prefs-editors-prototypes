@@ -139,7 +139,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             universalVolume: ".gpiic-speakText-universalVolume",
             universalVolumeLabel: ".gpiic-speakText-universalVolume-label",
             universalVolumeMinus: ".gpiic-speakText-universalVolume-minus",
-            universalVolumePlus: ".gpiic-speakText-universalVolume-plus"
+            universalVolumePlus: ".gpiic-speakText-universalVolume-plus",
+            universalVolumeDescription: ".gpiic-speakText-universalVolume-description"
         },
         protoTree: {
             universalVolume: {
@@ -154,7 +155,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             universalVolumeLabel: {messagekey: "universalVolumeLabel"},
             universalVolumeMinus: {messagekey: "stepperMinus"},
-            universalVolumePlus: {messagekey: "stepperPlus"}
+            universalVolumePlus: {messagekey: "stepperPlus"},
+            universalVolumeDescription: {messagekey: "universalVolumeDescription"}  
         }
     });
 

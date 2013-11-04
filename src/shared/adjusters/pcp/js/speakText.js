@@ -84,6 +84,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onHidePartialAdjusters.hideTick": {
                     "funcName": "{that}.events.onHideSpeakTextTickIcon.fire"
                 },
+
+
+                "onReady.setTextVolumeHeader": {
+                    "this": "{that}.dom.volumeHeader",
+                    "method": "text",
+                    "args": ["{that}.options.strings.volumeHeader"]
+                },
+
+
                 "onReady.setSaveAndApplyText": {
                     "this": "{that}.dom.saveAndApply",
                     "method": "prop",
@@ -140,6 +149,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 speakTextHeader: ".gpii-speakTextPresetButton-label",
                 speakTextTickIcon: ".white-tick-icon",
 
+                volumeHeader: ".gpii-volumePresetButton-label",
+
                 saveAndApply: ".flc-prefsEditor-save",
                 resetAndApply: ".flc-prefsEditor-reset",
                 cancel: ".flc-prefsEditor-cancel"
@@ -154,6 +165,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     expander: {
                         func: "gpii.speakText.lookupMsg",
                         args: ["{prefsEditorLoader}.msgBundle", "speakTextPresetButtonLabel"]
+                    }
+                },
+                volumeHeader: {
+                    expander: {
+                        func: "gpii.speakText.lookupMsg",
+                        args: ["{prefsEditorLoader}.msgBundle", "volumePresetButtonLabel"]
                     }
                 },
                 saveAndApply: {
