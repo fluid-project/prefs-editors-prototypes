@@ -24,6 +24,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "showCrosshairs": {
             "type": "boolean",
             "default": false
+        },
+        "followingElement": {
+            "type": "string",
+            "default": "",
+            "enum": ["mousecursor", "textcursor", "keyboardfocus"]
         }
     };
 
@@ -56,6 +61,24 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "container": ".gpiic-increaseSize-showCrosshairs",
                 "template": "%prefix/UIOptionsTemplate-iconCheckAdjuster.html",
                 "message": "%prefix/showCrosshairs.json"
+            }
+        },
+        "followingElement": {
+            "type": "followingElement",
+            "classes": {
+                "mousecursor": "",
+                "textcursor": "",
+                "keyboardfocus": ""
+                /*"mousecursor": "gpii-increaseSize-magnifierFollowsMouseCursor gpii-increaseSize-magnifierFollowsIconLabel",
+                "textcursor": "gpii-increaseSize-magnifierFollowsTextCursor gpii-increaseSize-magnifierFollowsIconLabel",
+                "keyboardfocus": "gpii-increaseSize-magnifierFollowsKeyboardFocus gpii-increaseSize-magnifierFollowsIconLabel"*/
+            },
+            "panel": {
+                "type": "gpii.prefs.panel.followingElement",
+                "container": ".gpiic-increaseSize-magnifierFollows",
+                "template": "%prefix/UIOptionsTemplate-followingElement.html",
+                "message": "%prefix/followingElement.json",
+                "classnameMap": {"followingElement": "@followingElement.classes"}
             }
         }
     };
