@@ -34,6 +34,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "string",
             "default": "",
             "enum": ["mousecursor", "textcursor", "keyboardfocus"]
+        },
+        "contrast.theme": {
+            "type": "string",
+            "default": "bw",
+            "enum": ["bw", "yb", "by", "wb"]
         }
     };
 
@@ -93,6 +98,26 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "template": "%prefix/UIOptionsTemplate-followingElement.html",
                 "message": "%prefix/followingElement.json",
                 "classnameMap": {"followingElement": "@followingElement.classes"}
+            }
+        },
+        "contrastTheme": {
+            "type": "contrast.theme",
+            "classes": {
+                "bw": "fl-theme-prefsEditor-bw fl-theme-bw",
+                "yb": "fl-theme-prefsEditor-yb fl-theme-yb",
+                "by": "fl-theme-prefsEditor-by fl-theme-by",
+                "wb": "fl-theme-prefsEditor-wb fl-theme-wb"
+            },
+            "enactor": {
+                "type": "fluid.prefs.enactors.contrast",
+                "classes": "@contrastTheme.classes"
+            },
+            "panel": {
+                "type": "gpii.prefs.panel.contrastTheme",
+                "container": ".gpiic-contrast",  // the css selector in the template where the panel is rendered
+                "classnameMap": {"theme": "@contrastTheme.classes"},
+                "template": "../../src/shared/lib/infusion/framework/preferences/html/PrefsEditorTemplate-contrast.html",
+                "message": "../../src/shared/lib/infusion/framework/preferences/messages/contrast.json"
             }
         }
     };
