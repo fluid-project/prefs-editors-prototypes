@@ -31,7 +31,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 createOnEvent: "afterRender",
                 container: "{that}.dom.cursorSizePreview",
                 options: {
-                    templateUrl: "../../src/shared/preview/html/uiOptionsCursorPreview.html"
+                    templateUrl: "../../src/shared/preview/html/cursorPreview.html"
                 }
             }
         },

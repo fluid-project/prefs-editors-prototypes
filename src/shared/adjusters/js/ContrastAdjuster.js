@@ -75,7 +75,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 createOnEvent: "afterRender",
                 container: "{that}.dom.contrastPreview",
                 options: {
-                    templateUrl: "../../src/shared/preview/html/uiOptionsContrastPreview.html",
+                    templateUrl: "../../src/shared/preview/html/contrastPreview.html",
                     components: {
                         enhancer: {
                             type: "fluid.uiEnhancer",

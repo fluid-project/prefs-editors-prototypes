@@ -37,7 +37,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 createOnEvent: "afterRender",
                 container: "{that}.dom.textSizePreview",
                 options: {
-                    templateUrl: "../../src/shared/preview/html/uiOptionsTextPreview.html",
+                    templateUrl: "../../src/shared/preview/html/textPreview.html",
                     components: {
                         enhancer: {
                             type: "fluid.uiEnhancer",
