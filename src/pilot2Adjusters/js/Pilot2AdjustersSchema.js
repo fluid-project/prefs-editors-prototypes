@@ -57,7 +57,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "panel": {
                 "type": "gpii.prefs.panel.magnifier.invertColours",
                 "container": ".gpiic-increaseSize-magnifierInvertColours",
-                "template": "%prefix/UIOptionsTemplate-iconCheckAdjuster.html",
+                "template": "%prefix/PrefsEditorTemplate-iconCheckAdjuster.html",
                 "message": "%prefix/magnifierInvertColours.json"
             }
         },
@@ -69,7 +69,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "panel": {
                 "type": "gpii.prefs.panel.showCrosshairs",
                 "container": ".gpiic-increaseSize-showCrosshairs",
-                "template": "%prefix/UIOptionsTemplate-iconCheckAdjuster.html",
+                "template": "%prefix/PrefsEditorTemplate-iconCheckAdjuster.html",
                 "message": "%prefix/showCrosshairs.json"
             }
         },
@@ -85,7 +85,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "panel": {
                 "type": "gpii.prefs.panel.followingElement.magnifier",
                 "container": ".gpiic-increaseSize-magnifierFollows",
-                "template": "%prefix/UIOptionsTemplate-followingElement.html",
+                "template": "%prefix/PrefsEditorTemplate-followingElement.html",
                 "message": "%prefix/followingElement.json",
                 "classnameMap": {"followingElement": "@followingElement.classes"}
             }
@@ -95,7 +95,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "panel": {
                 "type": "gpii.prefs.panel.followingElement.screenReader",
                 "container": ".gpiic-increaseSize-screenReaderFollows",
-                "template": "%prefix/UIOptionsTemplate-followingElement.html",
+                "template": "%prefix/PrefsEditorTemplate-followingElement.html",
                 "message": "%prefix/followingElement.json",
                 "classnameMap": {"followingElement": "@followingElement.classes"}
             }
