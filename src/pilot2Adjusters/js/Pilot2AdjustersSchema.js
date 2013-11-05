@@ -37,7 +37,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "contrast.theme": {
             "type": "string",
-            "default": "bw",
+            "default": "",
             "enum": ["bw", "yb", "by", "wb"]
         }
     };
