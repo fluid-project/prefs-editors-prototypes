@@ -15,7 +15,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
 
-    fluid.defaults("gpii.uiOptions.enactors.cursorSize", {
+    fluid.defaults("gpii.enactor.cursorSize", {
         gradeNames: ["fluid.viewComponent", "fluid.prefs.enactors", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.cursorSize": {
@@ -27,7 +27,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         invokers: {
             set: {
-                funcName: "gpii.uiOptions.enactors.cursorSize.set",
+                funcName: "gpii.enactor.cursorSize.set",
                 args: ["{that}.model.value", "{that}.dom.cursorDiv"]
             }
         },
@@ -39,7 +39,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.uiOptions.enactors.cursorSize.set = function (times, cursorDiv) {
+    gpii.enactor.cursorSize.set = function (times, cursorDiv) {
         cursorDiv.css("font-size", times + "em");
     };
 

@@ -14,7 +14,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 /*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
 
 (function ($, fluid) {
-    fluid.registerNamespace("gpii.uiOptions.pmt");
+    fluid.registerNamespace("gpii.pmt");
 
     gpii.primarySchema = {
 
@@ -55,7 +55,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     };
 
-    gpii.uiOptions.pmt.auxiliarySchema = {
+    gpii.pmt.auxiliarySchema = {
         // The global values:
         "namespace": "gpii.uiOptions.constructed",
         "templatePrefix": "../../src/shared/adjusters/html/", // The common path to settings panel templates
@@ -67,10 +67,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "contrast": {
             "type": "gpii.primarySchema.highContrast",
             "enactor": {
-                "type": "gpii.uiOptions.enactors.contrast"
+                "type": "gpii.enactor.contrast"
             },
             "panel": {
-                "type": "gpii.uiOptions.panels.contrast",
+                "type": "gpii.adjuster.contrast",
                 "container": ".gpii-prefsEditor-contrastPanel",
                 "template": "%prefix/UIOptionsTemplate-contrastNew.html",
                 "message": "%prefix/contrastNew.json"
@@ -79,10 +79,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "increaseSize": {
             "type": "increaseSize",
             /*"enactor": {
-                "type": "gpii.uiOptions.enactors.contrast"
+                "type": "gpii.enactor.contrast"
             },*/
             "panel": {
-                "type": "gpii.uiOptions.panels.increaseSize",
+                "type": "gpii.adjuster.increaseSize",
                 "container": ".gpii-prefsEditor-increaseSizePanel",
                 "template": "%prefix/UIOptionsTemplate-increaseSize.html",
                 "message": "%prefix/increaseSize.json"
@@ -91,28 +91,28 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "textSize": {
             "type": "gpii.primarySchema.fontSize",
             "enactor": {
-                "type": "gpii.uiOptions.enactors.textSize"
+                "type": "gpii.enactor.textSize"
             },
             "panel": {
-                "type": "gpii.uiOptions.panels.increaseSize"
+                "type": "gpii.adjuster.increaseSize"
             }
         },
         "cursorSize": {
             "type": "gpii.primarySchema.cursorSize",
             "enactor": {
-                "type": "gpii.uiOptions.enactors.cursorSize"
+                "type": "gpii.enactor.cursorSize"
             },
             "panel": {
-                "type": "gpii.uiOptions.panels.increaseSize"
+                "type": "gpii.adjuster.increaseSize"
             }
         },
         "magnifier": {
             "type": "gpii.primarySchema.magnification",
             "enactor": {
-                "type": "gpii.uiOptions.enactors.magnifier"
+                "type": "gpii.enactor.magnifier"
             },
             "panel": {
-                "type": "gpii.uiOptions.panels.increaseSize"
+                "type": "gpii.adjuster.increaseSize"
             }
         },
         "magnifierPosition": {
@@ -127,7 +127,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
             },
             "panel": {
-                "type": "gpii.uiOptions.panels.increaseSize",
+                "type": "gpii.adjuster.increaseSize",
                 "classnameMap": {"magnifierPosition": "@magnifierPosition.classes"}
             }
         },
@@ -139,7 +139,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "keyboardfocus": "gpii-increaseSize-magnifierFollowsKeyboardFocus gpii-increaseSize-magnifierFollowsIconLabel"
             },
             "panel": {
-                "type": "gpii.uiOptions.panels.increaseSize",
+                "type": "gpii.adjuster.increaseSize",
                 "classnameMap": {"magnifierFollows": "@magnifierFollows.classes"}
             }
         }

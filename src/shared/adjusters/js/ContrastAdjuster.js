@@ -15,8 +15,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     
-    fluid.defaults("gpii.uiOptions.panels.contrast", {
-        gradeNames: ["fluid.prefs.panel", "gpii.uiOptions.pmt.previewPerSettingEnhanced", "autoInit"],
+    fluid.defaults("gpii.adjuster.contrast", {
+        gradeNames: ["fluid.prefs.panel", "gpii.pmt.previewPerSettingEnhanced", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.highContrast": {
                 "model.contrast": "default"
@@ -36,7 +36,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "slideToggle"
             },
             "afterRender.setContrastAdjusters": {
-                listener: "gpii.uiOptions.panels.contrast.setContrastAdjusters",
+                listener: "gpii.adjuster.contrast.setContrastAdjusters",
                 args: ["{that}.dom.contrastAdjusters", "{that}.model.contrast"]
             },
             "afterRender.setATTRaddToMyPreferencesLabel": {
@@ -115,7 +115,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }]
     });
     
-    gpii.uiOptions.panels.contrast.setContrastAdjusters = function (contrastAdjuster, flag) {
+    gpii.adjuster.contrast.setContrastAdjusters = function (contrastAdjuster, flag) {
         contrastAdjuster[flag ? "show" : "hide"]();
     };
 })(jQuery, fluid);

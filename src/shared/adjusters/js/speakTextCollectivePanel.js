@@ -25,10 +25,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             speechRate: {
                 decorators: {
                     type: "fluid",
-                    func: "gpii.uiOptions.textfieldStepper",
+                    func: "gpii.textfieldStepper",
                     options: {
-                        range: "{that}.options.controlValues.speechRate",
-                        path: "value"
+                        sourceApplier: "{that}.applier",
+                        rules: {
+                            "value": "value"
+                        },
+                        model: {
+                            value: "{that}.model.value"
+                        },
+                        range: "{that}.options.controlValues.speechRate"
                     }
                 }
             },

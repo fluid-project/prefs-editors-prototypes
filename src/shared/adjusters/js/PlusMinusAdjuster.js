@@ -14,11 +14,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 /*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
 
 (function ($, fluid) {
-    fluid.defaults("gpii.uiOptions.panels.plusMinus", {
+    fluid.defaults("gpii.adjuster.plusMinus", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         invokers: {
             onValueTextPreventNonNumeric: {
-                funcName: "gpii.uiOptions.panels.plusMinus.onValueTextPreventNonNumeric",
+                funcName: "gpii.adjuster.plusMinus.onValueTextPreventNonNumeric",
                 args: [
                     "{arguments}.0"
                 ]
@@ -26,12 +26,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
     
-    gpii.uiOptions.panels.plusMinus.onMinusClick = function (that, modelValue, range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText) {
+    gpii.adjuster.plusMinus.onMinusClick = function (that, modelValue, range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText) {
         var newValue =  parseFloat(modelValue) - parseFloat(range.divisibleBy);
-        gpii.uiOptions.panels.plusMinus.updateBoundedValue(that, newValue, range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText);
+        gpii.adjuster.plusMinus.updateBoundedValue(that, newValue, range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText);
     };
     
-    gpii.uiOptions.panels.plusMinus.updateBoundedValue = function (that, newValue, range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText) {
+    gpii.adjuster.plusMinus.updateBoundedValue = function (that, newValue, range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText) {
         var boundedValue;
         
         if (newValue >= parseFloat(range.min)) {
@@ -42,10 +42,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         
         that.applier.requestChange(modelValueName, boundedValue);
         refreshValueText();
-        gpii.uiOptions.panels.plusMinus.performMinRangeCheck(that, boundedValue, range, minRangeReachedEvent, minRangeExitedEvent);
+        gpii.adjuster.plusMinus.performMinRangeCheck(that, boundedValue, range, minRangeReachedEvent, minRangeExitedEvent);
     }
     
-    gpii.uiOptions.panels.plusMinus.performMinRangeCheck = function (that, boundedValue, range, minRangeReachedEvent, minRangeExitedEvent) {
+    gpii.adjuster.plusMinus.performMinRangeCheck = function (that, boundedValue, range, minRangeReachedEvent, minRangeExitedEvent) {
         if (boundedValue === range.min) {
             minRangeReachedEvent.fire();
         } else {
@@ -53,16 +53,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     }
     
-    gpii.uiOptions.panels.plusMinus.onPlusClick = function (that, modelValue, range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText) {
+    gpii.adjuster.plusMinus.onPlusClick = function (that, modelValue, range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText) {
         var newValue =  parseFloat(modelValue) + parseFloat(range.divisibleBy);
-        gpii.uiOptions.panels.plusMinus.updateBoundedValue(that, newValue, range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText);
+        gpii.adjuster.plusMinus.updateBoundedValue(that, newValue, range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText);
     };
     
-    gpii.uiOptions.panels.plusMinus.onValueTextChange = function (that, elmValue, range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText) {
-        gpii.uiOptions.panels.plusMinus.updateBoundedValue(that, parseFloat(elmValue), range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText);
+    gpii.adjuster.plusMinus.onValueTextChange = function (that, elmValue, range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText) {
+        gpii.adjuster.plusMinus.updateBoundedValue(that, parseFloat(elmValue), range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText);
     };
     
-    gpii.uiOptions.panels.plusMinus.onValueTextPreventNonNumeric = function (event) {
+    gpii.adjuster.plusMinus.onValueTextPreventNonNumeric = function (event) {
         // Allow only backspace, delete and tab
         if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 37 || event.keyCode == 39 || event.keyCode == 35 || event.keyCode == 36 || event.keyCode == 9) {
             // let it happen, don't do anything

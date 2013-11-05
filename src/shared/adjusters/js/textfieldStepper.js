@@ -20,7 +20,7 @@ var fluid_1_5 = fluid_1_5 || {};
      *******************************************/
 
     fluid.defaults("gpii.textfieldStepper", {
-        gradeNames: ["fluid.viewComponent", "autoInit"],
+        gradeNames: ["fluid.viewComponent", "fluid.prefs.modelRelay", "autoInit"],
         components: {
             textfield: {
                 type: "fluid.textfieldSlider.textfield",
@@ -137,18 +137,5 @@ var fluid_1_5 = fluid_1_5 || {};
             }
         });
     };
-
-    fluid.defaults("gpii.uiOptions.textfieldStepper", {
-        gradeNames: ["gpii.textfieldStepper", "autoInit"],
-        model: "{fluid.prefs.panel}.model",
-        range: "{fluid.prefs.panel}.options.range",
-        listeners: {
-            modelChanged: {
-                listener: "{fluid.prefs.panel}.applier.requestChange",
-                args: ["{that}.options.path", "{arguments}.0"]
-            }
-        },
-        path: "value"
-    });
 
 })(jQuery, fluid_1_5);

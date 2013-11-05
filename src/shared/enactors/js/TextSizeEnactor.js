@@ -15,7 +15,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     
-	fluid.defaults("gpii.uiOptions.enactors.textSize", {
+	fluid.defaults("gpii.enactor.textSize", {
         gradeNames: ["fluid.viewComponent", "fluid.prefs.enactors", "fluid.prefs.enactors.textSize", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.fontSize": {
@@ -24,7 +24,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         invokers: {
             set: {
-                funcName: "gpii.uiOptions.enactors.textSize.set",
+                funcName: "gpii.enactor.textSize.set",
                 args: ["{arguments}.0", "{that}.container"]
             }
         },
@@ -36,7 +36,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-	gpii.uiOptions.enactors.textSize.set = function (sizeInPt, that) {
+	gpii.enactor.textSize.set = function (sizeInPt, that) {
         that.css("font-size", sizeInPt + "pt");
     };
     

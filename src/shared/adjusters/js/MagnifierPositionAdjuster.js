@@ -15,7 +15,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     
-    fluid.defaults("gpii.uiOptions.panels.magnifierPosition", {
+    fluid.defaults("gpii.adjuster.magnifierPosition", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.magnificationPosition": {
@@ -53,7 +53,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         invokers: {
             "magnifierPositionStyle": {
-                funcName: "gpii.uiOptions.panels.magnifierPosition.style",
+                funcName: "gpii.adjuster.magnifierPosition.style",
                 args: ["{that}.dom.magnifierPositionLabel", "{that}.options.strings.magnifierPosition",
                     "{that}.options.markup.magnifierPositionLabel", "{that}.options.controlValues.magnifierPosition",
                     "{that}.options.classnameMap.magnifierPosition", "{that}"]
@@ -61,7 +61,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.uiOptions.panels.magnifierPosition.style = function (labels, strings, markup, magnifierPosition, style, that) {
+    gpii.adjuster.magnifierPosition.style = function (labels, strings, markup, magnifierPosition, style, that) {
         fluid.each(labels, function (label, index) {
             label = $(label);
             label.html(fluid.stringTemplate(markup, {

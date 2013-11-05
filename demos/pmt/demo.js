@@ -19,10 +19,10 @@ var demo = demo || {};
     demo.initPMT = function (container, compOpts) {
         demo.builder = fluid.prefs.builder({
             primarySchema: gpii.primarySchema,
-            auxiliarySchema: gpii.uiOptions.pmt.auxiliarySchema
+            auxiliarySchema: gpii.pmt.auxiliarySchema
         });
         
-        demo.instantiatePMT(container, compOpts, "gpii.uiOptions.pmt", gpii.getDefaultLanguage());
+        demo.instantiatePMT(container, compOpts, "gpii.pmt", gpii.getDefaultLanguage());
     };
     
     demo.instantiatePMT = function (container, compOpts, prefsEditorType, language) {

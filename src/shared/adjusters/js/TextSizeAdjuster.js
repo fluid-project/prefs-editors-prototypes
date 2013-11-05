@@ -15,8 +15,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     
-    fluid.defaults("gpii.uiOptions.panels.textSize", {
-        gradeNames: ["fluid.prefs.panel", "gpii.uiOptions.panels.plusMinus", "gpii.uiOptions.pmt.previewPerSettingEnhanced", "autoInit"],
+    fluid.defaults("gpii.adjuster.textSize", {
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.plusMinus", "gpii.pmt.previewPerSettingEnhanced", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.fontSize": {
                 "model.fontSize": "default",
@@ -25,12 +25,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "fontSize.range.divisibleBy": "divisibleBy"
             }
         },
-
         events: {
             textSizeMinRangeReached: null,
             textSizeMinRangeExited: null
         },
-
         components: {
             textSizePreview: {
                 type: "fluid.prefs.preview",
@@ -112,7 +110,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         invokers: {
             onTextSizeMinusClick: {
-                funcName: "gpii.uiOptions.panels.plusMinus.onMinusClick",
+                funcName: "gpii.adjuster.plusMinus.onMinusClick",
                 args: [
                     "{that}",
                     "{that}.model.fontSize",
@@ -124,7 +122,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 ]
             },
             onTextSizePlusClick: {
-                funcName: "gpii.uiOptions.panels.plusMinus.onPlusClick",
+                funcName: "gpii.adjuster.plusMinus.onPlusClick",
                 args: [
                     "{that}",
                     "{that}.model.fontSize",
@@ -136,7 +134,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 ]
             },
             onTextSizeValueTextChange: {
-                funcName: "gpii.uiOptions.panels.plusMinus.onValueTextChange",
+                funcName: "gpii.adjuster.plusMinus.onValueTextChange",
                 args: [
                     "{that}",
                     {expander: {
@@ -174,7 +172,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
             },
             checkTextSizeInitialMinRange: {
-                funcName: "gpii.uiOptions.panels.plusMinus.performMinRangeCheck",
+                funcName: "gpii.adjuster.plusMinus.performMinRangeCheck",
                 args: [
                     "{that}",
                     "{that}.model.fontSize",
@@ -187,16 +185,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 func: "{that}.refreshTextSizeValueText"
             }
         },
-
-        // strings: {
-        //     fontSizeStringTemplate: "{that}.stringBundle.fontSizeStringTemplate"
-            // fontSizeStringTemplate: {
-            //     expander: {
-            //         func: "gpii.lookupMsg",
-            //         args: ["{uiOptionsLoader}.msgBundle", "fontSizeStringTemplate"]
-            //     }
-            // }  
-        // },
         distributeOptions: [{
             source: "{that}.options.outerPreviewEnhancerOptions",
             target: "{that textSizePreview enhancer}.options"

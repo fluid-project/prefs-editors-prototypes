@@ -14,7 +14,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 /*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
 
 (function ($, fluid) {
-    fluid.defaults("gpii.uiOptions.pmt", {
+    fluid.defaults("gpii.pmt", {
         gradeNames: ["fluid.prefs.fullNoPreview", "autoInit"],
         prefsEditor: {
             gradeNames: ["fluid.prefs.stringBundle"],
@@ -54,7 +54,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         return s1 + s2; 
     };
     
-    fluid.defaults("gpii.uiOptions.pmt.previewPerSettingEnhanced", {
+    fluid.defaults("gpii.pmt.previewPerSettingEnhanced", {
         gradeNames: "fluid.littleComponent",
         outerPreviewEnhancerOptions: "{originalEnhancerOptions}.options.originalUserOptions",
         emptyComponentType: "fluid.emptySubcomponent"

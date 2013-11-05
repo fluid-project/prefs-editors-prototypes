@@ -15,7 +15,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     
-    fluid.defaults("gpii.uiOptions.panels.magnifierFollows", {
+    fluid.defaults("gpii.adjuster.magnifierFollows", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.tracking": {
@@ -53,7 +53,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         invokers: {
             magnifierFollowsStyle: {
-                funcName: "gpii.uiOptions.panels.magnifierFollows.style",
+                funcName: "gpii.adjuster.magnifierFollows.style",
                 args: ["{that}.dom.magnifierFollowsLabel", "{that}.options.strings.magnifierFollows",
                     "{that}.options.markup.magnifierFollowsLabel", "{that}.options.controlValues.magnifierFollows",
                     "{that}.options.classnameMap.magnifierFollows"]
@@ -61,7 +61,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.uiOptions.panels.magnifierFollows.style = function (labels, strings, markup, magnifierFollows, style) {
+    gpii.adjuster.magnifierFollows.style = function (labels, strings, markup, magnifierFollows, style) {
         fluid.each(labels, function (label, index) {
             label = $(label);
             label.html(fluid.stringTemplate(markup, {

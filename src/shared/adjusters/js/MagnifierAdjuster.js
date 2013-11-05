@@ -15,8 +15,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     
-    fluid.defaults("gpii.uiOptions.panels.magnifier", {
-        gradeNames: ["fluid.prefs.panel", "gpii.uiOptions.panels.plusMinus", "gpii.uiOptions.pmt.previewPerSettingEnhanced", "autoInit"],
+    fluid.defaults("gpii.adjuster.magnifier", {
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.plusMinus", "gpii.pmt.previewPerSettingEnhanced", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.magnification": {
                 "model.magnification": "default",
@@ -121,7 +121,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         invokers: {
             onMagnifierMinusClick: {
-                funcName: "gpii.uiOptions.panels.plusMinus.onMinusClick",
+                funcName: "gpii.adjuster.plusMinus.onMinusClick",
                 args: [
                     "{that}",
                     "{that}.model.magnification",
@@ -133,7 +133,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 ]
             },
             onMagnifierPlusClick: {
-                funcName: "gpii.uiOptions.panels.plusMinus.onPlusClick",
+                funcName: "gpii.adjuster.plusMinus.onPlusClick",
                 args: [
                     "{that}",
                     "{that}.model.magnification",
@@ -145,7 +145,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 ]
             },
             onMagnifierValueTextChange: {
-                funcName: "gpii.uiOptions.panels.plusMinus.onValueTextChange",
+                funcName: "gpii.adjuster.plusMinus.onValueTextChange",
                 args: [
                     "{that}",
                     {expander: {
@@ -183,7 +183,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
             },
             checkMagnifierInitialMinRange: {
-                funcName: "gpii.uiOptions.panels.plusMinus.performMinRangeCheck",
+                funcName: "gpii.adjuster.plusMinus.performMinRangeCheck",
                 args: [
                     "{that}",
                     "{that}.model.magnification",
