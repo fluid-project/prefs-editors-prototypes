@@ -114,10 +114,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             "panel": {
                 "type": "gpii.prefs.panel.contrastTheme",
-                "container": ".gpiic-contrast",  // the css selector in the template where the panel is rendered
+                "container": ".gpiic-contrast",
                 "classnameMap": {"theme": "@contrastTheme.classes"},
-                "template": "../../src/shared/lib/infusion/framework/preferences/html/PrefsEditorTemplate-contrast.html",
-                "message": "../../src/shared/lib/infusion/framework/preferences/messages/contrast.json"
+                "template": "%prefix/PrefsEditorTemplate-contrastTheme.html"
             }
         }
     };
