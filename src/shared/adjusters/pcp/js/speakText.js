@@ -18,80 +18,128 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             fullyExpandedSlideSpeed: 500,
 
             model: {
-                partialAdjustersVisibility: false,
-                extraAdjustersVisibility: false
+                visualAlternativesPartialVisible: false,
+                visualAlternativesExtraVisible: false,
+
+                volumePartialVisible: false
             },
             events: {
-                onShowPartialAdjusters: null,
-                onHidePartialAdjusters: null,
-                onHideSpeakTextTickIcon: null,
-                onShowExtraAdjusters: null,
-                onHideExtraAdjusters: null
+                onShowVisualAlternativesPartial: null,
+                onHideVisualAlternativesPartial: null,
+                onHideVisualAlternativesTickIcon: null,
+                onShowVisualAlternativesExtra: null,
+                onHideVisualAlternativesExtra: null
             },
             listeners: {
-                "onHideSpeakTextTickIcon.hideTick": {
-                    "this": "{that}.dom.speakTextTickIcon",
+
+                // Visual Alternatives adjuster group part
+
+                "onHideVisualAlternativesTickIcon.hideTick": {
+                    "this": "{that}.dom.visualAlternativesTickIcon",
                     "method": "hide"
                 },
-                "onReady.bindEventPreferenceSwitchSpeakText": {
-                    "this": "{that}.dom.preferencesSwitchSpeakText",
+                "onReady.activateCombobox": {
+                    "listener": "gpii.activateCombobox",
+                    "args": ["{that}"]
+                },
+                "onReady.bindEventMoreLessVisualAlternatives": {
+                    "this": "{that}.dom.visualAlternativesPreferenceSwitch",
                     "method": "change",
                     "args": ["{that}.updateModelValue"]
                 },
+                "onCreate.addSpeakTextSwitchListener": {
+                    "listener": "{that}.applier.modelChanged.addListener",
+                    "args": ["gpii_primarySchema_speakText", "{that}.updateModelExtraValue"]
+                },
+                "onCreate.addExtraVisibleListener": {
+                    "listener": "{that}.applier.modelChanged.addListener",
+                    "args": ["visualAlternativesExtraVisible", "{that}.showHideExtra"]
+                },
                 "onCreate.addPartialVisibilityListener": {
                     "listener": "{that}.applier.modelChanged.addListener",
-                    "args": ["partialAdjustersVisibility", "{that}.showHidePartial"]
+                    "args": ["visualAlternativesPartialVisible", "{that}.showHidePartial"]
                 },
-                "onReady.setTextSpeakTextHeader": {
-                    "this": "{that}.dom.speakTextHeader",
+                // "onCreate.addVolumePartialVisibilityListener": {
+                //     "listener": "{that}.applier.modelChanged.addListener",
+                //     "args": ["volumePartialVisible", "{that}.showHidePartial"]
+                // },
+                "onReady.setTextVisualAlternativesHeader": {
+                    "this": "{that}.dom.visualAlternativesHeader",
                     "method": "text",
-                    "args": ["{that}.options.strings.speakTextHeader"]
+                    "args": ["{that}.options.strings.visualAlternativesHeader"]
                 },
-                "onShowPartialAdjusters.showPartialAdjusters": {
-                    "this": "{that}.dom.speakTextPartialAdjusters",
+                "onShowVisualAlternativesPartial.showPartialAdjusters": {
+                    "this": "{that}.dom.visualAlternativesPartialAdjusters",
                     "method": "slideDown",
                     "args": ["{that}.options.partiallyExpandedSlideSpeed"]
                 },
-                "onShowPartialAdjusters.showWhiteTickIcon": {
-                    "this": "{that}.dom.speakTextTickIcon",
+                "onShowVisualAlternativesPartial.showWhiteTickIcon": {
+                    "this": "{that}.dom.visualAlternativesTickIcon",
                     "method": "show"
                 },
-                "onShowPartialAdjusters.setHeaderTextBold.addBoldClass": {
-                    "this": "{that}.dom.speakTextHeader",
+                "onShowVisualAlternativesPartial.setHeaderTextBold.addBoldClass": {
+                    "this": "{that}.dom.visualAlternativesHeader",
                     "method": "addClass",
                     "args": ["{that}.options.styles.boldText"]
                 },
-                "onShowPartialAdjusters.setHeaderTextBold.removeNormalClass": {
-                    "this": "{that}.dom.speakTextHeader",
+                "onShowVisualAlternativesPartial.setHeaderTextBold.removeNormalClass": {
+                    "this": "{that}.dom.visualAlternativesHeader",
                     "method": "removeClass",
                     "args": ["{that}.options.styles.normalText"]
                 },
-                "onHidePartialAdjusters.hideAdjusters": {
-                    "this": "{that}.dom.speakTextPartialAdjusters",
+                "onHideVisualAlternativesPartial.hideAdjusters": {
+                    "this": "{that}.dom.visualAlternativesPartialAdjusters",
                     "method": "slideUp",
                     "args": ["{that}.options.partiallyExpandedSlideSpeed"]
                 },
-                "onHidePartialAdjusters.setHeaderTextNormal.addNormalClass": {
-                    "this": "{that}.dom.speakTextHeader",
+                "onHideVisualAlternativesPartial.setHeaderTextNormal.addNormalClass": {
+                    "this": "{that}.dom.visualAlternativesHeader",
                     "method": "addClass",
                     "args": ["{that}.options.styles.normalText"]
                 },
-                "onHidePartialAdjusters.setHeaderTextNormal.removeBoldClass": {
-                    "this": "{that}.dom.speakTextHeader",
+                "onHideVisualAlternativesPartial.setHeaderTextNormal.removeBoldClass": {
+                    "this": "{that}.dom.visualAlternativesHeader",
                     "method": "removeClass",
                     "args": ["{that}.options.styles.boldText"]
                 },
-                "onHidePartialAdjusters.hideTick": {
-                    "funcName": "{that}.events.onHideSpeakTextTickIcon.fire"
+                "onHideVisualAlternativesPartial.hideTick": {
+                    "funcName": "{that}.events.onHideVisualAlternativesTickIcon.fire"
+                },
+                "onShowVisualAlternativesExtra.show": {
+                    "this": "{that}.dom.visualAlternativesExtraAdjusters",
+                    "method": "slideDown",
+                    "args": ["{that}.options.fullyExpandedSlideSpeed"]
+                },
+                "onHideVisualAlternativesExtra.hide": {
+                    "this": "{that}.dom.visualAlternativesExtraAdjusters",
+                    "method": "slideUp",
+                    "args": ["{that}.options.fullyExpandedSlideSpeed"]
                 },
 
+
+                //  Volume adjuster group part
 
                 "onReady.setTextVolumeHeader": {
                     "this": "{that}.dom.volumeHeader",
                     "method": "text",
                     "args": ["{that}.options.strings.volumeHeader"]
                 },
+                // "onReady.bindEventPreferenceSwitchVolume": {
+                //     "this": "{that}.dom.volumePreferenceSwitch",
+                //     "method": "change",
+                //     "args": ["{that}.updateVolumeModelValue"]
+                // },
 
+
+                //  Language adjuster group part
+
+                "onReady.setTextLanguageHeader": {
+                    "this": "{that}.dom.languageHeader",
+                    "method": "text",
+                    "args": ["{that}.options.strings.languageHeader"]
+                },
+
+                //  Save, Reset and Cancel buttons:
 
                 "onReady.setSaveAndApplyText": {
                     "this": "{that}.dom.saveAndApply",
@@ -128,15 +176,35 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 updateModelValue: {
                     "funcName": "gpii.speakText.updateModelHeaderClicked",
                     "args": ["{that}",
-                             "{that}.model.partialAdjustersVisibility"
-                    ]
+                             "{that}.model.visualAlternativesPartialVisible",
+                             "{that}.model.visualAlternativesExtraVisible"
+                    ],
+                    "dynamic": true
                 },
+                updateModelExtraValue: {
+                    "funcName": "gpii.updateModelExtraValue",
+                    "args": ["{that}"],
+                    "dynamic": true
+                },
+                // updateVolumeModelValue: {
+                //     "funcName": "gpii.speakText.updateModelVolumeHeaderClicked",
+                //     "args": ["{that}"]
+                // },
                 showHidePartial: {
                     "funcName": "gpii.speakText.showOrHideDependingOnState",
-                    "args": ["{that}",
-                             "{that}.events.onShowPartialAdjusters.fire",
-                             "{that}.events.onHidePartialAdjusters.fire"
-                        ]
+                    "args": ["{that}.model.visualAlternativesPartialVisible",
+                             "{that}.events.onShowVisualAlternativesPartial.fire",
+                             "{that}.events.onHideVisualAlternativesPartial.fire"
+                    ],
+                    "dynamic": true
+                },
+                showHideExtra: {
+                    "funcName": "gpii.speakText.showOrHideDependingOnState",
+                    "args": ["{that}.model.visualAlternativesExtraVisible",
+                             "{that}.events.onShowVisualAlternativesExtra.fire",
+                             "{that}.events.onHideVisualAlternativesExtra.fire"
+                    ],
+                    "dynamic": true
                 },
                 updateModelAllHidden: {
                     "funcName": "gpii.speakText.updateModelAllHidden",
@@ -144,33 +212,47 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             selectors: {
-                preferencesSwitchSpeakText: "#presetButton",
-                speakTextPartialAdjusters: ".gpii-speakText-partially-expanded",
-                speakTextHeader: ".gpii-speakTextPresetButton-label",
-                speakTextTickIcon: ".white-tick-icon",
+                speakTextSwitch: "#speakText",
 
+                visualAlternativesPreferenceSwitch: ".gpii-speakTextPresetButton",
+                visualAlternativesPartialAdjusters: ".gpii-speakText-partially-expanded",
+                visualAlternativesExtraAdjusters: ".gpii-speakText-fully-expanded",
+                visualAlternativesHeader: ".gpii-speakTextPresetButton-label",
+                visualAlternativesTickIcon: ".visualAlternatives-white-tick-icon",
+
+                volumePreferenceSwitch: ".gpii-volumePresetButton",
+                volumePartialAdjusters: ".gpii-volume-partially-expanded",
                 volumeHeader: ".gpii-volumePresetButton-label",
+                volumeTickIcon: ".white-tick-icon",
+
+                languageHeader: ".gpii-languagePresetButton-label",
 
                 saveAndApply: ".flc-prefsEditor-save",
                 resetAndApply: ".flc-prefsEditor-reset",
                 cancel: ".flc-prefsEditor-cancel"
             },
-            selectorsToIgnore: ["preferencesSwitchSpeakText", "speakTextPartialAdjusters", "speakTextHeader", "speakTextTickIcon",  "saveAndApply", "resetAndApply", "cancel"],
+            selectorsToIgnore: ["speakTextSwitch", "languageHeader", "volumePreferenceSwitch", "volumePartialAdjusters", "volumeHeader", "volumeTickIcon", "visualAlternativesPreferenceSwitch", "visualAlternativesPartialAdjusters", "visualAlternativesHeader", "visualAlternativesTickIcon",  "saveAndApply", "resetAndApply", "cancel"],
             styles: {
                 boldText: "bold-font-weight",
                 normalText: "normal-font-weight"
             },
             strings: {
-                speakTextHeader: {
+                visualAlternativesHeader: {
                     expander: {
                         func: "gpii.speakText.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "speakTextPresetButtonLabel"]
+                        args: ["{prefsEditorLoader}.msgBundle", "visualAlternativesPresetButtonLabel"]
                     }
                 },
                 volumeHeader: {
                     expander: {
                         func: "gpii.speakText.lookupMsg",
                         args: ["{prefsEditorLoader}.msgBundle", "volumePresetButtonLabel"]
+                    }
+                },
+                languageHeader: {
+                    expander: {
+                        func: "gpii.speakText.lookupMsg",
+                        args: ["{prefsEditorLoader}.msgBundle", "languagePresetButtonLabel"]
                     }
                 },
                 saveAndApply: {
@@ -195,23 +277,44 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.speakText.updateModelHeaderClicked = function (that, partialVisible) {
-        var partialVisible = that.model.partialAdjustersVisibility;
-        // alert("partial is " + partialVisible);
-        hook = that;
-        if (partialVisible) {
-            that.applier.requestChange("partialAdjustersVisibility", false);
+    gpii.activateCombobox = function (that) {
+        $("#auditoryOutLanguage").combobox();
+        $("#auditoryOutLanguage").change(function (event, newValue) {
+            that.applier.requestChange("auditoryOutLanguage", newValue);
+        });
+    }
+
+    gpii.speakText.updateModelHeaderClicked = function (that, partialVisible, extraVisible) {
+        if (extraVisible) {
+            that.applier.requestChange("visualAlternativesPartialVisible", false);
+            that.locate("speakTextSwitch").trigger('click');
+        } else if (partialVisible && !extraVisible) {
+            that.applier.requestChange("visualAlternativesPartialVisible", false);
         } else {
-            that.applier.requestChange("partialAdjustersVisibility", true);
+            that.applier.requestChange("visualAlternativesPartialVisible", true);
         }
     };
 
-    gpii.speakText.updateModelAllHidden = function (that) {
-        that.applier.requestChange("partialAdjustersVisibility", false);
+    gpii.speakText.updateModelVolumeHeaderClicked = function (that) {
+        var partialVisible = that.model.volumePartialVisible;
+
+        if (partialVisible) {
+            that.applier.requestChange("volumePartialVisible", false);
+        } else {
+            that.applier.requestChange("volumePartialVisible", true);
+        }
     };
 
-    gpii.speakText.showOrHideDependingOnState = function (that, showEvent, hideEvent) {
-        var state = that.model.partialAdjustersVisibility;
+    gpii.updateModelExtraValue = function (that) {
+        var newValue = that.model.gpii_primarySchema_speakText
+        that.applier.requestChange("visualAlternativesExtraVisible", newValue);
+    };
+
+    gpii.speakText.updateModelAllHidden = function (that) {
+        that.applier.requestChange("visualAlternativesPartialVisible", false);
+    };
+
+    gpii.speakText.showOrHideDependingOnState = function (state, showEvent, hideEvent) {
         state ? showEvent() : hideEvent();
     };
 

@@ -40,23 +40,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("speakText.panel.braille", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
-        preferenceMap: {
-            "gpii.primarySchema.braille": {
-                "model.braille": "default"
-            }
-        },
-        selectors: {
-            braille: ".gpiic-speakText-braille",
-            brailleLabel: ".gpiic-speakText-braille-label"
-        },
-        protoTree: {
-            braille: "${braille}",
-            brailleLabel: {messagekey: "brailleLabel"}
-        }
-    });
-
     fluid.defaults("speakText.panel.wordsSpokenPerMinute", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
@@ -171,6 +154,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         selectors: {
             auditoryOutLanguage: ".gpiic-speakText-auditoryOutLanguage",
             auditoryOutLanguageLabel: ".gpiic-speakText-auditoryOutLanguage-label"
+        },
+        protoTree: {
+            auditoryOutLanguage: {
+                selection: "${auditoryOutLanguage}",
+                optionlist: "${{that}.options.controlValues.auditoryOutLanguage}"
+            },
+            auditoryOutLanguageLabel: {messagekey: "auditoryOutLanguageLabel"}
         }
     });
 

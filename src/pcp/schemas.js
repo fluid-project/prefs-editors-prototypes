@@ -15,7 +15,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.primarySchema = {
         "gpii.primarySchema.speakText": {
             "type": "boolean",
-            "default": true
+            "default": false
         },
         "gpii.primarySchema.wordsSpokenPerMinute": {
             "type": "number",
@@ -39,7 +39,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "default": 80,
             "minimum": 0,
             "divisibleBy": 10
-        }
+        },
+
+        "gpii.primarySchema.auditoryOutLanguage": {
+            "type": "string",
+            "default": "English",
+            "enum": ["English", "French (français)", "German (Deutsch)", "Russian (Русский)"]
+        },
     };
 
     gpii.speakText.auxiliarySchema = {
@@ -96,6 +102,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "container": ".universalVolume",
                 "message": "%prefix/speakText.json"
             }
-        }
+        },
+
+        "auditoryOutLanguage": {
+            "type": "gpii.primarySchema.auditoryOutLanguage",
+            "panel": {
+                "type": "speakText.panel.auditoryOutLanguage",
+                "template": "%prefix/universalLanguageTemplate.html",
+                "container": ".universalLanguage",
+                "message": "%prefix/speakText.json"
+            }
+        },
     };
 })(fluid);
