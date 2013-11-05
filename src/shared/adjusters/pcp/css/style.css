@@ -64,11 +64,6 @@
     font-size: 15px !important;
 }
 
-.gpii-speakText-speechRate-element {
-    position: relative;
-    padding-top: 15px;
-}
-
 .gpii-speakText-volume-element {
     position: relative;
     padding-top: 15px;
@@ -77,22 +72,18 @@
 .stepper {
     text-align: center;
     border: none;
-    width: 200px;
-    font-size: 23px;
-    display: inline !important;
+    width: 200px !important;
+    font-size: 23px !important;
+    display: inline;
 }
 
 .stepperMinus {
-    font-size: 50px;
+    font-size: 50px !important;
 }
 
 .stepperPlus {
-    font-size: 30px;
+    font-size: 30px !important;
     font-weight: bold;
-}
-
-#speechRate.gpii-textfieldStepper-field::-moz-selection {
-    background-color: yellow;
 }
 
 textarea:focus, input:focus {
