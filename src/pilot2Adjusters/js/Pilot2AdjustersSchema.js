@@ -78,7 +78,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "mousecursor": "gpii-followingElement-mouseCursorIcon",
                 "textcursor": "gpii-followingElement-textCursorIcon",
                 "keyboardfocus": "gpii-followingElement-keyboardFocusIcon"
-            }            
+            },
+            "borderClasses": {
+                "topOnly": "gpii-iconCheckAdjusterAreaTopOnlyBorder",
+                "bottomOnly": "gpii-iconCheckAdjusterAreaBottomOnlyBorder",
+                "noBorder": "gpii-iconCheckAdjusterAreaNoBorder"
+            }
         },
         "magnifierTracking": {
             "type": "magnifier.tracking",
@@ -87,7 +92,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "container": ".gpiic-increaseSize-magnifierFollows",
                 "template": "%prefix/PrefsEditorTemplate-followingElement.html",
                 "message": "%prefix/followingElement.json",
-                "classnameMap": {"followingElement": "@followingElement.classes"}
+                "classnameMap": {
+                    "followingElement": "@followingElement.classes",
+                    "followingElementBorder": "@followingElement.borderClasses"
+                }
             }
         },
         "screenReaderTracking": {
@@ -97,7 +105,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "container": ".gpiic-increaseSize-screenReaderFollows",
                 "template": "%prefix/PrefsEditorTemplate-followingElement.html",
                 "message": "%prefix/followingElement.json",
-                "classnameMap": {"followingElement": "@followingElement.classes"}
+                "classnameMap": {
+                    "followingElement": "@followingElement.classes",
+                    "followingElementBorder": "@followingElement.borderClasses"
+                }
             }
         },
         "contrastTheme": {

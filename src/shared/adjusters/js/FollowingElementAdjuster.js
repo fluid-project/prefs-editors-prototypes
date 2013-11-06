@@ -36,7 +36,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         controlValues: {
-            followingElement: ["mousecursor", "textcursor", "keyboardfocus"]
+            followingElement: ["mousecursor", "textcursor", "keyboardfocus"],
+            followingElementBorder: ["topOnly", "bottomOnly", "noBorder"]
         },
         markup: {
             followingElementLabel:  
@@ -54,7 +55,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 args: [
                     "{that}.dom.followingElementLabel", "{that}.options.strings.followingElement",
                     "{that}.options.markup.followingElementLabel", "{that}.options.controlValues.followingElement",
-                    "{that}.options.classnameMap.followingElement"
+                    "{that}.options.classnameMap.followingElement",
+                    "{that}.options.controlValues.followingElementBorder", "{that}.options.classnameMap.followingElementBorder"
                 ],
                 dynamic: true
             }
@@ -70,7 +72,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         return messages;
     };
 
-    gpii.prefs.panel.followingElement.style = function (labels, strings, markup, followingElement, style) {
+    gpii.prefs.panel.followingElement.style = function (labels, strings, markup, followingElement, style, followingElementBorder, borderStyle) {
         fluid.each(labels, function (label, index) {
             label = $(label);
             label.html(fluid.stringTemplate(markup, {
@@ -78,11 +80,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }));
             label.find(".gpiic-iconCheckAdjusterIcon").addClass(style[followingElement[index]]);
             if (index === 0) {
-                label.addClass("gpii-iconCheckAdjusterAreaTopOnlyBorder");
+                label.addClass(borderStyle[followingElementBorder[0]]);
             } else if (index === labels.length - 1) {
-                label.addClass("gpii-iconCheckAdjusterAreaBottomOnlyBorder");
+                label.addClass(borderStyle[followingElementBorder[1]]);
             } else {
-                label.addClass("gpii-iconCheckAdjusterAreaNoBorder");
+                label.addClass(borderStyle[followingElementBorder[2]]);
             }
         });
     };
