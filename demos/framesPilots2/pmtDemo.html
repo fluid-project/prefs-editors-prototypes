@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+
+    <!-- The Infusion Library -->
+    <script type="text/javascript" src="../../src/shared/lib/infusion/MyInfusion.js"></script>
+
+    <!-- The i18n JS files -->
+    <script type="text/javascript" src="../../src/shared/i18n/js/i18n.js"></script>
+
+    <!-- Pilot2Adjusters-specific files -->
+    <script type="text/javascript" src="../../src/pilot2Frames/pmt/js/Pilot2PMTSchema.js"></script>
+    <script type="text/javascript" src="../../src/pilot2Frames/pmt/js/Pilot2PMTDefaults.js"></script>
+
+    <!-- The demo script -->
+    <script type="text/javascript" src="pmtDemo.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        demo.initPMT("#pmtPrefsEditor");
+    })
+</script>
+
+</head>
+<body>
+    <!-- This is the div that will contain the Prefs Editor component -->
+    <div id="pmtPrefsEditor">
+    </div>
+</body>
+</html>
