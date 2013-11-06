@@ -60,10 +60,17 @@ body {
 
 .gpii-prefsEditor-preferencesContainer {
 	height: 500px;
+	overflow: auto;
 }
 
 .gpii-prefsEditor-preferenceSetSelectionHeader {
 	display: table;
 	background-color: #8c9597;
+	padding: 10px;
+}
+
+.gpii-prefsEditor-preferences {
+	height: 1000px; /* for testing only */
+	background-color: #ced7d9;
 	padding: 10px;
 }
