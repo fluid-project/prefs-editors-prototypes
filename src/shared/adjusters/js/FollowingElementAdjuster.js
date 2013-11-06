@@ -21,9 +21,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             afterRender: "{that}.followingElementStyle"
         },
         selectors: {
+            followingElementRow: ".gpiic-followingElementRow",
+            followingElementLabel: ".gpiic-followingElementLabel",
+            followingElementInput: ".gpiic-followingElementInput",
             followingElementHeading: ".gpiic-followingElementHeading"
         },
-
+        repeatingSelectors: ["followingElementRow"],
         strings: {
             followingElement: {
                 expander: {
@@ -44,6 +47,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "       <div class='gpii-prefsEditor-adjusterIcons gpii-prefsEditor-adjusterIcons-sept-12 gpii-iconCheckAdjusterCheckIcon'></div>" +
                     "   </label>" +
                     "</div>"
+        },
+        invokers: {
+            followingElementStyle: {
+                funcName: "gpii.prefs.panel.followingElement.style",
+                args: [
+                    "{that}.dom.followingElementLabel", "{that}.options.strings.followingElement",
+                    "{that}.options.markup.followingElementLabel", "{that}.options.controlValues.followingElement",
+                    "{that}.options.classnameMap.followingElement"
+                ],
+                dynamic: true
+            }
         }
     });
 
