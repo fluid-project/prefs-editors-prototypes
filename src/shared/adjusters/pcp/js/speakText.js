@@ -21,14 +21,23 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 visualAlternativesPartialVisible: false,
                 visualAlternativesExtraVisible: false,
 
-                volumePartialVisible: false
+                volumePartialVisible: false,
+                languagePartialVisible: false
             },
             events: {
                 onShowVisualAlternativesPartial: null,
                 onHideVisualAlternativesPartial: null,
                 onHideVisualAlternativesTickIcon: null,
                 onShowVisualAlternativesExtra: null,
-                onHideVisualAlternativesExtra: null
+                onHideVisualAlternativesExtra: null,
+
+                onShowVolumePartial: null,
+                onHideVolumePartial: null,
+                onHideVolumeTickIcon: null,
+
+                onShowLanguagePartial: null,
+                onHideLanguagePartial: null,
+                onHideLanguageTickIcon: null
             },
             listeners: {
 
@@ -59,10 +68,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "listener": "{that}.applier.modelChanged.addListener",
                     "args": ["visualAlternativesPartialVisible", "{that}.showHidePartial"]
                 },
-                // "onCreate.addVolumePartialVisibilityListener": {
-                //     "listener": "{that}.applier.modelChanged.addListener",
-                //     "args": ["volumePartialVisible", "{that}.showHidePartial"]
-                // },
                 "onReady.setTextVisualAlternativesHeader": {
                     "this": "{that}.dom.visualAlternativesHeader",
                     "method": "text",
@@ -119,26 +124,120 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
                 //  Volume adjuster group part
 
+                "onHideVolumeTickIcon.hideTick": {
+                    "this": "{that}.dom.volumeTickIcon",
+                    "method": "hide"
+                },
                 "onReady.setTextVolumeHeader": {
                     "this": "{that}.dom.volumeHeader",
                     "method": "text",
                     "args": ["{that}.options.strings.volumeHeader"]
                 },
-                // "onReady.bindEventPreferenceSwitchVolume": {
-                //     "this": "{that}.dom.volumePreferenceSwitch",
-                //     "method": "change",
-                //     "args": ["{that}.updateVolumeModelValue"]
-                // },
+                "onReady.bindEventPreferenceSwitchVolume": {
+                    "this": "{that}.dom.volumePreferenceSwitch",
+                    "method": "change",
+                    "args": ["{that}.updateVolumeModelValue"]
+                },
+                "onCreate.addVolumePartialVisibilityListener": {
+                    "listener": "{that}.applier.modelChanged.addListener",
+                    "args": ["volumePartialVisible", "{that}.showHideVolumePartial"]
+                },
+                "onShowVolumePartial.showPartialAdjusters": {
+                    "this": "{that}.dom.volumePartialAdjusters",
+                    "method": "slideDown",
+                    "args": ["{that}.options.partiallyExpandedSlideSpeed"]
+                },
+                "onShowVolumePartial.showWhiteTickIcon": {
+                    "this": "{that}.dom.volumeTickIcon",
+                    "method": "show"
+                },
+                "onShowVolumePartial.setHeaderTextBold.addBoldClass": {
+                    "this": "{that}.dom.volumeHeader",
+                    "method": "addClass",
+                    "args": ["{that}.options.styles.boldText"]
+                },
+                "onShowVolumePartial.setHeaderTextBold.removeNormalClass": {
+                    "this": "{that}.dom.volumeHeader",
+                    "method": "removeClass",
+                    "args": ["{that}.options.styles.normalText"]
+                },
+                "onHideVolumePartial.hideAdjusters": {
+                    "this": "{that}.dom.volumePartialAdjusters",
+                    "method": "slideUp",
+                    "args": ["{that}.options.partiallyExpandedSlideSpeed"]
+                },
+                "onHideVolumePartial.setHeaderTextNormal.addNormalClass": {
+                    "this": "{that}.dom.volumeHeader",
+                    "method": "addClass",
+                    "args": ["{that}.options.styles.normalText"]
+                },
+                "onHideVolumePartial.setHeaderTextNormal.removeBoldClass": {
+                    "this": "{that}.dom.volumeHeader",
+                    "method": "removeClass",
+                    "args": ["{that}.options.styles.boldText"]
+                },
+                "onHideVolumePartial.hideTick": {
+                    "funcName": "{that}.events.onHideVolumeTickIcon.fire"
+                },
 
 
                 //  Language adjuster group part
 
+                "onHideLanguageTickIcon.hideTick": {
+                    "this": "{that}.dom.languageTickIcon",
+                    "method": "hide"
+                },
                 "onReady.setTextLanguageHeader": {
                     "this": "{that}.dom.languageHeader",
                     "method": "text",
                     "args": ["{that}.options.strings.languageHeader"]
                 },
-
+                "onReady.bindEventPreferenceSwitchLanguage": {
+                    "this": "{that}.dom.languagePreferenceSwitch",
+                    "method": "change",
+                    "args": ["{that}.updateLanguageModelValue"]
+                },
+                "onCreate.addLanguagePartialVisibilityListener": {
+                    "listener": "{that}.applier.modelChanged.addListener",
+                    "args": ["languagePartialVisible", "{that}.showHideLanguagePartial"]
+                },
+                "onShowLanguagePartial.showPartialAdjusters": {
+                    "this": "{that}.dom.languagePartialAdjusters",
+                    "method": "slideDown",
+                    "args": ["{that}.options.partiallyExpandedSlideSpeed"]
+                },
+                "onShowLanguagePartial.showWhiteTickIcon": {
+                    "this": "{that}.dom.languageTickIcon",
+                    "method": "show"
+                },
+                "onShowLanguagePartial.setHeaderTextBold.addBoldClass": {
+                    "this": "{that}.dom.languageHeader",
+                    "method": "addClass",
+                    "args": ["{that}.options.styles.boldText"]
+                },
+                "onShowLanguagePartial.setHeaderTextBold.removeNormalClass": {
+                    "this": "{that}.dom.languageHeader",
+                    "method": "removeClass",
+                    "args": ["{that}.options.styles.normalText"]
+                },
+                "onHideLanguagePartial.hideAdjusters": {
+                    "this": "{that}.dom.languagePartialAdjusters",
+                    "method": "slideUp",
+                    "args": ["{that}.options.partiallyExpandedSlideSpeed"]
+                },
+                "onHideLanguagePartial.setHeaderTextNormal.addNormalClass": {
+                    "this": "{that}.dom.languageHeader",
+                    "method": "addClass",
+                    "args": ["{that}.options.styles.normalText"]
+                },
+                "onHideLanguagePartial.setHeaderTextNormal.removeBoldClass": {
+                    "this": "{that}.dom.languageHeader",
+                    "method": "removeClass",
+                    "args": ["{that}.options.styles.boldText"]
+                },
+                "onHideLanguagePartial.hideTick": {
+                    "funcName": "{that}.events.onHideLanguageTickIcon.fire"
+                },
                 //  Save, Reset and Cancel buttons:
 
                 "onReady.setSaveAndApplyText": {
@@ -186,15 +285,41 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": ["{that}"],
                     "dynamic": true
                 },
-                // updateVolumeModelValue: {
-                //     "funcName": "gpii.speakText.updateModelVolumeHeaderClicked",
-                //     "args": ["{that}"]
-                // },
+                updateVolumeModelValue: {
+                    "funcName": "gpii.speakText.updateModelVolumeHeaderClicked",
+                    "args": ["{that}",
+                             "{that}.model.volumePartialVisible"
+                    ],
+                    "dynamic": true
+                },
+                updateLanguageModelValue: {
+                    "funcName": "gpii.speakText.updateModelLanguageHeaderClicked",
+                    "args": ["{that}",
+                             "{that}.model.languagePartialVisible"
+                    ],
+                    "dynamic": true
+                },
                 showHidePartial: {
                     "funcName": "gpii.speakText.showOrHideDependingOnState",
                     "args": ["{that}.model.visualAlternativesPartialVisible",
                              "{that}.events.onShowVisualAlternativesPartial.fire",
                              "{that}.events.onHideVisualAlternativesPartial.fire"
+                    ],
+                    "dynamic": true
+                },
+                showHideVolumePartial: {
+                    "funcName": "gpii.speakText.showOrHideDependingOnState",
+                    "args": ["{that}.model.volumePartialVisible",
+                             "{that}.events.onShowVolumePartial.fire",
+                             "{that}.events.onHideVolumePartial.fire"
+                    ],
+                    "dynamic": true
+                },
+                showHideLanguagePartial: {
+                    "funcName": "gpii.speakText.showOrHideDependingOnState",
+                    "args": ["{that}.model.languagePartialVisible",
+                             "{that}.events.onShowLanguagePartial.fire",
+                             "{that}.events.onHideLanguagePartial.fire"
                     ],
                     "dynamic": true
                 },
@@ -223,9 +348,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 volumePreferenceSwitch: ".gpii-volumePresetButton",
                 volumePartialAdjusters: ".gpii-volume-partially-expanded",
                 volumeHeader: ".gpii-volumePresetButton-label",
-                volumeTickIcon: ".white-tick-icon",
+                volumeTickIcon: ".universalVolume-white-tick-icon",
 
+                languagePreferenceSwitch: ".gpii-languagePresetButton",
+                languagePartialAdjusters: ".gpii-language-partially-expanded",
                 languageHeader: ".gpii-languagePresetButton-label",
+                languageTickIcon: ".universalLanguage-white-tick-icon",
 
                 saveAndApply: ".flc-prefsEditor-save",
                 resetAndApply: ".flc-prefsEditor-reset",
@@ -295,13 +423,19 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     };
 
-    gpii.speakText.updateModelVolumeHeaderClicked = function (that) {
-        var partialVisible = that.model.volumePartialVisible;
-
+    gpii.speakText.updateModelVolumeHeaderClicked = function (that, partialVisible) {
         if (partialVisible) {
             that.applier.requestChange("volumePartialVisible", false);
         } else {
             that.applier.requestChange("volumePartialVisible", true);
+        }
+    };
+
+    gpii.speakText.updateModelLanguageHeaderClicked = function (that, partialVisible) {
+        if (partialVisible) {
+            that.applier.requestChange("languagePartialVisible", false);
+        } else {
+            that.applier.requestChange("languagePartialVisible", true);
         }
     };
 
