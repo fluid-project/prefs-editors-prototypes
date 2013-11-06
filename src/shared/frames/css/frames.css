@@ -1,0 +1,16 @@
+/*
+    General frames styling
+*/
+body {
+	margin: 0;
+}
+
+.gpii-prefsEditor-preferenceSetSelectionButton {
+	display: inline-block;
+	width: 125px;
+	text-align: center;
+}
+
+.gpii-prefsEditor-preferencesContainer {
+	height: 500px;
+}
