@@ -20,7 +20,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             model: {
                 visualAlternativesPartialVisible: false,
                 visualAlternativesExtraVisible: false,
-
                 volumePartialVisible: false,
                 languagePartialVisible: false
             },
@@ -47,10 +46,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.visualAlternativesTickIcon",
                     "method": "hide"
                 },
-                "onReady.activateCombobox": {
-                    "listener": "gpii.activateCombobox",
-                    "args": ["{that}"]
-                },
                 "onReady.bindEventMoreLessVisualAlternatives": {
                     "this": "{that}.dom.visualAlternativesPreferenceSwitch",
                     "method": "change",
@@ -66,7 +61,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 "onCreate.addPartialVisibilityListener": {
                     "listener": "{that}.applier.modelChanged.addListener",
-                    "args": ["visualAlternativesPartialVisible", "{that}.showHidePartial"]
+                    "args": ["visualAlternativesPartialVisible", "{that}.showHideVisualAlternativesPartial"]
                 },
                 "onReady.setTextVisualAlternativesHeader": {
                     "this": "{that}.dom.visualAlternativesHeader",
@@ -197,9 +192,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "change",
                     "args": ["{that}.updateLanguageModelValue"]
                 },
-                "onCreate.addLanguagePartialVisibilityListener": {
+                "onCreate.addLanguagePartialVisibilityListenerForAnimation": {
                     "listener": "{that}.applier.modelChanged.addListener",
                     "args": ["languagePartialVisible", "{that}.showHideLanguagePartial"]
+                },
+                "onCreate.addLanguagePartialVisibilityListenerForCombobox": {
+                    "listener": "{that}.applier.modelChanged.addListener",
+                    "args": ["languagePartialVisible", "{that}.activateCombobox"]
                 },
                 "onShowLanguagePartial.showPartialAdjusters": {
                     "this": "{that}.dom.languagePartialAdjusters",
@@ -238,6 +237,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onHideLanguagePartial.hideTick": {
                     "funcName": "{that}.events.onHideLanguageTickIcon.fire"
                 },
+
+
                 //  Save, Reset and Cancel buttons:
 
                 "onReady.setSaveAndApplyText": {
@@ -272,8 +273,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             invokers: {
+                activateCombobox: {
+                    "funcName": "gpii.activateCombobox",
+                    "args": ["{that}"]
+                },
                 updateModelValue: {
-                    "funcName": "gpii.speakText.updateModelHeaderClicked",
+                    "funcName": "gpii.updateModelHeaderClicked",
                     "args": ["{that}",
                              "{that}.model.visualAlternativesPartialVisible",
                              "{that}.model.visualAlternativesExtraVisible"
@@ -286,21 +291,21 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "dynamic": true
                 },
                 updateVolumeModelValue: {
-                    "funcName": "gpii.speakText.updateModelVolumeHeaderClicked",
+                    "funcName": "gpii.updateModelVolumeHeaderClicked",
                     "args": ["{that}",
                              "{that}.model.volumePartialVisible"
                     ],
                     "dynamic": true
                 },
                 updateLanguageModelValue: {
-                    "funcName": "gpii.speakText.updateModelLanguageHeaderClicked",
+                    "funcName": "gpii.updateModelLanguageHeaderClicked",
                     "args": ["{that}",
                              "{that}.model.languagePartialVisible"
                     ],
                     "dynamic": true
                 },
-                showHidePartial: {
-                    "funcName": "gpii.speakText.showOrHideDependingOnState",
+                showHideVisualAlternativesPartial: {
+                    "funcName": "gpii.showOrHideDependingOnState",
                     "args": ["{that}.model.visualAlternativesPartialVisible",
                              "{that}.events.onShowVisualAlternativesPartial.fire",
                              "{that}.events.onHideVisualAlternativesPartial.fire"
@@ -308,7 +313,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "dynamic": true
                 },
                 showHideVolumePartial: {
-                    "funcName": "gpii.speakText.showOrHideDependingOnState",
+                    "funcName": "gpii.showOrHideDependingOnState",
                     "args": ["{that}.model.volumePartialVisible",
                              "{that}.events.onShowVolumePartial.fire",
                              "{that}.events.onHideVolumePartial.fire"
@@ -316,7 +321,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "dynamic": true
                 },
                 showHideLanguagePartial: {
-                    "funcName": "gpii.speakText.showOrHideDependingOnState",
+                    "funcName": "gpii.showOrHideDependingOnState",
                     "args": ["{that}.model.languagePartialVisible",
                              "{that}.events.onShowLanguagePartial.fire",
                              "{that}.events.onHideLanguagePartial.fire"
@@ -324,7 +329,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "dynamic": true
                 },
                 showHideExtra: {
-                    "funcName": "gpii.speakText.showOrHideDependingOnState",
+                    "funcName": "gpii.showOrHideDependingOnState",
                     "args": ["{that}.model.visualAlternativesExtraVisible",
                              "{that}.events.onShowVisualAlternativesExtra.fire",
                              "{that}.events.onHideVisualAlternativesExtra.fire"
@@ -332,7 +337,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "dynamic": true
                 },
                 updateModelAllHidden: {
-                    "funcName": "gpii.speakText.updateModelAllHidden",
+                    "funcName": "gpii.updateModelAllHidden",
                     "args": ["{that}"]
                 }
             },
@@ -367,37 +372,37 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             strings: {
                 visualAlternativesHeader: {
                     expander: {
-                        func: "gpii.speakText.lookupMsg",
+                        func: "gpii.lookupMsg",
                         args: ["{prefsEditorLoader}.msgBundle", "visualAlternativesPresetButtonLabel"]
                     }
                 },
                 volumeHeader: {
                     expander: {
-                        func: "gpii.speakText.lookupMsg",
+                        func: "gpii.lookupMsg",
                         args: ["{prefsEditorLoader}.msgBundle", "volumePresetButtonLabel"]
                     }
                 },
                 languageHeader: {
                     expander: {
-                        func: "gpii.speakText.lookupMsg",
+                        func: "gpii.lookupMsg",
                         args: ["{prefsEditorLoader}.msgBundle", "languagePresetButtonLabel"]
                     }
                 },
                 saveAndApply: {
                     expander: {
-                        func: "gpii.speakText.lookupMsg",
+                        func: "gpii.lookupMsg",
                         args: ["{prefsEditorLoader}.msgBundle", "saveAndApply"]
                     }
                 },
                 resetAndApply: {
                     expander: {
-                        func: "gpii.speakText.lookupMsg",
+                        func: "gpii.lookupMsg",
                         args: ["{prefsEditorLoader}.msgBundle", "resetAndApply"]
                     }
                 },
                 cancel: {
                     expander: {
-                        func: "gpii.speakText.lookupMsg",
+                        func: "gpii.lookupMsg",
                         args: ["{prefsEditorLoader}.msgBundle", "cancel"]
                     }
                 }
@@ -410,9 +415,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         $("#auditoryOutLanguage").change(function (event, newValue) {
             that.applier.requestChange("auditoryOutLanguage", newValue);
         });
-    }
+    };
 
-    gpii.speakText.updateModelHeaderClicked = function (that, partialVisible, extraVisible) {
+    gpii.updateModelHeaderClicked = function (that, partialVisible, extraVisible) {
         if (extraVisible) {
             that.applier.requestChange("visualAlternativesPartialVisible", false);
             that.locate("speakTextSwitch").trigger('click');
@@ -423,7 +428,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     };
 
-    gpii.speakText.updateModelVolumeHeaderClicked = function (that, partialVisible) {
+    gpii.updateModelVolumeHeaderClicked = function (that, partialVisible) {
         if (partialVisible) {
             that.applier.requestChange("volumePartialVisible", false);
         } else {
@@ -431,7 +436,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     };
 
-    gpii.speakText.updateModelLanguageHeaderClicked = function (that, partialVisible) {
+    gpii.updateModelLanguageHeaderClicked = function (that, partialVisible) {
         if (partialVisible) {
             that.applier.requestChange("languagePartialVisible", false);
         } else {
@@ -444,15 +449,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         that.applier.requestChange("visualAlternativesExtraVisible", newValue);
     };
 
-    gpii.speakText.updateModelAllHidden = function (that) {
-        that.applier.requestChange("visualAlternativesPartialVisible", false);
+    gpii.updateModelAllHidden = function (that) {
+        var visibilityFlags = ["languagePartialVisible", "visualAlternativesExtraVisible", "visualAlternativesPartialVisible", "volumePartialVisible"]
+        fluid.each(visibilityFlags, function (flag) {
+            that.applier.requestChange(flag, false);
+        });
     };
 
-    gpii.speakText.showOrHideDependingOnState = function (state, showEvent, hideEvent) {
+    gpii.showOrHideDependingOnState = function (state, showEvent, hideEvent) {
         state ? showEvent() : hideEvent();
     };
 
-    gpii.speakText.lookupMsg = function (messageResolver, value) {
+    gpii.lookupMsg = function (messageResolver, value) {
         var looked = messageResolver.lookup([value]);
         return looked ? looked.template : looked;
     };
