@@ -88,3 +88,7 @@ body {
 	padding: 10px;
 	cursor: pointer;
 }
+
+.gpii-prefsEditor-save {
+	display: none;
+}

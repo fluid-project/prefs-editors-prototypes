@@ -43,6 +43,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             listeners: {
+                onSave: {
+                    listener: "console.log"
+                },
                 "onReady.setMyPreferencesLabelText": {
                     "this": "{that}.dom.myPreferencesLabel",
                     "method": "text",
