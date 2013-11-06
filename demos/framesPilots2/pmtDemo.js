@@ -31,7 +31,7 @@ var demo = demo || {};
             components: {
                 prefsEditorLoader: {
                     options: {
-                        messagePrefix: "../../src/pilot2Frames/pmt/messages/" + language + "/"
+                        messagePrefix: "../../src/shared/frames/messages/" + language + "/"
                     }
                 }
             }

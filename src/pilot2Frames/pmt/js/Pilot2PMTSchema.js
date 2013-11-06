@@ -23,7 +23,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "namespace": "gpii.prefs.pmt_pilot_2.auxiliarySchema",
         "templatePrefix": "../../src/pilot2Frames/pmt/html/",
         "template": "%prefix/PrefsEditorTemplate-PMT.html",
-        "messagePrefix": "../../src/pilot2Frames/pmt/messages/en/", // default
-        "message": "%prefix/pmt.json"
+        "messagePrefix": "../../src/shared/frames/messages/en/", // default
+        "message": "%prefix/frames.json"
     };
 })(jQuery, fluid);
