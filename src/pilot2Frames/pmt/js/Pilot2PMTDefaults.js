@@ -15,6 +15,38 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     fluid.defaults("gpii.prefs.pmt_pilot_2", {
-        gradeNames: ["fluid.prefs.fullNoPreview", "autoInit"]
+        gradeNames: ["fluid.prefs.fullNoPreview", "autoInit"],
+        prefsEditor: {
+            selectors: {
+                myPreferencesLabel: ".gpiic-pmt-preferenceSetSelectionButtonMyPreferencesLabel",
+                allPreferencesLabel: ".gpiic-pmt-preferenceSetSelectionButtonAllPreferencesLabel"
+            },
+            strings: {
+                myPreferencesLabelText: {
+                    expander: {
+                        func: "gpii.lookupMsg",
+                        args: ["{prefsEditorLoader}.msgBundle", "myPreferencesLabelText"]
+                    }
+                },
+                allPreferencesLabelText: {
+                    expander: {
+                        func: "gpii.lookupMsg",
+                        args: ["{prefsEditorLoader}.msgBundle", "allPreferencesLabelText"]
+                    }
+                }
+            },
+            listeners: {
+                "onReady.setMyPreferencesLabelText": {
+                    "this": "{that}.dom.myPreferencesLabel",
+                    "method": "text",
+                    "args": ["{that}.options.strings.myPreferencesLabelText"]
+                },
+                "onReady.setAllPreferencesLabelText": {
+                    "this": "{that}.dom.allPreferencesLabel",
+                    "method": "text",
+                    "args": ["{that}.options.strings.allPreferencesLabelText"]
+                }
+            }
+        }
     });
 })(jQuery, fluid);
