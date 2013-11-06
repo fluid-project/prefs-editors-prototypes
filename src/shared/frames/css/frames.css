@@ -74,3 +74,17 @@ body {
 	background-color: #ced7d9;
 	padding: 10px;
 }
+
+.gpii-pmt-bottomRow {
+	text-align: right;
+}
+
+.gpii-pmt-saveAndApplyButton {
+	background-color: #4c5259;
+	color: white;
+	border-radius: 5px;
+	display: inline-block;
+	margin: 5px;
+	padding: 10px;
+	cursor: pointer;
+}
