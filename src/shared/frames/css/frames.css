@@ -35,10 +35,12 @@ body {
 	border: 3px solid #fffbd9;
 	border-radius: 5px;
 	color: #fffbd9;
+	cursor: pointer;
 }
 
 .gpii-prefsEditor-preferenceSetSelectionButtonGrayed {
 	color: #aeb5b6;
+	cursor: default;
 }
 
 .gpii-prefsEditor-preferenceSetSelectionButtonMyPreferences:before {
@@ -53,6 +55,7 @@ body {
 
 .gpii-prefsEditor-preferenceSetSelectionButtonLabel {
 	vertical-align: top;
+	cursor: inherit;
 }
 
 .gpii-prefsEditor-preferencesContainer {
