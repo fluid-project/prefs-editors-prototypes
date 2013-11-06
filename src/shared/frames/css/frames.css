@@ -28,6 +28,7 @@ body {
 	text-align: center;
 	padding: 5px;
 	white-space: nowrap;
+	line-height: 1.2em;
 }
 
 .gpii-prefsEditor-preferenceSetSelectionButtonSelected {
@@ -48,6 +49,10 @@ body {
 .gpii-prefsEditor-preferenceSetSelectionButtonAllPreferences:before {
 	font-size: 1.5em;
 	content: "\e00b"
+}
+
+.gpii-prefsEditor-preferenceSetSelectionButtonLabel {
+	vertical-align: top;
 }
 
 .gpii-prefsEditor-preferencesContainer {
