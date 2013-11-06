@@ -1,16 +1,61 @@
+@font-face {
+    font-family: 'icomoon';
+    src:url('../../fonts/icomoon.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /*
     General frames styling
 */
 body {
-	margin: 0;
+	margin: 5px;
+	background-color: #f2f2f2;
+}
+
+.gpii-prefsEditor-pmtContainer {
+	display: table;
+	font-size: 1.2em;	
+}
+
+.gpii-prefsEditor-frameIcon {
+	font-family: icomoon;
 }
 
 .gpii-prefsEditor-preferenceSetSelectionButton {
-	display: inline-block;
-	width: 125px;
+	display: table-cell;
+	width: 50%;
 	text-align: center;
+	padding: 5px;
+	white-space: nowrap;
+}
+
+.gpii-prefsEditor-preferenceSetSelectionButtonSelected {
+	border: 3px solid #fffbd9;
+	border-radius: 5px;
+	color: #fffbd9;
+}
+
+.gpii-prefsEditor-preferenceSetSelectionButtonGrayed {
+	color: #aeb5b6;
+}
+
+.gpii-prefsEditor-preferenceSetSelectionButtonMyPreferences:before {
+	font-size: 1.5em;
+	content: "\e00a"
+}
+
+.gpii-prefsEditor-preferenceSetSelectionButtonAllPreferences:before {
+	font-size: 1.5em;
+	content: "\e00b"
 }
 
 .gpii-prefsEditor-preferencesContainer {
 	height: 500px;
+}
+
+.gpii-prefsEditor-preferenceSetSelectionHeader {
+	display: table;
+	background-color: #8c9597;
+	padding: 10px;
 }

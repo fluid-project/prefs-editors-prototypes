@@ -3,28 +3,28 @@
 */
 @font-face {
     font-family: 'icons-no-frames-aug-29';
-    src:url('../fonts/icons-no-frames-aug-29.ttf') format('truetype');
+    src:url('../../fonts/icons-no-frames-aug-29.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'font-icons-sept-3';
-    src:url('../fonts/font-icons-sept-3.ttf') format('truetype');
+    src:url('../../fonts/font-icons-sept-3.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'sept-12';
-    src:url('../fonts/sept-12.ttf') format('truetype');
+    src:url('../../fonts/sept-12.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'icomoon';
-    src:url('../fonts/icomoon.ttf') format('truetype');
+    src:url('../../fonts/icomoon.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
