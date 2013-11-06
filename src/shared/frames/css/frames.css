@@ -79,16 +79,25 @@ body {
 	text-align: right;
 }
 
+.gpii-pmt-saveAndApplyButtonLabel {
+	cursor: inherit;
+}
+
+.gpii-prefsEditor-save {
+	display: none;
+}
+
 .gpii-pmt-saveAndApplyButton {
-	background-color: #4c5259;
-	color: white;
+	display: inline-block;
 	border-radius: 5px;
 	display: inline-block;
+	background-color: #4c5259;
+	color: white;
 	margin: 5px;
 	padding: 10px;
 	cursor: pointer;
 }
 
-.gpii-prefsEditor-save {
-	display: none;
+.gpii-pmt-saveAndApplyButton:before {
+	content: "\e00b"
 }

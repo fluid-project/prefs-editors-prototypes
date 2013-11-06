@@ -20,7 +20,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             selectors: {
                 myPreferencesLabel: ".gpiic-pmt-preferenceSetSelectionButtonMyPreferencesLabel",
                 allPreferencesLabel: ".gpiic-pmt-preferenceSetSelectionButtonAllPreferencesLabel",
-                saveAndApplyButton: ".gpiic-pmt-saveAndApplyButton"
+                saveAndApplyButtonLabel: ".gpiic-pmt-saveAndApplyButtonLabel"
             },
             strings: {
                 myPreferencesLabelText: {
@@ -57,7 +57,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": ["{that}.options.strings.allPreferencesLabelText"]
                 },
                 "onReady.setSaveAndApplyButtonText": {
-                    "this": "{that}.dom.saveAndApplyButton",
+                    "this": "{that}.dom.saveAndApplyButtonLabel",
                     "method": "text",
                     "args": ["{that}.options.strings.saveAndApplyText"]
                 }
