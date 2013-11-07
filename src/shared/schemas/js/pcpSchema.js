@@ -11,10 +11,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
 (function (fluid) {
-    fluid.registerNamespace("gpii.ppt");
-    
-    gpii.ppt.auxiliarySchema = {
-        "namespace": "gpii.constructedPPT",
+    fluid.registerNamespace("gpii.pcp");
+
+    gpii.pcp.auxiliarySchema = {
+        "namespace": "gpii.constructedPCP",
         "templatePrefix": "../../src/shared/adjusters/html/",
         "messagePrefix": "../../src/shared/adjusters/messages/",
         "template": "%prefix/newestSpeakText.html",

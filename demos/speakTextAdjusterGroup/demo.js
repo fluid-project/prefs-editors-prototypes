@@ -16,7 +16,7 @@ var demo = demo || {};
     demo.initGPII = function (container, compOpts) {
         var builder = fluid.prefs.builder({
             primarySchema: gpii.primarySchema,
-            auxiliarySchema: gpii.ppt.auxiliarySchema
+            auxiliarySchema: gpii.pcp.auxiliarySchema
         });
         var baseOpts = {
             prefsEditorType: "gpii.speakText"
