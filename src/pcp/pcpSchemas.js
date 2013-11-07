@@ -50,9 +50,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     gpii.speakText.auxiliarySchema = {
         "namespace": "gpii.adjusters.speakText",
-        "templatePrefix": "../../src/shared/adjusters/pcp/html/",
-        "messagePrefix": "../../src/shared/adjusters/pcp/messages/",
-        "template": "../../src/pcp/newestSpeakText.html",
+        "templatePrefix": "../../src/shared/adjusters/html/",
+        "messagePrefix": "../../src/shared/adjusters/messages/",
+        "template": "../../src/pcp/pcpContainer.html",
 
         "speakText": {
             "type": "gpii.primarySchema.speakText",

@@ -344,10 +344,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             selectors: {
                 speakTextSwitch: "#speakText",
 
-                visualAlternativesPreferenceSwitch: ".gpii-speakTextPresetButton",
+                visualAlternativesPreferenceSwitch: ".gpii-visualAlternativesPresetButton",
                 visualAlternativesPartialAdjusters: ".gpii-speakText-partially-expanded",
                 visualAlternativesExtraAdjusters: ".gpii-speakText-fully-expanded",
-                visualAlternativesHeader: ".gpii-speakTextPresetButton-label",
+                visualAlternativesHeader: ".gpii-visualAlternativesPresetButton-label",
                 visualAlternativesTickIcon: ".visualAlternatives-white-tick-icon",
 
                 volumePreferenceSwitch: ".gpii-volumePresetButton",
@@ -453,6 +453,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     gpii.updateModelAllHidden = function (that) {
         var visibilityFlags = ["languagePartialVisible", "visualAlternativesExtraVisible", "visualAlternativesPartialVisible", "volumePartialVisible"]
+        var preferenceSwitches = ["visualAlternativesPreferenceSwitch", "volumePreferenceSwitch", "languagePreferenceSwitch"]        
+
         fluid.each(visibilityFlags, function (flag) {
             that.applier.requestChange(flag, false);
         });

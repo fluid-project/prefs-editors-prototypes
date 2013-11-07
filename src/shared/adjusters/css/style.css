@@ -1,19 +1,19 @@
 @font-face {
+    font-family: 'allIcons';
+    src: url('../fonts/allIcons.ttf') format('truetype'),
+         url('../fonts/allIcons.eot');
+}
+
+@font-face {
+    font-family: 'headerGear';
+    src: url('../fonts/headerGear.ttf') format('truetype'),
+         url('../fonts/headerGear.eot');
+}
+
+@font-face {
     font-family: 'radioButtonIcons';
     src: url('../fonts/blackDot.ttf') format('truetype'),
          url('../fonts/blackDot.eot');
-}
-
-@font-face {
-    font-family: 'optionsIcons';
-    src: url('../fonts/icomoon.ttf') format('truetype'),
-         url('../fonts/icomoon.eot');
-}
-
-@font-face {
-    font-family: 'presetButtonPackage';
-    src: url('../fonts/presetButton.ttf') format('truetype'),
-         url('../fonts/presetButton.eot');
 }
 
 @font-face {
@@ -64,30 +64,26 @@
     font-size: 15px !important;
 }
 
-.gpii-speakText-speechRate-element {
+.gpii-speakText-volume-element {
     position: relative;
     padding-top: 15px;
 }
 
-#speechRate {
+.stepper {
     text-align: center;
     border: none;
-    width: 200px;
-    font-size: 23px;
-    display: inline !important;
+    width: 200px !important;
+    font-size: 23px !important;
+    display: inline;
 }
 
-#speechRateMinus {
-    font-size: 50px;
+.stepperMinus {
+    font-size: 50px !important;
 }
 
-#speechRatePlus {
-    font-size: 30px;
+.stepperPlus {
+    font-size: 30px !important;
     font-weight: bold;
-}
-
-#speechRate.gpii-textfieldStepper-field::-moz-selection {
-    background-color: yellow;
 }
 
 textarea:focus, input:focus {
@@ -109,6 +105,18 @@ textarea:focus, input:focus {
     display: none;
 }
 
+.gpii-volume-partially-expanded {
+    display: none;
+}
+
+.gpii-language-partially-expanded {
+    display: none;
+}
+
+.gpii-speakText-fully-expanded {
+    display: none;
+}
+
 .gpii-speakText-switch {
     font-size:135%;
     float: left;
@@ -123,7 +131,7 @@ textarea:focus, input:focus {
 #gpii-speakText-brailleOnOff {
     font-size:70%;
     float:left;
-    margin-left:125px;
+    margin-left:87px;
 }
 
 input[type="radio"] {
@@ -299,24 +307,31 @@ input[type=checkbox] + label.gpii-speakText-checkboxLabel {
     content: "\e00d";
 }
 
-.white-baloon-icon {
-    position: absolute;
-    font-family: 'presetButtonPackage';
-}
-
-.white-baloon-icon:before {
-    content: "\e004";
+.main-icon:before {
+    font-family: 'allIcons';
     position: absolute;
     z-index: 4;
-    margin-top: 7px;
+    margin-top: 3px;
     margin-left: 7px;
-    font-size: 70px;
+    font-size: 80px;
     color: white;
+}
+
+.visualAlternatives-main-icon:before {
+    content: "\e004";
+}
+
+.volume-main-icon:before {
+    content: "\e00e";
+}
+
+.language-main-icon:before {
+    content: "\e010";
 }
 
 .white-tick-icon {
     display: none;
-    font-family: 'presetButtonPackage';
+    font-family: 'headerGear';
 }
 
 .white-tick-icon:before {
@@ -335,12 +350,14 @@ input[type=checkbox] + label.gpii-speakText-checkboxLabel {
 input[type=checkbox] + label.preset-button-label {
     z-index: 2;
     position: absolute;
-    padding-left: 125px;
-    padding-top: 33px;
+    padding-left: 90px;
+    padding-top: 31px;
     color: white;
-    background-color: #556273;
-    width: 200px;
-    height: 60px;
+    background-color: rgb(85, 98, 115);
+    width: 236px;
+    height: 61px;
+    text-align: left;
+    font-size: 1.3em;
 }
 
 input[type=checkbox] + label.gpii-speakText-checkboxLabel {
@@ -454,7 +471,7 @@ div.ui-tooltip-content: {
     padding-right: 15px; /* add padding to account for vertical scrollbar */
 }
 
-.fl-uiOptions .fl-uiOptions-onoff .fl-uiOptions-switch {
+.fl-prefsEditor .fl-prefsEditor-onoff .fl-prefsEditor-switch {
     font-family: Arial;
     border-radius:50px;
     border: 1px solid #D7DCDD;
@@ -471,7 +488,7 @@ div.ui-tooltip-content: {
     font-weight: 700;
 }
 
-.fl-uiOptions .fl-uiOptions-onoff input {
+.fl-prefsEditor .fl-prefsEditor-onoff input {
     border: 0 none;
     clip: rect(0px, 0px, 0px, 0px);
     height: 1px;
@@ -482,25 +499,25 @@ div.ui-tooltip-content: {
     width: 1px;
 }
 
-.fl-uiOptions .fl-uiOptions-onoff input:focus + label {
+.fl-prefsEditor .fl-prefsEditor-onoff input:focus + label {
     outline: 1px solid black;
 }
 
-.fl-uiOptions .fl-uiOptions-onoff input:checked + label .fl-uiOptions-switch {
+.fl-prefsEditor .fl-prefsEditor-onoff input:checked + label .fl-prefsEditor-switch {
     padding-left: 3em;
     width: 2em;
     background-color: rgb(23, 169, 184);
     box-shadow: -1em 1.1em 0.1em 0 rgba(172, 216, 92, 0.00) inset;
 }
 
-.fl-uiOptions .fl-uiOptions-onoff input + label [data-checkboxStateOn]:before {
+.fl-prefsEditor .fl-prefsEditor-onoff input + label [data-checkboxStateOn]:before {
     content: attr(data-checkboxStateOn);
 }
-.fl-uiOptions .fl-uiOptions-onoff input + label [data-checkboxStateOff]:after {
+.fl-prefsEditor .fl-prefsEditor-onoff input + label [data-checkboxStateOff]:after {
     content: attr(data-checkboxStateOff);
 }
 
-.fl-uiOptions .fl-uiOptions-onoff input + label .fl-uiOptions-switch:before {
+.fl-prefsEditor .fl-prefsEditor-onoff input + label .fl-prefsEditor-switch:before {
     color: #fff;
     border: 1px solid rgb(0, 55, 85);
     border-radius: 150px;
@@ -526,14 +543,14 @@ div.ui-tooltip-content: {
     box-shadow: 0.1em 0.1em 0.0em #444;
 }
 
-.fl-uiOptions .fl-uiOptions-onoff input + label .fl-uiOptions-switch:after {
+.fl-prefsEditor .fl-prefsEditor-onoff input + label .fl-prefsEditor-switch:after {
     float:left;
     position:relative;
     top: -0.76em;
     left: 0.5em;
 }
 
-.fl-uiOptions .fl-uiOptions-onoff .fl-uiOptions-switch-inner {
+.fl-prefsEditor .fl-prefsEditor-onoff .fl-prefsEditor-switch-inner {
     border: 0.1px solid #493A30;
     border-radius: 50px;
     width: 0.9em;
@@ -548,18 +565,18 @@ div.ui-tooltip-content: {
     display:inline-block;
 }
 
-.fl-uiOptions .fl-uiOptions-onoff input:checked + label .fl-uiOptions-switch .fl-uiOptions-switch-inner {
+.fl-prefsEditor .fl-prefsEditor-onoff input:checked + label .fl-prefsEditor-switch .fl-prefsEditor-switch-inner {
     top:-1.5em;
     left: 0.56em;
 }
 
-.fl-uiOptions label {
+.fl-prefsEditor label {
     text-transform: none;
     font-size: 1.2em;
 }
 
 .fl-adjuster-icons-additional {
-    font-family: 'presetButtonPackage';
+    font-family: 'headerGear';
 }
 
 .addToMyPreferencesStar:before {
