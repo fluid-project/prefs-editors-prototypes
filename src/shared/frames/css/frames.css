@@ -84,9 +84,11 @@ body {
     border-radius: 5px;
     color: #FFFFFF;
     cursor: pointer;
-    margin: 5px 5px 5px -30px;
-    padding: 10px 10px 10px 30px;
+    margin: 0.1em 0.1em 0.1em -1.5em;
+    padding: 0.4em 0.4em 0.4em 1.5em;
     position: relative;
+    font-size: 1.2em;
+    vertical-align: baseline;
 }
 
 .gpii-pmt-saveAndApplyButtonLabel {
@@ -95,6 +97,8 @@ body {
     vertical-align: middle;
     z-index: 1;
     color: #FFFFFF;
+    font-size: 1.2em;
+    left: 0.1em;
 }
 
 .gpii-pmt-saveAndApplyButtonLabel:before {
