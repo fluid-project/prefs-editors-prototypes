@@ -20,7 +20,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             selectors: {
                 myPreferencesLabel: ".gpiic-pmt-preferenceSetSelectionButtonMyPreferencesLabel",
                 allPreferencesLabel: ".gpiic-pmt-preferenceSetSelectionButtonAllPreferencesLabel",
-                saveAndApplyButtonLabel: ".gpiic-pmt-saveAndApplyButtonLabel"
+                saveAndApplyButtonLabel: ".gpiic-pmt-saveAndApplyButtonLabel",
+                messageLineLabel: ".gpiic-prefsEditor-messageLine"
             },
             strings: {
                 myPreferencesLabelText: {
@@ -40,11 +41,22 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         func: "gpii.lookupMsg",
                         args: ["{prefsEditorLoader}.msgBundle", "saveAndApplyText"]
                     }
+                },
+                preferencesSavedToUSB: {
+                    expander: {
+                        func: "gpii.lookupMsg",
+                        args: ["{prefsEditorLoader}.msgBundle", "preferencesSavedToUSB"]
+                    }
                 }
             },
             listeners: {
                 onSave: {
                     listener: "console.log"
+                },
+                "onSave.showSaveMessage": {
+                    "this": "{that}.dom.messageLineLabel",
+                    "method": "text",
+                    "args": ["{that}.options.strings.preferencesSavedToUSB"]
                 },
                 "onReady.setMyPreferencesLabelText": {
                     "this": "{that}.dom.myPreferencesLabel",

@@ -112,7 +112,9 @@ body {
 .gpii-prefsEditor-messageLine {
 	display: table-cell;
 	white-space: normal;
-	width: 50%;
+	width: 55%;
+	font-style:italic;
+	vertical-align: middle;
 }
 
 .gpii-prefsEditor-saveButtonContainer {
