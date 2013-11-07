@@ -11,6 +11,7 @@
 body {
 	margin: 5px;
 	background-color: #f2f2f2;
+	font-family: 'Roboto Slab', serif;
 }
 
 .gpii-prefsEditor-pmtContainer {
@@ -29,6 +30,7 @@ body {
 	padding: 5px;
 	white-space: nowrap;
 	line-height: 1.2em;
+	font-size: 1.2em;
 }
 
 .gpii-prefsEditor-preferenceSetSelectionButtonSelected {
@@ -44,18 +46,17 @@ body {
 }
 
 .gpii-prefsEditor-preferenceSetSelectionButtonMyPreferences:before {
-	font-size: 1.5em;
 	content: "\e00a"
 }
 
 .gpii-prefsEditor-preferenceSetSelectionButtonAllPreferences:before {
-	font-size: 1.5em;
 	content: "\e00b"
 }
 
 .gpii-prefsEditor-preferenceSetSelectionButtonLabel {
 	vertical-align: top;
 	cursor: inherit;
+	font-family: 'Roboto Slab', serif;
 }
 
 .gpii-prefsEditor-preferencesContainer {
@@ -80,6 +81,7 @@ body {
 }
 
 .gpii-prefsEditor-save {
+	font-family: 'Roboto Slab', serif;
 	background-color: #4C5259;
     border-radius: 5px;
     color: #FFFFFF;
