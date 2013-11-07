@@ -46,7 +46,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.visualAlternativesTickIcon",
                     "method": "hide"
                 },
-                "onReady.bindEventMoreLessVisualAlternatives": {
+                "onReady.bindEventPreferenceSwitchVisualAlternatives": {
                     "this": "{that}.dom.visualAlternativesPreferenceSwitch",
                     "method": "change",
                     "args": ["{that}.updateModelValue"]
@@ -278,7 +278,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": ["{that}"]
                 },
                 updateModelValue: {
-                    "funcName": "gpii.updateModelHeaderClicked",
+                    "funcName": "gpii.updateModelVisualAlternativesHeaderClicked",
                     "args": ["{that}",
                              "{that}.model.visualAlternativesPartialVisible",
                              "{that}.model.visualAlternativesExtraVisible"
@@ -417,7 +417,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         });
     };
 
-    gpii.updateModelHeaderClicked = function (that, partialVisible, extraVisible) {
+    gpii.updateModelVisualAlternativesHeaderClicked = function (that, partialVisible, extraVisible) {
         if (extraVisible) {
             that.applier.requestChange("visualAlternativesPartialVisible", false);
             that.locate("speakTextSwitch").trigger('click');
@@ -425,6 +425,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             that.applier.requestChange("visualAlternativesPartialVisible", false);
         } else {
             that.applier.requestChange("visualAlternativesPartialVisible", true);
+            if (that.model.gpii_primarySchema_speakText)
+                that.applier.requestChange("visualAlternativesExtraVisible", true);
         }
     };
 
