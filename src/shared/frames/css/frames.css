@@ -17,6 +17,7 @@ body {
 .gpii-prefsEditor-pmtContainer {
 	display: table;
 	font-size: 1.2em;	
+	width: 450px;
 }
 
 .gpii-prefsEditor-frameIcon {
@@ -76,10 +77,6 @@ body {
 	padding: 10px;
 }
 
-.gpii-pmt-bottomRow {
-	text-align: right;
-}
-
 .gpii-prefsEditor-save {
 	font-family: 'Roboto Slab', serif;
 	background-color: #4C5259;
@@ -105,4 +102,22 @@ body {
 
 .gpii-pmt-saveAndApplyButtonLabel:before {
 	content: "\e00b"
+}
+
+.gpii-pmt-bottomRow {
+	display: table;
+	width: 100%;
+}
+
+.gpii-prefsEditor-messageLine {
+	display: table-cell;
+	white-space: normal;
+	width: 50%;
+}
+
+.gpii-prefsEditor-saveButtonContainer {
+	display: table-cell;
+	text-align: right;
+	margin: 5px;
+	vertical-align: top;
 }
