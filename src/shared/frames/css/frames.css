@@ -96,7 +96,7 @@ body {
 .gpii-pmt-saveAndApplyButtonLabel {
 	cursor: pointer;
     position: relative;
-    vertical-align: middle;
+    vertical-align: sub;
     z-index: 1;
     color: #FFFFFF;
     font-size: 1.2em;
