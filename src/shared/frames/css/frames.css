@@ -81,6 +81,7 @@ body {
 
 .gpii-pmt-saveAndApplyButtonLabel {
 	cursor: inherit;
+	vertical-align: bottom;
 }
 
 .gpii-prefsEditor-save {
