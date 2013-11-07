@@ -79,25 +79,24 @@ body {
 	text-align: right;
 }
 
-.gpii-pmt-saveAndApplyButtonLabel {
-	cursor: inherit;
-	vertical-align: bottom;
-}
-
 .gpii-prefsEditor-save {
-	display: none;
+	background-color: #4C5259;
+    border-radius: 5px;
+    color: #FFFFFF;
+    cursor: pointer;
+    margin: 5px 5px 5px -30px;
+    padding: 10px 10px 10px 30px;
+    position: relative;
 }
 
-.gpii-pmt-saveAndApplyButton {
-	display: inline-block;
-	border-radius: 5px;
-	background-color: #4c5259;
-	color: white;
-	margin: 5px;
-	padding: 10px;
+.gpii-pmt-saveAndApplyButtonLabel {
 	cursor: pointer;
+    position: relative;
+    vertical-align: middle;
+    z-index: 1;
+    color: #FFFFFF;
 }
 
-.gpii-pmt-saveAndApplyButton:before {
+.gpii-pmt-saveAndApplyButtonLabel:before {
 	content: "\e00b"
 }
