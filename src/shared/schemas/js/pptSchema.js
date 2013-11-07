@@ -22,7 +22,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "screenReaderTTSEnabled": {
             "type": "screenReaderTTSEnabled",
             "panel": {
-                "type": "speakText.panels.CollectivePanel",
+                "type": "gpii.adjuster.CollectivePanel",
                 "template": "%prefix/speakTextCollectiveTemplate.html",
                 "container": ".speakText-collectiveContainer",
                 "message": "%prefix/speakText.json"
@@ -32,21 +32,21 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "speechRate": {
             "type": "speechRate",
             "panel": {
-                "type": "speakText.panels.CollectivePanel"
+                "type": "gpii.adjuster.CollectivePanel"
             }
         },
 
         "auditoryOutLanguage": {
             "type": "auditoryOutLanguage",
             "panel": {
-                "type": "speakText.panels.CollectivePanel"
+                "type": "gpii.adjuster.CollectivePanel"
             }
         },
 
         "punctuationVerbosity": {
             "type": "punctuationVerbosity",
             "panel": {
-                "type": "speakText.panels.CollectivePanel",
+                "type": "gpii.adjuster.CollectivePanel",
                 "classnameMap": {"punctuationVerbosity": "@punctuationVerbosity.classes"}
             },
             "classes": {
@@ -60,35 +60,35 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "announceCapitals": {
             "type": "announceCapitals",
             "panel": {
-                "type": "speakText.panels.CollectivePanel"
+                "type": "gpii.adjuster.CollectivePanel"
             }
         },
 
         "speakTutorialMessages": {
             "type": "speakTutorialMessages",
             "panel": {
-                "type": "speakText.panels.CollectivePanel"
+                "type": "gpii.adjuster.CollectivePanel"
             }
         },
 
         "keyEcho": {
             "type": "keyEcho",
             "panel": {
-                "type": "speakText.panels.CollectivePanel"
+                "type": "gpii.adjuster.CollectivePanel"
             }
         },
 
         "wordEcho": {
             "type": "wordEcho",
             "panel": {
-                "type": "speakText.panels.CollectivePanel"
+                "type": "gpii.adjuster.CollectivePanel"
             }
         },
 
         "screenReaderBrailleOutput": {
             "type": "screenReaderBrailleOutput",
             "panel": {
-                "type": "speakText.panels.CollectivePanel"
+                "type": "gpii.adjuster.CollectivePanel"
             }
         }
     };

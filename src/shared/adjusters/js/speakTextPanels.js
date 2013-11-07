@@ -24,7 +24,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         return target;
     };
 
-    fluid.defaults("speakText.panels.screenReaderTTSEnabled", {
+    fluid.defaults("gpii.adjuster.screenReaderTTSEnabled", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "screenReaderTTSEnabled": {
@@ -37,7 +37,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("speakText.panels.speechRate", {
+    fluid.defaults("gpii.adjuster.speechRate", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "speechRate": {
@@ -57,7 +57,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("speakText.panels.auditoryOutLanguage", {
+    fluid.defaults("gpii.adjuster.auditoryOutLanguage", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "auditoryOutLanguage": {
@@ -71,7 +71,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("speakText.panels.punctuationVerbosity", {
+    fluid.defaults("gpii.adjuster.punctuationVerbosity", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         mergePolicy: {
             repeatingSelectors: gpii.speakText.arrayMergePolicy
@@ -94,7 +94,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         invokers: {
             style: {
-                funcName: "speakText.panels.punctuationVerbosity.punctuationVerbosityStyle",
+                funcName: "gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle",
                 args: [
                     "{that}.dom.punctuationVerbosityOptionLabel",
                     "{that}.options.controlValues.punctuationVerbosity",
@@ -104,7 +104,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    speakText.panels.punctuationVerbosity.punctuationVerbosityStyle = function (labels, values, classes) {
+    gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle = function (labels, values, classes) {
         fluid.each(labels, function (label, index) {
             $(label).addClass(classes[values[index]]);
             $(label).append('<span></span>');
@@ -112,7 +112,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
 
 
-    fluid.defaults("speakText.panels.announceCapitals", {
+    fluid.defaults("gpii.adjuster.announceCapitals", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "announceCapitals": {
@@ -125,7 +125,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("speakText.panels.speakTutorialMessages", {
+    fluid.defaults("gpii.adjuster.speakTutorialMessages", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "speakTutorialMessages": {
@@ -138,7 +138,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("speakText.panels.keyEcho", {
+    fluid.defaults("gpii.adjuster.keyEcho", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "keyEcho": {
@@ -151,7 +151,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("speakText.panels.wordEcho", {
+    fluid.defaults("gpii.adjuster.wordEcho", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "wordEcho": {
@@ -164,7 +164,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("speakText.panels.screenReaderBrailleOutput", {
+    fluid.defaults("gpii.adjuster.screenReaderBrailleOutput", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "screenReaderBrailleOutput": {

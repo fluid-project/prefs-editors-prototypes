@@ -11,8 +11,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
 (function (fluid) {
-    fluid.defaults("speakText.panels.CollectivePanel", {
-        gradeNames: ["fluid.prefs.panel", "speakText.panels.keyEcho", "speakText.panels.wordEcho", "speakText.panels.speakTutorialMessages", "speakText.panels.screenReaderTTSEnabled", "speakText.panels.announceCapitals", "speakText.panels.punctuationVerbosity", "speakText.panels.screenReaderBrailleOutput", "speakText.panels.auditoryOutLanguage", "speakText.panels.speechRate", "autoInit"],
+    fluid.defaults("gpii.adjuster.CollectivePanel", {
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.keyEcho", "gpii.adjuster.wordEcho", "gpii.adjuster.speakTutorialMessages", "gpii.adjuster.screenReaderTTSEnabled", "gpii.adjuster.announceCapitals", "gpii.adjuster.punctuationVerbosity", "gpii.adjuster.screenReaderBrailleOutput", "gpii.adjuster.auditoryOutLanguage", "gpii.adjuster.speechRate", "autoInit"],
         protoTree: {
             preferencesSwitchSpeakText: {messagekey: "speakTextPresetButtonLabel"},
 
@@ -96,7 +96,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         listeners: {
             "afterRender.activateCombobox": {
-                "listener": "speakText.panels.CollectivePanel.activateCombobox",
+                "listener": "gpii.adjuster.CollectivePanel.activateCombobox",
                 "args": ["{that}"]
             },
             "afterRender.setATTRaddToMyPreferencesStar": {
@@ -252,7 +252,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    speakText.panels.CollectivePanel.activateCombobox = function (that) {
+    gpii.adjuster.CollectivePanel.activateCombobox = function (that) {
         $("#auditoryOutLanguage").combobox();
         $("#auditoryOutLanguage").change(function (event, newValue) {
             that.applier.requestChange("auditoryOutLanguage", newValue);
