@@ -16,50 +16,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
     fluid.registerNamespace("gpii.pmt");
 
-    gpii.primarySchema = {
-
-        "gpii.primarySchema.fontSize": {
-            "type": "number",
-            "default": 12,
-            "minimum": 1,
-            "maximum": 1000,
-            "divisibleBy": 1
-        },
-        "gpii.primarySchema.cursorSize": {
-            "type": "number",
-            "default": 1,
-            "minimum": 1,
-            "maximum": 5,
-            "divisibleBy": 0.2
-        },
-        "gpii.primarySchema.magnification": {
-            "type": "number",
-            "default": 100,
-            "minimum": 100,
-            "maximum": 10000,
-            "divisibleBy": 50
-        },
-        "gpii.primarySchema.magnificationPosition": {
-            "type": "string",
-            "default": "",
-            "enum": ["lens", "dockedleft", "dockedtop", "fullscreen", "dockedright", "dockedbottom"]
-        },
-        "gpii.primarySchema.tracking": {
-            "type": "string",
-            "default": "",
-            "enum": ["mousecursor", "textcursor", "keyboardfocus"]
-        },
-        "gpii.primarySchema.highContrast": {
-            "type": "boolean",
-            "default": false
-        }
-    };
-
     gpii.pmt.auxiliarySchema = {
         // The global values:
-        "namespace": "gpii.uiOptions.constructed",
+        "namespace": "gpii.constructedPMT",
         "templatePrefix": "../../src/shared/adjusters/html/", // The common path to settings panel templates
-        "template": "../../src/pmt/html/PMTUIOptions.html",
+        "template": "../../src/pmt/html/PMT.html",
         "messagePrefix": "../../src/shared/adjusters/messages/en/",
         "message": "%prefix/pmt.json",
 
@@ -72,7 +33,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "panel": {
                 "type": "gpii.adjuster.contrast",
                 "container": ".gpii-prefsEditor-contrastPanel",
-                "template": "%prefix/UIOptionsTemplate-contrastNew.html",
+                "template": "%prefix/contrastNewTemplate.html",
                 "message": "%prefix/contrastNew.json"
             }
         },
@@ -84,7 +45,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "panel": {
                 "type": "gpii.adjuster.increaseSize",
                 "container": ".gpii-prefsEditor-increaseSizePanel",
-                "template": "%prefix/UIOptionsTemplate-increaseSize.html",
+                "template": "%prefix/increaseSizeTemplate.html",
                 "message": "%prefix/increaseSize.json"
             }
         },

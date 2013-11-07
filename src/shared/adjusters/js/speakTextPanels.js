@@ -11,7 +11,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
 (function (fluid) {
-    
+    fluid.registerNamespace("gpii.speakText");
+
     gpii.speakText.arrayMergePolicy = function (target, source) {
         target = fluid.makeArray(target);
         source = fluid.makeArray(source);

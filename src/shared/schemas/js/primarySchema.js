@@ -11,8 +11,44 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
 (function (fluid) {
-    fluid.registerNamespace("gpii.speakText");
-    gpii.speakText.primarySchema = {
+    fluid.registerNamespace("gpii");
+
+    gpii.primarySchema = {
+        "gpii.primarySchema.fontSize": {
+            "type": "number",
+            "default": 12,
+            "minimum": 1,
+            "maximum": 1000,
+            "divisibleBy": 1
+        },
+        "gpii.primarySchema.cursorSize": {
+            "type": "number",
+            "default": 1,
+            "minimum": 1,
+            "maximum": 5,
+            "divisibleBy": 0.2
+        },
+        "gpii.primarySchema.magnification": {
+            "type": "number",
+            "default": 100,
+            "minimum": 100,
+            "maximum": 10000,
+            "divisibleBy": 50
+        },
+        "gpii.primarySchema.magnificationPosition": {
+            "type": "string",
+            "default": "",
+            "enum": ["lens", "dockedleft", "dockedtop", "fullscreen", "dockedright", "dockedbottom"]
+        },
+        "gpii.primarySchema.tracking": {
+            "type": "string",
+            "default": "",
+            "enum": ["mousecursor", "textcursor", "keyboardfocus"]
+        },
+        "gpii.primarySchema.highContrast": {
+            "type": "boolean",
+            "default": false
+        },
         "screenReaderTTSEnabled": {
             "type": "boolean",
             "default": true
@@ -55,83 +91,4 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     };
 
-    gpii.speakText.auxiliarySchema = {
-        "namespace": "gpii.adjusters.speakText",
-        "templatePrefix": "../../src/shared/adjusters/html/",
-        "messagePrefix": "../../src/shared/adjusters/messages/",
-        "template": "%prefix/newestSpeakText.html",
-
-        "screenReaderTTSEnabled": {
-            "type": "screenReaderTTSEnabled",
-            "panel": {
-                "type": "speakText.panels.CollectivePanel",
-                "template": "%prefix/speakTextCollectiveTemplate.html",
-                "container": ".speakText-collectiveContainer",
-                "message": "%prefix/speakText.json"
-            }
-        },
-
-        "speechRate": {
-            "type": "speechRate",
-            "panel": {
-                "type": "speakText.panels.CollectivePanel"
-            }
-        },
-
-        "auditoryOutLanguage": {
-            "type": "auditoryOutLanguage",
-            "panel": {
-                "type": "speakText.panels.CollectivePanel"
-            }
-        },
-
-        "punctuationVerbosity": {
-            "type": "punctuationVerbosity",
-            "panel": {
-                "type": "speakText.panels.CollectivePanel",
-                "classnameMap": {"punctuationVerbosity": "@punctuationVerbosity.classes"}
-            },
-            "classes": {
-                "none": "radioButton-left",
-                "some": "radioButton-middle radioButton-second",
-                "most": "radioButton-middle radioButton-third",
-                "all": "radioButton-right"
-            }
-        },
-
-        "announceCapitals": {
-            "type": "announceCapitals",
-            "panel": {
-                "type": "speakText.panels.CollectivePanel"
-            }
-        },
-
-        "speakTutorialMessages": {
-            "type": "speakTutorialMessages",
-            "panel": {
-                "type": "speakText.panels.CollectivePanel"
-            }
-        },
-
-        "keyEcho": {
-            "type": "keyEcho",
-            "panel": {
-                "type": "speakText.panels.CollectivePanel"
-            }
-        },
-
-        "wordEcho": {
-            "type": "wordEcho",
-            "panel": {
-                "type": "speakText.panels.CollectivePanel"
-            }
-        },
-
-        "screenReaderBrailleOutput": {
-            "type": "screenReaderBrailleOutput",
-            "panel": {
-                "type": "speakText.panels.CollectivePanel"
-            }
-        }
-    };
 })(fluid);
