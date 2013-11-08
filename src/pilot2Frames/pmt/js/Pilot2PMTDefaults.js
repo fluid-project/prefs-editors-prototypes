@@ -21,7 +21,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 myPreferencesLabel: ".gpiic-pmt-preferenceSetSelectionButtonMyPreferencesLabel",
                 allPreferencesLabel: ".gpiic-pmt-preferenceSetSelectionButtonAllPreferencesLabel",
                 saveAndApplyButtonLabel: ".gpiic-pmt-saveAndApplyButtonLabel",
-                messageLineLabel: ".gpiic-prefsEditor-messageLine"
+                messageLineLabel: ".gpiic-prefsEditor-messageLine",
+                notification: ".gpiic-prefsEditor-notification",
+                confirmButton: ".gpiic-prefsEditor-notificationConfirmButton"
             },
             strings: {
                 myPreferencesLabelText: {
@@ -58,6 +60,23 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "text",
                     "args": ["{that}.options.strings.preferencesSavedToUSB"]
                 },
+                "onReady.bindNotificationConfirmButtonClick": {
+                    "this": "{that}.dom.confirmButton",
+                    "method": "click",
+                    "args": ["{that}.hideSaveNotification"]
+                },
+                "onReady.prepareSaveNotification": {
+                    "this": "{that}.dom.notification",
+                    "method": "dialog",
+                    "args": [{
+                        autoOpen: false,
+                        modal: true,
+                        dialogClass: "gpii-dialog-noTitle"
+                    }]
+                },
+                "onSave.showSaveNotification": {
+                    listener: "gpii.prefs.pmt_pilot_2.showSaveNotification"
+                },
                 "onReady.setMyPreferencesLabelText": {
                     "this": "{that}.dom.myPreferencesLabel",
                     "method": "text",
@@ -73,7 +92,27 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "text",
                     "args": ["{that}.options.strings.saveAndApplyText"]
                 }
+            },
+            invokers: {
+                hideSaveNotification: {
+                    "funcName": "gpii.prefs.pmt_pilot_2.hideSaveNotification"
+                }
             }
         }
     });
+    
+    gpii.prefs.pmt_pilot_2.showSaveNotification = function () {
+        // Had to reference the notification container this way, because jQuery.dialog()
+        // detaches it from its original position and appends it to body, making Infusion
+        // DOM to lose reference to it.
+        $(".gpiic-prefsEditor-notification").dialog("open");
+    };
+    
+    gpii.prefs.pmt_pilot_2.hideSaveNotification = function () {
+        // Had to reference the notification container this way, because jQuery.dialog()
+        // detaches it from its original position and appends it to body, making Infusion
+        // DOM to lose reference to it.
+        $(".gpiic-prefsEditor-notification").dialog("close");
+    };
+
 })(jQuery, fluid);

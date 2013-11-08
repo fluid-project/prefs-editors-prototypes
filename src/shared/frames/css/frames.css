@@ -123,3 +123,31 @@ body {
 	margin: 5px;
 	vertical-align: top;
 }
+
+.gpii-prefsEditor-notification {
+	background-color: black !important;
+	color: white !important;
+}
+
+.gpii-prefsEditor-notificationMessage {
+	color: #f3f3f3 !important;
+}
+
+.ui-dialog {
+	padding: 0 !important;
+}
+
+.gpii-dialog-noTitle .ui-dialog-titlebar {
+	display: none;
+}
+
+.gpii-prefsEditor-notificationConfirmationArea {
+	text-align: right;
+}
+
+.gpii-prefsEditor-notificationConfirmButton {
+	display: inline-block;
+	font-style: italic;
+	font-weight: bold;
+	cursor: pointer;
+}
