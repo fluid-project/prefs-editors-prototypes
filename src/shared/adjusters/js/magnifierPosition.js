@@ -36,7 +36,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             messageResolver: "{prefsEditorLoader}.msgBundle"
         },
         stringArrayIndex: {
-            magnifierPosition: ["magnifierPosition-default", "magnifierPosition-lens", "magnifierPosition-fullscreen", "magnifierPosition-dockedtop", "magnifierPosition-dockedbottom", , "magnifierPosition-dockedleft", "magnifierPosition-dockedright"]
+            magnifierPosition: ["magnifierPosition-lens", "magnifierPosition-dockedleft", "magnifierPosition-dockedtop", "magnifierPosition-fullscreen", "magnifierPosition-dockedright", "magnifierPosition-dockedbottom"]
         },
         strings: {
             magnifierPosition: "{that}.stringBundle.magnifierPosition"
