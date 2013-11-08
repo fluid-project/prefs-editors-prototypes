@@ -90,18 +90,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 onSave: {
                     listener: "console.log"
                 },
-                "onSave.showSaveMessage": {
-                    "this": "{that}.dom.messageLineLabel",
-                    "method": "text",
-                    "args": ["{that}.options.strings.preferencesSavedToUSB"]
-                },
-                "onReady.bindNotificationConfirmButtonClick": {
+                "onReady.bindNotificationConfirmButtonClickHideNotification": {
                     "this": "{that}.dom.confirmButton",
                     "method": "click",
                     "args": ["{that}.hideSaveNotification"]
                 },
-                "onSave.showSaveNotification": {
-                    listener: "gpii.prefs.pmt_pilot_2.showSaveNotification"
+                "onReady.bindNotificationConfirmButtonClickShowSaveMessage": {
+                    "this": "{that}.dom.confirmButton",
+                    "method": "click",
+                    "args": ["{that}.showSaveMessage"]
                 },
                 "onReady.setMyPreferencesLabelText": {
                     "this": "{that}.dom.myPreferencesLabel",
@@ -150,13 +147,22 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         autoOpen: false,
                         modal: true,
                         width: 450,
-                        dialogClass: "gpii-dialog-noTitle"
+                        dialogClass: "gpii-dialog-noTitle",
+                        closeOnEscape: false
                     }]
+                },
+                "onSave.showSaveNotification": {
+                    listener: "gpii.prefs.pmt_pilot_2.showSaveNotification"
                 }
             },
             invokers: {
                 hideSaveNotification: {
                     "funcName": "gpii.prefs.pmt_pilot_2.hideSaveNotification"
+                },
+                showSaveMessage: {
+                    "this": "{that}.dom.messageLineLabel",
+                    "method": "text",
+                    "args": ["{that}.options.strings.preferencesSavedToUSB"]
                 }
             }
         }
