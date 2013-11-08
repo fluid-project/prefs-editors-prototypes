@@ -135,10 +135,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             cursorSize: {
                 decorators: {
                     type: "fluid",
-                    func: "fluid.prefs.textfieldSlider",
+                    func: "fluid.textfieldSlider",
                     options: {
-                        range: "{that}.options.controlValues.cursorSize",
-                        path: "value"
+                        rules: {
+                            "value": "value"
+                        },
+                        model: {
+                            value: "{that}.model.value"
+                        },
+                        sourceApplier: "{that}.applier",
+                        range: "{that}.options.range",
+                        sliderOptions: "{that}.options.sliderOptions"
                     }
                 }
             },
