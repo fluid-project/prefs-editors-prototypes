@@ -23,7 +23,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 saveAndApplyButtonLabel: ".gpiic-pmt-saveAndApplyButtonLabel",
                 messageLineLabel: ".gpiic-prefsEditor-messageLine",
                 notification: ".gpiic-prefsEditor-notification",
-                confirmButton: ".gpiic-prefsEditor-notificationConfirmButton"
+                confirmButton: ".gpiic-prefsEditor-notificationConfirmButton",
+                notificationMessagePart1: ".gpiic-prefsEditor-notificationMessagePart1",
+                notificationMessagePart2: ".gpiic-prefsEditor-notificationMessagePart2",
+                notificationMessagePart3: ".gpiic-prefsEditor-notificationMessagePart3",
+                notificationTitle: ".gpiic-prefsEditor-notificationTitle",
+                notificationConfirmButton: ".gpiic-prefsEditor-notificationConfirmButton"
             },
             strings: {
                 myPreferencesLabelText: {
@@ -49,6 +54,36 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         func: "gpii.lookupMsg",
                         args: ["{prefsEditorLoader}.msgBundle", "preferencesSavedToUSB"]
                     }
+                },
+                notificationMessagePart1: {
+                    expander: {
+                        func: "gpii.lookupMsg",
+                        args: ["{prefsEditorLoader}.msgBundle", "notificationMessagePart1"]
+                    }
+                },
+                notificationMessagePart2: {
+                    expander: {
+                        func: "gpii.lookupMsg",
+                        args: ["{prefsEditorLoader}.msgBundle", "notificationMessagePart2"]
+                    }
+                },
+                notificationMessagePart3: {
+                    expander: {
+                        func: "gpii.lookupMsg",
+                        args: ["{prefsEditorLoader}.msgBundle", "notificationMessagePart3"]
+                    }
+                },
+                notificationTitle: {
+                    expander: {
+                        func: "gpii.lookupMsg",
+                        args: ["{prefsEditorLoader}.msgBundle", "notificationTitle"]
+                    }
+                },
+                notificationConfirmButton: {
+                    expander: {
+                        func: "gpii.lookupMsg",
+                        args: ["{prefsEditorLoader}.msgBundle", "notificationConfirmButton"]
+                    }                    
                 }
             },
             listeners: {
@@ -64,15 +99,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.confirmButton",
                     "method": "click",
                     "args": ["{that}.hideSaveNotification"]
-                },
-                "onReady.prepareSaveNotification": {
-                    "this": "{that}.dom.notification",
-                    "method": "dialog",
-                    "args": [{
-                        autoOpen: false,
-                        modal: true,
-                        dialogClass: "gpii-dialog-noTitle"
-                    }]
                 },
                 "onSave.showSaveNotification": {
                     listener: "gpii.prefs.pmt_pilot_2.showSaveNotification"
@@ -91,6 +117,41 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.saveAndApplyButtonLabel",
                     "method": "text",
                     "args": ["{that}.options.strings.saveAndApplyText"]
+                },
+                "onReady.setNotificationMessagePart1": {
+                    "this": "{that}.dom.notificationMessagePart1",
+                    "method": "text",
+                    "args": ["{that}.options.strings.notificationMessagePart1"]
+                },
+                "onReady.setNotificationMessagePart2": {
+                    "this": "{that}.dom.notificationMessagePart2",
+                    "method": "text",
+                    "args": ["{that}.options.strings.notificationMessagePart2"]
+                },
+                "onReady.setNotificationMessagePart3": {
+                    "this": "{that}.dom.notificationMessagePart3",
+                    "method": "text",
+                    "args": ["{that}.options.strings.notificationMessagePart3"]
+                },
+                "onReady.setNotificationTitle": {
+                    "this": "{that}.dom.notificationTitle",
+                    "method": "text",
+                    "args": ["{that}.options.strings.notificationTitle"]
+                },
+                "onReady.setNotificationConfirmButton": {
+                    "this": "{that}.dom.notificationConfirmButton",
+                    "method": "text",
+                    "args": ["{that}.options.strings.notificationConfirmButton"]
+                },
+                "onReady.prepareSaveNotification": {
+                    "this": "{that}.dom.notification",
+                    "method": "dialog",
+                    "args": [{
+                        autoOpen: false,
+                        modal: true,
+                        width: 450,
+                        dialogClass: "gpii-dialog-noTitle"
+                    }]
                 }
             },
             invokers: {

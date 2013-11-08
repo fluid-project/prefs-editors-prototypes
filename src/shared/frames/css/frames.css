@@ -151,3 +151,9 @@ body {
 	font-weight: bold;
 	cursor: pointer;
 }
+
+.gpii-prefsEditor-notificationMessageTOKEN {
+	color: white;
+	background-color: #666666;
+	padding: 0 5px 0 5px;
+}
