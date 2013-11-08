@@ -130,7 +130,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.events.magnifierMinRangeReached",
                     "{that}.events.magnifierMinRangeExited",
                     "{that}.refreshMagnifierValueText"
-                ]
+                ],
+                dynamic: true
             },
             onMagnifierPlusClick: {
                 funcName: "gpii.adjuster.plusMinus.onPlusClick",
@@ -142,7 +143,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.events.magnifierMinRangeReached",
                     "{that}.events.magnifierMinRangeExited",
                     "{that}.refreshMagnifierValueText"
-                ]
+                ],
+                dynamic: true
             },
             onMagnifierValueTextChange: {
                 funcName: "gpii.adjuster.plusMinus.onValueTextChange",
@@ -168,7 +170,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         method: "stringTemplate",
                         args: ["{that}.options.strings.magnifierStringTemplate", ["{that}.model.magnification"]]
                     }
-                }
+                },
+                dynamic: true
             },
             setMagnifierMinusStyleAdd: {
                 "this": "{that}.dom.magnifierMinus",
@@ -190,7 +193,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.options.magnification.range",
                     "{that}.events.magnifierMinRangeReached",
                     "{that}.events.magnifierMinRangeExited"
-                ]
+                ],
+                dynamic: true
             },
             setMagnifierMetricUnit: {
                 func: "{that}.refreshMagnifierValueText"

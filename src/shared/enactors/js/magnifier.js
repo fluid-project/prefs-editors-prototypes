@@ -25,7 +25,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         invokers: {
             set: {
                 funcName: "gpii.enactor.magnifier.set",
-                args: ["{that}.model.value", "{that}.container"]
+                args: ["{that}.model.value", "{that}.container"],
+                dynamic: true
             }
         },
         listeners: {

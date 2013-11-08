@@ -29,7 +29,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         invokers: {
             toggleContrast: {
                 funcName: "gpii.enactor.contrast.toggleContrast",
-                args: ["{that}.container", "{that}.options.styles.defaultTheme", "{that}.options.styles.contrastTheme", "{that}.model.value"]
+                args: ["{that}.container", "{that}.options.styles.defaultTheme", "{that}.options.styles.contrastTheme", "{that}.model.value"],
+                dynamic: true
             }
         },
         listeners: {

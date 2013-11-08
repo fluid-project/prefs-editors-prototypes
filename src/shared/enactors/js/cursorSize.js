@@ -28,7 +28,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         invokers: {
             set: {
                 funcName: "gpii.enactor.cursorSize.set",
-                args: ["{that}.model.value", "{that}.dom.cursorDiv"]
+                args: ["{that}.model.value", "{that}.dom.cursorDiv"],
+                dynamic: true
             }
         },
         listeners: {
