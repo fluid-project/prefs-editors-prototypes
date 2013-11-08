@@ -148,7 +148,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         modal: true,
                         width: 450,
                         dialogClass: "gpii-dialog-noTitle",
-                        closeOnEscape: false
+                        closeOnEscape: false,
+                        position: { my: "bottom", at: "bottom", of: ".gpii-prefsEditor-preferencesContainer" }
                     }]
                 },
                 "onSave.showSaveNotification": {
