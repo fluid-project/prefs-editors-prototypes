@@ -24,7 +24,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      *******************************************************************************/
 
     fluid.defaults("gpii.explorationTool.enactors.selfVoicing", {
-        gradeNames: ["fluid.viewComponent", "fluid.prefs.enactors", "autoInit"],
+        gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
         model: {
             value: false
         },

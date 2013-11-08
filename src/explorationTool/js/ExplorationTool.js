@@ -621,7 +621,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
     // Note that the implementors need to provide the container for this view component
     fluid.defaults("gpii.explorationTool.enactors.simplifiedContent", {
-        gradeNames: ["fluid.viewComponent", "fluid.prefs.enactors", "autoInit"],
+        gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
         selectors: {
             elementsToHide: "header, footer, aside, nav, .flc-explorationTool-simplify-hide"
         },
@@ -702,7 +702,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
     // Note that the implementors need to provide the container for this view component
     fluid.defaults("gpii.explorationTool.enactors.showMoreText", {
-        gradeNames: ["fluid.viewComponent", "fluid.prefs.enactors", "autoInit"],
+        gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
         selectors: {
             moreTexts: ".flc-explorationTool-moreText-container",
             images: "img, [role~='img']",
