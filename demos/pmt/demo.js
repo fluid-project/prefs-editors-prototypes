@@ -31,7 +31,7 @@ var demo = demo || {};
             components: {
                 uiOptionsLoader: {
                     options: {
-                        messagePrefix: "../../src/shared/adjusters/messages/" + language + "/"
+                        messagePrefix: "../../src/shared/i18n/messages/" + language + "/"
                     }
                 }
             }
