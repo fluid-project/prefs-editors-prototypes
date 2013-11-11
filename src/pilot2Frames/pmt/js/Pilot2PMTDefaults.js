@@ -16,6 +16,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
     fluid.defaults("gpii.prefs.pmt_pilot_2", {
         gradeNames: ["fluid.prefs.fullNoPreview", "autoInit"],
+        mergePolicy: {
+            // override onReset listener in order not to save
+            "prefsEditor.listeners.onReset": gpii.prefs.helpers.arrayOverridePolicy
+        },
         prefsEditor: {
             selectors: {
                 myPreferencesLabel: ".gpiic-pmt-preferenceSetSelectionButtonMyPreferencesLabel",
@@ -178,6 +182,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onSave.showSaveNotification": {
                     listener: "gpii.prefs.pmt_pilot_2.showSaveNotification"
                 },
+                onReset: [{
+                    listener: "{that}.applyChanges"
+                }],
                 "onReset.hideUserStatusBar": {
                     "this": "{that}.dom.userStatusBar",
                     "method": "slideUp"
