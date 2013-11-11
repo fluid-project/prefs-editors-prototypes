@@ -29,7 +29,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 notificationMessagePart3: ".gpiic-prefsEditor-notificationMessagePart3",
                 notificationTitle: ".gpiic-prefsEditor-notificationTitle",
                 notificationConfirmButton: ".gpiic-prefsEditor-notificationConfirmButton",
-                logoutLink: ".gpiic-prefsEditor-userLogoutLink"
+                logoutLink: ".gpiic-prefsEditor-userLogoutLink",
+                userStatusBar: ".gpiic-prefsEditor-userStatusBar"
             },
             strings: {
                 myPreferencesLabelText: {
@@ -107,6 +108,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "click",
                     "args": ["{that}.showSaveMessage"]
                 },
+                "onReady.bindNotificationConfirmButtonClickShowUserStatusBar": {
+                    "this": "{that}.dom.confirmButton",
+                    "method": "click",
+                    "args": ["{that}.showUserStatusBar"]
+                },
                 "onReady.setMyPreferencesLabelText": {
                     "this": "{that}.dom.myPreferencesLabel",
                     "method": "text",
@@ -164,6 +170,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "text",
                     "args": ["{that}.options.strings.logoutText"]
                 },
+                "onReady.hideUserStatusBar": {
+                    "this": "{that}.dom.userStatusBar",
+                    "method": "hide",
+                    "args": [0]
+                },
                 "onSave.showSaveNotification": {
                     listener: "gpii.prefs.pmt_pilot_2.showSaveNotification"
                 }
@@ -176,6 +187,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.messageLineLabel",
                     "method": "text",
                     "args": ["{that}.options.strings.preferencesSavedToUSB"]
+                },
+                showUserStatusBar: {
+                    "this": "{that}.dom.userStatusBar",
+                    "method": "slideDown"
                 }
             }
         }
