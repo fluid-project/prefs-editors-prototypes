@@ -17,19 +17,19 @@ var demo = demo || {};
 
 (function ($, fluid) {
     demo.initPMT = function (container, compOpts) {
-        demo.uioBuilder = fluid.uiOptions.builder({
+        demo.builder = fluid.prefs.builder({
             primarySchema: gpii.primarySchema,
-            auxiliarySchema: gpii.uiOptions.pmt.auxiliarySchema
+            auxiliarySchema: gpii.pmt.auxiliarySchema
         });
         
-        demo.instantiateUIO(container, compOpts, "gpii.uiOptions.pmt", gpii.getDefaultLanguage());
+        demo.instantiatePMT(container, compOpts, "gpii.pmt", gpii.getDefaultLanguage());
     };
     
-    demo.instantiateUIO = function (container, compOpts, uioType, language) {
+    demo.instantiatePMT = function (container, compOpts, prefsEditorType, language) {
         var baseOpts = {
-            uioType: uioType,
+            prefsEditorType: prefsEditorType,
             components: {
-                uiOptionsLoader: {
+                prefsEditorLoader: {
                     options: {
                         messagePrefix: "../../src/shared/i18n/messages/" + language + "/"
                     }
@@ -37,6 +37,6 @@ var demo = demo || {};
             }
         };
         $.extend(true, baseOpts, compOpts);
-        fluid.invokeGlobalFunction(demo.uioBuilder.options.assembledUIOGrade, [container, baseOpts]);
+        fluid.invokeGlobalFunction(demo.builder.options.assembledPrefsEditorGrade, [container, baseOpts]);
     };
 })(jQuery, fluid);
