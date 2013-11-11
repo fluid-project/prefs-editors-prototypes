@@ -98,7 +98,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.dom.punctuationVerbosityOptionLabel",
                     "{that}.options.controlValues.punctuationVerbosity",
                     "{that}.options.classnameMap.punctuationVerbosity"
-                ]
+                ],
+                "dynamic": true
             }
         }
     });
