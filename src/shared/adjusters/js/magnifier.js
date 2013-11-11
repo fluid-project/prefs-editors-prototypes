@@ -159,7 +159,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.events.magnifierMinRangeReached",
                     "{that}.events.magnifierMinRangeExited",
                     "{that}.refreshMagnifierValueText"
-                ]
+                ],
+                dynamic: true
             },
             refreshMagnifierValueText: {
                 "this": "{that}.dom.magnifierValueText",

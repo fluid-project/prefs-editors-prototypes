@@ -149,7 +149,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.events.textSizeMinRangeReached",
                     "{that}.events.textSizeMinRangeExited",
                     "{that}.refreshTextSizeValueText"
-                ]
+                ],
+                dynamic: true
             },
             refreshTextSizeValueText: {
                 "this": "{that}.dom.textSizeValueText",
