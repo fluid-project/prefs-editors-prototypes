@@ -15,8 +15,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
 
-    fluid.defaults("fluid.prefs.enactors.contrast", {
-        gradeNames: ["fluid.prefs.enactors.classSwapper", "autoInit"],
+    fluid.defaults("gpii.prefs.enactor.contrast", {
+        gradeNames: ["fluid.prefs.enactor.classSwapper", "autoInit"],
         preferenceMap: {
             "contrast.theme": {
                 "model.value": "default"

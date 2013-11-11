@@ -45,8 +45,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.prefs.adjusters_pilot_2.auxiliarySchema = {
         "namespace": "gpii.prefs.adjusters_pilot_2.auxiliarySchema",
         "templatePrefix": "../../src/shared/adjusters/html/",
-        "template": "%prefix/adjustersPilots2.html",
-        "messagePrefix": "../../src/shared/adjusters/messages/en/", // default
+        "template": "../../src/pilot2Adjusters/html/adjustersPilots2.html",
+        "messagePrefix": "../../src/shared/i18n/messages/en/", // default
         "message": "%prefix/pmt.json",
         
         "magnifier.invertColours": {
@@ -120,7 +120,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "wb": "fl-theme-prefsEditor-wb fl-theme-wb"
             },
             "enactor": {
-                "type": "fluid.prefs.enactors.contrast",
+                "type": "gpii.prefs.enactor.contrast",
                 "classes": "@contrastTheme.classes"
             },
             "panel": {
