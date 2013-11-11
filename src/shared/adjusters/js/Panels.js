@@ -64,10 +64,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             wordsSpokenPerMinute: {
                 decorators: {
                     type: "fluid",
-                    func: "gpii.uiOptions.textfieldStepper",
+                    func: "gpii.textfieldStepper",
                     options: {
-                        range: "{that}.options.controlValues.wordsSpokenPerMinute",
-                        path: "value"
+                        sourceApplier: "{that}.applier",
+                        rules: {
+                            "value": "value"
+                        },
+                        model: {
+                            value: "{that}.model.value"
+                        },
+                        range: "{that}.options.controlValues.wordsSpokenPerMinute"
                     }
                 }
             },
@@ -96,16 +102,60 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             volume: {
                 decorators: {
                     type: "fluid",
-                    func: "gpii.uiOptions.textfieldStepper",
+                    func: "gpii.textfieldStepper",
                     options: {
-                        range: "{that}.options.controlValues.volume",
-                        path: "value"
+                        sourceApplier: "{that}.applier",
+                        rules: {
+                            "value": "value"
+                        },
+                        model: {
+                            value: "{that}.model.value"
+                        },
+                        range: "{that}.options.controlValues.volume"
                     }
                 }
             },
             volumeLabel: {messagekey: "volumeLabel"},
             volumeMinus: {messagekey: "stepperMinus"},
             volumePlus: {messagekey: "stepperPlus"}
+        }
+    });
+
+    fluid.defaults("speakText.panel.voicePitch", {
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        preferenceMap: {
+            "gpii.primarySchema.voicePitch": {
+                "model.value": "default",
+                "controlValues.voicePitch.min": "minimum",
+                "controlValues.voicePitch.step": "divisibleBy"
+            }
+        },
+        selectors: {
+            voicePitch: ".gpiic-speakText-voicePitch",
+            voicePitchLabel: ".gpiic-speakText-voicePitch-label",
+            voicePitchMinus: ".gpiic-speakText-voicePitch-minus",
+            voicePitchPlus: ".gpiic-speakText-voicePitch-plus"
+        },
+        protoTree: {
+            voicePitch: {
+                decorators: {
+                    type: "fluid",
+                    func: "gpii.textfieldStepper",
+                    options: {
+                        sourceApplier: "{that}.applier",
+                        rules: {
+                            "value": "value"
+                        },
+                        model: {
+                            value: "{that}.model.value"
+                        },
+                        range: "{that}.options.controlValues.voicePitch"
+                    }
+                }
+            },
+            voicePitchLabel: {messagekey: "voicePitchLabel"},
+            voicePitchMinus: {messagekey: "stepperMinus"},
+            voicePitchPlus: {messagekey: "stepperPlus"}
         }
     });
 
@@ -129,10 +179,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             universalVolume: {
                 decorators: {
                     type: "fluid",
-                    func: "gpii.uiOptions.textfieldStepper",
+                    func: "gpii.textfieldStepper",
                     options: {
-                        range: "{that}.options.controlValues.universalVolume",
-                        path: "value"
+                        sourceApplier: "{that}.applier",
+                        rules: {
+                            "value": "value"
+                        },
+                        model: {
+                            value: "{that}.model.value"
+                        },
+                        range: "{that}.options.controlValues.universalVolume"
                     }
                 }
             },

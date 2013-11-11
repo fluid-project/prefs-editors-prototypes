@@ -14,14 +14,14 @@ var demo = demo || {};
 
 (function ($, fluid) {
     demo.initGPII = function (container, compOpts) {
-        var uioBuilder = fluid.uiOptions.builder({
+        var uioBuilder = fluid.prefs.builder({
             primarySchema: gpii.primarySchema,
             auxiliarySchema: gpii.speakText.auxiliarySchema
         });
         var baseOpts = {
-            uioType: "gpii.speakText"
+            prefsEditorType: "gpii.speakText"
         };
         $.extend(true, baseOpts, compOpts);
-        return fluid.invokeGlobalFunction(uioBuilder.options.assembledUIOGrade, [container, baseOpts]);
+        return fluid.invokeGlobalFunction(uioBuilder.options.assembledPrefsEditorGrade, [container, baseOpts]);
     };
 })(jQuery, fluid);

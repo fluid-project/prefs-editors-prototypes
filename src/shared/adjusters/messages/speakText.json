@@ -10,6 +10,7 @@
     "stepperMinus": "-",
     "stepperPlus": "+",
     "volumeLabel": "Volume",
+    "voicePitchLabel": "Voice Pitch",
     "universalVolumeLabel": "Universal volume",
     "universalVolumeDescription": "All volume levels will be affected, except where it has been set independently",
     "auditoryOutLanguageLabel": "Language",

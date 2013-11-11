@@ -20,7 +20,7 @@ var fluid_1_5 = fluid_1_5 || {};
      *******************************************/
 
     fluid.defaults("gpii.textfieldStepper", {
-        gradeNames: ["fluid.viewComponent", "autoInit"],
+        gradeNames: ["fluid.viewComponent", "fluid.prefs.modelRelay", "autoInit"],
         components: {
             textfield: {
                 type: "fluid.textfieldSlider.textfield",
@@ -87,8 +87,8 @@ var fluid_1_5 = fluid_1_5 || {};
     fluid.defaults("gpii.textfieldStepper.buttons", {
         gradeNames: ["fluid.viewComponent", "autoInit"],
         selectors: {
-            inc: ".gpiic-speakText-textfieldStepper-increment",
-            dec: ".gpiic-speakText-textfieldStepper-decrement"
+            inc: ".gpii-textfieldStepper-increment",
+            dec: ".gpii-textfieldStepper-decrement"
         },
         events: {
             modelChanged: null
@@ -123,8 +123,6 @@ var fluid_1_5 = fluid_1_5 || {};
     });
 
     gpii.textfieldStepper.buttons.alterValue = function (that, multiplier) {
-        finalhookmodel = that;
-
         var currentValue = that.model.value;
         var step = that.options.range.step;
         var newValue = currentValue + multiplier * step;
@@ -139,31 +137,5 @@ var fluid_1_5 = fluid_1_5 || {};
             }
         });
     };
-
-    fluid.defaults("gpii.uiOptions.textfieldStepper", {
-        gradeNames: ["gpii.textfieldStepper", "autoInit"],
-        model: "{fluid.prefs.panel}.model",
-        range: "{fluid.prefs.panel}.options.range",
-        listeners: {
-            modelChanged: {
-                listener: "{fluid.prefs.panel}.applier.requestChange",
-                args: ["{that}.options.path", "{arguments}.0"]
-            }
-        },
-        path: "value"
-    });
-
-
-    fluid.defaults("gpii.onOffSwitch", {
-        gradeNames: ["fluid.viewComponent", "autoInit"],
-        selectors: {
-            label: ".onoff-label",
-            input: ".onoff-input",
-            description: ".onoff-description"
-        }
-    });
-
-
-
 
 })(jQuery, fluid_1_5);
