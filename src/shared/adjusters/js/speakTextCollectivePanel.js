@@ -203,27 +203,31 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "args": ["{that}",
                          "{that}.model.partialAdjustersVisibility",
                          "{that}.model.extraAdjustersVisibility"
-                    ]
+                    ],
+                dynamic: true
             },
             updateExtraModelValue: {
                 "funcName": "gpii.speakText.updateModelMoreLessClicked",
                 "args": ["{that}",
                          "{that}.model.extraAdjustersVisibility"
-                    ]
+                    ],
+                dynamic: true
             },
             showHidePartial: {
                 "funcName": "gpii.speakText.showOrHideDependingOnState",
                 "args": ["{that}.model.partialAdjustersVisibility",
                          "{that}.events.onShowPartialAdjusters.fire",
                          "{that}.events.onHidePartialAdjusters.fire"
-                    ]
+                    ],
+                dynamic: true
             },
             showHideExtra: {
                 "funcName": "gpii.speakText.showOrHideDependingOnState",
                 "args": ["{that}.model.extraAdjustersVisibility",
                          "{that}.events.onShowExtraAdjuster.fire",
                          "{that}.events.onHideExtraAdjuster.fire"
-                    ]
+                    ],
+                dynamic: true
             }
         },
         selectors: {

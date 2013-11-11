@@ -16,7 +16,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
 
     fluid.defaults("gpii.enactor.contrast", {
-        gradeNames: ["fluid.viewComponent", "fluid.prefs.enactors", "autoInit"],
+        gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.highContrast": {
                 "model.value": "default"
@@ -29,7 +29,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         invokers: {
             toggleContrast: {
                 funcName: "gpii.enactor.contrast.toggleContrast",
-                args: ["{that}.container", "{that}.options.styles.defaultTheme", "{that}.options.styles.contrastTheme", "{that}.model.value"]
+                args: ["{that}.container", "{that}.options.styles.defaultTheme", "{that}.options.styles.contrastTheme", "{that}.model.value"],
+                dynamic: true
             }
         },
         listeners: {

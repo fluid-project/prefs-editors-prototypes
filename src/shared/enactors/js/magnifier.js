@@ -16,7 +16,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
     
     fluid.defaults("gpii.enactor.magnifier", {
-        gradeNames: ["fluid.viewComponent", "fluid.prefs.enactors", "autoInit"],
+        gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.magnification": {
                 "model.value": "default"
@@ -25,7 +25,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         invokers: {
             set: {
                 funcName: "gpii.enactor.magnifier.set",
-                args: ["{that}.model.value", "{that}.container"]
+                args: ["{that}.model.value", "{that}.container"],
+                dynamic: true
             }
         },
         listeners: {

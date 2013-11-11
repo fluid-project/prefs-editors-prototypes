@@ -135,10 +135,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             cursorSize: {
                 decorators: {
                     type: "fluid",
-                    func: "fluid.prefs.textfieldSlider",
+                    func: "fluid.textfieldSlider",
                     options: {
-                        range: "{that}.options.controlValues.cursorSize",
-                        path: "value"
+                        rules: {
+                            "value": "value"
+                        },
+                        model: {
+                            value: "{that}.model.value"
+                        },
+                        sourceApplier: "{that}.applier",
+                        range: "{that}.options.range",
+                        sliderOptions: "{that}.options.sliderOptions"
                     }
                 }
             },
@@ -189,7 +196,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.events.onShowAdjuster.fire",
                     "{that}.events.onHideAdjuster.fire",
                     0
-                ]
+                ],
+                dynamic: true
             },
             toggleIncreaseSizeExtraAdjustersInstant: {
                 "funcName": "gpii.adjuster.increaseSize.toggleIncreaseSizeExtraAdjusters",
@@ -198,7 +206,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.events.onShowExtraAdjuster.fire",
                     "{that}.events.onHideExtraAdjuster.fire",
                     0
-                ]
+                ],
+                dynamic: true
             },
             toggleIncreaseSizeAdjusters: {
                 "funcName": "gpii.adjuster.increaseSize.toggleIncreaseSizeAdjusters",
@@ -206,7 +215,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.model.increaseSizeAdjustersEnabledSwitch",
                     "{that}.events.onShowAdjuster.fire",
                     "{that}.events.onHideAdjuster.fire"
-                ]
+                ],
+                dynamic: true
             },
             toggleIncreaseSizeExtraAdjusters: {
                 "funcName": "gpii.adjuster.increaseSize.toggleIncreaseSizeExtraAdjusters",
@@ -214,7 +224,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.model.increaseSizeExtraAdjustersEnabledSwitch",
                     "{that}.events.onShowExtraAdjuster.fire",
                     "{that}.events.onHideExtraAdjuster.fire"
-                ]
+                ],
+                dynamic: true
             }
         }
     });

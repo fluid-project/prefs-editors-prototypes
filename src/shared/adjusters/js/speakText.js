@@ -60,12 +60,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "funcName": "gpii.speakText.updateModelAllHidden",
                     "args": ["{gpii.adjuster.CollectivePanel}"]
                 }
-            },
-            // strings: {
-            //     saveAndApply: "{that}.stringBundle.saveAndApply",
-            //     resetAndApply: "{that}.stringBundle.resetAndApply",
-            //     cancel: "{that}.stringBundle.cancel"
-            // }
+            }
         }
     });
 

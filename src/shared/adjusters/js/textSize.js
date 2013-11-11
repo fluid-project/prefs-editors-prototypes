@@ -119,7 +119,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.events.textSizeMinRangeReached",
                     "{that}.events.textSizeMinRangeExited",
                     "{that}.refreshTextSizeValueText"
-                ]
+                ],
+                dynamic: true
+
             },
             onTextSizePlusClick: {
                 funcName: "gpii.adjuster.plusMinus.onPlusClick",
@@ -131,7 +133,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.events.textSizeMinRangeReached",
                     "{that}.events.textSizeMinRangeExited",
                     "{that}.refreshTextSizeValueText"
-                ]
+                ],
+                dynamic: true
             },
             onTextSizeValueTextChange: {
                 funcName: "gpii.adjuster.plusMinus.onValueTextChange",
@@ -157,7 +160,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         method: "stringTemplate",
                         args: ["{that}.stringBundle.fontSizeStringTemplate", ["{that}.model.fontSize"]]
                     }
-                }
+                },
+                dynamic: true
             },
             setTextSizeMinusStyleAdd: {
                 "this": "{that}.dom.textSizeMinus",
@@ -179,7 +183,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.options.fontSize.range",
                     "{that}.events.textSizeMinRangeReached",
                     "{that}.events.textSizeMinRangeExited"
-                ]
+                ],
+                dynamic: true
             },
             setTextSizeMetricUnit: {
                 func: "{that}.refreshTextSizeValueText"
