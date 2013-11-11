@@ -57,7 +57,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "panel": {
                 "type": "gpii.prefs.panel.magnifier.invertColours",
                 "container": ".gpiic-increaseSize-magnifierInvertColours",
-                "template": "%prefix/PrefsEditorTemplate-iconCheckAdjuster.html",
+                "template": "%prefix/iconCheckTemplate.html",
                 "message": "%prefix/magnifierInvertColours.json"
             }
         },
@@ -69,7 +69,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "panel": {
                 "type": "gpii.prefs.panel.showCrosshairs",
                 "container": ".gpiic-increaseSize-showCrosshairs",
-                "template": "%prefix/PrefsEditorTemplate-iconCheckAdjuster.html",
+                "template": "%prefix/iconCheckTemplate.html",
                 "message": "%prefix/showCrosshairs.json"
             }
         },
@@ -90,7 +90,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "panel": {
                 "type": "gpii.prefs.panel.followingElement.magnifier",
                 "container": ".gpiic-increaseSize-magnifierFollows",
-                "template": "%prefix/PrefsEditorTemplate-followingElement.html",
+                "template": "%prefix/followingElementTemplate.html",
                 "message": "%prefix/followingElement.json",
                 "classnameMap": {
                     "followingElement": "@followingElement.classes",
@@ -103,7 +103,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "panel": {
                 "type": "gpii.prefs.panel.followingElement.screenReader",
                 "container": ".gpiic-increaseSize-screenReaderFollows",
-                "template": "%prefix/PrefsEditorTemplate-followingElement.html",
+                "template": "%prefix/followingElementTemplate.html",
                 "message": "%prefix/followingElement.json",
                 "classnameMap": {
                     "followingElement": "@followingElement.classes",
@@ -127,7 +127,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.prefs.panel.contrastTheme",
                 "container": ".gpiic-contrast",
                 "classnameMap": {"theme": "@contrastTheme.classes"},
-                "template": "%prefix/PrefsEditorTemplate-contrastTheme.html"
+                "template": "%prefix/contrastThemeTemplate.html"
             }
         }
     };
