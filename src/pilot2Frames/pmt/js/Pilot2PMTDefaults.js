@@ -177,6 +177,25 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 "onSave.showSaveNotification": {
                     listener: "gpii.prefs.pmt_pilot_2.showSaveNotification"
+                },
+                "onReset.hideUserStatusBar": {
+                    "this": "{that}.dom.userStatusBar",
+                    "method": "slideUp"
+                },
+                "onReset.clearMessage": {
+                    "this": "{that}.dom.messageLineLabel",
+                    "method": "text",
+                    "args": [""]
+                },
+                "onReady.console": {
+                    "this": "console",
+                    "method": "log",
+                    "args": ["{that}"]
+                },
+                "onReset.console": {
+                    "this": "console",
+                    "method": "log",
+                    "args": ["onReset"]
                 }
             },
             invokers: {
