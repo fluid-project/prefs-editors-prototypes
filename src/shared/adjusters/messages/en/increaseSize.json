@@ -1,0 +1,23 @@
+{
+    "increaseSizeHeader": "increase size",
+    "cursorSizeLabel": "Cursor Size",
+    "magnifierLabel": "Magnification",
+    "magnifierOFF": "OFF",
+    "magnifierMAX": "maximum",
+    "magnifierPositionLabel": "Magnifier position",
+    "magnifierPosition-default": "Default",
+    "magnifierPosition-lens": "Lens",
+    "magnifierPosition-fullscreen": "Full-screen",
+    "magnifierPosition-dockedtop": "Docked top",
+    "magnifierPosition-dockedbottom": "Docked bottom",
+    "magnifierPosition-dockedleft": "Docked left",
+    "magnifierPosition-dockedright": "Docked right",
+    "magnifierFollowsLabel": "Magnifier follows",
+    "magnifierFollows-mousecursor": "Mouse cursor",
+    "magnifierFollows-textcursor": "Text cursor",
+    "magnifierFollows-keyboardfocus": "Keyboard focus",
+    "textSizeLabel": "Text Size",
+    "previewText": "This is how most text will appear.",
+    "fontSizeStringTemplate" : "%0pt",
+    "magnifierStringTemplate" : "%0%"
+}
