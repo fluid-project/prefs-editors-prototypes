@@ -157,3 +157,14 @@ body {
 	background-color: #666666;
 	padding: 0 5px 0 5px;
 }
+
+.gpii-prefsEditor-userStatusBar {
+	text-align: right;
+}
+
+.gpii-prefsEditor-userLogoutLink {
+	color: #249fb8;
+	font-style: italic;
+	font-weight: bold;
+	cursor: pointer; 
+}
