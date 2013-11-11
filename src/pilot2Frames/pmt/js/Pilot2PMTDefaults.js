@@ -21,6 +21,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "prefsEditor.listeners.onReset": gpii.prefs.helpers.arrayOverridePolicy
         },
         prefsEditor: {
+            events: {
+                onLogout: null
+            },
             selectors: {
                 myPreferencesLabel: ".gpiic-pmt-preferenceSetSelectionButtonMyPreferencesLabel",
                 allPreferencesLabel: ".gpiic-pmt-preferenceSetSelectionButtonAllPreferencesLabel",
@@ -117,6 +120,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "click",
                     "args": ["{that}.showUserStatusBar"]
                 },
+                "onReady.bindLogoutLinkClick": {
+                    "this": "{that}.dom.logoutLink",
+                    "method": "click",
+                    "args": ["{that}.events.onLogout.fire"]
+                },
+                "onLogout.reloadPage": {
+                    "this": "location",
+                    "method": "reload"
+                },
                 "onReady.setMyPreferencesLabelText": {
                     "this": "{that}.dom.myPreferencesLabel",
                     "method": "text",
@@ -193,16 +205,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.messageLineLabel",
                     "method": "text",
                     "args": [""]
-                },
-                "onReady.console": {
-                    "this": "console",
-                    "method": "log",
-                    "args": ["{that}"]
-                },
-                "onReset.console": {
-                    "this": "console",
-                    "method": "log",
-                    "args": ["onReset"]
                 }
             },
             invokers: {
