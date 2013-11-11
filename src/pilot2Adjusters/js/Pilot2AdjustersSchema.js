@@ -46,7 +46,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "namespace": "gpii.prefs.adjusters_pilot_2.auxiliarySchema",
         "templatePrefix": "../../src/shared/adjusters/html/",
         "template": "../../src/pilot2Adjusters/html/adjustersPilots2.html",
-        "messagePrefix": "../../src/shared/i18n/messages/en/", // default
+        "messagePrefix": "../../src/shared/adjusters/messages/en/", // default
         "message": "%prefix/pmt.json",
         
         "magnifier.invertColours": {

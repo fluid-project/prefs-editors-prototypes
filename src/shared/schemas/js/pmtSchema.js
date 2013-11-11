@@ -21,7 +21,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "namespace": "gpii.constructedPMT",
         "templatePrefix": "../../src/shared/adjusters/html/", // The common path to settings panel templates
         "template": "../../src/pmt/html/PMT.html",
-        "messagePrefix": "../../src/shared/i18n/messages/en/",
+        "messagePrefix": "../../src/shared/adjusters/messages/en/",
         "message": "%prefix/pmt.json",
 
         // The preference-specific information:
