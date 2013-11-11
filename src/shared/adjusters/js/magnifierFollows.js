@@ -56,7 +56,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 funcName: "gpii.adjuster.magnifierFollows.style",
                 args: ["{that}.dom.magnifierFollowsLabel", "{that}.options.strings.magnifierFollows",
                     "{that}.options.markup.magnifierFollowsLabel", "{that}.options.controlValues.magnifierFollows",
-                    "{that}.options.classnameMap.magnifierFollows"]
+                    "{that}.options.classnameMap.magnifierFollows"],
+                dynamic: true
             }
         }
     });
