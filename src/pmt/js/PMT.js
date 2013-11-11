@@ -22,6 +22,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 messageResolver: "{prefsEditorLoader}.msgBundle"
             },
             listeners: {
+                onSave: {
+                    listener: "console.log"
+                },
                 "onReady.setATTRsaveButton": {
                     "this": "{that}.dom.saveButton",
                     "method": "attr",
