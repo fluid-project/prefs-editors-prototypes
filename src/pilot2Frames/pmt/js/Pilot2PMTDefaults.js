@@ -28,7 +28,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 notificationMessagePart2: ".gpiic-prefsEditor-notificationMessagePart2",
                 notificationMessagePart3: ".gpiic-prefsEditor-notificationMessagePart3",
                 notificationTitle: ".gpiic-prefsEditor-notificationTitle",
-                notificationConfirmButton: ".gpiic-prefsEditor-notificationConfirmButton"
+                notificationConfirmButton: ".gpiic-prefsEditor-notificationConfirmButton",
+                logoutLink: ".gpiic-prefsEditor-userLogoutLink"
             },
             strings: {
                 myPreferencesLabelText: {
@@ -83,6 +84,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     expander: {
                         func: "gpii.lookupMsg",
                         args: ["{prefsEditorLoader}.msgBundle", "notificationConfirmButton"]
+                    }                    
+                },
+                logoutText: {
+                    expander: {
+                        func: "gpii.lookupMsg",
+                        args: ["{prefsEditorLoader}.msgBundle", "logoutText"]
                     }                    
                 }
             },
@@ -151,6 +158,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         closeOnEscape: false,
                         position: { my: "bottom", at: "bottom", of: ".gpii-prefsEditor-preferencesContainer" }
                     }]
+                },
+                "onReady.setLogoutLinkText": {
+                    "this": "{that}.dom.logoutLink",
+                    "method": "text",
+                    "args": ["{that}.options.strings.logoutText"]
                 },
                 "onSave.showSaveNotification": {
                     listener: "gpii.prefs.pmt_pilot_2.showSaveNotification"

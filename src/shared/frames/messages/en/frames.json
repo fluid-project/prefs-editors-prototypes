@@ -7,5 +7,6 @@
 	"notificationMessagePart2": "TOKEN NUMBER",
 	"notificationMessagePart3": "to a USB or RFID reader.",
 	"notificationTitle": "Preferences have been saved to the cloud and applied to this device.",
-	"notificationConfirmButton": "got it"
+	"notificationConfirmButton": "got it",
+	"logoutText": "log-out"
 }
