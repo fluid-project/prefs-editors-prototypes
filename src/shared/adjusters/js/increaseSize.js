@@ -144,7 +144,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                             value: "{that}.model.value"
                         },
                         sourceApplier: "{that}.applier",
-                        range: "{that}.options.range",
+                        range: "{that}.options.controlValues.cursorSize",
                         sliderOptions: "{that}.options.sliderOptions"
                     }
                 }
