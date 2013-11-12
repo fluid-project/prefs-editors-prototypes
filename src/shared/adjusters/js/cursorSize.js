@@ -14,7 +14,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 /*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
 
 (function ($, fluid) {
-    
+
     fluid.defaults("gpii.adjuster.cursorSize", {
         gradeNames: ["fluid.prefs.panel", "gpii.pmt.previewPerSettingEnhanced", "autoInit"],
         preferenceMap: {
@@ -41,12 +41,32 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             cursorSizePreview: ".gpiic-increaseSize-previewPerSettingFrameCursorSize"
         },
         selectorsToIgnore: ["cursorSizePreview"],
+        protoTree: {
+            cursorSizeLabel: {messagekey: "cursorSizeLabel"},
+            cursorSize: {
+                decorators: {
+                    type: "fluid",
+                    func: "fluid.textfieldSlider",
+                    options: {
+                        rules: {
+                            "value": "value"
+                        },
+                        model: {
+                            value: "{that}.model.value"
+                        },
+                        sourceApplier: "{that}.applier",
+                        range: "{that}.options.controlValues.cursorSize",
+                        sliderOptions: "{that}.options.sliderOptions"
+                    }
+                }
+            }
+        },
         sliderOptions: {
             orientation: "horizontal",
             step: 0.2,
             range: "min"
         },
-        
+
         distributeOptions: [{
             source: "{that}.options.outerPreviewEnhancerOptions",
             target: "{that cursorSizePreview enhancer}.options"
@@ -58,5 +78,5 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             target: "{that cursorSizePreview enhancer magnifier}.type"
         }]
     });
-    
+
 })(jQuery, fluid);

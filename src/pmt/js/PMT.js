@@ -47,13 +47,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     gpii.getDefaultLanguage = function () {
-        return (navigator.userLanguage || navigator.language).substring(0, 2).toLowerCase(); 
+        return (navigator.userLanguage || navigator.language).substring(0, 2).toLowerCase();
     };
-    
+
     gpii.concatStrings = function (s1, s2) {
-        return s1 + s2; 
+        return s1 + s2;
     };
-    
+
     fluid.defaults("gpii.pmt.previewPerSettingEnhanced", {
         gradeNames: "fluid.littleComponent",
         outerPreviewEnhancerOptions: "{originalEnhancerOptions}.options.originalUserOptions",

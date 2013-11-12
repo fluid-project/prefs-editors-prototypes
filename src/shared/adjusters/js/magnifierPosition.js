@@ -14,7 +14,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 /*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
 
 (function ($, fluid) {
-    
+
     fluid.defaults("gpii.adjuster.magnifierPosition", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
@@ -31,6 +31,23 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierPositionLabel: ".gpiic-increaseSize-magnifierPositionLabel",
             magnifierPositionInput: ".gpiic-increaseSize-magnifierPositionInput",
             magnifierPositionHeading: ".gpiic-increaseSize-magnifierPositionHeading"
+        },
+        protoTree: {
+            expander: [
+                {
+                    type: "fluid.renderer.selection.inputs",
+                    rowID: "magnifierPositionRow",
+                    labelID: "magnifierPositionLabel",
+                    inputID: "magnifierPositionInput",
+                    selectID: "magnifierPosition-radio",
+                    tree: {
+                        optionnames: "${{that}.options.strings.magnifierPosition}",
+                        optionlist: "${{that}.options.controlValues.magnifierPosition}",
+                        selection: "${magnifierPosition}"
+                    }
+                }
+            ],
+            magnifierPositionHeading: {messagekey: "magnifierPositionLabel"}
         },
         members: {
             messageResolver: "{prefsEditorLoader}.msgBundle"
@@ -71,5 +88,5 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             label.attr("tooltip", strings[index]);
         });
     };
-    
+
 })(jQuery, fluid);
