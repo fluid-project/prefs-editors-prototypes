@@ -25,26 +25,26 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         }
     });
-    
+
     gpii.adjuster.plusMinus.onMinusClick = function (that, modelValue, range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText) {
         var newValue =  parseFloat(modelValue) - parseFloat(range.divisibleBy);
         gpii.adjuster.plusMinus.updateBoundedValue(that, newValue, range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText);
     };
-    
+
     gpii.adjuster.plusMinus.updateBoundedValue = function (that, newValue, range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText) {
         var boundedValue;
-        
+
         if (newValue >= parseFloat(range.min)) {
             boundedValue = newValue;
         } else {
             boundedValue = range.min;
         }
-        
+
         that.applier.requestChange(modelValueName, boundedValue);
         refreshValueText();
         gpii.adjuster.plusMinus.performMinRangeCheck(that, boundedValue, range, minRangeReachedEvent, minRangeExitedEvent);
     }
-    
+
     gpii.adjuster.plusMinus.performMinRangeCheck = function (that, boundedValue, range, minRangeReachedEvent, minRangeExitedEvent) {
         if (boundedValue === range.min) {
             minRangeReachedEvent.fire();
@@ -52,16 +52,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             minRangeExitedEvent.fire();
         }
     }
-    
+
     gpii.adjuster.plusMinus.onPlusClick = function (that, modelValue, range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText) {
         var newValue =  parseFloat(modelValue) + parseFloat(range.divisibleBy);
         gpii.adjuster.plusMinus.updateBoundedValue(that, newValue, range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText);
     };
-    
+
     gpii.adjuster.plusMinus.onValueTextChange = function (that, elmValue, range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText) {
         gpii.adjuster.plusMinus.updateBoundedValue(that, parseFloat(elmValue), range, modelValueName, minRangeReachedEvent, minRangeExitedEvent, refreshValueText);
     };
-    
+
     gpii.adjuster.plusMinus.onValueTextPreventNonNumeric = function (event) {
         // Allow only backspace, delete and tab
         if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 37 || event.keyCode == 39 || event.keyCode == 35 || event.keyCode == 36 || event.keyCode == 9) {
@@ -74,5 +74,5 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         }
     };
-    
+
 })(jQuery, fluid);

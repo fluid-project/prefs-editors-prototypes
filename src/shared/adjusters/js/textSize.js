@@ -14,7 +14,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 /*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
 
 (function ($, fluid) {
-    
+
     fluid.defaults("gpii.adjuster.textSize", {
         gradeNames: ["fluid.prefs.panel", "gpii.adjuster.plusMinus", "gpii.pmt.previewPerSettingEnhanced", "autoInit"],
         preferenceMap: {
@@ -73,6 +73,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             textSizePreview: ".gpiic-increaseSize-previewPerSettingFrameTextSize"
         },
         selectorsToIgnore: ["textSizePreview"],
+
+        protoTree: {
+            textSizeMinus: {messagekey: "minus"},
+            textSizeLabel: {messagekey: "textSizeLabel"},
+            textSizePlus: {messagekey: "plus"},
+
+            textSizeValueText: "${fontSize}"
+        },
 
         listeners: {
             "afterRender.bindEventTextSizeMinusClick": {
@@ -166,13 +174,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             setTextSizeMinusStyleAdd: {
                 "this": "{that}.dom.textSizeMinus",
                 "method": "addClass",
-                "args": "gpii-increaseSize-plusMinusNumericalMinReached"                        
+                "args": "gpii-increaseSize-plusMinusNumericalMinReached"
 
             },
             setTextSizeMinusStyleRemove: {
                 "this": "{that}.dom.textSizeMinus",
                 "method": "removeClass",
-                "args": "gpii-increaseSize-plusMinusNumericalMinReached"                        
+                "args": "gpii-increaseSize-plusMinusNumericalMinReached"
 
             },
             checkTextSizeInitialMinRange: {
@@ -198,5 +206,5 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             target: "{that textSizePreview enhancer magnifier}.type"
         }]
     });
-    
+
 })(jQuery, fluid);

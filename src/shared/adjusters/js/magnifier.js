@@ -14,7 +14,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 /*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
 
 (function ($, fluid) {
-    
+
     fluid.defaults("gpii.adjuster.magnifier", {
         gradeNames: ["fluid.prefs.panel", "gpii.adjuster.plusMinus", "gpii.pmt.previewPerSettingEnhanced", "autoInit"],
         preferenceMap: {
@@ -25,12 +25,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "magnification.range.divisibleBy": "divisibleBy"
             }
         },
-
         events: {
             magnifierMinRangeReached: null,
             magnifierMinRangeExited: null
         },
-
+        members: {
+            messageResolver: "{prefsEditorLoader}.msgBundle"
+        },
         components: {
             magnifierPreview: {
                 type: "fluid.prefs.preview",
@@ -67,7 +68,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             }
         },
-
         selectors: {
             magnifierMinus: ".gpiic-increaseSize-plusMinusNumericalMinusMagnifier",
             magnifierLabel: ".gpiic-increaseSize-plusMinusNumericalLabelMagnifier",
@@ -76,6 +76,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierPreview: ".gpiic-increaseSize-previewPerSettingFrameMagnifier"
         },
         selectorsToIgnore: ["magnifierPreview"],
+        protoTree: {
+            magnifierMinus: {messagekey: "minus"},
+            magnifierLabel: {messagekey: "magnifierLabel"},
+            magnifierPlus: {messagekey: "plus"},
+            magnifierValueText: "${magnification}",
+        },
         strings: {
             magnifierOFF: "{that}.stringBundle.magnifierOFF",
             magnifierStringTemplate: "{that}.stringBundle.magnifierStringTemplate"
@@ -176,13 +182,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             setMagnifierMinusStyleAdd: {
                 "this": "{that}.dom.magnifierMinus",
                 "method": "addClass",
-                "args": "gpii-increaseSize-plusMinusNumericalMinReached"                        
+                "args": "gpii-increaseSize-plusMinusNumericalMinReached"
 
             },
             setMagnifierMinusStyleRemove: {
                 "this": "{that}.dom.magnifierMinus",
                 "method": "removeClass",
-                "args": "gpii-increaseSize-plusMinusNumericalMinReached"                        
+                "args": "gpii-increaseSize-plusMinusNumericalMinReached"
 
             },
             checkMagnifierInitialMinRange: {
@@ -200,10 +206,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 func: "{that}.refreshMagnifierValueText"
             }
         },
-        
         distributeOptions: [{
             source: "{that}.options.outerPreviewEnhancerOptions",
-            //removeSource: true,
             target: "{that magnifierPreview enhancer}.options"
         }]
     });
