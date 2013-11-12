@@ -269,9 +269,27 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.dom.punctuationVerbosityOptionLabel",
                     "{that}.options.controlValues.punctuationVerbosity",
                     "{that}.options.classnameMap.punctuationVerbosity"
-                ]
+                ],
+                "dynamic": true
             }
+        },
+        protoTree: {
+            expander: {
+                type: "fluid.renderer.selection.inputs",
+                rowID: "punctuationVerbosityRow",
+                labelID: "punctuationVerbosityOptionLabel",
+                inputID: "punctuationVerbosityInput",
+                selectID: "punctuationVerbosity-selection",
+                tree: {
+                    optionnames: "${{that}.options.controlValues.punctuationVerbosity}",
+                    optionlist: "${{that}.options.controlValues.punctuationVerbosity}",
+                    selection: "${punctuationVerbosity}"
+                }
+            },
+            punctuationVerbosityLabel: {messagekey: "punctuationVerbosityLabel"},
+            punctuationVerbosityDescription: {messagekey: "punctuationVerbosityDescription"}
         }
+
     });
 
     speakText.panel.punctuationVerbosity.punctuationVerbosityStyle = function (labels, values, classes) {
@@ -291,6 +309,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         selectors: {
             announceCapitals: ".gpiic-speakText-announceCapitals",
             announceCapitalsLabel: ".gpiic-speakText-announceCapitals-label"
+        },
+        protoTree: {
+            announceCapitals: "${announceCapitals}",
+            announceCapitalsLabel: {messagekey: "announceCapitalsLabel"}
         }
     });
 
@@ -304,6 +326,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         selectors: {
             speakTutorialMessages: ".gpiic-speakText-speakTutorialMessages",
             speakTutorialMessagesLabel: ".gpiic-speakText-speakTutorialMessages-label"
+        },
+        protoTree: {
+            speakTutorialMessages: "${speakTutorialMessages}",
+            speakTutorialMessagesLabel: {messagekey: "speakTutorialMessagesLabel"}
         }
     });
 
@@ -317,6 +343,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         selectors: {
             keyEcho: ".gpiic-speakText-keyEcho",
             keyEchoLabel: ".gpiic-speakText-keyEcho-label"
+        },
+        protoTree: {
+            keyEcho: "${keyEcho}",
+            keyEchoLabel: {messagekey: "keyEchoLabel"}
         }
     });
 
@@ -330,6 +360,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         selectors: {
             wordEcho: ".gpiic-speakText-wordEcho",
             wordEchoLabel: ".gpiic-speakText-wordEcho-label"
+        },
+        protoTree: {
+            wordEcho: "${wordEcho}",
+            wordEchoLabel: {messagekey: "wordEchoLabel"}
         }
     });
 

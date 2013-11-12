@@ -57,6 +57,28 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "string",
             "default": "English",
             "enum": ["English", "French (français)", "German (Deutsch)", "Russian (Русский)"]
+        },
+
+        "gpii.primarySchema.punctuationVerbosity": {
+            "type": "string",
+            "default": "none",
+            "enum": ["none", "some", "most", "all"]
+        },
+        "gpii.primarySchema.announceCapitals": {
+            "type": "boolean",
+            "default": false
+        },
+        "gpii.primarySchema.speakTutorialMessages": {
+            "type": "boolean",
+            "default": false
+        },
+        "gpii.primarySchema.keyEcho": {
+            "type": "boolean",
+            "default": false
+        },
+        "gpii.primarySchema.wordEcho": {
+            "type": "boolean",
+            "default": false
         }
     };
 
@@ -145,5 +167,61 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "message": "%prefix/speakText.json"
             }
         },
+
+        "punctuationVerbosity": {
+            "type": "gpii.primarySchema.punctuationVerbosity",
+            "panel": {
+                "type": "speakText.panel.punctuationVerbosity",
+                "template": "%prefix/punctuationVerbosityTemplate.html",
+                "container": ".punctuationVerbosity",
+                "message": "%prefix/speakText.json",
+                "classnameMap": {"punctuationVerbosity": "@punctuationVerbosity.classes"}
+            },
+            "classes": {
+                "none": "radioButton-left",
+                "some": "radioButton-middle radioButton-second",
+                "most": "radioButton-middle radioButton-third",
+                "all": "radioButton-right"
+            }
+        },
+        "announceCapitals": {
+            "type": "gpii.primarySchema.announceCapitals",
+            "panel": {
+                "type": "speakText.panel.announceCapitals",
+                "template": "%prefix/announceCapitalsTemplate.html",
+                "container": ".announceCapitals",
+                "message": "%prefix/speakText.json"
+            }
+        },
+
+        "speakTutorialMessages": {
+            "type": "gpii.primarySchema.speakTutorialMessages",
+            "panel": {
+                "type": "speakText.panel.speakTutorialMessages",
+                "template": "%prefix/speakTutorialMessagesTemplate.html",
+                "container": ".speakTutorialMessages",
+                "message": "%prefix/speakText.json"
+            }
+        },
+
+        "keyEcho": {
+            "type": "gpii.primarySchema.keyEcho",
+            "panel": {
+                "type": "speakText.panel.keyEcho",
+                "template": "%prefix/keyEchoTemplate.html",
+                "container": ".keyEcho",
+                "message": "%prefix/speakText.json"
+            }
+        },
+
+        "wordEcho": {
+            "type": "gpii.primarySchema.wordEcho",
+            "panel": {
+                "type": "speakText.panel.wordEcho",
+                "template": "%prefix/wordEchoTemplate.html",
+                "container": ".wordEcho",
+                "message": "%prefix/speakText.json"
+            }
+        }
     };
 })(fluid);
