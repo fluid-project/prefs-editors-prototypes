@@ -42,10 +42,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "cursorSizePanel": {
             "type": "gpii.primarySchema.cursorSize",
-            /*"enactor": {
-                "type": "fluid.prefs.enactor.subPanel1",
-                "cssClass": "fl-link-enhanced"
-            },*/
+            "enactor": {
+                "type": "gpii.enactor.cursorSize"
+            },
             "panel": {
                 "type": "gpii.adjuster.cursorSize",
                 "container": ".gpiic-increaseSize-cursor-size", // the css selector in the template where the panel is rendered
