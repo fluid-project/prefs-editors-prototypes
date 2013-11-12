@@ -41,7 +41,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "divisibleBy": 10
         },
 
-        "gpii.primarySchema.auditoryOutLanguage": {
+        "gpii.primarySchema.universalLanguage": {
             "type": "string",
             "default": "English",
             "enum": ["English", "French (français)", "German (Deutsch)", "Russian (Русский)"]
@@ -104,10 +104,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
 
-        "auditoryOutLanguage": {
-            "type": "gpii.primarySchema.auditoryOutLanguage",
+        "universalLanguage": {
+            "type": "gpii.primarySchema.universalLanguage",
             "panel": {
-                "type": "speakText.panel.auditoryOutLanguage",
+                "type": "speakText.panel.universalLanguage",
                 "template": "%prefix/universalLanguageTemplate.html",
                 "container": ".universalLanguage",
                 "message": "%prefix/speakText.json"

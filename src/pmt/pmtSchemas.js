@@ -47,11 +47,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "divisibleBy": 10
         },
 
-        "gpii.primarySchema.auditoryOutLanguage": {
+        "gpii.primarySchema.universalLanguage": {
             "type": "string",
             "default": "English",
             "enum": ["English", "French (français)", "German (Deutsch)", "Russian (Русский)"]
         },
+
+        "gpii.primarySchema.screenReaderLanguage": {
+            "type": "string",
+            "default": "English",
+            "enum": ["English", "French (français)", "German (Deutsch)", "Russian (Русский)"]
+        }
     };
 
     gpii.speakText.auxiliarySchema = {
@@ -120,12 +126,22 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
 
-        "auditoryOutLanguage": {
-            "type": "gpii.primarySchema.auditoryOutLanguage",
+        "universalLanguage": {
+            "type": "gpii.primarySchema.universalLanguage",
             "panel": {
-                "type": "speakText.panel.auditoryOutLanguage",
+                "type": "speakText.panel.universalLanguage",
                 "template": "%prefix/universalLanguageTemplate.html",
                 "container": ".universalLanguage",
+                "message": "%prefix/speakText.json"
+            }
+        },
+
+        "screenReaderLanguage": {
+            "type": "gpii.primarySchema.screenReaderLanguage",
+            "panel": {
+                "type": "speakText.panel.screenReaderLanguage",
+                "template": "%prefix/screenReaderLanguageTemplate.html",
+                "container": ".screenReaderLanguage",
                 "message": "%prefix/speakText.json"
             }
         },

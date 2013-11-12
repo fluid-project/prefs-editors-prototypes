@@ -110,6 +110,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "slideDown",
                     "args": ["{that}.options.fullyExpandedSlideSpeed"]
                 },
+                "onShowVisualAlternativesExtra.activateCombobox": {
+                    "funcName": "gpii.activateCombobox",
+                    "args": ["{that}",
+                             "screenReaderLanguage"
+                    ]
+                },
                 "onHideVisualAlternativesExtra.hide": {
                     "this": "{that}.dom.visualAlternativesExtraAdjusters",
                     "method": "slideUp",
@@ -196,9 +202,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "listener": "{that}.applier.modelChanged.addListener",
                     "args": ["languagePartialVisible", "{that}.showHideLanguagePartial"]
                 },
-                "onCreate.addLanguagePartialVisibilityListenerForCombobox": {
-                    "listener": "{that}.applier.modelChanged.addListener",
-                    "args": ["languagePartialVisible", "{that}.activateCombobox"]
+                "onShowLanguagePartial.activateCombobox": {
+                    "funcName": "gpii.activateCombobox",
+                    "args": ["{that}",
+                             "universalLanguage"
+                    ]
                 },
                 "onShowLanguagePartial.showPartialAdjusters": {
                     "this": "{that}.dom.languagePartialAdjusters",
@@ -273,10 +281,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             invokers: {
-                activateCombobox: {
-                    "funcName": "gpii.activateCombobox",
-                    "args": ["{that}"]
-                },
                 updateModelValue: {
                     "funcName": "gpii.updateModelVisualAlternativesHeaderClicked",
                     "args": ["{that}",
@@ -338,7 +342,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 updateModelAllHidden: {
                     "funcName": "gpii.updateModelAllHidden",
-                    "args": ["{that}"]
+                    "args": ["{that}"],
+                    "dynamic": true
                 }
             },
             selectors: {
@@ -410,10 +415,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.activateCombobox = function (that) {
-        $("#auditoryOutLanguage").combobox();
-        $("#auditoryOutLanguage").change(function (event, newValue) {
-            that.applier.requestChange("auditoryOutLanguage", newValue);
+    gpii.activateCombobox = function (that, id) {
+        $("#" + id).combobox();
+        $("#" + id).change(function (event, newValue) {
+            that.applier.requestChange("gpii_primarySchema_" + id, newValue);
         });
     };
 

@@ -49,8 +49,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     this._trigger("select", event, {
                         item: ui.item.option
                     });
-                    var newValue = $("#auditoryOutLanguage").val();
-                    $("#auditoryOutLanguage").trigger('change', newValue);
+                    var newValueUniversal = $("#universalLanguage").val();
+                    $("#universalLanguage").trigger('change', newValueUniversal);
+                    var newValueScreenReader = $("#screenReaderLanguage").val();
+                    $("#screenReaderLanguage").trigger('change', newValueScreenReader);
                 },
                 autocompletechange: "_removeIfInvalid"
             });

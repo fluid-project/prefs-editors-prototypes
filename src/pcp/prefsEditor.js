@@ -411,9 +411,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     gpii.activateCombobox = function (that) {
-        $("#auditoryOutLanguage").combobox();
-        $("#auditoryOutLanguage").change(function (event, newValue) {
-            that.applier.requestChange("auditoryOutLanguage", newValue);
+        $("#universalLanguage").combobox();
+        $("#universalLanguage").change(function (event, newValue) {
+            that.applier.requestChange("universalLanguage", newValue);
         });
     };
 

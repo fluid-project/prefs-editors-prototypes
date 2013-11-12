@@ -199,24 +199,45 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("speakText.panel.auditoryOutLanguage", {
+    fluid.defaults("speakText.panel.universalLanguage", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
-            "gpii.primarySchema.auditoryOutLanguage": {
-                "model.auditoryOutLanguage": "default",
-                "controlValues.auditoryOutLanguage": "enum"
+            "gpii.primarySchema.universalLanguage": {
+                "model.universalLanguage": "default",
+                "controlValues.universalLanguage": "enum"
             }
         },
         selectors: {
-            auditoryOutLanguage: ".gpiic-speakText-auditoryOutLanguage",
-            auditoryOutLanguageLabel: ".gpiic-speakText-auditoryOutLanguage-label"
+            universalLanguage: ".gpiic-speakText-universalLanguage",
+            universalLanguageLabel: ".gpiic-speakText-universalLanguage-label"
         },
         protoTree: {
-            auditoryOutLanguage: {
-                selection: "${auditoryOutLanguage}",
-                optionlist: "${{that}.options.controlValues.auditoryOutLanguage}"
+            universalLanguage: {
+                selection: "${universalLanguage}",
+                optionlist: "${{that}.options.controlValues.universalLanguage}"
             },
-            auditoryOutLanguageLabel: {messagekey: "auditoryOutLanguageLabel"}
+            universalLanguageLabel: {messagekey: "universalLanguageLabel"}
+        }
+    });
+
+    fluid.defaults("speakText.panel.screenReaderLanguage", {
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        preferenceMap: {
+            "gpii.primarySchema.screenReaderLanguage": {
+                "model.screenReaderLanguage": "default",
+                "controlValues.screenReaderLanguage": "enum"
+            }
+        },
+        selectors: {
+            screenReaderLanguage: ".gpiic-speakText-screenReaderLanguage",
+            screenReaderLanguageLabel: ".gpiic-speakText-screenReaderLanguage-label"
+        },
+        protoTree: {
+            screenReaderLanguage: {
+                selection: "${screenReaderLanguage}",
+                optionlist: "${{that}.options.controlValues.screenReaderLanguage}"
+            },
+            screenReaderLanguageLabel: {messagekey: "screenReaderLanguageLabel"}
         }
     });
 
