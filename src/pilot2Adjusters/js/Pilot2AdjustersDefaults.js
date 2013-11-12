@@ -17,6 +17,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.prefs.adjusters_pilot_2", {
         gradeNames: ["fluid.prefs.fullNoPreview", "autoInit"],
         prefsEditor: {
+            gradeNames: ["fluid.prefs.stringBundle"],
+            members: {
+                messageResolver: "{prefsEditorLoader}.msgBundle"
+            },
             listeners: {
                 onSave: {
                     listener: "console.log"
@@ -24,49 +28,24 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.setATTRsaveButton": {
                     "this": "{that}.dom.saveButton",
                     "method": "attr",
-                    "args": ["value", "{that}.options.strings.saveButtonText"]
+                    "args": ["value", "{that}.stringBundle.saveButtonText"]
                 },
                 "onReady.setATTRresetButton": {
                     "this": "{that}.dom.resetButton",
                     "method": "attr",
-                    "args": ["value", "{that}.options.strings.resetButtonText"]
+                    "args": ["value", "{that}.stringBundle.resetButtonText"]
                 },
                 "onReady.setATTRcancelButton": {
                     "this": "{that}.dom.cancelButton",
                     "method": "attr",
-                    "args": ["value", "{that}.options.strings.cancelButtonText"]
+                    "args": ["value", "{that}.stringBundle.cancelButtonText"]
                 }
             },
             selectors: {
                 saveButton: ".flc-prefsEditor-save",
                 resetButton: ".flc-prefsEditor-reset",
                 cancelButton: ".flc-prefsEditor-cancel"
-            },
-            strings: {
-                saveButtonText: {
-                    expander: {
-                        func: "gpii.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "saveButtonText"]
-                    }
-                },
-                resetButtonText: {
-                    expander: {
-                        func: "gpii.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "resetButtonText"]
-                    }
-                },
-                cancelButtonText: {
-                    expander: {
-                        func: "gpii.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "cancelButtonText"]
-                    }
-                }
             }
         }
     });
-
-    gpii.lookupMsg = function (messageResolver, value) {
-        var looked = messageResolver.lookup([value]);
-        return looked ? looked.template : looked;
-    };
 })(jQuery, fluid);

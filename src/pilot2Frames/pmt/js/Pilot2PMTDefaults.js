@@ -17,6 +17,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.prefs.pmt_pilot_2", {
         gradeNames: ["fluid.prefs.GPIIEditor", "autoInit"],
         prefsEditor: {
+            gradeNames: ["fluid.prefs.stringBundle"],
+            members: {
+                messageResolver: "{prefsEditorLoader}.msgBundle"
+            },
             events: {
                 onLogout: null
             },
@@ -34,68 +38,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 notificationConfirmButton: ".gpiic-prefsEditor-notificationConfirmButton",
                 logoutLink: ".gpiic-prefsEditor-userLogoutLink",
                 userStatusBar: ".gpiic-prefsEditor-userStatusBar"
-            },
-            strings: {
-                myPreferencesLabelText: {
-                    expander: {
-                        func: "gpii.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "myPreferencesLabelText"]
-                    }
-                },
-                allPreferencesLabelText: {
-                    expander: {
-                        func: "gpii.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "allPreferencesLabelText"]
-                    }
-                },
-                saveAndApplyText: {
-                    expander: {
-                        func: "gpii.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "saveAndApplyText"]
-                    }
-                },
-                preferencesSavedToUSB: {
-                    expander: {
-                        func: "gpii.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "preferencesSavedToUSB"]
-                    }
-                },
-                notificationMessagePart1: {
-                    expander: {
-                        func: "gpii.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "notificationMessagePart1"]
-                    }
-                },
-                notificationMessagePart2: {
-                    expander: {
-                        func: "gpii.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "notificationMessagePart2"]
-                    }
-                },
-                notificationMessagePart3: {
-                    expander: {
-                        func: "gpii.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "notificationMessagePart3"]
-                    }
-                },
-                notificationTitle: {
-                    expander: {
-                        func: "gpii.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "notificationTitle"]
-                    }
-                },
-                notificationConfirmButton: {
-                    expander: {
-                        func: "gpii.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "notificationConfirmButton"]
-                    }                    
-                },
-                logoutText: {
-                    expander: {
-                        func: "gpii.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "logoutText"]
-                    }                    
-                }
             },
             listeners: {
                 onSave: {
@@ -128,42 +70,42 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.setMyPreferencesLabelText": {
                     "this": "{that}.dom.myPreferencesLabel",
                     "method": "text",
-                    "args": ["{that}.options.strings.myPreferencesLabelText"]
+                    "args": ["{that}.stringBundle.myPreferencesLabelText"]
                 },
                 "onReady.setAllPreferencesLabelText": {
                     "this": "{that}.dom.allPreferencesLabel",
                     "method": "text",
-                    "args": ["{that}.options.strings.allPreferencesLabelText"]
+                    "args": ["{that}.stringBundle.allPreferencesLabelText"]
                 },
                 "onReady.setSaveAndApplyButtonText": {
                     "this": "{that}.dom.saveAndApplyButtonLabel",
                     "method": "text",
-                    "args": ["{that}.options.strings.saveAndApplyText"]
+                    "args": ["{that}.stringBundle.saveAndApplyText"]
                 },
                 "onReady.setNotificationMessagePart1": {
                     "this": "{that}.dom.notificationMessagePart1",
                     "method": "text",
-                    "args": ["{that}.options.strings.notificationMessagePart1"]
+                    "args": ["{that}.stringBundle.notificationMessagePart1"]
                 },
                 "onReady.setNotificationMessagePart2": {
                     "this": "{that}.dom.notificationMessagePart2",
                     "method": "text",
-                    "args": ["{that}.options.strings.notificationMessagePart2"]
+                    "args": ["{that}.stringBundle.notificationMessagePart2"]
                 },
                 "onReady.setNotificationMessagePart3": {
                     "this": "{that}.dom.notificationMessagePart3",
                     "method": "text",
-                    "args": ["{that}.options.strings.notificationMessagePart3"]
+                    "args": ["{that}.stringBundle.notificationMessagePart3"]
                 },
                 "onReady.setNotificationTitle": {
                     "this": "{that}.dom.notificationTitle",
                     "method": "text",
-                    "args": ["{that}.options.strings.notificationTitle"]
+                    "args": ["{that}.stringBundle.notificationTitle"]
                 },
                 "onReady.setNotificationConfirmButton": {
                     "this": "{that}.dom.notificationConfirmButton",
                     "method": "text",
-                    "args": ["{that}.options.strings.notificationConfirmButton"]
+                    "args": ["{that}.stringBundle.notificationConfirmButton"]
                 },
                 "onReady.prepareSaveNotification": {
                     "this": "{that}.dom.notification",
@@ -180,7 +122,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.setLogoutLinkText": {
                     "this": "{that}.dom.logoutLink",
                     "method": "text",
-                    "args": ["{that}.options.strings.logoutText"]
+                    "args": ["{that}.stringBundle.logoutText"]
                 },
                 "onReady.hideUserStatusBar": {
                     "this": "{that}.dom.userStatusBar",
@@ -212,7 +154,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 showSaveMessage: {
                     "this": "{that}.dom.messageLineLabel",
                     "method": "text",
-                    "args": ["{that}.options.strings.preferencesSavedToUSB"]
+                    "args": ["{that}.stringBundle.preferencesSavedToUSB"]
                 },
                 showUserStatusBar: {
                     "this": "{that}.dom.userStatusBar",
