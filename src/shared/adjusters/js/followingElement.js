@@ -26,15 +26,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             followingElementInput: ".gpiic-followingElementInput",
             followingElementHeading: ".gpiic-followingElementHeading"
         },
-        repeatingSelectors: ["followingElementRow"],
-        strings: {
-            followingElement: {
-                expander: {
-                    func: "gpii.prefs.panel.followingElement.lookupMsg",
-                    args: ["{that}.options.parentBundle", "followingElement", "{that}.options.controlValues.followingElement"]
-                }
-            }
+        members: {
+            messageResolver: "{prefsEditorLoader}.msgBundle"
         },
+        stringArrayIndex: {
+            followingElement: ["followingElement-mousecursor", "followingElement-textcursor", "followingElement-keyboardfocus"]
+        },
+        repeatingSelectors: ["followingElementRow"],
         controlValues: {
             followingElement: ["mousecursor", "textcursor", "keyboardfocus"],
             followingElementBorder: ["topOnly", "bottomOnly", "noBorder"]
@@ -53,7 +51,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             followingElementStyle: {
                 funcName: "gpii.prefs.panel.followingElement.style",
                 args: [
-                    "{that}.dom.followingElementLabel", "{that}.options.strings.followingElement",
+                    "{that}.dom.followingElementLabel", "{that}.stringBundle.followingElement",
                     "{that}.options.markup.followingElementLabel", "{that}.options.controlValues.followingElement",
                     "{that}.options.classnameMap.followingElement",
                     "{that}.options.controlValues.followingElementBorder", "{that}.options.classnameMap.followingElementBorder"
@@ -62,15 +60,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         }
     });
-
-    gpii.prefs.panel.followingElement.lookupMsg = function (messageResolver, prefix, values) {
-        var messages = [];
-        fluid.each(values, function (value, key) {
-            var looked = messageResolver.lookup([prefix + "." + value]);
-            messages.push(looked ? looked.template : looked);
-        });
-        return messages;
-    };
 
     gpii.prefs.panel.followingElement.style = function (labels, strings, markup, followingElement, style, followingElementBorder, borderStyle) {
         fluid.each(labels, function (label, index) {
