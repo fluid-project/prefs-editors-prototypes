@@ -11,7 +11,7 @@
 body {
 	margin: 5px;
 	background-color: #f2f2f2;
-	font-family: 'Roboto Slab', serif;
+	font-family: 'Roboto Slab', serif !important;
 }
 
 .gpii-prefsEditor-pmtContainer {
@@ -114,6 +114,7 @@ body {
 	width: 55%;
 	font-style:italic;
 	vertical-align: middle;
+	font-size: 1.2em;
 }
 
 .gpii-prefsEditor-saveButtonContainer {
@@ -126,6 +127,8 @@ body {
 .gpii-prefsEditor-notification {
 	background-color: #333333 !important;
 	color: white !important;
+	font-size: 1.5em;
+    padding: 10px;
 }
 
 .gpii-prefsEditor-notificationMessage {
