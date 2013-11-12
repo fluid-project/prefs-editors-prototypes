@@ -63,10 +63,6 @@ body {
     text-transform: lowercase;
 }
 
-.gpii-prefsEditor label {
-    font-size: 0.8em;
-}
-
 h2 {
     border-top: 2px solid #dddddd;
     margin-bottom: 5px;
@@ -204,7 +200,7 @@ input[type=checkbox], input[type=radio] {
     The slider's style
 */
 .gpii-prefsEditor .gpii-prefsEditor-slider-horz {
-    width: calc(330 * 0.8px - 2em);
+    width: calc(100% - 3em);
     margin: 2px !important;
     margin-bottom: 0.7em !important;
 }

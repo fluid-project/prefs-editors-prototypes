@@ -66,7 +66,7 @@ body {
 }
 
 .gpii-prefsEditor-preferenceSetSelectionHeader {
-	display: table;
+	display: block;
 	background-color: #8c9597;
 	padding: 10px;
 }
