@@ -86,18 +86,17 @@ body {
     margin: 0.1em 0.1em 0.1em -1.5em;
     padding: 0.4em 0.4em 0.4em 1.5em;
     position: relative;
-    font-size: 1.2em;
-    vertical-align: baseline;
+    font-size: 1.5em;
+    vertical-align: middle;
 }
 
 .gpii-pmt-saveAndApplyButtonLabel {
 	cursor: pointer;
     position: relative;
-    vertical-align: sub;
+    vertical-align: middle;
     z-index: 1;
     color: #FFFFFF;
     font-size: 1.2em;
-    left: 0.1em;
 }
 
 .gpii-pmt-saveAndApplyButtonLabel:before {
@@ -171,4 +170,17 @@ body {
 
 .gpii-prefsEditor-reset {
 	display: none;
+}
+
+.ui-widget-overlay {
+    background: url("images/ui-bg_flat_0_aaaaaa_40x100.png") repeat-x scroll 50% 50% #AAAAAA;
+    opacity: 0.3;
+}
+
+.ui-widget-overlay {
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
