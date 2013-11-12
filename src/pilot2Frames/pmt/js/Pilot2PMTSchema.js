@@ -17,13 +17,41 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.registerNamespace("gpii.prefs.pmt_pilot_2");
 
     gpii.prefs.pmt_pilot_2.primarySchema = {
+        "gpii.primarySchema.cursorSize": {
+            "type": "number",
+            "default": 1,
+            "minimum": 1,
+            "maximum": 5,
+            "divisibleBy": 0.2
+        }
     };
 
     gpii.prefs.pmt_pilot_2.auxiliarySchema = {
         "namespace": "gpii.prefs.pmt_pilot_2.auxiliarySchema",
-        "templatePrefix": "../../src/pilot2Frames/pmt/html/",
-        "template": "%prefix/PrefsEditorTemplate-PMT.html",
+        "templatePrefix": "../../src/shared/adjusters/html/",
+        "template": "../../src/pilot2Frames/pmt/html/PrefsEditorTemplate-PMT.html",
         "messagePrefix": "../../src/shared/frames/messages/en/", // default
-        "message": "%prefix/frames.json"
+        "message": "%prefix/frames.json",
+        "groups": {
+            "combinedPMTPanels": {
+                "container": ".gpiic-prefsEditor-preferences",
+                "template": "%prefix/increaseSizeTemplate.html",
+                "type": "gpii.adjuster.increaseSize",
+                "panels": ["cursorSizePanel"]
+            }
+        },
+        "cursorSizePanel": {
+            "type": "gpii.primarySchema.cursorSize",
+            /*"enactor": {
+                "type": "fluid.prefs.enactor.subPanel1",
+                "cssClass": "fl-link-enhanced"
+            },*/
+            "panel": {
+                "type": "gpii.adjuster.cursorSize",
+                "container": ".gpiic-increaseSize-cursor-size", // the css selector in the template where the panel is rendered
+                "template": "%prefix/cursorSizeTemplate.html",
+                "message": "../../src/shared/adjusters/messages/en/increaseSize.json"
+            }
+        }
     };
 })(jQuery, fluid);
