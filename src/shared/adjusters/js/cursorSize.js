@@ -36,14 +36,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
-            cursorSize: ".gpiic-increaseSize-cursor-size-slider",
+            cursorSizeSlider: ".gpiic-increaseSize-cursor-size-slider",
             cursorSizeLabel: ".gpiic-increaseSize-cursor-size-label",
             cursorSizePreview: ".gpiic-increaseSize-previewPerSettingFrameCursorSize"
         },
         selectorsToIgnore: ["cursorSizePreview"],
         protoTree: {
             cursorSizeLabel: {messagekey: "cursorSizeLabel"},
-            cursorSize: {
+            cursorSizeSlider: {
                 decorators: {
                     type: "fluid",
                     func: "fluid.textfieldSlider",
