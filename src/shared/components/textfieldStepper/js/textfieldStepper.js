@@ -86,11 +86,11 @@ var fluid_1_5 = fluid_1_5 || {};
     };
 
     gpii.textfieldStepper.guard = function (model, changeRequest, range) {
-        var newVal = changeRequest.value;
-        if (typeof newVal === "number" && newVal !== fluid.get(model, changeRequest.path)) {
-            return Math.min(range.max, Math.max(range.min, newVal));
+        var newVal = parseInt(changeRequest.value);
+        if (isNaN(newVal) || newVal === fluid.get(model, changeRequest.path)) {
+            return false;
         }
-        return false;
+        changeRequest.value = Math.min(range.max, Math.max(range.min, newVal));
     };
 
  })(jQuery, fluid_1_5);

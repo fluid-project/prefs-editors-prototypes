@@ -24,9 +24,6 @@ https://github.com/gpii/universal/LICENSE.txt
                 type: "gpii.textfieldStepper",
                 container: ".gpiic-textfieldStepper",
                 options: {
-                    listeners: {
-                        afterRender: "console.log"
-                    },
                     strings: {
                         unit: "pt"
                     },
@@ -91,60 +88,53 @@ https://github.com/gpii/universal/LICENSE.txt
                 args: ["{stepper}.dom.valueField", "{stepper}.model.value"]
             }, {
                 name: "Changing the value",
-                expect: 12,
+                expect: 14,
                 sequence: [{
                     func: "{stepper}.increment"
                 }, {
                     listenerMaker: "gpii.tests.makeStateChecker",
-                    makerArgs: ["{stepper}.model", "{stepper}.dom.valueField", 3],
+                    makerArgs: ["{stepper}", 3],
                     event: "{stepper}.events.afterRender"
                 }, {
                     func: "{stepper}.decrement"
                 }, {
                     listenerMaker: "gpii.tests.makeStateChecker",
-                    makerArgs: ["{stepper}.model", "{stepper}.dom.valueField", 0],
+                    makerArgs: ["{stepper}", 0],
                     event: "{stepper}.events.afterRender"
                 }, {
                     jQueryTrigger: "click",
                     element: "{stepper}.dom.increment"
                 }, {
                     listenerMaker: "gpii.tests.makeStateChecker",
-                    makerArgs: ["{stepper}.model", "{stepper}.dom.valueField", 3],
+                    makerArgs: ["{stepper}", 3],
                     event: "{stepper}.events.afterRender"
                 }, {
                     jQueryTrigger: "click",
                     element: "{stepper}.dom.decrement"
                 }, {
                     listenerMaker: "gpii.tests.makeStateChecker",
-                    makerArgs: ["{stepper}.model", "{stepper}.dom.valueField", 0],
+                    makerArgs: ["{stepper}", 0],
                     event: "{stepper}.events.afterRender"
                 }, {
                     func: "gpii.tests.setInput",
                     args: ["{stepper}.dom.valueField", 2]
                 }, {
                     listenerMaker: "gpii.tests.makeStateChecker",
-                    makerArgs: ["{stepper}.model", "{stepper}.dom.valueField", 2],
+                    makerArgs: ["{stepper}", 2],
                     event: "{stepper}.events.afterRender"
                 }, {
                     func: "gpii.tests.setInput",
                     args: ["{stepper}.dom.valueField", 6]
                 }, {
                     listenerMaker: "gpii.tests.makeStateChecker",
-                    makerArgs: ["{stepper}.model", "{stepper}.dom.valueField", 5],
+                    makerArgs: ["{stepper}", 5],
                     event: "{stepper}.events.afterRender"
                 }, {
                     func: "gpii.tests.setInput",
                     args: ["{stepper}.dom.valueField", -6]
                 }, {
                     listenerMaker: "gpii.tests.makeStateChecker",
-                    makerArgs: ["{stepper}.model", "{stepper}.dom.valueField", -5],
-                    event: "{stepper}.events.afterRender"
-                }, {
-                    func: "gpii.tests.setInput",
-                    args: ["{stepper}.dom.valueField", "abc"]
-                }, {
-                    listenerMaker: "gpii.tests.makeStateChecker",
-                    makerArgs: ["{stepper}.model", "{stepper}.dom.valueField", -5],
+                    makerArgs: ["{stepper}", -5],
                     event: "{stepper}.events.afterRender"
                 }]
             }]
@@ -159,19 +149,15 @@ https://github.com/gpii/universal/LICENSE.txt
         jqUnit.assertEquals("The value should be set.", expected, elm.val());
     };
 
-    gpii.tests.click = function (elm) {
-        elm.click();
-    };
-
     gpii.tests.setInput = function (input, value) {
         input.val(value);
         input.change();
     };
 
-    gpii.tests.makeStateChecker = function (model, input, expected) {
+    gpii.tests.makeStateChecker = function (that, expected) {
         return function () {
-            jqUnit.assertEquals("The model should be updated", expected, model.value);
-            jqUnit.assertEquals("The textfield's value should be set", expected, input.val());
+            jqUnit.assertEquals("The model should be updated", expected, that.model.value);
+            jqUnit.assertEquals("The textfield's value should be set", expected, that.locate("valueField").val());
         };
     };
 
