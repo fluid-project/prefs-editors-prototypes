@@ -30,8 +30,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "namespace": "gpii.prefs.pmt_pilot_2.auxiliarySchema",
         "templatePrefix": "../../src/shared/adjusters/html/",
         "template": "../../src/pilot2Frames/pmt/html/PrefsEditorTemplate-PMT.html",
-        "messagePrefix": "../../src/shared/frames/messages/en/", // default
-        "message": "%prefix/frames.json",
+        "messagePrefix": "../../src/shared/adjusters/messages/en/", // default
+        "message": "../../src/shared/frames/messages/" + gpii.prefs.i18n.getDefaultLanguage() + "/frames.json",
         "groups": {
             "combinedPMTPanels": {
                 "container": ".gpiic-prefsEditor-preferences",
@@ -49,7 +49,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.adjuster.cursorSize",
                 "container": ".gpiic-increaseSize-cursor-size", // the css selector in the template where the panel is rendered
                 "template": "%prefix/cursorSizeTemplate.html",
-                "message": "../../src/shared/adjusters/messages/en/increaseSize.json"
+                "message": "%prefix/increaseSize.json"
             }
         }
     };

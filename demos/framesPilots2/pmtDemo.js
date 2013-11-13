@@ -31,7 +31,7 @@ var demo = demo || {};
             components: {
                 prefsEditorLoader: {
                     options: {
-                        messagePrefix: "../../src/shared/frames/messages/" + language + "/"
+                        messagePrefix: "../../src/shared/adjusters/messages/" + language + "/"
                     }
                 }
             }
