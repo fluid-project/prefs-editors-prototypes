@@ -51,6 +51,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "change",
                     "args": ["{that}.updateModelValue"]
                 },
+                "onReady.bindEventVisualAlternativesMoreLess": {
+                    "this": "{that}.dom.moreLess",
+                    "method": "click",
+                    "args": ["{that}.updateModelMoreLess"]
+                },
                 "onCreate.addSpeakTextSwitchListener": {
                     "listener": "{that}.applier.modelChanged.addListener",
                     "args": ["gpii_primarySchema_speakText", "{that}.updateModelExtraValue"]
@@ -67,6 +72,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.visualAlternativesHeader",
                     "method": "text",
                     "args": ["{that}.options.strings.visualAlternativesHeader"]
+                },
+                "onShowVisualAlternativesPartial.setTextMoreText": {
+                    "this": "{that}.dom.moreLess",
+                    "method": "text",
+                    "args": ["{that}.options.strings.moreText"]
                 },
                 "onShowVisualAlternativesPartial.showPartialAdjusters": {
                     "this": "{that}.dom.visualAlternativesPartialAdjusters",
@@ -122,10 +132,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                              "textHighlighting"
                     ]
                 },
+                "onShowVisualAlternativesExtra.setLessText": {
+                    "this": "{that}.dom.moreLess",
+                    "method": "text",
+                    "args": ["{that}.options.strings.lessText"]
+                },
                 "onHideVisualAlternativesExtra.hide": {
                     "this": "{that}.dom.visualAlternativesExtraAdjusters",
                     "method": "slideUp",
                     "args": ["{that}.options.fullyExpandedSlideSpeed"]
+                },
+                "onHideVisualAlternativesExtra.setMoreText": {
+                    "this": "{that}.dom.moreLess",
+                    "method": "text",
+                    "args": ["{that}.options.strings.moreText"]
                 },
 
 
@@ -300,6 +320,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": ["{that}"],
                     "dynamic": true
                 },
+                updateModelMoreLess: {
+                    "funcName": "gpii.modeLess",
+                    "args": ["{that}",
+                             "{that}.model.visualAlternativesExtraVisible"
+                    ],
+                    "dynamic": true
+                },
                 updateVolumeModelValue: {
                     "funcName": "gpii.updateModelVolumeHeaderClicked",
                     "args": ["{that}",
@@ -371,6 +398,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 languageHeader: ".gpii-languagePresetButton-label",
                 languageTickIcon: ".universalLanguage-white-tick-icon",
 
+                moreLess: ".gpiic-speakText-moreOptionsLabel",
+
                 saveAndApply: ".flc-prefsEditor-save",
                 resetAndApply: ".flc-prefsEditor-reset",
                 cancel: ".flc-prefsEditor-cancel"
@@ -397,6 +426,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     expander: {
                         func: "gpii.lookupMsg",
                         args: ["{prefsEditorLoader}.msgBundle", "languagePresetButtonLabel"]
+                    }
+                },
+                moreText: {
+                    expander: {
+                        func: "gpii.lookupMsg",
+                        args: ["{prefsEditorLoader}.msgBundle", "moreText"]
+                    }
+                },
+                lessText: {
+                    expander: {
+                        func: "gpii.lookupMsg",
+                        args: ["{prefsEditorLoader}.msgBundle", "lessText"]
                     }
                 },
                 saveAndApply: {
@@ -426,6 +467,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         $("#" + id).change(function (event, newValue) {
             that.applier.requestChange("gpii_primarySchema_" + id, newValue);
         });
+    };
+
+    gpii.modeLess = function (that, extraVisible) {
+        that.applier.requestChange("visualAlternativesExtraVisible", !extraVisible);
     };
 
     gpii.updateModelVisualAlternativesHeaderClicked = function (that, partialVisible, extraVisible) {
@@ -458,7 +503,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
 
     gpii.updateModelExtraValue = function (that) {
-        var newValue = that.model.gpii_primarySchema_speakText
+        var newValue = that.model.gpii_primarySchema_speakText;
         that.applier.requestChange("visualAlternativesExtraVisible", newValue);
     };
 

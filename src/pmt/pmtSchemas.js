@@ -86,7 +86,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
         "gpii.primarySchema.textHighlighting": {
             "type": "string",
-            "default": "English",
+            "default": "Word",
             "enum": ["Word", "Second option?", "Third option?"]
         }
     };
