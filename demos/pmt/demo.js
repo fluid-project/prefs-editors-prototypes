@@ -22,7 +22,7 @@ var demo = demo || {};
             auxiliarySchema: gpii.pmt.auxiliarySchema
         });
         
-        demo.instantiatePMT(container, compOpts, "gpii.pmt", gpii.getDefaultLanguage());
+        demo.instantiatePMT(container, compOpts, "gpii.pmt", gpii.prefs.i18n.getDefaultLanguage());
     };
     
     demo.instantiatePMT = function (container, compOpts, prefsEditorType, language) {
