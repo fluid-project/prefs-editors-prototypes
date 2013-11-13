@@ -15,6 +15,7 @@
     "universalVolumeDescription": "All volume levels will be affected, except where it has been set independently",
     "universalLanguageLabel": "Language",
     "screenReaderLanguageLabel": "Screen reader language",
+    "textHighlightingLabel": "Text highlighting",
     "punctuationVerbosityLabel": "Punctuation marks",
     "announceCapitalsLabel": "Uppercase letters",
     "speakTutorialMessagesLabel": "Instructions when focused on an interactive (eg. button)",

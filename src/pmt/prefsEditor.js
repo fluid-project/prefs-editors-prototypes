@@ -110,10 +110,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "slideDown",
                     "args": ["{that}.options.fullyExpandedSlideSpeed"]
                 },
-                "onShowVisualAlternativesExtra.activateCombobox": {
+                "onShowVisualAlternativesExtra.activateComboboxLanguage": {
                     "funcName": "gpii.activateCombobox",
                     "args": ["{that}",
                              "screenReaderLanguage"
+                    ]
+                },
+                "onShowVisualAlternativesExtra.activateComboboxText": {
+                    "funcName": "gpii.activateCombobox",
+                    "args": ["{that}",
+                             "textHighlighting"
                     ]
                 },
                 "onHideVisualAlternativesExtra.hide": {

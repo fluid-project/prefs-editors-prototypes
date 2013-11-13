@@ -241,6 +241,27 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
+    fluid.defaults("speakText.panel.textHighlighting", {
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        preferenceMap: {
+            "gpii.primarySchema.textHighlighting": {
+                "model.textHighlighting": "default",
+                "controlValues.textHighlighting": "enum"
+            }
+        },
+        selectors: {
+            textHighlighting: ".gpiic-speakText-textHighlighting",
+            textHighlightingLabel: ".gpiic-speakText-textHighlighting-label"
+        },
+        protoTree: {
+            textHighlighting: {
+                selection: "${textHighlighting}",
+                optionlist: "${{that}.options.controlValues.textHighlighting}"
+            },
+            textHighlightingLabel: {messagekey: "textHighlightingLabel"}
+        }
+    });
+
     fluid.defaults("speakText.panel.punctuationVerbosity", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         mergePolicy: {

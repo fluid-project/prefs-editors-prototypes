@@ -68,17 +68,26 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "boolean",
             "default": false
         },
+
         "gpii.primarySchema.speakTutorialMessages": {
             "type": "boolean",
             "default": false
         },
+
         "gpii.primarySchema.keyEcho": {
             "type": "boolean",
             "default": false
         },
+
         "gpii.primarySchema.wordEcho": {
             "type": "boolean",
             "default": false
+        },
+
+        "gpii.primarySchema.textHighlighting": {
+            "type": "string",
+            "default": "English",
+            "enum": ["Word", "Second option?", "Third option?"]
         }
     };
 
@@ -220,6 +229,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "speakText.panel.wordEcho",
                 "template": "%prefix/wordEchoTemplate.html",
                 "container": ".wordEcho",
+                "message": "%prefix/speakText.json"
+            }
+        },
+
+        "textHighlighting": {
+            "type": "gpii.primarySchema.textHighlighting",
+            "panel": {
+                "type": "speakText.panel.textHighlighting",
+                "template": "%prefix/textHighlightingTemplate.html",
+                "container": ".textHighlighting",
                 "message": "%prefix/speakText.json"
             }
         }
