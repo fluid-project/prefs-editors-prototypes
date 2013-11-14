@@ -1,3 +1,9 @@
+/*
+DEPRECATED - No need to maintain this adjuster. 
+The "Magnifier Follows" adjuster for pilots2 has different styling.
+I will start work on that version and ping you when i have something ready for review.
+*/
+
 /*!
 Cloud4all Preferences Management Tools
 
