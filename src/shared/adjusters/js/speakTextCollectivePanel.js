@@ -27,6 +27,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     type: "fluid",
                     func: "gpii.textfieldStepper",
                     options: {
+                        gradeNames: "fluid.prefs.modelRelay",
                         sourceApplier: "{that}.applier",
                         rules: {
                             "value": "value"

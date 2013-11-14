@@ -14,7 +14,8 @@ var fluid_1_5 = fluid_1_5 || {};
 (function ($, fluid) {
 
     fluid.defaults("gpii.textfieldStepper", {
-        gradeNames: ["fluid.rendererComponent", "fluid.prefs.modelRelay", "autoInit"],
+        gradeNames: ["fluid.rendererComponent", "autoInit"],
+        renderOnInit: true,
         strings: {
             increment: "+",
             decrement: "-",
@@ -31,7 +32,6 @@ var fluid_1_5 = fluid_1_5 || {};
                 listener: "{that}.applier.guards.addListener",
                 args: ["value", "{that}.guard"]
             },
-            "onCreate.refreshView": "{that}.refreshView",
             "afterRender.incClick": {
                 "this": "{that}.dom.increment",
                 "method": "click",
