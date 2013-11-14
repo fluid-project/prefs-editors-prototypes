@@ -14,23 +14,24 @@ var fluid_1_5 = fluid_1_5 || {};
 (function ($, fluid) {
 
     fluid.defaults("gpii.textfieldStepper", {
-        gradeNames: ["fluid.rendererComponent", "autoInit"],
+        gradeNames: ["fluid.rendererComponent", "fluid.prefs.modelRelay", "autoInit"],
         strings: {
             increment: "+",
             decrement: "-",
             unit: ""
         },
         selectors: {
-            valueField: ".gpii-textfieldStepper-valueField",
-            unit: ".gpii-textfieldStepper-unitField",
-            increment: ".gpii-textfieldStepper-increment",
-            decrement: ".gpii-textfieldStepper-decrement"
+            valueField: ".gpiic-textfieldStepper-valueField",
+            unit: ".gpiic-textfieldStepper-unitField",
+            increment: ".gpiic-textfieldStepper-increment",
+            decrement: ".gpiic-textfieldStepper-decrement"
         },
         listeners: {
             "onCreate.modelGuard": {
                 listener: "{that}.applier.guards.addListener",
                 args: ["value", "{that}.guard"]
             },
+            "onCreate.refreshView": "{that}.refreshView",
             "afterRender.incClick": {
                 "this": "{that}.dom.increment",
                 "method": "click",

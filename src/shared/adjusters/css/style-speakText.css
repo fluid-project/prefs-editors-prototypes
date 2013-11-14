@@ -86,8 +86,13 @@
     font-weight: bold;
 }
 
-#speechRate.gpii-textfieldStepper-field::-moz-selection {
-    background-color: yellow;
+#speechRate .gpii-speakText-speechRate-stepper {
+    width: 10em;
+}
+
+#speechRate .gpii-textfieldStepper-valueField {
+    width: 80%;
+    text-align: center;
 }
 
 textarea:focus, input:focus {
@@ -406,7 +411,7 @@ div.ui-tooltip-content: {
     font-family: 'Roboto Slab', serif;
 }
 
-.ui-widget-content.ui-widget::selection { 
+.ui-widget-content.ui-widget::selection {
     background: yellow; /*Safari*/
 }
 
