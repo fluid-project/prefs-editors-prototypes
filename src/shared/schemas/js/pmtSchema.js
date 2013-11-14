@@ -25,27 +25,27 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "message": "%prefix/pmt.json",
 
         // The preference-specific information:
-        /*"groups": {
+        "groups": {
             "addContrast": {
                 "container": ".gpii-prefsEditor-contrastPanel",
-                "template": "%prefix/contrastNewTemplate.html",
-                "message": "%prefix/contrastNew.json",
-                "type": "fluid.prefs.panel.combinedBoth",
-                "panels": ["highContrast"]
+                "template": "%prefix/addContrastTemplate.html",
+                "message": "%prefix/contrast.json",
+                "type": "gpii.adjuster.addContrast",
+                "panels": [/*"highContrast"*/]
             }
-        },*/
-        "highContrast": {
+        },
+        /*"highContrast": {
             "type": "gpii.primarySchema.highContrast",
             "enactor": {
                 "type": "gpii.enactor.highContrast"
             },
             "panel": {
-                "type": "gpii.adjuster.contrast",
-                "container": ".gpii-prefsEditor-contrastPanel",
+                "type": "gpii.adjuster.highContrast",
+                "container": ".gpiic-highContrast",
                 "template": "%prefix/highContrastTemplate.html",
                 "message": "%prefix/contrast.json"
             }
-        },
+        },*/
         "increaseSize": {
             "type": "increaseSize",
             "panel": {

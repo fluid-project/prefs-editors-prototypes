@@ -15,59 +15,23 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     
-    fluid.defaults("gpii.adjuster.contrast", {
+    fluid.defaults("gpii.adjuster.highContrast", {
         gradeNames: ["fluid.prefs.panel", "gpii.pmt.previewPerSettingEnhanced", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.highContrast": {
                 "model.contrast": "default"
             }
         },
-        events: {
-            onToggleContrastAdjusters: null
-        },
         listeners: {
-            "afterRender.bindEventPreferenceSwitchContrast": {
-                "this": "{that}.dom.valueCheckbox",
-                "method": "change",
-                "args": ["{that}.events.onToggleContrastAdjusters.fire"]
-            },
-            "onToggleContrastAdjusters.showHide": {
-                "this": "{that}.dom.contrastAdjusters",
-                "method": "slideToggle"
-            },
-            "afterRender.setContrastAdjusters": {
-                listener: "gpii.adjuster.contrast.setContrastAdjusters",
-                args: ["{that}.dom.contrastAdjusters", "{that}.model.contrast"]
-            },
-            "afterRender.setATTRaddToMyPreferencesLabel": {
-                "this": "{that}.dom.addToMyPreferencesLabel",
-                "method": "attr",
-                "args": [{
-                    "tooltip-checked": "{that}.options.strings.tooltipChecked",
-                    "tooltip-unchecked": "{that}.options.strings.tooltipUnchecked"
-                }]
-            }
+            
         },
         selectors: {
             valueCheckbox: ".gpiic-contrast-constrastInput",
-            headingLabel: ".gpiic-contrast-contrastLabel",
-            panelLabel: ".gpiic-headerTitle",
-            addToMyPreferencesLabel: ".gpiic-addToMyPreferencesLabel",
-            contrastAdjusters: ".gpiic-category",
             contrastPreview: ".gpiic-contrast-previewPerSettingFrameContrast"
         },
-        selectorsToIgnore: ["contrastAdjusters", "addToMyPreferencesLabel", "contrastPreview"],
+        selectorsToIgnore: ["contrastPreview"],
         protoTree: {
-            valueCheckbox: "${contrast}",
-            headingLabel: {messagekey: "contrast"},
-            panelLabel: {messagekey: "addContrast"}
-        },
-        members: {
-            messageResolver: "{prefsEditorLoader}.msgBundle"
-        },
-        strings: {
-            tooltipChecked: "{that}.stringBundle.tooltipChecked",
-            tooltipUnchecked: "{that}.stringBundle.tooltipUnchecked"
+            valueCheckbox: "${contrast}"
         },
         components: {
             preview: {
@@ -114,8 +78,4 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             target: "{that preview enhancer magnifier}.type"
         }]
     });
-    
-    gpii.adjuster.contrast.setContrastAdjusters = function (contrastAdjuster, flag) {
-        contrastAdjuster[flag ? "show" : "hide"]();
-    };
 })(jQuery, fluid);
