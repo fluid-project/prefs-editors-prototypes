@@ -46,7 +46,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         selectors: {
             constrastAdjustersEnabled: ".gpiic-contrast-constrastAdjustersEnabled",
             panelLabel: ".gpiic-headerTitle",
-            headingLabel: ".gpiic-contrast-contrastLabel",
             addToMyPreferencesLabel: ".gpiic-addToMyPreferencesLabel",
             contrastAdjusters: ".gpiic-category"
         },
@@ -56,8 +55,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         protoTree: {
             constrastAdjustersEnabled: "${contrastAdjustersEnabledSwitch}",
-            panelLabel: {messagekey: "addContrast"},
-            headingLabel: {messagekey: "contrast"}
+            panelLabel: {messagekey: "addContrast"}
         },
         members: {
             messageResolver: "{prefsEditorLoader}.msgBundle"

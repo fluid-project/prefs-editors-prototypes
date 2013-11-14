@@ -26,11 +26,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             
         },
         selectors: {
+            headingLabel: ".gpiic-contrast-contrastLabel",
             valueCheckbox: ".gpiic-contrast-constrastInput",
             contrastPreview: ".gpiic-contrast-previewPerSettingFrameContrast"
         },
         selectorsToIgnore: ["contrastPreview"],
         protoTree: {
+            headingLabel: {messagekey: "contrast"},
             valueCheckbox: "${contrast}"
         },
         components: {
