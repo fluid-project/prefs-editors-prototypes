@@ -18,6 +18,6 @@
     "magnifierFollows-keyboardfocus": "Φόκους πληκτρολογίου",
     "textSizeLabel": "Μέγεθος κειμένου",
     "previewText": "Έτσι θα εμφανίζεται το περισσότερο κείμενο.",
-    "fontSizeStringTemplate" : "%0πόντοι",
+    "fontSizeUnit" : "pt",
     "magnifierStringTemplate" : "%0%"
 }

@@ -16,13 +16,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
 
     fluid.defaults("gpii.adjuster.textSize", {
-        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.plusMinus", "gpii.pmt.previewPerSettingEnhanced", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.pmt.previewPerSettingEnhanced", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.fontSize": {
                 "model.fontSize": "default",
                 "fontSize.range.min": "minimum",
                 "fontSize.range.max": "maximum",
-                "fontSize.range.divisibleBy": "divisibleBy"
+                "fontSize.range.step": "divisibleBy"
             }
         },
         events: {
@@ -66,137 +66,33 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
-            textSizeMinus: ".gpiic-incresaeSize-plusMinusNumericalMinusTextSize",
-            textSizeLabel: ".gpiic-increaseSize-plusMinusNumericalLabelTextSize",
-            textSizePlus: ".gpiic-increaseSize-plusMinusNumericalPlusTextSize",
-            textSizeValueText: ".gpiic-increaseSize-plusMinusNumericalValueTextSize",
-            textSizePreview: ".gpiic-increaseSize-previewPerSettingFrameTextSize"
+            textSizeLabel: ".gpiic-textSize",
+            textSizePreview: ".gpiic-textSize-preview",
+            textSizeStepper: ".gpiic-textSize-stepper"
         },
         selectorsToIgnore: ["textSizePreview"],
-
         protoTree: {
-            textSizeMinus: {messagekey: "minus"},
             textSizeLabel: {messagekey: "textSizeLabel"},
-            textSizePlus: {messagekey: "plus"},
-
-            textSizeValueText: "${fontSize}"
-        },
-
-        listeners: {
-            "afterRender.bindEventTextSizeMinusClick": {
-                "this": "{that}.dom.textSizeMinus",
-                "method": "click",
-                "args": ["{that}.onTextSizeMinusClick"]
-            },
-            "afterRender.bindEventTextSizePlusClick": {
-                "this": "{that}.dom.textSizePlus",
-                "method": "click",
-                "args": ["{that}.onTextSizePlusClick"]
-            },
-            "afterRender.bindEventTextSizeValueTextChange": {
-                "this": "{that}.dom.textSizeValueText",
-                "method": "change",
-                "args": ["{that}.onTextSizeValueTextChange"]
-            },
-            "afterRender.bindEventTextSizeValueTextPreventNonNumeric": {
-                "this": "{that}.dom.textSizeValueText",
-                "method": "keydown",
-                "args": ["{that}.onValueTextPreventNonNumeric"]
-            },
-            "afterRender.setTextSizeMetricUnit": {
-                listener: "{that}.setTextSizeMetricUnit"
-            },
-            "afterRender.checkTextSizeInitialMinRange": {
-                listener: "{that}.checkTextSizeInitialMinRange"
-            },
-            "textSizeMinRangeReached.setTextSizeMinusStyleAdd": {
-                listener: "{that}.setTextSizeMinusStyleAdd"
-            },
-            "textSizeMinRangeExited.setTextSizeMinusStyleRemove": {
-                listener: "{that}.setTextSizeMinusStyleRemove"
-            }
-        },
-        invokers: {
-            onTextSizeMinusClick: {
-                funcName: "gpii.adjuster.plusMinus.onMinusClick",
-                args: [
-                    "{that}",
-                    "{that}.model.fontSize",
-                    "{that}.options.fontSize.range",
-                    "fontSize",
-                    "{that}.events.textSizeMinRangeReached",
-                    "{that}.events.textSizeMinRangeExited",
-                    "{that}.refreshTextSizeValueText"
-                ],
-                dynamic: true
-
-            },
-            onTextSizePlusClick: {
-                funcName: "gpii.adjuster.plusMinus.onPlusClick",
-                args: [
-                    "{that}",
-                    "{that}.model.fontSize",
-                    "{that}.options.fontSize.range",
-                    "fontSize",
-                    "{that}.events.textSizeMinRangeReached",
-                    "{that}.events.textSizeMinRangeExited",
-                    "{that}.refreshTextSizeValueText"
-                ],
-                dynamic: true
-            },
-            onTextSizeValueTextChange: {
-                funcName: "gpii.adjuster.plusMinus.onValueTextChange",
-                args: [
-                    "{that}",
-                    {expander: {
-                        "this": "{that}.dom.textSizeValueText",
-                        "method": "val"
-                    }},
-                    "{that}.options.fontSize.range",
-                    "fontSize",
-                    "{that}.events.textSizeMinRangeReached",
-                    "{that}.events.textSizeMinRangeExited",
-                    "{that}.refreshTextSizeValueText"
-                ]
-            },
-            refreshTextSizeValueText: {
-                "this": "{that}.dom.textSizeValueText",
-                "method": "val",
-                "args": {
-                    expander: {
-                        "this": "fluid",
-                        method: "stringTemplate",
-                        args: ["{that}.stringBundle.fontSizeStringTemplate", ["{that}.model.fontSize"]]
+            textSizeStepper: {
+                decorators: {
+                    type: "fluid",
+                    func: "gpii.textfieldStepper",
+                    options: {
+                        gradeNames: "fluid.prefs.modelRelay",
+                        sourceApplier: "{that}.applier",
+                        rules: {
+                            "fontSize": "value"
+                        },
+                        model: {
+                            value: "{that}.model.fontSize"
+                        },
+                        strings: {
+                            "unit": "{that}.stringBundle.fontSizeUnit"
+                        },
+                        range: "{that}.fontSize.range"
                     }
-                },
-                dynamic: true
+                }
             },
-            setTextSizeMinusStyleAdd: {
-                "this": "{that}.dom.textSizeMinus",
-                "method": "addClass",
-                "args": "gpii-increaseSize-plusMinusNumericalMinReached"
-
-            },
-            setTextSizeMinusStyleRemove: {
-                "this": "{that}.dom.textSizeMinus",
-                "method": "removeClass",
-                "args": "gpii-increaseSize-plusMinusNumericalMinReached"
-
-            },
-            checkTextSizeInitialMinRange: {
-                funcName: "gpii.adjuster.plusMinus.performMinRangeCheck",
-                args: [
-                    "{that}",
-                    "{that}.model.fontSize",
-                    "{that}.options.fontSize.range",
-                    "{that}.events.textSizeMinRangeReached",
-                    "{that}.events.textSizeMinRangeExited"
-                ],
-                dynamic: true
-            },
-            setTextSizeMetricUnit: {
-                func: "{that}.refreshTextSizeValueText"
-            }
         },
         distributeOptions: [{
             source: "{that}.options.outerPreviewEnhancerOptions",

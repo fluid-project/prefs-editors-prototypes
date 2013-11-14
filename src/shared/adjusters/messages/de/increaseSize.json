@@ -18,6 +18,6 @@
     "magnifierFollows-keyboardfocus": "Tastaturfokus",
     "textSizeLabel": "Textgröße",
     "previewText": "So wird Text meistens aussehen.",
-    "fontSizeStringTemplate" : "%0pt",
+    "fontSizeUnit" : "pt",
     "magnifierStringTemplate" : "%0%"
 }
