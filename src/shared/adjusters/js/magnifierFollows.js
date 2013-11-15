@@ -29,6 +29,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "controlValues.magnifierFollows": "enum"
             }
         },
+        "classes": {
+            "mousecursor": "gpii-increaseSize-magnifierFollowsMouseCursor gpii-increaseSize-magnifierFollowsIconLabel",
+            "textcursor": "gpii-increaseSize-magnifierFollowsTextCursor gpii-increaseSize-magnifierFollowsIconLabel",
+            "keyboardfocus": "gpii-increaseSize-magnifierFollowsKeyboardFocus gpii-increaseSize-magnifierFollowsIconLabel"
+        },
         listeners: {
             afterRender: "{that}.magnifierFollowsStyle"
         },
@@ -79,7 +84,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 funcName: "gpii.adjuster.magnifierFollows.style",
                 args: ["{that}.dom.magnifierFollowsLabel", "{that}.options.strings.magnifierFollows",
                     "{that}.options.markup.magnifierFollowsLabel", "{that}.options.controlValues.magnifierFollows",
-                    "{that}.options.classnameMap.magnifierFollows"]
+                    "{that}.options.classes"]
             }
         }
     });

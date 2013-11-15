@@ -37,7 +37,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "message": "%prefix/contrastNew.json"
             }
         },
-        /*"textSize": {
+        "textSize": {
             "type": "gpii.primarySchema.fontSize",
             "enactor": {
                 "type": "gpii.enactor.textSize"
@@ -47,7 +47,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "container": ".gpiic-prefsEditor-textSize",
                 "template": "%prefix/textSizeTemplate.html"
             }
-        },*/
+        },
         "cursorSize": {
             "type": "gpii.primarySchema.cursorSize",
             "enactor": {
@@ -59,47 +59,42 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "template": "%prefix/cursorSizeTemplate.html"
             }
         },
-        // "magnifier": {
-        //     "type": "gpii.primarySchema.magnification",
-        //     "enactor": {
-        //         "type": "gpii.enactor.magnifier"
-        //     },
-        //     "panel": {
-        //         "type": "gpii.adjuster.magnifier",
-        //         "container": ".gpiic-prefsEditor-magnifier",
-        //         "template": "%prefix/magnifierTemplate.html"
-        //     }
-        // },
-        // "magnifierPosition": {
-        //     "type": "gpii.primarySchema.magnificationPosition",
-        //     "panel": {
-        //         "type": "gpii.adjuster.magnifierPosition",
-        //         "container": ".gpiic-prefsEditor-magnifierPosition",
-        //         "template": "%prefix/magnifierPositionTemplate.html",
-        //         "extraOption": 1
-        //     }
-        // },
-        // "magnifierFollows": {
-        //     "type": "gpii.primarySchema.tracking",
-        //     "classes": {
-        //         "mousecursor": "gpii-increaseSize-magnifierFollowsMouseCursor gpii-increaseSize-magnifierFollowsIconLabel",
-        //         "textcursor": "gpii-increaseSize-magnifierFollowsTextCursor gpii-increaseSize-magnifierFollowsIconLabel",
-        //         "keyboardfocus": "gpii-increaseSize-magnifierFollowsKeyboardFocus gpii-increaseSize-magnifierFollowsIconLabel"
-        //     },
-        //     "panel": {
-        //         "type": "gpii.adjuster.magnifierFollows",
-        //         "container": ".gpiic-prefsEditor-magnifierFollows",
-        //         "template": "%prefix/magnifierFollowsTemplate.html",
-        //         "classnameMap": {"magnifierFollows": "@magnifierFollows.classes"}
-        //     }
-        // },
+        "magnifier": {
+            "type": "gpii.primarySchema.magnification",
+            "enactor": {
+                "type": "gpii.enactor.magnifier"
+            },
+            "panel": {
+                "type": "gpii.adjuster.magnifier",
+                "container": ".gpiic-prefsEditor-magnifier",
+                "template": "%prefix/magnifierTemplate.html"
+            }
+        },
+        "magnifierPosition": {
+            "type": "gpii.primarySchema.magnificationPosition",
+            "panel": {
+                "type": "gpii.adjuster.magnifierPosition",
+                "container": ".gpiic-prefsEditor-magnifierPosition",
+                "template": "%prefix/magnifierPositionTemplate.html",
+                "extraOption": 1
+            }
+        },
+        "magnifierFollows": {
+            "type": "gpii.primarySchema.tracking",
+            "panel": {
+                "type": "gpii.adjuster.magnifierFollows",
+                "container": ".gpiic-prefsEditor-magnifierFollows",
+                "template": "%prefix/magnifierFollowsTemplate.html",
+                "classnameMap": {"magnifierFollows": "@magnifierFollows.classes"}
+            }
+        },
         groups: {
             "increaseSize": {
                 "type": "gpii.panel.increaseSize",
                 "container": ".gpiic-prefsEditor-increaseSizePanel",
                 "template": "%prefix/increaseSizeTemplate.html",
                 "message": "%prefix/increaseSize.json",
-                "panels": [/*"textSize", */"cursorSize"/*, "magnifierPosition", "magnifier", "magnifierFollows"*/]
+                "panels": ["textSize", "cursorSize", "magnifier", "magnifierPosition", "magnifierFollows"]
             }
         }
     };
