@@ -82,7 +82,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                             value: "{that}.model.fontSize"
                         },
                         strings: {
-                            "unit": "{that}.stringBundle.fontSizeUnit"
+                            "unit": "{that}.stringBundle.textSizeUnit"
                         },
                         range: "{that}.fontSize.range"
                     }

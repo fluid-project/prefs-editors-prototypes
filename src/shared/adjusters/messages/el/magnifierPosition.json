@@ -1,0 +1,10 @@
+{
+    "magnifierPositionLabel": "Θέση μεγεθυντικού φακού",
+    "magnifierPosition-default": "Προεπιλογή",
+    "magnifierPosition-lens": "Φακός",
+    "magnifierPosition-fullscreen": "Πλήρης οθόνη",
+    "magnifierPosition-dockedtop": "Επάνω",
+    "magnifierPosition-dockedbottom": "Κάτω",
+    "magnifierPosition-dockedleft": "Αριστερά",
+    "magnifierPosition-dockedright": "Δεξιά"
+}

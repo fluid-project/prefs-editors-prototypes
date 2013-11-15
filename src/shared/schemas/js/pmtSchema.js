@@ -34,7 +34,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.adjuster.contrast",
                 "container": ".gpiic-prefsEditor-contrastPanel",
                 "template": "%prefix/contrastNewTemplate.html",
-                "message": "%prefix/contrastNew.json"
+                "message": "%prefix/contrast.json"
             }
         },
         "textSize": {
@@ -45,7 +45,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "panel": {
                 "type": "gpii.adjuster.textSize",
                 "container": ".gpiic-prefsEditor-textSize",
-                "template": "%prefix/textSizeTemplate.html"
+                "template": "%prefix/textSizeTemplate.html",
+                "message": "%prefix/textSize.json"
             }
         },
         "cursorSize": {
@@ -56,7 +57,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "panel": {
                 "type": "gpii.adjuster.cursorSize",
                 "container": ".gpiic-prefsEditor-cursorSize",
-                "template": "%prefix/cursorSizeTemplate.html"
+                "template": "%prefix/cursorSizeTemplate.html",
+                "message": "%prefix/cursorSize.json"
             }
         },
         "magnifier": {
@@ -67,7 +69,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "panel": {
                 "type": "gpii.adjuster.magnifier",
                 "container": ".gpiic-prefsEditor-magnifier",
-                "template": "%prefix/magnifierTemplate.html"
+                "template": "%prefix/magnifierTemplate.html",
+                "message": "%prefix/magnifier.json"
             }
         },
         "magnifierPosition": {
@@ -76,7 +79,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.adjuster.magnifierPosition",
                 "container": ".gpiic-prefsEditor-magnifierPosition",
                 "template": "%prefix/magnifierPositionTemplate.html",
-                "extraOption": 1
+                "message": "%prefix/magnifierPosition.json"
             }
         },
         "magnifierFollows": {
@@ -85,6 +88,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.adjuster.magnifierFollows",
                 "container": ".gpiic-prefsEditor-magnifierFollows",
                 "template": "%prefix/magnifierFollowsTemplate.html",
+                "message": "%prefix/magnifierFollows.json",
                 "classnameMap": {"magnifierFollows": "@magnifierFollows.classes"}
             }
         },
