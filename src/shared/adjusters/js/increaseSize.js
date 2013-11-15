@@ -97,7 +97,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             addToMyPreferencesStar: ".gpiic-addToMyPreferencesLabel",
             increaseSizeExtraAdjusters: ".gpiic-category-hidden",
             preferenceSwitchIncreaseSizeExtra: ".gpiic-increaseSize-preferenceSwitchExtra",
-            moreLess: ".gpiic-moreLess"
+            moreLess: ".gpiic-moreLess",
+            appearanceHeading: ".gpiic-increaseSize-appearanceHeading",
+            magnifierHeading: ".gpiic-increaseSize-magnifierHeading"
         },
         selectorsToIgnore: ["increaseSizeHeader", "increaseSizeAdjusters", "addToMyPreferencesStar", "increaseSizeExtraAdjusters", "moreLess"],
         members: {
@@ -117,7 +119,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             preferenceSwitchIncreaseSize: "${increaseSizeAdjustersEnabledSwitch}",
             preferenceSwitchIncreaseSizeExtra: "${increaseSizeExtraAdjustersEnabledSwitch}",
             increaseSizeHeader: {messagekey: "increaseSizeHeader"},
-            moreLess: {messagekey: "more"}
+            moreLess: {messagekey: "more"},
+            appearanceHeading: {messagekey: "appearance"},
+            magnifierHeading:  {messagekey: "magnifier"}
         },
         invokers: {
             toggleIncreaseSizeAdjustersInstant: {

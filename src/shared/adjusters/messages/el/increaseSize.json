@@ -19,5 +19,7 @@
     "textSizeLabel": "Μέγεθος κειμένου",
     "previewText": "Έτσι θα εμφανίζεται το περισσότερο κείμενο.",
     "fontSizeUnit" : "pt",
-    "magnifierStringTemplate" : "%0%"
+    "magnifierStringTemplate" : "%0%",
+    "appearance": "appearance",
+    "magnifier": "magnifier"
 }
