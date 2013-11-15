@@ -48,7 +48,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "template": "%prefix/textSizeTemplate.html"
             }
         },*/
-        "cursorSize": {
+        /*"cursorSize": {
             "type": "gpii.primarySchema.cursorSize",
             "enactor": {
                 "type": "gpii.enactor.cursorSize"
@@ -58,7 +58,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "container": ".gpiic-prefsEditor-cursorSize",
                 "template": "%prefix/cursorSizeTemplate.html"
             }
-        },
+        },*/
         // "magnifier": {
         //     "type": "gpii.primarySchema.magnification",
         //     "enactor": {
@@ -70,24 +70,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         //         "template": "%prefix/magnifierTemplate.html"
         //     }
         // },
-        // "magnifierPosition": {
-        //     "type": "gpii.primarySchema.magnificationPosition",
-        //     "classes": {
-        //         "lens": "gpii-increaseSize-magnifierPositionLens gpii-increaseSize-magnifierPositionIconLabel",
-        //         "fullscreen": "gpii-increaseSize-magnifierPositionFullscreen gpii-increaseSize-magnifierPositionIconLabel",
-        //         "dockedtop": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionTop gpii-increaseSize-magnifierPositionIconLabel",
-        //         "dockedbottom": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionBottom gpii-increaseSize-magnifierPositionIconLabel",
-        //         "dockedleft": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionLeft gpii-increaseSize-magnifierPositionIconLabel",
-        //         "dockedright": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionRight gpii-increaseSize-magnifierPositionIconLabel"
-
-        //     },
-        //     "panel": {
-        //         "type": "gpii.adjuster.magnifierPosition",
-        //         "container": ".gpiic-prefsEditor-magnifierPosition",
-        //         "template": "%prefix/magnifierPositionTemplate.html",
-        //         "classnameMap": {"magnifierPosition": "@magnifierPosition.classes"}
-        //     }
-        // },
+        "magnifierPosition": {
+            "type": "gpii.primarySchema.magnificationPosition",
+            "panel": {
+                "type": "gpii.adjuster.magnifierPosition",
+                "container": ".gpiic-prefsEditor-magnifierPosition",
+                "template": "%prefix/magnifierPositionTemplate.html",
+                "extraOption": 1
+            }
+        },
         // "magnifierFollows": {
         //     "type": "gpii.primarySchema.tracking",
         //     "classes": {
@@ -108,7 +99,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "container": ".gpiic-prefsEditor-increaseSizePanel",
                 "template": "%prefix/increaseSizeTemplate.html",
                 "message": "%prefix/increaseSize.json",
-                "panels": [/*"textSize", */"cursorSize"/*, "magnifier", "magnifierPosition", "magnifierFollows"*/]
+                "panels": [/*"textSize", "cursorSize",*/ "magnifierPosition"/*, "magnifier", "magnifierFollows"*/]
             }
         }
     };

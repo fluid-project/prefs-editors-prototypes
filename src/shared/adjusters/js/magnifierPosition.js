@@ -23,6 +23,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "controlValues.magnifierPosition": "enum"
             }
         },
+        "classes": {
+            "lens": "gpii-increaseSize-magnifierPositionLens gpii-increaseSize-magnifierPositionIconLabel",
+            "fullscreen": "gpii-increaseSize-magnifierPositionFullscreen gpii-increaseSize-magnifierPositionIconLabel",
+            "dockedtop": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionTop gpii-increaseSize-magnifierPositionIconLabel",
+            "dockedbottom": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionBottom gpii-increaseSize-magnifierPositionIconLabel",
+            "dockedleft": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionLeft gpii-increaseSize-magnifierPositionIconLabel",
+            "dockedright": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionRight gpii-increaseSize-magnifierPositionIconLabel"
+        },
         listeners: {
             afterRender: "{that}.magnifierPositionStyle"
         },
@@ -53,7 +61,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             messageResolver: "{prefsEditorLoader}.msgBundle"
         },
         stringArrayIndex: {
-            magnifierPosition: ["magnifierPosition-default", "magnifierPosition-lens", "magnifierPosition-fullscreen", "magnifierPosition-dockedtop", "magnifierPosition-dockedbottom", , "magnifierPosition-dockedleft", "magnifierPosition-dockedright"]
+            magnifierPosition: ["magnifierPosition-lens", "magnifierPosition-dockedleft", "magnifierPosition-dockedtop", "magnifierPosition-fullscreen", "magnifierPosition-dockedright", "magnifierPosition-dockedbottom"]
         },
         strings: {
             magnifierPosition: "{that}.stringBundle.magnifierPosition"
@@ -73,7 +81,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 funcName: "gpii.adjuster.magnifierPosition.style",
                 args: ["{that}.dom.magnifierPositionLabel", "{that}.options.strings.magnifierPosition",
                     "{that}.options.markup.magnifierPositionLabel", "{that}.options.controlValues.magnifierPosition",
-                    "{that}.options.classnameMap.magnifierPosition", "{that}"]
+                    "{that}.options.classes", "{that}"],
+                    dynamic: true
             }
         }
     });
