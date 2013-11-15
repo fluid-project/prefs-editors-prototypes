@@ -295,6 +295,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "click",
                     "args": ["{that}.updateModelAllHidden"]
                 },
+        "onReady.onSaveaaaaaatualisation": {
+            "this": "{that}.dom.saveAndApply",
+            "method": "click",
+            "args": ["{that}.baba"]
+        },
                 "onReady.onResetVisibilityActualisation": {
                     "this": "{that}.dom.resetAndApply",
                     "method": "click",
@@ -307,6 +312,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             invokers: {
+                baba: {
+                    "funcName": "baba",
+                    "args": ["{that}"],
+                    "dynamic": true
+                },
                 updateModelValue: {
                     "funcName": "gpii.updateModelVisualAlternativesHeaderClicked",
                     "args": ["{that}",
@@ -524,5 +534,40 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         var looked = messageResolver.lookup([value]);
         return looked ? looked.template : looked;
     };
+
+
+
+
+
+
+
+
+baba = function (that) {
+
+    var keys_in_model = $.grep(Object.keys(that.model), function (el) {return el.substring(0,19) === "gpii_primarySchema_"});
+    var keys_for_post = $.map(keys_in_model, function (el) {return "http://registry.gpii.org/common/" + el.substring(19, el.length)});
+
+    var saved_settings = {};
+    for (var i = 0; i < keys_for_post.length; i++) {
+        saved_settings[keys_for_post[i]] = that.model[keys_in_model[i]]
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "http://localhost:8081/user/haha/",
+        data: saved_settings,
+        success: function () {alert("it succeeded!");}
+    });
+};
+
+
+
+
+
+
+
+
+
+
 
 })(jQuery, fluid);
