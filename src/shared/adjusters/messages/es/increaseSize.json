@@ -19,5 +19,7 @@
     "textSizeLabel": "Tamaño del texto",
     "previewText": "Así es como se mostrará  la mayoría del texto.",
     "fontSizeUnit" : "pt",
-    "magnifierStringTemplate" : "%0%"
+    "magnifierStringTemplate" : "%0%",
+    "appearance": "appearance",
+    "magnifier": "magnifier"
 }

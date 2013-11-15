@@ -694,3 +694,13 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
 .gpii-prefsEditor-adjusterIcons-sept-12 {
     font-family: 'sept-12';
 }
+
+.gpii-prefsEditor-expandedHeading
+{
+	font-size: large;
+	font-weight: bold;
+}
+
+.gpii-prefsEditor-firstHeading {
+	border-top: none;
+}
