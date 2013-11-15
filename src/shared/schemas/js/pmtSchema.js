@@ -48,7 +48,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "template": "%prefix/textSizeTemplate.html"
             }
         },*/
-        /*"cursorSize": {
+        "cursorSize": {
             "type": "gpii.primarySchema.cursorSize",
             "enactor": {
                 "type": "gpii.enactor.cursorSize"
@@ -58,7 +58,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "container": ".gpiic-prefsEditor-cursorSize",
                 "template": "%prefix/cursorSizeTemplate.html"
             }
-        },*/
+        },
         // "magnifier": {
         //     "type": "gpii.primarySchema.magnification",
         //     "enactor": {
@@ -70,15 +70,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         //         "template": "%prefix/magnifierTemplate.html"
         //     }
         // },
-        "magnifierPosition": {
-            "type": "gpii.primarySchema.magnificationPosition",
-            "panel": {
-                "type": "gpii.adjuster.magnifierPosition",
-                "container": ".gpiic-prefsEditor-magnifierPosition",
-                "template": "%prefix/magnifierPositionTemplate.html",
-                "extraOption": 1
-            }
-        },
+        // "magnifierPosition": {
+        //     "type": "gpii.primarySchema.magnificationPosition",
+        //     "panel": {
+        //         "type": "gpii.adjuster.magnifierPosition",
+        //         "container": ".gpiic-prefsEditor-magnifierPosition",
+        //         "template": "%prefix/magnifierPositionTemplate.html",
+        //         "extraOption": 1
+        //     }
+        // },
         // "magnifierFollows": {
         //     "type": "gpii.primarySchema.tracking",
         //     "classes": {
@@ -99,7 +99,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "container": ".gpiic-prefsEditor-increaseSizePanel",
                 "template": "%prefix/increaseSizeTemplate.html",
                 "message": "%prefix/increaseSize.json",
-                "panels": [/*"textSize", "cursorSize",*/ "magnifierPosition"/*, "magnifier", "magnifierFollows"*/]
+                "panels": [/*"textSize", */"cursorSize"/*, "magnifierPosition", "magnifier", "magnifierFollows"*/]
             }
         }
     };
