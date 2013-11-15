@@ -25,9 +25,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             speechRate: {
                 decorators: {
                     type: "fluid",
-                    func: "gpii.textfieldStepper",
+                    func: "gpii.adjuster.textfieldStepper",
                     options: {
-                        gradeNames: "fluid.prefs.modelRelay",
                         sourceApplier: "{that}.applier",
                         rules: {
                             "value": "value"

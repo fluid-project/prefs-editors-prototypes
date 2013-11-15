@@ -25,10 +25,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "fontSize.range.step": "divisibleBy"
             }
         },
-        events: {
-            textSizeMinRangeReached: null,
-            textSizeMinRangeExited: null
-        },
         components: {
             textSizePreview: {
                 type: "fluid.prefs.preview",
@@ -66,7 +62,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
-            textSizeLabel: ".gpiic-textSize",
+            textSizeLabel: ".gpiic-textSize-label",
             textSizePreview: ".gpiic-textSize-preview",
             textSizeStepper: ".gpiic-textSize-stepper"
         },
@@ -76,9 +72,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             textSizeStepper: {
                 decorators: {
                     type: "fluid",
-                    func: "gpii.textfieldStepper",
+                    func: "gpii.adjuster.textfieldStepper",
                     options: {
-                        gradeNames: "fluid.prefs.modelRelay",
                         sourceApplier: "{that}.applier",
                         rules: {
                             "fontSize": "value"

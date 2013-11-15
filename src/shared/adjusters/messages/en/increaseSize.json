@@ -19,7 +19,7 @@
     "textSizeLabel": "Text Size",
     "previewText": "This is how most text will appear.",
     "fontSizeUnit" : "pt",
-    "magnifierStringTemplate" : "%0%",
+    "magnifierUnit" : "%",
     "appearance": "appearance",
     "magnifier": "magnifier"
 }

@@ -16,18 +16,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
 
     fluid.defaults("gpii.adjuster.magnifier", {
-        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.plusMinus", "gpii.pmt.previewPerSettingEnhanced", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.pmt.previewPerSettingEnhanced", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.magnification": {
                 "model.magnification": "default",
                 "magnification.range.min": "minimum",
                 "magnification.range.max": "maximum",
-                "magnification.range.divisibleBy": "divisibleBy"
+                "magnification.range.step": "divisibleBy"
             }
-        },
-        events: {
-            magnifierMinRangeReached: null,
-            magnifierMinRangeExited: null
         },
         members: {
             messageResolver: "{prefsEditorLoader}.msgBundle"
@@ -69,141 +65,31 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
-            magnifierMinus: ".gpiic-increaseSize-plusMinusNumericalMinusMagnifier",
-            magnifierLabel: ".gpiic-increaseSize-plusMinusNumericalLabelMagnifier",
-            magnifierPlus: ".gpiic-increaseSize-plusMinusNumericalPlusMagnifier",
-            magnifierValueText: ".gpiic-increaseSize-plusMinusNumericalValueMagnifier",
-            magnifierPreview: ".gpiic-increaseSize-previewPerSettingFrameMagnifier"
+            magnifierLabel: ".gpiic-magnifier-label",
+            magnifierStepper: ".gpiic-magnifier-stepper",
+            magnifierPreview: ".gpiic-magnifier-preview"
         },
         selectorsToIgnore: ["magnifierPreview"],
         protoTree: {
-            magnifierMinus: {messagekey: "minus"},
             magnifierLabel: {messagekey: "magnifierLabel"},
-            magnifierPlus: {messagekey: "plus"},
-            magnifierValueText: "${magnification}",
-        },
-        strings: {
-            magnifierOFF: "{that}.stringBundle.magnifierOFF",
-            magnifierStringTemplate: "{that}.stringBundle.magnifierStringTemplate"
-        },
-        listeners: {
-            "magnifierMinRangeReached.setMagnifierValueText": {
-                "this": "{that}.dom.magnifierValueText",
-                "method": "val",
-                "args": ["{that}.options.strings.magnifierOFF"]
-            },
-            "afterRender.bindEventMagnifierMinusClick": {
-                "this": "{that}.dom.magnifierMinus",
-                "method": "click",
-                "args": ["{that}.onMagnifierMinusClick"]
-            },
-            "afterRender.bindEventMagnifierPlusClick": {
-                "this": "{that}.dom.magnifierPlus",
-                "method": "click",
-                "args": ["{that}.onMagnifierPlusClick"]
-            },
-            "afterRender.bindEventMagnifierValueTextChange": {
-                "this": "{that}.dom.magnifierValueText",
-                "method": "change",
-                "args": ["{that}.onMagnifierValueTextChange"]
-            },
-            "afterRender.bindEventMagnifierValueTextPreventNonNumeric": {
-                "this": "{that}.dom.magnifierValueText",
-                "method": "keydown",
-                "args": ["{that}.onValueTextPreventNonNumeric"]
-            },
-            "afterRender.setMagnifierMetricUnit": {
-                listener: "{that}.setMagnifierMetricUnit"
-            },
-            "afterRender.checkMagnifierInitialMinRange": {
-                listener: "{that}.checkMagnifierInitialMinRange"
-            },
-            "magnifierMinRangeReached.setMagnifierMinusStyleAdd": {
-                listener: "{that}.setMagnifierMinusStyleAdd"
-            },
-            "magnifierMinRangeExited.setMagnifierMinusStyleRemove": {
-                listener: "{that}.setMagnifierMinusStyleRemove"
-            }
-        },
-        invokers: {
-            onMagnifierMinusClick: {
-                funcName: "gpii.adjuster.plusMinus.onMinusClick",
-                args: [
-                    "{that}",
-                    "{that}.model.magnification",
-                    "{that}.options.magnification.range",
-                    "magnification",
-                    "{that}.events.magnifierMinRangeReached",
-                    "{that}.events.magnifierMinRangeExited",
-                    "{that}.refreshMagnifierValueText"
-                ],
-                dynamic: true
-            },
-            onMagnifierPlusClick: {
-                funcName: "gpii.adjuster.plusMinus.onPlusClick",
-                args: [
-                    "{that}",
-                    "{that}.model.magnification",
-                    "{that}.options.magnification.range",
-                    "magnification",
-                    "{that}.events.magnifierMinRangeReached",
-                    "{that}.events.magnifierMinRangeExited",
-                    "{that}.refreshMagnifierValueText"
-                ],
-                dynamic: true
-            },
-            onMagnifierValueTextChange: {
-                funcName: "gpii.adjuster.plusMinus.onValueTextChange",
-                args: [
-                    "{that}",
-                    {expander: {
-                        "this": "{that}.dom.magnifierValueText",
-                        "method": "val"
-                    }},
-                    "{that}.options.magnification.range",
-                    "magnification",
-                    "{that}.events.magnifierMinRangeReached",
-                    "{that}.events.magnifierMinRangeExited",
-                    "{that}.refreshMagnifierValueText"
-                ]
-            },
-            refreshMagnifierValueText: {
-                "this": "{that}.dom.magnifierValueText",
-                "method": "val",
-                "args": {
-                    expander: {
-                        "this": "fluid",
-                        method: "stringTemplate",
-                        args: ["{that}.options.strings.magnifierStringTemplate", ["{that}.model.magnification"]]
+            magnifierStepper: {
+                decorators: {
+                    type: "fluid",
+                    func: "gpii.adjuster.textfieldStepper",
+                    options: {
+                        sourceApplier: "{that}.applier",
+                        rules: {
+                            "magnification": "value"
+                        },
+                        model: {
+                            value: "{that}.model.magnification"
+                        },
+                        strings: {
+                            "unit": "{that}.stringBundle.magnifierUnit"
+                        },
+                        range: "{that}.options.magnification.range"
                     }
-                },
-                dynamic: true
-            },
-            setMagnifierMinusStyleAdd: {
-                "this": "{that}.dom.magnifierMinus",
-                "method": "addClass",
-                "args": "gpii-increaseSize-plusMinusNumericalMinReached"
-
-            },
-            setMagnifierMinusStyleRemove: {
-                "this": "{that}.dom.magnifierMinus",
-                "method": "removeClass",
-                "args": "gpii-increaseSize-plusMinusNumericalMinReached"
-
-            },
-            checkMagnifierInitialMinRange: {
-                funcName: "gpii.adjuster.plusMinus.performMinRangeCheck",
-                args: [
-                    "{that}",
-                    "{that}.model.magnification",
-                    "{that}.options.magnification.range",
-                    "{that}.events.magnifierMinRangeReached",
-                    "{that}.events.magnifierMinRangeExited"
-                ],
-                dynamic: true
-            },
-            setMagnifierMetricUnit: {
-                func: "{that}.refreshMagnifierValueText"
+                }
             }
         },
         distributeOptions: [{

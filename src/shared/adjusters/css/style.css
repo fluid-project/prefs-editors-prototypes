@@ -240,6 +240,7 @@ input[type=checkbox], input[type=radio] {
     font-size: 1.5em !important;
     margin-top: 1px !important;
     margin-bottom: 2px !important;
+    float: left;
 }
 
 .gpii-stepper-unit {
@@ -659,17 +660,8 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
     background-color: transparent !important;
 }
 
-.gpii-prefsEditor-theme-yb .gpii-increaseSize-plusMinusNumericalWidget {
-    width: calc(100% - 2px) !important;
-    border: 1px solid !important;
-}
-
 .gpii-prefsEditor-theme-yb .gpii-stepper-valueField {
     margin-bottom: 1px !important;
-}
-
-.gpii-prefsEditor-theme-yb .gpii-increaseSize-plusMinusNumericalMinReached {
-    color: gray !important;
 }
 
 .gpii-prefsEditor-theme-yb .gpii-prefsEditor input:focus + label, .gpii-prefsEditor-theme-yb .gpii-prefsEditor .gpii-prefsEditor-choice input:focus ~ label {
