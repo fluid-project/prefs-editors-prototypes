@@ -607,49 +607,64 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
     background-color: black;
 }
 
+.gpii-prefsEditor-theme-bw {
+    color: black;
+    background-color: white;
+}
+
+.gpii-prefsEditor-theme-by {
+    color: black;
+    background-color: yellow;
+}
+
+.gpii-prefsEditor-theme-wb {
+    color: white;
+    background-color: black;
+}
+
 .gpii-prefsEditor-theme-default {
     color: black;
     background-color: #d5e2de;
 }
 
 .gpii-prefsEditor-theme-yb .gpii-prefsEditor-headerImage {
-    background-color: black !important;
-    color: yellow !important;
-}
-
-.gpii-prefsEditor-theme-bw .gpii-prefsEditor-headerImage {
-    background-color: white !important;
+    background-color: transparent !important;
     color: black !important;
 }
 
+.gpii-prefsEditor-theme-bw .gpii-prefsEditor-headerImage {
+    background-color: transparent !important;
+    color: white !important;
+}
+
 .gpii-prefsEditor-theme-by .gpii-prefsEditor-headerImage {
+    background-color: transparent !important;
+    color: yellow !important;
+}
+
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor-headerImage {
+    background-color: transparent !important;
+    color: black !important;
+}
+
+.gpii-prefsEditor-theme-yb .gpii-prefsEditor-headerTitle {
     background-color: yellow !important;
     color: black !important;
 }
 
-.gpii-prefsEditor-theme-wb .gpii-prefsEditor-headerImage {
+.gpii-prefsEditor-theme-bw .gpii-prefsEditor-headerTitle {
     background-color: black !important;
     color: white !important;
 }
 
-.gpii-prefsEditor-theme-yb .gpii-prefsEditor-headerTitle {
-    background-color: transparent !important;
-    color: black !important;
-}
-
-.gpii-prefsEditor-theme-bw .gpii-prefsEditor-headerTitle {
-    background-color: transparent !important;
-    color: black !important;
-}
-
 .gpii-prefsEditor-theme-by .gpii-prefsEditor-headerTitle {
-    background-color: transparent !important;
-    color: black !important;
+    background-color: black !important;
+    color: yellow !important;
 }
 
 .gpii-prefsEditor-theme-wb .gpii-prefsEditor-headerTitle {
-    background-color: transparent !important;
-    color: white !important;
+    background-color: white !important;
+    color: black !important;
 }
 
 .gpii-prefsEditor-theme-yb .gpii-prefsEditor-headerClickableLabel,
@@ -673,18 +688,18 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
 }
 
 .gpii-prefsEditor-theme-bw .gpii-prefsEditor-addToMyPreferencesStar {
-    background-color: white !important;
-    color: black !important;
+    background-color: black !important;
+    color: white !important;
 }
 
 .gpii-prefsEditor-theme-by .gpii-prefsEditor-addToMyPreferencesStar {
-    background-color: yellow !important;
-    color: black !important;
+    background-color: black !important;
+    color: yellow !important;
 }
 
 .gpii-prefsEditor-theme-wb .gpii-prefsEditor-addToMyPreferencesStar {
-    background-color: black !important;
-    color: white !important;
+    background-color: white !important;
+    color: black !important;
 }
 
 .gpii-prefsEditor-theme-yb input:checked + .gpii-prefsEditor-addToMyPreferencesStar {
@@ -693,18 +708,18 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
 }
 
 .gpii-prefsEditor-theme-bw input:checked + .gpii-prefsEditor-addToMyPreferencesStar {
-    background-color: black !important;
-    color: white !important;
+    background-color: white !important;
+    color: black !important;
 }
 
 .gpii-prefsEditor-theme-by input:checked + .gpii-prefsEditor-addToMyPreferencesStar {
-    background-color: black !important;
-    color: yellow !important;
+    background-color: yellow !important;
+    color: black !important;
 }
 
 .gpii-prefsEditor-theme-wb input:checked + .gpii-prefsEditor-addToMyPreferencesStar {
-    background-color: white !important;
-    color: black !important;
+    background-color: black !important;
+    color: white !important;
 }
 
 .gpii-prefsEditor-theme-yb [title]:after{
@@ -725,26 +740,6 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
 .gpii-prefsEditor-theme-wb [title]:after{
     background-color: black !important;
     border: 1px solid white !important;
-}
-
-.gpii-prefsEditor-theme-yb .gpii-prefsEditor-headerImage {
-    background-color: yellow !important;
-    color: black !important;
-}
-
-.gpii-prefsEditor-theme-bw .gpii-prefsEditor-headerImage {
-    background-color: white !important;
-    color: black !important;
-}
-
-.gpii-prefsEditor-theme-by .gpii-prefsEditor-headerImage {
-    background-color: yellow !important;
-    color: black !important;
-}
-
-.gpii-prefsEditor-theme-wb .gpii-prefsEditor-headerImage {
-    background-color: black !important;
-    color: white !important;
 }
 
 .gpii-prefsEditor-theme-yb .gpii-increaseSize-magnifierPositionBackground,
