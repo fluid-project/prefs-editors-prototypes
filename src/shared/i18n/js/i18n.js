@@ -10,12 +10,13 @@ You may obtain a copy of the License at
 https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
-/*global fluid, jQuery, gpii*/
+/*global fluid, gpii, jQuery, navigator*/
 /*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
 
 (function ($, fluid) {
-    
-    fluid.defaults("gpii.adjuster.increaseSize", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"]
-    });
+    fluid.registerNamespace("gpii.prefs.i18n");
+
+    gpii.prefs.i18n.getDefaultLanguage = function () {
+        return (navigator.userLanguage || navigator.language).substring(0, 2).toLowerCase(); 
+    };
 })(jQuery, fluid);

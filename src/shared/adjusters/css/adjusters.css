@@ -22,6 +22,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'icomoon';
+    src:url('../fonts/icomoonPMT.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /*
     General preferences styling
 */
@@ -33,9 +40,9 @@ body {
 }
 
 .gpii-prefsEditor-preferenceGroup {
-    background:#ECEFEF;
+    background:#e7f1ef;
     width: 340px;
-    min-height: 100px;
+    //min-height: 100px;
 }
 
 .gpii-prefsEditor-category {
@@ -49,11 +56,14 @@ body {
 }
 
 .gpii-prefsEditor label {
-    font-size: 0.8em;
+    text-transform: none !important;
+}
+
+.gpii-uiOptions .headerTitle::first-letter {
+    text-transform: lowercase;
 }
 
 h2 {
-    border-top: 2px solid #dddddd;
     margin-bottom: 5px;
 }
 
@@ -189,7 +199,7 @@ input[type=checkbox], input[type=radio] {
     The slider's style
 */
 .gpii-prefsEditor .gpii-prefsEditor-slider-horz {
-    width: calc(330 * 0.8px - 2em);
+    width: calc(100% - 3em);
     margin: 2px !important;
     margin-bottom: 0.7em !important;
 }
@@ -404,27 +414,8 @@ input[type=checkbox], input[type=radio] {
     Style for magnifier follows checked font icons
 */
 .gpii-increaseSize-magnifierFollowsIconCheck {
-    background-color: #FFFFFF;
-    border: 3px double #636C7C;
-    border-radius: 6px 6px 6px 6px;
-    color: #FFFFFF;
-    font-size: 1.2em;
-    height: 1.2em;
     margin-left: 3.6em;
     margin-top: -2.1em;
-    position: relative;
-    width: 1.2em;
-}
-
-input:checked + .gpii-increaseSize-magnifierFollowsLabel > .gpii-increaseSize-magnifierFollowsIconCheck {
-    padding-right: 0.1em;
-    padding-top: 0.1em;
-    border: 2px solid;
-    background-color: 636C7C;
-}
-
-input:checked + .gpii-increaseSize-magnifierFollowsLabel > .gpii-increaseSize-magnifierFollowsIconCheck:before {
-    content: "\e00a";
 }
 
 /*
@@ -447,8 +438,20 @@ input:checked + .gpii-increaseSize-magnifierFollowsLabel > .gpii-increaseSize-ma
     margin-top: -1em;
 }
 
+.gpii-prefsEditor-previewPerSettingFrame-small {
+	height: 80px;
+}
+
+.gpii-prefsEditor-previewPerSettingFrame-medium {
+	height: 120px;
+}
+
+.gpii-prefsEditor-previewPerSettingFrame-large {
+	height: 150px;
+}
+
 .gpii-prefsEditor-previewPerSettingContainer {
-    background-color: #d3dfdf;
+    background-color: white;
     border: 1px solid #beced1;
     color: #B8C9CC;
     font-size: 2em;
@@ -606,7 +609,7 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
 
 .gpii-prefsEditor-theme-default {
     color: black;
-    background-color: #D3DFDF;
+    background-color: white;
 }
 
 .gpii-prefsEditor-theme-yb .gpii-prefsEditor-headerImage {
@@ -681,13 +684,144 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
     border: 1px solid;
 }
 
-.gpii-prefsEditor-theme-yb .gpii-increaseSize-magnifierFollowsIconCheck {
-    margin-top: -1.9em;
-}
-
 /*
     Style for sept-12 font icons
 */
 .gpii-prefsEditor-adjusterIcons-sept-12 {
     font-family: 'sept-12';
+}
+
+/*
+    Style for magnifier.invertColours adjuster
+*/
+.gpiic-increaseSize-magnifierInvertColours > .gpii-iconCheckAdjusterArea > .gpii-iconCheckAdjusterIcon {
+    font-family: 'icomoon';
+}
+
+.gpiic-increaseSize-magnifierInvertColours > .gpii-iconCheckAdjusterArea > .gpii-iconCheckAdjusterIcon:before {
+    content: "\e002";
+    font-size: 70px !important;
+}
+
+/*
+    Style for icon check adjuster
+*/
+.gpii-iconCheckAdjusterCheckIcon {
+    background-color: #FFFFFF;
+    border: 1px solid #636C7C;
+    border-radius: 4px 4px 4px 4px;
+    color: #FFFFFF;
+    font-size: calc(2.3em + 2px);
+    height: 1em;
+    position: relative;
+    width: calc(1em + 2px);
+}
+
+input:checked + label > .gpii-iconCheckAdjusterCheckIcon,
+input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon {
+    background-color: 636C7C;
+}
+
+input:checked + label > .gpii-iconCheckAdjusterCheckIcon:before,
+input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
+    content: "\e00a";
+}
+
+.gpii-iconCheckAdjusterArea {
+	cursor: pointer;
+	display: block;
+	background-color: white;
+	margin: 2px;
+	border-radius: 5px;
+}
+
+.gpii-iconCheckAdjusterDescription {
+	font-size: 1.5em !important;
+}
+
+.gpii-iconCheckAdjusterContainer {
+	display:table;
+    height: 70px;
+}
+
+.gpii-table-cell-valign-label {
+	cursor: inherit;
+	display: table-cell !important;
+	vertical-align: middle;
+	width: 100%;
+	padding-right: 10px;
+}
+
+/*
+    Style for icomoon font icons
+*/
+.gpii-prefsEditor-adjusterIcons-icomoon {
+    font-family: 'icomoon';
+}
+
+/*
+    Style for showCrosshairs adjuster
+*/
+.gpiic-increaseSize-showCrosshairs > .gpii-iconCheckAdjusterArea > .gpii-iconCheckAdjusterIcon {
+    font-family: 'icomoon';
+}
+
+.gpiic-increaseSize-showCrosshairs > .gpii-iconCheckAdjusterArea > .gpii-iconCheckAdjusterIcon:before {
+    content: "\e00f";
+    font-size: 70px !important;
+}
+
+/*
+    Style for followingElement adjuster
+*/
+
+.gpii-followingElement-mouseCursorIcon, .gpii-followingElement-textCursorIcon, .gpii-followingElement-keyboardFocusIcon {
+    font-family: 'icomoon';
+    font-size: 70px !important;
+}
+
+.gpii-followingElement-mouseCursorIcon:before {
+    content: "\e007";
+}
+
+.gpii-followingElement-textCursorIcon:before {
+    content: "\e000";
+}
+
+.gpii-followingElement-keyboardFocusIcon:before {
+    content: "\e005";
+}
+
+.gpii-iconCheckAdjusterAreaNoBorder {
+	border-radius: 0px !important;
+}
+
+.gpii-iconCheckAdjusterAreaTopOnlyBorder {
+	border-radius: 5px 5px 0px 0px !important;
+}
+
+.gpii-iconCheckAdjusterAreaBottomOnlyBorder {
+	border-radius: 0px 0px 5px 5px !important;
+}
+
+/*
+    Style for contrastTheme adjuster
+*/
+.gpii-contrastThemeLabel {
+	font-size: 1.5em !important;
+	border: 2px solid #000000 !important;
+	border-radius: 0 !important;
+	margin-right: 20px !important;
+	padding: 0px !important;
+	height: 3em !important;
+	width: 3em !important;
+	cursor: pointer;
+}
+
+.fl-prefsEditor .fl-choice label {
+	line-height: 3em !important;
+}
+
+.gpii-contrastThemeIndicator {
+	margin: 0 0 0 1.5em !important;
 }

@@ -14,8 +14,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 /*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
 
 (function ($, fluid) {
-    
-    fluid.defaults("gpii.adjuster.increaseSize", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"]
+
+    fluid.defaults("gpii.prefs.enactor.contrast", {
+        gradeNames: ["fluid.prefs.enactor.classSwapper", "autoInit"],
+        preferenceMap: {
+            "contrast.theme": {
+                "model.value": "default"
+            }
+        }
     });
 })(jQuery, fluid);

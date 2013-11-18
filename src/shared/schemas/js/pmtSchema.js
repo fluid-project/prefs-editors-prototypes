@@ -51,7 +51,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "panel": {
                 "type": "gpii.adjuster.increaseSize",
                 "container": ".gpii-prefsEditor-increaseSizePanel",
-                "template": "%prefix/increaseSizeTemplate.html",
+                "template": "%prefix/increaseSizeTemplateOld.html",
                 "message": "%prefix/increaseSize.json"
             }
         },

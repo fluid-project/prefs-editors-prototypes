@@ -47,7 +47,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         markup: {
             magnifierFollowsLabel:  "<div class=\"gpii-prefsEditor-adjusterIcons gpii-prefsEditor-adjusterIcons-sept-12 gpii-increaseSize-magnifierFollowsIcon\"></div>" +
-                    "<div class=\"gpii-prefsEditor-adjusterIcons gpii-prefsEditor-adjusterIcons-sept-12 gpii-increaseSize-magnifierFollowsIconCheck\"></div>" +
+                    "<div class=\"gpii-prefsEditor-adjusterIcons gpii-prefsEditor-adjusterIcons-sept-12 gpii-increaseSize-iconCheck gpii-increaseSize-magnifierFollowsIconCheck\"></div>" +
                     /*"%magnifierFollows" +*/
                     "<div class=\"gpii-increaseSize-magnifierFollowsLegend\">%magnifierFollows</div>"
         },

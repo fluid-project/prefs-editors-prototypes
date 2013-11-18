@@ -233,9 +233,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         selectors: {
             addToMyPreferencesStar: ".addToMyPreferencesLabel",
             preferencesSwitchSpeakText: "#presetButton",
-            speakTextPartialAdjusters: ".partially-expanded",
-            moreLess: ".more-options-label",
-            speakTextExtraAdjusters: ".fully-expanded",
+            speakTextPartialAdjusters: ".gpii-speakText-partially-expanded",
+            moreLess: ".gpiic-speakText-moreOptionsLabel",
+            speakTextExtraAdjusters: ".gpii-speakText-fully-expanded",
             speakTextHeader: ".gpii-speakTextPresetButton-label",
             speakTextTickIcon: ".white-tick-icon"
         },

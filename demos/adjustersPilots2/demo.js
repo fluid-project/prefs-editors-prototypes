@@ -16,18 +16,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 var demo = demo || {};
 
 (function ($, fluid) {
-    demo.initPMT = function (container, compOpts) {
-        demo.builder = fluid.prefs.builder({
-            primarySchema: gpii.primarySchema,
-            auxiliarySchema: gpii.pmt.auxiliarySchema
+    demo.initAdjusters = function (container, compOpts) {
+        demo.prefsBuilder = fluid.prefs.builder({
+            primarySchema: gpii.prefs.adjusters_pilot_2.primarySchema,
+            auxiliarySchema: gpii.prefs.adjusters_pilot_2.auxiliarySchema
         });
         
-        demo.instantiatePMT(container, compOpts, "gpii.pmt", gpii.prefs.i18n.getDefaultLanguage());
+        demo.instantiatePrefs(container, compOpts, "gpii.prefs.adjusters_pilot_2", gpii.prefs.i18n.getDefaultLanguage());
     };
     
-    demo.instantiatePMT = function (container, compOpts, prefsEditorType, language) {
+    demo.instantiatePrefs = function (container, compOpts, prefsType, language) {
         var baseOpts = {
-            prefsEditorType: prefsEditorType,
+            prefsEditorType: prefsType,
             components: {
                 prefsEditorLoader: {
                     options: {
@@ -37,6 +37,6 @@ var demo = demo || {};
             }
         };
         $.extend(true, baseOpts, compOpts);
-        fluid.invokeGlobalFunction(demo.builder.options.assembledPrefsEditorGrade, [container, baseOpts]);
+        fluid.invokeGlobalFunction(demo.prefsBuilder.options.assembledPrefsEditorGrade, [container, baseOpts]);
     };
 })(jQuery, fluid);
