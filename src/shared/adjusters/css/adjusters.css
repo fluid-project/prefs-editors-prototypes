@@ -609,7 +609,7 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
 
 .gpii-prefsEditor-theme-default {
     color: black;
-    background-color: white;
+    background-color: #d5e2de;
 }
 
 .gpii-prefsEditor-theme-yb .gpii-prefsEditor-headerImage {
