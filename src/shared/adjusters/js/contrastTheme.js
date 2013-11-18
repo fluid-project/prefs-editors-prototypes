@@ -33,10 +33,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         classes: {
-            "bw": "fl-theme-prefsEditor-bw fl-theme-bw",
-            "yb": "fl-theme-prefsEditor-yb fl-theme-yb",
-            "by": "fl-theme-prefsEditor-by fl-theme-by",
-            "wb": "fl-theme-prefsEditor-wb fl-theme-wb"
+            "bw": "fl-theme-prefsEditor-bw gpii-prefsEditor-theme-bw fl-theme-bw",
+            "yb": "fl-theme-prefsEditor-yb gpii-prefsEditor-theme-yb fl-theme-yb",
+            "by": "fl-theme-prefsEditor-by gpii-prefsEditor-theme-by fl-theme-by",
+            "wb": "fl-theme-prefsEditor-wb gpii-prefsEditor-theme-wb fl-theme-wb"
         },
         controlValues: {
             theme: ["bw", "yb", "by", "wb"]

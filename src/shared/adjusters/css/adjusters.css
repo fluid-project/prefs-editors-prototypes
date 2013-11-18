@@ -617,17 +617,53 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
     color: yellow !important;
 }
 
+.gpii-prefsEditor-theme-bw .gpii-prefsEditor-headerImage {
+    background-color: white !important;
+    color: black !important;
+}
+
+.gpii-prefsEditor-theme-by .gpii-prefsEditor-headerImage {
+    background-color: yellow !important;
+    color: black !important;
+}
+
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor-headerImage {
+    background-color: black !important;
+    color: white !important;
+}
+
 .gpii-prefsEditor-theme-yb .gpii-prefsEditor-headerTitle {
     background-color: transparent !important;
     color: black !important;
 }
 
-.gpii-prefsEditor-theme-yb .gpii-prefsEditor-headerClickableLabel {
+.gpii-prefsEditor-theme-bw .gpii-prefsEditor-headerTitle {
+    background-color: transparent !important;
+    color: black !important;
+}
+
+.gpii-prefsEditor-theme-by .gpii-prefsEditor-headerTitle {
+    background-color: transparent !important;
+    color: black !important;
+}
+
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor-headerTitle {
+    background-color: transparent !important;
+    color: white !important;
+}
+
+.gpii-prefsEditor-theme-yb .gpii-prefsEditor-headerClickableLabel,
+.gpii-prefsEditor-theme-bw .gpii-prefsEditor-headerClickableLabel,
+.gpii-prefsEditor-theme-by .gpii-prefsEditor-headerClickableLabel,
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor-headerClickableLabel {
     background-color: transparent !important;
     color: transparent !important;
 }
 
-.gpii-prefsEditor-theme-yb .gpii-prefsEditor-addToMyPreferencesLabel {
+.gpii-prefsEditor-theme-yb .gpii-prefsEditor-addToMyPreferencesLabel,
+.gpii-prefsEditor-theme-bw .gpii-prefsEditor-addToMyPreferencesLabel,
+.gpii-prefsEditor-theme-by .gpii-prefsEditor-addToMyPreferencesLabel,
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor-addToMyPreferencesLabel {
     background-color: transparent !important;
 }
 
@@ -636,14 +672,59 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
     color: black !important;
 }
 
+.gpii-prefsEditor-theme-bw .gpii-prefsEditor-addToMyPreferencesStar {
+    background-color: white !important;
+    color: black !important;
+}
+
+.gpii-prefsEditor-theme-by .gpii-prefsEditor-addToMyPreferencesStar {
+    background-color: yellow !important;
+    color: black !important;
+}
+
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor-addToMyPreferencesStar {
+    background-color: black !important;
+    color: white !important;
+}
+
 .gpii-prefsEditor-theme-yb input:checked + .gpii-prefsEditor-addToMyPreferencesStar {
     background-color: black !important;
     color: yellow !important;
 }
 
- .gpii-prefsEditor-theme-yb [title]:after{
+.gpii-prefsEditor-theme-bw input:checked + .gpii-prefsEditor-addToMyPreferencesStar {
+    background-color: black !important;
+    color: white !important;
+}
+
+.gpii-prefsEditor-theme-by input:checked + .gpii-prefsEditor-addToMyPreferencesStar {
+    background-color: black !important;
+    color: yellow !important;
+}
+
+.gpii-prefsEditor-theme-wb input:checked + .gpii-prefsEditor-addToMyPreferencesStar {
+    background-color: white !important;
+    color: black !important;
+}
+
+.gpii-prefsEditor-theme-yb [title]:after{
     background-color: black !important;
     border: 1px solid yellow !important;
+}
+
+.gpii-prefsEditor-theme-bw [title]:after{
+    background-color: white !important;
+    border: 1px solid black !important;
+}
+
+.gpii-prefsEditor-theme-by [title]:after{
+    background-color: yellow !important;
+    border: 1px solid black !important;
+}
+
+.gpii-prefsEditor-theme-wb [title]:after{
+    background-color: black !important;
+    border: 1px solid white !important;
 }
 
 .gpii-prefsEditor-theme-yb .gpii-prefsEditor-headerImage {
@@ -651,36 +732,84 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
     color: black !important;
 }
 
-.gpii-prefsEditor-theme-yb .gpii-increaseSize-magnifierPositionBackground {
+.gpii-prefsEditor-theme-bw .gpii-prefsEditor-headerImage {
+    background-color: white !important;
+    color: black !important;
+}
+
+.gpii-prefsEditor-theme-by .gpii-prefsEditor-headerImage {
+    background-color: yellow !important;
+    color: black !important;
+}
+
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor-headerImage {
+    background-color: black !important;
+    color: white !important;
+}
+
+.gpii-prefsEditor-theme-yb .gpii-increaseSize-magnifierPositionBackground,
+.gpii-prefsEditor-theme-bw .gpii-increaseSize-magnifierPositionBackground,
+.gpii-prefsEditor-theme-by .gpii-increaseSize-magnifierPositionBackground,
+.gpii-prefsEditor-theme-wb .gpii-increaseSize-magnifierPositionBackground {
     background-color: transparent !important;
 }
 
-.gpii-prefsEditor-theme-yb .gpii-prefsEditor-indicator {
+.gpii-prefsEditor-theme-yb .gpii-prefsEditor-indicator,
+.gpii-prefsEditor-theme-bw .gpii-prefsEditor-indicator,
+.gpii-prefsEditor-theme-by .gpii-prefsEditor-indicator,
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor-indicator {
     background-color: transparent !important;
 }
 
-.gpii-prefsEditor-theme-yb .gpii-increaseSize-plusMinusNumericalWidget {
+.gpii-prefsEditor-theme-yb .gpii-increaseSize-plusMinusNumericalWidget,
+.gpii-prefsEditor-theme-bw .gpii-increaseSize-plusMinusNumericalWidget,
+.gpii-prefsEditor-theme-by .gpii-increaseSize-plusMinusNumericalWidget,
+.gpii-prefsEditor-theme-wb .gpii-increaseSize-plusMinusNumericalWidget {
     width: calc(100% - 2px) !important;
     border: 1px solid !important;
 }
 
-.gpii-prefsEditor-theme-yb .gpii-increaseSize-plusMinusNumericalValue {
+.gpii-prefsEditor-theme-yb .gpii-increaseSize-plusMinusNumericalValue,
+.gpii-prefsEditor-theme-bw .gpii-increaseSize-plusMinusNumericalValue,
+.gpii-prefsEditor-theme-by .gpii-increaseSize-plusMinusNumericalValue,
+.gpii-prefsEditor-theme-wb .gpii-increaseSize-plusMinusNumericalValue {
     margin-bottom: 1px !important;
 }
 
-.gpii-prefsEditor-theme-yb .gpii-increaseSize-plusMinusNumericalMinReached {
+.gpii-prefsEditor-theme-yb .gpii-increaseSize-plusMinusNumericalMinReached,
+.gpii-prefsEditor-theme-bw .gpii-increaseSize-plusMinusNumericalMinReached,
+.gpii-prefsEditor-theme-by .gpii-increaseSize-plusMinusNumericalMinReached,
+.gpii-prefsEditor-theme-wb .gpii-increaseSize-plusMinusNumericalMinReached {
     color: gray !important;
 }
 
-.gpii-prefsEditor-theme-yb .gpii-prefsEditor input:focus + label, .gpii-prefsEditor-theme-yb .gpii-prefsEditor .gpii-prefsEditor-choice input:focus ~ label {
+.gpii-prefsEditor-theme-yb .gpii-prefsEditor input:focus + label, .gpii-prefsEditor-theme-yb .gpii-prefsEditor .gpii-prefsEditor-choice input:focus ~ label,
+.gpii-prefsEditor-theme-bw .gpii-prefsEditor input:focus + label, .gpii-prefsEditor-theme-bw .gpii-prefsEditor .gpii-prefsEditor-choice input:focus ~ label,
+.gpii-prefsEditor-theme-by .gpii-prefsEditor input:focus + label, .gpii-prefsEditor-theme-by .gpii-prefsEditor .gpii-prefsEditor-choice input:focus ~ label,
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor input:focus + label, .gpii-prefsEditor-theme-wb .gpii-prefsEditor .gpii-prefsEditor-choice input:focus ~ label {
     outline: none !important;
 }
 
 .gpii-prefsEditor-theme-yb .gpii-increaseSize-plusMinusNumericalValue:focus, .gpii-prefsEditor-theme-yb .gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-yb.gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-yb .selectable {
-    outline: 2px solid #FFFF00 !important;
+    outline: 2px solid yellow !important;
 }
 
-.gpii-prefsEditor-theme-yb .gpii-increaseSize-magnifierFollowsIcon {
+.gpii-prefsEditor-theme-bw .gpii-increaseSize-plusMinusNumericalValue:focus, .gpii-prefsEditor-theme-bw .gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-bw.gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-bw .selectable {
+    outline: 2px solid black !important;
+}
+
+.gpii-prefsEditor-theme-by .gpii-increaseSize-plusMinusNumericalValue:focus, .gpii-prefsEditor-theme-by .gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-by.gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-by .selectable {
+    outline: 2px solid black !important;
+}
+
+.gpii-prefsEditor-theme-wb .gpii-increaseSize-plusMinusNumericalValue:focus, .gpii-prefsEditor-theme-wb .gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-wb.gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-wb .selectable {
+    outline: 2px solid white !important;
+}
+
+.gpii-prefsEditor-theme-yb .gpii-increaseSize-magnifierFollowsIcon,
+.gpii-prefsEditor-theme-bw .gpii-increaseSize-magnifierFollowsIcon,
+.gpii-prefsEditor-theme-by .gpii-increaseSize-magnifierFollowsIcon,
+.gpii-prefsEditor-theme-wb .gpii-increaseSize-magnifierFollowsIcon {
     border: 1px solid;
 }
 
