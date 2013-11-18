@@ -105,18 +105,6 @@ textarea:focus, input:focus {
     display: none;
 }
 
-.gpii-volume-partially-expanded {
-    display: none;
-}
-
-.gpii-language-partially-expanded {
-    display: none;
-}
-
-.gpii-speakText-fully-expanded {
-    display: none;
-}
-
 .gpii-speakText-switch {
     font-size:135%;
     float: left;
