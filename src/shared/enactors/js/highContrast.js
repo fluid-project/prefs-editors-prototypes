@@ -24,7 +24,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         styles: {
             defaultTheme: "fl-theme-prefsEditor-default gpii-prefsEditor-theme-default",
-            contrastTheme: "fl-theme-prefsEditor-yb gpii-prefsEditor-theme-yb"
+            contrastTheme: ""
         },
         invokers: {
             toggleContrast: {
