@@ -31,10 +31,21 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "template": "%prefix/addContrastTemplate.html",
                 "message": "%prefix/contrast.json",
                 "type": "gpii.adjuster.addContrast",
-                "panels": ["highContrast"]
+                "panels": ["contrastTheme"]
             }
         },
-        "highContrast": {
+        "contrastTheme": {
+            "type": "gpii.primarySchema.contrast.theme",
+            "enactor": {
+                "type": "gpii.enactor.contrastTheme"
+            },
+            "panel": {
+                "type": "gpii.adjuster.contrastTheme",
+                "container": ".gpiic-contrastTheme",
+                "template": "%prefix/contrastThemeTemplate.html"
+            }
+        },
+        /*"highContrast": {
             "type": "gpii.primarySchema.highContrast",
             "enactor": {
                 "type": "gpii.enactor.highContrast"
@@ -45,7 +56,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "template": "%prefix/highContrastTemplate.html",
                 "message": "%prefix/contrast.json"
             }
-        },
+        },*/
         "increaseSize": {
             "type": "increaseSize",
             "panel": {

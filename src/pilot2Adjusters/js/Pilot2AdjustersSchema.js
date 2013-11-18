@@ -35,7 +35,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "default": "",
             "enum": ["mousecursor", "textcursor", "keyboardfocus"]
         },
-        "contrast.theme": {
+        "gpii.primarySchema.contrast.theme": {
             "type": "string",
             "default": "",
             "enum": ["bw", "yb", "by", "wb"]
@@ -112,7 +112,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         "contrastTheme": {
-            "type": "contrast.theme",
+            "type": "gpii.primarySchema.contrast.theme",
             "classes": {
                 "bw": "fl-theme-prefsEditor-bw fl-theme-bw",
                 "yb": "fl-theme-prefsEditor-yb fl-theme-yb",
@@ -120,11 +120,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "wb": "fl-theme-prefsEditor-wb fl-theme-wb"
             },
             "enactor": {
-                "type": "gpii.prefs.enactor.contrast",
+                "type": "gpii.enactor.contrastTheme",
                 "classes": "@contrastTheme.classes"
             },
             "panel": {
-                "type": "gpii.prefs.panel.contrastTheme",
+                "type": "gpii.adjuster.contrastTheme",
                 "container": ".gpiic-contrast",
                 "classnameMap": {"theme": "@contrastTheme.classes"},
                 "template": "%prefix/contrastThemeTemplate.html"

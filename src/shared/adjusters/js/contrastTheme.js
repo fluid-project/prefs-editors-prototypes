@@ -15,23 +15,42 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     
-    gpii.prefs.panel.arrayOverridePolicy = function (target, source) {
+    fluid.registerNamespace("gpii.prefs.helpers");
+
+    gpii.prefs.helpers.arrayOverridePolicy = function (target, source) {
         source = fluid.makeArray(source);
         return source;
     };
     
-    fluid.defaults("gpii.prefs.panel.contrastTheme", {
+    fluid.defaults("gpii.adjuster.contrastTheme", {
         gradeNames: ["fluid.prefs.panel.contrast", "autoInit"],
         mergePolicy: {
-            "controlValues.theme": gpii.prefs.panel.arrayOverridePolicy
+            "controlValues.theme": gpii.prefs.helpers.arrayOverridePolicy
         },
         preferenceMap: {
-            "contrast.theme": {
+            "gpii.primarySchema.contrast.theme": {
                 "model.value": "default"
             }
         },
+        classes: {
+            "bw": "fl-theme-prefsEditor-bw fl-theme-bw",
+            "yb": "fl-theme-prefsEditor-yb fl-theme-yb",
+            "by": "fl-theme-prefsEditor-by fl-theme-by",
+            "wb": "fl-theme-prefsEditor-wb fl-theme-wb"
+        },
         controlValues: {
             theme: ["bw", "yb", "by", "wb"]
+        },
+        invokers: {
+            style: {
+                funcName: "fluid.prefs.panel.contrast.style",
+                args: [
+                    "{that}.dom.themeLabel", "{that}.stringBundle.theme",
+                    "{that}.options.markup.label", "{that}.options.controlValues.theme",
+                    "{that}.options.classes"
+                ],
+                dynamic: true
+            }
         }
     });
 })(jQuery, fluid);
