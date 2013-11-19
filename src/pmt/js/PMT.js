@@ -53,10 +53,4 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.concatStrings = function (s1, s2) {
         return s1 + s2;
     };
-
-    fluid.defaults("gpii.pmt.previewPerSettingEnhanced", {
-        gradeNames: "fluid.littleComponent",
-        outerPreviewEnhancerOptions: "{originalEnhancerOptions}.options.originalUserOptions",
-        emptyComponentType: "fluid.emptySubcomponent"
-    });
 })(jQuery, fluid);

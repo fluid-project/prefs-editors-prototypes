@@ -14,9 +14,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 /*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
 
 (function ($, fluid) {
-    
+
     fluid.defaults("gpii.adjuster.contrast", {
-        gradeNames: ["fluid.prefs.panel", "gpii.pmt.previewPerSettingEnhanced", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.highContrast": {
                 "model.contrast": "default"
@@ -54,9 +54,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             panelLabel: ".gpiic-headerTitle",
             addToMyPreferencesLabel: ".gpiic-addToMyPreferencesLabel",
             contrastAdjusters: ".gpiic-category",
-            contrastPreview: ".gpiic-contrast-previewPerSettingFrameContrast"
         },
-        selectorsToIgnore: ["contrastAdjusters", "addToMyPreferencesLabel", "contrastPreview"],
+        selectorsToIgnore: ["contrastAdjusters", "addToMyPreferencesLabel"],
         protoTree: {
             valueCheckbox: "${contrast}",
             headingLabel: {messagekey: "contrast"},
@@ -68,54 +67,25 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         strings: {
             tooltipChecked: "{that}.stringBundle.tooltipChecked",
             tooltipUnchecked: "{that}.stringBundle.tooltipUnchecked"
-        },
-        components: {
-            preview: {
-                type: "fluid.prefs.preview",
-                createOnEvent: "afterRender",
-                container: "{that}.dom.contrastPreview",
-                options: {
-                    templateUrl: "../../src/shared/preview/html/contrastPreview.html",
-                    components: {
-                        enhancer: {
-                            type: "fluid.uiEnhancer",
-                            container: "{preview}.enhancerContainer",
-                            createOnEvent: "onReady",
-                            options: {
-                                gradeNames: ["fluid.prefs.stringBundle"],
-                                members: {
-                                    messageResolver: "{prefsEditorLoader}.msgBundle"
-                                },
-                                strings: {
-                                    previewText: "{that}.stringBundle.contrastPreviewText"
-                                },
-                                selectors: {
-                                    previewText: ".gpiic-preview-per-setting-label"
-                                },
-                                listeners: {
-                                    "onCreate.setText": {
-                                        "this": "{that}.dom.previewText",
-                                        "method": "text",
-                                        "args": ["{that}.options.strings.previewText"]
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        
-        distributeOptions: [{
-            source: "{that}.options.outerPreviewEnhancerOptions",
-            target: "{that preview enhancer}.options"
-        }, {
-            source: "{that}.options.emptyComponentType",
-            target: "{that preview enhancer magnifier}.type"
-        }]
+        }
     });
-    
+
     gpii.adjuster.contrast.setContrastAdjusters = function (contrastAdjuster, flag) {
         contrastAdjuster[flag ? "show" : "hide"]();
     };
+
+    fluid.defaults("gpii.adjuster.contrast.preview", {
+        gradeNames: ["gpii.adjuster.previewWithText", "autoInit"],
+        selectorsToIgnore: ["contrastAdjusters", "addToMyPreferencesLabel", "preview"],
+        previewURL: "",
+        previewEnactors: {
+            contrast: {
+                type: "gpii.enactor.contrast",
+                container: "{enhancer}.container",
+                options: {
+                    gradeNames: ["gpii.enactors.previewConnections"]
+                }
+            }
+        }
+    });
 })(jQuery, fluid);

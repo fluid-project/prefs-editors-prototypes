@@ -34,7 +34,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.adjuster.contrast",
                 "container": ".gpiic-prefsEditor-contrastPanel",
                 "template": "%prefix/contrastNewTemplate.html",
-                "message": "%prefix/contrast.json"
+                "message": "%prefix/contrast.json",
+                "gradeNames": ["gpii.adjuster.contrast.preview", "gpii.adjuster.textSize.preview"],
+                "previewURL": "../../src/shared/preview/html/contrastPreview.html"
             }
         },
         "textSize": {
@@ -46,7 +48,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.adjuster.textSize",
                 "container": ".gpiic-prefsEditor-textSize",
                 "template": "%prefix/textSizeTemplate.html",
-                "message": "%prefix/textSize.json"
+                "message": "%prefix/textSize.json",
+                "gradeNames": ["gpii.adjuster.textSize.preview", "gpii.adjuster.contrast.preview"],
+                "previewURL": "../../src/shared/preview/html/textPreview.html"
             }
         },
         "cursorSize": {
@@ -58,7 +62,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.adjuster.cursorSize",
                 "container": ".gpiic-prefsEditor-cursorSize",
                 "template": "%prefix/cursorSizeTemplate.html",
-                "message": "%prefix/cursorSize.json"
+                "message": "%prefix/cursorSize.json",
+                "gradeNames": ["gpii.adjuster.cursorSize.preview", "gpii.adjuster.contrast.preview"],
+                "previewURL": "../../src/shared/preview/html/cursorPreview.html"
             }
         },
         "magnifier": {
@@ -70,7 +76,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.adjuster.magnifier",
                 "container": ".gpiic-prefsEditor-magnifier",
                 "template": "%prefix/magnifierTemplate.html",
-                "message": "%prefix/magnifier.json"
+                "message": "%prefix/magnifier.json",
+                "gradeNames": ["gpii.adjuster.magnifier.preview", "gpii.adjuster.textSize.preview", "gpii.adjuster.contrast.preview"],
+                "previewURL": "../../src/shared/preview/html/textPreview.html"
             }
         },
         "magnifierPosition": {

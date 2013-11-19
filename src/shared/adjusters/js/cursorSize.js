@@ -16,7 +16,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
 
     fluid.defaults("gpii.adjuster.cursorSize", {
-        gradeNames: ["fluid.prefs.panel", "gpii.pmt.previewPerSettingEnhanced", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.cursorSize": {
                 "model.value": "default",
@@ -25,22 +25,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "controlValues.cursorSize.divisibleBy": "divisibleBy"
             }
         },
-        components: {
-            cursorSizePreview: {
-                type: "fluid.prefs.preview",
-                createOnEvent: "afterRender",
-                container: "{that}.dom.cursorSizePreview",
-                options: {
-                    templateUrl: "../../src/shared/preview/html/cursorPreview.html"
-                }
-            }
-        },
         selectors: {
             cursorSizeSlider: ".gpiic-increaseSize-cursor-size-slider",
-            cursorSizeLabel: ".gpiic-increaseSize-cursor-size-label",
-            cursorSizePreview: ".gpiic-increaseSize-previewPerSettingFrameCursorSize"
+            cursorSizeLabel: ".gpiic-increaseSize-cursor-size-label"
         },
-        selectorsToIgnore: ["cursorSizePreview"],
         protoTree: {
             cursorSizeLabel: {messagekey: "cursorSizeLabel"},
             cursorSizeSlider: {
@@ -65,18 +53,21 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             orientation: "horizontal",
             step: 0.2,
             range: "min"
-        },
+        }
+    });
 
-        distributeOptions: [{
-            source: "{that}.options.outerPreviewEnhancerOptions",
-            target: "{that cursorSizePreview enhancer}.options"
-        }, {
-            source: "{that}.options.emptyComponentType",
-            target: "{that cursorSizePreview enhancer textSize}.type"
-        }, {
-            source: "{that}.options.emptyComponentType",
-            target: "{that cursorSizePreview enhancer magnifier}.type"
-        }]
+    fluid.defaults("gpii.adjuster.cursorSize.preview", {
+        gradeNames: ["gpii.adjuster.preview", "autoInit"],
+        previewURL: "",
+        previewEnactors: {
+            cursorSize: {
+                type: "gpii.enactor.cursorSize",
+                container: "{enhancer}.container",
+                options: {
+                    gradeNames: ["gpii.enactors.previewConnections"]
+                }
+            }
+        }
     });
 
 })(jQuery, fluid);

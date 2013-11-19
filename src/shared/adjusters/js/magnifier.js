@@ -16,7 +16,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
 
     fluid.defaults("gpii.adjuster.magnifier", {
-        gradeNames: ["fluid.prefs.panel", "gpii.pmt.previewPerSettingEnhanced", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.magnification": {
                 "model.magnification": "default",
@@ -28,48 +28,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         members: {
             messageResolver: "{prefsEditorLoader}.msgBundle"
         },
-        components: {
-            magnifierPreview: {
-                type: "fluid.prefs.preview",
-                createOnEvent: "afterRender",
-                container: "{that}.dom.magnifierPreview",
-                options: {
-                    templateUrl: "../../src/shared/preview/html/textPreview.html",
-                    components: {
-                        enhancer: {
-                            type: "fluid.uiEnhancer",
-                            container: "{magnifierPreview}.enhancerContainer",
-                            createOnEvent: "onReady",
-                            options: {
-                                gradeNames: ["fluid.prefs.stringBundle"],
-                                members: {
-                                    messageResolver: "{prefsEditorLoader}.msgBundle"
-                                },
-                                strings: {
-                                    previewText: "{that}.stringBundle.previewText"
-                                },
-                                selectors: {
-                                    previewText: ".gpiic-preview-per-setting-label"
-                                },
-                                listeners: {
-                                    "onCreate.setText": {
-                                        "this": "{that}.dom.previewText",
-                                        "method": "text",
-                                        "args": ["{that}.options.strings.previewText"]
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         selectors: {
             magnifierLabel: ".gpiic-magnifier-label",
-            magnifierStepper: ".gpiic-magnifier-stepper",
-            magnifierPreview: ".gpiic-magnifier-preview"
+            magnifierStepper: ".gpiic-magnifier-stepper"
         },
-        selectorsToIgnore: ["magnifierPreview"],
         protoTree: {
             magnifierLabel: {messagekey: "magnifierLabel"},
             magnifierStepper: {
@@ -91,10 +53,21 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     }
                 }
             }
-        },
-        distributeOptions: [{
-            source: "{that}.options.outerPreviewEnhancerOptions",
-            target: "{that magnifierPreview enhancer}.options"
-        }]
+        }
     });
+
+    fluid.defaults("gpii.adjuster.magnifier.preview", {
+        gradeNames: ["gpii.adjuster.previewWithText", "autoInit"],
+        previewURL: "",
+        previewEnactors: {
+            magnifier: {
+                type: "gpii.enactor.magnifier",
+                container: "{enhancer}.container",
+                options: {
+                    gradeNames: ["gpii.enactors.previewConnections"]
+                }
+            }
+        }
+    });
+
 })(jQuery, fluid);

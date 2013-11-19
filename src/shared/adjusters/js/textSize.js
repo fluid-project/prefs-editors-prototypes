@@ -16,7 +16,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
 
     fluid.defaults("gpii.adjuster.textSize", {
-        gradeNames: ["fluid.prefs.panel", "gpii.pmt.previewPerSettingEnhanced", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.fontSize": {
                 "model.fontSize": "default",
@@ -25,48 +25,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "fontSize.range.step": "divisibleBy"
             }
         },
-        components: {
-            textSizePreview: {
-                type: "fluid.prefs.preview",
-                createOnEvent: "afterRender",
-                container: "{that}.dom.textSizePreview",
-                options: {
-                    templateUrl: "../../src/shared/preview/html/textPreview.html",
-                    components: {
-                        enhancer: {
-                            type: "fluid.uiEnhancer",
-                            container: "{textSizePreview}.enhancerContainer",
-                            createOnEvent: "onReady",
-                            options: {
-                                gradeNames: ["fluid.prefs.stringBundle"],
-                                members: {
-                                    messageResolver: "{prefsEditorLoader}.msgBundle"
-                                },
-                                strings: {
-                                    previewText: "{that}.stringBundle.previewText"
-                                },
-                                selectors: {
-                                    previewText: ".gpiic-preview-per-setting-label"
-                                },
-                                listeners: {
-                                    "onCreate.setText": {
-                                        "this": "{that}.dom.previewText",
-                                        "method": "text",
-                                        "args": ["{that}.options.strings.previewText"]
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         selectors: {
             textSizeLabel: ".gpiic-textSize-label",
-            textSizePreview: ".gpiic-textSize-preview",
             textSizeStepper: ".gpiic-textSize-stepper"
         },
-        selectorsToIgnore: ["textSizePreview"],
         protoTree: {
             textSizeLabel: {messagekey: "textSizeLabel"},
             textSizeStepper: {
@@ -88,14 +50,21 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     }
                 }
             },
-        },
-        distributeOptions: [{
-            source: "{that}.options.outerPreviewEnhancerOptions",
-            target: "{that textSizePreview enhancer}.options"
-        }, {
-            source: "{that}.options.emptyComponentType",
-            target: "{that textSizePreview enhancer magnifier}.type"
-        }]
+        }
+    });
+
+    fluid.defaults("gpii.adjuster.textSize.preview", {
+        gradeNames: ["gpii.adjuster.previewWithText", "autoInit"],
+        previewURL: "",
+        previewEnactors: {
+            textSize: {
+                type: "gpii.enactor.textSize",
+                container: "{enhancer}.container",
+                options: {
+                    gradeNames: ["gpii.enactors.previewConnections"]
+                }
+            }
+        }
     });
 
 })(jQuery, fluid);
