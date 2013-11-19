@@ -100,7 +100,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "classnameMap": {"magnifierFollows": "@magnifierFollows.classes"}
             }
         },
-        groups: {
+        "groups": {
             "increaseSize": {
                 "type": "gpii.panel.increaseSize",
                 "container": ".gpiic-prefsEditor-increaseSizePanel",

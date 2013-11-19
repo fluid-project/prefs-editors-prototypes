@@ -69,29 +69,8 @@
     padding-top: 15px;
 }
 
-#speechRate {
-    text-align: center;
-    border: none;
-    width: 200px;
-    font-size: 23px;
-    display: inline !important;
-}
-
-#speechRateMinus {
-    font-size: 50px;
-}
-
-#speechRatePlus {
-    font-size: 30px;
-    font-weight: bold;
-}
-
-#speechRate .gpii-speakText-speechRate-stepper {
-    width: 10em;
-}
-
-#speechRate .gpii-textfieldStepper-valueField {
-    width: 80%;
+.fl-prefsEditor .gpii-speakText-speechRate-stepper .gpii-textfieldStepper-valueField {
+    width: 12em;
     text-align: center;
 }
 

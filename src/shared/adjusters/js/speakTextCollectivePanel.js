@@ -11,78 +11,27 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
 (function (fluid) {
-    fluid.defaults("gpii.adjuster.CollectivePanel", {
-        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.keyEcho", "gpii.adjuster.wordEcho", "gpii.adjuster.speakTutorialMessages", "gpii.adjuster.screenReaderTTSEnabled", "gpii.adjuster.announceCapitals", "gpii.adjuster.punctuationVerbosity", "gpii.adjuster.screenReaderBrailleOutput", "gpii.adjuster.auditoryOutLanguage", "gpii.adjuster.speechRate", "autoInit"],
+    fluid.defaults("gpii.panel.visualAlternatives", {
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        selectors: {
+            addToMyPreferencesStar: ".addToMyPreferencesLabel",
+            preferencesSwitchSpeakText: "#presetButton",
+            speakTextPartialAdjusters: ".gpii-speakText-partially-expanded",
+            moreLess: ".gpiic-speakText-moreOptionsLabel",
+            speakTextExtraAdjusters: ".gpii-speakText-fully-expanded",
+            speakTextHeader: ".gpiic-speakTextPresetButton-label",
+            speakTextTickIcon: ".white-tick-icon"
+        },
+        selectorsToIgnore: ["addToMyPreferencesStar", "preferencesSwitchSpeakText", "speakTextPartialAdjusters", "moreLess", "speakTextExtraAdjusters", "speakTextTickIcon"],
         protoTree: {
             preferencesSwitchSpeakText: {messagekey: "speakTextPresetButtonLabel"},
-
-            screenReaderTTSEnabled: "${screenReaderTTSEnabled}",
-            screenReaderTTSEnabledLabel: {messagekey: "screenReaderTTSEnabledLabel"},
+            speakTextHeader: {messagekey: "speakTextPresetButtonLabel"},
 
             addOrRemovePreference: "${addOrRemovePreference}",
-            addOrRemovePreferenceLabel: {messagekey: "addOrRemovePreferenceLabelOff"},
-
-            speechRate: {
-                decorators: {
-                    type: "fluid",
-                    func: "gpii.adjuster.textfieldStepper",
-                    options: {
-                        sourceApplier: "{that}.applier",
-                        rules: {
-                            "value": "value"
-                        },
-                        model: {
-                            value: "{that}.model.value"
-                        },
-                        range: "{that}.options.controlValues.speechRate"
-                    }
-                }
-            },
-            speechRateLabel: {messagekey: "speechRateLabel"},
-            speechRateMinus: {messagekey: "speechRateMinus"},
-            speechRatePlus: {messagekey: "speechRatePlus"},
-
-            auditoryOutLanguage: {
-                selection: "${auditoryOutLanguage}",
-                optionlist: "${{that}.options.controlValues.auditoryOutLanguage}"
-            },
-            auditoryOutLanguageLabel: {messagekey: "auditoryOutLanguageLabel"},
-
-            expander: {
-                type: "fluid.renderer.selection.inputs",
-                rowID: "punctuationVerbosityRow",
-                labelID: "punctuationVerbosityOptionLabel",
-                inputID: "punctuationVerbosityInput",
-                selectID: "punctuationVerbosity-selection",
-                tree: {
-                    optionnames: "${{that}.options.controlValues.punctuationVerbosity}",
-                    optionlist: "${{that}.options.controlValues.punctuationVerbosity}",
-                    selection: "${punctuationVerbosity}"
-                }
-            },
-            punctuationVerbosityLabel: {messagekey: "punctuationVerbosityLabel"},
-            punctuationVerbosityDescription: {messagekey: "punctuationVerbosityDescription"},
-
-            announceCapitals: "${announceCapitals}",
-            announceCapitalsLabel: {messagekey: "announceCapitalsLabel"},
-
-            speakTutorialMessages: "${speakTutorialMessages}",
-            speakTutorialMessagesLabel: {messagekey: "speakTutorialMessagesLabel"},
-
-            keyEcho: "${keyEcho}",
-            keyEchoLabel: {messagekey: "keyEchoLabel"},
-
-            wordEcho: "${wordEcho}",
-            wordEchoLabel: {messagekey: "wordEchoLabel"},
-
-            screenReaderBrailleOutput: "${screenReaderBrailleOutput}",
-            screenReaderBrailleOutputLabel: {messagekey: "screenReaderBrailleOutputLabel"},
-            screenReaderBrailleOutputDescription: {messagekey: "screenReaderBrailleOutputDescription"}
+            addOrRemovePreferenceLabel: {messagekey: "addOrRemovePreferenceLabelOff"}
         },
-
         partiallyExpandedSlideSpeed: 500,
         fullyExpandedSlideSpeed: 600,
-
         model: {
             partialAdjustersVisibility: false,
             extraAdjustersVisibility: false
@@ -95,10 +44,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             onHideSpeakTextTickIcon: null
         },
         listeners: {
-            "afterRender.activateCombobox": {
-                "listener": "gpii.adjuster.CollectivePanel.activateCombobox",
-                "args": ["{that}"]
-            },
             "afterRender.setATTRaddToMyPreferencesStar": {
                 "this": "{that}.dom.addToMyPreferencesStar",
                 "method": "attr",
@@ -123,11 +68,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "onCreate.addExtraVisibilityListener": {
                 "listener": "{that}.applier.modelChanged.addListener",
                 "args": ["extraAdjustersVisibility", "{that}.showHideExtra"]
-            },
-            "afterRender.setTextSpeakTextHeader": {
-                "this": "{that}.dom.speakTextHeader",
-                "method": "text",
-                "args": ["{that}.options.strings.speakTextHeader"]
             },
             "afterRender.bindEventMoreLess": {
                 "this": "{that}.dom.moreLess",
@@ -230,16 +170,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 dynamic: true
             }
         },
-        selectors: {
-            addToMyPreferencesStar: ".addToMyPreferencesLabel",
-            preferencesSwitchSpeakText: "#presetButton",
-            speakTextPartialAdjusters: ".gpii-speakText-partially-expanded",
-            moreLess: ".gpiic-speakText-moreOptionsLabel",
-            speakTextExtraAdjusters: ".gpii-speakText-fully-expanded",
-            speakTextHeader: ".gpii-speakTextPresetButton-label",
-            speakTextTickIcon: ".white-tick-icon"
-        },
-        selectorsToIgnore: ["addToMyPreferencesStar", "preferencesSwitchSpeakText", "speakTextPartialAdjusters", "moreLess", "speakTextExtraAdjusters", "speakTextHeader", "speakTextTickIcon"],
         members: {
             messageResolver: "{prefsEditorLoader}.msgBundle"
         },
@@ -255,12 +185,5 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             normalText: "normal-font-weight"
         }
     });
-
-    gpii.adjuster.CollectivePanel.activateCombobox = function (that) {
-        $("#auditoryOutLanguage").combobox();
-        $("#auditoryOutLanguage").change(function (event, newValue) {
-            that.applier.requestChange("auditoryOutLanguage", newValue);
-        });
-    };
 
 })(fluid);
