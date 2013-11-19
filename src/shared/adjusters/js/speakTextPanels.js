@@ -11,17 +11,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
 (function (fluid) {
-    
-    gpii.arrayMergePolicy = function (target, source) {
-        target = fluid.makeArray(target);
-        source = fluid.makeArray(source);
-        fluid.each(source, function (selector) {
-            if ($.inArray(selector, target) < 0) {
-                target.push(selector);
-            }
-        });
-        return target;
-    };
 
     fluid.defaults("gpii.adjuster.screenReaderTTSEnabled", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
@@ -33,6 +22,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         selectors: {
             screenReaderTTSEnabled: ".gpiic-speakText-screenReaderTTSEnabled",
             screenReaderTTSEnabledLabel: ".gpiic-speakText-screenReaderTTSEnabled-label"
+        },
+        protoTree: {
+            screenReaderTTSEnabled: "${screenReaderTTSEnabled}",
+            screenReaderTTSEnabledLabel: {messagekey: "screenReaderTTSEnabledLabel"}
         }
     });
 
@@ -49,10 +42,27 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
-            speechRate: ".gpiic-speakText-speechRate",
             speechRateLabel: ".gpiic-speakText-speechRate-label",
-            speechRateMinus: ".gpiic-speakText-speechRate-minus",
-            speechRatePlus: ".gpiic-speakText-speechRate-plus"
+            speechRate: ".gpiic-speakText-speechRate-stepper"
+        },
+        protoTree: {
+            speechRate: {
+                decorators: {
+                    type: "fluid",
+                    func: "gpii.adjuster.textfieldStepper",
+                    options: {
+                        sourceApplier: "{that}.applier",
+                        rules: {
+                            "value": "value"
+                        },
+                        model: {
+                            value: "{that}.model.value"
+                        },
+                        range: "{that}.options.controlValues.speechRate"
+                    }
+                }
+            },
+            speechRateLabel: {messagekey: "speechRateLabel"}
         }
     });
 
@@ -67,14 +77,36 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         selectors: {
             auditoryOutLanguage: ".gpiic-speakText-auditoryOutLanguage",
             auditoryOutLanguageLabel: ".gpiic-speakText-auditoryOutLanguage-label"
+        },
+        protoTree: {
+            auditoryOutLanguage: {
+                selection: "${auditoryOutLanguage}",
+                optionlist: "${{that}.options.controlValues.auditoryOutLanguage}"
+            },
+            auditoryOutLanguageLabel: {messagekey: "auditoryOutLanguageLabel"}
+        },
+        listeners: {
+            "afterRender.activateCombobox": {
+                "listener": "gpii.adjuster.auditoryOutLanguage.activateCombobox",
+                "args": ["{that}"]
+            }
         }
     });
 
+    gpii.adjuster.auditoryOutLanguage.activateCombobox = function (that) {
+        // Since infusion is using jQuery 1.7.1, fluid.locate() returns a jQuery 1.7.1 element.
+        // As the combo box requires jQuery 1.9.1, unwrap the 1.7.1 element and rewrap it with
+        // jQuery 1.9.1 before passing to combobox()
+        var dropdown = that.locate("auditoryOutLanguage");
+        var unwrappedDropdown = fluid.unwrap(dropdown);
+        var dropdownReadyForCombobox = $(unwrappedDropdown);
+        dropdownReadyForCombobox.combobox().change(function (event, newValue) {
+            that.applier.requestChange("auditoryOutLanguage", newValue);
+        });
+    };
+
     fluid.defaults("gpii.adjuster.punctuationVerbosity", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
-        mergePolicy: {
-            repeatingSelectors: gpii.arrayMergePolicy
-        },
         preferenceMap: {
             "gpii.primarySchema.punctuationVerbosity": {
                 "model.punctuationVerbosity": "default",
@@ -82,10 +114,28 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
+            announceLabel: ".gpiic-speakText-announce-label",
             punctuationVerbosityRow: ".gpiic-speakText-punctuationVerbosity-row",
             punctuationVerbosityOptionLabel: ".gpiic-speakText-punctuationVerbosity-option-label",
             punctuationVerbosityInput: ".gpiic-speakText-punctuationVerbosity",
             punctuationVerbosityLabel: ".gpiic-speakText-punctuationVerbosity-label"
+        },
+        protoTree: {
+            announceLabel: {messagekey: "announce"},
+            expander: {
+                type: "fluid.renderer.selection.inputs",
+                rowID: "punctuationVerbosityRow",
+                labelID: "punctuationVerbosityOptionLabel",
+                inputID: "punctuationVerbosityInput",
+                selectID: "punctuationVerbosity-selection",
+                tree: {
+                    optionnames: "${{that}.options.controlValues.punctuationVerbosity}",
+                    optionlist: "${{that}.options.controlValues.punctuationVerbosity}",
+                    selection: "${punctuationVerbosity}"
+                }
+            },
+            punctuationVerbosityLabel: {messagekey: "punctuationVerbosityLabel"},
+            punctuationVerbosityDescription: {messagekey: "punctuationVerbosityDescription"}
         },
         repeatingSelectors: ["punctuationVerbosityRow"],
         listeners: {
@@ -121,6 +171,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         selectors: {
             announceCapitals: ".gpiic-speakText-announceCapitals",
             announceCapitalsLabel: ".gpiic-speakText-announceCapitals-label"
+        },
+        protoTree: {
+            announceCapitals: "${announceCapitals}",
+            announceCapitalsLabel: {messagekey: "announceCapitalsLabel"}
         }
     });
 
@@ -134,6 +188,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         selectors: {
             speakTutorialMessages: ".gpiic-speakText-speakTutorialMessages",
             speakTutorialMessagesLabel: ".gpiic-speakText-speakTutorialMessages-label"
+        },
+        protoTree: {
+            speakTutorialMessages: "${speakTutorialMessages}",
+            speakTutorialMessagesLabel: {messagekey: "speakTutorialMessagesLabel"}
         }
     });
 
@@ -145,8 +203,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
+            readBackLabel: ".gpiic-speakText-readBack-label",
             keyEcho: ".gpiic-speakText-keyEcho",
             keyEchoLabel: ".gpiic-speakText-keyEcho-label"
+        },
+        protoTree: {
+            readBackLabel: {messagekey: "readBackLabel"},
+            keyEcho: "${keyEcho}",
+            keyEchoLabel: {messagekey: "keyEchoLabel"}
         }
     });
 
@@ -160,6 +224,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         selectors: {
             wordEcho: ".gpiic-speakText-wordEcho",
             wordEchoLabel: ".gpiic-speakText-wordEcho-label"
+        },
+        protoTree: {
+            wordEcho: "${wordEcho}",
+            wordEchoLabel: {messagekey: "wordEchoLabel"}
         }
     });
 

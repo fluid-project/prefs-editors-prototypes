@@ -58,7 +58,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             invokers: {
                 updateModelAllHidden: {
                     "funcName": "gpii.speakText.updateModelAllHidden",
-                    "args": ["{gpii.adjuster.CollectivePanel}"]
+                    "args": ["{gpii.panel.visualAlternatives}"]
                 }
             }
         }

@@ -49,8 +49,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     this._trigger("select", event, {
                         item: ui.item.option
                     });
-                    var newValue = $("#auditoryOutLanguage").val();
-                    $("#auditoryOutLanguage").trigger('change', newValue);
+                    var newValue = this.element.val();
+                    this.element.trigger('change', newValue);
                 },
                 autocompletechange: "_removeIfInvalid"
             });
@@ -59,7 +59,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         _createShowAllButton: function () {
             var input = this.input,
                 wasOpen = false;
-            
+
             $("<a>")
                 .attr("tabIndex", -1)
                 .attr("title", "Show All Languages")

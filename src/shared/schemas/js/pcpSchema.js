@@ -17,36 +17,45 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "namespace": "gpii.constructedPCP",
         "templatePrefix": "../../src/shared/adjusters/html/",
         "messagePrefix": "../../src/shared/adjusters/messages/",
-        "template": "%prefix/newestSpeakText.html",
+        "template": "%prefix/pcpTemplate.html",
 
         "screenReaderTTSEnabled": {
             "type": "gpii.primarySchema.screenReaderTTSEnabled",
             "panel": {
-                "type": "gpii.adjuster.CollectivePanel",
-                "template": "%prefix/speakTextCollectiveTemplate.html",
-                "container": ".speakText-collectiveContainer",
-                "message": "%prefix/speakText.json"
+                "type": "gpii.adjuster.screenReaderTTSEnabled",
+                "template": "%prefix/screenReaderTemplate.html",
+                "message": "%prefix/screenReader.json",
+                "container": ".gpiic-speakText-screenReader"
             }
         },
 
         "speechRate": {
             "type": "gpii.primarySchema.speechRate",
             "panel": {
-                "type": "gpii.adjuster.CollectivePanel"
+                "type": "gpii.adjuster.speechRate",
+                "template": "%prefix/speechRateTemplate.html",
+                "message": "%prefix/speechRate.json",
+                "container": ".gpiic-speakText-speechRate"
             }
         },
 
         "auditoryOutLanguage": {
             "type": "gpii.primarySchema.auditoryOutLanguage",
             "panel": {
-                "type": "gpii.adjuster.CollectivePanel"
+                "type": "gpii.adjuster.auditoryOutLanguage",
+                "template": "%prefix/auditoryOutLanguageTemplate.html",
+                "message": "%prefix/auditoryOutLanguage.json",
+                "container": ".gpiic-speakText-language"
             }
         },
 
         "punctuationVerbosity": {
             "type": "gpii.primarySchema.punctuationVerbosity",
             "panel": {
-                "type": "gpii.adjuster.CollectivePanel",
+                "type": "gpii.adjuster.punctuationVerbosity",
+                "template": "%prefix/punctuationTemplate.html",
+                "message": "%prefix/punctuation.json",
+                "container": ".gpiic-speakText-punctuation",
                 "classnameMap": {"punctuationVerbosity": "@punctuationVerbosity.classes"}
             },
             "classes": {
@@ -60,35 +69,63 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "announceCapitals": {
             "type": "gpii.primarySchema.announceCapitals",
             "panel": {
-                "type": "gpii.adjuster.CollectivePanel"
+                "type": "gpii.adjuster.announceCapitals",
+                "template": "%prefix/capitalsTemplate.html",
+                "message": "%prefix/capitals.json",
+                "container": ".gpiic-speakText-capitals"
             }
         },
 
         "speakTutorialMessages": {
             "type": "gpii.primarySchema.speakTutorialMessages",
             "panel": {
-                "type": "gpii.adjuster.CollectivePanel"
+                "type": "gpii.adjuster.speakTutorialMessages",
+                "template": "%prefix/tutorialMessagesTemplate.html",
+                "message": "%prefix/tutorialMessages.json",
+                "container": ".gpiic-speakText-tutorialMessages"
             }
         },
 
         "keyEcho": {
             "type": "gpii.primarySchema.keyEcho",
             "panel": {
-                "type": "gpii.adjuster.CollectivePanel"
+                "type": "gpii.adjuster.keyEcho",
+                "template": "%prefix/keyEchoTemplate.html",
+                "message": "%prefix/keyEcho.json",
+                "container": ".gpiic-speakText-readBack-keyEcho"
             }
         },
 
         "wordEcho": {
             "type": "gpii.primarySchema.wordEcho",
             "panel": {
-                "type": "gpii.adjuster.CollectivePanel"
+                "type": "gpii.adjuster.wordEcho",
+                "template": "%prefix/wordEchoTemplate.html",
+                "message": "%prefix/wordEcho.json",
+                "container": ".gpiic-speakText-readBack-wordEcho"
             }
         },
 
         "screenReaderBrailleOutput": {
             "type": "gpii.primarySchema.screenReaderBrailleOutput",
             "panel": {
-                "type": "gpii.adjuster.CollectivePanel"
+                "type": "gpii.adjuster.screenReaderBrailleOutput",
+                "template": "%prefix/brailleTemplate.html",
+                "message": "%prefix/braille.json",
+                "container": ".gpiic-speakText-braille"
+            }
+        },
+
+        "groups": {
+            "visualAlternatives": {
+                "type": "gpii.panel.visualAlternatives",
+                "container": ".gpiic-visualAlternatives",
+                "template": "%prefix/visualAlternativesTemplate.html",
+                "message": "%prefix/visualAlternatives.json",
+                "panels": [
+                    "screenReaderTTSEnabled", "speechRate", "auditoryOutLanguage", "punctuationVerbosity", "announceCapitals",
+                    "speakTutorialMessages", "keyEcho", "wordEcho", "screenReaderBrailleOutput"
+                ]
             }
         }
     };
