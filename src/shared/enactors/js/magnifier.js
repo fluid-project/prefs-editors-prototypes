@@ -14,7 +14,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 /*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
 
 (function ($, fluid) {
-    
+
     fluid.defaults("gpii.enactor.magnifier", {
         gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
         preferenceMap: {
@@ -25,17 +25,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         invokers: {
             set: {
                 funcName: "gpii.enactor.magnifier.set",
-                args: ["{that}.model.value", "{that}.container"],
-                dynamic: true
+                args: ["{arguments}.0", "{that}.container"]
             }
         },
         listeners: {
             onCreate: {
                 listener: "{that}.set"
-            },
-            "onCreate.init": {
-                listener: "{that}.applier.modelChanged.addListener",
-                args: ["value", "{that}.set"]
+            }
+        },
+        modelListeners: {
+            "value": {
+                func: "{that}.set",
+                args: ["{change}.value"]
             }
         }
     });
@@ -43,5 +44,5 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.enactor.magnifier.set = function (times, that) {
         that.css({"transform": "scale(" + times / 100 + ")", "-webkit-transform": "scale(" + times / 100 + ")"});
     };
-    
+
 })(jQuery, fluid);

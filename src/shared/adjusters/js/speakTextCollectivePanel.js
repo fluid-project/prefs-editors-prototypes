@@ -61,14 +61,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "change",
                 "args": ["{that}.updateModelValue"]
             },
-            "onCreate.addPartialVisibilityListener": {
-                "listener": "{that}.applier.modelChanged.addListener",
-                "args": ["partialAdjustersVisibility", "{that}.showHidePartial"]
-            },
-            "onCreate.addExtraVisibilityListener": {
-                "listener": "{that}.applier.modelChanged.addListener",
-                "args": ["extraAdjustersVisibility", "{that}.showHideExtra"]
-            },
             "afterRender.bindEventMoreLess": {
                 "this": "{that}.dom.moreLess",
                 "method": "click",
@@ -137,6 +129,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "args": ["{that}.options.strings.moreText"]
             }
         },
+        modelListeners: {
+            "partialAdjustersVisibility": {
+                "func": "{that}.showHidePartial",
+                args: ["{change}.value"]
+            },
+            "extraAdjustersVisibility": {
+                "listener": "{that}.showHideExtra",
+                "args": ["{change}.value"]
+            },
+        },
         invokers: {
             updateModelValue: {
                 "funcName": "gpii.speakText.updateModelHeaderClicked",
@@ -155,19 +157,19 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             showHidePartial: {
                 "funcName": "gpii.speakText.showOrHideDependingOnState",
-                "args": ["{that}.model.partialAdjustersVisibility",
-                         "{that}.events.onShowPartialAdjusters.fire",
-                         "{that}.events.onHidePartialAdjusters.fire"
-                    ],
-                dynamic: true
+                "args": [
+                    "{arguments}.0",
+                    "{that}.events.onShowPartialAdjusters.fire",
+                    "{that}.events.onHidePartialAdjusters.fire"
+                ]
             },
             showHideExtra: {
                 "funcName": "gpii.speakText.showOrHideDependingOnState",
-                "args": ["{that}.model.extraAdjustersVisibility",
-                         "{that}.events.onShowExtraAdjuster.fire",
-                         "{that}.events.onHideExtraAdjuster.fire"
-                    ],
-                dynamic: true
+                "args": [
+                    "{arguments}.0",
+                    "{that}.events.onShowExtraAdjuster.fire",
+                    "{that}.events.onHideExtraAdjuster.fire"
+                ]
             }
         },
         members: {
