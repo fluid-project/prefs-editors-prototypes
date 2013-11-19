@@ -29,4 +29,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "wb": "fl-theme-prefsEditor-wb gpii-prefsEditor-theme-wb fl-theme-wb"
         }
     });
+
+    // override the swap function
+    fluid.prefs.enactor.classSwapper.swap = function (value, that) {
+        that.clearClasses();
+        if (that.options.sourceApplier.model.gpii_primarySchema_highContrast) {
+            that.container.addClass(that.options.classes[value]);
+        }
+    };
 })(jQuery, fluid);
