@@ -83,6 +83,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "text",
                     "args": ["{that}.options.strings.lessText"]
                 },
+                "onShowVisualAlternativesExtra.addLessIconClass": {
+                    "this": "{that}.dom.moreLessIcon",
+                    "method": "addClass",
+                    "args": ["{that}.options.styles.lessIcon"]
+                },
+                "onShowVisualAlternativesExtra.removeMoreIconClass": {
+                    "this": "{that}.dom.moreLessIcon",
+                    "method": "removeClass",
+                    "args": ["{that}.options.styles.moreIcon"]
+                },
                 "onHideVisualAlternativesExtra.hide": {
                     "this": "{that}.dom.visualAlternativesExtraAdjusters",
                     "method": "slideUp",
@@ -93,12 +103,24 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "text",
                     "args": ["{that}.options.strings.moreText"]
                 },
+                "onHideVisualAlternativesExtra.addMoreIconClass": {
+                    "this": "{that}.dom.moreLessIcon",
+                    "method": "addClass",
+                    "args": ["{that}.options.styles.moreIcon"]
+                },
+                "onHideVisualAlternativesExtra.removeLessIconClass": {
+                    "this": "{that}.dom.moreLessIcon",
+                    "method": "removeClass",
+                    "args": ["{that}.options.styles.lessIcon"]
+                },
+
 
                 "onReady.setTextVolumeHeader": {
                     "this": "{that}.dom.volumeHeader",
                     "method": "text",
                     "args": ["{that}.options.strings.volumeHeader"]
                 },
+
 
                 "onReady.setTextLanguageHeader": {
                     "this": "{that}.dom.languageHeader",
@@ -109,6 +131,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "funcName": "gpii.activateCombobox",
                     "args": ["{that}","universalLanguage"]
                 },
+
 
                 "onReady.setSaveAndApplyText": {
                     "this": "{that}.dom.saveAndApply",
@@ -130,11 +153,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "click",
                     "args": ["{that}.updateModelAllHidden"]
                 },
-        "onReady.onSaveToPreferencesServer": {
-            "this": "{that}.dom.saveAndApply",
-            "method": "click",
-            "args": ["{that}.saveToPreferencesServer"]
-        },
+                "onReady.onSaveToPreferencesServer": {
+                    "this": "{that}.dom.saveAndApply",
+                    "method": "click",
+                    "args": ["{that}.saveToPreferencesServer"]
+                },
                 "onReady.onResetVisibilityActualisation": {
                     "this": "{that}.dom.resetAndApply",
                     "method": "click",
@@ -187,7 +210,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             selectors: {
-
                 visualAlternativesPartialAdjusters: ".gpii-speakText-partially-expanded",
                 visualAlternativesExtraAdjusters: ".gpii-speakText-fully-expanded",
                 visualAlternativesHeader: ".gpii-visualAlternativesPresetButton-label",
@@ -197,6 +219,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 languageHeader: ".gpii-languagePresetButton-label",
 
                 moreLess: ".gpiic-speakText-moreOptionsLabel",
+                moreLessIcon: ".moreOptionsIcon",
 
                 saveAndApply: ".flc-prefsEditor-save",
                 resetAndApply: ".flc-prefsEditor-reset",
@@ -204,8 +227,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             selectorsToIgnore: ["languageHeader", "volumeHeader", "visualAlternativesPartialAdjusters", "visualAlternativesHeader",  "saveAndApply", "resetAndApply", "cancel"],
             styles: {
-                boldText: "bold-font-weight",
-                normalText: "normal-font-weight"
+                moreIcon: "gpii-speakText-moreOptionsIcon-more",
+                lessIcon: "gpii-speakText-moreOptionsIcon-less"
             },
             strings: {
                 visualAlternativesHeader: {
@@ -285,10 +308,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             that.applier.requestChange(flag, false);
         });
 
-        $("#" + "universalLanguage").combobox();
-        $("#" + "universalLanguage").change(function (event, newValue) {
-            that.applier.requestChange("gpii_primarySchema_" + "universalLanguage", newValue);
-        });
+        gpii.activateCombobox(that, "universalLanguage"); //needed for combobox styling of the universalLanguage adjuster after saving.
     };
 
     gpii.showOrHideDependingOnState = function (state, showEvent, hideEvent) {
@@ -300,9 +320,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         return looked ? looked.template : looked;
     };
 
-
-
-
     gpii.saveToPreferencesServer = function (that) {
         var keys_in_model = $.grep(Object.keys(that.model), function (el) {return el.substring(0,19) === "gpii_primarySchema_"});
         var keys_for_post = $.map(keys_in_model, function (el) {return "http://registry.gpii.org/common/" + el.substring(19, el.length)});
@@ -313,13 +330,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
         $.ajax({
             type: "POST",
-            url: "http://localhost:8081/user/a",
+            url: "http://localhost:8081/user/test",
             data: saved_settings,
-            success: function () {alert("Successfully sent to the Preferences server.");}
+            success: function () {
+                alert("Successfully sent to the Preferences server.");
+            }
         });
     };
-
-
-
 
 })(jQuery, fluid);

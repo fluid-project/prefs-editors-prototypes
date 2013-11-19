@@ -11,7 +11,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
 (function (fluid) {
-    fluid.registerNamespace("gpii.speakText");
     gpii.primarySchema = {
         "gpii.primarySchema.speakText": {
             "type": "boolean",

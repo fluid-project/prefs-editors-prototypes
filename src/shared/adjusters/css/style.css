@@ -22,6 +22,12 @@
          url('../fonts/tick.eot');
 }
 
+@font-face {
+    font-family: 'moreLessArrows';
+    src: url('../fonts/arrows.ttf') format('truetype'),
+         url('../fonts/arrows.eot');
+}
+
 .bold-font-weight {
     font-weight: bold;
 }
@@ -30,8 +36,16 @@
     font-weight: normal;
 }
 
-.gpii-speakText-moreOptionsIcon {
-    font-family: 'optionsIcons'
+.moreOptionsIcon {
+    font-family: 'moreLessArrows'
+}
+
+.gpii-speakText-moreOptionsIcon-more:before {
+    content: "\e601";
+}
+
+.gpii-speakText-moreOptionsIcon-less:before {
+    content: "\e600";
 }
 
 .spacing-ensurer {
@@ -42,10 +56,6 @@
 .gpii-speakText-screenReaderTTSEnabled-element {
     padding-top: 1px;
     height: 55px;
-}
-
-.gpii-speakText-moreOptionsIcon:before {
-    content: "\e009";
 }
 
 .gpii-speakText-adjusters {
@@ -94,7 +104,7 @@ textarea:focus, input:focus {
     padding-top: 20px;
     font-size: 15px;
     font-weight: bold;
-    margin-left: 90px;
+    margin-left: 120px;
 }
 
 .gpii-speakText-partially-expanded {
