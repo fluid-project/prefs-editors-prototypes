@@ -45,7 +45,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "default": "",
             "enum": ["mousecursor", "textcursor", "keyboardfocus"]
         },
-        "gpii.primarySchema.highContrast": {
+        "gpii.primarySchema.contrastEnabled": {
             "type": "boolean",
             "default": false
         },

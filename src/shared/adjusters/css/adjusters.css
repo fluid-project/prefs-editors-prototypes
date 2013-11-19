@@ -37,6 +37,7 @@ body {
     transform-origin: 0 0 0;
     -webkit-transform-origin: 0 0 0;
     margin:20px;
+    background-color: #d5e2de;
 }
 
 .gpii-prefsEditor-preferenceGroup {

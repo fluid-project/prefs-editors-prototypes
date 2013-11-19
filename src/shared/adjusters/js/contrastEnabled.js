@@ -15,15 +15,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     
-    fluid.defaults("gpii.adjuster.highContrast", {
+    fluid.defaults("gpii.adjuster.contrastEnabled", {
         gradeNames: ["fluid.prefs.panel", "gpii.pmt.previewPerSettingEnhanced", "autoInit"],
         preferenceMap: {
-            "gpii.primarySchema.highContrast": {
+            "gpii.primarySchema.contrastEnabled": {
                 "model.contrast": "default"
             }
-        },
-        listeners: {
-            
         },
         selectors: {
             headingLabel: ".gpiic-contrast-contrastLabel",

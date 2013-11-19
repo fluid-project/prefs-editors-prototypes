@@ -1,3 +1,8 @@
+/*
+ * DEPRECATED - High contrast now is merely only a model value. It does not enact anything on UI.
+ * UI changes are mode by the contrast theme, which considers the contrastEnabled model value.
+ */
+
 /*!
 Cloud4all Preferences Management Tools
 

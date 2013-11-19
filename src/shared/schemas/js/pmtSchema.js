@@ -31,7 +31,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "template": "%prefix/addContrastTemplate.html",
                 "message": "%prefix/contrast.json",
                 "type": "gpii.adjuster.addContrast",
-                "panels": ["contrastTheme", "highContrast"]
+                "panels": ["contrastTheme", "contrastEnabled"]
             }
         },
         "contrastTheme": {
@@ -45,15 +45,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "template": "%prefix/contrastThemeTemplate.html"
             }
         },
-        "highContrast": {
-            "type": "gpii.primarySchema.highContrast",
-            "enactor": {
-                "type": "gpii.enactor.highContrast"
-            },
+        "contrastEnabled": {
+            "type": "gpii.primarySchema.contrastEnabled",
             "panel": {
-                "type": "gpii.adjuster.highContrast",
-                "container": ".gpiic-highContrast",
-                "template": "%prefix/highContrastTemplate.html",
+                "type": "gpii.adjuster.contrastEnabled",
+                "container": ".gpiic-contrastEnabled",
+                "template": "%prefix/contrastEnabledTemplate.html",
                 "message": "%prefix/contrast.json"
             }
         },

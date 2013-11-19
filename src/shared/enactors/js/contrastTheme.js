@@ -33,7 +33,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     // override the swap function
     fluid.prefs.enactor.classSwapper.swap = function (value, that) {
         that.clearClasses();
-        if (that.options.sourceApplier.model.gpii_primarySchema_highContrast) {
+        if (that.options.sourceApplier.model.gpii_primarySchema_contrastEnabled) {
             that.container.addClass(that.options.classes[value]);
         }
     };
