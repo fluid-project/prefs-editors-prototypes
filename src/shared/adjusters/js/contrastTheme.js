@@ -33,9 +33,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
-            contrastPreview: ".gpiic-contrast-previewPerSettingFrameContrast"
+            contrastPreview: ".gpiic-contrast-previewPerSettingFrameContrast",
+            contrastOptions: ".gpiic-contrast-contrastOptions"
         },
-        selectorsToIgnore: ["contrastPreview"],
+        selectorsToIgnore: ["contrastPreview", "contrastOptions"],
+        listeners: {
+            "afterRender.setContrastOptionstext": {
+                "this": "{that}.dom.contrastOptions",
+                "method": "text",
+                "args": ["{that}.stringBundle.contrastOptions"]
+            }
+        },
         classes: {
             "bw": "fl-theme-prefsEditor-bw gpii-prefsEditor-theme-bw fl-theme-bw",
             "yb": "fl-theme-prefsEditor-yb gpii-prefsEditor-theme-yb fl-theme-yb",

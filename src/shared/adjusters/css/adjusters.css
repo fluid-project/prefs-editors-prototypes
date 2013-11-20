@@ -452,6 +452,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-prefsEditor-previewPerSettingContainer {
+	display: inline-block;
     background-color: white;
     border: 1px solid #beced1;
     color: #B8C9CC;
