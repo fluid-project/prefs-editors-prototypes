@@ -60,7 +60,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     fluid.defaults("gpii.adjuster.magnifier.preview", {
         gradeNames: ["gpii.adjuster.previewWithText", "autoInit"],
-        selectorsToIgnore: ["magnifierStepper", "preview"],
         previewURL: "",
         previewEnactors: {
             magnifier: {

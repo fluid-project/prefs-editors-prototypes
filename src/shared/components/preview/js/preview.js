@@ -14,6 +14,9 @@ var fluid_1_5 = fluid_1_5 || {};
 
     fluid.defaults("gpii.adjuster.preview", {
         gradeNames: ["fluid.rendererComponent", "autoInit"],
+        mergePolicy: {
+            selectorsToIgnore: fluid.prefs.compositePanel.arrayMergePolicy
+        },
         selectors: {
             preview: ".gpiic-adjuster-preview"
         },

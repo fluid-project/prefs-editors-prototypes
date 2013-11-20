@@ -76,7 +76,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     fluid.defaults("gpii.adjuster.contrast.preview", {
         gradeNames: ["gpii.adjuster.previewWithText", "autoInit"],
-        selectorsToIgnore: ["contrastAdjusters", "addToMyPreferencesLabel", "preview"],
         previewURL: "",
         previewEnactors: {
             contrast: {

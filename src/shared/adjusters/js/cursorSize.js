@@ -60,7 +60,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     fluid.defaults("gpii.adjuster.cursorSize.preview", {
         gradeNames: ["gpii.adjuster.preview", "autoInit"],
-        selectorsToIgnore: ["cursorSizeSlider", "preview"],
         previewURL: "",
         previewEnactors: {
             cursorSize: {
