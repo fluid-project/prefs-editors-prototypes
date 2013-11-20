@@ -10,10 +10,8 @@ You may obtain a copy of the License at
 https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
-(function (fluid) {
-    fluid.registerNamespace("gpii.speakText");
-    
-    gpii.speakText.arrayMergePolicy = function (target, source) {
+(function (fluid) {    
+    gpii.arrayMergePolicy = function (target, source) {
         target = fluid.makeArray(target);
         source = fluid.makeArray(source);
         fluid.each(source, function (selector) {
@@ -24,7 +22,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         return target;
     };
 
-    fluid.defaults("speakText.panel.speakText", {
+    fluid.defaults("gpii.panelspeakText", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.speakText": {
@@ -41,7 +39,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("speakText.panel.wordsSpokenPerMinute", {
+    fluid.defaults("gpii.panelwordsSpokenPerMinute", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.wordsSpokenPerMinute": {
@@ -84,7 +82,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("speakText.panel.volume", {
+    fluid.defaults("gpii.panelvolume", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.volume": {
@@ -122,7 +120,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("speakText.panel.voicePitch", {
+    fluid.defaults("gpii.panelvoicePitch", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.voicePitch": {
@@ -160,7 +158,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("speakText.panel.universalVolume", {
+    fluid.defaults("gpii.paneluniversalVolume", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.universalVolume": {
@@ -200,7 +198,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("speakText.panel.universalLanguage", {
+    fluid.defaults("gpii.paneluniversalLanguage", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.universalLanguage": {
@@ -221,7 +219,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("speakText.panel.screenReaderLanguage", {
+    fluid.defaults("gpii.panelscreenReaderLanguage", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.screenReaderLanguage": {
@@ -242,7 +240,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("speakText.panel.textHighlighting", {
+    fluid.defaults("gpii.paneltextHighlighting", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.textHighlighting": {
@@ -263,10 +261,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("speakText.panel.punctuationVerbosity", {
+    fluid.defaults("gpii.panelpunctuationVerbosity", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         mergePolicy: {
-            repeatingSelectors: gpii.speakText.arrayMergePolicy
+            repeatingSelectors: gpii.arrayMergePolicy
         },
         preferenceMap: {
             "gpii.primarySchema.punctuationVerbosity": {
@@ -286,7 +284,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         invokers: {
             style: {
-                funcName: "speakText.panel.punctuationVerbosity.punctuationVerbosityStyle",
+                funcName: "gpii.panelpunctuationVerbosity.punctuationVerbosityStyle",
                 args: [
                     "{that}.dom.punctuationVerbosityOptionLabel",
                     "{that}.options.controlValues.punctuationVerbosity",
@@ -314,14 +312,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     });
 
-    speakText.panel.punctuationVerbosity.punctuationVerbosityStyle = function (labels, values, classes) {
+    gpii.panelpunctuationVerbosity.punctuationVerbosityStyle = function (labels, values, classes) {
         fluid.each(labels, function (label, index) {
             $(label).addClass(classes[values[index]]);
             $(label).append('<span></span>');
         });
     };
 
-    fluid.defaults("speakText.panel.announceCapitals", {
+    fluid.defaults("gpii.panelannounceCapitals", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.announceCapitals": {
@@ -338,7 +336,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("speakText.panel.speakTutorialMessages", {
+    fluid.defaults("gpii.panelspeakTutorialMessages", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.speakTutorialMessages": {
@@ -355,7 +353,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("speakText.panel.keyEcho", {
+    fluid.defaults("gpii.panelkeyEcho", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.keyEcho": {
@@ -372,7 +370,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("speakText.panel.wordEcho", {
+    fluid.defaults("gpii.panelwordEcho", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.wordEcho": {
@@ -389,7 +387,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("speakText.panel.screenReaderBrailleOutput", {
+    fluid.defaults("gpii.panelscreenReaderBrailleOutput", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.screenReaderBrailleOutput": {

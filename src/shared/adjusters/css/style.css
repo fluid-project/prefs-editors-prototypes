@@ -107,7 +107,7 @@ textarea:focus, input:focus {
     margin-left: 120px;
 }
 
-.gpii-speakText-partially-expanded {
+.gpii-partially-expanded {
     display: none;
 }
 

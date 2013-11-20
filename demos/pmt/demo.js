@@ -15,11 +15,11 @@ var demo = demo || {};
 (function ($, fluid) {
     demo.initGPII = function (container, compOpts) {
         var uioBuilder = fluid.prefs.builder({
-            primarySchema: gpii.primarySchema,
-            auxiliarySchema: gpii.speakText.auxiliarySchema
+            primarySchema: gpii.pmt.primarySchema,
+            auxiliarySchema: gpii.pmt.auxiliarySchema
         });
         var baseOpts = {
-            prefsEditorType: "gpii.speakText"
+            prefsEditorType: "gpii.pmt"
         };
         $.extend(true, baseOpts, compOpts);
         return fluid.invokeGlobalFunction(uioBuilder.options.assembledPrefsEditorGrade, [container, baseOpts]);

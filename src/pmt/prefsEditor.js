@@ -11,7 +11,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
 (function ($, fluid) {
-    fluid.defaults("gpii.speakText", {
+    fluid.defaults("gpii.pmt", {
         gradeNames: ["fluid.prefs.fullNoPreview", "autoInit"],
         prefsEditor: {
             partiallyExpandedSlideSpeed: 500,
@@ -210,7 +210,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             selectors: {
-                visualAlternativesPartialAdjusters: ".gpii-speakText-partially-expanded",
+                visualAlternativesPartialAdjusters: ".gpii-partially-expanded",
                 visualAlternativesExtraAdjusters: ".gpii-speakText-fully-expanded",
                 visualAlternativesHeader: ".gpii-visualAlternativesPresetButton-label",
 

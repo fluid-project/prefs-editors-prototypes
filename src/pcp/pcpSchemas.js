@@ -57,60 +57,60 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "speakText": {
             "type": "gpii.primarySchema.speakText",
             "panel": {
-                "type": "speakText.panel.speakText",
-                "template": "%prefix/speakText.html",
+                "type": "gpii.panelspeakText",
+                "template": "%prefix/speakTextTemplate.html",
                 "container": ".speakText",
-                "message": "%prefix/speakText.json"
+                "message": "%prefix/message.json"
             }
         },
 
         "wordsSpokenPerMinute": {
             "type": "gpii.primarySchema.wordsSpokenPerMinute",
             "panel": {
-                "type": "speakText.panel.wordsSpokenPerMinute",
+                "type": "gpii.panelwordsSpokenPerMinute",
                 "template": "%prefix/wordsSpokenPerMinute.html",
                 "container": ".words-spoken-per-minute",
-                "message": "%prefix/speakText.json"
+                "message": "%prefix/message.json"
             }
         },
 
         "volume": {
             "type": "gpii.primarySchema.volume",
             "panel": {
-                "type": "speakText.panel.volume",
+                "type": "gpii.panelvolume",
                 "template": "%prefix/volumeTemplate.html",
                 "container": ".volume",
-                "message": "%prefix/speakText.json"
+                "message": "%prefix/message.json"
             }
         },
 
         "screenReaderBrailleOutput": {
             "type": "gpii.primarySchema.screenReaderBrailleOutput",
             "panel": {
-                "type": "speakText.panel.screenReaderBrailleOutput",
+                "type": "gpii.panelscreenReaderBrailleOutput",
                 "template": "%prefix/brailleTemplate.html",
                 "container": ".braille",
-                "message": "%prefix/speakText.json"
+                "message": "%prefix/message.json"
             }
         },
 
         "universalVolume": {
             "type": "gpii.primarySchema.universalVolume",
             "panel": {
-                "type": "speakText.panel.universalVolume",
+                "type": "gpii.paneluniversalVolume",
                 "template": "%prefix/universalVolumeTemplate.html",
                 "container": ".universalVolume",
-                "message": "%prefix/speakText.json"
+                "message": "%prefix/message.json"
             }
         },
 
         "universalLanguage": {
             "type": "gpii.primarySchema.universalLanguage",
             "panel": {
-                "type": "speakText.panel.universalLanguage",
+                "type": "gpii.paneluniversalLanguage",
                 "template": "%prefix/universalLanguageTemplate.html",
                 "container": ".universalLanguage",
-                "message": "%prefix/speakText.json"
+                "message": "%prefix/message.json"
             }
         },
     };
