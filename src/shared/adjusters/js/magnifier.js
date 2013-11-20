@@ -32,32 +32,35 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierLabel: ".gpiic-magnifier-label",
             magnifierStepper: ".gpiic-magnifier-stepper"
         },
-        protoTree: {
-            magnifierLabel: {messagekey: "magnifierLabel"},
+        selectorsToIgnore: ["magnifierStepper"],
+        components: {
             magnifierStepper: {
-                decorators: {
-                    type: "fluid",
-                    func: "gpii.adjuster.textfieldStepper",
-                    options: {
-                        sourceApplier: "{that}.applier",
-                        rules: {
-                            "magnification": "value"
-                        },
-                        model: {
-                            value: "{that}.model.magnification"
-                        },
-                        strings: {
-                            "unit": "{that}.stringBundle.magnifierUnit"
-                        },
-                        range: "{that}.options.magnification.range"
-                    }
+                type: "gpii.adjuster.textfieldStepper",
+                container: "{that}.dom.magnifierStepper",
+                createOnEvent: "afterRender",
+                options: {
+                    sourceApplier: "{magnifier}.applier",
+                    rules: {
+                        "magnification": "value"
+                    },
+                    model: {
+                        value: "{magnifier}.model.magnification"
+                    },
+                    strings: {
+                        "unit": "{magnifier}.stringBundle.magnifierUnit"
+                    },
+                    range: "{magnifier}.options.magnification.range"
                 }
             }
+        },
+        protoTree: {
+            magnifierLabel: {messagekey: "magnifierLabel"}
         }
     });
 
     fluid.defaults("gpii.adjuster.magnifier.preview", {
         gradeNames: ["gpii.adjuster.previewWithText", "autoInit"],
+        selectorsToIgnore: ["magnifierStepper", "preview"],
         previewURL: "",
         previewEnactors: {
             magnifier: {

@@ -45,23 +45,25 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             speechRateLabel: ".gpiic-speakText-speechRate-label",
             speechRate: ".gpiic-speakText-speechRate-stepper"
         },
-        protoTree: {
-            speechRate: {
-                decorators: {
-                    type: "fluid",
-                    func: "gpii.adjuster.textfieldStepper",
-                    options: {
-                        sourceApplier: "{that}.applier",
-                        rules: {
-                            "value": "value"
-                        },
-                        model: {
-                            value: "{that}.model.value"
-                        },
-                        range: "{that}.options.controlValues.speechRate"
-                    }
+        selectorsToIgnore: ["speechRate"],
+        components: {
+            textfieldStepper: {
+                type: "gpii.adjuster.textfieldStepper",
+                container: "{that}.dom.speechRate",
+                createOnEvent: "afterRender",
+                options: {
+                    sourceApplier: "{speechRate}.applier",
+                    rules: {
+                        "value": "value"
+                    },
+                    model: {
+                        value: "{speechRate}.model.value"
+                    },
+                    range: "{speechRate}.options.controlValues.speechRate"
                 }
-            },
+            }
+        },
+        protoTree: {
             speechRateLabel: {messagekey: "speechRateLabel"}
         }
     });

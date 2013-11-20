@@ -29,32 +29,35 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             textSizeLabel: ".gpiic-textSize-label",
             textSizeStepper: ".gpiic-textSize-stepper"
         },
-        protoTree: {
-            textSizeLabel: {messagekey: "textSizeLabel"},
-            textSizeStepper: {
-                decorators: {
-                    type: "fluid",
-                    func: "gpii.adjuster.textfieldStepper",
-                    options: {
-                        sourceApplier: "{that}.applier",
-                        rules: {
-                            "fontSize": "value"
-                        },
-                        model: {
-                            value: "{that}.model.fontSize"
-                        },
-                        strings: {
-                            "unit": "{that}.stringBundle.textSizeUnit"
-                        },
-                        range: "{that}.fontSize.range"
-                    }
+        components: {
+            textfieldStepper: {
+                type: "gpii.adjuster.textfieldStepper",
+                container: "{textSize}.dom.textSizeStepper",
+                createOnEvent: "afterRender",
+                options: {
+                    sourceApplier: "{textSize}.applier",
+                    rules: {
+                        "fontSize": "value"
+                    },
+                    model: {
+                        value: "{textSize}.model.fontSize"
+                    },
+                    strings: {
+                        "unit": "{textSize}.stringBundle.textSizeUnit"
+                    },
+                    range: "{textSize}.fontSize.range"
                 }
-            },
+            }
+        },
+        selectorsToIgnore: ["textSizeStepper"],
+        protoTree: {
+            textSizeLabel: {messagekey: "textSizeLabel"}
         }
     });
 
     fluid.defaults("gpii.adjuster.textSize.preview", {
         gradeNames: ["gpii.adjuster.previewWithText", "autoInit"],
+        selectorsToIgnore: ["preview", "textSizeStepper"],
         previewURL: "",
         previewEnactors: {
             textSize: {
