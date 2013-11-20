@@ -211,14 +211,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             selectors: {
                 visualAlternativesPartialAdjusters: ".gpii-partially-expanded",
-                visualAlternativesExtraAdjusters: ".gpii-speakText-fully-expanded",
+                visualAlternativesExtraAdjusters: ".gpii-fully-expanded",
                 visualAlternativesHeader: ".gpii-visualAlternativesPresetButton-label",
 
                 volumeHeader: ".gpii-volumePresetButton-label",
 
                 languageHeader: ".gpii-languagePresetButton-label",
 
-                moreLess: ".gpiic-speakText-moreOptionsLabel",
+                moreLess: ".gpiic-moreOptionsLabel",
                 moreLessIcon: ".moreOptionsIcon",
 
                 saveAndApply: ".flc-prefsEditor-save",
@@ -227,8 +227,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             selectorsToIgnore: ["languageHeader", "volumeHeader", "visualAlternativesPartialAdjusters", "visualAlternativesHeader",  "saveAndApply", "resetAndApply", "cancel"],
             styles: {
-                moreIcon: "gpii-speakText-moreOptionsIcon-more",
-                lessIcon: "gpii-speakText-moreOptionsIcon-less"
+                moreIcon: "gpii-moreOptionsIcon-more",
+                lessIcon: "gpii-moreOptionsIcon-less"
             },
             strings: {
                 visualAlternativesHeader: {

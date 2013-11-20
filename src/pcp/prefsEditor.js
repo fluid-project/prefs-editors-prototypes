@@ -346,7 +346,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
                 visualAlternativesPreferenceSwitch: ".gpii-visualAlternativesPresetButton",
                 visualAlternativesPartialAdjusters: ".gpii-partially-expanded",
-                visualAlternativesExtraAdjusters: ".gpii-speakText-fully-expanded",
+                visualAlternativesExtraAdjusters: ".gpii-fully-expanded",
                 visualAlternativesHeader: ".gpii-visualAlternativesPresetButton-label",
                 visualAlternativesTickIcon: ".visualAlternatives-white-tick-icon",
 

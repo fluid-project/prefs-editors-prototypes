@@ -101,7 +101,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "speakText": {
             "type": "gpii.primarySchema.speakText",
             "panel": {
-                "type": "gpii.panelspeakText",
+                "type": "gpii.panel.speakText",
                 "template": "%prefix/speakTextTemplate.html",
                 "container": ".speakText",
                 "message": "%prefix/message.json"
@@ -111,7 +111,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "wordsSpokenPerMinute": {
             "type": "gpii.primarySchema.wordsSpokenPerMinute",
             "panel": {
-                "type": "gpii.panelwordsSpokenPerMinute",
+                "type": "gpii.panel.wordsSpokenPerMinute",
                 "template": "%prefix/wordsSpokenPerMinute.html",
                 "container": ".words-spoken-per-minute",
                 "message": "%prefix/message.json"
@@ -121,7 +121,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "volume": {
             "type": "gpii.primarySchema.volume",
             "panel": {
-                "type": "gpii.panelvolume",
+                "type": "gpii.panel.volume",
                 "template": "%prefix/volumeTemplate.html",
                 "container": ".volume",
                 "message": "%prefix/message.json"
@@ -131,7 +131,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "voicePitch": {
             "type": "gpii.primarySchema.voicePitch",
             "panel": {
-                "type": "gpii.panelvoicePitch",
+                "type": "gpii.panel.voicePitch",
                 "template": "%prefix/voicePitchTemplate.html",
                 "container": ".voicePitch",
                 "message": "%prefix/message.json"
@@ -141,7 +141,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "screenReaderBrailleOutput": {
             "type": "gpii.primarySchema.screenReaderBrailleOutput",
             "panel": {
-                "type": "gpii.panelscreenReaderBrailleOutput",
+                "type": "gpii.panel.screenReaderBrailleOutput",
                 "template": "%prefix/brailleTemplate.html",
                 "container": ".braille",
                 "message": "%prefix/message.json"
@@ -151,7 +151,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "universalVolume": {
             "type": "gpii.primarySchema.universalVolume",
             "panel": {
-                "type": "gpii.paneluniversalVolume",
+                "type": "gpii.panel.universalVolume",
                 "template": "%prefix/universalVolumeTemplate.html",
                 "container": ".universalVolume",
                 "message": "%prefix/message.json"
@@ -161,7 +161,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "universalLanguage": {
             "type": "gpii.primarySchema.universalLanguage",
             "panel": {
-                "type": "gpii.paneluniversalLanguage",
+                "type": "gpii.panel.universalLanguage",
                 "template": "%prefix/universalLanguageTemplate.html",
                 "container": ".universalLanguage",
                 "message": "%prefix/message.json"
@@ -171,7 +171,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "screenReaderLanguage": {
             "type": "gpii.primarySchema.screenReaderLanguage",
             "panel": {
-                "type": "gpii.panelscreenReaderLanguage",
+                "type": "gpii.panel.screenReaderLanguage",
                 "template": "%prefix/screenReaderLanguageTemplate.html",
                 "container": ".screenReaderLanguage",
                 "message": "%prefix/message.json"
@@ -181,7 +181,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "punctuationVerbosity": {
             "type": "gpii.primarySchema.punctuationVerbosity",
             "panel": {
-                "type": "gpii.panelpunctuationVerbosity",
+                "type": "gpii.panel.punctuationVerbosity",
                 "template": "%prefix/punctuationVerbosityTemplate.html",
                 "container": ".punctuationVerbosity",
                 "message": "%prefix/message.json",
@@ -197,7 +197,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "announceCapitals": {
             "type": "gpii.primarySchema.announceCapitals",
             "panel": {
-                "type": "gpii.panelannounceCapitals",
+                "type": "gpii.panel.announceCapitals",
                 "template": "%prefix/announceCapitalsTemplate.html",
                 "container": ".announceCapitals",
                 "message": "%prefix/message.json"
@@ -207,7 +207,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "speakTutorialMessages": {
             "type": "gpii.primarySchema.speakTutorialMessages",
             "panel": {
-                "type": "gpii.panelspeakTutorialMessages",
+                "type": "gpii.panel.speakTutorialMessages",
                 "template": "%prefix/speakTutorialMessagesTemplate.html",
                 "container": ".speakTutorialMessages",
                 "message": "%prefix/message.json"
@@ -217,7 +217,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "keyEcho": {
             "type": "gpii.primarySchema.keyEcho",
             "panel": {
-                "type": "gpii.panelkeyEcho",
+                "type": "gpii.panel.keyEcho",
                 "template": "%prefix/keyEchoTemplate.html",
                 "container": ".keyEcho",
                 "message": "%prefix/message.json"
@@ -227,7 +227,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "wordEcho": {
             "type": "gpii.primarySchema.wordEcho",
             "panel": {
-                "type": "gpii.panelwordEcho",
+                "type": "gpii.panel.wordEcho",
                 "template": "%prefix/wordEchoTemplate.html",
                 "container": ".wordEcho",
                 "message": "%prefix/message.json"
@@ -237,7 +237,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "textHighlighting": {
             "type": "gpii.primarySchema.textHighlighting",
             "panel": {
-                "type": "gpii.paneltextHighlighting",
+                "type": "gpii.panel.textHighlighting",
                 "template": "%prefix/textHighlightingTemplate.html",
                 "container": ".textHighlighting",
                 "message": "%prefix/message.json"
