@@ -49,12 +49,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     this._trigger("select", event, {
                         item: ui.item.option
                     });
-                    var newValueUniversal = $("#universalLanguage").val();
-                    $("#universalLanguage").trigger('change', newValueUniversal);
-                    var newValueScreenReader = $("#screenReaderLanguage").val();
-                    $("#screenReaderLanguage").trigger('change', newValueScreenReader);
-                    var newValueTextHighlight = $("#textHighlighting").val();
-                    $("#textHighlighting").trigger('change', newValueTextHighlight);
+                    var ids = ["#universalLanguage", "#screenReaderLanguage", "#textHighlighting"];
+                    fluid.each(ids, function (id) {
+                        var newValue = $(id).val();
+                        $(id).trigger('change', newValue);
+                    });
                 },
                 autocompletechange: "_removeIfInvalid"
             });
@@ -99,11 +98,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
             response(this.element.children("option").map(function () {
                 var text = $(this).text();
-                if (this.value && (!request.term || matcher.test(text))) return {
-                    label: text,
-                    value: text,
-                    option: this
-                };
+                if (this.value && (!request.term || matcher.test(text))) {
+                    return {
+                        label: text,
+                        value: text,
+                        option: this
+                    };
+                }
             }));
         },
 
@@ -148,7 +149,3 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 })(jQuery);
-
-$(function () {
-    $.noConflict(); //switch namespace to version 1.9.1 of jQuery. Should be unnecessary after version update.
-});

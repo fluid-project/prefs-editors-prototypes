@@ -84,7 +84,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 "onReady.activateCombobox": {
                     "funcName": "gpii.activateCombobox",
-                    "args": ["{that}","universalLanguage"]
+                    "args": ["{that}", "universalLanguage"]
                 },
 
 
@@ -142,7 +142,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": ["{that}.model.visualAlternativesPartialVisible",
                              "{that}.events.onShowVisualAlternativesPartial.fire",
                              "{that}.events.onHideVisualAlternativesPartial.fire"
-                    ],
+                        ],
                     "dynamic": true
                 },
                 updateModelAllHidden: {
@@ -167,10 +167,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 cancel: ".flc-prefsEditor-cancel"
             },
             selectorsToIgnore: ["languageHeader", "volumeHeader", "visualAlternativesPartialAdjusters", "visualAlternativesHeader",  "saveAndApply", "resetAndApply", "cancel"],
-            styles: {
-                moreIcon: "gpii-moreOptionsIcon-more",
-                lessIcon: "gpii-moreOptionsIcon-less"
-            },
             strings: {
                 visualAlternativesHeader: {
                     expander: {
@@ -188,18 +184,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     expander: {
                         func: "gpii.lookupMsg",
                         args: ["{prefsEditorLoader}.msgBundle", "languagePresetButtonLabel"]
-                    }
-                },
-                moreText: {
-                    expander: {
-                        func: "gpii.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "moreText"]
-                    }
-                },
-                lessText: {
-                    expander: {
-                        func: "gpii.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "lessText"]
                     }
                 },
                 saveAndApply: {
@@ -238,12 +222,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.updateModelVisualAlternativesPartial = function (that) {
         var newValue = that.model.gpii_primarySchema_speakText;
         that.applier.requestChange("visualAlternativesPartialVisible", newValue);
-        if (that.model.visualAlternativesExtraVisible)
+        if (that.model.visualAlternativesExtraVisible) {
             that.applier.requestChange("visualAlternativesExtraVisible", false);
+        }
     };
 
     gpii.updateModelAllHidden = function (that) {
-        var visibilityFlags = ["visualAlternativesExtraVisible", "visualAlternativesPartialVisible"]
+        var visibilityFlags = ["visualAlternativesExtraVisible", "visualAlternativesPartialVisible"];
 
         fluid.each(visibilityFlags, function (flag) {
             that.applier.requestChange(flag, false);
@@ -262,12 +247,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
 
     gpii.saveToPreferencesServer = function (that) {
-        var keys_in_model = $.grep(Object.keys(that.model), function (el) {return el.substring(0,19) === "gpii_primarySchema_"});
-        var keys_for_post = $.map(keys_in_model, function (el) {return "http://registry.gpii.org/common/" + el.substring(19, el.length)});
+        var keys_in_model = $.grep(Object.keys(that.model), function (el) {return el.substring(0, 19) === "gpii_primarySchema_";});
+        var keys_for_post = $.map(keys_in_model, function (el) {return "http://registry.gpii.org/common/" + el.substring(19, el.length);});
         var saved_settings = {};
 
-        for (var i = 0; i < keys_for_post.length; i++)
-            saved_settings[keys_for_post[i]] = that.model[keys_in_model[i]]
+        for (var i = 0; i < keys_for_post.length; i++) {
+            saved_settings[keys_for_post[i]] = that.model[keys_in_model[i]];
+        }
 
         $.ajax({
             type: "POST",
