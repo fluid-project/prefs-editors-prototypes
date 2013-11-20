@@ -11,7 +11,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
 (function (fluid) {
-    fluid.registerNamespace("gpii.speakText");
+    fluid.registerNamespace("gpii");
     gpii.primarySchema = {
         "gpii.primarySchema.speakText": {
             "type": "boolean",
@@ -33,22 +33,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "boolean",
             "default": false
         },
-
         "gpii.primarySchema.universalVolume": {
             "type": "number",
             "default": 80,
             "minimum": 0,
             "divisibleBy": 10
         },
-
         "gpii.primarySchema.universalLanguage": {
             "type": "string",
             "default": "English",
             "enum": ["English", "French (français)", "German (Deutsch)", "Russian (Русский)"]
-        },
+        }
     };
 
-    gpii.speakText.auxiliarySchema = {
+    gpii.auxiliarySchema = {
         "namespace": "gpii.adjusters.speakText",
         "templatePrefix": "../../src/shared/adjusters/html/",
         "messagePrefix": "../../src/shared/adjusters/messages/",
@@ -112,6 +110,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "container": ".universalLanguage",
                 "message": "%prefix/message.json"
             }
-        },
+        }
     };
 })(fluid);

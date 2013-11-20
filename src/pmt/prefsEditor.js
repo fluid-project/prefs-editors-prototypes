@@ -28,6 +28,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 onHideVisualAlternativesExtra: null
             },
             listeners: {
+
+                //  Visual alternatives adjuster group part
+
                 "onReady.bindEventVisualAlternativesMoreLess": {
                     "this": "{that}.dom.moreLess",
                     "method": "click",
@@ -35,7 +38,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 "onCreate.addSpeakTextSwitchListener": {
                     "listener": "{that}.applier.modelChanged.addListener",
-                    "args": ["gpii_primarySchema_speakText", "{that}.updateModelExtraValue"]
+                    "args": ["gpii_primarySchema_speakText", "{that}.updateModelVisualAlternativesPartial"]
                 },
                 "onCreate.addExtraVisibleListener": {
                     "listener": "{that}.applier.modelChanged.addListener",
@@ -115,12 +118,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
 
 
+                // Volume adjuster group part
+
                 "onReady.setTextVolumeHeader": {
                     "this": "{that}.dom.volumeHeader",
                     "method": "text",
                     "args": ["{that}.options.strings.volumeHeader"]
                 },
 
+
+                // Language adjuster group part
 
                 "onReady.setTextLanguageHeader": {
                     "this": "{that}.dom.languageHeader",
@@ -132,6 +139,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": ["{that}","universalLanguage"]
                 },
 
+
+                // Save, Reset & Cancel part
 
                 "onReady.setSaveAndApplyText": {
                     "this": "{that}.dom.saveAndApply",
@@ -175,8 +184,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": ["{that}"],
                     "dynamic": true
                 },
-                updateModelExtraValue: {
-                    "funcName": "gpii.updateModelExtraValue",
+                updateModelVisualAlternativesPartial: {
+                    "funcName": "gpii.updateModelVisualAlternativesPartial",
                     "args": ["{that}"],
                     "dynamic": true
                 },
@@ -294,7 +303,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         that.applier.requestChange("visualAlternativesExtraVisible", !extraVisible);
     };
 
-    gpii.updateModelExtraValue = function (that) {
+    gpii.updateModelVisualAlternativesPartial = function (that) {
         var newValue = that.model.gpii_primarySchema_speakText;
         that.applier.requestChange("visualAlternativesPartialVisible", newValue);
         if (that.model.visualAlternativesExtraVisible)
