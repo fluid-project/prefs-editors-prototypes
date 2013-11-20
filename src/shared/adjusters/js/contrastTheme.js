@@ -23,7 +23,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
     
     fluid.defaults("gpii.adjuster.contrastTheme", {
-        gradeNames: ["fluid.prefs.panel.contrast", "autoInit"],
+        gradeNames: ["fluid.prefs.panel.contrast", "gpii.pmt.previewPerSettingEnhanced", "autoInit"],
         mergePolicy: {
             "controlValues.theme": gpii.prefs.helpers.arrayOverridePolicy
         },
@@ -32,6 +32,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "model.value": "default"
             }
         },
+        selectors: {
+            contrastPreview: ".gpiic-contrast-previewPerSettingFrameContrast"
+        },
+        selectorsToIgnore: ["contrastPreview"],
         classes: {
             "bw": "fl-theme-prefsEditor-bw gpii-prefsEditor-theme-bw fl-theme-bw",
             "yb": "fl-theme-prefsEditor-yb gpii-prefsEditor-theme-yb fl-theme-yb",
@@ -51,6 +55,49 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 ],
                 dynamic: true
             }
-        }
+        },
+        components: {
+            preview: {
+                type: "fluid.prefs.preview",
+                createOnEvent: "afterRender",
+                container: "{that}.dom.contrastPreview",
+                options: {
+                    templateUrl: "../../src/shared/preview/html/contrastPreview.html",
+                    components: {
+                        enhancer: {
+                            type: "fluid.uiEnhancer",
+                            container: "{preview}.enhancerContainer",
+                            createOnEvent: "onReady",
+                            options: {
+                                gradeNames: ["fluid.prefs.stringBundle"],
+                                members: {
+                                    messageResolver: "{prefsEditorLoader}.msgBundle"
+                                },
+                                strings: {
+                                    previewText: "{that}.stringBundle.contrastPreviewText"
+                                },
+                                selectors: {
+                                    previewText: ".gpiic-preview-per-setting-label"
+                                },
+                                listeners: {
+                                    "onCreate.setText": {
+                                        "this": "{that}.dom.previewText",
+                                        "method": "text",
+                                        "args": ["{that}.options.strings.previewText"]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        distributeOptions: [{
+            source: "{that}.options.outerPreviewEnhancerOptions",
+            target: "{that preview enhancer}.options"
+        }, {
+            source: "{that}.options.emptyComponentType",
+            target: "{that preview enhancer magnifier}.type"
+        }]
     });
 })(jQuery, fluid);

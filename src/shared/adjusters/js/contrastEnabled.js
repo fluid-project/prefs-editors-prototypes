@@ -16,7 +16,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
     
     fluid.defaults("gpii.adjuster.contrastEnabled", {
-        gradeNames: ["fluid.prefs.panel", "gpii.pmt.previewPerSettingEnhanced", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.contrastEnabled": {
                 "model.contrast": "default"
@@ -24,57 +24,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         selectors: {
             headingLabel: ".gpiic-contrast-contrastLabel",
-            valueCheckbox: ".gpiic-contrast-constrastInput",
-            contrastPreview: ".gpiic-contrast-previewPerSettingFrameContrast"
+            valueCheckbox: ".gpiic-contrast-constrastInput"
         },
-        selectorsToIgnore: ["contrastPreview"],
         protoTree: {
             headingLabel: {messagekey: "contrast"},
             valueCheckbox: "${contrast}"
-        },
-        components: {
-            preview: {
-                type: "fluid.prefs.preview",
-                createOnEvent: "afterRender",
-                container: "{that}.dom.contrastPreview",
-                options: {
-                    templateUrl: "../../src/shared/preview/html/contrastPreview.html",
-                    components: {
-                        enhancer: {
-                            type: "fluid.uiEnhancer",
-                            container: "{preview}.enhancerContainer",
-                            createOnEvent: "onReady",
-                            options: {
-                                gradeNames: ["fluid.prefs.stringBundle"],
-                                members: {
-                                    messageResolver: "{prefsEditorLoader}.msgBundle"
-                                },
-                                strings: {
-                                    previewText: "{that}.stringBundle.contrastPreviewText"
-                                },
-                                selectors: {
-                                    previewText: ".gpiic-preview-per-setting-label"
-                                },
-                                listeners: {
-                                    "onCreate.setText": {
-                                        "this": "{that}.dom.previewText",
-                                        "method": "text",
-                                        "args": ["{that}.options.strings.previewText"]
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        
-        distributeOptions: [{
-            source: "{that}.options.outerPreviewEnhancerOptions",
-            target: "{that preview enhancer}.options"
-        }, {
-            source: "{that}.options.emptyComponentType",
-            target: "{that preview enhancer magnifier}.type"
-        }]
+        }
     });
 })(jQuery, fluid);
