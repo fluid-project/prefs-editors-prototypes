@@ -34,6 +34,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "panels": ["contrastTheme", "contrastEnabled"]
             }
         },
+        "contrastEnabled": {
+            "type": "gpii.primarySchema.contrastEnabled",
+            "enactor": {
+                "type": "gpii.enactor.contrastTheme"
+            },
+            "panel": {
+                "type": "gpii.adjuster.contrastEnabled",
+                "container": ".gpiic-contrastEnabled",
+                "template": "%prefix/contrastEnabledTemplate.html",
+                "message": "%prefix/contrast.json"
+            }
+        },
         "contrastTheme": {
             "type": "gpii.primarySchema.contrast.theme",
             "enactor": {
@@ -43,15 +55,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.adjuster.contrastTheme",
                 "container": ".gpiic-contrastTheme",
                 "template": "%prefix/contrastThemeTemplate.html"
-            }
-        },
-        "contrastEnabled": {
-            "type": "gpii.primarySchema.contrastEnabled",
-            "panel": {
-                "type": "gpii.adjuster.contrastEnabled",
-                "container": ".gpiic-contrastEnabled",
-                "template": "%prefix/contrastEnabledTemplate.html",
-                "message": "%prefix/contrast.json"
             }
         },
         "increaseSize": {

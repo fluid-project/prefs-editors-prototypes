@@ -18,6 +18,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.enactor.contrastTheme", {
         gradeNames: ["fluid.prefs.enactor.classSwapper", "autoInit"],
         preferenceMap: {
+            "gpii.primarySchema.contrastEnabled": {
+                "model.enabled": "default"
+            },
             "gpii.primarySchema.contrast.theme": {
                 "model.value": "default"
             }
@@ -33,7 +36,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     // override the swap function
     fluid.prefs.enactor.classSwapper.swap = function (value, that) {
         that.clearClasses();
-        if (that.options.sourceApplier.model.gpii_primarySchema_contrastEnabled) {
+        if (that.model.enabled) {
             that.container.addClass(that.options.classes[value]);
         }
     };
