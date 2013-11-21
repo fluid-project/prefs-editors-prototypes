@@ -25,6 +25,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "model.value": "default"
             }
         },
+        invokers: {
+            swap: {
+                funcName: "gpii.enactor.contrastTheme.swap",
+                args: ["{arguments}.0", "{that}"]
+            }
+        },
         classes: {
             "bw": "fl-theme-prefsEditor-bw gpii-prefsEditor-theme-bw fl-theme-bw",
             "yb": "fl-theme-prefsEditor-yb gpii-prefsEditor-theme-yb fl-theme-yb",
@@ -33,8 +39,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    // override the swap function
-    fluid.prefs.enactor.classSwapper.swap = function (value, that) {
+    gpii.enactor.contrastTheme.swap = function (value, that) {
         that.clearClasses();
         if (that.model.enabled) {
             that.container.addClass(that.options.classes[value]);
