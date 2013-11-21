@@ -23,6 +23,8 @@
     "wordEchoLabel": "Echo word after typed",
     "screenReaderBrailleOutputLabel": "Braille",
     "screenReaderBrailleOutputDescription": "Output to available device",
+    "readBackLabel": "Read-back",
+    "announceLabel": "Announce",
     "moreText": "more",
     "lessText": "less",
     "saveAndApply": "Save and Apply",

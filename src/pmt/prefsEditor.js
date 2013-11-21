@@ -73,6 +73,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "slideDown",
                     "args": ["{that}.options.fullyExpandedSlideSpeed"]
                 },
+                "onShowVisualAlternativesExtra.setTextReadBackLabel": {
+                    "this": "{that}.dom.readBackLabel",
+                    "method": "text",
+                    "args": ["{that}.options.strings.readBackLabel"]
+                },
+                "onShowVisualAlternativesExtra.setTextAnnounceLabel": {
+                    "this": "{that}.dom.announceLabel",
+                    "method": "text",
+                    "args": ["{that}.options.strings.announceLabel"]
+                },
                 "onShowVisualAlternativesExtra.activateComboboxLanguage": {
                     "funcName": "gpii.activateCombobox",
                     "args": ["{that}", "screenReaderLanguage"]
@@ -227,6 +237,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
                 languageHeader: ".gpii-languagePresetButton-label",
 
+                readBackLabel: ".gpii-readBackLabel",
+                announceLabel: ".gpii-announceLabel",
+
                 moreLess: ".gpiic-moreOptionsLabel",
                 moreLessIcon: ".moreOptionsIcon",
 
@@ -256,6 +269,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     expander: {
                         func: "gpii.lookupMsg",
                         args: ["{prefsEditorLoader}.msgBundle", "languagePresetButtonLabel"]
+                    }
+                },
+                readBackLabel: {
+                    expander: {
+                        func: "gpii.lookupMsg",
+                        args: ["{prefsEditorLoader}.msgBundle", "readBackLabel"]
+                    }
+                },
+                announceLabel: {
+                    expander: {
+                        func: "gpii.lookupMsg",
+                        args: ["{prefsEditorLoader}.msgBundle", "announceLabel"]
                     }
                 },
                 moreText: {

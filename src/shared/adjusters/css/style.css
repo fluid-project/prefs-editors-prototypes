@@ -48,21 +48,28 @@
     content: "\e600";
 }
 
-.spacing-ensurer {
+.gpii-spacingEnsurer {
     height: 65px;
     width: 0px;
 }
 
-.gpii-screenReaderTTSEnabled-element {
-    padding-top: 1px;
-    height: 55px;
+.gpii-announce {
+    padding-bottom: 15px;
+}
+
+.gpii-readBack {
+    padding-top: 15px;
 }
 
 .gpii-adjusters {
     padding-left: 40px;
     font-family: 'Roboto Slab', serif;
-    background-color: #E5EFEF;
     width: 285px;
+}
+
+.fl-prefsEditor-category {
+    background-color: #E5EFEF;
+    width: 325px;
 }
 
 .gpii-label {
@@ -76,7 +83,6 @@
 
 .gpii-volume-element {
     position: relative;
-    padding-top: 15px;
 }
 
 .stepper {
@@ -118,6 +124,15 @@ textarea:focus, input:focus {
 .gpii-switch {
     font-size:135%;
     float: left;
+}
+
+.gpii-dropdown {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.gpii-punctuationVerbosity {
+    padding-bottom: 15px;
 }
 
 #gpii-screenReaderOnOff {
@@ -345,7 +360,7 @@ input[type=checkbox] + label.gpii-checkboxLabel {
     background-color: white;
 }
 
-input[type=checkbox] + label.preset-button-label {
+label.preset-button-label {
     z-index: 2;
     position: absolute;
     padding-left: 90px;
@@ -411,10 +426,6 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-size: 80%;
     width: 200px !important;
-}
-
-div.ui-tooltip-content: {
-    width: 20px;
 }
 
 .ui-widget {
@@ -571,67 +582,4 @@ div.ui-tooltip-content: {
 .fl-prefsEditor label {
     text-transform: none;
     font-size: 1.2em;
-}
-
-.fl-adjuster-icons-additional {
-    font-family: 'headerGear';
-}
-
-.addToMyPreferencesStar:before {
-    content: "\e00b";
-}
-
-.addToMyPreferencesStar {
-    margin-left: 300px;
-    margin-top: 1px;
-    color: rgb(107, 114, 129);
-    position: absolute;
-    z-index: 3;
-    font-size: 25px;
-}
-
-input:checked + .addToMyPreferencesStar {
-    color: #FAE80B;
-    border-radius: 50%;
-}
-
-.addToMyPreferencesLabel {
-    position: absolute;
-    height: 17px !important;
-    width: 17px !important;
-    cursor: pointer;
-    margin-left: 302px;
-    margin-top: 2px;
-    padding: 2px;
-    z-index: 4;
-}
-
-[title]:after{
-    background-color: #F4E413;
-    padding:5px;
-    position:absolute;
-    right: 0;
-    opacity:0;
-    bottom:100%;
-    white-space:nowrap;
-    -webkit-transition:0.25s linear opacity;
-    border: 1px solid black;
-    border-radius: 3px;
-    font-size: 12px;
-    z-index: 10;
-    float: right;
-    overflow: hidden;
-}
-[title]:hover:after{
-    opacity:2;
-}
-
-.addToMyPreferencesLabel[title]:after {
-    content:attr(tooltip-unchecked);
-    float: right;
-}
-
-input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after {
-    content:attr(tooltip-checked);
-    float: right;
 }
