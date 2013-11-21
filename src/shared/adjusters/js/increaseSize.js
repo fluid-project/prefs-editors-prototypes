@@ -15,19 +15,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
 
-    gpii.adjuster.arrayMergePolicy = function (target, source) {
-        target = fluid.makeArray(target);
-        source = fluid.makeArray(source);
-        fluid.each(source, function (selector) {
-            if ($.inArray(selector, target) < 0) {
-                target.push(selector);
-            }
-        });
-        return target;
-    };
-
     fluid.defaults("gpii.panel.increaseSize", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        gradeNames: ["fluid.prefs.compositePanel", "autoInit"],
         events: {
             onShowAdjuster: null,
             onHideAdjuster: null,

@@ -122,10 +122,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "container": ".gpiic-visualAlternatives",
                 "template": "%prefix/visualAlternativesTemplate.html",
                 "message": "%prefix/visualAlternatives.json",
-                "panels": [
-                    "screenReaderTTSEnabled", "speechRate", "auditoryOutLanguage", "punctuationVerbosity", "announceCapitals",
-                    "speakTutorialMessages", "keyEcho", "wordEcho", "screenReaderBrailleOutput"
-                ]
+                "panels": {
+                    "always": ["screenReaderTTSEnabled", "screenReaderBrailleOutput"],
+                        "gpii.primarySchema.screenReaderTTSEnabled": [
+                        "speechRate", "auditoryOutLanguage", "punctuationVerbosity", "announceCapitals",
+                        "speakTutorialMessages", "keyEcho", "wordEcho"
+                    ]
+                }
             }
         }
     };
