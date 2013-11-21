@@ -361,7 +361,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         var saved_settings = {};
 
         for (var i = 0; i < keys_for_post.length; i++) {
-            saved_settings[keys_for_post[i]] = that.model[keys_in_model[i]];
+            saved_settings[keys_for_post[i]] = [{value: that.model[keys_in_model[i]]}];
         }
 
         $.ajax({
