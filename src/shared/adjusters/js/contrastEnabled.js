@@ -23,8 +23,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
-            headingLabel: ".gpiic-contrast-contrastLabel",
-            valueCheckbox: ".gpiic-contrast-constrastInput"
+            headingLabel: ".gpiic-speakText-screenReaderTTSEnabled-label",
+            valueCheckbox: ".gpiic-speakText-screenReaderTTSEnabled"
         },
         protoTree: {
             headingLabel: {messagekey: "contrast"},

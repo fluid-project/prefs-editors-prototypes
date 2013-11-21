@@ -42,7 +42,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "panel": {
                 "type": "gpii.adjuster.contrastEnabled",
                 "container": ".gpiic-contrastEnabled",
-                "template": "%prefix/contrastEnabledTemplate.html",
+                "template": "%prefix/onOffSwitchTemplate.html",
                 "message": "%prefix/contrast.json"
             }
         },
