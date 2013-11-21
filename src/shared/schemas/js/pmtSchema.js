@@ -25,20 +25,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "message": "%prefix/pmt.json",
 
         // The preference-specific information:
-        "contrast": {
-            "type": "gpii.primarySchema.highContrast",
-            "enactor": {
-                "type": "gpii.enactor.contrast"
-            },
-            "panel": {
-                "type": "gpii.adjuster.contrast",
-                "container": ".gpiic-prefsEditor-contrastPanel",
-                "template": "%prefix/contrastNewTemplate.html",
-                "message": "%prefix/contrast.json",
-                "gradeNames": ["gpii.adjuster.contrast.preview", "gpii.adjuster.textSize.preview"],
-                "previewURL": "../../src/shared/preview/html/contrastPreview.html"
-            }
-        },
         "textSize": {
             "type": "gpii.primarySchema.fontSize",
             "enactor": {
@@ -49,7 +35,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "container": ".gpiic-prefsEditor-textSize",
                 "template": "%prefix/textSizeTemplate.html",
                 "message": "%prefix/textSize.json",
-                "gradeNames": ["gpii.adjuster.textSize.preview", "gpii.adjuster.contrast.preview"],
+                "gradeNames": ["gpii.adjuster.textSize.preview"],
                 "previewURL": "../../src/shared/preview/html/textPreview.html"
             }
         },
@@ -63,7 +49,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "container": ".gpiic-prefsEditor-cursorSize",
                 "template": "%prefix/cursorSizeTemplate.html",
                 "message": "%prefix/cursorSize.json",
-                "gradeNames": ["gpii.adjuster.cursorSize.preview", "gpii.adjuster.contrast.preview"],
+                "gradeNames": ["gpii.adjuster.cursorSize.preview"],
                 "previewURL": "../../src/shared/preview/html/cursorPreview.html"
             }
         },
@@ -77,7 +63,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "container": ".gpiic-prefsEditor-magnifier",
                 "template": "%prefix/magnifierTemplate.html",
                 "message": "%prefix/magnifier.json",
-                "gradeNames": ["gpii.adjuster.magnifier.preview", "gpii.adjuster.textSize.preview", "gpii.adjuster.contrast.preview"],
+                "gradeNames": ["gpii.adjuster.magnifier.preview", "gpii.adjuster.textSize.preview"],
                 "previewURL": "../../src/shared/preview/html/textPreview.html"
             }
         },
