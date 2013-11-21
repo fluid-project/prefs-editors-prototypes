@@ -23,8 +23,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
-            headingLabel: ".gpiic-speakText-screenReaderTTSEnabled-label",
-            valueCheckbox: ".gpiic-speakText-screenReaderTTSEnabled"
+            headingLabel: ".gpiic-onOffSwitch-label",
+            valueCheckbox: ".gpiic-onOffSwitch-input"
         },
         protoTree: {
             headingLabel: {messagekey: "contrast"},
