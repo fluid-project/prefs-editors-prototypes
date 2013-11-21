@@ -366,7 +366,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
         $.ajax({
             type: "POST",
-            url: "http://localhost:8081/user/test",
+            url: "http://preferences.gpii.net/user/", // still not supported
             data: saved_settings,
             success: function () {
                 alert("Successfully sent to the Preferences server.");
