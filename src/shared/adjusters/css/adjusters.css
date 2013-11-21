@@ -951,3 +951,7 @@ input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
 .gpii-contrastThemeIndicator {
 	margin: 0 0 0 1.5em !important;
 }
+
+.gpii-contrast-contrastOptions {
+	display: inline-block;
+}
