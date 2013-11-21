@@ -15,16 +15,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     
-    fluid.defaults("gpii.adjuster.contrastEnabled", {
-        gradeNames: ["gpii.adjuster.onOffSwitch", "autoInit"],
-        preferenceMap: {
-            "gpii.primarySchema.contrastEnabled": {
-                "model.contrast": "default"
-            }
-        },
-        protoTree: {
-            headingLabel: {messagekey: "contrast"},
-            valueCheckbox: "${contrast}"
+    fluid.defaults("gpii.adjuster.onOffSwitch", {
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        selectors: {
+            headingLabel: ".gpiic-onOffSwitch-label",
+            valueCheckbox: ".gpiic-onOffSwitch-input"
         }
     });
 })(jQuery, fluid);
