@@ -15,59 +15,54 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     
-    fluid.defaults("gpii.adjuster.contrast", {
-        gradeNames: ["fluid.prefs.panel", "gpii.pmt.previewPerSettingEnhanced", "autoInit"],
+    fluid.registerNamespace("gpii.prefs.helpers");
+
+    gpii.prefs.helpers.arrayOverridePolicy = function (target, source) {
+        source = fluid.makeArray(source);
+        return source;
+    };
+    
+    fluid.defaults("gpii.adjuster.contrastTheme", {
+        gradeNames: ["fluid.prefs.panel.contrast", "gpii.pmt.previewPerSettingEnhanced", "autoInit"],
+        mergePolicy: {
+            "controlValues.theme": gpii.prefs.helpers.arrayOverridePolicy
+        },
         preferenceMap: {
-            "gpii.primarySchema.highContrast": {
-                "model.contrast": "default"
-            }
-        },
-        events: {
-            onToggleContrastAdjusters: null
-        },
-        listeners: {
-            "afterRender.bindEventPreferenceSwitchContrast": {
-                "this": "{that}.dom.valueCheckbox",
-                "method": "change",
-                "args": ["{that}.events.onToggleContrastAdjusters.fire"]
-            },
-            "onToggleContrastAdjusters.showHide": {
-                "this": "{that}.dom.contrastAdjusters",
-                "method": "slideToggle"
-            },
-            "afterRender.setContrastAdjusters": {
-                listener: "gpii.adjuster.contrast.setContrastAdjusters",
-                args: ["{that}.dom.contrastAdjusters", "{that}.model.contrast"]
-            },
-            "afterRender.setATTRaddToMyPreferencesLabel": {
-                "this": "{that}.dom.addToMyPreferencesLabel",
-                "method": "attr",
-                "args": [{
-                    "tooltip-checked": "{that}.options.strings.tooltipChecked",
-                    "tooltip-unchecked": "{that}.options.strings.tooltipUnchecked"
-                }]
+            "gpii.primarySchema.contrast.theme": {
+                "model.value": "default"
             }
         },
         selectors: {
-            valueCheckbox: ".gpiic-contrast-constrastInput",
-            headingLabel: ".gpiic-contrast-contrastLabel",
-            panelLabel: ".gpiic-headerTitle",
-            addToMyPreferencesLabel: ".gpiic-addToMyPreferencesLabel",
-            contrastAdjusters: ".gpiic-category",
-            contrastPreview: ".gpiic-contrast-previewPerSettingFrameContrast"
+            contrastPreview: ".gpiic-contrast-previewPerSettingFrameContrast",
+            contrastOptions: ".gpiic-contrast-contrastOptions"
         },
-        selectorsToIgnore: ["contrastAdjusters", "addToMyPreferencesLabel", "contrastPreview"],
-        protoTree: {
-            valueCheckbox: "${contrast}",
-            headingLabel: {messagekey: "contrast"},
-            panelLabel: {messagekey: "addContrast"}
+        selectorsToIgnore: ["contrastPreview", "contrastOptions"],
+        listeners: {
+            "afterRender.setContrastOptionstext": {
+                "this": "{that}.dom.contrastOptions",
+                "method": "text",
+                "args": ["{that}.stringBundle.contrastOptions"]
+            }
         },
-        members: {
-            messageResolver: "{prefsEditorLoader}.msgBundle"
+        classes: {
+            "bw": "fl-theme-prefsEditor-bw gpii-prefsEditor-theme-bw fl-theme-bw",
+            "yb": "fl-theme-prefsEditor-yb gpii-prefsEditor-theme-yb fl-theme-yb",
+            "by": "fl-theme-prefsEditor-by gpii-prefsEditor-theme-by fl-theme-by",
+            "wb": "fl-theme-prefsEditor-wb gpii-prefsEditor-theme-wb fl-theme-wb"
         },
-        strings: {
-            tooltipChecked: "{that}.stringBundle.tooltipChecked",
-            tooltipUnchecked: "{that}.stringBundle.tooltipUnchecked"
+        controlValues: {
+            theme: ["bw", "yb", "by", "wb"]
+        },
+        invokers: {
+            style: {
+                funcName: "fluid.prefs.panel.contrast.style",
+                args: [
+                    "{that}.dom.themeLabel", "{that}.stringBundle.theme",
+                    "{that}.options.markup.label", "{that}.options.controlValues.theme",
+                    "{that}.options.classes"
+                ],
+                dynamic: true
+            }
         },
         components: {
             preview: {
@@ -105,7 +100,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             }
         },
-        
         distributeOptions: [{
             source: "{that}.options.outerPreviewEnhancerOptions",
             target: "{that preview enhancer}.options"
@@ -114,8 +108,4 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             target: "{that preview enhancer magnifier}.type"
         }]
     });
-    
-    gpii.adjuster.contrast.setContrastAdjusters = function (contrastAdjuster, flag) {
-        contrastAdjuster[flag ? "show" : "hide"]();
-    };
 })(jQuery, fluid);

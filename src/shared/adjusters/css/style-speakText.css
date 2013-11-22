@@ -119,9 +119,20 @@ textarea:focus, input:focus {
     float: left;
 }
 
+.gpii-onOffSwitch-switch {
+	float: left;
+}
+
 #gpii-speakText-screenReaderOnOff {
     font-size:70%;
     float:left;
+    margin-left:37px;
+}
+
+#gpii-onOffSwitch-onOff {
+	display: inline;
+    float: right;    
+    font-size:70%;
     margin-left:37px;
 }
 

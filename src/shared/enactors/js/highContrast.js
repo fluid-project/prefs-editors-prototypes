@@ -1,3 +1,8 @@
+/*
+ * DEPRECATED - High contrast now is merely only a model value. It does not enact anything on UI.
+ * UI changes are mode by the contrast theme, which considers the contrastEnabled model value.
+ */
+
 /*!
 Cloud4all Preferences Management Tools
 
@@ -15,7 +20,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
 
-    fluid.defaults("gpii.enactor.contrast", {
+    fluid.defaults("gpii.enactor.highContrast", {
         gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.highContrast": {
@@ -24,11 +29,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         styles: {
             defaultTheme: "fl-theme-prefsEditor-default gpii-prefsEditor-theme-default",
-            contrastTheme: "fl-theme-prefsEditor-yb gpii-prefsEditor-theme-yb"
+            contrastTheme: ""
         },
         invokers: {
             toggleContrast: {
-                funcName: "gpii.enactor.contrast.toggleContrast",
+                funcName: "gpii.enactor.highContrast.toggleContrast",
                 args: ["{that}.container", "{that}.options.styles.defaultTheme", "{that}.options.styles.contrastTheme", "{that}.model.value"],
                 dynamic: true
             }
@@ -45,7 +50,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.enactor.contrast.toggleContrast = function (elm, originalClass, contrastClass, enableContrast) {
+    gpii.enactor.highContrast.toggleContrast = function (elm, originalClass, contrastClass, enableContrast) {
         elm.toggleClass(originalClass, !enableContrast);
         elm.toggleClass(contrastClass, enableContrast);
     };

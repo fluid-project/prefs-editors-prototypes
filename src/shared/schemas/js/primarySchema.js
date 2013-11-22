@@ -45,9 +45,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "default": "",
             "enum": ["mousecursor", "textcursor", "keyboardfocus"]
         },
-        "gpii.primarySchema.highContrast": {
+        "gpii.primarySchema.contrastEnabled": {
             "type": "boolean",
             "default": false
+        },
+        "gpii.primarySchema.contrast.theme": {
+            "type": "string",
+            "default": "",
+            "enum": ["bw", "yb", "by", "wb"]
         },
         "gpii.primarySchema.screenReaderTTSEnabled": {
             "type": "boolean",
