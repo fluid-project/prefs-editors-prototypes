@@ -38,7 +38,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "container": ".gpiic-prefsEditor-increaseSizePanel",
                 "template": "%prefix/increaseSizeTemplate.html",
                 "message": "%prefix/increaseSize.json",
-                "panels": ["textSize", "cursorSize", "magnifierEnabled", "magnifier", "magnifierInvertColours", "magnifierPosition", "magnifierFollows"]
+                "panels": ["textSize", "cursorSize", "magnifierEnabled", "magnifier", "magnifierInvertColours", "magnifierPosition", "magnifierFollows", "showCrosshairs"]
             }
         },
         "contrastEnabled": {
@@ -153,6 +153,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "followingElement": "@followingElement.classes",
                     "followingElementBorder": "@followingElement.borderClasses"
                 }
+            }
+        },
+        "showCrosshairs": {
+            "type": "gpii.primarySchema.showCrosshairs",
+            "panel": {
+                "type": "gpii.adjuster.showCrosshairs",
+                "container": ".gpiic-prefsEditor-showCrosshairs",
+                "template": "%prefix/iconCheckTemplate.html",
+                "message": "%prefix/showCrosshairs.json"
             }
         }
     };

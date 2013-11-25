@@ -53,6 +53,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "default": "",
             "enum": ["mousecursor", "textcursor", "keyboardfocus"]
         },
+        "gpii.primarySchema.showCrosshairs": {
+            "type": "boolean",
+            "default": false
+        },
         "gpii.primarySchema.contrastEnabled": {
             "type": "boolean",
             "default": false

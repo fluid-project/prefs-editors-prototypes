@@ -21,7 +21,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "boolean",
             "default": false
         },
-        "showCrosshairs": {
+        "gpii.primarySchema.showCrosshairs": {
             "type": "boolean",
             "default": false
         },
@@ -62,12 +62,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         "showCrosshairs": {
-            "type": "showCrosshairs",
+            "type": "gpii.primarySchema.showCrosshairs",
             /*"enactor": {
                 "type": "gpii.uiOptions.enactors.contrast"
             },*/
             "panel": {
-                "type": "gpii.prefs.panel.showCrosshairs",
+                "type": "gpii.adjuster.showCrosshairs",
                 "container": ".gpiic-increaseSize-showCrosshairs",
                 "template": "%prefix/iconCheckTemplate.html",
                 "message": "%prefix/showCrosshairs.json"

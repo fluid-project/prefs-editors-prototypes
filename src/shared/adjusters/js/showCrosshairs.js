@@ -15,18 +15,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     
-    fluid.defaults("gpii.prefs.panel.showCrosshairs", {
+    fluid.defaults("gpii.adjuster.showCrosshairs", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
-            "showCrosshairs": {
+            "gpii.primarySchema.showCrosshairs": {
                 "model.value": "default"
             }
         },
         selectors: {
+            showCrosshairsTitle: ".gpiic-iconCheckAdjusterTitle",
             preferenceSwitchShowCrosshairs: "#preferenceSwitchIconCheckAdjuster",
             showCrosshairsDescription: ".gpiic-iconCheckAdjusterDescription"
         },
         protoTree: {
+            showCrosshairsTitle: {messagekey: "emphasizeLocation"},
             preferenceSwitchShowCrosshairs: "${value}",
             showCrosshairsDescription: {messagekey: "showCrosshairs"}
         }
