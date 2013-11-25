@@ -25,7 +25,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "boolean",
             "default": false
         },
-        "magnifier.tracking": {
+        "gpii.primarySchema.tracking": {
             "type": "string",
             "default": "",
             "enum": ["mousecursor", "textcursor", "keyboardfocus"]
@@ -86,9 +86,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         "magnifierTracking": {
-            "type": "magnifier.tracking",
+            "type": "gpii.primarySchema.tracking",
             "panel": {
-                "type": "gpii.prefs.panel.followingElement.magnifier",
+                "type": "gpii.adjuster.followingElement.magnifier",
                 "container": ".gpiic-increaseSize-magnifierFollows",
                 "template": "%prefix/followingElementTemplate.html",
                 "message": "%prefix/followingElement.json",
@@ -101,7 +101,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "screenReaderTracking": {
             "type": "screenReader.tracking",
             "panel": {
-                "type": "gpii.prefs.panel.followingElement.screenReader",
+                "type": "gpii.adjuster.followingElement.screenReader",
                 "container": ".gpiic-increaseSize-screenReaderFollows",
                 "template": "%prefix/followingElementTemplate.html",
                 "message": "%prefix/followingElement.json",

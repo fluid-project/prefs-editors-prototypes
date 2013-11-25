@@ -145,11 +145,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "magnifierFollows": {
             "type": "gpii.primarySchema.tracking",
             "panel": {
-                "type": "gpii.adjuster.magnifierFollows",
+                "type": "gpii.adjuster.followingElement.magnifier",
                 "container": ".gpiic-prefsEditor-magnifierFollows",
-                "template": "%prefix/magnifierFollowsTemplate.html",
-                "message": "%prefix/magnifierFollows.json",
-                "classnameMap": {"magnifierFollows": "@magnifierFollows.classes"}
+                "template": "%prefix/followingElementTemplate.html",
+                "message": "%prefix/followingElement.json",
+                "classnameMap": {
+                    "followingElement": "@followingElement.classes",
+                    "followingElementBorder": "@followingElement.borderClasses"
+                }
             }
         }
     };
