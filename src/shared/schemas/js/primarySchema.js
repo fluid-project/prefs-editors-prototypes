@@ -39,6 +39,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "maximum": 10000,
             "divisibleBy": 50
         },
+        "gpii.primarySchema.magnifier.invertColours": {
+            "type": "boolean",
+            "default": false
+        },
         "gpii.primarySchema.magnificationPosition": {
             "type": "string",
             "default": "",

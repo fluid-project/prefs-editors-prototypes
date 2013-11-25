@@ -17,7 +17,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.registerNamespace("gpii.prefs.adjusters_pilot_2");
 
     gpii.prefs.adjusters_pilot_2.primarySchema = {
-        "magnifier.invertColours": {
+        "gpii.primarySchema.magnifier.invertColours": {
             "type": "boolean",
             "default": false
         },
@@ -50,12 +50,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "message": "%prefix/pmt.json",
         
         "magnifier.invertColours": {
-            "type": "magnifier.invertColours",
+            "type": "gpii.primarySchema.magnifier.invertColours",
             /*"enactor": {
                 "type": "gpii.uiOptions.enactors.contrast"
             },*/
             "panel": {
-                "type": "gpii.prefs.panel.magnifier.invertColours",
+                "type": "gpii.adjuster.magnifierInvertColours",
                 "container": ".gpiic-increaseSize-magnifierInvertColours",
                 "template": "%prefix/iconCheckTemplate.html",
                 "message": "%prefix/magnifierInvertColours.json"

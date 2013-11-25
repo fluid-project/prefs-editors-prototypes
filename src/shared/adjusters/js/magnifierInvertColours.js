@@ -15,10 +15,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     
-    fluid.defaults("gpii.prefs.panel.magnifier.invertColours", {
+    fluid.defaults("gpii.adjuster.magnifierInvertColours", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
-            "magnifier.invertColours": {
+            "gpii.primarySchema.magnifier.invertColours": {
                 "model.value": "default"
             }
         },
