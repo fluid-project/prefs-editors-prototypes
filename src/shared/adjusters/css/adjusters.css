@@ -454,6 +454,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-prefsEditor-previewPerSettingContainer {
+	display: inline-block;
 	width:100%;
     background-color: white;
     border: 1px solid #beced1;
