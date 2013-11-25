@@ -99,9 +99,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "magnifierEnabled": {
             "type": "gpii.primarySchema.magnifierEnabled",
-            /*"enactor": {
-                "type": "gpii.enactor.contrastTheme"
-            },*/
+            "enactor": {
+                "type": "gpii.enactor.magnifier"
+            },
             "panel": {
                 "type": "gpii.adjuster.magnifierEnabled",
                 "container": ".gpiic-prefsEditor-magnifierEnabled",
