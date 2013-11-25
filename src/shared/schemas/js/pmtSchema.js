@@ -38,7 +38,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "container": ".gpiic-prefsEditor-increaseSizePanel",
                 "template": "%prefix/increaseSizeTemplate.html",
                 "message": "%prefix/increaseSize.json",
-                "panels": ["textSize", "cursorSize", "magnifier", "magnifierPosition", "magnifierFollows"]
+                "panels": ["textSize", "cursorSize", "magnifierEnabled", "magnifier", "magnifierPosition", "magnifierFollows"]
             }
         },
         "contrastEnabled": {
@@ -95,6 +95,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "container": ".gpiic-prefsEditor-cursorSize",
                 "template": "%prefix/cursorSizeTemplate.html",
                 "message": "%prefix/cursorSize.json"
+            }
+        },
+        "magnifierEnabled": {
+            "type": "gpii.primarySchema.magnifierEnabled",
+            /*"enactor": {
+                "type": "gpii.enactor.contrastTheme"
+            },*/
+            "panel": {
+                "type": "gpii.adjuster.magnifierEnabled",
+                "container": ".gpiic-prefsEditor-magnifierEnabled",
+                "template": "%prefix/onOffSwitchTemplate.html",
+                "message": "%prefix/magnifier.json"
             }
         },
         "magnifier": {

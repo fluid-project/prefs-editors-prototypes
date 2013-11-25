@@ -28,6 +28,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "maximum": 5,
             "divisibleBy": 0.2
         },
+        "gpii.primarySchema.magnifierEnabled": {
+            "type": "boolean",
+            "default": false
+        },
         "gpii.primarySchema.magnification": {
             "type": "number",
             "default": 100,

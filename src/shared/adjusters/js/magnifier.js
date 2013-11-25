@@ -65,13 +65,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
-            magnifierLabel: ".gpiic-magnifier-label",
             magnifierStepper: ".gpiic-magnifier-stepper",
             magnifierPreview: ".gpiic-magnifier-preview"
         },
         selectorsToIgnore: ["magnifierPreview"],
         protoTree: {
-            magnifierLabel: {messagekey: "magnifierLabel"},
             magnifierStepper: {
                 decorators: {
                     type: "fluid",
