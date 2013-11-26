@@ -34,7 +34,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "panels": ["contrastTheme", "contrastEnabled"]
             },
             "increaseSize": {
-                "type": "gpii.panel.increaseSize",
+                "type": "gpii.adjuster.increaseSize",
                 "container": ".gpiic-prefsEditor-increaseSizePanel",
                 "template": "%prefix/increaseSizeTemplate.html",
                 "message": "%prefix/increaseSize.json",
