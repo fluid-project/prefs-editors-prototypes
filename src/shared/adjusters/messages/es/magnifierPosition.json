@@ -1,0 +1,10 @@
+{
+    "magnifierPositionLabel": "Posición del magnificador",
+    "magnifierPosition-default": "Opción por defecto",
+    "magnifierPosition-lens": "Lupa",
+    "magnifierPosition-fullscreen": "Pantalla completa",
+    "magnifierPosition-dockedtop": "Anclado en marco superior",
+    "magnifierPosition-dockedbottom": "Anclado en marco inferior",
+    "magnifierPosition-dockedleft": "Anclado a la izquierda",
+    "magnifierPosition-dockedright": "Anclado a la derecha"
+}

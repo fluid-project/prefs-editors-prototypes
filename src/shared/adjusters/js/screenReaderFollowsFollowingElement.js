@@ -15,8 +15,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     
-    fluid.defaults("gpii.prefs.panel.followingElement.screenReader", {
-        gradeNames: ["gpii.prefs.panel.followingElement", "autoInit"],
+    fluid.defaults("gpii.adjuster.followingElement.screenReader", {
+        gradeNames: ["gpii.adjuster.followingElement", "autoInit"],
         preferenceMap: {
             "screenReader.tracking": {
                 "model.value": "",

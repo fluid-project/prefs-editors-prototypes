@@ -208,20 +208,24 @@ input[type=checkbox], input[type=radio] {
 .gpii-prefsEditor .gpii-prefsEditor-slider a {
     //background: radial-gradient(circle 14.5px at 14.5px 50%, #566374 6px, white 8px);
     border: 1px solid #566374;
+    box-shadow: none;
+    width: 2.2em !important;
 }
 
 .gpii-prefsEditor .ui-slider-range {
     background-color: #17a9b8;
 }
 
-.gpii-prefsEditor .gpii-prefsEditor-slider a {
-    box-shadow: none;
+/*
+    The textfieldStepper style
+*/
+.gpii-stepper {
+    width: 100% !important;
+    background-color: #FFFFFF;
+    display: table;
 }
 
-/*
-    The plusMinusAdjuster style
-*/
-.gpii-increaseSize-plusMinusNumericalMinus, .gpii-increaseSize-plusMinusNumericalPlus {
+.gpii-stepper-buttons {
     width: 10% !important;
     font-size: 1.5em !important;
     cursor: pointer;
@@ -238,23 +242,21 @@ input[type=checkbox], input[type=radio] {
     float: left;
 }
 
-.gpii-increaseSize-plusMinusNumericalWidget {
-    width: 100% !important;
-    background-color: #FFFFFF;
-    display: table;
-}
-
-.gpii-increaseSize-plusMinusNumericalValue {
-    width: 76% !important;
+.gpii-stepper-valueField {
+    width: 66% !important;
     border: none !important;
     text-align: center !important;
     font-size: 1.5em !important;
     margin-top: 1px !important;
     margin-bottom: 2px !important;
+    float: left;
 }
 
-.gpii-increaseSize-plusMinusNumericalMinReached {
-    color: #D3D3D3 !important;
+.gpii-stepper-unit {
+    float: left;
+    width: 10% !important;
+    text-align: center !important;
+    font-size: 1.5em !important;
 }
 
 /*
@@ -453,6 +455,7 @@ input[type=checkbox], input[type=radio] {
 
 .gpii-prefsEditor-previewPerSettingContainer {
 	display: inline-block;
+	width:100%;
     background-color: white;
     border: 1px solid #beced1;
     color: #B8C9CC;
@@ -818,13 +821,16 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
 }
 
 /*
-    Style for magnifier.invertColours adjuster
+    Style for iconCheck adjuster
 */
-.gpiic-increaseSize-magnifierInvertColours > .gpii-iconCheckAdjusterArea > .gpii-iconCheckAdjusterIcon {
+.gpii-iconCheckAdjusterIcon {
     font-family: 'icomoon';
 }
 
-.gpiic-increaseSize-magnifierInvertColours > .gpii-iconCheckAdjusterArea > .gpii-iconCheckAdjusterIcon:before {
+/*
+    Style for magnifier.invertColours adjuster
+*/
+.gpii-iconCheck-magnifierInvertColours:before {
     content: "\e002";
     font-size: 70px !important;
 }
@@ -888,11 +894,8 @@ input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
 /*
     Style for showCrosshairs adjuster
 */
-.gpiic-increaseSize-showCrosshairs > .gpii-iconCheckAdjusterArea > .gpii-iconCheckAdjusterIcon {
-    font-family: 'icomoon';
-}
 
-.gpiic-increaseSize-showCrosshairs > .gpii-iconCheckAdjusterArea > .gpii-iconCheckAdjusterIcon:before {
+.gpii-iconCheck-showCrosshairs:before {
     content: "\e00f";
     font-size: 70px !important;
 }

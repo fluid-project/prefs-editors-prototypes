@@ -15,10 +15,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     
-    fluid.defaults("gpii.prefs.panel.followingElement.magnifier", {
-        gradeNames: ["gpii.prefs.panel.followingElement", "autoInit"],
+    fluid.defaults("gpii.adjuster.followingElement.magnifier", {
+        gradeNames: ["gpii.adjuster.followingElement", "autoInit"],
         preferenceMap: {
-            "magnifier.tracking": {
+            "gpii.primarySchema.tracking": {
                 "model.value": "",
                 "controlValues.followingElement": "enum"
             }

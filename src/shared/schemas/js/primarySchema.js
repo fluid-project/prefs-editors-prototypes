@@ -28,12 +28,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "maximum": 5,
             "divisibleBy": 0.2
         },
+        "gpii.primarySchema.magnifierEnabled": {
+            "type": "boolean",
+            "default": false
+        },
         "gpii.primarySchema.magnification": {
             "type": "number",
             "default": 100,
             "minimum": 100,
             "maximum": 10000,
             "divisibleBy": 50
+        },
+        "gpii.primarySchema.magnifier.invertColours": {
+            "type": "boolean",
+            "default": false
         },
         "gpii.primarySchema.magnificationPosition": {
             "type": "string",
@@ -44,6 +52,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "string",
             "default": "",
             "enum": ["mousecursor", "textcursor", "keyboardfocus"]
+        },
+        "gpii.primarySchema.showCrosshairs": {
+            "type": "boolean",
+            "default": false
         },
         "gpii.primarySchema.contrastEnabled": {
             "type": "boolean",
