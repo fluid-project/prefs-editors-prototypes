@@ -129,7 +129,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "panel": {
                 "type": "gpii.adjuster.magnifierInvertColours",
                 "container": ".gpiic-prefsEditor-magnifierInvertColours",
-                "template": "%prefix/iconCheckTemplate.html",
+                "template": "%prefix/iconCheckTemplateInvertColours.html",
                 "message": "%prefix/magnifierInvertColours.json"
             }
         },
@@ -160,7 +160,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "panel": {
                 "type": "gpii.adjuster.showCrosshairs",
                 "container": ".gpiic-prefsEditor-showCrosshairs",
-                "template": "%prefix/iconCheckTemplate.html",
+                "template": "%prefix/iconCheckTemplateShowCrosshairs.html",
                 "message": "%prefix/showCrosshairs.json"
             }
         }

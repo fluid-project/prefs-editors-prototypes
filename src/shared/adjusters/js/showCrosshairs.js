@@ -24,7 +24,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         selectors: {
             showCrosshairsTitle: ".gpiic-iconCheckAdjusterTitle",
-            preferenceSwitchShowCrosshairs: "#preferenceSwitchIconCheckAdjuster",
+            preferenceSwitchShowCrosshairs: "#preferenceSwitchIconCheckAdjusterShowCrosshairs",
             showCrosshairsDescription: ".gpiic-iconCheckAdjusterDescription"
         },
         protoTree: {
