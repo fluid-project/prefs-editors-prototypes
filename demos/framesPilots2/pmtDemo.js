@@ -40,3 +40,4 @@ var demo = demo || {};
         fluid.invokeGlobalFunction(demo.prefsBuilder.options.assembledPrefsEditorGrade, [container, baseOpts]);
     };
 })(jQuery, fluid);
+ 
