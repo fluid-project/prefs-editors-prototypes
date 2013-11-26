@@ -36,7 +36,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "combinedPMTPanels": {
                 "container": ".gpiic-prefsEditor-preferences",
                 "template": "%prefix/increaseSizeTemplate.html",
-                "type": "gpii.adjuster.increaseSize",
+                "type": "gpii.panel.increaseSize",
                 "panels": ["cursorSizePanel"]
             }
         },

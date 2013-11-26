@@ -26,7 +26,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         return target;
     };*/
 
-    fluid.defaults("gpii.adjuster.increaseSize", {
+    fluid.defaults("gpii.panel.increaseSize", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         events: {
             onShowAdjuster: null,
@@ -125,7 +125,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         invokers: {
             toggleIncreaseSizeAdjustersInstant: {
-                "funcName": "gpii.adjuster.increaseSize.toggleIncreaseSizeAdjusters",
+                "funcName": "gpii.panel.increaseSize.toggleIncreaseSizeAdjusters",
                 "args": [
                     "{that}.model.increaseSizeAdjustersEnabledSwitch",
                     "{that}.events.onShowAdjuster.fire",
@@ -135,7 +135,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 dynamic: true
             },
             toggleIncreaseSizeExtraAdjustersInstant: {
-                "funcName": "gpii.adjuster.increaseSize.toggleIncreaseSizeExtraAdjusters",
+                "funcName": "gpii.panel.increaseSize.toggleIncreaseSizeExtraAdjusters",
                 "args": [
                     "{that}.model.increaseSizeExtraAdjustersEnabledSwitch",
                     "{that}.events.onShowExtraAdjuster.fire",
@@ -145,7 +145,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 dynamic: true
             },
             toggleIncreaseSizeAdjusters: {
-                "funcName": "gpii.adjuster.increaseSize.toggleIncreaseSizeAdjusters",
+                "funcName": "gpii.panel.increaseSize.toggleIncreaseSizeAdjusters",
                 "args": [
                     "{that}.model.increaseSizeAdjustersEnabledSwitch",
                     "{that}.events.onShowAdjuster.fire",
@@ -154,7 +154,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 dynamic: true
             },
             toggleIncreaseSizeExtraAdjusters: {
-                "funcName": "gpii.adjuster.increaseSize.toggleIncreaseSizeExtraAdjusters",
+                "funcName": "gpii.panel.increaseSize.toggleIncreaseSizeExtraAdjusters",
                 "args": [
                     "{that}.model.increaseSizeExtraAdjustersEnabledSwitch",
                     "{that}.events.onShowExtraAdjuster.fire",
@@ -165,7 +165,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.adjuster.increaseSize.toggleIncreaseSizeAdjusters = function (increaseSizeAdjustersEnabledSwitch, showEvent, hideEvent, duration) {
+    gpii.panel.increaseSize.toggleIncreaseSizeAdjusters = function (increaseSizeAdjustersEnabledSwitch, showEvent, hideEvent, duration) {
         if (increaseSizeAdjustersEnabledSwitch) {
             showEvent(duration);
         } else {
@@ -173,7 +173,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     };
 
-    gpii.adjuster.increaseSize.toggleIncreaseSizeExtraAdjusters = function (increaseSizeExtraAdjustersEnabledSwitch, showEvent, hideEvent, duration) {
+    gpii.panel.increaseSize.toggleIncreaseSizeExtraAdjusters = function (increaseSizeExtraAdjustersEnabledSwitch, showEvent, hideEvent, duration) {
         if (increaseSizeExtraAdjustersEnabledSwitch) {
             showEvent(duration);
         } else {
