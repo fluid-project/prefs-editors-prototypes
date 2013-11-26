@@ -15,20 +15,21 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     
-    fluid.defaults("gpii.prefs.panel.magnifier.invertColours", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+    fluid.defaults("gpii.adjuster.magnifierInvertColours", {
+        gradeNames: ["gpii.adjuster.iconCheck", "autoInit"],
         preferenceMap: {
-            "magnifier.invertColours": {
+            "gpii.primarySchema.magnifier.invertColours": {
                 "model.value": "default"
             }
         },
         selectors: {
-            preferenceSwitchMagnifierInvertColours: "#preferenceSwitchIconCheckAdjuster",
+            preferenceSwitchMagnifierInvertColours: "#preferenceSwitchIconCheckAdjusterInvertColours",
             magnifierInvertColoursDescription: ".gpiic-iconCheckAdjusterDescription"
         },
         protoTree: {
             preferenceSwitchMagnifierInvertColours: "${value}",
             magnifierInvertColoursDescription: {messagekey: "magnifierInvertColoursDescription"}
-        }
+        },
+        "class": "gpii-iconCheck-magnifierInvertColours"
     });
 })(jQuery, fluid);

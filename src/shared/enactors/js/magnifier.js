@@ -20,12 +20,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         preferenceMap: {
             "gpii.primarySchema.magnification": {
                 "model.value": "default"
+            },
+            "gpii.primarySchema.magnifierEnabled": {
+                "model.enabled": "default"
             }
         },
         invokers: {
             set: {
                 funcName: "gpii.enactor.magnifier.set",
-                args: ["{that}.model.value", "{that}.container"],
+                args: ["{that}.model.enabled", "{that}.model.value", "{that}.container"],
                 dynamic: true
             }
         },
@@ -40,8 +43,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.enactor.magnifier.set = function (times, that) {
-        that.css({"transform": "scale(" + times / 100 + ")", "-webkit-transform": "scale(" + times / 100 + ")"});
+    gpii.enactor.magnifier.set = function (enabled, times, that) {
+        if (enabled) {
+            that.css({"transform": "scale(" + times / 100 + ")", "-webkit-transform": "scale(" + times / 100 + ")"});
+        } else {
+            that.css({"transform": "scale(1)", "-webkit-transform": "scale(1)"});
+        }
     };
     
 })(jQuery, fluid);

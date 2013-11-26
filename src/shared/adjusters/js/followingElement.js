@@ -15,7 +15,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     
-    fluid.defaults("gpii.prefs.panel.followingElement", {
+    fluid.defaults("gpii.adjuster.followingElement", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         listeners: {
             afterRender: "{that}.followingElementStyle"
@@ -47,21 +47,31 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "   </label>" +
                     "</div>"
         },
+        "classes": {
+            "mousecursor": "gpii-followingElement-mouseCursorIcon",
+            "textcursor": "gpii-followingElement-textCursorIcon",
+            "keyboardfocus": "gpii-followingElement-keyboardFocusIcon"
+        },
+        "borderClasses": {
+            "topOnly": "gpii-iconCheckAdjusterAreaTopOnlyBorder",
+            "bottomOnly": "gpii-iconCheckAdjusterAreaBottomOnlyBorder",
+            "noBorder": "gpii-iconCheckAdjusterAreaNoBorder"
+        },
         invokers: {
             followingElementStyle: {
-                funcName: "gpii.prefs.panel.followingElement.style",
+                funcName: "gpii.adjuster.followingElement.style",
                 args: [
                     "{that}.dom.followingElementLabel", "{that}.stringBundle.followingElement",
                     "{that}.options.markup.followingElementLabel", "{that}.options.controlValues.followingElement",
-                    "{that}.options.classnameMap.followingElement",
-                    "{that}.options.controlValues.followingElementBorder", "{that}.options.classnameMap.followingElementBorder"
+                    "{that}.options.classes",
+                    "{that}.options.controlValues.followingElementBorder", "{that}.options.borderClasses"
                 ],
                 dynamic: true
             }
         }
     });
 
-    gpii.prefs.panel.followingElement.style = function (labels, strings, markup, followingElement, style, followingElementBorder, borderStyle) {
+    gpii.adjuster.followingElement.style = function (labels, strings, markup, followingElement, style, followingElementBorder, borderStyle) {
         fluid.each(labels, function (label, index) {
             label = $(label);
             label.html(fluid.stringTemplate(markup, {

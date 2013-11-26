@@ -25,37 +25,64 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "message": "%prefix/pmt.json",
 
         // The preference-specific information:
-        "contrast": {
-            "type": "gpii.primarySchema.highContrast",
-            "enactor": {
-                "type": "gpii.enactor.contrast"
-            },
-            "panel": {
-                "type": "gpii.adjuster.contrast",
+        "groups": {
+            "addContrast": {
                 "container": ".gpii-prefsEditor-contrastPanel",
-                "template": "%prefix/contrastNewTemplate.html",
-                "message": "%prefix/contrastNew.json"
+                "template": "%prefix/addContrastTemplate.html",
+                "message": "%prefix/contrast.json",
+                "type": "gpii.adjuster.addContrast",
+                "panels": ["contrastTheme", "contrastEnabled"]
+            },
+            "increaseSize": {
+                "type": "gpii.panel.increaseSize",
+                "container": ".gpiic-prefsEditor-increaseSizePanel",
+                "template": "%prefix/increaseSizeTemplate.html",
+                "message": "%prefix/increaseSize.json",
+                "panels": ["textSize", "cursorSize", "magnifierEnabled", "magnifier", "magnifierInvertColours", "magnifierPosition", "magnifierFollows", "showCrosshairs"]
             }
         },
-        "increaseSize": {
+        "contrastEnabled": {
+            "type": "gpii.primarySchema.contrastEnabled",
+            "enactor": {
+                "type": "gpii.enactor.contrastTheme"
+            },
+            "panel": {
+                "type": "gpii.adjuster.contrastEnabled",
+                "container": ".gpiic-contrastEnabled",
+                "template": "%prefix/onOffSwitchTemplate.html",
+                "message": "%prefix/contrast.json"
+            }
+        },
+        "contrastTheme": {
+            "type": "gpii.primarySchema.contrast.theme",
+            "enactor": {
+                "type": "gpii.enactor.contrastTheme"
+            },
+            "panel": {
+                "type": "gpii.adjuster.contrastTheme",
+                "container": ".gpiic-contrastTheme",
+                "template": "%prefix/contrastThemeTemplate.html"
+            }
+        },
+        /*"increaseSize": {
             "type": "increaseSize",
-            /*"enactor": {
-                "type": "gpii.enactor.contrast"
-            },*/
             "panel": {
                 "type": "gpii.adjuster.increaseSize",
                 "container": ".gpii-prefsEditor-increaseSizePanel",
                 "template": "%prefix/increaseSizeTemplateOld.html",
                 "message": "%prefix/increaseSize.json"
             }
-        },
+        },*/
         "textSize": {
             "type": "gpii.primarySchema.fontSize",
             "enactor": {
                 "type": "gpii.enactor.textSize"
             },
             "panel": {
-                "type": "gpii.adjuster.increaseSize"
+                "type": "gpii.adjuster.textSize",
+                "container": ".gpiic-prefsEditor-textSize",
+                "template": "%prefix/textSizeTemplate.html",
+                "message": "%prefix/textSize.json"
             }
         },
         "cursorSize": {
@@ -64,7 +91,22 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.enactor.cursorSize"
             },
             "panel": {
-                "type": "gpii.adjuster.increaseSize"
+                "type": "gpii.adjuster.cursorSize",
+                "container": ".gpiic-prefsEditor-cursorSize",
+                "template": "%prefix/cursorSizeTemplate.html",
+                "message": "%prefix/cursorSize.json"
+            }
+        },
+        "magnifierEnabled": {
+            "type": "gpii.primarySchema.magnifierEnabled",
+            "enactor": {
+                "type": "gpii.enactor.magnifier"
+            },
+            "panel": {
+                "type": "gpii.adjuster.magnifierEnabled",
+                "container": ".gpiic-prefsEditor-magnifierEnabled",
+                "template": "%prefix/onOffSwitchTemplate.html",
+                "message": "%prefix/magnifier.json"
             }
         },
         "magnifier": {
@@ -73,35 +115,53 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.enactor.magnifier"
             },
             "panel": {
-                "type": "gpii.adjuster.increaseSize"
+                "type": "gpii.adjuster.magnifier",
+                "container": ".gpiic-prefsEditor-magnifier",
+                "template": "%prefix/magnifierTemplate.html",
+                "message": "%prefix/magnifier.json"
+            }
+        },
+        "magnifierInvertColours": {
+            "type": "gpii.primarySchema.magnifier.invertColours",
+            /*"enactor": {
+                "type": "gpii.uiOptions.enactors.contrast"
+            },*/
+            "panel": {
+                "type": "gpii.adjuster.magnifierInvertColours",
+                "container": ".gpiic-prefsEditor-magnifierInvertColours",
+                "template": "%prefix/iconCheckTemplateInvertColours.html",
+                "message": "%prefix/magnifierInvertColours.json"
             }
         },
         "magnifierPosition": {
             "type": "gpii.primarySchema.magnificationPosition",
-            "classes": {
-                "lens": "gpii-increaseSize-magnifierPositionLens gpii-increaseSize-magnifierPositionIconLabel",
-                "fullscreen": "gpii-increaseSize-magnifierPositionFullscreen gpii-increaseSize-magnifierPositionIconLabel",
-                "dockedtop": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionTop gpii-increaseSize-magnifierPositionIconLabel",
-                "dockedbottom": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionBottom gpii-increaseSize-magnifierPositionIconLabel",
-                "dockedleft": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionLeft gpii-increaseSize-magnifierPositionIconLabel",
-                "dockedright": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionRight gpii-increaseSize-magnifierPositionIconLabel"
-
-            },
             "panel": {
-                "type": "gpii.adjuster.increaseSize",
-                "classnameMap": {"magnifierPosition": "@magnifierPosition.classes"}
+                "type": "gpii.adjuster.magnifierPosition",
+                "container": ".gpiic-prefsEditor-magnifierPosition",
+                "template": "%prefix/magnifierPositionTemplate.html",
+                "message": "%prefix/magnifierPosition.json"
             }
         },
         "magnifierFollows": {
             "type": "gpii.primarySchema.tracking",
-            "classes": {
-                "mousecursor": "gpii-increaseSize-magnifierFollowsMouseCursor gpii-increaseSize-magnifierFollowsIconLabel",
-                "textcursor": "gpii-increaseSize-magnifierFollowsTextCursor gpii-increaseSize-magnifierFollowsIconLabel",
-                "keyboardfocus": "gpii-increaseSize-magnifierFollowsKeyboardFocus gpii-increaseSize-magnifierFollowsIconLabel"
-            },
             "panel": {
-                "type": "gpii.adjuster.increaseSize",
-                "classnameMap": {"magnifierFollows": "@magnifierFollows.classes"}
+                "type": "gpii.adjuster.followingElement.magnifier",
+                "container": ".gpiic-prefsEditor-magnifierFollows",
+                "template": "%prefix/followingElementTemplate.html",
+                "message": "%prefix/followingElement.json",
+                "classnameMap": {
+                    "followingElement": "@followingElement.classes",
+                    "followingElementBorder": "@followingElement.borderClasses"
+                }
+            }
+        },
+        "showCrosshairs": {
+            "type": "gpii.primarySchema.showCrosshairs",
+            "panel": {
+                "type": "gpii.adjuster.showCrosshairs",
+                "container": ".gpiic-prefsEditor-showCrosshairs",
+                "template": "%prefix/iconCheckTemplateShowCrosshairs.html",
+                "message": "%prefix/showCrosshairs.json"
             }
         }
     };

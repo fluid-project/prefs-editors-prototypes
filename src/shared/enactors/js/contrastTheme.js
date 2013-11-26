@@ -15,12 +15,34 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
 
-    fluid.defaults("gpii.prefs.enactor.contrast", {
+    fluid.defaults("gpii.enactor.contrastTheme", {
         gradeNames: ["fluid.prefs.enactor.classSwapper", "autoInit"],
         preferenceMap: {
-            "contrast.theme": {
+            "gpii.primarySchema.contrastEnabled": {
+                "model.enabled": "default"
+            },
+            "gpii.primarySchema.contrast.theme": {
                 "model.value": "default"
             }
+        },
+        invokers: {
+            swap: {
+                funcName: "gpii.enactor.contrastTheme.swap",
+                args: ["{arguments}.0", "{that}"]
+            }
+        },
+        classes: {
+            "bw": "fl-theme-prefsEditor-bw gpii-prefsEditor-theme-bw fl-theme-bw",
+            "yb": "fl-theme-prefsEditor-yb gpii-prefsEditor-theme-yb fl-theme-yb",
+            "by": "fl-theme-prefsEditor-by gpii-prefsEditor-theme-by fl-theme-by",
+            "wb": "fl-theme-prefsEditor-wb gpii-prefsEditor-theme-wb fl-theme-wb"
         }
     });
+
+    gpii.enactor.contrastTheme.swap = function (value, that) {
+        that.clearClasses();
+        if (that.model.enabled) {
+            that.container.addClass(that.options.classes[value]);
+        }
+    };
 })(jQuery, fluid);

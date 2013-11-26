@@ -47,11 +47,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             "panel": {
                 "type": "gpii.adjuster.cursorSize",
-                "container": ".gpiic-increaseSize-cursor-size", // the css selector in the template where the panel is rendered
+                "container": ".gpiic-prefsEditor-cursorSize", // the css selector in the template where the panel is rendered
                 "template": "%prefix/cursorSizeTemplate.html",
                 "message": "%prefix/increaseSize.json"
             }
         }
     };
 })(jQuery, fluid);
- 

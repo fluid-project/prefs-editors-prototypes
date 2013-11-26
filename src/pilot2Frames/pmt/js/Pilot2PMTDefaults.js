@@ -179,4 +179,3 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
 
 })(jQuery, fluid);
- 

@@ -1,3 +1,9 @@
+/*
+DEPRECATED - No need to maintain this adjuster. 
+The "Magnifier Follows" adjuster for pilots2 has different styling.
+I will start work on that version and ping you when i have something ready for review.
+*/
+
 /*!
 Cloud4all Preferences Management Tools
 
@@ -23,6 +29,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "controlValues.magnifierFollows": "enum"
             }
         },
+        "classes": {
+            "mousecursor": "gpii-increaseSize-magnifierFollowsMouseCursor gpii-increaseSize-magnifierFollowsIconLabel",
+            "textcursor": "gpii-increaseSize-magnifierFollowsTextCursor gpii-increaseSize-magnifierFollowsIconLabel",
+            "keyboardfocus": "gpii-increaseSize-magnifierFollowsKeyboardFocus gpii-increaseSize-magnifierFollowsIconLabel"
+        },
         listeners: {
             afterRender: "{that}.magnifierFollowsStyle"
         },
@@ -31,6 +42,23 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierFollowsLabel: ".gpiic-increaseSize-magnifierFollowsLabel",
             magnifierFollowsInput: ".gpiic-increaseSize-magnifierFollowsInput",
             magnifierFollowsHeading: ".gpiic-increaseSize-magnifierFollowsHeading"
+        },
+        protoTree: {
+            magnifierFollowsHeading: {messagekey: "magnifierFollowsLabel"},
+            expander: [
+                {
+                    type: "fluid.renderer.selection.inputs",
+                    rowID: "magnifierFollowsRow",
+                    labelID: "magnifierFollowsLabel",
+                    inputID: "magnifierFollowsInput",
+                    selectID: "magnifierFollows-radio",
+                    tree: {
+                        optionnames: "${{that}.options.strings.magnifierFollows}",
+                        optionlist: "${{that}.options.controlValues.magnifierFollows}",
+                        selection: "${magnifierFollows}"
+                    }
+                }
+            ]
         },
         members: {
             messageResolver: "{prefsEditorLoader}.msgBundle"
@@ -56,8 +84,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 funcName: "gpii.adjuster.magnifierFollows.style",
                 args: ["{that}.dom.magnifierFollowsLabel", "{that}.options.strings.magnifierFollows",
                     "{that}.options.markup.magnifierFollowsLabel", "{that}.options.controlValues.magnifierFollows",
-                    "{that}.options.classnameMap.magnifierFollows"],
-                dynamic: true
+                    "{that}.options.classes"]
             }
         }
     });
