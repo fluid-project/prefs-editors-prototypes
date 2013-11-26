@@ -821,13 +821,16 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
 }
 
 /*
-    Style for magnifier.invertColours adjuster
+    Style for iconCheck adjuster
 */
-.gpiic-increaseSize-magnifierInvertColours > .gpii-iconCheckAdjusterArea > .gpii-iconCheckAdjusterIcon {
+.gpii-iconCheckAdjusterIcon {
     font-family: 'icomoon';
 }
 
-.gpiic-increaseSize-magnifierInvertColours > .gpii-iconCheckAdjusterArea > .gpii-iconCheckAdjusterIcon:before {
+/*
+    Style for magnifier.invertColours adjuster
+*/
+.gpii-iconCheck-magnifierInvertColours:before {
     content: "\e002";
     font-size: 70px !important;
 }
@@ -891,11 +894,8 @@ input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
 /*
     Style for showCrosshairs adjuster
 */
-.gpiic-increaseSize-showCrosshairs > .gpii-iconCheckAdjusterArea > .gpii-iconCheckAdjusterIcon {
-    font-family: 'icomoon';
-}
 
-.gpiic-increaseSize-showCrosshairs > .gpii-iconCheckAdjusterArea > .gpii-iconCheckAdjusterIcon:before {
+.gpii-iconCheck-showCrosshairs:before {
     content: "\e00f";
     font-size: 70px !important;
 }
