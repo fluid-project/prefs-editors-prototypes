@@ -294,6 +294,11 @@ input[type=checkbox], input[type=radio] {
 /*
     Style for magnifier position font icons
 */
+.gpii-increaseSize-magnifierPositionContainer {
+	display: inline-block;
+	width: 100% !important;
+}
+
 .gpii-increaseSize-magnifierPositionIconLabel {
     height: 4.7em !important;
     width: 6.3em !important;
