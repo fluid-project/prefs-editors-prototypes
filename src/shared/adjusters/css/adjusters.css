@@ -303,6 +303,7 @@ input[type=checkbox], input[type=radio] {
     background-color: white;
     margin-bottom: 0.5em !important;
     margin-right: 0.5em !important;
+    font-size: 1em !important;
 }
 
 .gpii-increaseSize-magnifierPositionIcon {
@@ -848,7 +849,7 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
     border: 1px solid #636C7C;
     border-radius: 4px 4px 4px 4px;
     color: #FFFFFF;
-    font-size: calc(2.3em + 2px);
+    font-size: calc(1em + 2px);
     height: 1em;
     position: relative;
     width: calc(1em + 2px);
@@ -873,7 +874,7 @@ input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
 }
 
 .gpii-iconCheckAdjusterDescription {
-	font-size: 1.5em !important;
+	font-size: 1em !important;
 }
 
 .gpii-iconCheckAdjusterContainer {
