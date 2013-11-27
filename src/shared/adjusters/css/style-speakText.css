@@ -552,7 +552,7 @@ div.ui-tooltip-content: {
 .fl-prefsEditor .fl-prefsEditor-onoff .fl-prefsEditor-switch-inner {
     border: 0.1px solid #493A30;
     border-radius: 50px;
-    width: 0.9em;
+    width: 1em;
     height: 0.9em;
     position:relative;
     left:-1.45em;
