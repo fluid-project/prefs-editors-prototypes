@@ -20,9 +20,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         // The global values:
         "namespace": "gpii.constructedPMT",
         "templatePrefix": "../../src/shared/adjusters/html/", // The common path to settings panel templates
-        "template": "../../src/pmt/html/PMT.html",
+        "template": "../../src/pilot2Frames/pmt/html/PrefsEditorTemplate-PMT.html",
         "messagePrefix": "../../src/shared/adjusters/messages/en/",
-        "message": "%prefix/pmt.json",
+        "message": "../../src/shared/frames/messages/" + gpii.prefs.i18n.getDefaultLanguage() + "/frames.json",
 
         // The preference-specific information:
         "groups": {
