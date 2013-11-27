@@ -15,7 +15,38 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     fluid.defaults("gpii.pmt", {
-        gradeNames: ["gpii.prefs.pmt_pilot_2", "autoInit"]
+        gradeNames: ["fluid.prefs.fullNoPreview", "autoInit"],
+        prefsEditor: {
+            gradeNames: ["fluid.prefs.stringBundle"],
+            members: {
+                messageResolver: "{prefsEditorLoader}.msgBundle"
+            },
+            listeners: {
+                onSave: {
+                    listener: "console.log"
+                },
+                "onReady.setATTRsaveButton": {
+                    "this": "{that}.dom.saveButton",
+                    "method": "attr",
+                    "args": ["value", "{that}.stringBundle.saveButtonText"]
+                },
+                "onReady.setATTRresetButton": {
+                    "this": "{that}.dom.resetButton",
+                    "method": "attr",
+                    "args": ["value", "{that}.stringBundle.resetButtonText"]
+                },
+                "onReady.setATTRcancelButton": {
+                    "this": "{that}.dom.cancelButton",
+                    "method": "attr",
+                    "args": ["value", "{that}.stringBundle.cancelButtonText"]
+                }
+            },
+            selectors: {
+                saveButton: ".flc-prefsEditor-save",
+                resetButton: ".flc-prefsEditor-reset",
+                cancelButton: ".flc-prefsEditor-cancel"
+            }
+        }
     });
 
     fluid.defaults("gpii.pmt.previewPerSettingEnhanced", {

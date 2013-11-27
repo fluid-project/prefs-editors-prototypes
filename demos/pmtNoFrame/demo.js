@@ -17,17 +17,17 @@ var demo = demo || {};
 
 (function ($, fluid) {
     demo.initPMT = function (container, compOpts) {
-        demo.prefsBuilder = fluid.prefs.builder({
-            primarySchema: gpii.prefs.pmt_pilot_2.primarySchema,
-            auxiliarySchema: gpii.prefs.pmt_pilot_2.auxiliarySchema
+        demo.builder = fluid.prefs.builder({
+            primarySchema: gpii.primarySchema,
+            auxiliarySchema: gpii.pmt.auxiliarySchema
         });
         
-        demo.instantiatePrefs(container, compOpts, "gpii.prefs.pmt_pilot_2", gpii.prefs.i18n.getDefaultLanguage());
+        demo.instantiatePMT(container, compOpts, "gpii.pmt", gpii.prefs.i18n.getDefaultLanguage());
     };
     
-    demo.instantiatePrefs = function (container, compOpts, prefsType, language) {
+    demo.instantiatePMT = function (container, compOpts, prefsEditorType, language) {
         var baseOpts = {
-            prefsEditorType: prefsType,
+            prefsEditorType: prefsEditorType,
             components: {
                 prefsEditorLoader: {
                     options: {
@@ -37,6 +37,6 @@ var demo = demo || {};
             }
         };
         $.extend(true, baseOpts, compOpts);
-        fluid.invokeGlobalFunction(demo.prefsBuilder.options.assembledPrefsEditorGrade, [container, baseOpts]);
+        fluid.invokeGlobalFunction(demo.builder.options.assembledPrefsEditorGrade, [container, baseOpts]);
     };
 })(jQuery, fluid);
