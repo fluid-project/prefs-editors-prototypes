@@ -318,13 +318,13 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-increaseSize-magnifierPositionBackground {
-    height: 4.9em !important;
+    height: 4.7em !important;
     width: 6.3em !important;
     padding-top: 2px;
 }
 
 .gpii-increaseSize-magnifierPositionBackground:before {
-    font-size: 4.8em !important;
+    font-size: 4.7em !important;
     content: "\e00b" !important;
 }
     
@@ -375,11 +375,11 @@ input[type=checkbox], input[type=radio] {
 .gpii-prefsEditor .gpii-prefsEditor-choice .gpii-prefsEditor-indicator {
     font-family: 'icons-no-frames-aug-29' !important;
     font-size: 0.8em;
-     color: #636c7c;
-     position: relative;
-     top: 0.4em;
+    color: #636c7c;
+    position: relative;
+    top: 0.4em;
     height: 1em !important;
-    margin: -0.75em 0 0 2.15em !important;
+    margin: -0.75em 0 0 3em !important;
     z-index: 11;
 }
 
