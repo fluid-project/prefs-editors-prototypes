@@ -318,13 +318,13 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-increaseSize-magnifierPositionBackground {
-    height: 4.7em !important;
+    height: 4.9em !important;
     width: 6.3em !important;
     padding-top: 2px;
 }
 
 .gpii-increaseSize-magnifierPositionBackground:before {
-    font-size: 4.7em !important;
+    font-size: 4.8em !important;
     content: "\e00b" !important;
 }
     
@@ -585,6 +585,8 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar {
     border-radius: 3px 3px 3px 3px;
     font-size: 12px;
     z-index: 10;
+    /* we have a conflict with style-speakText.css here */
+    right: inherit !important;
 }
 [title]:hover:after{
     left:0px;
