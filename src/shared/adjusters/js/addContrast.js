@@ -46,10 +46,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         selectors: {
             constrastAdjustersEnabled: ".gpiic-contrast-constrastAdjustersEnabled",
             panelLabel: ".gpiic-headerTitle",
-            addToMyPreferencesLabel: ".gpiic-addToMyPreferencesLabel",
+            // markup of this element is disappearing if i add this, cannot set tooltips.
+            //addToMyPreferencesLabel: ".gpiic-addToMyPreferencesLabel",
             contrastAdjusters: ".gpiic-category"
         },
-        selectorsToIgnore: ["contrastAdjusters", "addToMyPreferencesLabel"],
+        selectorsToIgnore: ["contrastAdjusters"/*, "addToMyPreferencesLabel"*/],
         model: {
             contrastAdjustersEnabledSwitch: false
         },

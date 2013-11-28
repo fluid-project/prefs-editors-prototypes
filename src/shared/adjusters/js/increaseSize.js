@@ -94,14 +94,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             increaseSizeHeader: ".gpiic-headerTitle",
             increaseSizeAdjusters: ".gpiic-category",
             preferenceSwitchIncreaseSize: ".gpiic-increaseSize-preferenceSwitch",
-            addToMyPreferencesStar: ".gpiic-addToMyPreferencesLabel",
+            // markup of this element is disappearing if i add this, cannot set tooltips.
+            //addToMyPreferencesStar: ".gpiic-addToMyPreferencesLabel",
             increaseSizeExtraAdjusters: ".gpiic-category-hidden",
             preferenceSwitchIncreaseSizeExtra: ".gpiic-increaseSize-preferenceSwitchExtra",
             moreLess: ".gpiic-moreLess",
             appearanceHeading: ".gpiic-increaseSize-appearanceHeading",
             magnifierHeading: ".gpiic-increaseSize-magnifierHeading"
         },
-        selectorsToIgnore: ["increaseSizeHeader", "increaseSizeAdjusters", "addToMyPreferencesStar", "increaseSizeExtraAdjusters", "moreLess"],
+        selectorsToIgnore: ["increaseSizeHeader", "increaseSizeAdjusters"/*, "addToMyPreferencesStar"*/, "increaseSizeExtraAdjusters", "moreLess"],
         members: {
             messageResolver: "{prefsEditorLoader}.msgBundle"
         },
