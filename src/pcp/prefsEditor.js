@@ -12,6 +12,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     fluid.defaults("gpii.pcp", {
-        gradeNames: ["gpii.common", "autoInit"]
+        gradeNames: ["gpii.commonPrefsEditor", "autoInit"]
     });
 })(jQuery, fluid);

@@ -11,9 +11,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
 (function ($, fluid) {
-    fluid.defaults("gpii.common", {
+    fluid.defaults("gpii.commonPrefsEditor", {
         gradeNames: ["fluid.prefs.fullNoPreview", "autoInit"],
         prefsEditor: {
+            gradeNames: ["fluid.prefs.stringBundle"],
+            members: {
+                messageResolver: "{prefsEditorLoader}.msgBundle"
+            },
             partiallyExpandedSlideSpeed: 500,
 
             model: {
@@ -38,7 +42,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.setTextVisualAlternativesHeader": {
                     "this": "{that}.dom.visualAlternativesHeader",
                     "method": "text",
-                    "args": ["{that}.options.strings.visualAlternativesHeader"]
+                    "args": ["{that}.stringBundle.visualAlternativesPresetButtonLabel"]
                 },
                 "onShowVisualAlternativesPartial.showPartialAdjusters": {
                     "this": "{that}.dom.visualAlternativesPartialAdjusters",
@@ -57,7 +61,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.setTextVolumeHeader": {
                     "this": "{that}.dom.volumeHeader",
                     "method": "text",
-                    "args": ["{that}.options.strings.volumeHeader"]
+                    "args": ["{that}.stringBundle.volumePresetButtonLabel"]
                 },
 
 
@@ -66,7 +70,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.setTextLanguageHeader": {
                     "this": "{that}.dom.languageHeader",
                     "method": "text",
-                    "args": ["{that}.options.strings.languageHeader"]
+                    "args": ["{that}.stringBundle.languagePresetButtonLabel"]
                 },
                 "onReady.activateCombobox": {
                     "funcName": "gpii.activateCombobox",
@@ -79,17 +83,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.setSaveAndApplyText": {
                     "this": "{that}.dom.saveAndApply",
                     "method": "prop",
-                    "args": ["value", "{that}.options.strings.saveAndApply"]
+                    "args": ["value", "{that}.stringBundle.saveAndApply"]
                 },
                 "onReady.setResetAndApplyText": {
                     "this": "{that}.dom.resetAndApply",
                     "method": "prop",
-                    "args": ["value", "{that}.options.strings.resetAndApply"]
+                    "args": ["value", "{that}.stringBundle.resetAndApply"]
                 },
                 "onReady.setCancelText": {
                     "this": "{that}.dom.cancel",
                     "method": "prop",
-                    "args": ["value", "{that}.options.strings.cancel"]
+                    "args": ["value", "{that}.stringBundle.cancel"]
                 },
                 "onReady.onSaveVisibilityActualisation": {
                     "this": "{that}.dom.saveAndApply",
@@ -150,44 +154,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 cancel: ".flc-prefsEditor-cancel"
             },
             selectorsToIgnore: ["languageHeader", "volumeHeader", "visualAlternativesPartialAdjusters", "visualAlternativesHeader",  "saveAndApply", "resetAndApply", "cancel"],
-            strings: {
-                visualAlternativesHeader: {
-                    expander: {
-                        func: "gpii.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "visualAlternativesPresetButtonLabel"]
-                    }
-                },
-                volumeHeader: {
-                    expander: {
-                        func: "gpii.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "volumePresetButtonLabel"]
-                    }
-                },
-                languageHeader: {
-                    expander: {
-                        func: "gpii.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "languagePresetButtonLabel"]
-                    }
-                },
-                saveAndApply: {
-                    expander: {
-                        func: "gpii.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "saveAndApply"]
-                    }
-                },
-                resetAndApply: {
-                    expander: {
-                        func: "gpii.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "resetAndApply"]
-                    }
-                },
-                cancel: {
-                    expander: {
-                        func: "gpii.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "cancel"]
-                    }
-                }
-            }
         }
     });    
 
@@ -222,11 +188,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     gpii.showOrHideDependingOnState = function (state, showEvent, hideEvent) {
         state ? showEvent() : hideEvent();
-    };
-
-    gpii.lookupMsg = function (messageResolver, value) {
-        var looked = messageResolver.lookup([value]);
-        return looked ? looked.template : looked;
     };
 
     gpii.saveToPreferencesServer = function (that) {

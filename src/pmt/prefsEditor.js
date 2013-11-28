@@ -12,10 +12,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     fluid.defaults("gpii.pmt", {
-        gradeNames: ["gpii.common", "autoInit"],
+        gradeNames: ["gpii.commonPrefsEditor", "autoInit"],
         prefsEditor: {
             fullyExpandedSlideSpeed: 500,
-
             model: {
                 visualAlternativesExtraVisible: false
             },
@@ -39,7 +38,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onShowVisualAlternativesPartial.setTextMoreText": {
                     "this": "{that}.dom.moreLess",
                     "method": "text",
-                    "args": ["{that}.options.strings.moreText"]
+                    "args": ["{that}.stringBundle.moreText"]
                 },
                 "onShowVisualAlternativesExtra.show": {
                     "this": "{that}.dom.visualAlternativesExtraAdjusters",
@@ -49,12 +48,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onShowVisualAlternativesExtra.setTextReadBackLabel": {
                     "this": "{that}.dom.readBackLabel",
                     "method": "text",
-                    "args": ["{that}.options.strings.readBackLabel"]
+                    "args": ["{that}.stringBundle.readBackLabel"]
                 },
                 "onShowVisualAlternativesExtra.setTextAnnounceLabel": {
                     "this": "{that}.dom.announceLabel",
                     "method": "text",
-                    "args": ["{that}.options.strings.announceLabel"]
+                    "args": ["{that}.stringBundle.announceLabel"]
                 },
                 "onShowVisualAlternativesExtra.activateComboboxLanguage": {
                     "funcName": "gpii.activateCombobox",
@@ -67,7 +66,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onShowVisualAlternativesExtra.setLessText": {
                     "this": "{that}.dom.moreLess",
                     "method": "text",
-                    "args": ["{that}.options.strings.lessText"]
+                    "args": ["{that}.stringBundle.lessText"]
                 },
                 "onShowVisualAlternativesExtra.addLessIconClass": {
                     "this": "{that}.dom.moreLessIcon",
@@ -87,7 +86,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onHideVisualAlternativesExtra.setMoreText": {
                     "this": "{that}.dom.moreLess",
                     "method": "text",
-                    "args": ["{that}.options.strings.moreText"]
+                    "args": ["{that}.stringBundle.moreText"]
                 },
                 "onHideVisualAlternativesExtra.addMoreIconClass": {
                     "this": "{that}.dom.moreLessIcon",
@@ -130,32 +129,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             styles: {
                 moreIcon: "gpii-moreOptionsIcon-more",
                 lessIcon: "gpii-moreOptionsIcon-less"
-            },
-            strings: {
-                readBackLabel: {
-                    expander: {
-                        func: "gpii.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "readBackLabel"]
-                    }
-                },
-                announceLabel: {
-                    expander: {
-                        func: "gpii.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "announceLabel"]
-                    }
-                },
-                moreText: {
-                    expander: {
-                        func: "gpii.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "moreText"]
-                    }
-                },
-                lessText: {
-                    expander: {
-                        func: "gpii.lookupMsg",
-                        args: ["{prefsEditorLoader}.msgBundle", "lessText"]
-                    }
-                }
             }
         }
     });
