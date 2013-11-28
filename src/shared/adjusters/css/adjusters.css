@@ -970,6 +970,11 @@ input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
 	display: inline-block;
 }
 
+.fl-prefsEditor .fl-choice {
+	display: inline-block;
+    float: none;
+}
+
 /*
     Style for onOffSwitch adjuster
 */
