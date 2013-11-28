@@ -27834,7 +27834,16 @@ var fluid_1_5 = fluid_1_5 || {};
      ***********************************************/
 
     fluid.defaults("fluid.prefs.panel", {
-        gradeNames: ["fluid.rendererComponent", "fluid.prefs.stringBundle", "fluid.prefs.modelRelay", "autoInit"]
+        gradeNames: ["fluid.rendererComponent", "fluid.prefs.stringBundle", "fluid.prefs.modelRelay", "autoInit"],
+        events: {
+            onDomBind: null
+        },
+        // Any listener that requires a DOM element, should be registered
+        // to the onDomBind listener. By default it is fired by onCreate, but
+        // when used as a subpanel, it will be triggered by the resetDomBinder invoker.
+        listeners: {
+            "onCreate.onDomBind": "{that}.events.onDomBind"
+        }
     });
 
     /***************************
@@ -27842,16 +27851,21 @@ var fluid_1_5 = fluid_1_5 || {};
      ***************************/
 
     fluid.defaults("fluid.prefs.subPanel", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "{that}.getDomBindGrade", "autoInit"],
         mergePolicy: {
             sourceApplier: "nomerge"
         },
         sourceApplier: "{compositePanel}.applier",
         listeners: {
-            "{compositePanel}.events.subPanelAfterRender": {
+            "{compositePanel}.events.afterRender": {
                 listener: "{that}.events.afterRender",
                 args: ["{that}"]
-            }
+            },
+            // Changing the firing of onDomBind from the onCreate.
+            // This is due to the fact that the rendering process, controlled by the
+            // composite panel, will set/replace the DOM elements.
+            "onCreate.onDomBind": null, // remove listener
+            "afterRender.onDomBind": "{that}.resetDomBinder"
         },
         rules: {
             expander: {
@@ -27866,12 +27880,50 @@ var fluid_1_5 = fluid_1_5 || {};
             }
         },
         invokers: {
-            refreshView: "{compositePanel}.refreshView"
+            refreshView: "{compositePanel}.refreshView",
+            // resetDomBinder must fire the onDomBind event
+            resetDomBinder: {
+                funcName: "fluid.prefs.subPanel.resetDomBinder",
+                args: ["{that}"]
+            },
+            getDomBindGrade: {
+                funcName: "fluid.prefs.subPanel.getDomBindGrade",
+                args: ["{prefsEditor}"]
+            }
         },
         strings: {},
         parentBundle: "{compositePanel}.messageResolver",
         renderOnInit: false
     });
+
+    fluid.defaults("fluid.prefs.subPanel.domBind", {
+        gradeNames: ["fluid.eventedComponent", "autoInit"],
+        listeners: {
+            "onDomBind.domChange": {
+                listener: "{prefsEditor}.events.onSignificantDOMChange"
+            }
+        }
+    });
+
+    fluid.prefs.subPanel.getDomBindGrade = function (prefsEditor) {
+        var hasListener = fluid.get(prefsEditor, "options.events.onSignificantDOMChange") !== undefined;
+        if (hasListener) {
+            return "fluid.prefs.subPanel.domBind";
+        }
+    };
+
+    /*
+     * Since the composite panel manages the rendering of the subpanels
+     * the markup used by subpanels needs to be completely replaced.
+     * The subpanel's container is refereshed to point at the newly
+     * rendered markup, and the domBinder is re-initialized. Once
+     * this is all done, the onDomBind event is fired.
+     */
+    fluid.prefs.subPanel.resetDomBinder = function (that) {
+        that.container = $(that.container.selector);
+        fluid.initDomBinder(that, that.options.selectors);
+        that.events.onDomBind.fire(that);
+    };
 
     fluid.prefs.subPanel.safePrefKey = function (prefKey) {
         return prefKey.replace(/[.]/g, "_");
@@ -27935,8 +27987,7 @@ var fluid_1_5 = fluid_1_5 || {};
         repeatingSelectors: [],
         events: {
             onRefreshView: null,
-            initSubPanels: null,
-            subPanelAfterRender: null
+            initSubPanels: null
         },
         listeners: {
             "onCreate.combineResources": "{that}.combineResources",
@@ -27948,12 +27999,7 @@ var fluid_1_5 = fluid_1_5 || {};
             "onCreate.initSubPanels": "{that}.events.initSubPanels",
             "onCreate.hideInactive": "{that}.hideInactive",
             "onCreate.surfaceSubpanelRendererSelectors": "{that}.surfaceSubpanelRendererSelectors",
-            "afterRender.initSubPanels": "{that}.events.initSubPanels",
-            "afterRender.hideInactive": "{that}.hideInactive",
-            "afterRender.subPanelRelay": {
-                listener: "{that}.events.subPanelAfterRender",
-                priority: "last"
-            }
+            "afterRender.hideInactive": "{that}.hideInactive"
         },
         invokers: {
             getDistributeOptionsGrade: {
@@ -28067,9 +28113,9 @@ var fluid_1_5 = fluid_1_5 || {};
 
     fluid.prefs.compositePanel.handleRenderOnPreference = function (that, value, createEvent, componentNames) {
         componentNames = fluid.makeArray(componentNames);
+        that.conditionalCreateEvent(value, createEvent);
         fluid.each(componentNames, function (componentName) {
             var comp = that[componentName];
-            that.conditionalCreateEvent(value, createEvent);
             if (!value && comp) {
                 comp.destroy();
             }
@@ -28119,16 +28165,14 @@ var fluid_1_5 = fluid_1_5 || {};
                     var afterRenderListener = "afterRender." + pref;
                     var onCreateListener = "onCreate." + pref;
                     creationEventOpt = fluid.prefs.compositePanel.creationEventName(pref);
-                    var listenerOpts = {
-                        listener: "{that}.conditionalCreateEvent",
-                        args: ["{that}.model." + pref, "{that}.events." + creationEventOpt + ".fire"]
-                    };
                     subPanelCreationOpts[creationEventOpt] = creationEventOpt;
                     events[creationEventOpt] = null;
                     conditionals[pref] = conditionals[pref] || [];
                     conditionals[pref].push(componentName);
-                    listeners[afterRenderListener] = listenerOpts;
-                    listeners[onCreateListener] = listenerOpts;
+                    listeners[onCreateListener] = {
+                        listener: "{that}.conditionalCreateEvent",
+                        args: ["{that}.model." + pref, "{that}.events." + creationEventOpt + ".fire"]
+                    };
                 }
                 distributeOptions.push({
                     source: "{that}.options.subPanelCreationOpts." + creationEventOpt,
@@ -28738,7 +28782,7 @@ var fluid_1_5 = fluid_1_5 || {};
                 args: ["{that}.options.sourceApplier.modelChanged", "{that}.options.listenerNamespaces"]
             }
         },
-        sourceApplier: null,  // must be supplied by implementors
+        // sourceApplier: {external}.applier must be supplied by implementors
         rules: {}  // must be supplied by implementors, in format: "externalModelKey": "internalModelKey"
     });
 
@@ -28787,6 +28831,18 @@ var fluid_1_5 = fluid_1_5 || {};
 
     fluid.defaults("fluid.prefs.enactor", {
         gradeNames: ["fluid.modelComponent", "fluid.eventedComponent", "fluid.prefs.modelRelay", "autoInit"]
+    });
+
+    /********************************************************************************
+     * The grade that contains the connections between an enactor and uiEnhancer
+     ********************************************************************************/
+
+    fluid.defaults("fluid.prefs.uiEnhancerConnections", {
+        gradeNames: ["fluid.eventedComponent", "autoInit"],
+        mergePolicy: {
+            sourceApplier: "nomerge"
+        },
+        sourceApplier: "{uiEnhancer}.applier"
     });
 
     /**********************************************************************************
@@ -29435,13 +29491,18 @@ var fluid_1_5 = fluid_1_5 || {};
 
     fluid.defaults("fluid.uiEnhancer.starterEnactors", {
         gradeNames: ["fluid.uiEnhancer", "fluid.uiEnhancer.cssClassEnhancerBase", "fluid.uiEnhancer.browserTextEnhancerBase", "autoInit"],
+        connectionsGrade: "fluid.prefs.uiEnhancerConnections",
+        distributeOptions: {
+            source: "{that}.options.connectionsGrade",
+            removeSource: true,
+            target: "{that > fluid.prefs.enactor}.options.gradeNames"
+        },
         components: {
             textSize: {
                 type: "fluid.prefs.enactor.textSize",
                 container: "{uiEnhancer}.container",
                 options: {
                     fontSizeMap: "{uiEnhancer}.options.fontSizeMap",
-                    sourceApplier: "{uiEnhancer}.applier",
                     rules: {
                         "textSize": "value"
                     },
@@ -29455,7 +29516,6 @@ var fluid_1_5 = fluid_1_5 || {};
                 container: "{uiEnhancer}.container",
                 options: {
                     classes: "{uiEnhancer}.options.classnameMap.textFont",
-                    sourceApplier: "{uiEnhancer}.applier",
                     rules: {
                         "textFont": "value"
                     },
@@ -29469,7 +29529,6 @@ var fluid_1_5 = fluid_1_5 || {};
                 container: "{uiEnhancer}.container",
                 options: {
                     fontSizeMap: "{uiEnhancer}.options.fontSizeMap",
-                    sourceApplier: "{uiEnhancer}.applier",
                     rules: {
                         "lineSpace": "value"
                     },
@@ -29483,7 +29542,6 @@ var fluid_1_5 = fluid_1_5 || {};
                 container: "{uiEnhancer}.container",
                 options: {
                     classes: "{uiEnhancer}.options.classnameMap.theme",
-                    sourceApplier: "{uiEnhancer}.applier",
                     rules: {
                         "theme": "value"
                     },
@@ -29497,7 +29555,6 @@ var fluid_1_5 = fluid_1_5 || {};
                 container: "{uiEnhancer}.container",
                 options: {
                     cssClass: "{uiEnhancer}.options.classnameMap.links",
-                    sourceApplier: "{uiEnhancer}.applier",
                     rules: {
                         "links": "value"
                     },
@@ -29511,7 +29568,6 @@ var fluid_1_5 = fluid_1_5 || {};
                 container: "{uiEnhancer}.container",
                 options: {
                     cssClass: "{uiEnhancer}.options.classnameMap.inputsLarger",
-                    sourceApplier: "{uiEnhancer}.applier",
                     rules: {
                         "inputsLarger": "value"
                     },
@@ -29523,10 +29579,8 @@ var fluid_1_5 = fluid_1_5 || {};
             tableOfContents: {
                 type: "fluid.prefs.enactor.tableOfContents",
                 container: "{uiEnhancer}.container",
-                // createOnEvent: "onCreateToc",
                 options: {
                     tocTemplate: "{uiEnhancer}.options.tocTemplate",
-                    sourceApplier: "{uiEnhancer}.applier",
                     rules: {
                         "toc": "value"
                     },
@@ -30525,7 +30579,6 @@ var fluid_1_5 = fluid_1_5 || {};
     fluid.prefs.expandCompositePanels = function (auxSchema, compositePanelList, panelIndex, compositePanelCommonOptions, subPanelCommonOptions,
         compositePanelBasedOnSubCommonOptions, mappedDefaults) {
         var type = "panel";
-        var alwaysFlag = "always";
         var panelsToIgnore = [];
 
         fluid.each(compositePanelList, function (compositeDetail, compositeKey) {
@@ -30554,7 +30607,7 @@ var fluid_1_5 = fluid_1_5 || {};
             if (!fluid.isPrimitive(thisCompositeOptions.panels)) {
                 fluid.each(thisCompositeOptions.panels, function (subpanelArray, pref) {
                     subPanelList = subPanelList.concat(subpanelArray);
-                    if (pref !== alwaysFlag) {
+                    if (pref !== "always") {
                         fluid.each(subpanelArray, function (onePanel) {
                             fluid.set(subPanelRenderOn, onePanel, pref);
                         });
@@ -30647,9 +30700,9 @@ var fluid_1_5 = fluid_1_5 || {};
         return auxSchema;
     };
 
-    fluid.prefs.expandSchema = function (schemaToExpand, defaultNamespace, indexes, topCommonOptions, elementCommonOptions, mappedDefaults) {
+    fluid.prefs.expandSchema = function (schemaToExpand, indexes, topCommonOptions, elementCommonOptions, mappedDefaults) {
         var auxSchema = fluid.prefs.expandSchemaImpl(schemaToExpand);
-        auxSchema.namespace = auxSchema.namespace || defaultNamespace;
+        auxSchema.namespace = auxSchema.namespace || "fluid.prefs.created_" + fluid.allocateGuid();
 
         var compositePanelList = fluid.get(auxSchema, "groups");
         if (compositePanelList) {
@@ -30708,7 +30761,6 @@ var fluid_1_5 = fluid_1_5 || {};
 
     fluid.defaults("fluid.prefs.auxBuilder", {
         gradeNames: ["fluid.prefs.auxSchema", "autoInit"],
-        defaultNamespace: "fluid.prefs.create",
         mergePolicy: {
             elementCommonOptions: "noexpand"
         },
@@ -30755,12 +30807,12 @@ var fluid_1_5 = fluid_1_5 || {};
                 "container": "{%compositePanel}.dom.%prefKey"
             },
             enactor: {
+                "options.gradeNames": "fluid.prefs.uiEnhancerConnections",
                 // Conditional handling. Add value to the path only if the execution of func returns true.
                 "container": {
                     value: "{uiEnhancer}.container",
                     func: "fluid.prefs.containerNeeded"
-                },
-                "options.sourceApplier": "{uiEnhancer}.applier"
+                }
             }
         },
         indexes: {
@@ -30789,7 +30841,6 @@ var fluid_1_5 = fluid_1_5 || {};
                 func: "fluid.prefs.expandSchema",
                 args: [
                     "{that}.options.auxiliarySchema",
-                    "{that}.options.defaultNamespace",
                     "{that}.options.indexes",
                     "{that}.options.topCommonOptions",
                     "{that}.options.elementCommonOptions",
@@ -31251,6 +31302,15 @@ var fluid_1_5 = fluid_1_5 || {};
             }
         });
         return auxTypes;
+    };
+
+    /*
+     * A one-stop-shop function to build and instantiate a prefsEditor from a schema.
+     */
+    fluid.prefs.create = function (container, options) {
+        options = options || {};
+        var builder = fluid.prefs.builder(options.build);
+        return fluid.invokeGlobalFunction(builder.options.assembledPrefsEditorGrade, [container, options.prefsEditor]);
     };
 
 })(jQuery, fluid_1_5);
