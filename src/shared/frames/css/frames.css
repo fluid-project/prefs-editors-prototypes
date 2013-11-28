@@ -62,7 +62,8 @@ body {
 
 .gpii-prefsEditor-preferencesContainer {
 	height: calc(100% - 150px);
-	overflow: auto;
+	overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .gpii-prefsEditor-preferenceSetSelectionHeader {
@@ -190,4 +191,10 @@ body {
 .gpii-prefsEditor-adjusterGroup {
 	margin-bottom: 2em;
 	background-color: #e5eded;
+}
+
+/* This conflits with speakText-style.css
+Needed for the frame's popup */
+.ui-corner-all {
+    width: 420 !important;
 }

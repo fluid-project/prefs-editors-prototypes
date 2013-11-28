@@ -113,7 +113,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": [{
                         autoOpen: false,
                         modal: true,
-                        width: 450,
+                        width: 420,
                         dialogClass: "gpii-dialog-noTitle",
                         closeOnEscape: false,
                         position: { my: "bottom", at: "bottom", of: ".gpii-prefsEditor-preferencesContainer" }
