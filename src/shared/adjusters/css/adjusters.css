@@ -550,9 +550,9 @@ input[type=checkbox], input[type=radio] {
 
 .gpii-prefsEditor-addToMyPreferencesStar {
     margin-left: 310px;
-    margin-top: 10px;
+    margin-top: -90px;
     color: #6b7281;
-      position: absolute;
+    position: relative;
     font-size: 16px;
     display: table;
     padding: 2px;
