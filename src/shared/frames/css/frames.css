@@ -15,9 +15,9 @@ body {
 }
 
 .gpii-prefsEditor-pmtContainer {
-	display: table;
-	//font-size: 1.2em;	
-	width: 340px;
+	//display: table;
+	height: 100%;
+    width: 440px;
 }
 
 .gpii-prefsEditor-frameIcon {
@@ -61,7 +61,7 @@ body {
 }
 
 .gpii-prefsEditor-preferencesContainer {
-	height: 500px;
+	height: calc(100% - 150px);
 	overflow: auto;
 }
 
@@ -72,7 +72,6 @@ body {
 }
 
 .gpii-prefsEditor-preferences {
-	height: 1000px; /* for testing only */
 	background-color: #ced7d9;
 	padding: 10px;
 }
