@@ -16,8 +16,8 @@ body {
 
 .gpii-prefsEditor-pmtContainer {
 	display: table;
-	font-size: 1.2em;	
-	width: 450px;
+	//font-size: 1.2em;	
+	width: 340px;
 }
 
 .gpii-prefsEditor-frameIcon {
