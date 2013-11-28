@@ -649,42 +649,38 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
 }
 
 .gpii-prefsEditor-theme-yb .gpii-prefsEditor-headerImage {
-    background-color: transparent !important;
-    color: black !important;
-}
-
-.gpii-prefsEditor-theme-bw .gpii-prefsEditor-headerImage {
-    background-color: transparent !important;
-    color: white !important;
-}
-
-.gpii-prefsEditor-theme-by .gpii-prefsEditor-headerImage {
-    background-color: transparent !important;
-    color: yellow !important;
-}
-
-.gpii-prefsEditor-theme-wb .gpii-prefsEditor-headerImage {
-    background-color: transparent !important;
-    color: black !important;
-}
-
-.gpii-prefsEditor-theme-yb .gpii-prefsEditor-headerTitle {
     background-color: yellow !important;
     color: black !important;
 }
 
-.gpii-prefsEditor-theme-bw .gpii-prefsEditor-headerTitle {
+.gpii-prefsEditor-theme-bw .gpii-prefsEditor-headerImage {
     background-color: black !important;
     color: white !important;
 }
 
-.gpii-prefsEditor-theme-by .gpii-prefsEditor-headerTitle {
+.gpii-prefsEditor-theme-by .gpii-prefsEditor-headerImage {
     background-color: black !important;
     color: yellow !important;
 }
 
-.gpii-prefsEditor-theme-wb .gpii-prefsEditor-headerTitle {
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor-headerImage {
     background-color: white !important;
+    color: black !important;
+}
+
+.gpii-prefsEditor-theme-yb .gpii-prefsEditor-headerTitle {
+    color: black !important;
+}
+
+.gpii-prefsEditor-theme-bw .gpii-prefsEditor-headerTitle {
+    color: white !important;
+}
+
+.gpii-prefsEditor-theme-by .gpii-prefsEditor-headerTitle {
+    color: yellow !important;
+}
+
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor-headerTitle {
     color: black !important;
 }
 
@@ -693,7 +689,6 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
 .gpii-prefsEditor-theme-by .gpii-prefsEditor-headerClickableLabel,
 .gpii-prefsEditor-theme-wb .gpii-prefsEditor-headerClickableLabel {
     background-color: transparent !important;
-    color: transparent !important;
 }
 
 .gpii-prefsEditor-theme-yb .gpii-prefsEditor-addToMyPreferencesLabel,
