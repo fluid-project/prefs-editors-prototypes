@@ -15,9 +15,9 @@ body {
 }
 
 .gpii-prefsEditor-pmtContainer {
-	//display: table;
+	//display: inline-block;
 	height: 100%;
-    width: 440px;
+    width: 30em;
 }
 
 .gpii-prefsEditor-frameIcon {
@@ -61,7 +61,7 @@ body {
 }
 
 .gpii-prefsEditor-preferencesContainer {
-	height: calc(100% - 150px);
+	height: calc(100% - 8em);
 	overflow-x: hidden;
     overflow-y: auto;
 }
