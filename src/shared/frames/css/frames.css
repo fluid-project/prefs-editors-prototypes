@@ -196,5 +196,5 @@ body {
 /* This conflits with speakText-style.css
 Needed for the frame's popup */
 .ui-corner-all {
-    width: 30em !important;
+    width: 28em !important;
 }
