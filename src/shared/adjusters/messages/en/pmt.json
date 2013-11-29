@@ -1,0 +1,12 @@
+{
+    "more": "+ more",
+    "less": "- less",
+    "tooltipChecked": "remove from my preferences",
+    "tooltipUnchecked": "add to my preferences",
+    "languageLabel": "language",
+    "saveButtonText": "save and apply",
+    "resetButtonText": "reset",
+    "cancelButtonText": "cancel",
+    "plus": "+",
+    "minus": "-"
+}

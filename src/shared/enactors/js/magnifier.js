@@ -1,0 +1,49 @@
+/*!
+Cloud4all Preferences Management Tools
+
+Copyright 2013 OCAD University
+Copyright 2013 CERTH/HIT
+
+Licensed under the New BSD license. You may not use this file except in
+compliance with this License.
+
+You may obtain a copy of the License at
+https://github.com/GPII/prefsEditors/LICENSE.txt
+*/
+
+/*global fluid, jQuery, gpii*/
+/*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
+
+(function ($, fluid) {
+
+    fluid.defaults("gpii.enactor.magnifier", {
+        gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
+        preferenceMap: {
+            "gpii.primarySchema.magnification": {
+                "model.value": "default"
+            }
+        },
+        invokers: {
+            set: {
+                funcName: "gpii.enactor.magnifier.set",
+                args: ["{arguments}.0", "{that}.container"]
+            }
+        },
+        listeners: {
+            onCreate: {
+                listener: "{that}.set"
+            }
+        },
+        modelListeners: {
+            "value": {
+                func: "{that}.set",
+                args: ["{change}.value"]
+            }
+        }
+    });
+
+    gpii.enactor.magnifier.set = function (times, that) {
+        that.css({"transform": "scale(" + times / 100 + ")", "-webkit-transform": "scale(" + times / 100 + ")"});
+    };
+
+})(jQuery, fluid);
