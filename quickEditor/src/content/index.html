@@ -1,0 +1,69 @@
+<head>
+    <title> Personal Control Panel Prototype </title>
+    <link rel="stylesheet" type="text/css" href="deps/framework/fss/css/fss-layout.css" />
+    <link rel="stylesheet" type="text/css" href="deps/framework/fss/css/fss-text.css" />
+    <link rel="stylesheet" type="text/css" href="deps/components/uiOptions/css/fss/fss-theme-bw-uio.css" />
+    <link rel="stylesheet" type="text/css" href="deps/components/uiOptions/css/fss/fss-theme-wb-uio.css" />
+    <link rel="stylesheet" type="text/css" href="deps/components/uiOptions/css/fss/fss-theme-by-uio.css" />
+    <link rel="stylesheet" type="text/css" href="deps/components/uiOptions/css/fss/fss-theme-yb-uio.css" />
+    <link rel="stylesheet" type="text/css" href="deps/components/uiOptions/css/fss/fss-text-uio.css" />
+
+    <link rel="stylesheet" type="text/css" href="deps/components/uiOptions/css/UIOptions.css" />
+    <link rel="stylesheet" type="text/css" href="deps/components/uiOptions/css/FullUIOptions.css" />
+    <link rel="stylesheet" type="text/css" href="deps/components/uiOptions/css/FullNoPreviewUIOptions.css" />
+
+    <link rel="stylesheet" type="text/css" href="deps/title-bar-style.css" />
+
+    <script type="text/javascript" src="deps/MyInfusion.js"></script>
+    <script type="text/javascript" src="deps/GPIIStore.js"></script>
+    <script type="text/javascript" src="deps/prefPanel.js"></script>
+    <script type="text/javascript" src="deps/genericControls/js/genericCheckbox.js"></script>
+    <script type="text/javascript" src="deps/genericControls/js/genericDropdown.js"></script>
+    <script type="text/javascript" src="deps/genericControls/js/genericSlider.js"></script>
+    <!--<script type="text/javascript" src="deps/genericControls/js/genericControl.js"></script>-->
+
+    <script type="text/javascript" src="deps/uiOptionsInit.js"></script>
+</head>
+
+<body onload="uiOptionsInit([{&quot;id&quot;:&quot;http://registry.gpii.org/common/fontSize&quot;,&quot;preferenceName&quot;:&quot;Font Size&quot;,&quot;preferenceDescription&quot;:&quot;Make letters bigger or smaller.&quot;,&quot;valueSpace&quot;:{&quot;start&quot;:8,&quot;end&quot;:24,&quot;step&quot;:1},&quot;value&quot;:12},{&quot;id&quot;:&quot;http://registry.gpii.org/common/foregroundColor&quot;,&quot;preferenceName&quot;:&quot;Foreground Color&quot;,&quot;preferenceDescription&quot;:&quot;Change the color of letters.&quot;,&quot;valueSpace&quot;:[&quot;Black&quot;,&quot;White&quot;,&quot;Green&quot;,&quot;Blue&quot;,&quot;Yellow&quot;],&quot;value&quot;:&quot;Black&quot;},{&quot;id&quot;:&quot;http://registry.gpii.org/common/highContrast&quot;,&quot;preferenceName&quot;:&quot;High Contrast&quot;,&quot;preferenceDescription&quot;:&quot;&quot;,&quot;valueSpace&quot;:&quot;boolean&quot;,&quot;value&quot;:false}])">
+    <div id="pcp-title-bar" class="pcp-title-bar">
+        <div class="pcp-title-bar-text"> Personal Control Panel </div>
+        <div id="pcp-title-bar-close" class="pcp-title-bar-button"> X </div>
+        <div id="pcp-title-bar-minimize" class="pcp-title-bar-button"> v </div>
+        <div style="clear: both"> </div>
+    </div>
+
+    <h1 style="padding: 10px"> Personal Control Panel Prototype </h1>
+
+    <!-- This is the div that will contain the UI Options component -->
+    <div id="pcpMainSettings"> </div>
+
+    <script type="text/javascript">
+        document.getElementById("pcp-title-bar-close").onclick = function () {window.close()};
+
+        var minimized = false, width, height;
+        document.getElementById("pcp-title-bar-minimize").onclick = function () {
+            var gui = require('nw.gui');
+            var win = gui.Window.get();
+            if (!minimized) {
+                width = win.width;
+                height = win.height;
+                win.resizeTo(250, 30);
+                //win.moveTo(screen.width - 250, screen.height - 30);
+                //win.x = screen.width - 250;
+                //win.y = screen.height - 30;
+                document.getElementById("pcp-title-bar").className += " pcp-minimized";
+            } else {
+                win.resizeTo(width, height);
+                //win.setPosition("center");
+                //win.moveTo(100, 200);
+                //win.x = 200;
+                //win.y = 100;
+                document.getElementById("pcp-title-bar").className = "pcp-title-bar";
+            }
+
+            minimized = !minimized;
+            win.setAlwaysOnTop(minimized);
+        };
+    </script>
+</body>

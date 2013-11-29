@@ -1,0 +1,51 @@
+<ul class="fl-clearfix fl-uiOptions-media fl-uiOptions-topContainer">
+    <li class="fl-uiOptions-volume fl-media-column">
+        <label for="volume">Sample Slider</label>
+        <div class="fl-inputs">
+                <div class="fl-force-left fl-icon fl-sampleSlider-left"><span class="fl-hidden-accessible">icon of a speaker with no sound</span></div>                       
+                <div id="volume" class="flc-uiOptions-sampleSlider fl-slider fl-slider-horz"></div>
+                <div class="fl-force-left fl-icon fl-sampleSlider-right"><span class="fl-hidden-accessible">icon of a speaker with maximum sound</span></div>
+        </div>
+    </li>
+    <li class="fl-media-column">
+        <ul class="fl-uiOptions-nestedList">
+            <li>
+                <input type="checkbox" id="sampleCheckbox" class="flc-uiOptions-sampleCheckbox fl-force-left" />
+                <div>
+                    <label for="sampleCheckbox">Sample Checkbox</label>
+                    <p class="fl-uiOptions-option-description">Description of what this checkbox is for</p>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li class="fl-media-column">
+        <ul class="fl-uiOptions-nestedList">
+          <li>
+            <label for="sampleDropdown">Sample Dropdown</label>
+          </li>
+          <li>
+            <p>Description of what this dropdown is for</p>
+            <select id="sampleDropdown" class="flc-uiOptions-sampleDropdown">
+                <option value="en">English</option>
+                <option value="fr">French</option>
+            </select>
+          </li>
+        </ul>
+    </li> 
+    <li class="fl-media-column">
+        <ul class="fl-uiOptions-nestedList">
+          <li>
+            <label for="sampleRadioButtons">Sample Radio Buttons</label>
+          </li>
+          <li>
+            <p>Description of what these radio buttons are for</p>
+            <div class="flc-uiOptions-sampleRadioButtons">
+                <div class="flc-uiOptions-sampleRadioButtons-radio">
+                    <input type="radio" id="radioid" class="flc-uiOptions-sampleRadioButtons-radioButton" />
+                    <label for="radioid" class="flc-uiOptions-sampleRadioButtons-radioLabel">label</label> 
+                </div>
+            </div>
+          </li>
+        </ul>
+    </li> 
+</ul>

@@ -1,0 +1,110 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="deps/framework/fss/css/fss-layout.css" />
+    <link rel="stylesheet" type="text/css" href="deps/framework/fss/css/fss-text.css" />
+    <link rel="stylesheet" type="text/css" href="deps/components/uiOptions/css/fss/fss-theme-bw-uio.css" />
+    <link rel="stylesheet" type="text/css" href="deps/components/uiOptions/css/fss/fss-theme-wb-uio.css" />
+    <link rel="stylesheet" type="text/css" href="deps/components/uiOptions/css/fss/fss-theme-by-uio.css" />
+    <link rel="stylesheet" type="text/css" href="deps/components/uiOptions/css/fss/fss-theme-yb-uio.css" />
+    <link rel="stylesheet" type="text/css" href="deps/components/uiOptions/css/fss/fss-text-uio.css" />
+
+    <link rel="stylesheet" type="text/css" href="deps/components/uiOptions/css/UIOptions.css" />
+    <link rel="stylesheet" type="text/css" href="deps/components/uiOptions/css/FullUIOptions.css" />
+    <link rel="stylesheet" type="text/css" href="deps/components/uiOptions/css/FullNoPreviewUIOptions.css" />
+
+    <script type="text/javascript" src="deps/MyInfusion.js"></script>
+    <script type="text/javascript" src="deps/GPIIStore.js"></script>
+    <script type="text/javascript" src="deps/prefPanel.js"></script>
+    <!--<script type="text/javascript" src="deps/onScreenKeyboard.js"></script>
+    <script type="text/javascript" src="deps/audioFeedback.js"></script>
+    <script type="text/javascript" src="deps/renderingSamplePrefPanel.js"></script>-->
+
+    <script type="text/javascript" src="deps/genericControls/js/genericCheckbox.js"></script>
+</head>
+
+<body>
+    <!-- This div should be placed where the Table of Contents is to be displayed -->
+    <div class="flc-toc-tocContainer"> </div>
+
+    <h1> Personal Control Panel Prototype </h1>
+
+    <!-- This is the div that will contain the UI Options component -->
+    <div id="pcpMainSettings"> </div>
+
+    <script type="text/javascript">
+        fluid.staticEnvironment.gpiiPcp = fluid.typeTag("gpii.pcp");
+
+        fluid.pageEnhancer({});
+
+        fluid.uiOptions.fullNoPreview("#pcpMainSettings", {
+            // Tell UIOptions where to find all the templates, relative to this file
+            prefix: "deps/components/uiOptions/html/",
+            distributeOptions: [{
+                target: "{that > templateLoader}.options.templates",
+                record: {
+                    uiOptions: "deps/pcp_templates/pcpMainDialog.html",
+                    genericCheckbox: "deps/genericControls/html/genericCheckbox.html",
+                    genericCheckbox1: "deps/genericControls/html/genericCheckbox.html"
+                }
+            }, {
+                target: "{that > uiOptionsLoader > uiOptions}",
+                record: {
+                    selectors: {
+                        genericCheckbox: ".flc-uiOptions-genericCheckbox",
+                        genericCheckbox1: ".flc-uiOptions-genericCheckbox1"
+                    },
+                    components: {
+                        genericCheckbox: {
+                            type: "gpii.pcp.genericCheckbox",
+                            container: "{uiOptions}.dom.genericCheckbox",
+                            createOnEvent: "onUIOptionsMarkupReady",
+                            options: {
+                                // some customization to the preference pane
+                                //id: "http://registry.gpii.org/common/fontSize", // the dots and the colon in the id are messing the things up
+                                id: "registry*gpii*org/common/fontSize", // this one works just fine
+                                preferenceName: "Font Size",
+                                preferenceDescription: "Make letters bigger or smaller."
+                            }
+                        },
+
+                        // this overwrites the previous checkbox component
+                        genericCheckbox1: {
+                            type: "gpii.pcp.genericCheckbox",
+                            container: "{uiOptions}.dom.genericCheckbox1",
+                            createOnEvent: "onUIOptionsMarkupReady",
+                            options: {
+                                id: "registry*gpii*org/common/something",
+                                preferenceName: "Something",
+                                preferenceDescription: "It's something..."
+                            }
+                        }
+                    }
+                }
+            }],
+
+            // Tell UIOptions where to redirect to if the user cancels the operation
+            uiOptions: {
+                options: {
+                    listeners: {
+                        onCancel: function(){
+                            window.location = "";
+                        }
+                    }
+                }
+            }
+        });
+
+        fluid.demands("fluid.uiOptions.textControls", ["fluid.uiOptions", "gpii.pcp"], {
+            funcName: "fluid.emptySubcomponent"
+        });
+
+        fluid.demands("fluid.uiOptions.layoutControls", ["fluid.uiOptions", "gpii.pcp"], {
+            funcName: "fluid.emptySubcomponent"
+        });
+
+        fluid.demands("fluid.uiOptions.linksControls", ["fluid.uiOptions", "gpii.pcp"], {
+            funcName: "fluid.emptySubcomponent"
+        });
+
+    </script>
+
+</body>

@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title> Personal Control Panel Prototype </title>
+    <style>
+        #box { 
+            position: static;
+            /*border-style: dashed;
+            border-width: thin;
+            border-spacing: 10px;*/
+            float: left;
+            width: auto;
+            height: auto;
+            margin: 5px;
+        }
+
+        .clear { clear: left;}
+    </style>
+</head>
+<body>
+    <h1> Personal Control Panel Prototype </h1>
+
+    <form enctype="application/x-www-form-urlencoded" action="/pcp/update" method="post">
+
+    <div id="box" class="box">
+        Font Size: <br>
+        <input type="text" name="http://registry.gpii.org/common/fontSize" value="23">
+    </div>
+    
+    <div id="box" class="box">
+        Foreground Color: <br>
+        <input type="text" name="http://registry.gpii.org/common/foregroundColor" value="black">
+    </div>
+
+    <div id="box" class="box">
+        Onscreen Keyboard: <br />
+        <input type="radio" name="http://registry.gpii.org/common/onscreenKeyboard" value="true"> Enabled<br>
+        <input type="radio" name="http://registry.gpii.org/common/onscreenKeyboard" value="false"> Disabled
+    </div>
+
+    <div id="box" class="box clear">
+        <input type="submit" value="update" />
+    </div>
+    </form>
+
+    <script>
+        document.oncontextmenu = function(){
+            return false;
+        };
+        
+        var divs = document.getElementsByTagName("div");
+        var maxHeight = 0;
+
+        for (var i = 0; i < divs.length - 1; i++) { // i < divs.length - 1 <-- don't unclude the update button
+            if (maxHeight < divs[i].clientHeight) {
+                maxHeight = divs[i].clientHeight;
+            }
+        }
+
+        maxHeight += "px";
+
+        for (var i = 0; i < divs.length - 1; i++) {
+            divs[i].style.height = maxHeight;
+        }
+    </script>
+</body>
+</html>
