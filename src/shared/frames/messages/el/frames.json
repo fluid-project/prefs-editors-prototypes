@@ -1,12 +1,12 @@
 {
 	"myPreferencesLabelText": "οι προτιμήσεις μου",
-	"allPreferencesLabelText": "all preferences",
-	"saveAndApplyText": "save & apply",
-	"preferencesSavedToUSB": "preferences saved to usb",
-	"notificationMessagePart1": "To apply preferences on other devices, save this token:",
+	"allPreferencesLabelText": "προτιμήσεις",
+	"saveAndApplyText": "αποθήκευση",
+	"preferencesSavedToUSB": "οι προτιμήσεις αποθηκεύτηκαν στο usb",
+	"notificationMessagePart1": "Για να εφαρμόσετε της προτιμήσεις σε άλλες συσκευές, αποθηκεύστε αυτό το κείμενο:",
 	"notificationMessagePart2": "TOKEN NUMBER",
-	"notificationMessagePart3": "to a USB or RFID reader.",
-	"notificationTitle": "Preferences have been saved to the cloud and applied to this device.",
-	"notificationConfirmButton": "got it",
-	"logoutText": "log-out"
+	"notificationMessagePart3": "σέ ένα USB ή RFID.",
+	"notificationTitle": "Οι προτιμήσεις αποθηκεύτηκαν στο σύννεφο και εφαρμόστηκαν σε αυτή τη συσκευή.",
+	"notificationConfirmButton": "το κατάλαβα",
+	"logoutText": "εξοδος"
 }

@@ -27,7 +27,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             selectors: {
                 myPreferencesLabel: ".gpiic-pmt-preferenceSetSelectionButtonMyPreferencesLabel",
                 allPreferencesLabel: ".gpiic-pmt-preferenceSetSelectionButtonAllPreferencesLabel",
-                saveAndApplyButtonLabel: ".gpiic-pmt-saveAndApplyButtonLabel",
+                saveAndApplyButtonLabel: ".flc-prefsEditor-save",
                 messageLineLabel: ".gpiic-prefsEditor-messageLine",
                 notification: ".gpiic-prefsEditor-notification",
                 confirmButton: ".gpiic-prefsEditor-notificationConfirmButton",
@@ -79,8 +79,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 "onReady.setSaveAndApplyButtonText": {
                     "this": "{that}.dom.saveAndApplyButtonLabel",
-                    "method": "text",
-                    "args": ["{that}.stringBundle.saveAndApplyText"]
+                    "method": "attr",
+                    "args": ["value", "{that}.stringBundle.saveAndApplyText"]
                 },
                 "onReady.setNotificationMessagePart1": {
                     "this": "{that}.dom.notificationMessagePart1",
