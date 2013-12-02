@@ -1,6 +1,7 @@
 /*!
 Cloud4all Preferences Management Tools
 
+Copyright 2013 OCAD University
 Copyright 2013 CERTH/HIT
 
 Licensed under the New BSD license. You may not use this file except in
@@ -82,7 +83,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.adjuster.textSize",
                 "container": ".gpiic-prefsEditor-textSize",
                 "template": "%prefix/textSizeTemplate.html",
-                "message": "%prefix/textSize.json"
+                "message": "%prefix/textSize.json",
+                "gradeNames": ["gpii.adjuster.textSize.preview"],
+                "previewURL": "../../src/shared/preview/html/textPreview.html"
             }
         },
         "cursorSize": {
@@ -94,7 +97,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.adjuster.cursorSize",
                 "container": ".gpiic-prefsEditor-cursorSize",
                 "template": "%prefix/cursorSizeTemplate.html",
-                "message": "%prefix/cursorSize.json"
+                "message": "%prefix/cursorSize.json",
+                "gradeNames": ["gpii.adjuster.cursorSize.preview"],
+                "previewURL": "../../src/shared/preview/html/cursorPreview.html"
             }
         },
         "magnifierEnabled": {
@@ -118,7 +123,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.adjuster.magnifier",
                 "container": ".gpiic-prefsEditor-magnifier",
                 "template": "%prefix/magnifierTemplate.html",
-                "message": "%prefix/magnifier.json"
+                "message": "%prefix/magnifier.json",
+                "gradeNames": ["gpii.adjuster.magnifier.preview", "gpii.adjuster.textSize.preview"],
+                "previewURL": "../../src/shared/preview/html/textPreview.html"
             }
         },
         "magnifierInvertColours": {

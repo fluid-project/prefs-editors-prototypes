@@ -1,6 +1,7 @@
 /*!
 Cloud4all Preferences Management Tools
 
+Copyright 2013 OCAD University
 Copyright 2013 Astea
 
 Licensed under the New BSD license. You may not use this file except in
@@ -13,15 +14,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 var demo = demo || {};
 
 (function ($, fluid) {
-    demo.initGPII = function (container, compOpts) {
-        var builder = fluid.prefs.builder({
-            primarySchema: gpii.primarySchema,
-            auxiliarySchema: gpii.pcp.auxiliarySchema
+
+    $(document).ready(function () {
+        fluid.prefs.create(".flc-prefsEditor", {
+            build: {
+                primarySchema: gpii.primarySchema,
+                auxiliarySchema: gpii.pcp.auxiliarySchema
+            },
+            prefsEditor: {
+                prefsEditorType: "gpii.speakText"
+            }
         });
-        var baseOpts = {
-            prefsEditorType: "gpii.speakText"
-        };
-        $.extend(true, baseOpts, compOpts);
-        return fluid.invokeGlobalFunction(builder.options.assembledPrefsEditorGrade, [container, baseOpts]);
-    };
+    });
+
 })(jQuery, fluid);
