@@ -30,7 +30,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             appearanceHeading: ".gpiic-increaseSize-appearanceHeading",
             magnifierHeading: ".gpiic-increaseSize-magnifierHeading"
         },
-        selectorsToIgnore: ["increaseSizeHeader", "increaseSizeAdjusters"/*, "addToMyPreferencesStar"*/, "increaseSizeExtraAdjusters", "moreLess"],
+        //selectorsToIgnore: ["increaseSizeHeader", "increaseSizeAdjusters"/*, "addToMyPreferencesStar"*/, "increaseSizeExtraAdjusters", "moreLess"],
         members: {
             messageResolver: "{prefsEditorLoader}.msgBundle"
         },
