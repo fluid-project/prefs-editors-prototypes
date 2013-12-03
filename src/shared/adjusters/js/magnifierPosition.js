@@ -33,7 +33,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "dockedright": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionRight gpii-increaseSize-magnifierPositionIconLabel"
         },
         listeners: {
-            afterRender: "{that}.magnifierPositionStyle"
+            onDomBind: "{that}.magnifierPositionStyle"
         },
         selectors: {
             magnifierPositionRow: ".gpiic-increaseSize-magnifierPositionRow",

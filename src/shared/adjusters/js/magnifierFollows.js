@@ -36,7 +36,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "keyboardfocus": "gpii-increaseSize-magnifierFollowsKeyboardFocus gpii-increaseSize-magnifierFollowsIconLabel"
         },
         listeners: {
-            afterRender: "{that}.magnifierFollowsStyle"
+            onDomBind: "{that}.magnifierFollowsStyle"
         },
         selectors: {
             magnifierFollowsRow: ".gpiic-increaseSize-magnifierFollowsRow",
@@ -85,7 +85,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 funcName: "gpii.adjuster.magnifierFollows.style",
                 args: ["{that}.dom.magnifierFollowsLabel", "{that}.options.strings.magnifierFollows",
                     "{that}.options.markup.magnifierFollowsLabel", "{that}.options.controlValues.magnifierFollows",
-                    "{that}.options.classes"]
+                    "{that}.options.classes"],
+                    dynamic: true
             }
         }
     });
