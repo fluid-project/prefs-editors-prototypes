@@ -23,7 +23,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
     
     fluid.defaults("gpii.adjuster.contrastTheme", {
-        gradeNames: ["fluid.prefs.panel.contrast", "gpii.pmt.previewPerSettingEnhanced", "autoInit"],
+        gradeNames: ["fluid.prefs.panel.contrast", "autoInit"],
         mergePolicy: {
             "controlValues.theme": gpii.prefs.helpers.arrayOverridePolicy
         },
@@ -64,36 +64,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 ],
                 dynamic: true
             }
-        },
+        }
+    });
+    
+    fluid.defaults("gpii.adjuster.contrastTheme.preview", {
+        gradeNames: ["gpii.adjuster.previewWithText", "autoInit"],
         components: {
             preview: {
-                type: "fluid.prefs.preview",
-                createOnEvent: "afterRender",
-                container: "{that}.dom.contrastPreview",
                 options: {
-                    templateUrl: "../../src/shared/preview/html/contrastPreview.html",
                     components: {
                         enhancer: {
-                            type: "fluid.uiEnhancer",
-                            container: "{preview}.enhancerContainer",
-                            createOnEvent: "onReady",
                             options: {
-                                gradeNames: ["fluid.prefs.stringBundle"],
-                                members: {
-                                    messageResolver: "{prefsEditorLoader}.msgBundle"
-                                },
                                 strings: {
+                                    // override preview text
                                     previewText: "{that}.stringBundle.contrastPreviewText"
-                                },
-                                selectors: {
-                                    previewText: ".gpiic-preview-per-setting-label"
-                                },
-                                listeners: {
-                                    "onCreate.setText": {
-                                        "this": "{that}.dom.previewText",
-                                        "method": "text",
-                                        "args": ["{that}.options.strings.previewText"]
-                                    }
                                 }
                             }
                         }
@@ -101,12 +85,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             }
         },
-        distributeOptions: [{
-            source: "{that}.options.outerPreviewEnhancerOptions",
-            target: "{that preview enhancer}.options"
-        }, {
-            source: "{that}.options.emptyComponentType",
-            target: "{that preview enhancer magnifier}.type"
-        }]
+        previewURL: "",
+        previewEnactors: {
+            textSize: {
+                type: "gpii.enactor.contrastTheme",
+                container: "{enhancer}.container",
+                options: {
+                    gradeNames: ["gpii.enactors.previewConnections"]
+                }
+            }
+        }
     });
+
 })(jQuery, fluid);

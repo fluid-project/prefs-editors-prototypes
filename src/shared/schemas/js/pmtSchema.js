@@ -62,7 +62,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "panel": {
                 "type": "gpii.adjuster.contrastTheme",
                 "container": ".gpiic-contrastTheme",
-                "template": "%prefix/contrastThemeTemplate.html"
+                "template": "%prefix/contrastThemeTemplate.html",
+                "message": "%prefix/contrast.json",
+                "gradeNames": ["gpii.adjuster.contrastTheme.preview"],
+                "previewURL": "../../src/shared/preview/html/contrastPreview.html"
             }
         },
         /*"increaseSize": {
