@@ -45,12 +45,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             onDomBind: "{that}.style"
         },
-        classes: {
-            "bw": "fl-theme-prefsEditor-bw gpii-prefsEditor-theme-bw fl-theme-bw",
-            "yb": "fl-theme-prefsEditor-yb gpii-prefsEditor-theme-yb fl-theme-yb",
-            "by": "fl-theme-prefsEditor-by gpii-prefsEditor-theme-by fl-theme-by",
-            "wb": "fl-theme-prefsEditor-wb gpii-prefsEditor-theme-wb fl-theme-wb"
-        },
         controlValues: {
             theme: ["bw", "yb", "by", "wb"]
         },
@@ -60,7 +54,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 args: [
                     "{that}.dom.themeLabel", "{that}.stringBundle.theme",
                     "{that}.options.markup.label", "{that}.options.controlValues.theme",
-                    "{that}.options.classes"
+                    "{that}.options.classnameMap.contrastTheme"
                 ],
                 dynamic: true
             }

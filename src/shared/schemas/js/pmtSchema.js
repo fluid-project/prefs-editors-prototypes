@@ -56,6 +56,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "contrastTheme": {
             "type": "gpii.primarySchema.contrast.theme",
+            "classes": {
+                "bw": "fl-theme-prefsEditor-bw gpii-prefsEditor-theme-bw fl-theme-bw",
+                "yb": "fl-theme-prefsEditor-yb gpii-prefsEditor-theme-yb fl-theme-yb",
+                "by": "fl-theme-prefsEditor-by gpii-prefsEditor-theme-by fl-theme-by",
+                "wb": "fl-theme-prefsEditor-wb gpii-prefsEditor-theme-wb fl-theme-wb"
+            },
             "enactor": {
                 "type": "gpii.enactor.contrastTheme"
             },
@@ -65,7 +71,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "template": "%prefix/contrastThemeTemplate.html",
                 "message": "%prefix/contrast.json",
                 "gradeNames": ["gpii.adjuster.contrastTheme.preview"],
-                "previewURL": "../../src/shared/preview/html/contrastPreview.html"
+                "previewURL": "../../src/shared/preview/html/contrastPreview.html",
+                "classnameMap": {"contrastTheme": "@contrastTheme.classes"}
             }
         },
         /*"increaseSize": {
@@ -145,11 +152,32 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "magnifierPosition": {
             "type": "gpii.primarySchema.magnificationPosition",
+            "classes": {
+                "lens": "gpii-increaseSize-magnifierPositionLens gpii-increaseSize-magnifierPositionIconLabel",
+                "fullscreen": "gpii-increaseSize-magnifierPositionFullscreen gpii-increaseSize-magnifierPositionIconLabel",
+                "dockedtop": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionTop gpii-increaseSize-magnifierPositionIconLabel",
+                "dockedbottom": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionBottom gpii-increaseSize-magnifierPositionIconLabel",
+                "dockedleft": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionLeft gpii-increaseSize-magnifierPositionIconLabel",
+                "dockedright": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionRight gpii-increaseSize-magnifierPositionIconLabel"
+            },
             "panel": {
                 "type": "gpii.adjuster.magnifierPosition",
                 "container": ".gpiic-prefsEditor-magnifierPosition",
                 "template": "%prefix/magnifierPositionTemplate.html",
-                "message": "%prefix/magnifierPosition.json"
+                "message": "%prefix/magnifierPosition.json",
+                "classnameMap": {"magnifierPosition": "@magnifierPosition.classes"}
+            }
+        },
+        "followingElement": {
+            "classes": {
+                "mousecursor": "gpii-followingElement-mouseCursorIcon",
+                "textcursor": "gpii-followingElement-textCursorIcon",
+                "keyboardfocus": "gpii-followingElement-keyboardFocusIcon"
+            },
+            "borderClasses": {
+                "topOnly": "gpii-iconCheckAdjusterAreaTopOnlyBorder",
+                "bottomOnly": "gpii-iconCheckAdjusterAreaBottomOnlyBorder",
+                "noBorder": "gpii-iconCheckAdjusterAreaNoBorder"
             }
         },
         "magnifierFollows": {
