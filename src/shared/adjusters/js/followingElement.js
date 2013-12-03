@@ -18,7 +18,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.adjuster.followingElement", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         listeners: {
-            afterRender: "{that}.followingElementStyle"
+            onDomBind: "{that}.followingElementStyle"
         },
         selectors: {
             followingElementRow: ".gpiic-followingElementRow",

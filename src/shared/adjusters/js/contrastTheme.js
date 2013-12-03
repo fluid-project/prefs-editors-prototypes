@@ -42,7 +42,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "this": "{that}.dom.contrastOptions",
                 "method": "text",
                 "args": ["{that}.stringBundle.contrastOptions"]
-            }
+            },
+            onDomBind: "{that}.style"
         },
         classes: {
             "bw": "fl-theme-prefsEditor-bw gpii-prefsEditor-theme-bw fl-theme-bw",
