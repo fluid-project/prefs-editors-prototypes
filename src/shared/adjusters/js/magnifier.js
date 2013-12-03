@@ -1,6 +1,7 @@
 /*!
 Cloud4all Preferences Management Tools
 
+Copyright 2013 OCAD University
 Copyright 2013 CERTH/HIT
 
 Licensed under the New BSD license. You may not use this file except in
@@ -16,7 +17,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
 
     fluid.defaults("gpii.adjuster.magnifier", {
-        gradeNames: ["fluid.prefs.panel", "gpii.pmt.previewPerSettingEnhanced", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.magnification": {
                 "model.magnification": "default",
@@ -28,71 +29,62 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         members: {
             messageResolver: "{prefsEditorLoader}.msgBundle"
         },
-        components: {
-            magnifierPreview: {
-                type: "fluid.prefs.preview",
-                createOnEvent: "afterRender",
-                container: "{that}.dom.magnifierPreview",
-                options: {
-                    templateUrl: "../../src/shared/preview/html/textPreview.html",
-                    components: {
-                        enhancer: {
-                            type: "fluid.uiEnhancer",
-                            container: "{magnifierPreview}.enhancerContainer",
-                            createOnEvent: "onReady",
-                            options: {
-                                gradeNames: ["fluid.prefs.stringBundle"],
-                                members: {
-                                    messageResolver: "{prefsEditorLoader}.msgBundle"
-                                },
-                                strings: {
-                                    previewText: "{that}.stringBundle.previewText"
-                                },
-                                selectors: {
-                                    previewText: ".gpiic-preview-per-setting-label"
-                                },
-                                listeners: {
-                                    "onCreate.setText": {
-                                        "this": "{that}.dom.previewText",
-                                        "method": "text",
-                                        "args": ["{that}.options.strings.previewText"]
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         selectors: {
-            magnifierStepper: ".gpiic-magnifier-stepper",
-            magnifierPreview: ".gpiic-magnifier-preview"
+            magnifierLabel: ".gpiic-magnifier-label",
+            magnifierStepper: ".gpiic-magnifier-stepper"
         },
-        selectorsToIgnore: ["magnifierPreview"],
-        protoTree: {
+        selectorsToIgnore: ["magnifierStepper"],
+        components: {
             magnifierStepper: {
-                decorators: {
-                    type: "fluid",
-                    func: "gpii.adjuster.textfieldStepper",
-                    options: {
-                        sourceApplier: "{that}.applier",
-                        rules: {
-                            "magnification": "value"
-                        },
-                        model: {
-                            value: "{that}.model.magnification"
-                        },
-                        strings: {
-                            "unit": "{that}.stringBundle.magnifierUnit"
-                        },
-                        range: "{that}.options.magnification.range"
-                    }
+                type: "gpii.adjuster.textfieldStepper",
+                container: "{that}.dom.magnifierStepper",
+                createOnEvent: "afterRender",
+                options: {
+                    sourceApplier: "{magnifier}.applier",
+                    rules: {
+                        "magnification": "value"
+                    },
+                    model: {
+                        value: "{magnifier}.model.magnification"
+                    },
+                    strings: {
+                        "unit": "{magnifier}.stringBundle.magnifierUnit"
+                    },
+                    range: "{magnifier}.options.magnification.range"
                 }
             }
         },
-        distributeOptions: [{
-            source: "{that}.options.outerPreviewEnhancerOptions",
-            target: "{that magnifierPreview enhancer}.options"
-        }]
+        protoTree: {
+            magnifierLabel: {messagekey: "magnifierLabel"}
+        }
     });
+
+    fluid.defaults("gpii.adjuster.magnifier.preview", {
+        gradeNames: ["gpii.adjuster.previewWithText", "autoInit"],
+        previewURL: "",
+        previewEnactors: {
+            magnifier: {
+                type: "gpii.enactor.magnifier",
+                container: "{enhancer}.container",
+                options: {
+                    gradeNames: ["gpii.enactors.previewConnections"]
+                }
+            },
+            textSize: {
+                type: "gpii.enactor.textSize",
+                container: "{enhancer}.container",
+                options: {
+                    gradeNames: ["gpii.enactors.previewConnections"]
+                }
+            },
+            contrastTheme: {
+                type: "gpii.enactor.contrastTheme",
+                container: "{enhancer}.container",
+                options: {
+                    gradeNames: ["gpii.enactors.previewConnections"]
+                }
+            }
+        }
+    });
+
 })(jQuery, fluid);

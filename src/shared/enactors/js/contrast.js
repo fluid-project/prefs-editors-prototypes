@@ -16,42 +16,39 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
 
-    fluid.defaults("gpii.enactor.magnifier", {
+    fluid.defaults("gpii.enactor.contrast", {
         gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
         preferenceMap: {
-            "gpii.primarySchema.magnification": {
+            "gpii.primarySchema.highContrast": {
                 "model.value": "default"
-            },
-            "gpii.primarySchema.magnifierEnabled": {
-                "model.enabled": "default"
             }
         },
+        styles: {
+            defaultTheme: "fl-theme-prefsEditor-default gpii-prefsEditor-theme-default",
+            contrastTheme: "fl-theme-prefsEditor-yb gpii-prefsEditor-theme-yb"
+        },
         invokers: {
-            set: {
-                funcName: "gpii.enactor.magnifier.set",
-                args: ["{that}.model.enabled", "{that}.model.value", "{that}.container"],
-                dynamic: true
+            toggleContrast: {
+                funcName: "gpii.enactor.contrast.toggleContrast",
+                args: ["{that}.container", "{that}.options.styles.defaultTheme", "{that}.options.styles.contrastTheme", "{arguments}.0"]
             }
         },
         listeners: {
-            onCreate: {
-                listener: "{that}.set"
+            "onCreate.toggleDefaultTheme": {
+                listener: "{that}.toggleContrast"
             }
+
         },
         modelListeners: {
             "value": {
-                func: "{that}.set",
+                func: "{that}.toggleContrast",
                 args: ["{change}.value"]
             }
         }
     });
 
-    gpii.enactor.magnifier.set = function (enabled, times, that) {
-        if (enabled) {
-            that.css({"transform": "scale(" + times / 100 + ")", "-webkit-transform": "scale(" + times / 100 + ")"});
-        } else {
-            that.css({"transform": "scale(1)", "-webkit-transform": "scale(1)"});
-        }
+    gpii.enactor.contrast.toggleContrast = function (elm, originalClass, contrastClass, enableContrast) {
+        elm.toggleClass(originalClass, !enableContrast);
+        elm.toggleClass(contrastClass, enableContrast);
     };
-
 })(jQuery, fluid);

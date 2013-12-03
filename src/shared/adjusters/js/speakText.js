@@ -1,6 +1,7 @@
 /*!
 Cloud4all Preferences Management Tools
 
+Copyright 2013 OCAD University
 Copyright 2013 Astea
 
 Licensed under the New BSD license. You may not use this file except in
@@ -58,7 +59,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             invokers: {
                 updateModelAllHidden: {
                     "funcName": "gpii.speakText.updateModelAllHidden",
-                    "args": ["{gpii.adjuster.CollectivePanel}"]
+                    "args": ["{gpii.panel.visualAlternatives}"]
                 }
             }
         }

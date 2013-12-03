@@ -18,7 +18,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.adjuster.followingElement", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         listeners: {
-            afterRender: "{that}.followingElementStyle"
+            onDomBind: "{that}.followingElementStyle"
         },
         selectors: {
             followingElementRow: ".gpiic-followingElementRow",
@@ -47,24 +47,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "   </label>" +
                     "</div>"
         },
-        "classes": {
-            "mousecursor": "gpii-followingElement-mouseCursorIcon",
-            "textcursor": "gpii-followingElement-textCursorIcon",
-            "keyboardfocus": "gpii-followingElement-keyboardFocusIcon"
-        },
-        "borderClasses": {
-            "topOnly": "gpii-iconCheckAdjusterAreaTopOnlyBorder",
-            "bottomOnly": "gpii-iconCheckAdjusterAreaBottomOnlyBorder",
-            "noBorder": "gpii-iconCheckAdjusterAreaNoBorder"
-        },
         invokers: {
             followingElementStyle: {
                 funcName: "gpii.adjuster.followingElement.style",
                 args: [
                     "{that}.dom.followingElementLabel", "{that}.stringBundle.followingElement",
                     "{that}.options.markup.followingElementLabel", "{that}.options.controlValues.followingElement",
-                    "{that}.options.classes",
-                    "{that}.options.controlValues.followingElementBorder", "{that}.options.borderClasses"
+                    "{that}.options.classnameMap.followingElement",
+                    "{that}.options.controlValues.followingElementBorder", "{that}.options.classnameMap.followingElementBorder"
                 ],
                 dynamic: true
             }

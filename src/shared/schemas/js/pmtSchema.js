@@ -1,6 +1,7 @@
 /*!
 Cloud4all Preferences Management Tools
 
+Copyright 2013 OCAD University
 Copyright 2013 CERTH/HIT
 
 Licensed under the New BSD license. You may not use this file except in
@@ -55,13 +56,23 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "contrastTheme": {
             "type": "gpii.primarySchema.contrast.theme",
+            "classes": {
+                "bw": "fl-theme-prefsEditor-bw gpii-prefsEditor-theme-bw fl-theme-bw",
+                "yb": "fl-theme-prefsEditor-yb gpii-prefsEditor-theme-yb fl-theme-yb",
+                "by": "fl-theme-prefsEditor-by gpii-prefsEditor-theme-by fl-theme-by",
+                "wb": "fl-theme-prefsEditor-wb gpii-prefsEditor-theme-wb fl-theme-wb"
+            },
             "enactor": {
                 "type": "gpii.enactor.contrastTheme"
             },
             "panel": {
                 "type": "gpii.adjuster.contrastTheme",
                 "container": ".gpiic-contrastTheme",
-                "template": "%prefix/contrastThemeTemplate.html"
+                "template": "%prefix/contrastThemeTemplate.html",
+                "message": "%prefix/contrast.json",
+                "gradeNames": ["gpii.adjuster.contrastTheme.preview"],
+                "previewURL": "../../src/shared/preview/html/contrastPreview.html",
+                "classnameMap": {"contrastTheme": "@contrastTheme.classes"}
             }
         },
         /*"increaseSize": {
@@ -82,7 +93,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.adjuster.textSize",
                 "container": ".gpiic-prefsEditor-textSize",
                 "template": "%prefix/textSizeTemplate.html",
-                "message": "%prefix/textSize.json"
+                "message": "%prefix/textSize.json",
+                "gradeNames": ["gpii.adjuster.textSize.preview"],
+                "previewURL": "../../src/shared/preview/html/textPreview.html"
             }
         },
         "cursorSize": {
@@ -94,7 +107,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.adjuster.cursorSize",
                 "container": ".gpiic-prefsEditor-cursorSize",
                 "template": "%prefix/cursorSizeTemplate.html",
-                "message": "%prefix/cursorSize.json"
+                "message": "%prefix/cursorSize.json",
+                "gradeNames": ["gpii.adjuster.cursorSize.preview"],
+                "previewURL": "../../src/shared/preview/html/cursorPreview.html"
             }
         },
         "magnifierEnabled": {
@@ -118,7 +133,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.adjuster.magnifier",
                 "container": ".gpiic-prefsEditor-magnifier",
                 "template": "%prefix/magnifierTemplate.html",
-                "message": "%prefix/magnifier.json"
+                "message": "%prefix/magnifier.json",
+                "gradeNames": ["gpii.adjuster.magnifier.preview", "gpii.adjuster.textSize.preview"],
+                "previewURL": "../../src/shared/preview/html/textPreview.html"
             }
         },
         "magnifierInvertColours": {
@@ -135,11 +152,32 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "magnifierPosition": {
             "type": "gpii.primarySchema.magnificationPosition",
+            "classes": {
+                "lens": "gpii-increaseSize-magnifierPositionLens gpii-increaseSize-magnifierPositionIconLabel",
+                "fullscreen": "gpii-increaseSize-magnifierPositionFullscreen gpii-increaseSize-magnifierPositionIconLabel",
+                "dockedtop": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionTop gpii-increaseSize-magnifierPositionIconLabel",
+                "dockedbottom": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionBottom gpii-increaseSize-magnifierPositionIconLabel",
+                "dockedleft": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionLeft gpii-increaseSize-magnifierPositionIconLabel",
+                "dockedright": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionRight gpii-increaseSize-magnifierPositionIconLabel"
+            },
             "panel": {
                 "type": "gpii.adjuster.magnifierPosition",
                 "container": ".gpiic-prefsEditor-magnifierPosition",
                 "template": "%prefix/magnifierPositionTemplate.html",
-                "message": "%prefix/magnifierPosition.json"
+                "message": "%prefix/magnifierPosition.json",
+                "classnameMap": {"magnifierPosition": "@magnifierPosition.classes"}
+            }
+        },
+        "followingElement": {
+            "classes": {
+                "mousecursor": "gpii-followingElement-mouseCursorIcon",
+                "textcursor": "gpii-followingElement-textCursorIcon",
+                "keyboardfocus": "gpii-followingElement-keyboardFocusIcon"
+            },
+            "borderClasses": {
+                "topOnly": "gpii-iconCheckAdjusterAreaTopOnlyBorder",
+                "bottomOnly": "gpii-iconCheckAdjusterAreaBottomOnlyBorder",
+                "noBorder": "gpii-iconCheckAdjusterAreaNoBorder"
             }
         },
         "magnifierFollows": {

@@ -1,6 +1,7 @@
 /*!
 Cloud4all Preferences Management Tools
 
+Copyright 2013 OCAD University
 Copyright 2013 CERTH/HIT
 
 Licensed under the New BSD license. You may not use this file except in
@@ -49,9 +50,4 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("gpii.pmt.previewPerSettingEnhanced", {
-        gradeNames: "fluid.littleComponent",
-        outerPreviewEnhancerOptions: "{originalEnhancerOptions}.options.originalUserOptions",
-        emptyComponentType: "fluid.emptySubcomponent"
-    });
 })(jQuery, fluid);

@@ -1,5 +1,5 @@
 /*
-DEPRECATED - No need to maintain this adjuster. 
+DEPRECATED - No need to maintain this adjuster.
 The "Magnifier Follows" adjuster for pilots2 has different styling.
 I will start work on that version and ping you when i have something ready for review.
 */
@@ -7,6 +7,7 @@ I will start work on that version and ping you when i have something ready for r
 /*!
 Cloud4all Preferences Management Tools
 
+Copyright 2013 OCAD University
 Copyright 2013 CERTH/HIT
 
 Licensed under the New BSD license. You may not use this file except in
@@ -20,7 +21,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 /*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
 
 (function ($, fluid) {
-    
+
     fluid.defaults("gpii.adjuster.magnifierFollows", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
@@ -35,7 +36,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "keyboardfocus": "gpii-increaseSize-magnifierFollowsKeyboardFocus gpii-increaseSize-magnifierFollowsIconLabel"
         },
         listeners: {
-            afterRender: "{that}.magnifierFollowsStyle"
+            onDomBind: "{that}.magnifierFollowsStyle"
         },
         selectors: {
             magnifierFollowsRow: ".gpiic-increaseSize-magnifierFollowsRow",
@@ -84,7 +85,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 funcName: "gpii.adjuster.magnifierFollows.style",
                 args: ["{that}.dom.magnifierFollowsLabel", "{that}.options.strings.magnifierFollows",
                     "{that}.options.markup.magnifierFollowsLabel", "{that}.options.controlValues.magnifierFollows",
-                    "{that}.options.classes"]
+                    "{that}.options.classes"],
+                    dynamic: true
             }
         }
     });
@@ -98,5 +100,5 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             label.addClass(style[magnifierFollows[index]]);
         });
     };
-    
+
 })(jQuery, fluid);

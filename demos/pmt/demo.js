@@ -1,6 +1,7 @@
 /*!
 Cloud4all Preferences Management Tools
 
+Copyright 2013 OCAD University
 Copyright 2013 CERTH/HIT
 
 Licensed under the New BSD license. You may not use this file except in
@@ -16,27 +17,24 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 var demo = demo || {};
 
 (function ($, fluid) {
-    demo.initPMT = function (container, compOpts) {
-        demo.builder = fluid.prefs.builder({
-            primarySchema: gpii.primarySchema,
-            auxiliarySchema: gpii.pmt.auxiliarySchema
-        });
-        
-        demo.instantiatePMT(container, compOpts, "gpii.pmt", gpii.prefs.i18n.getDefaultLanguage());
-    };
-    
-    demo.instantiatePMT = function (container, compOpts, prefsEditorType, language) {
-        var baseOpts = {
-            prefsEditorType: prefsEditorType,
-            components: {
-                prefsEditorLoader: {
-                    options: {
-                        messagePrefix: "../../src/shared/adjusters/messages/" + language + "/"
+
+    $(document).ready(function () {
+        fluid.prefs.create("#gpiic-pmt", {
+            build: {
+                primarySchema: gpii.primarySchema,
+                auxiliarySchema: gpii.pmt.auxiliarySchema
+            },
+            prefsEditor: {
+                prefsEditorType: "gpii.pmt",
+                components: {
+                    prefsEditorLoader: {
+                        options: {
+                            messagePrefix: "../../src/shared/adjusters/messages/" + gpii.prefs.i18n.getDefaultLanguage() + "/"
+                        }
                     }
                 }
             }
-        };
-        $.extend(true, baseOpts, compOpts);
-        fluid.invokeGlobalFunction(demo.builder.options.assembledPrefsEditorGrade, [container, baseOpts]);
-    };
+        });
+    });
+
 })(jQuery, fluid);

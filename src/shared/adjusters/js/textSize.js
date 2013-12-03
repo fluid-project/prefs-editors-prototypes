@@ -1,6 +1,7 @@
 /*!
 Cloud4all Preferences Management Tools
 
+Copyright 2013 OCAD University
 Copyright 2013 CERTH/HIT
 
 Licensed under the New BSD license. You may not use this file except in
@@ -16,7 +17,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
 
     fluid.defaults("gpii.adjuster.textSize", {
-        gradeNames: ["fluid.prefs.panel", "gpii.pmt.previewPerSettingEnhanced", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.fontSize": {
                 "model.fontSize": "default",
@@ -25,77 +26,55 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "fontSize.range.step": "divisibleBy"
             }
         },
+        selectors: {
+            textSizeLabel: ".gpiic-textSize-label",
+            textSizeStepper: ".gpiic-textSize-stepper"
+        },
         components: {
-            textSizePreview: {
-                type: "fluid.prefs.preview",
+            textfieldStepper: {
+                type: "gpii.adjuster.textfieldStepper",
+                container: "{textSize}.dom.textSizeStepper",
                 createOnEvent: "afterRender",
-                container: "{that}.dom.textSizePreview",
                 options: {
-                    templateUrl: "../../src/shared/preview/html/textPreview.html",
-                    components: {
-                        enhancer: {
-                            type: "fluid.uiEnhancer",
-                            container: "{textSizePreview}.enhancerContainer",
-                            createOnEvent: "onReady",
-                            options: {
-                                gradeNames: ["fluid.prefs.stringBundle"],
-                                members: {
-                                    messageResolver: "{prefsEditorLoader}.msgBundle"
-                                },
-                                strings: {
-                                    previewText: "{that}.stringBundle.previewText"
-                                },
-                                selectors: {
-                                    previewText: ".gpiic-preview-per-setting-label"
-                                },
-                                listeners: {
-                                    "onCreate.setText": {
-                                        "this": "{that}.dom.previewText",
-                                        "method": "text",
-                                        "args": ["{that}.options.strings.previewText"]
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    sourceApplier: "{textSize}.applier",
+                    rules: {
+                        "fontSize": "value"
+                    },
+                    model: {
+                        value: "{textSize}.model.fontSize"
+                    },
+                    strings: {
+                        "unit": "{textSize}.stringBundle.textSizeUnit"
+                    },
+                    range: "{textSize}.fontSize.range"
                 }
             }
         },
-        selectors: {
-            textSizeLabel: ".gpiic-textSize-label",
-            textSizePreview: ".gpiic-textSize-preview",
-            textSizeStepper: ".gpiic-textSize-stepper"
-        },
-        selectorsToIgnore: ["textSizePreview"],
+        selectorsToIgnore: ["textSizeStepper"],
         protoTree: {
-            textSizeLabel: {messagekey: "textSizeLabel"},
-            textSizeStepper: {
-                decorators: {
-                    type: "fluid",
-                    func: "gpii.adjuster.textfieldStepper",
-                    options: {
-                        sourceApplier: "{that}.applier",
-                        rules: {
-                            "fontSize": "value"
-                        },
-                        model: {
-                            value: "{that}.model.fontSize"
-                        },
-                        strings: {
-                            "unit": "{that}.stringBundle.textSizeUnit"
-                        },
-                        range: "{that}.fontSize.range"
-                    }
+            textSizeLabel: {messagekey: "textSizeLabel"}
+        }
+    });
+
+    fluid.defaults("gpii.adjuster.textSize.preview", {
+        gradeNames: ["gpii.adjuster.previewWithText", "autoInit"],
+        previewURL: "",
+        previewEnactors: {
+            textSize: {
+                type: "gpii.enactor.textSize",
+                container: "{enhancer}.container",
+                options: {
+                    gradeNames: ["gpii.enactors.previewConnections"]
                 }
             },
-        },
-        distributeOptions: [{
-            source: "{that}.options.outerPreviewEnhancerOptions",
-            target: "{that textSizePreview enhancer}.options"
-        }, {
-            source: "{that}.options.emptyComponentType",
-            target: "{that textSizePreview enhancer magnifier}.type"
-        }]
+            contrastTheme: {
+                type: "gpii.enactor.contrastTheme",
+                container: "{enhancer}.container",
+                options: {
+                    gradeNames: ["gpii.enactors.previewConnections"]
+                }
+            }
+        }
     });
 
 })(jQuery, fluid);

@@ -1,6 +1,7 @@
 /*!
 Cloud4all Preferences Management Tools
 
+Copyright 2013 OCAD University
 Copyright 2013 CERTH/HIT
 
 Licensed under the New BSD license. You may not use this file except in
@@ -23,16 +24,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "controlValues.magnifierPosition": "enum"
             }
         },
-        "classes": {
-            "lens": "gpii-increaseSize-magnifierPositionLens gpii-increaseSize-magnifierPositionIconLabel",
-            "fullscreen": "gpii-increaseSize-magnifierPositionFullscreen gpii-increaseSize-magnifierPositionIconLabel",
-            "dockedtop": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionTop gpii-increaseSize-magnifierPositionIconLabel",
-            "dockedbottom": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionBottom gpii-increaseSize-magnifierPositionIconLabel",
-            "dockedleft": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionLeft gpii-increaseSize-magnifierPositionIconLabel",
-            "dockedright": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionRight gpii-increaseSize-magnifierPositionIconLabel"
-        },
         listeners: {
-            afterRender: "{that}.magnifierPositionStyle"
+            onDomBind: "{that}.magnifierPositionStyle"
         },
         selectors: {
             magnifierPositionRow: ".gpiic-increaseSize-magnifierPositionRow",
@@ -81,8 +74,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 funcName: "gpii.adjuster.magnifierPosition.style",
                 args: ["{that}.dom.magnifierPositionLabel", "{that}.options.strings.magnifierPosition",
                     "{that}.options.markup.magnifierPositionLabel", "{that}.options.controlValues.magnifierPosition",
-                    "{that}.options.classes", "{that}"],
-                    dynamic: true
+                    "{that}.options.classnameMap.magnifierPosition", "{that}"],
+                dynamic: true
             }
         }
     });

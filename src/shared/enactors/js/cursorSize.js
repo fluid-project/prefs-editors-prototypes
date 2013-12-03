@@ -1,6 +1,7 @@
 /*!
 Cloud4all Preferences Management Tools
 
+Copyright 2013 OCAD University
 Copyright 2013 CERTH/HIT
 
 Licensed under the New BSD license. You may not use this file except in
@@ -28,14 +29,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         invokers: {
             set: {
                 funcName: "gpii.enactor.cursorSize.set",
-                args: ["{that}.model.value", "{that}.dom.cursorDiv"],
-                dynamic: true
+                args: ["{arguments}.0", "{that}.dom.cursorDiv"]
             }
         },
-        listeners: {
-            "onCreate.init": {
-                listener: "{that}.applier.modelChanged.addListener",
-                args: ["value", "{that}.set"]
+        modelListeners: {
+            "value": {
+                func: "{that}.set",
+                args: ["{change}.value"]
             }
         }
     });
