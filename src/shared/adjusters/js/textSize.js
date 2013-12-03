@@ -66,6 +66,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 options: {
                     gradeNames: ["gpii.enactors.previewConnections"]
                 }
+            },
+            contrastTheme: {
+                type: "gpii.enactor.contrastTheme",
+                container: "{enhancer}.container",
+                options: {
+                    gradeNames: ["gpii.enactors.previewConnections"]
+                }
             }
         }
     });

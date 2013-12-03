@@ -93,6 +93,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 options: {
                     gradeNames: ["gpii.enactors.previewConnections"]
                 }
+            },
+            textSize: {
+                type: "gpii.enactor.textSize",
+                container: "{enhancer}.container",
+                options: {
+                    gradeNames: ["gpii.enactors.previewConnections"]
+                }
             }
         }
     });
