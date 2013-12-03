@@ -113,12 +113,8 @@ textarea:focus, input:focus {
     margin-left: 120px;
 }
 
-.gpii-partially-expanded {
-    display: none;
-}
-
 .gpii-fully-expanded {
-    display: none;
+    /*display: none;*/
 }
 
 .gpii-switch {

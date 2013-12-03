@@ -50,7 +50,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "namespace": "gpii.adjusters.speakText",
         "templatePrefix": "../../src/shared/adjusters/html/",
         "messagePrefix": "../../src/shared/adjusters/messages/",
-        "template": "../../src/pcp/pcpContainer.html",
+        "template": "../../src/pcp/pcpTemplate.html",
 
         "speakText": {
             "type": "gpii.primarySchema.speakText",
@@ -109,6 +109,39 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "template": "%prefix/universalLanguageTemplate.html",
                 "container": ".universalLanguage",
                 "message": "%prefix/message.json"
+            }
+        },
+
+        "groups": {
+            "visualAlternatives": {
+                "type": "gpii.panel.visualAlternatives",
+                "container": ".gpiic-visualAlternatives",
+                "template": "../../src/pcp/pcpContainer.html",
+                "message": "%prefix/message.json",
+                "panels": {
+                    "always": ["speakText", "screenReaderBrailleOutput"],
+                    "gpii.primarySchema.speakText": [
+                        "wordsSpokenPerMinute", "volume"
+                    ]
+                }
+            },
+            "volume": {
+                "type": "gpii.panel.volumeCollectivePanel",
+                "container": ".gpiic-volumeGroup",
+                "template": "../../src/pcp/pcpContainer-Volume.html",
+                "message": "%prefix/message.json",
+                "panels": {
+                    "always": ["universalVolume"]
+                }
+            },
+            "language": {
+                "type": "gpii.panel.languageCollectivePanel",
+                "container": ".gpiic-languageGroup",
+                "template": "../../src/pcp/pcpContainer-Language.html",
+                "message": "%prefix/message.json",
+                "panels": {
+                    "always": ["universalLanguage"]
+                }
             }
         }
     };
