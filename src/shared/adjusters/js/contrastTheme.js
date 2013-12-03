@@ -87,7 +87,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         previewURL: "",
         previewEnactors: {
-            textSize: {
+            contrastTheme: {
                 type: "gpii.enactor.contrastTheme",
                 container: "{enhancer}.container",
                 options: {
