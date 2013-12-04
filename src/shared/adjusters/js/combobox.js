@@ -17,7 +17,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 .addClass("custom-combobox")
                 .insertAfter(this.element);
 
-            this.element.hide();
+            // this.element.hide();
             this._createAutocomplete();
             this._createShowAllButton();
         },
@@ -49,7 +49,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     this._trigger("select", event, {
                         item: ui.item.option
                     });
-                    var ids = ["#universalLanguage", "#screenReaderLanguage", "#textHighlighting"];
+                    var ids = ["#gpii_primarySchema_universalLanguage_universalLanguage", "#screenReaderLanguage", "#textHighlighting"];
                     fluid.each(ids, function (id) {
                         var newValue = $(id).val();
                         $(id).trigger('change', newValue);
@@ -149,3 +149,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 })(jQuery);
+
+$(function () {
+    $.noConflict(); //switch namespace to version 1.9.1 of jQuery. Should be unnecessary after version update.
+});

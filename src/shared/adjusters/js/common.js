@@ -19,9 +19,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 messageResolver: "{prefsEditorLoader}.msgBundle"
             },
             listeners: {
-
-                // Save, Reset & Cancel part
-
                 "onReady.setSaveAndApplyText": {
                     "this": "{that}.dom.saveAndApply",
                     "method": "prop",
@@ -57,7 +54,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             selectorsToIgnore: ["saveAndApply", "resetAndApply", "cancel"]
         }
-    });    
+    });
 
     // gpii.activateCombobox = function (that, id) {
     //     $("#" + id).combobox();

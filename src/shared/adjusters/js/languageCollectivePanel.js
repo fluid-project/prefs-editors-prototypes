@@ -22,7 +22,31 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         members: {
             messageResolver: "{prefsEditorLoader}.msgBundle"
+        },
+        listeners: {
+            "afterRender.activateCombobox": {
+                "funcName": "gpii.activateCombobox",
+                "args": ["{that}",
+                         "gpii_primarySchema",
+                         "universalLanguage",
+                         "universalLanguage"
+                ]
+            }
         }
     });
+
+    gpii.activateCombobox = function (that, common_in_primary, group, adjuster) {
+        // Since infusion is using jQuery 1.7.1, fluid.locate() returns a jQuery 1.7.1 element.
+        // As the combo box requires jQuery 1.9.1, unwrap the 1.7.1 element and rewrap it with
+        // jQuery 1.9.1 before passing to combobox()
+
+        var dropdown = that.locate(common_in_primary + "_" + group + "_" + adjuster);
+        var unwrappedDropdown = fluid.unwrap(dropdown);
+        var dropdownReadyForCombobox = $(unwrappedDropdown);
+
+        dropdownReadyForCombobox.combobox().change(function (event, newValue) {
+            that.applier.requestChange(common_in_primary + "_" + adjuster, newValue);
+        });
+    };
 
 })(fluid);

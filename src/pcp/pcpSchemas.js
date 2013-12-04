@@ -116,7 +116,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "visualAlternatives": {
                 "type": "gpii.panel.visualAlternatives",
                 "container": ".gpiic-visualAlternatives",
-                "template": "../../src/pcp/pcpContainer.html",
+                "template": "../../src/pcp/pcpContainer-VisualAlternatives.html",
                 "message": "%prefix/message.json",
                 "panels": {
                     "always": ["speakText", "screenReaderBrailleOutput"],
