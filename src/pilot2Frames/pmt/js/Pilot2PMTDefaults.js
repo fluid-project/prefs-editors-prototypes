@@ -47,14 +47,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 onSave: {
                     listener: "console.log"
                 },
+                // show notification onSave
                 "onSave.showSaveNotification": {
                     "listener": "{that}.showSaveNotification"
                 },
+                // trigger login on notification confirmation
                 "onReady.bindNotificationConfirmButtonClickTriggerLogin": {
                     "this": "{that}.dom.confirmButton",
                     "method": "click",
                     "args": ["{that}.events.onLogin.fire"]
                 },
+                // perform these onLogin
                 "onLogin.hideNotification": {
                     "listener": "{that}.hideSaveNotification"
                 },
@@ -64,9 +67,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onLogin.showUserStatusBar": {
                     "listener": "{that}.showUserStatusBar"
                 },
+                // trigger logout onReset (logout link is the reset button)
                 "onReset.triggerLogoutEvent": {
                     "listener": "{that}.events.onLogout.fire"
                 },
+                // perform these onLogout
                 "onLogout.hideUserStatusBar": {
                     "this": "{that}.dom.userStatusBar",
                     "method": "slideUp"
@@ -80,6 +85,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "location",
                     "method": "reload"
                 },*/
+                // set texts
                 "onReady.setMyPreferencesLabelText": {
                     "this": "{that}.dom.myPreferencesLabel",
                     "method": "text",
@@ -120,6 +126,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "text",
                     "args": ["{that}.stringBundle.notificationConfirmButton"]
                 },
+                "onReady.setLogoutLinkText": {
+                    "this": "{that}.dom.logoutLink",
+                    "method": "text",
+                    "args": ["{that}.stringBundle.logoutText"]
+                },
+                // setup the jQuery dialog
                 "onReady.prepareSaveNotification": {
                     "this": "{that}.dom.notification",
                     "method": "dialog",
@@ -132,11 +144,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         position: { my: "bottom", at: "bottom", of: ".gpii-prefsEditor-preferencesContainer" }
                     }]
                 },
-                "onReady.setLogoutLinkText": {
-                    "this": "{that}.dom.logoutLink",
-                    "method": "text",
-                    "args": ["{that}.stringBundle.logoutText"]
-                },
+                // hide the logout link initially
                 "onReady.hideUserStatusBar": {
                     "this": "{that}.dom.userStatusBar",
                     "method": "hide",
