@@ -22,6 +22,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 messageResolver: "{prefsEditorLoader}.msgBundle"
             },
             events: {
+                onLogin: null,
                 onLogout: null
             },
             selectors: {
@@ -39,29 +40,41 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 logoutLink: ".gpiic-prefsEditor-userLogoutLink",
                 userStatusBar: ".gpiic-prefsEditor-userStatusBar"
             },
+            model: {
+                userLoggedIn: false
+            },
             listeners: {
                 onSave: {
                     listener: "console.log"
                 },
-                "onReady.bindNotificationConfirmButtonClickHideNotification": {
+                "onSave.showSaveNotification": {
+                    "listener": "{that}.showSaveNotification"
+                },
+                "onReady.bindNotificationConfirmButtonClickTriggerLogin": {
                     "this": "{that}.dom.confirmButton",
                     "method": "click",
-                    "args": ["{that}.hideSaveNotification"]
+                    "args": ["{that}.events.onLogin.fire"]
                 },
-                "onReady.bindNotificationConfirmButtonClickShowSaveMessage": {
-                    "this": "{that}.dom.confirmButton",
-                    "method": "click",
-                    "args": ["{that}.showSaveMessage"]
+                "onLogin.hideNotification": {
+                    "listener": "{that}.hideSaveNotification"
                 },
-                "onReady.bindNotificationConfirmButtonClickShowUserStatusBar": {
-                    "this": "{that}.dom.confirmButton",
-                    "method": "click",
-                    "args": ["{that}.showUserStatusBar"]
+                "onLogin.showSaveMessage": {
+                    "listener": "{that}.showSaveMessage"
                 },
-                "onReady.bindLogoutLinkClick": {
-                    "this": "{that}.dom.logoutLink",
-                    "method": "click",
-                    "args": ["{that}.events.onLogout.fire"]
+                "onLogin.showUserStatusBar": {
+                    "listener": "{that}.showUserStatusBar"
+                },
+                "onReset.triggerLogoutEvent": {
+                    "listener": "{that}.events.onLogout.fire"
+                },
+                "onLogout.hideUserStatusBar": {
+                    "this": "{that}.dom.userStatusBar",
+                    "method": "slideUp"
+                },
+                "onLogout.clearMessage": {
+                    "this": "{that}.dom.messageLineLabel",
+                    "method": "text",
+                    "args": [""]
                 },
                 /*"onLogout.reloadPage": {
                     "this": "location",
@@ -128,26 +141,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.userStatusBar",
                     "method": "hide",
                     "args": [0]
-                },
-                "onSave.showSaveNotification": {
-                    listener: "gpii.prefs.pmt_pilot_2.showSaveNotification"
-                },
-                "onReset.hideUserStatusBar": {
-                    "this": "{that}.dom.userStatusBar",
-                    "method": "slideUp"
-                },
-                "onReset.clearMessage": {
-                    "this": "{that}.dom.messageLineLabel",
-                    "method": "text",
-                    "args": [""]
-                },
+                }/*,
                 "onReady.console": {
                     "this": "console",
                     "method": "log",
                     "args": ["{that}"]
-                }
+                }*/
             },
             invokers: {
+                showSaveNotification: {
+                    "funcName": "gpii.prefs.pmt_pilot_2.showSaveNotification"
+                },
                 hideSaveNotification: {
                     "funcName": "gpii.prefs.pmt_pilot_2.hideSaveNotification"
                 },
