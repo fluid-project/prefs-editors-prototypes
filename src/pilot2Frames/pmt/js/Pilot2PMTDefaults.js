@@ -158,7 +158,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.userStatusBar",
                     "method": "hide",
                     "args": [0]
-                }/*,
+                },
+                // trigger logout onReady
+                "onReady.triggerLogoutEvent": {
+                    "listener": "{that}.events.onLogout.fire"
+                }
+                /*,
                 "onReady.console": {
                     "this": "console",
                     "method": "log",
