@@ -44,9 +44,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 userLoggedIn: false
             },
             listeners: {
-                onSave: {
+                /*onSave: {
                     listener: "console.log"
-                },
+                },*/
                 // show notification onSave if not already logged in
                 "onSave.showSaveNotificationIfNoLogin": {
                     "listener": "{that}.showSaveNotificationIfNoLogin",
