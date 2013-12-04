@@ -47,9 +47,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 onSave: {
                     listener: "console.log"
                 },
-                // show notification onSave
-                "onSave.showSaveNotification": {
-                    "listener": "{that}.showSaveNotification"
+                // show notification onSave if not already logged in
+                "onSave.showSaveNotificationIfNoLogin": {
+                    "listener": "{that}.showSaveNotificationIfNoLogin",
+                    "args": ["{that}.model.userLoggedIn"]
                 },
                 // trigger login on notification confirmation
                 "onReady.bindNotificationConfirmButtonClickTriggerLogin": {
@@ -58,6 +59,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": ["{that}.events.onLogin.fire"]
                 },
                 // perform these onLogin
+                "onLogin.setUserLoggedIn": {
+                    listener: "{that}.applier.requestChange",
+                    args: ["userLoggedIn", true]
+                },
                 "onLogin.hideNotification": {
                     "listener": "{that}.hideSaveNotification"
                 },
@@ -72,6 +77,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "listener": "{that}.events.onLogout.fire"
                 },
                 // perform these onLogout
+                "onLogout.setUserLoggedIn": {
+                    listener: "{that}.applier.requestChange",
+                    args: ["userLoggedIn", false]
+                },
                 "onLogout.hideUserStatusBar": {
                     "this": "{that}.dom.userStatusBar",
                     "method": "slideUp"
@@ -157,8 +166,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }*/
             },
             invokers: {
-                showSaveNotification: {
-                    "funcName": "gpii.prefs.pmt_pilot_2.showSaveNotification"
+                showSaveNotificationIfNoLogin: {
+                    "funcName": "gpii.prefs.pmt_pilot_2.showSaveNotificationIfNoLogin",
+                    "args": "{arguments}.0"
                 },
                 hideSaveNotification: {
                     "funcName": "gpii.prefs.pmt_pilot_2.hideSaveNotification"
@@ -176,11 +186,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
     
-    gpii.prefs.pmt_pilot_2.showSaveNotification = function () {
-        // Had to reference the notification container this way, because jQuery.dialog()
-        // detaches it from its original position and appends it to body, making Infusion
-        // DOM to lose reference to it.
-        $(".gpiic-prefsEditor-notification").dialog("open");
+    gpii.prefs.pmt_pilot_2.showSaveNotificationIfNoLogin = function (userLoggedIn) {
+        if (!userLoggedIn) {
+            // Had to reference the notification container this way, because jQuery.dialog()
+            // detaches it from its original position and appends it to body, making Infusion
+            // DOM to lose reference to it.
+            $(".gpiic-prefsEditor-notification").dialog("open");
+        }
     };
     
     gpii.prefs.pmt_pilot_2.hideSaveNotification = function () {
