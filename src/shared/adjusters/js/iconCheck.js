@@ -18,7 +18,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.adjuster.iconCheck", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         listeners: {
-            afterRender: "{that}.iconCheckStyle"
+            onDomBind: "{that}.iconCheckStyle"
         },
         selectors: {
             iconCheckAdjusterIcon: ".gpiic-iconCheckAdjusterIcon"
