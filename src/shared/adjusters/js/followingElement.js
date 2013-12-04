@@ -68,6 +68,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 followingElement: strings[index]
             }));
             label.find(".gpiic-iconCheckAdjusterIcon").addClass(style[followingElement[index]]);
+            
+            /*
+             * This is a hack for Chrome due to the following reasons:
+             * 1) Invalid template HTML (div inside label)
+             * 2) Chrome's inability to trigger the click event on the whole label,
+             * which is only triggered when clicking on its first child div.
+             * 
+             * Fixing (1) should solve these issues, this is a dirty fix for the time being...    
+             */
+            label.find(".gpii-table-cell-valign-label").attr("for", label.attr("for"));
+            
             if (index === 0) {
                 label.addClass(borderStyle[followingElementBorder[0]]);
             } else if (index === labels.length - 1) {
