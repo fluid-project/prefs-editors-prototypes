@@ -22,7 +22,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         return target;
     };
 
-    fluid.defaults("gpii.panel.speakText", {
+    fluid.defaults("gpii.adjuster.speakText", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.speakText": {
@@ -39,7 +39,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("gpii.panel.wordsSpokenPerMinute", {
+    fluid.defaults("gpii.adjuster.wordsSpokenPerMinute", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.wordsSpokenPerMinute": {
@@ -82,7 +82,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("gpii.panel.volume", {
+    fluid.defaults("gpii.adjuster.volume", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.volume": {
@@ -120,7 +120,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("gpii.panel.voicePitch", {
+    fluid.defaults("gpii.adjuster.voicePitch", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.voicePitch": {
@@ -158,7 +158,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("gpii.panel.universalVolume", {
+    fluid.defaults("gpii.adjuster.universalVolume", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.universalVolume": {
@@ -198,7 +198,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("gpii.panel.universalLanguage", {
+    fluid.defaults("gpii.adjuster.universalLanguage", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.universalLanguage": {
@@ -219,7 +219,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("gpii.panel.screenReaderLanguage", {
+    fluid.defaults("gpii.adjuster.screenReaderLanguage", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.screenReaderLanguage": {
@@ -261,11 +261,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("gpii.panel.punctuationVerbosity", {
+    fluid.defaults("gpii.adjuster.punctuationVerbosity", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
-        mergePolicy: {
-            repeatingSelectors: gpii.arrayMergePolicy
-        },
         preferenceMap: {
             "gpii.primarySchema.punctuationVerbosity": {
                 "model.punctuationVerbosity": "default",
@@ -273,27 +270,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
-            punctuationVerbosityRow: ".gpiic-punctuationVerbosity-row",
-            punctuationVerbosityOptionLabel: ".gpiic-punctuationVerbosity-option-label",
-            punctuationVerbosityInput: ".gpiic-punctuationVerbosity",
-            punctuationVerbosityLabel: ".gpiic-punctuationVerbosity-label"
-        },
-        repeatingSelectors: ["punctuationVerbosityRow"],
-        listeners: {
-            afterRender: "{that}.style"
-        },
-        invokers: {
-            style: {
-                funcName: "gpii.panel.punctuationVerbosity.punctuationVerbosityStyle",
-                args: [
-                    "{that}.dom.punctuationVerbosityOptionLabel",
-                    "{that}.options.controlValues.punctuationVerbosity",
-                    "{that}.options.classnameMap.punctuationVerbosity"
-                ],
-                "dynamic": true
-            }
+            announceLabel: ".gpiic-speakText-announce-label",
+            punctuationVerbosityRow: ".gpiic-speakText-punctuationVerbosity-row",
+            punctuationVerbosityOptionLabel: ".gpiic-speakText-punctuationVerbosity-option-label",
+            punctuationVerbosityInput: ".gpiic-speakText-punctuationVerbosity",
+            punctuationVerbosityLabel: ".gpiic-speakText-punctuationVerbosity-label"
         },
         protoTree: {
+            announceLabel: {messagekey: "announce"},
             expander: {
                 type: "fluid.renderer.selection.inputs",
                 rowID: "punctuationVerbosityRow",
@@ -306,20 +290,35 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     selection: "${punctuationVerbosity}"
                 }
             },
-            punctuationVerbosityLabel: {messagekey: "punctuationVerbosityLabel"},
-            punctuationVerbosityDescription: {messagekey: "punctuationVerbosityDescription"}
+            punctuationVerbosityLabel: {messagekey: "punctuationVerbosityLabel"}
+        },
+        repeatingSelectors: ["punctuationVerbosityRow"],
+        listeners: {
+            afterRender: "{that}.style"
+        },
+        invokers: {
+            style: {
+                funcName: "gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle",
+                args: [
+                    "{that}.dom.punctuationVerbosityOptionLabel",
+                    "{that}.options.controlValues.punctuationVerbosity",
+                    "{that}.options.classnameMap.punctuationVerbosity"
+                ],
+                "dynamic": true
+            }
         }
-
     });
 
-    gpii.panel.punctuationVerbosity.punctuationVerbosityStyle = function (labels, values, classes) {
+    gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle = function (labels, values, classes) {
+        labels = $(".gpiic-speakText-punctuationVerbosity-option-label"); // WARNING! labels is [] when passed to the function.
+
         fluid.each(labels, function (label, index) {
             $(label).addClass(classes[values[index]]);
             $(label).append('<span></span>');
         });
     };
 
-    fluid.defaults("gpii.panel.announceCapitals", {
+    fluid.defaults("gpii.adjuster.announceCapitals", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.announceCapitals": {
@@ -336,7 +335,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("gpii.panel.speakTutorialMessages", {
+    fluid.defaults("gpii.adjuster.speakTutorialMessages", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.speakTutorialMessages": {
@@ -353,7 +352,24 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("gpii.panel.keyEcho", {
+    // fluid.defaults("gpii.adjuster.keyEcho", {
+    //     gradeNames: ["fluid.prefs.panel", "autoInit"],
+    //     preferenceMap: {
+    //         "gpii.primarySchema.keyEcho": {
+    //             "model.keyEcho": "default"
+    //         }
+    //     },
+    //     selectors: {
+    //         keyEcho: ".gpiic-keyEcho",
+    //         keyEchoLabel: ".gpiic-keyEcho-label"
+    //     },
+    //     protoTree: {
+    //         keyEcho: "${keyEcho}",
+    //         keyEchoLabel: {messagekey: "keyEchoLabel"}
+    //     }
+    // });
+
+    fluid.defaults("gpii.adjuster.keyEcho", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.keyEcho": {
@@ -361,16 +377,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
-            keyEcho: ".gpiic-keyEcho",
-            keyEchoLabel: ".gpiic-keyEcho-label"
+            readBackLabel: ".gpiic-speakText-readBack-label",
+            keyEcho: ".gpiic-speakText-keyEcho",
+            keyEchoLabel: ".gpiic-speakText-keyEcho-label"
         },
         protoTree: {
+            readBackLabel: {messagekey: "readBackLabel"},
             keyEcho: "${keyEcho}",
             keyEchoLabel: {messagekey: "keyEchoLabel"}
         }
     });
 
-    fluid.defaults("gpii.panel.wordEcho", {
+    fluid.defaults("gpii.adjuster.wordEcho", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.wordEcho": {
@@ -387,7 +405,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("gpii.panel.screenReaderBrailleOutput", {
+    fluid.defaults("gpii.adjuster.screenReaderBrailleOutput", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.screenReaderBrailleOutput": {
@@ -405,6 +423,5 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             screenReaderBrailleOutputDescription: {messagekey: "screenReaderBrailleOutputDescription"}
         }
     });
-
 
 })(fluid);

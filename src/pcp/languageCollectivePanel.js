@@ -28,19 +28,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "funcName": "gpii.activateCombobox",
                 "args": ["{that}",
                          "gpii_primarySchema",
-                         "universalLanguage",
                          "universalLanguage"
                 ]
             }
         }
     });
 
-    gpii.activateCombobox = function (that, common_in_primary, group, adjuster) {
+    gpii.activateCombobox = function (that, common_in_primary, adjuster) {
         // Since infusion is using jQuery 1.7.1, fluid.locate() returns a jQuery 1.7.1 element.
         // As the combo box requires jQuery 1.9.1, unwrap the 1.7.1 element and rewrap it with
         // jQuery 1.9.1 before passing to combobox()
 
-        var dropdown = that.locate(common_in_primary + "_" + group + "_" + adjuster);
+        var dropdown = that.locate(common_in_primary + "_" + adjuster + "_" + adjuster);
         var unwrappedDropdown = fluid.unwrap(dropdown);
         var dropdownReadyForCombobox = $(unwrappedDropdown);
 

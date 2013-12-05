@@ -15,8 +15,8 @@ var demo = demo || {};
 (function ($, fluid) {
     demo.initGPII = function (container, compOpts) {
         var uioBuilder = fluid.prefs.builder({
-            primarySchema: gpii.pmt.primarySchema,
-            auxiliarySchema: gpii.pmt.auxiliarySchema
+            primarySchema: gpii.primarySchema,
+            auxiliarySchema: gpii.auxiliarySchema
         });
         var baseOpts = {
             prefsEditorType: "gpii.pmt"
