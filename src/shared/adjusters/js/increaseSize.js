@@ -19,6 +19,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.panel.increaseSize", {
         gradeNames: ["fluid.prefs.compositePanel", "autoInit"],
         events: {
+            onShowMagnifierAdjusters: null,
+            onHideMagnifierAdjusters: null,
             onShowMagnifierExtraAdjusters: null,
             onHideMagnifierExtraAdjusters: null
         },
@@ -48,6 +50,24 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "text",
                 "args": ["{that}.stringBundle.more"]
             },
+            "afterRender.bindEventPreferenceSwitchMagnifier": {
+                "this": "{that}.dom.preferenceSwitchMagnifierEnabled",
+                "method": "change",
+                "args": ["{that}.toggleMagnifierAdjustersInstant"]
+            },
+            "onShowMagnifierAdjusters.show": {
+                "this": "{that}.dom.magnifierAdjusters",
+                "method": "slideDown",
+                "args": ["{arguments}.0"]
+            },
+            "onHideMagnifierAdjusters.hide": {
+                "this": "{that}.dom.magnifierAdjusters",
+                "method": "slideUp",
+                "args": ["{arguments}.0"]
+            },
+            "afterRender.restoreMagnifierAdjusters": {
+                listener: "{that}.toggleMagnifierAdjustersInstant"
+            },
             "afterRender.restoreMagnifierExtraAdjusters": {
                 listener: "{that}.toggleMagnifierExtraAdjustersInstant"
             }
@@ -59,6 +79,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.model.magnifierExtraAdjustersEnabledSwitch",
                     "{that}.events.onShowMagnifierExtraAdjusters.fire",
                     "{that}.events.onHideMagnifierExtraAdjusters.fire",
+                    0
+                ],
+                dynamic: true
+            },
+            toggleMagnifierAdjustersInstant: {
+                "funcName": "gpii.panel.increaseSize.toggleMagnifierAdjusters",
+                "args": [
+                    "{that}.dom.preferenceSwitchMagnifierEnabled",
+                    "{that}.events.onShowMagnifierAdjusters.fire",
+                    "{that}.events.onHideMagnifierAdjusters.fire",
                     0
                 ],
                 dynamic: true
@@ -82,7 +112,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             preferenceSwitchIncreaseSize: ".gpiic-increaseSize-preferenceSwitch",
             // markup of this element is disappearing if i add this, cannot set tooltips.
             //addToMyPreferencesStar: ".gpiic-addToMyPreferencesLabel",
+            magnifierAdjusters: ".gpiic-magnifier-category",
             magnifierExtraAdjusters: ".gpiic-magnifier-hidden",
+            // This is in a sub-panel. Is that bad?
+            preferenceSwitchMagnifierEnabled: ".gpiic-prefsEditor-magnifierEnabled .gpiic-onOffSwitch-input",
             preferenceSwitchMagnifierExtra: ".gpiic-magnifier-preferenceSwitchExtra",
             magnifierMoreLess: ".gpiic-magnifier-moreLess",
             appearanceHeading: ".gpiic-increaseSize-appearanceHeading",
@@ -90,7 +123,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierMoreLess: ".gpiic-magnifier-moreLess"
         },
         //selectorsToIgnore: ["increaseSizeHeader", "increaseSizeAdjusters"/*, "addToMyPreferencesStar"*/, "increaseSizeExtraAdjusters", "moreLess"],
-        selectorsToIgnore: ["magnifierExtraAdjusters"],
+        selectorsToIgnore: ["magnifierExtraAdjusters", "preferenceSwitchMagnifierEnabled"],
         members: {
             messageResolver: "{prefsEditorLoader}.msgBundle"
         },
@@ -104,7 +137,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     gpii.panel.increaseSize.toggleMagnifierAdjusters = function (magnifierAdjustersEnabledSwitch, showEvent, hideEvent, duration) {
-        if (magnifierAdjustersEnabledSwitch) {
+        if (magnifierAdjustersEnabledSwitch.is(':checked')) {
             showEvent(duration);
         } else {
             hideEvent(duration);
