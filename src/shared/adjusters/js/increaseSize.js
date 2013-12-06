@@ -50,11 +50,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "text",
                 "args": ["{that}.stringBundle.more"]
             },
-            "afterRender.bindEventPreferenceSwitchMagnifier": {
-                "this": "{that}.dom.preferenceSwitchMagnifierEnabled",
-                "method": "change",
-                "args": ["{that}.toggleMagnifierAdjustersInstant"]
-            },
             "onShowMagnifierAdjusters.show": {
                 "this": "{that}.dom.magnifierAdjusters",
                 "method": "slideDown",
@@ -86,7 +81,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             toggleMagnifierAdjustersInstant: {
                 "funcName": "gpii.panel.increaseSize.toggleMagnifierAdjusters",
                 "args": [
-                    "{that}.dom.preferenceSwitchMagnifierEnabled",
+                    "{that}.model.gpii_primarySchema_magnifierEnabled",
                     "{that}.events.onShowMagnifierAdjusters.fire",
                     "{that}.events.onHideMagnifierAdjusters.fire",
                     0
@@ -115,7 +110,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierAdjusters: ".gpiic-magnifier-category",
             magnifierExtraAdjusters: ".gpiic-magnifier-hidden",
             // This is in a sub-panel. Is that bad?
-            preferenceSwitchMagnifierEnabled: ".gpiic-prefsEditor-magnifierEnabled .gpiic-onOffSwitch-input",
             preferenceSwitchMagnifierExtra: ".gpiic-magnifier-preferenceSwitchExtra",
             magnifierMoreLess: ".gpiic-magnifier-moreLess",
             appearanceHeading: ".gpiic-increaseSize-appearanceHeading",
@@ -123,7 +117,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierMoreLess: ".gpiic-magnifier-moreLess"
         },
         //selectorsToIgnore: ["increaseSizeHeader", "increaseSizeAdjusters"/*, "addToMyPreferencesStar"*/, "increaseSizeExtraAdjusters", "moreLess"],
-        selectorsToIgnore: ["magnifierExtraAdjusters", "preferenceSwitchMagnifierEnabled"],
+        selectorsToIgnore: ["magnifierExtraAdjusters"],
         members: {
             messageResolver: "{prefsEditorLoader}.msgBundle"
         },
@@ -137,7 +131,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     gpii.panel.increaseSize.toggleMagnifierAdjusters = function (magnifierAdjustersEnabledSwitch, showEvent, hideEvent, duration) {
-        if (magnifierAdjustersEnabledSwitch.is(':checked')) {
+        if (magnifierAdjustersEnabledSwitch) {
             showEvent(duration);
         } else {
             hideEvent(duration);
