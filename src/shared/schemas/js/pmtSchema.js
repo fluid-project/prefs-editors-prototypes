@@ -42,7 +42,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "container": ".gpiic-prefsEditor-increaseSizePanel",
                 "template": "%prefix/increaseSizeTemplate.html",
                 "message": "%prefix/increaseSize.json",
-                "panels": ["textSize", "cursorSize", "magnifierEnabled", "magnifier", "magnifierInvertColours", "magnifierPosition", "magnifierFollows", "showCrosshairs"]
+                "panels": {
+                    "always": ["textSize", "cursorSize", "magnifierEnabled"],
+                    "gpii.primarySchema.magnifierEnabled": ["magnifier", "magnifierInvertColours", "magnifierPosition", "magnifierFollows", "showCrosshairs"]
+                }
             }
         },
         "contrastEnabled": {
