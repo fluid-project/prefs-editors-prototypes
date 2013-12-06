@@ -64,7 +64,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "gpii.primarySchema.contrast.theme": {
             "type": "string",
-            "default": "",
+            "default": "bw",
             "enum": ["bw", "yb", "by", "wb"]
         },
         "gpii.primarySchema.screenReaderTTSEnabled": {

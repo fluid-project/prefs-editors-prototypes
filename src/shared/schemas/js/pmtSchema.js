@@ -32,7 +32,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "template": "%prefix/addContrastTemplate.html",
                 "message": "%prefix/contrast.json",
                 "type": "gpii.adjuster.addContrast",
-                "panels": ["contrastTheme", "contrastEnabled"]
+                "panels": {
+                    "always": ["contrastEnabled"],
+                    "gpii.primarySchema.contrastEnabled": ["contrastTheme"]
+                }
             },
             "increaseSize": {
                 "type": "gpii.panel.increaseSize",
