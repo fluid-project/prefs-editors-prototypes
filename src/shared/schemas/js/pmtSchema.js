@@ -81,15 +81,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "classnameMap": {"contrastTheme": "@contrastTheme.classes"}
             }
         },
-        /*"increaseSize": {
-            "type": "increaseSize",
-            "panel": {
-                "type": "gpii.adjuster.increaseSize",
-                "container": ".gpii-prefsEditor-increaseSizePanel",
-                "template": "%prefix/increaseSizeTemplateOld.html",
-                "message": "%prefix/increaseSize.json"
-            }
-        },*/
         "textSize": {
             "type": "gpii.primarySchema.fontSize",
             "enactor": {
