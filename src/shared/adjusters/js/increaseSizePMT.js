@@ -16,11 +16,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
 
-    fluid.defaults("gpii.panel.increaseSize", {
-        gradeNames: ["fluid.prefs.compositePanel", "autoInit"],
+    fluid.defaults("gpii.panel.increaseSizePMT", {
+        gradeNames: ["gpii.panel.increaseSizePCP", "autoInit"],
         events: {
-            onShowMagnifierAdjusters: null,
-            onHideMagnifierAdjusters: null,
             onShowMagnifierExtraAdjusters: null,
             onHideMagnifierExtraAdjusters: null
         },
@@ -50,26 +48,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "text",
                 "args": ["{that}.stringBundle.more"]
             },
-            "onShowMagnifierAdjusters.show": {
-                "this": "{that}.dom.magnifierAdjusters",
-                "method": "slideDown",
-                "args": ["{arguments}.0"]
-            },
-            "onHideMagnifierAdjusters.hide": {
-                "this": "{that}.dom.magnifierAdjusters",
-                "method": "slideUp",
-                "args": ["{arguments}.0"]
-            },
-            "afterRender.restoreMagnifierAdjusters": {
-                listener: "{that}.toggleMagnifierAdjustersInstant"
-            },
             "afterRender.restoreMagnifierExtraAdjusters": {
                 listener: "{that}.toggleMagnifierExtraAdjustersInstant"
             }
         },
         invokers: {
             toggleMagnifierExtraAdjustersInstant: {
-                "funcName": "gpii.panel.increaseSize.toggleMagnifierExtraAdjusters",
+                "funcName": "gpii.panel.increaseSizePMT.toggleMagnifierExtraAdjusters",
                 "args": [
                     "{that}.model.magnifierExtraAdjustersEnabledSwitch",
                     "{that}.events.onShowMagnifierExtraAdjusters.fire",
@@ -78,18 +63,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 ],
                 dynamic: true
             },
-            toggleMagnifierAdjustersInstant: {
-                "funcName": "gpii.panel.increaseSize.toggleMagnifierAdjusters",
-                "args": [
-                    "{that}.model.gpii_primarySchema_magnifierEnabled",
-                    "{that}.events.onShowMagnifierAdjusters.fire",
-                    "{that}.events.onHideMagnifierAdjusters.fire",
-                    0
-                ],
-                dynamic: true
-            },
             toggleMagnifierExtraAdjusters: {
-                "funcName": "gpii.panel.increaseSize.toggleMagnifierExtraAdjusters",
+                "funcName": "gpii.panel.increaseSizePMT.toggleMagnifierExtraAdjusters",
                 "args": [
                     "{that}.model.magnifierExtraAdjustersEnabledSwitch",
                     "{that}.events.onShowMagnifierExtraAdjusters.fire",
@@ -102,23 +77,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierExtraAdjustersEnabledSwitch: false
         },
         selectors: {
-            increaseSizeHeader: ".gpiic-headerTitle",
-            preferenceSwitchIncreaseSize: ".gpiic-increaseSize-preferenceSwitch",
-            // markup of this element is disappearing if i add this, cannot set tooltips.
-            //addToMyPreferencesStar: ".gpiic-addToMyPreferencesLabel",
-            magnifierAdjusters: ".gpiic-magnifier-category",
             magnifierExtraAdjusters: ".gpiic-magnifier-hidden",
             // This is in a sub-panel. Is that bad?
             preferenceSwitchMagnifierExtra: ".gpiic-magnifier-preferenceSwitchExtra",
-            magnifierMoreLess: ".gpiic-magnifier-moreLess",
-            appearanceHeading: ".gpiic-increaseSize-appearanceHeading",
-            magnifierHeading: ".gpiic-increaseSize-magnifierHeading"
+            magnifierMoreLess: ".gpiic-magnifier-moreLess"
         },
         selectorsToIgnore: ["magnifierExtraAdjusters"],
-        members: {
-            messageResolver: "{prefsEditorLoader}.msgBundle"
-        },
         protoTree: {
+            // duplicate entries in protoTree; it does not merge.
             increaseSizeHeader: {messagekey: "increaseSizeHeader"},
             preferenceSwitchMagnifierExtra: "${magnifierExtraAdjustersEnabledSwitch}",
             appearanceHeading: {messagekey: "appearance"},
@@ -127,15 +93,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.panel.increaseSize.toggleMagnifierAdjusters = function (magnifierAdjustersEnabledSwitch, showEvent, hideEvent, duration) {
-        if (magnifierAdjustersEnabledSwitch) {
-            showEvent(duration);
-        } else {
-            hideEvent(duration);
-        }
-    };
-
-    gpii.panel.increaseSize.toggleMagnifierExtraAdjusters = function (magnifierExtraAdjustersEnabledSwitch, showEvent, hideEvent, duration) {
+    gpii.panel.increaseSizePMT.toggleMagnifierExtraAdjusters = function (magnifierExtraAdjustersEnabledSwitch, showEvent, hideEvent, duration) {
         if (magnifierExtraAdjustersEnabledSwitch) {
             showEvent(duration);
         } else {

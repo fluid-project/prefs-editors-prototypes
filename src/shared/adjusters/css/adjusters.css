@@ -272,6 +272,7 @@ input[type=checkbox], input[type=radio] {
 */
 .gpii-increaseSizePreferenceGroup {
     //padding-top: 100px;
+    padding-bottom: 10px;
 }
 
 .gpii-prefsEditor-category {
@@ -970,7 +971,7 @@ input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
 }
 
 .gpii-contrast-contrastOptions {
-	display: inline-block;
+	display: block;
 }
 
 .fl-prefsEditor .fl-choice {

@@ -38,9 +38,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             "increaseSize": {
-                "type": "gpii.panel.increaseSize",
+                "type": "gpii.panel.increaseSizePMT",
                 "container": ".gpiic-prefsEditor-increaseSizePanel",
-                "template": "%prefix/increaseSizeTemplate.html",
+                "template": "%prefix/increaseSizeTemplatePMT.html",
                 "message": "%prefix/increaseSize.json",
                 "panels": {
                     "always": ["textSize", "cursorSize", "magnifierEnabled"],
@@ -72,11 +72,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.enactor.contrastTheme"
             },
             "panel": {
-                "type": "gpii.adjuster.contrastTheme",
+                "type": "gpii.adjuster.contrastThemePMT",
                 "container": ".gpiic-contrastTheme",
-                "template": "%prefix/contrastThemeTemplate.html",
+                "template": "%prefix/contrastThemeTemplatePMT.html",
                 "message": "%prefix/contrast.json",
-                "gradeNames": ["gpii.adjuster.contrastTheme.preview"],
+                "gradeNames": ["gpii.adjuster.contrastThemePMT.preview"],
                 "previewURL": "../../src/shared/preview/html/contrastPreview.html",
                 "classnameMap": {"contrastTheme": "@contrastTheme.classes"}
             }
@@ -87,11 +87,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.enactor.textSize"
             },
             "panel": {
-                "type": "gpii.adjuster.textSize",
+                "type": "gpii.adjuster.textSizePMT",
                 "container": ".gpiic-prefsEditor-textSize",
-                "template": "%prefix/textSizeTemplate.html",
+                "template": "%prefix/textSizeTemplatePMT.html",
                 "message": "%prefix/textSize.json",
-                "gradeNames": ["gpii.adjuster.textSize.preview"],
+                "gradeNames": ["gpii.adjuster.textSizePMT.preview"],
                 "previewURL": "../../src/shared/preview/html/textPreview.html"
             }
         },
@@ -101,11 +101,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.enactor.cursorSize"
             },
             "panel": {
-                "type": "gpii.adjuster.cursorSize",
+                "type": "gpii.adjuster.cursorSizePMT",
                 "container": ".gpiic-prefsEditor-cursorSize",
-                "template": "%prefix/cursorSizeTemplate.html",
+                "template": "%prefix/cursorSizeTemplatePMT.html",
                 "message": "%prefix/cursorSize.json",
-                "gradeNames": ["gpii.adjuster.cursorSize.preview"],
+                "gradeNames": ["gpii.adjuster.cursorSizePMT.preview"],
                 "previewURL": "../../src/shared/preview/html/cursorPreview.html"
             }
         },
@@ -127,11 +127,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.enactor.magnifier"
             },
             "panel": {
-                "type": "gpii.adjuster.magnifier",
+                "type": "gpii.adjuster.magnifierPMT",
                 "container": ".gpiic-prefsEditor-magnifier",
-                "template": "%prefix/magnifierTemplate.html",
+                "template": "%prefix/magnifierTemplatePMT.html",
                 "message": "%prefix/magnifier.json",
-                "gradeNames": ["gpii.adjuster.magnifier.preview", "gpii.adjuster.textSize.preview"],
+                "gradeNames": ["gpii.adjuster.magnifierPMT.preview", "gpii.adjuster.textSizePMT.preview"],
                 "previewURL": "../../src/shared/preview/html/textPreview.html"
             }
         },

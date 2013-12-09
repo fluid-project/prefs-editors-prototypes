@@ -16,7 +16,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
 
-    fluid.defaults("gpii.adjuster.textSize", {
+    fluid.defaults("gpii.adjuster.textSizePCP", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.fontSize": {
@@ -33,20 +33,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         components: {
             textfieldStepper: {
                 type: "gpii.adjuster.textfieldStepper",
-                container: "{textSize}.dom.textSizeStepper",
+                container: "{textSizePCP}.dom.textSizeStepper",
                 createOnEvent: "afterRender",
                 options: {
-                    sourceApplier: "{textSize}.applier",
+                    sourceApplier: "{textSizePCP}.applier",
                     rules: {
                         "fontSize": "value"
                     },
                     model: {
-                        value: "{textSize}.model.fontSize"
+                        value: "{textSizePCP}.model.fontSize"
                     },
                     strings: {
-                        "unit": "{textSize}.stringBundle.textSizeUnit"
+                        "unit": "{textSizePCP}.stringBundle.textSizeUnit"
                     },
-                    range: "{textSize}.fontSize.range"
+                    range: "{textSizePCP}.fontSize.range"
                 }
             }
         },
@@ -55,26 +55,4 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             textSizeLabel: {messagekey: "textSizeLabel"}
         }
     });
-
-    fluid.defaults("gpii.adjuster.textSize.preview", {
-        gradeNames: ["gpii.adjuster.previewWithText", "autoInit"],
-        previewURL: "",
-        previewEnactors: {
-            textSize: {
-                type: "gpii.enactor.textSize",
-                container: "{enhancer}.container",
-                options: {
-                    gradeNames: ["gpii.enactors.previewConnections"]
-                }
-            },
-            contrastTheme: {
-                type: "gpii.enactor.contrastTheme",
-                container: "{enhancer}.container",
-                options: {
-                    gradeNames: ["gpii.enactors.previewConnections"]
-                }
-            }
-        }
-    });
-
 })(jQuery, fluid);
