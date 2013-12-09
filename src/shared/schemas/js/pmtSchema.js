@@ -32,14 +32,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "template": "%prefix/addContrastTemplate.html",
                 "message": "%prefix/contrast.json",
                 "type": "gpii.adjuster.addContrast",
-                "panels": ["contrastTheme", "contrastEnabled"]
+                "panels": {
+                    "always": ["contrastEnabled"],
+                    "gpii.primarySchema.contrastEnabled": ["contrastTheme"]
+                }
             },
             "increaseSize": {
                 "type": "gpii.panel.increaseSize",
                 "container": ".gpiic-prefsEditor-increaseSizePanel",
                 "template": "%prefix/increaseSizeTemplate.html",
                 "message": "%prefix/increaseSize.json",
-                "panels": ["textSize", "cursorSize", "magnifierEnabled", "magnifier", "magnifierInvertColours", "magnifierPosition", "magnifierFollows", "showCrosshairs"]
+                "panels": {
+                    "always": ["textSize", "cursorSize", "magnifierEnabled"],
+                    "gpii.primarySchema.magnifierEnabled": ["magnifier", "magnifierInvertColours", "magnifierPosition", "magnifierFollows", "showCrosshairs"]
+                }
             }
         },
         "contrastEnabled": {
@@ -75,15 +81,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "classnameMap": {"contrastTheme": "@contrastTheme.classes"}
             }
         },
-        /*"increaseSize": {
-            "type": "increaseSize",
-            "panel": {
-                "type": "gpii.adjuster.increaseSize",
-                "container": ".gpii-prefsEditor-increaseSizePanel",
-                "template": "%prefix/increaseSizeTemplateOld.html",
-                "message": "%prefix/increaseSize.json"
-            }
-        },*/
         "textSize": {
             "type": "gpii.primarySchema.fontSize",
             "enactor": {

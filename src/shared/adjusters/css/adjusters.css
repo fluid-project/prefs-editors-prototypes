@@ -48,7 +48,9 @@ body {
 
 .gpii-prefsEditor-category {
     width: 80%;
-    margin: 0 auto;
+    margin-left: 10%;
+    margin-right: 10%;
+    //margin: 0 auto;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -74,7 +76,7 @@ h2 {
 }
 
 h2 > label {
-    width: 240px !important;
+    //width: 240px !important;
     word-wrap: break-word;    
 }
 
@@ -144,7 +146,7 @@ input[type=checkbox]:checked + .gpii-prefsEditor-headerImage > .gpii-prefsEditor
 }
 
 .gpii-prefsEditor-headerClickableLabel {
-    cursor: pointer;
+    //cursor: pointer;
     margin: 0 !important;
     position: relative !important;
     top: -90px;
@@ -269,15 +271,15 @@ input[type=checkbox], input[type=radio] {
     Style for sliding to work
 */
 .gpii-increaseSizePreferenceGroup {
-    padding-top: 100px;
+    //padding-top: 100px;
 }
 
 .gpii-prefsEditor-category {
-    overflow: hidden;
+    display: inline-block;
 }
 
 .gpii-prefsEditor-category-hidden {
-    overflow: hidden;
+    //overflow: hidden;
 }
 
 /*
@@ -285,7 +287,7 @@ input[type=checkbox], input[type=radio] {
 */
 .gpii-prefsEditor-moreLess{
 	display: block;
-    width:100% !important;
+    //width:100% !important;
     text-align: center;
     cursor: pointer;
     padding-bottom: 5px !important;
@@ -298,6 +300,7 @@ input[type=checkbox], input[type=radio] {
 .gpii-increaseSize-magnifierPositionContainer {
 	display: inline-block;
 	width: 100% !important;
+	margin-top: 20px;
 }
 
 .gpii-increaseSize-magnifierPositionIconLabel {
@@ -854,7 +857,7 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
     border: 1px solid #636C7C;
     border-radius: 4px 4px 4px 4px;
     color: #FFFFFF;
-    font-size: calc(1em + 2px);
+    font-size: calc(0.8em + 2px);
     height: 1em;
     position: relative;
     width: calc(1em + 2px);
@@ -879,7 +882,7 @@ input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
 }
 
 .gpii-iconCheckAdjusterDescription {
-	font-size: 1em !important;
+	font-size: 0.8em !important;
 }
 
 .gpii-iconCheckAdjusterContainer {
@@ -980,7 +983,43 @@ input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
 */
 .gpii-onOffSwitch-container {
 	display: inline-block;
-    padding-bottom: 1em;
-    padding-top: 1em;
+    //padding-bottom: 1em;
+    //padding-top: 1em;
     width: 100%;
+    padding-bottom: 30px;
+}
+
+.gpii-prefsEditor-firstHeading {
+	padding: 0 !important;
+	color: black !important;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+h4 {
+	margin-bottom: 5px;
+}
+
+.gpii-prefsEditor-adjusterPanel {
+	margin-bottom: 20px;
+}
+
+.gpii-prefsEditor-separator {
+	height: 3px;
+	background-color: white;
+	border-bottom: 1px solid #dde7e5;
+	margin-top: 30px;
+	margin-bottom: 10px;
+}
+
+.gpii-iconCheck-adjuster {
+	margin-top: 20px;
+}
+
+.gpii-followingElement-container {
+	margin-top: 20px;
+}
+
+.fl-preview-A {
+	display: block;
 }
