@@ -272,7 +272,7 @@ input[type=checkbox], input[type=radio] {
 */
 .gpii-increaseSizePreferenceGroup, .contrastPreferenceGroup {
     //padding-top: 100px;
-    padding-bottom: 10px;
+    //padding-bottom: 10px;
 }
 
 .gpii-prefsEditor-category {
