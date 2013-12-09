@@ -42,13 +42,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             "increaseSize": {
-                "type": "gpii.panel.increaseSize",
+                "type": "gpii.panel.increaseSizePCP",
                 "container": ".gpiic-prefsEditor-increaseSizePanel",
-                "template": "%prefix/increaseSizeTemplate.html",
+                "template": "%prefix/increaseSizeTemplatePCP.html",
                 "message": "%prefix/increaseSize.json",
                 "panels": {
                     "always": ["textSize", "cursorSize", "magnifierEnabled"],
-                    "gpii.primarySchema.magnifierEnabled": ["magnifier", "magnifierInvertColours", "magnifierPosition", "magnifierFollows", "showCrosshairs"]
+                    "gpii.primarySchema.magnifierEnabled": ["magnifier"]
                 }
             }
         },
@@ -131,70 +131,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "message": "%prefix/magnifier.json",
                 "gradeNames": ["gpii.adjuster.magnifier.preview", "gpii.adjuster.textSize.preview"],
                 "previewURL": "../../src/shared/preview/html/textPreview.html"
-            }
-        },
-        "magnifierInvertColours": {
-            "type": "gpii.primarySchema.magnifier.invertColours",
-            /*"enactor": {
-                "type": "gpii.uiOptions.enactors.contrast"
-            },*/
-            "panel": {
-                "type": "gpii.adjuster.magnifierInvertColours",
-                "container": ".gpiic-prefsEditor-magnifierInvertColours",
-                "template": "%prefix/iconCheckTemplateInvertColours.html",
-                "message": "%prefix/magnifierInvertColours.json"
-            }
-        },
-        "magnifierPosition": {
-            "type": "gpii.primarySchema.magnificationPosition",
-            "classes": {
-                "lens": "gpii-increaseSize-magnifierPositionLens gpii-increaseSize-magnifierPositionIconLabel",
-                "fullscreen": "gpii-increaseSize-magnifierPositionFullscreen gpii-increaseSize-magnifierPositionIconLabel",
-                "dockedtop": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionTop gpii-increaseSize-magnifierPositionIconLabel",
-                "dockedbottom": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionBottom gpii-increaseSize-magnifierPositionIconLabel",
-                "dockedleft": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionLeft gpii-increaseSize-magnifierPositionIconLabel",
-                "dockedright": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionRight gpii-increaseSize-magnifierPositionIconLabel"
-            },
-            "panel": {
-                "type": "gpii.adjuster.magnifierPosition",
-                "container": ".gpiic-prefsEditor-magnifierPosition",
-                "template": "%prefix/magnifierPositionTemplate.html",
-                "message": "%prefix/magnifierPosition.json",
-                "classnameMap": {"magnifierPosition": "@magnifierPosition.classes"}
-            }
-        },
-        "followingElement": {
-            "classes": {
-                "mousecursor": "gpii-followingElement-mouseCursorIcon",
-                "textcursor": "gpii-followingElement-textCursorIcon",
-                "keyboardfocus": "gpii-followingElement-keyboardFocusIcon"
-            },
-            "borderClasses": {
-                "topOnly": "gpii-iconCheckAdjusterAreaTopOnlyBorder",
-                "bottomOnly": "gpii-iconCheckAdjusterAreaBottomOnlyBorder",
-                "noBorder": "gpii-iconCheckAdjusterAreaNoBorder"
-            }
-        },
-        "magnifierFollows": {
-            "type": "gpii.primarySchema.tracking",
-            "panel": {
-                "type": "gpii.adjuster.followingElement.magnifier",
-                "container": ".gpiic-prefsEditor-magnifierFollows",
-                "template": "%prefix/followingElementTemplate.html",
-                "message": "%prefix/followingElement.json",
-                "classnameMap": {
-                    "followingElement": "@followingElement.classes",
-                    "followingElementBorder": "@followingElement.borderClasses"
-                }
-            }
-        },
-        "showCrosshairs": {
-            "type": "gpii.primarySchema.showCrosshairs",
-            "panel": {
-                "type": "gpii.adjuster.showCrosshairs",
-                "container": ".gpiic-prefsEditor-showCrosshairs",
-                "template": "%prefix/iconCheckTemplateShowCrosshairs.html",
-                "message": "%prefix/showCrosshairs.json"
             }
         }
     };

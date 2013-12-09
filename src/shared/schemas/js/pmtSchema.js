@@ -38,9 +38,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             "increaseSize": {
-                "type": "gpii.panel.increaseSize",
+                "type": "gpii.panel.increaseSizePMT",
                 "container": ".gpiic-prefsEditor-increaseSizePanel",
-                "template": "%prefix/increaseSizeTemplate.html",
+                "template": "%prefix/increaseSizeTemplatePMT.html",
                 "message": "%prefix/increaseSize.json",
                 "panels": {
                     "always": ["textSize", "cursorSize", "magnifierEnabled"],
