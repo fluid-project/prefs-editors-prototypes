@@ -16,12 +16,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
     
     fluid.defaults("gpii.adjuster.addContrast", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
-        events: {
+        gradeNames: ["fluid.prefs.compositePanel", "autoInit"],
+        /*events: {
             onToggleContrastAdjusters: null
-        },
+        },*/
         listeners: {
-            "afterRender.bindEventConstrastAdjustersEnabled": {
+            /*"afterRender.bindEventConstrastAdjustersEnabled": {
                 "this": "{that}.dom.constrastAdjustersEnabled",
                 "method": "change",
                 "args": ["{that}.events.onToggleContrastAdjusters.fire"]
@@ -41,34 +41,34 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "tooltip-checked": "{that}.options.strings.tooltipChecked",
                     "tooltip-unchecked": "{that}.options.strings.tooltipUnchecked"
                 }]
-            }
+            }*/
         },
         selectors: {
-            constrastAdjustersEnabled: ".gpiic-contrast-constrastAdjustersEnabled",
+            //constrastAdjustersEnabled: ".gpiic-contrast-constrastAdjustersEnabled",
             panelLabel: ".gpiic-headerTitle",
             // markup of this element is disappearing if i add this, cannot set tooltips.
             //addToMyPreferencesLabel: ".gpiic-addToMyPreferencesLabel",
-            contrastAdjusters: ".gpiic-category"
+            //contrastAdjusters: ".gpiic-category"
         },
-        selectorsToIgnore: ["contrastAdjusters"/*, "addToMyPreferencesLabel"*/],
-        model: {
+        //selectorsToIgnore: ["contrastAdjusters"/*, "addToMyPreferencesLabel"*/],
+        /*model: {
             contrastAdjustersEnabledSwitch: false
-        },
+        },*/
         protoTree: {
-            constrastAdjustersEnabled: "${contrastAdjustersEnabledSwitch}",
+            //constrastAdjustersEnabled: "${contrastAdjustersEnabledSwitch}",
             panelLabel: {messagekey: "addContrast"}
         },
         members: {
             messageResolver: "{prefsEditorLoader}.msgBundle"
-        },
+        }/*,
         strings: {
             tooltipChecked: "{that}.stringBundle.tooltipChecked",
             tooltipUnchecked: "{that}.stringBundle.tooltipUnchecked"
-        }
+        }*/
     });
     
-    gpii.adjuster.addContrast.toggleContrastAdjusters = function (contrastAdjuster, flag) {
+    /*gpii.adjuster.addContrast.toggleContrastAdjusters = function (contrastAdjuster, flag) {
         contrastAdjuster[flag ? "show" : "hide"]();
-    };
+    };*/
     
 })(jQuery, fluid);

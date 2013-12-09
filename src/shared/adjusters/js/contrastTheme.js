@@ -38,7 +38,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         selectorsToIgnore: ["contrastPreview", "contrastOptions"],
         listeners: {
-            "afterRender.setContrastOptionstext": {
+            "onDomBind.setContrastOptionstext": {
                 "this": "{that}.dom.contrastOptions",
                 "method": "text",
                 "args": ["{that}.stringBundle.contrastOptions"]

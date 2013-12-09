@@ -31,6 +31,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         selectors: {
             magnifierLabel: ".gpiic-magnifier-label",
+            magnificationLevel: ".gpiic-magnifier-magnificationLevel",
             magnifierStepper: ".gpiic-magnifier-stepper"
         },
         selectorsToIgnore: ["magnifierStepper"],
@@ -55,7 +56,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         protoTree: {
-            magnifierLabel: {messagekey: "magnifierLabel"}
+            magnifierLabel: {messagekey: "magnifierLabel"},
+            magnificationLevel: {messagekey: "magnificationLevel"}
         }
     });
 

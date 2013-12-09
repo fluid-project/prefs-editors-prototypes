@@ -103,7 +103,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         selectors: {
             increaseSizeHeader: ".gpiic-headerTitle",
-            increaseSizeAdjusters: ".gpiic-category",
+            //increaseSizeAdjusters: ".gpiic-category",
             preferenceSwitchIncreaseSize: ".gpiic-increaseSize-preferenceSwitch",
             // markup of this element is disappearing if i add this, cannot set tooltips.
             //addToMyPreferencesStar: ".gpiic-addToMyPreferencesLabel",
@@ -113,8 +113,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             preferenceSwitchMagnifierExtra: ".gpiic-magnifier-preferenceSwitchExtra",
             magnifierMoreLess: ".gpiic-magnifier-moreLess",
             appearanceHeading: ".gpiic-increaseSize-appearanceHeading",
-            magnifierHeading: ".gpiic-increaseSize-magnifierHeading",
-            magnifierMoreLess: ".gpiic-magnifier-moreLess"
+            magnifierHeading: ".gpiic-increaseSize-magnifierHeading"
         },
         //selectorsToIgnore: ["increaseSizeHeader", "increaseSizeAdjusters"/*, "addToMyPreferencesStar"*/, "increaseSizeExtraAdjusters", "moreLess"],
         selectorsToIgnore: ["magnifierExtraAdjusters"],
