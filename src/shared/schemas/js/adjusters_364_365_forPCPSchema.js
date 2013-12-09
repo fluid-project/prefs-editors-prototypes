@@ -89,12 +89,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.enactor.textSize"
             },
             "panel": {
-                "type": "gpii.adjuster.textSize",
+                "type": "gpii.adjuster.textSizePCP",
                 "container": ".gpiic-prefsEditor-textSize",
-                "template": "%prefix/textSizeTemplate.html",
-                "message": "%prefix/textSize.json",
-                "gradeNames": ["gpii.adjuster.textSize.preview"],
-                "previewURL": "../../src/shared/preview/html/textPreview.html"
+                "template": "%prefix/textSizeTemplatePCP.html",
+                "message": "%prefix/textSize.json"
             }
         },
         "cursorSize": {
