@@ -270,7 +270,7 @@ input[type=checkbox], input[type=radio] {
 /*
     Style for sliding to work
 */
-.gpii-increaseSizePreferenceGroup {
+.gpii-increaseSizePreferenceGroup, .contrastPreferenceGroup {
     //padding-top: 100px;
     padding-bottom: 10px;
 }
