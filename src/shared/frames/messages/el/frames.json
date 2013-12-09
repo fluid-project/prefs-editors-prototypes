@@ -8,5 +8,7 @@
 	"notificationMessagePart3": "σέ ένα USB ή RFID.",
 	"notificationTitle": "Οι προτιμήσεις αποθηκεύτηκαν στο σύννεφο και εφαρμόστηκαν σε αυτή τη συσκευή.",
 	"notificationConfirmButton": "το κατάλαβα",
-	"logoutText": "εξοδος"
+	"logoutText": "εξοδος",
+    "more": "+ more",
+    "less": "- less"
 }
