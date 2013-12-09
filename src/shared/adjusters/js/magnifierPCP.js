@@ -16,7 +16,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
 
-    fluid.defaults("gpii.adjuster.magnifier", {
+    fluid.defaults("gpii.adjuster.magnifierPCP", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.magnification": {
@@ -41,17 +41,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 container: "{that}.dom.magnifierStepper",
                 createOnEvent: "afterRender",
                 options: {
-                    sourceApplier: "{magnifier}.applier",
+                    sourceApplier: "{magnifierPCP}.applier",
                     rules: {
                         "magnification": "value"
                     },
                     model: {
-                        value: "{magnifier}.model.magnification"
+                        value: "{magnifierPCP}.model.magnification"
                     },
                     strings: {
-                        "unit": "{magnifier}.stringBundle.magnifierUnit"
+                        "unit": "{magnifierPCP}.stringBundle.magnifierUnit"
                     },
-                    range: "{magnifier}.options.magnification.range"
+                    range: "{magnifierPCP}.options.magnification.range"
                 }
             }
         },
@@ -60,33 +60,4 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnificationLevel: {messagekey: "magnificationLevel"}
         }
     });
-
-    fluid.defaults("gpii.adjuster.magnifier.preview", {
-        gradeNames: ["gpii.adjuster.previewWithText", "autoInit"],
-        previewURL: "",
-        previewEnactors: {
-            magnifier: {
-                type: "gpii.enactor.magnifier",
-                container: "{enhancer}.container",
-                options: {
-                    gradeNames: ["gpii.enactors.previewConnections"]
-                }
-            },
-            textSize: {
-                type: "gpii.enactor.textSize",
-                container: "{enhancer}.container",
-                options: {
-                    gradeNames: ["gpii.enactors.previewConnections"]
-                }
-            },
-            contrastTheme: {
-                type: "gpii.enactor.contrastTheme",
-                container: "{enhancer}.container",
-                options: {
-                    gradeNames: ["gpii.enactors.previewConnections"]
-                }
-            }
-        }
-    });
-
 })(jQuery, fluid);

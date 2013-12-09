@@ -125,12 +125,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.enactor.magnifier"
             },
             "panel": {
-                "type": "gpii.adjuster.magnifier",
+                "type": "gpii.adjuster.magnifierPCP",
                 "container": ".gpiic-prefsEditor-magnifier",
-                "template": "%prefix/magnifierTemplate.html",
-                "message": "%prefix/magnifier.json",
-                "gradeNames": ["gpii.adjuster.magnifier.preview", "gpii.adjuster.textSize.preview"],
-                "previewURL": "../../src/shared/preview/html/textPreview.html"
+                "template": "%prefix/magnifierTemplatePCP.html",
+                "message": "%prefix/magnifier.json"
             }
         }
     };
