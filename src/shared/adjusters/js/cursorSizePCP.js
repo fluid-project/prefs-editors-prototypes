@@ -16,7 +16,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
 
-    fluid.defaults("gpii.adjuster.cursorSize", {
+    fluid.defaults("gpii.adjuster.cursorSizePCP", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.cursorSize": {
@@ -41,11 +41,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         "value": "value"
                     },
                     model: {
-                        value: "{cursorSize}.model.value"
+                        value: "{cursorSizePCP}.model.value"
                     },
-                    sourceApplier: "{cursorSize}.applier",
-                    range: "{cursorSize}.options.controlValues.cursorSize",
-                    sliderOptions: "{cursorSize}.options.sliderOptions"
+                    sourceApplier: "{cursorSizePCP}.applier",
+                    range: "{cursorSizePCP}.options.controlValues.cursorSize",
+                    sliderOptions: "{cursorSizePCP}.options.sliderOptions"
                 }
             }
         },
@@ -58,26 +58,4 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             range: "min"
         }
     });
-
-    fluid.defaults("gpii.adjuster.cursorSize.preview", {
-        gradeNames: ["gpii.adjuster.preview", "autoInit"],
-        previewURL: "",
-        previewEnactors: {
-            cursorSize: {
-                type: "gpii.enactor.cursorSize",
-                container: "{enhancer}.container",
-                options: {
-                    gradeNames: ["gpii.enactors.previewConnections"]
-                }
-            },
-            contrastTheme: {
-                type: "gpii.enactor.contrastTheme",
-                container: "{enhancer}.container",
-                options: {
-                    gradeNames: ["gpii.enactors.previewConnections"]
-                }
-            }
-        }
-    });
-
 })(jQuery, fluid);

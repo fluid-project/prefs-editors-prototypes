@@ -101,12 +101,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.enactor.cursorSize"
             },
             "panel": {
-                "type": "gpii.adjuster.cursorSize",
+                "type": "gpii.adjuster.cursorSizePCP",
                 "container": ".gpiic-prefsEditor-cursorSize",
-                "template": "%prefix/cursorSizeTemplate.html",
-                "message": "%prefix/cursorSize.json",
-                "gradeNames": ["gpii.adjuster.cursorSize.preview"],
-                "previewURL": "../../src/shared/preview/html/cursorPreview.html"
+                "template": "%prefix/cursorSizeTemplatePCP.html",
+                "message": "%prefix/cursorSize.json"
             }
         },
         "magnifierEnabled": {
