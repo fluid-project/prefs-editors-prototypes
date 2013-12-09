@@ -1,3 +1,7 @@
+/*
+ * Helper file for Alex's convenience. Will be deleted once our work is merged.
+ */
+
 /*!
 Cloud4all Preferences Management Tools
 
@@ -72,12 +76,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.enactor.contrastTheme"
             },
             "panel": {
-                "type": "gpii.adjuster.contrastThemePMT",
+                "type": "gpii.adjuster.contrastThemePCP",
                 "container": ".gpiic-contrastTheme",
-                "template": "%prefix/contrastThemeTemplatePMT.html",
+                "template": "%prefix/contrastThemeTemplatePCP.html",
                 "message": "%prefix/contrast.json",
-                "gradeNames": ["gpii.adjuster.contrastThemePMT.preview"],
-                "previewURL": "../../src/shared/preview/html/contrastPreview.html",
                 "classnameMap": {"contrastTheme": "@contrastTheme.classes"}
             }
         },

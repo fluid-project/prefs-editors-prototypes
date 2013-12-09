@@ -970,7 +970,7 @@ input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
 }
 
 .gpii-contrast-contrastOptions {
-	display: inline-block;
+	display: block;
 }
 
 /*

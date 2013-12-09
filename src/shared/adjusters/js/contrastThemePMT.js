@@ -15,17 +15,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     
-    fluid.registerNamespace("gpii.prefs.helpers");
-
-    gpii.prefs.helpers.arrayOverridePolicy = function (target, source) {
-        source = fluid.makeArray(source);
-        return source;
-    };
-    
-    fluid.defaults("gpii.adjuster.contrastTheme", {
-        gradeNames: ["fluid.prefs.panel.contrast", "autoInit"],
+    fluid.defaults("gpii.adjuster.contrastThemePMT", {
+        gradeNames: ["gpii.adjuster.contrastThemePCP", "autoInit"],
         mergePolicy: {
-            "controlValues.theme": gpii.prefs.helpers.arrayOverridePolicy
+            selectorsToIgnore: fluid.prefs.compositePanel.arrayMergePolicy
         },
         preferenceMap: {
             "gpii.primarySchema.contrast.theme": {
@@ -33,35 +26,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
-            contrastPreview: ".gpiic-contrast-previewPerSettingFrameContrast",
-            contrastOptions: ".gpiic-contrast-contrastOptions"
+            contrastPreview: ".gpiic-contrast-previewPerSettingFrameContrast"
         },
-        selectorsToIgnore: ["contrastPreview", "contrastOptions"],
-        listeners: {
-            "onDomBind.setContrastOptionstext": {
-                "this": "{that}.dom.contrastOptions",
-                "method": "text",
-                "args": ["{that}.stringBundle.contrastOptions"]
-            },
-            onDomBind: "{that}.style"
-        },
-        controlValues: {
-            theme: ["bw", "yb", "by", "wb"]
-        },
-        invokers: {
-            style: {
-                funcName: "fluid.prefs.panel.contrast.style",
-                args: [
-                    "{that}.dom.themeLabel", "{that}.stringBundle.theme",
-                    "{that}.options.markup.label", "{that}.options.controlValues.theme",
-                    "{that}.options.classnameMap.contrastTheme"
-                ],
-                dynamic: true
-            }
-        }
+        selectorsToIgnore: ["contrastPreview"]
     });
     
-    fluid.defaults("gpii.adjuster.contrastTheme.preview", {
+    fluid.defaults("gpii.adjuster.contrastThemePMT.preview", {
         gradeNames: ["gpii.adjuster.previewWithText", "autoInit"],
         components: {
             preview: {
