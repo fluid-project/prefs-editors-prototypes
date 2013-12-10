@@ -43,7 +43,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "message": "%prefix/increaseSize.json",
                 "panels": {
                     "always": ["textSize", "cursorSize", "magnifierEnabled"],
-                    "gpii.primarySchema.magnifierEnabled": ["magnifier", "magnifierInvertColours", "magnifierPosition", "magnifierFollows", "showCrosshairs"]
+                    "gpii.primarySchema.magnifierEnabled": ["magnifier", "magnifierPosition", "magnifierFollows", "showCrosshairs"]
                 }
             }
         },
@@ -120,18 +120,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "message": "%prefix/magnifier.json",
                 "gradeNames": ["gpii.adjuster.magnifierPMT.preview", "gpii.adjuster.textSizePMT.preview"],
                 "previewURL": "../../src/shared/preview/html/textPreview.html"
-            }
-        },
-        "magnifierInvertColours": {
-            "type": "gpii.primarySchema.magnifier.invertColours",
-            /*"enactor": {
-                "type": "gpii.uiOptions.enactors.contrast"
-            },*/
-            "panel": {
-                "type": "gpii.adjuster.magnifierInvertColours",
-                "container": ".gpiic-prefsEditor-magnifierInvertColours",
-                "template": "%prefix/iconCheckTemplateInvertColours.html",
-                "message": "%prefix/magnifierInvertColours.json"
             }
         },
         "magnifierPosition": {
