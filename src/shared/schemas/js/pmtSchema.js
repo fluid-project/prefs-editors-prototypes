@@ -33,8 +33,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "message": "%prefix/contrast.json",
                 "type": "gpii.adjuster.addContrast",
                 "panels": {
-                    "always": ["contrastEnabled"],
-                    "gpii.primarySchema.contrastEnabled": ["contrastTheme"]
+                    "always": ["contrastTheme"]
                 }
             },
             "increaseSize": {
@@ -48,36 +47,23 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             }
         },
-        "contrastEnabled": {
-            "type": "gpii.primarySchema.contrastEnabled",
-            "enactor": {
-                "type": "gpii.enactor.contrastTheme"
-            },
-            "panel": {
-                "type": "gpii.adjuster.contrastEnabled",
-                "container": ".gpiic-contrastEnabled",
-                "template": "%prefix/onOffSwitchTemplate.html",
-                "message": "%prefix/contrast.json"
-            }
-        },
         "contrastTheme": {
             "type": "gpii.primarySchema.contrast.theme",
             "classes": {
+                "default": "fl-theme-prefsEditor-default gpii-prefsEditor-theme-default",
                 "bw": "fl-theme-prefsEditor-bw gpii-prefsEditor-theme-bw fl-theme-bw",
                 "yb": "fl-theme-prefsEditor-yb gpii-prefsEditor-theme-yb fl-theme-yb",
                 "by": "fl-theme-prefsEditor-by gpii-prefsEditor-theme-by fl-theme-by",
                 "wb": "fl-theme-prefsEditor-wb gpii-prefsEditor-theme-wb fl-theme-wb"
             },
             "enactor": {
-                "type": "gpii.enactor.contrastTheme"
+                "type": "gpii.enactor.contrastThemeWithInversion"
             },
             "panel": {
-                "type": "gpii.adjuster.contrastThemePMT",
+                "type": "gpii.adjuster.contrastThemeWithInversion",
                 "container": ".gpiic-contrastTheme",
-                "template": "%prefix/contrastThemeTemplatePMT.html",
+                "template": "%prefix/contrastThemeWithInversionTemplate.html",
                 "message": "%prefix/contrast.json",
-                "gradeNames": ["gpii.adjuster.contrastThemePMT.preview"],
-                "previewURL": "../../src/shared/preview/html/contrastPreview.html",
                 "classnameMap": {"contrastTheme": "@contrastTheme.classes"}
             }
         },

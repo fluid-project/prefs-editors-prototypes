@@ -37,7 +37,7 @@ body {
     transform-origin: 0 0 0;
     -webkit-transform-origin: 0 0 0;
     margin:20px;
-    background-color: #d5e2de;
+    //background-color: #d5e2de;
 }
 
 .gpii-prefsEditor-preferenceGroup {
@@ -647,9 +647,17 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
     background-color: black;
 }
 
+.fl-prefsEditor .fl-choice label.fl-theme-prefsEditor-default,
+.fl-prefsEditor .fl-choice label.fl-theme-prefsEditor-default span,
+.fl-prefsEditor .fl-choice label.fl-theme-prefsEditor-default .fl-crossout {
+    background-color: #e9e9e9 !important;
+    border-color: #393536 !important;
+    color: #393536 !important;
+}
+
 .gpii-prefsEditor-theme-default {
-    color: black;
-    background-color: #d5e2de;
+    color: #393536;
+    background-color: #e9e9e9;
 }
 
 .gpii-prefsEditor-theme-yb .gpii-prefsEditor-headerImage {

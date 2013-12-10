@@ -58,14 +58,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "boolean",
             "default": false
         },
-        "gpii.primarySchema.contrastEnabled": {
-            "type": "boolean",
-            "default": false
-        },
         "gpii.primarySchema.contrast.theme": {
             "type": "string",
-            "default": "bw",
-            "enum": ["bw", "yb", "by", "wb"]
+            "default": "default",
+            "enum": ["default", "bw", "yb", "by", "wb"]
         },
         "gpii.primarySchema.screenReaderTTSEnabled": {
             "type": "boolean",
