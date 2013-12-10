@@ -3,5 +3,11 @@
     "addContrast": "Προσθήκη αντίθεσης",
     "contrastPreviewText": "Η σελίδα θα εμφανίζεται έτσι.",
     "contrastOptions": "contrast options",
-    "colourTheme": "colour themes"
+    "colourTheme": "colour themes",
+    "contrast-default": "default",
+    "contrast-inverted": "invert colours",
+    "contrast-bw": "black on white",
+    "contrast-wb": "white on black",
+    "contrast-by": "black on yellow",
+    "contrast-yb": "yellow on black"
 }

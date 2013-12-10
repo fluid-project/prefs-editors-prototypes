@@ -1013,19 +1013,37 @@ input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
 	font-size: 1.5em !important;
 	border: 2px solid #000000 !important;
 	border-radius: 0 !important;
-	margin-right: 20px !important;
-	padding: 5px !important;
-	height: 2em !important;
-	width: 2em !important;
+	margin-top: 5px !important;
+	padding: 15px 5px !important;
+	height: 1.5em !important;
+	width: 90% !important;
 	cursor: pointer;
+	text-align: left !important;
 }
 
 .fl-prefsEditor .fl-choice label {
-	line-height: 2em !important;
+	line-height: 1.5em !important;
+}
+
+.fl-prefsEditor .fl-choice .fl-indicator {
+    height: auto;
 }
 
 .gpii-contrastThemeIndicator {
-	margin: 0 0 0 calc(0.75em + 5px) !important;
+    margin: 5% 0 0 !important;
+    float: right;
+    width: 0;
+    transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+}
+
+.gpii-prefsEditor-themeRow {
+	float: none !important;
+}
+
+.fl-prefsEditor .fl-icon-indicator:before, .fl-prefsEditor .fl-choice input:checked + label + span:before {
+    content: "";
 }
 
 .gpii-contrast-contrastOptions {

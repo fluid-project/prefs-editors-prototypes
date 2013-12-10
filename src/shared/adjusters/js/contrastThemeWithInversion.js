@@ -25,7 +25,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.adjuster.contrastThemeWithInversion", {
         gradeNames: ["fluid.prefs.panel.contrast", "autoInit"],
         mergePolicy: {
-            "controlValues.theme": gpii.prefs.helpers.arrayOverridePolicy
+            "controlValues.theme": gpii.prefs.helpers.arrayOverridePolicy,
+            "stringArrayIndex.theme": gpii.prefs.helpers.arrayOverridePolicy
         },
         preferenceMap: {
             "gpii.primarySchema.contrast.theme": {
@@ -44,11 +45,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             onDomBind: "{that}.style"
         },
+        stringArrayIndex: {
+            theme: ["contrast-default", "contrast-inverted","contrast-bw", "contrast-wb", "contrast-by", "contrast-yb"]
+        },
         controlValues: {
             theme: ["default", "inverted", "bw", "wb", "by", "yb"]
         },
         markup: {
-            label: "<span class=\"fl-preview-A\">A</span><span class=\"fl-hidden-accessible\">%theme</span>"
+            label: "<span>%theme</span>"
         },
         invokers: {
             style: {
