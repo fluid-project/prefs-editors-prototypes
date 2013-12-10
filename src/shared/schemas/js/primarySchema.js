@@ -61,7 +61,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "gpii.primarySchema.contrast.theme": {
             "type": "string",
             "default": "default",
-            "enum": ["default", "bw", "yb", "by", "wb"]
+            "enum": ["default", "inverted", "bw", "wb", "by", "yb"]
         },
         "gpii.primarySchema.screenReaderTTSEnabled": {
             "type": "boolean",

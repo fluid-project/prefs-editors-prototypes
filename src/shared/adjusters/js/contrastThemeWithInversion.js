@@ -45,7 +45,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             onDomBind: "{that}.style"
         },
         controlValues: {
-            theme: ["default", "bw", "yb", "by", "wb"]
+            theme: ["default", "inverted", "bw", "wb", "by", "yb"]
         },
         markup: {
             label: "<span class=\"fl-preview-A\">A</span><span class=\"fl-hidden-accessible\">%theme</span>"

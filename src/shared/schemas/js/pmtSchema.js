@@ -51,10 +51,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "gpii.primarySchema.contrast.theme",
             "classes": {
                 "default": "fl-theme-prefsEditor-default gpii-prefsEditor-theme-default",
+                "inverted": "fl-theme-prefsEditor-inverted gpii-prefsEditor-theme-inverted",
                 "bw": "fl-theme-prefsEditor-bw gpii-prefsEditor-theme-bw fl-theme-bw",
-                "yb": "fl-theme-prefsEditor-yb gpii-prefsEditor-theme-yb fl-theme-yb",
+                "wb": "fl-theme-prefsEditor-wb gpii-prefsEditor-theme-wb fl-theme-wb",
                 "by": "fl-theme-prefsEditor-by gpii-prefsEditor-theme-by fl-theme-by",
-                "wb": "fl-theme-prefsEditor-wb gpii-prefsEditor-theme-wb fl-theme-wb"
+                "yb": "fl-theme-prefsEditor-yb gpii-prefsEditor-theme-yb fl-theme-yb"
             },
             "enactor": {
                 "type": "gpii.enactor.contrastThemeWithInversion"
