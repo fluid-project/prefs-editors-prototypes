@@ -37,7 +37,7 @@ body {
     transform-origin: 0 0 0;
     -webkit-transform-origin: 0 0 0;
     margin:20px;
-    background-color: #d5e2de;
+    //background-color: #d5e2de;
 }
 
 .gpii-prefsEditor-preferenceGroup {
@@ -647,9 +647,30 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
     background-color: black;
 }
 
+.gpii-prefsEditor-theme-inverted {
+    color: #e9e9e9;
+    background-color: #393536;
+}
+
+.fl-prefsEditor .fl-choice label.fl-theme-prefsEditor-default,
+.fl-prefsEditor .fl-choice label.fl-theme-prefsEditor-default span,
+.fl-prefsEditor .fl-choice label.fl-theme-prefsEditor-default .fl-crossout {
+    background-color: #e9e9e9 !important;
+    border-color: #393536 !important;
+    color: #393536 !important;
+}
+
+.fl-prefsEditor .fl-choice label.fl-theme-prefsEditor-inverted,
+.fl-prefsEditor .fl-choice label.fl-theme-prefsEditor-inverted span,
+.fl-prefsEditor .fl-choice label.fl-theme-prefsEditor-inverted .fl-crossout {
+    background-color: #393536 !important;
+    border-color: #e9e9e9 !important;
+    color: #e9e9e9 !important;
+}
+
 .gpii-prefsEditor-theme-default {
-    color: black;
-    background-color: #d5e2de;
+    color: #393536;
+    background-color: #e9e9e9;
 }
 
 .gpii-prefsEditor-theme-yb .gpii-prefsEditor-headerImage {
@@ -672,6 +693,11 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
     color: black !important;
 }
 
+.gpii-prefsEditor-theme-inverted .gpii-prefsEditor-headerImage {
+    background-color: #e9e9e9 !important;
+    color: #393536 !important;
+}
+
 .gpii-prefsEditor-theme-yb .gpii-prefsEditor-headerTitle {
     color: black !important;
 }
@@ -688,17 +714,23 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
     color: black !important;
 }
 
+.gpii-prefsEditor-theme-inverted .gpii-prefsEditor-headerTitle {
+    color: #393536 !important;
+}
+
 .gpii-prefsEditor-theme-yb .gpii-prefsEditor-headerClickableLabel,
 .gpii-prefsEditor-theme-bw .gpii-prefsEditor-headerClickableLabel,
 .gpii-prefsEditor-theme-by .gpii-prefsEditor-headerClickableLabel,
-.gpii-prefsEditor-theme-wb .gpii-prefsEditor-headerClickableLabel {
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor-headerClickableLabel,
+.gpii-prefsEditor-theme-inverted .gpii-prefsEditor-headerClickableLabel {
     background-color: transparent !important;
 }
 
 .gpii-prefsEditor-theme-yb .gpii-prefsEditor-addToMyPreferencesLabel,
 .gpii-prefsEditor-theme-bw .gpii-prefsEditor-addToMyPreferencesLabel,
 .gpii-prefsEditor-theme-by .gpii-prefsEditor-addToMyPreferencesLabel,
-.gpii-prefsEditor-theme-wb .gpii-prefsEditor-addToMyPreferencesLabel {
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor-addToMyPreferencesLabel,
+.gpii-prefsEditor-theme-inverted .gpii-prefsEditor-addToMyPreferencesLabel {
     background-color: transparent !important;
 }
 
@@ -722,6 +754,11 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
     color: black !important;
 }
 
+.gpii-prefsEditor-theme-inverted .gpii-prefsEditor-addToMyPreferencesStar {
+    background-color: #e9e9e9 !important;
+    color: #393536 !important;
+}
+
 .gpii-prefsEditor-theme-yb input:checked + .gpii-prefsEditor-addToMyPreferencesStar {
     background-color: black !important;
     color: yellow !important;
@@ -740,6 +777,11 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
 .gpii-prefsEditor-theme-wb input:checked + .gpii-prefsEditor-addToMyPreferencesStar {
     background-color: black !important;
     color: white !important;
+}
+
+.gpii-prefsEditor-theme-inverted input:checked + .gpii-prefsEditor-addToMyPreferencesStar {
+    background-color: #393536 !important;
+    color: #e9e9e9 !important;
 }
 
 .gpii-prefsEditor-theme-yb [title]:after{
@@ -762,24 +804,32 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
     border: 1px solid white !important;
 }
 
+.gpii-prefsEditor-theme-inverted [title]:after{
+    background-color: #e9e9e9 !important;
+    border: 1px solid #393536 !important;
+}
+
 .gpii-prefsEditor-theme-yb .gpii-increaseSize-magnifierPositionBackground,
 .gpii-prefsEditor-theme-bw .gpii-increaseSize-magnifierPositionBackground,
 .gpii-prefsEditor-theme-by .gpii-increaseSize-magnifierPositionBackground,
-.gpii-prefsEditor-theme-wb .gpii-increaseSize-magnifierPositionBackground {
+.gpii-prefsEditor-theme-wb .gpii-increaseSize-magnifierPositionBackground,
+.gpii-prefsEditor-theme-inverted .gpii-increaseSize-magnifierPositionBackground {
     background-color: transparent !important;
 }
 
 .gpii-prefsEditor-theme-yb .gpii-prefsEditor-indicator,
 .gpii-prefsEditor-theme-bw .gpii-prefsEditor-indicator,
 .gpii-prefsEditor-theme-by .gpii-prefsEditor-indicator,
-.gpii-prefsEditor-theme-wb .gpii-prefsEditor-indicator {
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor-indicator,
+.gpii-prefsEditor-theme-inverted .gpii-prefsEditor-indicator {
     background-color: transparent !important;
 }
 
 .gpii-prefsEditor-theme-yb .gpii-increaseSize-plusMinusNumericalWidget,
 .gpii-prefsEditor-theme-bw .gpii-increaseSize-plusMinusNumericalWidget,
 .gpii-prefsEditor-theme-by .gpii-increaseSize-plusMinusNumericalWidget,
-.gpii-prefsEditor-theme-wb .gpii-increaseSize-plusMinusNumericalWidget {
+.gpii-prefsEditor-theme-wb .gpii-increaseSize-plusMinusNumericalWidget,
+.gpii-prefsEditor-theme-inverted .gpii-increaseSize-plusMinusNumericalWidget {
     width: calc(100% - 2px) !important;
     border: 1px solid !important;
 }
@@ -787,21 +837,24 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
 .gpii-prefsEditor-theme-yb .gpii-increaseSize-plusMinusNumericalValue,
 .gpii-prefsEditor-theme-bw .gpii-increaseSize-plusMinusNumericalValue,
 .gpii-prefsEditor-theme-by .gpii-increaseSize-plusMinusNumericalValue,
-.gpii-prefsEditor-theme-wb .gpii-increaseSize-plusMinusNumericalValue {
+.gpii-prefsEditor-theme-wb .gpii-increaseSize-plusMinusNumericalValue,
+.gpii-prefsEditor-theme-inverted .gpii-increaseSize-plusMinusNumericalValue {
     margin-bottom: 1px !important;
 }
 
 .gpii-prefsEditor-theme-yb .gpii-increaseSize-plusMinusNumericalMinReached,
 .gpii-prefsEditor-theme-bw .gpii-increaseSize-plusMinusNumericalMinReached,
 .gpii-prefsEditor-theme-by .gpii-increaseSize-plusMinusNumericalMinReached,
-.gpii-prefsEditor-theme-wb .gpii-increaseSize-plusMinusNumericalMinReached {
+.gpii-prefsEditor-theme-wb .gpii-increaseSize-plusMinusNumericalMinReached,
+.gpii-prefsEditor-theme-inverted .gpii-increaseSize-plusMinusNumericalMinReached {
     color: gray !important;
 }
 
 .gpii-prefsEditor-theme-yb .gpii-prefsEditor input:focus + label, .gpii-prefsEditor-theme-yb .gpii-prefsEditor .gpii-prefsEditor-choice input:focus ~ label,
 .gpii-prefsEditor-theme-bw .gpii-prefsEditor input:focus + label, .gpii-prefsEditor-theme-bw .gpii-prefsEditor .gpii-prefsEditor-choice input:focus ~ label,
 .gpii-prefsEditor-theme-by .gpii-prefsEditor input:focus + label, .gpii-prefsEditor-theme-by .gpii-prefsEditor .gpii-prefsEditor-choice input:focus ~ label,
-.gpii-prefsEditor-theme-wb .gpii-prefsEditor input:focus + label, .gpii-prefsEditor-theme-wb .gpii-prefsEditor .gpii-prefsEditor-choice input:focus ~ label {
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor input:focus + label, .gpii-prefsEditor-theme-wb .gpii-prefsEditor .gpii-prefsEditor-choice input:focus ~ label,
+.gpii-prefsEditor-theme-inverted .gpii-prefsEditor input:focus + label, .gpii-prefsEditor-theme-inverted .gpii-prefsEditor .gpii-prefsEditor-choice input:focus ~ label {
     outline: none !important;
 }
 
@@ -821,10 +874,15 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
     outline: 2px solid white !important;
 }
 
+.gpii-prefsEditor-theme-inverted .gpii-increaseSize-plusMinusNumericalValue:focus, .gpii-prefsEditor-theme-inverted .gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-inverted.gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-inverted .selectable {
+    outline: 2px solid #e9e9e9 !important;
+}
+
 .gpii-prefsEditor-theme-yb .gpii-increaseSize-magnifierFollowsIcon,
 .gpii-prefsEditor-theme-bw .gpii-increaseSize-magnifierFollowsIcon,
 .gpii-prefsEditor-theme-by .gpii-increaseSize-magnifierFollowsIcon,
-.gpii-prefsEditor-theme-wb .gpii-increaseSize-magnifierFollowsIcon {
+.gpii-prefsEditor-theme-wb .gpii-increaseSize-magnifierFollowsIcon,
+.gpii-prefsEditor-theme-inverted .gpii-increaseSize-magnifierFollowsIcon {
     border: 1px solid;
 }
 
@@ -955,19 +1013,38 @@ input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
 	font-size: 1.5em !important;
 	border: 2px solid #000000 !important;
 	border-radius: 0 !important;
-	margin-right: 20px !important;
-	padding: 5px !important;
-	height: 2em !important;
-	width: 2em !important;
+	margin-top: 5px !important;
+	padding: 15px 5px !important;
+	height: 1.5em !important;
+	width: 90% !important;
 	cursor: pointer;
+	text-align: left !important;
 }
 
 .fl-prefsEditor .fl-choice label {
-	line-height: 2em !important;
+	line-height: 1.5em !important;
+}
+
+.fl-prefsEditor .fl-choice .fl-indicator {
+    height: auto;
 }
 
 .gpii-contrastThemeIndicator {
-	margin: 0 0 0 calc(0.75em + 5px) !important;
+    margin: 5% 0 0 !important;
+    float: right;
+    width: 0;
+    transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+}
+
+.gpii-prefsEditor-themeRow {
+	display: block !important;
+	float: none !important;
+}
+
+.fl-prefsEditor .fl-icon-indicator:before, .fl-prefsEditor .fl-choice input:checked + label + span:before {
+    content: "";
 }
 
 .gpii-contrast-contrastOptions {

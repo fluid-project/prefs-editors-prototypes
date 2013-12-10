@@ -33,7 +33,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             //addToMyPreferencesLabel: ".gpiic-addToMyPreferencesLabel",
         },
         protoTree: {
-            panelLabel: {messagekey: "addContrast"}
+            panelLabel: {messagekey: "changeContrast"}
         },
         members: {
             messageResolver: "{prefsEditorLoader}.msgBundle"

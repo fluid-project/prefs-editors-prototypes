@@ -1,6 +1,14 @@
 {
     "contrast": "Kontrast",
     "addContrast": "Kontrast vergrößern",
+    "changeContrast": "change contrast",
     "contrastPreviewText": "So wird die Seite aussehen.",
-    "contrastOptions": "contrast options"
+    "contrastOptions": "contrast options",
+    "colourTheme": "colour themes",
+    "contrast-default": "default",
+    "contrast-inverted": "invert colours",
+    "contrast-bw": "black on white",
+    "contrast-wb": "white on black",
+    "contrast-by": "black on yellow",
+    "contrast-yb": "yellow on black"
 }
