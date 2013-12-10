@@ -1,6 +1,7 @@
 {
     "contrast": "contrast",
     "addContrast": "add contrast",
+    "changeContrast": "change contrast",
     "contrastPreviewText": "This is how the page will appear.",
     "contrastOptions": "contrast options",
     "colourTheme": "colour themes",
