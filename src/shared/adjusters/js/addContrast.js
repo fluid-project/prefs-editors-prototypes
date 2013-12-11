@@ -32,6 +32,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             // markup of this element is disappearing if i add this, cannot set tooltips.
             //addToMyPreferencesLabel: ".gpiic-addToMyPreferencesLabel",
         },
+        //selectorsToIgnore: ["addToMyPreferencesLabel"],
         protoTree: {
             panelLabel: {messagekey: "changeContrast"}
         },
