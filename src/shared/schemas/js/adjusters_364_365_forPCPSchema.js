@@ -69,7 +69,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "container": ".gpiic-contrastTheme",
                 "template": "%prefix/contrastThemeWithInversionTemplate.html",
                 "message": "%prefix/contrast.json",
-                "classnameMap": {"contrastTheme": "@contrastTheme.classes"}
+                "classnameMap": {"theme": "@contrastTheme.classes"}
             }
         },
         "textSize": {

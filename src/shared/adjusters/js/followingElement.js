@@ -39,13 +39,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         markup: {
             followingElementLabel:  
-                    "<div class='gpiic-iconCheckAdjusterIcon gpii-iconCheckAdjusterIcon gpii-prefsEditor-adjusterIcons'></div>" +
-                    "<div class='gpii-iconCheckAdjusterContainer'>" +
-                    "   <label class='gpiic-iconCheckAdjusterDescription gpii-iconCheckAdjusterDescription gpii-table-cell-valign-label'>%followingElement</label>" +
-                    "   <label class='gpii-table-cell-valign-label'>" +
-                    "       <div class='gpii-prefsEditor-adjusterIcons gpii-prefsEditor-adjusterIcons-sept-12 gpii-iconCheckAdjusterCheckIcon'></div>" +
-                    "   </label>" +
-                    "</div>"
+                    "<span class='gpiic-iconCheckAdjusterIcon gpii-iconCheckAdjusterIcon gpii-prefsEditor-adjusterIcons'></span>" +
+                    "<span class='gpii-iconCheckAdjusterContainer'>" +
+                    "   <span class='gpiic-iconCheckAdjusterDescription gpii-iconCheckAdjusterDescription gpii-table-cell-valign-label'>%followingElement</span>" +
+                    "   <span class='gpii-table-cell-valign-label'>" +
+                    "       <span class='gpii-prefsEditor-adjusterIcons gpii-prefsEditor-adjusterIcons-sept-12 gpii-iconCheckAdjusterCheckIcon'></span>" +
+                    "   </span>" +
+                    "</span>"
         },
         invokers: {
             followingElementStyle: {
@@ -68,16 +68,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 followingElement: strings[index]
             }));
             label.find(".gpiic-iconCheckAdjusterIcon").addClass(style[followingElement[index]]);
-            
-            /*
-             * This is a hack for Chrome due to the following reasons:
-             * 1) Invalid template HTML (div inside label)
-             * 2) Chrome's inability to trigger the click event on the whole label,
-             * which is only triggered when clicking on its first child div.
-             * 
-             * Fixing (1) should solve these issues, this is a dirty fix for the time being...    
-             */
-            label.find(".gpii-table-cell-valign-label").attr("for", label.attr("for"));
             
             if (index === 0) {
                 label.addClass(borderStyle[followingElementBorder[0]]);

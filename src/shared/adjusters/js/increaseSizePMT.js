@@ -17,87 +17,34 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
 
     fluid.defaults("gpii.panel.increaseSizePMT", {
-        gradeNames: ["gpii.panel.increaseSizePCP", "autoInit"],
-        events: {
-            onShowMagnifierExtraAdjusters: null,
-            onHideMagnifierExtraAdjusters: null
+        gradeNames: ["gpii.panel.increaseSizePCP", "gpii.panel.expandingAdjusters", "autoInit"],
+        model: {
+            moreLessEnabledSwitch: false
         },
-        listeners: {
-            "afterRender.bindEventPreferenceSwitchMagnifierExtra": {
-                "this": "{that}.dom.preferenceSwitchMagnifierExtra",
-                "method": "change",
-                "args": ["{that}.toggleMagnifierExtraAdjustersInstant"]
-            },
-            "onShowMagnifierExtraAdjusters.show": {
-                "this": "{that}.dom.magnifierExtraAdjusters",
-                "method": "slideDown",
-                "args": ["{arguments}.0"]
-            },
-            "onHideMagnifierExtraAdjusters.hide": {
-                "this": "{that}.dom.magnifierExtraAdjusters",
-                "method": "slideUp",
-                "args": ["{arguments}.0"]
-            },
-            "onShowMagnifierExtraAdjusters.setLessText": {
-                "this": "{that}.dom.magnifierMoreLess",
-                "method": "text",
-                "args": ["{that}.stringBundle.less"]
-            },
-            "onHideMagnifierExtraAdjusters.setMoreText": {
-                "this": "{that}.dom.magnifierMoreLess",
-                "method": "text",
-                "args": ["{that}.stringBundle.more"]
-            },
-            "afterRender.restoreMagnifierExtraAdjusters": {
-                listener: "{that}.toggleMagnifierExtraAdjustersInstant"
-            }
+        protoTree: {
+            increaseSizeHeader: {messagekey: "increaseSizeHeader"},
+            appearanceHeading: {messagekey: "appearance"},
+            magnifierHeading:  {messagekey: "magnifier"},
+            // duplicate entry in protoTree; it does not merge.
+            preferenceSwitchExpanding: "${expandingAdjustersEnabledSwitch}"
+        },
+        selectors: {
+            preferenceSwitchExpanding: ".gpiic-magnifier-preferenceSwitchExtra",
+            expandingAdjusters: ".gpiic-magnifier-hidden",
+            moreLess: ".gpiic-magnifier-category"
         },
         invokers: {
-            toggleMagnifierExtraAdjustersInstant: {
-                "funcName": "gpii.panel.increaseSizePMT.toggleMagnifierExtraAdjusters",
+            // override this invoker to use the "magnifierEnabled" model value
+            toggleMoreLessInstant: {
+                "funcName": "gpii.panel.expandingAdjusters.toggleMoreLess",
                 "args": [
-                    "{that}.model.magnifierExtraAdjustersEnabledSwitch",
-                    "{that}.events.onShowMagnifierExtraAdjusters.fire",
-                    "{that}.events.onHideMagnifierExtraAdjusters.fire",
+                    "{that}.model.gpii_primarySchema_magnifierEnabled",
+                    "{that}.events.onShowMoreLess.fire",
+                    "{that}.events.onHideMoreLess.fire",
                     0
                 ],
                 dynamic: true
-            },
-            toggleMagnifierExtraAdjusters: {
-                "funcName": "gpii.panel.increaseSizePMT.toggleMagnifierExtraAdjusters",
-                "args": [
-                    "{that}.model.magnifierExtraAdjustersEnabledSwitch",
-                    "{that}.events.onShowMagnifierExtraAdjusters.fire",
-                    "{that}.events.onHideMagnifierExtraAdjusters.fire"
-                ],
-                dynamic: true
             }
-        },
-        model: {
-            magnifierExtraAdjustersEnabledSwitch: false
-        },
-        selectors: {
-            magnifierExtraAdjusters: ".gpiic-magnifier-hidden",
-            // This is in a sub-panel. Is that bad?
-            preferenceSwitchMagnifierExtra: ".gpiic-magnifier-preferenceSwitchExtra",
-            magnifierMoreLess: ".gpiic-magnifier-moreLess"
-        },
-        selectorsToIgnore: ["magnifierExtraAdjusters"],
-        protoTree: {
-            // duplicate entries in protoTree; it does not merge.
-            increaseSizeHeader: {messagekey: "increaseSizeHeader"},
-            preferenceSwitchMagnifierExtra: "${magnifierExtraAdjustersEnabledSwitch}",
-            appearanceHeading: {messagekey: "appearance"},
-            magnifierHeading:  {messagekey: "magnifier"},
-            magnifierMoreLess: "{that}.stringBundle.more"
         }
     });
-
-    gpii.panel.increaseSizePMT.toggleMagnifierExtraAdjusters = function (magnifierExtraAdjustersEnabledSwitch, showEvent, hideEvent, duration) {
-        if (magnifierExtraAdjustersEnabledSwitch) {
-            showEvent(duration);
-        } else {
-            hideEvent(duration);
-        }
-    };    
 })(jQuery, fluid);

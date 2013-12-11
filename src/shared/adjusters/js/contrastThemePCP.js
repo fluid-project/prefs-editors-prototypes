@@ -42,21 +42,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "text",
                 "args": ["{that}.stringBundle.contrastOptions"]
             },
-            onDomBind: "{that}.style"
+            "onDomBind.style": "{that}.style"
         },
         controlValues: {
             theme: ["bw", "yb", "by", "wb"]
-        },
-        invokers: {
-            style: {
-                funcName: "fluid.prefs.panel.contrast.style",
-                args: [
-                    "{that}.dom.themeLabel", "{that}.stringBundle.theme",
-                    "{that}.options.markup.label", "{that}.options.controlValues.theme",
-                    "{that}.options.classnameMap.contrastTheme"
-                ],
-                dynamic: true
-            }
         }
     });
 })(jQuery, fluid);

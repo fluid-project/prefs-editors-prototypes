@@ -37,20 +37,17 @@ body {
     transform-origin: 0 0 0;
     -webkit-transform-origin: 0 0 0;
     margin:20px;
-    //background-color: #d5e2de;
 }
 
 .gpii-prefsEditor-preferenceGroup {
     background:#e7f1ef;
     width: 340px;
-    //min-height: 100px;
 }
 
 .gpii-prefsEditor-category {
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
-    //margin: 0 auto;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -76,7 +73,6 @@ h2 {
 }
 
 h2 > label {
-    //width: 240px !important;
     word-wrap: break-word;    
 }
 
@@ -99,7 +95,7 @@ h2 > label {
 .gpii-prefsEditor-headerImageTick {
     font-size: 20px !important;
     float: right !important;
-	margin-right: 5px;
+    margin-right: 5px;
     margin-top: -120px;
     background-color: white;
     border-radius: 50%;
@@ -146,7 +142,6 @@ input[type=checkbox]:checked + .gpii-prefsEditor-headerImage > .gpii-prefsEditor
 }
 
 .gpii-prefsEditor-headerClickableLabel {
-    //cursor: pointer;
     margin: 0 !important;
     position: relative !important;
     top: -90px;
@@ -214,7 +209,6 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-prefsEditor .gpii-prefsEditor-slider a {
-    //background: radial-gradient(circle 14.5px at 14.5px 50%, #566374 6px, white 8px);
     border: 1px solid #566374;
     box-shadow: none;
     width: 2.2em !important;
@@ -271,8 +265,7 @@ input[type=checkbox], input[type=radio] {
     Style for sliding to work
 */
 .gpii-increaseSizePreferenceGroup, .contrastPreferenceGroup {
-    //padding-top: 100px;
-    //padding-bottom: 10px;
+    padding-bottom: 10px;
 }
 
 .gpii-prefsEditor-category {
@@ -280,15 +273,13 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-prefsEditor-category-hidden {
-    //overflow: hidden;
 }
 
 /*
     Style for more/less
 */
 .gpii-prefsEditor-moreLess{
-	display: block;
-    //width:100% !important;
+    display: block;
     text-align: center;
     cursor: pointer;
     padding-bottom: 5px !important;
@@ -299,9 +290,9 @@ input[type=checkbox], input[type=radio] {
     Style for magnifier position font icons
 */
 .gpii-increaseSize-magnifierPositionContainer {
-	display: inline-block;
-	width: 100% !important;
-	margin-top: 20px;
+    display: inline-block;
+    width: 100% !important;
+    margin-top: 20px;
 }
 
 .gpii-increaseSize-magnifierPositionIconLabel {
@@ -458,20 +449,20 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-prefsEditor-previewPerSettingFrame-small {
-	height: 80px;
+    height: 80px;
 }
 
 .gpii-prefsEditor-previewPerSettingFrame-medium {
-	height: 120px;
+    height: 120px;
 }
 
 .gpii-prefsEditor-previewPerSettingFrame-large {
-	height: 150px;
+    height: 150px;
 }
 
 .gpii-prefsEditor-previewPerSettingContainer {
-	display: inline-block;
-	width:100%;
+    display: inline-block;
+    width:100%;
     background-color: white;
     border: 1px solid #beced1;
     color: #B8C9CC;
@@ -923,38 +914,40 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
 }
 
 input:checked + label > .gpii-iconCheckAdjusterCheckIcon,
-input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon {
+input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon,
+input:checked + label > span > span > .gpii-iconCheckAdjusterCheckIcon {
     background-color: 636C7C;
 }
 
 input:checked + label > .gpii-iconCheckAdjusterCheckIcon:before,
-input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
+input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before,
+input:checked + label > span > span > .gpii-iconCheckAdjusterCheckIcon:before {
     content: "\e00a";
 }
 
 .gpii-iconCheckAdjusterArea {
-	cursor: pointer;
-	display: block;
-	background-color: white;
-	margin: 2px;
-	border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    background-color: white;
+    margin: 2px;
+    border-radius: 5px;
 }
 
 .gpii-iconCheckAdjusterDescription {
-	font-size: 0.8em !important;
+    font-size: 0.8em !important;
 }
 
 .gpii-iconCheckAdjusterContainer {
-	display:table;
+    display:table;
     height: 70px;
 }
 
 .gpii-table-cell-valign-label {
-	cursor: inherit;
-	display: table-cell !important;
-	vertical-align: middle;
-	width: 100%;
-	padding-right: 10px;
+    cursor: inherit;
+    display: table-cell !important;
+    vertical-align: middle;
+    width: 100%;
+    padding-right: 10px;
 }
 
 /*
@@ -995,34 +988,34 @@ input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
 }
 
 .gpii-iconCheckAdjusterAreaNoBorder {
-	border-radius: 0px !important;
+    border-radius: 0px !important;
 }
 
 .gpii-iconCheckAdjusterAreaTopOnlyBorder {
-	border-radius: 5px 5px 0px 0px !important;
+    border-radius: 5px 5px 0px 0px !important;
 }
 
 .gpii-iconCheckAdjusterAreaBottomOnlyBorder {
-	border-radius: 0px 0px 5px 5px !important;
+    border-radius: 0px 0px 5px 5px !important;
 }
 
 /*
     Style for contrastTheme adjuster
 */
 .gpii-contrastThemeLabel {
-	font-size: 1.5em !important;
-	border: 2px solid #000000 !important;
-	border-radius: 0 !important;
-	margin-top: 5px !important;
-	padding: 15px 5px !important;
-	height: 1.5em !important;
-	width: 90% !important;
-	cursor: pointer;
-	text-align: left !important;
+    font-size: 1.5em !important;
+    border: 2px solid #000000 !important;
+    border-radius: 0 !important;
+    margin-top: 5px !important;
+    padding: 15px 5px !important;
+    height: 1.5em !important;
+    width: 90% !important;
+    cursor: pointer;
+    text-align: left !important;
 }
 
 .fl-prefsEditor .fl-choice label {
-	line-height: 1.5em !important;
+    line-height: 1.5em !important;
 }
 
 .fl-prefsEditor .fl-choice .fl-indicator {
@@ -1060,42 +1053,40 @@ input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
     Style for onOffSwitch adjuster
 */
 .gpii-onOffSwitch-container {
-	display: inline-block;
-    //padding-bottom: 1em;
-    //padding-top: 1em;
+    display: inline-block;
     width: 100%;
     padding-bottom: 30px;
 }
 
 .gpii-prefsEditor-firstHeading {
-	padding: 0 !important;
-	color: black !important;
-	margin-top:20px;
-	margin-bottom:20px;
+    padding: 0 !important;
+    color: black !important;
+    margin-top:20px;
+    margin-bottom:20px;
 }
 
 h4 {
-	margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 .gpii-prefsEditor-adjusterPanel {
-	margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .gpii-prefsEditor-separator {
-	height: 3px;
-	background-color: white;
-	border-bottom: 1px solid #dde7e5;
-	margin-top: 30px;
-	margin-bottom: 10px;
+    height: 3px;
+    background-color: white;
+    border-bottom: 1px solid #dde7e5;
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
 
 .gpii-iconCheck-adjuster {
-	margin-top: 20px;
+    margin-top: 20px;
 }
 
 .gpii-followingElement-container {
-	margin-top: 20px;
+    margin-top: 20px;
 }
 
 .fl-preview-A {
