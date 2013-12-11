@@ -43,7 +43,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "text",
                 "args": ["{that}.stringBundle.colourTheme"]
             },
-            onDomBind: "{that}.style"
+            "onDomBind.style": "{that}.style"
         },
         stringArrayIndex: {
             theme: ["contrast-default", "contrast-inverted", "contrast-bw", "contrast-wb", "contrast-by", "contrast-yb"]

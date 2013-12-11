@@ -42,7 +42,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "text",
                 "args": ["{that}.stringBundle.contrastOptions"]
             },
-            onDomBind: "{that}.style"
+            "onDomBind.style": "{that}.style"
         },
         controlValues: {
             theme: ["bw", "yb", "by", "wb"]
