@@ -37,20 +37,17 @@ body {
     transform-origin: 0 0 0;
     -webkit-transform-origin: 0 0 0;
     margin:20px;
-    //background-color: #d5e2de;
 }
 
 .gpii-prefsEditor-preferenceGroup {
     background:#e7f1ef;
     width: 340px;
-    //min-height: 100px;
 }
 
 .gpii-prefsEditor-category {
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
-    //margin: 0 auto;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -76,7 +73,6 @@ h2 {
 }
 
 h2 > label {
-    //width: 240px !important;
     word-wrap: break-word;    
 }
 
@@ -146,7 +142,6 @@ input[type=checkbox]:checked + .gpii-prefsEditor-headerImage > .gpii-prefsEditor
 }
 
 .gpii-prefsEditor-headerClickableLabel {
-    //cursor: pointer;
     margin: 0 !important;
     position: relative !important;
     top: -90px;
@@ -214,7 +209,6 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-prefsEditor .gpii-prefsEditor-slider a {
-    //background: radial-gradient(circle 14.5px at 14.5px 50%, #566374 6px, white 8px);
     border: 1px solid #566374;
     box-shadow: none;
     width: 2.2em !important;
@@ -271,7 +265,6 @@ input[type=checkbox], input[type=radio] {
     Style for sliding to work
 */
 .gpii-increaseSizePreferenceGroup, .contrastPreferenceGroup {
-    //padding-top: 100px;
     padding-bottom: 10px;
 }
 
@@ -280,7 +273,6 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-prefsEditor-category-hidden {
-    //overflow: hidden;
 }
 
 /*
@@ -288,7 +280,6 @@ input[type=checkbox], input[type=radio] {
 */
 .gpii-prefsEditor-moreLess{
 	display: block;
-    //width:100% !important;
     text-align: center;
     cursor: pointer;
     padding-bottom: 5px !important;
@@ -1055,8 +1046,6 @@ input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
 */
 .gpii-onOffSwitch-container {
 	display: inline-block;
-    //padding-bottom: 1em;
-    //padding-top: 1em;
     width: 100%;
     padding-bottom: 30px;
 }
