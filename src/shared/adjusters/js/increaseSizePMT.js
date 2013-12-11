@@ -78,7 +78,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         selectors: {
             magnifierExtraAdjusters: ".gpiic-magnifier-hidden",
-            // This is in a sub-panel. Is that bad?
             preferenceSwitchMagnifierExtra: ".gpiic-magnifier-preferenceSwitchExtra",
             magnifierMoreLess: ".gpiic-magnifier-moreLess"
         },
