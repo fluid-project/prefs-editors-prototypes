@@ -914,12 +914,14 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
 }
 
 input:checked + label > .gpii-iconCheckAdjusterCheckIcon,
-input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon {
+input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon,
+input:checked + label > span > span > .gpii-iconCheckAdjusterCheckIcon {
     background-color: 636C7C;
 }
 
 input:checked + label > .gpii-iconCheckAdjusterCheckIcon:before,
-input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
+input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before,
+input:checked + label > span > span > .gpii-iconCheckAdjusterCheckIcon:before {
     content: "\e00a";
 }
 
