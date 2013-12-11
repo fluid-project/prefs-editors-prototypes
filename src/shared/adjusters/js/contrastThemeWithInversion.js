@@ -46,24 +46,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             onDomBind: "{that}.style"
         },
         stringArrayIndex: {
-            theme: ["contrast-default", "contrast-inverted","contrast-bw", "contrast-wb", "contrast-by", "contrast-yb"]
+            theme: ["contrast-default", "contrast-inverted", "contrast-bw", "contrast-wb", "contrast-by", "contrast-yb"]
         },
         controlValues: {
             theme: ["default", "inverted", "bw", "wb", "by", "yb"]
         },
         markup: {
             label: "<span>%theme</span>"
-        },
-        invokers: {
-            style: {
-                funcName: "fluid.prefs.panel.contrast.style",
-                args: [
-                    "{that}.dom.themeLabel", "{that}.stringBundle.theme",
-                    "{that}.options.markup.label", "{that}.options.controlValues.theme",
-                    "{that}.options.classnameMap.contrastTheme"
-                ],
-                dynamic: true
-            }
         }
     });
 })(jQuery, fluid);

@@ -46,17 +46,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         controlValues: {
             theme: ["bw", "yb", "by", "wb"]
-        },
-        invokers: {
-            style: {
-                funcName: "fluid.prefs.panel.contrast.style",
-                args: [
-                    "{that}.dom.themeLabel", "{that}.stringBundle.theme",
-                    "{that}.options.markup.label", "{that}.options.controlValues.theme",
-                    "{that}.options.classnameMap.contrastTheme"
-                ],
-                dynamic: true
-            }
         }
     });
 })(jQuery, fluid);
