@@ -28,12 +28,9 @@
          url('../fonts/arrows.eot');
 }
 
-.bold-font-weight {
-    font-weight: bold;
-}
-
-.normal-font-weight {
-    font-weight: normal;
+.gpii-moreLess {
+    margin-left: 85px;
+    padding-top: 10px;
 }
 
 .moreOptionsIcon {

@@ -55,7 +55,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "speakText": {
             "type": "gpii.primarySchema.speakText",
             "panel": {
-                "type": "gpii.panel.speakText",
+                "type": "gpii.adjuster.speakText",
                 "template": "%prefix/speakTextTemplate.html",
                 "container": ".speakText",
                 "message": "%prefix/message.json"
@@ -65,7 +65,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "wordsSpokenPerMinute": {
             "type": "gpii.primarySchema.wordsSpokenPerMinute",
             "panel": {
-                "type": "gpii.panel.wordsSpokenPerMinute",
+                "type": "gpii.adjuster.wordsSpokenPerMinute",
                 "template": "%prefix/wordsSpokenPerMinute.html",
                 "container": ".words-spoken-per-minute",
                 "message": "%prefix/message.json"
@@ -75,7 +75,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "volume": {
             "type": "gpii.primarySchema.volume",
             "panel": {
-                "type": "gpii.panel.volume",
+                "type": "gpii.adjuster.volume",
                 "template": "%prefix/volumeTemplate.html",
                 "container": ".volume",
                 "message": "%prefix/message.json"
@@ -85,7 +85,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "screenReaderBrailleOutput": {
             "type": "gpii.primarySchema.screenReaderBrailleOutput",
             "panel": {
-                "type": "gpii.panel.screenReaderBrailleOutput",
+                "type": "gpii.adjuster.screenReaderBrailleOutput",
                 "template": "%prefix/brailleTemplate.html",
                 "container": ".braille",
                 "message": "%prefix/message.json"
@@ -95,7 +95,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "universalVolume": {
             "type": "gpii.primarySchema.universalVolume",
             "panel": {
-                "type": "gpii.panel.universalVolume",
+                "type": "gpii.adjuster.universalVolume",
                 "template": "%prefix/universalVolumeTemplate.html",
                 "container": ".universalVolume",
                 "message": "%prefix/message.json"
@@ -105,7 +105,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "universalLanguage": {
             "type": "gpii.primarySchema.universalLanguage",
             "panel": {
-                "type": "gpii.panel.universalLanguage",
+                "type": "gpii.adjuster.universalLanguage",
                 "template": "%prefix/universalLanguageTemplate.html",
                 "container": ".universalLanguage",
                 "message": "%prefix/message.json"

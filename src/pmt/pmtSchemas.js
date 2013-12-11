@@ -76,6 +76,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "boolean",
             "default": false
         },
+        "gpii.primarySchema.moreLess": {
+            "type": "boolean",
+            "default": false
+        },
         "gpii.primarySchema.textHighlighting": {
             "type": "string",
             "default": "Word",
@@ -196,6 +200,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
 
+        "moreLess": {
+            "type": "gpii.primarySchema.moreLess",
+            "panel": {
+                "type": "gpii.adjuster.moreLess",
+                "template": "%prefix/moreLessTemplate.html",
+                "message": "%prefix/message.json",
+                "container": ".moreLess"
+            }
+        },
+
         "screenReaderBrailleOutput": {
             "type": "gpii.primarySchema.screenReaderBrailleOutput",
             "panel": {
@@ -235,7 +249,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "panels": {
                     "always": ["speakText", "screenReaderBrailleOutput"],
                     "gpii.primarySchema.speakText": [
-                        "wordsSpokenPerMinute", "volume", "voicePitch", "screenReaderLanguage", "punctuationVerbosity", "announceCapitals", "speakTutorialMessages", "keyEcho", "wordEcho"
+                        "wordsSpokenPerMinute", "volume", "moreLess"
+                    ],
+                    "gpii.primarySchema.moreLess": [
+                        "voicePitch", "screenReaderLanguage", "punctuationVerbosity", "announceCapitals", "speakTutorialMessages", "keyEcho", "wordEcho"
                     ]
                 }
             },

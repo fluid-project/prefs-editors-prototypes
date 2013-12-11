@@ -352,23 +352,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    // fluid.defaults("gpii.adjuster.keyEcho", {
-    //     gradeNames: ["fluid.prefs.panel", "autoInit"],
-    //     preferenceMap: {
-    //         "gpii.primarySchema.keyEcho": {
-    //             "model.keyEcho": "default"
-    //         }
-    //     },
-    //     selectors: {
-    //         keyEcho: ".gpiic-keyEcho",
-    //         keyEchoLabel: ".gpiic-keyEcho-label"
-    //     },
-    //     protoTree: {
-    //         keyEcho: "${keyEcho}",
-    //         keyEchoLabel: {messagekey: "keyEchoLabel"}
-    //     }
-    // });
-
     fluid.defaults("gpii.adjuster.keyEcho", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
@@ -404,6 +387,88 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             wordEchoLabel: {messagekey: "wordEchoLabel"}
         }
     });
+
+    fluid.defaults("gpii.adjuster.moreLess", {
+        gradeNames: ["fluid.prefs.panel", "fluid.prefs.stringBundle", "autoInit"],
+        members: {
+            messageResolver: "{prefsEditorLoader}.msgBundle"
+        },
+        preferenceMap: {
+            "gpii.primarySchema.moreLess": {
+                "model.moreLess": "default"
+            }
+        },
+        selectors: {
+            moreLess: ".gpiic-moreLess",
+            moreLessLabel: ".gpiic-moreLess-label",
+            moreLessIcon: ".moreOptionsIcon",
+        },
+        selectorsToIgnore: ["moreLessIcon"],
+        protoTree: {
+            moreLess: "${moreLess}",
+            expander: {
+                type: "fluid.renderer.condition",
+                condition: "${{that}.model.moreLess}",
+                trueTree: {
+                    moreLessLabel: {messagekey: "lessText"},
+                    moreLessIcon: {
+                        decorators: [{
+                            type: "addClass",
+                            classes: "${{that}.options.styles.moreIcon}"
+                        }]
+                    }
+                },
+                falseTree: {
+                    moreLessLabel: {messagekey: "moreText"},
+                    moreLessIcon: {
+                        decorators: [{
+                            type: "addClass",
+                            classes: "${{that}.options.styles.lessIcon}"
+                        }]
+                    }
+                }
+            }
+        },
+        listeners: {
+            "onCreate.addListener": {
+                "listener": "{that}.applier.modelChanged.addListener",
+                "args": ["moreLess", "{that}.toggleMoreLess"]
+            },
+            "afterRender.addMoreIconClass": {
+                "this": "{that}.dom.moreLessIcon",
+                "method": "addClass",
+                "args": ["{that}.options.styles.moreIcon"]
+            }
+        },
+        styles: {
+            moreIcon: "gpii-moreOptionsIcon-more",
+            lessIcon: "gpii-moreOptionsIcon-less"
+        },
+        invokers: {
+            toggleMoreLess: {
+                "funcName": "gpii.moreLessConfiguration",
+                "args": ["{that}.model.moreLess",
+                         "{that}.dom.moreLessLabel",
+                         "{that}.stringBundle.moreText",
+                         "{that}.stringBundle.lessText",
+                         "{that}.dom.moreLessIcon",
+                         "{that}.options.styles.moreIcon",
+                         "{that}.options.styles.lessIcon"
+                    ],
+                "dynamic": true
+            }
+        }
+    });
+
+    gpii.moreLessConfiguration = function (modelValue, label, more, less, icon, moreIcon, lessIcon) {
+        var newText = modelValue ? less : more;
+        var newIcon = modelValue ? lessIcon : moreIcon;
+        var oldIcon = modelValue ? moreIcon : lessIcon;
+
+        label.text(newText);
+        icon.removeClass(oldIcon);
+        icon.addClass(newIcon);
+    };
 
     fluid.defaults("gpii.adjuster.screenReaderBrailleOutput", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],

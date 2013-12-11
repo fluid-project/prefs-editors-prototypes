@@ -13,15 +13,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 var demo = demo || {};
 
 (function ($, fluid) {
-    demo.initGPII = function (container, compOpts) {
-        var uioBuilder = fluid.prefs.builder({
-            primarySchema: gpii.primarySchema,
-            auxiliarySchema: gpii.auxiliarySchema
-        });
-        var baseOpts = {
-            prefsEditorType: "gpii.pmt"
-        };
-        $.extend(true, baseOpts, compOpts);
-        return fluid.invokeGlobalFunction(uioBuilder.options.assembledPrefsEditorGrade, [container, baseOpts]);
-    };
+    $(document).ready(function () {
+        fluid.prefs.create(".flc-prefsEditor", {
+            build: {
+                primarySchema: gpii.primarySchema,
+                auxiliarySchema: gpii.auxiliarySchema
+            },
+            prefsEditor: {
+                prefsEditorType: "gpii.pmt"
+            }
+        })
+    });
 })(jQuery, fluid);
