@@ -99,7 +99,7 @@ textarea:focus, input:focus {
 }
 
 .gpii-onOffSwitch-switch {
-	float: left;
+    float: left;
 }
 
 #gpii-speakText-screenReaderOnOff {
@@ -109,7 +109,7 @@ textarea:focus, input:focus {
 }
 
 #gpii-onOffSwitch-onOff {
-	display: inline;
+    display: inline;
     float: right;    
     font-size:70%;
     margin-left:37px;

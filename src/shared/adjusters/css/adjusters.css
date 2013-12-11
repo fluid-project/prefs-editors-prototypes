@@ -95,7 +95,7 @@ h2 > label {
 .gpii-prefsEditor-headerImageTick {
     font-size: 20px !important;
     float: right !important;
-	margin-right: 5px;
+    margin-right: 5px;
     margin-top: -120px;
     background-color: white;
     border-radius: 50%;
@@ -279,7 +279,7 @@ input[type=checkbox], input[type=radio] {
     Style for more/less
 */
 .gpii-prefsEditor-moreLess{
-	display: block;
+    display: block;
     text-align: center;
     cursor: pointer;
     padding-bottom: 5px !important;
@@ -290,9 +290,9 @@ input[type=checkbox], input[type=radio] {
     Style for magnifier position font icons
 */
 .gpii-increaseSize-magnifierPositionContainer {
-	display: inline-block;
-	width: 100% !important;
-	margin-top: 20px;
+    display: inline-block;
+    width: 100% !important;
+    margin-top: 20px;
 }
 
 .gpii-increaseSize-magnifierPositionIconLabel {
@@ -449,20 +449,20 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-prefsEditor-previewPerSettingFrame-small {
-	height: 80px;
+    height: 80px;
 }
 
 .gpii-prefsEditor-previewPerSettingFrame-medium {
-	height: 120px;
+    height: 120px;
 }
 
 .gpii-prefsEditor-previewPerSettingFrame-large {
-	height: 150px;
+    height: 150px;
 }
 
 .gpii-prefsEditor-previewPerSettingContainer {
-	display: inline-block;
-	width:100%;
+    display: inline-block;
+    width:100%;
     background-color: white;
     border: 1px solid #beced1;
     color: #B8C9CC;
@@ -924,28 +924,28 @@ input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
 }
 
 .gpii-iconCheckAdjusterArea {
-	cursor: pointer;
-	display: block;
-	background-color: white;
-	margin: 2px;
-	border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    background-color: white;
+    margin: 2px;
+    border-radius: 5px;
 }
 
 .gpii-iconCheckAdjusterDescription {
-	font-size: 0.8em !important;
+    font-size: 0.8em !important;
 }
 
 .gpii-iconCheckAdjusterContainer {
-	display:table;
+    display:table;
     height: 70px;
 }
 
 .gpii-table-cell-valign-label {
-	cursor: inherit;
-	display: table-cell !important;
-	vertical-align: middle;
-	width: 100%;
-	padding-right: 10px;
+    cursor: inherit;
+    display: table-cell !important;
+    vertical-align: middle;
+    width: 100%;
+    padding-right: 10px;
 }
 
 /*
@@ -986,34 +986,34 @@ input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
 }
 
 .gpii-iconCheckAdjusterAreaNoBorder {
-	border-radius: 0px !important;
+    border-radius: 0px !important;
 }
 
 .gpii-iconCheckAdjusterAreaTopOnlyBorder {
-	border-radius: 5px 5px 0px 0px !important;
+    border-radius: 5px 5px 0px 0px !important;
 }
 
 .gpii-iconCheckAdjusterAreaBottomOnlyBorder {
-	border-radius: 0px 0px 5px 5px !important;
+    border-radius: 0px 0px 5px 5px !important;
 }
 
 /*
     Style for contrastTheme adjuster
 */
 .gpii-contrastThemeLabel {
-	font-size: 1.5em !important;
-	border: 2px solid #000000 !important;
-	border-radius: 0 !important;
-	margin-top: 5px !important;
-	padding: 15px 5px !important;
-	height: 1.5em !important;
-	width: 90% !important;
-	cursor: pointer;
-	text-align: left !important;
+    font-size: 1.5em !important;
+    border: 2px solid #000000 !important;
+    border-radius: 0 !important;
+    margin-top: 5px !important;
+    padding: 15px 5px !important;
+    height: 1.5em !important;
+    width: 90% !important;
+    cursor: pointer;
+    text-align: left !important;
 }
 
 .fl-prefsEditor .fl-choice label {
-	line-height: 1.5em !important;
+    line-height: 1.5em !important;
 }
 
 .fl-prefsEditor .fl-choice .fl-indicator {
@@ -1030,7 +1030,7 @@ input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
 }
 
 .gpii-prefsEditor-themeRow {
-	float: none !important;
+    float: none !important;
 }
 
 .fl-prefsEditor .fl-icon-indicator:before, .fl-prefsEditor .fl-choice input:checked + label + span:before {
@@ -1038,49 +1038,49 @@ input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before {
 }
 
 .gpii-contrast-contrastOptions {
-	display: block;
+    display: block;
 }
 
 /*
     Style for onOffSwitch adjuster
 */
 .gpii-onOffSwitch-container {
-	display: inline-block;
+    display: inline-block;
     width: 100%;
     padding-bottom: 30px;
 }
 
 .gpii-prefsEditor-firstHeading {
-	padding: 0 !important;
-	color: black !important;
-	margin-top:20px;
-	margin-bottom:20px;
+    padding: 0 !important;
+    color: black !important;
+    margin-top:20px;
+    margin-bottom:20px;
 }
 
 h4 {
-	margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 .gpii-prefsEditor-adjusterPanel {
-	margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .gpii-prefsEditor-separator {
-	height: 3px;
-	background-color: white;
-	border-bottom: 1px solid #dde7e5;
-	margin-top: 30px;
-	margin-bottom: 10px;
+    height: 3px;
+    background-color: white;
+    border-bottom: 1px solid #dde7e5;
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
 
 .gpii-iconCheck-adjuster {
-	margin-top: 20px;
+    margin-top: 20px;
 }
 
 .gpii-followingElement-container {
-	margin-top: 20px;
+    margin-top: 20px;
 }
 
 .fl-preview-A {
-	display: block;
+    display: block;
 }

@@ -269,7 +269,7 @@ input[type=checkbox], input[type=radio] {
     Style for more/less
 */
 .gpii-prefsEditor-moreLess{
-	display: block;
+    display: block;
     width:100% !important;
     text-align: center;
     cursor: pointer;
@@ -689,10 +689,10 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
 
 .gpii-prefsEditor-expandedHeading
 {
-	font-size: large;
-	font-weight: bold;
+    font-size: large;
+    font-weight: bold;
 }
 
 .gpii-prefsEditor-firstHeading {
-	border-top: none;
+    border-top: none;
 }
