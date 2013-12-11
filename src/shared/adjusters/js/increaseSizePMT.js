@@ -19,10 +19,22 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.panel.increaseSizePMT", {
         gradeNames: ["gpii.panel.increaseSizePCP", "autoInit"],
         events: {
+            onShowMagnifierAdjusters: null,
+            onHideMagnifierAdjusters: null,
             onShowMagnifierExtraAdjusters: null,
             onHideMagnifierExtraAdjusters: null
         },
         listeners: {
+            "onShowMagnifierAdjusters.show": {
+                "this": "{that}.dom.magnifierAdjusters",
+                "method": "slideDown",
+                "args": ["{arguments}.0"]
+            },
+            "onHideMagnifierAdjusters.hide": {
+                "this": "{that}.dom.magnifierAdjusters",
+                "method": "slideUp",
+                "args": ["{arguments}.0"]
+            },
             "afterRender.bindEventPreferenceSwitchMagnifierExtra": {
                 "this": "{that}.dom.preferenceSwitchMagnifierExtra",
                 "method": "change",
@@ -48,11 +60,24 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "text",
                 "args": ["{that}.stringBundle.more"]
             },
+            "afterRender.restoreMagnifierAdjusters": {
+                listener: "{that}.toggleMagnifierAdjustersInstant"
+            },
             "afterRender.restoreMagnifierExtraAdjusters": {
                 listener: "{that}.toggleMagnifierExtraAdjustersInstant"
             }
         },
         invokers: {
+            toggleMagnifierAdjustersInstant: {
+                "funcName": "gpii.panel.increaseSizePMT.toggleMagnifierAdjusters",
+                "args": [
+                    "{that}.model.gpii_primarySchema_magnifierEnabled",
+                    "{that}.events.onShowMagnifierAdjusters.fire",
+                    "{that}.events.onHideMagnifierAdjusters.fire",
+                    0
+                ],
+                dynamic: true
+            },
             toggleMagnifierExtraAdjustersInstant: {
                 "funcName": "gpii.panel.increaseSizePMT.toggleMagnifierExtraAdjusters",
                 "args": [
@@ -77,6 +102,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierExtraAdjustersEnabledSwitch: false
         },
         selectors: {
+            magnifierAdjusters: ".gpiic-magnifier-category",
             magnifierExtraAdjusters: ".gpiic-magnifier-hidden",
             preferenceSwitchMagnifierExtra: ".gpiic-magnifier-preferenceSwitchExtra",
             magnifierMoreLess: ".gpiic-magnifier-moreLess"
@@ -91,6 +117,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierMoreLess: "{that}.stringBundle.more"
         }
     });
+
+    gpii.panel.increaseSizePMT.toggleMagnifierAdjusters = function (magnifierAdjustersEnabledSwitch, showEvent, hideEvent, duration) {
+        if (magnifierAdjustersEnabledSwitch) {
+            showEvent(duration);
+        } else {
+            hideEvent(duration);
+        }
+    };
 
     gpii.panel.increaseSizePMT.toggleMagnifierExtraAdjusters = function (magnifierExtraAdjustersEnabledSwitch, showEvent, hideEvent, duration) {
         if (magnifierExtraAdjustersEnabledSwitch) {
