@@ -71,7 +71,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             toggleMoreLessInstant: {
                 "funcName": "gpii.panel.expandingAdjusters.toggleMoreLess",
                 "args": [
-                    "{that}.model.gpii_primarySchema_magnifierEnabled",
+                    "{that}.model.moreLessEnabledSwitch",
                     "{that}.events.onShowMoreLess.fire",
                     "{that}.events.onHideMoreLess.fire",
                     0
@@ -99,6 +99,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         model: {
+            moreLessEnabledSwitch: true,    // more/less is enabled by default. This can be overriden.
             expandingAdjustersEnabledSwitch: false
         },
         selectors: {
