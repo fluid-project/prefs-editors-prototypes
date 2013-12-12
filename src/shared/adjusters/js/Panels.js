@@ -101,6 +101,44 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
+    // fluid.defaults("gpii.adjuster.voicePitch", {
+    //     gradeNames: ["fluid.prefs.panel", "autoInit"],
+    //     preferenceMap: {
+    //         "gpii.primarySchema.voicePitch": {
+    //             "model.value": "default",
+    //             "controlValues.voicePitch.min": "minimum",
+    //             "controlValues.voicePitch.step": "divisibleBy"
+    //         }
+    //     },
+    //     selectors: {
+    //         voicePitch: ".gpiic-voicePitch",
+    //         voicePitchLabel: ".gpiic-voicePitch-label",
+    //         voicePitchMinus: ".gpiic-voicePitch-minus",
+    //         voicePitchPlus: ".gpiic-voicePitch-plus"
+    //     },
+    //     protoTree: {
+    //         voicePitch: {
+    //             decorators: {
+    //                 type: "fluid",
+    //                 func: "gpii.textfieldStepper",
+    //                 options: {
+    //                     sourceApplier: "{that}.applier",
+    //                     rules: {
+    //                         "value": "value"
+    //                     },
+    //                     model: {
+    //                         value: "{that}.model.value"
+    //                     },
+    //                     range: "{that}.options.controlValues.voicePitch"
+    //                 }
+    //             }
+    //         },
+    //         voicePitchLabel: {messagekey: "voicePitchLabel"},
+    //         voicePitchMinus: {messagekey: "stepperMinus"},
+    //         voicePitchPlus: {messagekey: "stepperPlus"}
+    //     }
+    // });
+
     fluid.defaults("gpii.adjuster.voicePitch", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
@@ -111,73 +149,31 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
-            voicePitch: ".gpiic-voicePitch",
-            voicePitchLabel: ".gpiic-voicePitch-label",
-            voicePitchMinus: ".gpiic-voicePitch-minus",
-            voicePitchPlus: ".gpiic-voicePitch-plus"
+            voicePitchLabel: ".gpiic-speakText-voicePitch-label",
+            voicePitch: ".gpiic-speakText-voicePitch-stepper"
         },
-        protoTree: {
-            voicePitch: {
-                decorators: {
-                    type: "fluid",
-                    func: "gpii.textfieldStepper",
-                    options: {
-                        sourceApplier: "{that}.applier",
-                        rules: {
-                            "value": "value"
-                        },
-                        model: {
-                            value: "{that}.model.value"
-                        },
-                        range: "{that}.options.controlValues.voicePitch"
-                    }
+        selectorsToIgnore: ["voicePitch"],
+        components: {
+            textfieldStepper: {
+                type: "gpii.adjuster.textfieldStepper",
+                container: "{that}.dom.voicePitch",
+                createOnEvent: "afterRender",
+                options: {
+                    sourceApplier: "{voicePitch}.applier",
+                    rules: {
+                        "value": "value"
+                    },
+                    model: {
+                        value: "{voicePitch}.model.value"
+                    },
+                    range: "{voicePitch}.options.controlValues.voicePitch"
                 }
-            },
-            voicePitchLabel: {messagekey: "voicePitchLabel"},
-            voicePitchMinus: {messagekey: "stepperMinus"},
-            voicePitchPlus: {messagekey: "stepperPlus"}
-        }
-    });
-
-/*    fluid.defaults("gpii.adjuster.universalVolume", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
-        preferenceMap: {
-            "gpii.primarySchema.universalVolume": {
-                "model.value": "default",
-                "controlValues.universalVolume.min": "minimum",
-                "controlValues.universalVolume.step": "divisibleBy"
             }
         },
-        selectors: {
-            universalVolume: ".gpiic-universalVolume",
-            universalVolumeLabel: ".gpiic-universalVolume-label",
-            universalVolumeMinus: ".gpiic-universalVolume-minus",
-            universalVolumePlus: ".gpiic-universalVolume-plus",
-            universalVolumeDescription: ".gpiic-universalVolume-description"
-        },
         protoTree: {
-            universalVolume: {
-                decorators: {
-                    type: "fluid",
-                    func: "gpii.textfieldStepper",
-                    options: {
-                        sourceApplier: "{that}.applier",
-                        rules: {
-                            "value": "value"
-                        },
-                        model: {
-                            value: "{that}.model.value"
-                        },
-                        range: "{that}.options.controlValues.universalVolume"
-                    }
-                }
-            },
-            universalVolumeLabel: {messagekey: "universalVolumeLabel"},
-            universalVolumeMinus: {messagekey: "stepperMinus"},
-            universalVolumePlus: {messagekey: "stepperPlus"},
-            universalVolumeDescription: {messagekey: "universalVolumeDescription"}
+            voicePitchLabel: {messagekey: "voicePitchLabel"}
         }
-    });*/
+    });
 
     fluid.defaults("gpii.adjuster.universalVolume", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
