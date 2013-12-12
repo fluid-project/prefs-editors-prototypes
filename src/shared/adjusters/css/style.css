@@ -54,14 +54,6 @@
     width: 0px;
 }
 
-.gpii-announce {
-    padding-bottom: 15px;
-}
-
-.gpii-readBack {
-    padding-top: 15px;
-}
-
 .gpii-adjusters {
     padding-left: 40px;
     font-family: 'Roboto Slab', serif;
@@ -86,7 +78,7 @@
     position: relative;
 }
 
-.stepper {
+.gpii-stepper {
     text-align: center;
     border: none;
     width: 200px !important;
@@ -105,13 +97,6 @@
 
 textarea:focus, input:focus {
     outline: 0;
-}
-
-.gpii-moreOptions {
-    padding-top: 20px;
-    font-size: 15px;
-    font-weight: bold;
-    margin-left: 120px;
 }
 
 .gpii-switch {
