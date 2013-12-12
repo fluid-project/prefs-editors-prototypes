@@ -114,10 +114,6 @@ textarea:focus, input:focus {
     margin-left: 120px;
 }
 
-.gpii-fully-expanded {
-    /*display: none;*/
-}
-
 .gpii-switch {
     font-size:135%;
     float: left;
