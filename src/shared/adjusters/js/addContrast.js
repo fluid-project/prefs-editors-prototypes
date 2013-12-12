@@ -17,31 +17,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     
     fluid.defaults("gpii.adjuster.addContrast", {
         gradeNames: ["fluid.prefs.compositePanel", "autoInit"],
-        listeners: {
-            /*"afterRender.setATTRaddToMyPreferencesLabel": {
-                "this": "{that}.dom.addToMyPreferencesLabel",
-                "method": "attr",
-                "args": [{
-                    "tooltip-checked": "{that}.options.strings.tooltipChecked",
-                    "tooltip-unchecked": "{that}.options.strings.tooltipUnchecked"
-                }]
-            }*/
-        },
         selectors: {
             panelLabel: ".gpiic-headerTitle"
-            // markup of this element is disappearing if i add this, cannot set tooltips.
-            //addToMyPreferencesLabel: ".gpiic-addToMyPreferencesLabel",
         },
-        //selectorsToIgnore: ["addToMyPreferencesLabel"],
         protoTree: {
             panelLabel: {messagekey: "changeContrast"}
         },
         members: {
             messageResolver: "{prefsEditorLoader}.msgBundle"
-        }/*,
-        strings: {
-            tooltipChecked: "{that}.stringBundle.tooltipChecked",
-            tooltipUnchecked: "{that}.stringBundle.tooltipUnchecked"
-        }*/
+        }
     });
 })(jQuery, fluid);

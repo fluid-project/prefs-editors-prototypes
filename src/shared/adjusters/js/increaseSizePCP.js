@@ -20,12 +20,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         gradeNames: ["fluid.prefs.compositePanel", "autoInit"],
         selectors: {
             increaseSizeHeader: ".gpiic-headerTitle",
-            preferenceSwitchIncreaseSize: ".gpiic-increaseSize-preferenceSwitch",
-            //addToMyPreferencesStar: ".gpiic-addToMyPreferencesLabel",
             appearanceHeading: ".gpiic-increaseSize-appearanceHeading",
             magnifierHeading: ".gpiic-increaseSize-magnifierHeading"
         },
-        //selectorsToIgnore: ["addToMyPreferencesStar"],
         members: {
             messageResolver: "{prefsEditorLoader}.msgBundle"
         },
