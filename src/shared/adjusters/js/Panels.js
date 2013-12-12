@@ -10,18 +10,7 @@ You may obtain a copy of the License at
 https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
-(function (fluid) {    
-    gpii.arrayMergePolicy = function (target, source) {
-        target = fluid.makeArray(target);
-        source = fluid.makeArray(source);
-        fluid.each(source, function (selector) {
-            if ($.inArray(selector, target) < 0) {
-                target.push(selector);
-            }
-        });
-        return target;
-    };
-
+(function (fluid) {
     fluid.defaults("gpii.adjuster.speakText", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
@@ -43,10 +32,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.wordsSpokenPerMinute": {
-                "model.value": "default", /* WARNING
-                A temporary solution is to store "default" in model.VALUE
-                With the separation into smaller components this actually
-                won't be an issue */
+                "model.value": "default",
                 "controlValues.wordsSpokenPerMinute.min": "minimum",
                 "controlValues.wordsSpokenPerMinute.step": "divisibleBy"
             }
@@ -194,7 +180,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             universalVolumeLabel: {messagekey: "universalVolumeLabel"},
             universalVolumeMinus: {messagekey: "stepperMinus"},
             universalVolumePlus: {messagekey: "stepperPlus"},
-            universalVolumeDescription: {messagekey: "universalVolumeDescription"}  
+            universalVolumeDescription: {messagekey: "universalVolumeDescription"}
         }
     });
 

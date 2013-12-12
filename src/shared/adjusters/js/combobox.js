@@ -62,7 +62,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         _createShowAllButton: function () {
             var input = this.input,
                 wasOpen = false;
-            
+
             $("<a>")
                 .attr("tabIndex", -1)
                 .attr("title", "Show All Languages")

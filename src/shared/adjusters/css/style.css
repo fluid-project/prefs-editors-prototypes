@@ -33,6 +33,10 @@
     padding-top: 10px;
 }
 
+.gpii-moreLess-label {
+    cursor: pointer;
+}
+
 .moreOptionsIcon {
     font-family: 'moreLessArrows'
 }
@@ -425,7 +429,7 @@ body {
     font-family: 'Roboto Slab', serif;
 }
 
-.ui-widget-content.ui-widget::selection { 
+.ui-widget-content.ui-widget::selection {
     background: yellow; /*Safari*/
 }
 

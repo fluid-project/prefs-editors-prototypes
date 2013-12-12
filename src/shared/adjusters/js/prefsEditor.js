@@ -11,7 +11,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
 (function ($, fluid) {
-    fluid.defaults("gpii.commonPrefsEditor", {
+    fluid.defaults("gpii.prefsEditor", {
         gradeNames: ["fluid.prefs.fullNoPreview", "autoInit"],
         prefsEditor: {
             gradeNames: ["fluid.prefs.stringBundle"],
@@ -47,7 +47,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             invokers: {
                 foldExpandedViewWhenOff: {
                     "funcName": "gpii.foldExpandedViewWhenOff",
-                    "args": ["{that}.applier", 
+                    "args": ["{that}.applier",
                              "{that}.model.gpii_primarySchema_moreLess",
                              "gpii_primarySchema_moreLess"
                         ],

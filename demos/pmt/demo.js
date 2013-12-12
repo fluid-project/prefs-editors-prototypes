@@ -20,7 +20,7 @@ var demo = demo || {};
                 auxiliarySchema: gpii.auxiliarySchema
             },
             prefsEditor: {
-                prefsEditorType: "gpii.pmt"
+                prefsEditorType: "gpii.prefsEditor"
             }
         })
     });
