@@ -1090,5 +1090,9 @@ h4 {
 }
 
 .fl-preview-A {
-	display: block;
+    display: block;
+}
+
+.gpii-prefsEditor-slider-input {
+	display:none;
 }

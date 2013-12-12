@@ -15,16 +15,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     
-    fluid.defaults("gpii.adjuster.addContrast", {
-        gradeNames: ["fluid.prefs.compositePanel", "autoInit"],
-        selectors: {
-            panelLabel: ".gpiic-headerTitle"
-        },
-        protoTree: {
-            panelLabel: {messagekey: "changeContrast"}
-        },
-        members: {
-            messageResolver: "{prefsEditorLoader}.msgBundle"
-        }
-    });
+    fluid.registerNamespace("gpii.prefs.merging");
+
+    gpii.prefs.merging.arrayOverridePolicy = function (target, source) {
+        source = fluid.makeArray(source);
+        return source;
+    };
 })(jQuery, fluid);

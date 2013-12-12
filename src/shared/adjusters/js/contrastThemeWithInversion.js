@@ -15,18 +15,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     
-    fluid.registerNamespace("gpii.prefs.helpers");
-
-    gpii.prefs.helpers.arrayOverridePolicy = function (target, source) {
-        source = fluid.makeArray(source);
-        return source;
-    };
-    
     fluid.defaults("gpii.adjuster.contrastThemeWithInversion", {
         gradeNames: ["fluid.prefs.panel.contrast", "autoInit"],
         mergePolicy: {
-            "controlValues.theme": gpii.prefs.helpers.arrayOverridePolicy,
-            "stringArrayIndex.theme": gpii.prefs.helpers.arrayOverridePolicy
+            "controlValues.theme": gpii.prefs.merging.arrayOverridePolicy,
+            "stringArrayIndex.theme": gpii.prefs.merging.arrayOverridePolicy
         },
         preferenceMap: {
             "gpii.primarySchema.contrast.theme": {
