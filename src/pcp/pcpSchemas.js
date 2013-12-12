@@ -116,7 +116,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "visualAlternatives": {
                 "type": "gpii.panel.visualAlternatives",
                 "container": ".gpiic-visualAlternatives",
-                "template": "../../src/pcp/pcpContainer-VisualAlternatives.html",
+                "template": "../../src/pcp/pcp-VisualAlternativesGroupContainer.html",
                 "message": "%prefix/message.json",
                 "panels": {
                     "always": ["speakText", "screenReaderBrailleOutput"],
@@ -128,7 +128,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "volume": {
                 "type": "gpii.panel.volumeCollectivePanel",
                 "container": ".gpiic-volumeGroup",
-                "template": "../../src/pcp/pcpContainer-Volume.html",
+                "template": "%prefix/VolumeGroupContainer.html",
                 "message": "%prefix/message.json",
                 "panels": {
                     "always": ["universalVolume"]
@@ -137,7 +137,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "language": {
                 "type": "gpii.panel.languageCollectivePanel",
                 "container": ".gpiic-languageGroup",
-                "template": "../../src/pcp/pcpContainer-Language.html",
+                "template": "%prefix/LanguageGroupContainer.html",
                 "message": "%prefix/message.json",
                 "panels": {
                     "always": ["universalLanguage"]

@@ -44,13 +44,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             wordsSpokenPerMinutePlus: ".gpiic-wordsSpokenPerMinute-plus"
         },
         protoTree: {
-            preferencesSwitchSpeakText: {messagekey: "speakTextPresetButtonLabel"},
-
             wordsSpokenPerMinute: {
                 decorators: {
                     type: "fluid",
                     func: "gpii.textfieldStepper",
                     options: {
+                        gradeNames: "fluid.prefs.modelRelay",
                         sourceApplier: "{that}.applier",
                         rules: {
                             "value": "value"
