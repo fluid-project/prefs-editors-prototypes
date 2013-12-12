@@ -38,34 +38,32 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
-            wordsSpokenPerMinute: ".gpiic-wordsSpokenPerMinute",
-            wordsSpokenPerMinuteLabel: ".gpiic-wordsSpokenPerMinute-label",
-            wordsSpokenPerMinuteMinus: ".gpiic-wordsSpokenPerMinute-minus",
-            wordsSpokenPerMinutePlus: ".gpiic-wordsSpokenPerMinute-plus"
+            wordsSpokenPerMinuteLabel: ".gpiic-speakText-wordsSpokenPerMinute-label",
+            wordsSpokenPerMinute: ".gpiic-speakText-wordsSpokenPerMinute-stepper"
+        },
+        selectorsToIgnore: ["wordsSpokenPerMinute"],
+        components: {
+            textfieldStepper: {
+                type: "gpii.adjuster.textfieldStepper",
+                container: "{that}.dom.wordsSpokenPerMinute",
+                createOnEvent: "afterRender",
+                options: {
+                    sourceApplier: "{wordsSpokenPerMinute}.applier",
+                    rules: {
+                        "value": "value"
+                    },
+                    model: {
+                        value: "{wordsSpokenPerMinute}.model.value"
+                    },
+                    range: "{wordsSpokenPerMinute}.options.controlValues.wordsSpokenPerMinute"
+                }
+            }
         },
         protoTree: {
-            wordsSpokenPerMinute: {
-                decorators: {
-                    type: "fluid",
-                    func: "gpii.textfieldStepper",
-                    options: {
-                        gradeNames: "fluid.prefs.modelRelay",
-                        sourceApplier: "{that}.applier",
-                        rules: {
-                            "value": "value"
-                        },
-                        model: {
-                            value: "{that}.model.value"
-                        },
-                        range: "{that}.options.controlValues.wordsSpokenPerMinute"
-                    }
-                }
-            },
-            wordsSpokenPerMinuteLabel: {messagekey: "wordsSpokenPerMinuteLabel"},
-            wordsSpokenPerMinuteMinus: {messagekey: "stepperMinus"},
-            wordsSpokenPerMinutePlus: {messagekey: "stepperPlus"}
+            wordsSpokenPerMinuteLabel: {messagekey: "wordsSpokenPerMinuteLabel"}
         }
     });
+
 
     fluid.defaults("gpii.adjuster.volume", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
@@ -77,31 +75,29 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
-            volume: ".gpiic-volume",
-            volumeLabel: ".gpiic-volume-label",
-            volumeMinus: ".gpiic-volume-minus",
-            volumePlus: ".gpiic-volume-plus"
+            volumeLabel: ".gpiic-speakText-volume-label",
+            volume: ".gpiic-speakText-volume-stepper"
+        },
+        selectorsToIgnore: ["volume"],
+        components: {
+            textfieldStepper: {
+                type: "gpii.adjuster.textfieldStepper",
+                container: "{that}.dom.volume",
+                createOnEvent: "afterRender",
+                options: {
+                    sourceApplier: "{volume}.applier",
+                    rules: {
+                        "value": "value"
+                    },
+                    model: {
+                        value: "{volume}.model.value"
+                    },
+                    range: "{volume}.options.controlValues.volume"
+                }
+            }
         },
         protoTree: {
-            volume: {
-                decorators: {
-                    type: "fluid",
-                    func: "gpii.textfieldStepper",
-                    options: {
-                        sourceApplier: "{that}.applier",
-                        rules: {
-                            "value": "value"
-                        },
-                        model: {
-                            value: "{that}.model.value"
-                        },
-                        range: "{that}.options.controlValues.volume"
-                    }
-                }
-            },
-            volumeLabel: {messagekey: "volumeLabel"},
-            volumeMinus: {messagekey: "stepperMinus"},
-            volumePlus: {messagekey: "stepperPlus"}
+            volumeLabel: {messagekey: "volumeLabel"}
         }
     });
 
@@ -143,7 +139,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("gpii.adjuster.universalVolume", {
+/*    fluid.defaults("gpii.adjuster.universalVolume", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.universalVolume": {
@@ -179,6 +175,44 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             universalVolumeLabel: {messagekey: "universalVolumeLabel"},
             universalVolumeMinus: {messagekey: "stepperMinus"},
             universalVolumePlus: {messagekey: "stepperPlus"},
+            universalVolumeDescription: {messagekey: "universalVolumeDescription"}
+        }
+    });*/
+
+    fluid.defaults("gpii.adjuster.universalVolume", {
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        preferenceMap: {
+            "gpii.primarySchema.universalVolume": {
+                "model.value": "default",
+                "controlValues.universalVolume.min": "minimum",
+                "controlValues.universalVolume.step": "divisibleBy"
+            }
+        },
+        selectors: {
+            universalVolumeLabel: ".gpiic-speakText-universalVolume-label",
+            universalVolume: ".gpiic-speakText-universalVolume-stepper",
+            universalVolumeDescription: ".gpiic-universalVolume-description"
+        },
+        selectorsToIgnore: ["universalVolume"],
+        components: {
+            textfieldStepper: {
+                type: "gpii.adjuster.textfieldStepper",
+                container: "{that}.dom.universalVolume",
+                createOnEvent: "afterRender",
+                options: {
+                    sourceApplier: "{universalVolume}.applier",
+                    rules: {
+                        "value": "value"
+                    },
+                    model: {
+                        value: "{universalVolume}.model.value"
+                    },
+                    range: "{universalVolume}.options.controlValues.universalVolume"
+                }
+            }
+        },
+        protoTree: {
+            universalVolumeLabel: {messagekey: "universalVolumeLabel"},
             universalVolumeDescription: {messagekey: "universalVolumeDescription"}
         }
     });

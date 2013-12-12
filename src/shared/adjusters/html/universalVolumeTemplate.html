@@ -1,9 +1,15 @@
 <div class="gpii-adjusters">
-    <div class="gpiic-universalVolume">
-        <label class="gpiic-universalVolume-label gpii-label"></label><br>
-        <div class="gpiic-universalVolume-description gpii-description"></div>
-        <label class="gpii-textfieldStepper-decrement gpiic-universalVolume-minus stepperMinus"></label>
-        <input type="text" class="gpii-textfieldStepper-field fl-inputs stepper"/>
-        <label class="gpii-textfieldStepper-increment gpiic-universalVolume-plus stepperPlus"></label>
+    <div class="gpii-partially-expanded">
+        <div class="gpii-universalVolume-element">
+            <div class="gpiic-universalVolume">
+                <label class="gpiic-speakText-universalVolume-label gpii-speakText-label"></label><br>
+                <div class="gpiic-universalVolume-description gpii-description"></div>
+                <div class="gpiic-speakText-universalVolume-stepper gpii-speakText-universalVolume-stepper">
+                    <label class="gpiic-textfieldStepper-decrement stepperMinus" id="universalVolumeMinus"></label>
+                    <input type="text" class="gpiic-textfieldStepper-valueField gpii-textfieldStepper-valueField stepper fl-inputs" />
+                    <label class="gpiic-textfieldStepper-increment stepperPlus" id="universalVolumePlus"></label>
+                </div>
+            </div>
+        </div><br>
     </div>
 </div>
