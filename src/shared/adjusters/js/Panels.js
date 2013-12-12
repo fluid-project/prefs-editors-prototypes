@@ -101,44 +101,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    // fluid.defaults("gpii.adjuster.voicePitch", {
-    //     gradeNames: ["fluid.prefs.panel", "autoInit"],
-    //     preferenceMap: {
-    //         "gpii.primarySchema.voicePitch": {
-    //             "model.value": "default",
-    //             "controlValues.voicePitch.min": "minimum",
-    //             "controlValues.voicePitch.step": "divisibleBy"
-    //         }
-    //     },
-    //     selectors: {
-    //         voicePitch: ".gpiic-voicePitch",
-    //         voicePitchLabel: ".gpiic-voicePitch-label",
-    //         voicePitchMinus: ".gpiic-voicePitch-minus",
-    //         voicePitchPlus: ".gpiic-voicePitch-plus"
-    //     },
-    //     protoTree: {
-    //         voicePitch: {
-    //             decorators: {
-    //                 type: "fluid",
-    //                 func: "gpii.textfieldStepper",
-    //                 options: {
-    //                     sourceApplier: "{that}.applier",
-    //                     rules: {
-    //                         "value": "value"
-    //                     },
-    //                     model: {
-    //                         value: "{that}.model.value"
-    //                     },
-    //                     range: "{that}.options.controlValues.voicePitch"
-    //                 }
-    //             }
-    //         },
-    //         voicePitchLabel: {messagekey: "voicePitchLabel"},
-    //         voicePitchMinus: {messagekey: "stepperMinus"},
-    //         voicePitchPlus: {messagekey: "stepperPlus"}
-    //     }
-    // });
-
     fluid.defaults("gpii.adjuster.voicePitch", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
