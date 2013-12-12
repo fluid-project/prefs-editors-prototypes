@@ -365,30 +365,30 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("gpii.adjuster.moreLess", {
+    fluid.defaults("gpii.adjuster.visualAlternativesMoreLess", {
         gradeNames: ["fluid.prefs.panel", "fluid.prefs.stringBundle", "autoInit"],
         members: {
             messageResolver: "{prefsEditorLoader}.msgBundle"
         },
         preferenceMap: {
-            "gpii.primarySchema.moreLess": {
-                "model.moreLess": "default"
+            "gpii.primarySchema.visualAlternativesMoreLess": {
+                "model.visualAlternativesMoreLess": "default"
             }
         },
         selectors: {
-            moreLess: ".gpiic-moreLess",
-            moreLessLabel: ".gpiic-moreLess-label",
-            moreLessIcon: ".moreOptionsIcon",
+            visualAlternativesMoreLess: ".gpiic-visualAlternativesMoreLess",
+            visualAlternativesMoreLessLabel: ".gpiic-visualAlternativesMoreLess-label",
+            visualAlternativesMoreLessIcon: ".visualAlternativesMoreLessIcon",
         },
-        selectorsToIgnore: ["moreLessIcon"],
+        selectorsToIgnore: ["visualAlternativesMoreLessIcon"],
         protoTree: {
-            moreLess: "${moreLess}",
+            visualAlternativesMoreLess: "${visualAlternativesMoreLess}",
             expander: {
                 type: "fluid.renderer.condition",
-                condition: "${{that}.model.moreLess}",
+                condition: "${{that}.model.visualAlternativesMoreLess}",
                 trueTree: {
-                    moreLessLabel: {messagekey: "lessText"},
-                    moreLessIcon: {
+                    visualAlternativesMoreLessLabel: {messagekey: "lessText"},
+                    visualAlternativesMoreLessIcon: {
                         decorators: [{
                             type: "addClass",
                             classes: "${{that}.options.styles.moreIcon}"
@@ -396,8 +396,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     }
                 },
                 falseTree: {
-                    moreLessLabel: {messagekey: "moreText"},
-                    moreLessIcon: {
+                    visualAlternativesMoreLessLabel: {messagekey: "moreText"},
+                    visualAlternativesMoreLessIcon: {
                         decorators: [{
                             type: "addClass",
                             classes: "${{that}.options.styles.lessIcon}"
@@ -409,26 +409,26 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         listeners: {
             "onCreate.addListener": {
                 "listener": "{that}.applier.modelChanged.addListener",
-                "args": ["moreLess", "{that}.toggleMoreLess"]
+                "args": ["visualAlternativesMoreLess", "{that}.toggleVisualAlternativesMoreLess"]
             },
             "afterRender.addMoreIconClass": {
-                "this": "{that}.dom.moreLessIcon",
+                "this": "{that}.dom.visualAlternativesMoreLessIcon",
                 "method": "addClass",
                 "args": ["{that}.options.styles.moreIcon"]
             }
         },
         styles: {
-            moreIcon: "gpii-moreOptionsIcon-more",
-            lessIcon: "gpii-moreOptionsIcon-less"
+            moreIcon: "gpii-visualAlternativesMoreLessIcon-more",
+            lessIcon: "gpii-visualAlternativesMoreLessIcon-less"
         },
         invokers: {
-            toggleMoreLess: {
-                "funcName": "gpii.moreLessConfiguration",
-                "args": ["{that}.model.moreLess",
-                         "{that}.dom.moreLessLabel",
+            toggleVisualAlternativesMoreLess: {
+                "funcName": "gpii.visualAlternativesMoreLessConfiguration",
+                "args": ["{that}.model.visualAlternativesMoreLess",
+                         "{that}.dom.visualAlternativesMoreLessLabel",
                          "{that}.stringBundle.moreText",
                          "{that}.stringBundle.lessText",
-                         "{that}.dom.moreLessIcon",
+                         "{that}.dom.visualAlternativesMoreLessIcon",
                          "{that}.options.styles.moreIcon",
                          "{that}.options.styles.lessIcon"
                     ],
@@ -437,7 +437,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.moreLessConfiguration = function (modelValue, label, more, less, icon, moreIcon, lessIcon) {
+    gpii.visualAlternativesMoreLessConfiguration = function (modelValue, label, more, less, icon, moreIcon, lessIcon) {
         var newText = modelValue ? less : more;
         var newIcon = modelValue ? lessIcon : moreIcon;
         var oldIcon = modelValue ? moreIcon : lessIcon;

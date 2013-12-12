@@ -23,29 +23,29 @@
 }
 
 @font-face {
-    font-family: 'moreLessArrows';
+    font-family: 'visualAlternativesMoreLessArrows';
     src: url('../fonts/arrows.ttf') format('truetype'),
          url('../fonts/arrows.eot');
 }
 
-.gpii-moreLess {
+.gpii-visualAlternativesMoreLess {
     margin-left: 85px;
     padding-top: 10px;
 }
 
-.gpii-moreLess-label {
+.gpii-visualAlternativesMoreLess-label {
     cursor: pointer;
 }
 
-.moreOptionsIcon {
-    font-family: 'moreLessArrows'
+.visualAlternativesMoreLessIcon {
+    font-family: 'visualAlternativesMoreLessArrows'
 }
 
-.gpii-moreOptionsIcon-more:before {
+.gpii-visualAlternativesMoreLessIcon-more:before {
     content: "\e601";
 }
 
-.gpii-moreOptionsIcon-less:before {
+.gpii-visualAlternativesMoreLessIcon-less:before {
     content: "\e600";
 }
 

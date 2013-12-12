@@ -48,8 +48,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 foldExpandedViewWhenOff: {
                     "funcName": "gpii.foldExpandedViewWhenOff",
                     "args": ["{that}.applier",
-                             "{that}.model.gpii_primarySchema_moreLess",
-                             "gpii_primarySchema_moreLess"
+                             "{that}.model.gpii_primarySchema_visualAlternativesMoreLess",
+                             "gpii_primarySchema_visualAlternativesMoreLess"
                         ],
                     "dynamic": true
                 },

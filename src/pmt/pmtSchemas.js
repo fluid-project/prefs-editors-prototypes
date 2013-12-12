@@ -76,7 +76,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "boolean",
             "default": false
         },
-        "gpii.primarySchema.moreLess": {
+        "gpii.primarySchema.visualAlternativesMoreLess": {
             "type": "boolean",
             "default": false
         },
@@ -200,13 +200,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
 
-        "moreLess": {
-            "type": "gpii.primarySchema.moreLess",
+        "visualAlternativesMoreLess": {
+            "type": "gpii.primarySchema.visualAlternativesMoreLess",
             "panel": {
-                "type": "gpii.adjuster.moreLess",
-                "template": "%prefix/moreLessTemplate.html",
+                "type": "gpii.adjuster.visualAlternativesMoreLess",
+                "template": "%prefix/visualAlternativesMoreLessTemplate.html",
                 "message": "%prefix/message.json",
-                "container": ".moreLess"
+                "container": ".visualAlternativesMoreLess"
             }
         },
 
@@ -249,9 +249,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "panels": {
                     "always": ["speakText", "screenReaderBrailleOutput"],
                     "gpii.primarySchema.speakText": [
-                        "wordsSpokenPerMinute", "volume", "moreLess"
+                        "wordsSpokenPerMinute", "volume", "visualAlternativesMoreLess"
                     ],
-                    "gpii.primarySchema.moreLess": [
+                    "gpii.primarySchema.visualAlternativesMoreLess": [
                         "voicePitch", "screenReaderLanguage", "punctuationVerbosity", "announceCapitals", "speakTutorialMessages", "keyEcho", "wordEcho"
                     ]
                 }
