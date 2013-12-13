@@ -29,8 +29,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             iconCheckStyle: {
                 "this": "{that}.dom.iconCheckAdjusterIcon",
                 "method": "addClass",
-                "args": ["{that}.options.class"],
-                dynamic: true
+                "args": ["{that}.options.class"]
             }
         }
     });
