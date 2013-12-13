@@ -1071,8 +1071,8 @@ input:checked + label > span > span > .gpii-iconCheckAdjusterCheckIcon:before {
     Style for onOffSwitch adjuster
 */
 .gpii-onOffSwitch-container {
-    display: inline-block;
-    width: 100%;
+    //display: inline-block;
+    //width: 100%;
     padding-bottom: 30px;
 }
 
