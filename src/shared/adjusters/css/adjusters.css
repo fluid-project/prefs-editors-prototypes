@@ -304,7 +304,7 @@ input[type=checkbox], input[type=radio] {
 .gpii-increaseSize-magnifierPositionContainer {
     display: inline-block;
     width: 100% !important;
-    max-width: 21em; /* Do not allow more than 3 selections in a row */
+    //max-width: 21em; /* Do not allow more than 3 selections in a row */
     margin-top: 20px;
 }
 
@@ -1038,19 +1038,24 @@ input:checked + label > span > span > .gpii-iconCheckAdjusterCheckIcon:before {
 }
 
 .fl-prefsEditor .fl-choice .fl-indicator {
-    height: auto;
+    //height: auto;
+    //min-height: 2em !important;
+    //min-width: 2em !important;
 }
 
 .gpii-contrastThemeIndicator {
-	display: table-cell;
-	vertical-align: middle !important;
+	//display: table-cell;
+	//vertical-align: middle !important;
     //margin: 5% 0 0 !important;
     //float: right;
+    display: inline-block;
+    height: 100% !important;
+    margin: 0 !important;
     background-color: transparent !important;
-    width: 10%;
-    transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    -webkit-transform: rotate(90deg);
+    //width: 10%;
+    transform: rotate(90deg) translateY(1em);
+    -ms-transform: rotate(90deg) translateY(1em);
+    -webkit-transform: rotate(90deg) translateY(1em);
 }
 
 .gpii-prefsEditor-themeRow {
