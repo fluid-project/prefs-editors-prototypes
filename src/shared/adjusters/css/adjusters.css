@@ -36,7 +36,7 @@
 body {
     transform-origin: 0 0 0;
     -webkit-transform-origin: 0 0 0;
-    margin:20px;
+    //margin:20px;
 }
 
 .gpii-prefsEditor-preferenceGroup {
@@ -193,22 +193,26 @@ input[type=checkbox], input[type=radio] {
     content: "\e000";
 }
 .gpii-increaseSize-iconSmallCursor {
+	display: table-cell;
+    float: none;
+    vertical-align: middle !important;
     width: 1em;
-    text-align: right;
-    padding-top: 0.25em;
+    //text-align: right;
+    //padding-top: 0.25em;
 }
 .gpii-increaseSize-iconBigCursor {
+	float: right;
     width: 1em;
-    margin-top: -0.5em !important;
+    //margin-top: -0.5em !important;
 }
 
 /*
     The slider's style
 */
 .gpii-prefsEditor .gpii-prefsEditor-slider-horz {
-    width: calc(100% - 3em) !important; /* this conflicts with frames.css .ui-corner-all */
-    margin: 2px !important;
-    margin-bottom: 0.7em !important;
+    width: calc(100% - 2em - 2px) !important;
+    margin: 0.5em 0 0 !important;
+    //margin-bottom: 0.7em !important;
 }
 
 .gpii-prefsEditor .gpii-prefsEditor-slider a {
@@ -219,6 +223,11 @@ input[type=checkbox], input[type=radio] {
 
 .gpii-prefsEditor .ui-slider-range {
     background-color: #17a9b8;
+}
+
+.gpii-increaseSize-cursor-size-slider-container {
+	display: inline-table !important;
+	width: 100% !important;
 }
 
 /*
