@@ -277,7 +277,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             style: {
                 funcName: "gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle",
                 args: [
-                    "{that}.dom.punctuationVerbosityOptionLabel",
+                    ".gpiic-speakText-punctuationVerbosity-option-label",
                     "{that}.options.controlValues.punctuationVerbosity",
                     "{that}.options.classnameMap.punctuationVerbosity"
                 ],
@@ -286,8 +286,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle = function (labels, values, classes) {
-        labels = $(".gpiic-speakText-punctuationVerbosity-option-label"); // WARNING! labels is [] when passed to the function.
+    gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle = function (labelsClass, values, classes) {
+        labels = $(labelsClass); // Used because "{that}.dom.punctuationVerbosityOptionLabel" 
+                                 // (like that.locate("punctuationVerbosityOptionLabel")) fails to return
+                                 // the array of labels.
 
         fluid.each(labels, function (label, index) {
             $(label).addClass(classes[values[index]]);

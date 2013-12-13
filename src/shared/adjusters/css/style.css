@@ -74,10 +74,6 @@
     font-size: 15px !important;
 }
 
-.gpii-volume-element {
-    position: relative;
-}
-
 .gpii-stepper {
     text-align: center;
     border: none;
@@ -86,11 +82,11 @@
     display: inline;
 }
 
-.stepperMinus {
+.gpii-stepperMinus {
     font-size: 50px !important;
 }
 
-.stepperPlus {
+.gpii-stepperPlus {
     font-size: 30px !important;
     font-weight: bold;
 }
@@ -109,19 +105,11 @@ textarea:focus, input:focus {
     padding-bottom: 15px;
 }
 
-.gpii-punctuationVerbosity {
-    padding-bottom: 15px;
-}
-
 #gpii-screenReaderOnOff {
-    font-size:70%;
-    float:left;
     margin-left:37px;
 }
 
 #gpii-brailleOnOff {
-    font-size:70%;
-    float:left;
     margin-left:87px;
 }
 
@@ -282,23 +270,11 @@ input[type=checkbox] {
     border:0;
 }
 
-input[type=checkbox] + label.gpii-checkboxLabel {
+input[type=checkbox] + label.gpii-checkbox-label {
     font-family: 'Open Sans', sans-serif;
 }
 
-.presetButton-icon {
-    font-family: 'presetButton';
-    font-size: 600%!important;
-    position: absolute;
-    color: #566374;
-    z-index: 1;
-}
-
-.presetButton-icon:before {
-    content: "\e00d";
-}
-
-.main-icon:before {
+.gpii-header-icon:before {
     font-family: 'allIcons';
     position: absolute;
     z-index: 4;
@@ -308,37 +284,19 @@ input[type=checkbox] + label.gpii-checkboxLabel {
     color: white;
 }
 
-.visualAlternatives-main-icon:before {
+.visualAlternatives-header-icon:before {
     content: "\e004";
 }
 
-.volume-main-icon:before {
+.volume-header-icon:before {
     content: "\e00e";
 }
 
-.language-main-icon:before {
+.language-header-icon:before {
     content: "\e010";
 }
 
-.white-tick-icon {
-    display: none;
-    font-family: 'headerGear';
-}
-
-.white-tick-icon:before {
-    content: "\e00a";
-    position: absolute;
-    z-index: 3;
-    margin-top: 53px;
-    margin-left: 288px;
-    font-size: 20px;
-    color: #566374;
-    border: 4px solid white;
-    border-radius: 100%;
-    background-color: white;
-}
-
-label.preset-button-label {
+label.gpii-preset-button-label {
     z-index: 2;
     position: absolute;
     padding-left: 90px;
@@ -351,15 +309,15 @@ label.preset-button-label {
     font-size: 1.3em;
 }
 
-input[type=checkbox] + label.gpii-checkboxLabel {
+input[type=checkbox] + label.gpii-checkbox-label {
     margin-left: 25px;
     text-indent: -1.2em;
     font-family: 'checkboxTick';
     display: inline-block;
-    width: 250px;
+    width: 228px;
 }
 
-input[type=checkbox] + label.gpii-checkboxLabel:before {
+input[type=checkbox] + label.gpii-checkbox-label:before {
     content: "\e00a";
     color: transparent;
     border: 1px solid #556273;
@@ -368,24 +326,20 @@ input[type=checkbox] + label.gpii-checkboxLabel:before {
     font-size: 75%;
 }
 
-input[type=checkbox]:checked + label.gpii-checkboxLabel {
+input[type=checkbox]:checked + label.gpii-checkbox-label {
     font-family: 'checkboxTick';
 }
 
-input[type=checkbox]:checked + label.gpii-checkboxLabel:before {
+input[type=checkbox]:checked + label.gpii-checkbox-label:before {
     content: "\e00a";
     color: white;
     background-color: #556273;
 }
 
-.gpii-checkboxSpan {
+.gpii-checkbox-label-text {
     font-family: 'Open Sans', sans-serif;
     font-size: 75%;
     padding-left: 5px;
-}
-
-.gpiic-moreOptionsLabel {
-    cursor: pointer;
 }
 
 body {
@@ -473,6 +427,11 @@ body {
     transition-property: padding-left, width, background-color, margin-left;
     font-size: 1.1em;
     font-weight: 700;
+}
+
+.fl-prefsEditor .fl-prefsEditor-onoff {
+    font-size:70%;
+    float:left;
 }
 
 .fl-prefsEditor .fl-prefsEditor-onoff input {
