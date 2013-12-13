@@ -1007,6 +1007,7 @@ input:checked + label > span > span > .gpii-iconCheckAdjusterCheckIcon:before {
     Style for contrastTheme adjuster
 */
 .gpii-contrastThemeLabel {
+	display: table-cell !important;
     font-size: 1.5em !important;
     border: 2px solid #000000 !important;
     border-radius: 0 !important;
@@ -1018,6 +1019,11 @@ input:checked + label > span > span > .gpii-iconCheckAdjusterCheckIcon:before {
     text-align: left !important;
 }
 
+.gpii-contrastThemeLabel > span {
+	display: table-cell;
+	vertical-align: middle;
+}
+
 .fl-prefsEditor .fl-choice label {
     line-height: 1.5em !important;
 }
@@ -1027,17 +1033,21 @@ input:checked + label > span > span > .gpii-iconCheckAdjusterCheckIcon:before {
 }
 
 .gpii-contrastThemeIndicator {
-    margin: 5% 0 0 !important;
-    float: right;
-    width: 0;
+	display: table-cell;
+	vertical-align: middle !important;
+    //margin: 5% 0 0 !important;
+    //float: right;
+    background-color: transparent !important;
+    width: 10%;
     transform: rotate(90deg);
     -ms-transform: rotate(90deg);
     -webkit-transform: rotate(90deg);
 }
 
 .gpii-prefsEditor-themeRow {
-	display: block !important;
+	display: table !important;
     float: none !important;
+    width: 100% !important;
 }
 
 .fl-prefsEditor .fl-icon-indicator:before, .fl-prefsEditor .fl-choice input:checked + label + span:before {
