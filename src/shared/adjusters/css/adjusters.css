@@ -41,7 +41,7 @@ body {
 
 .gpii-prefsEditor-preferenceGroup {
     background:#e7f1ef;
-    width: 340px;
+    //width: 340px;
 }
 
 .gpii-prefsEditor-category {
@@ -269,7 +269,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-prefsEditor-category {
-    display: inline-block;
+    //display: inline-block;
 }
 
 .gpii-prefsEditor-category-hidden {
@@ -292,6 +292,7 @@ input[type=checkbox], input[type=radio] {
 .gpii-increaseSize-magnifierPositionContainer {
     display: inline-block;
     width: 100% !important;
+    max-width: 21em; /* Do not allow more than 3 selections in a row */
     margin-top: 20px;
 }
 
@@ -1032,6 +1033,7 @@ input:checked + label > span > span > .gpii-iconCheckAdjusterCheckIcon:before {
 }
 
 .gpii-prefsEditor-themeRow {
+	display: block !important;
     float: none !important;
 }
 
