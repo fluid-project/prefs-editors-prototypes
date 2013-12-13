@@ -55,8 +55,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.options.markup.followingElementLabel", "{that}.options.controlValues.followingElement",
                     "{that}.options.classnameMap.followingElement",
                     "{that}.options.controlValues.followingElementBorder", "{that}.options.classnameMap.followingElementBorder"
-                ],
-                dynamic: true
+                ]
             }
         }
     });

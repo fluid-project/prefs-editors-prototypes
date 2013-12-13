@@ -74,8 +74,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 funcName: "gpii.adjuster.magnifierPosition.style",
                 args: ["{that}.dom.magnifierPositionLabel", "{that}.options.strings.magnifierPosition",
                     "{that}.options.markup.magnifierPositionLabel", "{that}.options.controlValues.magnifierPosition",
-                    "{that}.options.classnameMap.magnifierPosition", "{that}"],
-                dynamic: true
+                    "{that}.options.classnameMap.magnifierPosition", "{that}"]
             }
         }
     });
