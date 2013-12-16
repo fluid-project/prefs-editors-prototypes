@@ -16,7 +16,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
     
     fluid.defaults("gpii.adjuster.magnifierEnabled", {
-        gradeNames: ["gpii.adjuster.onOffSwitch", "autoInit"],
+        gradeNames: ["gpii.adjuster.onOffSwitch", "gpii.panel.expandingAdjusters", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.magnifierEnabled": {
                 "model.value": "default"
@@ -25,6 +25,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         protoTree: {
             headingLabel: {messagekey: "magnifierLabel"},
             valueCheckbox: "${value}"
+        },
+        selectors: {
+            expandingAdjusters: function () {return ".gpiic-magnifier-hidden"},
+            moreLess: function () {return ".gpiic-magnifier-category"}
+        },
+        // propagate "model.value" to "moreLessEnabledSwitch"
+        modelListeners: {
+            "value": {
+                "this": "{that}.applier",
+                "method": "requestChange",
+                "args": ["moreLessEnabledSwitch", "{change}.value"]
+            }
         }
     });
 })(jQuery, fluid);

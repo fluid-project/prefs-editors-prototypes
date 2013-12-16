@@ -17,34 +17,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
 
     fluid.defaults("gpii.panel.increaseSizePMT", {
-        gradeNames: ["gpii.panel.increaseSizePCP", "gpii.panel.expandingAdjusters", "autoInit"],
-        model: {
-            moreLessEnabledSwitch: false
-        },
+        gradeNames: ["gpii.panel.increaseSizePCP", "autoInit"],
         protoTree: {
             increaseSizeHeader: {messagekey: "increaseSizeHeader"},
             appearanceHeading: {messagekey: "appearance"},
-            magnifierHeading:  {messagekey: "magnifier"},
-            // duplicate entry in protoTree; it does not merge.
-            preferenceSwitchExpanding: "${expandingAdjustersEnabledSwitch}"
-        },
-        selectors: {
-            preferenceSwitchExpanding: ".gpiic-magnifier-preferenceSwitchExtra",
-            expandingAdjusters: ".gpiic-magnifier-hidden",
-            moreLess: ".gpiic-magnifier-category"
-        },
-        invokers: {
-            // override this invoker to use the "magnifierEnabled" model value
-            toggleMoreLessInstant: {
-                "funcName": "gpii.panel.expandingAdjusters.toggleMoreLess",
-                "args": [
-                    "{that}.model.gpii_primarySchema_magnifierEnabled",
-                    "{that}.events.onShowMoreLess.fire",
-                    "{that}.events.onHideMoreLess.fire",
-                    0
-                ],
-                dynamic: true
-            }
+            magnifierHeading:  {messagekey: "magnifier"}
         }
     });
 })(jQuery, fluid);
