@@ -277,13 +277,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             style: {
                 funcName: "gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle",
                 args: [
-                    ".gpiic-speakText-punctuationVerbosity-option-label",
+                    "{that}.options.selectors.punctuationVerbosityOptionLabel",
                     "{that}.options.controlValues.punctuationVerbosity",
                     "{that}.options.classnameMap.punctuationVerbosity"
-                ],
-                "dynamic": true
+                ]
             }
         }
+
     });
 
     gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle = function (labelsClass, values, classes) {
