@@ -39,11 +39,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         markup: {
             followingElementLabel:  
-                    "<span class='gpiic-iconCheckAdjusterIcon gpii-iconCheckAdjusterIcon gpii-prefsEditor-adjusterIcons'></span>" +
+                    "<span class='gpiic-iconCheckAdjusterIcon gpii-prefsEditor-adjusterIcons'></span>" +
                     "<span class='gpii-iconCheckAdjusterContainer'>" +
                     "   <span class='gpiic-iconCheckAdjusterDescription gpii-iconCheckAdjusterDescription gpii-table-cell-valign-label'>%followingElement</span>" +
                     "   <span class='gpii-table-cell-valign-label'>" +
-                    "       <span class='gpii-prefsEditor-adjusterIcons gpii-prefsEditor-adjusterIcons-sept-12 gpii-iconCheckAdjusterCheckIcon'></span>" +
+                    "       <span class='gpii-prefsEditor-adjusterIcons gpii-iconCheckAdjusterCheckIcon'></span>" +
                     "   </span>" +
                     "</span>"
         },

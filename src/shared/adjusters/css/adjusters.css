@@ -1,7 +1,7 @@
 /*
     Font icons
 */
-@font-face {
+/* @font-face {
     font-family: 'icons-no-frames-aug-29';
     src:url('../fonts/icons-no-frames-aug-29.ttf') format('truetype');
     font-weight: normal;
@@ -27,7 +27,19 @@
     src:url('../fonts/icomoonPMT.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
+} */
+@font-face {
+	font-family: 'C4Aicons';
+	src:url('../fonts/C4Aicons.eot');
+	src:url('../fonts/C4Aicons.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/C4Aicons.ttf') format('truetype'),
+		url('../fonts/C4Aicons.woff') format('woff'),
+		url('../fonts/C4Aicons.svg#C4Aicons') format('svg');
+	font-weight: normal;
+	font-style: normal;
 }
+
+
 
 /*
     General preferences styling
@@ -101,7 +113,7 @@ h2 > label {
 }
 
 .gpii-prefsEditor-headerImageTick:before {
-    content: "\e00a" !important;
+    content: "\e60a";
 }
 
 input[type=checkbox] + .gpii-prefsEditor-headerImage > .gpii-prefsEditor-headerImageTick{
@@ -113,11 +125,11 @@ input[type=checkbox]:checked + .gpii-prefsEditor-headerImage > .gpii-prefsEditor
 }
 
 .gpii-prefsEditor-increaseSizePanel > .gpii-prefsEditor-headerImage:before {
-    content: "\e003";
+    content: "\e613";
 }
 
 .gpii-prefsEditor-contrastPanel > .gpii-prefsEditor-headerImage:before {
-    content: "\e002";
+    content: "\e60e";
 }
 
 .gpii-prefsEditor-headerTitle {
@@ -150,7 +162,7 @@ input[type=checkbox], input[type=radio] {
 */
 .gpii-prefsEditor-adjusterIcons {
     float: left;
-    font-family: 'icons-no-frames-aug-29';
+    font-family: 'C4Aicons';
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -158,23 +170,24 @@ input[type=checkbox], input[type=radio] {
     text-transform: none;
     line-height: 1;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-.gpii-prefsEditor-adjusterIconsAdditional > .gpii-increaseSize-magnifierPositionIconMain {
-    font-family: 'font-icons-sept-3';
+/* .gpii-prefsEditor-adjusterIconsAdditional > .gpii-increaseSize-magnifierPositionIconMain {
+    font-family: 'C4Aicons';
     margin-top: 0em;
-}
+} */
 
 /*
     The cursor size font icons
 */
 .gpii-increaseSize-iconSmallCursor:before {
     font-size: 0.8em !important;
-    content: "\e000";
+    content: "\e612";
 }
 .gpii-increaseSize-iconBigCursor:before {
     font-size: 1.9em !important;
-    content: "\e000";
+    content: "\e612";
 }
 .gpii-increaseSize-iconSmallCursor {
 	display: table-cell;
@@ -317,16 +330,16 @@ input[type=checkbox], input[type=radio] {
 
 .gpii-increaseSize-magnifierPositionBackground:before {
     font-size: 4.8em !important;
-    content: "\e00b" !important;
+    //content: "\e00b" !important;
 }
     
 .gpii-increaseSize-magnifierPositionFullscreen > .gpii-increaseSize-magnifierPositionFrame:before {
     font-size: 5em !important;
-    content: "\e008" !important;
+    content: "\e601" !important;
 }
 
 .gpii-increaseSize-magnifierPositionLens > .gpii-increaseSize-magnifierPositionIcon:before {
-    content: "\e00a";
+    content: "\e61e";
 } 
 
 .gpii-increaseSize-magnifierPositionFullscreen > .gpii-increaseSize-magnifierPositionIconMain {
@@ -337,35 +350,35 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-increaseSize-magnifierPositionFullscreen > .gpii-increaseSize-magnifierPositionIconMain:before {
-    content: "\e009";
+    content: "\e601";
     font-size: 4.7em !important;
     color: #00a9bd;
 }
 
 .gpii-increaseSize-magnifierPositionTop > .gpii-increaseSize-magnifierPositionIconMain:before {
-    content: "\e001";
+    content: "\e607";
 }
 
 .gpii-increaseSize-magnifierPositionBottom > .gpii-increaseSize-magnifierPositionIconMain:before {
-    content: "\e004";
+    content: "\e61c";
 }
 
 .gpii-increaseSize-magnifierPositionLeft > .gpii-increaseSize-magnifierPositionIconMain:before {
-    content: "\e003";
+    content: "\e603";
 }
 
 .gpii-increaseSize-magnifierPositionRight > .gpii-increaseSize-magnifierPositionIconMain:before {
-    content: "\e002";
+    content: "\e605";
 }
 
 /*
     Style for magnifier position indicator
 */
 .gpii-prefsEditor .gpii-prefsEditor-choice input:checked + div:before {
-    content: "\e007";
+    content: "\e608";
 }
 .gpii-prefsEditor .gpii-prefsEditor-choice .gpii-prefsEditor-indicator {
-    font-family: 'icons-no-frames-aug-29' !important;
+    font-family: 'C4Aicons' !important;
     font-size: 0.8em;
     color: #636c7c;
     position: relative;
@@ -400,15 +413,15 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-increaseSize-magnifierFollowsMouseCursor > .gpii-increaseSize-magnifierFollowsIcon:before {
-    content: "\e007";
+    content: "\e612";
 }
 
 .gpii-increaseSize-magnifierFollowsTextCursor > .gpii-increaseSize-magnifierFollowsIcon:before {
-    content: "\e000";
+    content: "\e619";
 }
 
 .gpii-increaseSize-magnifierFollowsKeyboardFocus > .gpii-increaseSize-magnifierFollowsIcon:before {
-    content: "\e008";
+    content: "\e618";
 }
 
 /*
@@ -465,7 +478,7 @@ input[type=checkbox], input[type=radio] {
     position: relative;
     z-index: 2;
     background-color: transparent !important;
-    content: "\e00c";
+    content: "\e611";
 }
 
 .gpii-prefsEditor-previewPerSettingEyeBackground {
@@ -513,26 +526,22 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-prefsEditor-previewPerSettingCursor1:before {
-    content: "\e006";
+    content: "\e612";
 }
 
 .gpii-prefsEditor-previewPerSettingCursor2:before {
-    content: "\e005";
+    content: "\e616";
 }
 
 .gpii-prefsEditor-previewPerSettingCursor3:before {
-    content: "\e001";
+    content: "\e61b";
 }
 
 /*
     Style for "Add to my preferences" star font icon
 */
-.gpii-prefsEditor-adjusterIconsAdditional {
-    font-family: 'font-icons-sept-3';
-}
-
 .gpii-prefsEditor-addToMyPreferencesStar:before {
-    content: "\e000";
+    content: "\e617";
 }
 
 .gpii-prefsEditor-addToMyPreferencesStar {
@@ -871,22 +880,22 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
 /*
     Style for sept-12 font icons
 */
-.gpii-prefsEditor-adjusterIcons-sept-12 {
-    font-family: 'sept-12';
-}
+/* .gpii-prefsEditor-adjusterIcons-sept-12 {
+    font-family: 'C4Aicons';
+} */
 
 /*
     Style for iconCheck adjuster
 */
-.gpii-iconCheckAdjusterIcon {
-    font-family: 'icomoon';
-}
+/* .gpii-iconCheckAdjusterIcon {
+    font-family: 'C4Aicons';
+} */
 
 /*
     Style for magnifier.invertColours adjuster
 */
 .gpii-iconCheck-magnifierInvertColours:before {
-    content: "\e002";
+    content: "\e60e";
     font-size: 70px !important;
 }
 
@@ -913,7 +922,7 @@ input:checked + label > span > span > .gpii-iconCheckAdjusterCheckIcon {
 input:checked + label > .gpii-iconCheckAdjusterCheckIcon:before,
 input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before,
 input:checked + label > span > span > .gpii-iconCheckAdjusterCheckIcon:before {
-    content: "\e00a";
+    content: "\e60a";
 }
 
 .gpii-iconCheckAdjusterArea {
@@ -944,16 +953,16 @@ input:checked + label > span > span > .gpii-iconCheckAdjusterCheckIcon:before {
 /*
     Style for icomoon font icons
 */
-.gpii-prefsEditor-adjusterIcons-icomoon {
-    font-family: 'icomoon';
-}
+/* .gpii-prefsEditor-adjusterIcons-icomoon {
+    font-family: 'C4Aicons';
+} */
 
 /*
     Style for showCrosshairs adjuster
 */
 
 .gpii-iconCheck-showCrosshairs:before {
-    content: "\e00f";
+    content: "\e610";
     font-size: 70px !important;
 }
 
@@ -962,20 +971,20 @@ input:checked + label > span > span > .gpii-iconCheckAdjusterCheckIcon:before {
 */
 
 .gpii-followingElement-mouseCursorIcon, .gpii-followingElement-textCursorIcon, .gpii-followingElement-keyboardFocusIcon {
-    font-family: 'icomoon';
+    //font-family: 'C4Aicons';
     font-size: 70px !important;
 }
 
 .gpii-followingElement-mouseCursorIcon:before {
-    content: "\e007";
+    content: "\e612";
 }
 
 .gpii-followingElement-textCursorIcon:before {
-    content: "\e000";
+    content: "\e619";
 }
 
 .gpii-followingElement-keyboardFocusIcon:before {
-    content: "\e005";
+    content: "\e618";
 }
 
 .gpii-iconCheckAdjusterAreaNoBorder {
@@ -1034,8 +1043,11 @@ input:checked + label > span > span > .gpii-iconCheckAdjusterCheckIcon:before {
     width: 100% !important;
 }
 
+.fl-prefsEditor .fl-icon-indicator:before, .fl-prefsEditor .fl-choice input:checked + label + span {
+    font-family: 'C4Aicons' !important;
+}
 .fl-prefsEditor .fl-icon-indicator:before, .fl-prefsEditor .fl-choice input:checked + label + span:before {
-    content: "";
+    content: "\e606";
 }
 
 .gpii-contrast-contrastOptions {
