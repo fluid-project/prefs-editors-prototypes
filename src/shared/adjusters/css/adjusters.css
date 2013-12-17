@@ -316,11 +316,11 @@ input[type=checkbox], input[type=radio] {
     height: 0 !important;
     width: 0 !important;
     color: #636c7c;
-    margin-top: -2px;
+    margin-top: -1em;
 }
 
 .gpii-increaseSize-magnifierPositionIcon:before {
-    font-size: 5em !important;
+    font-size: 6.3em !important;
 }
 
 .gpii-increaseSize-magnifierPositionBackground {
@@ -331,11 +331,11 @@ input[type=checkbox], input[type=radio] {
 
 .gpii-increaseSize-magnifierPositionBackground:before {
     font-size: 4.8em !important;
-    //content: "\e00b" !important;
+    content: "" !important;
 }
     
 .gpii-increaseSize-magnifierPositionFullscreen > .gpii-increaseSize-magnifierPositionFrame:before {
-    font-size: 5em !important;
+    font-size: 6.3em !important;
     content: "\e601" !important;
 }
 
@@ -346,13 +346,13 @@ input[type=checkbox], input[type=radio] {
 .gpii-increaseSize-magnifierPositionFullscreen > .gpii-increaseSize-magnifierPositionIconMain {
     opacity:0.5;
     position: relative;
-    top: 0.15em;
-    left: 0.15em;
+    //top: 0.15em;
+    //left: 0.15em;
 }
 
 .gpii-increaseSize-magnifierPositionFullscreen > .gpii-increaseSize-magnifierPositionIconMain:before {
     content: "\e601";
-    font-size: 4.7em !important;
+    font-size: 6.3em !important;
     color: #00a9bd;
 }
 
@@ -380,13 +380,14 @@ input[type=checkbox], input[type=radio] {
 }
 .gpii-prefsEditor .gpii-prefsEditor-choice .gpii-prefsEditor-indicator {
     font-family: 'C4Aicons' !important;
-    font-size: 0.8em;
+    font-size: 2em;
     color: #636c7c;
     position: relative;
-    top: 0.4em;
+    top: 0.6em;
     height: 1em !important;
-    margin: -0.75em 0 0 3em !important;
+    margin: -0.75em 0 0 -0.2em !important;
     z-index: 11;
+    text-align: center !important;
 }
 
 /*
