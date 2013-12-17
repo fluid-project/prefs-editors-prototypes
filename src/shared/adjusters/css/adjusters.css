@@ -801,8 +801,8 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
 }
 
 .gpii-prefsEditor-theme-inverted [title]:after{
-    background-color: #e9e9e9 !important;
-    border: 1px solid #393536 !important;
+    background-color: #393536 !important;
+    border: 1px solid #e9e9e9 !important;
 }
 
 .gpii-prefsEditor-theme-yb .gpii-increaseSize-magnifierPositionBackground,
