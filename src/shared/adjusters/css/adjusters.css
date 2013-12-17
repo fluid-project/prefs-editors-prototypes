@@ -882,6 +882,61 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
     border: 1px solid;
 }
 
+.gpii-prefsEditor-theme-yb .gpii-prefsEditor-previewPerSettingEyeBackground {
+	border-right: 1.7em solid rgba(0, 0, 0, 0) !important;
+    border-top: 1.7em solid !important;
+    color: yellow !important;
+    background-color: transparent !important;
+}
+
+.gpii-prefsEditor-theme-yb .gpii-prefsEditor-previewPerSettingEye {
+	color: black !important;
+}
+
+.gpii-prefsEditor-theme-bw .gpii-prefsEditor-previewPerSettingEyeBackground {
+	border-right: 1.7em solid rgba(0, 0, 0, 0) !important;
+    border-top: 1.7em solid !important;
+    color: black !important;
+    background-color: transparent !important;
+}
+
+.gpii-prefsEditor-theme-bw .gpii-prefsEditor-previewPerSettingEye {
+	color: white !important;
+}
+
+.gpii-prefsEditor-theme-by .gpii-prefsEditor-previewPerSettingEyeBackground {
+	border-right: 1.7em solid rgba(0, 0, 0, 0) !important;
+    border-top: 1.7em solid !important;
+    color: black !important;
+    background-color: transparent !important;
+}
+
+.gpii-prefsEditor-theme-by .gpii-prefsEditor-previewPerSettingEye {
+	color: yellow !important;
+}
+
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor-previewPerSettingEyeBackground {
+	border-right: 1.7em solid rgba(0, 0, 0, 0) !important;
+    border-top: 1.7em solid !important;
+    color: white !important;
+    background-color: transparent !important;
+}
+
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor-previewPerSettingEye {
+	color: black !important;
+}
+
+.gpii-prefsEditor-theme-inverted .gpii-prefsEditor-previewPerSettingEyeBackground {
+	border-right: 1.7em solid rgba(0, 0, 0, 0) !important;
+    border-top: 1.7em solid !important;
+    color: #e9e9e9 !important;
+    background-color: transparent !important;
+}
+
+.gpii-prefsEditor-theme-inverted .gpii-prefsEditor-previewPerSettingEye {
+	color: #393536 !important;
+}
+
 /*
     Style for sept-12 font icons
 */
