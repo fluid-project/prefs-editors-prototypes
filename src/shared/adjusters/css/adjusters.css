@@ -1028,13 +1028,11 @@ input:checked + label > span > span > .gpii-iconCheckAdjusterCheckIcon:before {
 }
 
 .gpii-contrastThemeIndicator {
-    display: inline-block;
-    height: 100% !important;
+    display: table-cell;
+    vertical-align: middle;
+    width: 10% !important;
     margin: 0 !important;
     background-color: transparent !important;
-    transform: rotate(90deg) translateY(1em);
-    -ms-transform: rotate(90deg) translateY(1em);
-    -webkit-transform: rotate(90deg) translateY(1em);
 }
 
 .gpii-prefsEditor-themeRow {
