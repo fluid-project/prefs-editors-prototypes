@@ -1,33 +1,6 @@
 /*
     Font icons
 */
-/* @font-face {
-    font-family: 'icons-no-frames-aug-29';
-    src:url('../fonts/icons-no-frames-aug-29.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'font-icons-sept-3';
-    src:url('../fonts/font-icons-sept-3.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'sept-12';
-    src:url('../fonts/sept-12.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'icomoon';
-    src:url('../fonts/icomoonPMT.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-} */
 @font-face {
 	font-family: 'C4Aicons';
 	src:url('../fonts/C4Aicons.eot');
@@ -38,8 +11,6 @@
 	font-weight: normal;
 	font-style: normal;
 }
-
-
 
 /*
     General preferences styling
@@ -173,11 +144,6 @@ input[type=checkbox], input[type=radio] {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* .gpii-prefsEditor-adjusterIconsAdditional > .gpii-increaseSize-magnifierPositionIconMain {
-    font-family: 'C4Aicons';
-    margin-top: 0em;
-} */
-
 /*
     The cursor size font icons
 */
@@ -196,7 +162,6 @@ input[type=checkbox], input[type=radio] {
     width: 1em;
 }
 .gpii-increaseSize-iconBigCursor {
-	//float: right;
     width: 0;
     margin-top: -1em;
 }
@@ -331,7 +296,7 @@ input[type=checkbox], input[type=radio] {
 
 .gpii-increaseSize-magnifierPositionBackground:before {
     font-size: 4.8em !important;
-    content: "" !important;
+    content: "" !important; /* this should get value if we have the background font icon */
 }
     
 .gpii-increaseSize-magnifierPositionFullscreen > .gpii-increaseSize-magnifierPositionFrame:before {
@@ -346,8 +311,6 @@ input[type=checkbox], input[type=radio] {
 .gpii-increaseSize-magnifierPositionFullscreen > .gpii-increaseSize-magnifierPositionIconMain {
     opacity:0.5;
     position: relative;
-    //top: 0.15em;
-    //left: 0.15em;
 }
 
 .gpii-increaseSize-magnifierPositionFullscreen > .gpii-increaseSize-magnifierPositionIconMain:before {
@@ -471,7 +434,6 @@ input[type=checkbox], input[type=radio] {
     width:100%;
     background-color: white;
     border: 1px solid #beced1;
-    //color: #B8C9CC;
     font-size: 1.5em;
     margin-bottom: 0.5em;
 }
@@ -488,10 +450,7 @@ input[type=checkbox], input[type=radio] {
     border-top: 1.7em solid !important;
     color: #B8C9CC;
     position: relative;
-    //background-color: #000000;
     height: 0;
-    //margin-left: 0.1em;
-    //margin-top: 0.1em;
     width: 0;
     z-index: 1;
 }
@@ -938,20 +897,6 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
 }
 
 /*
-    Style for sept-12 font icons
-*/
-/* .gpii-prefsEditor-adjusterIcons-sept-12 {
-    font-family: 'C4Aicons';
-} */
-
-/*
-    Style for iconCheck adjuster
-*/
-/* .gpii-iconCheckAdjusterIcon {
-    font-family: 'C4Aicons';
-} */
-
-/*
     Style for magnifier.invertColours adjuster
 */
 .gpii-iconCheck-magnifierInvertColours:before {
@@ -1011,16 +956,8 @@ input:checked + label > span > span > .gpii-iconCheckAdjusterCheckIcon:before {
 }
 
 /*
-    Style for icomoon font icons
-*/
-/* .gpii-prefsEditor-adjusterIcons-icomoon {
-    font-family: 'C4Aicons';
-} */
-
-/*
     Style for showCrosshairs adjuster
 */
-
 .gpii-iconCheck-showCrosshairs:before {
     content: "\e610";
     font-size: 70px !important;
@@ -1031,7 +968,6 @@ input:checked + label > span > span > .gpii-iconCheckAdjusterCheckIcon:before {
 */
 
 .gpii-followingElement-mouseCursorIcon, .gpii-followingElement-textCursorIcon, .gpii-followingElement-keyboardFocusIcon {
-    //font-family: 'C4Aicons';
     font-size: 70px !important;
 }
 
