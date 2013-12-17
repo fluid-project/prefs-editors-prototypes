@@ -1,7 +1,7 @@
 {
-    "magnifierFollowsLabel": "Magnifier location follows:",
-    "screenReaderFollowsLabel": "Screen reader follows:",
-    "followingElement-mousecursor": "Mouse cursor",
-    "followingElement-textcursor": "Text cursor",
-    "followingElement-keyboardfocus": "Keyboard focus"
+    "magnifierFollowsLabel": "θέση μεγεθυντικού φακού ακολουθεί:",
+    "screenReaderFollowsLabel": "αναγνώστης οθόνης ακολουθεί:",
+    "followingElement-mousecursor": "κέρσορα ποντικιού",
+    "followingElement-textcursor": "κέρσορα κειμένου",
+    "followingElement-keyboardfocus": "φόκους πληκτρολογίου"
 }

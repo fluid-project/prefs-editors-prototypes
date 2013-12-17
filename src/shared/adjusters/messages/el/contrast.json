@@ -1,14 +1,14 @@
 {
     "contrast": "Αντίθεση",
     "addContrast": "Προσθήκη αντίθεσης",
-    "changeContrast": "change contrast",
+    "changeContrast": "αλλαγή αντίθεσης",
     "contrastPreviewText": "Η σελίδα θα εμφανίζεται έτσι.",
-    "contrastOptions": "contrast options",
-    "colourTheme": "colour themes",
-    "contrast-default": "default",
-    "contrast-inverted": "invert colours",
-    "contrast-bw": "black on white",
-    "contrast-wb": "white on black",
-    "contrast-by": "black on yellow",
-    "contrast-yb": "yellow on black"
+    "contrastOptions": "επιλογές αντίθεσης",
+    "colourTheme": "χρωματικά θέματα",
+    "contrast-default": "προεπιλεγμένο",
+    "contrast-inverted": "αντιστροφή χρωμάτων",
+    "contrast-bw": "μαύρο σε άσπρο",
+    "contrast-wb": "άσπρο σε μαύρο",
+    "contrast-by": "μαύρο σε κίτρινο",
+    "contrast-yb": "κίτρινο σε μαύρο"
 }
