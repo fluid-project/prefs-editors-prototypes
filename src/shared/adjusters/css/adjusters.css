@@ -1048,11 +1048,6 @@ input:checked + label > span > span > .gpii-iconCheckAdjusterCheckIcon:before {
 	display: block;
 }
 
-.fl-prefsEditor .fl-choice {
-	display: inline-block;
-    float: none;
-}
-
 /*
     Style for onOffSwitch adjuster
 */
