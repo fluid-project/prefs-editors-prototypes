@@ -470,7 +470,7 @@ input[type=checkbox], input[type=radio] {
     background-color: white;
     border: 1px solid #beced1;
     color: #B8C9CC;
-    font-size: 2em;
+    font-size: 1.5em;
     margin-bottom: 0.5em;
 }
 
@@ -484,10 +484,10 @@ input[type=checkbox], input[type=radio] {
 .gpii-prefsEditor-previewPerSettingEyeBackground {
     position: relative;
     background-color: #000000;
-    height: 0.34em;
-    margin-left: 0.1em;
-    margin-top: 0.1em;
-    width: 0.5em;
+    height: 1em;
+    //margin-left: 0.1em;
+    //margin-top: 0.1em;
+    width: 1em;
     z-index: 1;
 }
 
