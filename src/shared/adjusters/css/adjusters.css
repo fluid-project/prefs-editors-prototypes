@@ -182,22 +182,23 @@ input[type=checkbox], input[type=radio] {
     The cursor size font icons
 */
 .gpii-increaseSize-iconSmallCursor:before {
-    font-size: 0.8em !important;
+    font-size: 2em !important;
     content: "\e612";
 }
 .gpii-increaseSize-iconBigCursor:before {
-    font-size: 1.9em !important;
+    font-size: 4em !important;
     content: "\e612";
 }
 .gpii-increaseSize-iconSmallCursor {
 	display: table-cell;
     float: none;
-    vertical-align: middle !important;
+    vertical-align: top !important;
     width: 1em;
 }
 .gpii-increaseSize-iconBigCursor {
-	float: right;
+	//float: right;
     width: 1em;
+    margin-top: -1em;
 }
 
 /*
