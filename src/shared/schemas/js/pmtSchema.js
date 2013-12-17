@@ -127,10 +127,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "classes": {
                 "lens": "gpii-increaseSize-magnifierPositionLens gpii-increaseSize-magnifierPositionIconLabel",
                 "fullscreen": "gpii-increaseSize-magnifierPositionFullscreen gpii-increaseSize-magnifierPositionIconLabel",
-                "dockedtop": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionTop gpii-increaseSize-magnifierPositionIconLabel",
-                "dockedbottom": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionBottom gpii-increaseSize-magnifierPositionIconLabel",
-                "dockedleft": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionLeft gpii-increaseSize-magnifierPositionIconLabel",
-                "dockedright": "gpii-prefsEditor-adjusterIconsAdditional gpii-increaseSize-magnifierPositionRight gpii-increaseSize-magnifierPositionIconLabel"
+                "dockedtop": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-magnifierPositionTop gpii-increaseSize-magnifierPositionIconLabel",
+                "dockedbottom": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-magnifierPositionBottom gpii-increaseSize-magnifierPositionIconLabel",
+                "dockedleft": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-magnifierPositionLeft gpii-increaseSize-magnifierPositionIconLabel",
+                "dockedright": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-magnifierPositionRight gpii-increaseSize-magnifierPositionIconLabel"
             },
             "panel": {
                 "type": "gpii.adjuster.magnifierPosition",
@@ -142,9 +142,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "followingElement": {
             "classes": {
-                "mousecursor": "gpii-followingElement-mouseCursorIcon",
-                "textcursor": "gpii-followingElement-textCursorIcon",
-                "keyboardfocus": "gpii-followingElement-keyboardFocusIcon"
+                "mousecursor": "gpii-prefsEditor-adjusterIcons gpii-followingElement-mouseCursorIcon",
+                "textcursor": "gpii-prefsEditor-adjusterIcons gpii-followingElement-textCursorIcon",
+                "keyboardfocus": "gpii-prefsEditor-adjusterIcons gpii-followingElement-keyboardFocusIcon"
             },
             "borderClasses": {
                 "topOnly": "gpii-iconCheckAdjusterAreaTopOnlyBorder",

@@ -1,7 +1,7 @@
 {
-    "magnifierFollowsLabel": "Ο μεγεθυντικός φακός ακολουθεί:",
-    "screenReaderFollowsLabel": "Ο αναγνώστης οθόνης καολουθεί:",
-    "followingElement-mousecursor": "Κέρσορας ποντικιού",
-    "followingElement-textcursor": "Κέρσορας κειμένου",
-    "followingElement-keyboardfocus": "Φόκους πληκτρολογίου"
+    "magnifierFollowsLabel": "θέση μεγεθυντικού φακού ακολουθεί:",
+    "screenReaderFollowsLabel": "αναγνώστης οθόνης ακολουθεί:",
+    "followingElement-mousecursor": "κέρσορα ποντικιού",
+    "followingElement-textcursor": "κέρσορα κειμένου",
+    "followingElement-keyboardfocus": "φόκους πληκτρολογίου"
 }

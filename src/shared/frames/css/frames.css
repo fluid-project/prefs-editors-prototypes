@@ -1,8 +1,12 @@
 @font-face {
-    font-family: 'icomoon';
-    src:url('../fonts/icomoon.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'C4Aicons';
+	src:url('../fonts/C4Aicons.eot');
+	src:url('../fonts/C4Aicons.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/C4Aicons.ttf') format('truetype'),
+		url('../fonts/C4Aicons.woff') format('woff'),
+		url('../fonts/C4Aicons.svg#C4Aicons') format('svg');
+	font-weight: normal;
+	font-style: normal;
 }
 
 /*
@@ -21,7 +25,7 @@ body {
 }
 
 .gpii-prefsEditor-frameIcon {
-	font-family: icomoon;
+	font-family: C4Aicons;
 }
 
 .gpii-prefsEditor-preferenceSetSelectionButton {
@@ -47,11 +51,11 @@ body {
 }
 
 .gpii-prefsEditor-preferenceSetSelectionButtonMyPreferences:before {
-	content: "\e00a"
+	content: "\e617"
 }
 
 .gpii-prefsEditor-preferenceSetSelectionButtonAllPreferences:before {
-	content: "\e00b"
+	content: "\e614"
 }
 
 .gpii-prefsEditor-preferenceSetSelectionButtonLabel {
@@ -83,7 +87,7 @@ body {
     border-radius: 5px;
     color: #FFFFFF;
     cursor: pointer;
-    margin: 0.1em 0.1em 0.1em -1.5em;
+    margin: 0.1em 0.1em 0.1em -2.3em;
     padding: 0.4em 0.4em 0.4em 1.5em;
     position: relative;
     font-size: 1.5em;
@@ -96,11 +100,11 @@ body {
     vertical-align: middle;
     z-index: 1;
     color: #FFFFFF;
-    font-size: 1.2em;
+    font-size: 2em !important;
 }
 
 .gpii-pmt-saveAndApplyButtonLabel:before {
-	content: "\e00b"
+	content: "\e60c"
 }
 
 .gpii-pmt-bottomRow {
