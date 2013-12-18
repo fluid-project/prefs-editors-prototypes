@@ -35,10 +35,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "slideUp",
                 "args": ["{arguments}.0"]
             },
-            "afterRender.bindEventPreferenceSwitchRequestChange": {
-                "this": "{that}.dom.moreLess",
-                "method": "click",
-                "args": ["{that}.requestChangeForExpandingAdjustersEnabledSwitch"]
+            "afterRender.bindEventPreferenceSwitchExpanding": {
+                "this": "{that}.dom.preferenceSwitchExpanding",
+                "method": "change",
+                "args": ["{that}.toggleExpandingAdjustersInstant"]
             },
             "onShowExpandingAdjusters.show": {
                 "this": "{that}.dom.expandingAdjusters",
@@ -96,31 +96,22 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.events.onHideExpandingAdjusters.fire"
                 ],
                 dynamic: true
-            },
-            requestChangeForExpandingAdjustersEnabledSwitch: {
-                // had to make this in a func because negations (!) are not expanded
-                "funcName": "gpii.panel.expandingAdjusters.requestChangeForExpandingAdjustersEnabledSwitch",
-                args: ["{that}.applier.requestChange", "expandingAdjustersEnabledSwitch", "{that}.model.expandingAdjustersEnabledSwitch"]
             }
         },
         model: {
             moreLessEnabledSwitch: true,    // more/less is enabled by default. This can be overriden.
             expandingAdjustersEnabledSwitch: false
         },
-        modelListeners: {
-            "expandingAdjustersEnabledSwitch": {
-                func: "{that}.toggleExpandingAdjustersInstant"
-            },
-            "moreLessEnabledSwitch": {
-                func: "{that}.toggleMoreLessInstant"
-            }
-        },
         selectors: {
             moreLess: "",  //should be provided by integrators
-            expandingAdjusters: ""  //should be provided by integrators
+            expandingAdjusters: "",  //should be provided by integrators
+            preferenceSwitchExpanding: ""  //should be provided by integrators
             
         },
-        selectorsToIgnore: ["expandingAdjusters", "moreLess"]
+        selectorsToIgnore: ["expandingAdjusters", "moreLess"],
+        protoTree: {
+            preferenceSwitchExpanding: "${expandingAdjustersEnabledSwitch}"
+        }
     });
 
     gpii.panel.expandingAdjusters.toggleMoreLess = function (moreLessEnabledSwitch, showEvent, hideEvent, duration) {
@@ -138,9 +129,4 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             hideEvent(duration);
         }
     };    
-
-    gpii.panel.expandingAdjusters.requestChangeForExpandingAdjustersEnabledSwitch = function (requestChange, modelPreference, switchValue) {
-        requestChange(modelPreference, !switchValue);
-    };
-
 })(jQuery, fluid);
