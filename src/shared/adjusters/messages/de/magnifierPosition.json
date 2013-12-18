@@ -1,10 +1,10 @@
 {
-    "magnifierPositionLabel": "Position der Bildschirmlupe",
+    "magnifierPositionLabel": "Position der Lupe",
     "magnifierPosition-default": "Voreinstellung",
     "magnifierPosition-lens": "Linse",
     "magnifierPosition-fullscreen": "Ganzer Bildschirm",
-    "magnifierPosition-dockedtop": "Oben befestigt",
-    "magnifierPosition-dockedbottom": "unten befestigt",
-    "magnifierPosition-dockedleft": "links befestigt",
-    "magnifierPosition-dockedright": "rechts befestigt"
+    "magnifierPosition-dockedtop": "Oben angeheftet",
+    "magnifierPosition-dockedbottom": "Unten angeheftet",
+    "magnifierPosition-dockedleft": "Links angeheftet",
+    "magnifierPosition-dockedright": "Rechts angeheftet"
 }
