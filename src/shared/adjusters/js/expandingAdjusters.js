@@ -116,5 +116,5 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     gpii.panel.expandingAdjusters.showOrHideDependingOnState = function (state, showEvent, hideEvent, duration) {
         state ? showEvent(duration) : hideEvent(duration);
-    }; 
+    };
 })(jQuery, fluid);
