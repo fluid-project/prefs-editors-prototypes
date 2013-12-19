@@ -42,7 +42,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         invokers: {
             toggleMoreLessInstant: {
-                "funcName": "gpii.panel.expandingAdjusters.toggleMoreLess",
+                "funcName": "gpii.panel.expandingAdjusters.showOrHideDependingOnState",
                 "args": [
                     "{that}.model.gpii_primarySchema_speakText",
                     "{that}.events.onShowMoreLess.fire",
