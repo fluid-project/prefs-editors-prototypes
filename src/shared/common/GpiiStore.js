@@ -33,6 +33,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     fluid.defaults("gpii.prefs.gpiiStore", {
         gradeNames: ["fluid.prefs.dataSource", "autoInit"],
         gpiiEntry: "http://registry.gpii.org/applications/gpii.prefs",
+        loggedUser: null,
         invokers: {
             get: {
                 funcName: "gpii.prefs.gpiiStore.get",
@@ -47,20 +48,24 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
     gpii.prefs.gpiiStore.get = function (settings) {
         var gpiiModel;
+        if (settings.loggedUser != null) {
 
-        $.ajax({
-            url: settings.url,
-            type: "GET",
-            dataType: "json",
-            async: false,
-            success: function (data) {
-                gpiiModel = fluid.get(data, ["preferences", settings.gpiiEntry, 0, "value"]);
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                fluid.log("GET: Error at retrieving from GPII! Test status: " + textStatus);
-                fluid.log(errorThrown);
-            }
-        });
+            var urlToPost = settings.loggedUser ? (settings.url + settings.loggedUser) : (settings.url);
+            
+            $.ajax({
+                url: urlToPost,
+                type: "GET",
+                dataType: "json",
+                async: false,
+                success: function (data) {
+                    gpiiModel = fluid.get(data, ["preferences", settings.gpiiEntry, 0, "value"]);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    fluid.log("GET: Error at retrieving from GPII! Test status: " + textStatus);
+                    fluid.log(errorThrown);
+                }
+            });            
+        }
 
         return gpiiModel;
     };
@@ -74,13 +79,17 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
         console.log(JSON.stringify(dataToSave));
         
+        var urlToPost = settings.loggedUser ? (settings.url + settings.loggedUser) : (settings.url);
+        
         $.ajax({
-            url: settings.url,
+            url: urlToPost,
             type: "POST",
             dataType: "json",
             contentType: "application/json",
             data: JSON.stringify(dataToSave),
             success: function (data) {
+                // set the logged user on save
+                settings.loggedUser = data.token;
                 fluid.log("POST: Saved to GPII server");
             },
             error: function () {

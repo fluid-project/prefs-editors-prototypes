@@ -39,7 +39,7 @@ var demo = demo || {};
         // set GPII store
         gpii.prefs.gpiiSettingsStore({
             settingsStore: {
-                url: "http://localhost:8081/user/chrispetsos" // gpiiServerURL
+                url: "http://localhost:8081/user/" // gpiiServerURL
             }
         });
     });
