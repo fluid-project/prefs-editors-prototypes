@@ -44,6 +44,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             set: {
                 funcName: "gpii.prefs.gpiiStore.set",
                 args: ["{arguments}.0", "{that}.options"]
+            },
+            logout: {
+                "funcName": "gpii.prefs.gpiiStore.logout",
+                "args": ["{that}.options"]
             }
         }
     });
@@ -115,6 +119,24 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         });
     };
 
+    // perhaps this should also go to another component
+    gpii.prefs.gpiiStore.logout = function (settings) {
+        if (settings.loggedUser != null) {
+            $.ajax({
+                url: settings.url + settings.loggedUser + "/logout",
+                type: "GET",
+                success: function (data) {
+                    settings.loggedUser = null;
+                    fluid.log("GET: " + data);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    fluid.log("GET: Error at logging out user " + gpiiStore.options.loggedUser + "! Test status: " + textStatus);
+                    fluid.log(errorThrown);
+                }
+            });
+        }
+    };
+    
     fluid.defaults("gpii.prefs.gpiiSettingsStore", {
         gradeNames: ["autoInit", "fluid.globalSettingsStore"],
         storeType: "gpii.prefs.gpiiStore",
