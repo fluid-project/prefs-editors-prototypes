@@ -38,11 +38,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                          "screenReaderLanguage"
                 ]
             }
-        },
-        finalInitFunction: "baba"
+        }
     });
 
-    baba = function (that) {
-        hook = that;
-    }
 })(fluid);
