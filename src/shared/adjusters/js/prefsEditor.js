@@ -55,8 +55,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 saveToPreferencesServer: {
                     "funcName": "gpii.saveToPreferencesServer",
-                    "args": ["{that}"],
-                    "dynamic": true
+                    "args": ["{that}"]
                 }
             },
             selectors: {
