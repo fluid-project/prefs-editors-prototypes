@@ -91,6 +91,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 if (settings.loggedUser != data.token) {
                     // new user, set the logged user on save
                     settings.loggedUser = data.token;
+                    alert("New user created with token: " + settings.loggedUser);
                     // also login here, do we pollute the store functionality with that?
                     // maybe logging in/out should be performed by another component?
                     // interaction through proper events?
