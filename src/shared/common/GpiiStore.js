@@ -77,8 +77,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             value: model
         }];
 
-        console.log(JSON.stringify(dataToSave));
-        
         var urlToPost = settings.loggedUser ? (settings.url + settings.loggedUser) : (settings.url);
         
         $.ajax({
@@ -88,8 +86,24 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             contentType: "application/json",
             data: JSON.stringify(dataToSave),
             success: function (data) {
-                // set the logged user on save
-                settings.loggedUser = data.token;
+                if (settings.loggedUser != data.token) {
+                    // new user, set the logged user on save
+                    settings.loggedUser = data.token;
+                    // also login here, do we pollute the store functionality with that?
+                    // maybe logging in/out should be performed by another component?
+                    // interaction through proper events?
+                    $.ajax({
+                        url: settings.url + settings.loggedUser + "/login",
+                        type: "GET",
+                        success: function (data) {
+                            fluid.log("GET: " + data);
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            fluid.log("GET: Error at logging in user " + settings.loggedUser + "! Test status: " + textStatus);
+                            fluid.log(errorThrown);
+                        }
+                    });
+                }
                 fluid.log("POST: Saved to GPII server");
             },
             error: function () {
