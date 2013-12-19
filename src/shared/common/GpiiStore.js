@@ -33,6 +33,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     fluid.defaults("gpii.prefs.gpiiStore", {
         gradeNames: ["fluid.prefs.dataSource", "autoInit"],
         gpiiEntry: "http://registry.gpii.org/applications/gpii.prefs",
+        // Maybe we should be informed for currently logged user from GPII?
+        // This is relevant, http://issues.gpii.net/browse/GPII-290 
         loggedUser: null,
         invokers: {
             get: {
