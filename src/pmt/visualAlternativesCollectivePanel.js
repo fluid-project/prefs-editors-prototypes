@@ -15,7 +15,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.panel.visualAlternatives", {
         gradeNames: ["fluid.prefs.compositePanel", "gpii.panel.expandingAdjusters", "autoInit"],
         model: {
-            moreLessEnabledSwitch: true
+            moreLessEnabledSwitch: true,
+            expandingAdjustersEnabledSwitch: false
         },
         selectors: {
             visualAlternativesHeader: ".gpii-visualAlternativesPresetButton-label",
@@ -25,7 +26,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         protoTree: {
             visualAlternativesHeader: {messagekey: "visualAlternativesPresetButtonLabel"},
-            preferenceSwitchExpanding: "${moreLessEnabledSwitch}"
+            preferenceSwitchExpanding: "${expandingAdjustersEnabledSwitch}"
         },
         members: {
             messageResolver: "{prefsEditorLoader}.msgBundle"
@@ -50,12 +51,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 ],
                 dynamic: true
             }
-        },
-        finalInitFunction: "baba"
+        }
     });
-
-    baba = function (that) {
-        hook = that
-    }
-
 })(fluid);
