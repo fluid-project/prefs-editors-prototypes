@@ -76,10 +76,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "boolean",
             "default": false
         },
-        "gpii.primarySchema.visualAlternativesMoreLess": {
-            "type": "boolean",
-            "default": false
-        },
         "gpii.primarySchema.textHighlighting": {
             "type": "string",
             "default": "Word",
@@ -200,16 +196,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
 
-        "visualAlternativesMoreLess": {
-            "type": "gpii.primarySchema.visualAlternativesMoreLess",
-            "panel": {
-                "type": "gpii.adjuster.visualAlternativesMoreLess",
-                "template": "%prefix/visualAlternativesMoreLessTemplate.html",
-                "message": "%prefix/message.json",
-                "container": ".visualAlternativesMoreLess"
-            }
-        },
-
         "screenReaderBrailleOutput": {
             "type": "gpii.primarySchema.screenReaderBrailleOutput",
             "panel": {
@@ -249,10 +235,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "panels": {
                     "always": ["speakText", "screenReaderBrailleOutput"],
                     "gpii.primarySchema.speakText": [
-                        "wordsSpokenPerMinute", "volume", "visualAlternativesMoreLess"
-                    ],
-                    "gpii.primarySchema.visualAlternativesMoreLess": [
-                        "voicePitch", "screenReaderLanguage", "punctuationVerbosity", "announceCapitals", "speakTutorialMessages", "keyEcho", "wordEcho"
+                        "wordsSpokenPerMinute", "volume", "voicePitch", "screenReaderLanguage",
+                        "punctuationVerbosity", "announceCapitals", "speakTutorialMessages", "keyEcho", "wordEcho"
                     ]
                 }
             },

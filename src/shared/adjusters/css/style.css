@@ -28,25 +28,13 @@
          url('../fonts/arrows.eot');
 }
 
-.gpii-visualAlternativesMoreLess {
-    margin-left: 85px;
-    padding-top: 10px;
-}
-
-.gpii-visualAlternativesMoreLess-label {
+.gpii-prefsEditor-moreLess {
+    display: block;
+    width:100% !important;
+    text-align: center;
     cursor: pointer;
-}
-
-.visualAlternativesMoreLessIcon {
-    font-family: 'visualAlternativesMoreLessArrows'
-}
-
-.gpii-visualAlternativesMoreLessIcon-more:before {
-    content: "\e601";
-}
-
-.gpii-visualAlternativesMoreLessIcon-less:before {
-    content: "\e600";
+    padding-bottom: 5px !important;
+    padding-top: 20px;
 }
 
 .gpii-spacingEnsurer {

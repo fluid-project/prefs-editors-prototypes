@@ -14,11 +14,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function (fluid) {
     fluid.defaults("gpii.panel.visualAlternatives", {
         gradeNames: ["fluid.prefs.compositePanel", "autoInit"],
+        model: {
+            moreLessEnabledSwitch: true
+        },
         selectors: {
-            visualAlternativesHeader: ".gpii-visualAlternativesPresetButton-label"
+            visualAlternativesHeader: ".gpii-visualAlternativesPresetButton-label",
+            preferenceSwitchExpanding: ".gpiic-visualAlternatives-preferenceSwitchExtra",
+            expandingAdjusters: ".gpiic-visualAlternatives-hidden",
+            moreLess: ".gpiic-visualAlternatives-category"
         },
         protoTree: {
-            visualAlternativesHeader: {messagekey: "visualAlternativesPresetButtonLabel"}
+            visualAlternativesHeader: {messagekey: "visualAlternativesPresetButtonLabel"},
+            preferenceSwitchExpanding: "${moreLessEnabledSwitch}"
         },
         members: {
             messageResolver: "{prefsEditorLoader}.msgBundle"
@@ -31,6 +38,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                          "screenReaderLanguage"
                 ]
             }
-        }
+        },
+        finalInitFunction: "baba"
     });
+
+    baba = function (that) {
+        hook = that;
+    }
 })(fluid);

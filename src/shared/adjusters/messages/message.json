@@ -25,8 +25,8 @@
     "screenReaderBrailleOutputDescription": "Output to available device",
     "readBackLabel": "Read-back",
     "announce": "Announce",
-    "moreText": "more",
-    "lessText": "less",
+    "more": "more",
+    "less": "less",
     "saveAndApply": "Save and Apply",
     "resetAndApply": "Reset and Apply",
     "cancel": "Cancel"
