@@ -54,9 +54,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             dataType: "json",
             async: false,
             success: function (data) {
-                gpiiModel = JSON.parse(data);
-                //gpiiModel = fluid.get(data, [settings.gpiiEntry, 0, "value"]);
-                var i=0;
+                gpiiModel = fluid.get(data, ["preferences", settings.gpiiEntry, 0, "value"]);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 fluid.log("GET: Error at retrieving from GPII! Test status: " + textStatus);
@@ -79,10 +77,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         $.ajax({
             url: settings.url,
             type: "POST",
-            /*headers: {
-                'X-CORS-REQUEST': 'pingpong'
-            },*/
-            dataType: "text",
+            dataType: "json",
+            contentType: "application/json",
             data: JSON.stringify(dataToSave),
             success: function (data) {
                 fluid.log("POST: Saved to GPII server");
