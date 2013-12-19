@@ -13,7 +13,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function (fluid) {
     fluid.defaults("gpii.panel.visualAlternatives", {
-        gradeNames: ["fluid.prefs.compositePanel", "autoInit"],
+        gradeNames: ["fluid.prefs.compositePanel", "gpii.panel.expandingAdjusters", "autoInit"],
         model: {
             moreLessEnabledSwitch: true
         },
@@ -38,7 +38,24 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                          "screenReaderLanguage"
                 ]
             }
-        }
+        },
+        invokers: {
+            toggleMoreLessInstant: {
+                "funcName": "gpii.panel.expandingAdjusters.toggleMoreLess",
+                "args": [
+                    "{that}.model.gpii_primarySchema_speakText",
+                    "{that}.events.onShowMoreLess.fire",
+                    "{that}.events.onHideMoreLess.fire",
+                    0
+                ],
+                dynamic: true
+            }
+        },
+        finalInitFunction: "baba"
     });
+
+    baba = function (that) {
+        hook = that
+    }
 
 })(fluid);
