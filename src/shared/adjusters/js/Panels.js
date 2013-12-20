@@ -271,7 +271,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         repeatingSelectors: ["punctuationVerbosityRow"],
         listeners: {
-            afterRender: "{that}.style"
+            onDomBind: "{that}.style"
         },
         invokers: {
             style: {
