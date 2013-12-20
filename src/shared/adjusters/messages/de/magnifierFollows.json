@@ -1,6 +1,6 @@
 {
-    "magnifierFollowsLabel": "Bildschirmlupe folgt",
+    "magnifierFollowsLabel": "Lupe folgt",
     "magnifierFollows-mousecursor": "Mauszeiger",
-    "magnifierFollows-textcursor": "Eingabezeiger",
+    "magnifierFollows-textcursor": "Textzeiger",
     "magnifierFollows-keyboardfocus": "Tastaturfokus"
 }

@@ -1,10 +1,10 @@
 {
     "more": "+ mehr",
     "less": "- weniger",
-    "tooltipChecked": "Präferenz entfernen",
-    "tooltipUnchecked": "Präferenz hinzufügen",
+    "tooltipChecked": "aus meinen bevorzugten Einstellungen entfernen",
+    "tooltipUnchecked": "zu meinen bevorzugten Einstellungen hinzufügen",
     "languageLabel": "Sprache",
-    "saveButtonText": "Speichern und anwenden",
+    "saveButtonText": "speichern und anwenden",
     "resetButtonText": "zurücksetzen",
     "cancelButtonText": "abbrechen",
     "plus": "+",

@@ -1,7 +1,7 @@
 {
-    "magnifierFollowsLabel": "Magnifier location follows:",
-    "screenReaderFollowsLabel": "Screen reader follows:",
-    "followingElement-mousecursor": "Mouse cursor",
-    "followingElement-textcursor": "Text cursor",
-    "followingElement-keyboardfocus": "Keyboard focus"
+    "magnifierFollowsLabel": "Lupe folgt:",
+    "screenReaderFollowsLabel": "Vorlesefunktion folgt:",
+    "followingElement-mousecursor": "Mauszeiger",
+    "followingElement-textcursor": "Textzeiger",
+    "followingElement-keyboardfocus": "Tastaturfokus"
 }
