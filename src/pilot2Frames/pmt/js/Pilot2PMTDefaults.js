@@ -47,23 +47,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 // on Session login:
                 "{gpiiSession}.events.onLogin": [{
                     // a) set user token in message
-                    "this": "{that}.dom.notificationMessagePart2",
-                    "method": "text",
+                    "listener": "{that}.setUserTokenInNotification",
                     "args": ["{gpiiSession}.options.loggedUser"]
                 }, {
-                    // b) prepare popup notification
-                    "this": "{that}.dom.notification",
-                    "method": "dialog",
-                    "args": [{
-                        autoOpen: false,
-                        modal: true,
-                        //width: 420,
-                        dialogClass: "gpii-dialog-noTitle",
-                        closeOnEscape: false,
-                        position: { my: "bottom", at: "bottom", of: ".gpii-prefsEditor-preferencesContainer" }
-                    }]
-                }, {
-                    // c) show notification
+                    // b) show notification
                     "listener": "{that}.showSaveNotificationIfNoLogin",
                     "args": ["{that}.model.userLoggedIn"]
                 }],
@@ -109,6 +96,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.messageLineLabel",
                     "method": "text",
                     "args": [""]
+                },
+                "onLogout.gpiiLogout": {
+                    listener: "{gpiiSession}.logout"
                 },
                 /*"onLogout.reloadPage": {
                     "this": "location",
@@ -160,12 +150,24 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "text",
                     "args": ["{that}.stringBundle.logoutText"]
                 },
+                "onReady.prepareSaveNotification": {
+                    "this": "{that}.dom.notification",
+                    "method": "dialog",
+                    "args": [{
+                        autoOpen: false,
+                        modal: true,
+                        //width: 420,
+                        dialogClass: "gpii-dialog-noTitle",
+                        closeOnEscape: false,
+                        position: { my: "bottom", at: "bottom", of: ".gpii-prefsEditor-preferencesContainer" }
+                    }]
+                },
                 // hide the logout link initially
-                "onReady.hideSaveNotification": {
+                /*"onReady.hideSaveNotification": {
                     "this": "{that}.dom.notification",
                     "method": "hide",
                     "args": [0]
-                },
+                },*/
                 // hide the logout link initially
                 "onReady.hideUserStatusBar": {
                     "this": "{that}.dom.userStatusBar",
@@ -178,6 +180,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             invokers: {
+                setUserTokenInNotification: {
+                    "funcName": "gpii.prefs.pmt_pilot_2.setUserTokenInNotification",
+                    "args": "{arguments}.0"
+                },
                 showSaveNotificationIfNoLogin: {
                     "funcName": "gpii.prefs.pmt_pilot_2.showSaveNotificationIfNoLogin",
                     "args": "{arguments}.0"
@@ -197,6 +203,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         }
     });
+    
+    gpii.prefs.pmt_pilot_2.setUserTokenInNotification = function (userToken) {
+        // Had to reference the notification container this way, because jQuery.dialog()
+        // detaches it from its original position and appends it to body, making Infusion
+        // DOM to lose reference to it.
+        $(".gpiic-prefsEditor-notificationMessagePart2").text(userToken);
+    };
     
     gpii.prefs.pmt_pilot_2.showSaveNotificationIfNoLogin = function (userLoggedIn) {
         if (!userLoggedIn) {
