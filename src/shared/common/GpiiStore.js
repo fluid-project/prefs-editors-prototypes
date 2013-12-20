@@ -1,5 +1,6 @@
 /*
 Copyright 2013 OCAD University
+Copyright 2013 CERTH/HIT
 
 Licensed under the Educational Community License (ECL), Version 2.0 or the New
 BSD license. You may not use this file except in compliance with one these
@@ -15,10 +16,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 // JSLint options
 /*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
 
-// GPII store is for connecting the discovery tool with the GPII server.
-// The discovery tool uses the cookie store by default, rather than the
+// GPII store is for connecting the preference tools with the GPII server.
+// The preference tools uses the cookie store by default, rather than the
 // GPII store.
-// To activate the GPII store in the discovery tool, refer to comments in
+// To activate the GPII store in the preference tools, refer to comments in
 // http://issues.gpii.net/browse/GPII-185
 
 (function ($, fluid) {
@@ -31,35 +32,32 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * @param {Object} options
      */
     fluid.defaults("gpii.prefs.gpiiStore", {
-        gradeNames: ["fluid.prefs.dataSource", "fluid.eventedComponent", "autoInit"],
-        gpiiEntry: "http://registry.gpii.org/applications/gpii.prefs",
-        // Maybe we should be informed for currently logged user from GPII?
-        // This is relevant, http://issues.gpii.net/browse/GPII-290 
-        loggedUser: null,
-        events: {
-            onLogin: null
+        gradeNames: ["fluid.prefs.dataSource", "autoInit"],
+        // instantiate the gpiiSession component
+        components: {
+            gpiiSession: {
+                type: "gpii.prefs.gpiiSession"
+            }
         },
+        gpiiEntry: "http://registry.gpii.org/applications/gpii.prefs",
         invokers: {
             get: {
                 funcName: "gpii.prefs.gpiiStore.get",
-                args: ["{that}.options"]
+                args: ["{that}.options", "{gpiiSession}"]
             },
             set: {
                 funcName: "gpii.prefs.gpiiStore.set",
-                args: ["{arguments}.0", "{that}.options", "{that}.events.onLogin"]
-            },
-            logout: {
-                "funcName": "gpii.prefs.gpiiStore.logout",
-                "args": ["{that}.options"]
+                args: ["{arguments}.0", "{that}.options", "{gpiiSession}"]
             }
         }
     });
 
-    gpii.prefs.gpiiStore.get = function (settings) {
+    gpii.prefs.gpiiStore.get = function (settings, session) {
         var gpiiModel;
-        if (settings.loggedUser != null) {
+        
+        if (session.loggedUser != null) {
 
-            var urlToPost = settings.loggedUser ? (settings.url + settings.loggedUser) : (settings.url);
+            var urlToPost = session.loggedUser ? (session.url + session.loggedUser) : (session.url);
             
             $.ajax({
                 url: urlToPost,
@@ -79,14 +77,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         return gpiiModel;
     };
 
-    gpii.prefs.gpiiStore.set = function (model, settings, onLoginEvent) {
+    gpii.prefs.gpiiStore.set = function (model, settings, session) {
         var dataToSave = {};
 
         dataToSave[settings.gpiiEntry] = [{
             value: model
         }];
 
-        var urlToPost = settings.loggedUser ? (settings.url + settings.loggedUser) : (settings.url);
+        var urlToPost = session.loggedUser ? (session.url + session.loggedUser) : (session.url);
         
         $.ajax({
             url: urlToPost,
@@ -95,25 +93,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             contentType: "application/json",
             data: JSON.stringify(dataToSave),
             success: function (data) {
-                if (settings.loggedUser != data.token) {
-                    // new user, set the logged user on save
-                    settings.loggedUser = data.token;
-                    onLoginEvent.fire();
-                    //alert("New user created with token: " + settings.loggedUser);
-                    // also login here, do we pollute the store functionality with that?
-                    // maybe logging in/out should be performed by another component?
-                    // interaction through proper events?
-                    $.ajax({
-                        url: settings.url + settings.loggedUser + "/login",
-                        type: "GET",
-                        success: function (data) {
-                            fluid.log("GET: " + data);
-                        },
-                        error: function (jqXHR, textStatus, errorThrown) {
-                            fluid.log("GET: Error at logging in user " + settings.loggedUser + "! Test status: " + textStatus);
-                            fluid.log(errorThrown);
-                        }
-                    });
+                if (session.loggedUser != data.token) {
+                    // new user, trigger Login event
+                    session.events.onLogin.fire();
                 }
                 fluid.log("POST: Saved to GPII server");
             },
@@ -123,24 +105,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         });
     };
 
-    // perhaps this should also go to another component
-    gpii.prefs.gpiiStore.logout = function (settings) {
-        if (settings.loggedUser != null) {
-            $.ajax({
-                url: settings.url + settings.loggedUser + "/logout",
-                type: "GET",
-                success: function (data) {
-                    settings.loggedUser = null;
-                    fluid.log("GET: " + data);
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    fluid.log("GET: Error at logging out user " + gpiiStore.options.loggedUser + "! Test status: " + textStatus);
-                    fluid.log(errorThrown);
-                }
-            });
-        }
-    };
-    
     fluid.defaults("gpii.prefs.gpiiSettingsStore", {
         gradeNames: ["autoInit", "fluid.globalSettingsStore"],
         storeType: "gpii.prefs.gpiiStore",

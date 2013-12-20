@@ -39,7 +39,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": ["value", "{that}.stringBundle.cancelButtonText"]
                 },
                 "onReset.logout": {
-                    listener: "{gpiiStore}.logout"
+                    listener: "{gpiiSession}.logout"
                 }
             },
             selectors: {

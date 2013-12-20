@@ -44,14 +44,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 userLoggedIn: false
             },
             listeners: {
-                /*onSave: {
-                    listener: "console.log"
-                },*/
-                "{gpiiStore}.events.onLogin": [{
+                // on Session login:
+                "{gpiiSession}.events.onLogin": [{
+                    // a) set user token in message
                     "this": "{that}.dom.notificationMessagePart2",
                     "method": "text",
-                    "args": ["{gpiiStore}.options.loggedUser"]
+                    "args": ["{gpiiSession}.options.loggedUser"]
                 }, {
+                    // b) prepare popup notification
                     "this": "{that}.dom.notification",
                     "method": "dialog",
                     "args": [{
@@ -63,6 +63,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         position: { my: "bottom", at: "bottom", of: ".gpii-prefsEditor-preferencesContainer" }
                     }]
                 }, {
+                    // c) show notification
                     "listener": "{that}.showSaveNotificationIfNoLogin",
                     "args": ["{that}.model.userLoggedIn"]
                 }],
