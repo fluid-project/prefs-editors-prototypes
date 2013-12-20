@@ -1,5 +1,6 @@
 /*
 Copyright 2013 OCAD University
+Copyright 2013 CERTH/HIT
 
 Licensed under the Educational Community License (ECL), Version 2.0 or the New
 BSD license. You may not use this file except in compliance with one these
@@ -15,10 +16,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 // JSLint options
 /*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
 
-// GPII store is for connecting the discovery tool with the GPII server.
-// The discovery tool uses the cookie store by default, rather than the
+// GPII store is for connecting the preference tools with the GPII server.
+// The preference tools uses the cookie store by default, rather than the
 // GPII store.
-// To activate the GPII store in the discovery tool, refer to comments in
+// To activate the GPII store in the preference tools, refer to comments in
 // http://issues.gpii.net/browse/GPII-185
 
 (function ($, fluid) {
