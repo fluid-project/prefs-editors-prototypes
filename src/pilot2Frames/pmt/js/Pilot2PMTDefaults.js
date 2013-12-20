@@ -45,19 +45,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             listeners: {
                 // on Session login:
-                "{gpiiSession}.events.onLogin": [{
-                    // a) set user token in message
-                    "listener": "{that}.setUserTokenInNotification",
-                    "args": ["{gpiiSession}.options.loggedUser"]
-                }, {
-                    // b) show notification
+                "{gpiiSession}.events.onLogin": {
+                    // set user token and show notification 
                     "listener": "{that}.showSaveNotificationIfNoLogin",
-                    "args": ["{that}.model.userLoggedIn"]
-                }],
-                // show notification onSave if not already logged in
-                "onSave.showSaveNotificationIfNoLogin": {
-                    "listener": "{that}.showSaveNotificationIfNoLogin",
-                    "args": ["{that}.model.userLoggedIn"]
+                    "args": ["{that}.model.userLoggedIn", "{gpiiSession}.options.loggedUser"]
                 },
                 // trigger login on notification confirmation
                 "onReady.bindNotificationConfirmButtonClickTriggerLogin": {
@@ -180,13 +171,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             invokers: {
-                setUserTokenInNotification: {
-                    "funcName": "gpii.prefs.pmt_pilot_2.setUserTokenInNotification",
-                    "args": "{arguments}.0"
-                },
                 showSaveNotificationIfNoLogin: {
                     "funcName": "gpii.prefs.pmt_pilot_2.showSaveNotificationIfNoLogin",
-                    "args": "{arguments}.0"
+                    "args": ["{arguments}.0", "{arguments}.1"]
                 },
                 hideSaveNotification: {
                     "funcName": "gpii.prefs.pmt_pilot_2.hideSaveNotification"
@@ -204,18 +191,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
     
-    gpii.prefs.pmt_pilot_2.setUserTokenInNotification = function (userToken) {
-        // Had to reference the notification container this way, because jQuery.dialog()
-        // detaches it from its original position and appends it to body, making Infusion
-        // DOM to lose reference to it.
-        $(".gpiic-prefsEditor-notificationMessagePart2").text(userToken);
-    };
-    
-    gpii.prefs.pmt_pilot_2.showSaveNotificationIfNoLogin = function (userLoggedIn) {
+    gpii.prefs.pmt_pilot_2.showSaveNotificationIfNoLogin = function (userLoggedIn, userToken) {
         if (!userLoggedIn) {
             // Had to reference the notification container this way, because jQuery.dialog()
             // detaches it from its original position and appends it to body, making Infusion
             // DOM to lose reference to it.
+            $(".gpiic-prefsEditor-notificationMessagePart2").text(userToken);
             $(".gpiic-prefsEditor-notification").dialog("open");
         }
     };
