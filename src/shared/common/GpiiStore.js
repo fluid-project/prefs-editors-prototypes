@@ -31,11 +31,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * @param {Object} options
      */
     fluid.defaults("gpii.prefs.gpiiStore", {
-        gradeNames: ["fluid.prefs.dataSource", "autoInit"],
+        gradeNames: ["fluid.prefs.dataSource", "fluid.eventedComponent", "autoInit"],
         gpiiEntry: "http://registry.gpii.org/applications/gpii.prefs",
         // Maybe we should be informed for currently logged user from GPII?
         // This is relevant, http://issues.gpii.net/browse/GPII-290 
         loggedUser: null,
+        events: {
+            onLogin: null
+        },
         invokers: {
             get: {
                 funcName: "gpii.prefs.gpiiStore.get",
@@ -43,7 +46,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             },
             set: {
                 funcName: "gpii.prefs.gpiiStore.set",
-                args: ["{arguments}.0", "{that}.options"]
+                args: ["{arguments}.0", "{that}.options", "{that}.events.onLogin"]
             },
             logout: {
                 "funcName": "gpii.prefs.gpiiStore.logout",
@@ -76,7 +79,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         return gpiiModel;
     };
 
-    gpii.prefs.gpiiStore.set = function (model, settings) {
+    gpii.prefs.gpiiStore.set = function (model, settings, onLoginEvent) {
         var dataToSave = {};
 
         dataToSave[settings.gpiiEntry] = [{
@@ -95,7 +98,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 if (settings.loggedUser != data.token) {
                     // new user, set the logged user on save
                     settings.loggedUser = data.token;
-                    alert("New user created with token: " + settings.loggedUser);
+                    onLoginEvent.fire();
+                    //alert("New user created with token: " + settings.loggedUser);
                     // also login here, do we pollute the store functionality with that?
                     // maybe logging in/out should be performed by another component?
                     // interaction through proper events?

@@ -47,6 +47,25 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 /*onSave: {
                     listener: "console.log"
                 },*/
+                "{gpiiStore}.events.onLogin": [{
+                    "this": "{that}.dom.notificationMessagePart2",
+                    "method": "text",
+                    "args": ["{gpiiStore}.options.loggedUser"]
+                }, {
+                    "this": "{that}.dom.notification",
+                    "method": "dialog",
+                    "args": [{
+                        autoOpen: false,
+                        modal: true,
+                        //width: 420,
+                        dialogClass: "gpii-dialog-noTitle",
+                        closeOnEscape: false,
+                        position: { my: "bottom", at: "bottom", of: ".gpii-prefsEditor-preferencesContainer" }
+                    }]
+                }, {
+                    "listener": "{that}.showSaveNotificationIfNoLogin",
+                    "args": ["{that}.model.userLoggedIn"]
+                }],
                 // show notification onSave if not already logged in
                 "onSave.showSaveNotificationIfNoLogin": {
                     "listener": "{that}.showSaveNotificationIfNoLogin",
@@ -140,18 +159,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "text",
                     "args": ["{that}.stringBundle.logoutText"]
                 },
-                // setup the jQuery dialog
-                "onReady.prepareSaveNotification": {
+                // hide the logout link initially
+                "onReady.hideSaveNotification": {
                     "this": "{that}.dom.notification",
-                    "method": "dialog",
-                    "args": [{
-                        autoOpen: false,
-                        modal: true,
-                        //width: 420,
-                        dialogClass: "gpii-dialog-noTitle",
-                        closeOnEscape: false,
-                        position: { my: "bottom", at: "bottom", of: ".gpii-prefsEditor-preferencesContainer" }
-                    }]
+                    "method": "hide",
+                    "args": [0]
                 },
                 // hide the logout link initially
                 "onReady.hideUserStatusBar": {
@@ -163,12 +175,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.triggerLogoutEvent": {
                     "listener": "{that}.events.onLogout.fire"
                 }
-                /*,
-                "onReady.console": {
-                    "this": "console",
-                    "method": "log",
-                    "args": ["{that}"]
-                }*/
             },
             invokers: {
                 showSaveNotificationIfNoLogin: {
