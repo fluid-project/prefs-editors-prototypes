@@ -51,10 +51,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.prefs.gpiiSession.login = function (that, userToken) {
         if (userToken != null) {
             $.ajax({
-                url: that.settings.url + userToken + "/login",
+                url: that.options.url + userToken + "/login",
                 type: "GET",
                 success: function (data) {
-                    that.settings.loggedUser = userToken;
+                    that.options.loggedUser = userToken;
                     that.events.onLogin.fire();
                     fluid.log("GET: " + data);
                 },
@@ -67,12 +67,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
     
     gpii.prefs.gpiiSession.logout = function (that) {
-        if (that.settings.loggedUser != null) {
+        if (that.options.loggedUser != null) {
             $.ajax({
-                url: that.settings.url + that.settings.loggedUser + "/logout",
+                url: that.options.url + that.options.loggedUser + "/logout",
                 type: "GET",
                 success: function (data) {
-                    that.settings.loggedUser = null;
+                    that.options.loggedUser = null;
                     that.events.onLogout.fire();
                     fluid.log("GET: " + data);
                 },

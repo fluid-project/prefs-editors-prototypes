@@ -43,7 +43,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         invokers: {
             get: {
                 funcName: "gpii.prefs.gpiiStore.get",
-                args: ["{that}.options", "{gpiiSession}"]
+                args: ["{that}.options", "{gpiiSession}.options"]
             },
             set: {
                 funcName: "gpii.prefs.gpiiStore.set",
@@ -52,12 +52,12 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
     });
 
-    gpii.prefs.gpiiStore.get = function (settings, session) {
+    gpii.prefs.gpiiStore.get = function (settings, sessionSettings) {
         var gpiiModel;
         
-        if (session.loggedUser != null) {
+        if (sessionSettings.loggedUser != null) {
 
-            var urlToPost = session.loggedUser ? (session.url + session.loggedUser) : (session.url);
+            var urlToPost = sessionSettings.loggedUser ? (sessionSettings.url + sessionSettings.loggedUser) : (sessionSettings.url);
             
             $.ajax({
                 url: urlToPost,
@@ -84,7 +84,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             value: model
         }];
 
-        var urlToPost = session.loggedUser ? (session.url + session.loggedUser) : (session.url);
+        var urlToPost = session.options.loggedUser ? (session.options.url + session.options.loggedUser) : (session.options.url);
         
         $.ajax({
             url: urlToPost,
@@ -93,9 +93,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             contentType: "application/json",
             data: JSON.stringify(dataToSave),
             success: function (data) {
-                if (session.loggedUser != data.token) {
-                    // new user, trigger Login event
-                    session.events.onLogin.fire();
+                if (session.options.loggedUser != data.token) {
+                    // new user, login
+                    session.login(data.token);
                 }
                 fluid.log("POST: Saved to GPII server");
             },
