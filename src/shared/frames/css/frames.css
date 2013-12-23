@@ -142,7 +142,7 @@ body {
 }
 
 .gpii-prefsEditor-notificationMessage {
-	color: #f3f3f3 !important;
+	color: #f3f3f3;
 }
 
 .ui-dialog {
@@ -168,6 +168,7 @@ body {
 	color: white;
 	background-color: #666666;
 	padding: 0 5px 0 5px;
+	font-size: 1.5em;
 }
 
 .gpii-prefsEditor-userStatusBar {
@@ -204,8 +205,12 @@ body {
 	background-color: #e5eded;
 }
 
-/* This conflits with speakText-style.css
+/* These conflit with speakText-style.css
 Needed for the frame's popup */
 .ui-corner-all {
     width: 28em !important;
+}
+
+.ui-widget .ui-widget-content {
+    border-style: solid solid solid solid !important;
 }
