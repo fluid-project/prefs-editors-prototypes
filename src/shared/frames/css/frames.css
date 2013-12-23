@@ -165,10 +165,13 @@ body {
 }
 
 .gpii-prefsEditor-notificationMessageTOKEN {
+	display: block;
 	color: white;
 	background-color: #666666;
 	padding: 0 5px 0 5px;
 	font-size: 1.5em;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
 }
 
 .gpii-prefsEditor-userStatusBar {
