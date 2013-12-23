@@ -29,13 +29,14 @@ body {
 }
 
 .gpii-prefsEditor-preferenceSetSelectionButton {
-	display: table-cell;
-	width: 50%;
-	text-align: center;
+	display: inline-block;
+	width: 45%;
+	//text-align: center;
 	padding: 5px;
-	white-space: nowrap;
+	//white-space: nowrap;
 	line-height: 1.2em;
 	font-size: 1.2em;
+	word-wrap: break-word !important;
 }
 
 .gpii-prefsEditor-preferenceSetSelectionButtonSelected {
