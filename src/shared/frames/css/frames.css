@@ -219,3 +219,7 @@ Needed for the frame's popup */
 .ui-widget .ui-widget-content {
     border-style: solid solid solid solid !important;
 }
+
+body {
+    -webkit-user-select: auto !important;
+}
