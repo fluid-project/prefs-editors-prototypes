@@ -34,7 +34,7 @@ body {
 	//text-align: center;
 	padding: 5px;
 	//white-space: nowrap;
-	line-height: 1.2em;
+	//line-height: 1.2em;
 	font-size: 1.2em;
 	word-wrap: break-word !important;
 }
@@ -52,11 +52,13 @@ body {
 }
 
 .gpii-prefsEditor-preferenceSetSelectionButtonMyPreferences:before {
-	content: "\e617"
+	content: "\e617";
+	vertical-align: middle;
 }
 
 .gpii-prefsEditor-preferenceSetSelectionButtonAllPreferences:before {
-	content: "\e614"
+	content: "\e614";
+	vertical-align: middle;
 }
 
 .gpii-prefsEditor-preferenceSetSelectionButtonLabel {
