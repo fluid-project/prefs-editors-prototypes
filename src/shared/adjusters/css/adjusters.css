@@ -295,8 +295,9 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-increaseSize-magnifierPositionBackground:before {
-    font-size: 4.8em !important;
-    content: "" !important; /* this should get value if we have the background font icon */
+    font-size: 6.2em !important;
+    opacity: 0.3;
+    content: "\e620" !important;
 }
     
 .gpii-increaseSize-magnifierPositionFullscreen > .gpii-increaseSize-magnifierPositionFrame:before {
