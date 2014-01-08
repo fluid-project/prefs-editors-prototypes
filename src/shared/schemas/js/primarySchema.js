@@ -107,6 +107,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "boolean",
             "default": false
         },
+        "gpii.primarySchema.textHighlighting": {
+            "type": "string",
+            "default": "Word",
+            "enum": ["Word", "Second option?", "Third option?"]
+        },
         "gpii.primarySchema.screenReaderBrailleOutput": {
             "type": "boolean",
             "default": false

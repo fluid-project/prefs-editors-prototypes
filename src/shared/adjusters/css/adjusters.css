@@ -61,8 +61,8 @@ h2 > label {
 */
 .gpii-prefsEditor-headerImage {
     -webkit-font-smoothing: antialiased;
-    width: 100%;
-    margin: 0px !important;
+    width: 96%;
+    margin-left: -21px;
     color: white;
     background-color: #566374;
     display: table;    
@@ -1093,4 +1093,14 @@ h4 {
 
 .gpii-prefsEditor-slider-input {
 	display:none;
+}
+
+.gpiic-increaseSize-cursor-size-label {
+    display: table;
+    float: left;
+    margin-left: -288px;
+}
+
+.gpii-spacing-ensurer {
+    height: 13px;
 }
