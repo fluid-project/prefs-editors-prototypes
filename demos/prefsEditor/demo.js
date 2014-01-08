@@ -19,14 +19,14 @@ var demo = demo || {};
 (function ($, fluid) {
 
     $(document).ready(function () {
-        fluid.prefs.create("#gpiic-pmt", {
+        var prefsEditor = fluid.prefs.create("#gpiic-pmt", {
             build: {
                 primarySchema: gpii.primarySchema,
                 auxiliarySchema: gpii.pmt.auxiliarySchema
             },
             prefsEditor: {
                 prefsEditorType: "gpii.pmt",
-                storeType: "gpii.prefs.gpiiSettingsStore",
+                // storeType: "gpii.prefs.gpiiSettingsStore",
                 components: {
                     prefsEditorLoader: {
                         options: {
@@ -36,6 +36,9 @@ var demo = demo || {};
                 }
             }
         });
+        // set GPII store
+        gpii.prefs.gpiiSettingsStore();
+        console.log(prefsEditor);
     });
 
 })(jQuery, fluid);
