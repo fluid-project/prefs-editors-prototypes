@@ -54,7 +54,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "panels": {
                     "always": ["speakText", "screenReaderBrailleOutput"],
                     "gpii.primarySchema.speakText": [
-                        "wordsSpokenPerMinute", "volume"
+                        "wordsSpokenPerMinute", "volume", "voicePitch", "screenReaderLanguage",
+                        "punctuationVerbosity", "announceCapitals", "speakTutorialMessages", "keyEcho", "wordEcho"
                     ]
                 }
             },
@@ -232,6 +233,83 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "template": "%prefix/volumeTemplate.html",
                 "container": ".volume",
                 "message": "%prefix/message.json"
+            }
+        },
+
+        "voicePitch": {
+            "type": "gpii.primarySchema.voicePitch",
+            "panel": {
+                "type": "gpii.adjuster.voicePitch",
+                "template": "%prefix/voicePitchTemplate.html",
+                "container": ".voicePitch",
+                "message": "%prefix/message.json"
+            }
+        },
+
+        "screenReaderLanguage": {
+            "type": "gpii.primarySchema.screenReaderLanguage",
+            "panel": {
+                "type": "gpii.adjuster.screenReaderLanguage",
+                "template": "%prefix/screenReaderLanguageTemplate.html",
+                "container": ".screenReaderLanguage",
+                "message": "%prefix/message.json"
+            }
+        },
+
+        "punctuationVerbosity": {
+            "type": "gpii.primarySchema.punctuationVerbosity",
+            "panel": {
+                "type": "gpii.adjuster.punctuationVerbosity",
+                "template": "%prefix/punctuationVerbosityTemplate.html",
+                "container": ".punctuationVerbosity",
+                "message": "%prefix/message.json",
+                "classnameMap": {"punctuationVerbosity": "@punctuationVerbosity.classes"}
+            },
+            "classes": {
+                "none": "radioButton-left",
+                "some": "radioButton-middle radioButton-second",
+                "most": "radioButton-middle radioButton-third",
+                "all": "radioButton-right"
+            }
+        },
+
+        "announceCapitals": {
+            "type": "gpii.primarySchema.announceCapitals",
+            "panel": {
+                "type": "gpii.adjuster.announceCapitals",
+                "template": "%prefix/announceCapitalsTemplate.html",
+                "message": "%prefix/message.json",
+                "container": ".capitals"
+            }
+        },
+
+        "speakTutorialMessages": {
+            "type": "gpii.primarySchema.speakTutorialMessages",
+            "panel": {
+                "type": "gpii.adjuster.speakTutorialMessages",
+                "template": "%prefix/speakTutorialMessagesTemplate.html",
+                "message": "%prefix/message.json",
+                "container": ".tutorials"
+            }
+        },
+
+        "keyEcho": {
+            "type": "gpii.primarySchema.keyEcho",
+            "panel": {
+                "type": "gpii.adjuster.keyEcho",
+                "template": "%prefix/keyEchoTemplate.html",
+                "message": "%prefix/message.json",
+                "container": ".keyEcho"
+            }
+        },
+
+        "wordEcho": {
+            "type": "gpii.primarySchema.wordEcho",
+            "panel": {
+                "type": "gpii.adjuster.wordEcho",
+                "template": "%prefix/wordEchoTemplate.html",
+                "message": "%prefix/message.json",
+                "container": ".wordEcho"
             }
         },
 

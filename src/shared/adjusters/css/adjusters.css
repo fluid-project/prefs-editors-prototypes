@@ -193,9 +193,9 @@ input[type=checkbox], input[type=radio] {
     The textfieldStepper style
 */
 .gpii-stepper {
-    width: 100% !important;
+    /*width: 100% !important;*/
     background-color: #FFFFFF;
-    display: table;
+    /*display: table;*/
 }
 
 .gpii-stepper-buttons {

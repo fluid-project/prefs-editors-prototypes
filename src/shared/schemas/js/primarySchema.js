@@ -75,6 +75,38 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "minimum": 0,
             "divisibleBy": 10
         },
+        "gpii.primarySchema.voicePitch": {
+            "type": "number",
+            "default": 80,
+            "minimum": 0,
+            "divisibleBy": 10
+        },
+        "gpii.primarySchema.screenReaderLanguage": {
+            "type": "string",
+            "default": "English",
+            "enum": ["English", "French (français)", "German (Deutsch)", "Russian (Русский)"]
+        },
+        "gpii.primarySchema.punctuationVerbosity": {
+            "type": "string",
+            "default": "none",
+            "enum": ["none", "some", "most", "all"]
+        },
+        "gpii.primarySchema.announceCapitals": {
+            "type": "boolean",
+            "default": false
+        },
+        "gpii.primarySchema.speakTutorialMessages": {
+            "type": "boolean",
+            "default": false
+        },
+        "gpii.primarySchema.keyEcho": {
+            "type": "boolean",
+            "default": false
+        },
+        "gpii.primarySchema.wordEcho": {
+            "type": "boolean",
+            "default": false
+        },
         "gpii.primarySchema.screenReaderBrailleOutput": {
             "type": "boolean",
             "default": false
