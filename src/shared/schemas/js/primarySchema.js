@@ -112,6 +112,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "default": "Word",
             "enum": ["Word", "Second option?", "Third option?"]
         },
+        "gpii.primarySchema.screenReaderTracking": {
+            "type": "string",
+            "default": "",
+            "enum": ["mousecursor", "textcursor", "keyboardfocus"]
+        },
         "gpii.primarySchema.screenReaderBrailleOutput": {
             "type": "boolean",
             "default": false

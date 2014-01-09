@@ -49,13 +49,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "visualAlternatives": {
                 "type": "gpii.panel.visualAlternatives",
                 "container": ".gpiic-visualAlternatives",
-                "template": "../../src/pcp/pcp-VisualAlternativesGroupContainer.html",
+                "template": "../../src/pmt/pmt-VisualAlternativesGroupContainer.html",
                 "message": "%prefix/message.json",
                 "panels": {
                     "always": ["speakText", "screenReaderBrailleOutput"],
                     "gpii.primarySchema.speakText": [
                         "wordsSpokenPerMinute", "volume", "voicePitch", "screenReaderLanguage",
-                        "punctuationVerbosity", "announceCapitals", "speakTutorialMessages", "keyEcho", "wordEcho"
+                        "punctuationVerbosity", "announceCapitals", "speakTutorialMessages", "keyEcho", "wordEcho", "screenReaderFollows"
                     ]
                 }
             },
@@ -313,6 +313,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
 
+        "screenReaderFollows": {
+            "type": "gpii.primarySchema.screenReaderTracking",
+            "panel": {
+                "type": "gpii.adjuster.followingElement.screenReader",
+                "container": ".screanReaderFollows",
+                "template": "%prefix/followingElementTemplate.html",
+                "message": "%prefix/followingElement.json",
+                "classnameMap": {
+                    "followingElement": "@followingElement.classes",
+                    "followingElementBorder": "@followingElement.borderClasses"
+                }
+            }
+        },
+        
         "screenReaderBrailleOutput": {
             "type": "gpii.primarySchema.screenReaderBrailleOutput",
             "panel": {
