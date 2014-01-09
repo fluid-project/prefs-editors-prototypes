@@ -61,8 +61,8 @@ h2 > label {
 */
 .gpii-prefsEditor-headerImage {
     -webkit-font-smoothing: antialiased;
-    width: 96%;
-    margin-left: -21px;
+    width: 100%;
+    margin: 0px !important;
     color: white;
     background-color: #566374;
     display: table;    
@@ -193,9 +193,9 @@ input[type=checkbox], input[type=radio] {
     The textfieldStepper style
 */
 .gpii-stepper {
-    /*width: 100% !important;*/
+    //width: 100% !important;
     background-color: #FFFFFF;
-    /*display: table;*/
+    display: inline-table;
 }
 
 .gpii-stepper-buttons {
@@ -1095,12 +1095,17 @@ h4 {
 	display:none;
 }
 
-.gpiic-increaseSize-cursor-size-label {
-    display: table;
+.gpii-onOffSwitch-switch {
     float: left;
-    margin-left: -288px;
 }
 
-.gpii-spacing-ensurer {
-    height: 13px;
+#gpii-onOffSwitch-onOff {
+    display: inline;
+    float: right;
+    font-size: 70%;
+    margin-left: 37px;
+}
+
+.gpii-stepper-pmt {
+	width: 100% !important;
 }

@@ -18,7 +18,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.adjuster.followingElement.screenReader", {
         gradeNames: ["gpii.adjuster.followingElement", "autoInit"],
         preferenceMap: {
-            "screenReader.tracking": {
+            "gpii.primarySchema.screenReaderTracking": {
                 "model.value": "",
                 "controlValues.followingElement": "enum"
             }
