@@ -77,22 +77,21 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
 
         if (!loggedIn) {
-            alert("dano")
-            var port = 8080;
+            var port = 8081;
             var token = "screenreader_common"; //TODO: should be obtained from PMT. Currently used for testing purpose.
             var get_url = "http://localhost:" + port + "/user/" + token + "/login";
             $.ajax({
                 type: "GET",
                 url: get_url,
                 success: function () {
-                    alert("Successfully sent to the Flow Manager.");
+                    fluid.log("Successfully sent to the Flow Manager.");
                 }
             });
 
             that.options.loggedInFlag = true;
         }
         else {
-            var host = "ws://localhost:8080/update";
+            var host = "ws://localhost:8081/update";
             var socket = new WebSocket(host);
 
             if (socket.readyState == 1) {
