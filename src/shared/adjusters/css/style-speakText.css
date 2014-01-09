@@ -56,6 +56,11 @@
 .gpii-label {
     font-size: 19px !important;
     font-family: 'Roboto Slab', serif;
+    font-weight: normal;
+}
+
+.gpiic-followingElementHeading.gpii-label {
+    margin-left: 15px;
 }
 
 .gpii-description {
