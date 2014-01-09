@@ -45,6 +45,37 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "always": ["textSize", "cursorSize", "magnifierEnabled"],
                     "gpii.primarySchema.magnifierEnabled": ["magnifier", "magnifierPosition", "magnifierFollows", "showCrosshairs"]
                 }
+            },
+            "visualAlternatives": {
+                "type": "gpii.panel.visualAlternatives",
+                "container": ".gpiic-visualAlternatives",
+                "template": "../../src/pmt/pmt-VisualAlternativesGroupContainer.html",
+                "message": "%prefix/message.json",
+                "panels": {
+                    "always": ["speakText", "screenReaderBrailleOutput"],
+                    "gpii.primarySchema.speakText": [
+                        "wordsSpokenPerMinute", "volume", "voicePitch", "screenReaderLanguage",
+                        "punctuationVerbosity", "announceCapitals", "speakTutorialMessages", "keyEcho", "wordEcho", "textHighlighting", "screenReaderFollows"
+                    ]
+                }
+            },
+            "volume": {
+                "type": "gpii.panel.volumeCollectivePanel",
+                "container": ".gpiic-volumeGroup",
+                "template": "%prefix/VolumeGroupContainer.html",
+                "message": "%prefix/message.json",
+                "panels": {
+                    "always": ["universalVolume"]
+                }
+            },
+            "language": {
+                "type": "gpii.panel.languageCollectivePanel",
+                "container": ".gpiic-languageGroup",
+                "template": "%prefix/LanguageGroupContainer.html",
+                "message": "%prefix/message.json",
+                "panels": {
+                    "always": ["universalLanguage"]
+                }
             }
         },
         "contrastTheme": {
@@ -172,6 +203,167 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "container": ".gpiic-prefsEditor-showCrosshairs",
                 "template": "%prefix/iconCheckTemplateShowCrosshairs.html",
                 "message": "%prefix/showCrosshairs.json"
+            }
+        },
+        
+        "speakText": {
+            "type": "gpii.primarySchema.speakText",
+            "panel": {
+                "type": "gpii.adjuster.speakText",
+                "template": "%prefix/speakTextTemplate.html",
+                "container": ".speakText",
+                "message": "%prefix/message.json"
+            }
+        },
+
+        "wordsSpokenPerMinute": {
+            "type": "gpii.primarySchema.wordsSpokenPerMinute",
+            "panel": {
+                "type": "gpii.adjuster.wordsSpokenPerMinute",
+                "template": "%prefix/wordsSpokenPerMinute.html",
+                "container": ".words-spoken-per-minute",
+                "message": "%prefix/message.json"
+            }
+        },
+
+        "volume": {
+            "type": "gpii.primarySchema.volume",
+            "panel": {
+                "type": "gpii.adjuster.volume",
+                "template": "%prefix/volumeTemplate.html",
+                "container": ".volume",
+                "message": "%prefix/message.json"
+            }
+        },
+
+        "voicePitch": {
+            "type": "gpii.primarySchema.voicePitch",
+            "panel": {
+                "type": "gpii.adjuster.voicePitch",
+                "template": "%prefix/voicePitchTemplate.html",
+                "container": ".voicePitch",
+                "message": "%prefix/message.json"
+            }
+        },
+
+        "screenReaderLanguage": {
+            "type": "gpii.primarySchema.screenReaderLanguage",
+            "panel": {
+                "type": "gpii.adjuster.screenReaderLanguage",
+                "template": "%prefix/screenReaderLanguageTemplate.html",
+                "container": ".screenReaderLanguage",
+                "message": "%prefix/message.json"
+            }
+        },
+
+        "textHighlighting": {
+            "type": "gpii.primarySchema.textHighlighting",
+            "panel": {
+                "type": "gpii.adjuster.textHighlighting",
+                "template": "%prefix/textHighlightingTemplate.html",
+                "container": ".textHighlighting",
+                "message": "%prefix/message.json"
+            }
+        },
+
+        "punctuationVerbosity": {
+            "type": "gpii.primarySchema.punctuationVerbosity",
+            "panel": {
+                "type": "gpii.adjuster.punctuationVerbosity",
+                "template": "%prefix/punctuationVerbosityTemplate.html",
+                "container": ".punctuationVerbosity",
+                "message": "%prefix/message.json",
+                "classnameMap": {"punctuationVerbosity": "@punctuationVerbosity.classes"}
+            },
+            "classes": {
+                "none": "radioButton-left",
+                "some": "radioButton-middle radioButton-second",
+                "most": "radioButton-middle radioButton-third",
+                "all": "radioButton-right"
+            }
+        },
+
+        "announceCapitals": {
+            "type": "gpii.primarySchema.announceCapitals",
+            "panel": {
+                "type": "gpii.adjuster.announceCapitals",
+                "template": "%prefix/announceCapitalsTemplate.html",
+                "message": "%prefix/message.json",
+                "container": ".capitals"
+            }
+        },
+
+        "speakTutorialMessages": {
+            "type": "gpii.primarySchema.speakTutorialMessages",
+            "panel": {
+                "type": "gpii.adjuster.speakTutorialMessages",
+                "template": "%prefix/speakTutorialMessagesTemplate.html",
+                "message": "%prefix/message.json",
+                "container": ".tutorials"
+            }
+        },
+
+        "keyEcho": {
+            "type": "gpii.primarySchema.keyEcho",
+            "panel": {
+                "type": "gpii.adjuster.keyEcho",
+                "template": "%prefix/keyEchoTemplate.html",
+                "message": "%prefix/message.json",
+                "container": ".keyEcho"
+            }
+        },
+
+        "wordEcho": {
+            "type": "gpii.primarySchema.wordEcho",
+            "panel": {
+                "type": "gpii.adjuster.wordEcho",
+                "template": "%prefix/wordEchoTemplate.html",
+                "message": "%prefix/message.json",
+                "container": ".wordEcho"
+            }
+        },
+
+        "screenReaderFollows": {
+            "type": "gpii.primarySchema.screenReaderTracking",
+            "panel": {
+                "type": "gpii.adjuster.followingElement.screenReader",
+                "container": ".screanReaderFollows",
+                "template": "%prefix/followingElementTemplate.html",
+                "message": "%prefix/followingElement.json",
+                "classnameMap": {
+                    "followingElement": "@followingElement.classes",
+                    "followingElementBorder": "@followingElement.borderClasses"
+                }
+            }
+        },
+        
+        "screenReaderBrailleOutput": {
+            "type": "gpii.primarySchema.screenReaderBrailleOutput",
+            "panel": {
+                "type": "gpii.adjuster.screenReaderBrailleOutput",
+                "template": "%prefix/brailleTemplate.html",
+                "container": ".braille",
+                "message": "%prefix/message.json"
+            }
+        },
+
+        "universalVolume": {
+            "type": "gpii.primarySchema.universalVolume",
+            "panel": {
+                "type": "gpii.adjuster.universalVolume",
+                "template": "%prefix/universalVolumeTemplate.html",
+                "container": ".universalVolume",
+                "message": "%prefix/message.json"
+            }
+        },
+
+        "universalLanguage": {
+            "type": "gpii.primarySchema.universalLanguage",
+            "panel": {
+                "type": "gpii.adjuster.universalLanguage",
+                "template": "%prefix/universalLanguageTemplate.html",
+                "container": ".universalLanguage",
+                "message": "%prefix/message.json"
             }
         }
     };

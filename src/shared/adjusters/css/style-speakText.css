@@ -1,19 +1,19 @@
 @font-face {
+    font-family: 'allIcons';
+    src: url('../fonts/allIcons.ttf') format('truetype'),
+         url('../fonts/allIcons.eot');
+}
+
+@font-face {
+    font-family: 'headerGear';
+    src: url('../fonts/headerGear.ttf') format('truetype'),
+         url('../fonts/headerGear.eot');
+}
+
+@font-face {
     font-family: 'radioButtonIcons';
     src: url('../fonts/blackDot.ttf') format('truetype'),
          url('../fonts/blackDot.eot');
-}
-
-@font-face {
-    font-family: 'optionsIcons';
-    src: url('../fonts/icomoon.ttf') format('truetype'),
-         url('../fonts/icomoon.eot');
-}
-
-@font-face {
-    font-family: 'presetButtonPackage';
-    src: url('../fonts/presetButton.ttf') format('truetype'),
-         url('../fonts/presetButton.eot');
 }
 
 @font-face {
@@ -22,103 +22,83 @@
          url('../fonts/tick.eot');
 }
 
-.bold-font-weight {
-    font-weight: bold;
+@font-face {
+    font-family: 'visualAlternativesMoreLessArrows';
+    src: url('../fonts/arrows.ttf') format('truetype'),
+         url('../fonts/arrows.eot');
 }
 
-.normal-font-weight {
-    font-weight: normal;
+.gpii-prefsEditor-moreLess {
+    display: block;
+    width:100% !important;
+    text-align: center;
+    cursor: pointer;
+    padding-bottom: 5px !important;
+    padding-top: 20px;
 }
 
-.gpii-speakText-moreOptionsIcon {
-    font-family: 'optionsIcons'
-}
-
-.spacing-ensurer {
+.gpii-spacingEnsurer {
     height: 65px;
     width: 0px;
 }
 
-.gpii-speakText-screenReaderTTSEnabled-element {
-    padding-top: 1px;
-    height: 55px;
-}
-
-.gpii-speakText-moreOptionsIcon:before {
-    content: "\e009";
-}
-
-.gpii-speakText-adjusters {
+.gpii-adjusters {
     padding-left: 40px;
     font-family: 'Roboto Slab', serif;
-    background-color: #E5EFEF;
     width: 285px;
 }
 
-.gpii-speakText-label {
+.fl-prefsEditor-category {
+    background-color: #E5EFEF;
+    width: 325px;
+}
+
+.gpii-label {
     font-size: 19px !important;
     font-family: 'Roboto Slab', serif;
 }
 
-.gpii-speakText-description {
+.gpii-description {
     font-size: 15px !important;
 }
 
-.gpii-speakText-speechRate-element {
-    position: relative;
-    padding-top: 15px;
+.gpii-stepper {
+    text-align: center;
+    border: none;
+    width: 200px !important;
+    font-size: 23px !important;
+    display: inline;
 }
 
-.fl-prefsEditor .gpii-speakText-speechRate-stepper .gpii-textfieldStepper-valueField {
-    width: 12em;
-    text-align: center;
+.gpii-stepperMinus {
+    font-size: 50px !important;
+}
+
+.gpii-stepperPlus {
+    font-size: 30px !important;
+    font-weight: bold;
 }
 
 textarea:focus, input:focus {
-    outline: 0;
+    outline: 0 !important;
 }
 
-.gpii-speakText-moreOptions {
-    padding-top: 20px;
-    font-size: 15px;
-    font-weight: bold;
-    margin-left: 90px;
-}
-
-.gpii-speakText-partially-expanded {
-    display: none;
-}
-
-.gpii-speakText-fully-expanded {
-    display: none;
-}
-
-.gpii-speakText-switch {
+.gpii-switch {
     font-size:135%;
     float: left;
 }
 
-.gpii-onOffSwitch-switch {
-    float: left;
+.gpii-dropdown {
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
-#gpii-speakText-screenReaderOnOff {
-    font-size:70%;
-    float:left;
+#gpii-screenReaderOnOff {
     margin-left:37px;
 }
 
-#gpii-onOffSwitch-onOff {
-    display: inline;
-    float: right;    
-    font-size:70%;
-    margin-left:37px;
-}
-
-#gpii-speakText-brailleOnOff {
-    font-size:70%;
-    float:left;
-    margin-left:125px;
+#gpii-brailleOnOff {
+    margin-left:87px;
 }
 
 input[type="radio"] {
@@ -130,7 +110,7 @@ input[type="radio"] + label {
     text-transform: capitalize;
 }
 
-.gpii-speakText-punctuationVerbosity-container {
+.gpii-punctuationVerbosity-container {
     position: relative;
     height: 55px;
     width: 250px;
@@ -278,75 +258,54 @@ input[type=checkbox] {
     border:0;
 }
 
-input[type=checkbox] + label.gpii-speakText-checkboxLabel {
+input[type=checkbox] + label.gpii-checkbox-label {
     font-family: 'Open Sans', sans-serif;
 }
 
-.presetButton-icon {
-    font-family: 'presetButton';
-    font-size: 600%!important;
-    position: absolute;
-    color: #566374;
-    z-index: 1;
-}
-
-.presetButton-icon:before {
-    content: "\e00d";
-}
-
-.white-baloon-icon {
-    position: absolute;
-    font-family: 'presetButtonPackage';
-}
-
-.white-baloon-icon:before {
-    content: "\e004";
+.gpii-header-icon:before {
+    font-family: 'allIcons';
     position: absolute;
     z-index: 4;
-    margin-top: 7px;
+    margin-top: 3px;
     margin-left: 7px;
-    font-size: 70px;
+    font-size: 80px;
     color: white;
 }
 
-.white-tick-icon {
-    display: none;
-    font-family: 'presetButtonPackage';
+.visualAlternatives-header-icon:before {
+    content: "\e004";
 }
 
-.white-tick-icon:before {
-    content: "\e00a";
-    position: absolute;
-    z-index: 3;
-    margin-top: 53px;
-    margin-left: 288px;
-    font-size: 20px;
-    color: #566374;
-    border: 4px solid white;
-    border-radius: 100%;
-    background-color: white;
+.volume-header-icon:before {
+    content: "\e00e";
 }
 
-input[type=checkbox] + label.preset-button-label {
+.language-header-icon:before {
+    content: "\e010";
+}
+
+label.gpii-preset-button-label {
     z-index: 2;
     position: absolute;
-    padding-left: 125px;
-    padding-top: 33px;
+    padding-left: 90px;
+    padding-top: 31px;
     color: white;
-    background-color: #556273;
-    width: 200px;
-    height: 60px;
+    background-color: rgb(85, 98, 115);
+    width: 236px;
+    height: 61px;
+    text-align: left;
+    font-size: 1.3em;
 }
 
-input[type=checkbox] + label.gpii-speakText-checkboxLabel {
+input[type=checkbox] + label.gpii-checkbox-label {
     margin-left: 25px;
     text-indent: -1.2em;
     font-family: 'checkboxTick';
     display: inline-block;
-    width: 250px;
+    width: 228px;
 }
 
-input[type=checkbox] + label.gpii-speakText-checkboxLabel:before {
+input[type=checkbox] + label.gpii-checkbox-label:before {
     content: "\e00a";
     color: transparent;
     border: 1px solid #556273;
@@ -355,24 +314,20 @@ input[type=checkbox] + label.gpii-speakText-checkboxLabel:before {
     font-size: 75%;
 }
 
-input[type=checkbox]:checked + label.gpii-speakText-checkboxLabel {
+input[type=checkbox]:checked + label.gpii-checkbox-label {
     font-family: 'checkboxTick';
 }
 
-input[type=checkbox]:checked + label.gpii-speakText-checkboxLabel:before {
+input[type=checkbox]:checked + label.gpii-checkbox-label:before {
     content: "\e00a";
     color: white;
     background-color: #556273;
 }
 
-.gpii-speakText-checkboxSpan {
+.gpii-checkbox-label-text {
     font-family: 'Open Sans', sans-serif;
     font-size: 75%;
     padding-left: 5px;
-}
-
-.gpiic-speakText-moreOptionsLabel {
-    cursor: pointer;
 }
 
 body {
@@ -393,10 +348,6 @@ body {
     width: 200px !important;
 }
 
-div.ui-tooltip-content: {
-    width: 20px;
-}
-
 .ui-widget {
     font-family: 'Roboto Slab', serif;
 }
@@ -407,14 +358,15 @@ div.ui-tooltip-content: {
 
 .ui-widget-content::-moz-selection {
     background: yellow; /* Firefox */
+    border-color: #D5E1E2 !important;
 }
 
 .ui-widget .ui-widget-content {
     font-family: 'Open Sans', sans-serif;
     font-size: 90%;
-    height: 33px;
+    height: 39px;
     border: 2px;
-    border-color: #D5E1E2;
+    border-color: #D5E1E2 !important;
     border-style: solid none solid solid;
     padding-left: 10px;
 }
@@ -464,6 +416,11 @@ div.ui-tooltip-content: {
     transition-property: padding-left, width, background-color, margin-left;
     font-size: 1.1em;
     font-weight: 700;
+}
+
+.fl-prefsEditor .fl-prefsEditor-onoff {
+    font-size:70%;
+    float:left;
 }
 
 .fl-prefsEditor .fl-prefsEditor-onoff input {
@@ -524,22 +481,20 @@ div.ui-tooltip-content: {
 .fl-prefsEditor .fl-prefsEditor-onoff input + label .fl-prefsEditor-switch:after {
     float:left;
     position:relative;
-    top: -0.76em;
+    top: -0.56em;
     left: 0.5em;
 }
 
 .fl-prefsEditor .fl-prefsEditor-onoff .fl-prefsEditor-switch-inner {
     border: 0.1px solid #493A30;
     border-radius: 50px;
-    width: 1em;
+    width: 0.9em;
     height: 0.9em;
     position:relative;
     left:-1.45em;
     top:0.52em;
-
     background-color: #617796;
     box-shadow: 0 -0.2em 0.3em 0.05em rgba(250, 250, 250, 0.3) inset;
-
     display:inline-block;
 }
 
@@ -551,67 +506,4 @@ div.ui-tooltip-content: {
 .fl-prefsEditor label {
     text-transform: none;
     font-size: 1.2em;
-}
-
-.fl-adjuster-icons-additional {
-    font-family: 'presetButtonPackage';
-}
-
-.addToMyPreferencesStar:before {
-    content: "\e00b";
-}
-
-.addToMyPreferencesStar {
-    margin-left: 300px;
-    margin-top: 1px;
-    color: rgb(107, 114, 129);
-    position: absolute;
-    z-index: 3;
-    font-size: 25px;
-}
-
-input:checked + .addToMyPreferencesStar {
-    color: #FAE80B;
-    border-radius: 50%;
-}
-
-.addToMyPreferencesLabel {
-    position: absolute;
-    height: 17px !important;
-    width: 17px !important;
-    cursor: pointer;
-    margin-left: 302px;
-    margin-top: 2px;
-    padding: 2px;
-    z-index: 4;
-}
-
-[title]:after{
-    background-color: #F4E413;
-    padding:5px;
-    position:absolute;
-    right: 0;
-    opacity:0;
-    bottom:100%;
-    white-space:nowrap;
-    -webkit-transition:0.25s linear opacity;
-    border: 1px solid black;
-    border-radius: 3px;
-    font-size: 12px;
-    z-index: 10;
-    float: right;
-    overflow: hidden;
-}
-[title]:hover:after{
-    opacity:2;
-}
-
-.addToMyPreferencesLabel[title]:after {
-    content:attr(tooltip-unchecked);
-    float: right;
-}
-
-input:checked + .addToMyPreferencesStar + .addToMyPreferencesLabel[title]:after {
-    content:attr(tooltip-checked);
-    float: right;
 }

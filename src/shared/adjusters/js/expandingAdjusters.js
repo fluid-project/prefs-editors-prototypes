@@ -69,7 +69,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         invokers: {
             toggleMoreLessInstant: {
-                "funcName": "gpii.panel.expandingAdjusters.toggleMoreLess",
+                "funcName": "gpii.panel.expandingAdjusters.showOrHideDependingOnState",
                 "args": [
                     "{that}.model.moreLessEnabledSwitch",
                     "{that}.events.onShowMoreLess.fire",
@@ -79,7 +79,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 dynamic: true
             },
             toggleExpandingAdjustersInstant: {
-                "funcName": "gpii.panel.expandingAdjusters.toggleExpandingAdjusters",
+                "funcName": "gpii.panel.expandingAdjusters.showOrHideDependingOnState",
                 "args": [
                     "{that}.model.expandingAdjustersEnabledSwitch",
                     "{that}.events.onShowExpandingAdjusters.fire",
@@ -89,7 +89,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 dynamic: true
             },
             toggleExpandingAdjusters: {
-                "funcName": "gpii.panel.expandingAdjusters.toggleExpandingAdjusters",
+                "funcName": "gpii.panel.expandingAdjusters.showOrHideDependingOnState",
                 "args": [
                     "{that}.model.expandingAdjustersEnabledSwitch",
                     "{that}.events.onShowExpandingAdjusters.fire",
@@ -114,19 +114,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.panel.expandingAdjusters.toggleMoreLess = function (moreLessEnabledSwitch, showEvent, hideEvent, duration) {
-        if (moreLessEnabledSwitch) {
-            showEvent(duration);
-        } else {
-            hideEvent(duration);
-        }
+    gpii.panel.expandingAdjusters.showOrHideDependingOnState = function (state, showEvent, hideEvent, duration) {
+        state ? showEvent(duration) : hideEvent(duration);
     };
-
-    gpii.panel.expandingAdjusters.toggleExpandingAdjusters = function (expandingAdjustersEnabledSwitch, showEvent, hideEvent, duration) {
-        if (expandingAdjustersEnabledSwitch) {
-            showEvent(duration);
-        } else {
-            hideEvent(duration);
-        }
-    };    
 })(jQuery, fluid);
