@@ -1,5 +1,6 @@
 {
     "magnifierLabel": "Μεγέθυνση",
+    "magnificationLevel": "επίπεδο μεγέθυνσης",
     "magnifierOFF": "Απενεργοποιημένο",
     "magnifierMAX": "μέγιστο",
     "magnifierUnit" : "%"

@@ -29,7 +29,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         invokers: {
             set: {
                 funcName: "gpii.enactor.cursorSize.set",
-                args: ["{arguments}.0", "{that}.dom.cursorDiv", "{that}"]
+                args: ["{arguments}.0", "{that}.dom.cursorDiv"]
             }
         },
         modelListeners: {
@@ -40,7 +40,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.enactor.cursorSize.set = function (times, cursorDiv, that) {
+    gpii.enactor.cursorSize.set = function (times, cursorDiv) {
         cursorDiv.css("font-size", times + "em");
     };
 
