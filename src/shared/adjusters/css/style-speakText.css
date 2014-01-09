@@ -56,6 +56,11 @@
 .gpii-label {
     font-size: 19px !important;
     font-family: 'Roboto Slab', serif;
+    font-weight: normal;
+}
+
+.gpiic-followingElementHeading.gpii-label {
+    margin-left: 15px;
 }
 
 .gpii-description {
@@ -266,7 +271,7 @@ input[type=checkbox] + label.gpii-checkbox-label {
     font-family: 'allIcons';
     position: absolute;
     z-index: 4;
-    margin-top: 3px;
+    margin-top: -3px;
     margin-left: 7px;
     font-size: 80px;
     color: white;
@@ -291,10 +296,11 @@ label.gpii-preset-button-label {
     padding-top: 31px;
     color: white;
     background-color: rgb(85, 98, 115);
-    width: 236px;
-    height: 61px;
+    width: 237px;
+    height: 59px;
     text-align: left;
-    font-size: 1.3em;
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.4em!important;
 }
 
 input[type=checkbox] + label.gpii-checkbox-label {

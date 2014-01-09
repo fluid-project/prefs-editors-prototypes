@@ -1,32 +1,46 @@
-<form id="options" action="" class="fl-prefsEditor gpii-prefsEditor fl-focus">
-    
-    <div class="fl-container-flex30 fl-force-left gpii-prefsEditor-preferenceGroup">
-        <div class="fl-prefsEditor-category">
-            <div class="gpiic-visualAlternatives"></div>
-            <div class="gpiic-volumeGroup"></div>
-            <div class="gpiic-languageGroup"></div>
+<div id="options" action="" class="fl-container-flex30 fl-prefsEditor gpii-prefsEditor fl-focus gpii-prefsEditor-pmtContainer">
+    <div class="gpii-prefsEditor-userStatusBar gpiic-prefsEditor-userStatusBar">
+        <label class="gpii-prefsEditor-link gpii-prefsEditor-fullEditor gpiic-prefsEditor-fullEditorLink"></label>
+        <label for="pmtResetButton" class="gpii-prefsEditor-link gpii-prefsEditor-userLogout gpiic-prefsEditor-userLogoutLink"></label>
+    </div>
+
+    <div class="gpii-prefsEditor-preferencesContainer">
+        <div class="gpii-prefsEditor-preferences gpiic-prefsEditor-preferences">
+            <form id="options" action="" class="fl-prefsEditor gpii-prefsEditor fl-focus">
+                
+                <div class="fl-container-flex30 fl-force-left gpii-prefsEditor-preferenceGroup">
+                    <div class="fl-prefsEditor-category">
+                        <div class="gpiic-visualAlternatives"></div>
+                        <div class="gpiic-volumeGroup"></div>
+                        <div class="gpiic-languageGroup"></div>
+
+                        <div class="contrastPreferenceGroup">
+                            <div class="gpiic-prefsEditor-contrastPanel gpii-prefsEditor-contrastPanel"></div>
+                        </div>
+                        <div class="gpiic-prefsEditor-increaseSizePanel gpii-prefsEditor-increaseSizePanel">
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-    
-    <div class="fl-container-flex30 fl-force-left gpii-prefsEditor-preferenceGroup">
 
-        <div class="contrastPreferenceGroup">
-            <div class="gpiic-prefsEditor-contrastPanel gpii-prefsEditor-contrastPanel"></div>
-        </div>
-
-    </div>
-
-    <div class="fl-container-flex30 fl-force-left gpii-prefsEditor-preferenceGroup">
-
-    	<div class="gpiic-prefsEditor-increaseSizePanel gpii-prefsEditor-increaseSizePanel">
-    	</div>
-    </div>
-
-    <div class="fl-container-flex20 fl-force-right">
-        <div class="fl-prefsEditor-buttons">
-            <input class="flc-prefsEditor-save fl-prefsEditor-save" type="button" value="" />
-            <input class="flc-prefsEditor-reset" type="button" value="" />
-            <input class="flc-prefsEditor-cancel fl-prefsEditor-cancel" type="button" value="" />
+    <div class="gpii-pmt-bottomRow">
+        <span class="gpii-prefsEditor-messageLine gpiic-prefsEditor-messageLine"></span>
+        <span class="gpii-prefsEditor-saveButtonContainer">
+            <label for="pmtSaveButton" class="gpii-prefsEditor-frameIcon gpii-pmt-saveAndApplyButtonLabel">
+            </label>
+            <input id="pmtSaveButton" class="flc-prefsEditor-save fl-prefsEditor-save gpii-prefsEditor-save" type="button" value="" />
+        </span>
+        <div class="gpii-prefsEditor-notification gpiic-prefsEditor-notification">
+            <h2><div class="gpiic-prefsEditor-notificationTitle"></div></h2>
+            <label class="gpii-prefsEditor-notificationMessage gpiic-prefsEditor-notificationMessagePart1"></label>
+            <label class="gpii-prefsEditor-notificationMessage gpii-prefsEditor-notificationMessageTOKEN gpiic-prefsEditor-notificationMessagePart2"></label>
+            <label class="gpii-prefsEditor-notificationMessage gpiic-prefsEditor-notificationMessagePart3"></label>
+            <br/><br/>
+            <div class="gpii-prefsEditor-notificationConfirmationArea">
+                <div class="gpii-prefsEditor-notificationConfirmButton gpiic-prefsEditor-notificationConfirmButton"></div>
+            </div>
         </div>
     </div>
-</form>
+</div>

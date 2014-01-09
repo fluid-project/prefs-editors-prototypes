@@ -54,6 +54,7 @@ h2 {
 }
 
 h2 > label {
+    padding-top: 10px;
 }
 
 /*
@@ -65,7 +66,7 @@ h2 > label {
     margin: 0px !important;
     color: white;
     background-color: #566374;
-    display: table;    
+    display: table;
 }
 
 .gpii-prefsEditor-headerImage:before {
@@ -106,7 +107,7 @@ input[type=checkbox]:checked + .gpii-prefsEditor-headerImage > .gpii-prefsEditor
 .gpii-prefsEditor-headerTitle {
     font-family: 'Roboto Slab', serif;
     color: white;
-    font-size: 1.8em !important;
+    font-size: 1.6em !important;
     display: table-cell;
     color: #FFFFFF;
     float: none;
@@ -299,7 +300,7 @@ input[type=checkbox], input[type=radio] {
     opacity: 0.3;
     content: "\e620" !important;
 }
-    
+
 .gpii-increaseSize-magnifierPositionFullscreen > .gpii-increaseSize-magnifierPositionFrame:before {
     font-size: 6.3em !important;
     content: "\e601" !important;
@@ -307,7 +308,7 @@ input[type=checkbox], input[type=radio] {
 
 .gpii-increaseSize-magnifierPositionLens > .gpii-increaseSize-magnifierPositionIcon:before {
     content: "\e61e";
-} 
+}
 
 .gpii-increaseSize-magnifierPositionFullscreen > .gpii-increaseSize-magnifierPositionIconMain {
     opacity:0.5;
@@ -463,29 +464,29 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-prefsEditor-previewPerSettingDiv {
-    width: 100%; 
-    height: 100%; 
+    width: 100%;
+    height: 100%;
     position: relative;
 }
 
-.gpii-prefsEditor-previewPerSettingDivInner { 
-    position: absolute; 
-    display: table; 
-    width: 100%; 
-    height: 100%; 
+.gpii-prefsEditor-previewPerSettingDivInner {
+    position: absolute;
+    display: table;
+    width: 100%;
+    height: 100%;
 }
 
 .gpii-prefsEditor-previewPerSettingDivInner p {
-    display: table-cell; 
-    vertical-align: middle; 
-    text-align: center; 
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
     padding: 10px;
 }
 
 .gpii-prefsEditor-previewPerSettingDivInner div {
-    display: table-cell; 
-    vertical-align: middle; 
-    text-align: center; 
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
     padding: 10px;
     float: none;
 }
@@ -1085,6 +1086,8 @@ h4 {
 
 .gpii-followingElement-container {
     margin-top: 20px;
+    background-color: #E5EFEF;
+    margin-left: 30px;
 }
 
 .fl-preview-A {
@@ -1108,4 +1111,8 @@ h4 {
 
 .gpii-stepper-pmt {
 	width: 100% !important;
+}
+
+.gpii-prefsEditor-headerClickableLabel {
+    width: 100%;
 }
