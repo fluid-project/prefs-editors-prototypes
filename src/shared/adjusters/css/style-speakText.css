@@ -80,7 +80,7 @@
 }
 
 textarea:focus, input:focus {
-    outline: 0;
+    outline: 0 !important;
 }
 
 .gpii-switch {
@@ -358,14 +358,15 @@ body {
 
 .ui-widget-content::-moz-selection {
     background: yellow; /* Firefox */
+    border-color: #D5E1E2 !important;
 }
 
 .ui-widget .ui-widget-content {
     font-family: 'Open Sans', sans-serif;
     font-size: 90%;
-    height: 33px;
+    height: 39px;
     border: 2px;
-    border-color: #D5E1E2;
+    border-color: #D5E1E2 !important;
     border-style: solid none solid solid;
     padding-left: 10px;
 }
@@ -480,7 +481,7 @@ body {
 .fl-prefsEditor .fl-prefsEditor-onoff input + label .fl-prefsEditor-switch:after {
     float:left;
     position:relative;
-    top: -0.76em;
+    top: -0.56em;
     left: 0.5em;
 }
 

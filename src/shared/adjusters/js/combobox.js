@@ -49,7 +49,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     this._trigger("select", event, {
                         item: ui.item.option
                     });
-                    var ids = ["#gpii_primarySchema_universalLanguage_universalLanguage", "#gpii_primarySchema_screenReaderLanguage_screenReaderLanguage", "#textHighlighting"];
+                    var ids = ["#gpii_primarySchema_universalLanguage_universalLanguage", "#gpii_primarySchema_screenReaderLanguage_screenReaderLanguage", "#gpii_primarySchema_textHighlighting_textHighlighting"];
                     fluid.each(ids, function (id) {
                         var newValue = $(id).val();
                         $(id).trigger('change', newValue);
