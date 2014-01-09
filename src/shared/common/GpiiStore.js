@@ -112,11 +112,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             source: "{that}.options.settingsStoreType",
             removeSource: true,
             target: "{that > settingsStore}.type"
-        }/*, {
-            source: "{that}.options.settingsStore",
-            removeSource: true,
-            target: "{that > settingsStore}.options"
-        }*/]
+        }]
     });
 
 })(jQuery, fluid);
