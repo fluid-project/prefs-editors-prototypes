@@ -1,6 +1,7 @@
 {
-    "magnifierLabel": "Vergrößerung",
-    "magnifierOFF": "Aus",
+    "magnifierLabel": "Lupe",
+    "magnificationLevel": "Vergrößerungsstufe",
+    "magnifierOFF": "AUS",
     "magnifierMAX": "Maximum",
     "magnifierUnit" : "%"
 }

@@ -1,7 +1,6 @@
 /*!
 Cloud4all Preferences Management Tools
 
-Copyright 2013 OCAD University
 Copyright 2013 Astea
 
 Licensed under the New BSD license. You may not use this file except in
@@ -50,8 +49,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     this._trigger("select", event, {
                         item: ui.item.option
                     });
-                    var newValue = this.element.val();
-                    this.element.trigger('change', newValue);
+                    var ids = ["#gpii_primarySchema_universalLanguage_universalLanguage", "#gpii_primarySchema_screenReaderLanguage_screenReaderLanguage", "#gpii_primarySchema_textHighlighting_textHighlighting"];
+                    fluid.each(ids, function (id) {
+                        var newValue = $(id).val();
+                        $(id).trigger('change', newValue);
+                    });
                 },
                 autocompletechange: "_removeIfInvalid"
             });
@@ -96,11 +98,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
             response(this.element.children("option").map(function () {
                 var text = $(this).text();
-                if (this.value && (!request.term || matcher.test(text))) return {
-                    label: text,
-                    value: text,
-                    option: this
-                };
+                if (this.value && (!request.term || matcher.test(text))) {
+                    return {
+                        label: text,
+                        value: text,
+                        option: this
+                    };
+                }
             }));
         },
 

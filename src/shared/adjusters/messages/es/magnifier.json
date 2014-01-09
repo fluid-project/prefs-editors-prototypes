@@ -1,5 +1,6 @@
 {
     "magnifierLabel": "Magnificador",
+    "magnificationLevel": "magnification level",
     "magnifierOFF": "Apagado",
     "magnifierMAX": "Máximo",
     "magnifierUnit" : "%"

@@ -1,0 +1,1111 @@
+/*
+    Font icons
+*/
+@font-face {
+	font-family: 'C4Aicons';
+	src:url('../fonts/C4Aicons.eot');
+	src:url('../fonts/C4Aicons.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/C4Aicons.ttf') format('truetype'),
+		url('../fonts/C4Aicons.woff') format('woff'),
+		url('../fonts/C4Aicons.svg#C4Aicons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/*
+    General preferences styling
+*/
+
+body {
+    transform-origin: 0 0 0;
+    -webkit-transform-origin: 0 0 0;
+}
+
+.gpii-prefsEditor-preferenceGroup {
+    background:#e7f1ef;
+}
+
+.gpii-prefsEditor-category {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.gpii-prefsEditor label::first-letter,
+.gpii-prefsEditor h1::first-letter,
+.gpii-prefsEditor h2::first-letter,
+.gpii-prefsEditor h3::first-letter,
+.gpii-prefsEditor h4::first-letter,
+.gpii-prefsEditor h5::first-letter {
+    text-transform: capitalize;
+}
+
+.gpii-prefsEditor label {
+    text-transform: none !important;
+}
+
+.gpii-uiOptions .headerTitle::first-letter {
+    text-transform: lowercase;
+}
+
+h2 {
+    margin-bottom: 5px;
+}
+
+h2 > label {
+}
+
+/*
+    Header's styling
+*/
+.gpii-prefsEditor-headerImage {
+    -webkit-font-smoothing: antialiased;
+    width: 100%;
+    margin: 0px !important;
+    color: white;
+    background-color: #566374;
+    display: table;    
+}
+
+.gpii-prefsEditor-headerImage:before {
+    font-size: 90px !important;
+}
+
+.gpii-prefsEditor-headerImageTick {
+    font-size: 20px !important;
+    float: right !important;
+    margin-right: 5px;
+    margin-top: -120px;
+    background-color: white;
+    border-radius: 50%;
+    padding: 2px;
+    color: #566374;
+}
+
+.gpii-prefsEditor-headerImageTick:before {
+    content: "\e60a";
+}
+
+input[type=checkbox] + .gpii-prefsEditor-headerImage > .gpii-prefsEditor-headerImageTick{
+    display: none;
+}
+
+input[type=checkbox]:checked + .gpii-prefsEditor-headerImage > .gpii-prefsEditor-headerImageTick{
+    display: block;
+}
+
+.gpii-prefsEditor-increaseSizePanel > .gpii-prefsEditor-headerImage:before {
+    content: "\e613";
+}
+
+.gpii-prefsEditor-contrastPanel > .gpii-prefsEditor-headerImage:before {
+    content: "\e60e";
+}
+
+.gpii-prefsEditor-headerTitle {
+    font-family: 'Roboto Slab', serif;
+    color: white;
+    font-size: 1.8em !important;
+    display: table-cell;
+    color: #FFFFFF;
+    float: none;
+    vertical-align: middle;
+}
+
+.gpii-prefsEditor-headerClickableLabel {
+    margin: 0 !important;
+}
+
+input[type=checkbox], input[type=radio] {
+    position: absolute;
+    display: none;
+    clip: rect(0 0 0 0);
+    height:1px;
+    width:1px;
+    margin:-1px;
+    padding:0;
+    border:0;
+}
+
+/*
+    The adjusters' font icons
+*/
+.gpii-prefsEditor-adjusterIcons {
+    float: left;
+    font-family: 'C4Aicons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/*
+    The cursor size font icons
+*/
+.gpii-increaseSize-iconSmallCursor:before {
+    font-size: 2em !important;
+    content: "\e612";
+}
+.gpii-increaseSize-iconBigCursor:before {
+    font-size: 4em !important;
+    content: "\e612";
+}
+.gpii-increaseSize-iconSmallCursor {
+	display: table-cell;
+    float: none;
+    vertical-align: top !important;
+    width: 1em;
+}
+.gpii-increaseSize-iconBigCursor {
+    width: 0;
+    margin-top: -1em;
+}
+
+/*
+    The slider's style
+*/
+.gpii-prefsEditor .gpii-prefsEditor-slider-horz {
+    width: calc(100% - 2em - 2px) !important;
+    margin: 0.5em 0 0 !important;
+}
+
+.gpii-prefsEditor .gpii-prefsEditor-slider a {
+    border: 1px solid #566374;
+    box-shadow: none;
+    width: 2.2em !important;
+}
+
+.gpii-prefsEditor .ui-slider-range {
+    background-color: #17a9b8;
+}
+
+.gpii-increaseSize-cursor-size-slider-container {
+	display: inline-table !important;
+	width: 100% !important;
+}
+
+/*
+    The textfieldStepper style
+*/
+.gpii-stepper {
+    //width: 100% !important;
+    background-color: #FFFFFF;
+    display: inline-table;
+}
+
+.gpii-stepper-buttons {
+    width: 10% !important;
+    font-size: 1.5em !important;
+    cursor: pointer;
+    text-align: center !important;
+    background-color: white;
+    margin-left: 2px !important;
+    margin-right: 2px !important;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    padding-top: 0.05em;
+    float: left;
+}
+
+.gpii-stepper-valueField {
+    width: 66% !important;
+    border: none !important;
+    text-align: center !important;
+    font-size: 1.5em !important;
+    margin-top: 1px !important;
+    margin-bottom: 2px !important;
+    float: left;
+}
+
+.gpii-stepper-unit {
+    float: left;
+    width: 10% !important;
+    text-align: center !important;
+    font-size: 1.5em !important;
+}
+
+/*
+    Style for sliding to work
+*/
+.gpii-increaseSizePreferenceGroup, .contrastPreferenceGroup {
+    padding-bottom: 10px;
+}
+
+.gpii-prefsEditor-category {
+}
+
+.gpii-prefsEditor-category-hidden {
+}
+
+/*
+    Style for more/less
+*/
+.gpii-prefsEditor-moreLess{
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    padding-bottom: 5px !important;
+    padding-top: 20px;
+}
+
+/*
+    Style for magnifier position font icons
+*/
+.gpii-increaseSize-magnifierPositionContainer {
+    display: inline-block;
+    width: 100% !important;
+    margin-top: 20px;
+}
+
+.gpii-increaseSize-magnifierPositionIconLabel {
+    height: 4.7em !important;
+    width: 6.3em !important;
+    border: none !important;
+    padding: 0 !important;
+    cursor: pointer;
+    background-color: white;
+    margin-bottom: 0.5em !important;
+    margin-right: 0.5em !important;
+    font-size: 1em !important;
+}
+
+.gpii-increaseSize-magnifierPositionIcon {
+    height: 0 !important;
+    width: 0 !important;
+    color: #636c7c;
+    margin-top: -1em;
+}
+
+.gpii-increaseSize-magnifierPositionIcon:before {
+    font-size: 6.3em !important;
+}
+
+.gpii-increaseSize-magnifierPositionBackground {
+    height: 4.9em !important;
+    width: 6.3em !important;
+    padding-top: 2px;
+}
+
+.gpii-increaseSize-magnifierPositionBackground:before {
+    font-size: 6.2em !important;
+    opacity: 0.3;
+    content: "\e620" !important;
+}
+    
+.gpii-increaseSize-magnifierPositionFullscreen > .gpii-increaseSize-magnifierPositionFrame:before {
+    font-size: 6.3em !important;
+    content: "\e601" !important;
+}
+
+.gpii-increaseSize-magnifierPositionLens > .gpii-increaseSize-magnifierPositionIcon:before {
+    content: "\e61e";
+} 
+
+.gpii-increaseSize-magnifierPositionFullscreen > .gpii-increaseSize-magnifierPositionIconMain {
+    opacity:0.5;
+    position: relative;
+}
+
+.gpii-increaseSize-magnifierPositionFullscreen > .gpii-increaseSize-magnifierPositionIconMain:before {
+    content: "\e601";
+    font-size: 6.3em !important;
+    color: #00a9bd;
+}
+
+.gpii-increaseSize-magnifierPositionTop > .gpii-increaseSize-magnifierPositionIconMain:before {
+    content: "\e607";
+}
+
+.gpii-increaseSize-magnifierPositionBottom > .gpii-increaseSize-magnifierPositionIconMain:before {
+    content: "\e61c";
+}
+
+.gpii-increaseSize-magnifierPositionLeft > .gpii-increaseSize-magnifierPositionIconMain:before {
+    content: "\e603";
+}
+
+.gpii-increaseSize-magnifierPositionRight > .gpii-increaseSize-magnifierPositionIconMain:before {
+    content: "\e605";
+}
+
+/*
+    Style for magnifier position indicator
+*/
+.gpii-prefsEditor .gpii-prefsEditor-choice input:checked + div:before {
+    content: "\e608";
+}
+.gpii-prefsEditor .gpii-prefsEditor-choice .gpii-prefsEditor-indicator {
+    font-family: 'C4Aicons' !important;
+    font-size: 2em;
+    color: #636c7c;
+    position: relative;
+    top: 0.6em;
+    height: 1em !important;
+    margin: -0.75em 0 0 -0.2em !important;
+    z-index: 11;
+    text-align: center !important;
+}
+
+/*
+    Style for magnifier follows font icons
+*/
+.gpii-increaseSize-magnifierFollowsIconLabel {
+    height: 7.8em !important;
+    width: 6.5em !important;
+    border: none !important;
+    padding: 0 !important;
+    cursor: pointer;
+    background-color: #636c7c;
+    margin-bottom: 1.5em !important;
+    margin-right: 0.5em !important;
+}
+
+.gpii-increaseSize-magnifierFollowsIcon {
+    font-size: 6.8em !important;
+    padding-bottom: 0.2em !important;
+    color: white;
+}
+
+.gpii-increaseSize-magnifierFollowsRow{
+    margin-bottom: 1em !important;
+}
+
+.gpii-increaseSize-magnifierFollowsMouseCursor > .gpii-increaseSize-magnifierFollowsIcon:before {
+    content: "\e612";
+}
+
+.gpii-increaseSize-magnifierFollowsTextCursor > .gpii-increaseSize-magnifierFollowsIcon:before {
+    content: "\e619";
+}
+
+.gpii-increaseSize-magnifierFollowsKeyboardFocus > .gpii-increaseSize-magnifierFollowsIcon:before {
+    content: "\e618";
+}
+
+/*
+    Style for magnifier follows checked font icons
+*/
+.gpii-increaseSize-magnifierFollowsIconCheck {
+    margin-left: 3.6em;
+    margin-top: -2.1em;
+}
+
+/*
+    Style for magnifier follows legend
+*/
+.gpii-increaseSize-magnifierFollowsLegend {
+    line-height: 1.1em;
+    color: #566374;
+}
+
+.gpii-increaseSize-magnifierFollowsLegend::first-letter {
+    text-transform: capitalize;
+}
+
+/*
+    Style for preview-per-setting iframe and content
+*/
+.gpii-prefsEditor-previewPerSettingFrame {
+    width: 100% !important;
+    margin-top: calc(-1.7em + 1px);
+}
+
+.gpii-prefsEditor-previewPerSettingFrame-small {
+    height: 80px;
+}
+
+.gpii-prefsEditor-previewPerSettingFrame-medium {
+    height: 120px;
+}
+
+.gpii-prefsEditor-previewPerSettingFrame-large {
+    height: 150px;
+}
+
+.gpii-prefsEditor-previewPerSettingContainer {
+    display: inline-block;
+    width:100%;
+    background-color: white;
+    border: 1px solid #beced1;
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+.gpii-prefsEditor-previewPerSettingEye:before {
+    position: relative;
+    z-index: 2;
+    background-color: transparent !important;
+    content: "\e611";
+}
+
+.gpii-prefsEditor-previewPerSettingEyeBackground {
+	border-right: 1.7em solid rgba(0, 0, 0, 0) !important;
+    border-top: 1.7em solid !important;
+    color: #B8C9CC;
+    position: relative;
+    height: 0;
+    width: 0;
+    z-index: 1;
+}
+
+.gpii-prefsEditor-previewPerSettingBody {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0;
+}
+
+.gpii-prefsEditor-previewPerSettingDiv {
+    width: 100%; 
+    height: 100%; 
+    position: relative;
+}
+
+.gpii-prefsEditor-previewPerSettingDivInner { 
+    position: absolute; 
+    display: table; 
+    width: 100%; 
+    height: 100%; 
+}
+
+.gpii-prefsEditor-previewPerSettingDivInner p {
+    display: table-cell; 
+    vertical-align: middle; 
+    text-align: center; 
+    padding: 10px;
+}
+
+.gpii-prefsEditor-previewPerSettingDivInner div {
+    display: table-cell; 
+    vertical-align: middle; 
+    text-align: center; 
+    padding: 10px;
+    float: none;
+}
+
+.gpii-prefsEditor-previewPerSettingCursor1:before {
+    content: "\e612";
+}
+
+.gpii-prefsEditor-previewPerSettingCursor2:before {
+    content: "\e616";
+}
+
+.gpii-prefsEditor-previewPerSettingCursor3:before {
+    content: "\e61b";
+}
+
+/*
+    Style for "Add to my preferences" star font icon
+*/
+.gpii-prefsEditor-addToMyPreferencesStar:before {
+    content: "\e617";
+}
+
+.gpii-prefsEditor-addToMyPreferencesStar {
+    float: right;
+    margin-top: -90px;
+    color: #6b7281;
+    position: relative;
+    font-size: 16px;
+    display: table;
+    padding: 2px;
+}
+
+input:checked + .gpii-prefsEditor-addToMyPreferencesStar {
+    color: #fae80b;
+    border-radius: 50%;
+}
+
+.gpii-prefsEditor-addToMyPreferencesLabel {
+    height: 17px !important;
+    position: absolute;
+    width: 17px !important;
+    cursor: pointer;
+    margin-left: 310px;
+    display: table;
+    padding: 2px;
+    float: right;
+    margin-top: -90px;
+    position: relative;
+}
+
+/*
+    Style for tooltips
+*/
+[title]:after{
+    background-color: #f4e413;
+    padding:5px;
+    position:absolute;
+    left:-9999px;
+    opacity:0;
+    bottom:100%;
+    white-space:nowrap;
+    -webkit-transition:0.25s linear opacity;
+    border: 1px solid black;
+    border-radius: 3px 3px 3px 3px;
+    font-size: 12px;
+    z-index: 10;
+    /* we have a conflict with style-speakText.css here */
+    right: inherit !important;
+}
+[title]:hover:after{
+    left:0px;
+    opacity:1;
+}
+
+.gpii-prefsEditor-addToMyPreferencesLabel[title]:after {
+    content:attr(tooltip-unchecked);
+}
+
+input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-addToMyPreferencesLabel[title]:after {
+    content:attr(tooltip-checked);
+}
+
+.gpii-increaseSize-magnifierPositionLabel[title] {
+    position:relative;
+}
+
+.gpii-increaseSize-magnifierPositionLabel[title]:after {
+    content: attr(tooltip);
+    line-height: 1em !important;
+    font-size: 1em;
+    white-space:normal;
+}
+
+/*
+    Style for contrast
+*/
+.gpii-prefsEditor-theme-yb {
+    color: yellow;
+    background-color: black;
+}
+
+.gpii-prefsEditor-theme-bw {
+    color: black;
+    background-color: white;
+}
+
+.gpii-prefsEditor-theme-by {
+    color: black;
+    background-color: yellow;
+}
+
+.gpii-prefsEditor-theme-wb {
+    color: white;
+    background-color: black;
+}
+
+.gpii-prefsEditor-theme-inverted {
+    color: #e9e9e9;
+    background-color: #393536;
+}
+
+.fl-prefsEditor .fl-choice label.fl-theme-prefsEditor-default,
+.fl-prefsEditor .fl-choice label.fl-theme-prefsEditor-default span,
+.fl-prefsEditor .fl-choice label.fl-theme-prefsEditor-default .fl-crossout {
+    background-color: #e9e9e9 !important;
+    border-color: #393536 !important;
+    color: #393536 !important;
+}
+
+.fl-prefsEditor .fl-choice label.fl-theme-prefsEditor-inverted,
+.fl-prefsEditor .fl-choice label.fl-theme-prefsEditor-inverted span,
+.fl-prefsEditor .fl-choice label.fl-theme-prefsEditor-inverted .fl-crossout {
+    background-color: #393536 !important;
+    border-color: #e9e9e9 !important;
+    color: #e9e9e9 !important;
+}
+
+.gpii-prefsEditor-theme-default {
+    color: #393536;
+    background-color: #e9e9e9;
+}
+
+.gpii-prefsEditor-theme-yb .gpii-prefsEditor-headerImage {
+    background-color: yellow !important;
+    color: black !important;
+}
+
+.gpii-prefsEditor-theme-bw .gpii-prefsEditor-headerImage {
+    background-color: black !important;
+    color: white !important;
+}
+
+.gpii-prefsEditor-theme-by .gpii-prefsEditor-headerImage {
+    background-color: black !important;
+    color: yellow !important;
+}
+
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor-headerImage {
+    background-color: white !important;
+    color: black !important;
+}
+
+.gpii-prefsEditor-theme-inverted .gpii-prefsEditor-headerImage {
+    background-color: #e9e9e9 !important;
+    color: #393536 !important;
+}
+
+.gpii-prefsEditor-theme-yb .gpii-prefsEditor-headerTitle {
+    color: black !important;
+}
+
+.gpii-prefsEditor-theme-bw .gpii-prefsEditor-headerTitle {
+    color: white !important;
+}
+
+.gpii-prefsEditor-theme-by .gpii-prefsEditor-headerTitle {
+    color: yellow !important;
+}
+
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor-headerTitle {
+    color: black !important;
+}
+
+.gpii-prefsEditor-theme-inverted .gpii-prefsEditor-headerTitle {
+    color: #393536 !important;
+}
+
+.gpii-prefsEditor-theme-yb .gpii-prefsEditor-headerClickableLabel,
+.gpii-prefsEditor-theme-bw .gpii-prefsEditor-headerClickableLabel,
+.gpii-prefsEditor-theme-by .gpii-prefsEditor-headerClickableLabel,
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor-headerClickableLabel,
+.gpii-prefsEditor-theme-inverted .gpii-prefsEditor-headerClickableLabel {
+    background-color: transparent !important;
+}
+
+.gpii-prefsEditor-theme-yb .gpii-prefsEditor-addToMyPreferencesLabel,
+.gpii-prefsEditor-theme-bw .gpii-prefsEditor-addToMyPreferencesLabel,
+.gpii-prefsEditor-theme-by .gpii-prefsEditor-addToMyPreferencesLabel,
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor-addToMyPreferencesLabel,
+.gpii-prefsEditor-theme-inverted .gpii-prefsEditor-addToMyPreferencesLabel {
+    background-color: transparent !important;
+}
+
+.gpii-prefsEditor-theme-yb .gpii-prefsEditor-addToMyPreferencesStar {
+    background-color: yellow !important;
+    color: black !important;
+}
+
+.gpii-prefsEditor-theme-bw .gpii-prefsEditor-addToMyPreferencesStar {
+    background-color: black !important;
+    color: white !important;
+}
+
+.gpii-prefsEditor-theme-by .gpii-prefsEditor-addToMyPreferencesStar {
+    background-color: black !important;
+    color: yellow !important;
+}
+
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor-addToMyPreferencesStar {
+    background-color: white !important;
+    color: black !important;
+}
+
+.gpii-prefsEditor-theme-inverted .gpii-prefsEditor-addToMyPreferencesStar {
+    background-color: #e9e9e9 !important;
+    color: #393536 !important;
+}
+
+.gpii-prefsEditor-theme-yb input:checked + .gpii-prefsEditor-addToMyPreferencesStar {
+    background-color: black !important;
+    color: yellow !important;
+}
+
+.gpii-prefsEditor-theme-bw input:checked + .gpii-prefsEditor-addToMyPreferencesStar {
+    background-color: white !important;
+    color: black !important;
+}
+
+.gpii-prefsEditor-theme-by input:checked + .gpii-prefsEditor-addToMyPreferencesStar {
+    background-color: yellow !important;
+    color: black !important;
+}
+
+.gpii-prefsEditor-theme-wb input:checked + .gpii-prefsEditor-addToMyPreferencesStar {
+    background-color: black !important;
+    color: white !important;
+}
+
+.gpii-prefsEditor-theme-inverted input:checked + .gpii-prefsEditor-addToMyPreferencesStar {
+    background-color: #393536 !important;
+    color: #e9e9e9 !important;
+}
+
+.gpii-prefsEditor-theme-yb [title]:after{
+    background-color: black !important;
+    border: 1px solid yellow !important;
+}
+
+.gpii-prefsEditor-theme-bw [title]:after{
+    background-color: white !important;
+    border: 1px solid black !important;
+}
+
+.gpii-prefsEditor-theme-by [title]:after{
+    background-color: yellow !important;
+    border: 1px solid black !important;
+}
+
+.gpii-prefsEditor-theme-wb [title]:after{
+    background-color: black !important;
+    border: 1px solid white !important;
+}
+
+.gpii-prefsEditor-theme-inverted [title]:after{
+    background-color: #393536 !important;
+    border: 1px solid #e9e9e9 !important;
+}
+
+.gpii-prefsEditor-theme-yb .gpii-increaseSize-magnifierPositionBackground,
+.gpii-prefsEditor-theme-bw .gpii-increaseSize-magnifierPositionBackground,
+.gpii-prefsEditor-theme-by .gpii-increaseSize-magnifierPositionBackground,
+.gpii-prefsEditor-theme-wb .gpii-increaseSize-magnifierPositionBackground,
+.gpii-prefsEditor-theme-inverted .gpii-increaseSize-magnifierPositionBackground {
+    background-color: transparent !important;
+}
+
+.gpii-prefsEditor-theme-yb .gpii-prefsEditor-indicator,
+.gpii-prefsEditor-theme-bw .gpii-prefsEditor-indicator,
+.gpii-prefsEditor-theme-by .gpii-prefsEditor-indicator,
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor-indicator,
+.gpii-prefsEditor-theme-inverted .gpii-prefsEditor-indicator {
+    background-color: transparent !important;
+}
+
+.gpii-prefsEditor-theme-yb .gpii-increaseSize-plusMinusNumericalWidget,
+.gpii-prefsEditor-theme-bw .gpii-increaseSize-plusMinusNumericalWidget,
+.gpii-prefsEditor-theme-by .gpii-increaseSize-plusMinusNumericalWidget,
+.gpii-prefsEditor-theme-wb .gpii-increaseSize-plusMinusNumericalWidget,
+.gpii-prefsEditor-theme-inverted .gpii-increaseSize-plusMinusNumericalWidget {
+    width: calc(100% - 2px) !important;
+    border: 1px solid !important;
+}
+
+.gpii-prefsEditor-theme-yb .gpii-increaseSize-plusMinusNumericalValue,
+.gpii-prefsEditor-theme-bw .gpii-increaseSize-plusMinusNumericalValue,
+.gpii-prefsEditor-theme-by .gpii-increaseSize-plusMinusNumericalValue,
+.gpii-prefsEditor-theme-wb .gpii-increaseSize-plusMinusNumericalValue,
+.gpii-prefsEditor-theme-inverted .gpii-increaseSize-plusMinusNumericalValue {
+    margin-bottom: 1px !important;
+}
+
+.gpii-prefsEditor-theme-yb .gpii-increaseSize-plusMinusNumericalMinReached,
+.gpii-prefsEditor-theme-bw .gpii-increaseSize-plusMinusNumericalMinReached,
+.gpii-prefsEditor-theme-by .gpii-increaseSize-plusMinusNumericalMinReached,
+.gpii-prefsEditor-theme-wb .gpii-increaseSize-plusMinusNumericalMinReached,
+.gpii-prefsEditor-theme-inverted .gpii-increaseSize-plusMinusNumericalMinReached {
+    color: gray !important;
+}
+
+.gpii-prefsEditor-theme-yb .gpii-prefsEditor input:focus + label, .gpii-prefsEditor-theme-yb .gpii-prefsEditor .gpii-prefsEditor-choice input:focus ~ label,
+.gpii-prefsEditor-theme-bw .gpii-prefsEditor input:focus + label, .gpii-prefsEditor-theme-bw .gpii-prefsEditor .gpii-prefsEditor-choice input:focus ~ label,
+.gpii-prefsEditor-theme-by .gpii-prefsEditor input:focus + label, .gpii-prefsEditor-theme-by .gpii-prefsEditor .gpii-prefsEditor-choice input:focus ~ label,
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor input:focus + label, .gpii-prefsEditor-theme-wb .gpii-prefsEditor .gpii-prefsEditor-choice input:focus ~ label,
+.gpii-prefsEditor-theme-inverted .gpii-prefsEditor input:focus + label, .gpii-prefsEditor-theme-inverted .gpii-prefsEditor .gpii-prefsEditor-choice input:focus ~ label {
+    outline: none !important;
+}
+
+.gpii-prefsEditor-theme-yb .gpii-increaseSize-plusMinusNumericalValue:focus, .gpii-prefsEditor-theme-yb .gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-yb.gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-yb .selectable {
+    outline: 2px solid yellow !important;
+}
+
+.gpii-prefsEditor-theme-bw .gpii-increaseSize-plusMinusNumericalValue:focus, .gpii-prefsEditor-theme-bw .gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-bw.gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-bw .selectable {
+    outline: 2px solid black !important;
+}
+
+.gpii-prefsEditor-theme-by .gpii-increaseSize-plusMinusNumericalValue:focus, .gpii-prefsEditor-theme-by .gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-by.gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-by .selectable {
+    outline: 2px solid black !important;
+}
+
+.gpii-prefsEditor-theme-wb .gpii-increaseSize-plusMinusNumericalValue:focus, .gpii-prefsEditor-theme-wb .gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-wb.gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-wb .selectable {
+    outline: 2px solid white !important;
+}
+
+.gpii-prefsEditor-theme-inverted .gpii-increaseSize-plusMinusNumericalValue:focus, .gpii-prefsEditor-theme-inverted .gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-inverted.gpii-increaseSize-plusMinusNumericalValue *:focus, .gpii-prefsEditor-theme-inverted .selectable {
+    outline: 2px solid #e9e9e9 !important;
+}
+
+.gpii-prefsEditor-theme-yb .gpii-increaseSize-magnifierFollowsIcon,
+.gpii-prefsEditor-theme-bw .gpii-increaseSize-magnifierFollowsIcon,
+.gpii-prefsEditor-theme-by .gpii-increaseSize-magnifierFollowsIcon,
+.gpii-prefsEditor-theme-wb .gpii-increaseSize-magnifierFollowsIcon,
+.gpii-prefsEditor-theme-inverted .gpii-increaseSize-magnifierFollowsIcon {
+    border: 1px solid;
+}
+
+.gpii-prefsEditor-theme-yb .gpii-prefsEditor-previewPerSettingEyeBackground {
+	border-right: 1.7em solid rgba(0, 0, 0, 0) !important;
+    border-top: 1.7em solid !important;
+    color: yellow !important;
+    background-color: transparent !important;
+}
+
+.gpii-prefsEditor-theme-yb .gpii-prefsEditor-previewPerSettingEye {
+	color: black !important;
+}
+
+.gpii-prefsEditor-theme-bw .gpii-prefsEditor-previewPerSettingEyeBackground {
+	border-right: 1.7em solid rgba(0, 0, 0, 0) !important;
+    border-top: 1.7em solid !important;
+    color: black !important;
+    background-color: transparent !important;
+}
+
+.gpii-prefsEditor-theme-bw .gpii-prefsEditor-previewPerSettingEye {
+	color: white !important;
+}
+
+.gpii-prefsEditor-theme-by .gpii-prefsEditor-previewPerSettingEyeBackground {
+	border-right: 1.7em solid rgba(0, 0, 0, 0) !important;
+    border-top: 1.7em solid !important;
+    color: black !important;
+    background-color: transparent !important;
+}
+
+.gpii-prefsEditor-theme-by .gpii-prefsEditor-previewPerSettingEye {
+	color: yellow !important;
+}
+
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor-previewPerSettingEyeBackground {
+	border-right: 1.7em solid rgba(0, 0, 0, 0) !important;
+    border-top: 1.7em solid !important;
+    color: white !important;
+    background-color: transparent !important;
+}
+
+.gpii-prefsEditor-theme-wb .gpii-prefsEditor-previewPerSettingEye {
+	color: black !important;
+}
+
+.gpii-prefsEditor-theme-inverted .gpii-prefsEditor-previewPerSettingEyeBackground {
+	border-right: 1.7em solid rgba(0, 0, 0, 0) !important;
+    border-top: 1.7em solid !important;
+    color: #e9e9e9 !important;
+    background-color: transparent !important;
+}
+
+.gpii-prefsEditor-theme-inverted .gpii-prefsEditor-previewPerSettingEye {
+	color: #393536 !important;
+}
+
+/*
+    Style for magnifier.invertColours adjuster
+*/
+.gpii-iconCheck-magnifierInvertColours:before {
+    content: "\e60e";
+    font-size: 70px !important;
+}
+
+/*
+    Style for icon check adjuster
+*/
+.gpii-iconCheckAdjusterCheckIcon {
+    background-color: #FFFFFF;
+    border: 1px solid #636C7C;
+    border-radius: 4px 4px 4px 4px;
+    color: #FFFFFF;
+    font-size: 1em;
+    height: 1em;
+    position: relative;
+    width: calc(1em + 1px);
+}
+
+input:checked + label > .gpii-iconCheckAdjusterCheckIcon,
+input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon,
+input:checked + label > span > span > .gpii-iconCheckAdjusterCheckIcon {
+    background-color: 636C7C;
+}
+
+input:checked + label > .gpii-iconCheckAdjusterCheckIcon:before,
+input:checked + label > div > label > .gpii-iconCheckAdjusterCheckIcon:before,
+input:checked + label > span > span > .gpii-iconCheckAdjusterCheckIcon:before {
+    content: "\e60a";
+}
+
+.gpii-iconCheckAdjusterArea {
+    cursor: pointer;
+    display: block;
+    background-color: white;
+    margin: 2px;
+    border-radius: 5px;
+}
+
+.gpii-iconCheckAdjusterDescription {
+    font-size: 0.8em !important;
+}
+
+.gpii-iconCheckAdjusterContainer {
+    display:table;
+    height: 70px;
+}
+
+.gpii-table-cell-valign-label {
+    cursor: inherit;
+    display: table-cell !important;
+    vertical-align: middle;
+    width: 100%;
+    padding-right: 10px;
+}
+
+/*
+    Style for showCrosshairs adjuster
+*/
+.gpii-iconCheck-showCrosshairs:before {
+    content: "\e610";
+    font-size: 70px !important;
+}
+
+/*
+    Style for followingElement adjuster
+*/
+
+.gpii-followingElement-mouseCursorIcon, .gpii-followingElement-textCursorIcon, .gpii-followingElement-keyboardFocusIcon {
+    font-size: 70px !important;
+}
+
+.gpii-followingElement-mouseCursorIcon:before {
+    content: "\e612";
+}
+
+.gpii-followingElement-textCursorIcon:before {
+    content: "\e619";
+}
+
+.gpii-followingElement-keyboardFocusIcon:before {
+    content: "\e618";
+}
+
+.gpii-iconCheckAdjusterAreaNoBorder {
+    border-radius: 0px !important;
+}
+
+.gpii-iconCheckAdjusterAreaTopOnlyBorder {
+    border-radius: 5px 5px 0px 0px !important;
+}
+
+.gpii-iconCheckAdjusterAreaBottomOnlyBorder {
+    border-radius: 0px 0px 5px 5px !important;
+}
+
+/*
+    Style for contrastTheme adjuster
+*/
+.gpii-contrastThemeLabel {
+	display: table-cell !important;
+    font-size: 1.5em !important;
+    border: 2px solid #000000 !important;
+    border-radius: 0 !important;
+    margin-top: 5px !important;
+    padding: 15px 5px !important;
+    height: 1.5em !important;
+    width: 90% !important;
+    cursor: pointer;
+    text-align: left !important;
+}
+
+.gpii-contrastThemeLabel > span {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.fl-prefsEditor .fl-choice label {
+    line-height: 1.5em !important;
+}
+
+.fl-prefsEditor .fl-choice .fl-indicator {
+}
+
+.gpii-contrastThemeIndicator {
+    display: table-cell;
+    vertical-align: middle;
+    width: 10% !important;
+    margin: 0 !important;
+    background-color: transparent !important;
+}
+
+.gpii-prefsEditor-themeRow {
+	display: table !important;
+    float: none !important;
+    width: 100% !important;
+}
+
+.fl-prefsEditor .fl-icon-indicator:before, .fl-prefsEditor .fl-choice input:checked + label + span {
+    font-family: 'C4Aicons' !important;
+}
+.fl-prefsEditor .fl-icon-indicator:before, .fl-prefsEditor .fl-choice input:checked + label + span:before {
+    content: "\e606";
+}
+
+.gpii-contrast-contrastOptions {
+    display: block;
+}
+
+/*
+    Style for onOffSwitch adjuster
+*/
+.gpii-onOffSwitch-container {
+    padding-bottom: 30px;
+}
+
+.gpii-prefsEditor-firstHeading {
+    padding: 0 !important;
+    color: black !important;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+h4 {
+    margin-bottom: 5px;
+}
+
+.gpii-prefsEditor-adjusterPanel {
+    margin-bottom: 20px;
+}
+
+.gpii-prefsEditor-separator {
+    height: 3px;
+    background-color: white;
+    border-bottom: 1px solid #dde7e5;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.gpii-iconCheck-adjuster {
+    margin-top: 20px;
+}
+
+.gpii-followingElement-container {
+    margin-top: 20px;
+}
+
+.fl-preview-A {
+    display: block;
+}
+
+.gpii-prefsEditor-slider-input {
+	display:none;
+}
+
+.gpii-onOffSwitch-switch {
+    float: left;
+}
+
+#gpii-onOffSwitch-onOff {
+    display: inline;
+    float: right;
+    font-size: 70%;
+    margin-left: 37px;
+}
+
+.gpii-stepper-pmt {
+	width: 100% !important;
+}
