@@ -54,6 +54,7 @@ h2 {
 }
 
 h2 > label {
+    padding-top: 10px;
 }
 
 /*
@@ -1110,4 +1111,9 @@ h4 {
 
 .gpii-stepper-pmt {
 	width: 100% !important;
+}
+
+.gpiic-prefsEditor-contrastPanel {
+    margin-left: -25px!important;
+    width: 375px!important;
 }
