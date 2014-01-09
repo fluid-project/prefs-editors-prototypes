@@ -68,7 +68,7 @@ body {
 }
 
 .gpii-prefsEditor-preferencesContainer {
-	height: calc(100% - 8em);
+	//height: calc(100% - 8em);
 	overflow-x: hidden;
     overflow-y: auto;
 }
