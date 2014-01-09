@@ -68,7 +68,7 @@ body {
 }
 
 .gpii-prefsEditor-preferencesContainer {
-	height: calc(100% - 8em);
+	//height: calc(100% - 8em);
 	overflow-x: hidden;
     overflow-y: auto;
 }
@@ -222,4 +222,25 @@ Needed for the frame's popup */
 
 body {
     -webkit-user-select: auto !important;
+}
+
+label.gpii-preset-button-label {
+	/* TODO: static width should be dynamic once Alex's headers are not positioned absolutely */
+	width: 460px;
+	font-size: 1.8em;
+}
+
+.gpii-prefsEditor-headerTitle {
+	padding-right: 230px !important;
+}
+
+/* hack for padding per element, this should be margin of container for all */
+.screanReaderFollows {
+	padding-left: 40px;
+}
+
+/* hack for more/less position */
+.gpii-prefsEditor-moreLess {
+	position: relative;
+	left: -35px;
 }
