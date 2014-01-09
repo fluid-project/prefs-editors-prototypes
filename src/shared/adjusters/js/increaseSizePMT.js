@@ -36,7 +36,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         invokers: {
             // override this invoker to use the "magnifierEnabled" model value
             toggleMoreLessInstant: {
-                "funcName": "gpii.panel.expandingAdjusters.toggleMoreLess",
+                "funcName": "gpii.panel.expandingAdjusters.showOrHideDependingOnState",
                 "args": [
                     "{that}.model.gpii_primarySchema_magnifierEnabled",
                     "{that}.events.onShowMoreLess.fire",
