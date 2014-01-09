@@ -217,7 +217,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    fluid.defaults("gpii.panel.textHighlighting", {
+    fluid.defaults("gpii.adjuster.textHighlighting", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.textHighlighting": {

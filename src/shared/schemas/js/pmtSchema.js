@@ -55,7 +55,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "always": ["speakText", "screenReaderBrailleOutput"],
                     "gpii.primarySchema.speakText": [
                         "wordsSpokenPerMinute", "volume", "voicePitch", "screenReaderLanguage",
-                        "punctuationVerbosity", "announceCapitals", "speakTutorialMessages", "keyEcho", "wordEcho"
+                        "punctuationVerbosity", "announceCapitals", "speakTutorialMessages", "keyEcho", "wordEcho", "textHighlighting"
                     ]
                 }
             },
@@ -252,6 +252,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.adjuster.screenReaderLanguage",
                 "template": "%prefix/screenReaderLanguageTemplate.html",
                 "container": ".screenReaderLanguage",
+                "message": "%prefix/message.json"
+            }
+        },
+
+        "textHighlighting": {
+            "type": "gpii.primarySchema.textHighlighting",
+            "panel": {
+                "type": "gpii.adjuster.textHighlighting",
+                "template": "%prefix/textHighlightingTemplate.html",
+                "container": ".textHighlighting",
                 "message": "%prefix/message.json"
             }
         },
