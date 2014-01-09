@@ -26,6 +26,20 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
     fluid.registerNamespace("gpii.prefs");
 
+    var rules = {
+        "http://registry\\.gpii\\.org/common/magnification": {
+            transform: {
+                type: "fluid.transforms.linearScale",
+                valuePath: "gpii_primarySchema_magnification",
+                factor: 0.01,
+                outputPath: "value"
+            }
+        },
+        "http://registry\\.gpii\\.org/common/fontSize": {
+            value: "gpii_primarySchema_fontSize",
+        }
+    };
+
     /**
      * gpiiStore Subcomponent that uses GPII server for persistence.
      * It sends request to the GPII server to save and retrieve model information
@@ -78,11 +92,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     };
 
     gpii.prefs.gpiiStore.set = function (model, settings, session) {
-        var dataToSave = {};
-
-        dataToSave[settings.gpiiEntry] = [{
-            value: model
-        }];
+        var transformedModel = fluid.model.transform(model, rules);
 
         var urlToPost = session.options.loggedUser ? (session.options.url + session.options.loggedUser) : (session.options.url);
 
@@ -91,7 +101,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             type: "POST",
             dataType: "json",
             contentType: "application/json",
-            data: JSON.stringify(dataToSave),
+            data: JSON.stringify(transformedModel),
             success: function (data) {
                 if (session.options.loggedUser != data.token) {
                     // new user, login
