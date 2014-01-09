@@ -25,7 +25,7 @@ var demo = demo || {};
                 auxiliarySchema: gpii.pmt.auxiliarySchema
             },
             prefsEditor: {
-                prefsEditorType: "gpii.pmt",
+                prefsEditorType: "gpii.prefsEditor",
                 components: {
                     prefsEditorLoader: {
                         options: {

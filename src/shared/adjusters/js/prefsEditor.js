@@ -12,36 +12,27 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     fluid.defaults("gpii.prefsEditor", {
-        gradeNames: ["fluid.prefs.fullNoPreview", "autoInit"],
+        gradeNames: ["gpii.prefs.pmt_pilot_2", "autoInit"],
+        loggedInFlag: false,
         prefsEditor: {
             gradeNames: ["fluid.prefs.stringBundle"],
             members: {
                 messageResolver: "{prefsEditorLoader}.msgBundle"
             },
             listeners: {
+                "onReady.setATTRsaveButton": {
+                    "this": "{that}.dom.saveButton",
+                    "method": "attr",
+                    "args": ["value", "{that}.stringBundle.saveAndApplyText"]
+                },
                 "onCreate.addListener": {
                     "listener": "{that}.applier.modelChanged.addListener",
                     "args": ["gpii_primarySchema_speakText", "{that}.foldExpandedViewWhenOff"]
                 },
-                "onReady.setSaveAndApplyText": {
-                    "this": "{that}.dom.saveAndApply",
-                    "method": "prop",
-                    "args": ["value", "{that}.stringBundle.saveAndApply"]
-                },
-                "onReady.setResetAndApplyText": {
-                    "this": "{that}.dom.resetAndApply",
-                    "method": "prop",
-                    "args": ["value", "{that}.stringBundle.resetAndApply"]
-                },
-                "onReady.setCancelText": {
-                    "this": "{that}.dom.cancel",
-                    "method": "prop",
-                    "args": ["value", "{that}.stringBundle.cancel"]
-                },
-                "onReady.onSaveToPreferencesServer": {
+                "onReady.onApplySettings": {
                     "this": "{that}.dom.saveAndApply",
                     "method": "click",
-                    "args": ["{that}.saveToPreferencesServer"]
+                    "args": ["{that}.applySettings"]
                 }
             },
             invokers: {
@@ -53,19 +44,19 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         ],
                     "dynamic": true
                 },
-                saveToPreferencesServer: {
-                    "funcName": "gpii.saveToPreferencesServer",
-                    "args": ["{that}"]
+                applySettings: {
+                    "funcName": "gpii.applySettings",
+                    "args": ["{that}", "{that}.options.loggedInFlag"],
+                    "dynamic": true
                 }
             },
             selectors: {
-                saveAndApply: ".flc-prefsEditor-save",
-                resetAndApply: ".flc-prefsEditor-reset",
-                cancel: ".flc-prefsEditor-cancel"
+                saveAndApply: ".flc-prefsEditor-save"
             },
-            selectorsToIgnore: ["saveAndApply", "resetAndApply", "cancel"]
+            selectorsToIgnore: ["saveAndApply"]
         }
     });
+
 
     gpii.foldExpandedViewWhenOff = function (applier, extraVisible, valueToChange) {
         if (extraVisible) {
@@ -73,7 +64,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     };
 
-    gpii.saveToPreferencesServer = function (that) {
+    gpii.applySettings = function (that, loggedIn) {
         var common_model_part = "gpii_primarySchema_";
         var size_common = common_model_part.length;
 
@@ -85,13 +76,34 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             saved_settings[keys_for_post[i]] = [{value: that.model[keys_in_model[i]]}];
         }
 
-        $.ajax({
-            type: "POST",
-            url: "http://preferences.gpii.net/user/", // still not supported
-            data: saved_settings,
-            success: function () {
-                alert("Successfully sent to the Preferences server.");
+        if (!loggedIn) {
+            alert("dano")
+            var port = 8080;
+            var token = "screenreader_common"; //TODO: should be obtained from PMT. Currently used for testing purpose.
+            var get_url = "http://localhost:" + port + "/user/" + token + "/login";
+            $.ajax({
+                type: "GET",
+                url: get_url,
+                success: function () {
+                    alert("Successfully sent to the Flow Manager.");
+                }
+            });
+
+            that.options.loggedInFlag = true;
+        }
+        else {
+            var host = "ws://localhost:8080/update";
+            var socket = new WebSocket(host);
+
+            if (socket.readyState == 1) {
+                socket.send(saved_settings);
             }
-        });
+            else {
+                socket.onopen = function (e) {
+                    socket.send(saved_settings);
+                }
+            }
+        }
     };
+
 })(jQuery, fluid);
