@@ -54,7 +54,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             headingLabel: ".gpiic-contrast-contrastLabel",
             panelLabel: ".gpiic-headerTitle",
             addToMyPreferencesLabel: ".gpiic-addToMyPreferencesLabel",
-            contrastAdjusters: ".gpiic-category",
+            contrastAdjusters: ".gpiic-category"
         },
         selectorsToIgnore: ["contrastAdjusters", "addToMyPreferencesLabel"],
         protoTree: {

@@ -1,5 +1,14 @@
 {
     "contrast": "Αντίθεση",
     "addContrast": "Προσθήκη αντίθεσης",
-    "contrastPreviewText": "Η σελίδα θα εμφανίζεται έτσι."
+    "changeContrast": "αλλαγή αντίθεσης",
+    "contrastPreviewText": "Η σελίδα θα εμφανίζεται έτσι.",
+    "contrastOptions": "επιλογές αντίθεσης",
+    "colourTheme": "χρωματικά θέματα",
+    "contrast-default": "προεπιλεγμένο",
+    "contrast-inverted": "αντιστροφή χρωμάτων",
+    "contrast-bw": "μαύρο σε άσπρο",
+    "contrast-wb": "άσπρο σε μαύρο",
+    "contrast-by": "μαύρο σε κίτρινο",
+    "contrast-yb": "κίτρινο σε μαύρο"
 }
