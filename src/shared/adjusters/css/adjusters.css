@@ -107,7 +107,7 @@ input[type=checkbox]:checked + .gpii-prefsEditor-headerImage > .gpii-prefsEditor
 .gpii-prefsEditor-headerTitle {
     font-family: 'Roboto Slab', serif;
     color: white;
-    font-size: 1.8em !important;
+    font-size: 1.6em !important;
     display: table-cell;
     color: #FFFFFF;
     float: none;
@@ -1113,7 +1113,6 @@ h4 {
 	width: 100% !important;
 }
 
-.gpiic-prefsEditor-contrastPanel {
-    margin-left: -25px!important;
-    width: 375px!important;
+.gpii-prefsEditor-headerClickableLabel {
+    width: 100%;
 }
