@@ -54,11 +54,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
     gpii.prefs.gpiiStore.get = function (settings, sessionSettings) {
         var gpiiModel;
-        
+
         if (sessionSettings.loggedUser != null) {
 
             var urlToPost = sessionSettings.loggedUser ? (sessionSettings.url + sessionSettings.loggedUser) : (sessionSettings.url);
-            
+
             $.ajax({
                 url: urlToPost,
                 type: "GET",
@@ -71,7 +71,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     fluid.log("GET: Error at retrieving from GPII! Test status: " + textStatus);
                     fluid.log(errorThrown);
                 }
-            });            
+            });
         }
 
         return gpiiModel;
@@ -85,7 +85,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }];
 
         var urlToPost = session.options.loggedUser ? (session.options.url + session.options.loggedUser) : (session.options.url);
-        
+
         $.ajax({
             url: urlToPost,
             type: "POST",
@@ -106,17 +106,17 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     };
 
     fluid.defaults("gpii.prefs.gpiiSettingsStore", {
-        gradeNames: ["autoInit", "fluid.globalSettingsStore"],
-        storeType: "gpii.prefs.gpiiStore",
+        gradeNames: ["fluid.globalSettingsStore", "autoInit"],
+        settingsStoreType: "gpii.prefs.gpiiStore",
         distributeOptions: [{
-            source: "{that}.options.storeType",
+            source: "{that}.options.settingsStoreType",
             removeSource: true,
             target: "{that > settingsStore}.type"
-        }, {
+        }/*, {
             source: "{that}.options.settingsStore",
             removeSource: true,
             target: "{that > settingsStore}.options"
-        }]
+        }*/]
     });
 
 })(jQuery, fluid);
