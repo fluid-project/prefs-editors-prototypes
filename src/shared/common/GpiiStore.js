@@ -80,18 +80,22 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     gpii.prefs.gpiiStore.set = function (model, settings, session) {
         var dataToSave = {};
 
-        dataToSave[settings.gpiiEntry] = [{
-            value: model
-        }];
+        /*dataToSave[settings.gpiiEntry] = [{
+            value: gpii.prefs.gpiiStore.convertUIOSchemaToGPIISchema(model)
+        }];*/
 
+        dataToSave = gpii.prefs.gpiiStore.convertUIOSchemaToGPIISchema(model);
+        
         var urlToPost = session.options.loggedUser ? (session.options.url + session.options.loggedUser) : (session.options.url);
+        
+        console.log(JSON.stringify(dataToSave, null, '\t'));
         
         $.ajax({
             url: urlToPost,
             type: "POST",
             dataType: "json",
             contentType: "application/json",
-            data: JSON.stringify(dataToSave),
+            data: JSON.stringify(dataToSave, null, '\t'),
             success: function (data) {
                 if (session.options.loggedUser != data.token) {
                     // new user, login
@@ -105,6 +109,21 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         });
     };
 
+    gpii.prefs.gpiiStore.convertUIOSchemaToGPIISchema = function (model) {
+        var common_model_part = "gpii_primarySchema_";
+        var size_common = common_model_part.length;
+
+        var keys_in_model = $.grep(Object.keys(model), function (el) {return el.substring(0, size_common) === common_model_part; });
+        var keys_for_post = $.map(keys_in_model, function (el) {return "http://registry.gpii.org/common/" + el.substring(size_common, el.length); });
+        var saved_settings = {};
+
+        for (var i = 0; i < keys_for_post.length; i++) {
+            saved_settings[keys_for_post[i]] = [{value: model[keys_in_model[i]]}];
+        }
+        
+        return saved_settings;
+    }
+    
     fluid.defaults("gpii.prefs.gpiiSettingsStore", {
         gradeNames: ["autoInit", "fluid.globalSettingsStore"],
         storeType: "gpii.prefs.gpiiStore",
