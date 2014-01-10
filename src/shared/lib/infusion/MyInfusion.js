@@ -11086,11 +11086,11 @@ var fluid = fluid || fluid_1_5;
      * can be found
      */
     fluid.contains = function (obj, value) {
-        return obj ? fluid.find(obj, function (thisValue) {
+        return obj ? (fluid.isArrayable(obj) ? $.inArray(value, obj) !== -1 : fluid.find(obj, function (thisValue) {
             if (value === thisValue) {
                 return true;
             }
-        }) : undefined;
+        })) : undefined;
     };
     
     /**
@@ -11834,7 +11834,7 @@ var fluid = fluid || fluid_1_5;
             optionsChain: []
         };
         // stronger grades appear to the left in defaults - dynamic grades are stronger still - FLUID-5085
-        return resolveGradesImpl(gradeStruct, (gradeNames || []).concat([defaultName]), true);
+        return resolveGradesImpl(gradeStruct, (fluid.makeArray(gradeNames).reverse() || []).concat([defaultName]), true);
     };
         
     var mergedDefaultsCache = {};
@@ -13675,7 +13675,7 @@ var fluid_1_5 = fluid_1_5 || {};
             return fluid.model.accessImpl(root, EL, newValue, config, initSegs, returnSegs, fluid.model.traverseWithStrategy);
         }
     };
-
+    
     // Implementation notes: The EL path manipulation utilities here are somewhat more thorough
     // and expensive versions of those provided in Fluid.js - there is some duplication of
     // functionality. This is a tradeoff between stability and performance - the versions in
@@ -13683,11 +13683,11 @@ var fluid_1_5 = fluid_1_5 || {};
     // as \. and \ as \\ as the versions here. The implementations here are not
     // performant and are left here partially as an implementation note. Problems will
     // arise if clients manipulate JSON structures containing "." characters in keys as if they
-    // are models. The basic  utilities fluid.path(), fluid.parseEL and fluid.composePath are
+    // are models. The basic utilities fluid.path(), fluid.parseEL and fluid.composePath are
     // the ones recommended for general users and the following implementations will
     // be upgraded to use regexes in future to make them better alternatives
 
-    fluid.pathUtil = {};
+    fluid.registerNamespace("fluid.pathUtil");
 
     var getPathSegmentImpl = function (accept, path, i) {
         var segment = null; // TODO: rewrite this with regexes and replaces
@@ -13723,6 +13723,107 @@ var fluid_1_5 = fluid_1_5 || {};
     };
 
     var globalAccept = []; // TODO: serious reentrancy risk here, why is this impl like this?
+
+    /** A version of fluid.model.parseEL that apples escaping rules - this allows path segments
+     * to contain period characters . - characters "\" and "}" will also be escaped. WARNING -
+     * this current implementation is EXTREMELY slow compared to fluid.model.parseEL and should
+     * not be used in performance-sensitive applications */
+    // supported, PUBLIC API function
+    fluid.pathUtil.parseEL = function (path) {
+        var togo = [];
+        var index = 0;
+        var limit = path.length;
+        while (index < limit) {
+            var firstdot = getPathSegmentImpl(globalAccept, path, index);
+            togo.push(globalAccept[0]);
+            index = firstdot + 1;
+        }
+        return togo;
+    };
+
+    // supported, PUBLIC API function
+    fluid.pathUtil.composeSegment = function (prefix, toappend) {
+        toappend = toappend.toString();
+        for (var i = 0; i < toappend.length; ++i) {
+            var c = toappend.charAt(i);
+            if (c === '.' || c === '\\' || c === '}') {
+                prefix += '\\';
+            }
+            prefix += c;
+        }
+        return prefix;
+    };
+
+    /** Escapes a single path segment by replacing any character ".", "\" or "}" with
+     * itself prepended by \
+     */
+     // supported, PUBLIC API function
+    fluid.pathUtil.escapeSegment = function (segment) {
+        return fluid.pathUtil.composeSegment("", segment);
+    };
+
+    /**
+     * Compose a prefix and suffix EL path, where the prefix is already escaped.
+     * Prefix may be empty, but not null. The suffix will become escaped.
+     */
+    // supported, PUBLIC API function
+    fluid.pathUtil.composePath = function (prefix, suffix) {
+        if (prefix.length !== 0) {
+            prefix += '.';
+        }
+        return fluid.pathUtil.composeSegment(prefix, suffix);
+    };
+    
+    /**
+     * Compose a set of path segments supplied as arguments into an escaped EL expression. Escaped version
+     * of fluid.model.composeSegments
+     */
+    
+    // supported, PUBLIC API function    
+    fluid.pathUtil.composeSegments = function () {
+        var path = "";
+        for (var i = 0; i < arguments.length; ++ i) {
+            path = fluid.pathUtil.composePath(path, arguments[i]);
+        }
+        return path;
+    };
+    
+    fluid.model.unescapedParser = {
+        parse: fluid.model.parseEL,
+        compose: fluid.model.composeSegments
+    };
+
+    // supported, PUBLIC API record
+    fluid.model.defaultGetConfig = {
+        parser: fluid.model.unescapedParser,
+        strategies: [fluid.model.funcResolverStrategy, fluid.model.defaultFetchStrategy]
+    };
+
+    // supported, PUBLIC API record
+    fluid.model.defaultSetConfig = {
+        parser: fluid.model.unescapedParser,
+        strategies: [fluid.model.funcResolverStrategy, fluid.model.defaultFetchStrategy, fluid.model.defaultCreatorStrategy]
+    };
+    
+    fluid.model.escapedParser = {
+        parse: fluid.pathUtil.parseEL,
+        compose: fluid.pathUtil.composeSegments
+    };
+
+    // supported, PUBLIC API record
+    fluid.model.escapedGetConfig = {
+        parser: fluid.model.escapedParser,
+        strategies: [fluid.model.defaultFetchStrategy]
+    };
+
+    // supported, PUBLIC API record
+    fluid.model.escapedSetConfig = {
+        parser: fluid.model.escapedParser,
+        strategies: [fluid.model.defaultFetchStrategy, fluid.model.defaultCreatorStrategy]
+    };
+
+
+    /** OLD CHANGEAPPLIER IMPLEMENTATION (Infusion 1.5 and before - this will be removed on Fluid 2.0) **/
 
     /** Parses a path segment, following escaping rules, starting from character index i in the supplied path */
     fluid.pathUtil.getPathSegment = function (path, i) {
@@ -13760,53 +13861,6 @@ var fluid_1_5 = fluid_1_5 || {};
         return fluid.pathUtil.getPathSegment(path, lastdot + 1);
     };
 
-    /** A version of fluid.model.parseEL that apples escaping rules - this allows path segments
-     * to contain period characters . - characters "\" and "}" will also be escaped. WARNING -
-     * this current implementation is EXTREMELY slow compared to fluid.model.parseEL and should
-     * not be used in performance-sensitive applications */
-
-    fluid.pathUtil.parseEL = function (path) {
-        var togo = [];
-        var index = 0;
-        var limit = path.length;
-        while (index < limit) {
-            var firstdot = getPathSegmentImpl(globalAccept, path, index);
-            togo.push(globalAccept[0]);
-            index = firstdot + 1;
-        }
-        return togo;
-    };
-
-    var composeSegment = function (prefix, toappend) {
-        toappend = toappend.toString();
-        for (var i = 0; i < toappend.length; ++i) {
-            var c = toappend.charAt(i);
-            if (c === '.' || c === '\\' || c === '}') {
-                prefix += '\\';
-            }
-            prefix += c;
-        }
-        return prefix;
-    };
-
-    /** Escapes a single path segment by replacing any character ".", "\" or "}" with
-     * itself prepended by \
-     */
-    fluid.pathUtil.escapeSegment = function (segment) {
-        return composeSegment("", segment);
-    };
-
-    /**
-     * Compose a prefix and suffix EL path, where the prefix is already escaped.
-     * Prefix may be empty, but not null. The suffix will become escaped.
-     */
-    fluid.pathUtil.composePath = function (prefix, suffix) {
-        if (prefix.length !== 0) {
-            prefix += '.';
-        }
-        return composeSegment(prefix, suffix);
-    };
-
     /** Helpful utility for use in resolvers - matches a path which has already been
       * parsed into segments **/
 
@@ -13823,7 +13877,8 @@ var fluid_1_5 = fluid_1_5 || {};
     };
 
     /** Determine the path by which a given path is nested within another **/
-
+    // TODO: This utility is not used in the framework, and will cease to be useful in client code
+    // once we move over to the declarative system for change binding
     fluid.pathUtil.getExcessPath = function (base, longer) {
         var index = longer.indexOf(base);
         if (index !== 0) {
@@ -13908,30 +13963,6 @@ var fluid_1_5 = fluid_1_5 || {};
                 delete pen.root[last];
             }
         }
-    };
-
-    fluid.model.defaultGetConfig = {
-        strategies: [fluid.model.funcResolverStrategy, fluid.model.defaultFetchStrategy]
-    };
-
-    fluid.model.defaultSetConfig = {
-        strategies: [fluid.model.funcResolverStrategy, fluid.model.defaultFetchStrategy, fluid.model.defaultCreatorStrategy]
-    };
-
-    fluid.model.escapedGetConfig = {
-        parser: {
-            parse: fluid.pathUtil.parseEL,
-            compose: fluid.pathUtil.composePath
-        },
-        strategies: [fluid.model.defaultFetchStrategy]
-    };
-
-    fluid.model.escapedSetConfig = {
-        parser: {
-            parse: fluid.pathUtil.parseEL,
-            compose: fluid.pathUtil.composePath
-        },
-        strategies: [fluid.model.defaultFetchStrategy, fluid.model.defaultCreatorStrategy]
     };
 
     /** Add a listener to a ChangeApplier event that only acts in the case the event
@@ -14852,10 +14883,10 @@ var fluid = fluid || fluid_1_5;
     };
     
     // unsupported, NON-API function
-    fluid.model.transform.flatSchemaStrategy = function (flatSchema) {
+    fluid.model.transform.flatSchemaStrategy = function (flatSchema, getConfig) {
         var keys = fluid.model.sortByKeyLength(flatSchema);
         return function (root, segment, index, segs) {
-            var path = fluid.path.apply(null, segs.slice(0, index));
+            var path = getConfig.parser.compose.apply(null, segs.slice(0, index));
           // TODO: clearly this implementation could be much more efficient
             for (var i = 0; i < keys.length; ++i) {
                 var key = keys[i];
@@ -14973,7 +15004,7 @@ var fluid = fluid || fluid_1_5;
         // Modify schemaStrategy if we collected flat schema options for the setConfig of finalApplier
         if (transform.collectedFlatSchemaOpts !== undefined) {
             $.extend(transform.collectedFlatSchemaOpts, options.flatSchema);
-            schemaStrategy = fluid.model.transform.flatSchemaStrategy(transform.collectedFlatSchemaOpts);
+            schemaStrategy = fluid.model.transform.flatSchemaStrategy(transform.collectedFlatSchemaOpts, getConfig);
         }
         setConfig.strategies = [fluid.model.defaultFetchStrategy, schemaStrategy ? fluid.model.transform.schemaToCreatorStrategy(schemaStrategy)
                 : fluid.model.defaultCreatorStrategy];
@@ -17186,26 +17217,72 @@ var fluid_1_5 = fluid_1_5 || {};
         // This prevents corruption of instantiator records by defeating effect of "returnedPath" for non-roots
         return shadow && shadow.path !== "" ? null : returnedPath;
     };
-    
-    fluid.expandDynamicGrades = function (that, dynamicGrades) {
+
+    fluid.defaults("fluid.gradeLinkageRecord", {
+        gradeNames: ["fluid.littleComponent"]
+    });
+
+    /** A "tag component" to opt in to the grade linkage system (FLUID-5212) which is currently very expensive -
+      * this will become the default once we have a better implementation and have stabilised requirements
+      */
+    fluid.defaults("fluid.applyGradeLinkage", { });
+
+    fluid.gradeLinkageIndexer = function (defaults) {
+        if (defaults.contextGrades && defaults.resultGrades) {
+            return ["*"];
+        }
+    };
+
+    fluid.getLinkedGrades = function (gradeNames) {
+        var togo = [];
+        var gradeLinkages = fluid.indexDefaults("gradeLinkages", {
+            gradeNames: "fluid.gradeLinkageRecord",
+            indexFunc: fluid.gradeLinkageIndexer
+        });
+        fluid.each(gradeLinkages["*"], function (defaultsName) {
+            var defaults = fluid.defaults(defaultsName);
+            var exclude = fluid.find(fluid.makeArray(defaults.contextGrades),
+                function (grade) {
+                    if (!fluid.contains(gradeNames, grade)) {
+                        return true;
+                    }
+                }
+            );
+            if (!exclude) {
+                togo.push.apply(togo, fluid.makeArray(defaults.resultGrades));
+            }
+        });
+        return togo;
+    };
+
+    fluid.expandDynamicGrades = function (that, gradeNames, dynamicGrades) {
         var resolved = [];
         fluid.each(dynamicGrades, function (dynamicGrade) {
             var expanded = fluid.expandOptions(dynamicGrade, that);
             if (typeof(expanded) === "function") {
                 expanded = expanded();
             }
-            if (expanded) {    
+            if (expanded) {
                 resolved = resolved.concat(expanded);
             }
         });
-        return resolved;    
+        var allGrades = fluid.makeArray(gradeNames).concat(resolved);
+        if (fluid.contains(allGrades, "fluid.applyGradeLinkage")) {
+            var linkedGrades = fluid.getLinkedGrades(allGrades);
+            fluid.remove_if(linkedGrades, function (gradeName) {
+                return fluid.contains(allGrades, gradeName);
+            });
+            resolved = resolved.concat(linkedGrades);
+        }
+
+        return resolved;
     };
-    
+
     fluid.collectDynamicGrades = function (that, shadow, defaultsBlock, gradeNames, dynamicGrades, resolved) {
         var newDefaults = fluid.copy(fluid.getGradedDefaults(that.typeName, resolved));
         gradeNames.length = 0; // acquire derivatives of dynamic grades (FLUID-5054)
         gradeNames.push.apply(gradeNames, newDefaults.gradeNames);
-        
+
         fluid.cacheShadowGrades(that, shadow);
         // This cheap strategy patches FLUID-5091 for now - some more sophisticated activity will take place
         // at this site when we have a full fix for FLUID-5028
@@ -17214,12 +17291,13 @@ var fluid_1_5 = fluid_1_5 || {};
 
         defaultsBlock.source = newDefaults;
         shadow.mergeOptions.updateBlocks();
-            
+
         var furtherResolved = fluid.remove_if(gradeNames, function (gradeName) {
             return gradeName.charAt(0) === "{" && !fluid.contains(dynamicGrades, gradeName);
         }, []);
         dynamicGrades.push.apply(dynamicGrades, furtherResolved);
-        furtherResolved = fluid.expandDynamicGrades(that, furtherResolved);
+        furtherResolved = fluid.expandDynamicGrades(that, gradeNames, furtherResolved);
+
         resolved.push.apply(resolved, furtherResolved);
         return furtherResolved;
     };
@@ -17227,14 +17305,14 @@ var fluid_1_5 = fluid_1_5 || {};
     // unsupported, NON-API function
     fluid.computeDynamicGrades = function (that, shadow, strategy) {
         delete that.options.gradeNames; // Recompute gradeNames for FLUID-5012 and others
-        
+
         var gradeNames = fluid.driveStrategy(that.options, "gradeNames", strategy);
         // TODO: In complex distribution cases, a component might end up with multiple default blocks
         var defaultsBlock = fluid.findMergeBlocks(shadow.mergeOptions.mergeBlocks, "defaults")[0];
         var dynamicGrades = fluid.remove_if(gradeNames, function (gradeName) {
             return gradeName.charAt(0) === "{" || !fluid.hasGrade(defaultsBlock.target, gradeName);
         }, []);
-        var resolved = fluid.expandDynamicGrades(that, dynamicGrades);
+        var resolved = fluid.expandDynamicGrades(that, gradeNames, dynamicGrades);
         if (resolved.length !== 0) {
             do { // repeatedly collect dynamic grades whilst they arrive (FLUID-5155)
                 var furtherResolved = fluid.collectDynamicGrades(that, shadow, defaultsBlock, gradeNames, dynamicGrades, resolved);
@@ -18161,7 +18239,7 @@ outer:  for (var i = 0; i < exist.length; ++i) {
         var demandspec = fluid.determineDemands(parentThat, funcNames);
         return fluid.embodyDemands(parentThat, demandspec, initArgs, options);
     };
-    
+
     // unsupported, non-API function
     fluid.thisistToApplicable = function (record, recthis, that) {
         return {
@@ -18182,15 +18260,15 @@ outer:  for (var i = 0; i < exist.length; ++i) {
                 fluid.log("Applying arguments ", args, " to method " + record.method + " of instance ", resolvedThis);
                 return resolvedFunc.apply(resolvedThis, args);
             }
-        };      
+        };
     };
-    
+
     fluid.changeToApplicable = function (record, that) {
         return {
             apply: function (noThis, args) {
                 var parsed = fluid.resolveModelReference(that, record.changePath);
                 var value = fluid.expandOptions(record.value, that, {}, {arguments: args});
-                fluid.fireSourcedChange(parsed.that.applier, parsed.path, value, record.source); 
+                fluid.fireSourcedChange(parsed.that.applier, parsed.path, value, record.source);
             }
         };
     };
@@ -18231,13 +18309,13 @@ outer:  for (var i = 0; i < exist.length; ++i) {
             return fluid.invokeGlobalFunction(invokeSpec.funcName, invokeSpec.args, environment);
         };
     };
-    
+
     var argPrefix = "{arguments}.";
-    
+
     fluid.parseInteger = function (string) {
         return isFinite(string) && ((string % 1) === 0) ? Number(string) : NaN;
     };
-    
+
     fluid.makeFastInvoker = function (invokeSpec, func) {
         var argMap;
         if (invokeSpec.preExpand) {
@@ -18554,12 +18632,12 @@ outer:  for (var i = 0; i < exist.length; ++i) {
 
     /** END of unofficial IoC material **/
 
-    // unsupported, non-API function    
+    // unsupported, non-API function
     fluid.coerceToPrimitive = function (string) {
-        return string === "false" ? false : (string === "true" ? true : 
-            (isFinite(string) ? Number(string) : string)); 
+        return string === "false" ? false : (string === "true" ? true :
+            (isFinite(string) ? Number(string) : string));
     };
-    
+
     // unsupported, non-API function
     fluid.compactStringToRec = function (string, type) {
          var openPos = string.indexOf("(");
@@ -18572,12 +18650,12 @@ outer:  for (var i = 0; i < exist.length; ++i) {
              var body = string.substring(openPos + 1, closePos);
              var args = fluid.transform(body.split(","), $.trim, fluid.coerceToPrimitive);
              var togo = {
-                 args: args 
+                 args: args
              };
              if (type === "invoker" && prefix.charAt(openPos - 1) === "!") {
                  prefix = string.substring(0, openPos - 1);
                  togo.dynamic = true;
-             } 
+             }
              togo[prefix.charAt(0) === "{" ? "func" : "funcName"] = prefix;
              return togo;
          }
@@ -18586,12 +18664,12 @@ outer:  for (var i = 0; i < exist.length; ++i) {
          }
          return string;
     };
-    
+
     fluid.expandPrefix = "@expand:";
     // unsupported, non-API function
     fluid.expandCompactString = function (string, active) {
          var rec = string;
-         if (string.indexOf(fluid.expandPrefix) === 0) {  
+         if (string.indexOf(fluid.expandPrefix) === 0) {
              var rem = string.substring(fluid.expandPrefix.length);
              rec = {
                  expander: fluid.compactStringToRec(rem, "expander")
@@ -18602,16 +18680,16 @@ outer:  for (var i = 0; i < exist.length; ++i) {
          }
          return rec;
     };
-    
+
     var singularPenRecord = {
         listeners: "listener",
         modelListeners: "modelListener"
     };
-    
+
     var singularRecord = $.extend({
         invokers: "invoker"
     }, singularPenRecord);
-    
+
     // unsupported, non-API function
     fluid.expandCompactRec = function (segs, target, source) {
         var pen = segs.length > 0 ? segs[segs.length - 1] : "";
@@ -18633,8 +18711,8 @@ outer:  for (var i = 0; i < exist.length; ++i) {
             target[key] = value;
         });
     };
-    
-    // unsupported, non-API function    
+
+    // unsupported, non-API function
     fluid.expandCompact = function (options) {
         var togo = {};
         fluid.expandCompactRec([], togo, options)
@@ -18789,7 +18867,7 @@ outer:  for (var i = 0; i < exist.length; ++i) {
         return fluid.isPrimitive(source) || source.nodeType !== undefined || source.jquery || !fluid.isPlainObject(source);
     };
 
-    // unsupported, NON-API function    
+    // unsupported, NON-API function
     fluid.expandSource = function (options, target, i, segs, deliverer, source, policy, miniWorld, recurse) {
         var expanded, isTrunk, isLate;
         var thisPolicy = fluid.derefMergePolicy(policy);
@@ -30323,7 +30401,7 @@ var fluid_1_5 = fluid_1_5 || {};
             schema: fluid.filterKeys(primarySchema.properties || primarySchema,
                 typeFilter, false)
         });
-        var primary = [suppliedPrimaryGradeName];
+        var primary = [];
         // Lookup all available schema grades from the index that match the
         // top level preference name.
         fluid.each(typeFilter, function merge(type) {
@@ -30332,6 +30410,7 @@ var fluid_1_5 = fluid_1_5 || {};
                 primary.push.apply(primary, schemaGrades);
             }
         });
+        primary.push(suppliedPrimaryGradeName);
         return primary;
     };
 

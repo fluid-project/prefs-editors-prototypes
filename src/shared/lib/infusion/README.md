@@ -1,7 +1,7 @@
 
 The version of Infusion included in this folder was created using a custom build from commit
 
-    73889463d799973a3a858c921d7bd2f9361c5906
+    568cb1d4091ccc68d95fb91afadfe10c7f14f457
 
 of the Infusion master branch
 
