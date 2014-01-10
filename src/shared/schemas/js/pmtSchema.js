@@ -156,12 +156,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "magnifierPosition": {
             "type": "gpii.primarySchema.magnificationPosition",
             "classes": {
-                "lens": "gpii-increaseSize-magnifierPositionLens gpii-increaseSize-magnifierPositionIconLabel",
-                "fullscreen": "gpii-increaseSize-magnifierPositionFullscreen gpii-increaseSize-magnifierPositionIconLabel",
-                "dockedtop": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-magnifierPositionTop gpii-increaseSize-magnifierPositionIconLabel",
-                "dockedbottom": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-magnifierPositionBottom gpii-increaseSize-magnifierPositionIconLabel",
-                "dockedleft": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-magnifierPositionLeft gpii-increaseSize-magnifierPositionIconLabel",
-                "dockedright": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-magnifierPositionRight gpii-increaseSize-magnifierPositionIconLabel"
+                "Lens": "gpii-increaseSize-magnifierPositionLens gpii-increaseSize-magnifierPositionIconLabel",
+                "FullScreen": "gpii-increaseSize-magnifierPositionFullscreen gpii-increaseSize-magnifierPositionIconLabel",
+                "TopHalf": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-magnifierPositionTop gpii-increaseSize-magnifierPositionIconLabel",
+                "BottomHalf": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-magnifierPositionBottom gpii-increaseSize-magnifierPositionIconLabel",
+                "LeftHalf": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-magnifierPositionLeft gpii-increaseSize-magnifierPositionIconLabel",
+                "RightHalf": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-magnifierPositionRight gpii-increaseSize-magnifierPositionIconLabel"
             },
             "panel": {
                 "type": "gpii.adjuster.magnifierPosition",
@@ -173,9 +173,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "followingElement": {
             "classes": {
-                "mousecursor": "gpii-prefsEditor-adjusterIcons gpii-followingElement-mouseCursorIcon",
-                "textcursor": "gpii-prefsEditor-adjusterIcons gpii-followingElement-textCursorIcon",
-                "keyboardfocus": "gpii-prefsEditor-adjusterIcons gpii-followingElement-keyboardFocusIcon"
+                "mouse": "gpii-prefsEditor-adjusterIcons gpii-followingElement-mouseCursorIcon",
+                "caret": "gpii-prefsEditor-adjusterIcons gpii-followingElement-textCursorIcon",
+                "focus": "gpii-prefsEditor-adjusterIcons gpii-followingElement-keyboardFocusIcon"
             },
             "borderClasses": {
                 "topOnly": "gpii-iconCheckAdjusterAreaTopOnlyBorder",

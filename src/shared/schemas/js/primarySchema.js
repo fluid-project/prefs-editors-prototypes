@@ -43,12 +43,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "gpii.primarySchema.magnificationPosition": {
             "type": "string",
             "default": "",
-            "enum": ["lens", "dockedleft", "dockedtop", "fullscreen", "dockedright", "dockedbottom"]
+            "enum": ["Lens", "LeftHalf", "TopHalf", "FullScreen", "RightHalf", "BottomHalf"]
         },
         "gpii.primarySchema.tracking": {
             "type": "string",
             "default": "",
-            "enum": ["mousecursor", "textcursor", "keyboardfocus"]
+            "enum": ["mouse", "caret", "focus"]
         },
         "gpii.primarySchema.showCrosshairs": {
             "type": "boolean",

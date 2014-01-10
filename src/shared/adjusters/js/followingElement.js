@@ -34,7 +34,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         repeatingSelectors: ["followingElementRow"],
         controlValues: {
-            followingElement: ["mousecursor", "textcursor", "keyboardfocus"],
+            followingElement: ["mouse", "caret", "focus"],
             followingElementBorder: ["topOnly", "bottomOnly", "noBorder"]
         },
         markup: {

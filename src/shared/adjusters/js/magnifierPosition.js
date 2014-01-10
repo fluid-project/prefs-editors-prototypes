@@ -61,7 +61,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         repeatingSelectors: ["magnifierPositionRow"],
         controlValues: {
-            magnifierPosition: ["lens", "dockedleft", "dockedtop", "fullscreen", "dockedright", "dockedbottom"]
+            magnifierPosition: ["Lens", "LeftHalf", "TopHalf", "FullScreen", "RightHalf", "BottomHalf"]
         },
         markup: {
             magnifierPositionLabel: "<div class=\"gpii-prefsEditor-adjusterIcons gpii-increaseSize-magnifierPositionIcon gpii-increaseSize-magnifierPositionIconMain\"></div>" +
