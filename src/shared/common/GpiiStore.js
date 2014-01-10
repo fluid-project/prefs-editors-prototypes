@@ -27,40 +27,40 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     fluid.registerNamespace("gpii.prefs");
 
     var rules = {
-        "http://registry\\.gpii\\.org/common/magnification": {
+        "http://registry\\.gpii\\.org/common/magnification": [{
             transform: {
                 type: "fluid.transforms.linearScale",
                 valuePath: "gpii_primarySchema_magnification",
                 factor: 0.01,
                 outputPath: "value"
             }
-        },
-        "http://registry\\.gpii\\.org/common/fontSize": {
+        }],
+        "http://registry\\.gpii\\.org/common/fontSize": [{
             value: "gpii_primarySchema_fontSize"
-        },
-        "http://registry\\.gpii\\.org/common/highContrastTheme": {
+        }],
+        "http://registry\\.gpii\\.org/common/highContrastTheme": [{
             value: "gpii_primarySchema_contrast_theme"
-        },
-        "http://registry\\.gpii\\.org/common/cursorSize": {
+        }],
+        "http://registry\\.gpii\\.org/common/cursorSize": [{
             transform: {
                 type: "fluid.transforms.linearScale",
                 valuePath: "gpii_primarySchema_cursorSize",
                 factor: 0.2,
                 outputPath: "value"
             }
-        },
-        "http://registry\\.gpii\\.org/common/magnifierEnabled": {
+        }],
+        "http://registry\\.gpii\\.org/common/magnifierEnabled": [{
             value: "gpii_primarySchema_magnifierEnabled"
-        },
-        "http://registry\\.gpii\\.org/common/tracking": {
+        }],
+        "http://registry\\.gpii\\.org/common/tracking": [{
             value: "gpii_primarySchema_tracking"
-        },
-        "http://registry\\.gpii\\.org/common/magnifierPosition": {
+        }],
+        "http://registry\\.gpii\\.org/common/magnifierPosition": [{
             value: "gpii_primarySchema_magnificationPosition"
-        },
-        "http://registry\\.gpii\\.org/common/showCrosshairs": {
+        }],
+        "http://registry\\.gpii\\.org/common/showCrosshairs": [{
             value: "gpii_primarySchema_showCrosshairs"
-        }
+        }]
     };
 
     /**
@@ -116,16 +116,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
     gpii.prefs.gpiiStore.set = function (model, settings, session) {
         var transformedModel = fluid.model.transform(model, rules);
-        // hack UIO setting value as array
-        var dataToSave = {};
-        for (var preferenceKey in transformedModel) {
-            dataToSave[preferenceKey] = [transformedModel[preferenceKey]];
-        }
-        console.log(JSON.stringify(dataToSave, null, '\t'));
-        
-        /*var dataToSave = {};
-        dataToSave = gpii.prefs.gpiiStore.convertUIOSchemaToGPIISchema(model);
-        console.log(JSON.stringify(dataToSave, null, '\t'));*/
 
         var urlToPost = session.options.loggedUser ? (session.options.url + session.options.loggedUser) : (session.options.url);
         $.ajax({
@@ -133,8 +123,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             type: "POST",
             dataType: "json",
             contentType: "application/json",
-            //data: JSON.stringify(transformedModel),
-            data: JSON.stringify(dataToSave, null, '\t'),
+            data: JSON.stringify(transformedModel),
             success: function (data) {
                 if (session.options.loggedUser != data.token) {
                     // new user, login
