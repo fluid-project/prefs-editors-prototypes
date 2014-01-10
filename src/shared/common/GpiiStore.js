@@ -27,6 +27,63 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     fluid.registerNamespace("gpii.prefs");
 
     var rules = {
+        "http://registry\\.gpii\\.org/common/announceCapitals": [{
+            value: "gpii_primarySchema_announceCapitals"
+        }],
+        "http://registry\\.gpii\\.org/common/keyEcho": [{
+            value: "gpii_primarySchema_keyEcho"
+        }],
+        "http://registry\\.gpii\\.org/common/punctuationVerbosity": [{
+            value: "gpii_primarySchema_punctuationVerbosity"
+        }],
+        "http://registry\\.gpii\\.org/common/screenReaderBrailleOutput": [{
+            vale: "gpii_primarySchema_screenReaderBrailleOutput"
+        }],
+        "http://registry\\.gpii\\.org/common/auditoryOutLanguage": [{
+            value: "gpii_primarySchema_screenReaderLanguage"
+        }],
+        "http://registry\\.gpii\\.org/common/screenReaderTTSEnabled": [{
+            value: "gpii_primarySchema_speakText"
+        }],
+        "http://registry\\.gpii\\.org/common/speakTutorialMessages": [{
+            value: "gpii_primarySchema_speakTutorialMessages"
+        }],
+        "http://registry\\.gpii\\.org/common/readingUnit": [{
+            value: "gpii_primarySchema_textHighlighting"
+        }],
+        "http://registry\\.gpii\\.org/common/language": [{
+            value: "gpii_primarySchema_universalLanguage"
+        }],
+        "http://registry\\.gpii\\.org/common/volume": [{
+            transform: {
+                type: "fluid.transforms.linearScale",
+                valuePath: "gpii_primarySchema_universalVolume",
+                factor: 0.01,
+                outputPath: "value"
+            }
+        }],
+        "http://registry\\.gpii\\.org/common/pitch": [{
+            transform: {
+                type: "fluid.transforms.linearScale",
+                valuePath: "gpii_primarySchema_voicePitch",
+                factor: 0.01,
+                outputPath: "value"
+            }
+        }],
+        "http://registry\\.gpii\\.org/common/volumeTTS": [{
+            transform: {
+                type: "fluid.transforms.linearScale",
+                valuePath: "gpii_primarySchema_volume",
+                factor: 0.01,
+                outputPath: "value"
+            }
+        }],
+        "http://registry\\.gpii\\.org/common/wordEcho": [{
+            value: "gpii_primarySchema_wordEcho"
+        }],
+        "http://registry\\.gpii\\.org/common/speechRate": [{
+            value: "gpii_primarySchema_wordsSpokenPerMinute"
+        }],
         "http://registry\\.gpii\\.org/common/magnification": [{
             transform: {
                 type: "fluid.transforms.linearScale",
