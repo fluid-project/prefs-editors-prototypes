@@ -16,7 +16,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
     fluid.defaults("gpii.pmt", {
         gradeNames: ["gpii.prefs.pmt_pilot_2", "autoInit"],
-        pcpUrl: "http://localhost/prefsEditors/demos/pcp/",
+        pcpUrl: "../pcp/index.html",
         selectors: {
             gotoPcpButton: ".flc-prefsEditor-gotoPcp"
         },
