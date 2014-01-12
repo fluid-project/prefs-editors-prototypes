@@ -30,7 +30,8 @@ var demo = demo || {};
                 components: {
                     prefsEditorLoader: {
                         options: {
-                            messagePrefix: "../../src/shared/adjusters/messages/" + gpii.prefs.i18n.getDefaultLanguage() + "/"
+                            messagePrefix: "../../src/shared/adjusters/messages/" + gpii.prefs.i18n.getDefaultLanguage() + "/",
+                            pcpUrl: "http://localhost/prefsEditors/demos/pcp/"
                         }
                     }
                 }

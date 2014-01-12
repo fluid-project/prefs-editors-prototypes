@@ -84,7 +84,7 @@ body {
 	padding: 10px;
 }
 
-.gpii-prefsEditor-save {
+.gpii-prefsEditor-save, .gpii-prefsEditor-gotoPcp {
 	font-family: 'Roboto Slab', serif;
 	background-color: #4C5259;
     border-radius: 5px;
@@ -184,7 +184,7 @@ body {
 	color: #249fb8;
 	font-style: italic;
 	font-weight: bold;
-	cursor: pointer; 
+	cursor: pointer;
 }
 
 .gpii-prefsEditor-reset {
