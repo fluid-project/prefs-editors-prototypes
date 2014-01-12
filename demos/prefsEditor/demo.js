@@ -31,7 +31,7 @@ var demo = demo || {};
                     prefsEditorLoader: {
                         options: {
                             messagePrefix: "../../src/shared/adjusters/messages/" + gpii.prefs.i18n.getDefaultLanguage() + "/",
-                            pcpUrl: "http://localhost/prefsEditors/demos/pcp/"
+                            pcpUrl: "../pcp/index.html"
                         }
                     }
                 }
