@@ -23,7 +23,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         invokers: {
             openPcp: {
                 funcName: "gpii.pmt.openPcp",
-                args: "{that}.options.pcpUrl"
+                args: ["{that}.options.pcpUrl", "{gpiiSession}.options.loggedUser"]
             }
         },
         listeners: {
@@ -35,8 +35,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.pmt.openPcp = function (pcpUrl) {
-        window.open(pcpUrl);
+	// FIXME: Figure out a better way to pass the user token.
+    gpii.pmt.openPcp = function (pcpUrl, token) {
+        window.open(pcpUrl + "?" + token);
         return false;
     };
 

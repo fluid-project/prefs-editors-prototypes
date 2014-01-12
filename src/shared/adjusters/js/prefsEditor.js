@@ -78,7 +78,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
         if (!loggedIn) {
             var port = 8081;
-            var token = "screenreader_common"; //TODO: should be obtained from PMT. Currently used for testing purpose.
+			// FIXME: The below method for obtaining the token is not safe.
+            var token = window.location.search.substring(1);
             var get_url = "http://localhost:" + port + "/user/" + token + "/login";
             $.ajax({
                 type: "GET",
