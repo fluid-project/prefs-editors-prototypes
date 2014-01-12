@@ -25,13 +25,11 @@ var demo = demo || {};
                 auxiliarySchema: gpii.pmt.auxiliarySchema
             },
             prefsEditor: {
-                prefsEditorType: "gpii.pmt",
-                storeType: "gpii.prefs.gpiiSettingsStore",
+                prefsEditorType: "gpii.prefsEditor",
                 components: {
                     prefsEditorLoader: {
                         options: {
-                            messagePrefix: "../../src/shared/adjusters/messages/" + gpii.prefs.i18n.getDefaultLanguage() + "/",
-                            pcpUrl: "pcp.html"
+                            messagePrefix: "../../src/shared/adjusters/messages/" + gpii.prefs.i18n.getDefaultLanguage() + "/"
                         }
                     }
                 }
