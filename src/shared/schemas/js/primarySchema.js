@@ -83,8 +83,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "gpii.primarySchema.screenReaderLanguage": {
             "type": "string",
-            "default": "English",
-            "enum": ["English", "French (français)", "German (Deutsch)", "Russian (Русский)"]
+            "default": "en",
+            "enum": ["en", "fr", "de", "ru"]
         },
         "gpii.primarySchema.punctuationVerbosity": {
             "type": "string",
@@ -129,8 +129,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "gpii.primarySchema.universalLanguage": {
             "type": "string",
-            "default": "English",
-            "enum": ["English", "French (français)", "German (Deutsch)", "Russian (Русский)"]
+            "default": "en",
+            "enum": ["en", "fr", "de", "ru"]
         }
     };
 

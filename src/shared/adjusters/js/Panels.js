@@ -187,9 +187,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             universalLanguage: ".gpiic-universalLanguage",
             universalLanguageLabel: ".gpiic-universalLanguage-label"
         },
+        stringArrayIndex: {
+            languages: ["language-english", "language-french", "language-german", "language-russian"]
+        },
         protoTree: {
             universalLanguage: {
                 selection: "${universalLanguage}",
+                optionnames: "${{that}.stringBundle.languages}",
                 optionlist: "${{that}.options.controlValues.universalLanguage}"
             },
             universalLanguageLabel: {messagekey: "universalLanguageLabel"}
@@ -208,9 +212,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             screenReaderLanguage: ".gpiic-screenReaderLanguage",
             screenReaderLanguageLabel: ".gpiic-screenReaderLanguage-label"
         },
+        stringArrayIndex: {
+            languages: ["language-english", "language-french", "language-german", "language-russian"]
+        },
         protoTree: {
             screenReaderLanguage: {
                 selection: "${screenReaderLanguage}",
+                optionnames: "${{that}.stringBundle.languages}",
                 optionlist: "${{that}.options.controlValues.screenReaderLanguage}"
             },
             screenReaderLanguageLabel: {messagekey: "screenReaderLanguageLabel"}
@@ -287,7 +295,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle = function (labelsClass, values, classes) {
-        labels = $(labelsClass); // Used because "{that}.dom.punctuationVerbosityOptionLabel" 
+        labels = $(labelsClass); // Used because "{that}.dom.punctuationVerbosityOptionLabel"
                                  // (like that.locate("punctuationVerbosityOptionLabel")) fails to return
                                  // the array of labels.
 
