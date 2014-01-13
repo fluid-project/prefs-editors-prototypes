@@ -20,8 +20,9 @@ body {
 
 .gpii-prefsEditor-pmtContainer {
 	//display: inline-block;
-	height: 100%;
+	height: 700px;
     //width: 28em;
+    width: 560px;
 }
 
 .gpii-prefsEditor-frameIcon {
@@ -226,7 +227,7 @@ body {
 
 label.gpii-preset-button-label {
 	/* TODO: static width should be dynamic once Alex's headers are not positioned absolutely */
-	width: 460px;
+	width: 450px;
 	font-size: 1.8em;
 }
 

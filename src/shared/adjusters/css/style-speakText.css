@@ -50,7 +50,7 @@
 
 .fl-prefsEditor-category {
     background-color: #E5EFEF;
-    width: 325px;
+    width: 530px;
 }
 
 .gpii-label {
@@ -296,7 +296,7 @@ label.gpii-preset-button-label {
     padding-top: 31px;
     color: white;
     background-color: rgb(85, 98, 115);
-    width: 237px;
+    width: 440px;
     height: 59px;
     text-align: left;
     font-family: 'Roboto Slab', serif;

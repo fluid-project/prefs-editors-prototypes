@@ -80,7 +80,7 @@ body {
     position: absolute;
     overflow-y: auto;
     height: 700px;
-    width: 338px;
+    width: 540px;
 }
 
 .gpii-prefsEditor-save {
@@ -188,8 +188,8 @@ Needed for the frame's popup */
 }
 
 .contrastPreferenceGroup {
-    width: 325px;
+    width: 530px;
 }
 .gpii-prefsEditor-increaseSizePanel {
-    width: 325px;
+    width: 530px;
 }
