@@ -103,7 +103,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         if (that.socket) {
             that.socket.emit("message", saved_settings, fluid.log);
         } else {
-            that.socket = that.socket || io.connect("http://localhost:8080/update");
+            that.socket = that.socket || io.connect("http://localhost:8081/update");
             that.socket.on("connect", function (){
                 that.socket.emit("message", saved_settings, fluid.log);
             });
