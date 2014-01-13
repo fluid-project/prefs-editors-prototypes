@@ -83,7 +83,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     fluid.log("GET: " + data);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    fluid.log("GET: Error at logging out user " + that.settings.loggedUser + "! Test status: " + textStatus);
+                    fluid.log("GET: Error at logging out user " + that.options.loggedUser + "! Test status: " + textStatus);
                     fluid.log(errorThrown);
                 }
             });

@@ -32,6 +32,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "this": "{that}.dom.gotoPcpButton",
                 method: "click",
                 args: "{that}.openPcp"
+            },
+            "onReady.setInitialModel": {
+                listener: "gpii.pmt.setInitialModel",
+                args: ["{that}", "{gpiiStore}"],
+                priority: "last"
             }
         }
     });
@@ -40,6 +45,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.pmt.openPcp = function (pcpUrl, token) {
         window.open(pcpUrl + "?" + token);
         return false;
+    };
+
+    gpii.pmt.setInitialModel = function (that, gpiiStore) {
+        var token = window.location.search.substring(1);
+        if (token) {
+            fluid.set(gpiiStore, ["gpiiSession", "options", "loggedUser"], token)
+            var initialModel = gpiiStore.get();
+            that.prefsEditor.applier.requestChange("", initialModel);
+        }
     };
 
     fluid.defaults("gpii.pmt.previewPerSettingEnhanced", {

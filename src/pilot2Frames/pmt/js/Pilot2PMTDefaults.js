@@ -45,11 +45,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             listeners: {
                 // on Session login:
-                "{gpiiSession}.events.onLogin": {
-                    // set user token and show notification 
-                    "listener": "{that}.showSaveNotificationIfNoLogin",
-                    "args": ["{that}.model.userLoggedIn", "{gpiiSession}.options.loggedUser"]
-                },
+                "{gpiiSession}.events.onLogin": "{that}.showSaveNotificationIfNoLogin",
                 // trigger login on notification confirmation
                 "onReady.bindNotificationConfirmButtonClickTriggerLogin": {
                     "this": "{that}.dom.confirmButton",
@@ -173,7 +169,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             invokers: {
                 showSaveNotificationIfNoLogin: {
                     "funcName": "gpii.prefs.pmt_pilot_2.showSaveNotificationIfNoLogin",
-                    "args": ["{arguments}.0", "{arguments}.1"]
+                    "args": ["{that}.model.userLoggedIn", "{gpiiSession}.options.loggedUser"],
+                    dynamic: true
                 },
                 hideSaveNotification: {
                     "funcName": "gpii.prefs.pmt_pilot_2.hideSaveNotification"
@@ -190,7 +187,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         }
     });
-    
+
     gpii.prefs.pmt_pilot_2.showSaveNotificationIfNoLogin = function (userLoggedIn, userToken) {
         if (!userLoggedIn) {
             // Had to reference the notification container this way, because jQuery.dialog()
@@ -200,7 +197,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             $(".gpiic-prefsEditor-notification").dialog("open");
         }
     };
-    
+
     gpii.prefs.pmt_pilot_2.hideSaveNotification = function () {
         // Had to reference the notification container this way, because jQuery.dialog()
         // detaches it from its original position and appends it to body, making Infusion

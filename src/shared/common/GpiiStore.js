@@ -139,11 +139,13 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         invokers: {
             get: {
                 funcName: "gpii.prefs.gpiiStore.get",
-                args: ["{that}.options", "{gpiiSession}.options", "{that}.inverseModelTransform"]
+                args: ["{that}.options", "{gpiiSession}.options", "{that}.inverseModelTransform"],
+                dynamic: true
             },
             set: {
                 funcName: "gpii.prefs.gpiiStore.set",
-                args: ["{arguments}.0", "{that}.options", "{gpiiSession}", "{that}.modelTransform"]
+                args: ["{arguments}.0", "{that}.options", "{gpiiSession}", "{that}.modelTransform"],
+                dynamic: true
             },
             modelTransform: {
                 funcName: "fluid.model.transform",
@@ -203,21 +205,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             }
         });
     };
-
-    gpii.prefs.gpiiStore.convertUIOSchemaToGPIISchema = function (model) {
-        var common_model_part = "gpii_primarySchema_";
-        var size_common = common_model_part.length;
-
-        var keys_in_model = $.grep(Object.keys(model), function (el) {return el.substring(0, size_common) === common_model_part; });
-        var keys_for_post = $.map(keys_in_model, function (el) {return "http://registry.gpii.org/common/" + el.substring(size_common, el.length); });
-        var saved_settings = {};
-
-        for (var i = 0; i < keys_for_post.length; i++) {
-            saved_settings[keys_for_post[i]] = [{value: model[keys_in_model[i]]}];
-        }
-
-        return saved_settings;
-    }
 
     fluid.defaults("gpii.prefs.gpiiSettingsStore", {
         gradeNames: ["fluid.globalSettingsStore", "autoInit"],
