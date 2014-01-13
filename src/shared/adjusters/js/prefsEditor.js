@@ -13,7 +13,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
     fluid.defaults("gpii.prefsEditor", {
         gradeNames: ["gpii.prefs.pmt_pilot_2", "autoInit"],
-        loggedInFlag: false,
         userToken: null,
         prefsEditor: {
             gradeNames: ["fluid.prefs.stringBundle", "gpii.prefs.gpiiStore"],
@@ -63,7 +62,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 applySettings: {
                     "funcName": "gpii.applySettings",
-                    "args": ["{that}", "{that}.options.loggedInFlag"],
+                    "args": "{that}",
                     "dynamic": true
                 }
             },
@@ -101,32 +100,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             saved_settings[keys_for_post[i]] = [{value: that.model[keys_in_model[i]]}];
         }
 
-        if (!loggedIn) {
-            var port = 8081;
-			// FIXME: The below method for obtaining the token is not safe.
-            var token = window.location.search.substring(1);
-            var get_url = "http://localhost:" + port + "/user/" + token + "/login";
-            $.ajax({
-                type: "GET",
-                url: get_url,
-                success: function () {
-                    fluid.log("Successfully sent to the Flow Manager.");
-                }
-            });
+        var host = "ws://localhost:8081/update";
+        var socket = new WebSocket(host);
 
-            that.options.loggedInFlag = true;
-        }
-        else {
-            var host = "ws://localhost:8081/update";
-            var socket = new WebSocket(host);
-
-            if (socket.readyState == 1) {
+        if (socket.readyState == 1) {
+            socket.send(saved_settings);
+        } else {
+            socket.onopen = function (e) {
                 socket.send(saved_settings);
-            }
-            else {
-                socket.onopen = function (e) {
-                    socket.send(saved_settings);
-                }
             }
         }
     };

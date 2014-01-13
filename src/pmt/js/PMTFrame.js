@@ -23,7 +23,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         invokers: {
             openPcp: {
                 funcName: "gpii.pmt.openPcp",
-                args: ["{that}.options.pcpUrl", "{gpiiSession}.options.loggedUser"]
+                args: ["{that}.options.pcpUrl", "{gpiiSession}.options.loggedUser"],
+                dynamic: true
             }
         },
         listeners: {
