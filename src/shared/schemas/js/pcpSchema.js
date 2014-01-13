@@ -91,9 +91,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "by": "fl-theme-prefsEditor-by gpii-prefsEditor-theme-by fl-theme-by",
                 "yb": "fl-theme-prefsEditor-yb gpii-prefsEditor-theme-yb fl-theme-yb"
             },
-            "enactor": {
-                "type": "gpii.enactor.contrastThemeWithInversion"
-            },
+            // "enactor": {
+            //     "type": "gpii.enactor.contrastThemeWithInversion"
+            // },
             "panel": {
                 "type": "gpii.adjuster.contrastThemeWithInversion",
                 "container": ".gpiic-contrastTheme",
