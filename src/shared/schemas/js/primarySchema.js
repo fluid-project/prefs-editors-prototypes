@@ -115,7 +115,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "gpii.primarySchema.screenReaderTracking": {
             "type": "string",
             "default": "",
-            "enum": ["mousecursor", "textcursor", "keyboardfocus"]
+            "enum": ["mouse", "caret", "focus"]
         },
         "gpii.primarySchema.screenReaderBrailleOutput": {
             "type": "boolean",
