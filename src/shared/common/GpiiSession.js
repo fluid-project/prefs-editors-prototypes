@@ -19,13 +19,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     /**
      * gpiiSession Subcomponent that holds GPII session information.
-     * It holds user token, performs login/logout and generates events for such actions. 
+     * It holds user token, performs login/logout and generates events for such actions.
      */
     fluid.defaults("gpii.prefs.gpiiSession", {
         gradeNames: ["fluid.eventedComponent", "autoInit"],
         url: "http://localhost:8081/user/",
         // Maybe we should be informed for currently logged user from GPII?
-        // This is relevant, http://issues.gpii.net/browse/GPII-290 
+        // This is relevant, http://issues.gpii.net/browse/GPII-290
         loggedUser: null,
         events: {
             onLogin: null,
@@ -53,6 +53,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             $.ajax({
                 url: that.options.url + userToken + "/login",
                 type: "GET",
+                xhrFields: {
+                    withCredentials: true
+                },
                 success: function (data) {
                     that.options.loggedUser = userToken;
                     that.events.onLogin.fire();
@@ -65,12 +68,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             });
         }
     };
-    
+
     gpii.prefs.gpiiSession.logout = function (that) {
         if (that.options.loggedUser != null) {
             $.ajax({
                 url: that.options.url + that.options.loggedUser + "/logout",
                 type: "GET",
+                xhrFields: {
+                    withCredentials: true
+                },
                 success: function (data) {
                     that.options.loggedUser = null;
                     that.events.onLogout.fire();

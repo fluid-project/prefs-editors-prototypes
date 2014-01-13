@@ -100,15 +100,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             saved_settings[keys_for_post[i]] = [{value: that.model[keys_in_model[i]]}];
         }
 
-        var host = "ws://localhost:8081/update";
-        var socket = new WebSocket(host);
-
-        if (socket.readyState == 1) {
-            socket.send(saved_settings);
+        if (that.socket) {
+            that.socket.emit("message", saved_settings, fluid.log);
         } else {
-            socket.onopen = function (e) {
-                socket.send(saved_settings);
-            }
+            that.socket = that.socket || io.connect("http://localhost:8081/update");
+            that.socket.on("connect", function (){
+                that.socket.emit("message", saved_settings, fluid.log);
+            });
+            fluid.each(["error", "disconnect"], function (event) {
+                that.socket.on(event, function (data) {
+                    fluid.log(data);
+                    that.socket.disconnect();
+                    delete that.socket;
+                });
+            });
         }
     };
 
