@@ -13,28 +13,21 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
     fluid.defaults("gpii.prefsEditor", {
         gradeNames: ["gpii.prefs.pmt_pilot_2", "autoInit"],
-        userToken: null,
         prefsEditor: {
             gradeNames: ["fluid.prefs.stringBundle", "gpii.prefs.gpiiStore"],
             members: {
                 messageResolver: "{prefsEditorLoader}.msgBundle"
             },
+
+
             listeners: {
                 "onCreate.setUserToken": {
                     listener: "fluid.set",
-                    args: ["{that}", ["options", "userToken"], {
+                    args: ["{gpiiSession}", ["options", "loggedUser"], {
                         expander: {
                             funcName: "gpii.prefsEditor.getUserToken"
                         }
                     }]
-                },
-                "onCreate.login": {
-                    listener: "{gpiiSession}.login",
-                    args: ["{that}.options.userToken"]
-                },
-                "{gpiiSession}.events.onLogin": {
-                    listener: "gpii.prefsEditor.setInitialModel",
-                    args: ["{that}"]
                 },
                 "onReady.setATTRsaveButton": {
                     "this": "{that}.dom.saveButton",
@@ -49,6 +42,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.saveAndApply",
                     "method": "click",
                     "args": ["{that}.applySettings"]
+                },
+                "onReady.setInitialModel": {
+                    listener: "gpii.prefsEditor.setInitialModel",
+                    args: ["{that}"]
                 }
             },
             invokers: {
@@ -88,7 +85,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     };
 
-    gpii.applySettings = function (that, loggedIn) {
+    gpii.applySettings = function (that) {
         var common_model_part = "gpii_primarySchema_";
         var size_common = common_model_part.length;
 
