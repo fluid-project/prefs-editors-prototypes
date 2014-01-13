@@ -26,7 +26,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
     fluid.registerNamespace("gpii.prefs");
 
-    var rules = {
+    gpii.prefs.commonTermsTransformationRules = {
         "http://registry\\.gpii\\.org/common/announceCapitals": [{
             value: "gpii_primarySchema_announceCapitals"
         }],
@@ -120,6 +120,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }]
     };
 
+    gpii.prefs.commonTermsInverseTransformationRules = fluid.model.transform.invertConfiguration(gpii.prefs.commonTermsTransformationRules);
+
     /**
      * gpiiStore Subcomponent that uses GPII server for persistence.
      * It sends request to the GPII server to save and retrieve model information
@@ -137,16 +139,24 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         invokers: {
             get: {
                 funcName: "gpii.prefs.gpiiStore.get",
-                args: ["{that}.options", "{gpiiSession}.options"]
+                args: ["{that}.options", "{gpiiSession}.options", "{that}.inverseModelTransform"]
             },
             set: {
                 funcName: "gpii.prefs.gpiiStore.set",
-                args: ["{arguments}.0", "{that}.options", "{gpiiSession}"]
+                args: ["{arguments}.0", "{that}.options", "{gpiiSession}", "{that}.modelTransform"]
+            },
+            modelTransform: {
+                funcName: "fluid.model.transform",
+                args: ["{arguments}.0", gpii.prefs.commonTermsTransformationRules]
+            },
+            inverseModelTransform: {
+                funcName: "fluid.model.transform",
+                args: ["{arguments}.0", gpii.prefs.commonTermsInverseTransformationRules]
             }
         }
     });
 
-    gpii.prefs.gpiiStore.get = function (settings, sessionSettings) {
+    gpii.prefs.gpiiStore.get = function (settings, sessionSettings, modelTransformFunc) {
         var gpiiModel;
 
         if (sessionSettings.loggedUser != null) {
@@ -159,8 +169,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 dataType: "json",
                 async: false,
                 success: function (data) {
-                    var inverseRules = fluid.model.transform.invertConfiguration(rules);
-                    gpiiModel = fluid.model.transform(fluid.get(data, ["preferences"]), inverseRules);
+                    gpiiModel = modelTransformFunc(fluid.get(data, ["preferences"]));
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     fluid.log("GET: Error at retrieving from GPII! Test status: " + textStatus);
@@ -172,8 +181,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         return gpiiModel;
     };
 
-    gpii.prefs.gpiiStore.set = function (model, settings, session) {
-        var transformedModel = fluid.model.transform(model, rules);
+    gpii.prefs.gpiiStore.set = function (model, settings, session, modelTransformFunc) {
+        var transformedModel = modelTransformFunc(model);
 
         var urlToPost = session.options.loggedUser ? (session.options.url + session.options.loggedUser) : (session.options.url);
         $.ajax({

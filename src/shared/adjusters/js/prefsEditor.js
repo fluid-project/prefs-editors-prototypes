@@ -86,23 +86,24 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
 
     gpii.applySettings = function (that) {
-        var common_model_part = "gpii_primarySchema_";
-        var size_common = common_model_part.length;
+        var savedSettings = that.modelTransform(that.model);
+        // var common_model_part = "gpii_primarySchema_";
+        // var size_common = common_model_part.length;
 
-        var keys_in_model = $.grep(Object.keys(that.model), function (el) {return el.substring(0, size_common) === common_model_part;});
-        var keys_for_post = $.map(keys_in_model, function (el) {return "http://registry.gpii.org/common/" + el.substring(size_common, el.length);});
-        var saved_settings = {};
+        // var keys_in_model = $.grep(Object.keys(that.model), function (el) {return el.substring(0, size_common) === common_model_part;});
+        // var keys_for_post = $.map(keys_in_model, function (el) {return "http://registry.gpii.org/common/" + el.substring(size_common, el.length);});
+        // var savedSettings = {};
 
-        for (var i = 0; i < keys_for_post.length; i++) {
-            saved_settings[keys_for_post[i]] = [{value: that.model[keys_in_model[i]]}];
-        }
+        // for (var i = 0; i < keys_for_post.length; i++) {
+        //     savedSettings[keys_for_post[i]] = [{value: that.model[keys_in_model[i]]}];
+        // }
 
         if (that.socket) {
-            that.socket.emit("message", saved_settings, fluid.log);
+            that.socket.emit("message", savedSettings, fluid.log);
         } else {
             that.socket = that.socket || io.connect("http://localhost:8081/update");
             that.socket.on("connect", function (){
-                that.socket.emit("message", saved_settings, fluid.log);
+                that.socket.emit("message", savedSettings, fluid.log);
             });
             fluid.each(["error", "disconnect"], function (event) {
                 that.socket.on(event, function (data) {
