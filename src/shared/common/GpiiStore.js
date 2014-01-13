@@ -159,7 +159,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 dataType: "json",
                 async: false,
                 success: function (data) {
-                    gpiiModel = fluid.get(data, ["preferences", settings.gpiiEntry, 0, "value"]);
+                    var inverseRules = fluid.model.transform.invertConfiguration(rules);
+                    gpiiModel = fluid.model.transform(fluid.get(data, ["preferences"]), inverseRules);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     fluid.log("GET: Error at retrieving from GPII! Test status: " + textStatus);

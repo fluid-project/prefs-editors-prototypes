@@ -14,12 +14,29 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.prefsEditor", {
         gradeNames: ["gpii.prefs.pmt_pilot_2", "autoInit"],
         loggedInFlag: false,
+        userToken: null,
         prefsEditor: {
-            gradeNames: ["fluid.prefs.stringBundle"],
+            gradeNames: ["fluid.prefs.stringBundle", "gpii.prefs.gpiiStore"],
             members: {
                 messageResolver: "{prefsEditorLoader}.msgBundle"
             },
             listeners: {
+                "onCreate.setUserToken": {
+                    listener: "fluid.set",
+                    args: ["{that}", ["options", "userToken"], {
+                        expander: {
+                            funcName: "gpii.prefsEditor.getUserToken"
+                        }
+                    }]
+                },
+                "onCreate.login": {
+                    listener: "{gpiiSession}.login",
+                    args: ["{that}.options.userToken"]
+                },
+                "{gpiiSession}.events.onLogin": {
+                    listener: "gpii.prefsEditor.setInitialModel",
+                    args: ["{that}"]
+                },
                 "onReady.setATTRsaveButton": {
                     "this": "{that}.dom.saveButton",
                     "method": "attr",
@@ -57,6 +74,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
+    gpii.prefsEditor.getUserToken = function (that) {
+        return window.location.search.substring(1);
+    };
+
+    gpii.prefsEditor.setInitialModel = function (that) {
+        var initialModel = that.get();
+        that.applier.requestChange("", initialModel);
+    };
 
     gpii.foldExpandedViewWhenOff = function (applier, extraVisible, valueToChange) {
         if (extraVisible) {
