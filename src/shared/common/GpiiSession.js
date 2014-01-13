@@ -23,7 +23,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
      */
     fluid.defaults("gpii.prefs.gpiiSession", {
         gradeNames: ["fluid.eventedComponent", "autoInit"],
-        url: "http://localhost:8081/user/",
+        url: "http://localhost:8080/user/",
         // Maybe we should be informed for currently logged user from GPII?
         // This is relevant, http://issues.gpii.net/browse/GPII-290
         loggedUser: null,
