@@ -88,9 +88,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "by": "fl-theme-prefsEditor-by gpii-prefsEditor-theme-by fl-theme-by",
                 "yb": "fl-theme-prefsEditor-yb gpii-prefsEditor-theme-yb fl-theme-yb"
             },
-            "enactor": {
-                "type": "gpii.enactor.contrastThemeWithInversion"
-            },
+            // "enactor": {
+            //     "type": "gpii.enactor.contrastThemeWithInversion"
+            // },
             "panel": {
                 "type": "gpii.adjuster.contrastThemeWithInversion",
                 "container": ".gpiic-contrastTheme",
@@ -101,9 +101,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "textSize": {
             "type": "gpii.primarySchema.fontSize",
-            "enactor": {
-                "type": "gpii.enactor.textSize"
-            },
+            // "enactor": {
+            //     "type": "gpii.enactor.textSize"
+            // },
             "panel": {
                 "type": "gpii.adjuster.textSizePMT",
                 "container": ".gpiic-prefsEditor-textSize",
@@ -115,9 +115,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "cursorSize": {
             "type": "gpii.primarySchema.cursorSize",
-            "enactor": {
-                "type": "gpii.enactor.cursorSize"
-            },
+            // "enactor": {
+            //     "type": "gpii.enactor.cursorSize"
+            // },
             "panel": {
                 "type": "gpii.adjuster.cursorSizePMT",
                 "container": ".gpiic-prefsEditor-cursorSize",
@@ -129,9 +129,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "magnifierEnabled": {
             "type": "gpii.primarySchema.magnifierEnabled",
-            "enactor": {
-                "type": "gpii.enactor.magnifier"
-            },
+            // "enactor": {
+            //     "type": "gpii.enactor.magnifier"
+            // },
             "panel": {
                 "type": "gpii.adjuster.magnifierEnabled",
                 "container": ".gpiic-prefsEditor-magnifierEnabled",
@@ -141,9 +141,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "magnifier": {
             "type": "gpii.primarySchema.magnification",
-            "enactor": {
-                "type": "gpii.enactor.magnifier"
-            },
+            // "enactor": {
+            //     "type": "gpii.enactor.magnifier"
+            // },
             "panel": {
                 "type": "gpii.adjuster.magnifierPMT",
                 "container": ".gpiic-prefsEditor-magnifier",
@@ -205,7 +205,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "message": "%prefix/showCrosshairs.json"
             }
         },
-        
+
         "speakText": {
             "type": "gpii.primarySchema.speakText",
             "panel": {
@@ -336,7 +336,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             }
         },
-        
+
         "screenReaderBrailleOutput": {
             "type": "gpii.primarySchema.screenReaderBrailleOutput",
             "panel": {

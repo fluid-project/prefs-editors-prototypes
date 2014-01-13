@@ -27,14 +27,6 @@ var demo = demo || {};
             prefsEditor: {
                 prefsEditorType: "gpii.pmt",
                 storeType: "gpii.prefs.gpiiSettingsStore",
-                // Disable page enhancer enactors so the selected preferences don't apply to the page itself
-                enhancer: {
-                    emptySubcomponent: "fluid.emptySubcomponent",
-                    distributeOptions: {
-                        source: "{that}.options.emptySubcomponent",
-                        target: "{that > fluid.prefs.enactor}.type"
-                    }
-                },
                 components: {
                     prefsEditorLoader: {
                         options: {
