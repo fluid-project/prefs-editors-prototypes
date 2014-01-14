@@ -53,9 +53,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             $.ajax({
                 url: that.options.url + userToken + "/login",
                 type: "GET",
-                xhrFields: {
+                /*xhrFields: {
                     withCredentials: true
-                },
+                },*/
                 success: function (data) {
                     that.options.loggedUser = userToken;
                     that.events.onLogin.fire();
@@ -74,9 +74,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             $.ajax({
                 url: that.options.url + that.options.loggedUser + "/logout",
                 type: "GET",
-                xhrFields: {
+                /*xhrFields: {
                     withCredentials: true
-                },
+                },*/
                 success: function (data) {
                     that.options.loggedUser = null;
                     that.events.onLogout.fire();
