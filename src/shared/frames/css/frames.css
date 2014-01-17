@@ -1,93 +1,93 @@
 @font-face {
-	font-family: 'C4Aicons';
-	src:url('../fonts/C4Aicons.eot');
-	src:url('../fonts/C4Aicons.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/C4Aicons.ttf') format('truetype'),
-		url('../fonts/C4Aicons.woff') format('woff'),
-		url('../fonts/C4Aicons.svg#C4Aicons') format('svg');
-	font-weight: normal;
-	font-style: normal;
+    font-family: 'C4Aicons';
+    src:url('../fonts/C4Aicons.eot');
+    src:url('../fonts/C4Aicons.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/C4Aicons.ttf') format('truetype'),
+        url('../fonts/C4Aicons.woff') format('woff'),
+        url('../fonts/C4Aicons.svg#C4Aicons') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
 /*
     General frames styling
 */
 body {
-	margin: 5px;
-	background-color: #f2f2f2;
-	font-family: 'Roboto Slab', serif !important;
+    margin: 5px;
+    background-color: #f2f2f2;
+    font-family: 'Roboto Slab', serif !important;
 }
 
 .gpii-prefsEditor-pmtContainer {
-	//display: inline-block;
-	height: 700px;
+    //display: inline-block;
+    height: 700px;
     //width: 28em;
     width: 560px;
 }
 
 .gpii-prefsEditor-frameIcon {
-	font-family: C4Aicons;
+    font-family: C4Aicons;
 }
 
 .gpii-prefsEditor-preferenceSetSelectionButton {
-	display: inline-block;
-	width: 45%;
-	//text-align: center;
-	padding: 5px;
-	//white-space: nowrap;
-	//line-height: 1.2em;
-	font-size: 1.2em;
-	word-wrap: break-word !important;
+    display: inline-block;
+    width: 45%;
+    //text-align: center;
+    padding: 5px;
+    //white-space: nowrap;
+    //line-height: 1.2em;
+    font-size: 1.2em;
+    word-wrap: break-word !important;
 }
 
 .gpii-prefsEditor-preferenceSetSelectionButtonSelected {
-	border: 3px solid #fffbd9;
-	border-radius: 5px;
-	color: #fffbd9;
-	cursor: pointer;
+    border: 3px solid #fffbd9;
+    border-radius: 5px;
+    color: #fffbd9;
+    cursor: pointer;
 }
 
 .gpii-prefsEditor-preferenceSetSelectionButtonGrayed {
-	color: #aeb5b6;
-	cursor: default;
+    color: #aeb5b6;
+    cursor: default;
 }
 
 .gpii-prefsEditor-preferenceSetSelectionButtonMyPreferences:before {
-	content: "\e617";
-	vertical-align: middle;
+    content: "\e617";
+    vertical-align: middle;
 }
 
 .gpii-prefsEditor-preferenceSetSelectionButtonAllPreferences:before {
-	content: "\e614";
-	vertical-align: middle;
+    content: "\e614";
+    vertical-align: middle;
 }
 
 .gpii-prefsEditor-preferenceSetSelectionButtonLabel {
-	vertical-align: top;
-	cursor: inherit;
-	font-family: 'Roboto Slab', serif;
+    vertical-align: top;
+    cursor: inherit;
+    font-family: 'Roboto Slab', serif;
 }
 
 .gpii-prefsEditor-preferencesContainer {
-	//height: calc(100% - 8em);
-	overflow-x: hidden;
+    //height: calc(100% - 8em);
+    overflow-x: hidden;
     overflow-y: auto;
 }
 
 .gpii-prefsEditor-preferenceSetSelectionHeader {
-	display: block;
-	background-color: #8c9597;
-	padding: 10px;
+    display: block;
+    background-color: #8c9597;
+    padding: 10px;
 }
 
 .gpii-prefsEditor-preferences {
-	background-color: #ced7d9;
-	padding: 10px;
+    background-color: #ced7d9;
+    padding: 10px;
 }
 
 .gpii-prefsEditor-save, .gpii-prefsEditor-gotoPcp {
-	font-family: 'Roboto Slab', serif;
-	background-color: #4C5259;
+    font-family: 'Roboto Slab', serif;
+    background-color: #4C5259;
     border-radius: 5px;
     color: #FFFFFF;
     cursor: pointer;
@@ -103,7 +103,7 @@ body {
 }
 
 .gpii-pmt-saveAndApplyButtonLabel {
-	cursor: pointer;
+    cursor: pointer;
     position: relative;
     vertical-align: middle;
     z-index: 1;
@@ -113,83 +113,83 @@ body {
 }
 
 .gpii-pmt-saveAndApplyButtonLabel:before {
-	content: "\e60c"
+    content: "\e60c"
 }
 
 .gpii-pmt-bottomRow {
-	display: table;
-	width: 100%;
+    display: table;
+    width: 100%;
 }
 
 .gpii-prefsEditor-messageLine {
-	display: table-cell;
-	white-space: normal;
-	width: 55%;
-	font-style:italic;
-	vertical-align: middle;
-	font-size: 1.2em;
+    display: table-cell;
+    white-space: normal;
+    width: 55%;
+    font-style:italic;
+    vertical-align: middle;
+    font-size: 1.2em;
 }
 
 .gpii-prefsEditor-saveButtonContainer {
-	display: table-cell;
-	text-align: right;
-	margin: 5px;
-	vertical-align: top;
+    display: table-cell;
+    text-align: right;
+    margin: 5px;
+    vertical-align: top;
 }
 
 .gpii-prefsEditor-notification {
-	background-color: #333333 !important;
-	color: white !important;
-	font-size: 1.5em;
+    background-color: #333333 !important;
+    color: white !important;
+    font-size: 1.5em;
     padding: 10px;
 }
 
 .gpii-prefsEditor-notificationMessage {
-	color: #f3f3f3;
+    color: #f3f3f3;
 }
 
 .ui-dialog {
-	padding: 0 !important;
+    padding: 0 !important;
 }
 
 .gpii-dialog-noTitle .ui-dialog-titlebar {
-	display: none;
+    display: none;
 }
 
 .gpii-prefsEditor-notificationConfirmationArea {
-	text-align: right;
+    text-align: right;
 }
 
 .gpii-prefsEditor-notificationConfirmButton {
-	display: inline-block;
-	font-style: italic;
-	font-weight: bold;
-	cursor: pointer;
+    display: inline-block;
+    font-style: italic;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .gpii-prefsEditor-notificationMessageTOKEN {
-	display: block;
-	color: white;
-	background-color: #666666;
-	padding: 0 5px 0 5px;
-	font-size: 1.4em;
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
+    display: block;
+    color: white;
+    background-color: #666666;
+    padding: 0 5px 0 5px;
+    font-size: 1.4em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 .gpii-prefsEditor-userStatusBar {
-	text-align: right;
+    text-align: right;
 }
 
 .gpii-prefsEditor-userLogoutLink {
-	color: #249fb8;
-	font-style: italic;
-	font-weight: bold;
-	cursor: pointer;
+    color: #249fb8;
+    font-style: italic;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .gpii-prefsEditor-reset {
-	display: none;
+    display: none;
 }
 
 .ui-widget-overlay {
@@ -206,9 +206,9 @@ body {
 }
 
 .gpii-prefsEditor-adjusterGroup {
-	margin-bottom: 2em;
-	padding-bottom: 1em;
-	background-color: #e5eded;
+    margin-bottom: 2em;
+    padding-bottom: 1em;
+    background-color: #e5eded;
 }
 
 /* These conflit with speakText-style.css
@@ -226,22 +226,22 @@ body {
 }
 
 label.gpii-preset-button-label {
-	/* TODO: static width should be dynamic once Alex's headers are not positioned absolutely */
-	width: 450px;
-	font-size: 1.8em;
+    /* TODO: static width should be dynamic once Alex's headers are not positioned absolutely */
+    width: 450px;
+    font-size: 1.8em;
 }
 
 .gpii-prefsEditor-headerTitle {
-	padding-right: 230px !important;
+    padding-right: 230px !important;
 }
 
 /* hack for padding per element, this should be margin of container for all */
 .screanReaderFollows {
-	padding-left: 40px;
+    padding-left: 40px;
 }
 
 /* hack for more/less position */
 .gpii-prefsEditor-moreLess {
-	position: relative;
-	left: -35px;
+    position: relative;
+    left: -35px;
 }

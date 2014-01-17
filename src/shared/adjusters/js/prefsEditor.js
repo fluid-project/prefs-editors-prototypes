@@ -12,14 +12,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     fluid.defaults("gpii.prefsEditor", {
-        gradeNames: ["gpii.prefs.pmt_pilot_2", "autoInit"],
+        gradeNames: ["gpii.prefs.pcp_pilot_2", "autoInit"],
         prefsEditor: {
             gradeNames: ["fluid.prefs.stringBundle", "gpii.prefs.gpiiStore"],
             members: {
                 messageResolver: "{prefsEditorLoader}.msgBundle"
             },
-
-
             listeners: {
                 "onCreate.setUserToken": {
                     listener: "fluid.set",
@@ -34,10 +32,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "attr",
                     "args": ["value", "{that}.stringBundle.saveAndApplyText"]
                 },
-                "onCreate.addListener": {
-                    "listener": "{that}.applier.modelChanged.addListener",
-                    "args": ["gpii_primarySchema_speakText", "{that}.foldExpandedViewWhenOff"]
-                },
                 "onReady.onApplySettings": {
                     "this": "{that}.dom.saveAndApply",
                     "method": "click",
@@ -49,14 +43,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             invokers: {
-                foldExpandedViewWhenOff: {
-                    "funcName": "gpii.foldExpandedViewWhenOff",
-                    "args": ["{that}.applier",
-                             "{that}.model.gpii_primarySchema_visualAlternativesMoreLess",
-                             "gpii_primarySchema_visualAlternativesMoreLess"
-                        ],
-                    "dynamic": true
-                },
                 applySettings: {
                     "funcName": "gpii.applySettings",
                     "args": "{that}",
@@ -77,12 +63,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.prefsEditor.setInitialModel = function (that) {
         var initialModel = that.get();
         that.applier.requestChange("", initialModel);
-    };
-
-    gpii.foldExpandedViewWhenOff = function (applier, extraVisible, valueToChange) {
-        if (extraVisible) {
-            applier.requestChange(valueToChange, false);
-        }
     };
 
     gpii.applySettings = function (that) {

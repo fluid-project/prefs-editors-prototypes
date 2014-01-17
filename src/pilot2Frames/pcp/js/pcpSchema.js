@@ -23,11 +23,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     gpii.pcp.auxiliarySchema = {
         // The global values:
-        "namespace": "gpii.constructedPCP",
+        "namespace": "gpii.constructedPMT",
         "templatePrefix": "../../src/shared/adjusters/html/", // The common path to settings panel templates
-        "template": "../../src/pcp/html/PrefsEditorTemplate-PCP.html",
-        "messagePrefix": "../../src/shared/adjusters/messages/" + gpii.prefs.i18n.getDefaultLanguage() + "/"
-        "message": "../../src/shared/frames/messages/" + gpii.prefs.i18n.getDefaultLanguage() + "/frames.json",
+        "template": "../../src/pmt/html/PMT.html",
+        "messagePrefix": "../../src/shared/adjusters/messages/en/",
+        "message": "%prefix/pmt.json",
 
         // The preference-specific information:
         "groups": {
