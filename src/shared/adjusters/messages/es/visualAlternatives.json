@@ -1,0 +1,11 @@
+{
+    "tooltipUnchecked": "Añadir a mis preferencias",
+    "tooltipChecked": "Eliminar de mis preferencias",
+    "speakTextPresetButtonLabel": "Alternativas visuales",
+    "screenReaderSwitchLabel": "Pronunciar texto",
+    "moreText": "más",
+    "lessText": "menos",
+    "saveAndApply": "Guardar y aplicar",
+    "resetAndApply": "Limpiar y aplicar",
+    "cancel": "Cancelar"
+}
