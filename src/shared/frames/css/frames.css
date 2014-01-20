@@ -85,6 +85,13 @@ body {
     padding: 10px;
 }
 
+.gpii-prefsEditor-PCP-preferences {
+    position: absolute;
+    overflow-y: auto;
+    height: 700px;
+    width: 545px;
+}
+
 .gpii-prefsEditor-save, .gpii-prefsEditor-gotoPcp {
     font-family: 'Roboto Slab', serif;
     background-color: #4C5259;
@@ -100,6 +107,14 @@ body {
     text-align: center;
     white-space: pre-line;
     word-wrap: break-word;
+}
+
+.gpii-PCP-save {
+    background-color: #BDE2E9;
+}
+
+.gpii-PCP-save:hover {
+    background-color: #249FB7;
 }
 
 .gpii-pmt-saveAndApplyButtonLabel {

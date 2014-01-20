@@ -1,49 +1,6 @@
-.gpii-prefsEditor-preferenceSetSelectionButton {
-    display: table-cell;
-    width: 50%;
-    text-align: center;
-    white-space: nowrap;
-    line-height: 1.2em;
-}
-
-.gpii-prefsEditor-preferencesContainer {
-    height: calc(100% - 8em);
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-.gpii-prefsEditor-preferences {
-    position: absolute;
-    overflow-y: auto;
-    height: 700px;
-    width: 545px;
-}
-
-.gpii-prefsEditor-save {
-    font-family: 'Roboto Slab', serif;
-    background-color: #BDE2E9;
-    border-radius: 5px;
-    color: #FFFFFF;
-    cursor: pointer;
-    margin: 0.1em 0.1em 0.1em -2.3em;
-    padding: 0.4em 0.4em 0.4em 1.5em;
-    position: relative;
-    font-size: 1.5em;
-    vertical-align: middle;
-}
-
-.gpii-prefsEditor-save:hover {
-    background-color: #249FB7;
-}
-
 .gpii-pmt-saveAndApplyButtonLabel {
-    cursor: pointer;
-    vertical-align: middle;
-    z-index: 1;
     color: white;
-    background-color: transparent !important;
     position: absolute;
-    font-size: 2em !important;
     margin-left: -47px;
     margin-top: 12px;
 }
