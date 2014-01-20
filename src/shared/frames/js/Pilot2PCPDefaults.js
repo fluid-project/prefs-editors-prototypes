@@ -63,14 +63,12 @@ compliance with this License.
                 "onReady.setFullEditorLinkText": {
                     "this": "{that}.dom.fullEditorLink",
                     "method": "text",
-                    // "args": ["{that}.stringBundle.fullEditorText"]
-                    "args": ["full editor"]
+                    "args": ["{that}.stringBundle.fullEditorText"]
                 },
                 "onReady.setLogoutLinkText": {
                     "this": "{that}.dom.logoutLink",
                     "method": "text",
-                    // "args": ["{that}.stringBundle.logoutText"]
-                    "args": ["logout"]
+                    "args": ["{that}.stringBundle.logoutText"]
                 },
                 "onReady.triggerLogoutEvent": {
                     "listener": "{that}.events.onLogout.fire"
