@@ -196,11 +196,20 @@ body {
     text-align: right;
 }
 
-.gpii-prefsEditor-userLogoutLink {
+.gpii-prefsEditor-link {
     color: #249fb8;
     font-style: italic;
     font-weight: bold;
     cursor: pointer;
+}
+
+.gpii-prefsEditor-pcp-userLogout {
+    text-align: right;
+    margin-left: 185px;
+}
+
+.gpii-prefsEditor-fullEditor {
+    text-align: left;
 }
 
 .gpii-prefsEditor-reset {
@@ -242,7 +251,6 @@ body {
 
 label.gpii-preset-button-label {
     /* TODO: static width should be dynamic once Alex's headers are not positioned absolutely */
-    width: 450px;
     font-size: 1.8em;
 }
 
