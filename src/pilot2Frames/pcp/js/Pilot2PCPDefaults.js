@@ -38,7 +38,9 @@ compliance with this License.
                     args: ["userLoggedIn", true]
                 },
                 "onLogin.showSaveMessage": {
-                    "listener": "{that}.showSaveMessage"
+                    "this": "{that}.dom.messageLineLabel",
+                    "method": "text",
+                    "args": ["{that}.stringBundle.preferencesModified"]
                 },
                 "onLogin.showUserStatusBar": {
                     "listener": "{that}.showUserStatusBar"
@@ -69,17 +71,9 @@ compliance with this License.
                     "this": "{that}.dom.logoutLink",
                     "method": "text",
                     "args": ["{that}.stringBundle.logoutText"]
-                    },
-                "onReady.triggerLogoutEvent": {
-                    "listener": "{that}.events.onLogout.fire"
                 }
             },
             invokers: {
-                showSaveMessage: {
-                    "this": "{that}.dom.messageLineLabel",
-                    "method": "text",
-                    "args": ["{that}.stringBundle.preferencesSavedToUSB"]
-                },
                 showUserStatusBar: {
                     "this": "{that}.dom.userStatusBar",
                     "method": "slideDown"

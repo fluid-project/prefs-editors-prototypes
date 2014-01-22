@@ -1118,7 +1118,6 @@ h4 {
 .gpii-followingElement-container {
     margin-top: 20px;
     background-color: #E5EFEF;
-    //margin-left: 30px;
 }
 
 .fl-preview-A {
@@ -1524,7 +1523,6 @@ input[type=checkbox]:checked + label.gpii-checkbox-label:before {
     text-transform: none;
     font-size: 1.2em;
 }
-
 
 /*
     Styling for autocomplete dropdowns

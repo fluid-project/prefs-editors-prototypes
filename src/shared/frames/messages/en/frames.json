@@ -3,6 +3,7 @@
 	"allPreferencesLabelText": "all preferences",
 	"saveAndApplyText": "save & apply",
 	"preferencesSavedToUSB": "preferences saved to usb",
+	"preferencesModified": "preferences modified",
 	"notificationMessagePart1": "To apply preferences on other devices, save this token:",
 	"notificationMessagePart2": "TOKEN NUMBER",
 	"notificationMessagePart3": "to a USB or RFID reader.",

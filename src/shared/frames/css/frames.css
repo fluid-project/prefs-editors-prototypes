@@ -19,9 +19,6 @@ body {
 }
 
 .gpii-prefsEditor-pmtContainer {
-    //display: inline-block;
-    height: 700px;
-    //width: 28em;
     width: 560px;
 }
 
@@ -32,10 +29,7 @@ body {
 .gpii-prefsEditor-preferenceSetSelectionButton {
     display: inline-block;
     width: 45%;
-    //text-align: center;
     padding: 5px;
-    //white-space: nowrap;
-    //line-height: 1.2em;
     font-size: 1.2em;
     word-wrap: break-word !important;
 }
@@ -69,7 +63,6 @@ body {
 }
 
 .gpii-prefsEditor-preferencesContainer {
-    //height: calc(100% - 8em);
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -136,8 +129,12 @@ body {
     width: 100%;
 }
 
+.gpii-pcp-bottomRow {
+    margin-top: 720px;
+    margin-left: 20px;
+}
+
 .gpii-prefsEditor-messageLine {
-    display: table-cell;
     white-space: normal;
     width: 55%;
     font-style:italic;
@@ -145,11 +142,16 @@ body {
     font-size: 1.2em;
 }
 
-.gpii-prefsEditor-saveButtonContainer {
+.gpii-pmt-saveButtonContainer {
     display: table-cell;
     text-align: right;
     margin: 5px;
     vertical-align: top;
+}
+
+.gpii-pcp-saveButtonContainer {
+    float: right;
+    width: 165px;
 }
 
 .gpii-prefsEditor-notification {
@@ -213,11 +215,6 @@ body {
 }
 
 .ui-widget-overlay {
-    background: url("images/ui-bg_flat_0_aaaaaa_40x100.png") repeat-x scroll 50% 50% #AAAAAA;
-    opacity: 0.3;
-}
-
-.ui-widget-overlay {
     height: 100%;
     left: 0;
     position: fixed;
@@ -231,8 +228,6 @@ body {
     background-color: #e5eded;
 }
 
-/* These conflit with speakText-style.css
-Needed for the frame's popup */
 .ui-corner-all {
     width: 28em !important;
 }

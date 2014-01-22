@@ -21,10 +21,10 @@ var demo = demo || {};
             primarySchema: gpii.primarySchema,
             auxiliarySchema: gpii.pmt.auxiliarySchema
         });
-        
+
         demo.instantiatePMT(container, compOpts, "gpii.pmt", gpii.prefs.i18n.getDefaultLanguage());
     };
-    
+
     demo.instantiatePMT = function (container, compOpts, prefsEditorType, language) {
         var baseOpts = {
             prefsEditorType: prefsEditorType,

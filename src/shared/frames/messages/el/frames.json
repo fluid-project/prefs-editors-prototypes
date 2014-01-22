@@ -3,6 +3,7 @@
 	"allPreferencesLabelText": "προτιμήσεις",
 	"saveAndApplyText": "αποθήκευση",
 	"preferencesSavedToUSB": "οι προτιμήσεις αποθηκεύτηκαν στο usb",
+	"preferencesModified": "οι προτιμήσεις άλλαξα",
 	"notificationMessagePart1": "Για να εφαρμόσετε της προτιμήσεις σε άλλες συσκευές, αποθηκεύστε αυτό το κείμενο:",
 	"notificationMessagePart2": "TOKEN NUMBER",
 	"notificationMessagePart3": "σέ ένα USB ή RFID.",
