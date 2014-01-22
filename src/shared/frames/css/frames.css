@@ -192,10 +192,6 @@ body {
     margin-bottom: 0.5em;
 }
 
-.gpii-prefsEditor-userStatusBar {
-    text-align: right;
-}
-
 .gpii-prefsEditor-link {
     color: #249fb8;
     font-style: italic;
@@ -205,7 +201,7 @@ body {
 
 .gpii-prefsEditor-pcp-userLogout {
     text-align: right;
-    margin-left: 185px;
+    margin-left: 410px;
 }
 
 .gpii-prefsEditor-fullEditor {

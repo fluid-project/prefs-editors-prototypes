@@ -85,13 +85,7 @@ compliance with this License.
                     "method": "slideDown"
                 }
             }
-        },
-        // finalInitFunction: "baba"
+        }
     });
-
-    // baba = function (that) {
-    //     // alert("final")
-    //     hook = that
-    // }
 
 })(jQuery, fluid);
