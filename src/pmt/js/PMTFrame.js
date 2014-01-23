@@ -45,7 +45,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             listeners: {
                 // on Session login:
-                "{gpiiSession}.events.onLogin": "{that}.showSaveNotificationIfNoLogin",
+                "{gpiiSession}.events.onLogin": "{that}.showSaveNotification",
                 // trigger login on notification confirmation
                 "onReady.bindNotificationConfirmButtonClickTriggerLogin": {
                     "this": "{that}.dom.confirmButton",
@@ -157,9 +157,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             invokers: {
-                showSaveNotificationIfNoLogin: {
-                    "funcName": "gpii.pmt.showSaveNotificationIfNoLogin",
-                    "args": ["{that}.model.userLoggedIn", "{gpiiSession}.options.loggedUser"],
+                showSaveNotification: {
+                    "funcName": "gpii.pmt.showSaveNotification",
+                    "args": ["{gpiiSession}.options.loggedUser"],
                     dynamic: true
                 },
                 hideSaveNotification: {
@@ -200,14 +200,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.pmt.showSaveNotificationIfNoLogin = function (userLoggedIn, userToken) {
-        if (!userLoggedIn) {
-            // Had to reference the notification container this way, because jQuery.dialog()
-            // detaches it from its original position and appends it to body, making Infusion
-            // DOM to lose reference to it.
-            $(".gpiic-prefsEditor-notificationMessagePart2").text(userToken);
-            $(".gpiic-prefsEditor-notification").dialog("open");
-        }
+    gpii.pmt.showSaveNotification = function (userToken) {
+        // Had to reference the notification container this way, because jQuery.dialog()
+        // detaches it from its original position and appends it to body, making Infusion
+        // DOM to lose reference to it.
+        $(".gpiic-prefsEditor-notificationMessagePart2").text(userToken);
+        $(".gpiic-prefsEditor-notification").dialog("open");
     };
 
     gpii.pmt.hideSaveNotification = function () {
