@@ -186,7 +186,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             }
         },
-        pcpUrl: "./pcp.html",
         selectors: {
             gotoPcpButton: ".flc-prefsEditor-gotoPcp"
         },
