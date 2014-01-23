@@ -141,7 +141,7 @@ body {
 	background-color: #333333 !important;
 	color: white !important;
 	font-size: 1.5em;
-    padding: 10px;
+    padding: 10px !important;
 }
 
 .gpii-prefsEditor-notificationMessage {
@@ -168,13 +168,22 @@ body {
 }
 
 .gpii-prefsEditor-notificationMessageTOKEN {
-	display: block;
-	color: white;
-	background-color: #666666;
-	padding: 0 5px 0 5px;
-	font-size: 1.4em;
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
+	display: block !important;
+	color: white !important;
+	background-color: #666666 !important;
+	padding: 0 5px 0 5px !important;
+	font-size: 1.4em !important;
+	margin-top: 0.5em !important;
+	margin-bottom: 0.5em !important;
+}
+
+.gpii-prefsEditor-notificationMessageTOKEN:first-letter {
+	text-transform: none !important;
+}
+
+.gpii-prefsEditor-notificationHeader {
+	color: white !important;
+    padding: 10px !important;
 }
 
 .gpii-prefsEditor-userStatusBar {

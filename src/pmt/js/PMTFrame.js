@@ -13,7 +13,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 /*global fluid, gpii, jQuery, navigator*/
 /*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
 
-(function ($, fluid) {
+(function (fluid) {
     fluid.defaults("gpii.pmt", {
         gradeNames: ["fluid.prefs.GPIIEditor", "autoInit"],
         prefsEditor: {
@@ -133,17 +133,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "text",
                     "args": ["{that}.stringBundle.logoutText"]
                 },
+                // simply hide notification onReady
                 "onReady.prepareSaveNotification": {
                     "this": "{that}.dom.notification",
-                    "method": "dialog",
-                    "args": [{
-                        autoOpen: false,
-                        modal: true,
-                        //width: 420,
-                        dialogClass: "gpii-dialog-noTitle",
-                        closeOnEscape: false,
-                        position: { my: "bottom", at: "bottom", of: ".gpii-prefsEditor-preferencesContainer" }
-                    }]
+                    "method": "hide"
                 },
                 // hide the logout link initially
                 "onReady.hideUserStatusBar": {
@@ -159,11 +152,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             invokers: {
                 showSaveNotification: {
                     "funcName": "gpii.pmt.showSaveNotification",
-                    "args": ["{gpiiSession}.options.loggedUser"],
+                    "args": ["{that}", "{gpiiSession}.options.loggedUser"],
                     dynamic: true
                 },
                 hideSaveNotification: {
-                    "funcName": "gpii.pmt.hideSaveNotification"
+                    "funcName": "gpii.pmt.hideSaveNotification",
+                    "args": ["{that}"],
+                    dynamic: true
                 },
                 showSaveMessage: {
                     "this": "{that}.dom.messageLineLabel",
@@ -200,19 +195,31 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.pmt.showSaveNotification = function (userToken) {
-        // Had to reference the notification container this way, because jQuery.dialog()
-        // detaches it from its original position and appends it to body, making Infusion
-        // DOM to lose reference to it.
-        $(".gpiic-prefsEditor-notificationMessagePart2").text(userToken);
-        $(".gpiic-prefsEditor-notification").dialog("open");
+    gpii.pmt.showSaveNotification = function (that, userToken) {
+        // re-wrap jQuery 1.7 element as jQuery 1.9 version in order to support the "appendTo" param. 
+        var notificationjq1_7 = that.dom.locate("notification");
+        var unwrappedNotification = fluid.unwrap(notificationjq1_7);
+        var notificationjq1_9 = $(unwrappedNotification);
+        // create and show it immediately
+        notificationjq1_9.dialog({
+            autoOpen: true,
+            modal: true,
+            appendTo: ".gpiic-pmt-bottomRow",
+            dialogClass: "gpii-dialog-noTitle",
+            closeOnEscape: false,
+            position: { my: "bottom", at: "bottom", of: ".gpii-prefsEditor-preferencesContainer" }
+        });
+        // also set the token text
+        that.dom.locate("notificationMessagePart2").text(userToken);
     };
 
-    gpii.pmt.hideSaveNotification = function () {
-        // Had to reference the notification container this way, because jQuery.dialog()
-        // detaches it from its original position and appends it to body, making Infusion
-        // DOM to lose reference to it.
-        $(".gpiic-prefsEditor-notification").dialog("close");
+    gpii.pmt.hideSaveNotification = function (that) {
+        // re-wrap jQuery 1.7 element as jQuery 1.9 version in order to support the "appendTo" param. 
+        var notificationjq1_7 = that.dom.locate("notification");
+        var unwrappedNotification = fluid.unwrap(notificationjq1_7);
+        var notificationjq1_9 = $(unwrappedNotification);
+        // destroy it on hide
+        notificationjq1_9.dialog("destroy");
     };
     
 	// FIXME: Figure out a better way to pass the user token.
@@ -235,4 +242,4 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         outerPreviewEnhancerOptions: "{originalEnhancerOptions}.options.originalUserOptions",
         emptyComponentType: "fluid.emptySubcomponent"
     });
-})(jQuery, fluid);
+})(fluid);
