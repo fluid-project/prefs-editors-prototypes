@@ -87,10 +87,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onLogout.gpiiLogout": {
                     listener: "{gpiiSession}.logout"
                 },
-                /*"onLogout.reloadPage": {
-                    "this": "location",
-                    "method": "reload"
-                },*/
                 // set texts
                 "onReady.setMyPreferencesLabelText": {
                     "this": "{that}.dom.myPreferencesLabel",
@@ -149,12 +145,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         position: { my: "bottom", at: "bottom", of: ".gpii-prefsEditor-preferencesContainer" }
                     }]
                 },
-                // hide the logout link initially
-                /*"onReady.hideSaveNotification": {
-                    "this": "{that}.dom.notification",
-                    "method": "hide",
-                    "args": [0]
-                },*/
                 // hide the logout link initially
                 "onReady.hideUserStatusBar": {
                     "this": "{that}.dom.userStatusBar",
