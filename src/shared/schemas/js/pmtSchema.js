@@ -23,6 +23,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "templatePrefix": "../../src/shared/adjusters/html/", // The common path to settings panel templates
         "template": "../../src/pmt/html/PrefsEditorTemplate-PMT.html",
         "messagePrefix": "../../src/shared/adjusters/messages/en/",
+        // FIXME: Ideally we wouldn't have any function calls in the schema, which would make it easier to pass around.
         "message": "../../src/shared/frames/messages/" + gpii.prefs.i18n.getDefaultLanguage() + "/frames.json",
 
         // The preference-specific information:
