@@ -19,15 +19,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 /*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
 
 (function ($, fluid) {
-    fluid.registerNamespace("gpii.pmt");
+    fluid.registerNamespace("gpii.pcp");
 
-    gpii.pmt.auxiliarySchema = {
+    gpii.pcp.auxiliarySchema = {
         // The global values:
-        "namespace": "gpii.constructedPMT",
+        "namespace": "gpii.constructedPCP",
         "templatePrefix": "../../src/shared/adjusters/html/", // The common path to settings panel templates
-        "template": "../../src/pmt/html/PMT.html",
-        "messagePrefix": "../../src/shared/adjusters/messages/en/",
-        "message": "%prefix/pmt.json",
+        "template": "../../src/pcp/html/PrefsEditorTemplate-PCP.html",
+        "messagePrefix": "../../src/shared/adjusters/messages/" + gpii.prefs.i18n.getDefaultLanguage() + "/",
+        "message": "../../src/shared/frames/messages/" + gpii.prefs.i18n.getDefaultLanguage() + "/frames.json",
 
         // The preference-specific information:
         "groups": {
@@ -91,9 +91,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "by": "fl-theme-prefsEditor-by gpii-prefsEditor-theme-by fl-theme-by",
                 "yb": "fl-theme-prefsEditor-yb gpii-prefsEditor-theme-yb fl-theme-yb"
             },
-            "enactor": {
-                "type": "gpii.enactor.contrastThemeWithInversion"
-            },
+            // "enactor": {
+            //     "type": "gpii.enactor.contrastThemeWithInversion"
+            // },
             "panel": {
                 "type": "gpii.adjuster.contrastThemeWithInversion",
                 "container": ".gpiic-contrastTheme",
@@ -104,9 +104,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "textSize": {
             "type": "gpii.primarySchema.fontSize",
-            "enactor": {
-                "type": "gpii.enactor.textSize"
-            },
+            // "enactor": {
+            //     "type": "gpii.enactor.textSize"
+            // },
             "panel": {
                 "type": "gpii.adjuster.textSizePCP",
                 "container": ".gpiic-prefsEditor-textSize",
@@ -116,9 +116,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "cursorSize": {
             "type": "gpii.primarySchema.cursorSize",
-            "enactor": {
-                "type": "gpii.enactor.cursorSize"
-            },
+            // "enactor": {
+            //     "type": "gpii.enactor.cursorSize"
+            // },
             "panel": {
                 "type": "gpii.adjuster.cursorSizePCP",
                 "container": ".gpiic-prefsEditor-cursorSize",
@@ -128,9 +128,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "magnifierEnabled": {
             "type": "gpii.primarySchema.magnifierEnabled",
-            "enactor": {
-                "type": "gpii.enactor.magnifier"
-            },
+            // "enactor": {
+            //     "type": "gpii.enactor.magnifier"
+            // },
             "panel": {
                 "type": "gpii.adjuster.magnifierEnabled",
                 "container": ".gpiic-prefsEditor-magnifierEnabled",
@@ -140,9 +140,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "magnifier": {
             "type": "gpii.primarySchema.magnification",
-            "enactor": {
-                "type": "gpii.enactor.magnifier"
-            },
+            // "enactor": {
+            //     "type": "gpii.enactor.magnifier"
+            // },
             "panel": {
                 "type": "gpii.adjuster.magnifierPCP",
                 "container": ".gpiic-prefsEditor-magnifier",

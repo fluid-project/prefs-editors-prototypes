@@ -19,13 +19,13 @@ var demo = demo || {};
 (function ($, fluid) {
 
     $(document).ready(function () {
-        fluid.prefs.create("#gpiic-pmt", {
+        fluid.prefs.create("#gpiic-pcp", {
             build: {
                 primarySchema: gpii.primarySchema,
-                auxiliarySchema: gpii.pmt.auxiliarySchema
+                auxiliarySchema: gpii.pcp.auxiliarySchema
             },
             prefsEditor: {
-                prefsEditorType: "gpii.pmt",
+                prefsEditorType: "gpii.prefsEditor",
                 components: {
                     prefsEditorLoader: {
                         options: {

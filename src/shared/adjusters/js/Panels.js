@@ -101,6 +101,58 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
+    fluid.defaults("gpii.adjuster.visualAlternativesMoreLess", {
+        gradeNames: ["fluid.prefs.panel", "fluid.prefs.stringBundle", "autoInit"],
+        members: {
+            messageResolver: "{prefsEditorLoader}.msgBundle"
+        },
+        preferenceMap: {
+            "gpii.primarySchema.visualAlternativesMoreLess": {
+                "model.visualAlternativesMoreLess": "default"
+            }
+        },
+        selectors: {
+            visualAlternativesMoreLess: ".gpiic-visualAlternativesMoreLess",
+            visualAlternativesMoreLessLabel: ".gpiic-visualAlternativesMoreLess-label"
+        },
+        selectorsToIgnore: ["visualAlternativesMoreLessIcon"],
+        protoTree: {
+            visualAlternativesMoreLess: "${visualAlternativesMoreLess}",
+            expander: {
+                type: "fluid.renderer.condition",
+                condition: "${{that}.model.visualAlternativesMoreLess}",
+                trueTree: {
+                    visualAlternativesMoreLessLabel: {messagekey: "less"}
+                },
+                falseTree: {
+                    visualAlternativesMoreLessLabel: {messagekey: "more"}
+                }
+            }
+        },
+        listeners: {
+            "onDomBind.addListener": {
+                "listener": "{that}.applier.modelChanged.addListener",
+                "args": ["visualAlternativesMoreLess", "{that}.toggleVisualAlternativesMoreLess"]
+            }
+        },
+        invokers: {
+            toggleVisualAlternativesMoreLess: {
+                "funcName": "gpii.visualAlternativesMoreLessConfiguration",
+                "args": ["{that}.model.visualAlternativesMoreLess",
+                         "{that}.dom.visualAlternativesMoreLessLabel",
+                         "{that}.stringBundle.more",
+                         "{that}.stringBundle.less"
+                    ],
+                "dynamic": true
+            }
+        }
+    });
+
+    gpii.visualAlternativesMoreLessConfiguration = function (modelValue, label, more, less) {
+        var newText = modelValue ? less : more;
+        label.text(newText);
+    };
+
     fluid.defaults("gpii.adjuster.voicePitch", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
@@ -187,9 +239,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             universalLanguage: ".gpiic-universalLanguage",
             universalLanguageLabel: ".gpiic-universalLanguage-label"
         },
+        stringArrayIndex: {
+            languages: ["language-english", "language-french", "language-german", "language-russian"]
+        },
         protoTree: {
             universalLanguage: {
                 selection: "${universalLanguage}",
+                optionnames: "${{that}.stringBundle.languages}",
                 optionlist: "${{that}.options.controlValues.universalLanguage}"
             },
             universalLanguageLabel: {messagekey: "universalLanguageLabel"}
@@ -208,9 +264,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             screenReaderLanguage: ".gpiic-screenReaderLanguage",
             screenReaderLanguageLabel: ".gpiic-screenReaderLanguage-label"
         },
+        stringArrayIndex: {
+            languages: ["language-english", "language-french", "language-german", "language-russian"]
+        },
         protoTree: {
             screenReaderLanguage: {
                 selection: "${screenReaderLanguage}",
+                optionnames: "${{that}.stringBundle.languages}",
                 optionlist: "${{that}.options.controlValues.screenReaderLanguage}"
             },
             screenReaderLanguageLabel: {messagekey: "screenReaderLanguageLabel"}
@@ -287,7 +347,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle = function (labelsClass, values, classes) {
-        labels = $(labelsClass); // Used because "{that}.dom.punctuationVerbosityOptionLabel" 
+        labels = $(labelsClass); // Used because "{that}.dom.punctuationVerbosityOptionLabel"
                                  // (like that.locate("punctuationVerbosityOptionLabel")) fails to return
                                  // the array of labels.
 

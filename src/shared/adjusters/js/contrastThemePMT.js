@@ -14,7 +14,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 /*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
 
 (function ($, fluid) {
-    
+
     fluid.defaults("gpii.adjuster.contrastThemePMT", {
         gradeNames: ["gpii.adjuster.contrastThemePCP", "autoInit"],
         mergePolicy: {
@@ -30,7 +30,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         selectorsToIgnore: ["contrastPreview"]
     });
-    
+
     fluid.defaults("gpii.adjuster.contrastThemePMT.preview", {
         gradeNames: ["gpii.adjuster.previewWithText", "autoInit"],
         distributeOptions: [{

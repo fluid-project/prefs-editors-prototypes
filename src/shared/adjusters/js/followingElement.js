@@ -14,7 +14,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 /*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
 
 (function ($, fluid) {
-    
+
     fluid.defaults("gpii.adjuster.followingElement", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         listeners: {
@@ -34,7 +34,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         repeatingSelectors: ["followingElementRow"],
         controlValues: {
-            followingElement: ["mousecursor", "textcursor", "keyboardfocus"],
+            followingElement: ["mouse", "caret", "focus"],
             followingElementBorder: ["topOnly", "bottomOnly", "noBorder"]
         },
         markup: {
@@ -68,7 +68,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 followingElement: strings[index]
             }));
             label.find(".gpiic-iconCheckAdjusterIcon").addClass(style[followingElement[index]]);
-            
+
             if (index === 0) {
                 label.addClass(borderStyle[followingElementBorder[0]]);
             } else if (index === labels.length - 1) {
@@ -78,5 +78,5 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         });
     };
-    
+
 })(jQuery, fluid);

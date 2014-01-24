@@ -35,6 +35,12 @@ var demo = demo || {};
                 }
             }
         });
+
+        // set GPII store
+        gpii.prefs.gpiiSettingsStore({
+            settingsStore: {
+            }
+        });
     });
 
 })(jQuery, fluid);

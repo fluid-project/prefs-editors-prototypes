@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Preferences Management Tool</title>
+<title>Personal Control Panel</title>
 
     <!-- The needed infusion CSS files -->
     <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/framework/fss/css/fss-reset-global.css" />
@@ -24,7 +24,6 @@
 
     <!-- All styling for PMT is here -->
     <link rel="stylesheet" type="text/css" href="../../src/shared/adjusters/css/fss-theme-inverted-prefsEditor.css" />
-    <link rel="stylesheet" type="text/css" href="../../src/shared/adjusters/css/style-speakText.css" />
     <link rel="stylesheet" type="text/css" href="../../src/shared/adjusters/css/adjusters.css" />
 
     <!-- This is breaking the slider color -->
@@ -33,6 +32,8 @@
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script type="text/javascript" src="../../src/shared/adjusters/js/combobox.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="../../src/shared/frames/css/frames.css" />
+
     <!-- The Infusion Library -->
     <script type="text/javascript" src="../../src/shared/lib/infusion/MyInfusion.js"></script>
 
@@ -40,6 +41,9 @@
     <script type="text/javascript" src="../../src/shared/common/merging.js"></script>
 
     <script type="text/javascript" src="../../src/shared/adjusters/js/Panels.js"></script>
+
+    <script type="text/javascript" src="../../src/shared/frames/js/GPIIPrefsEditor.js"></script>
+    <script type="text/javascript" src="../../src/pilot2Frames/pcp/js/Pilot2PCPDefaults.js"></script>
 
     <!-- The custom adjusters JS files -->
     <script type="text/javascript" src="../../src/shared/components/preview/js/preview.js"></script>
@@ -71,12 +75,14 @@
     <!-- The i18n JS files -->
     <script type="text/javascript" src="../../src/shared/i18n/js/i18n.js"></script>
 
-    <!-- PMT-specific files -->
-    <script type="text/javascript" src="../../src/shared/schemas/js/primarySchema.js"></script>
-    <script type="text/javascript" src="../../src/shared/schemas/js/pcpSchema.js"></script>
-    <script type="text/javascript" src="../../src/pmt/js/PMT.js"></script>
+    <!-- Socket.io-client library -->
+    <script type="text/javascript" src="../../src/shared/lib/socket.io/socket.io.js"></script>
 
-    <!-- PCPteam-specific files -->
+    <!-- PCP-specific files -->
+    <script type="text/javascript" src="../../src/shared/schemas/js/primarySchema.js"></script>
+    <script type="text/javascript" src="../../src/pilot2Frames/pcp/js/pcpSchema.js"></script>
+    <script type="text/javascript" src="../../src/shared/common/GpiiSession.js"></script>
+    <script type="text/javascript" src="../../src/shared/common/GpiiStore.js"></script>
     <script type="text/javascript" src="../../src/shared/adjusters/js/prefsEditor.js"></script>
     <script type="text/javascript" src="../../src/shared/adjusters/js/languageCollectivePanel.js"></script>
     <script type="text/javascript" src="../../src/pcp/visualAlternativesCollectivePanel.js"></script>
@@ -89,7 +95,7 @@
 <body>
 
     <!-- This is the div that will contain the UI Options component -->
-    <div id="gpiic-pmt">
+    <div id="gpiic-pcp">
     </div>
 
 </body>

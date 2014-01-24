@@ -1,0 +1,261 @@
+@font-face {
+    font-family: 'C4Aicons';
+    src:url('../fonts/C4Aicons.eot');
+    src:url('../fonts/C4Aicons.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/C4Aicons.ttf') format('truetype'),
+        url('../fonts/C4Aicons.woff') format('woff'),
+        url('../fonts/C4Aicons.svg#C4Aicons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*
+    General frames styling
+*/
+body {
+    margin: 5px;
+    background-color: #f2f2f2;
+    font-family: 'Roboto Slab', serif !important;
+}
+
+.gpii-prefsEditor-pmtContainer {
+    width: 560px;
+}
+
+.gpii-prefsEditor-frameIcon {
+    font-family: C4Aicons;
+}
+
+.gpii-prefsEditor-preferenceSetSelectionButton {
+    display: inline-block;
+    width: 45%;
+    padding: 5px;
+    font-size: 1.2em;
+    word-wrap: break-word !important;
+}
+
+.gpii-prefsEditor-preferenceSetSelectionButtonSelected {
+    border: 3px solid #fffbd9;
+    border-radius: 5px;
+    color: #fffbd9;
+    cursor: pointer;
+}
+
+.gpii-prefsEditor-preferenceSetSelectionButtonGrayed {
+    color: #aeb5b6;
+    cursor: default;
+}
+
+.gpii-prefsEditor-preferenceSetSelectionButtonMyPreferences:before {
+    content: "\e617";
+    vertical-align: middle;
+}
+
+.gpii-prefsEditor-preferenceSetSelectionButtonAllPreferences:before {
+    content: "\e614";
+    vertical-align: middle;
+}
+
+.gpii-prefsEditor-preferenceSetSelectionButtonLabel {
+    vertical-align: top;
+    cursor: inherit;
+    font-family: 'Roboto Slab', serif;
+}
+
+.gpii-prefsEditor-preferencesContainer {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.gpii-prefsEditor-preferenceSetSelectionHeader {
+    display: block;
+    background-color: #8c9597;
+    padding: 10px;
+}
+
+.gpii-prefsEditor-preferences {
+    background-color: #ced7d9;
+    padding: 10px;
+}
+
+.gpii-prefsEditor-PCP-preferences {
+    position: absolute;
+    overflow-y: auto;
+    height: 700px;
+    width: 545px;
+}
+
+.gpii-prefsEditor-save, .gpii-prefsEditor-gotoPcp {
+    font-family: 'Roboto Slab', serif;
+    background-color: #4C5259;
+    border-radius: 5px;
+    color: #FFFFFF;
+    cursor: pointer;
+    margin: 0.1em 0.1em 0.1em -2.3em;
+    padding: 0.4em 0.4em 0.4em 1.5em;
+    position: relative;
+    font-size: 1.5em;
+    vertical-align: middle;
+    max-width: 100%;
+    text-align: center;
+    white-space: pre-line;
+    word-wrap: break-word;
+}
+
+.gpii-PCP-save {
+    background-color: #BDE2E9;
+}
+
+.gpii-PCP-save:hover {
+    background-color: #249FB7;
+}
+
+.gpii-pmt-saveAndApplyButtonLabel {
+    cursor: pointer;
+    position: relative;
+    vertical-align: middle;
+    z-index: 1;
+    color: #FFFFFF;
+    background-color: transparent !important;
+    font-size: 2em !important;
+}
+
+.gpii-pmt-saveAndApplyButtonLabel:before {
+    content: "\e60c"
+}
+
+.gpii-pmt-bottomRow {
+    display: table;
+    width: 100%;
+}
+
+.gpii-pcp-bottomRow {
+    margin-top: 720px;
+    margin-left: 20px;
+}
+
+.gpii-prefsEditor-messageLine {
+    white-space: normal;
+    width: 55%;
+    font-style:italic;
+    vertical-align: middle;
+    font-size: 1.2em;
+}
+
+.gpii-pmt-saveButtonContainer {
+    display: table-cell;
+    text-align: right;
+    margin: 5px;
+    vertical-align: top;
+}
+
+.gpii-pcp-saveButtonContainer {
+    float: right;
+    width: 165px;
+}
+
+.gpii-prefsEditor-notification {
+    background-color: #333333 !important;
+    color: white !important;
+    font-size: 1.5em;
+    padding: 10px;
+}
+
+.gpii-prefsEditor-notificationMessage {
+    color: #f3f3f3;
+}
+
+.ui-dialog {
+    padding: 0 !important;
+}
+
+.gpii-dialog-noTitle .ui-dialog-titlebar {
+    display: none;
+}
+
+.gpii-prefsEditor-notificationConfirmationArea {
+    text-align: right;
+}
+
+.gpii-prefsEditor-notificationConfirmButton {
+    display: inline-block;
+    font-style: italic;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.gpii-prefsEditor-notificationMessageTOKEN {
+    display: block;
+    color: white;
+    background-color: #666666;
+    padding: 0 5px 0 5px;
+    font-size: 1.4em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.gpii-prefsEditor-link {
+    color: #249fb8;
+    font-style: italic;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.gpii-prefsEditor-pcp-userLogout {
+    text-align: right;
+    margin-left: 410px;
+}
+
+.gpii-prefsEditor-fullEditor {
+    text-align: left;
+}
+
+.gpii-prefsEditor-reset {
+    display: none;
+}
+
+.ui-widget-overlay {
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.gpii-prefsEditor-adjusterGroup {
+    margin-bottom: 2em;
+    padding-bottom: 1em;
+    background-color: #e5eded;
+}
+
+.ui-corner-all {
+    width: 28em !important;
+}
+
+.ui-widget .ui-widget-content {
+    border-style: solid solid solid solid !important;
+}
+
+body {
+    -webkit-user-select: auto !important;
+}
+
+label.gpii-preset-button-label {
+    /* TODO: static width should be dynamic once Alex's headers are not positioned absolutely */
+    font-size: 1.8em;
+}
+
+.gpii-prefsEditor-headerTitle {
+    padding-right: 230px !important;
+}
+
+/* hack for padding per element, this should be margin of container for all */
+.screanReaderFollows {
+    padding-left: 40px;
+}
+
+/* hack for more/less position */
+.gpii-prefsEditor-moreLess {
+    position: relative;
+    left: -35px;
+}

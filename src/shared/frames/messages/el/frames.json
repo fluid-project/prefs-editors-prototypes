@@ -1,0 +1,15 @@
+{
+	"myPreferencesLabelText": "οι προτιμήσεις μου",
+	"allPreferencesLabelText": "προτιμήσεις",
+	"saveAndApplyText": "αποθήκευση",
+	"preferencesSavedToUSB": "οι προτιμήσεις αποθηκεύτηκαν στο usb",
+	"preferencesModified": "οι προτιμήσεις άλλαξα",
+	"notificationMessagePart1": "Για να εφαρμόσετε της προτιμήσεις σε άλλες συσκευές, αποθηκεύστε αυτό το κείμενο:",
+	"notificationMessagePart2": "TOKEN NUMBER",
+	"notificationMessagePart3": "σέ ένα USB ή RFID.",
+	"notificationTitle": "Οι προτιμήσεις αποθηκεύτηκαν στο σύννεφο και εφαρμόστηκαν σε αυτή τη συσκευή.",
+	"notificationConfirmButton": "το κατάλαβα",
+	"logoutText": "εξοδος",
+    "more": "+ περισσότερα",
+    "less": "- λιγότερα"
+}
