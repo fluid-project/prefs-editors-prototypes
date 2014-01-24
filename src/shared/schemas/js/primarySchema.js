@@ -75,6 +75,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "minimum": 0,
             "divisibleBy": 10
         },
+        "gpii.primarySchema.visualAlternativesMoreLess": {
+            "type": "boolean",
+            "default": false
+        },
         "gpii.primarySchema.voicePitch": {
             "type": "number",
             "default": 80,

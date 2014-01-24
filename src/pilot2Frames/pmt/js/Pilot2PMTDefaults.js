@@ -164,9 +164,21 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 // trigger logout onReady
                 "onReady.triggerLogoutEvent": {
                     "listener": "{that}.events.onLogout.fire"
+                },
+                "onReady.addHidingListener": {
+                    "listener": "{that}.applier.modelChanged.addListener",
+                    "args": ["{that}.options.strings.mainVisibilitySwitch", "{that}.foldExpandedViewWhenOff"]
                 }
             },
             invokers: {
+                foldExpandedViewWhenOff: {
+                    "funcName": "gpii.foldExpandedViewWhenOff",
+                    "args": ["{that}.applier",
+                             "{that}.model.gpii_primarySchema_visualAlternativesMoreLess",
+                             "{that}.options.strings.extraVisibilitySwitch"
+                        ],
+                    "dynamic": true
+                },
                 showSaveNotificationIfNoLogin: {
                     "funcName": "gpii.prefs.pmt_pilot_2.showSaveNotificationIfNoLogin",
                     "args": ["{that}.model.userLoggedIn", "{gpiiSession}.options.loggedUser"],
@@ -184,9 +196,19 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.userStatusBar",
                     "method": "slideDown"
                 }
+            },
+            strings: {
+                "mainVisibilitySwitch": "gpii_primarySchema_speakText",
+                "extraVisibilitySwitch":"gpii_primarySchema_visualAlternativesMoreLess"
             }
         }
     });
+
+    gpii.foldExpandedViewWhenOff = function (applier, extraCurrentlyVisible, valueToBeChanged) {
+        if (extraCurrentlyVisible) {
+            applier.requestChange(valueToBeChanged, false);
+        }
+    };
 
     gpii.prefs.pmt_pilot_2.showSaveNotificationIfNoLogin = function (userLoggedIn, userToken) {
         if (!userLoggedIn) {

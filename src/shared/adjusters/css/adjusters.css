@@ -1446,6 +1446,15 @@ input[type="radio"] + label {
     margin-left:87px;
 }
 
+.gpii-visualAlternativesMoreLess {
+    margin-left: 85px;
+    padding-top: 10px;
+}
+
+.gpii-visualAlternativesMoreLess-label {
+    cursor: pointer;
+}
+
 input[type=checkbox] + label.gpii-checkbox-label {
     font-family: 'Open Sans', sans-serif;
 }
