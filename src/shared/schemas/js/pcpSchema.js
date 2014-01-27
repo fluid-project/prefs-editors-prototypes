@@ -53,7 +53,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "visualAlternatives": {
                 "type": "gpii.panel.visualAlternatives",
                 "container": ".gpiic-visualAlternatives",
-                "template": "../../src/pcp/pcp-VisualAlternativesGroupContainer.html",
+                "template": "../../src/pcp/html/pcp-VisualAlternativesGroupContainer.html",
                 "message": "%prefix/message.json",
                 "panels": {
                     "always": ["speakText", "screenReaderBrailleOutput"],

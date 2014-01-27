@@ -12,11 +12,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     fluid.defaults("gpii.prefsEditor", {
-        gradeNames: ["gpii.prefs.pcp_pilot_2", "autoInit"],
+        gradeNames: ["fluid.prefs.GPIIEditor", "autoInit"],
         prefsEditor: {
             gradeNames: ["fluid.prefs.stringBundle", "gpii.prefs.gpiiStore"],
             members: {
                 messageResolver: "{prefsEditorLoader}.msgBundle"
+            },
+            events: {
+                onLogin: null,
+                onLogout: null
+            },
+            model: {
+                userLoggedIn: false
             },
             listeners: {
                 "onCreate.setUserToken": {
@@ -40,6 +47,45 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.setInitialModel": {
                     listener: "gpii.prefsEditor.setInitialModel",
                     args: ["{that}"]
+                },
+                "onLogin.setUserLoggedIn": {
+                    listener: "{that}.applier.requestChange",
+                    args: ["userLoggedIn", true]
+                },
+                "onLogin.showSaveMessage": {
+                    "this": "{that}.dom.messageLineLabel",
+                    "method": "text",
+                    "args": ["{that}.stringBundle.preferencesModified"]
+                },
+                "onLogin.showUserStatusBar": {
+                    "listener": "{that}.showUserStatusBar"
+                },
+                "onReset.triggerLogoutEvent": {
+                    "listener": "{that}.events.onLogout.fire"
+                },
+                "onLogout.setUserLoggedIn": {
+                    listener: "{that}.applier.requestChange",
+                    args: ["userLoggedIn", false]
+                },
+                "onLogout.clearMessage": {
+                    "this": "{that}.dom.messageLineLabel",
+                    "method": "text",
+                    "args": [""]
+                },
+                "onReady.setSaveAndApplyButtonText": {
+                    "this": "{that}.dom.saveAndApplyButtonLabel",
+                    "method": "attr",
+                    "args": ["value", "{that}.stringBundle.saveAndApplyText"]
+                },
+                "onReady.setFullEditorLinkText": {
+                    "this": "{that}.dom.fullEditorLink",
+                    "method": "text",
+                    "args": ["{that}.stringBundle.fullEditorText"]
+                },
+                "onReady.setLogoutLinkText": {
+                    "this": "{that}.dom.logoutLink",
+                    "method": "text",
+                    "args": ["{that}.stringBundle.logoutText"]
                 }
             },
             invokers: {
@@ -47,10 +93,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "funcName": "gpii.applySettings",
                     "args": "{that}",
                     "dynamic": true
+                },
+                showUserStatusBar: {
+                    "this": "{that}.dom.userStatusBar",
+                    "method": "slideDown"
                 }
             },
             selectors: {
-                saveAndApply: ".flc-prefsEditor-save"
+                saveAndApply: ".flc-prefsEditor-save",
+                saveAndApplyButtonLabel: ".flc-prefsEditor-save",
+                messageLineLabel: ".gpiic-prefsEditor-messageLine",
+                fullEditorLink: ".gpiic-prefsEditor-fullEditorLink",
+                logoutLink: ".gpiic-prefsEditor-userLogoutLink"
             },
             selectorsToIgnore: ["saveAndApply"]
         }
