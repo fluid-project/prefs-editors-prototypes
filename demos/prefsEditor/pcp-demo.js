@@ -22,7 +22,7 @@ var demo = demo || {};
         fluid.prefs.create("#gpiic-pmt", {
             build: {
                 primarySchema: gpii.primarySchema,
-                auxiliarySchema: gpii.pmt.auxiliarySchema
+                auxiliarySchema: gpii.pcp.auxiliarySchema
             },
             prefsEditor: {
                 prefsEditorType: "gpii.prefsEditor",

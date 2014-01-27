@@ -19,9 +19,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 /*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
 
 (function ($, fluid) {
-    fluid.registerNamespace("gpii.pmt");
+    fluid.registerNamespace("gpii.pcp");
 
-    gpii.pmt.auxiliarySchema = {
+    gpii.pcp.auxiliarySchema = {
         // The global values:
         "namespace": "gpii.constructedPMT",
         "templatePrefix": "../../src/shared/adjusters/html/", // The common path to settings panel templates
