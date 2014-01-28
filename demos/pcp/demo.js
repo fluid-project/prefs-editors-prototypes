@@ -19,7 +19,7 @@ var demo = demo || {};
 (function ($, fluid) {
 
     $(document).ready(function () {
-        fluid.prefs.create("#gpiic-pmt", {
+        fluid.prefs.create("#gpiic-pcp", {
             build: {
                 primarySchema: gpii.primarySchema,
                 auxiliarySchema: gpii.pcp.auxiliarySchema

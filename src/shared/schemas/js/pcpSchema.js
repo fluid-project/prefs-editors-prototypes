@@ -23,11 +23,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     gpii.pcp.auxiliarySchema = {
         // The global values:
-        "namespace": "gpii.constructedPMT",
+        "namespace": "gpii.constructedPCP",
         "templatePrefix": "../../src/shared/adjusters/html/", // The common path to settings panel templates
-        "template": "../../src/pmt/html/PMT.html",
-        "messagePrefix": "../../src/shared/adjusters/messages/en/",
-        "message": "%prefix/pmt.json",
+        "template": "../../src/pcp/html/PrefsEditorTemplate-PCP.html",
+        "messagePrefix": "../../src/shared/adjusters/messages/" + gpii.prefs.i18n.getDefaultLanguage() + "/",
+        "message": "../../src/shared/frames/messages/" + gpii.prefs.i18n.getDefaultLanguage() + "/frames.json",
 
         // The preference-specific information:
         "groups": {
@@ -53,7 +53,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "visualAlternatives": {
                 "type": "gpii.panel.visualAlternatives",
                 "container": ".gpiic-visualAlternatives",
-                "template": "../../src/pcp/pcp-VisualAlternativesGroupContainer.html",
+                "template": "../../src/pcp/html/pcp-VisualAlternativesGroupContainer.html",
                 "message": "%prefix/message.json",
                 "panels": {
                     "always": ["speakText", "screenReaderBrailleOutput"],
