@@ -1539,10 +1539,6 @@ input[type=checkbox]:checked + label.gpii-checkbox-label:before {
     width: 40% !important;
 }
 
-.ui-corner-all {
-    width: 229px !important;
-}
-
 .ui-menu .ui-menu-item a {
     font-family: 'Open Sans', sans-serif;
     font-size: 80%;
