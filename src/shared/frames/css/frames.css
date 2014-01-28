@@ -210,6 +210,15 @@ body {
     cursor: pointer;
 }
 
+.gpii-prefsEditor-pmt-userLogoutLink {
+	display: block;
+    text-align: right;
+}
+
+.gpii-prefsEditor-pmt-userLogoutLink:first-letter {
+	text-transform: none !important;
+}
+
 .gpii-prefsEditor-pcp-userLogout {
     text-align: right;
     margin-left: 410px;
