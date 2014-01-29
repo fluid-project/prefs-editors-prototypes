@@ -106,7 +106,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             moreLess: "",  //should be provided by integrators
             expandingAdjusters: "",  //should be provided by integrators
             preferenceSwitchExpanding: ""  //should be provided by integrators
-            
         },
         selectorsToIgnore: ["expandingAdjusters", "moreLess"],
         protoTree: {

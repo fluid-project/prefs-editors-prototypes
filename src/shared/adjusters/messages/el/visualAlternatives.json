@@ -1,0 +1,11 @@
+{
+    "tooltipUnchecked": "Προσθήκη στις προτιμήσεις μου",
+    "tooltipChecked": "Αφαίρεση από τις προτιμήσεις μου",
+    "speakTextPresetButtonLabel": "Εναλλακτικές μορφές εμφάνισης",
+    "screenReaderSwitchLabel": "Ανάγνωση κειμένου",
+    "moreText": "περισσότερα",
+    "lessText": "λιγότερα",
+    "saveAndApply": "Αποθήκευση και εφαρμογή",
+    "resetAndApply": "Αρχικοποίηση και εφαρμογή",
+    "cancel": "Ακύρωση"
+}

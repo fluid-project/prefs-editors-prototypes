@@ -43,12 +43,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "gpii.primarySchema.magnificationPosition": {
             "type": "string",
             "default": "",
-            "enum": ["lens", "dockedleft", "dockedtop", "fullscreen", "dockedright", "dockedbottom"]
+            "enum": ["Lens", "LeftHalf", "TopHalf", "FullScreen", "RightHalf", "BottomHalf"]
         },
         "gpii.primarySchema.tracking": {
             "type": "string",
             "default": "",
-            "enum": ["mousecursor", "textcursor", "keyboardfocus"]
+            "enum": ["mouse", "caret", "focus"]
         },
         "gpii.primarySchema.showCrosshairs": {
             "type": "boolean",
@@ -75,6 +75,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "minimum": 0,
             "divisibleBy": 10
         },
+        "gpii.primarySchema.visualAlternativesMoreLess": {
+            "type": "boolean",
+            "default": false
+        },
         "gpii.primarySchema.voicePitch": {
             "type": "number",
             "default": 80,
@@ -83,8 +87,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "gpii.primarySchema.screenReaderLanguage": {
             "type": "string",
-            "default": "English",
-            "enum": ["English", "French (français)", "German (Deutsch)", "Russian (Русский)"]
+            "default": "en",
+            "enum": ["en", "fr", "de", "ru"]
         },
         "gpii.primarySchema.punctuationVerbosity": {
             "type": "string",
@@ -115,7 +119,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "gpii.primarySchema.screenReaderTracking": {
             "type": "string",
             "default": "",
-            "enum": ["mousecursor", "textcursor", "keyboardfocus"]
+            "enum": ["mouse", "caret", "focus"]
         },
         "gpii.primarySchema.screenReaderBrailleOutput": {
             "type": "boolean",
@@ -129,8 +133,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "gpii.primarySchema.universalLanguage": {
             "type": "string",
-            "default": "English",
-            "enum": ["English", "French (français)", "German (Deutsch)", "Russian (Русский)"]
+            "default": "en",
+            "enum": ["en", "fr", "de", "ru"]
         }
     };
 

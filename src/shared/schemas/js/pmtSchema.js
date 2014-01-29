@@ -21,9 +21,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         // The global values:
         "namespace": "gpii.constructedPMT",
         "templatePrefix": "../../src/shared/adjusters/html/", // The common path to settings panel templates
-        "template": "../../src/pmt/html/PMT.html",
+        "template": "../../src/pmt/html/PrefsEditorTemplate-PMT.html",
         "messagePrefix": "../../src/shared/adjusters/messages/en/",
-        "message": "%prefix/pmt.json",
+        // FIXME: Ideally we wouldn't have any function calls in the schema, which would make it easier to pass around.
+        "message": "../../src/shared/frames/messages/" + gpii.prefs.i18n.getDefaultLanguage() + "/frames.json",
 
         // The preference-specific information:
         "groups": {
@@ -54,8 +55,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "panels": {
                     "always": ["speakText", "screenReaderBrailleOutput"],
                     "gpii.primarySchema.speakText": [
-                        "wordsSpokenPerMinute", "volume", "voicePitch", "screenReaderLanguage",
-                        "punctuationVerbosity", "announceCapitals", "speakTutorialMessages", "keyEcho", "wordEcho", "textHighlighting", "screenReaderFollows"
+                        "wordsSpokenPerMinute", "volume", "visualAlternativesMoreLess"
+                    ],
+                    "gpii.primarySchema.visualAlternativesMoreLess": [
+                        "voicePitch", "screenReaderLanguage", "punctuationVerbosity", "announceCapitals", "speakTutorialMessages", "keyEcho", "wordEcho", "textHighlighting", "screenReaderFollows"
                     ]
                 }
             },
@@ -88,9 +91,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "by": "fl-theme-prefsEditor-by gpii-prefsEditor-theme-by fl-theme-by",
                 "yb": "fl-theme-prefsEditor-yb gpii-prefsEditor-theme-yb fl-theme-yb"
             },
-            "enactor": {
-                "type": "gpii.enactor.contrastThemeWithInversion"
-            },
+            // "enactor": {
+            //     "type": "gpii.enactor.contrastThemeWithInversion"
+            // },
             "panel": {
                 "type": "gpii.adjuster.contrastThemeWithInversion",
                 "container": ".gpiic-contrastTheme",
@@ -101,9 +104,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "textSize": {
             "type": "gpii.primarySchema.fontSize",
-            "enactor": {
-                "type": "gpii.enactor.textSize"
-            },
+            // "enactor": {
+            //     "type": "gpii.enactor.textSize"
+            // },
             "panel": {
                 "type": "gpii.adjuster.textSizePMT",
                 "container": ".gpiic-prefsEditor-textSize",
@@ -115,9 +118,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "cursorSize": {
             "type": "gpii.primarySchema.cursorSize",
-            "enactor": {
-                "type": "gpii.enactor.cursorSize"
-            },
+            // "enactor": {
+            //     "type": "gpii.enactor.cursorSize"
+            // },
             "panel": {
                 "type": "gpii.adjuster.cursorSizePMT",
                 "container": ".gpiic-prefsEditor-cursorSize",
@@ -129,9 +132,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "magnifierEnabled": {
             "type": "gpii.primarySchema.magnifierEnabled",
-            "enactor": {
-                "type": "gpii.enactor.magnifier"
-            },
+            // "enactor": {
+            //     "type": "gpii.enactor.magnifier"
+            // },
             "panel": {
                 "type": "gpii.adjuster.magnifierEnabled",
                 "container": ".gpiic-prefsEditor-magnifierEnabled",
@@ -141,9 +144,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "magnifier": {
             "type": "gpii.primarySchema.magnification",
-            "enactor": {
-                "type": "gpii.enactor.magnifier"
-            },
+            // "enactor": {
+            //     "type": "gpii.enactor.magnifier"
+            // },
             "panel": {
                 "type": "gpii.adjuster.magnifierPMT",
                 "container": ".gpiic-prefsEditor-magnifier",
@@ -156,12 +159,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "magnifierPosition": {
             "type": "gpii.primarySchema.magnificationPosition",
             "classes": {
-                "lens": "gpii-increaseSize-magnifierPositionLens gpii-increaseSize-magnifierPositionIconLabel",
-                "fullscreen": "gpii-increaseSize-magnifierPositionFullscreen gpii-increaseSize-magnifierPositionIconLabel",
-                "dockedtop": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-magnifierPositionTop gpii-increaseSize-magnifierPositionIconLabel",
-                "dockedbottom": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-magnifierPositionBottom gpii-increaseSize-magnifierPositionIconLabel",
-                "dockedleft": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-magnifierPositionLeft gpii-increaseSize-magnifierPositionIconLabel",
-                "dockedright": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-magnifierPositionRight gpii-increaseSize-magnifierPositionIconLabel"
+                "Lens": "gpii-increaseSize-magnifierPositionLens gpii-increaseSize-magnifierPositionIconLabel",
+                "FullScreen": "gpii-increaseSize-magnifierPositionFullscreen gpii-increaseSize-magnifierPositionIconLabel",
+                "TopHalf": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-magnifierPositionTop gpii-increaseSize-magnifierPositionIconLabel",
+                "BottomHalf": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-magnifierPositionBottom gpii-increaseSize-magnifierPositionIconLabel",
+                "LeftHalf": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-magnifierPositionLeft gpii-increaseSize-magnifierPositionIconLabel",
+                "RightHalf": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-magnifierPositionRight gpii-increaseSize-magnifierPositionIconLabel"
             },
             "panel": {
                 "type": "gpii.adjuster.magnifierPosition",
@@ -173,9 +176,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "followingElement": {
             "classes": {
-                "mousecursor": "gpii-prefsEditor-adjusterIcons gpii-followingElement-mouseCursorIcon",
-                "textcursor": "gpii-prefsEditor-adjusterIcons gpii-followingElement-textCursorIcon",
-                "keyboardfocus": "gpii-prefsEditor-adjusterIcons gpii-followingElement-keyboardFocusIcon"
+                "mouse": "gpii-prefsEditor-adjusterIcons gpii-followingElement-mouseCursorIcon",
+                "caret": "gpii-prefsEditor-adjusterIcons gpii-followingElement-textCursorIcon",
+                "focus": "gpii-prefsEditor-adjusterIcons gpii-followingElement-keyboardFocusIcon"
             },
             "borderClasses": {
                 "topOnly": "gpii-iconCheckAdjusterAreaTopOnlyBorder",
@@ -205,7 +208,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "message": "%prefix/showCrosshairs.json"
             }
         },
-        
+
         "speakText": {
             "type": "gpii.primarySchema.speakText",
             "panel": {
@@ -223,6 +226,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "template": "%prefix/wordsSpokenPerMinute.html",
                 "container": ".words-spoken-per-minute",
                 "message": "%prefix/message.json"
+            }
+        },
+
+        "visualAlternativesMoreLess": {
+            "type": "gpii.primarySchema.visualAlternativesMoreLess",
+            "panel": {
+                "type": "gpii.adjuster.visualAlternativesMoreLess",
+                "template": "%prefix/visualAlternativesMoreLessTemplate.html",
+                "message": "%prefix/message.json",
+                "container": ".visualAlternativesMoreLess"
             }
         },
 
@@ -336,7 +349,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             }
         },
-        
+
         "screenReaderBrailleOutput": {
             "type": "gpii.primarySchema.screenReaderBrailleOutput",
             "panel": {

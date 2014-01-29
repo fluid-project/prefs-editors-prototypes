@@ -12,86 +12,130 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     fluid.defaults("gpii.prefsEditor", {
-        gradeNames: ["fluid.prefs.fullNoPreview", "autoInit"],
+        gradeNames: ["fluid.prefs.GPIIEditor", "autoInit"],
         prefsEditor: {
-            gradeNames: ["fluid.prefs.stringBundle"],
+            gradeNames: ["fluid.prefs.stringBundle", "gpii.prefs.gpiiStore"],
             members: {
                 messageResolver: "{prefsEditorLoader}.msgBundle"
             },
+            events: {
+                onLogin: null,
+                onLogout: null
+            },
+            model: {
+                userLoggedIn: false
+            },
             listeners: {
-                "onCreate.addListener": {
-                    "listener": "{that}.applier.modelChanged.addListener",
-                    "args": ["gpii_primarySchema_speakText", "{that}.foldExpandedViewWhenOff"]
+                "onCreate.setUserToken": {
+                    listener: "fluid.set",
+                    args: ["{gpiiSession}", ["options", "loggedUser"], {
+                        expander: {
+                            funcName: "gpii.prefsEditor.getUserToken"
+                        }
+                    }]
                 },
-                "onReady.setSaveAndApplyText": {
-                    "this": "{that}.dom.saveAndApply",
-                    "method": "prop",
-                    "args": ["value", "{that}.stringBundle.saveAndApply"]
+                "onReady.setATTRsaveButton": {
+                    "this": "{that}.dom.saveButton",
+                    "method": "attr",
+                    "args": ["value", "{that}.stringBundle.saveAndApplyText"]
                 },
-                "onReady.setResetAndApplyText": {
-                    "this": "{that}.dom.resetAndApply",
-                    "method": "prop",
-                    "args": ["value", "{that}.stringBundle.resetAndApply"]
-                },
-                "onReady.setCancelText": {
-                    "this": "{that}.dom.cancel",
-                    "method": "prop",
-                    "args": ["value", "{that}.stringBundle.cancel"]
-                },
-                "onReady.onSaveToPreferencesServer": {
+                "onReady.onApplySettings": {
                     "this": "{that}.dom.saveAndApply",
                     "method": "click",
-                    "args": ["{that}.saveToPreferencesServer"]
+                    "args": ["{that}.applySettings"]
+                },
+                "onReady.setInitialModel": {
+                    listener: "gpii.prefsEditor.setInitialModel",
+                    args: ["{that}"]
+                },
+                "onLogin.setUserLoggedIn": {
+                    listener: "{that}.applier.requestChange",
+                    args: ["userLoggedIn", true]
+                },
+                "onLogin.showSaveMessage": {
+                    "this": "{that}.dom.messageLineLabel",
+                    "method": "text",
+                    "args": ["{that}.stringBundle.preferencesModified"]
+                },
+                "onLogin.showUserStatusBar": {
+                    "listener": "{that}.showUserStatusBar"
+                },
+                "onReset.triggerLogoutEvent": {
+                    "listener": "{that}.events.onLogout.fire"
+                },
+                "onLogout.setUserLoggedIn": {
+                    listener: "{that}.applier.requestChange",
+                    args: ["userLoggedIn", false]
+                },
+                "onLogout.clearMessage": {
+                    "this": "{that}.dom.messageLineLabel",
+                    "method": "text",
+                    "args": [""]
+                },
+                "onReady.setSaveAndApplyButtonText": {
+                    "this": "{that}.dom.saveAndApplyButtonLabel",
+                    "method": "attr",
+                    "args": ["value", "{that}.stringBundle.saveAndApplyText"]
+                },
+                "onReady.setFullEditorLinkText": {
+                    "this": "{that}.dom.fullEditorLink",
+                    "method": "text",
+                    "args": ["{that}.stringBundle.fullEditorText"]
+                },
+                "onReady.setLogoutLinkText": {
+                    "this": "{that}.dom.logoutLink",
+                    "method": "text",
+                    "args": ["{that}.stringBundle.logoutText"]
                 }
             },
             invokers: {
-                foldExpandedViewWhenOff: {
-                    "funcName": "gpii.foldExpandedViewWhenOff",
-                    "args": ["{that}.applier",
-                             "{that}.model.gpii_primarySchema_visualAlternativesMoreLess",
-                             "gpii_primarySchema_visualAlternativesMoreLess"
-                        ],
+                applySettings: {
+                    "funcName": "gpii.applySettings",
+                    "args": "{that}",
                     "dynamic": true
                 },
-                saveToPreferencesServer: {
-                    "funcName": "gpii.saveToPreferencesServer",
-                    "args": ["{that}"]
+                showUserStatusBar: {
+                    "this": "{that}.dom.userStatusBar",
+                    "method": "slideDown"
                 }
             },
             selectors: {
                 saveAndApply: ".flc-prefsEditor-save",
-                resetAndApply: ".flc-prefsEditor-reset",
-                cancel: ".flc-prefsEditor-cancel"
+                saveAndApplyButtonLabel: ".flc-prefsEditor-save",
+                messageLineLabel: ".gpiic-prefsEditor-messageLine",
+                fullEditorLink: ".gpiic-prefsEditor-fullEditorLink",
+                logoutLink: ".gpiic-prefsEditor-userLogoutLink"
             },
-            selectorsToIgnore: ["saveAndApply", "resetAndApply", "cancel"]
+            selectorsToIgnore: ["saveAndApply"]
         }
     });
 
-    gpii.foldExpandedViewWhenOff = function (applier, extraVisible, valueToChange) {
-        if (extraVisible) {
-            applier.requestChange(valueToChange, false);
+    gpii.prefsEditor.getUserToken = function (that) {
+        return window.location.search.substring(1);
+    };
+
+    gpii.prefsEditor.setInitialModel = function (that) {
+        var initialModel = that.get();
+        that.applier.requestChange("", initialModel);
+    };
+
+    gpii.applySettings = function (that) {
+        var savedSettings = that.modelTransform(that.model);
+        if (that.socket) {
+            that.socket.emit("message", savedSettings, fluid.log);
+        } else {
+            that.socket = that.socket || io.connect("http://localhost:8081/update");
+            that.socket.on("connect", function (){
+                that.socket.emit("message", savedSettings, fluid.log);
+            });
+            fluid.each(["error", "disconnect"], function (event) {
+                that.socket.on(event, function (data) {
+                    fluid.log(data);
+                    that.socket.disconnect();
+                    delete that.socket;
+                });
+            });
         }
     };
 
-    gpii.saveToPreferencesServer = function (that) {
-        var common_model_part = "gpii_primarySchema_";
-        var size_common = common_model_part.length;
-
-        var keys_in_model = $.grep(Object.keys(that.model), function (el) {return el.substring(0, size_common) === common_model_part;});
-        var keys_for_post = $.map(keys_in_model, function (el) {return "http://registry.gpii.org/common/" + el.substring(size_common, el.length);});
-        var saved_settings = {};
-
-        for (var i = 0; i < keys_for_post.length; i++) {
-            saved_settings[keys_for_post[i]] = [{value: that.model[keys_in_model[i]]}];
-        }
-
-        $.ajax({
-            type: "POST",
-            url: "http://preferences.gpii.net/user/", // still not supported
-            data: saved_settings,
-            success: function () {
-                alert("Successfully sent to the Preferences server.");
-            }
-        });
-    };
 })(jQuery, fluid);
