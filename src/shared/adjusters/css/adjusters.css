@@ -585,7 +585,6 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar {
     border-radius: 3px 3px 3px 3px;
     font-size: 12px;
     z-index: 10;
-    /* we have a conflict with style-speakText.css here */
     right: inherit !important;
 }
 [title]:hover:after{
