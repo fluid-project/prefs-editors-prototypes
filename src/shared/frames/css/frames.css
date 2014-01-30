@@ -78,7 +78,7 @@ body {
     padding: 10px;
 }
 
-.gpii-prefsEditor-PCP-preferences {
+.gpii-prefsEditor-pcp-preferences {
     position: absolute;
     overflow-y: auto;
     height: 700px;
@@ -102,11 +102,11 @@ body {
     word-wrap: break-word;
 }
 
-.gpii-PCP-save {
+.gpii-pcp-save {
     background-color: #BDE2E9;
 }
 
-.gpii-PCP-save:hover {
+.gpii-pcp-save:hover {
     background-color: #249FB7;
 }
 
@@ -228,12 +228,8 @@ body {
     background-color: #e5eded;
 }
 
-.ui-corner-all {
-    width: 28em !important;
-}
-
 .ui-widget .ui-widget-content {
-    border-style: solid solid solid solid !important;
+    border-style: solid solid solid solid;
 }
 
 body {
@@ -241,7 +237,6 @@ body {
 }
 
 label.gpii-preset-button-label {
-    /* TODO: static width should be dynamic once Alex's headers are not positioned absolutely */
     font-size: 1.8em;
 }
 
@@ -249,12 +244,10 @@ label.gpii-preset-button-label {
     padding-right: 230px !important;
 }
 
-/* hack for padding per element, this should be margin of container for all */
 .screanReaderFollows {
     padding-left: 40px;
 }
 
-/* hack for more/less position */
 .gpii-prefsEditor-moreLess {
     position: relative;
     left: -35px;

@@ -64,7 +64,7 @@ textarea:focus, input:focus {
 }
 
 .gpii-prefsEditor label {
-    text-transform: none !important;
+    text-transform: none;
 }
 
 .gpii-uiOptions .headerTitle::first-letter {
@@ -126,10 +126,10 @@ input[type=checkbox]:checked + .gpii-prefsEditor-headerImage > .gpii-prefsEditor
     content: "\e60e";
 }
 
-.gpii-prefsEditor-headerTitle {
+.gpii-prefsEditor-adjusterIcons .gpii-prefsEditor-headerTitle {
     font-family: 'Roboto Slab', serif;
     color: white;
-    font-size: 1.6em !important;
+    font-size: 1.6em;
     display: table-cell;
     color: #FFFFFF;
     float: none;
@@ -193,14 +193,14 @@ input[type=checkbox], input[type=radio] {
     The slider's style
 */
 .gpii-prefsEditor .gpii-prefsEditor-slider-horz {
-    width: calc(100% - 2em - 2px) !important;
-    margin: 0.5em 0 0 !important;
+    width: calc(100% - 2em - 2px);
+    margin: 0.5em 0 0;
 }
 
 .gpii-prefsEditor .gpii-prefsEditor-slider a {
     border: 1px solid #566374;
     box-shadow: none;
-    width: 2.2em !important;
+    width: 2.2em;
 }
 
 .gpii-prefsEditor .ui-slider-range {
@@ -208,8 +208,8 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-increaseSize-cursor-size-slider-container {
-	display: inline-table !important;
-	width: 100% !important;
+	display: inline-table;
+	width: 100%;
 }
 
 /*
@@ -1536,17 +1536,13 @@ input[type=checkbox]:checked + label.gpii-checkbox-label:before {
     Styling for autocomplete dropdowns
 */
 .ui-menu-item {
-    width: 40% !important;
-}
-
-.ui-corner-all {
-    width: 229px !important;
+    width: 40%;
 }
 
 .ui-menu .ui-menu-item a {
     font-family: 'Open Sans', sans-serif;
     font-size: 80%;
-    width: 200px !important;
+    width: 200px;
 }
 
 .ui-widget {
