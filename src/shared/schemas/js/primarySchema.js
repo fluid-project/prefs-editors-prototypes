@@ -114,7 +114,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "gpii.primarySchema.textHighlighting": {
             "type": "string",
             "default": "Word",
-            "enum": ["Word", "Second option?", "Third option?"]
+            "enum": ["Word", "Line", "Sentence", "Paragraph"]
         },
         "gpii.primarySchema.screenReaderTracking": {
             "type": "string",
