@@ -57,7 +57,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "gpii.primarySchema.contrast.theme": {
             "type": "string",
             "default": "default",
-            "enum": ["default", "inverted", "bw", "wb", "by", "yb"]
+            "enum": ["default", "black-white", "white-black", "black-yellow", "yellow-black"]
         },
         "gpii.primarySchema.speakText": {
             "type": "boolean",

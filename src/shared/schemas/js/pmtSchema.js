@@ -85,17 +85,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "gpii.primarySchema.contrast.theme",
             "classes": {
                 "default": "fl-theme-prefsEditor-default gpii-prefsEditor-theme-default",
-                "inverted": "fl-theme-prefsEditor-inverted gpii-prefsEditor-theme-inverted",
-                "bw": "fl-theme-prefsEditor-bw gpii-prefsEditor-theme-bw fl-theme-bw",
-                "wb": "fl-theme-prefsEditor-wb gpii-prefsEditor-theme-wb fl-theme-wb",
-                "by": "fl-theme-prefsEditor-by gpii-prefsEditor-theme-by fl-theme-by",
-                "yb": "fl-theme-prefsEditor-yb gpii-prefsEditor-theme-yb fl-theme-yb"
+                "black-white": "fl-theme-prefsEditor-bw gpii-prefsEditor-theme-bw fl-theme-bw",
+                "white-black": "fl-theme-prefsEditor-wb gpii-prefsEditor-theme-wb fl-theme-wb",
+                "black-yellow": "fl-theme-prefsEditor-by gpii-prefsEditor-theme-by fl-theme-by",
+                "yellow-black": "fl-theme-prefsEditor-yb gpii-prefsEditor-theme-yb fl-theme-yb"
             },
             // "enactor": {
-            //     "type": "gpii.enactor.contrastThemeWithInversion"
+            //     "type": "gpii.enactor.contrastThemeNoPreview"
             // },
             "panel": {
-                "type": "gpii.adjuster.contrastThemeWithInversion",
+                "type": "gpii.adjuster.contrastThemeNoPreview",
                 "container": ".gpiic-contrastTheme",
                 "template": "%prefix/contrastThemeWithInversionTemplate.html",
                 "message": "%prefix/contrast.json",
