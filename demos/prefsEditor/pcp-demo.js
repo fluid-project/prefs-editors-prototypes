@@ -21,8 +21,21 @@ var demo = demo || {};
     $(document).ready(function () {
         fluid.prefs.create("#gpiic-pcp", {
             build: {
-                primarySchema: gpii.primarySchema,
-                auxiliarySchema: gpii.pcp.auxiliarySchema
+                gradeNames: ["fluid.progressiveCheckerForComponent", "gpii.pcp.auxiliarySchema.common", "autoInit"],
+                componentName: "fluid.prefs.builder",
+                progressiveCheckerOptions: {
+                    checks: [
+                        {
+                            feature: "{gpii.os.isWindowsPlatform}",
+                            contextName: "gpii.pcp.auxiliarySchema.windows"
+                        },
+                        {
+                            feature: "{gpii.os.isLinuxPlatform}",
+                            contextName: "gpii.pcp.auxiliarySchema.linux"
+                        }
+                    ]
+                },
+                primarySchema: gpii.primarySchema
             },
             prefsEditor: {
                 prefsEditorType: "gpii.prefsEditor",
