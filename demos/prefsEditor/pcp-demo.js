@@ -18,23 +18,73 @@ var demo = demo || {};
 
 (function ($, fluid) {
 
+    fluid.defaults("fluid.prefs.builder", {
+        gradeNames: ["fluid.eventedComponent", "fluid.prefs.auxBuilder", "autoInit"],
+        progressiveCheckerOptions: {
+            checks: [
+                {
+                    feature: "{gpii.os.isWindowsPlatform}",
+                    contextName: "gpii.pcp.auxiliarySchema.windows"
+                },
+                {
+                    feature: "{gpii.os.isLinuxPlatform}",
+                    contextName: "gpii.pcp.auxiliarySchema.linux"
+                }
+            ]
+        },
+        mergePolicy: {
+            auxSchema: "expandedAuxSchema"
+        },
+        assembledPrefsEditorGrade: {
+            expander: {
+                func: "fluid.prefs.builder.generateGrade",
+                args: ["prefsEditor", "{that}.options.auxSchema.namespace", {
+                    gradeNames: ["fluid.viewComponent", "autoInit", "fluid.prefs.assembler.prefsEd"],
+                    componentGrades: "{that}.options.constructedGrades"
+                }]
+            }
+        },
+        assembledUIEGrade: {
+            expander: {
+                func: "fluid.prefs.builder.generateGrade",
+                args: ["uie", "{that}.options.auxSchema.namespace", {
+                    gradeNames: ["fluid.viewComponent", "autoInit", "fluid.prefs.assembler.uie"],
+                    componentGrades: "{that}.options.constructedGrades"
+                }]
+            }
+        },
+        constructedGrades: {
+            expander: {
+                func: "fluid.prefs.builder.constructGrades",
+                args: ["{that}.options.auxSchema", ["enactors", "messages", "panels", "rootModel", "templateLoader", "messageLoader", "templatePrefix", "messagePrefix"]]
+            }
+        },
+        mappedDefaults: "{primaryBuilder}.options.schema.properties",
+        components: {
+            primaryBuilder: {
+                type: "fluid.prefs.primaryBuilder",
+                options: {
+                    typeFilter: {
+                        expander: {
+                            func: "fluid.prefs.builder.parseAuxSchema",
+                            args: "{builder}.options.auxiliarySchema"
+                        }
+                    }
+                }
+            }
+        },
+        distributeOptions: [{
+            source: "{that}.options.primarySchema",
+            removeSource: true,
+            target: "{that > primaryBuilder}.options.primarySchema"
+        }]
+    });
+    
     $(document).ready(function () {
         fluid.prefs.create("#gpiic-pcp", {
             build: {
                 gradeNames: ["fluid.progressiveCheckerForComponent", "gpii.pcp.auxiliarySchema.common", "autoInit"],
                 componentName: "fluid.prefs.builder",
-                progressiveCheckerOptions: {
-                    checks: [
-                        {
-                            feature: "{gpii.os.isWindowsPlatform}",
-                            contextName: "gpii.pcp.auxiliarySchema.windows"
-                        },
-                        {
-                            feature: "{gpii.os.isLinuxPlatform}",
-                            contextName: "gpii.pcp.auxiliarySchema.linux"
-                        }
-                    ]
-                },
                 primarySchema: gpii.primarySchema
             },
             prefsEditor: {
