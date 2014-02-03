@@ -29,7 +29,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         loggedUser: null,
         events: {
             onLogin: null,
-            onLogout: null
+            onLogout: null,
+            accountCreated: null
         },
         invokers: {
             login: {
@@ -39,6 +40,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             logout: {
                 "funcName": "gpii.prefs.gpiiSession.logout",
                 "args": ["{that}"]
+            }
+        },
+        listeners: {
+            "accountCreated.loginUser": {
+                "listener": "{that}.login",
+                "args": ["{arguments}.0"]
             }
         }
     });
@@ -53,6 +60,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             $.ajax({
                 url: that.options.url + userToken + "/login",
                 type: "GET",
+                // NOTE: This is async because we want to serially streamline the logout/login that is triggered
+                // by the GPIIStore "refresh" of system level applications when setting preferences.
+                async: false,
                 /*xhrFields: {
                     withCredentials: true
                 },*/
@@ -74,6 +84,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             $.ajax({
                 url: that.options.url + that.options.loggedUser + "/logout",
                 type: "GET",
+                // NOTE: This is async because we want to serially streamline the logout/login that is triggered
+                // by the GPIIStore "refresh" of system level applications when setting preferences.
+                async: false,
                 /*xhrFields: {
                     withCredentials: true
                 },*/

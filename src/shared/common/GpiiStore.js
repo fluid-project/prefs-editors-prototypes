@@ -195,8 +195,18 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             data: JSON.stringify(transformedModel),
             success: function (data) {
                 if (session.options.loggedUser != data.token) {
-                    // new user, login
+                    // new user, trigger event
+                    session.events.accountCreated.fire(data.token);
+                } else {
+                    // already logged in
+                    // log out
+                    session.logout();
+                    // and in again
                     session.login(data.token);
+                    /* NOTE: The above procedure should normally be happening on the GPII side.
+                     * Preference management tools should not have session management responsibilities.
+                     * This is a work-around for the pilot2 tests.
+                     * */
                 }
                 fluid.log("POST: Saved to GPII server");
             },

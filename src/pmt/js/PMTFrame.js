@@ -45,7 +45,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             listeners: {
                 // on Session login:
-                "{gpiiSession}.events.onLogin": "{that}.showSaveNotification",
+                "{gpiiSession}.events.accountCreated": {
+                    listener: "{that}.showSaveNotification",
+                    "args": ["{arguments}.0"]
+                },
                 // trigger login on notification confirmation
                 "onReady.bindNotificationConfirmButtonClickTriggerLogin": {
                     "this": "{that}.dom.confirmButton",
@@ -160,7 +163,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 showSaveNotification: {
                     "funcName": "gpii.pmt.showSaveNotification",
-                    "args": ["{that}", "{gpiiSession}.options.loggedUser"],
+                    "args": ["{that}", "{arguments}.0"],
                     dynamic: true
                 },
                 hideSaveNotification: {
