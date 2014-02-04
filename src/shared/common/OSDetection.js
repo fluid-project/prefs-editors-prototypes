@@ -25,14 +25,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         return navigator.platform.toUpperCase().indexOf('LINUX') !== -1;
     };
     
-    fluid.enhance.isUnknownPlatform = function () {
-        return ((!fluid.enhance.isWindowsPlatform()) && (!fluid.enhance.isLinuxPlatform()));
-    };
-    
     fluid.enhance.check({
         "gpii.os.isWindowsPlatform": "fluid.enhance.isWindowsPlatform",
-        "gpii.os.isLinuxPlatform": "fluid.enhance.isLinuxPlatform",
-        "gpii.os.isUnknownPlatform": "fluid.enhance.isUnknownPlatform"
+        "gpii.os.isLinuxPlatform": "fluid.enhance.isLinuxPlatform"
     });
     
 })(jQuery, fluid);
