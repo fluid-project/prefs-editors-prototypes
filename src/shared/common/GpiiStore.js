@@ -212,7 +212,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     // already logged in
                     // fire refreshATApplications event
                     refreshATApplicationsEvent.fire(data.token);
-                    /* NOTE: The above procedure should normally be happening on the GPII side.
+                    /* TODO: The above procedure should normally be happening on the GPII side.
                      * Preference management tools should not have session management responsibilities.
                      * This is a work-around for the pilot2 tests.
                      * */
