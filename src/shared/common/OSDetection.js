@@ -30,4 +30,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "gpii.os.isLinuxPlatform": "fluid.enhance.isLinuxPlatform"
     });
     
+    fluid.defaults("gpii.pcp.progressiveEnhancement", {
+        gradeNames: ["fluid.progressiveCheckerForComponent"],
+        componentName: "gpii.pcp.progressiveEnhancement",
+        progressiveCheckerOptions: {
+            checks: [
+                {
+                    feature: "{gpii.os.isWindowsPlatform}",
+                    contextName: "gpii.pcp.auxiliarySchema.windows"
+                },
+                {
+                    feature: "{gpii.os.isLinuxPlatform}",
+                    contextName: "gpii.pcp.auxiliarySchema.linux"
+                }
+            ]
+        }
+    });
 })(jQuery, fluid);

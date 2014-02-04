@@ -18,23 +18,6 @@ var demo = demo || {};
 
 (function ($, fluid) {
 
-    fluid.defaults("gpii.pcp.progressiveEnhancement", {
-        gradeNames: ["fluid.progressiveCheckerForComponent"],
-        componentName: "gpii.pcp.progressiveEnhancement",
-        progressiveCheckerOptions: {
-            checks: [
-                {
-                    feature: "{gpii.os.isWindowsPlatform}",
-                    contextName: "gpii.pcp.auxiliarySchema.windows"
-                },
-                {
-                    feature: "{gpii.os.isLinuxPlatform}",
-                    contextName: "gpii.pcp.auxiliarySchema.linux"
-                }
-            ]
-        }
-    });
-    
     $(document).ready(function () {
         fluid.prefs.create("#gpiic-pcp", {
             build: {
