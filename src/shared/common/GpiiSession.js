@@ -44,8 +44,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         listeners: {
             "accountCreated.loginUser": {
-                "listener": "{that}.login",
-                "args": ["{arguments}.0"]
+                "listener": "{that}.login"
             }
         }
     });

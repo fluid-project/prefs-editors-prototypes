@@ -46,8 +46,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             listeners: {
                 // on Session login:
                 "{gpiiSession}.events.accountCreated": {
-                    listener: "{that}.showSaveNotification",
-                    "args": ["{arguments}.0"]
+                    listener: "{that}.showSaveNotification"
                 },
                 // trigger login on notification confirmation
                 "onReady.bindNotificationConfirmButtonClickTriggerLogin": {
