@@ -128,12 +128,15 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * @param {Object} options
      */
     fluid.defaults("gpii.prefs.gpiiStore", {
-        gradeNames: ["fluid.prefs.dataSource", "autoInit"],
+        gradeNames: ["fluid.prefs.dataSource", "fluid.eventedComponent", "autoInit"],
         // instantiate the gpiiSession component
         components: {
             gpiiSession: {
                 type: "gpii.prefs.gpiiSession"
             }
+        },
+        events: {
+            refreshATApplications: null
         },
         gpiiEntry: "http://registry.gpii.org/applications/gpii.prefs",
         invokers: {
@@ -144,7 +147,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             },
             set: {
                 funcName: "gpii.prefs.gpiiStore.set",
-                args: ["{arguments}.0", "{that}.options", "{gpiiSession}", "{that}.modelTransform"],
+                args: ["{arguments}.0", "{that}.options", "{gpiiSession}", "{that}.modelTransform", "{that}.events.refreshATApplications"],
                 dynamic: true
             },
             modelTransform: {
@@ -154,6 +157,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             inverseModelTransform: {
                 funcName: "fluid.model.transform",
                 args: ["{arguments}.0", gpii.prefs.commonTermsInverseTransformationRules]
+            }
+        },
+        listeners: {
+            "refreshATApplications.logoutUser": {
+                "listener": "{gpiiSession}.logout"
+            },
+            "refreshATApplications.loginUser": {
+                "listener": "{gpiiSession}.login"
             }
         }
     });
@@ -183,7 +194,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         return gpiiModel;
     };
 
-    gpii.prefs.gpiiStore.set = function (model, settings, session, modelTransformFunc) {
+    gpii.prefs.gpiiStore.set = function (model, settings, session, modelTransformFunc, refreshATApplicationsEvent) {
         var transformedModel = modelTransformFunc(model);
 
         var urlToPost = session.options.loggedUser ? (session.options.url + session.options.loggedUser) : (session.options.url);
@@ -199,10 +210,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     session.events.accountCreated.fire(data.token);
                 } else {
                     // already logged in
-                    // log out
-                    session.logout();
-                    // and in again
-                    session.login(data.token);
+                    // fire refreshATApplications event
+                    refreshATApplicationsEvent.fire(data.token);
                     /* NOTE: The above procedure should normally be happening on the GPII side.
                      * Preference management tools should not have session management responsibilities.
                      * This is a work-around for the pilot2 tests.
