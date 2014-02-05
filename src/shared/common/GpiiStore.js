@@ -122,21 +122,38 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
     gpii.prefs.commonTermsInverseTransformationRules = fluid.model.transform.invertConfiguration(gpii.prefs.commonTermsTransformationRules);
 
+    fluid.registerNamespace("gpii.prefs.gpiiStore");
+
+    gpii.prefs.gpiiStore.onSuccessfulSet = function (session, data) {
+        if (session.options.loggedUser != data.token) {
+            // new user, trigger accountCreated event
+            session.events.accountCreated.fire(data.token);
+        } else {
+            // already logged in, refresh AT applications
+            // log user out
+            session.logout();
+            // and log user in again
+            session.login(data.token);
+            /* TODO: The above procedure should normally be happening on the GPII side.
+             * Preference management tools should not have session management responsibilities.
+             * This is a work-around for the pilot2 tests.
+             * */
+        }
+        fluid.log("POST: Saved to GPII server");
+    };
+    
     /**
      * gpiiStore Subcomponent that uses GPII server for persistence.
      * It sends request to the GPII server to save and retrieve model information
      * @param {Object} options
      */
     fluid.defaults("gpii.prefs.gpiiStore", {
-        gradeNames: ["fluid.prefs.dataSource", "fluid.eventedComponent", "autoInit"],
+        gradeNames: ["fluid.prefs.dataSource", "autoInit"],
         // instantiate the gpiiSession component
         components: {
             gpiiSession: {
                 type: "gpii.prefs.gpiiSession"
             }
-        },
-        events: {
-            refreshATApplications: null
         },
         gpiiEntry: "http://registry.gpii.org/applications/gpii.prefs",
         invokers: {
@@ -147,7 +164,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             },
             set: {
                 funcName: "gpii.prefs.gpiiStore.set",
-                args: ["{arguments}.0", "{that}.options", "{gpiiSession}", "{that}.modelTransform", "{that}.events.refreshATApplications"],
+                args: ["{arguments}.0", "{that}.options", "{gpiiSession}", "{that}.modelTransform", gpii.prefs.gpiiStore.onSuccessfulSet],
                 dynamic: true
             },
             modelTransform: {
@@ -157,14 +174,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             inverseModelTransform: {
                 funcName: "fluid.model.transform",
                 args: ["{arguments}.0", gpii.prefs.commonTermsInverseTransformationRules]
-            }
-        },
-        listeners: {
-            "refreshATApplications.logoutUser": {
-                "listener": "{gpiiSession}.logout"
-            },
-            "refreshATApplications.loginUser": {
-                "listener": "{gpiiSession}.login"
             }
         }
     });
@@ -194,7 +203,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         return gpiiModel;
     };
 
-    gpii.prefs.gpiiStore.set = function (model, settings, session, modelTransformFunc, refreshATApplicationsEvent) {
+    gpii.prefs.gpiiStore.set = function (model, settings, session, modelTransformFunc, onSuccessfulSetFunction) {
         var transformedModel = modelTransformFunc(model);
 
         var urlToPost = session.options.loggedUser ? (session.options.url + session.options.loggedUser) : (session.options.url);
@@ -205,26 +214,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             contentType: "application/json",
             data: JSON.stringify(transformedModel),
             success: function (data) {
-                if (session.options.loggedUser != data.token) {
-                    // new user, trigger event
-                    session.events.accountCreated.fire(data.token);
-                } else {
-                    // already logged in
-                    // fire refreshATApplications event
-                    refreshATApplicationsEvent.fire(data.token);
-                    /* TODO: The above procedure should normally be happening on the GPII side.
-                     * Preference management tools should not have session management responsibilities.
-                     * This is a work-around for the pilot2 tests.
-                     * */
-                }
-                fluid.log("POST: Saved to GPII server");
+                onSuccessfulSetFunction(session, data);
             },
             error: function () {
                 fluid.log("POST: Error at saving to GPII server");
             }
         });
     };
-
+    
     fluid.defaults("gpii.prefs.gpiiSettingsStore", {
         gradeNames: ["fluid.globalSettingsStore", "autoInit"],
         settingsStoreType: "gpii.prefs.gpiiStore",
