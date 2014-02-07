@@ -1185,7 +1185,7 @@ h4 {
 
 .fl-prefsEditor .fl-prefsEditor-onoff input:checked + label .fl-prefsEditor-switch {
     padding-left: 3em;
-    width: 2em;
+    width: 2.1em;
     background-color: rgb(23, 169, 184);
     box-shadow: -1em 1.1em 0.1em 0 rgba(172, 216, 92, 0.00) inset;
 }
@@ -1202,7 +1202,7 @@ h4 {
     border: 1px solid rgb(0, 55, 85);
     border-radius: 150px;
     float:left;
-    width:1.9em;
+    width:2.1em;
     height: 1.9em; /* Width and height of the knob. */
     text-indent:-2.07em;
     line-height:1.9em;
@@ -1226,7 +1226,7 @@ h4 {
 .fl-prefsEditor .fl-prefsEditor-onoff input + label .fl-prefsEditor-switch:after {
     float:left;
     position:relative;
-    top: -0.56em;
+    top: -0.9em;
     left: 0.5em;
 }
 
@@ -1236,7 +1236,7 @@ h4 {
     width: 0.9em;
     height: 0.9em;
     position:relative;
-    left:-1.45em;
+    left:-1.6em;
     top:0.52em;
     background-color: #617796;
     box-shadow: 0 -0.2em 0.3em 0.05em rgba(250, 250, 250, 0.3) inset;
