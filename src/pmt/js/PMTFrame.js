@@ -242,7 +242,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     
 	// FIXME: Figure out a better way to pass the user token.
     gpii.pmt.openPcp = function (pcpUrl, token) {
-        window.open(pcpUrl + "?" + token);
+        window.location.assign(pcpUrl + "?" + token);
         return false;
     };
 
