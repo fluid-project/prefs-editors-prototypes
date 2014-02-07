@@ -189,9 +189,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "extraVisibilitySwitch": "gpii_primarySchema_visualAlternativesMoreLess"
             }
         },
-        selectors: {
-            gotoPcpButton: ".flc-prefsEditor-gotoPcp"
-        },
         invokers: {
             openPcp: {
                 funcName: "gpii.pmt.openPcp",
@@ -201,7 +198,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         listeners: {
             "onReady.bindClick": {
-                "this": "{that}.dom.gotoPcpButton",
+                "this": "{that}.prefsEditor.dom.quickEditorLink",
                 method: "click",
                 args: "{that}.openPcp"
             },
