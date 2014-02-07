@@ -37,6 +37,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 notificationMessagePart3: ".gpiic-prefsEditor-notificationMessagePart3",
                 notificationTitle: ".gpiic-prefsEditor-notificationTitle",
                 notificationConfirmButton: ".gpiic-prefsEditor-notificationConfirmButton",
+                quickEditorLink: ".gpiic-prefsEditor-quickEditorLink",
                 logoutLink: ".gpiic-prefsEditor-userLogoutLink",
                 userStatusBar: ".gpiic-prefsEditor-userStatusBar"
             },
@@ -132,6 +133,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.logoutLink",
                     "method": "text",
                     "args": ["{that}.stringBundle.logoutText"]
+                },
+                "onReady.setQuickEditorLinkText": {
+                    "this": "{that}.dom.quickEditorLink",
+                    "method": "text",
+                    "args": ["{that}.stringBundle.quickEditorText"]
                 },
                 // simply hide notification onReady
                 "onReady.prepareSaveNotification": {
