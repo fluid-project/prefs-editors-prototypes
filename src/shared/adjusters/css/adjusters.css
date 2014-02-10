@@ -221,12 +221,12 @@ input[type=checkbox], input[type=radio] {
     text-align: center;
     border: none;
     width: 200px !important;
-    font-size: 23px !important;
+    font-size: 1em !important;
 }
 
 .gpii-stepper-buttons {
     width: 10% !important;
-    font-size: 1.5em !important;
+    font-size: 3em !important;
     cursor: pointer;
     text-align: center !important;
     background-color: white;
@@ -238,7 +238,7 @@ input[type=checkbox], input[type=radio] {
     -o-user-select: none;
     user-select: none;
     padding-top: 0.05em;
-    float: left;
+    display: table-cell !important;
 }
 
 .gpii-stepperMinus {
@@ -251,18 +251,23 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-stepper-valueField {
-    width: 66% !important;
+	display: table-cell !important;
     border: none !important;
     text-align: center !important;
     font-size: 1.5em !important;
     margin-top: 1px !important;
     margin-bottom: 2px !important;
-    float: left;
+    vertical-align: bottom !important;
+    width: 90% !important;
+    float: none !important;
+}
+
+.gpii-stepper-valueField-no-metric-unit {
+    width: 76% !important;
 }
 
 .gpii-stepper-unit {
-    float: left;
-    width: 10% !important;
+    float: right !important;
     text-align: center !important;
     font-size: 1.5em !important;
 }
