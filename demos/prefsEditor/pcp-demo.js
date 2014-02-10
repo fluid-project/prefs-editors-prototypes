@@ -26,6 +26,7 @@ var demo = demo || {};
             },
             prefsEditor: {
                 prefsEditorType: "gpii.prefsEditor",
+                storeType: "gpii.prefs.gpiiSettingsStore",
                 components: {
                     prefsEditorLoader: {
                         options: {

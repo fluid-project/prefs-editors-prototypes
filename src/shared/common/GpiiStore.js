@@ -37,7 +37,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             value: "gpii_primarySchema_punctuationVerbosity"
         }],
         "http://registry\\.gpii\\.org/common/screenReaderBrailleOutput": [{
-            vale: "gpii_primarySchema_screenReaderBrailleOutput"
+            value: "gpii_primarySchema_screenReaderBrailleOutput"
         }],
         "http://registry\\.gpii\\.org/common/auditoryOutLanguage": [{
             value: "gpii_primarySchema_screenReaderLanguage"
@@ -163,7 +163,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
     gpii.prefs.gpiiStore.get = function (settings, sessionSettings, modelTransformFunc) {
         var gpiiModel;
-
         if (sessionSettings.loggedUser != null) {
 
             var urlToPost = sessionSettings.loggedUser ? (sessionSettings.url + sessionSettings.loggedUser) : (sessionSettings.url);
@@ -187,6 +186,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     };
 
     gpii.prefs.gpiiStore.set = function (model, settings, session, modelTransformFunc) {
+        gpii.prefs.getUserToken(session);
+
         var transformedModel = modelTransformFunc(model);
 
         var urlToPost = session.options.loggedUser ? (session.options.url + session.options.loggedUser) : (session.options.url);
@@ -203,10 +204,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 }
                 fluid.log("POST: Saved to GPII server");
             },
-            error: function () {
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
                 fluid.log("POST: Error at saving to GPII server");
             }
         });
+    };
+
+    gpii.prefs.getUserToken = function (gpiiSession) {
+        gpiiSession.options.loggedUser = window.location.search.substring(1);
     };
 
     fluid.defaults("gpii.prefs.gpiiSettingsStore", {

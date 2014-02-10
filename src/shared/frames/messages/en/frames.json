@@ -1,7 +1,7 @@
 {
 	"myPreferencesLabelText": "my preferences",
 	"allPreferencesLabelText": "all preferences",
-	"saveAndApplyText": "save & apply",
+	"saveAndApplyText": "save",
 	"preferencesSavedToUSB": "preferences saved to usb",
 	"preferencesModified": "preferences modified",
 	"notificationMessagePart1": "To apply preferences on other devices, save this token:",

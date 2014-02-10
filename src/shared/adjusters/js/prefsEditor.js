@@ -27,12 +27,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             listeners: {
                 "onCreate.setUserToken": {
-                    listener: "fluid.set",
-                    args: ["{gpiiSession}", ["options", "loggedUser"], {
-                        expander: {
-                            funcName: "gpii.prefsEditor.getUserToken"
-                        }
-                    }]
+                    funcName: "gpii.prefs.getUserToken",
+                    args: ["{gpiiSession}"]
                 },
                 "onReady.setATTRsaveButton": {
                     "this": "{that}.dom.saveButton",
@@ -40,7 +36,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": ["value", "{that}.stringBundle.saveAndApplyText"]
                 },
                 "onReady.onApplySettings": {
-                    "this": "{that}.dom.saveAndApply",
+                    "this": "{that}.dom.applyButton",
                     "method": "click",
                     "args": ["{that}.applySettings"]
                 },
@@ -102,6 +98,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             selectors: {
                 saveAndApply: ".flc-prefsEditor-save",
                 saveAndApplyButtonLabel: ".flc-prefsEditor-save",
+                applyButton: ".gpiic-prefsEditor-applyButton",
                 messageLineLabel: ".gpiic-prefsEditor-messageLine",
                 fullEditorLink: ".gpiic-prefsEditor-fullEditorLink",
                 logoutLink: ".gpiic-prefsEditor-userLogoutLink"
@@ -109,10 +106,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             selectorsToIgnore: ["saveAndApply"]
         }
     });
-
-    gpii.prefsEditor.getUserToken = function (that) {
-        return window.location.search.substring(1);
-    };
 
     gpii.prefsEditor.setInitialModel = function (that) {
         var initialModel = that.get();
