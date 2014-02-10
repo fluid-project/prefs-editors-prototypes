@@ -1,15 +1,15 @@
 {
-	"myPreferencesLabelText": "my preferences",
-	"allPreferencesLabelText": "all preferences",
-	"saveAndApplyText": "save & apply",
-	"preferencesSavedToUSB": "preferences saved to usb",
-	"preferencesModified": "preferences modified",
-	"notificationMessagePart1": "To apply preferences on other devices, save this token:",
-	"notificationMessagePart2": "TOKEN NUMBER",
-	"notificationMessagePart3": "to a USB or RFID reader.",
-	"notificationTitle": "Preferences have been saved to the cloud and applied to this device.",
-	"notificationConfirmButton": "got it",
-	"logoutText": "log-out",
-    "more": "+ more",
-    "less": "- less"
+	"myPreferencesLabelText": "mis preferencias",
+	"allPreferencesLabelText": "todas las preferencias",
+	"saveAndApplyText": "guardar y aplicar",
+	"preferencesSavedToUSB": "identificador guardado en el USB",
+	"preferencesModified": "se han modificado las preferencias",
+	"notificationMessagePart1": "Para aplicar las preferencias en otros dispositivos, guarda este identificador:",
+	"notificationMessagePart2": "NUMERO DE IDENTIFICADOR",
+	"notificationMessagePart3": "a una memoria USB o una etiqueta RFID.",
+	"notificationTitle": "Tus preferencias se han guardado en la nube  y se han aplicado en este dispositivo.",
+	"notificationConfirmButton": "aceptar",
+	"logoutText": "salir",
+    "more": "+ más",
+    "less": "- menos"
 }
