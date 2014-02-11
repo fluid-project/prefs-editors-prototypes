@@ -15,7 +15,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     
-    fluid.defaults("gpii.adjuster.contrastThemeWithInversion", {
+    fluid.defaults("gpii.adjuster.contrastThemeNoPreview", {
         gradeNames: ["fluid.prefs.panel.contrast", "autoInit"],
         mergePolicy: {
             "controlValues.theme": gpii.prefs.merging.arrayOverridePolicy,
@@ -29,7 +29,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         selectors: {
             colourTheme: ".gpiic-contrast-colourTheme"
         },
-        selectorsToIgnore: ["colourTheme"],
         listeners: {
             "onDomBind.setColourThemeText": {
                 "this": "{that}.dom.colourTheme",
@@ -39,10 +38,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "onDomBind.style": "{that}.style"
         },
         stringArrayIndex: {
-            theme: ["contrast-default", "contrast-inverted", "contrast-bw", "contrast-wb", "contrast-by", "contrast-yb"]
+            theme: ["contrast-bw", "contrast-wb", "contrast-by", "contrast-yb"]
         },
         controlValues: {
-            theme: ["default", "inverted", "bw", "wb", "by", "yb"]
+            theme: ["black-white", "white-black", "black-yellow", "yellow-black"]
         },
         markup: {
             label: "<span>%theme</span>"

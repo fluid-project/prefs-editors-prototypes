@@ -95,6 +95,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         "http://registry\\.gpii\\.org/common/fontSize": [{
             value: "gpii_primarySchema_fontSize"
         }],
+        "http://registry\\.gpii\\.org/common/highContrastEnabled": [{
+            value: "gpii_primarySchema_contrastEnabled"
+        }],
         "http://registry\\.gpii\\.org/common/highContrastTheme": [{
             value: "gpii_primarySchema_contrast_theme"
         }],
@@ -111,6 +114,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }],
         "http://registry\\.gpii\\.org/common/tracking": [{
             value: "gpii_primarySchema_tracking"
+        }],
+        "http://registry\\.gpii\\.org/common/trackingTTS": [{
+            value: "gpii_primarySchema_screenReaderTracking"
         }],
         "http://registry\\.gpii\\.org/common/magnifierPosition": [{
             value: "gpii_primarySchema_magnificationPosition"
