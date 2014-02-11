@@ -23,7 +23,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
      */
     fluid.defaults("gpii.prefs.gpiiSession", {
         gradeNames: ["fluid.eventedComponent", "autoInit"],
-        url: "http://localhost:8081/user/",
+        url: "http://localhost:8081/",
         // Maybe we should be informed for currently logged user from GPII?
         // This is relevant, http://issues.gpii.net/browse/GPII-290
         loggedUser: null,
@@ -40,9 +40,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             logout: {
                 "funcName": "gpii.prefs.gpiiSession.logout",
                 "args": ["{that}"]
+            },
+            getLoggedUser: {
+                "funcName": "gpii.prefs.gpiiSession.getLoggedUser",
+                "args": ["{that}"]
             }
         },
         listeners: {
+            "onCreate.getLoggedUser": {
+                "listener": "{that}.getLoggedUser"
+            },
             "accountCreated.loginUser": {
                 "listener": "{that}.login"
             }
@@ -57,7 +64,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.prefs.gpiiSession.login = function (that, userToken) {
         if (userToken != null) {
             $.ajax({
-                url: that.options.url + userToken + "/login",
+                url: that.options.url + "user/" + userToken + "/login",
                 type: "GET",
                 // TODO: This is non-async because we want to serially streamline the logout/login that is triggered
                 // by the GPIIStore "refresh" of system level applications when setting preferences.
@@ -81,7 +88,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.prefs.gpiiSession.logout = function (that) {
         if (that.options.loggedUser != null) {
             $.ajax({
-                url: that.options.url + that.options.loggedUser + "/logout",
+                url: that.options.url + "user/" + that.options.loggedUser + "/logout",
                 type: "GET",
                 // TODO: This is non-async because we want to serially streamline the logout/login that is triggered
                 // by the GPIIStore "refresh" of system level applications when setting preferences.
@@ -100,6 +107,28 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             });
         }
+    };
+    
+    gpii.prefs.gpiiSession.getLoggedUser = function (that) {
+        $.ajax({
+            url: that.options.url + "token",
+            type: "GET",
+            // TODO: This is non-async because we want the "loggedUser" to be set before any "get" or "set"
+            // in the GPIIStore is invoked.
+            async: false,
+            /*xhrFields: {
+                withCredentials: true
+            },*/
+            success: function (data) {
+                that.options.loggedUser = data;
+                fluid.log("GET: " + data);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                that.options.loggedUser = null;
+                fluid.log("GET: Error at getting logged user's token! Test status: " + textStatus);
+                fluid.log(errorThrown);
+            }
+        });
     };
 
 })(jQuery, fluid);
