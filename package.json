@@ -6,7 +6,7 @@
     "bugs": "http://wiki.gpii.net/index.php/Main_Page",
     "homepage": "http://gpii.net/",
     "dependencies": {
-        "universal": "git://github.com/yzen/universal.git"
+        "universal": "git://github.com/GPII/universal.git"
     },
     "licenses": [
         {
