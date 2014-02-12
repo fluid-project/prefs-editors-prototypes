@@ -286,6 +286,8 @@ input[type=checkbox], input[type=radio] {
     cursor: pointer;
     padding-bottom: 5px !important;
     padding-top: 20px;
+    background-color: transparent;
+    border: 0;
 }
 
 /*
