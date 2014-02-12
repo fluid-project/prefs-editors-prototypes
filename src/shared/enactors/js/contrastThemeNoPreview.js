@@ -18,6 +18,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.enactor.contrastThemeNoPreview", {
         gradeNames: ["fluid.prefs.enactor.classSwapper", "autoInit"],
         preferenceMap: {
+            "gpii.primarySchema.contrastEnabled": {
+                "model.enabled": "default"
+            },
             "gpii.primarySchema.contrast.theme": {
                 "model.value": "default"
             }
@@ -39,6 +42,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     gpii.enactor.contrastThemeNoPreview.swap = function (value, that) {
         that.clearClasses();
-        that.container.addClass(that.options.classes[value]);
+        if (that.model.enabled) {
+            that.container.addClass(that.options.classes[value]);
+        } else {
+            // set the default theme if contrast is disabled
+            that.container.addClass(that.options.classes["default"]);
+        }
     };
 })(jQuery, fluid);
