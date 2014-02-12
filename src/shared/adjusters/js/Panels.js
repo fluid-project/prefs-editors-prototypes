@@ -130,6 +130,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         listeners: {
+            "onDomBind.bindEventToggleMoreLessSwitch": {
+                "this": "{that}.dom.visualAlternativesMoreLessLabel",
+                "method": "click",
+                "args": ["{that}.toggleMoreLessSwitch"]
+            },
             "onDomBind.addListener": {
                 "listener": "{that}.applier.modelChanged.addListener",
                 "args": ["visualAlternativesMoreLess", "{that}.toggleVisualAlternativesMoreLess"]
@@ -144,6 +149,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                          "{that}.stringBundle.less"
                     ],
                 "dynamic": true
+            },
+            toggleMoreLessSwitch: {
+                "this": "{that}.dom.visualAlternativesMoreLess",
+                "method": "trigger",
+                "args": ["click"]
             }
         }
     });
