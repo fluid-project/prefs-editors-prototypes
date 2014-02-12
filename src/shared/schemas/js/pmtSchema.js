@@ -34,7 +34,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "message": "%prefix/contrast.json",
                 "type": "gpii.adjuster.addContrast",
                 "panels": {
-                    "always": ["contrastTheme"]
+                    "always": ["contrastEnabled"],
+                    "gpii.primarySchema.contrastEnabled": ["contrastTheme"]
                 }
             },
             "increaseSize": {
@@ -81,10 +82,21 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             }
         },
+        "contrastEnabled": {
+            "type": "gpii.primarySchema.contrastEnabled",
+            /*"enactor": {
+                "type": "gpii.enactor.contrastTheme"
+            },*/
+            "panel": {
+                "type": "gpii.adjuster.contrastEnabled",
+                "container": ".gpiic-contrastEnabled",
+                "template": "%prefix/onOffSwitchTemplate.html",
+                "message": "%prefix/contrast.json"
+            }
+        },
         "contrastTheme": {
             "type": "gpii.primarySchema.contrast.theme",
             "classes": {
-                "default": "fl-theme-prefsEditor-default gpii-prefsEditor-theme-default",
                 "black-white": "fl-theme-prefsEditor-bw gpii-prefsEditor-theme-bw fl-theme-bw",
                 "white-black": "fl-theme-prefsEditor-wb gpii-prefsEditor-theme-wb fl-theme-wb",
                 "black-yellow": "fl-theme-prefsEditor-by gpii-prefsEditor-theme-by fl-theme-by",
@@ -96,7 +108,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "panel": {
                 "type": "gpii.adjuster.contrastThemeNoPreview",
                 "container": ".gpiic-contrastTheme",
-                "template": "%prefix/contrastThemeWithInversionTemplate.html",
+                "template": "%prefix/contrastThemeNoPreviewTemplate.html",
                 "message": "%prefix/contrast.json",
                 "classnameMap": {"theme": "@contrastTheme.classes"}
             }
