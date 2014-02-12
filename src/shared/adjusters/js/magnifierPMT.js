@@ -39,7 +39,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             contrastTheme: {
-                type: "gpii.enactor.contrastThemeWithInversion",
+                type: "gpii.enactor.contrastThemeNoPreview",
                 container: "{enhancer}.container",
                 options: {
                     gradeNames: ["gpii.enactors.previewConnections"]
