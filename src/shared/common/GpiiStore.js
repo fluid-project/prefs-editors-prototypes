@@ -189,7 +189,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     };
 
     gpii.prefs.gpiiStore.set = function (model, settings, session, modelTransformFunc) {
-        gpii.prefs.getUserToken(session);
+        var token = gpii.prefs.getUserToken(session);
+        fluid.set(session, ["options", "loggedUser"], token);
 
         var transformedModel = modelTransformFunc(model);
 
@@ -214,7 +215,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     };
 
     gpii.prefs.getUserToken = function (gpiiSession) {
-        gpiiSession.options.loggedUser = window.location.search.substring(1);
+        return window.location.search.substring(1);
     };
 
     fluid.defaults("gpii.prefs.gpiiSettingsStore", {

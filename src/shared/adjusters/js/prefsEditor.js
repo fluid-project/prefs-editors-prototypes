@@ -27,8 +27,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             listeners: {
                 "onCreate.setUserToken": {
-                    funcName: "gpii.prefs.getUserToken",
-                    args: ["{gpiiSession}"]
+                    listener: "fluid.set",
+                    args: ["{gpiiSession}", ["options", "loggedUser"], {
+                        expander: {
+                            funcName: "gpii.prefs.getUserToken"
+                        }
+                    }]
                 },
                 "onReady.setATTRsaveButton": {
                     "this": "{that}.dom.saveButton",
