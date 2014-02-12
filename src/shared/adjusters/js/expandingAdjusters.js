@@ -40,6 +40,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "change",
                 "args": ["{that}.toggleExpandingAdjustersInstant"]
             },
+            "afterRender.bindEventToggleMoreLessSwitch": {
+                "this": "{that}.dom.moreLess",
+                "method": "click",
+                "args": ["{that}.toggleMoreLessSwitch"]
+            },
             "onShowExpandingAdjusters.show": {
                 "this": "{that}.dom.expandingAdjusters",
                 "method": "slideDown",
@@ -52,13 +57,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             "onShowExpandingAdjusters.setLessText": {
                 "this": "{that}.dom.moreLess",
-                "method": "text",
-                "args": ["{that}.stringBundle.less"]
+                "method": "attr",
+                "args": ["value", "{that}.stringBundle.less"]
             },
             "onHideExpandingAdjusters.setMoreText": {
                 "this": "{that}.dom.moreLess",
-                "method": "text",
-                "args": ["{that}.stringBundle.more"]
+                "method": "attr",
+                "args": ["value", "{that}.stringBundle.more"]
             },
             "afterRender.restoreMoreLess": {
                 listener: "{that}.toggleMoreLessInstant"
@@ -96,6 +101,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.events.onHideExpandingAdjusters.fire"
                 ],
                 dynamic: true
+            },
+            toggleMoreLessSwitch: {
+                "this": "{that}.dom.preferenceSwitchExpanding",
+                "method": "trigger",
+                "args": ["click"]
             }
         },
         model: {
