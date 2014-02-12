@@ -288,6 +288,12 @@ input[type=checkbox], input[type=radio] {
     padding-top: 20px;
     background-color: transparent;
     border: 0;
+    margin: 0 auto;
+    font-size: 1.5em;
+}
+
+.gpii-prefsEditor-moreLessWrapper {
+    text-align: center;
 }
 
 /*
