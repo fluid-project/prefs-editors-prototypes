@@ -1456,11 +1456,11 @@ input[type="radio"] + label {
 
 .gpii-visualAlternativesMoreLess {
     margin-left: 85px;
-    padding-top: 10px;
 }
 
 .gpii-visualAlternativesMoreLess-label {
     cursor: pointer;
+    font-size: 1em !important;
 }
 
 input[type=checkbox] + label.gpii-checkbox-label {

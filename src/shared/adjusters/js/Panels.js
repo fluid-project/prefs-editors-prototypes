@@ -150,7 +150,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     gpii.visualAlternativesMoreLessConfiguration = function (modelValue, label, more, less) {
         var newText = modelValue ? less : more;
-        label.text(newText);
+        label.attr("value", newText);
     };
 
     fluid.defaults("gpii.adjuster.voicePitch", {
