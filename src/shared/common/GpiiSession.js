@@ -47,24 +47,24 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "funcName": "gpii.prefs.gpiiSession.getLoggedUser",
                 "args": ["{that}", "{that}.events.onGetLoggedUserSuccess", "{that}.events.onGetLoggedUserError"]
             },
-            onGetLoggedUserSuccess: {
-                "funcName": "gpii.prefs.gpiiSession.onGetLoggedUserSuccess",
+            setLoggedUser: {
+                "funcName": "gpii.prefs.gpiiSession.setLoggedUser",
                 "args": ["{that}", "{arguments}.0"]
             },
-            onGetLoggedUserError: {
-                "funcName": "gpii.prefs.gpiiSession.onGetLoggedUserError",
-                "args": ["{that}", "{arguments}.0", "{arguments}.1", "{arguments}.2"]
+            clearLoggedUser: {
+                "funcName": "gpii.prefs.gpiiSession.clearLoggedUser",
+                "args": ["{that}"]
             }
         },
         listeners: {
             "onCreate.getLoggedUser": {
                 "listener": "{that}.getLoggedUser"
             },
-            "onGetLoggedUserSuccess": {
-                "listener": "{that}.onGetLoggedUserSuccess"
+            "onGetLoggedUserSuccess.setLoggedUser": {
+                "listener": "{that}.setLoggedUser"
             },
-            "onGetLoggedUserError": {
-                "listener": "{that}.onGetLoggedUserError"
+            "onGetLoggedUserError.clearLoggedUser": {
+                "listener": "{that}.clearLoggedUser"
             },
             "accountCreated.loginUser": {
                 "listener": "{that}.login"
@@ -136,23 +136,25 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 withCredentials: true
             },*/
             success: function (data) {
+                fluid.log("GET: " + data);
+
                 onGetLoggedUserSuccessEvent.fire(data);
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                onGetLoggedUserErrorEvent.fire(jqXHR, textStatus, errorThrown);
+                fluid.log("GET: Error at getting logged user's token! Test status: " + textStatus);
+                fluid.log(errorThrown);
+                
+                onGetLoggedUserErrorEvent.fire();
             }
         });
     };
 
-    gpii.prefs.gpiiSession.onGetLoggedUserSuccess = function (that, data) {
+    gpii.prefs.gpiiSession.setLoggedUser = function (that, data) {
         that.options.loggedUser = data;
-        fluid.log("GET: " + data);
     };
     
-    gpii.prefs.gpiiSession.onGetLoggedUserError = function (that, jqXHR, textStatus, errorThrown) {
+    gpii.prefs.gpiiSession.clearLoggedUser = function (that) {
         that.options.loggedUser = null;
-        fluid.log("GET: Error at getting logged user's token! Test status: " + textStatus);
-        fluid.log(errorThrown);
     };
     
 })(jQuery, fluid);
