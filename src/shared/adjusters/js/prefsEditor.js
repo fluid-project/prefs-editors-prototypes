@@ -34,11 +34,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         }
                     }]
                 },
-                "onReady.setATTRsaveButton": {
-                    "this": "{that}.dom.saveButton",
-                    "method": "attr",
-                    "args": ["value", "{that}.stringBundle.saveAndApplyText"]
-                },
                 "onReady.onApplySettings": {
                     "this": "{that}.dom.applyButton",
                     "method": "click",
@@ -72,10 +67,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "text",
                     "args": [""]
                 },
-                "onReady.setSaveAndApplyButtonText": {
-                    "this": "{that}.dom.saveAndApplyButtonLabel",
+                "onReady.setSaveButtonText": {
+                    "this": "{that}.dom.saveButtonLabel",
                     "method": "attr",
-                    "args": ["value", "{that}.stringBundle.saveAndApplyText"]
+                    "args": ["value", "{that}.stringBundle.saveText"]
                 },
                 "onReady.setFullEditorLinkText": {
                     "this": "{that}.dom.fullEditorLink",
@@ -86,6 +81,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.logoutLink",
                     "method": "text",
                     "args": ["{that}.stringBundle.logoutText"]
+                },
+                "onReady.setApplyButtonText": {
+                    "this": "{that}.dom.applyButton",
+                    "method": "attr",
+                    "args": ["value", "{that}.stringBundle.applyText"]
                 }
             },
             invokers: {
@@ -100,14 +100,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             selectors: {
-                saveAndApply: ".flc-prefsEditor-save",
-                saveAndApplyButtonLabel: ".flc-prefsEditor-save",
+                save: ".flc-prefsEditor-save",
+                saveButtonLabel: ".flc-prefsEditor-save",
                 applyButton: ".gpiic-prefsEditor-applyButton",
                 messageLineLabel: ".gpiic-prefsEditor-messageLine",
                 fullEditorLink: ".gpiic-prefsEditor-fullEditorLink",
                 logoutLink: ".gpiic-prefsEditor-userLogoutLink"
             },
-            selectorsToIgnore: ["saveAndApply"]
+            selectorsToIgnore: ["save"]
         }
     });
 

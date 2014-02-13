@@ -102,11 +102,15 @@ body {
     word-wrap: break-word;
 }
 
-.gpii-PCP-save {
+.gpii-PCP-apply {
+    padding: 0.4em;
+}
+
+.gpii-PCP-button {
     background-color: #BDE2E9;
 }
 
-.gpii-PCP-save:hover {
+.gpii-PCP-button:hover {
     background-color: #249FB7;
 }
 
@@ -135,7 +139,7 @@ body {
 }
 
 .gpii-prefsEditor-messageLine {
-	display: table-cell;
+    display: table-cell;
     white-space: normal;
     width: 55%;
     font-style:italic;
@@ -156,9 +160,9 @@ body {
 }
 
 .gpii-prefsEditor-notification {
-	background-color: #333333 !important;
-	color: white !important;
-	font-size: 1.5em;
+    background-color: #333333 !important;
+    color: white !important;
+    font-size: 1.5em;
     padding: 10px !important;
 }
 
@@ -186,21 +190,21 @@ body {
 }
 
 .gpii-prefsEditor-notificationMessageTOKEN {
-	display: block !important;
-	color: white !important;
-	background-color: #666666 !important;
-	padding: 0 5px 0 5px !important;
-	font-size: 1.4em !important;
-	margin-top: 0.5em !important;
-	margin-bottom: 0.5em !important;
+    display: block !important;
+    color: white !important;
+    background-color: #666666 !important;
+    padding: 0 5px 0 5px !important;
+    font-size: 1.4em !important;
+    margin-top: 0.5em !important;
+    margin-bottom: 0.5em !important;
 }
 
 .gpii-prefsEditor-notificationMessageTOKEN:first-letter {
-	text-transform: none !important;
+    text-transform: none !important;
 }
 
 .gpii-prefsEditor-notificationHeader {
-	color: white !important;
+    color: white !important;
     padding: 10px !important;
 }
 
@@ -212,12 +216,12 @@ body {
 }
 
 .gpii-prefsEditor-pmt-userLogoutLink {
-	display: block;
+    display: block;
     text-align: right;
 }
 
 .gpii-prefsEditor-pmt-userLogoutLink:first-letter {
-	text-transform: none !important;
+    text-transform: none !important;
 }
 
 .gpii-prefsEditor-pcp-userLogout {
