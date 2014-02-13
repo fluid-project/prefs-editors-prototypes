@@ -22,7 +22,7 @@
         <div class="gpiic-prefsEditor-magnifier">
         </div>
 
-        <div class="gpiic-magnifier-hidden">
+        <div id="hiddenPanel" aria-expanded="" aria-label="" role="region" class="gpiic-magnifier-hidden">
             <div class="gpiic-prefsEditor-magnifierPosition">
             </div>
             <div class="gpiic-prefsEditor-magnifierFollows">
@@ -32,7 +32,7 @@
         </div>
 
         <div class="gpii-prefsEditor-moreLessWrapper">
-            <input type="button" class="gpii-prefsEditor-moreLess gpiic-magnifier-moreLess gpiic-magnifier-category"/>
+            <input type="button" class="gpii-prefsEditor-moreLess gpiic-magnifier-moreLess gpiic-magnifier-category" aria-controls="hiddenPanel" role="button"/>
             <input type="checkbox" id="preferenceSwitchMagnifierExtra" class="gpiic-magnifier-preferenceSwitchExtra"/>
         </div>
     </div>

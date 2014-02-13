@@ -33,6 +33,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             expandingAdjusters: ".gpiic-magnifier-hidden",
             moreLess: ".gpiic-magnifier-category"
         },
+        listeners: {
+            "afterRender.setExpandedAriaLabel": {
+                "this": "{that}.dom.expandingAdjusters",
+                "method": "attr",
+                "args": ["aria-label", "{that}.stringBundle.additionalMagnifierAdjusters"]
+            }
+        },
         invokers: {
             // override this invoker to use the "magnifierEnabled" model value
             toggleMoreLessInstant: {

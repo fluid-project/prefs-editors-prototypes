@@ -65,6 +65,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "attr",
                 "args": ["value", "{that}.stringBundle.more"]
             },
+            "onShowExpandingAdjusters.setExpanded": {
+                "listener": "{that}.setExpanded"
+            },
+            "onHideExpandingAdjusters.setExpanded": {
+                "listener": "{that}.setExpanded"
+            },
             "afterRender.restoreMoreLess": {
                 listener: "{that}.toggleMoreLessInstant"
             },
@@ -106,6 +112,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "this": "{that}.dom.preferenceSwitchExpanding",
                 "method": "trigger",
                 "args": ["click"]
+            },
+            setExpanded: {
+                "this": "{that}.dom.expandingAdjusters",
+                "method": "attr",
+                "args": ["aria-expanded", "{that}.model.expandingAdjustersEnabledSwitch"],
+                dynamic: true
             }
         },
         model: {

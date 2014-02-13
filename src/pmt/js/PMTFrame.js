@@ -38,7 +38,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 notificationTitle: ".gpiic-prefsEditor-notificationTitle",
                 notificationConfirmButton: ".gpiic-prefsEditor-notificationConfirmButton",
                 logoutLink: ".gpiic-prefsEditor-userLogoutLink",
-                userStatusBar: ".gpiic-prefsEditor-userStatusBar"
+                userStatusBar: ".gpiic-prefsEditor-userStatusBar",
+                visualAlternativesHiddenPanel: ".gpiic-visualAlternatives-hiddenPanel"
             },
             model: {
                 userLoggedIn: false
@@ -147,6 +148,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.addHidingListener": {
                     "listener": "{that}.applier.modelChanged.addListener",
                     "args": ["{that}.options.strings.mainVisibilitySwitch", "{that}.foldExpandedViewWhenOff"]
+                },
+                /*
+                 * TODO: This aria value is lost when the conditional panel is toggled.
+                 */
+                "onReady.setExpandedAriaLabel": {
+                    "this": "{that}.dom.visualAlternativesHiddenPanel",
+                    "method": "attr",
+                    "args": ["aria-label", "{that}.stringBundle.additionalVisualAdjusters"]
                 }
             },
             invokers: {
