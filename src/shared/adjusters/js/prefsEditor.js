@@ -44,6 +44,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "click",
                     "args": ["{that}.applySettings"]
                 },
+                "onReady.fullEditorSaveToPrefsServer": {
+                    "this": "{that}.dom.fullEditorLink",
+                    "method": "click",
+                    "args": ["{that}.triggerSave"]
+                },
+                "onReady.goToPMT": {
+                    "this": "{that}.dom.fullEditorLink",
+                    "method": "click",
+                    "args": ["{that}.openPMT"]
+                },
                 "onReady.setInitialModel": {
                     listener: "gpii.prefsEditor.setInitialModel",
                     args: ["{that}"]
@@ -97,6 +107,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 showUserStatusBar: {
                     "this": "{that}.dom.userStatusBar",
                     "method": "slideDown"
+                },
+                openPMT: {
+                    "funcName": "gpii.prefsEditor.openPMT",
+                    "args": ["{prefsEditorLoader}.options.pmtUrl"],
+                    "dynamic": true
+                },
+                triggerSave: {
+                    "funcName": "gpii.prefsEditor.triggerEvent",
+                    "args": ["{that}", "saveAndApply", "click"]
                 }
             },
             selectors: {
@@ -136,6 +155,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 });
             });
         }
+    };
+
+    gpii.prefsEditor.openPMT = function (pmtUrl) {
+        window.location.assign(pmtUrl);
+    };
+
+    gpii.prefsEditor.triggerEvent = function (that, targetSelector, event) {
+        that.locate(targetSelector).trigger(event);
     };
 
 })(jQuery, fluid);

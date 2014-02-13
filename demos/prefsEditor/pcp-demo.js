@@ -26,10 +26,12 @@ var demo = demo || {};
             },
             prefsEditor: {
                 prefsEditorType: "gpii.prefsEditor",
+                storeType: "gpii.prefs.gpiiSettingsStore",
                 components: {
                     prefsEditorLoader: {
                         options: {
-                            messagePrefix: "../../src/shared/adjusters/messages/" + gpii.prefs.i18n.getDefaultLanguage() + "/"
+                            messagePrefix: "../../src/shared/adjusters/messages/" + gpii.prefs.i18n.getDefaultLanguage() + "/",
+                            pmtUrl: "./index.html"
                         }
                     }
                 }
