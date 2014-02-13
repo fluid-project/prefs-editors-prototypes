@@ -150,12 +150,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": ["{that}.options.strings.mainVisibilitySwitch", "{that}.foldExpandedViewWhenOff"]
                 },
                 /*
-                 * TODO: This aria value is lost when the conditional panel is toggled.
+                 * TODO: These aria values are lost when the conditional panel is toggled (ON/OFF).
                  */
                 "onReady.setExpandedAriaLabel": {
-                    "this": "{that}.dom.visualAlternativesHiddenPanel",
-                    "method": "attr",
-                    "args": ["aria-label", "{that}.stringBundle.additionalVisualAdjusters"]
+                    "listener": "{that}.setExpandedAriaLabel"
+                },
+                "onReady.setExpandedAriaExpanded": {
+                    "listener": "{that}.setExpandedAriaExpanded"
+                },
+                "onReady.addListenerForAriaExpanded": {
+                    "listener": "{that}.applier.modelChanged.addListener",
+                    "args": ["gpii_primarySchema_visualAlternativesMoreLess", "{that}.setExpandedAriaExpanded"]
                 }
             },
             invokers: {
@@ -185,7 +190,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 showUserStatusBar: {
                     "this": "{that}.dom.userStatusBar",
                     "method": "slideDown"
-                }
+                },
+                setExpandedAriaLabel: {
+                    "this": "{that}.dom.visualAlternativesHiddenPanel",
+                    "method": "attr",
+                    "args": ["aria-label", "{that}.stringBundle.additionalVisualAdjusters"]
+                },
+                setExpandedAriaExpanded: {
+                    "this": "{that}.dom.visualAlternativesHiddenPanel",
+                    "method": "attr",
+                    "args": ["aria-expanded", "{that}.model.gpii_primarySchema_visualAlternativesMoreLess"]
+                } 
             },
             strings: {
                 "mainVisibilitySwitch": "gpii_primarySchema_speakText",
