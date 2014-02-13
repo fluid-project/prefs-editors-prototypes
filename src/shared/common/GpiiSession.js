@@ -30,7 +30,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         events: {
             onLogin: null,
             onLogout: null,
-            accountCreated: null
+            accountCreated: null,
+            onGetLoggedUserSuccess: null,
+            onGetLoggedUserError: null
         },
         invokers: {
             login: {
@@ -43,12 +45,26 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             getLoggedUser: {
                 "funcName": "gpii.prefs.gpiiSession.getLoggedUser",
-                "args": ["{that}"]
+                "args": ["{that}", "{that}.events.onGetLoggedUserSuccess", "{that}.events.onGetLoggedUserError"]
+            },
+            onGetLoggedUserSuccess: {
+                "funcName": "gpii.prefs.gpiiSession.onGetLoggedUserSuccess",
+                "args": ["{that}", "{arguments}.0"]
+            },
+            onGetLoggedUserError: {
+                "funcName": "gpii.prefs.gpiiSession.onGetLoggedUserError",
+                "args": ["{that}", "{arguments}.0", "{arguments}.1", "{arguments}.2"]
             }
         },
         listeners: {
             "onCreate.getLoggedUser": {
                 "listener": "{that}.getLoggedUser"
+            },
+            "onGetLoggedUserSuccess": {
+                "listener": "{that}.onGetLoggedUserSuccess"
+            },
+            "onGetLoggedUserError": {
+                "listener": "{that}.onGetLoggedUserError"
             },
             "accountCreated.loginUser": {
                 "listener": "{that}.login"
@@ -109,7 +125,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     };
     
-    gpii.prefs.gpiiSession.getLoggedUser = function (that) {
+    gpii.prefs.gpiiSession.getLoggedUser = function (that, onGetLoggedUserSuccessEvent, onGetLoggedUserErrorEvent) {
         $.ajax({
             url: that.options.url + "token",
             type: "GET",
@@ -120,15 +136,23 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 withCredentials: true
             },*/
             success: function (data) {
-                that.options.loggedUser = data;
-                fluid.log("GET: " + data);
+                onGetLoggedUserSuccessEvent.fire(data);
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                that.options.loggedUser = null;
-                fluid.log("GET: Error at getting logged user's token! Test status: " + textStatus);
-                fluid.log(errorThrown);
+                onGetLoggedUserErrorEvent.fire(jqXHR, textStatus, errorThrown);
             }
         });
     };
 
+    gpii.prefs.gpiiSession.onGetLoggedUserSuccess = function (that, data) {
+        that.options.loggedUser = data;
+        fluid.log("GET: " + data);
+    };
+    
+    gpii.prefs.gpiiSession.onGetLoggedUserError = function (that, jqXHR, textStatus, errorThrown) {
+        that.options.loggedUser = null;
+        fluid.log("GET: Error at getting logged user's token! Test status: " + textStatus);
+        fluid.log(errorThrown);
+    };
+    
 })(jQuery, fluid);
