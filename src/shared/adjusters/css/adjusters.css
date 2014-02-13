@@ -221,24 +221,25 @@ input[type=checkbox], input[type=radio] {
     text-align: center;
     border: none;
     width: 200px !important;
-    font-size: 23px !important;
+    font-size: 1em !important;
 }
 
 .gpii-stepper-buttons {
-    width: 10% !important;
-    font-size: 1.5em !important;
+    background-color: rgba(0, 0, 0, 0);
     cursor: pointer;
+    display: inline-block !important;
+    float: left;
+    font-size: 3em !important;
+    height: 1.15em;
+    margin-top: -0.15em;
+    position: relative;
     text-align: center !important;
-    background-color: white;
-    margin-left: 2px !important;
-    margin-right: 2px !important;
+    width: 10% !important;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -o-user-select: none;
     user-select: none;
-    padding-top: 0.05em;
-    float: left;
 }
 
 .gpii-stepperMinus {
@@ -251,20 +252,32 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-stepper-valueField {
-    width: 66% !important;
-    border: none !important;
-    text-align: center !important;
-    font-size: 1.5em !important;
-    margin-top: 1px !important;
-    margin-bottom: 2px !important;
+	border: medium none !important;
+    display: inline-block !important;
     float: left;
+    font-size: 1.5em !important;
+    text-align: right;
+    vertical-align: bottom !important;
+    width: 40% !important;
+    padding-top: 0.3em;
+}
+
+.gpii-stepper-valueField-no-metric-unit {
+    width: 80% !important;
+    text-align: center;
 }
 
 .gpii-stepper-unit {
-    float: left;
-    width: 10% !important;
-    text-align: center !important;
+    display: inline-block !important;
+    float: left !important;
     font-size: 1.5em !important;
+    text-align: left;
+    width: 40%;
+    padding-top: 0.37em;
+}
+
+.gpii-stepper-unit:first-letter {
+	text-transform: none !important;
 }
 
 /*
