@@ -47,7 +47,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.fullEditorSaveToPrefsServer": {
                     "this": "{that}.dom.fullEditorLink",
                     "method": "click",
-                    "args": ["{that}.triggerSave"]
+                    "args": ["{gpiiStore}.set"]
                 },
                 "onReady.goToPMT": {
                     "this": "{that}.dom.fullEditorLink",
@@ -101,8 +101,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             invokers: {
                 applySettings: {
                     "funcName": "gpii.applySettings",
-                    "args": "{that}",
-                    "dynamic": true
+                    "args": "{that}"
                 },
                 showUserStatusBar: {
                     "this": "{that}.dom.userStatusBar",
@@ -110,12 +109,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 openPMT: {
                     "funcName": "gpii.prefsEditor.openPMT",
-                    "args": ["{prefsEditorLoader}.options.pmtUrl"],
-                    "dynamic": true
-                },
-                triggerSave: {
-                    "funcName": "gpii.prefsEditor.triggerEvent",
-                    "args": ["{that}", "saveAndApply", "click"]
+                    "args": ["{prefsEditorLoader}.options.pmtUrl"]
                 }
             },
             selectors: {
