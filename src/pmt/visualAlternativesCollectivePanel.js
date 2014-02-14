@@ -22,8 +22,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             visualAlternativesHeader: ".gpii-visualAlternativesPresetButton-label",
             preferenceSwitchExpanding: ".gpiic-visualAlternatives-preferenceSwitchExtra",
             expandingAdjusters: ".gpiic-visualAlternatives-hidden",
-            moreLess: ".gpiic-visualAlternatives-category"
+            moreLess: ".gpiic-visualAlternatives-category",
+            visualAlternativesHiddenPanel: ".gpiic-visualAlternatives-hiddenPanel"
         },
+        selectorsToIgnore: ["visualAlternativesHiddenPanel"],
         protoTree: {
             visualAlternativesHeader: {messagekey: "visualAlternativesPresetButtonLabel"},
             preferenceSwitchExpanding: "${expandingAdjustersEnabledSwitch}"
@@ -45,6 +47,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                          "gpii_primarySchema",
                          "textHighlighting"
                 ]
+            },
+            "afterRender.setExpandedAriaLabel": {
+                "listener": "{that}.setExpandedAriaLabel"
+            },
+            "afterRender.setExpandedAriaExpanded": {
+                "listener": "{that}.setExpandedAriaExpanded"
+            },
+            "afterRender.addListenerForAriaExpanded": {
+                "listener": "{that}.applier.modelChanged.addListener",
+                "args": ["gpii_primarySchema_visualAlternativesMoreLess", "{that}.setExpandedAriaExpanded"]
             }
         },
         invokers: {
@@ -57,6 +69,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     0
                 ],
                 dynamic: true
+            },
+            setExpandedAriaLabel: {
+                "this": "{that}.dom.visualAlternativesHiddenPanel",
+                "method": "attr",
+                "args": ["aria-label", "{that}.stringBundle.additionalVisualAdjusters"]
+            },
+            setExpandedAriaExpanded: {
+                "this": "{that}.dom.visualAlternativesHiddenPanel",
+                "method": "attr",
+                "args": ["aria-expanded", "{that}.model.gpii_primarySchema_visualAlternativesMoreLess"]
             }
         }
     });

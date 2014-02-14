@@ -38,8 +38,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 notificationTitle: ".gpiic-prefsEditor-notificationTitle",
                 notificationConfirmButton: ".gpiic-prefsEditor-notificationConfirmButton",
                 logoutLink: ".gpiic-prefsEditor-userLogoutLink",
-                userStatusBar: ".gpiic-prefsEditor-userStatusBar",
-                visualAlternativesHiddenPanel: ".gpiic-visualAlternatives-hiddenPanel"
+                userStatusBar: ".gpiic-prefsEditor-userStatusBar"
             },
             model: {
                 userLoggedIn: false
@@ -148,19 +147,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.addHidingListener": {
                     "listener": "{that}.applier.modelChanged.addListener",
                     "args": ["{that}.options.strings.mainVisibilitySwitch", "{that}.foldExpandedViewWhenOff"]
-                },
-                /*
-                 * TODO: These aria values are lost when the conditional panel is toggled (ON/OFF).
-                 */
-                "onReady.setExpandedAriaLabel": {
-                    "listener": "{that}.setExpandedAriaLabel"
-                },
-                "onReady.setExpandedAriaExpanded": {
-                    "listener": "{that}.setExpandedAriaExpanded"
-                },
-                "onReady.addListenerForAriaExpanded": {
-                    "listener": "{that}.applier.modelChanged.addListener",
-                    "args": ["gpii_primarySchema_visualAlternativesMoreLess", "{that}.setExpandedAriaExpanded"]
                 }
             },
             invokers: {
@@ -190,16 +176,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 showUserStatusBar: {
                     "this": "{that}.dom.userStatusBar",
                     "method": "slideDown"
-                },
-                setExpandedAriaLabel: {
-                    "this": "{that}.dom.visualAlternativesHiddenPanel",
-                    "method": "attr",
-                    "args": ["aria-label", "{that}.stringBundle.additionalVisualAdjusters"]
-                },
-                setExpandedAriaExpanded: {
-                    "this": "{that}.dom.visualAlternativesHiddenPanel",
-                    "method": "attr",
-                    "args": ["aria-expanded", "{that}.model.gpii_primarySchema_visualAlternativesMoreLess"]
                 } 
             },
             strings: {
