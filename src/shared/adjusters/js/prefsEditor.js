@@ -51,8 +51,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 "onReady.goToPMT": {
                     "this": "{that}.dom.fullEditorLink",
-                    "method": "click",
-                    "args": ["{that}.openPMT"]
+                    "method": "attr",
+                    "args": ["href", "{prefsEditorLoader}.options.pmtUrl"]
                 },
                 "onReady.setInitialModel": {
                     listener: "gpii.prefsEditor.setInitialModel",
@@ -106,10 +106,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 showUserStatusBar: {
                     "this": "{that}.dom.userStatusBar",
                     "method": "slideDown"
-                },
-                openPMT: {
-                    "funcName": "gpii.prefsEditor.openPMT",
-                    "args": ["{prefsEditorLoader}.options.pmtUrl"]
                 }
             },
             selectors: {
@@ -149,10 +145,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 });
             });
         }
-    };
-
-    gpii.prefsEditor.openPMT = function (pmtUrl) {
-        window.location.assign(pmtUrl);
     };
 
     gpii.prefsEditor.triggerEvent = function (that, targetSelector, event) {
