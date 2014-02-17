@@ -112,12 +112,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
-            visualAlternativesMoreLess: ".gpiic-visualAlternativesMoreLess",
             visualAlternativesMoreLessLabel: ".gpiic-visualAlternativesMoreLess-label"
         },
         selectorsToIgnore: ["visualAlternativesMoreLessIcon"],
         protoTree: {
-            visualAlternativesMoreLess: "${visualAlternativesMoreLess}",
             expander: {
                 type: "fluid.renderer.condition",
                 condition: "${{that}.model.visualAlternativesMoreLess}",
@@ -133,7 +131,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "onDomBind.bindEventToggleMoreLessSwitch": {
                 "this": "{that}.dom.visualAlternativesMoreLessLabel",
                 "method": "click",
-                "args": ["{that}.toggleMoreLessSwitch"]
+                "args": ["{that}.visualAlternativesMoreLessRequestChange"]
             },
             "onDomBind.addListener": {
                 "listener": "{that}.applier.modelChanged.addListener",
@@ -150,10 +148,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     ],
                 "dynamic": true
             },
-            toggleMoreLessSwitch: {
-                "this": "{that}.dom.visualAlternativesMoreLess",
-                "method": "trigger",
-                "args": ["click"]
+            visualAlternativesMoreLessRequestChange: {
+                "funcName": "gpii.visualAlternativesMoreLessRequestChange",
+                "args": ["{that}"],
+                "dynamic": true
             }
         }
     });
@@ -161,6 +159,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.visualAlternativesMoreLessConfiguration = function (modelValue, label, more, less) {
         var newText = modelValue ? less : more;
         label.attr("value", newText);
+    };
+
+    gpii.visualAlternativesMoreLessRequestChange = function (that) {
+        that.applier.requestChange("visualAlternativesMoreLess", !that.model.visualAlternativesMoreLess);
     };
 
     fluid.defaults("gpii.adjuster.voicePitch", {
