@@ -31,9 +31,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             valueCheckbox: "${value}"
         },
         listeners: {
-            "afterRender.bindMagnifierOnOffFocusListener": {
-                listener: "{that}.applier.modelChanged.addListener",
-                args: ["value", "{that}.focusMagnifierOnOffFocusable"]
+            "onDomBind.bindMagnifierOnOffFocusListener": {
+                "this": "{that}.dom.valueCheckbox",
+                "method": "change",
+                args: ["{that}.focusMagnifierOnOffFocusable"]
 
                 // This does NOT work, perhaps the dom object has lost reference to the element
                 /*"this": "{that}.dom.magnifierOnOffFocusable",
