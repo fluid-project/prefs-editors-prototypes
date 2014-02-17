@@ -22,9 +22,37 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "model.value": "default"
             }
         },
+        selectors: {
+            magnifierOnOffFocusable: ".gpiic-onOffSwitch-focusable"
+        },
+        selectorsToIgnore: ["magnifierOnOffFocusable"],
         protoTree: {
             headingLabel: {messagekey: "magnifierLabel"},
             valueCheckbox: "${value}"
+        },
+        listeners: {
+            "onDomBind.focusMagnifierOnOffFocusable": {
+                listener: "{that}.focusMagnifierOnOffFocusable"
+
+                // This does NOT work, perhaps the dom object has lost reference to the element
+                /*"this": "{that}.dom.magnifierOnOffFocusable",
+                "method": "focus"*/
+            }
+        },
+        invokers: {
+            focusMagnifierOnOffFocusable: {
+                "funcName": "gpii.adjuster.magnifierEnabled.focusMagnifierOnOffFocusable",
+                "args": ["{that}"]
+            }
         }
     });
+    
+    gpii.adjuster.magnifierEnabled.focusMagnifierOnOffFocusable = function (that) {
+        // this works
+        //that.container.find(".gpiic-onOffSwitch-focusable").focus();
+        
+        // this works too
+        that.dom.locate("magnifierOnOffFocusable").focus();
+    };
+
 })(jQuery, fluid);
