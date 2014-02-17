@@ -2,5 +2,7 @@
     "increaseSizeHeader": "αύξηση μεγέθους",
     "previewText": "Έτσι θα εμφανίζεται το περισσότερο κείμενο.",
     "appearance": "εμφάνιση",
-    "magnifier": "μεγεθυντικός φακός"
+    "magnifier": "μεγεθυντικός φακός",
+    "additionalMagnifierAdjusters": "περισσότερες ρυθμίσεις μεγέθυνσης",
+    "additionalVisualAdjusters": "περισσότερες οπτικές ρυθμίσεις"
 }
