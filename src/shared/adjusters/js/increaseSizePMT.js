@@ -24,12 +24,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         protoTree: {
             increaseSizeHeader: {messagekey: "increaseSizeHeader"},
             appearanceHeading: {messagekey: "appearance"},
-            magnifierHeading:  {messagekey: "magnifier"},
-            // duplicate entry in protoTree; it does not merge.
-            preferenceSwitchExpanding: "${expandingAdjustersEnabledSwitch}"
+            magnifierHeading:  {messagekey: "magnifier"}
         },
         selectors: {
-            preferenceSwitchExpanding: ".gpiic-magnifier-preferenceSwitchExtra",
             expandingAdjusters: ".gpiic-magnifier-hidden",
             moreLess: ".gpiic-magnifier-category"
         },

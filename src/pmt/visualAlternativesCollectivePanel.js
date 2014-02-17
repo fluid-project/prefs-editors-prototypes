@@ -20,15 +20,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         selectors: {
             visualAlternativesHeader: ".gpii-visualAlternativesPresetButton-label",
-            preferenceSwitchExpanding: ".gpiic-visualAlternatives-preferenceSwitchExtra",
             expandingAdjusters: ".gpiic-visualAlternatives-hidden",
             moreLess: ".gpiic-visualAlternatives-category",
             visualAlternativesHiddenPanel: ".gpiic-visualAlternatives-hiddenPanel"
         },
         selectorsToIgnore: ["visualAlternativesHiddenPanel"],
         protoTree: {
-            visualAlternativesHeader: {messagekey: "visualAlternativesPresetButtonLabel"},
-            preferenceSwitchExpanding: "${expandingAdjustersEnabledSwitch}"
+            visualAlternativesHeader: {messagekey: "visualAlternativesPresetButtonLabel"}
         },
         members: {
             messageResolver: "{prefsEditorLoader}.msgBundle"
