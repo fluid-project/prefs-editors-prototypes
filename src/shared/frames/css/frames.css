@@ -272,9 +272,3 @@ label.gpii-preset-button-label {
 .screanReaderFollows {
     padding-left: 40px;
 }
-
-/* hack for more/less position */
-.gpii-prefsEditor-moreLess {
-    position: relative;
-    left: -35px;
-}

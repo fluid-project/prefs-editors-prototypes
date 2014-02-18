@@ -35,10 +35,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "slideUp",
                 "args": ["{arguments}.0"]
             },
-            "afterRender.bindEventPreferenceSwitchExpanding": {
-                "this": "{that}.dom.preferenceSwitchExpanding",
-                "method": "change",
-                "args": ["{that}.toggleExpandingAdjustersInstant"]
+            "afterRender.bindEventRequestChangeMoreLess": {
+                "this": "{that}.dom.moreLess",
+                "method": "click",
+                "args": ["{that}.requestChangeMoreLess"]
             },
             "onShowExpandingAdjusters.show": {
                 "this": "{that}.dom.expandingAdjusters",
@@ -52,13 +52,19 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             "onShowExpandingAdjusters.setLessText": {
                 "this": "{that}.dom.moreLess",
-                "method": "text",
-                "args": ["{that}.stringBundle.less"]
+                "method": "attr",
+                "args": ["value", "{that}.stringBundle.less"]
             },
             "onHideExpandingAdjusters.setMoreText": {
                 "this": "{that}.dom.moreLess",
-                "method": "text",
-                "args": ["{that}.stringBundle.more"]
+                "method": "attr",
+                "args": ["value", "{that}.stringBundle.more"]
+            },
+            "onShowExpandingAdjusters.setExpanded": {
+                "listener": "{that}.setExpanded"
+            },
+            "onHideExpandingAdjusters.setExpanded": {
+                "listener": "{that}.setExpanded"
             },
             "afterRender.restoreMoreLess": {
                 listener: "{that}.toggleMoreLessInstant"
@@ -96,6 +102,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.events.onHideExpandingAdjusters.fire"
                 ],
                 dynamic: true
+            },
+            requestChangeMoreLess: {
+                "funcName": "gpii.panel.expandingAdjusters.requestChangeMoreLess",
+                "args": ["{that}"],
+                "dynamic": true
+            },
+            setExpanded: {
+                "this": "{that}.dom.expandingAdjusters",
+                "method": "attr",
+                "args": ["aria-expanded", "{that}.model.expandingAdjustersEnabledSwitch"],
+                dynamic: true
             }
         },
         model: {
@@ -104,16 +121,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         selectors: {
             moreLess: "",  //should be provided by integrators
-            expandingAdjusters: "",  //should be provided by integrators
-            preferenceSwitchExpanding: ""  //should be provided by integrators
+            expandingAdjusters: ""  //should be provided by integrators
         },
-        selectorsToIgnore: ["expandingAdjusters", "moreLess"],
-        protoTree: {
-            preferenceSwitchExpanding: "${expandingAdjustersEnabledSwitch}"
-        }
+        selectorsToIgnore: ["expandingAdjusters", "moreLess"]
     });
 
     gpii.panel.expandingAdjusters.showOrHideDependingOnState = function (state, showEvent, hideEvent, duration) {
         state ? showEvent(duration) : hideEvent(duration);
+    };
+    
+    gpii.panel.expandingAdjusters.requestChangeMoreLess = function (that) {
+        that.applier.requestChange("expandingAdjustersEnabledSwitch", !that.model.expandingAdjustersEnabledSwitch);
+        // we need the refreshView() here since these will not be inside a conditional panel
+        that.refreshView();
     };
 })(jQuery, fluid);

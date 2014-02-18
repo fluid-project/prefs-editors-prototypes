@@ -176,7 +176,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 showUserStatusBar: {
                     "this": "{that}.dom.userStatusBar",
                     "method": "slideDown"
-                }
+                } 
             },
             strings: {
                 "mainVisibilitySwitch": "gpii_primarySchema_speakText",

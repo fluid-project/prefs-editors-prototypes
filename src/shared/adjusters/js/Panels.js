@@ -112,12 +112,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
-            visualAlternativesMoreLess: ".gpiic-visualAlternativesMoreLess",
             visualAlternativesMoreLessLabel: ".gpiic-visualAlternativesMoreLess-label"
         },
         selectorsToIgnore: ["visualAlternativesMoreLessIcon"],
         protoTree: {
-            visualAlternativesMoreLess: "${visualAlternativesMoreLess}",
             expander: {
                 type: "fluid.renderer.condition",
                 condition: "${{that}.model.visualAlternativesMoreLess}",
@@ -130,6 +128,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         listeners: {
+            "onDomBind.bindEventToggleMoreLessSwitch": {
+                "this": "{that}.dom.visualAlternativesMoreLessLabel",
+                "method": "click",
+                "args": ["{that}.visualAlternativesMoreLessRequestChange"]
+            },
             "onDomBind.addListener": {
                 "listener": "{that}.applier.modelChanged.addListener",
                 "args": ["visualAlternativesMoreLess", "{that}.toggleVisualAlternativesMoreLess"]
@@ -144,13 +147,22 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                          "{that}.stringBundle.less"
                     ],
                 "dynamic": true
+            },
+            visualAlternativesMoreLessRequestChange: {
+                "funcName": "gpii.visualAlternativesMoreLessRequestChange",
+                "args": ["{that}"],
+                "dynamic": true
             }
         }
     });
 
     gpii.visualAlternativesMoreLessConfiguration = function (modelValue, label, more, less) {
         var newText = modelValue ? less : more;
-        label.text(newText);
+        label.attr("value", newText);
+    };
+
+    gpii.visualAlternativesMoreLessRequestChange = function (that) {
+        that.applier.requestChange("visualAlternativesMoreLess", !that.model.visualAlternativesMoreLess);
     };
 
     fluid.defaults("gpii.adjuster.voicePitch", {
