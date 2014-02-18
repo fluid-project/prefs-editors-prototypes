@@ -31,6 +31,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             valueCheckbox: "${value}"
         },
         listeners: {
+            /*
+             * TODO: This is a temporary workaround for retaining focus on ON/OFF switch when it is toggled.
+             * This listener (along with the called invoker and function) should not be needed when,
+             *      http://issues.fluidproject.org/browse/FLUID-5278
+             * is resolved.      
+             */
             "onDomBind.bindMagnifierOnOffFocusListener": {
                 "this": "{that}.dom.valueCheckbox",
                 "method": "change",
