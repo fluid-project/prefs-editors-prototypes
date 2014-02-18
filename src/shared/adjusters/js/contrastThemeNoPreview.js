@@ -29,7 +29,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         selectors: {
             colourTheme: ".gpiic-contrast-colourTheme"
         },
-        selectorsToIgnore: ["colourTheme"],
         listeners: {
             "onDomBind.setColourThemeText": {
                 "this": "{that}.dom.colourTheme",
@@ -39,10 +38,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "onDomBind.style": "{that}.style"
         },
         stringArrayIndex: {
-            theme: ["contrast-default","contrast-bw", "contrast-wb", "contrast-by", "contrast-yb"]
+            theme: ["contrast-bw", "contrast-wb", "contrast-by", "contrast-yb"]
         },
         controlValues: {
-            theme: ["default", "black-white", "white-black", "black-yellow", "yellow-black"]
+            theme: ["black-white", "white-black", "black-yellow", "yellow-black"]
         },
         markup: {
             label: "<span>%theme</span>"

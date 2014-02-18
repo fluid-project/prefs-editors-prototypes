@@ -221,24 +221,25 @@ input[type=checkbox], input[type=radio] {
     text-align: center;
     border: none;
     width: 200px !important;
-    font-size: 23px !important;
+    font-size: 1em !important;
 }
 
 .gpii-stepper-buttons {
-    width: 10% !important;
-    font-size: 1.5em !important;
+    background-color: rgba(0, 0, 0, 0);
     cursor: pointer;
+    display: inline-block !important;
+    float: left;
+    font-size: 3em !important;
+    height: 1.15em;
+    margin-top: -0.15em;
+    position: relative;
     text-align: center !important;
-    background-color: white;
-    margin-left: 2px !important;
-    margin-right: 2px !important;
+    width: 10% !important;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -o-user-select: none;
     user-select: none;
-    padding-top: 0.05em;
-    float: left;
 }
 
 .gpii-stepperMinus {
@@ -251,20 +252,32 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-stepper-valueField {
-    width: 66% !important;
-    border: none !important;
-    text-align: center !important;
-    font-size: 1.5em !important;
-    margin-top: 1px !important;
-    margin-bottom: 2px !important;
+	border: medium none !important;
+    display: inline-block !important;
     float: left;
+    font-size: 1.5em !important;
+    text-align: right;
+    vertical-align: bottom !important;
+    width: 40% !important;
+    padding-top: 0.3em;
+}
+
+.gpii-stepper-valueField-no-metric-unit {
+    width: 80% !important;
+    text-align: center;
 }
 
 .gpii-stepper-unit {
-    float: left;
-    width: 10% !important;
-    text-align: center !important;
+    display: inline-block !important;
+    float: left !important;
     font-size: 1.5em !important;
+    text-align: left;
+    width: 40%;
+    padding-top: 0.37em;
+}
+
+.gpii-stepper-unit:first-letter {
+	text-transform: none !important;
 }
 
 /*
@@ -280,12 +293,24 @@ input[type=checkbox], input[type=radio] {
 /*
     Style for more/less
 */
-.gpii-prefsEditor-moreLess{
+.gpii-prefsEditor-moreLess {
     display: block;
     text-align: center;
     cursor: pointer;
-    padding-bottom: 5px !important;
-    padding-top: 20px;
+    margin-bottom: 5px !important;
+    margin-top: 20px;
+    background-color: transparent;
+    border: 0;
+    margin: 0 auto;
+    font-size: 1.5em;
+}
+
+.gpii-prefsEditor-moreLess:focus {
+    outline: 2px solid black !important;
+}
+
+.gpii-prefsEditor-moreLessWrapper {
+    text-align: center;
 }
 
 /*
@@ -1151,7 +1176,7 @@ h4 {
     border-radius:50px;
     border: 1px solid #D7DCDD;
     width: 5em;
-    height: 2em;
+    height: 2.1em;
     background-color: #FFFFFF;
     box-shadow: 1em 1.1em 0 0 rgba(250,250,250,0.53) inset;
     overflow:hidden;
@@ -1185,7 +1210,7 @@ h4 {
 
 .fl-prefsEditor .fl-prefsEditor-onoff input:checked + label .fl-prefsEditor-switch {
     padding-left: 3em;
-    width: 2em;
+    width: 2.1em;
     background-color: rgb(23, 169, 184);
     box-shadow: -1em 1.1em 0.1em 0 rgba(172, 216, 92, 0.00) inset;
 }
@@ -1202,7 +1227,7 @@ h4 {
     border: 1px solid rgb(0, 55, 85);
     border-radius: 150px;
     float:left;
-    width:1.9em;
+    width:2.1em;
     height: 1.9em; /* Width and height of the knob. */
     text-indent:-2.07em;
     line-height:1.9em;
@@ -1224,10 +1249,11 @@ h4 {
 }
 
 .fl-prefsEditor .fl-prefsEditor-onoff input + label .fl-prefsEditor-switch:after {
-    float:left;
-    position:relative;
-    top: -0.56em;
-    left: 0.5em;
+    clear: both;
+    float: left !important;
+    left: 2.5em !important;
+    margin-top: -0.9em !important;
+    top: -0.7em !important;
 }
 
 .fl-prefsEditor .fl-prefsEditor-onoff .fl-prefsEditor-switch-inner {
@@ -1236,7 +1262,7 @@ h4 {
     width: 0.9em;
     height: 0.9em;
     position:relative;
-    left:-1.45em;
+    left:-1.6em;
     top:0.52em;
     background-color: #617796;
     box-shadow: 0 -0.2em 0.3em 0.05em rgba(250, 250, 250, 0.3) inset;
@@ -1447,11 +1473,11 @@ input[type="radio"] + label {
 
 .gpii-visualAlternativesMoreLess {
     margin-left: 85px;
-    padding-top: 10px;
 }
 
 .gpii-visualAlternativesMoreLess-label {
     cursor: pointer;
+    font-size: 1em !important;
 }
 
 input[type=checkbox] + label.gpii-checkbox-label {
