@@ -50,11 +50,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
     
     gpii.adjuster.magnifierEnabled.focusMagnifierOnOffFocusable = function (that) {
-        // this works
-        //that.container.find(".gpiic-onOffSwitch-focusable").focus();
-        
-        // this works too
-        that.dom.locate("magnifierOnOffFocusable").focus();
+        that.locate("magnifierOnOffFocusable").focus();
     };
 
 })(jQuery, fluid);
