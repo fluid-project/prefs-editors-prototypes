@@ -2,5 +2,7 @@
     "increaseSizeHeader": "vergrößern",
     "previewText": "So wird Text meistens aussehen.",
     "appearance": "Aussehen",
-    "magnifier": "Lupe"
+    "magnifier": "Lupe",
+    "additionalMagnifierAdjusters": "additional magnifier adjusters",
+    "additionalVisualAdjusters": "additional visual adjusters"
 }

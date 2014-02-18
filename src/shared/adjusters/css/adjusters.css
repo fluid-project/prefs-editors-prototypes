@@ -293,12 +293,24 @@ input[type=checkbox], input[type=radio] {
 /*
     Style for more/less
 */
-.gpii-prefsEditor-moreLess{
+.gpii-prefsEditor-moreLess {
     display: block;
     text-align: center;
     cursor: pointer;
-    padding-bottom: 5px !important;
-    padding-top: 20px;
+    margin-bottom: 5px !important;
+    margin-top: 20px;
+    background-color: transparent;
+    border: 0;
+    margin: 0 auto;
+    font-size: 1.5em;
+}
+
+.gpii-prefsEditor-moreLess:focus {
+    outline: 2px solid black !important;
+}
+
+.gpii-prefsEditor-moreLessWrapper {
+    text-align: center;
 }
 
 /*
@@ -1461,11 +1473,11 @@ input[type="radio"] + label {
 
 .gpii-visualAlternativesMoreLess {
     margin-left: 85px;
-    padding-top: 10px;
 }
 
 .gpii-visualAlternativesMoreLess-label {
     cursor: pointer;
+    font-size: 1em !important;
 }
 
 input[type=checkbox] + label.gpii-checkbox-label {
