@@ -33,7 +33,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         listeners: {
             /*
              * TODO: This is a temporary workaround for retaining focus on ON/OFF switch when it is toggled.
-             * This listener (along with the called invoker and function) should not be needed when,
+             * This listener (along with the called invoker) should not be needed when,
              *      http://issues.fluidproject.org/browse/FLUID-5278
              * is resolved.      
              */
@@ -41,22 +41,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "this": "{that}.dom.valueCheckbox",
                 "method": "change",
                 args: ["{that}.focusMagnifierOnOffFocusable"]
-
-                // This does NOT work, perhaps the dom object has lost reference to the element
-                /*"this": "{that}.dom.magnifierOnOffFocusable",
-                "method": "focus"*/
             }
         },
         invokers: {
             focusMagnifierOnOffFocusable: {
-                "funcName": "gpii.adjuster.magnifierEnabled.focusMagnifierOnOffFocusable",
-                "args": ["{that}"]
+                "this": "{that}.dom.magnifierOnOffFocusable",
+                "method": "trigger",
+                args: ["focus"]
             }
         }
     });
-    
-    gpii.adjuster.magnifierEnabled.focusMagnifierOnOffFocusable = function (that) {
-        that.locate("magnifierOnOffFocusable").focus();
-    };
 
 })(jQuery, fluid);
