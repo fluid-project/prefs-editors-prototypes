@@ -12,19 +12,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function (fluid) {
     fluid.defaults("gpii.adjuster.speakText", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        gradeNames: ["gpii.adjuster.onOffSwitch", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.speakText": {
                 "model.speakText": "default"
             }
         },
-        selectors: {
-            speakText: ".gpiic-speakText",
-            speakTextLabel: ".gpiic-speakText-label"
-        },
         protoTree: {
-            speakText: "${speakText}",
-            speakTextLabel: {messagekey: "speakTextLabel"}
+            valueCheckbox: "${speakText}",
+            headingLabel: {messagekey: "speakTextLabel"}
         }
     });
 
