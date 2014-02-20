@@ -343,7 +343,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         repeatingSelectors: ["punctuationVerbosityRow"],
         listeners: {
-            onDomBind: "{that}.style"
+            onDomBind: "{that}.style",
+            "onDomBind.makeOptionLabelsActivatable": {
+                "this": "fluid",
+                "method": "activatable",
+                "args": ["{that}.dom.punctuationVerbosityOptionLabel", "{that}.makeOptionLabelsActivatable"]
+            }
         },
         invokers: {
             style: {
@@ -353,6 +358,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.options.controlValues.punctuationVerbosity",
                     "{that}.options.classnameMap.punctuationVerbosity"
                 ]
+            },
+            makeOptionLabelsActivatable: {
+                funcName: "gpii.adjuster.punctuationVerbosity.makeOptionLabelsActivatable"
             }
         }
 
@@ -367,6 +375,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             $(label).addClass(classes[values[index]]);
             $(label).append('<span></span>');
         });
+    };
+
+    gpii.adjuster.punctuationVerbosity.makeOptionLabelsActivatable = function (event) {
+        // activating options labels triggers a click on them
+        event.target.click();
     };
 
     fluid.defaults("gpii.adjuster.announceCapitals", {
