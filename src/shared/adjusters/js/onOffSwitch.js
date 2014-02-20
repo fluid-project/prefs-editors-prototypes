@@ -32,11 +32,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         invokers: {
             triggerModelChangeOnActivate: {
-                "this": "{that}.dom.valueCheckbox",
-                "method": "trigger",
-                "args": ["click"]
+                "funcName": "gpii.adjuster.onOffSwitch.triggerModelChangeOnActivate",
+                "args": ["{that}", "{arguments}.0"]
             }
         }
     });
+    
+    gpii.adjuster.onOffSwitch.triggerModelChangeOnActivate = function (that, event) {
+        that.locate("valueCheckbox").click();
+        /*
+         * This is needed because most modern browsers have the functionality of scrolling further
+         * down when Space key is pressed. So, this is needed in order to suppress this functionality when the 
+         * on/off switch has focus.
+         */
+        event.preventDefault();
+    }
     
 })(jQuery, fluid);
