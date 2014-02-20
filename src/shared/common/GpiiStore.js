@@ -134,7 +134,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         /*
          * TODO: Do we still need this check now that we can query the system for the logged in user?
          * Will we query GPII every time a component needs to know about the currently logged user or 
-         * will we have GPIISession caching it and getting it from there?
+         * will we have GPIISession caching it and getting it from there? Relevant JIRA:
+         *      http://issues.gpii.net/browse/GPII-623
          */
         if (session.options.loggedUser != data.token) {
             // new user, trigger accountCreated event
