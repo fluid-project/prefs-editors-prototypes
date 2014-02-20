@@ -45,7 +45,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             listeners: {
                 // on Session login:
-                "{gpiiSession}.events.onLogin": "{that}.showSaveNotification",
+                "{gpiiSession}.events.accountCreated": {
+                    listener: "{that}.showSaveNotification"
+                },
                 // trigger login on notification confirmation
                 "onReady.bindNotificationConfirmButtonClickTriggerLogin": {
                     "this": "{that}.dom.confirmButton",
@@ -138,11 +140,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.notification",
                     "method": "hide"
                 },
-                // hide the logout link initially
-                "onReady.hideUserStatusBar": {
-                    "this": "{that}.dom.userStatusBar",
-                    "method": "hide",
-                    "args": [0]
+                // hide the logout link if a user is not logged in
+                "onReady.hideUserStatusBarIfNotLoggedIn": {
+                    "listener": "{that}.hideUserStatusBarIfNotLoggedIn"
                 },
                 "onReady.addHidingListener": {
                     "listener": "{that}.applier.modelChanged.addListener",
@@ -160,7 +160,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 showSaveNotification: {
                     "funcName": "gpii.pmt.showSaveNotification",
-                    "args": ["{that}", "{gpiiSession}.options.loggedUser"],
+                    "args": ["{that}", "{arguments}.0"],
                     dynamic: true
                 },
                 hideSaveNotification: {
@@ -176,7 +176,27 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 showUserStatusBar: {
                     "this": "{that}.dom.userStatusBar",
                     "method": "slideDown"
-                } 
+                },
+                hideUserStatusBarIfNotLoggedIn: {
+                    "funcName": "gpii.pmt.hideUserStatusBarIfNotLoggedIn",
+                    /*
+                     * TODO: Can we be sure that "{gpiiSession}.options.loggedUser" will actually have a value here?
+                     * This would mean that GPIISession's "onCreate.getLoggedUser" has finished executing.
+                     * Moreover, logged user acquisition from GPII is made in a synchronous call now. What if this call
+                     * becomes async at some point?
+                     * Ideally, we would need the onReady event of this component to be fired when the onCreate of GPIISession
+                     * has finished. I could hook to "{gpiiSession}.events.onGetLoggedUserError" as i do further up with
+                     * "{gpiiSession}.events.accountCreated", but it seems that if i register a listener there it is
+                     * not executed because the onGetLoggedUserError event is fired from within the onCreate of GPIISession.
+                     * Looks like things get complicated with when {gpiiSession} is available in the static environment,
+                     * along with the event being generated from within the onCreate in GPIISession.
+                     * In any case, tested this many times and, having all AJAX calls synchronous, looks like everything
+                     * works as expected. We might have to synchronize everything better though if we make the AJAX calls
+                     * asynchronous. The relevant JIRA for this is,
+                     *      http://issues.gpii.net/browse/GPII-613
+                     */
+                    "args": ["{gpiiSession}.options.loggedUser", "{that}.dom.userStatusBar"]
+                }
             },
             strings: {
                 "mainVisibilitySwitch": "gpii_primarySchema_speakText",
@@ -207,6 +227,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
+    gpii.pmt.hideUserStatusBarIfNotLoggedIn = function (loggedUser, statusBarElement) {
+        if (loggedUser == null) {
+            statusBarElement.hide(0);
+        }
+    };
+    
     gpii.foldExpandedViewWhenOff = function (applier, extraCurrentlyVisible, valueToBeChanged) {
         if (extraCurrentlyVisible) {
             applier.requestChange(valueToBeChanged, false);
