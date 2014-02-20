@@ -25,8 +25,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         selectorsToIgnore: ["onOffSwitch"],
         listeners: {
             "onDomBind.makeOnOffSwitchActivatable": {
-                "this": "fluid",
-                "method": "activatable",
+                "funcName": "fluid.activatable",
                 "args": ["{that}.dom.onOffSwitch", "{that}.triggerModelChangeOnActivate"]
             }
         },
