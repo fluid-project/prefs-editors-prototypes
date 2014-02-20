@@ -371,7 +371,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
 
     fluid.defaults("gpii.adjuster.announceCapitals", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabels", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.announceCapitals": {
                 "model.announceCapitals": "default"
@@ -381,6 +381,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             announceCapitals: ".gpiic-announceCapitals",
             announceCapitalsLabel: ".gpiic-announceCapitals-label"
         },
+        activatableLabelsSelector: ".gpiic-checkbox-label",
         protoTree: {
             announceCapitals: "${announceCapitals}",
             announceCapitalsLabel: {messagekey: "announceCapitalsLabel"}
