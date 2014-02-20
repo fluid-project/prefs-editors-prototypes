@@ -131,6 +131,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     fluid.registerNamespace("gpii.prefs.gpiiStore");
 
     gpii.prefs.gpiiStore.onSuccessfulSet = function (session, data) {
+        /*
+         * TODO: Do we still need this check now that we can query the system for the logged in user?
+         * Will we query GPII every time a component needs to know about the currently logged user or 
+         * will we have GPIISession caching it and getting it from there?
+         */
         if (session.options.loggedUser != data.token) {
             // new user, trigger accountCreated event
             session.events.accountCreated.fire(data.token);
