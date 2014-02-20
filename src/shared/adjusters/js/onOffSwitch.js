@@ -39,7 +39,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
     
     gpii.adjuster.onOffSwitch.triggerModelChangeOnActivate = function (that, event) {
+        /*
+         * Isn't this the most appropriate way of performing the model change compared to requestChange?
+         * The reason for this is that the actual model path will be known only to the sub-components
+         * of this one (e.g. the magnifierEnabled). So, we either do it this way or we force/anticipate
+         * that sub-component implementers will follow the forced "that.model.value" path...
+         */
         that.locate("valueCheckbox").click();
+        //that.applier.requestChange("value", !that.model.value)
+        
         /*
          * This is needed because most modern browsers have the functionality of scrolling further
          * down when Space key is pressed. So, this is needed in order to suppress this functionality when the 
