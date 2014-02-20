@@ -381,7 +381,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             announceCapitals: ".gpiic-announceCapitals",
             announceCapitalsLabel: ".gpiic-announceCapitals-label"
         },
-        activatableLabelsSelector: ".gpiic-checkbox-label",
+        activatableLabelsSelector: ".gpiic-announceCapitals-checkbox-label",
         protoTree: {
             announceCapitals: "${announceCapitals}",
             announceCapitalsLabel: {messagekey: "announceCapitalsLabel"}
@@ -389,7 +389,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("gpii.adjuster.speakTutorialMessages", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabels", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.speakTutorialMessages": {
                 "model.speakTutorialMessages": "default"
@@ -399,6 +399,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             speakTutorialMessages: ".gpiic-speakTutorialMessages",
             speakTutorialMessagesLabel: ".gpiic-speakTutorialMessages-label"
         },
+        activatableLabelsSelector: ".gpiic-speakTutorialMessages-checkbox-label",
         protoTree: {
             speakTutorialMessages: "${speakTutorialMessages}",
             speakTutorialMessagesLabel: {messagekey: "speakTutorialMessagesLabel"}
