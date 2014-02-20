@@ -16,7 +16,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
 
     fluid.defaults("gpii.adjuster.showCrosshairs", {
-        gradeNames: ["gpii.adjuster.iconCheck", "autoInit"],
+        gradeNames: ["gpii.adjuster.iconCheck", "gpii.adjuster.activatableLabels", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.showCrosshairs": {
                 "model.value": "default"
@@ -27,6 +27,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             preferenceSwitchShowCrosshairs: "#preferenceSwitchIconCheckAdjusterShowCrosshairs",
             showCrosshairsDescription: ".gpiic-iconCheckAdjusterDescription"
         },
+        activatableLabelsSelector: ".gpiic-showCrosshairs-iconCheckAdjusterArea",
         protoTree: {
             showCrosshairsTitle: {messagekey: "emphasizeLocation"},
             preferenceSwitchShowCrosshairs: "${value}",
