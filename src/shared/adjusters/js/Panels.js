@@ -407,7 +407,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("gpii.adjuster.keyEcho", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabels", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.keyEcho": {
                 "model.keyEcho": "default"
@@ -418,6 +418,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             keyEcho: ".gpiic-speakText-keyEcho",
             keyEchoLabel: ".gpiic-speakText-keyEcho-label"
         },
+        activatableLabelsSelector: ".gpiic-keyEcho-checkbox-label",
         protoTree: {
             readBackLabel: {messagekey: "readBackLabel"},
             keyEcho: "${keyEcho}",
@@ -426,7 +427,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("gpii.adjuster.wordEcho", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabels", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.wordEcho": {
                 "model.wordEcho": "default"
@@ -436,6 +437,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             wordEcho: ".gpiic-wordEcho",
             wordEchoLabel: ".gpiic-wordEcho-label"
         },
+        activatableLabelsSelector: ".gpiic-wordEcho-checkbox-label",
         protoTree: {
             wordEcho: "${wordEcho}",
             wordEchoLabel: {messagekey: "wordEchoLabel"}
