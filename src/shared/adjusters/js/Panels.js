@@ -311,7 +311,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("gpii.adjuster.punctuationVerbosity", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabels", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.punctuationVerbosity": {
                 "model.punctuationVerbosity": "default",
@@ -325,6 +325,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             punctuationVerbosityInput: ".gpiic-speakText-punctuationVerbosity",
             punctuationVerbosityLabel: ".gpiic-speakText-punctuationVerbosity-label"
         },
+        activatableLabelsSelector: "{that}.options.selectors.punctuationVerbosityOptionLabel",
         protoTree: {
             announceLabel: {messagekey: "announce"},
             expander: {
@@ -343,12 +344,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         repeatingSelectors: ["punctuationVerbosityRow"],
         listeners: {
-            onDomBind: "{that}.style",
-            "onDomBind.makeOptionLabelsActivatable": {
-                "this": "fluid",
-                "method": "activatable",
-                "args": ["{that}.dom.punctuationVerbosityOptionLabel", "{that}.makeOptionLabelsActivatable"]
-            }
+            onDomBind: "{that}.style"
         },
         invokers: {
             style: {
@@ -358,9 +354,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.options.controlValues.punctuationVerbosity",
                     "{that}.options.classnameMap.punctuationVerbosity"
                 ]
-            },
-            makeOptionLabelsActivatable: {
-                funcName: "gpii.adjuster.punctuationVerbosity.makeOptionLabelsActivatable"
             }
         }
 
@@ -375,11 +368,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             $(label).addClass(classes[values[index]]);
             $(label).append('<span></span>');
         });
-    };
-
-    gpii.adjuster.punctuationVerbosity.makeOptionLabelsActivatable = function (event) {
-        // activating options labels triggers a click on them
-        event.target.click();
     };
 
     fluid.defaults("gpii.adjuster.announceCapitals", {
