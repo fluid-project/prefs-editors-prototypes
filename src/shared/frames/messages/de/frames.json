@@ -1,7 +1,8 @@
 {
 	"myPreferencesLabelText": "meine bevorzugten Einstellungen",
 	"allPreferencesLabelText": "alle bevorzugten Einstellungen",
-	"saveAndApplyText": "speichern und anwenden",
+	"saveText": "speichern",
+	"applyText": "anwenden",
 	"preferencesSavedToUSB": "bevorzugte Einstellungen auf USB gespeichert",
 	"preferencesModified": "bevorzugte Einstellungen änderte",
 	"notificationMessagePart1": "Das folgende Token speichern, um bevorzugte Einstellungen auf anderen Geräten anzuwenden:",
@@ -9,6 +10,7 @@
 	"notificationMessagePart3": "auf USB oder RFID-Lesegerät.",
 	"notificationTitle": "Bevorzugte Einstellungen wurden in der Cloud gespeichert und auf diesem Gerät angewendet.",
 	"notificationConfirmButton": "verstanden",
+	"fullEditorText": "voll editor",
 	"logoutText": "ausloggen",
     "more": "+ mehr",
     "less": "- weniger"
