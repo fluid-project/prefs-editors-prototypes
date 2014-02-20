@@ -23,11 +23,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "this": "fluid",
                 "method": "activatable",
                 "args": ["{that}.options.activatableLabelsSelector", "{that}.makeLabelsActivatable"]
-            },
-            "onDomBind.console": {
-                "this": "console",
-                "method": "log",
-                "args": ["{that}.options.activatableLabelsSelector"]
             }
         },
         invokers: {
@@ -41,6 +36,5 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         // activating labels triggers a click on them
         event.target.click();
     };
-
 
 })(jQuery, fluid);
