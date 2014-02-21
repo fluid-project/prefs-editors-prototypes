@@ -20,7 +20,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             events: {
                 onLogin: null,
-                onLogout: null
+                onLogout: null,
+                onRequestPageTransition: null,
+                onPageTransition: {
+                    events: {
+                        onSetSuccess: "onSetSuccess",
+                        onRequestPageTransition: "onRequestPageTransition"
+                    },
+                    args: ["{that}"]
+                }
             },
             model: {
                 userLoggedIn: false
@@ -44,15 +52,22 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "click",
                     "args": ["{that}.applySettings"]
                 },
-                "onReady.fullEditorSaveToPrefsServer": {
+                "onReady.fullEditorLink": {
                     "this": "{that}.dom.fullEditorLink",
                     "method": "click",
-                    "args": ["{gpiiStore}.set"]
+                    "args": ["{that}.events.onRequestPageTransition.fire"]
                 },
-                "onReady.goToPMT": {
-                    "this": "{that}.dom.fullEditorLink",
-                    "method": "attr",
-                    "args": ["href", "{prefsEditorLoader}.options.pmtUrl"]
+                "onRequestPageTransition.save": {
+                    listener: "{that}.saveSettings",
+                    args: ["{that}.model"]
+                },
+                /*
+                 * The URL is programmatically changed to prevent the page transitioning before
+                 * the asynchronous save procedure has completed.
+                 */
+                "onPageTransition.goToPMT": {
+                    "funcName": "fluid.set",
+                    "args": [window, "location.href", "{prefsEditorLoader}.options.pmtUrl"]
                 },
                 "onReady.setInitialModel": {
                     listener: "gpii.prefsEditor.setInitialModel",
@@ -106,7 +121,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 showUserStatusBar: {
                     "this": "{that}.dom.userStatusBar",
                     "method": "slideDown"
-                }
+                },
+                saveSettings: "{gpiiStore}.set"
             },
             selectors: {
                 saveAndApply: ".flc-prefsEditor-save",

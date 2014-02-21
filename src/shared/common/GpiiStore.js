@@ -133,7 +133,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     gpii.prefs.gpiiStore.onSuccessfulSet = function (session, data) {
         /*
          * TODO: Do we still need this check now that we can query the system for the logged in user?
-         * Will we query GPII every time a component needs to know about the currently logged user or 
+         * Will we query GPII every time a component needs to know about the currently logged user or
          * will we have GPIISession caching it and getting it from there? Relevant JIRA:
          *      http://issues.gpii.net/browse/GPII-623
          */
@@ -153,7 +153,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }
         fluid.log("POST: Saved to GPII server");
     };
-    
+
     /**
      * gpiiStore Subcomponent that uses GPII server for persistence.
      * It sends request to the GPII server to save and retrieve model information
@@ -167,6 +167,12 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 type: "gpii.prefs.gpiiSession"
             }
         },
+        events: {
+            onSetSuccess: null
+        },
+        listeners: {
+            "onSetSuccess.loginUser": "gpii.prefs.gpiiStore.onSuccessfulSet"
+        },
         gpiiEntry: "http://registry.gpii.org/applications/gpii.prefs",
         invokers: {
             get: {
@@ -176,7 +182,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             },
             set: {
                 funcName: "gpii.prefs.gpiiStore.set",
-                args: ["{arguments}.0", "{that}.options", "{gpiiSession}", "{that}.modelTransform", gpii.prefs.gpiiStore.onSuccessfulSet],
+                args: ["{arguments}.0", "{that}.options", "{gpiiSession}", "{that}.modelTransform", "{that}.events.onSetSuccess.fire"],
                 dynamic: true
             },
             modelTransform: {
@@ -233,7 +239,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             }
         });
     };
-    
+
     fluid.defaults("gpii.prefs.gpiiSettingsStore", {
         gradeNames: ["fluid.globalSettingsStore", "autoInit"],
         settingsStoreType: "gpii.prefs.gpiiStore",
