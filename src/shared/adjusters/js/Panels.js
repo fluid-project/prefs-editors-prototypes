@@ -311,7 +311,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("gpii.adjuster.punctuationVerbosity", {
-        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabelsPropagateKeyEventToLabelFor", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.punctuationVerbosity": {
                 "model.punctuationVerbosity": "default",
@@ -323,8 +323,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             punctuationVerbosityRow: ".gpiic-speakText-punctuationVerbosity-row",
             punctuationVerbosityOptionLabel: ".gpiic-speakText-punctuationVerbosity-option-label",
             punctuationVerbosityInput: ".gpiic-speakText-punctuationVerbosity",
-            punctuationVerbosityLabel: ".gpiic-speakText-punctuationVerbosity-label"
+            punctuationVerbosityLabel: ".gpiic-speakText-punctuationVerbosity-label",
+            punctuationVerbosityContainer: ".gpii-punctuationVerbosity-container"
         },
+        selectorsToIgnore: ["punctuationVerbosityContainer"],
         activatableLabelsSelector: "{that}.options.selectors.punctuationVerbosityOptionLabel",
         protoTree: {
             announceLabel: {messagekey: "announce"},
@@ -352,14 +354,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 args: [
                     "{that}.options.selectors.punctuationVerbosityOptionLabel",
                     "{that}.options.controlValues.punctuationVerbosity",
-                    "{that}.options.classnameMap.punctuationVerbosity"
+                    "{that}.options.classnameMap.punctuationVerbosity",
+                    "{that}.dom.punctuationVerbosityContainer"
                 ]
             }
         }
 
     });
 
-    gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle = function (labelsClass, values, classes) {
+    gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle = function (labelsClass, values, classes, punctuationVerbosityContainer) {
         labels = $(labelsClass); // Used because "{that}.dom.punctuationVerbosityOptionLabel"
                                  // (like that.locate("punctuationVerbosityOptionLabel")) fails to return
                                  // the array of labels.
@@ -367,6 +370,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         fluid.each(labels, function (label, index) {
             $(label).addClass(classes[values[index]]);
             $(label).append('<span></span>');
+            
+            // get the label's associated input
+            var inputCssCompliantSelector = "#" + $(label).attr("for").replace(/\:/g, '\\:');
+            var theInput = $(inputCssCompliantSelector);
+            // outline container according to focus
+            theInput.focusin(function () {
+                punctuationVerbosityContainer.css("outline", "2px solid black");
+            });
+            theInput.focusout(function () {
+                punctuationVerbosityContainer.css("outline", "none");
+            });
         });
     };
 

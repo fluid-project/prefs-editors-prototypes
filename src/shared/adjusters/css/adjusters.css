@@ -151,6 +151,17 @@ input[type=checkbox], input[type=radio] {
     border:0;
 }
 
+.gpii-prefsEditor-focusableRadio {
+	position: absolute;
+    display: inherit !important;
+    clip: rect(0 0 0 0);
+    height:1px;
+    width:1px;
+    margin:-1px;
+    padding:0;
+    border:0; 
+}
+
 /*
     The adjusters' font icons
 */
