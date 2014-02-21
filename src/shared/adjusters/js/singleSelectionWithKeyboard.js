@@ -21,7 +21,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "onDomBind.setFocusHandlers": "{that}.setFocusHandlers"
         },
         invokers: {
-            /* To be provided by implementors in order to pass correct args
+            /* To be provided by implementors in order to pass correct args e.g.
             setFocusHandlers: {
                 funcName: "gpii.adjuster.singleSelectionWithKeyboard.setFocusHandlers",
                 args: [
@@ -33,7 +33,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
     
-    gpii.adjuster.singleSelectionWithKeyboard.setFocusHandlers = function (labelsClass, punctuationVerbosityContainer) {
+    gpii.adjuster.singleSelectionWithKeyboard.setFocusHandlers = function (labelsClass, container) {
         labels = $(labelsClass); 
 
         fluid.each(labels, function (label, index) {
@@ -42,10 +42,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             var theInput = $(inputCssCompliantSelector);
             // outline container according to focus
             theInput.focusin(function () {
-                punctuationVerbosityContainer.css("outline", "2px solid black");
+                container.css("outline", "2px solid black");
             });
             theInput.focusout(function () {
-                punctuationVerbosityContainer.css("outline", "none");
+                container.css("outline", "none");
             });
         });
     };
