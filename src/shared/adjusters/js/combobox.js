@@ -33,15 +33,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 labelId = null;
 
             // Get the label id to associate with the combobox
-            var labelDomElement = this.options.labelDomElement;
-            if (labelDomElement) {
-                labelId = labelDomElement.attr("id");
-                // Add a dom id if labelDomElement doesn't have one
-                if (!labelId) {
-                    labelId = fluid.allocateGuid();
-                    labelDomElement.attr("id", labelId);
-                }
-            }
+            var labelId = gpii.utility.getLabelId(this.options.labelDomElement);
 
             this.input = $("<input>")
                 .appendTo(this.wrapper)
