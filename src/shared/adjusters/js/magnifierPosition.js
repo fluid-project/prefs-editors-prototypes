@@ -20,7 +20,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabels", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.magnificationPosition": {
-                "model.magnifierPosition": "",
+                "model.magnifierPosition": "default",
                 "controlValues.magnifierPosition": "enum"
             }
         },

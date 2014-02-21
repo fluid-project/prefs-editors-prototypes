@@ -42,7 +42,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "gpii.primarySchema.magnificationPosition": {
             "type": "string",
-            "default": "",
+            "default": "TopHalf",
             "enum": ["Lens", "LeftHalf", "TopHalf", "FullScreen", "RightHalf", "BottomHalf"]
         },
         "gpii.primarySchema.tracking": {
