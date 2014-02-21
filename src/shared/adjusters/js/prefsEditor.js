@@ -44,6 +44,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "click",
                     "args": ["{that}.applySettings"]
                 },
+                "onReady.fullEditorSaveToPrefsServer": {
+                    "this": "{that}.dom.fullEditorLink",
+                    "method": "click",
+                    "args": ["{gpiiStore}.set"]
+                },
+                "onReady.goToPMT": {
+                    "this": "{that}.dom.fullEditorLink",
+                    "method": "attr",
+                    "args": ["href", "{prefsEditorLoader}.options.pmtUrl"]
+                },
                 "onReady.setInitialModel": {
                     listener: "gpii.prefsEditor.setInitialModel",
                     args: ["{that}"]
@@ -91,8 +101,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             invokers: {
                 applySettings: {
                     "funcName": "gpii.applySettings",
-                    "args": "{that}",
-                    "dynamic": true
+                    "args": "{that}"
                 },
                 showUserStatusBar: {
                     "this": "{that}.dom.userStatusBar",
@@ -136,6 +145,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 });
             });
         }
+    };
+
+    gpii.prefsEditor.triggerEvent = function (that, targetSelector, event) {
+        that.locate(targetSelector).trigger(event);
     };
 
 })(jQuery, fluid);
