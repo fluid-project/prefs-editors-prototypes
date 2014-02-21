@@ -311,7 +311,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("gpii.adjuster.punctuationVerbosity", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.singleSelectionWithKeyboard", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.punctuationVerbosity": {
                 "model.punctuationVerbosity": "default",
@@ -357,6 +357,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.options.classnameMap.punctuationVerbosity",
                     "{that}.dom.punctuationVerbosityContainer"
                 ]
+            },
+            setFocusHandlers: {
+                funcName: "gpii.adjuster.singleSelectionWithKeyboard.setFocusHandlers",
+                args: [
+                    "{that}.options.selectors.punctuationVerbosityOptionLabel",
+                    "{that}.dom.punctuationVerbosityContainer"
+                ]
             }
         }
 
@@ -370,17 +377,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         fluid.each(labels, function (label, index) {
             $(label).addClass(classes[values[index]]);
             $(label).append('<span></span>');
-            
-            // get the label's associated input
-            var inputCssCompliantSelector = "#" + $(label).attr("for").replace(/\:/g, '\\:');
-            var theInput = $(inputCssCompliantSelector);
-            // outline container according to focus
-            theInput.focusin(function () {
-                punctuationVerbosityContainer.css("outline", "2px solid black");
-            });
-            theInput.focusout(function () {
-                punctuationVerbosityContainer.css("outline", "none");
-            });
         });
     };
 
