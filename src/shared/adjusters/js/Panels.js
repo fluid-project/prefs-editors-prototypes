@@ -311,7 +311,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("gpii.adjuster.punctuationVerbosity", {
-        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabelsClickOnActivate", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabelsPropagateKeyEventToLabelFor", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.punctuationVerbosity": {
                 "model.punctuationVerbosity": "default",
