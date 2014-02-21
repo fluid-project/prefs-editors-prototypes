@@ -160,7 +160,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * @param {Object} options
      */
     fluid.defaults("gpii.prefs.gpiiStore", {
-        gradeNames: ["fluid.prefs.dataSource", "autoInit"],
+        gradeNames: ["fluid.prefs.dataSource", "fluid.eventedComponent", "autoInit"],
         // instantiate the gpiiSession component
         components: {
             gpiiSession: {
