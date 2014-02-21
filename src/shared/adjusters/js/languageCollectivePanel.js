@@ -40,10 +40,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         // jQuery 1.9.1 before passing to combobox()
 
         var dropdown = that.locate(common_in_primary + "_" + adjuster + "_" + adjuster);
+        var dropdownLable = that.locate(common_in_primary + "_" + adjuster + "_" + adjuster + "Label");
         var unwrappedDropdown = fluid.unwrap(dropdown);
         var dropdownReadyForCombobox = $(unwrappedDropdown);
 
-        dropdownReadyForCombobox.combobox().change(function (event, newValue) {
+        dropdownReadyForCombobox.combobox({
+            labelDomElement: dropdownLable
+        }).change(function (event, newValue) {
             that.applier.requestChange(common_in_primary + "_" + adjuster, newValue);
         });
     };

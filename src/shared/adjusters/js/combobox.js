@@ -12,24 +12,42 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($) {
     $.widget("custom.combobox", {
-        _create: function () {
+        options: {
+            labelDomElement: null
+        },
+
+        _create: function (labelDomElement) {
             this.wrapper = $("<span>")
                 .addClass("custom-combobox")
                 .insertAfter(this.element);
 
             this.element.hide();
-            this._createAutocomplete();
+            this._createAutocomplete(labelDomElement);
             this._createShowAllButton();
         },
 
         _createAutocomplete: function () {
             var selected = this.element.children(":selected"),
-                value = selected.val() ? selected.text() : "";
+                value = selected.val() ? selected.text() : "",
+                labelId = null;
+
+            // Get the label id to associate with the combobox
+            var labelDomElement = this.options.labelDomElement;
+            if (labelDomElement) {
+                labelId = labelDomElement.attr("id");
+                // Add a dom id if labelDomElement doesn't have one
+                if (!labelId) {
+                    labelId = fluid.allocateGuid();
+                    labelDomElement.attr("id", labelId);
+                }
+            }
 
             this.input = $("<input>")
                 .appendTo(this.wrapper)
                 .val(value)
                 .attr("title", "")
+                .attr("role", "combobox")
+                .attr("aria-labelledby", labelId)
                 .addClass("custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left")
                 .autocomplete({
                     delay: 0,

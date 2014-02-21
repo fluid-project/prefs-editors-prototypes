@@ -104,7 +104,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         var dropdown = that.locate("auditoryOutLanguage");
         var unwrappedDropdown = fluid.unwrap(dropdown);
         var dropdownReadyForCombobox = $(unwrappedDropdown);
-        dropdownReadyForCombobox.combobox().change(function (event, newValue) {
+        dropdownReadyForCombobox.combobox({
+            labelDomElement: that.locate("auditoryOutLanguageLabel")
+        }).change(function (event, newValue) {
             that.applier.requestChange("auditoryOutLanguage", newValue);
         });
     };
