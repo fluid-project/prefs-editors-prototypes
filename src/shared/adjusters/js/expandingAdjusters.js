@@ -27,13 +27,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         listeners: {
             "onShowMoreLess.show": {
                 "this": "{that}.dom.moreLess",
-                "method": "slideDown",
-                "args": ["{arguments}.0"]
+                "method": "slideDown"
             },
             "onHideMoreLess.hide": {
                 "this": "{that}.dom.moreLess",
-                "method": "slideUp",
-                "args": ["{arguments}.0"]
+                "method": "slideUp"
             },
             "afterRender.bindEventRequestChangeMoreLess": {
                 "this": "{that}.dom.moreLess",
@@ -42,13 +40,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             "onShowExpandingAdjusters.show": {
                 "this": "{that}.dom.expandingAdjusters",
-                "method": "slideDown",
-                "args": ["{arguments}.0"]
+                "method": "slideDown"
             },
             "onHideExpandingAdjusters.hide": {
                 "this": "{that}.dom.expandingAdjusters",
-                "method": "slideUp",
-                "args": ["{arguments}.0"]
+                "method": "slideUp"
             },
             "onShowExpandingAdjusters.setLessText": {
                 "this": "{that}.dom.moreLess",
