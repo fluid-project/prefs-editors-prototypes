@@ -16,7 +16,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
 
     fluid.defaults("gpii.adjuster.showCrosshairs", {
-        gradeNames: ["gpii.adjuster.iconCheck", "gpii.adjuster.activatableLabels", "autoInit"],
+        gradeNames: ["gpii.adjuster.iconCheck", "gpii.adjuster.activatableLabelsClickOnActivate", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.showCrosshairs": {
                 "model.value": "default"

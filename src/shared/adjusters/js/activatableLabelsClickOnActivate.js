@@ -15,7 +15,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
 
-    fluid.defaults("gpii.adjuster.activatableLabels", {
+    fluid.defaults("gpii.adjuster.activatableLabelsClickOnActivate", {
         gradeNames: ["fluid.littleComponent", "autoInit"],
         activatableLabelsSelector: "",   // to be provided by implementors
         listeners: {
@@ -26,12 +26,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         invokers: {
             clickLabelsOnActivate: {
-                funcName: "gpii.adjuster.activatableLabels.clickLabelsOnActivate"
+                funcName: "gpii.adjuster.activatableLabelsClickOnActivate.clickLabelsOnActivate"
             }
         }
     });
     
-    gpii.adjuster.activatableLabels.clickLabelsOnActivate = function (event) {
+    gpii.adjuster.activatableLabelsClickOnActivate.clickLabelsOnActivate = function (event) {
         // activating labels triggers a click on them
         event.target.click();
     };

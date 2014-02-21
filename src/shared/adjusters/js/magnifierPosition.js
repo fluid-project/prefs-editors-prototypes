@@ -17,7 +17,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
 
     fluid.defaults("gpii.adjuster.magnifierPosition", {
-        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabels", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabelsClickOnActivate", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.magnificationPosition": {
                 "model.magnifierPosition": "default",

@@ -311,7 +311,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("gpii.adjuster.punctuationVerbosity", {
-        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabels", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabelsClickOnActivate", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.punctuationVerbosity": {
                 "model.punctuationVerbosity": "default",
@@ -371,7 +371,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
 
     fluid.defaults("gpii.adjuster.announceCapitals", {
-        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabels", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabelsClickOnActivate", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.announceCapitals": {
                 "model.announceCapitals": "default"
@@ -389,7 +389,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("gpii.adjuster.speakTutorialMessages", {
-        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabels", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabelsClickOnActivate", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.speakTutorialMessages": {
                 "model.speakTutorialMessages": "default"
@@ -407,7 +407,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("gpii.adjuster.keyEcho", {
-        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabels", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabelsClickOnActivate", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.keyEcho": {
                 "model.keyEcho": "default"
@@ -427,7 +427,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("gpii.adjuster.wordEcho", {
-        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabels", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabelsClickOnActivate", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.wordEcho": {
                 "model.wordEcho": "default"

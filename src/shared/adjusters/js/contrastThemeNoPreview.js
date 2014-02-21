@@ -16,7 +16,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
     
     fluid.defaults("gpii.adjuster.contrastThemeNoPreview", {
-        gradeNames: ["fluid.prefs.panel.contrast", "gpii.adjuster.activatableLabels", "autoInit"],
+        gradeNames: ["fluid.prefs.panel.contrast", "gpii.adjuster.activatableLabelsClickOnActivate", "autoInit"],
         mergePolicy: {
             "controlValues.theme": gpii.prefs.merging.arrayOverridePolicy,
             "stringArrayIndex.theme": gpii.prefs.merging.arrayOverridePolicy
