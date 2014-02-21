@@ -19,6 +19,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         _create: function (labelDomElement) {
             this.wrapper = $("<span>")
                 .addClass("custom-combobox")
+                .attr("role", "application")
                 .insertAfter(this.element);
 
             this.element.hide();
