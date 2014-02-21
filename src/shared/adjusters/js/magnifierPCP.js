@@ -51,7 +51,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     strings: {
                         "unit": "{magnifierPCP}.stringBundle.magnifierUnit"
                     },
-                    range: "{magnifierPCP}.options.magnification.range"
+                    range: "{magnifierPCP}.options.magnification.range",
+                    labelledbyDomElement: "{magnifierPCP}.dom.magnificationLevel"
                 }
             }
         },

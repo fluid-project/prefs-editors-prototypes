@@ -60,7 +60,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     model: {
                         value: "{speechRate}.model.value"
                     },
-                    range: "{speechRate}.options.controlValues.speechRate"
+                    range: "{speechRate}.options.controlValues.speechRate",
+                    labelledbyDomElement: "{speechRate}.dom.speechRateLabel"
                 }
             }
         },

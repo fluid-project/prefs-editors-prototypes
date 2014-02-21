@@ -16,6 +16,7 @@ var fluid_1_5 = fluid_1_5 || {};
     fluid.defaults("gpii.textfieldStepper", {
         gradeNames: ["fluid.rendererComponent", "autoInit"],
         renderOnInit: true,
+        labelledbyDomElement: null,   // Must be provided by integrators, used to add "aria-labelledby" for the stepper input field
         strings: {
             increment: "+",
             decrement: "-",
@@ -32,6 +33,7 @@ var fluid_1_5 = fluid_1_5 || {};
                 listener: "{that}.applier.guards.addListener",
                 args: ["value", "{that}.guard"]
             },
+            "onCreate.addAria": "{that}.addAria",
             "afterRender.incClick": {
                 "this": "{that}.dom.increment",
                 "method": "click",
@@ -68,6 +70,15 @@ var fluid_1_5 = fluid_1_5 || {};
             guard: {
                 funcName: "gpii.textfieldStepper.guard",
                 args: ["{arguments}.0", "{arguments}.1", "{that}.options.range"]
+            },
+            addAria: {
+                funcName: "gpii.textfieldStepper.addAria",
+                args: ["{that}"]
+            },
+            alterValueAria: {
+                funcName: "gpii.textfieldStepper.alterValueAria",
+                args: ["{that}.dom.valueField", "{that}.model.value", "{that}.options.strings.unit"],
+                dynamic: true
             }
         },
         protoTree: {
@@ -84,6 +95,7 @@ var fluid_1_5 = fluid_1_5 || {};
         var newValue = currentValue + multiplier * step;
 
         that.applier.requestChange("value", newValue);
+        that.alterValueAria();
     };
 
     gpii.textfieldStepper.guard = function (model, changeRequest, range) {
@@ -92,6 +104,34 @@ var fluid_1_5 = fluid_1_5 || {};
             return false;
         }
         changeRequest.value = Math.min(range.max, Math.max(range.min, newVal));
+    };
+
+    gpii.textfieldStepper.alterValueAria = function (valueField, currentValue, unit) {
+        valueField.attr("aria-valuenow", currentValue + unit);
+    };
+
+    gpii.textfieldStepper.addAria = function (that, range, labelledbyDomElement) {
+        var valueField = that.locate("valueField");
+        var range = that.options.range;
+        var unit = that.options.strings.unit;
+        var labelledbyDomElement = that.options.labelledbyDomElement;
+
+        valueField.attr("role", "spinbutton")
+        valueField.attr("aria-valuemin", range.min + unit);
+        valueField.attr("aria-valuemax", range.max + unit);
+        if (labelledbyDomElement) {
+            var id = labelledbyDomElement.attr("id");
+            // Add a dom id if labelledbyDomElement doesn't have one
+            if (!id) {
+                id = fluid.allocateGuid();
+                labelledbyDomElement.attr("id", id);
+            }
+            valueField.attr("aria-labelledby", id);
+        }
+        that.alterValueAria();
+
+        that.locate("increment").attr("role", "button");
+        that.locate("decrement").attr("role", "button");
     };
 
  })(jQuery, fluid_1_5);

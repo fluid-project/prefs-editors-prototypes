@@ -55,7 +55,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     model: {
                         value: "{wordsSpokenPerMinute}.model.value"
                     },
-                    range: "{wordsSpokenPerMinute}.options.controlValues.wordsSpokenPerMinute"
+                    range: "{wordsSpokenPerMinute}.options.controlValues.wordsSpokenPerMinute",
+                    labelledbyDomElement: "{wordsSpokenPerMinute}.dom.wordsSpokenPerMinuteLabel"
                 }
             }
         },
@@ -92,7 +93,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     model: {
                         value: "{volume}.model.value"
                     },
-                    range: "{volume}.options.controlValues.volume"
+                    range: "{volume}.options.controlValues.volume",
+                    labelledbyDomElement: "{volume}.dom.volumeLabel"
                 }
             }
         },
@@ -192,7 +194,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     model: {
                         value: "{voicePitch}.model.value"
                     },
-                    range: "{voicePitch}.options.controlValues.voicePitch"
+                    range: "{voicePitch}.options.controlValues.voicePitch",
+                    labelledbyDomElement: "{voicePitch}.dom.voicePitchLabel"
                 }
             }
         },
@@ -229,7 +232,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     model: {
                         value: "{universalVolume}.model.value"
                     },
-                    range: "{universalVolume}.options.controlValues.universalVolume"
+                    range: "{universalVolume}.options.controlValues.universalVolume",
+                    labelledbyDomElement: "{universalVolume}.dom.universalVolumeLabel"
                 }
             }
         },
