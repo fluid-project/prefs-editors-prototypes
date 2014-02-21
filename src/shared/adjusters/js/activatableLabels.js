@@ -20,19 +20,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         activatableLabelsSelector: "",   // to be provided by implementors
         listeners: {
             "onDomBind.makeLabelsActivatable": {
-                "this": "fluid",
-                "method": "activatable",
-                "args": ["{that}.options.activatableLabelsSelector", "{that}.makeLabelsActivatable"]
+                "funcName": "fluid.activatable",
+                "args": ["{that}.options.activatableLabelsSelector", "{that}.clickLabelsOnActivate"]
             }
         },
         invokers: {
-            makeLabelsActivatable: {
-                funcName: "gpii.adjuster.activatableLabels.makeLabelsActivatable"
+            clickLabelsOnActivate: {
+                funcName: "gpii.adjuster.activatableLabels.clickLabelsOnActivate"
             }
         }
     });
     
-    gpii.adjuster.activatableLabels.makeLabelsActivatable = function (event) {
+    gpii.adjuster.activatableLabels.clickLabelsOnActivate = function (event) {
         // activating labels triggers a click on them
         event.target.click();
     };
