@@ -21,8 +21,8 @@ var demo = demo || {};
     $(document).ready(function () {
         fluid.prefs.create("#gpiic-pcp", {
             build: {
-                primarySchema: gpii.primarySchema,
-                auxiliarySchema: gpii.pcp.auxiliarySchema
+                gradeNames: ["gpii.pcp.progressiveEnhancement", "gpii.pcp.auxiliarySchema.common"],
+                primarySchema: gpii.primarySchema
             },
             prefsEditor: {
                 prefsEditorType: "gpii.prefsEditor",
