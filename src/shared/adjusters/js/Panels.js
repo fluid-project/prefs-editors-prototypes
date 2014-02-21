@@ -327,7 +327,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             punctuationVerbosityContainer: ".gpii-punctuationVerbosity-container"
         },
         selectorsToIgnore: ["punctuationVerbosityContainer"],
-        activatableLabelsSelector: "{that}.options.selectors.punctuationVerbosityOptionLabel",
         protoTree: {
             announceLabel: {messagekey: "announce"},
             expander: {
