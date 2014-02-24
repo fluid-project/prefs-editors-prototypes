@@ -41,10 +41,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             var theInput = $(inputCssCompliantSelector);
             // outline container according to focus
             theInput.focusin(function () {
-                $(label).css("outline", "2px solid black");
+                $(label).addClass("gpii-focus");
             });
             theInput.focusout(function () {
-                $(label).css("outline", "none");
+                $(label).removeClass("gpii-focus");
             });
         });
     };

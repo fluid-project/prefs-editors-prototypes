@@ -1634,3 +1634,7 @@ input[type=checkbox]:checked + label.gpii-checkbox-label:before {
     overflow-x: hidden; /* prevent horizontal scrollbar */
     padding-right: 15px; /* add padding to account for vertical scrollbar */
 }
+
+.gpii-focus {
+	outline: 2px solid black !important;
+}
