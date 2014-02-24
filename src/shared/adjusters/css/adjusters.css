@@ -622,9 +622,11 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar {
     font-size: 12px;
     z-index: 10;
     right: inherit !important;
+    display: none;
 }
 [title]:hover:after{
-    left:0px;
+    display: inherit;
+	left:0px;
     opacity:1;
 }
 
