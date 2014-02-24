@@ -23,13 +23,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
      */
     fluid.defaults("gpii.prefs.gpiiSession", {
         gradeNames: ["fluid.eventedComponent", "autoInit"],
-        url: "http://localhost:8081/user/",
+        url: "http://localhost:8081/",
         // Maybe we should be informed for currently logged user from GPII?
         // This is relevant, http://issues.gpii.net/browse/GPII-290
         loggedUser: null,
         events: {
             onLogin: null,
-            onLogout: null
+            onLogout: null,
+            accountCreated: null,
+            onGetLoggedUserSuccess: null,
+            onGetLoggedUserError: null
         },
         invokers: {
             login: {
@@ -39,6 +42,32 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             logout: {
                 "funcName": "gpii.prefs.gpiiSession.logout",
                 "args": ["{that}"]
+            },
+            getLoggedUser: {
+                "funcName": "gpii.prefs.gpiiSession.getLoggedUser",
+                "args": ["{that}", "{that}.events.onGetLoggedUserSuccess", "{that}.events.onGetLoggedUserError"]
+            },
+            setLoggedUser: {
+                "funcName": "gpii.prefs.gpiiSession.setLoggedUser",
+                "args": ["{that}", "{arguments}.0"]
+            },
+            clearLoggedUser: {
+                "funcName": "gpii.prefs.gpiiSession.clearLoggedUser",
+                "args": ["{that}"]
+            }
+        },
+        listeners: {
+            "onCreate.getLoggedUser": {
+                "listener": "{that}.getLoggedUser"
+            },
+            "onGetLoggedUserSuccess.setLoggedUser": {
+                "listener": "{that}.setLoggedUser"
+            },
+            "onGetLoggedUserError.clearLoggedUser": {
+                "listener": "{that}.clearLoggedUser"
+            },
+            "accountCreated.loginUser": {
+                "listener": "{that}.login"
             }
         }
     });
@@ -51,8 +80,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.prefs.gpiiSession.login = function (that, userToken) {
         if (userToken != null) {
             $.ajax({
-                url: that.options.url + userToken + "/login",
+                url: that.options.url + "user/" + userToken + "/login",
                 type: "GET",
+                // TODO: This is non-async because we want to serially streamline the logout/login that is triggered
+                // by the GPIIStore "refresh" of system level applications when setting preferences.
+                async: false,
                 /*xhrFields: {
                     withCredentials: true
                 },*/
@@ -72,8 +104,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.prefs.gpiiSession.logout = function (that) {
         if (that.options.loggedUser != null) {
             $.ajax({
-                url: that.options.url + that.options.loggedUser + "/logout",
+                url: that.options.url + "user/" + that.options.loggedUser + "/logout",
                 type: "GET",
+                // TODO: This is non-async because we want to serially streamline the logout/login that is triggered
+                // by the GPIIStore "refresh" of system level applications when setting preferences.
+                async: false,
                 /*xhrFields: {
                     withCredentials: true
                 },*/
@@ -89,5 +124,37 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             });
         }
     };
+    
+    gpii.prefs.gpiiSession.getLoggedUser = function (that, onGetLoggedUserSuccessEvent, onGetLoggedUserErrorEvent) {
+        $.ajax({
+            url: that.options.url + "token",
+            type: "GET",
+            // TODO: This is non-async because we want the "loggedUser" to be set before any "get" or "set"
+            // in the GPIIStore is invoked.
+            async: false,
+            /*xhrFields: {
+                withCredentials: true
+            },*/
+            success: function (data) {
+                fluid.log("GET: " + data);
 
+                onGetLoggedUserSuccessEvent.fire(data);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                fluid.log("GET: Error at getting logged user's token! Test status: " + textStatus);
+                fluid.log(errorThrown);
+                
+                onGetLoggedUserErrorEvent.fire();
+            }
+        });
+    };
+
+    gpii.prefs.gpiiSession.setLoggedUser = function (that, data) {
+        that.options.loggedUser = data;
+    };
+    
+    gpii.prefs.gpiiSession.clearLoggedUser = function (that) {
+        that.options.loggedUser = null;
+    };
+    
 })(jQuery, fluid);
