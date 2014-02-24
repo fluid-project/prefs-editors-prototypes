@@ -20,7 +20,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             events: {
                 onLogin: null,
-                onLogout: null
+                onLogout: null,
+                onRequestPageTransition: null,
+                onPageTransition: {
+                    events: {
+                        onSetSuccess: "onSetSuccess",
+                        onRequestPageTransition: "onRequestPageTransition"
+                    },
+                    args: ["{that}"]
+                }
             },
             model: {
                 userLoggedIn: false
@@ -43,6 +51,23 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.saveAndApply",
                     "method": "click",
                     "args": ["{that}.applySettings"]
+                },
+                "onReady.fullEditorLink": {
+                    "this": "{that}.dom.fullEditorLink",
+                    "method": "click",
+                    "args": ["{that}.events.onRequestPageTransition.fire"]
+                },
+                "onRequestPageTransition.save": {
+                    listener: "{that}.saveSettings",
+                    args: ["{that}.model"]
+                },
+                /*
+                 * The URL is programmatically changed to prevent the page transitioning before
+                 * the asynchronous save procedure has completed.
+                 */
+                "onPageTransition.goToPMT": {
+                    "funcName": "fluid.set",
+                    "args": [window, "location.href", "{prefsEditorLoader}.options.pmtUrl"]
                 },
                 "onReady.setInitialModel": {
                     listener: "gpii.prefsEditor.setInitialModel",
@@ -91,13 +116,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             invokers: {
                 applySettings: {
                     "funcName": "gpii.applySettings",
-                    "args": "{that}",
-                    "dynamic": true
+                    "args": "{that}"
                 },
                 showUserStatusBar: {
                     "this": "{that}.dom.userStatusBar",
                     "method": "slideDown"
-                }
+                },
+                saveSettings: "{gpiiStore}.set"
             },
             selectors: {
                 saveAndApply: ".flc-prefsEditor-save",
@@ -136,6 +161,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 });
             });
         }
+    };
+
+    gpii.prefsEditor.triggerEvent = function (that, targetSelector, event) {
+        that.locate(targetSelector).trigger(event);
     };
 
 })(jQuery, fluid);
