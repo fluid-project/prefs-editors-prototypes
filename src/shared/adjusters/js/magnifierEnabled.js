@@ -17,6 +17,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     
     fluid.defaults("gpii.adjuster.magnifierEnabled", {
         gradeNames: ["gpii.adjuster.onOffSwitch", "autoInit"],
+        mergePolicy: {
+            selectorsToIgnore: fluid.prefs.compositePanel.arrayMergePolicy
+        },
         preferenceMap: {
             "gpii.primarySchema.magnifierEnabled": {
                 "model.value": "default"

@@ -224,7 +224,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "gpii.primarySchema.speakText",
             "panel": {
                 "type": "gpii.adjuster.speakText",
-                "template": "%prefix/speakTextTemplate.html",
+                "template": "%prefix/onOffSwitchTemplate.html",
                 "container": ".speakText",
                 "message": "%prefix/message.json"
             }

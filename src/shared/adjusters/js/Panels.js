@@ -12,19 +12,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function (fluid) {
     fluid.defaults("gpii.adjuster.speakText", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        gradeNames: ["gpii.adjuster.onOffSwitch", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.speakText": {
                 "model.speakText": "default"
             }
         },
-        selectors: {
-            speakText: ".gpiic-speakText",
-            speakTextLabel: ".gpiic-speakText-label"
-        },
         protoTree: {
-            speakText: "${speakText}",
-            speakTextLabel: {messagekey: "speakTextLabel"}
+            valueCheckbox: "${speakText}",
+            headingLabel: {messagekey: "speakTextLabel"}
         }
     });
 
@@ -440,20 +436,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("gpii.adjuster.screenReaderBrailleOutput", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        gradeNames: ["gpii.adjuster.onOffSwitch", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.screenReaderBrailleOutput": {
                 "model.screenReaderBrailleOutput": "default"
             }
         },
         selectors: {
-            screenReaderBrailleOutput: ".gpiic-screenReaderBrailleOutput",
-            screenReaderBrailleOutputLabel: ".gpiic-screenReaderBrailleOutput-label",
             screenReaderBrailleOutputDescription: ".gpiic-screenReaderBrailleOutput-description"
         },
         protoTree: {
-            screenReaderBrailleOutput: "${screenReaderBrailleOutput}",
-            screenReaderBrailleOutputLabel: {messagekey: "screenReaderBrailleOutputLabel"},
+            valueCheckbox: "${screenReaderBrailleOutput}",
+            headingLabel: {messagekey: "screenReaderBrailleOutputLabel"},
             screenReaderBrailleOutputDescription: {messagekey: "screenReaderBrailleOutputDescription"}
         }
     });
