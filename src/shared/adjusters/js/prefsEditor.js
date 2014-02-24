@@ -47,20 +47,19 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "attr",
                     "args": ["value", "{that}.stringBundle.saveAndApplyText"]
                 },
-                "onReady.onApplySettings": {
+                "onReady.bindSaveAndApply": {
                     "this": "{that}.dom.saveAndApply",
                     "method": "click",
-                    "args": ["{that}.applySettings"]
+                    // currently this triggers a save,
+                    // which logs in and out to apply the settings.
+                    "args": ["{that}.saveSettings"]
                 },
                 "onReady.fullEditorLink": {
                     "this": "{that}.dom.fullEditorLink",
                     "method": "click",
                     "args": ["{that}.events.onRequestPageTransition.fire"]
                 },
-                "onRequestPageTransition.save": {
-                    listener: "{that}.saveSettings",
-                    args: ["{that}.model"]
-                },
+                "onRequestPageTransition.save": "{that}.saveSettings",
                 /*
                  * The URL is programmatically changed to prevent the page transitioning before
                  * the asynchronous save procedure has completed.
@@ -122,7 +121,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.userStatusBar",
                     "method": "slideDown"
                 },
-                saveSettings: "{gpiiStore}.set"
+                saveSettings: {
+                    "func": "{gpiiStore}.set",
+                    "args": "{that}.model",
+                    "dynamic": true
+                }
             },
             selectors: {
                 saveAndApply: ".flc-prefsEditor-save",
