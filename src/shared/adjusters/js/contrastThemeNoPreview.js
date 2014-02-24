@@ -27,10 +27,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
-            colourTheme: ".gpiic-contrast-colourTheme",
-            colourThemeContainer: ".gpiic-contrastTheme-container"
+            colourTheme: ".gpiic-contrast-colourTheme"
         },
-        selectorsToIgnore: ["colourThemeContainer"],
         listeners: {
             "onDomBind.setColourThemeText": {
                 "this": "{that}.dom.colourTheme",
@@ -43,8 +41,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             setFocusHandlers: {
                 funcName: "gpii.adjuster.singleSelectionWithKeyboard.setFocusHandlers",
                 args: [
-                    "{that}.options.selectors.themeLabel",
-                    "{that}.dom.colourThemeContainer"
+                    "{that}.options.selectors.themeLabel"
                 ]
             }
         },

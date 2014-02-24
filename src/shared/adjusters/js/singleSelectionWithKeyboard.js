@@ -25,15 +25,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             setFocusHandlers: {
                 funcName: "gpii.adjuster.singleSelectionWithKeyboard.setFocusHandlers",
                 args: [
-                    "{that}.options.selectors.punctuationVerbosityOptionLabel",
-                    "{that}.dom.punctuationVerbosityContainer"
+                    "{that}.options.selectors.punctuationVerbosityOptionLabel"
                 ]
             }
             */
         }
     });
     
-    gpii.adjuster.singleSelectionWithKeyboard.setFocusHandlers = function (labelsClass, container) {
+    gpii.adjuster.singleSelectionWithKeyboard.setFocusHandlers = function (labelsClass) {
         labels = $(labelsClass); 
 
         fluid.each(labels, function (label, index) {
@@ -42,10 +41,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             var theInput = $(inputCssCompliantSelector);
             // outline container according to focus
             theInput.focusin(function () {
-                container.css("outline", "2px solid black");
+                $(label).css("outline", "2px solid black");
             });
             theInput.focusout(function () {
-                container.css("outline", "none");
+                $(label).css("outline", "none");
             });
         });
     };
