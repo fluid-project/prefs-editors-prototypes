@@ -227,6 +227,7 @@ body {
 
 .gpii-prefsEditor-fullEditor {
     text-align: left;
+    font-size: 120%;
 }
 
 .gpii-prefsEditor-reset {
@@ -266,9 +267,4 @@ label.gpii-preset-button-label {
 
 .gpii-prefsEditor-headerTitle {
     padding-right: 230px !important;
-}
-
-/* hack for padding per element, this should be margin of container for all */
-.screanReaderFollows {
-    padding-left: 40px;
 }
