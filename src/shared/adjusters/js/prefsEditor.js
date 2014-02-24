@@ -21,14 +21,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             events: {
                 onLogin: null,
                 onLogout: null,
-                onRequestPageTransition: null,
-                onPageTransition: {
-                    events: {
-                        onSetSuccess: "onSetSuccess",
-                        onRequestPageTransition: "onRequestPageTransition"
-                    },
-                    args: ["{that}"]
-                }
+                onRequestPageTransition: null
             },
             model: {
                 userLoggedIn: false
