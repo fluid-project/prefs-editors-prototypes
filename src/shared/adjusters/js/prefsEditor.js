@@ -61,11 +61,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     listener: "{that}.saveSettings",
                     args: ["{that}.model"]
                 },
-                /*
-                 * The URL is programmatically changed to prevent the page transitioning before
-                 * the asynchronous save procedure has completed.
-                 */
-                "onPageTransition.goToPMT": {
+                "onRequestPageTransition.goToPMT": {
                     "funcName": "fluid.set",
                     "args": [window, "location.href", "{prefsEditorLoader}.options.pmtUrl"]
                 },
