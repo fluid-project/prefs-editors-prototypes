@@ -312,7 +312,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("gpii.adjuster.punctuationVerbosity", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.singleSelectionWithKeyboard", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.punctuationVerbosity": {
                 "model.punctuationVerbosity": "default",
@@ -352,14 +352,21 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 args: [
                     "{that}.options.selectors.punctuationVerbosityOptionLabel",
                     "{that}.options.controlValues.punctuationVerbosity",
-                    "{that}.options.classnameMap.punctuationVerbosity"
+                    "{that}.options.classnameMap.punctuationVerbosity",
+                    "{that}.dom.punctuationVerbosityContainer"
+                ]
+            },
+            setFocusHandlers: {
+                funcName: "gpii.adjuster.singleSelectionWithKeyboard.setFocusHandlers",
+                args: [
+                    "{that}.options.selectors.punctuationVerbosityOptionLabel"
                 ]
             }
         }
 
     });
 
-    gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle = function (labelsClass, values, classes) {
+    gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle = function (labelsClass, values, classes, punctuationVerbosityContainer) {
         labels = $(labelsClass); // Used because "{that}.dom.punctuationVerbosityOptionLabel"
                                  // (like that.locate("punctuationVerbosityOptionLabel")) fails to return
                                  // the array of labels.
@@ -371,7 +378,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
 
     fluid.defaults("gpii.adjuster.announceCapitals", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabelsClickOnActivate", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.announceCapitals": {
                 "model.announceCapitals": "default"
@@ -381,6 +388,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             announceCapitals: ".gpiic-announceCapitals",
             announceCapitalsLabel: ".gpiic-announceCapitals-label"
         },
+        activatableLabelsSelector: ".gpiic-announceCapitals-checkbox-label",
         protoTree: {
             announceCapitals: "${announceCapitals}",
             announceCapitalsLabel: {messagekey: "announceCapitalsLabel"}
@@ -388,7 +396,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("gpii.adjuster.speakTutorialMessages", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabelsClickOnActivate", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.speakTutorialMessages": {
                 "model.speakTutorialMessages": "default"
@@ -398,6 +406,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             speakTutorialMessages: ".gpiic-speakTutorialMessages",
             speakTutorialMessagesLabel: ".gpiic-speakTutorialMessages-label"
         },
+        activatableLabelsSelector: ".gpiic-speakTutorialMessages-checkbox-label",
         protoTree: {
             speakTutorialMessages: "${speakTutorialMessages}",
             speakTutorialMessagesLabel: {messagekey: "speakTutorialMessagesLabel"}
@@ -405,7 +414,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("gpii.adjuster.keyEcho", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabelsClickOnActivate", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.keyEcho": {
                 "model.keyEcho": "default"
@@ -416,6 +425,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             keyEcho: ".gpiic-speakText-keyEcho",
             keyEchoLabel: ".gpiic-speakText-keyEcho-label"
         },
+        activatableLabelsSelector: ".gpiic-keyEcho-checkbox-label",
         protoTree: {
             readBackLabel: {messagekey: "readBackLabel"},
             keyEcho: "${keyEcho}",
@@ -424,7 +434,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("gpii.adjuster.wordEcho", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabelsClickOnActivate", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.wordEcho": {
                 "model.wordEcho": "default"
@@ -434,6 +444,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             wordEcho: ".gpiic-wordEcho",
             wordEchoLabel: ".gpiic-wordEcho-label"
         },
+        activatableLabelsSelector: ".gpiic-wordEcho-checkbox-label",
         protoTree: {
             wordEcho: "${wordEcho}",
             wordEchoLabel: {messagekey: "wordEchoLabel"}

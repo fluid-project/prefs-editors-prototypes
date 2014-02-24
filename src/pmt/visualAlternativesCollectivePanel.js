@@ -22,9 +22,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             visualAlternativesHeader: ".gpii-visualAlternativesPresetButton-label",
             expandingAdjusters: ".gpiic-visualAlternatives-hidden",
             moreLess: ".gpiic-visualAlternatives-category",
-            visualAlternativesHiddenPanel: ".gpiic-visualAlternatives-hiddenPanel"
+            visualAlternativesHiddenPanel: ".gpiic-visualAlternatives-hiddenPanel",
+            voicePitchInput: ".gpiic-voicePitch .gpiic-textfieldStepper-valueField",
+            visualAlternativesMoreLess: ".gpiic-visualAlternativesMoreLess-label"
         },
-        selectorsToIgnore: ["visualAlternativesHiddenPanel"],
+        selectorsToIgnore: ["visualAlternativesHiddenPanel", "voicePitchInput", "visualAlternativesMoreLess"],
         protoTree: {
             visualAlternativesHeader: {messagekey: "visualAlternativesPresetButtonLabel"}
         },
@@ -55,6 +57,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "afterRender.addListenerForAriaExpanded": {
                 "listener": "{that}.applier.modelChanged.addListener",
                 "args": ["gpii_primarySchema_visualAlternativesMoreLess", "{that}.setExpandedAriaExpanded"]
+            },
+            "afterRender.bindVisualAlternativesMoreLessChange": {
+                listener: "{that}.applier.modelChanged.addListener",
+                args: ["gpii_primarySchema_visualAlternativesMoreLess", "{that}.setFocusOnVisualAlternativesMoreLess"]
             }
         },
         invokers: {
@@ -77,8 +83,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "this": "{that}.dom.visualAlternativesHiddenPanel",
                 "method": "attr",
                 "args": ["aria-expanded", "{that}.model.gpii_primarySchema_visualAlternativesMoreLess"]
+            },
+            setFocusOnVisualAlternativesMoreLess: {
+                funcName: "gpii.panel.visualAlternatives.setFocusOnVisualAlternativesMoreLess",
+                args: ["{that}", "{that}.model.gpii_primarySchema_visualAlternativesMoreLess"]
             }
         }
     });
+    
+    gpii.panel.visualAlternatives.setFocusOnVisualAlternativesMoreLess = function (that, visualAlternativesMoreLessExpanded) {
+        if (visualAlternativesMoreLessExpanded) {
+            that.locate("voicePitchInput").focus();
+        } else {
+            that.locate("visualAlternativesMoreLess").focus();
+        }
+    };
 
 })(fluid);

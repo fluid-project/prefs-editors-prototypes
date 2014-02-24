@@ -16,7 +16,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
     
     fluid.defaults("gpii.adjuster.contrastThemeNoPreview", {
-        gradeNames: ["fluid.prefs.panel.contrast", "autoInit"],
+        gradeNames: ["fluid.prefs.panel.contrast", "gpii.adjuster.singleSelectionWithKeyboard", "autoInit"],
         mergePolicy: {
             "controlValues.theme": gpii.prefs.merging.arrayOverridePolicy,
             "stringArrayIndex.theme": gpii.prefs.merging.arrayOverridePolicy
@@ -36,6 +36,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "args": ["{that}.stringBundle.colourTheme"]
             },
             "onDomBind.style": "{that}.style"
+        },
+        invokers: {
+            setFocusHandlers: {
+                funcName: "gpii.adjuster.singleSelectionWithKeyboard.setFocusHandlers",
+                args: [
+                    "{that}.options.selectors.themeLabel"
+                ]
+            }
         },
         stringArrayIndex: {
             theme: ["contrast-bw", "contrast-wb", "contrast-by", "contrast-yb"]

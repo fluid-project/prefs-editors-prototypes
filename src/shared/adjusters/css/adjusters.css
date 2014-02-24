@@ -151,6 +151,17 @@ input[type=checkbox], input[type=radio] {
     border:0;
 }
 
+.gpii-prefsEditor-focusableRadio {
+	position: absolute;
+    display: inherit !important;
+    clip: rect(0 0 0 0);
+    height:1px;
+    width:1px;
+    margin:-1px;
+    padding:0;
+    border:0; 
+}
+
 /*
     The adjusters' font icons
 */
@@ -611,9 +622,11 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar {
     font-size: 12px;
     z-index: 10;
     right: inherit !important;
+    display: none;
 }
 [title]:hover:after{
-    left:0px;
+    display: inherit;
+	left:0px;
     opacity:1;
 }
 
@@ -1615,4 +1628,8 @@ input[type=checkbox]:checked + label.gpii-checkbox-label:before {
     overflow-y: auto;
     overflow-x: hidden; /* prevent horizontal scrollbar */
     padding-right: 15px; /* add padding to account for vertical scrollbar */
+}
+
+.gpii-focus {
+	outline: 2px solid black !important;
 }
