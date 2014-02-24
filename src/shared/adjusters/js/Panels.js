@@ -321,11 +321,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         selectors: {
             announceLabel: ".gpiic-speakText-announce-label",
+            punctuationVerbosityContainer: ".gpiic-punctuationVerbosity-container",
             punctuationVerbosityRow: ".gpiic-speakText-punctuationVerbosity-row",
             punctuationVerbosityOptionLabel: ".gpiic-speakText-punctuationVerbosity-option-label",
             punctuationVerbosityInput: ".gpiic-speakText-punctuationVerbosity",
             punctuationVerbosityLabel: ".gpiic-speakText-punctuationVerbosity-label"
         },
+        selectorsToIgnore: ["punctuationVerbosityContainer"],
         protoTree: {
             announceLabel: {messagekey: "announce"},
             expander: {
@@ -353,7 +355,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.options.selectors.punctuationVerbosityOptionLabel",
                     "{that}.options.controlValues.punctuationVerbosity",
                     "{that}.options.classnameMap.punctuationVerbosity",
-                    "{that}.dom.punctuationVerbosityContainer"
+                    "{that}.dom.punctuationVerbosityContainer",
+                    "{that}.dom.punctuationVerbosityLabel"
                 ]
             },
             setFocusHandlers: {
@@ -366,15 +369,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     });
 
-    gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle = function (labelsClass, values, classes, punctuationVerbosityContainer) {
+    gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle = function (labelsClass, values, classes, container, titleLabel) {
         labels = $(labelsClass); // Used because "{that}.dom.punctuationVerbosityOptionLabel"
                                  // (like that.locate("punctuationVerbosityOptionLabel")) fails to return
                                  // the array of labels.
 
         fluid.each(labels, function (label, index) {
-            $(label).addClass(classes[values[index]]);
-            $(label).append('<span></span>');
+            var label = $(label);
+            label.addClass(classes[values[index]]);
+            label.append('<span></span>');
         });
+
+        container.attr("aria-labelledby", gpii.utility.getLabelId(titleLabel));
     };
 
     fluid.defaults("gpii.adjuster.announceCapitals", {
