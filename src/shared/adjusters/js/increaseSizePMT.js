@@ -29,24 +29,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         selectors: {
             expandingAdjusters: ".gpiic-magnifier-hidden",
             moreLess: ".gpiic-magnifier-category",
-            magnifierLevelInput: ".gpiic-magnifier-stepper .gpiic-textfieldStepper-valueField"
+            elementToFocusOnExpansion: "input[name='gpii_primarySchema_magnificationPosition_magnifierPosition-radio']:checked"
         },
-        selectorsToIgnore: ["magnifierLevelInput"],
+        selectorsToIgnore: ["elementToFocusOnExpansion"],
         listeners: {
             "afterRender.setExpandedAriaLabel": {
                 "this": "{that}.dom.expandingAdjusters",
                 "method": "attr",
                 "args": ["aria-label", "{that}.stringBundle.additionalMagnifierAdjusters"]
-            },
-            "onShowExpandingAdjusters.focusMagnifierLevelInput": {
-                "this": "{that}.dom.magnifierLevelInput",
-                "method": "trigger",
-                "args": ["focus"]
-            },
-            "onHideExpandingAdjusters.focusMoreLess": {
-                "this": "{that}.dom.moreLess",
-                "method": "trigger",
-                "args": ["focus"]
             }
         },
         invokers: {
@@ -63,4 +53,5 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         }
     });
+    
 })(jQuery, fluid);
