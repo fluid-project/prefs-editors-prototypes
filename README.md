@@ -5,11 +5,8 @@ GPII preferences editors, responsible for authoring user preference sets.
 
 For more background about these tools, see 
 
-    http://wiki.gpii.net/index.php/PCPs,_PMTs,_etc
-
-and 
-
-    http://wiki.gpii.net/index.php/User_Preferences_UX
+* [PCPs, PMTs, etc](http://wiki.gpii.net/index.php/PCPs,_PMTs,_etc) and
+* [User Preferences UX](http://wiki.gpii.net/index.php/User_Preferences_UX), both on the GPII wiki.
 
 
 Installation
@@ -38,8 +35,6 @@ Identify the URL that would point to the file prefsEditors/demos/prefsEditor/ind
 on the web server and enter that URL in your browser to run the preferences editors.
 
 
-More detailed instructions are available at
-
-    http://wiki.gpii.net/index.php/Running_the_PMT_%26_PCP_on_Windows_and_Linux_with_a_local_web_server
+More detailed instructions are available on the page [Running the PMT & PCP on ... a local web server](http://wiki.gpii.net/index.php/Running_the_PMT_%26_PCP_on_Windows_and_Linux_with_a_local_web_server).
 
 
