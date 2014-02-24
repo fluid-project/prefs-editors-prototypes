@@ -25,6 +25,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         protoTree: {
             headingLabel: {messagekey: "contrast"},
             valueCheckbox: "${contrast}"
-        }
+        },
+        onOffModelKey: "contrast"
     });
 })(jQuery, fluid);

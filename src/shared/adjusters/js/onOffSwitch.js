@@ -17,6 +17,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     fluid.defaults("gpii.adjuster.onOffSwitch", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
+        onOffModelKey: null,    // Must be provided by integrators. The model key that controls on off switch
         selectors: {
             headingLabel: ".gpiic-onOffSwitch-label",
             valueCheckbox: ".gpiic-onOffSwitch-input",
@@ -24,19 +25,40 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         selectorsToIgnore: ["onOffSwitch"],
         listeners: {
+            "onCreate.init": {
+                listener: "gpii.adjuster.onOffSwitch.init",
+                args: ["{that}", "{that}.options.onOffModelKey"]
+            },
+            "onDomBind.addAria": "gpii.adjuster.onOffSwitch.addAria",
             "onDomBind.makeOnOffSwitchActivatable": {
                 "funcName": "fluid.activatable",
                 "args": ["{that}.dom.onOffSwitch", "{that}.triggerModelChangeOnActivate"]
+            },
+            /*
+             * TODO: This is a temporary workaround for retaining focus on ON/OFF switch when it is toggled.
+             * This listener (along with the called invoker) should not be needed when,
+             *      http://issues.fluidproject.org/browse/FLUID-5278
+             * is resolved.
+             */
+            "onDomBind.bindFocusListener": {
+                "this": "{that}.dom.valueCheckbox",
+                "method": "change",
+                args: ["{that}.focus"]
             }
         },
         invokers: {
             triggerModelChangeOnActivate: {
                 "funcName": "gpii.adjuster.onOffSwitch.triggerModelChangeOnActivate",
                 "args": ["{that}", "{arguments}.0"]
+            },
+            focus: {
+                "this": "{that}.dom.onOffSwitch",
+                "method": "trigger",
+                args: ["focus"]
             }
         }
     });
-    
+
     gpii.adjuster.onOffSwitch.triggerModelChangeOnActivate = function (that, event) {
         /*
          * This isn't the most appropriate way of performing the model change compared to requestChange.
@@ -46,13 +68,29 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
          */
         that.locate("valueCheckbox").click();
         //that.applier.requestChange("value", !that.model.value)
-        
+
         /*
          * This is needed because most modern browsers have the functionality of scrolling further
-         * down when Space key is pressed. So, this is needed in order to suppress this functionality when the 
+         * down when Space key is pressed. So, this is needed in order to suppress this functionality when the
          * on/off switch has focus.
          */
         event.preventDefault();
-    }
-    
+    };
+
+    gpii.adjuster.onOffSwitch.init = function (that, onOffModelKey) {
+        that.applier.modelChanged.addListener(onOffModelKey, function (newModel) {
+            var onOffSwitch = that.locate("onOffSwitch");
+            onOffSwitch.attr("aria-pressed", newModel[onOffModelKey]);
+        });
+    };
+
+    gpii.adjuster.onOffSwitch.addAria = function (that) {
+        that.container.attr("role", "application");
+
+        var onOffSwitch = that.locate("onOffSwitch");
+        onOffSwitch.attr("role", "button");
+        onOffSwitch.attr("aria-labelledby", gpii.utility.getLabelId(that.locate("headingLabel")));
+        onOffSwitch.attr("aria-pressed", that.model[that.options.onOffModelKey]);
+    };
+
 })(jQuery, fluid);

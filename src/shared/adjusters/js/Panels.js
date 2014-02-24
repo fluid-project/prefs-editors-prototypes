@@ -21,7 +21,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         protoTree: {
             valueCheckbox: "${speakText}",
             headingLabel: {messagekey: "speakTextLabel"}
-        }
+        },
+        onOffModelKey: "speakText"
     });
 
     fluid.defaults("gpii.adjuster.wordsSpokenPerMinute", {
@@ -453,7 +454,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             valueCheckbox: "${screenReaderBrailleOutput}",
             headingLabel: {messagekey: "screenReaderBrailleOutputLabel"},
             screenReaderBrailleOutputDescription: {messagekey: "screenReaderBrailleOutputDescription"}
-        }
+        },
+        onOffModelKey: "screenReaderBrailleOutput"
     });
 
 })(fluid);
