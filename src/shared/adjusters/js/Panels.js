@@ -379,7 +379,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             label.addClass(classes[values[index]]);
             label.append('<span></span>');
         });
-
+        container.attr("role", "radiogroup");
         container.attr("aria-labelledby", gpii.utility.getLabelId(titleLabel));
     };
 

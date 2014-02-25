@@ -31,8 +31,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierPositionRow: ".gpiic-increaseSize-magnifierPositionRow",
             magnifierPositionLabel: ".gpiic-increaseSize-magnifierPositionLabel",
             magnifierPositionInput: ".gpiic-increaseSize-magnifierPositionInput",
-            magnifierPositionHeading: ".gpiic-increaseSize-magnifierPositionHeading"
+            magnifierPositionHeading: ".gpiic-increaseSize-magnifierPositionHeading",
+            magnifierPositionContainer: ".gpiic-increaseSize-magnifierPositionContainer"
         },
+        selectorsToIgnore: ["magnifierPositionContainer"],
         protoTree: {
             expander: [
                 {
@@ -74,7 +76,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 funcName: "gpii.adjuster.magnifierPosition.style",
                 args: ["{that}.dom.magnifierPositionLabel", "{that}.options.strings.magnifierPosition",
                     "{that}.options.markup.magnifierPositionLabel", "{that}.options.controlValues.magnifierPosition",
-                    "{that}.options.classnameMap.magnifierPosition", "{that}"],
+                    "{that}.options.classnameMap.magnifierPosition", "{that}.dom.magnifierPositionContainer",
+                    "{that}.dom.magnifierPositionHeading"],
                 dynamic: true
             },
             setFocusHandlers: {
@@ -86,7 +89,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.adjuster.magnifierPosition.style = function (labels, strings, markup, magnifierPosition, style, that) {
+    gpii.adjuster.magnifierPosition.style = function (labels, strings, markup, magnifierPosition, style, container, heading) {
         fluid.each(labels, function (label, index) {
             label = $(label);
             label.html(fluid.stringTemplate(markup, {
@@ -95,6 +98,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             label.addClass(style[magnifierPosition[index]]);
             label.attr("tooltip", strings[index]);
         });
+        container.attr("role", "radiogroup");
+        container.attr("aria-labelledby", gpii.utility.getLabelId(heading));
     };
 
 })(jQuery, fluid);
