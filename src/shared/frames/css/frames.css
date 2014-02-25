@@ -240,6 +240,7 @@ body {
 .gpii-prefsEditor-quickEditorLink {
 	display: table-cell;
 	text-align: left;
+	font-size: 1.2em;
 }
 
 .gpii-prefsEditor-reset {

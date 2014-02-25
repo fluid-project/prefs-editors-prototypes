@@ -45,7 +45,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 userLoggedIn: false
             },
             listeners: {
-                // on Session login:
+                // on Session accountCreated:
                 "{gpiiSession}.events.accountCreated": {
                     listener: "{that}.showSaveNotification"
                 },
@@ -69,6 +69,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onLogin.showUserStatusBar": {
                     "listener": "{that}.showUserStatusBar"
                 },
+                // set href of quick editor link when we log the user in
+                "onLogin.setQuickEditorLinkHref": {
+                    "listener": "{that}.setQuickEditorLinkHref"
+                },
                 // trigger logout onReset (logout link is the reset button)
                 "onReset.triggerLogoutEvent": {
                     "listener": "{that}.events.onLogout.fire"
@@ -86,6 +90,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.messageLineLabel",
                     "method": "text",
                     "args": [""]
+                },
+                // clear href of quick editor link when we log the user out
+                "onLogout.clearQuickEditorLinkHref": {
+                    "listener": "{that}.clearQuickEditorLinkHref"
                 },
                 "onLogout.gpiiLogout": {
                     listener: "{gpiiSession}.logout"
@@ -150,6 +158,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.hideUserStatusBarIfNotLoggedIn": {
                     "listener": "{that}.hideUserStatusBarIfNotLoggedIn"
                 },
+                // this is needed for the cases where a user is already logged in
+                "onReady.setQuickEditorLinkHref": {
+                    "listener": "{that}.setQuickEditorLinkHref"
+                },
                 "onReady.addHidingListener": {
                     "listener": "{that}.applier.modelChanged.addListener",
                     "args": ["{that}.options.strings.mainVisibilitySwitch", "{that}.foldExpandedViewWhenOff"]
@@ -202,6 +214,25 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                      *      http://issues.gpii.net/browse/GPII-613
                      */
                     "args": ["{gpiiSession}.options.loggedUser", "{that}.dom.userStatusBar"]
+                },
+                setQuickEditorLinkHref : {
+                    "this": "{that}.dom.quickEditorLink",
+                    method: "attr",
+                    args: ["href", {
+                        expander: {
+                            funcName: "gpii.pmt.constructPcpUrl",
+                            /*
+                             * TODO: Same as above for the "onReady.setQuickEditorLinkHref" listener
+                             */
+                            args: ["{prefsEditorLoader}.options.pcpUrl", "{gpiiSession}.options.loggedUser"]
+                        }
+                    }],
+                    dynamic: true
+                },
+                clearQuickEditorLinkHref: {
+                    "this": "{that}.dom.quickEditorLink",
+                    method: "attr",
+                    args: ["href", ""]
                 }
             },
             strings: {
@@ -209,19 +240,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "extraVisibilitySwitch": "gpii_primarySchema_visualAlternativesMoreLess"
             }
         },
-        invokers: {
-            openPcp: {
-                funcName: "gpii.pmt.openPcp",
-                args: ["{that}.options.pcpUrl", "{gpiiSession}.options.loggedUser"],
-                dynamic: true
-            }
-        },
         listeners: {
-            "onReady.bindClick": {
-                "this": "{that}.prefsEditor.dom.quickEditorLink",
-                method: "click",
-                args: "{that}.openPcp"
-            },
             "onReady.setInitialModel": {
                 listener: "gpii.pmt.setInitialModel",
                 args: ["{that}", "{gpiiStore}"],
@@ -269,12 +288,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         notificationjq1_9.dialog("destroy");
     };
     
-	// FIXME: Figure out a better way to pass the user token.
-    gpii.pmt.openPcp = function (pcpUrl, token) {
-        window.location.assign(pcpUrl + "?" + token);
-        return false;
-    };
-
+    /*
+     * TODO: Does PCP still need the user token in the URL? Isn't it using the GPIIStore,
+     * which already has reference to the currently logged user, for fetching/saving preferences? 
+     * Passing data around in the URL is a bad practice and furthermore avoiding this would 
+     * simplify things a lot... we would just need to set the href once onReady.
+     */
+    gpii.pmt.constructPcpUrl = function (pcpUrl, token) {
+        return pcpUrl + "?" + token;
+    }
+    
     gpii.pmt.setInitialModel = function (that, gpiiStore) {
         var token = window.location.search.substring(1);
         if (token) {
