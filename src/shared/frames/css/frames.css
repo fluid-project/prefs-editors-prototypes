@@ -280,8 +280,3 @@ label.gpii-preset-button-label {
 .gpii-prefsEditor-headerTitle {
     padding-right: 230px !important;
 }
-
-/* hack for padding per element, this should be margin of container for all */
-.screanReaderFollows {
-    padding-left: 40px;
-}

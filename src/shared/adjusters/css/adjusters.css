@@ -220,7 +220,7 @@ input[type=checkbox], input[type=radio] {
     display: inline-table;
     text-align: center;
     border: none;
-    width: 200px !important;
+    width: 100% !important;
     font-size: 1em !important;
 }
 
@@ -1163,10 +1163,6 @@ h4 {
     margin-left: 37px;
 }
 
-.gpii-stepper-pmt {
-	width: 100% !important;
-}
-
 .gpii-prefsEditor-headerClickableLabel {
     width: 100%;
 }
@@ -1429,9 +1425,7 @@ input[type="radio"] + label {
 }
 
 .gpii-adjusters {
-    padding-left: 40px;
     font-family: 'Roboto Slab', serif;
-    width: 285px;
 }
 
 .fl-prefsEditor-category {
@@ -1472,7 +1466,6 @@ input[type="radio"] + label {
 }
 
 .gpii-visualAlternativesMoreLess {
-    margin-left: 85px;
 }
 
 .gpii-visualAlternativesMoreLess-label {
@@ -1513,7 +1506,7 @@ label.gpii-preset-button-label {
     padding-top: 31px;
     color: white;
     background-color: rgb(85, 98, 115);
-    width: 440px;
+    width: 450px;
     height: 59px;
     text-align: left;
     font-family: 'Roboto Slab', serif;
