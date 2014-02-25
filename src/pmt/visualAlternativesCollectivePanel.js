@@ -24,9 +24,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             moreLess: ".gpiic-visualAlternatives-category",
             visualAlternativesHiddenPanel: ".gpiic-visualAlternatives-hiddenPanel",
             voicePitchInput: ".gpiic-voicePitch .gpiic-textfieldStepper-valueField",
-            visualAlternativesMoreLess: ".gpiic-visualAlternativesMoreLess-label"
+            visualAlternativesMoreLess: ".gpiic-visualAlternativesMoreLess-label",
+            speakTextContainer: ".gpiic-speakText-container"
         },
-        selectorsToIgnore: ["visualAlternativesHiddenPanel", "voicePitchInput", "visualAlternativesMoreLess"],
+        selectorsToIgnore: ["visualAlternativesHiddenPanel", "voicePitchInput", "visualAlternativesMoreLess", "speakTextContainer"],
         protoTree: {
             visualAlternativesHeader: {messagekey: "visualAlternativesPresetButtonLabel"}
         },
@@ -49,7 +50,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 ]
             },
             "afterRender.setExpandedAriaLabel": {
-                "listener": "{that}.setExpandedAriaLabel"
+                "this": "{that}.dom.visualAlternativesHiddenPanel",
+                "method": "attr",
+                "args": ["aria-label", "{that}.stringBundle.additionalVisualAdjusters"]
+            },
+            "afterRender.setContainerAriaLabel": {
+                "this": "{that}.dom.speakTextContainer",
+                "method": "attr",
+                "args": ["aria-label", "{that}.stringBundle.additionalVisualAdjusters"]
             },
             "afterRender.setExpandedAriaExpanded": {
                 "listener": "{that}.setExpandedAriaExpanded"
@@ -61,7 +69,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "afterRender.bindVisualAlternativesMoreLessChange": {
                 listener: "{that}.applier.modelChanged.addListener",
                 args: ["gpii_primarySchema_visualAlternativesMoreLess", "{that}.setFocusOnVisualAlternativesMoreLess"]
-            }
+            },
+            "afterRender.setContainerAriaRelevant": "{that}.setAriaRelevant"
         },
         invokers: {
             toggleMoreLessInstant: {
@@ -74,11 +83,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 ],
                 dynamic: true
             },
-            setExpandedAriaLabel: {
-                "this": "{that}.dom.visualAlternativesHiddenPanel",
-                "method": "attr",
-                "args": ["aria-label", "{that}.stringBundle.additionalVisualAdjusters"]
-            },
             setExpandedAriaExpanded: {
                 "this": "{that}.dom.visualAlternativesHiddenPanel",
                 "method": "attr",
@@ -87,10 +91,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             setFocusOnVisualAlternativesMoreLess: {
                 funcName: "gpii.panel.visualAlternatives.setFocusOnVisualAlternativesMoreLess",
                 args: ["{that}", "{that}.model.gpii_primarySchema_visualAlternativesMoreLess"]
+            },
+            setAriaRelevant: {
+                funcName: "gpii.utility.setAriaRelevant",
+                args: ["{that}.dom.speakTextContainer", "{that}.model.gpii_primarySchema_speakText"],
+                dynamic: true
+
             }
         }
     });
-    
+
     gpii.panel.visualAlternatives.setFocusOnVisualAlternativesMoreLess = function (that, visualAlternativesMoreLessExpanded) {
         if (visualAlternativesMoreLessExpanded) {
             that.locate("voicePitchInput").focus();

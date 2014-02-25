@@ -28,6 +28,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             labelDomElement.attr("id", labelId);
         }
         return labelId;
-    }
+    };
+
+    gpii.utility.setAriaRelevant = function (container, enabled) {
+        container.attr("aria-relevant", enabled ? "additions" : "removals");
+    };
 
 })(jQuery, fluid);

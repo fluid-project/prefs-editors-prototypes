@@ -27,17 +27,24 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierHeading:  {messagekey: "magnifier"}
         },
         selectors: {
+            magnifierControlsContainer: ".gpiic-prefsEditor-magnifier-container",
             expandingAdjusters: ".gpiic-magnifier-hidden",
             moreLess: ".gpiic-magnifier-category",
             elementToFocusOnExpansion: "input[name='gpii_primarySchema_magnificationPosition_magnifierPosition-radio']:checked"
         },
-        selectorsToIgnore: ["elementToFocusOnExpansion"],
+        selectorsToIgnore: ["magnifierControlsContainer", "elementToFocusOnExpansion"],
         listeners: {
             "afterRender.setExpandedAriaLabel": {
                 "this": "{that}.dom.expandingAdjusters",
                 "method": "attr",
                 "args": ["aria-label", "{that}.stringBundle.additionalMagnifierAdjusters"]
-            }
+            },
+            "afterRender.setContainerAriaLabel": {
+                "this": "{that}.dom.magnifierControlsContainer",
+                "method": "attr",
+                "args": ["aria-label", "{that}.stringBundle.additionalMagnifierAdjusters"]
+            },
+            "afterRender.setContainerAriaRelevant": "{that}.setAriaRelevant"
         },
         invokers: {
             // override this invoker to use the "magnifierEnabled" model value
@@ -50,8 +57,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     0
                 ],
                 dynamic: true
+            },
+            setAriaRelevant: {
+                funcName: "gpii.utility.setAriaRelevant",
+                args: ["{that}.dom.magnifierControlsContainer", "{that}.model.gpii_primarySchema_magnifierEnabled"],
+                dynamic: true
+
             }
         }
     });
-    
+
 })(jQuery, fluid);
