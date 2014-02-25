@@ -47,6 +47,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         invokers: {
+            /*
+             * TODO: Implementing this with fluid.focus() conflicted with how focus is transfered to more/less
+             * in the expanding adjusters grade. Looks like a situation of which one happens first. The outcome was
+             * that the first time the magnifier's ON/OFF toggle was clicked it retained focus, but subsequent clicks
+             * gave focus to more/less.
+             * This way of element.trigger("focus") works correctly.
+             */
             focusMagnifierOnOffFocusable: {
                 "this": "{that}.dom.magnifierOnOffFocusable",
                 "method": "trigger",

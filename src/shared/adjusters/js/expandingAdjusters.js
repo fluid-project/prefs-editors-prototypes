@@ -57,14 +57,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "args": ["value", "{that}.stringBundle.more"]
             },
             "onShowExpandingAdjusters.focusElementToFocusOnExpansion": {
-                "this": "{that}.dom.elementToFocusOnExpansion",
-                "method": "trigger",
-                "args": ["focus"]
+                "this": "fluid",
+                "method": "focus",
+                "args": ["{that}.dom.elementToFocusOnExpansion"]
             },
             "onHideExpandingAdjusters.focusMoreLess": {
-                "this": "{that}.dom.moreLess",
-                "method": "trigger",
-                "args": ["focus"]
+                "this": "fluid",
+                "method": "focus",
+                "args": ["{that}.dom.moreLess"]
             },
             "onShowExpandingAdjusters.setExpanded": {
                 "listener": "{that}.setExpanded"

@@ -93,9 +93,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     
     gpii.panel.visualAlternatives.setFocusOnVisualAlternativesMoreLess = function (voicePitchInputElement, visualAlternativesMoreLessElement, visualAlternativesMoreLessExpanded) {
         if (visualAlternativesMoreLessExpanded) {
-            voicePitchInputElement.focus();
+            fluid.focus(voicePitchInputElement);
         } else {
-            visualAlternativesMoreLessElement.focus();
+            fluid.focus(visualAlternativesMoreLessElement);
         }
     };
 
