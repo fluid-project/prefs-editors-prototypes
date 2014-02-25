@@ -229,6 +229,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             url: urlToPost,
             type: "POST",
             dataType: "json",
+            async: false,
             contentType: "application/json",
             data: JSON.stringify(transformedModel),
             success: function (data) {
