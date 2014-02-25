@@ -34,4 +34,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         container.attr("aria-relevant", enabled ? "additions" : "removals");
     };
 
+    gpii.utility.setAriaChecked = function (container, checked) {
+        container.attr("aria-checked", checked);
+    };
+
 })(jQuery, fluid);

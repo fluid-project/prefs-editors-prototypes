@@ -392,12 +392,32 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         selectors: {
             announceCapitals: ".gpiic-announceCapitals",
-            announceCapitalsLabel: ".gpiic-announceCapitals-label"
+            announceCapitalsLabel: ".gpiic-announceCapitals-label",
+            checkbox: ".gpiic-announceCapitals-checkbox-label"
         },
-        activatableLabelsSelector: ".gpiic-announceCapitals-checkbox-label",
+        selectorsToIgnore: ["checkbox"],
+        activatableLabelsSelector: "{that}.options.selectors.checkbox",
         protoTree: {
             announceCapitals: "${announceCapitals}",
             announceCapitalsLabel: {messagekey: "announceCapitalsLabel"}
+        },
+        listeners: {
+            "onDomBind.setAriaChecked": {
+                listener: "{that}.setAriaChecked",
+                args: "{that}.model.announceCapitals"
+            }
+        },
+        modelListeners: {
+            announceCapitals: {
+                listener: "{that}.setAriaChecked",
+                args: ["{change}.value"]
+            }
+        },
+        invokers: {
+            setAriaChecked: {
+                funcName: "gpii.utility.setAriaChecked",
+                args: ["{that}.dom.checkbox", "{arguments}.0"]
+            }
         }
     });
 
@@ -410,12 +430,32 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         selectors: {
             speakTutorialMessages: ".gpiic-speakTutorialMessages",
-            speakTutorialMessagesLabel: ".gpiic-speakTutorialMessages-label"
+            speakTutorialMessagesLabel: ".gpiic-speakTutorialMessages-label",
+            checkbox: ".gpiic-speakTutorialMessages-checkbox-label"
         },
-        activatableLabelsSelector: ".gpiic-speakTutorialMessages-checkbox-label",
+        selectorsToIgnore: ["checkbox"],
+        activatableLabelsSelector: "{that}.options.selectors.checkbox",
         protoTree: {
             speakTutorialMessages: "${speakTutorialMessages}",
             speakTutorialMessagesLabel: {messagekey: "speakTutorialMessagesLabel"}
+        },
+        listeners: {
+            "onDomBind.setAriaChecked": {
+                listener: "{that}.setAriaChecked",
+                args: "{that}.model.speakTutorialMessages"
+            }
+        },
+        modelListeners: {
+            speakTutorialMessages: {
+                listener: "{that}.setAriaChecked",
+                args: ["{change}.value"]
+            }
+        },
+        invokers: {
+            setAriaChecked: {
+                funcName: "gpii.utility.setAriaChecked",
+                args: ["{that}.dom.checkbox", "{arguments}.0"]
+            }
         }
     });
 
@@ -429,13 +469,33 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         selectors: {
             readBackLabel: ".gpiic-speakText-readBack-label",
             keyEcho: ".gpiic-speakText-keyEcho",
-            keyEchoLabel: ".gpiic-speakText-keyEcho-label"
+            keyEchoLabel: ".gpiic-speakText-keyEcho-label",
+            checkbox: "gpiic-keyEcho-checkbox-label"
         },
-        activatableLabelsSelector: ".gpiic-keyEcho-checkbox-label",
+        selectorsToIgnore: ["checkbox"],
+        activatableLabelsSelector: "{that}.options.selectors.checkbox",
         protoTree: {
             readBackLabel: {messagekey: "readBackLabel"},
             keyEcho: "${keyEcho}",
             keyEchoLabel: {messagekey: "keyEchoLabel"}
+        },
+        listeners: {
+            "onDomBind.setAriaChecked": {
+                listener: "{that}.setAriaChecked",
+                args: "{that}.model.keyEcho"
+            }
+        },
+        modelListeners: {
+            keyEcho: {
+                listener: "{that}.setAriaChecked",
+                args: ["{change}.value"]
+            }
+        },
+        invokers: {
+            setAriaChecked: {
+                funcName: "gpii.utility.setAriaChecked",
+                args: ["{that}.dom.checkbox", "{arguments}.0"]
+            }
         }
     });
 
@@ -448,12 +508,32 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         selectors: {
             wordEcho: ".gpiic-wordEcho",
-            wordEchoLabel: ".gpiic-wordEcho-label"
+            wordEchoLabel: ".gpiic-wordEcho-label",
+            checkbox: ".gpiic-wordEcho-checkbox-label"
         },
-        activatableLabelsSelector: ".gpiic-wordEcho-checkbox-label",
+        selectorsToIgnore: ["checkbox"],
+        activatableLabelsSelector: "{that}.options.selectors.checkbox",
         protoTree: {
             wordEcho: "${wordEcho}",
             wordEchoLabel: {messagekey: "wordEchoLabel"}
+        },
+        listeners: {
+            "onDomBind.setAriaChecked": {
+                listener: "{that}.setAriaChecked",
+                args: "{that}.model.wordEcho"
+            }
+        },
+        modelListeners: {
+            wordEcho: {
+                listener: "{that}.setAriaChecked",
+                args: ["{change}.value"]
+            }
+        },
+        invokers: {
+            setAriaChecked: {
+                funcName: "gpii.utility.setAriaChecked",
+                args: ["{that}.dom.checkbox", "{arguments}.0"]
+            }
         }
     });
 
