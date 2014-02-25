@@ -36,15 +36,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         labels = $(labelsClass); 
 
         fluid.each(labels, function (label, index) {
+            label = $(label);
+            
             // get the label's associated input
-            var inputCssCompliantSelector = "#" + $(label).attr("for").replace(/\:/g, '\\:');
+            var inputCssCompliantSelector = "#" + label.attr("for").replace(/\:/g, '\\:');
             var theInput = $(inputCssCompliantSelector);
             // outline container according to focus
             theInput.focusin(function () {
-                $(label).addClass("gpii-focus");
+                label.addClass("gpii-focus");
             });
             theInput.focusout(function () {
-                $(label).removeClass("gpii-focus");
+                label.removeClass("gpii-focus");
             });
         });
     };

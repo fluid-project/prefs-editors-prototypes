@@ -362,8 +362,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle = function (labels, values, classes) {
         fluid.each(labels, function (label, index) {
-            $(label).addClass(classes[values[index]]);
-            $(label).append('<span></span>');
+            label = $(label);
+            label.addClass(classes[values[index]]);
+            label.append('<span></span>');
         });
     };
 
