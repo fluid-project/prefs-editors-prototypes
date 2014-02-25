@@ -158,5 +158,4 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.prefsEditor.triggerEvent = function (that, targetSelector, event) {
         that.locate(targetSelector).trigger(event);
     };
-
 })(jQuery, fluid);
