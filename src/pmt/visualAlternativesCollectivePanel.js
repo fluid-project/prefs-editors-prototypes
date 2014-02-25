@@ -86,16 +86,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             setFocusOnVisualAlternativesMoreLess: {
                 funcName: "gpii.panel.visualAlternatives.setFocusOnVisualAlternativesMoreLess",
-                args: ["{that}", "{that}.model.gpii_primarySchema_visualAlternativesMoreLess"]
+                args: ["{that}.dom.voicePitchInput", "{that}.dom.visualAlternativesMoreLess", "{that}.model.gpii_primarySchema_visualAlternativesMoreLess"]
             }
         }
     });
     
-    gpii.panel.visualAlternatives.setFocusOnVisualAlternativesMoreLess = function (that, visualAlternativesMoreLessExpanded) {
+    gpii.panel.visualAlternatives.setFocusOnVisualAlternativesMoreLess = function (voicePitchInputElement, visualAlternativesMoreLessElement, visualAlternativesMoreLessExpanded) {
         if (visualAlternativesMoreLessExpanded) {
-            that.locate("voicePitchInput").focus();
+            voicePitchInputElement.focus();
         } else {
-            that.locate("visualAlternativesMoreLess").focus();
+            visualAlternativesMoreLessElement.focus();
         }
     };
 
