@@ -45,7 +45,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     },
                     sourceApplier: "{cursorSizePCP}.applier",
                     range: "{cursorSizePCP}.options.controlValues.cursorSize",
-                    sliderOptions: "{cursorSizePCP}.options.sliderOptions"
+                    sliderOptions: "{cursorSizePCP}.options.sliderOptions",
+                    listeners: {
+                        "afterRender.setAria": {
+                            "this": "{that}.slider.dom.thumb",
+                            method: "attr",
+                            args: ["aria-labelledby", {expander: {funcName: "gpii.utility.getLabelId", args: "{cursorSizePCP}.dom.cursorSizeLabel"}}]
+                        }
+                    }
                 }
             }
         },
