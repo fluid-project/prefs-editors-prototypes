@@ -24,7 +24,7 @@ var demo = demo || {};
     };
 
     var isDevMode = function () {
-        var queryString = document.URL.split("?")[1]; // gets the query string
+        var queryString = document.URL.split("?")[1] || ""; // gets the query string
         var params = {};
         fluid.each(queryString.split("&"), function (paramString) {
             var param = paramString.split("=");
