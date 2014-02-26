@@ -3,6 +3,6 @@
     "previewText": "So wird Text meistens aussehen.",
     "appearance": "Aussehen",
     "magnifier": "Lupe",
-    "additionalMagnifierAdjusters": "zusätzliche Regler für Vergrößerungen",
-    "additionalVisualAdjusters": "zusätzliche Regler für Anzeigen"
+    "additionalMagnifierAdjusters": "Erweiterte Einstellungen für die Bildschirmlupe",
+    "additionalVisualAdjusters": "Erweiterte Einstellungen für den Screenreader"
 }
