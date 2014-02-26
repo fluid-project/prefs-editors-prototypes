@@ -9,8 +9,8 @@
 	"notificationMessagePart3": "a una memoria USB o una etiqueta RFID.",
 	"notificationTitle": "Tus preferencias se han guardado en la nube  y se han aplicado en este dispositivo.",
 	"notificationConfirmButton": "aceptar",
-	"fullEditorText": "full editor",
-	"quickEditorText": "quick editor",
+	"fullEditorText": "editor completo",
+	"quickEditorText": "editor rápido",
 	"logoutText": "salir",
     "more": "+ más",
     "less": "- menos"
