@@ -297,9 +297,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             textHighlighting: ".gpiic-textHighlighting",
             textHighlightingLabel: ".gpiic-textHighlighting-label"
         },
+        stringArrayIndex: {
+            textHighlightingLevel: ["textHighlighting-word", "textHighlighting-line", "textHighlighting-sentence", "textHighlighting-paragraph"]
+        },
         protoTree: {
             textHighlighting: {
                 selection: "${textHighlighting}",
+                optionnames: "${{that}.stringBundle.textHighlightingLevel}",
                 optionlist: "${{that}.options.controlValues.textHighlighting}"
             },
             textHighlightingLabel: {messagekey: "textHighlightingLabel"}
