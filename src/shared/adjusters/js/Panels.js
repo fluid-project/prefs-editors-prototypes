@@ -377,9 +377,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         selectors: {
             announceCapitals: ".gpiic-announceCapitals",
-            announceCapitalsLabel: ".gpiic-announceCapitals-label"
+            announceCapitalsLabel: ".gpiic-announceCapitals-label",
+            activatableLabelsSelector: ".gpiic-announceCapitals-checkbox-label"
         },
-        activatableLabelsSelector: ".gpiic-announceCapitals-checkbox-label",
         protoTree: {
             announceCapitals: "${announceCapitals}",
             announceCapitalsLabel: {messagekey: "announceCapitalsLabel"}
@@ -395,9 +395,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         selectors: {
             speakTutorialMessages: ".gpiic-speakTutorialMessages",
-            speakTutorialMessagesLabel: ".gpiic-speakTutorialMessages-label"
+            speakTutorialMessagesLabel: ".gpiic-speakTutorialMessages-label",
+            activatableLabelsSelector: ".gpiic-speakTutorialMessages-checkbox-label"
         },
-        activatableLabelsSelector: ".gpiic-speakTutorialMessages-checkbox-label",
         protoTree: {
             speakTutorialMessages: "${speakTutorialMessages}",
             speakTutorialMessagesLabel: {messagekey: "speakTutorialMessagesLabel"}
@@ -414,9 +414,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         selectors: {
             readBackLabel: ".gpiic-speakText-readBack-label",
             keyEcho: ".gpiic-speakText-keyEcho",
-            keyEchoLabel: ".gpiic-speakText-keyEcho-label"
+            keyEchoLabel: ".gpiic-speakText-keyEcho-label",
+            activatableLabelsSelector: ".gpiic-keyEcho-checkbox-label"
         },
-        activatableLabelsSelector: ".gpiic-keyEcho-checkbox-label",
         protoTree: {
             readBackLabel: {messagekey: "readBackLabel"},
             keyEcho: "${keyEcho}",
@@ -433,9 +433,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         selectors: {
             wordEcho: ".gpiic-wordEcho",
-            wordEchoLabel: ".gpiic-wordEcho-label"
+            wordEchoLabel: ".gpiic-wordEcho-label",
+            activatableLabelsSelector: ".gpiic-wordEcho-checkbox-label"
         },
-        activatableLabelsSelector: ".gpiic-wordEcho-checkbox-label",
         protoTree: {
             wordEcho: "${wordEcho}",
             wordEchoLabel: {messagekey: "wordEchoLabel"}
