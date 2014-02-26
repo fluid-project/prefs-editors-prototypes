@@ -18,11 +18,6 @@ Run the following command
 
     git clone https://github.com/GPII/prefsEditors
 
-Then run the following command in your newly checked out prefsEditors repository. 
-This will pull all dependencies that are required by the prefsEditors.
-
-    npm install
-
 Running the preferences editors
 -------------------------------
 
