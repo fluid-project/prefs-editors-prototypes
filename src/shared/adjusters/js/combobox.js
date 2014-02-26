@@ -2,6 +2,7 @@
 Cloud4all Preferences Management Tools
 
 Copyright 2013 Astea
+Copyright 2014 OCADU
 
 Licensed under the New BSD license. You may not use this file except in
 compliance with this License.
@@ -145,7 +146,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             // Remove invalid value
             this.input
                 .val("")
-                .attr("title", value + " didn't match any language")
+                .attr("title", value + " didn't match any listed item")
                 .tooltip("open");
             this.element.val("");
             this._delay(function () {
