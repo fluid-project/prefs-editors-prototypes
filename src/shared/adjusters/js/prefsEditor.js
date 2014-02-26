@@ -21,14 +21,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             events: {
                 onLogin: null,
                 onLogout: null,
-                onRequestPageTransition: null,
-                onPageTransition: {
-                    events: {
-                        onSetSuccess: "onSetSuccess",
-                        onRequestPageTransition: "onRequestPageTransition"
-                    },
-                    args: ["{that}"]
-                }
+                onRequestPageTransition: null
             },
             model: {
                 userLoggedIn: false
@@ -60,11 +53,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": ["{that}.events.onRequestPageTransition.fire"]
                 },
                 "onRequestPageTransition.save": "{that}.saveSettings",
-                /*
-                 * The URL is programmatically changed to prevent the page transitioning before
-                 * the asynchronous save procedure has completed.
-                 */
-                "onPageTransition.goToPMT": {
+                "onRequestPageTransition.goToPMT": {
                     "funcName": "fluid.set",
                     "args": [window, "location.href", "{prefsEditorLoader}.options.pmtUrl"]
                 },
@@ -169,5 +158,4 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.prefsEditor.triggerEvent = function (that, targetSelector, event) {
         that.locate(targetSelector).trigger(event);
     };
-
 })(jQuery, fluid);
