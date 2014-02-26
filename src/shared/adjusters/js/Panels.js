@@ -321,6 +321,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             punctuationVerbosityInput: ".gpiic-speakText-punctuationVerbosity",
             punctuationVerbosityLabel: ".gpiic-speakText-punctuationVerbosity-label"
         },
+        stringArrayIndex: {
+            punctuationVerbosityLevel: ["punctuationVerbosity-none", "punctuationVerbosity-some", "punctuationVerbosity-most", "punctuationVerbosity-all"]
+        },
         protoTree: {
             announceLabel: {messagekey: "announce"},
             expander: {
@@ -330,7 +333,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 inputID: "punctuationVerbosityInput",
                 selectID: "punctuationVerbosity-selection",
                 tree: {
-                    optionnames: "${{that}.options.controlValues.punctuationVerbosity}",
+                    optionnames: "${{that}.stringBundle.punctuationVerbosityLevel}",
                     optionlist: "${{that}.options.controlValues.punctuationVerbosity}",
                     selection: "${punctuationVerbosity}"
                 }
