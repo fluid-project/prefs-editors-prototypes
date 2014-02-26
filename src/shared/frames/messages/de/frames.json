@@ -9,6 +9,8 @@
 	"notificationMessagePart3": "auf USB oder RFID-Lesegerät.",
 	"notificationTitle": "Bevorzugte Einstellungen wurden in der Cloud gespeichert und auf diesem Gerät angewendet.",
 	"notificationConfirmButton": "verstanden",
+	"quickEditorText": "quick editor",
+	"fullEditorText": "full editor",
 	"logoutText": "ausloggen",
     "more": "+ mehr",
     "less": "- weniger"

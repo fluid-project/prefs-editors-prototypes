@@ -9,6 +9,7 @@
 	"notificationMessagePart3": "to a USB or RFID reader.",
 	"notificationTitle": "Preferences have been saved to the cloud and applied to this device.",
 	"notificationConfirmButton": "got it",
+	"quickEditorText": "quick editor",
 	"fullEditorText": "full editor",
 	"logoutText": "log-out",
     "more": "+ more",
