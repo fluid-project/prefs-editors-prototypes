@@ -24,9 +24,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             followingElementRow: ".gpiic-followingElementRow",
             followingElementLabel: ".gpiic-followingElementLabel",
             followingElementInput: ".gpiic-followingElementInput",
-            followingElementHeading: ".gpiic-followingElementHeading"
+            followingElementHeading: ".gpiic-followingElementHeading",
+            activatableLabelsSelector: ".gpiic-followingElementLabel"
         },
-        activatableLabelsSelector: "{that}.options.selectors.followingElementLabel",
         members: {
             messageResolver: "{prefsEditorLoader}.msgBundle"
         },

@@ -32,6 +32,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierPositionLabel: ".gpiic-increaseSize-magnifierPositionLabel",
             magnifierPositionInput: ".gpiic-increaseSize-magnifierPositionInput",
             magnifierPositionHeading: ".gpiic-increaseSize-magnifierPositionHeading",
+            singleSelectionLabels: ".gpiic-increaseSize-magnifierPositionLabel",
             magnifierPositionContainer: ".gpiic-increaseSize-magnifierPositionContainer"
         },
         selectorsToIgnore: ["magnifierPositionContainer"],
@@ -79,12 +80,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.options.classnameMap.magnifierPosition", "{that}.dom.magnifierPositionContainer",
                     "{that}.dom.magnifierPositionHeading"],
                 dynamic: true
-            },
-            setFocusHandlers: {
-                funcName: "gpii.adjuster.singleSelectionWithKeyboard.setFocusHandlers",
-                args: [
-                    "{that}.options.selectors.magnifierPositionLabel"
-                ]
             }
         }
     });

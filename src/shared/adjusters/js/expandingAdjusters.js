@@ -56,10 +56,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "attr",
                 "args": ["value", "{that}.stringBundle.more"]
             },
+            "onShowExpandingAdjusters.focusElementToFocusOnExpansion": {
+                "this": "fluid",
+                "method": "focus",
+                "args": ["{that}.dom.elementToFocusOnExpansion"]
+            },
             "onHideExpandingAdjusters.focusMoreLess": {
-                "this": "{that}.dom.moreLess",
-                "method": "trigger",
-                "args": ["focus"]
+                "this": "fluid",
+                "method": "focus",
+                "args": ["{that}.dom.moreLess"]
             },
             "onShowExpandingAdjusters.setExpanded": {
                 "listener": "{that}.setExpanded"
@@ -137,11 +142,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
         // we need the refreshView() here since these will not be inside a conditional panel
         that.refreshView();
-        
-        // focus element on expansion
-        if(that.model.expandingAdjustersEnabledSwitch) {
-            that.locate("elementToFocusOnExpansion").focus();
-        }
     };
     
 })(jQuery, fluid);

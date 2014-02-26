@@ -326,7 +326,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             punctuationVerbosityRow: ".gpiic-speakText-punctuationVerbosity-row",
             punctuationVerbosityOptionLabel: ".gpiic-speakText-punctuationVerbosity-option-label",
             punctuationVerbosityInput: ".gpiic-speakText-punctuationVerbosity",
-            punctuationVerbosityLabel: ".gpiic-speakText-punctuationVerbosity-label"
+            punctuationVerbosityLabel: ".gpiic-speakText-punctuationVerbosity-label",
+            singleSelectionLabels: ".gpiic-speakText-punctuationVerbosity-option-label"
         },
         selectorsToIgnore: ["punctuationVerbosityContainer"],
         protoTree: {
@@ -353,30 +354,19 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             style: {
                 funcName: "gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle",
                 args: [
-                    "{that}.options.selectors.punctuationVerbosityOptionLabel",
+                    "{that}.dom.punctuationVerbosityOptionLabel",
                     "{that}.options.controlValues.punctuationVerbosity",
                     "{that}.options.classnameMap.punctuationVerbosity",
                     "{that}.dom.punctuationVerbosityContainer",
                     "{that}.dom.punctuationVerbosityLabel"
                 ]
-            },
-            setFocusHandlers: {
-                funcName: "gpii.adjuster.singleSelectionWithKeyboard.setFocusHandlers",
-                args: [
-                    "{that}.options.selectors.punctuationVerbosityOptionLabel"
-                ]
             }
         }
-
     });
 
-    gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle = function (labelsClass, values, classes, container, titleLabel) {
-        labels = $(labelsClass); // Used because "{that}.dom.punctuationVerbosityOptionLabel"
-                                 // (like that.locate("punctuationVerbosityOptionLabel")) fails to return
-                                 // the array of labels.
-
+    gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle = function (labels, values, classes, container, titleLabel) {
         fluid.each(labels, function (label, index) {
-            var label = $(label);
+            label = $(label);
             label.addClass(classes[values[index]]);
             label.append('<span></span>');
         });

@@ -17,11 +17,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     fluid.defaults("gpii.adjuster.activatableLabelsClickOnActivate", {
         gradeNames: ["fluid.littleComponent", "autoInit"],
-        activatableLabelsSelector: "",   // to be provided by implementors
+        mergePolicy: {
+            selectorsToIgnore: fluid.prefs.compositePanel.arrayMergePolicy
+        },
+        selectors: {
+            activatableLabelsSelector: ""   // to be provided by implementors
+        },
+        selectorsToIgnore: ["activatableLabelsSelector"],
         listeners: {
             "onDomBind.makeLabelsActivatable": {
                 "funcName": "fluid.activatable",
-                "args": ["{that}.options.activatableLabelsSelector", "{that}.clickLabelsOnActivate"]
+                "args": ["{that}.dom.activatableLabelsSelector", "{that}.clickLabelsOnActivate"]
             }
         },
         invokers: {
