@@ -2,7 +2,7 @@
 Cloud4all Preferences Management Tools
 
 Copyright 2013 Astea
-Copyright 2014 OCADU
+Copyright 2014 OCAD University
 
 Licensed under the New BSD license. You may not use this file except in
 compliance with this License.
@@ -384,10 +384,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         selectors: {
             announceCapitals: ".gpiic-announceCapitals",
             announceCapitalsLabel: ".gpiic-announceCapitals-label",
-            checkbox: ".gpiic-announceCapitals-checkbox-label"
+            activatableLabelsSelector: ".gpiic-announceCapitals-checkbox-label"
         },
-        selectorsToIgnore: ["checkbox"],
-        activatableLabelsSelector: "{that}.options.selectors.checkbox",
+        selectorsToIgnore: ["activatableLabelsSelector"],
         protoTree: {
             announceCapitals: "${announceCapitals}",
             announceCapitalsLabel: {messagekey: "announceCapitalsLabel"}
@@ -407,7 +406,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         invokers: {
             setAriaChecked: {
                 funcName: "gpii.utility.setAriaChecked",
-                args: ["{that}.dom.checkbox", "{arguments}.0"]
+                args: ["{that}.dom.activatableLabelsSelector", "{arguments}.0"]
             }
         }
     });
@@ -422,10 +421,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         selectors: {
             speakTutorialMessages: ".gpiic-speakTutorialMessages",
             speakTutorialMessagesLabel: ".gpiic-speakTutorialMessages-label",
-            checkbox: ".gpiic-speakTutorialMessages-checkbox-label"
+            activatableLabelsSelector: ".gpiic-speakTutorialMessages-checkbox-label"
         },
-        selectorsToIgnore: ["checkbox"],
-        activatableLabelsSelector: "{that}.options.selectors.checkbox",
+        selectorsToIgnore: ["activatableLabelsSelector"],
         protoTree: {
             speakTutorialMessages: "${speakTutorialMessages}",
             speakTutorialMessagesLabel: {messagekey: "speakTutorialMessagesLabel"}
@@ -445,7 +443,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         invokers: {
             setAriaChecked: {
                 funcName: "gpii.utility.setAriaChecked",
-                args: ["{that}.dom.checkbox", "{arguments}.0"]
+                args: ["{that}.dom.activatableLabelsSelector", "{arguments}.0"]
             }
         }
     });
@@ -461,10 +459,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             readBackLabel: ".gpiic-speakText-readBack-label",
             keyEcho: ".gpiic-speakText-keyEcho",
             keyEchoLabel: ".gpiic-speakText-keyEcho-label",
-            checkbox: "gpiic-keyEcho-checkbox-label"
+            activatableLabelsSelector: ".gpiic-keyEcho-checkbox-label"
         },
-        selectorsToIgnore: ["checkbox"],
-        activatableLabelsSelector: "{that}.options.selectors.checkbox",
+        selectorsToIgnore: ["activatableLabelsSelector"],
         protoTree: {
             readBackLabel: {messagekey: "readBackLabel"},
             keyEcho: "${keyEcho}",
@@ -485,7 +482,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         invokers: {
             setAriaChecked: {
                 funcName: "gpii.utility.setAriaChecked",
-                args: ["{that}.dom.checkbox", "{arguments}.0"]
+                args: ["{that}.dom.activatableLabelsSelector", "{arguments}.0"]
             }
         }
     });
@@ -500,10 +497,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         selectors: {
             wordEcho: ".gpiic-wordEcho",
             wordEchoLabel: ".gpiic-wordEcho-label",
-            checkbox: ".gpiic-wordEcho-checkbox-label"
+            activatableLabelsSelector: ".gpiic-wordEcho-checkbox-label"
         },
-        selectorsToIgnore: ["checkbox"],
-        activatableLabelsSelector: "{that}.options.selectors.checkbox",
+        selectorsToIgnore: ["activatableLabelsSelector"],
         protoTree: {
             wordEcho: "${wordEcho}",
             wordEchoLabel: {messagekey: "wordEchoLabel"}
@@ -523,7 +519,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         invokers: {
             setAriaChecked: {
                 funcName: "gpii.utility.setAriaChecked",
-                args: ["{that}.dom.checkbox", "{arguments}.0"]
+                args: ["{that}.dom.activatableLabelsSelector", "{arguments}.0"]
             }
         }
     });

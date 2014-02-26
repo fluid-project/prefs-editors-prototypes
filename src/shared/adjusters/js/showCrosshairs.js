@@ -2,6 +2,7 @@
 Cloud4all Preferences Management Tools
 
 Copyright 2013 CERTH/HIT
+Copyright 2014 OCAD University
 
 Licensed under the New BSD license. You may not use this file except in
 compliance with this License.
@@ -28,11 +29,31 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             showCrosshairsDescription: ".gpiic-iconCheckAdjusterDescription",
             activatableLabelsSelector: ".gpiic-showCrosshairs-iconCheckAdjusterArea"
         },
+        selectorsToIgnore: ["activatableLabelsSelector"],
         protoTree: {
             showCrosshairsTitle: {messagekey: "emphasizeLocation"},
             preferenceSwitchShowCrosshairs: "${value}",
             showCrosshairsDescription: {messagekey: "showCrosshairs"}
         },
-        "class": "gpii-iconCheck-showCrosshairs"
+        "class": "gpii-iconCheck-showCrosshairs",
+        listeners: {
+            "onDomBind.setAriaChecked": {
+                listener: "{that}.setAriaChecked",
+                args: "{that}.model.value"
+            }
+        },
+        modelListeners: {
+            value: {
+                listener: "{that}.setAriaChecked",
+                args: ["{change}.value"]
+            }
+        },
+        invokers: {
+            setAriaChecked: {
+                funcName: "gpii.utility.setAriaChecked",
+                args: ["{that}.dom.activatableLabelsSelector", "{arguments}.0"],
+                dynamic: true
+            }
+        }
     });
 })(jQuery, fluid);
