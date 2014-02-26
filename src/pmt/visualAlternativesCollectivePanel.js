@@ -1,7 +1,7 @@
 /*!
 Cloud4all Preferences Management Tools
 
-Copyright 2013 OCAD University
+Copyright 2013-2014 OCAD University
 Copyright 2013 Astea
 
 Licensed under the New BSD license. You may not use this file except in
