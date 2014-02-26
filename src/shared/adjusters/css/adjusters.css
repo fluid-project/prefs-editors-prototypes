@@ -1281,6 +1281,7 @@ input[type="radio"] + label {
 .gpii-punctuationVerbosity-container {
     position: relative;
     height: 55px;
+    width: 250px;
     background-color: #CEDBDD;
     border-radius: 4%;
     padding-top: 10px;
@@ -1295,7 +1296,7 @@ input[type="radio"] + label.radioButton-left > span:before {
     font-size: 150%;
     position: absolute;
     margin-top: -30px;
-    margin-left: calc(-25%);
+    margin-left: -30px;
     color: white;
     border: solid white;
     background-color: white;
@@ -1320,7 +1321,7 @@ input[type="radio"] + label.radioButton-second > span:before {
     font-size: 150%;
     position: absolute;
     margin-top: -30px;
-    margin-left: calc(-25%);
+    margin-left: -33px;
     color: white;
     border: solid white;
     background-color: white;
@@ -1345,7 +1346,7 @@ input[type="radio"] + label.radioButton-third > span:before {
     font-size: 150%;
     position: absolute;
     margin-top: -30px;
-    margin-left: calc(-25%);
+    margin-left: -31px;
     color: white;
     border: solid white;
     background-color: white;
@@ -1370,7 +1371,7 @@ input[type="radio"] + label.radioButton-right > span:before {
     font-size: 150%;
     position: absolute;
     margin-top: -30px;
-    margin-left: calc(-25%);
+    margin-left: -21px;
     color: white;
     border: solid white;
     background-color: white;
@@ -1393,36 +1394,27 @@ input[type="radio"] + label.radioButton-left {
 }
 
 input[type="radio"] + label.radioButton-second {
+    margin-left: 70px;
     position: absolute;
     margin-top: 30px;
 }
 
 input[type="radio"] + label.radioButton-third {
+    margin-left: 140px;
     position: absolute;
     margin-top: 30px;
 }
 
 input[type="radio"] + label.radioButton-right {
+    margin-left: 210px;
     position: absolute;
     margin-top: 30px;
-    margin-right: 0 !important;
 }
 
 input[type="radio"] + label {
     font-size: 90%;
 }
 
-.gpii-speakText-punctuationVerbosity-row {
-	text-align: center;
-}
-
-input[type="radio"] + label.punctuationVerbosityRadioButton {
-	float: left !important;
-    margin-left: 0 !important;
-    margin-right: 1em;
-	position: relative !important;
-	width: calc(25% - 1em);
-}
 
 /*
     Style for Visual Alternatives, Language & Volume

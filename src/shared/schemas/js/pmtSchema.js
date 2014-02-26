@@ -300,10 +300,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "classnameMap": {"punctuationVerbosity": "@punctuationVerbosity.classes"}
             },
             "classes": {
-                "none": "punctuationVerbosityRadioButton radioButton-left",
-                "some": "punctuationVerbosityRadioButton radioButton-middle radioButton-second",
-                "most": "punctuationVerbosityRadioButton radioButton-middle radioButton-third",
-                "all": "punctuationVerbosityRadioButton radioButton-right"
+                "none": "radioButton-left",
+                "some": "radioButton-middle radioButton-second",
+                "most": "radioButton-middle radioButton-third",
+                "all": "radioButton-right"
             }
         },
 
