@@ -161,6 +161,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      */
     fluid.defaults("gpii.prefs.gpiiStore", {
         gradeNames: ["fluid.prefs.dataSource", "fluid.eventedComponent", "autoInit"],
+        url: "http://localhost:8081/",
         // instantiate the gpiiSession component
         components: {
             gpiiSession: {
@@ -199,9 +200,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     gpii.prefs.gpiiStore.get = function (settings, sessionSettings, modelTransformFunc) {
         var gpiiModel;
 
-        if (sessionSettings.loggedUser != null) {
+        if (sessionSettings.loggedUser !== null) {
 
-            var urlToPost = sessionSettings.loggedUser ? (sessionSettings.url + "user/" + sessionSettings.loggedUser) : (sessionSettings.url + "user/");
+            var urlToPost = sessionSettings.loggedUser ? (settings.url + "user/" + sessionSettings.loggedUser) : (settings.url + "user/");
 
             $.ajax({
                 url: urlToPost,
@@ -224,7 +225,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     gpii.prefs.gpiiStore.set = function (model, settings, session, modelTransformFunc, onSuccessfulSetFunction) {
         var transformedModel = modelTransformFunc(model);
 
-        var urlToPost = session.options.loggedUser ? (session.options.url + "user/" + session.options.loggedUser) : (session.options.url + "user/");
+        var urlToPost = session.options.loggedUser ? (settings.url + "user/" + session.options.loggedUser) : (settings.url + "user/");
         $.ajax({
             url: urlToPost,
             type: "POST",
