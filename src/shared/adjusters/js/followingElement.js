@@ -19,7 +19,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.adjuster.followingElement", {
         gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabelsClickOnActivate", "autoInit"],
         listeners: {
-            onDomBind: "{that}.followingElementStyle"
+            "onDomBind.style": "{that}.followingElementStyle",
+            "onDomBind.addAriaDesc": {
+                listener: "gpii.adjuster.followingElement.addAriaDesc",
+                args: ["{that}.dom.followingElementLabel", "{that}.dom.followingElementHeading"]
+            }
         },
         selectors: {
             followingElementRow: ".gpiic-followingElementRow",
@@ -83,6 +87,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             } else {
                 label.addClass(borderStyle[followingElementBorder[2]]);
             }
+        });
+    };
+
+    gpii.adjuster.followingElement.addAriaDesc = function (labels, headingDom) {
+        fluid.each(labels, function (label) {
+            $(label).attr("aria-describedby", gpii.utility.getLabelId(headingDom));
         });
     };
 

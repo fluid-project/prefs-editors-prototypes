@@ -37,6 +37,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "class": "gpii-iconCheck-showCrosshairs",
         listeners: {
+            "onDomBind.addAriaDesc": {
+                "this": "{that}.dom.activatableLabelsSelector",
+                method: "attr",
+                args: ["aria-describedby", {expander: {funcName: "gpii.utility.getLabelId", args: "{that}.dom.showCrosshairsTitle"}}]
+            },
             "onDomBind.setAriaChecked": {
                 listener: "{that}.setAriaChecked",
                 args: "{that}.model.value"

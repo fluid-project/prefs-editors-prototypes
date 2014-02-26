@@ -348,7 +348,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         repeatingSelectors: ["punctuationVerbosityRow"],
         listeners: {
-            onDomBind: "{that}.style"
+            "onDomBind.style": "{that}.style"
         },
         invokers: {
             style: {
@@ -358,20 +358,21 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.options.controlValues.punctuationVerbosity",
                     "{that}.options.classnameMap.punctuationVerbosity",
                     "{that}.dom.punctuationVerbosityContainer",
-                    "{that}.dom.punctuationVerbosityLabel"
+                    "{that}.dom.punctuationVerbosityLabel",
+                    "{that}.dom.announceLabel"
                 ]
             }
         }
     });
 
-    gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle = function (labels, values, classes, container, titleLabel) {
+    gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle = function (labels, values, classes, container, titleLabel, announceLabel) {
         fluid.each(labels, function (label, index) {
             label = $(label);
             label.addClass(classes[values[index]]);
             label.append('<span></span>');
         });
-        container.attr("role", "radiogroup");
         container.attr("aria-labelledby", gpii.utility.getLabelId(titleLabel));
+        container.attr("aria-describedby", gpii.utility.getLabelId(announceLabel));
     };
 
     fluid.defaults("gpii.adjuster.announceCapitals", {
@@ -468,6 +469,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             keyEchoLabel: {messagekey: "keyEchoLabel"}
         },
         listeners: {
+            "onDomBind.addAriaDesc": {
+                "this": "{that}.dom.activatableLabelsSelector",
+                method: "attr",
+                args: ["aria-describedby", {expander: {funcName: "gpii.utility.getLabelId", args: "{that}.dom.readBackLabel"}}]
+            },
             "onDomBind.setAriaChecked": {
                 listener: "{that}.setAriaChecked",
                 args: "{that}.model.keyEcho"
