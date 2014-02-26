@@ -319,7 +319,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             punctuationVerbosityRow: ".gpiic-speakText-punctuationVerbosity-row",
             punctuationVerbosityOptionLabel: ".gpiic-speakText-punctuationVerbosity-option-label",
             punctuationVerbosityInput: ".gpiic-speakText-punctuationVerbosity",
-            punctuationVerbosityLabel: ".gpiic-speakText-punctuationVerbosity-label"
+            punctuationVerbosityLabel: ".gpiic-speakText-punctuationVerbosity-label",
+            singleSelectionLabels: ".gpiic-speakText-punctuationVerbosity-option-label"            
         },
         protoTree: {
             announceLabel: {messagekey: "announce"},
@@ -348,12 +349,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.dom.punctuationVerbosityOptionLabel",
                     "{that}.options.controlValues.punctuationVerbosity",
                     "{that}.options.classnameMap.punctuationVerbosity"
-                ]
-            },
-            setFocusHandlers: {
-                funcName: "gpii.adjuster.singleSelectionWithKeyboard.setFocusHandlers",
-                args: [
-                    "{that}.options.selectors.punctuationVerbosityOptionLabel"
                 ]
             }
         }

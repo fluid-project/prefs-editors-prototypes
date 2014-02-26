@@ -17,18 +17,23 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     fluid.defaults("gpii.adjuster.singleSelectionWithKeyboard", {
         gradeNames: ["fluid.littleComponent", "autoInit"],
+        mergePolicy: {
+            selectorsToIgnore: fluid.prefs.compositePanel.arrayMergePolicy
+        },
+        selectors: {
+            singleSelectionLabels: ""   // to be provided by implementors
+        },
+        selectorsToIgnore: ["singleSelectionLabels"],
         listeners: {
             "onDomBind.setFocusHandlers": "{that}.setFocusHandlers"
         },
         invokers: {
-            /* To be provided by implementors in order to pass correct args e.g.
             setFocusHandlers: {
                 funcName: "gpii.adjuster.singleSelectionWithKeyboard.setFocusHandlers",
                 args: [
-                    "{that}.options.selectors.punctuationVerbosityOptionLabel"
+                    "{that}.dom.singleSelectionLabels"
                 ]
             }
-            */
         }
     });
     
