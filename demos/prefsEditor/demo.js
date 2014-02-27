@@ -18,6 +18,21 @@ var demo = demo || {};
 
 (function ($, fluid) {
 
+    var prefsServerUrl = {
+        production: "http://preferences.gpii.net/",
+        development: "http://localhost:8081/"
+    };
+
+    var isDevMode = function () {
+        var queryString = document.URL.split("?")[1] || ""; // gets the query string
+        var params = {};
+        fluid.each(queryString.split("&"), function (paramString) {
+            var param = paramString.split("=");
+            params[param[0]] = param[1];
+        });
+        return !!(params["mode"] === "dev");
+    };
+
     $(document).ready(function () {
         fluid.prefs.create("#gpiic-pmt", {
             build: {
@@ -27,6 +42,9 @@ var demo = demo || {};
             prefsEditor: {
                 prefsEditorType: "gpii.pmt",
                 storeType: "gpii.prefs.gpiiSettingsStore",
+                store: {
+                    url: isDevMode() ? prefsServerUrl.development : prefsServerUrl.production
+                },
                 components: {
                     prefsEditorLoader: {
                         options: {
