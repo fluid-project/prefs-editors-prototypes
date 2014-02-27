@@ -37,10 +37,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "class": "gpii-iconCheck-showCrosshairs",
         listeners: {
+            /**
+             Most PMT and PCP checkboxes displayed on UI are using nested divs for cosmetic reason. It results
+             in an issue that the regular way for grouping checkboxes that helps screen readers to announce
+             the group title when focusing on the first checkbox stops working. The workaround here is to use
+             "aria-describedby" to associate the title with each checkbox. This is not ideal.
+             An example of a grouped checkbox: http://test.cita.illinois.edu/aria/checkbox/checkbox1.php
+             **/
             "onDomBind.addAriaDesc": {
                 "this": "{that}.dom.activatableLabelsSelector",
                 method: "attr",
-                args: ["aria-describedby", {expander: {funcName: "gpii.utility.getLabelId", args: "{that}.dom.showCrosshairsTitle"}}]
+                args: ["aria-describedby", {expander: {funcName: "gpii.ariaUtility.getLabelId", args: "{that}.dom.showCrosshairsTitle"}}]
             },
             "onDomBind.setAriaChecked": {
                 listener: "{that}.setAriaChecked",
@@ -55,7 +62,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         invokers: {
             setAriaChecked: {
-                funcName: "gpii.utility.setAriaChecked",
+                funcName: "gpii.ariaUtility.setAriaChecked",
                 args: ["{that}.dom.activatableLabelsSelector", "{arguments}.0"],
                 dynamic: true
             }

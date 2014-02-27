@@ -59,7 +59,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 dynamic: true
             },
             setAriaRelevant: {
-                funcName: "gpii.utility.setAriaRelevant",
+                funcName: "gpii.ariaUtility.setAriaRelevant",
                 args: ["{that}.dom.magnifierControlsContainer", "{that}.model.gpii_primarySchema_magnifierEnabled"],
                 dynamic: true
 

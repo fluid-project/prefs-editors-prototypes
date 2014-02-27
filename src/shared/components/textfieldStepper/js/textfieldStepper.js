@@ -120,7 +120,7 @@ var fluid_1_5 = fluid_1_5 || {};
         valueField.attr("aria-valuemin", range.min + unit);
         valueField.attr("aria-valuemax", range.max + unit);
         valueField.attr("autocomplete", "off");
-        valueField.attr("aria-labelledby", gpii.utility.getLabelId(labelledbyDomElement));
+        valueField.attr("aria-labelledby", gpii.ariaUtility.getLabelId(labelledbyDomElement));
         that.alterValueAria();
 
         that.locate("increment").attr("role", "button");

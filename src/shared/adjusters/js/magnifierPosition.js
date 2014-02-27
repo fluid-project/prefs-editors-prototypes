@@ -93,7 +93,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             label.addClass(style[magnifierPosition[index]]);
             label.attr("tooltip", strings[index]);
         });
-        container.attr("aria-labelledby", gpii.utility.getLabelId(heading));
+        container.attr("aria-labelledby", gpii.ariaUtility.getLabelId(heading));
     };
 
 })(jQuery, fluid);

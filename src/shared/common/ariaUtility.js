@@ -15,9 +15,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
 
-    fluid.registerNamespace("gpii.utility");
+    fluid.registerNamespace("gpii.ariaUtility");
 
-    gpii.utility.getLabelId = function (labelDomElement) {
+    gpii.ariaUtility.getLabelId = function (labelDomElement) {
         if (!labelDomElement) {
             return;
         }
@@ -30,11 +30,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         return labelId;
     };
 
-    gpii.utility.setAriaRelevant = function (container, enabled) {
+    gpii.ariaUtility.setAriaRelevant = function (container, enabled) {
         container.attr("aria-relevant", enabled ? "additions" : "removals");
     };
 
-    gpii.utility.setAriaChecked = function (container, checked) {
+    gpii.ariaUtility.setAriaChecked = function (container, checked) {
         container.attr("aria-checked", checked);
     };
 

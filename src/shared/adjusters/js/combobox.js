@@ -24,6 +24,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 .attr("role", "application")
                 .insertAfter(this.element);
 
+            /**
+             The jQuery autocomplete widget has an accessibility issue that when using keyboard moving thru the items listed on
+             the drop down list box, NVDA sometimes announces some items as "blank".
+             The workaround for this issue is to add a live region that gets updated with the item content whenever the focus on
+             the drop down list is changed. However, this results in a situation that the item content is either announced twice
+             or announced as "blank" + the item content.
+             A better solution is needed for this issue.
+             **/
             this.liveRegionID = fluid.allocateGuid();
             this.wrapper.append('<span class="ui-helper-hidden-accessible" aria-live="polite" aria-atomic="true" aria-relevant="all" id="' + this.liveRegionID + '"></span>');
 
@@ -38,7 +46,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 labelId = null;
 
             // Get the label id to associate with the combobox
-            var labelId = gpii.utility.getLabelId(this.options.labelDomElement);
+            var labelId = gpii.ariaUtility.getLabelId(this.options.labelDomElement);
 
             this.input = $("<input>")
                 .appendTo(this.wrapper)

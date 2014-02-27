@@ -50,7 +50,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         "afterRender.setAria": {
                             "this": "{that}.slider.dom.thumb",
                             method: "attr",
-                            args: ["aria-labelledby", {expander: {funcName: "gpii.utility.getLabelId", args: "{cursorSizePCP}.dom.cursorSizeLabel"}}]
+                            args: ["aria-labelledby", {expander: {funcName: "gpii.ariaUtility.getLabelId", args: "{cursorSizePCP}.dom.cursorSizeLabel"}}]
                         }
                     }
                 }

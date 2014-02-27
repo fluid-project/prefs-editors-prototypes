@@ -90,7 +90,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
         var onOffSwitch = that.locate("onOffSwitch");
         onOffSwitch.attr("role", "button");
-        onOffSwitch.attr("aria-labelledby", gpii.utility.getLabelId(that.locate("headingLabel")));
+        onOffSwitch.attr("aria-labelledby", gpii.ariaUtility.getLabelId(that.locate("headingLabel")));
         onOffSwitch.attr("aria-pressed", that.model[that.options.onOffModelKey]);
     };
 

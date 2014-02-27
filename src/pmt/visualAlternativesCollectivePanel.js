@@ -95,7 +95,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 args: ["{that}.dom.voicePitchInput", "{that}.dom.visualAlternativesMoreLess", "{that}.model.gpii_primarySchema_visualAlternativesMoreLess"]
             },
             setAriaRelevant: {
-                funcName: "gpii.utility.setAriaRelevant",
+                funcName: "gpii.ariaUtility.setAriaRelevant",
                 args: ["{that}.dom.speakTextContainer", "{that}.model.gpii_primarySchema_speakText"],
                 dynamic: true
             }
