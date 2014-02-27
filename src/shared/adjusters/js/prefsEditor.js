@@ -27,14 +27,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 userLoggedIn: false
             },
             listeners: {
-                "onCreate.setUserToken": {
-                    listener: "fluid.set",
-                    args: ["{gpiiSession}", ["options", "loggedUser"], {
-                        expander: {
-                            funcName: "gpii.prefsEditor.getUserToken"
-                        }
-                    }]
-                },
+                // TODO: Remove
+                // "onCreate.setUserToken": {
+                //     listener: "fluid.set",
+                //     args: ["{gpiiSession}", ["options", "loggedUser"], {
+                //         expander: {
+                //             funcName: "gpii.prefsEditor.getUserToken"
+                //         }
+                //     }]
+                // },
                 "onReady.setATTRsaveButton": {
                     "this": "{that}.dom.saveButton",
                     "method": "attr",
@@ -123,9 +124,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.prefsEditor.getUserToken = function (that) {
-        return window.location.search.substring(1);
-    };
+    // TODO: Remove
+    // gpii.prefsEditor.getUserToken = function (that) {
+    //     return window.location.search.substring(1);
+    // };
 
     gpii.applySettings = function (that) {
         var savedSettings = that.modelTransform(that.model);

@@ -218,15 +218,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 setQuickEditorLinkHref : {
                     "this": "{that}.dom.quickEditorLink",
                     method: "attr",
-                    args: ["href", {
-                        expander: {
-                            funcName: "gpii.pmt.constructPcpUrl",
-                            /*
-                             * TODO: Same as above for the "onReady.setQuickEditorLinkHref" listener
-                             */
-                            args: ["{prefsEditorLoader}.options.pcpUrl", "{gpiiSession}.options.loggedUser"]
-                        }
-                    }],
+                    args: ["{prefsEditorLoader}.options.pcpUrl"],
+                    // TODO: Remove
+                    // args: ["href", {
+                    //     expander: {
+                    //         funcName: "gpii.pmt.constructPcpUrl",
+
+                    //          * TODO: Same as above for the "onReady.setQuickEditorLinkHref" listener
+
+                    //         args: ["{prefsEditorLoader}.options.pcpUrl", "{gpiiSession}.options.loggedUser"]
+                    //     }
+                    // }],
                     dynamic: true
                 },
                 clearQuickEditorLinkHref: {
@@ -240,13 +242,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "extraVisibilitySwitch": "gpii_primarySchema_visualAlternativesMoreLess"
             }
         },
-        listeners: {
-            "onReady.setInitialModel": {
-                listener: "gpii.pmt.setInitialModel",
-                args: ["{that}", "{gpiiStore}"],
-                priority: "last"
-            }
-        }
+        // TODO: Remove
+        // listeners: {
+        //     "onReady.setInitialModel": {
+        //         listener: "gpii.pmt.setInitialModel",
+        //         args: ["{that}", "{gpiiStore}"],
+        //         priority: "last"
+        //     }
+        // }
     });
 
     gpii.pmt.hideUserStatusBarIfNotLoggedIn = function (loggedUser, statusBarElement) {
@@ -254,15 +257,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             statusBarElement.hide(0);
         }
     };
-    
+
     gpii.foldExpandedViewWhenOff = function (applier, extraCurrentlyVisible, valueToBeChanged) {
         if (extraCurrentlyVisible) {
             applier.requestChange(valueToBeChanged, false);
         }
     };
-    
+
     gpii.pmt.showSaveNotification = function (that, userToken) {
-        // re-wrap jQuery 1.7 element as jQuery 1.9 version in order to support the "appendTo" param. 
+        // re-wrap jQuery 1.7 element as jQuery 1.9 version in order to support the "appendTo" param.
         var notificationjq1_7 = that.dom.locate("notification");
         var unwrappedNotification = fluid.unwrap(notificationjq1_7);
         var notificationjq1_9 = $(unwrappedNotification);
@@ -280,32 +283,34 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
 
     gpii.pmt.hideSaveNotification = function (that) {
-        // re-wrap jQuery 1.7 element as jQuery 1.9 version in order to support the "appendTo" param. 
+        // re-wrap jQuery 1.7 element as jQuery 1.9 version in order to support the "appendTo" param.
         var notificationjq1_7 = that.dom.locate("notification");
         var unwrappedNotification = fluid.unwrap(notificationjq1_7);
         var notificationjq1_9 = $(unwrappedNotification);
         // destroy it on hide
         notificationjq1_9.dialog("destroy");
     };
-    
+
     /*
      * TODO: Does PCP still need the user token in the URL? Isn't it using the GPIIStore,
-     * which already has reference to the currently logged user, for fetching/saving preferences? 
-     * Passing data around in the URL is a bad practice and furthermore avoiding this would 
+     * which already has reference to the currently logged user, for fetching/saving preferences?
+     * Passing data around in the URL is a bad practice and furthermore avoiding this would
      * simplify things a lot... we would just need to set the href once onReady.
      */
-    gpii.pmt.constructPcpUrl = function (pcpUrl, token) {
-        return pcpUrl + "?" + token;
-    }
-    
-    gpii.pmt.setInitialModel = function (that, gpiiStore) {
-        var token = window.location.search.substring(1);
-        if (token) {
-            fluid.set(gpiiStore, ["gpiiSession", "options", "loggedUser"], token)
-            var initialModel = gpiiStore.get();
-            that.prefsEditor.applier.requestChange("", initialModel);
-        }
-    };
+    // TODO: Remove
+    // gpii.pmt.constructPcpUrl = function (pcpUrl, token) {
+    //     return pcpUrl + "?" + token;
+    // };
+
+    // TODO: Remove
+    // gpii.pmt.setInitialModel = function (that, gpiiStore) {
+    //     var token = window.location.search.substring(1);
+    //     if (token) {
+    //         fluid.set(gpiiStore, ["gpiiSession", "options", "loggedUser"], token)
+    //         var initialModel = gpiiStore.get();
+    //         that.prefsEditor.applier.requestChange("", initialModel);
+    //     }
+    // };
 
     fluid.defaults("gpii.pmt.previewPerSettingEnhanced", {
         gradeNames: "fluid.littleComponent",

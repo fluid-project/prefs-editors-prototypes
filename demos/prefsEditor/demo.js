@@ -17,7 +17,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 var demo = demo || {};
 
 (function ($, fluid) {
-
+    // TODO: for switching the PMT and PCP from production to development
+    // mode is via a mode=dev query parameter. In the future we hope to
+    // employ a system based around the kettle configuration that the rest
+    // of GPII is using.
     demo.prefsServerUrl = {
         production: "http://preferences.gpii.net/",
         development: "http://localhost:8081/"
@@ -53,7 +56,8 @@ var demo = demo || {};
         components: {
             prefsEditorLoader: {
                 options: {
-                    pcpUrl: "./pcp.html"
+                    // Passes along any query parameters
+                    pcpUrl: "./pcp.html" + window.location.search
                 }
             }
         }
@@ -65,7 +69,8 @@ var demo = demo || {};
         components: {
             prefsEditorLoader: {
                 options: {
-                    pmtUrl: "./index.html"
+                    // Passes along any query parameters
+                    pmtUrl: "./index.html" + window.location.search
                 }
             }
         }
