@@ -56,6 +56,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "attr",
                 "args": ["value", "{that}.stringBundle.more"]
             },
+            "onShowExpandingAdjusters.focusElementToFocusOnExpansion": {
+                "this": "fluid",
+                "method": "focus",
+                "args": ["{that}.dom.elementToFocusOnExpansion"]
+            },
+            "onHideExpandingAdjusters.focusMoreLess": {
+                "this": "fluid",
+                "method": "focus",
+                "args": ["{that}.dom.moreLess"]
+            },
             "onShowExpandingAdjusters.setExpanded": {
                 "listener": "{that}.setExpanded"
             },
@@ -117,9 +127,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         selectors: {
             moreLess: "",  //should be provided by integrators
-            expandingAdjusters: ""  //should be provided by integrators
+            expandingAdjusters: "",  //should be provided by integrators
+            elementToFocusOnExpansion: ""   //should be provided by integrators
         },
-        selectorsToIgnore: ["expandingAdjusters", "moreLess"]
+        selectorsToIgnore: ["expandingAdjusters", "moreLess", "elementToFocusOnExpansion"]
     });
 
     gpii.panel.expandingAdjusters.showOrHideDependingOnState = function (state, showEvent, hideEvent, duration) {
@@ -128,7 +139,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     
     gpii.panel.expandingAdjusters.requestChangeMoreLess = function (that) {
         that.applier.requestChange("expandingAdjustersEnabledSwitch", !that.model.expandingAdjustersEnabledSwitch);
+
         // we need the refreshView() here since these will not be inside a conditional panel
         that.refreshView();
     };
+    
 })(jQuery, fluid);

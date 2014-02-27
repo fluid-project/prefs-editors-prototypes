@@ -16,7 +16,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
 
     fluid.defaults("gpii.adjuster.followingElement", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.activatableLabelsClickOnActivate", "autoInit"],
         listeners: {
             onDomBind: "{that}.followingElementStyle"
         },
@@ -24,7 +24,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             followingElementRow: ".gpiic-followingElementRow",
             followingElementLabel: ".gpiic-followingElementLabel",
             followingElementInput: ".gpiic-followingElementInput",
-            followingElementHeading: ".gpiic-followingElementHeading"
+            followingElementHeading: ".gpiic-followingElementHeading",
+            activatableLabelsSelector: ".gpiic-followingElementLabel"
         },
         members: {
             messageResolver: "{prefsEditorLoader}.msgBundle"

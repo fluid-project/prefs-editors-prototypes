@@ -17,10 +17,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
 
     fluid.defaults("gpii.adjuster.magnifierPosition", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.singleSelectionWithKeyboard", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.magnificationPosition": {
-                "model.magnifierPosition": "",
+                "model.magnifierPosition": "default",
                 "controlValues.magnifierPosition": "enum"
             }
         },
@@ -31,7 +31,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierPositionRow: ".gpiic-increaseSize-magnifierPositionRow",
             magnifierPositionLabel: ".gpiic-increaseSize-magnifierPositionLabel",
             magnifierPositionInput: ".gpiic-increaseSize-magnifierPositionInput",
-            magnifierPositionHeading: ".gpiic-increaseSize-magnifierPositionHeading"
+            magnifierPositionHeading: ".gpiic-increaseSize-magnifierPositionHeading",
+            singleSelectionLabels: ".gpiic-increaseSize-magnifierPositionLabel"
         },
         protoTree: {
             expander: [

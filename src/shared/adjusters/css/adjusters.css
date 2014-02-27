@@ -2,14 +2,14 @@
     Font icons
 */
 @font-face {
-	font-family: 'C4Aicons';
-	src:url('../fonts/C4Aicons.eot');
-	src:url('../fonts/C4Aicons.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/C4Aicons.ttf') format('truetype'),
-		url('../fonts/C4Aicons.woff') format('woff'),
-		url('../fonts/C4Aicons.svg#C4Aicons') format('svg');
-	font-weight: normal;
-	font-style: normal;
+    font-family: 'C4Aicons';
+    src:url('../fonts/C4Aicons.eot');
+    src:url('../fonts/C4Aicons.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/C4Aicons.ttf') format('truetype'),
+        url('../fonts/C4Aicons.woff') format('woff'),
+        url('../fonts/C4Aicons.svg#C4Aicons') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
@@ -151,6 +151,17 @@ input[type=checkbox], input[type=radio] {
     border:0;
 }
 
+.gpii-prefsEditor-focusableRadio {
+    position: absolute;
+    display: inherit !important;
+    clip: rect(0 0 0 0);
+    height:1px;
+    width:1px;
+    margin:-1px;
+    padding:0;
+    border:0; 
+}
+
 /*
     The adjusters' font icons
 */
@@ -179,7 +190,7 @@ input[type=checkbox], input[type=radio] {
     content: "\e612";
 }
 .gpii-increaseSize-iconSmallCursor {
-	display: table-cell;
+    display: table-cell;
     float: none;
     vertical-align: top !important;
     width: 1em;
@@ -208,8 +219,8 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-increaseSize-cursor-size-slider-container {
-	display: inline-table !important;
-	width: 100% !important;
+    display: inline-table !important;
+    width: 100% !important;
 }
 
 /*
@@ -252,7 +263,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-stepper-valueField {
-	border: medium none !important;
+    border: medium none !important;
     display: inline-block !important;
     float: left;
     font-size: 1.5em !important;
@@ -277,7 +288,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-stepper-unit:first-letter {
-	text-transform: none !important;
+    text-transform: none !important;
 }
 
 /*
@@ -504,7 +515,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-prefsEditor-previewPerSettingEyeBackground {
-	border-right: 1.7em solid rgba(0, 0, 0, 0) !important;
+    border-right: 1.7em solid rgba(0, 0, 0, 0) !important;
     border-top: 1.7em solid !important;
     color: #B8C9CC;
     position: relative;
@@ -611,8 +622,10 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar {
     font-size: 12px;
     z-index: 10;
     right: inherit !important;
+    display: none;
 }
 [title]:hover:after{
+    display: inherit;
     left:0px;
     opacity:1;
 }
@@ -899,58 +912,58 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
 }
 
 .gpii-prefsEditor-theme-yb .gpii-prefsEditor-previewPerSettingEyeBackground {
-	border-right: 1.7em solid rgba(0, 0, 0, 0) !important;
+    border-right: 1.7em solid rgba(0, 0, 0, 0) !important;
     border-top: 1.7em solid !important;
     color: yellow !important;
     background-color: transparent !important;
 }
 
 .gpii-prefsEditor-theme-yb .gpii-prefsEditor-previewPerSettingEye {
-	color: black !important;
+    color: black !important;
 }
 
 .gpii-prefsEditor-theme-bw .gpii-prefsEditor-previewPerSettingEyeBackground {
-	border-right: 1.7em solid rgba(0, 0, 0, 0) !important;
+    border-right: 1.7em solid rgba(0, 0, 0, 0) !important;
     border-top: 1.7em solid !important;
     color: black !important;
     background-color: transparent !important;
 }
 
 .gpii-prefsEditor-theme-bw .gpii-prefsEditor-previewPerSettingEye {
-	color: white !important;
+    color: white !important;
 }
 
 .gpii-prefsEditor-theme-by .gpii-prefsEditor-previewPerSettingEyeBackground {
-	border-right: 1.7em solid rgba(0, 0, 0, 0) !important;
+    border-right: 1.7em solid rgba(0, 0, 0, 0) !important;
     border-top: 1.7em solid !important;
     color: black !important;
     background-color: transparent !important;
 }
 
 .gpii-prefsEditor-theme-by .gpii-prefsEditor-previewPerSettingEye {
-	color: yellow !important;
+    color: yellow !important;
 }
 
 .gpii-prefsEditor-theme-wb .gpii-prefsEditor-previewPerSettingEyeBackground {
-	border-right: 1.7em solid rgba(0, 0, 0, 0) !important;
+    border-right: 1.7em solid rgba(0, 0, 0, 0) !important;
     border-top: 1.7em solid !important;
     color: white !important;
     background-color: transparent !important;
 }
 
 .gpii-prefsEditor-theme-wb .gpii-prefsEditor-previewPerSettingEye {
-	color: black !important;
+    color: black !important;
 }
 
 .gpii-prefsEditor-theme-inverted .gpii-prefsEditor-previewPerSettingEyeBackground {
-	border-right: 1.7em solid rgba(0, 0, 0, 0) !important;
+    border-right: 1.7em solid rgba(0, 0, 0, 0) !important;
     border-top: 1.7em solid !important;
     color: #e9e9e9 !important;
     background-color: transparent !important;
 }
 
 .gpii-prefsEditor-theme-inverted .gpii-prefsEditor-previewPerSettingEye {
-	color: #393536 !important;
+    color: #393536 !important;
 }
 
 /*
@@ -1056,7 +1069,7 @@ input:checked + label > span > span > .gpii-iconCheckAdjusterCheckIcon:before {
     Style for contrastTheme adjuster
 */
 .gpii-contrastThemeLabel {
-	display: table-cell !important;
+    display: table-cell !important;
     font-size: 1.5em !important;
     border: 2px solid #000000 !important;
     border-radius: 0 !important;
@@ -1069,8 +1082,8 @@ input:checked + label > span > span > .gpii-iconCheckAdjusterCheckIcon:before {
 }
 
 .gpii-contrastThemeLabel > span {
-	display: table-cell;
-	vertical-align: middle;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .fl-prefsEditor .fl-choice label {
@@ -1089,7 +1102,7 @@ input:checked + label > span > span > .gpii-iconCheckAdjusterCheckIcon:before {
 }
 
 .gpii-prefsEditor-themeRow {
-	display: table !important;
+    display: table !important;
     float: none !important;
     width: 100% !important;
 }
@@ -1102,7 +1115,7 @@ input:checked + label > span > span > .gpii-iconCheckAdjusterCheckIcon:before {
 }
 
 .gpii-contrast-contrastOptions {
-	display: block;
+    display: block;
 }
 
 /*
@@ -1149,7 +1162,7 @@ h4 {
 }
 
 .gpii-prefsEditor-slider-input {
-	display:none;
+    display:none;
 }
 
 .gpii-onOffSwitch-switch {
@@ -1615,4 +1628,8 @@ input[type=checkbox]:checked + label.gpii-checkbox-label:before {
     overflow-y: auto;
     overflow-x: hidden; /* prevent horizontal scrollbar */
     padding-right: 15px; /* add padding to account for vertical scrollbar */
+}
+
+.gpii-focus {
+    outline: 2px solid black !important;
 }
