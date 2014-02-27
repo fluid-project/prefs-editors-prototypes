@@ -1,7 +1,7 @@
 /*!
 Cloud4all Preferences Management Tools
 
-Copyright 2013 CERTH/HIT
+Copyright 2014 CERTH/HIT
 
 Licensed under the New BSD license. You may not use this file except in
 compliance with this License.
