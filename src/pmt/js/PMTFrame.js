@@ -218,7 +218,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 setQuickEditorLinkHref : {
                     "this": "{that}.dom.quickEditorLink",
                     method: "attr",
-                    args: ["{prefsEditorLoader}.options.pcpUrl"],
+                    args: ["href", "{prefsEditorLoader}.options.pcpUrl"],
                     // TODO: Remove
                     // args: ["href", {
                     //     expander: {
