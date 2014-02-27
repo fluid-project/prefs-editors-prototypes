@@ -218,18 +218,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 setQuickEditorLinkHref : {
                     "this": "{that}.dom.quickEditorLink",
                     method: "attr",
-                    args: ["href", "{prefsEditorLoader}.options.pcpUrl"],
-                    // TODO: Remove
-                    // args: ["href", {
-                    //     expander: {
-                    //         funcName: "gpii.pmt.constructPcpUrl",
-
-                    //          * TODO: Same as above for the "onReady.setQuickEditorLinkHref" listener
-
-                    //         args: ["{prefsEditorLoader}.options.pcpUrl", "{gpiiSession}.options.loggedUser"]
-                    //     }
-                    // }],
-                    dynamic: true
+                    args: ["href", "{prefsEditorLoader}.options.pcpUrl"]
                 },
                 clearQuickEditorLinkHref: {
                     "this": "{that}.dom.quickEditorLink",
@@ -241,15 +230,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "mainVisibilitySwitch": "gpii_primarySchema_speakText",
                 "extraVisibilitySwitch": "gpii_primarySchema_visualAlternativesMoreLess"
             }
-        },
-        // TODO: Remove
-        // listeners: {
-        //     "onReady.setInitialModel": {
-        //         listener: "gpii.pmt.setInitialModel",
-        //         args: ["{that}", "{gpiiStore}"],
-        //         priority: "last"
-        //     }
-        // }
+        }
     });
 
     gpii.pmt.hideUserStatusBarIfNotLoggedIn = function (loggedUser, statusBarElement) {
@@ -290,27 +271,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         // destroy it on hide
         notificationjq1_9.dialog("destroy");
     };
-
-    /*
-     * TODO: Does PCP still need the user token in the URL? Isn't it using the GPIIStore,
-     * which already has reference to the currently logged user, for fetching/saving preferences?
-     * Passing data around in the URL is a bad practice and furthermore avoiding this would
-     * simplify things a lot... we would just need to set the href once onReady.
-     */
-    // TODO: Remove
-    // gpii.pmt.constructPcpUrl = function (pcpUrl, token) {
-    //     return pcpUrl + "?" + token;
-    // };
-
-    // TODO: Remove
-    // gpii.pmt.setInitialModel = function (that, gpiiStore) {
-    //     var token = window.location.search.substring(1);
-    //     if (token) {
-    //         fluid.set(gpiiStore, ["gpiiSession", "options", "loggedUser"], token)
-    //         var initialModel = gpiiStore.get();
-    //         that.prefsEditor.applier.requestChange("", initialModel);
-    //     }
-    // };
 
     fluid.defaults("gpii.pmt.previewPerSettingEnhanced", {
         gradeNames: "fluid.littleComponent",
