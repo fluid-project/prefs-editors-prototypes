@@ -37,9 +37,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
     
-    gpii.adjuster.singleSelectionWithKeyboard.setFocusHandlers = function (labelsClass) {
-        labels = $(labelsClass); 
-
+    gpii.adjuster.singleSelectionWithKeyboard.setFocusHandlers = function (labels) {
         fluid.each(labels, function (label, index) {
             label = $(label);
             
