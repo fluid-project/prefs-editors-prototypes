@@ -1,7 +1,7 @@
 /*!
 Cloud4all Preferences Management Tools
 
-Copyright 2013 OCAD University
+Copyright 2013-2014 OCAD University
 Copyright 2013 Astea
 
 Licensed under the New BSD license. You may not use this file except in
@@ -105,7 +105,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         var unwrappedDropdown = fluid.unwrap(dropdown);
         var dropdownReadyForCombobox = $(unwrappedDropdown);
         dropdownReadyForCombobox.combobox({
-            labelDomElement: that.locate("auditoryOutLanguageLabel")
+            labelDomElement: that.locate("auditoryOutLanguageLabel"),
+            title: that.stringBundle.lookup("auditoryOutLanguageLabel")
         }).change(function (event, newValue) {
             that.applier.requestChange("auditoryOutLanguage", newValue);
         });

@@ -14,7 +14,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($) {
     $.widget("custom.combobox", {
         options: {
-            labelDomElement: null
+            labelDomElement: null,
+            title: null
         },
 
         _create: function (labelDomElement) {
@@ -22,6 +23,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 .addClass("custom-combobox")
                 .attr("role", "application")
                 .insertAfter(this.element);
+
+            this.liveRegionID = fluid.allocateGuid();
+            this.wrapper.append('<span class="ui-helper-hidden-accessible" aria-live="polite" aria-atomic="true" aria-relevant="all" id="' + this.liveRegionID + '"></span>');
 
             this.element.hide();
             this._createAutocomplete(labelDomElement);
@@ -67,17 +71,21 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         $(id).trigger('change', newValue);
                     });
                 },
-                autocompletechange: "_removeIfInvalid"
+                autocompletechange: "_removeIfInvalid",
+                autocompletefocus: function (event, ui) {
+                    this.wrapper.find("#" + this.liveRegionID).html(ui.item.label);
+                }
             });
         },
 
         _createShowAllButton: function () {
             var input = this.input,
-                wasOpen = false;
+                wasOpen = false,
+                title = this.options.title;
 
             $("<a>")
                 .attr("tabIndex", -1)
-                .attr("title", "Show All Languages")
+                .attr("title", "Show All " + title.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}))
                 .tooltip()
                 .appendTo(this.wrapper)
                 .button({

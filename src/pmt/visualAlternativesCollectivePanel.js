@@ -39,14 +39,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "funcName": "gpii.activateCombobox",
                 "args": ["{that}",
                          "gpii_primarySchema",
-                         "screenReaderLanguage"
+                         "screenReaderLanguage",
+                         "screenReaderLanguageLabel"
                 ]
             },
             "afterRender.activateComboboxTextHighlighting": {
                 "funcName": "gpii.activateCombobox",
                 "args": ["{that}",
                          "gpii_primarySchema",
-                         "textHighlighting"
+                         "textHighlighting",
+                         "textHighlightingLabel"
                 ]
             },
             "afterRender.setExpandedAriaLabel": {
