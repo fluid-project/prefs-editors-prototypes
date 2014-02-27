@@ -107,5 +107,16 @@
         <div id="gpiic-pmt">
         </div>
 
+        <script>
+            fluid.prefs.create("#gpiic-pmt", {
+                build: {
+                    primarySchema: gpii.primarySchema,
+                    auxiliarySchema: gpii.pmt.auxiliarySchema
+                },
+                prefsEditor: {
+                    gradeNames: ["demo.pmt"]
+                }
+            });
+        </script>
     </body>
 </html>
