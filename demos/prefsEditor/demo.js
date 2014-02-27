@@ -18,12 +18,12 @@ var demo = demo || {};
 
 (function ($, fluid) {
 
-    var prefsServerUrl = {
+    demo.prefsServerUrl = {
         production: "http://preferences.gpii.net/",
         development: "http://localhost:8081/"
     };
 
-    var isDevMode = function () {
+    demo.isDevMode = function () {
         var queryString = document.URL.split("?")[1] || ""; // gets the query string
         var params = {};
         fluid.each(queryString.split("&"), function (paramString) {
@@ -33,28 +33,42 @@ var demo = demo || {};
         return !!(params["mode"] === "dev");
     };
 
-    $(document).ready(function () {
-        fluid.prefs.create("#gpiic-pmt", {
-            build: {
-                primarySchema: gpii.primarySchema,
-                auxiliarySchema: gpii.pmt.auxiliarySchema
-            },
-            prefsEditor: {
-                prefsEditorType: "gpii.pmt",
-                storeType: "gpii.prefs.gpiiSettingsStore",
-                store: {
-                    url: isDevMode() ? prefsServerUrl.development : prefsServerUrl.production
-                },
-                components: {
-                    prefsEditorLoader: {
-                        options: {
-                            messagePrefix: "../../src/shared/adjusters/messages/" + gpii.prefs.i18n.getDefaultLanguage() + "/",
-                            pcpUrl: "./pcp.html"
-                        }
-                    }
+    fluid.defaults("demo.prefsEd", {
+        storeType: "gpii.prefs.gpiiSettingsStore",
+        store: {
+            url: demo.isDevMode() ? demo.prefsServerUrl.development : demo.prefsServerUrl.production
+        },
+        components: {
+            prefsEditorLoader: {
+                options: {
+                    messagePrefix: "../../src/shared/adjusters/messages/" + gpii.prefs.i18n.getDefaultLanguage() + "/",
                 }
             }
-        });
+        }
+    });
+
+    fluid.defaults("demo.pmt", {
+        gradeNames: ["demo.prefsEd"],
+        prefsEditorType: "gpii.pmt",
+        components: {
+            prefsEditorLoader: {
+                options: {
+                    pcpUrl: "./pcp.html"
+                }
+            }
+        }
+    });
+
+    fluid.defaults("demo.pcp", {
+        gradeNames: ["demo.prefsEd"],
+        prefsEditorType: "gpii.prefsEditor",
+        components: {
+            prefsEditorLoader: {
+                options: {
+                    pmtUrl: "./index.html"
+                }
+            }
+        }
     });
 
 })(jQuery, fluid);

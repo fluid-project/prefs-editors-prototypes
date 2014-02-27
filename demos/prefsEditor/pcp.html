@@ -90,7 +90,7 @@
     <script type="text/javascript" src="../../src/shared/adjusters/js/volumeCollectivePanel.js"></script>
 
     <!-- The demo script -->
-    <script type="text/javascript" src="pcp-demo.js"></script>
+    <script type="text/javascript" src="demo.js"></script>
 
 </head>
 <body>
@@ -98,6 +98,18 @@
     <!-- This is the div that will contain the UI Options component -->
     <div id="gpiic-pcp">
     </div>
+
+    <script>
+        fluid.prefs.create("#gpiic-pcp", {
+            build: {
+                gradeNames: ["gpii.pcp.progressiveEnhancement", "gpii.pcp.auxiliarySchema.common"],
+                primarySchema: gpii.primarySchema
+            },
+            prefsEditor: {
+                gradeNames: ["demo.pcp"]
+            }
+        });
+    </script>
 
 </body>
 </html>
