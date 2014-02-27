@@ -14,7 +14,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.prefsEditor", {
         gradeNames: ["fluid.prefs.GPIIEditor", "autoInit"],
         prefsEditor: {
-            gradeNames: ["fluid.prefs.stringBundle", "gpii.prefs.gpiiStore"],
+            gradeNames: ["fluid.prefs.stringBundle"/*, "gpii.prefs.gpiiStore"*/],
             members: {
                 messageResolver: "{prefsEditorLoader}.msgBundle"
             },
@@ -57,10 +57,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "funcName": "fluid.set",
                     "args": [window, "location.href", "{prefsEditorLoader}.options.pmtUrl"]
                 },
-                "onReady.setInitialModel": {
+                /*"onReady.setInitialModel": {
                     listener: "gpii.prefsEditor.setInitialModel",
                     args: ["{that}"]
-                },
+                },*/
                 "onLogin.setUserLoggedIn": {
                     listener: "{that}.applier.requestChange",
                     args: ["userLoggedIn", true]
@@ -131,10 +131,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         return window.location.search.substring(1);
     };
 
-    gpii.prefsEditor.setInitialModel = function (that) {
+    /*gpii.prefsEditor.setInitialModel = function (that) {
         var initialModel = that.get();
         that.applier.requestChange("", initialModel);
-    };
+    };*/
 
     gpii.applySettings = function (that) {
         var savedSettings = that.modelTransform(that.model);
