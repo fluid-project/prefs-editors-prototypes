@@ -297,9 +297,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             textHighlighting: ".gpiic-textHighlighting",
             textHighlightingLabel: ".gpiic-textHighlighting-label"
         },
+        stringArrayIndex: {
+            textHighlightingLevel: ["textHighlighting-word", "textHighlighting-line", "textHighlighting-sentence", "textHighlighting-paragraph"]
+        },
         protoTree: {
             textHighlighting: {
                 selection: "${textHighlighting}",
+                optionnames: "${{that}.stringBundle.textHighlightingLevel}",
                 optionlist: "${{that}.options.controlValues.textHighlighting}"
             },
             textHighlightingLabel: {messagekey: "textHighlightingLabel"}
@@ -322,6 +326,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             punctuationVerbosityLabel: ".gpiic-speakText-punctuationVerbosity-label",
             singleSelectionLabels: ".gpiic-speakText-punctuationVerbosity-option-label"            
         },
+        stringArrayIndex: {
+            punctuationVerbosityLevel: ["punctuationVerbosity-none", "punctuationVerbosity-some", "punctuationVerbosity-most", "punctuationVerbosity-all"]
+        },
         protoTree: {
             announceLabel: {messagekey: "announce"},
             expander: {
@@ -331,7 +338,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 inputID: "punctuationVerbosityInput",
                 selectID: "punctuationVerbosity-selection",
                 tree: {
-                    optionnames: "${{that}.options.controlValues.punctuationVerbosity}",
+                    optionnames: "${{that}.stringBundle.punctuationVerbosityLevel}",
                     optionlist: "${{that}.options.controlValues.punctuationVerbosity}",
                     selection: "${punctuationVerbosity}"
                 }
