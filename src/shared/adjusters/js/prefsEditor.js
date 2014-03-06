@@ -121,7 +121,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             that.socket.emit("message", savedSettings, fluid.log);
         } else {
             that.socket = that.socket || io.connect("http://localhost:8081/update");
-            that.socket.on("connect", function (){
+            that.socket.on("connect", function () {
                 that.socket.emit("message", savedSettings, fluid.log);
             });
             fluid.each(["error", "disconnect"], function (event) {
