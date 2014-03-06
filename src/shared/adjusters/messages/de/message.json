@@ -41,5 +41,7 @@
     "less": "- weniger",
     "saveAndApply": "Speichern und anwenden",
     "resetAndApply": "Zurücksetzen und anwenden",
-    "cancel": "Abbrechen"
+    "cancel": "Abbrechen",
+    "onText": "AN",
+    "offText": "AUS"
 }

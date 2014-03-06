@@ -27,6 +27,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "onDomBind.makeOnOffSwitchActivatable": {
                 "funcName": "fluid.activatable",
                 "args": ["{that}.dom.onOffSwitch", "{that}.triggerModelChangeOnActivate"]
+            },
+            "onDomBind.setOnText": {
+                "this": "{that}.dom.onOffSwitch",
+                "method": "attr",
+                "args": ["data-checkboxStateOn", "{that}.stringBundle.onText"]
+            },
+            "onDomBind.setOffText": {
+                "this": "{that}.dom.onOffSwitch",
+                "method": "attr",
+                "args": ["data-checkboxStateOff", "{that}.stringBundle.offText"]
             }
         },
         invokers: {

@@ -41,5 +41,7 @@
     "less": "- less",
     "saveAndApply": "Save",
     "resetAndApply": "Reset and Apply",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "onText": "ON",
+    "offText": "OFF"
 }
