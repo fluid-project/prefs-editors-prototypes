@@ -248,7 +248,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             universalLanguageLabel: ".gpiic-universalLanguage-label"
         },
         stringArrayIndex: {
-            languages: ["language-english", "language-french", "language-german", "language-russian"]
+            languages: ["language-english", "language-greek", "language-german", "language-spanish"]
         },
         protoTree: {
             universalLanguage: {
@@ -273,7 +273,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             screenReaderLanguageLabel: ".gpiic-screenReaderLanguage-label"
         },
         stringArrayIndex: {
-            languages: ["language-english", "language-french", "language-german", "language-russian"]
+            languages: ["language-english", "language-greek", "language-german", "language-spanish"]
         },
         protoTree: {
             screenReaderLanguage: {
