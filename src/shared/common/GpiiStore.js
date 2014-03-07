@@ -150,6 +150,9 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
              * Preference management tools should not have session management responsibilities.
              * This is a work-around for the pilot2 tests.
              * */
+            
+            // reload page after AT refresh so that it takes any system-level changes, e.g. new contrast theme
+            location.reload();
         }
         fluid.log("POST: Saved to GPII server");
     };

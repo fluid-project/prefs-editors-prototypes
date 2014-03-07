@@ -69,6 +69,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onLogin.showUserStatusBar": {
                     "listener": "{that}.showUserStatusBar"
                 },
+                // reload location onLogin so that page takes any system-level changes, e.g. new contrast theme
+                "onLogin.reloadLocation": {
+                    "this": "location",
+                    "method": "reload"
+                },
                 // set href of quick editor link when we log the user in
                 "onLogin.setQuickEditorLinkHref": {
                     "listener": "{that}.setQuickEditorLinkHref"
@@ -97,6 +102,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 "onLogout.gpiiLogout": {
                     listener: "{gpiiSession}.logout"
+                },
+                // reload location onLogout so that page takes any system-level changes, e.g. reverting contrast theme
+                "onLogout.reloadLocation": {
+                    "this": "location",
+                    "method": "reload"
                 },
                 // set texts
                 "onReady.setMyPreferencesLabelText": {
