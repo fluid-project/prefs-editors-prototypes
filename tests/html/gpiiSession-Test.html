@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>GPIISession tests</title>
+
+        <link rel="stylesheet" media="screen" href="../lib/qunit/qunit/css/qunit.css" />
+
+        <script src="../lib/qunit/qunit/js/qunit.js"></script>
+        <script src="../../src/shared/lib/infusion/MyInfusion.js"></script>
+        <script src="../lib/infusion/jqUnit/js/jqUnit.js"></script>
+        <script src="../lib/infusion/utils/js/IoCTestUtils.js"></script>
+
+        <!-- GPIISession specific files go here: -->
+        <script src="../../src/shared/components/textfieldStepper/js/textfieldStepper.js"></script>
+        <!-- Test specific files go here: -->
+        <script src="../js/gpiiSessionTests.js"></script>
+    </head>
+
+    <body id="body">
+        <h1 id="qunit-header">GPIISession tests</h1>
+        <h2 id="qunit-banner"></h2>
+        <div id="qunit-testrunner-toolbar"></div>
+        <h2 id="qunit-userAgent"></h2>
+        <ol id="qunit-tests"></ol>
+
+        <!-- Test HTML -->
+        <div class="gpiic-textfieldStepper">
+            <span class="gpiic-textfieldStepper-decrement"></span>
+            <input type="text" class="gpiic-textfieldStepper-valueField">
+            <span class="gpiic-textfieldStepper-unitField"></span>
+            <span class="gpiic-textfieldStepper-increment"></span>
+        </div>
+    </body>
+</html>
