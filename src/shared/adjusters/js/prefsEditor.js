@@ -14,7 +14,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.prefsEditor", {
         gradeNames: ["fluid.prefs.GPIIEditor", "autoInit"],
         prefsEditor: {
-            gradeNames: ["fluid.prefs.stringBundle", "gpii.prefs.gpiiStore"],
+            gradeNames: ["fluid.prefs.stringBundle"],
             members: {
                 messageResolver: "{prefsEditorLoader}.msgBundle"
             },
@@ -27,14 +27,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 userLoggedIn: false
             },
             listeners: {
-                "onCreate.setUserToken": {
-                    listener: "fluid.set",
-                    args: ["{gpiiSession}", ["options", "loggedUser"], {
-                        expander: {
-                            funcName: "gpii.prefsEditor.getUserToken"
-                        }
-                    }]
-                },
                 "onReady.setATTRsaveButton": {
                     "this": "{that}.dom.saveButton",
                     "method": "attr",
@@ -56,10 +48,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onRequestPageTransition.goToPMT": {
                     "funcName": "fluid.set",
                     "args": [window, "location.href", "{prefsEditorLoader}.options.pmtUrl"]
-                },
-                "onReady.setInitialModel": {
-                    listener: "gpii.prefsEditor.setInitialModel",
-                    args: ["{that}"]
                 },
                 "onLogin.setUserLoggedIn": {
                     listener: "{that}.applier.requestChange",
@@ -126,15 +114,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             selectorsToIgnore: ["saveAndApply"]
         }
     });
-
-    gpii.prefsEditor.getUserToken = function (that) {
-        return window.location.search.substring(1);
-    };
-
-    gpii.prefsEditor.setInitialModel = function (that) {
-        var initialModel = that.get();
-        that.applier.requestChange("", initialModel);
-    };
 
     gpii.applySettings = function (that) {
         var savedSettings = that.modelTransform(that.model);

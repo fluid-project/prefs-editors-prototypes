@@ -1,11 +1,11 @@
 {
-    "tooltipUnchecked": "Add to my preferences",
-    "tooltipChecked": "Remove from my preferences",
-    "speakTextPresetButtonLabel": "Visual Alternatives",
-    "screenReaderSwitchLabel": "Speak Text",
-    "moreText": "more",
-    "lessText": "less",
-    "saveAndApply": "Save and Apply",
-    "resetAndApply": "Reset and Apply",
-    "cancel": "Cancel"
+    "tooltipUnchecked": "Zu meinen bevorzugten Einstellungen hinzufügen",
+    "tooltipChecked": "Aus meinen bevorzugten Einstellungen entfernen",
+    "speakTextPresetButtonLabel": "Sichtbare Alternativen",
+    "screenReaderSwitchLabel": "Text vorlesen",
+    "moreText": "mehr",
+    "lessText": "weniger",
+    "saveAndApply": "Speichern und anwenden",
+    "resetAndApply": "Zurücksetzen und anwenden",
+    "cancel": "Abbrechen"
 }

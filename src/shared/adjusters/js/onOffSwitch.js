@@ -45,6 +45,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "this": "{that}.dom.valueCheckbox",
                 "method": "change",
                 args: ["{that}.focus"]
+            },
+            "onDomBind.setOnText": {
+                "this": "{that}.dom.onOffSwitch",
+                "method": "attr",
+                "args": ["data-checkboxStateOn", "{that}.stringBundle.onText"]
+            },
+            "onDomBind.setOffText": {
+                "this": "{that}.dom.onOffSwitch",
+                "method": "attr",
+                "args": ["data-checkboxStateOff", "{that}.stringBundle.offText"]
             }
         },
         invokers: {
