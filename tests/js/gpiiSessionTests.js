@@ -14,45 +14,16 @@ https://github.com/gpii/universal/LICENSE.txt
 // JSLint options
 /*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
 
+/*
+ * Prerequisites for tests to succeed:
+ * 1) GPII is running at localhost:8081
+ * 2) No user is currently logged in when tests start  
+ */
 (function ($) {
-    fluid.registerNamespace("gpii.tests");
-
-    fluid.defaults("gpii.tests.gpiiSession", {
-        gradeNames: ["fluid.test.testEnvironment", "autoInit"],
-        components: {
-            gpiiSession: {
-                type: "gpii.prefs.gpiiSession"
-            },
-            gpiiSessionTester: {
-                type: "gpii.tests.gpiiSessionTester"
-            }
-        }
-    });
-
-    fluid.defaults("gpii.tests.gpiiSessionTester", {
-        gradeNames: ["fluid.test.testCaseHolder", "autoInit"],
-        invokers: {
-        },
-        modules: [{
-            name: "gpii.gpiiSession tests",
-            tests: [
-                {
-                    expect: 1,
-                    name: "not null",
-                    func: "gpii.assertNotNull",
-                    args: ["{gpiiSession}"]
-                }
-            ]
-        }]
-    });
-
-    gpii.assertNotNull = function (value) {
-        jqUnit.assertValue("Object should not be null or undefined.", value);
-    };
-
-    $(document).ready(function () {
-        fluid.test.runTests([
-            "gpii.tests.gpiiSession"
-        ]);
+    jqUnit.module("GPIISession Tests");
+    
+    jqUnit.test("no user logged in", function () {
+        var session = gpii.prefs.gpiiSession();
+        jqUnit.assertNoValue("Initially, no user should be logged in", session.options.loggedUser);
     });
 })(jQuery);
