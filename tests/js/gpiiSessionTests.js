@@ -17,153 +17,42 @@ https://github.com/gpii/universal/LICENSE.txt
 (function ($) {
     fluid.registerNamespace("gpii.tests");
 
-    fluid.defaults("gpii.tests.textfieldStepper", {
+    fluid.defaults("gpii.tests.gpiiSession", {
         gradeNames: ["fluid.test.testEnvironment", "autoInit"],
         components: {
-            stepper: {
-                type: "gpii.textfieldStepper",
-                container: ".gpiic-textfieldStepper",
-                options: {
-                    strings: {
-                        unit: "pt"
-                    },
-                    model: {
-                        value: 0
-                    },
-                    range: {
-                        min: -5,
-                        max: 5,
-                        step: 3
-                    },
-                    renderOnInit: true
-                }
+            gpiiSession: {
+                type: "gpii.prefs.gpiiSession"
             },
-            textfieldStepperTester: {
-                type: "gpii.tests.textfieldStepperTester"
+            gpiiSessionTester: {
+                type: "gpii.tests.gpiiSessionTester"
             }
         }
     });
 
-    fluid.defaults("gpii.tests.textfieldStepperTester", {
+    fluid.defaults("gpii.tests.gpiiSessionTester", {
         gradeNames: ["fluid.test.testCaseHolder", "autoInit"],
         invokers: {
-            decText: {
-                "this": "{stepper}.dom.decrement",
-                method: "text"
-            },
-            incText: {
-                "this": "{stepper}.dom.increment",
-                method: "text"
-            },
-            uitText: {
-                "this": "{stepper}.dom.unit",
-                method: "text"
-            },
-            inputValue: {
-                "this": "{stepper}.dom.valueField",
-                method: "val"
-            }
         },
         modules: [{
-            name: "gpii.textfieldStepper tests",
-            tests: [{
-                expect: 1,
-                name: "decrement text",
-                func: "gpii.assertText",
-                args: ["{stepper}.dom.decrement", "{stepper}.options.strings.decrement"]
-            }, {
-                expect: 1,
-                name: "increment text",
-                func: "gpii.assertText",
-                args: ["{stepper}.dom.increment", "{stepper}.options.strings.increment"]
-            }, {
-                expect: 1,
-                name: "unit text",
-                func: "gpii.assertText",
-                args: ["{stepper}.dom.unit", "{stepper}.options.strings.unit"]
-            }, {
-                expect: 1,
-                name: "input value",
-                func: "gpii.assertValue",
-                args: ["{stepper}.dom.valueField", "{stepper}.model.value"]
-            }, {
-                name: "Changing the value",
-                expect: 14,
-                sequence: [{
-                    func: "{stepper}.increment"
-                }, {
-                    listenerMaker: "gpii.tests.makeStateChecker",
-                    makerArgs: ["{stepper}", 3],
-                    event: "{stepper}.events.afterRender"
-                }, {
-                    func: "{stepper}.decrement"
-                }, {
-                    listenerMaker: "gpii.tests.makeStateChecker",
-                    makerArgs: ["{stepper}", 0],
-                    event: "{stepper}.events.afterRender"
-                }, {
-                    jQueryTrigger: "click",
-                    element: "{stepper}.dom.increment"
-                }, {
-                    listenerMaker: "gpii.tests.makeStateChecker",
-                    makerArgs: ["{stepper}", 3],
-                    event: "{stepper}.events.afterRender"
-                }, {
-                    jQueryTrigger: "click",
-                    element: "{stepper}.dom.decrement"
-                }, {
-                    listenerMaker: "gpii.tests.makeStateChecker",
-                    makerArgs: ["{stepper}", 0],
-                    event: "{stepper}.events.afterRender"
-                }, {
-                    func: "gpii.tests.setInput",
-                    args: ["{stepper}.dom.valueField", 2]
-                }, {
-                    listenerMaker: "gpii.tests.makeStateChecker",
-                    makerArgs: ["{stepper}", 2],
-                    event: "{stepper}.events.afterRender"
-                }, {
-                    func: "gpii.tests.setInput",
-                    args: ["{stepper}.dom.valueField", 6]
-                }, {
-                    listenerMaker: "gpii.tests.makeStateChecker",
-                    makerArgs: ["{stepper}", 5],
-                    event: "{stepper}.events.afterRender"
-                }, {
-                    func: "gpii.tests.setInput",
-                    args: ["{stepper}.dom.valueField", -6]
-                }, {
-                    listenerMaker: "gpii.tests.makeStateChecker",
-                    makerArgs: ["{stepper}", -5],
-                    event: "{stepper}.events.afterRender"
-                }]
-            }]
+            name: "gpii.gpiiSession tests",
+            tests: [
+                {
+                    expect: 1,
+                    name: "not null",
+                    func: "gpii.assertNotNull",
+                    args: ["{gpiiSession}"]
+                }
+            ]
         }]
     });
 
-    gpii.assertText = function (elm, expected) {
-        jqUnit.assertEquals("The text should be set.", expected, elm.text());
-    };
-
-    gpii.assertValue = function (elm, expected) {
-        jqUnit.assertEquals("The value should be set.", expected, elm.val());
-    };
-
-    gpii.tests.setInput = function (input, value) {
-        input.val(value);
-        input.change();
-    };
-
-    gpii.tests.makeStateChecker = function (that, expected) {
-        return function () {
-            jqUnit.assertEquals("The model should be updated", expected, that.model.value);
-            jqUnit.assertEquals("The textfield's value should be set", expected, that.locate("valueField").val());
-        };
+    gpii.assertNotNull = function (value) {
+        jqUnit.assertValue("Object should not be null or undefined.", value);
     };
 
     $(document).ready(function () {
         fluid.test.runTests([
-            "gpii.tests.textfieldStepper"
+            "gpii.tests.gpiiSession"
         ]);
     });
 })(jQuery);
