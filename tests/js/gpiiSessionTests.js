@@ -21,9 +21,37 @@ https://github.com/gpii/universal/LICENSE.txt
  */
 (function ($) {
     jqUnit.module("GPIISession Tests");
+
+    var session = gpii.prefs.gpiiSession();
+    var userToWorkWith = "alsa";
     
-    jqUnit.test("no user logged in", function () {
-        var session = gpii.prefs.gpiiSession();
+    jqUnit.test("no user initially logged in", function () {
         jqUnit.assertNoValue("Initially, no user should be logged in", session.options.loggedUser);
     });
+    
+    jqUnit.test("login user", function () {
+        session.login(userToWorkWith);
+        jqUnit.assertEquals("User '" + userToWorkWith + "' should now be logged in", userToWorkWith, session.options.loggedUser);
+    });
+    
+    jqUnit.test("get logged user", function () {
+        session.getLoggedUser();
+        jqUnit.assertEquals("Current user should be '" + userToWorkWith + "'", userToWorkWith, session.options.loggedUser);
+    });
+
+    jqUnit.test("logout user", function () {
+        session.logout();
+        jqUnit.assertNoValue("No user should be currently logged in", session.options.loggedUser);
+    });
+
+    jqUnit.test("set logged user", function () {
+        session.setLoggedUser(userToWorkWith);
+        jqUnit.assertEquals("User '" + userToWorkWith + "' should have been logged in externally", userToWorkWith, session.options.loggedUser);
+    });
+
+    jqUnit.test("clear logged user", function () {
+        session.clearLoggedUser();
+        jqUnit.assertNoValue("User should have been logged out externally", session.options.loggedUser);
+    });
+
 })(jQuery);
