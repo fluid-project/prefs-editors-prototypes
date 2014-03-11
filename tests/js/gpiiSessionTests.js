@@ -19,42 +19,102 @@ https://github.com/gpii/universal/LICENSE.txt
 
     var session = gpii.prefs.gpiiSession();
     var userToWorkWith = "alsa";
+    var non_existent_user = "non_existent_user";
     
-    // mock the /login request
-    $.mockjax({
+    var loginSuccessMockSettings = 
+    {
         url: session.options.url + "user/" + userToWorkWith + "/login",
         responseText: "User with token " + userToWorkWith + " was successfully logged in."
-    });
+    };
     
-    // mock the /token request
-    $.mockjax({
+    var tokenSuccessMockSettings = 
+    {
         url: session.options.url + "token",
         responseText: userToWorkWith
-    });
+    };
     
-    // mock the /logout request
-    $.mockjax({
+    var logoutSuccessMockSettings = 
+    {
         url: session.options.url + "user/" + userToWorkWith + "/logout",
         responseText: "User with token " + userToWorkWith + " was successfully logged out."
-    });
+    };
+    
+    var loginErrorMockSettings = 
+    {
+        url: session.options.url + "user/" + non_existent_user + "/login",
+        status: 500,
+        contentType: 'application/json',
+        responseText: '{"isError": true, "message": "not_found: missing"}'
+    };
+    
+    var tokenErrorMockSettings = 
+    {
+        url: session.options.url + "token",
+        status: 500,
+        contentType: 'application/json',
+        responseText: '{"isError": true, "message": "No user currently logged into the system"}'
+    };
+    
+    var logoutErrorMockSettings = 
+    {
+        url: session.options.url + "user/" + non_existent_user + "/logout",
+        status: 500,
+        contentType: 'application/json',
+        responseText: '{"isError": true, "message": "There was an error logging out user ' + non_existent_user + '"}'
+    };
     
     jqUnit.test("no user initially logged in", function () {
         jqUnit.assertNoValue("Initially, no user should be logged in", session.options.loggedUser);
     });
     
     jqUnit.test("login user", function () {
+        $.mockjaxClear();
+        $.mockjax(loginSuccessMockSettings);
+
         session.login(userToWorkWith);
         jqUnit.assertEquals("User '" + userToWorkWith + "' should now be logged in", userToWorkWith, session.options.loggedUser);
     });
     
     jqUnit.test("get logged user", function () {
+        $.mockjaxClear();
+        $.mockjax(tokenSuccessMockSettings);
+        
         session.getLoggedUser();
         jqUnit.assertEquals("Current user should be '" + userToWorkWith + "'", userToWorkWith, session.options.loggedUser);
     });
 
     jqUnit.test("logout user", function () {
+        $.mockjaxClear();
+        $.mockjax(logoutSuccessMockSettings);
+
         session.logout();
         jqUnit.assertNoValue("No user should be currently logged in", session.options.loggedUser);
+    });
+
+    jqUnit.test("login user error", function () {
+        $.mockjaxClear();
+        $.mockjax(loginErrorMockSettings);
+
+        session.login(non_existent_user);
+        jqUnit.assertNoValue("Should not be able to login 'non_existent_user'", session.options.loggedUser);
+    });
+    
+    jqUnit.test("get logged user error", function () {
+        $.mockjaxClear();
+        $.mockjax(tokenErrorMockSettings);
+        
+        session.getLoggedUser();
+        jqUnit.assertNoValue("No user should be currently logged into the system", session.options.loggedUser);
+    });
+
+    jqUnit.test("login " + userToWorkWith + " and logout user error", function () {
+        $.mockjaxClear();
+        $.mockjax(loginSuccessMockSettings);
+        $.mockjax(logoutErrorMockSettings);
+
+        session.login(userToWorkWith);
+        session.logout();
+        jqUnit.assertEquals("User '" + userToWorkWith + "' should still be logged in", userToWorkWith, session.options.loggedUser);
     });
 
     jqUnit.test("set logged user", function () {
