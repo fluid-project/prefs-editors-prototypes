@@ -41,5 +41,7 @@
     "less": "- λιγότερα",
     "saveAndApply": "Αποθήκευση",
     "resetAndApply": "Αρχικοποίηση και εφαρμογή",
-    "cancel": "Ακύρωση"
+    "cancel": "Ακύρωση",
+    "onText": "ON",
+    "offText": "OFF"
 }

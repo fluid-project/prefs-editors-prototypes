@@ -39,7 +39,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "addContrast": {
                     "container": ".gpii-prefsEditor-contrastPanel",
                     "template": "%prefix/addContrastTemplate.html",
-                    "message": "%prefix/contrast.json",
+                    "message": "%prefix/message.json",
                     "type": "gpii.adjuster.addContrast",
                     "panels": {
                         "always": ["contrastEnabled"],
@@ -82,7 +82,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "addContrast": {
                     "container": ".gpii-prefsEditor-contrastPanel",
                     "template": "%prefix/addContrastTemplate.html",
-                    "message": "%prefix/contrast.json",
+                    "message": "%prefix/message.json",
                     "type": "gpii.adjuster.addContrast",
                     "panels": {
                         "always": ["contrastEnabled"],
