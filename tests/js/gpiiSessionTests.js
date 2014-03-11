@@ -57,10 +57,10 @@ https://github.com/gpii/universal/LICENSE.txt
     
     var logoutErrorMockSettings = 
     {
-        url: session.options.url + "user/" + non_existent_user + "/logout",
+        url: session.options.url + "user/" + userToWorkWith + "/logout",
         status: 500,
         contentType: 'application/json',
-        responseText: '{"isError": true, "message": "There was an error logging out user ' + non_existent_user + '"}'
+        responseText: '{"isError": true, "message": "There was an error logging out user ' + userToWorkWith + '"}'
     };
     
     jqUnit.test("no user initially logged in", function () {
