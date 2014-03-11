@@ -14,11 +14,6 @@ https://github.com/gpii/universal/LICENSE.txt
 // JSLint options
 /*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
 
-/*
- * Prerequisites for tests to succeed:
- * 1) GPII is running at localhost:8081
- * 2) No user is currently logged in when tests start  
- */
 (function ($) {
     jqUnit.module("GPIISession Tests");
 
