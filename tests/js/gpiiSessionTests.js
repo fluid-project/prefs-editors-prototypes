@@ -25,6 +25,24 @@ https://github.com/gpii/universal/LICENSE.txt
     var session = gpii.prefs.gpiiSession();
     var userToWorkWith = "alsa";
     
+    // mock the /login request
+    $.mockjax({
+        url: session.options.url + "user/" + userToWorkWith + "/login",
+        responseText: "User with token " + userToWorkWith + " was successfully logged in."
+    });
+    
+    // mock the /token request
+    $.mockjax({
+        url: session.options.url + "token",
+        responseText: userToWorkWith
+    });
+    
+    // mock the /logout request
+    $.mockjax({
+        url: session.options.url + "user/" + userToWorkWith + "/logout",
+        responseText: "User with token " + userToWorkWith + " was successfully logged out."
+    });
+    
     jqUnit.test("no user initially logged in", function () {
         jqUnit.assertNoValue("Initially, no user should be logged in", session.options.loggedUser);
     });
