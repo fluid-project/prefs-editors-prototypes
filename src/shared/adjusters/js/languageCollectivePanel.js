@@ -24,13 +24,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             messageResolver: "{prefsEditorLoader}.msgBundle"
         },
         listeners: {
-            "afterRender.activateCombobox": {
-                "funcName": "gpii.activateCombobox",
-                "args": ["{that}",
-                         "gpii_primarySchema",
-                         "universalLanguage"
-                ]
-            }
+            // "afterRender.activateCombobox": {
+            //     "funcName": "gpii.activateCombobox",
+            //     "args": ["{that}",
+            //              "gpii_primarySchema",
+            //              "universalLanguage"
+            //     ]
+            // }
         }
     });
 
