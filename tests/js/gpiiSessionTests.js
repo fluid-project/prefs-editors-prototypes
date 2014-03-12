@@ -73,6 +73,7 @@ https://github.com/gpii/universal/LICENSE.txt
 
         session.login(userToWorkWith);
         jqUnit.assertEquals("User '" + userToWorkWith + "' should now be logged in", userToWorkWith, session.options.loggedUser);
+        $.mockjaxClear();
     });
     
     jqUnit.test("get logged user", function () {
@@ -81,6 +82,7 @@ https://github.com/gpii/universal/LICENSE.txt
         
         session.getLoggedUser();
         jqUnit.assertEquals("Current user should be '" + userToWorkWith + "'", userToWorkWith, session.options.loggedUser);
+        $.mockjaxClear();
     });
 
     jqUnit.test("logout user", function () {
@@ -89,6 +91,7 @@ https://github.com/gpii/universal/LICENSE.txt
 
         session.logout();
         jqUnit.assertNoValue("No user should be currently logged in", session.options.loggedUser);
+        $.mockjaxClear();
     });
 
     jqUnit.test("login user error", function () {
@@ -97,6 +100,7 @@ https://github.com/gpii/universal/LICENSE.txt
 
         session.login(non_existent_user);
         jqUnit.assertNoValue("Should not be able to login 'non_existent_user'", session.options.loggedUser);
+        $.mockjaxClear();
     });
     
     jqUnit.test("get logged user error", function () {
@@ -105,6 +109,7 @@ https://github.com/gpii/universal/LICENSE.txt
         
         session.getLoggedUser();
         jqUnit.assertNoValue("No user should be currently logged into the system", session.options.loggedUser);
+        $.mockjaxClear();
     });
 
     jqUnit.test("login " + userToWorkWith + " and logout user error", function () {
@@ -115,6 +120,7 @@ https://github.com/gpii/universal/LICENSE.txt
         session.login(userToWorkWith);
         session.logout();
         jqUnit.assertEquals("User '" + userToWorkWith + "' should still be logged in", userToWorkWith, session.options.loggedUser);
+        $.mockjaxClear();
     });
 
     jqUnit.test("set logged user", function () {
