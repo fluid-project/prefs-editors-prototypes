@@ -128,11 +128,9 @@ https://github.com/gpii/universal/LICENSE.txt
     gpii.prefs.gpiiSession.tests.mockTest = function (testTitle, assertFunction, enabledMockSettings) {
         jqUnit.test(testTitle, function () {
             $.mockjaxClear();
-            if(enabledMockSettings) {
-                $.each(enabledMockSettings, function(index, mockSetting) {
-                    $.mockjax(mockSetting);
-                });
-            }
+            fluid.each(enabledMockSettings, function(mockSetting) {
+                $.mockjax(mockSetting);
+            });
             assertFunction();
             $.mockjaxClear();
         });
