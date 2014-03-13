@@ -92,7 +92,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "gpii.primarySchema.screenReaderLanguage": {
             "type": "string",
             "default": "en",
-            "enum": ["en", "fr", "de", "ru"]
+            "enum": ["en", "el", "de", "es"]
         },
         "gpii.primarySchema.punctuationVerbosity": {
             "type": "string",
@@ -138,7 +138,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "gpii.primarySchema.universalLanguage": {
             "type": "string",
             "default": "en",
-            "enum": ["en", "fr", "de", "ru"]
+            "enum": ["en", "el", "de", "es"]
         }
     };
 

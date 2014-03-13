@@ -1,7 +1,7 @@
 /*!
 Cloud4all Preferences Management Tools
 
-Copyright 2013 OCAD University
+Copyright 2013-2014 OCAD University
 Copyright 2013 Astea
 
 Licensed under the New BSD license. You may not use this file except in
@@ -60,7 +60,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     model: {
                         value: "{speechRate}.model.value"
                     },
-                    range: "{speechRate}.options.controlValues.speechRate"
+                    range: "{speechRate}.options.controlValues.speechRate",
+                    labelledbyDomElement: "{speechRate}.dom.speechRateLabel"
                 }
             }
         },
@@ -103,7 +104,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         var dropdown = that.locate("auditoryOutLanguage");
         var unwrappedDropdown = fluid.unwrap(dropdown);
         var dropdownReadyForCombobox = $(unwrappedDropdown);
-        dropdownReadyForCombobox.combobox().change(function (event, newValue) {
+        dropdownReadyForCombobox.combobox({
+            labelDomElement: that.locate("auditoryOutLanguageLabel"),
+            title: that.stringBundle.lookup("auditoryOutLanguageLabel")
+        }).change(function (event, newValue) {
             that.applier.requestChange("auditoryOutLanguage", newValue);
         });
     };

@@ -2,6 +2,7 @@
 Cloud4all Preferences Management Tools
 
 Copyright 2013 Astea
+Copyright 2014 OCAD University
 
 Licensed under the New BSD license. You may not use this file except in
 compliance with this License.
@@ -12,24 +13,47 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($) {
     $.widget("custom.combobox", {
-        _create: function () {
+        options: {
+            labelDomElement: null,
+            title: null
+        },
+
+        _create: function (labelDomElement) {
             this.wrapper = $("<span>")
                 .addClass("custom-combobox")
+                .attr("role", "application")
                 .insertAfter(this.element);
 
+            /**
+             The jQuery autocomplete widget has an accessibility issue that when using keyboard moving thru the items listed on
+             the drop down list box, NVDA sometimes announces some items as "blank".
+             The workaround for this issue is to add a live region that gets updated with the item content whenever the focus on
+             the drop down list is changed. However, this results in a situation that the item content is either announced twice
+             or announced as "blank" + the item content.
+             A better solution is needed for this issue.
+             **/
+            this.liveRegionID = fluid.allocateGuid();
+            this.wrapper.append('<span class="ui-helper-hidden-accessible" aria-live="polite" aria-atomic="true" aria-relevant="all" id="' + this.liveRegionID + '"></span>');
+
             this.element.hide();
-            this._createAutocomplete();
+            this._createAutocomplete(labelDomElement);
             this._createShowAllButton();
         },
 
         _createAutocomplete: function () {
             var selected = this.element.children(":selected"),
-                value = selected.val() ? selected.text() : "";
+                value = selected.val() ? selected.text() : "",
+                labelId = null;
+
+            // Get the label id to associate with the combobox
+            var labelId = gpii.ariaUtility.getLabelId(this.options.labelDomElement);
 
             this.input = $("<input>")
                 .appendTo(this.wrapper)
                 .val(value)
                 .attr("title", "")
+                .attr("role", "combobox")
+                .attr("aria-labelledby", labelId)
                 .addClass("custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left")
                 .autocomplete({
                     delay: 0,
@@ -55,17 +79,21 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         $(id).trigger('change', newValue);
                     });
                 },
-                autocompletechange: "_removeIfInvalid"
+                autocompletechange: "_removeIfInvalid",
+                autocompletefocus: function (event, ui) {
+                    this.wrapper.find("#" + this.liveRegionID).html(ui.item.label);
+                }
             });
         },
 
         _createShowAllButton: function () {
             var input = this.input,
-                wasOpen = false;
+                wasOpen = false,
+                title = this.options.title;
 
             $("<a>")
                 .attr("tabIndex", -1)
-                .attr("title", "Show All Languages")
+                .attr("title", "Show All " + title.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}))
                 .tooltip()
                 .appendTo(this.wrapper)
                 .button({
@@ -134,7 +162,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             // Remove invalid value
             this.input
                 .val("")
-                .attr("title", value + " didn't match any language")
+                .attr("title", value + " didn't match any listed item")
                 .tooltip("open");
             this.element.val("");
             this._delay(function () {

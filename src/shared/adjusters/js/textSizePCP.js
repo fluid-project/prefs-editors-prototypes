@@ -46,7 +46,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     strings: {
                         "unit": "{textSizePCP}.stringBundle.textSizeUnit"
                     },
-                    range: "{textSizePCP}.fontSize.range"
+                    range: "{textSizePCP}.fontSize.range",
+                    labelledbyDomElement: "{textSizePCP}.dom.textSizeLabel"
                 }
             }
         },

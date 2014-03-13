@@ -1622,7 +1622,7 @@ input[type=checkbox]:checked + label.gpii-checkbox-label:before {
 .ui-widget .ui-widget-content {
     font-family: 'Open Sans', sans-serif;
     font-size: 90%;
-    height: 39px;
+    height: 35px;
     border: 2px;
     border-color: #D5E1E2 !important;
     border-style: solid none solid solid;
