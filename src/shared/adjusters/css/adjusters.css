@@ -209,10 +209,10 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-prefsEditor .gpii-prefsEditor-slider a {
-    border: 0.35em solid #566374;
+    border: 0.65em solid #566374;
     box-shadow: none;
-    width: 1.5em !important;
-    height: 1.5em !important;
+    width: 1.05em !important;
+    height: 1.05em !important;
 }
 
 .gpii-prefsEditor .ui-slider-range {
