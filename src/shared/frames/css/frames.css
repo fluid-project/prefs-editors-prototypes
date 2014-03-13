@@ -209,36 +209,43 @@ body {
     font-style: italic;
     font-weight: bold;
     cursor: pointer;
+    border: 2px solid;
+	border-radius: 4px;
+	padding: 4px;
+	text-decoration: none;
+    
 }
 
 .gpii-prefsEditor-pmt-userLogoutLink {
-	display: table-cell;
+	float: right;
     text-align: right;
 }
 
 .gpii-prefsEditor-pmt-userLogoutLink:first-letter,
-.gpii-prefsEditor-quickEditorLink:first-letter
+.gpii-prefsEditor-quickEditorLink:first-letter,
+.gpii-prefsEditor-pcp-userLogout:first-letter
 {
 	text-transform: none !important;
 }
 
 .gpii-prefsEditor-userStatusBar {
-	display: table;
+	display: inline-block;
 	width: 100%;
 }
 
 .gpii-prefsEditor-pcp-userLogout {
-    text-align: right;
-    margin-left: 410px;
+	float: right;
+	text-align: right;
 }
 
 .gpii-prefsEditor-fullEditor {
+	float: left;
     text-align: left;
     font-size: 120%;
 }
 
 .gpii-prefsEditor-quickEditorLink {
-	display: table-cell;
+	float: left;
 	text-align: left;
 	font-size: 1.2em;
 }
