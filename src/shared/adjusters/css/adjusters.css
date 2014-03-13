@@ -1466,8 +1466,37 @@ input[type="radio"] + label {
 }
 
 .gpii-dropdown {
+    width: 14em;
+    overflow: hidden;
     padding-top: 15px;
     padding-bottom: 15px;
+}
+
+.gpii-dropdownArrow {
+    position: absolute;
+    margin-left: 12em;
+    margin-top: 1em;
+}
+
+.fl-prefsEditor .gpii-dropdownSelect {
+    width: 14em;
+    border: 0.23em solid #D5E1E2;
+    height: 3em;
+    vertical-align: middle;
+    position: relative;
+    z-index: 0;
+    background: transparent;
+    border-radius: 0.5em;
+    padding: 0.3em;
+    padding-top: 0.6em;
+    text-indent: 0.01px;
+    -moz-appearance: none;
+    text-overflow: '';
+    -webkit-appearance: none;
+}
+
+.gpii-dropdownSelect:focus {
+    outline: none;
 }
 
 #gpii-screenReaderOnOff {
