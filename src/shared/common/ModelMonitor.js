@@ -20,11 +20,21 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
      */
     fluid.defaults("gpii.prefs.modelMonitor", {
         gradeNames: ["fluid.littleComponent", "autoInit"],
+        preferencesChangedByUser: [],
         modelListeners: {
             "*": {
-                "this": "console",
-                "method": "log",
-                "args": ["{change}.path"]
+                "listener": "{that}.preferenceChanged",
+                "args": "{change}.path"
+            }
+        },
+        invokers: {
+            preferenceChanged: {
+                "funcName": "gpii.prefs.modelMonitor.addChangedPreference",
+                "args": ["{that}.options.preferencesChangedByUser", "{arguments}.0"]
+            },
+            reset: {
+                "funcName": "gpii.prefs.modelMonitor.reset",
+                "args": ["{that}.options.preferencesChangedByUser"]
             }
         }
     });
@@ -34,4 +44,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         fluid.staticEnvironment.modelMonitor = that;
     };
     
+    gpii.prefs.modelMonitor.addChangedPreference = function (preferencesChangedByUser, changedPreference) {
+        // if preference is defined and not in the array of changed ones 
+        if (changedPreference && $.inArray(changedPreference, preferencesChangedByUser) === -1) {
+            // add it
+            preferencesChangedByUser.push(changedPreference);
+        }
+    }
+    
+    gpii.prefs.modelMonitor.reset = function (preferencesChangedByUser) {
+        preferencesChangedByUser.length = 0;
+    }
+
 })(jQuery, fluid);
