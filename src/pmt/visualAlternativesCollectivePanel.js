@@ -1,7 +1,7 @@
 /*!
 Cloud4all Preferences Management Tools
 
-Copyright 2013 OCAD University
+Copyright 2013-2014 OCAD University
 Copyright 2013 Astea
 
 Licensed under the New BSD license. You may not use this file except in
@@ -24,9 +24,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             moreLess: ".gpiic-visualAlternatives-category",
             visualAlternativesHiddenPanel: ".gpiic-visualAlternatives-hiddenPanel",
             voicePitchInput: ".gpiic-voicePitch .gpiic-textfieldStepper-valueField",
-            visualAlternativesMoreLess: ".gpiic-visualAlternativesMoreLess-label"
+            visualAlternativesMoreLess: ".gpiic-visualAlternativesMoreLess-label",
+            speakTextContainer: ".gpiic-speakText-container"
         },
-        selectorsToIgnore: ["visualAlternativesHiddenPanel", "voicePitchInput", "visualAlternativesMoreLess"],
+        selectorsToIgnore: ["visualAlternativesHiddenPanel", "voicePitchInput", "visualAlternativesMoreLess", "speakTextContainer"],
         protoTree: {
             visualAlternativesHeader: {messagekey: "visualAlternativesPresetButtonLabel"}
         },
@@ -38,18 +39,27 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "funcName": "gpii.activateCombobox",
                 "args": ["{that}",
                          "gpii_primarySchema",
-                         "screenReaderLanguage"
+                         "screenReaderLanguage",
+                         "screenReaderLanguageLabel"
                 ]
             },
             "afterRender.activateComboboxTextHighlighting": {
                 "funcName": "gpii.activateCombobox",
                 "args": ["{that}",
                          "gpii_primarySchema",
-                         "textHighlighting"
+                         "textHighlighting",
+                         "textHighlightingLabel"
                 ]
             },
             "afterRender.setExpandedAriaLabel": {
-                "listener": "{that}.setExpandedAriaLabel"
+                "this": "{that}.dom.visualAlternativesHiddenPanel",
+                "method": "attr",
+                "args": ["aria-label", "{that}.stringBundle.additionalVisualAdjusters"]
+            },
+            "afterRender.setContainerAriaLabel": {
+                "this": "{that}.dom.speakTextContainer",
+                "method": "attr",
+                "args": ["aria-label", "{that}.stringBundle.additionalVisualAdjusters"]
             },
             "afterRender.setExpandedAriaExpanded": {
                 "listener": "{that}.setExpandedAriaExpanded"
@@ -61,7 +71,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "afterRender.bindVisualAlternativesMoreLessChange": {
                 listener: "{that}.applier.modelChanged.addListener",
                 args: ["gpii_primarySchema_visualAlternativesMoreLess", "{that}.setFocusOnVisualAlternativesMoreLess"]
-            }
+            },
+            "afterRender.setContainerAriaRelevant": "{that}.setAriaRelevant"
         },
         invokers: {
             toggleMoreLessInstant: {
@@ -74,11 +85,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 ],
                 dynamic: true
             },
-            setExpandedAriaLabel: {
-                "this": "{that}.dom.visualAlternativesHiddenPanel",
-                "method": "attr",
-                "args": ["aria-label", "{that}.stringBundle.additionalVisualAdjusters"]
-            },
             setExpandedAriaExpanded: {
                 "this": "{that}.dom.visualAlternativesHiddenPanel",
                 "method": "attr",
@@ -87,10 +93,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             setFocusOnVisualAlternativesMoreLess: {
                 funcName: "gpii.panel.visualAlternatives.setFocusOnVisualAlternativesMoreLess",
                 args: ["{that}.dom.voicePitchInput", "{that}.dom.visualAlternativesMoreLess", "{that}.model.gpii_primarySchema_visualAlternativesMoreLess"]
+            },
+            setAriaRelevant: {
+                funcName: "gpii.ariaUtility.setAriaRelevant",
+                args: ["{that}.dom.speakTextContainer", "{that}.model.gpii_primarySchema_speakText"],
+                dynamic: true
             }
         }
     });
-    
+
     gpii.panel.visualAlternatives.setFocusOnVisualAlternativesMoreLess = function (voicePitchInputElement, visualAlternativesMoreLessElement, visualAlternativesMoreLessExpanded) {
         if (visualAlternativesMoreLessExpanded) {
             fluid.focus(voicePitchInputElement);
