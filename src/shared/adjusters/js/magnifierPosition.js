@@ -1,7 +1,7 @@
 /*!
 Cloud4all Preferences Management Tools
 
-Copyright 2013 OCAD University
+Copyright 2013-2014 OCAD University
 Copyright 2013 CERTH/HIT
 
 Licensed under the New BSD license. You may not use this file except in
@@ -32,8 +32,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierPositionLabel: ".gpiic-increaseSize-magnifierPositionLabel",
             magnifierPositionInput: ".gpiic-increaseSize-magnifierPositionInput",
             magnifierPositionHeading: ".gpiic-increaseSize-magnifierPositionHeading",
-            singleSelectionLabels: ".gpiic-increaseSize-magnifierPositionLabel"
+            singleSelectionLabels: ".gpiic-increaseSize-magnifierPositionLabel",
+            magnifierPositionContainer: ".gpiic-increaseSize-magnifierPositionContainer"
         },
+        selectorsToIgnore: ["magnifierPositionContainer"],
         protoTree: {
             expander: [
                 {
@@ -75,13 +77,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 funcName: "gpii.adjuster.magnifierPosition.style",
                 args: ["{that}.dom.magnifierPositionLabel", "{that}.options.strings.magnifierPosition",
                     "{that}.options.markup.magnifierPositionLabel", "{that}.options.controlValues.magnifierPosition",
-                    "{that}.options.classnameMap.magnifierPosition", "{that}"],
+                    "{that}.options.classnameMap.magnifierPosition", "{that}.dom.magnifierPositionContainer",
+                    "{that}.dom.magnifierPositionHeading"],
                 dynamic: true
             }
         }
     });
 
-    gpii.adjuster.magnifierPosition.style = function (labels, strings, markup, magnifierPosition, style, that) {
+    gpii.adjuster.magnifierPosition.style = function (labels, strings, markup, magnifierPosition, style, container, heading) {
         fluid.each(labels, function (label, index) {
             label = $(label);
             label.html(fluid.stringTemplate(markup, {
@@ -90,6 +93,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             label.addClass(style[magnifierPosition[index]]);
             label.attr("tooltip", strings[index]);
         });
+        container.attr("aria-labelledby", gpii.ariaUtility.getLabelId(heading));
     };
 
 })(jQuery, fluid);

@@ -1,7 +1,7 @@
 /*!
 Cloud4all Preferences Management Tools
 
-Copyright 2013 OCAD University
+Copyright 2013-2014 OCAD University
 Copyright 2013 CERTH/HIT
 
 Licensed under the New BSD license. You may not use this file except in
@@ -45,7 +45,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     },
                     sourceApplier: "{cursorSizePCP}.applier",
                     range: "{cursorSizePCP}.options.controlValues.cursorSize",
-                    sliderOptions: "{cursorSizePCP}.options.sliderOptions"
+                    sliderOptions: "{cursorSizePCP}.options.sliderOptions",
+                    listeners: {
+                        "afterRender.setAria": {
+                            "this": "{that}.slider.dom.thumb",
+                            method: "attr",
+                            args: ["aria-labelledby", {expander: {funcName: "gpii.ariaUtility.getLabelId", args: "{cursorSizePCP}.dom.cursorSizeLabel"}}]
+                        }
+                    }
                 }
             }
         },

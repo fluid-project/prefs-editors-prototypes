@@ -2,6 +2,7 @@
 Cloud4all Preferences Management Tools
 
 Copyright 2013 CERTH/HIT
+Copyright 2014 OCAD University
 
 Licensed under the New BSD license. You may not use this file except in
 compliance with this License.
@@ -14,7 +15,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 /*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
 
 (function ($, fluid) {
-    
+
     fluid.defaults("gpii.adjuster.followingElement.screenReader", {
         gradeNames: ["gpii.adjuster.followingElement", "autoInit"],
         preferenceMap: {
@@ -36,6 +37,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     optionlist: "${{that}.options.controlValues.followingElement}",
                     selection: "${value}"
                 }
+            }
+        },
+        listeners: {
+            "onDomBind.setInitialAria": {
+                listener: "{that}.adjustAria",
+                args: "{that}.model.value"
+            }
+        },
+        modelListeners: {
+            value: {
+                listener: "{that}.adjustAria",
+                args: ["{change}.value"]
             }
         }
     });

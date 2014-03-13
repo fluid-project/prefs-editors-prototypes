@@ -73,6 +73,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "text",
                     "args": [""]
                 },
+                "onLogout.gpiiLogout": {
+                    listener: "{gpiiSession}.logout"
+                },
                 "onReady.setSaveAndApplyButtonText": {
                     "this": "{that}.dom.saveAndApplyButtonLabel",
                     "method": "attr",
@@ -87,6 +90,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.logoutLink",
                     "method": "text",
                     "args": ["{that}.stringBundle.logoutText"]
+                },
+                "onReady.bindLogout": {
+                    "this": "{that}.dom.logoutLink",
+                    "method": "click",
+                    "args": ["{that}.events.onLogout.fire"]
                 }
             },
             invokers: {
@@ -121,7 +129,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             that.socket.emit("message", savedSettings, fluid.log);
         } else {
             that.socket = that.socket || io.connect("http://localhost:8081/update");
-            that.socket.on("connect", function (){
+            that.socket.on("connect", function () {
                 that.socket.emit("message", savedSettings, fluid.log);
             });
             fluid.each(["error", "disconnect"], function (event) {
