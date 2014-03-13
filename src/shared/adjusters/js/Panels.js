@@ -2,6 +2,7 @@
 Cloud4all Preferences Management Tools
 
 Copyright 2013 Astea
+Copyright 2014 OCAD University
 
 Licensed under the New BSD license. You may not use this file except in
 compliance with this License.
@@ -21,7 +22,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         protoTree: {
             valueCheckbox: "${speakText}",
             headingLabel: {messagekey: "speakTextLabel"}
-        }
+        },
+        onOffModelKey: "speakText"
     });
 
     fluid.defaults("gpii.adjuster.wordsSpokenPerMinute", {
@@ -51,7 +53,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     model: {
                         value: "{wordsSpokenPerMinute}.model.value"
                     },
-                    range: "{wordsSpokenPerMinute}.options.controlValues.wordsSpokenPerMinute"
+                    range: "{wordsSpokenPerMinute}.options.controlValues.wordsSpokenPerMinute",
+                    labelledbyDomElement: "{wordsSpokenPerMinute}.dom.wordsSpokenPerMinuteLabel"
                 }
             }
         },
@@ -88,7 +91,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     model: {
                         value: "{volume}.model.value"
                     },
-                    range: "{volume}.options.controlValues.volume"
+                    range: "{volume}.options.controlValues.volume",
+                    labelledbyDomElement: "{volume}.dom.volumeLabel"
                 }
             }
         },
@@ -188,7 +192,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     model: {
                         value: "{voicePitch}.model.value"
                     },
-                    range: "{voicePitch}.options.controlValues.voicePitch"
+                    range: "{voicePitch}.options.controlValues.voicePitch",
+                    labelledbyDomElement: "{voicePitch}.dom.voicePitchLabel"
                 }
             }
         },
@@ -225,7 +230,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     model: {
                         value: "{universalVolume}.model.value"
                     },
-                    range: "{universalVolume}.options.controlValues.universalVolume"
+                    range: "{universalVolume}.options.controlValues.universalVolume",
+                    labelledbyDomElement: "{universalVolume}.dom.universalVolumeLabel"
                 }
             }
         },
@@ -320,12 +326,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         selectors: {
             announceLabel: ".gpiic-speakText-announce-label",
+            punctuationVerbosityContainer: ".gpiic-punctuationVerbosity-container",
             punctuationVerbosityRow: ".gpiic-speakText-punctuationVerbosity-row",
             punctuationVerbosityOptionLabel: ".gpiic-speakText-punctuationVerbosity-option-label",
             punctuationVerbosityInput: ".gpiic-speakText-punctuationVerbosity",
             punctuationVerbosityLabel: ".gpiic-speakText-punctuationVerbosity-label",
-            singleSelectionLabels: ".gpiic-speakText-punctuationVerbosity-option-label"            
+            singleSelectionLabels: ".gpiic-speakText-punctuationVerbosity-option-label"
         },
+        selectorsToIgnore: ["punctuationVerbosityContainer"],
         stringArrayIndex: {
             punctuationVerbosityLevel: ["punctuationVerbosity-none", "punctuationVerbosity-some", "punctuationVerbosity-most", "punctuationVerbosity-all"]
         },
@@ -347,7 +355,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         repeatingSelectors: ["punctuationVerbosityRow"],
         listeners: {
-            onDomBind: "{that}.style"
+            "onDomBind.style": "{that}.style"
         },
         invokers: {
             style: {
@@ -355,19 +363,31 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 args: [
                     "{that}.dom.punctuationVerbosityOptionLabel",
                     "{that}.options.controlValues.punctuationVerbosity",
-                    "{that}.options.classnameMap.punctuationVerbosity"
+                    "{that}.options.classnameMap.punctuationVerbosity",
+                    "{that}.dom.punctuationVerbosityContainer",
+                    "{that}.dom.punctuationVerbosityLabel",
+                    "{that}.dom.announceLabel"
                 ]
             }
         }
-
     });
 
-    gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle = function (labels, values, classes) {
+    gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle = function (labels, values, classes, container, titleLabel, announceLabel) {
         fluid.each(labels, function (label, index) {
             label = $(label);
             label.addClass(classes[values[index]]);
             label.append('<span></span>');
         });
+        container.attr("aria-labelledby", gpii.ariaUtility.getLabelId(titleLabel));
+
+        /**
+         Most PMT and PCP checkboxes displayed on UI are using nested divs for cosmetic reason. It results
+         in an issue that the regular way for grouping checkboxes that helps screen readers to announce
+         the group title when focusing on the first checkbox stops working. The workaround here is to use
+         "aria-describedby" to associate the title with each checkbox. This is not ideal.
+         An example of a grouped checkbox: http://test.cita.illinois.edu/aria/checkbox/checkbox1.php
+         **/
+        container.attr("aria-describedby", gpii.ariaUtility.getLabelId(announceLabel));
     };
 
     fluid.defaults("gpii.adjuster.announceCapitals", {
@@ -382,9 +402,28 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             announceCapitalsLabel: ".gpiic-announceCapitals-label",
             activatableLabelsSelector: ".gpiic-announceCapitals-checkbox-label"
         },
+        selectorsToIgnore: ["activatableLabelsSelector"],
         protoTree: {
             announceCapitals: "${announceCapitals}",
             announceCapitalsLabel: {messagekey: "announceCapitalsLabel"}
+        },
+        listeners: {
+            "onDomBind.setAriaChecked": {
+                listener: "{that}.setAriaChecked",
+                args: "{that}.model.announceCapitals"
+            }
+        },
+        modelListeners: {
+            announceCapitals: {
+                listener: "{that}.setAriaChecked",
+                args: ["{change}.value"]
+            }
+        },
+        invokers: {
+            setAriaChecked: {
+                funcName: "gpii.ariaUtility.setAriaChecked",
+                args: ["{that}.dom.activatableLabelsSelector", "{arguments}.0"]
+            }
         }
     });
 
@@ -400,9 +439,28 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             speakTutorialMessagesLabel: ".gpiic-speakTutorialMessages-label",
             activatableLabelsSelector: ".gpiic-speakTutorialMessages-checkbox-label"
         },
+        selectorsToIgnore: ["activatableLabelsSelector"],
         protoTree: {
             speakTutorialMessages: "${speakTutorialMessages}",
             speakTutorialMessagesLabel: {messagekey: "speakTutorialMessagesLabel"}
+        },
+        listeners: {
+            "onDomBind.setAriaChecked": {
+                listener: "{that}.setAriaChecked",
+                args: "{that}.model.speakTutorialMessages"
+            }
+        },
+        modelListeners: {
+            speakTutorialMessages: {
+                listener: "{that}.setAriaChecked",
+                args: ["{change}.value"]
+            }
+        },
+        invokers: {
+            setAriaChecked: {
+                funcName: "gpii.ariaUtility.setAriaChecked",
+                args: ["{that}.dom.activatableLabelsSelector", "{arguments}.0"]
+            }
         }
     });
 
@@ -419,10 +477,41 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             keyEchoLabel: ".gpiic-speakText-keyEcho-label",
             activatableLabelsSelector: ".gpiic-keyEcho-checkbox-label"
         },
+        selectorsToIgnore: ["activatableLabelsSelector"],
         protoTree: {
             readBackLabel: {messagekey: "readBackLabel"},
             keyEcho: "${keyEcho}",
             keyEchoLabel: {messagekey: "keyEchoLabel"}
+        },
+        listeners: {
+            /**
+             Most PMT and PCP checkboxes displayed on UI are using nested divs for cosmetic reason. It results
+             in an issue that the regular way for grouping checkboxes that helps screen readers to announce
+             the group title when focusing on the first checkbox stops working. The workaround here is to use
+             "aria-describedby" to associate the title with each checkbox. This is not ideal.
+             An example of a grouped checkbox: http://test.cita.illinois.edu/aria/checkbox/checkbox1.php
+             **/
+            "onDomBind.addAriaDesc": {
+                "this": "{that}.dom.activatableLabelsSelector",
+                method: "attr",
+                args: ["aria-describedby", {expander: {funcName: "gpii.ariaUtility.getLabelId", args: "{that}.dom.readBackLabel"}}]
+            },
+            "onDomBind.setAriaChecked": {
+                listener: "{that}.setAriaChecked",
+                args: "{that}.model.keyEcho"
+            }
+        },
+        modelListeners: {
+            keyEcho: {
+                listener: "{that}.setAriaChecked",
+                args: ["{change}.value"]
+            }
+        },
+        invokers: {
+            setAriaChecked: {
+                funcName: "gpii.ariaUtility.setAriaChecked",
+                args: ["{that}.dom.activatableLabelsSelector", "{arguments}.0"]
+            }
         }
     });
 
@@ -438,9 +527,28 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             wordEchoLabel: ".gpiic-wordEcho-label",
             activatableLabelsSelector: ".gpiic-wordEcho-checkbox-label"
         },
+        selectorsToIgnore: ["activatableLabelsSelector"],
         protoTree: {
             wordEcho: "${wordEcho}",
             wordEchoLabel: {messagekey: "wordEchoLabel"}
+        },
+        listeners: {
+            "onDomBind.setAriaChecked": {
+                listener: "{that}.setAriaChecked",
+                args: "{that}.model.wordEcho"
+            }
+        },
+        modelListeners: {
+            wordEcho: {
+                listener: "{that}.setAriaChecked",
+                args: ["{change}.value"]
+            }
+        },
+        invokers: {
+            setAriaChecked: {
+                funcName: "gpii.ariaUtility.setAriaChecked",
+                args: ["{that}.dom.activatableLabelsSelector", "{arguments}.0"]
+            }
         }
     });
 
@@ -458,7 +566,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             valueCheckbox: "${screenReaderBrailleOutput}",
             headingLabel: {messagekey: "screenReaderBrailleOutputLabel"},
             screenReaderBrailleOutputDescription: {messagekey: "screenReaderBrailleOutputDescription"}
-        }
+        },
+        onOffModelKey: "screenReaderBrailleOutput"
     });
 
 })(fluid);
