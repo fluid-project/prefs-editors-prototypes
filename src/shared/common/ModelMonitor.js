@@ -32,8 +32,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "funcName": "gpii.prefs.modelMonitor.addChangedPreference",
                 "args": ["{that}.options.preferencesChangedByUser", "{arguments}.0"]
             },
-            reset: {
-                "funcName": "gpii.prefs.modelMonitor.reset",
+            clearPreferencesChangedByUser: {
+                "funcName": "gpii.prefs.modelMonitor.clearPreferencesChangedByUser",
                 "args": ["{that}.options.preferencesChangedByUser"]
             }
         }
@@ -52,7 +52,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     }
     
-    gpii.prefs.modelMonitor.reset = function (preferencesChangedByUser) {
+    gpii.prefs.modelMonitor.clearPreferencesChangedByUser = function (preferencesChangedByUser) {
         preferencesChangedByUser.length = 0;
     }
 
