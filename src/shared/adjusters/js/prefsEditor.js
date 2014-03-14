@@ -21,7 +21,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             events: {
                 onLogin: null,
                 onLogout: null,
-                onRequestPageTransition: null
+                onRequestPageTransition: null,
+                onSettingChanged: null
             },
             model: {
                 userLoggedIn: false
@@ -95,6 +96,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.logoutLink",
                     "method": "click",
                     "args": ["{that}.events.onLogout.fire"]
+                },
+                "onReady.addModelChangedListener": {
+                    "listener": "{that}.applier.modelChanged.addListener",
+                    "args": ["", "{that}.events.onSettingChanged.fire"]
+                },
+                "onSettingChanged.toggleObjects": {
+                    "funcName": "gpii.toggleObjectsIfModelModified",
+                    "args": ["{that}", "{that}.options.selectorsToToggleIfModelModified"]
                 }
             },
             invokers: {
@@ -119,9 +128,25 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 fullEditorLink: ".gpiic-prefsEditor-fullEditorLink",
                 logoutLink: ".gpiic-prefsEditor-userLogoutLink"
             },
-            selectorsToIgnore: ["saveAndApply"]
+            selectorsToIgnore: ["saveAndApply"],
+            selectorsToToggleIfModelModified: ["saveAndApply"]
         }
     });
+
+    gpii.areEqualModels = function (m1, m2) {
+        return JSON.stringify(m1) === JSON.stringify(m2);
+    };
+
+    gpii.areSettingsModified = function (editor) {
+        return gpii.areEqualModels(editor.model, editor.rootModel);
+    };
+
+    gpii.toggleObjectsIfModelModified = function (that, selectorsToToggle) {
+        fluid.each(selectorsToToggle, function (selector) {
+            var object = that.locate(selector);
+            gpii.areSettingsModified(that) ? object.hide() : object.show();
+        });
+    };
 
     gpii.applySettings = function (that) {
         var savedSettings = that.modelTransform(that.model);
