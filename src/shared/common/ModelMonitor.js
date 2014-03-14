@@ -29,6 +29,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "args": "{change}.path"
             }
         },
+        listeners: {
+            "onReset.clearPreferencesChangedByUser": [{
+                listener: "{that}.clearPreferencesChangedByUser"
+            }],
+        },
         invokers: {
             preferenceChanged: {
                 "funcName": "gpii.prefs.modelMonitor.addChangedPreference",

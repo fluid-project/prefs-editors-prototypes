@@ -30,9 +30,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         onReset: [{
                             listener: "{that}.applyChanges"
                         }],
-                        "onReset.clearPreferencesChangedByUser": [{
-                            listener: "{modelMonitor}.clearPreferencesChangedByUser"
-                        }],
                         onReady: {
                             listener: "{GPIIEditor}.events.onReady",
                             args: "{GPIIEditor}"
