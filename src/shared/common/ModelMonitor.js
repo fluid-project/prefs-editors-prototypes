@@ -17,6 +17,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     /**
      * modelMonitor Subcomponent that holds information about which preferences the user has tweaked.
+     * This component doesn't do anything on its own, rather it gives a prefsEditor model-monitoring
+     * capabilities by adding this as grade to the prefsEditor's options (see GPIIPrefsEditor.js).
      */
     fluid.defaults("gpii.prefs.modelMonitor", {
         gradeNames: ["fluid.littleComponent", "autoInit"],
