@@ -103,12 +103,15 @@ body {
 }
 
 .gpii-PCP-save {
-    background-color: #BDE2E9;
+    background-color: #249FB7;
     display: none;
+    font-weight: bold;
+    border: 0.15em solid #249FB7;
 }
 
 .gpii-PCP-save:hover {
-    background-color: #249FB7;
+    background-color: white;
+    color: #249FB7;
 }
 
 .gpii-pmt-saveAndApplyButtonLabel {
@@ -123,6 +126,10 @@ body {
 
 .gpii-pmt-saveAndApplyButtonLabel:before {
     content: "\e60c"
+}
+
+.gpii-pmt-saveAndApplyButtonLabel:hover {
+    color: #249FB7;
 }
 
 .gpii-pmt-bottomRow {
