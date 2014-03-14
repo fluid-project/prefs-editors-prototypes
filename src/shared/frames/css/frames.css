@@ -135,7 +135,7 @@ body {
 }
 
 .gpii-prefsEditor-messageLine {
-	display: table-cell;
+    display: table-cell;
     white-space: normal;
     width: 55%;
     font-style:italic;
@@ -156,9 +156,9 @@ body {
 }
 
 .gpii-prefsEditor-notification {
-	background-color: #333333 !important;
-	color: white !important;
-	font-size: 1.5em;
+    background-color: #333333 !important;
+    color: white !important;
+    font-size: 1.5em;
     padding: 10px !important;
 }
 
@@ -186,21 +186,21 @@ body {
 }
 
 .gpii-prefsEditor-notificationMessageTOKEN {
-	display: block !important;
-	color: white !important;
-	background-color: #666666 !important;
-	padding: 0 5px 0 5px !important;
-	font-size: 1.4em !important;
-	margin-top: 0.5em !important;
-	margin-bottom: 0.5em !important;
+    display: block !important;
+    color: white !important;
+    background-color: #666666 !important;
+    padding: 0 5px 0 5px !important;
+    font-size: 1.4em !important;
+    margin-top: 0.5em !important;
+    margin-bottom: 0.5em !important;
 }
 
 .gpii-prefsEditor-notificationMessageTOKEN:first-letter {
-	text-transform: none !important;
+    text-transform: none !important;
 }
 
 .gpii-prefsEditor-notificationHeader {
-	color: white !important;
+    color: white !important;
     padding: 10px !important;
 }
 
@@ -210,14 +210,14 @@ body {
     font-weight: bold;
     cursor: pointer;
     border: 2px solid;
-	border-radius: 4px;
-	padding: 4px;
-	text-decoration: none;
+    border-radius: 4px;
+    padding: 4px;
+    text-decoration: none;
     
 }
 
 .gpii-prefsEditor-pmt-userLogoutLink {
-	float: right;
+    float: right;
     text-align: right;
 }
 
@@ -225,29 +225,29 @@ body {
 .gpii-prefsEditor-quickEditorLink:first-letter,
 .gpii-prefsEditor-pcp-userLogout:first-letter
 {
-	text-transform: none !important;
+    text-transform: none !important;
 }
 
 .gpii-prefsEditor-userStatusBar {
-	display: inline-block;
-	width: 100%;
+    display: inline-block;
+    width: 100%;
 }
 
 .gpii-prefsEditor-pcp-userLogout {
-	float: right;
-	text-align: right;
+    float: right;
+    text-align: right;
 }
 
 .gpii-prefsEditor-fullEditor {
-	float: left;
+    float: left;
     text-align: left;
     font-size: 120%;
 }
 
 .gpii-prefsEditor-quickEditorLink {
-	float: left;
-	text-align: left;
-	font-size: 1.2em;
+    float: left;
+    text-align: left;
+    font-size: 1.2em;
 }
 
 .gpii-prefsEditor-reset {
