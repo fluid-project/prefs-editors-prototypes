@@ -21,6 +21,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             events: {
                 onLogin: null,
                 onLogout: null,
+                onSaveClicked: null,
                 onRequestPageTransition: null,
                 onSettingChanged: null
             },
@@ -33,12 +34,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "attr",
                     "args": ["value", "{that}.stringBundle.saveAndApplyText"]
                 },
-                "onReady.bindSaveAndApply": {
+                "onReady.bindSaveAndApplyClick": {
                     "this": "{that}.dom.saveAndApply",
                     "method": "click",
+                    "args": ["{that}.events.onSaveClicked.fire"]
+                },
+                "onSaveClicked.saveSettings": {
                     // currently this triggers a save,
                     // which logs in and out to apply the settings.
-                    "args": ["{that}.saveSettings"]
+                    "listener": "{that}.saveSettings"
+                },
+                "onSaveClicked.hideSaveButton": {
+                    "this": "{that}.dom.saveAndApply",
+                    "method": "hide",
+                    "args": []
                 },
                 "onReady.fullEditorLink": {
                     "this": "{that}.dom.fullEditorLink",
@@ -101,9 +110,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "listener": "{that}.applier.modelChanged.addListener",
                     "args": ["", "{that}.events.onSettingChanged.fire"]
                 },
-                "onSettingChanged.toggleObjects": {
-                    "funcName": "gpii.toggleObjectsIfModelModified",
-                    "args": ["{that}", "{that}.options.selectorsToToggleIfModelModified"]
+                "onSettingChanged.showSaveButton": {
+                    "this": "{that}.dom.saveAndApply",
+                    "method": "show",
+                    "args": []
                 }
             },
             invokers: {
@@ -128,25 +138,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 fullEditorLink: ".gpiic-prefsEditor-fullEditorLink",
                 logoutLink: ".gpiic-prefsEditor-userLogoutLink"
             },
-            selectorsToIgnore: ["saveAndApply"],
-            selectorsToToggleIfModelModified: ["saveAndApply"]
+            selectorsToIgnore: ["saveAndApply"]
         }
     });
-
-    gpii.areEqualModels = function (m1, m2) {
-        return JSON.stringify(m1) === JSON.stringify(m2);
-    };
-
-    gpii.areSettingsModified = function (editor) {
-        return gpii.areEqualModels(editor.model, editor.rootModel);
-    };
-
-    gpii.toggleObjectsIfModelModified = function (that, selectorsToToggle) {
-        fluid.each(selectorsToToggle, function (selector) {
-            var object = that.locate(selector);
-            gpii.areSettingsModified(that) ? object.hide() : object.show();
-        });
-    };
 
     gpii.applySettings = function (that) {
         var savedSettings = that.modelTransform(that.model);
