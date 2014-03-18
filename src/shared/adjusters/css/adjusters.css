@@ -1485,14 +1485,11 @@ input[type="radio"] + label {
     height: 3em;
     vertical-align: middle;
     position: relative;
-    z-index: 0;
-    background: transparent;
+    background: none repeat scroll 0% 0% transparent;
     border-radius: 0.5em;
-    padding: 0.3em;
-    padding-top: 0.6em;
     text-indent: 0.01px;
     -moz-appearance: none;
-    text-overflow: '';
+    padding: 0.65em 0.3em 0.3em;
     -webkit-appearance: none;
 }
 
