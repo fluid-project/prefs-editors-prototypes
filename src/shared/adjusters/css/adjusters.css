@@ -1473,12 +1473,6 @@ input[type="radio"] + label {
     padding-bottom: 15px;
 }
 
-.gpii-dropdownArrow {
-    position: absolute;
-    margin-left: 12em;
-    margin-top: 1em;
-}
-
 .fl-prefsEditor .gpii-dropdownSelect {
     width: 14em;
     border: 0.23em solid #D5E1E2;
