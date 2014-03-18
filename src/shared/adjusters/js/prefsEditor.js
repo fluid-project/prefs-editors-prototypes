@@ -28,6 +28,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             model: {
                 userLoggedIn: false
             },
+            modelListeners: {
+                "*": "{that}.events.onSettingChanged.fire"
+            },
             listeners: {
                 "onReady.setATTRsaveButton": {
                     "this": "{that}.dom.saveButton",
@@ -105,10 +108,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.logoutLink",
                     "method": "click",
                     "args": ["{that}.events.onLogout.fire"]
-                },
-                "onReady.addModelChangedListener": {
-                    "listener": "{that}.applier.modelChanged.addListener",
-                    "args": ["", "{that}.events.onSettingChanged.fire"]
                 },
                 "onSettingChanged.showSaveButton": {
                     "this": "{that}.dom.saveAndApply",
