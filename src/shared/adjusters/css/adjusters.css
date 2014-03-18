@@ -1469,8 +1469,9 @@ input[type="radio"] + label {
 .gpii-dropdown {
     width: 14em;
     overflow: hidden;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-size: 1.1em;
 }
 
 .fl-prefsEditor .gpii-dropdownSelect {
@@ -1482,7 +1483,7 @@ input[type="radio"] + label {
     background: none repeat scroll 0% 0% transparent;
     border-radius: 0.5em;
     -moz-appearance: none;
-    padding: 0.65em 0.3em 0.3em;
+    padding: 0.5em 0.3em 0.3em;
     -webkit-appearance: none;
 }
 
