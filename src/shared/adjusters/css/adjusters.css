@@ -84,10 +84,11 @@ h2 > label {
 */
 .gpii-prefsEditor-headerImage {
     -webkit-font-smoothing: antialiased;
-    width: 100%;
+    width: calc(100% - 2px);;
     margin: 0px !important;
     color: white;
     background-color: #566374;
+    border: 1px solid #566374;
     display: table;
 }
 
@@ -1520,7 +1521,8 @@ label.gpii-preset-button-label {
     padding-top: 31px;
     color: white;
     background-color: rgb(85, 98, 115);
-    width: 450px;
+    border: 1px solid rgb(85, 98, 115);
+    width: 444px;
     height: 59px;
     text-align: left;
     font-family: 'Roboto Slab', serif;

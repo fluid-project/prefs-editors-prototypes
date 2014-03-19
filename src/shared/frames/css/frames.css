@@ -71,11 +71,13 @@ body {
     display: block;
     background-color: #8c9597;
     padding: 10px;
+    border: 1px solid #8c9597;
 }
 
 .gpii-prefsEditor-preferences {
     background-color: #ced7d9;
-    padding: 10px;
+    border: 1px solid #ced7d9;
+	padding: 10px;
 }
 
 .gpii-prefsEditor-PCP-preferences {
@@ -266,6 +268,7 @@ body {
     margin-bottom: 2em;
     padding-bottom: 1em;
     background-color: #e5eded;
+    border: 1px solid #e5eded;
 }
 
 .gpii-dialog-noTitle {
