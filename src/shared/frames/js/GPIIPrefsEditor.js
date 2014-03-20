@@ -25,7 +25,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             prefsEditor: {
                 container: "{that}.container",
                 options: {
-                    gradeNames: ["gpii.prefs.modelMonitor"],
                     listeners: {
                         onReset: [{
                             listener: "{that}.applyChanges"

@@ -160,7 +160,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * @param {Object} options
      */
     fluid.defaults("gpii.prefs.gpiiStore", {
-        gradeNames: ["fluid.prefs.dataSource", "fluid.eventedComponent", "autoInit"],
+        gradeNames: ["fluid.prefs.dataSource", "gpii.prefs.modelMonitor", "fluid.eventedComponent", "autoInit"],
         url: "http://localhost:8081/",
         // instantiate the gpiiSession component
         components: {
@@ -196,7 +196,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             },
             filterUnchangedPreferences: {
                 funcName: "gpii.prefs.gpiiStore.filterUnchangedPreferences",
-                args: ["{arguments}.0", "{modelMonitor}.options.preferencesChangedByUser"]
+                args: ["{arguments}.0", "{that}.options.preferencesChangedByUser"]
             }
         }
     });

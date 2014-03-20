@@ -47,11 +47,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    // make this component globally public through {modelMonitor}
-    gpii.prefs.modelMonitor.finalInit = function (that) {
-        fluid.staticEnvironment.modelMonitor = that;
-    };
-    
     gpii.prefs.modelMonitor.addChangedPreference = function (preferencesChangedByUser, changedPreference) {
         // if preference is defined and not in the array of changed ones 
         if (changedPreference && $.inArray(changedPreference, preferencesChangedByUser) === -1) {
