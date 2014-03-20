@@ -231,7 +231,7 @@ input[type=checkbox], input[type=radio] {
     background-color: #FFFFFF;
     display: inline-table;
     text-align: center;
-    border: none;
+    border: 1px solid #FFFFFF;
     width: 100% !important;
     font-size: 1em !important;
 }
