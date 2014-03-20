@@ -37,7 +37,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             value: "gpii_primarySchema_punctuationVerbosity"
         }],
         "http://registry\\.gpii\\.org/common/screenReaderBrailleOutput": [{
-            vale: "gpii_primarySchema_screenReaderBrailleOutput"
+            value: "gpii_primarySchema_screenReaderBrailleOutput"
         }],
         "http://registry\\.gpii\\.org/common/auditoryOutLanguage": [{
             value: "gpii_primarySchema_screenReaderLanguage"
