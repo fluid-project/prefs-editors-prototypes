@@ -509,6 +509,8 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-prefsEditor-previewPerSettingEye:before {
+	border-bottom: 1px solid #BECED1;
+    border-right: 1px solid #BECED1;
     position: relative;
     z-index: 2;
     background-color: transparent !important;
@@ -523,6 +525,7 @@ input[type=checkbox], input[type=radio] {
     height: 0;
     width: 0;
     z-index: 1;
+    visibility: hidden;
 }
 
 .gpii-prefsEditor-previewPerSettingBody {
