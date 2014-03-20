@@ -509,12 +509,13 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-prefsEditor-previewPerSettingEye:before {
-	border-bottom: 1px solid #BECED1;
-    border-right: 1px solid #BECED1;
+	border: 1px solid #BECED1;
     position: relative;
     z-index: 2;
-    background-color: transparent !important;
+    background-color: #B8C9CC !important;
     content: "\e611";
+    padding: 5px;
+    top: 6px;
 }
 
 .gpii-prefsEditor-previewPerSettingEyeBackground {
