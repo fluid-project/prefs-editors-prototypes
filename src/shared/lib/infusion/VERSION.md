@@ -9,7 +9,7 @@ using the command line
 
     grunt custom --source=true --include="preferences, enhancement"--name="prefsFramework"
 
-The following directories were stripped out of the build since they contain code that is included in the MyInfusion.js file:
+The following directories were stripped out of the build since they contain code that is included in the infusion-prefsFramework.js file:
 
 * src/shared/lib/infusion/components/slidingPanel/
 * src/shared/lib/infusion/components/tableOfContents/js/
