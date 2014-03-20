@@ -248,13 +248,18 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
     gpii.prefs.gpiiStore.filterUnchangedPreferences = function (model, preferencesChangedByUser) {
         // for every preference in current model
-        for (var modelPreference in model) {
+        fluid.each(model, function (value, modelPreference) {
             // if it does not exist in the preferencesChangedByUser
             if ($.inArray(modelPreference, preferencesChangedByUser) === -1) {
                 // delete it from model
+                /*
+                 * NOTE: This does not delete the preference from the actual model of the prefs framework.
+                 * Looks like the model passed in the set function is a copy of the actual model. If this is
+                 * not the case in the future, we will have to use a model copy in this function.
+                 */
                 delete model[modelPreference];
             }
-        }
+        });
         
         return model;
     }
