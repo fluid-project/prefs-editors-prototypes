@@ -30,10 +30,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         listeners: {
-            // when the prefsEditor resets, we should also clearPreferencesChangedByUser
-            "onReset.clearPreferencesChangedByUser": [{
-                listener: "{that}.clearPreferencesChangedByUser"
-            }]
+            // hook to onReset of prefsEditor when it's ready and clearPreferencesChangedByUser when fired  
+            "{prefsEditor}.events.onPrefsEditorReady": {
+                "this": "{prefsEditor}.prefsEditorLoader.prefsEditor.events.onReset",
+                "method": "addListener",
+                "args": ["{that}.clearPreferencesChangedByUser"]
+            }
         },
         invokers: {
             preferenceChanged: {
