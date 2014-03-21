@@ -1468,8 +1468,28 @@ input[type="radio"] + label {
 }
 
 .gpii-dropdown {
-    padding-top: 15px;
-    padding-bottom: 15px;
+    width: 14em;
+    overflow: hidden;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-size: 1.1em;
+}
+
+.fl-prefsEditor .gpii-dropdownSelect {
+    width: 14em;
+    border: 0.23em solid #D5E1E2;
+    height: 3em;
+    vertical-align: middle;
+    position: relative;
+    background: white;
+    border-radius: 0.5em;
+    -moz-appearance: none;
+    padding: 0.5em 0.3em 0.3em;
+    -webkit-appearance: none;
+}
+
+.gpii-dropdownSelect:focus {
+    outline: none;
 }
 
 #gpii-screenReaderOnOff {
