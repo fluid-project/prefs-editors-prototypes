@@ -160,7 +160,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
      * @param {Object} options
      */
     fluid.defaults("gpii.prefs.gpiiStore", {
-        gradeNames: ["fluid.prefs.dataSource", "fluid.eventedComponent", "autoInit"],
+        gradeNames: ["fluid.prefs.dataSource", "gpii.prefs.modelMonitor", "fluid.eventedComponent", "autoInit"],
         url: "http://localhost:8081/",
         // instantiate the gpiiSession component
         components: {
@@ -183,7 +183,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             },
             set: {
                 funcName: "gpii.prefs.gpiiStore.set",
-                args: ["{arguments}.0", "{that}.options", "{gpiiSession}", "{that}.modelTransform", "{that}.events.onSetSuccess.fire"],
+                args: ["{arguments}.0", "{that}.options", "{gpiiSession}", "{that}.modelTransform", "{that}.events.onSetSuccess.fire", "{that}.filterUnchangedPreferences"],
                 dynamic: true
             },
             modelTransform: {
@@ -193,6 +193,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             inverseModelTransform: {
                 funcName: "fluid.model.transform",
                 args: ["{arguments}.0", gpii.prefs.commonTermsInverseTransformationRules]
+            },
+            filterUnchangedPreferences: {
+                funcName: "gpii.prefs.gpiiStore.filterUnchangedPreferences",
+                args: ["{arguments}.0", "{that}.options.preferencesChangedByUser"]
             }
         }
     });
@@ -222,8 +226,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         return gpiiModel;
     };
 
-    gpii.prefs.gpiiStore.set = function (model, settings, session, modelTransformFunc, onSuccessfulSetFunction) {
-        var transformedModel = modelTransformFunc(model);
+    gpii.prefs.gpiiStore.set = function (model, settings, session, modelTransformFunc, onSuccessfulSetFunction, filterUnchangedPreferencesFunc) {
+        var transformedFilteredModel = modelTransformFunc(filterUnchangedPreferencesFunc(model));
 
         var urlToPost = session.options.loggedUser ? (settings.url + "user/" + session.options.loggedUser) : (settings.url + "user/");
         $.ajax({
@@ -232,7 +236,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             dataType: "json",
             async: false,
             contentType: "application/json",
-            data: JSON.stringify(transformedModel),
+            data: JSON.stringify(transformedFilteredModel),
             success: function (data) {
                 onSuccessfulSetFunction(session, data);
             },
@@ -242,6 +246,24 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         });
     };
 
+    gpii.prefs.gpiiStore.filterUnchangedPreferences = function (model, preferencesChangedByUser) {
+        // for every preference in current model
+        fluid.each(model, function (value, modelPreference) {
+            // if it does not exist in the preferencesChangedByUser
+            if ($.inArray(modelPreference, preferencesChangedByUser) === -1) {
+                // delete it from model
+                /*
+                 * NOTE: This does not delete the preference from the actual model of the prefs framework.
+                 * Looks like the model passed in the set function is a copy of the actual model. If this is
+                 * not the case in the future, we will have to use a model copy in this function.
+                 */
+                delete model[modelPreference];
+            }
+        });
+        
+        return model;
+    }
+    
     fluid.defaults("gpii.prefs.gpiiSettingsStore", {
         gradeNames: ["fluid.globalSettingsStore", "autoInit"],
         settingsStoreType: "gpii.prefs.gpiiStore",
