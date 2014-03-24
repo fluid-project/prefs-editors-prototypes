@@ -84,10 +84,11 @@ h2 > label {
 */
 .gpii-prefsEditor-headerImage {
     -webkit-font-smoothing: antialiased;
-    width: 100%;
+    width: calc(100% - 2px);;
     margin: 0px !important;
     color: white;
     background-color: #566374;
+    border: 1px solid #566374;
     display: table;
 }
 
@@ -231,7 +232,7 @@ input[type=checkbox], input[type=radio] {
     background-color: #FFFFFF;
     display: inline-table;
     text-align: center;
-    border: none;
+    border: 1px solid #FFFFFF;
     width: 100% !important;
     font-size: 1em !important;
 }
@@ -1467,8 +1468,28 @@ input[type="radio"] + label {
 }
 
 .gpii-dropdown {
-    padding-top: 15px;
-    padding-bottom: 15px;
+    width: 14em;
+    overflow: hidden;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-size: 1.1em;
+}
+
+.fl-prefsEditor .gpii-dropdownSelect {
+    width: 14em;
+    border: 0.23em solid #D5E1E2;
+    height: 3em;
+    vertical-align: middle;
+    position: relative;
+    background: white;
+    border-radius: 0.5em;
+    -moz-appearance: none;
+    padding: 0.5em 0.3em 0.3em;
+    -webkit-appearance: none;
+}
+
+.gpii-dropdownSelect:focus {
+    outline: none;
 }
 
 #gpii-screenReaderOnOff {
@@ -1520,7 +1541,8 @@ label.gpii-preset-button-label {
     padding-top: 31px;
     color: white;
     background-color: rgb(85, 98, 115);
-    width: 450px;
+    border: 1px solid rgb(85, 98, 115);
+    width: 444px;
     height: 59px;
     text-align: left;
     font-family: 'Roboto Slab', serif;
