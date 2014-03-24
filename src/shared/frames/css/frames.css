@@ -120,16 +120,11 @@ body {
     vertical-align: middle;
     z-index: 1;
     color: #FFFFFF;
-    background-color: transparent !important;
     font-size: 2em !important;
 }
 
 .gpii-pmt-saveAndApplyButtonLabel:before {
     content: "\e60c"
-}
-
-.gpii-pmt-saveAndApplyButtonLabel:hover {
-    color: #249FB7;
 }
 
 .gpii-pmt-bottomRow {

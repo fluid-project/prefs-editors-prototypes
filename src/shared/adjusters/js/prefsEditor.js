@@ -21,7 +21,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             events: {
                 onLogin: null,
                 onLogout: null,
-                onSaveClicked: null,
                 onRequestPageTransition: null,
                 onSettingChanged: null
             },
@@ -37,17 +36,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "attr",
                     "args": ["value", "{that}.stringBundle.saveAndApplyText"]
                 },
-                "onReady.bindSaveAndApplyClick": {
-                    "this": "{that}.dom.saveAndApply",
-                    "method": "click",
-                    "args": ["{that}.events.onSaveClicked.fire"]
-                },
-                "onSaveClicked.saveSettings": {
+                "onSave.saveSettings": {
                     // currently this triggers a save,
                     // which logs in and out to apply the settings.
                     "listener": "{that}.saveSettings"
                 },
-                "onSaveClicked.hideSaveButton": {
+                "onSave.hideSaveButton": {
                     "this": "{that}.dom.saveAndApply",
                     "method": "hide",
                     "args": []
