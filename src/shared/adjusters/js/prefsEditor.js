@@ -27,9 +27,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             model: {
                 userLoggedIn: false
             },
-            modelListeners: {
-                "*": "{that}.events.onSettingChanged.fire"
-            },
             listeners: {
                 "onReady.setATTRsaveButton": {
                     "this": "{that}.dom.saveButton",
@@ -42,7 +39,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "listener": "{that}.saveSettings"
                 },
                 "onSave.hideSaveButton": {
-                    "this": "{that}.dom.saveAndApply",
+                    "this": "{that}.dom.saveButtonContainer",
                     "method": "hide",
                     "args": []
                 },
@@ -103,8 +100,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "click",
                     "args": ["{that}.events.onLogout.fire"]
                 },
+                "onReady.bindModelChangedListener": {
+                    "listener": "{that}.applier.modelChanged.addListener",
+                    "args": ["*", "{that}.events.onSettingChanged.fire"]
+                },
                 "onSettingChanged.showSaveButton": {
-                    "this": "{that}.dom.saveAndApply",
+                    "this": "{that}.dom.saveButtonContainer",
                     "method": "show",
                     "args": []
                 }
@@ -127,6 +128,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             selectors: {
                 saveAndApply: ".flc-prefsEditor-save",
                 saveAndApplyButtonLabel: ".flc-prefsEditor-save",
+                saveButtonContainer: ".gpii-pcp-saveButtonContainer",
                 messageLineLabel: ".gpiic-prefsEditor-messageLine",
                 fullEditorLink: ".gpiic-prefsEditor-fullEditorLink",
                 logoutLink: ".gpiic-prefsEditor-userLogoutLink"
