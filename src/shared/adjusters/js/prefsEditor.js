@@ -33,11 +33,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "attr",
                     "args": ["value", "{that}.stringBundle.saveAndApplyText"]
                 },
-                "onSave.saveSettings": {
-                    // currently this triggers a save,
-                    // which logs in and out to apply the settings.
-                    "listener": "{that}.saveSettings"
-                },
                 "onSave.hideSaveButton": {
                     "this": "{that}.dom.saveButtonContainer",
                     "method": "hide",
@@ -105,7 +100,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     // model won't "count" as updated when fetching from
                     // the server. Thus, onSettingChanged is not fired on load.
                     "listener": "{that}.applier.modelChanged.addListener",
-                    "args": ["*", "{that}.events.onSettingChanged.fire"]
+                    "args": ["", "{that}.events.onSettingChanged.fire"]
                 },
                 "onSettingChanged.showSaveButton": {
                     "this": "{that}.dom.saveButtonContainer",
