@@ -101,6 +101,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": ["{that}.events.onLogout.fire"]
                 },
                 "onReady.bindModelChangedListener": {
+                    // used instead of the declarative syntax so that
+                    // model won't "count" as updated when fetching from
+                    // the server. Thus, onSettingChanged is not fired on load.
                     "listener": "{that}.applier.modelChanged.addListener",
                     "args": ["*", "{that}.events.onSettingChanged.fire"]
                 },
