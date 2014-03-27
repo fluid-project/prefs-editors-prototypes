@@ -21,7 +21,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             events: {
                 onLogin: null,
                 onLogout: null,
-                onRequestPageTransition: null
+                onRequestPageTransition: null,
+                onSettingChanged: null
             },
             model: {
                 userLoggedIn: false
@@ -32,12 +33,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "attr",
                     "args": ["value", "{that}.stringBundle.saveAndApplyText"]
                 },
-                "onReady.bindSaveAndApply": {
-                    "this": "{that}.dom.saveAndApply",
-                    "method": "click",
-                    // currently this triggers a save,
-                    // which logs in and out to apply the settings.
-                    "args": ["{that}.saveSettings"]
+                "onSave.hideSaveButton": {
+                    "this": "{that}.dom.saveButtonContainer",
+                    "method": "hide",
+                    "args": []
                 },
                 "onReady.fullEditorLink": {
                     "this": "{that}.dom.fullEditorLink",
@@ -95,6 +94,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.logoutLink",
                     "method": "click",
                     "args": ["{that}.events.onLogout.fire"]
+                },
+                "onReady.bindModelChangedListener": {
+                    // used instead of the declarative syntax so that
+                    // model won't "count" as updated when fetching from
+                    // the server. Thus, onSettingChanged is not fired on load.
+                    "listener": "{that}.applier.modelChanged.addListener",
+                    "args": ["", "{that}.events.onSettingChanged.fire"]
+                },
+                "onSettingChanged.showSaveButton": {
+                    "this": "{that}.dom.saveButtonContainer",
+                    "method": "show",
+                    "args": []
                 }
             },
             invokers: {
@@ -115,6 +126,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             selectors: {
                 saveAndApply: ".flc-prefsEditor-save",
                 saveAndApplyButtonLabel: ".flc-prefsEditor-save",
+                saveButtonContainer: ".gpii-pcp-saveButtonContainer",
                 messageLineLabel: ".gpiic-prefsEditor-messageLine",
                 fullEditorLink: ".gpiic-prefsEditor-fullEditorLink",
                 logoutLink: ".gpiic-prefsEditor-userLogoutLink"
