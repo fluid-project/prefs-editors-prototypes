@@ -1316,19 +1316,22 @@ input[type="radio"] + label.radioButton-third > span,
 input[type="radio"] + label.radioButton-right > span {
     display: block;
     font-size: 150%;
-    border: solid white;
     background-color: white;
     border-radius: 100%;
-    border-width: medium;
-    width: 1em;
-    height: 1em;
+    border: solid white;
+	border-width: 0.66em;
+    width: 0em;
+    height: 0em;
 }
 
 input[type="radio"]:checked + label.radioButton-left > span,
 input[type="radio"]:checked + label.radioButton-second > span,
 input[type="radio"]:checked + label.radioButton-third > span,
 input[type="radio"]:checked + label.radioButton-right > span {
-    background-color: #566273;
+	border-width: medium;
+    width: 1em;
+    height: 1em;
+	background-color: #566273;
 }
 
 input[type="radio"] + label {
