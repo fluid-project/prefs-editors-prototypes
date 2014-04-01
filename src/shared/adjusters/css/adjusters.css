@@ -63,10 +63,6 @@ textarea:focus, input:focus {
     text-transform: capitalize;
 }
 
-.gpii-prefsEditor label {
-    text-transform: none !important;
-}
-
 .gpii-uiOptions .headerTitle::first-letter {
     text-transform: lowercase;
 }
@@ -658,6 +654,10 @@ input:checked + .gpii-prefsEditor-addToMyPreferencesStar + .gpii-prefsEditor-add
 /*
     Style for contrast
 */
+.gpii-contrastThemeLabel {
+    text-transform: none !important;
+}
+
 .gpii-prefsEditor-theme-yb {
     color: yellow;
     background-color: black;
@@ -1307,6 +1307,7 @@ input[type="radio"] + label {
 	display: table-cell;
 	width: 25%;
 	text-align: center;
+	padding: 10px;
 }
 
 input[type="radio"] + label.radioButton-left > span {
