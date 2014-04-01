@@ -1304,8 +1304,7 @@ input[type="radio"] + label {
 }
 
 .gpii-speakText-punctuationVerbosity-row {
-    display: table-cell;
-    width: 25%;
+    display: inline-table;
     text-align: center;
     padding: 10px;
 }
