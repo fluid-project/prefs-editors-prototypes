@@ -1310,80 +1310,17 @@ input[type="radio"] + label {
 	padding: 10px;
 }
 
-input[type="radio"] + label.radioButton-left > span {
-    font-family: 'radioButtonIcons';
-    display: block;
-}
-
-input[type="radio"] + label.radioButton-left > span:before {
-    font-size: 150%;
-    color: white;
-    border: solid white;
-    background-color: white;
-    border-radius: 100%;
-    border-width: thin medium;
-    content: "\e001";
-}
-
-input[type="radio"]:checked + label.radioButton-left > span:before {
-    color: #566273;
-    border: solid white;
-    background-color: white;
-    border-radius: 100%;
-    border-width: thin medium;
-}
-
-input[type="radio"] + label.radioButton-second > span {
-    font-family: 'radioButtonIcons';
-    display: block;
-}
-
-input[type="radio"] + label.radioButton-second > span:before {
-    font-size: 150%;
-    color: white;
-    border: solid white;
-    background-color: white;
-    border-radius: 100%;
-    border-width: thin medium;
-    content: "\e001";
-}
-
-input[type="radio"]:checked + label.radioButton-second > span:before {
-    color: #566273;
-    border: solid white;
-    background-color: white;
-    border-radius: 100%;
-    border-width: thin medium;
-}
-
-input[type="radio"] + label.radioButton-third > span {
-    font-family: 'radioButtonIcons';
-    display: block;
-}
-
-input[type="radio"] + label.radioButton-third > span:before {
-    font-size: 150%;
-    color: white;
-    border: solid white;
-    background-color: white;
-    border-radius: 100%;
-    border-width: thin medium;
-    content: "\e001";
-}
-
-input[type="radio"]:checked + label.radioButton-third > span:before {
-    color: #566273;
-    border: solid white;
-    background-color: white;
-    border-radius: 100%;
-    border-width: thin medium;
-}
-
+input[type="radio"] + label.radioButton-left > span,
+input[type="radio"] + label.radioButton-second > span,
+input[type="radio"] + label.radioButton-third > span,
 input[type="radio"] + label.radioButton-right > span {
     font-family: 'radioButtonIcons';
     display: block;
 }
 
+input[type="radio"] + label.radioButton-left > span:before,
+input[type="radio"] + label.radioButton-second > span:before,
+input[type="radio"] + label.radioButton-third > span:before,
 input[type="radio"] + label.radioButton-right > span:before {
     font-size: 150%;
     color: white;
@@ -1394,6 +1331,9 @@ input[type="radio"] + label.radioButton-right > span:before {
     content: "\e001";
 }
 
+input[type="radio"]:checked + label.radioButton-left > span:before,
+input[type="radio"]:checked + label.radioButton-second > span:before,
+input[type="radio"]:checked + label.radioButton-third > span:before,
 input[type="radio"]:checked + label.radioButton-right > span:before {
     color: #566273;
     border: solid white;
