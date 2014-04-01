@@ -1314,32 +1314,21 @@ input[type="radio"] + label.radioButton-left > span,
 input[type="radio"] + label.radioButton-second > span,
 input[type="radio"] + label.radioButton-third > span,
 input[type="radio"] + label.radioButton-right > span {
-    font-family: 'radioButtonIcons';
     display: block;
-}
-
-input[type="radio"] + label.radioButton-left > span:before,
-input[type="radio"] + label.radioButton-second > span:before,
-input[type="radio"] + label.radioButton-third > span:before,
-input[type="radio"] + label.radioButton-right > span:before {
     font-size: 150%;
-    color: white;
     border: solid white;
     background-color: white;
     border-radius: 100%;
-    border-width: thin medium;
-    content: "\e001";
+    border-width: medium;
+    width: 1em;
+    height: 1em;
 }
 
-input[type="radio"]:checked + label.radioButton-left > span:before,
-input[type="radio"]:checked + label.radioButton-second > span:before,
-input[type="radio"]:checked + label.radioButton-third > span:before,
-input[type="radio"]:checked + label.radioButton-right > span:before {
-    color: #566273;
-    border: solid white;
-    background-color: white;
-    border-radius: 100%;
-    border-width: thin medium;
+input[type="radio"]:checked + label.radioButton-left > span,
+input[type="radio"]:checked + label.radioButton-second > span,
+input[type="radio"]:checked + label.radioButton-third > span,
+input[type="radio"]:checked + label.radioButton-right > span {
+    background-color: #566273;
 }
 
 input[type="radio"] + label {
