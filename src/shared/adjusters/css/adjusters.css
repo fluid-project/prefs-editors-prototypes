@@ -1310,6 +1310,10 @@ input[type="radio"] + label {
 	padding: 10px;
 }
 
+.gpii-speakText-punctuationVerbosity-option-label {
+	display: table-cell;
+}
+
 input[type="radio"] + label.radioButton-left > span,
 input[type="radio"] + label.radioButton-second > span,
 input[type="radio"] + label.radioButton-third > span,
