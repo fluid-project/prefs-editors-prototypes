@@ -1298,20 +1298,20 @@ input[type="radio"] + label {
 }
 
 .gpii-punctuationVerbosity-container {
-	display: table;
+    display: table;
     background-color: #CEDBDD;
     border-radius: 4%;
 }
 
 .gpii-speakText-punctuationVerbosity-row {
-	display: table-cell;
-	width: 25%;
-	text-align: center;
-	padding: 10px;
+    display: table-cell;
+    width: 25%;
+    text-align: center;
+    padding: 10px;
 }
 
 .gpii-speakText-punctuationVerbosity-option-label {
-	display: table-cell;
+    display: table-cell;
 }
 
 input[type="radio"] + label.radioButton-left > span,
@@ -1323,7 +1323,7 @@ input[type="radio"] + label.radioButton-right > span {
     background-color: white;
     border-radius: 100%;
     border: solid white;
-	border-width: 0.66em;
+    border-width: 0.66em;
     width: 0em;
     height: 0em;
     margin: 0 auto;
@@ -1333,10 +1333,10 @@ input[type="radio"]:checked + label.radioButton-left > span,
 input[type="radio"]:checked + label.radioButton-second > span,
 input[type="radio"]:checked + label.radioButton-third > span,
 input[type="radio"]:checked + label.radioButton-right > span {
-	border-width: medium;
+    border-width: medium;
     width: 1em;
     height: 1em;
-	background-color: #566273;
+    background-color: #566273;
 }
 
 input[type="radio"] + label {
