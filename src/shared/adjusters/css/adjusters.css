@@ -1553,37 +1553,10 @@ label.gpii-preset-button-label {
     font-size: 1.4em!important;
 }
 
-input[type=checkbox] + label.gpii-checkbox-label {
-    margin-left: 25px;
-    text-indent: -1.2em;
-    font-family: 'checkboxTick';
-    display: inline-block;
-    width: 228px;
-}
-
-input[type=checkbox] + label.gpii-checkbox-label:before {
-    content: "\e00a";
-    color: transparent;
-    border: 1px solid #556273;
-    border-radius: 4px;
-    background-color: white;
-    font-size: 75%;
-}
-
-input[type=checkbox]:checked + label.gpii-checkbox-label {
-    font-family: 'checkboxTick';
-}
-
-input[type=checkbox]:checked + label.gpii-checkbox-label:before {
-    content: "\e00a";
-    color: white;
-    background-color: #556273;
-}
-
 .gpii-checkbox-label-text {
     font-family: 'Open Sans', sans-serif;
-    font-size: 75%;
-    padding-left: 5px;
+    font-size: 90%;
+    padding-left: 0.5em;
 }
 
 .fl-prefsEditor label {
