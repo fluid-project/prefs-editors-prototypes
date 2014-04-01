@@ -18,7 +18,7 @@ body {
     font-family: 'Roboto Slab', serif !important;
 }
 
-.gpii-prefsEditor-pmtContainer {
+.gpii-prefsEditor-panelContainer {
     width: 560px;
 }
 
@@ -79,9 +79,7 @@ body {
 }
 
 .gpii-prefsEditor-PCP-preferences {
-    position: absolute;
     overflow-y: auto;
-    height: 700px;
     width: 545px;
 }
 
@@ -124,14 +122,13 @@ body {
     content: "\e60c"
 }
 
-.gpii-pmt-bottomRow {
+.gpii-prefsEditor-panelBottomRow {
     display: table;
     width: 100%;
 }
 
 .gpii-pcp-bottomRow {
-    margin-top: 720px;
-    margin-left: 20px;
+    margin-left: 1em;
 }
 
 .gpii-prefsEditor-messageLine {
