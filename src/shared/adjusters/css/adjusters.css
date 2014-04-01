@@ -1298,24 +1298,24 @@ input[type="radio"] + label {
 }
 
 .gpii-punctuationVerbosity-container {
-    position: relative;
-    height: 55px;
-    width: 250px;
+	display: table;
     background-color: #CEDBDD;
     border-radius: 4%;
-    padding-top: 10px;
-    padding-left: 5px;
+}
+
+.gpii-speakText-punctuationVerbosity-row {
+	display: table-cell;
+	width: 25%;
+	text-align: center;
 }
 
 input[type="radio"] + label.radioButton-left > span {
     font-family: 'radioButtonIcons';
+    display: block;
 }
 
 input[type="radio"] + label.radioButton-left > span:before {
     font-size: 150%;
-    position: absolute;
-    margin-top: -30px;
-    margin-left: -30px;
     color: white;
     border: solid white;
     background-color: white;
@@ -1334,13 +1334,11 @@ input[type="radio"]:checked + label.radioButton-left > span:before {
 
 input[type="radio"] + label.radioButton-second > span {
     font-family: 'radioButtonIcons';
+    display: block;
 }
 
 input[type="radio"] + label.radioButton-second > span:before {
     font-size: 150%;
-    position: absolute;
-    margin-top: -30px;
-    margin-left: -33px;
     color: white;
     border: solid white;
     background-color: white;
@@ -1359,13 +1357,11 @@ input[type="radio"]:checked + label.radioButton-second > span:before {
 
 input[type="radio"] + label.radioButton-third > span {
     font-family: 'radioButtonIcons';
+    display: block;
 }
 
 input[type="radio"] + label.radioButton-third > span:before {
     font-size: 150%;
-    position: absolute;
-    margin-top: -30px;
-    margin-left: -31px;
     color: white;
     border: solid white;
     background-color: white;
@@ -1384,13 +1380,11 @@ input[type="radio"]:checked + label.radioButton-third > span:before {
 
 input[type="radio"] + label.radioButton-right > span {
     font-family: 'radioButtonIcons';
+    display: block;
 }
 
 input[type="radio"] + label.radioButton-right > span:before {
     font-size: 150%;
-    position: absolute;
-    margin-top: -30px;
-    margin-left: -21px;
     color: white;
     border: solid white;
     background-color: white;
@@ -1405,29 +1399,6 @@ input[type="radio"]:checked + label.radioButton-right > span:before {
     background-color: white;
     border-radius: 100%;
     border-width: thin medium;
-}
-
-input[type="radio"] + label.radioButton-left {
-    position: absolute;
-    margin-top: 30px;
-}
-
-input[type="radio"] + label.radioButton-second {
-    margin-left: 70px;
-    position: absolute;
-    margin-top: 30px;
-}
-
-input[type="radio"] + label.radioButton-third {
-    margin-left: 140px;
-    position: absolute;
-    margin-top: 30px;
-}
-
-input[type="radio"] + label.radioButton-right {
-    margin-left: 210px;
-    position: absolute;
-    margin-top: 30px;
 }
 
 input[type="radio"] + label {
