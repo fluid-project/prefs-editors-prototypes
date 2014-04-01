@@ -1322,6 +1322,7 @@ input[type="radio"] + label.radioButton-right > span {
 	border-width: 0.66em;
     width: 0em;
     height: 0em;
+    margin: 0 auto;
 }
 
 input[type="radio"]:checked + label.radioButton-left > span,
