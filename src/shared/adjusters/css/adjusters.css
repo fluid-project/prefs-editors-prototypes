@@ -1332,9 +1332,9 @@ input[type="radio"]:checked + label.radioButton-left > span,
 input[type="radio"]:checked + label.radioButton-second > span,
 input[type="radio"]:checked + label.radioButton-third > span,
 input[type="radio"]:checked + label.radioButton-right > span {
-    border-width: medium;
-    width: 1em;
-    height: 1em;
+    border-width: 0.37em;
+    width: 0.64em;
+    height: 0.64em;
     background-color: #566273;
 }
 
