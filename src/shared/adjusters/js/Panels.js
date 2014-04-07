@@ -376,7 +376,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         fluid.each(labels, function (label, index) {
             label = $(label);
             label.addClass(classes[values[index]]);
-            label.append('<span></span>');
+            label.prepend('<span></span>');
         });
         container.attr("aria-labelledby", gpii.ariaUtility.getLabelId(titleLabel));
 
