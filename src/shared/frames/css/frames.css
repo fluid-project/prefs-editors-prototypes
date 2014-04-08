@@ -18,7 +18,7 @@ body {
     font-family: 'Roboto Slab', serif !important;
 }
 
-.gpii-prefsEditor-pmtContainer {
+.gpii-prefsEditor-panelContainer {
     width: 560px;
 }
 
@@ -81,9 +81,7 @@ body {
 }
 
 .gpii-prefsEditor-PCP-preferences {
-    position: absolute;
     overflow-y: auto;
-    height: 700px;
     width: 545px;
 }
 
@@ -94,7 +92,7 @@ body {
     color: #FFFFFF;
     cursor: pointer;
     margin: 0.1em 0.1em 0.1em -2.2em;
-    padding: 0.4em 0.4em 0.4em 1.5em;
+    padding: 0.4em 0.3em 0.4em 1.5em;
     position: relative;
     font-size: 1.5em;
     vertical-align: middle;
@@ -111,7 +109,6 @@ body {
 .gpii-PCP-save {
     background-color: #249FB7;
     font-weight: bold;
-    border: 0.15em solid #249FB7;
 }
 
 .gpii-prefsEditor-saveAndApplyButtonLabel {
@@ -127,14 +124,9 @@ body {
     content: "\e60c"
 }
 
-.gpii-pmt-bottomRow {
+.gpii-prefsEditor-panelBottomRow {
     display: table;
     width: 100%;
-}
-
-.gpii-pcp-bottomRow {
-    margin-top: 720px;
-    margin-left: 20px;
 }
 
 .gpii-prefsEditor-messageLine {
