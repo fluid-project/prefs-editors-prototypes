@@ -70,6 +70,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "gpii.primarySchema.volume": {
                 "model.value": "default",
                 "controlValues.volume.min": "minimum",
+                "controlValues.volume.max": "maximum",
                 "controlValues.volume.step": "divisibleBy"
             }
         },
