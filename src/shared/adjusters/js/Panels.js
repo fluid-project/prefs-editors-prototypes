@@ -209,6 +209,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "gpii.primarySchema.universalVolume": {
                 "model.value": "default",
                 "controlValues.universalVolume.min": "minimum",
+                "controlValues.universalVolume.max": "maximum",
                 "controlValues.universalVolume.step": "divisibleBy"
             }
         },

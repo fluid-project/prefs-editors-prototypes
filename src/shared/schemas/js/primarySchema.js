@@ -134,6 +134,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "number",
             "default": 80,
             "minimum": 0,
+            "maximum": 100,
             "divisibleBy": 10
         },
         "gpii.primarySchema.universalLanguage": {
