@@ -84,6 +84,9 @@ https://github.com/gpii/universal/LICENSE.txt
         dataType: "json"
     };
 
+
+
+
     gpii.prefs.gpiiStore.tests.assertNotUndefined = function () {
         jqUnit.assertValue("Object should not be null or undefined.", store);
     };
@@ -104,12 +107,17 @@ https://github.com/gpii/universal/LICENSE.txt
         jqUnit.assertEquals("Transforming the model from http://registry.gpii.org/common/... to schema-like", stringifiedExampleObject, exampleModel);
     };
 
+    gpii.prefs.gpiiStore.tests.assertGetInvokerNoLoggedUser = function () {
+        var gpiiModel = store.get();
+        jqUnit.assertNoValue("Settings object is undefined when no user is logged.", gpiiModel);
+    };
+
     gpii.prefs.gpiiStore.tests.assertGetSettingsFromLoggedUser = function () {
         var keys = ["keyEcho", "wordEcho", "fontSize", "tracking", "speakText", "contrast_theme", "showCrosshairs", "contrastEnabled", "announceCapitals", "textHighlighting", "magnifierEnabled", "universalLanguage", "punctuationVerbosity", "screenReaderLanguage", "wordsSpokenPerMinute", "screenReaderTracking", "speakTutorialMessages", "magnificationPosition", "screenReaderBrailleOutput"];
         var modelKeys = [];
 
         fluid.each(keys, function (key) {
-            modelKeys.push("gpii_primarySchema_" + key)
+            modelKeys.push("gpii_primarySchema_" + key);
         });
 
         store.gpiiSession.login(userToWorkWith);
@@ -117,6 +125,9 @@ https://github.com/gpii/universal/LICENSE.txt
 
         jqUnit.assertEquals("Checking if the GET invoker successfully calls the transform function.", JSON.stringify(Object.keys(gpiiModel)), JSON.stringify(modelKeys));
     };
+
+
+
 
     gpii.prefs.gpiiStore.tests.mockTest = function (testTitle, assertFunction, enabledMockSettings) {
         jqUnit.test(testTitle, function () {
@@ -130,6 +141,8 @@ https://github.com/gpii/universal/LICENSE.txt
     gpii.prefs.gpiiStore.tests.mockTest("Object not undefined.", gpii.prefs.gpiiStore.tests.assertNotUndefined);
     gpii.prefs.gpiiStore.tests.mockTest("Model transformation is correct.", gpii.prefs.gpiiStore.tests.assertModeflTransofrmation);
     gpii.prefs.gpiiStore.tests.mockTest("Inverted model transformation is correct.", gpii.prefs.gpiiStore.tests.assertInvertedModeflTransofrmation);
-    gpii.prefs.gpiiStore.tests.mockTest("Get invoker is working.", gpii.prefs.gpiiStore.tests.assertGetSettingsFromLoggedUser, [loginSuccessMockSettings, getRequestMockSettings]);
+    gpii.prefs.gpiiStore.tests.mockTest("Get invoker working when no user is logged.", gpii.prefs.gpiiStore.tests.assertGetInvokerNoLoggedUser);
+    gpii.prefs.gpiiStore.tests.mockTest("Get invoker working when user is logged.", gpii.prefs.gpiiStore.tests.assertGetSettingsFromLoggedUser, [loginSuccessMockSettings, getRequestMockSettings]);
+
 
 })(jQuery);
