@@ -19,10 +19,10 @@ https://github.com/gpii/universal/LICENSE.txt
 
     jqUnit.module("GPIIStore Tests");
 
-    store = gpii.prefs.gpiiStore();
+    var store = gpii.prefs.gpiiStore();
 
 
-    exampleModel = '{"gpii_primarySchema_volume":80,' +
+    var exampleModel = '{"gpii_primarySchema_volume":80,' +
                     '"gpii_primarySchema_keyEcho":false,' +
                     '"gpii_primarySchema_wordEcho":false,' +
                     '"gpii_primarySchema_fontSize":12,' +
@@ -46,7 +46,7 @@ https://github.com/gpii/universal/LICENSE.txt
                     '"gpii_primarySchema_screenReaderBrailleOutput":false}';
 
 
-    convertedExampleModel = '{"http://registry.gpii.org/common/pitch":[{"value":0.8}],' +
+    var convertedExampleModel = '{"http://registry.gpii.org/common/pitch":[{"value":0.8}],' +
                              '"http://registry.gpii.org/common/volume":[{"value":0.8}],' +
                              '"http://registry.gpii.org/common/keyEcho":[{"value":false}],' +
                              '"http://registry.gpii.org/common/language":[{"value":"en"}],' +
@@ -67,30 +67,56 @@ https://github.com/gpii/universal/LICENSE.txt
                              '"http://registry.gpii.org/common/punctuationVerbosity":[{"value":"none"}],' +
                              '"http://registry.gpii.org/common/speakTutorialMessages":[{"value":false}],' +
                              '"http://registry.gpii.org/common/screenReaderTTSEnabled":[{"value":false}],' +
-                             '"http://registry.gpii.org/common/screenReaderBrailleOutput":[{"value":false}]}'
+                             '"http://registry.gpii.org/common/screenReaderBrailleOutput":[{"value":false}]}';
 
+
+    var userToWorkWith = "sammy";
+
+    var loginSuccessMockSettings =
+    {
+        url: store.gpiiSession.options.url + "user/" + userToWorkWith + "/login",
+        responseText: "User with token " + userToWorkWith + " was successfully logged in."
+    };
+
+    var getRequestMockSettings =
+    {
+        url: store.gpiiSession.options.url + "user/" + userToWorkWith,
+        dataType: "json"
+    };
 
     gpii.prefs.gpiiStore.tests.assertNotUndefined = function () {
         jqUnit.assertValue("Object should not be null or undefined.", store);
-    }
+    };
 
     gpii.prefs.gpiiStore.tests.assertModeflTransofrmation = function () {
         var exampleModelObject = JSON.parse(exampleModel);
         var transformedExampleModel = store.modelTransform(exampleModelObject, gpii.prefs.commonTermsTransformationRules);
         var stringifiedExampleObject = JSON.stringify(transformedExampleModel); // Comparing stringified objects, since JSON.parse(JSON.stringify(obj)) != obj
 
-
         jqUnit.assertEquals("Transforming the model from schema to http://registry.gpii.org/common/...", stringifiedExampleObject, convertedExampleModel);
-    }
+    };
 
     gpii.prefs.gpiiStore.tests.assertInvertedModeflTransofrmation = function () {
         var exampleTransformedObject = JSON.parse(convertedExampleModel);
         var inverseTransformedExampleModel = store.inverseModelTransform(exampleTransformedObject, gpii.prefs.commonTermsInverseTransformationRules);
         var stringifiedExampleObject = JSON.stringify(inverseTransformedExampleModel);
 
-
         jqUnit.assertEquals("Transforming the model from http://registry.gpii.org/common/... to schema-like", stringifiedExampleObject, exampleModel);
-    }
+    };
+
+    gpii.prefs.gpiiStore.tests.assertGetSettingsFromLoggedUser = function () {
+        var keys = ["keyEcho", "wordEcho", "fontSize", "tracking", "speakText", "contrast_theme", "showCrosshairs", "contrastEnabled", "announceCapitals", "textHighlighting", "magnifierEnabled", "universalLanguage", "punctuationVerbosity", "screenReaderLanguage", "wordsSpokenPerMinute", "screenReaderTracking", "speakTutorialMessages", "magnificationPosition", "screenReaderBrailleOutput"];
+        var modelKeys = [];
+
+        fluid.each(keys, function (key) {
+            modelKeys.push("gpii_primarySchema_" + key)
+        });
+
+        store.gpiiSession.login(userToWorkWith);
+        var gpiiModel = store.get();
+
+        jqUnit.assertEquals("Checking if the GET invoker successfully calls the transform function.", JSON.stringify(Object.keys(gpiiModel)), JSON.stringify(modelKeys));
+    };
 
     gpii.prefs.gpiiStore.tests.mockTest = function (testTitle, assertFunction, enabledMockSettings) {
         jqUnit.test(testTitle, function () {
@@ -102,7 +128,8 @@ https://github.com/gpii/universal/LICENSE.txt
     };
 
     gpii.prefs.gpiiStore.tests.mockTest("Object not undefined.", gpii.prefs.gpiiStore.tests.assertNotUndefined);
-    gpii.prefs.gpiiStore.tests.mockTest("Model transformation is correct", gpii.prefs.gpiiStore.tests.assertModeflTransofrmation);
-    gpii.prefs.gpiiStore.tests.mockTest("Inverted model transformation is correct", gpii.prefs.gpiiStore.tests.assertInvertedModeflTransofrmation);
+    gpii.prefs.gpiiStore.tests.mockTest("Model transformation is correct.", gpii.prefs.gpiiStore.tests.assertModeflTransofrmation);
+    gpii.prefs.gpiiStore.tests.mockTest("Inverted model transformation is correct.", gpii.prefs.gpiiStore.tests.assertInvertedModeflTransofrmation);
+    gpii.prefs.gpiiStore.tests.mockTest("Get invoker is working.", gpii.prefs.gpiiStore.tests.assertGetSettingsFromLoggedUser, [loginSuccessMockSettings, getRequestMockSettings]);
 
 })(jQuery);
