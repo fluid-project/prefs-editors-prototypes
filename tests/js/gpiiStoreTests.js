@@ -23,51 +23,53 @@ https://github.com/gpii/universal/LICENSE.txt
 
 
     var exampleModel = '{"gpii_primarySchema_volume":80,' +
-                    '"gpii_primarySchema_keyEcho":false,' +
-                    '"gpii_primarySchema_wordEcho":false,' +
-                    '"gpii_primarySchema_fontSize":12,' +
-                    '"gpii_primarySchema_speakText":false,' +
-                    '"gpii_primarySchema_voicePitch":80,' +
-                    '"gpii_primarySchema_cursorSize":1,' +
-                    '"gpii_primarySchema_magnification":100,' +
-                    '"gpii_primarySchema_contrast_theme":"black-white",' +
-                    '"gpii_primarySchema_showCrosshairs":false,' +
-                    '"gpii_primarySchema_universalVolume":80,' +
-                    '"gpii_primarySchema_contrastEnabled":false,' +
-                    '"gpii_primarySchema_announceCapitals":false,' +
-                    '"gpii_primarySchema_textHighlighting":"Word",' +
-                    '"gpii_primarySchema_magnifierEnabled":false,' +
-                    '"gpii_primarySchema_universalLanguage":"en",' +
-                    '"gpii_primarySchema_punctuationVerbosity":"none",' +
-                    '"gpii_primarySchema_screenReaderLanguage":"en",' +
-                    '"gpii_primarySchema_wordsSpokenPerMinute":130,' +
-                    '"gpii_primarySchema_speakTutorialMessages":false,' +
-                    '"gpii_primarySchema_magnificationPosition":"TopHalf",' +
-                    '"gpii_primarySchema_screenReaderBrailleOutput":false}';
+                        '"gpii_primarySchema_keyEcho":false,' +
+                        '"gpii_primarySchema_wordEcho":false,' +
+                        '"gpii_primarySchema_fontSize":12,' +
+                        '"gpii_primarySchema_speakText":false,' +
+                        '"gpii_primarySchema_voicePitch":80,' +
+                        '"gpii_primarySchema_cursorSize":1,' +
+                        '"gpii_primarySchema_magnification":100,' +
+                        '"gpii_primarySchema_contrast_theme":"black-white",' +
+                        '"gpii_primarySchema_showCrosshairs":false,' +
+                        '"gpii_primarySchema_universalVolume":80,' +
+                        '"gpii_primarySchema_contrastEnabled":false,' +
+                        '"gpii_primarySchema_announceCapitals":false,' +
+                        '"gpii_primarySchema_textHighlighting":"Word",' +
+                        '"gpii_primarySchema_magnifierEnabled":false,' +
+                        '"gpii_primarySchema_universalLanguage":"en",' +
+                        '"gpii_primarySchema_punctuationVerbosity":"none",' +
+                        '"gpii_primarySchema_screenReaderLanguage":"en",' +
+                        '"gpii_primarySchema_wordsSpokenPerMinute":130,' +
+                        '"gpii_primarySchema_speakTutorialMessages":false,' +
+                        '"gpii_primarySchema_magnificationPosition":"TopHalf",' +
+                        '"gpii_primarySchema_screenReaderBrailleOutput":false}';
+
+
 
 
     var convertedExampleModel = '{"http://registry.gpii.org/common/pitch":[{"value":0.8}],' +
-                             '"http://registry.gpii.org/common/volume":[{"value":0.8}],' +
-                             '"http://registry.gpii.org/common/keyEcho":[{"value":false}],' +
-                             '"http://registry.gpii.org/common/language":[{"value":"en"}],' +
-                             '"http://registry.gpii.org/common/wordEcho":[{"value":false}],' +
-                             '"http://registry.gpii.org/common/fontSize":[{"value":12}],' +
-                             '"http://registry.gpii.org/common/volumeTTS":[{"value":0.8}],' +
-                             '"http://registry.gpii.org/common/speechRate":[{"value":130}],' +
-                             '"http://registry.gpii.org/common/cursorSize":[{"value":0.2}],' +
-                             '"http://registry.gpii.org/common/readingUnit":[{"value":"Word"}],' +
-                             '"http://registry.gpii.org/common/magnification":[{"value":1}],' +
-                             '"http://registry.gpii.org/common/showCrosshairs":[{"value":false}],' +
-                             '"http://registry.gpii.org/common/announceCapitals":[{"value":false}],' +
-                             '"http://registry.gpii.org/common/magnifierEnabled":[{"value":false}],' +
-                             '"http://registry.gpii.org/common/highContrastTheme":[{"value":"black-white"}],' +
-                             '"http://registry.gpii.org/common/magnifierPosition":[{"value":"TopHalf"}],' +
-                             '"http://registry.gpii.org/common/auditoryOutLanguage":[{"value":"en"}],' +
-                             '"http://registry.gpii.org/common/highContrastEnabled":[{"value":false}],' +
-                             '"http://registry.gpii.org/common/punctuationVerbosity":[{"value":"none"}],' +
-                             '"http://registry.gpii.org/common/speakTutorialMessages":[{"value":false}],' +
-                             '"http://registry.gpii.org/common/screenReaderTTSEnabled":[{"value":false}],' +
-                             '"http://registry.gpii.org/common/screenReaderBrailleOutput":[{"value":false}]}';
+                                 '"http://registry.gpii.org/common/volume":[{"value":0.8}],' +
+                                 '"http://registry.gpii.org/common/keyEcho":[{"value":false}],' +
+                                 '"http://registry.gpii.org/common/language":[{"value":"en"}],' +
+                                 '"http://registry.gpii.org/common/wordEcho":[{"value":false}],' +
+                                 '"http://registry.gpii.org/common/fontSize":[{"value":12}],' +
+                                 '"http://registry.gpii.org/common/volumeTTS":[{"value":0.8}],' +
+                                 '"http://registry.gpii.org/common/speechRate":[{"value":130}],' +
+                                 '"http://registry.gpii.org/common/cursorSize":[{"value":0.2}],' +
+                                 '"http://registry.gpii.org/common/readingUnit":[{"value":"Word"}],' +
+                                 '"http://registry.gpii.org/common/magnification":[{"value":1}],' +
+                                 '"http://registry.gpii.org/common/showCrosshairs":[{"value":false}],' +
+                                 '"http://registry.gpii.org/common/announceCapitals":[{"value":false}],' +
+                                 '"http://registry.gpii.org/common/magnifierEnabled":[{"value":false}],' +
+                                 '"http://registry.gpii.org/common/highContrastTheme":[{"value":"black-white"}],' +
+                                 '"http://registry.gpii.org/common/magnifierPosition":[{"value":"TopHalf"}],' +
+                                 '"http://registry.gpii.org/common/auditoryOutLanguage":[{"value":"en"}],' +
+                                 '"http://registry.gpii.org/common/highContrastEnabled":[{"value":false}],' +
+                                 '"http://registry.gpii.org/common/punctuationVerbosity":[{"value":"none"}],' +
+                                 '"http://registry.gpii.org/common/speakTutorialMessages":[{"value":false}],' +
+                                 '"http://registry.gpii.org/common/screenReaderTTSEnabled":[{"value":false}],' +
+                                 '"http://registry.gpii.org/common/screenReaderBrailleOutput":[{"value":false}]}';
 
 
     var userToWorkWith = "sammy";
@@ -84,7 +86,14 @@ https://github.com/gpii/universal/LICENSE.txt
         dataType: "json"
     };
 
-
+    setRequestNoUserMockSettings =
+    {
+        url: store.gpiiSession.options.url + "user/",
+        dataType: "json",
+        responseText: {
+            "token": userToWorkWith
+        }
+    };
 
 
     gpii.prefs.gpiiStore.tests.assertNotUndefined = function () {
@@ -127,6 +136,11 @@ https://github.com/gpii/universal/LICENSE.txt
     };
 
 
+    gpii.prefs.gpiiStore.tests.assertSetInvokerNoLoggedUser = function () {
+        store.set();
+        jqUnit.assertValue("Set creates token.", store.gpiiSession.options.loggedUser);
+    };
+
 
 
     gpii.prefs.gpiiStore.tests.mockTest = function (testTitle, assertFunction, enabledMockSettings) {
@@ -141,8 +155,9 @@ https://github.com/gpii/universal/LICENSE.txt
     gpii.prefs.gpiiStore.tests.mockTest("Object not undefined.", gpii.prefs.gpiiStore.tests.assertNotUndefined);
     gpii.prefs.gpiiStore.tests.mockTest("Model transformation is correct.", gpii.prefs.gpiiStore.tests.assertModeflTransofrmation);
     gpii.prefs.gpiiStore.tests.mockTest("Inverted model transformation is correct.", gpii.prefs.gpiiStore.tests.assertInvertedModeflTransofrmation);
-    gpii.prefs.gpiiStore.tests.mockTest("Get invoker working when no user is logged.", gpii.prefs.gpiiStore.tests.assertGetInvokerNoLoggedUser);
-    gpii.prefs.gpiiStore.tests.mockTest("Get invoker working when user is logged.", gpii.prefs.gpiiStore.tests.assertGetSettingsFromLoggedUser, [loginSuccessMockSettings, getRequestMockSettings]);
+    gpii.prefs.gpiiStore.tests.mockTest("Set invoker when user is logged.", gpii.prefs.gpiiStore.tests.assertSetInvokerNoLoggedUser, [setRequestNoUserMockSettings, loginSuccessMockSettings]);
+    gpii.prefs.gpiiStore.tests.mockTest("Get invoker when no user is logged.", gpii.prefs.gpiiStore.tests.assertGetInvokerNoLoggedUser);
+    gpii.prefs.gpiiStore.tests.mockTest("Get invoker when user is logged.", gpii.prefs.gpiiStore.tests.assertGetSettingsFromLoggedUser, [loginSuccessMockSettings, getRequestMockSettings]);
 
 
 })(jQuery);
