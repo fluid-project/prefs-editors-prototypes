@@ -21,6 +21,8 @@ https://github.com/gpii/universal/LICENSE.txt
 
     var store = gpii.prefs.gpiiStore();
 
+    var userToWorkWith = "sammy";
+    var userToBeCreated = "userThatJustHasBeenCreated";
 
     var exampleModel = '{"gpii_primarySchema_volume":80,' +
                         '"gpii_primarySchema_keyEcho":false,' +
@@ -72,12 +74,17 @@ https://github.com/gpii/universal/LICENSE.txt
                                  '"http://registry.gpii.org/common/screenReaderBrailleOutput":[{"value":false}]}';
 
 
-    var userToWorkWith = "sammy";
 
     var loginSuccessMockSettings =
     {
         url: store.gpiiSession.options.url + "user/" + userToWorkWith + "/login",
         responseText: "User with token " + userToWorkWith + " was successfully logged in."
+    };
+
+    var loginSuccessNewUserMockSettings =
+    {
+        url: store.gpiiSession.options.url + "user/" + userToBeCreated + "/login",
+        responseText: "User with token " + userToBeCreated + " was successfully logged in."
     };
 
     var getRequestMockSettings =
@@ -91,7 +98,7 @@ https://github.com/gpii/universal/LICENSE.txt
         url: store.gpiiSession.options.url + "user/",
         dataType: "json",
         responseText: {
-            "token": userToWorkWith
+            "token": userToBeCreated
         }
     };
 
@@ -155,7 +162,7 @@ https://github.com/gpii/universal/LICENSE.txt
     gpii.prefs.gpiiStore.tests.mockTest("Object not undefined.", gpii.prefs.gpiiStore.tests.assertNotUndefined);
     gpii.prefs.gpiiStore.tests.mockTest("Model transformation is correct.", gpii.prefs.gpiiStore.tests.assertModeflTransofrmation);
     gpii.prefs.gpiiStore.tests.mockTest("Inverted model transformation is correct.", gpii.prefs.gpiiStore.tests.assertInvertedModeflTransofrmation);
-    gpii.prefs.gpiiStore.tests.mockTest("Set invoker when no user is logged.", gpii.prefs.gpiiStore.tests.assertSetInvokerNoLoggedUser, [setRequestNoUserMockSettings, loginSuccessMockSettings]);
+    gpii.prefs.gpiiStore.tests.mockTest("Set invoker when no user is logged.", gpii.prefs.gpiiStore.tests.assertSetInvokerNoLoggedUser, [setRequestNoUserMockSettings, loginSuccessNewUserMockSettings]);
     gpii.prefs.gpiiStore.tests.mockTest("Get invoker when no user is logged.", gpii.prefs.gpiiStore.tests.assertGetInvokerNoLoggedUser);
     gpii.prefs.gpiiStore.tests.mockTest("Get invoker when user is logged.", gpii.prefs.gpiiStore.tests.assertGetSettingsFromLoggedUser, [loginSuccessMockSettings, getRequestMockSettings]);
 
