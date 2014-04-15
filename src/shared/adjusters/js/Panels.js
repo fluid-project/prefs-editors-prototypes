@@ -172,6 +172,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "gpii.primarySchema.voicePitch": {
                 "model.value": "default",
                 "controlValues.voicePitch.min": "minimum",
+                "controlValues.voicePitch.max": "maximum",
                 "controlValues.voicePitch.step": "divisibleBy"
             }
         },
