@@ -19,8 +19,10 @@ https://github.com/gpii/universal/LICENSE.txt
 
     jqUnit.module("GPIIStore Tests");
 
+    // The store object to work with throughout the tests
     var store = gpii.prefs.gpiiStore();
 
+    // Test data
     var userToWorkWith = "sammy";
     var userToBeCreated = "userThatJustHasBeenCreated";
 
@@ -46,7 +48,9 @@ https://github.com/gpii/universal/LICENSE.txt
                                  "http://registry.gpii.org/common/punctuationVerbosity":[{"value":"none"}], "http://registry.gpii.org/common/speakTutorialMessages":[{"value":false}],
                                  "http://registry.gpii.org/common/screenReaderTTSEnabled":[{"value":false}], "http://registry.gpii.org/common/screenReaderBrailleOutput":[{"value":false}]}; 
 
-
+    /*
+     * Mock settings used in the various test scenarios.
+     */
     var loginSuccessMockSettings =
     {
         url: store.gpiiSession.options.url + "user/" + userToWorkWith + "/login",
@@ -83,7 +87,9 @@ https://github.com/gpii/universal/LICENSE.txt
         }
     };
 
-
+    /*
+     * State-changing and assertion functions used in the various tests.
+     */
     gpii.prefs.gpiiStore.tests.assertNotUndefined = function () {
         jqUnit.assertValue("Object should not be null or undefined.", store);
     };
@@ -122,7 +128,6 @@ https://github.com/gpii/universal/LICENSE.txt
         jqUnit.assertEquals("Checking if the GET invoker successfully calls the transform function.", JSON.stringify(Object.keys(gpiiModel)), JSON.stringify(modelKeys));
     };
 
-
     gpii.prefs.gpiiStore.tests.assertSetInvokerNoLoggedUser = function () {
         store.set();
 
@@ -137,7 +142,12 @@ https://github.com/gpii/universal/LICENSE.txt
         jqUnit.assertEquals("Checking if after set the same user is logged.", store.gpiiSession.options.loggedUser, userToWorkWith);
     };
 
-
+    /*
+     * Reusable helper function that generates a test given:
+     * 1) The test title
+     * 2) The assertion function to be used in the test
+     * 3) An array of enabled mock settings (if any)
+     */
     gpii.prefs.gpiiStore.tests.mockTest = function (testTitle, assertFunction, enabledMockSettings) {
         jqUnit.test(testTitle, function () {
             $.mockjaxClear();
@@ -147,6 +157,7 @@ https://github.com/gpii/universal/LICENSE.txt
         });
     };
 
+    // Perform the various tests.
     gpii.prefs.gpiiStore.tests.mockTest("Object not undefined.", gpii.prefs.gpiiStore.tests.assertNotUndefined);
     gpii.prefs.gpiiStore.tests.mockTest("Model transformation check.", gpii.prefs.gpiiStore.tests.assertModeflTransofrmation);
     gpii.prefs.gpiiStore.tests.mockTest("Inverted model transformation check.", gpii.prefs.gpiiStore.tests.assertInvertedModeflTransofrmation);
