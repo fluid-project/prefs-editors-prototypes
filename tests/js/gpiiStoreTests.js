@@ -134,7 +134,6 @@ https://github.com/gpii/universal/LICENSE.txt
         jqUnit.assertValue("Set creates token.", store.gpiiSession.options.loggedUser);
     };
 
-
     gpii.prefs.gpiiStore.tests.assertSetInvokerUserLogged = function () {
         store.gpiiSession.login(userToWorkWith);
         store.set();
