@@ -18,7 +18,7 @@ body {
     font-family: 'Roboto Slab', serif !important;
 }
 
-.gpii-prefsEditor-pmtContainer {
+.gpii-prefsEditor-panelContainer {
     width: 560px;
 }
 
@@ -81,20 +81,18 @@ body {
 }
 
 .gpii-prefsEditor-PCP-preferences {
-    position: absolute;
     overflow-y: auto;
-    height: 700px;
     width: 545px;
 }
 
 .gpii-prefsEditor-save, .gpii-prefsEditor-gotoPcp {
     font-family: 'Roboto Slab', serif;
     background-color: #4C5259;
-    border-radius: 5px;
+    border-radius:0.25em;
     color: #FFFFFF;
     cursor: pointer;
-    margin: 0.1em 0.1em 0.1em -2.3em;
-    padding: 0.4em 0.4em 0.4em 1.5em;
+    margin: 0.1em 0.1em 0.1em -2.2em;
+    padding: 0.4em 0.3em 0.4em 1.5em;
     position: relative;
     font-size: 1.5em;
     vertical-align: middle;
@@ -104,36 +102,31 @@ body {
     word-wrap: break-word;
 }
 
+.gpii-pcp-saveButtonContainer {
+    display: none;
+}
+
 .gpii-PCP-save {
-    background-color: #BDE2E9;
-}
-
-.gpii-PCP-save:hover {
     background-color: #249FB7;
+    font-weight: bold;
 }
 
-.gpii-pmt-saveAndApplyButtonLabel {
+.gpii-prefsEditor-saveAndApplyButtonLabel {
     cursor: pointer;
     position: relative;
     vertical-align: middle;
     z-index: 1;
     color: #FFFFFF;
-    background-color: transparent !important;
     font-size: 2em !important;
 }
 
-.gpii-pmt-saveAndApplyButtonLabel:before {
+.gpii-prefsEditor-saveAndApplyButtonLabel:before {
     content: "\e60c"
 }
 
-.gpii-pmt-bottomRow {
+.gpii-prefsEditor-panelBottomRow {
     display: table;
     width: 100%;
-}
-
-.gpii-pcp-bottomRow {
-    margin-top: 720px;
-    margin-left: 20px;
 }
 
 .gpii-prefsEditor-messageLine {
@@ -155,6 +148,16 @@ body {
 .gpii-pcp-saveButtonContainer {
     float: right;
     width: 165px;
+}
+
+.gpii-pcp-saveButtonContainer:hover .gpii-pcp-cloudIcon {
+    color: #249FB7;
+    background-color: transparent;
+}
+
+.gpii-pcp-saveButtonContainer:hover .gpii-PCP-save {
+    color: #249FB7;
+    background-color: white;
 }
 
 .gpii-prefsEditor-notification {
