@@ -24,7 +24,7 @@ https://github.com/gpii/universal/LICENSE.txt
 
     // Test data
     var userToWorkWith = "sammy";
-    var userToBeCreated = "userThatJustHasBeenCreated";
+    var userToBeCreated = "userThatHasJustBeenCreated";
 
     var exampleModel = {"gpii_primarySchema_volume": 80, "gpii_primarySchema_keyEcho": false, "gpii_primarySchema_wordEcho": false,
                         "gpii_primarySchema_fontSize": 12, "gpii_primarySchema_speakText": false, "gpii_primarySchema_voicePitch": 80,
