@@ -24,33 +24,8 @@ https://github.com/gpii/universal/LICENSE.txt
     var userToWorkWith = "sammy";
     var userToBeCreated = "userThatJustHasBeenCreated";
 
-    var exampleModel = '{"gpii_primarySchema_volume":80,' +
-                        '"gpii_primarySchema_keyEcho":false,' +
-                        '"gpii_primarySchema_wordEcho":false,' +
-                        '"gpii_primarySchema_fontSize":12,' +
-                        '"gpii_primarySchema_speakText":false,' +
-                        '"gpii_primarySchema_voicePitch":80,' +
-                        '"gpii_primarySchema_cursorSize":1,' +
-                        '"gpii_primarySchema_magnification":100,' +
-                        '"gpii_primarySchema_contrast_theme":"black-white",' +
-                        '"gpii_primarySchema_showCrosshairs":false,' +
-                        '"gpii_primarySchema_universalVolume":80,' +
-                        '"gpii_primarySchema_contrastEnabled":false,' +
-                        '"gpii_primarySchema_announceCapitals":false,' +
-                        '"gpii_primarySchema_textHighlighting":"Word",' +
-                        '"gpii_primarySchema_magnifierEnabled":false,' +
-                        '"gpii_primarySchema_universalLanguage":"en",' +
-                        '"gpii_primarySchema_punctuationVerbosity":"none",' +
-                        '"gpii_primarySchema_screenReaderLanguage":"en",' +
-                        '"gpii_primarySchema_wordsSpokenPerMinute":130,' +
-                        '"gpii_primarySchema_speakTutorialMessages":false,' +
-                        '"gpii_primarySchema_magnificationPosition":"TopHalf",' +
-                        '"gpii_primarySchema_screenReaderBrailleOutput":false}';
 
-
-
-
-    var convertedExampleModel = '{"http://registry.gpii.org/common/pitch":[{"value":0.8}],' +
+     convertedExampleModel = '{"http://registry.gpii.org/common/pitch":[{"value":0.8}],' +
                                  '"http://registry.gpii.org/common/volume":[{"value":0.8}],' +
                                  '"http://registry.gpii.org/common/keyEcho":[{"value":false}],' +
                                  '"http://registry.gpii.org/common/language":[{"value":"en"}],' +
@@ -73,6 +48,16 @@ https://github.com/gpii/universal/LICENSE.txt
                                  '"http://registry.gpii.org/common/screenReaderTTSEnabled":[{"value":false}],' +
                                  '"http://registry.gpii.org/common/screenReaderBrailleOutput":[{"value":false}]}';
 
+
+ var exampleModel = {"gpii_primarySchema_volume": 80, "gpii_primarySchema_keyEcho": false, "gpii_primarySchema_wordEcho": false,
+                     "gpii_primarySchema_fontSize": 12, "gpii_primarySchema_speakText": false, "gpii_primarySchema_voicePitch": 80,
+                     "gpii_primarySchema_cursorSize": 1, "gpii_primarySchema_magnification": 100, "gpii_primarySchema_contrast_theme": "black-white",
+                     "gpii_primarySchema_showCrosshairs": false, "gpii_primarySchema_universalVolume": 80, "gpii_primarySchema_contrastEnabled": false,
+                     "gpii_primarySchema_announceCapitals": false, "gpii_primarySchema_textHighlighting": "Word",
+                     "gpii_primarySchema_magnifierEnabled": false, "gpii_primarySchema_universalLanguage": "en",
+                     "gpii_primarySchema_punctuationVerbosity": "none", "gpii_primarySchema_screenReaderLanguage": "en",
+                     "gpii_primarySchema_wordsSpokenPerMinute": 130, "gpii_primarySchema_speakTutorialMessages": false,
+                     "gpii_primarySchema_magnificationPosition": "TopHalf", "gpii_primarySchema_screenReaderBrailleOutput": false};
 
 
     var loginSuccessMockSettings =
@@ -117,8 +102,7 @@ https://github.com/gpii/universal/LICENSE.txt
     };
 
     gpii.prefs.gpiiStore.tests.assertModeflTransofrmation = function () {
-        var exampleModelObject = JSON.parse(exampleModel);
-        var transformedExampleModel = store.modelTransform(exampleModelObject, gpii.prefs.commonTermsTransformationRules);
+        var transformedExampleModel = store.modelTransform(exampleModel, gpii.prefs.commonTermsTransformationRules);
         var stringifiedExampleObject = JSON.stringify(transformedExampleModel); // Comparing stringified objects, since JSON.parse(JSON.stringify(obj)) != obj
 
         jqUnit.assertEquals("Transforming the model from schema to http://registry.gpii.org/common/...", stringifiedExampleObject, convertedExampleModel);
@@ -129,7 +113,7 @@ https://github.com/gpii/universal/LICENSE.txt
         var inverseTransformedExampleModel = store.inverseModelTransform(exampleTransformedObject, gpii.prefs.commonTermsInverseTransformationRules);
         var stringifiedExampleObject = JSON.stringify(inverseTransformedExampleModel);
 
-        jqUnit.assertEquals("Transforming the model from http://registry.gpii.org/common/... to schema-like", stringifiedExampleObject, exampleModel);
+        jqUnit.assertEquals("Transforming the model from http://registry.gpii.org/common/... to schema-like", stringifiedExampleObject, JSON.stringify(exampleModel));
     };
 
     gpii.prefs.gpiiStore.tests.assertGetInvokerNoLoggedUser = function () {
@@ -165,7 +149,7 @@ https://github.com/gpii/universal/LICENSE.txt
         store.set();
 
         jqUnit.assertEquals("Checking if after set the same user is logged.", store.gpiiSession.options.loggedUser, userToWorkWith);
-    }
+    };
 
 
     gpii.prefs.gpiiStore.tests.mockTest = function (testTitle, assertFunction, enabledMockSettings) {
