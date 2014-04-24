@@ -145,29 +145,14 @@ https://github.com/gpii/universal/LICENSE.txt
         jqUnit.assertEquals("Checking if after set the same user is logged.", store.gpiiSession.options.loggedUser, userToWorkWith);
     };
 
-    /*
-     * Reusable helper function that generates a test given:
-     * 1) The test title
-     * 2) The assertion function to be used in the test
-     * 3) An array of enabled mock settings (if any)
-     */
-    gpii.prefs.gpiiStore.tests.mockTest = function (testTitle, assertFunction, enabledMockSettings) {
-        jqUnit.test(testTitle, function () {
-            $.mockjaxClear();
-            fluid.each(enabledMockSettings, $.mockjax);
-            assertFunction();
-            $.mockjaxClear();
-        });
-    };
-
     // Perform the various tests.
-    gpii.prefs.gpiiStore.tests.mockTest("Object not undefined.", gpii.prefs.gpiiStore.tests.assertNotUndefined);
-    gpii.prefs.gpiiStore.tests.mockTest("Model transformation check.", gpii.prefs.gpiiStore.tests.assertModeflTransofrmation);
-    gpii.prefs.gpiiStore.tests.mockTest("Inverted model transformation check.", gpii.prefs.gpiiStore.tests.assertInvertedModeflTransofrmation);
-    gpii.prefs.gpiiStore.tests.mockTest("Set when no user is logged.", gpii.prefs.gpiiStore.tests.assertSetInvokerNoLoggedUser, [setRequestNoUserMockSettings, loginSuccessNewUserMockSettings]);
-    gpii.prefs.gpiiStore.tests.mockTest("Set when user is already logged.", gpii.prefs.gpiiStore.tests.assertSetInvokerUserLogged, [loginSuccessMockSettings, setRequestUserLoggedMockSettings]);
-    gpii.prefs.gpiiStore.tests.mockTest("Get when no user is logged.", gpii.prefs.gpiiStore.tests.assertGetInvokerNoLoggedUser);
-    gpii.prefs.gpiiStore.tests.mockTest("Get when user is logged.", gpii.prefs.gpiiStore.tests.assertGetSettingsFromLoggedUser, [loginSuccessMockSettings, getRequestMockSettings]);
+    gpii.tests.mockTest("Object not undefined.", gpii.prefs.gpiiStore.tests.assertNotUndefined);
+    gpii.tests.mockTest("Model transformation check.", gpii.prefs.gpiiStore.tests.assertModeflTransofrmation);
+    gpii.tests.mockTest("Inverted model transformation check.", gpii.prefs.gpiiStore.tests.assertInvertedModeflTransofrmation);
+    gpii.tests.mockTest("Set when no user is logged.", gpii.prefs.gpiiStore.tests.assertSetInvokerNoLoggedUser, [setRequestNoUserMockSettings, loginSuccessNewUserMockSettings]);
+    gpii.tests.mockTest("Set when user is already logged.", gpii.prefs.gpiiStore.tests.assertSetInvokerUserLogged, [loginSuccessMockSettings, setRequestUserLoggedMockSettings]);
+    gpii.tests.mockTest("Get when no user is logged.", gpii.prefs.gpiiStore.tests.assertGetInvokerNoLoggedUser);
+    gpii.tests.mockTest("Get when user is logged.", gpii.prefs.gpiiStore.tests.assertGetSettingsFromLoggedUser, [loginSuccessMockSettings, getRequestMockSettings]);
 
 
 })(jQuery);
