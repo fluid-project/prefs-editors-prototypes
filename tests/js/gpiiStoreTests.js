@@ -26,7 +26,7 @@ https://github.com/gpii/universal/LICENSE.txt
     var userToWorkWith = "sammy";
     var userToBeCreated = "userThatHasJustBeenCreated";
 
-    var exampleModel = {"gpii_primarySchema_volume": 80, "gpii_primarySchema_keyEcho": false, "gpii_primarySchema_wordEcho": false,
+    exampleModel = {"gpii_primarySchema_volume": 80, "gpii_primarySchema_keyEcho": false, "gpii_primarySchema_wordEcho": false,
                         "gpii_primarySchema_fontSize": 12, "gpii_primarySchema_speakText": false, "gpii_primarySchema_voicePitch": 80,
                         "gpii_primarySchema_cursorSize": 1, "gpii_primarySchema_magnification": 100, "gpii_primarySchema_contrast_theme": "black-white",
                         "gpii_primarySchema_showCrosshairs": false, "gpii_primarySchema_universalVolume": 80, "gpii_primarySchema_contrastEnabled": false,
@@ -36,7 +36,7 @@ https://github.com/gpii/universal/LICENSE.txt
                         "gpii_primarySchema_wordsSpokenPerMinute": 130, "gpii_primarySchema_speakTutorialMessages": false,
                         "gpii_primarySchema_magnificationPosition": "TopHalf", "gpii_primarySchema_screenReaderBrailleOutput": false};
 
-    var convertedExampleModel = {"http://registry.gpii.org/common/pitch":[{"value":0.8}], "http://registry.gpii.org/common/volume":[{"value":0.8}],
+    convertedExampleModel = {"http://registry.gpii.org/common/pitch":[{"value":0.8}], "http://registry.gpii.org/common/volume":[{"value":0.8}],
                                  "http://registry.gpii.org/common/keyEcho":[{"value":false}], "http://registry.gpii.org/common/language":[{"value":"en"}],
                                  "http://registry.gpii.org/common/wordEcho":[{"value":false}], "http://registry.gpii.org/common/fontSize":[{"value":12}],
                                  "http://registry.gpii.org/common/volumeTTS":[{"value":0.8}], "http://registry.gpii.org/common/speechRate":[{"value":130}],
@@ -99,16 +99,14 @@ https://github.com/gpii/universal/LICENSE.txt
 
     gpii.prefs.gpiiStore.tests.assertModeflTransofrmation = function () {
         var transformedExampleModel = store.modelTransform(exampleModel, gpii.prefs.commonTermsTransformationRules);
-        var stringifiedExampleObject = JSON.stringify(transformedExampleModel); // Comparing stringified objects, since JSON.parse(JSON.stringify(obj)) != obj
 
-        jqUnit.assertEquals("Transforming the model from schema to http://registry.gpii.org/common/...", stringifiedExampleObject, JSON.stringify(convertedExampleModel));
+        jqUnit.assertDeepEq("Transforming the model from schema to http://registry.gpii.org/common/...", transformedExampleModel, convertedExampleModel);
     };
 
     gpii.prefs.gpiiStore.tests.assertInvertedModeflTransofrmation = function () {
         var inverseTransformedExampleModel = store.inverseModelTransform(convertedExampleModel, gpii.prefs.commonTermsInverseTransformationRules);
-        var stringifiedExampleObject = JSON.stringify(inverseTransformedExampleModel);
 
-        jqUnit.assertEquals("Transforming the model from http://registry.gpii.org/common/... to schema-like", stringifiedExampleObject, JSON.stringify(exampleModel));
+        jqUnit.assertDeepEq("Transforming the model from http://registry.gpii.org/common/... to schema-like", inverseTransformedExampleModel, exampleModel);
     };
 
     gpii.prefs.gpiiStore.tests.assertGetInvokerNoLoggedUser = function () {
@@ -128,7 +126,7 @@ https://github.com/gpii/universal/LICENSE.txt
         store.gpiiSession.login(userToWorkWith);
         gpiiModel = store.get();
 
-        jqUnit.assertEquals("Checking if the GET invoker successfully calls the transform function.", JSON.stringify(Object.keys(gpiiModel)), JSON.stringify(modelKeys));
+        jqUnit.assertDeepEq("Checking if the GET invoker successfully calls the transform function.", Object.keys(gpiiModel), modelKeys);
     };
 
     gpii.prefs.gpiiStore.tests.assertSetInvokerNoLoggedUser = function () {
