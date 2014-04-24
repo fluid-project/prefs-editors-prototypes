@@ -1,4 +1,4 @@
 {
-    "readBackLabel": "Releer",
-    "keyEchoLabel": "Repetir letra una vez escrita"
+    "readBackLabel": "Opciones al escribir",
+    "keyEchoLabel": "Leer caracteres al escribir"
 }
