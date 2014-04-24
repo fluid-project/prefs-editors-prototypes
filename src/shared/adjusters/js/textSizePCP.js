@@ -22,7 +22,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "gpii.primarySchema.fontSize": {
                 "model.fontSize": "default",
                 "fontSize.range.min": "minimum",
-                "fontSize.range.max": "maximum",
                 "fontSize.range.step": "divisibleBy"
             }
         },

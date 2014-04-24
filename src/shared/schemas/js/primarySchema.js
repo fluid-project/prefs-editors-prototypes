@@ -19,7 +19,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "number",
             "default": 12,
             "minimum": 1,
-            "maximum": 1000,
             "divisibleBy": 1
         },
         "gpii.primarySchema.cursorSize": {
