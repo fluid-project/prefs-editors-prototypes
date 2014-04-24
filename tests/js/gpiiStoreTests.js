@@ -1,5 +1,5 @@
 /*!
-Copyright 2014 ASTEA
+Copyright 2013 ASTEA
 
 Licensed under the New BSD license. You may not use this file except in
 compliance with this License.
@@ -66,7 +66,10 @@ https://github.com/gpii/universal/LICENSE.txt
     var getRequestMockSettings =
     {
         url: store.gpiiSession.options.url + "user/" + userToWorkWith,
-        dataType: "json"
+        dataType: "json",
+        responseText: {
+            "preferences": convertedExampleModel
+        }
     };
 
     var setRequestNoUserMockSettings =
@@ -115,7 +118,7 @@ https://github.com/gpii/universal/LICENSE.txt
     };
 
     gpii.prefs.gpiiStore.tests.assertGetSettingsFromLoggedUser = function () {
-        var keys = ["keyEcho", "wordEcho", "fontSize", "tracking", "speakText", "contrast_theme", "showCrosshairs", "contrastEnabled", "announceCapitals", "textHighlighting", "magnifierEnabled", "universalLanguage", "punctuationVerbosity", "screenReaderLanguage", "wordsSpokenPerMinute", "screenReaderTracking", "speakTutorialMessages", "magnificationPosition", "screenReaderBrailleOutput"];
+        var keys = ["volume", "keyEcho", "wordEcho", "fontSize", "speakText", "voicePitch", "cursorSize", "magnification", "contrast_theme", "showCrosshairs", "universalVolume", "contrastEnabled", "announceCapitals", "textHighlighting", "magnifierEnabled", "universalLanguage", "punctuationVerbosity", "screenReaderLanguage", "wordsSpokenPerMinute", "speakTutorialMessages", "magnificationPosition", "screenReaderBrailleOutput"];
         var modelKeys = [];
 
         fluid.each(keys, function (key) {
@@ -123,7 +126,7 @@ https://github.com/gpii/universal/LICENSE.txt
         });
 
         store.gpiiSession.login(userToWorkWith);
-        var gpiiModel = store.get();
+        gpiiModel = store.get();
 
         jqUnit.assertEquals("Checking if the GET invoker successfully calls the transform function.", JSON.stringify(Object.keys(gpiiModel)), JSON.stringify(modelKeys));
     };
@@ -133,6 +136,7 @@ https://github.com/gpii/universal/LICENSE.txt
 
         jqUnit.assertValue("Set creates token.", store.gpiiSession.options.loggedUser);
     };
+
 
     gpii.prefs.gpiiStore.tests.assertSetInvokerUserLogged = function () {
         store.gpiiSession.login(userToWorkWith);
