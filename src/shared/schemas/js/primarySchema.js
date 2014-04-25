@@ -19,7 +19,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "number",
             "default": 12,
             "minimum": 1,
-            "maximum": 1000,
             "divisibleBy": 1
         },
         "gpii.primarySchema.cursorSize": {
@@ -77,6 +76,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "number",
             "default": 80,
             "minimum": 0,
+            "maximum": 100,
             "divisibleBy": 10
         },
         "gpii.primarySchema.visualAlternativesMoreLess": {
@@ -87,6 +87,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "number",
             "default": 80,
             "minimum": 0,
+            "maximum": 100,
             "divisibleBy": 10
         },
         "gpii.primarySchema.screenReaderLanguage": {
@@ -133,6 +134,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "number",
             "default": 80,
             "minimum": 0,
+            "maximum": 100,
             "divisibleBy": 10
         },
         "gpii.primarySchema.universalLanguage": {
