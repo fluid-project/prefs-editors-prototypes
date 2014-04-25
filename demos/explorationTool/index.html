@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/framework/preferences/css/fss/fss-theme-wb-prefsEditor.css" />
     <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/framework/preferences/css/fss/fss-theme-lgdg-prefsEditor.css" />
     <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/framework/preferences/css/fss/fss-theme-dglg-prefsEditor.css" />
+    <link rel="stylesheet" type="text/css" href="../../src/shared/lib/infusion/components/overviewPanel/css/OverviewPanel.css" />
 
     <link rel="stylesheet" type="text/css" href="../../src/explorationTool/css/ExplorationTool.css" />
     <link rel="stylesheet" type="text/css" href="demo.css" />
@@ -35,12 +36,14 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
+            demo.initOverviewPanel();
             demo.initCookieStore();
             demo.initPageEnhancer("exploration-tool-theme");
             demo.initExplorationTool(".flc-explorationTool");
         })
     </script>
 
+    <div class="flc-overviewPanel fl-overviewPanel-container"></div>
     <div class="flc-toc-tocContainer toc"> </div>
 
     <div>

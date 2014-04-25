@@ -24,7 +24,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             panelLabel: {messagekey: "changeContrast"}
         },
         members: {
-            messageResolver: "{prefsEditorLoader}.msgBundle"
+            messageResolver: "{prefsEditorLoader}.msgResolver"
         }
     });
 })(jQuery, fluid);

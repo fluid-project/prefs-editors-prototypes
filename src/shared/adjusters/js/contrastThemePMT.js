@@ -34,7 +34,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.adjuster.contrastThemePMT.preview", {
         gradeNames: ["gpii.adjuster.previewWithText", "autoInit"],
         distributeOptions: [{
-            source: "{that}.stringBundle.contrastPreviewText",
+            source: "{that}.msgLookup.contrastPreviewText",
             target: "{that preview enhancer}.options.strings.previewText"
         }],
         previewURL: "",

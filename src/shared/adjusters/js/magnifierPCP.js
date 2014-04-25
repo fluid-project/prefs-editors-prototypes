@@ -27,7 +27,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         members: {
-            messageResolver: "{prefsEditorLoader}.msgBundle"
+            messageResolver: "{prefsEditorLoader}.msgResolver"
         },
         selectors: {
             magnifierLabel: ".gpiic-magnifier-label",
@@ -49,7 +49,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         value: "{magnifierPCP}.model.magnification"
                     },
                     strings: {
-                        "unit": "{magnifierPCP}.stringBundle.magnifierUnit"
+                        "unit": "{magnifierPCP}.msgLookup.magnifierUnit"
                     },
                     range: "{magnifierPCP}.options.magnification.range",
                     labelledbyDomElement: "{magnifierPCP}.dom.magnificationLevel"

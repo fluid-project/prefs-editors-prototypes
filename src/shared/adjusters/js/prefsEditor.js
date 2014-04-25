@@ -14,9 +14,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.prefsEditor", {
         gradeNames: ["fluid.prefs.GPIIEditor", "autoInit"],
         prefsEditor: {
-            gradeNames: ["fluid.prefs.stringBundle"],
+            gradeNames: ["fluid.prefs.msgLookup"],
             members: {
-                messageResolver: "{prefsEditorLoader}.msgBundle"
+                messageResolver: "{prefsEditorLoader}.msgResolver"
             },
             events: {
                 onLogin: null,
@@ -31,7 +31,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.setATTRsaveButton": {
                     "this": "{that}.dom.saveButton",
                     "method": "attr",
-                    "args": ["value", "{that}.stringBundle.saveAndApplyText"]
+                    "args": ["value", "{that}.msgLookup.saveAndApplyText"]
                 },
                 "onSave.hideSaveButton": {
                     "this": "{that}.dom.saveButtonContainer",
@@ -55,7 +55,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onLogin.showSaveMessage": {
                     "this": "{that}.dom.messageLineLabel",
                     "method": "text",
-                    "args": ["{that}.stringBundle.preferencesModified"]
+                    "args": ["{that}.msgLookup.preferencesModified"]
                 },
                 "onLogin.showUserStatusBar": {
                     "listener": "{that}.showUserStatusBar"
@@ -78,17 +78,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.setSaveAndApplyButtonText": {
                     "this": "{that}.dom.saveAndApplyButtonLabel",
                     "method": "attr",
-                    "args": ["value", "{that}.stringBundle.saveAndApplyText"]
+                    "args": ["value", "{that}.msgLookup.saveAndApplyText"]
                 },
                 "onReady.setFullEditorLinkText": {
                     "this": "{that}.dom.fullEditorLink",
                     "method": "text",
-                    "args": ["{that}.stringBundle.fullEditorText"]
+                    "args": ["{that}.msgLookup.fullEditorText"]
                 },
                 "onReady.setLogoutLinkText": {
                     "this": "{that}.dom.logoutLink",
                     "method": "text",
-                    "args": ["{that}.stringBundle.logoutText"]
+                    "args": ["{that}.msgLookup.logoutText"]
                 },
                 "onReady.bindLogout": {
                     "this": "{that}.dom.logoutLink",

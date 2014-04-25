@@ -49,12 +49,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "onShowExpandingAdjusters.setLessText": {
                 "this": "{that}.dom.moreLess",
                 "method": "attr",
-                "args": ["value", "{that}.stringBundle.less"]
+                "args": ["value", "{that}.msgLookup.less"]
             },
             "onHideExpandingAdjusters.setMoreText": {
                 "this": "{that}.dom.moreLess",
                 "method": "attr",
-                "args": ["value", "{that}.stringBundle.more"]
+                "args": ["value", "{that}.msgLookup.more"]
             },
             "onShowExpandingAdjusters.focusElementToFocusOnExpansion": {
                 "this": "fluid",

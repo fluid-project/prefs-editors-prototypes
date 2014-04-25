@@ -50,12 +50,12 @@ var fluid_1_5 = fluid_1_5 || {};
                     components: {
                         enhancer: {
                             options: {
-                                gradeNames: ["fluid.prefs.stringBundle"],
+                                gradeNames: ["fluid.prefs.msgLookup"],
                                 members: {
-                                   messageResolver: "{prefsEditorLoader}.msgBundle"
+                                   messageResolver: "{prefsEditorLoader}.msgResolver"
                                 },
                                 strings: {
-                                   previewText: "{that}.stringBundle.previewText"
+                                   previewText: "{that}.msgLookup.previewText"
                                 },
                                 selectors: {
                                     text: ".gpiic-adjuster-preview-text"

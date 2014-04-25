@@ -22,6 +22,36 @@ var demo = demo || {};
     var pathToMessages = "../../src/explorationTool/messages/";
     var pathToTocTemplate = "../../src/shared/lib/infusion/components/tableOfContents/html/TableOfContents.html";
 
+    demo.initOverviewPanel = function () {
+        fluid.overviewPanel(".flc-overviewPanel", {
+            resources: {
+                template: {
+                    href: "overviewPanelTemplate.html"
+                }
+            },
+            strings: {
+                titleBegin: "A",
+                titleLinkText: "GPII",
+                titleEnd: "preferences editor demo",
+                componentName: "Preferences Exploration Tool",
+                feedbackText: "Have a comment?",
+                feedbackLinkText: "Email us"
+            },
+            markup: {
+                description: "The Preferences Exploration Tool offers a set of starter preferences to try - from reading content aloud so it's easier to follow along, to enhancing keyboard interactions so it's easier to use.",
+                instructions: "<ul><li>To access the preference editor on this page, click on the \"doesn't make sense?\" link in the bottom right corner of the page.</li>" +
+                                "<li>Try adjusting the appearance of the page by selecting options from the panel that opens. You will see the changes applied to the page immediately</li>" +
+                                "<li>To try randomly selected changes, click the \"try something new\" link to the left of the panel.</li></ul>"
+            },
+            links: {
+                titleLink: "http://gpii.net",
+                codeLink: "https://github.com/fluid-project/prefsEditors/",
+                designLink: "http://wiki.fluidproject.org/display/fluid/Preference+Editing+Tools+Design",
+                feedbackLink: "mailto:fluid-work@fluidproject.org?subject=Prefs Exploration Tool feedback"
+            }
+        });
+    };
+
     demo.initCookieStore = function () {
         return fluid.globalSettingsStore();
     };

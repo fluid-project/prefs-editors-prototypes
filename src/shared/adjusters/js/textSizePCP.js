@@ -43,7 +43,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         value: "{textSizePCP}.model.fontSize"
                     },
                     strings: {
-                        "unit": "{textSizePCP}.stringBundle.textSizeUnit"
+                        "unit": "{textSizePCP}.msgLookup.textSizeUnit"
                     },
                     range: "{textSizePCP}.options.fontSize.range",
                     labelledbyDomElement: "{textSizePCP}.dom.textSizeLabel"
