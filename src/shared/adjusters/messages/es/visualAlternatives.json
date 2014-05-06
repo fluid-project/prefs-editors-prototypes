@@ -1,8 +1,8 @@
 {
-    "tooltipUnchecked": "Añadir a mis preferencias",
-    "tooltipChecked": "Eliminar de mis preferencias",
+    "tooltipUnchecked": "Añadir a Mis preferencias",
+    "tooltipChecked": "Eliminar de Mis preferencias",
     "speakTextPresetButtonLabel": "Alternativas visuales",
-    "screenReaderSwitchLabel": "Pronunciar texto",
+    "screenReaderSwitchLabel": "Lector de pantalla",
     "moreText": "más",
     "lessText": "menos",
     "saveAndApply": "Guardar y aplicar",
