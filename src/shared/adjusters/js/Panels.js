@@ -70,6 +70,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "gpii.primarySchema.volume": {
                 "model.value": "default",
                 "controlValues.volume.min": "minimum",
+                "controlValues.volume.max": "maximum",
                 "controlValues.volume.step": "divisibleBy"
             }
         },
@@ -171,6 +172,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "gpii.primarySchema.voicePitch": {
                 "model.value": "default",
                 "controlValues.voicePitch.min": "minimum",
+                "controlValues.voicePitch.max": "maximum",
                 "controlValues.voicePitch.step": "divisibleBy"
             }
         },
@@ -208,6 +210,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "gpii.primarySchema.universalVolume": {
                 "model.value": "default",
                 "controlValues.universalVolume.min": "minimum",
+                "controlValues.universalVolume.max": "maximum",
                 "controlValues.universalVolume.step": "divisibleBy"
             }
         },

@@ -22,7 +22,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "gpii.primarySchema.fontSize": {
                 "model.fontSize": "default",
                 "fontSize.range.min": "minimum",
-                "fontSize.range.max": "maximum",
                 "fontSize.range.step": "divisibleBy"
             }
         },
@@ -46,7 +45,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     strings: {
                         "unit": "{textSizePCP}.stringBundle.textSizeUnit"
                     },
-                    range: "{textSizePCP}.fontSize.range",
+                    range: "{textSizePCP}.options.fontSize.range",
                     labelledbyDomElement: "{textSizePCP}.dom.textSizeLabel"
                 }
             }
