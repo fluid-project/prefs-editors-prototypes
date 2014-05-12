@@ -145,10 +145,9 @@ https://github.com/gpii/universal/LICENSE.txt
 
     gpii.prefs.gpiiStore.tests.assertGetSettingsFromLoggedUser = function () {
         var keys = ["volume", "keyEcho", "wordEcho", "fontSize", "speakText", "voicePitch", "cursorSize", "magnification", "contrast_theme", "showCrosshairs", "universalVolume", "contrastEnabled", "announceCapitals", "textHighlighting", "magnifierEnabled", "universalLanguage", "punctuationVerbosity", "screenReaderLanguage", "wordsSpokenPerMinute", "speakTutorialMessages", "magnificationPosition", "screenReaderBrailleOutput"];
-        var modelKeys = [];
 
-        fluid.each(keys, function (key) {
-            modelKeys.push("gpii_primarySchema_" + key);
+        var modelKeys = fluid.transform(keys, function (key) {
+            return "gpii_primarySchema_" + key;
         });
 
         store.gpiiSession.login(userToWorkWith);
