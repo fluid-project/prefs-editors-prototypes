@@ -1,5 +1,5 @@
 /*!
-Copyright 2014 ASTEA
+Copyright 2014 CERTH/HIT
 
 Licensed under the New BSD license. You may not use this file except in
 compliance with this License.
