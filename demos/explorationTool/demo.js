@@ -41,7 +41,7 @@ var demo = demo || {};
                 description: "The Preferences Exploration Tool offers a set of starter preferences to try - from reading content aloud so it's easier to follow along, to enhancing keyboard interactions so it's easier to use.",
                 instructions: "<ul><li>To access the preference editor on this page, click on the \"doesn't make sense?\" link in the bottom right corner of the page.</li>" +
                                 "<li>Try adjusting the appearance of the page by selecting options from the panel that opens. You will see the changes applied to the page immediately</li>" +
-                                "<li>To try randomly selected changes, click the \"try something new\" link to the left of the panel.</li></ul>"
+                                "<li>To try randomly selected changes, click the \"try something new\" link at the left end of the panel.</li></ul>"
             },
             links: {
                 titleLink: "http://gpii.net",

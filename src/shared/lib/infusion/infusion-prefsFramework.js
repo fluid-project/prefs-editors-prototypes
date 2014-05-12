@@ -1,4 +1,4 @@
-/*! infusion - v1.5.0-SNAPSHOT Friday, April 25th, 2014, 1:32:43 PM*/
+/*! infusion - v1.5.0-SNAPSHOT Monday, May 12th, 2014, 4:37:14 PM*/
 /*!
  * jQuery JavaScript Library v1.11.0
  * http://jquery.com/
@@ -17235,7 +17235,7 @@ outer:  for (var i = 0; i < exist.length; ++i) {
 Copyright 2008-2010 University of Cambridge
 Copyright 2008-2009 University of Toronto
 Copyright 2010-2011 Lucendo Development Ltd.
-Copyright 2010 OCAD University
+Copyright 2010-2014 OCAD University
 
 Licensed under the Educational Community License (ECL), Version 2.0 or the New
 BSD license. You may not use this file except in compliance with one these
@@ -17552,7 +17552,9 @@ var fluid_1_5 = fluid_1_5 || {};
             transRec[recel.that.applier.applierId] = {transaction: transac};
             return transac;
         });
-        var recs = fluid.values(mrec).sort(fluid.sortCompleteFirst);
+        // TODO: This sort has very little effect in any current test (can be replaced by no-op - see FLUID-5339) - but
+        // at least can't be performed in reverse order ("FLUID-3674 event coordination test" will fail) - need more cases
+        var recs = fluid.values(mrec).sort(fluid.sortCompleteLast);
         fluid.each(recs, function (recel) {
             var that = recel.that;
             var transac = transacs[that.id];
@@ -33436,7 +33438,7 @@ var fluid_1_5 = fluid_1_5 || {};
     /*******************************************************************************
      * textSize
      *
-     * Sets the text size on the container to the multiple provided.
+     * Sets the text size on the root element to the multiple provided.
      *******************************************************************************/
 
     // Note that the implementors need to provide the container for this view component
@@ -33447,6 +33449,15 @@ var fluid_1_5 = fluid_1_5 || {};
                 "model.value": "default"
             }
         },
+        members: {
+            root: {
+                expander: {
+                    "this": "{that}.container",
+                    "method": "closest", // ensure that the correct document is being used. i.e. in an iframe
+                    "args": ["html"]
+                }
+            }
+        },
         fontSizeMap: {},  // must be supplied by implementors
         invokers: {
             set: {
@@ -33455,15 +33466,6 @@ var fluid_1_5 = fluid_1_5 || {};
             },
             getTextSizeInPx: {
                 funcName: "fluid.prefs.enactor.getTextSizeInPx",
-                args: ["{that}.container", "{that}.options.fontSizeMap"]
-            },
-            getTextSizeInEm: {
-                funcName: "fluid.prefs.enactor.textSize.getTextSizeInEm",
-                args: [{expander: {func: "{that}.getTextSizeInPx"}}, {expander: {func: "{that}.getPx2EmFactor"}}],
-                dynamic: true
-            },
-            getPx2EmFactor: {
-                funcName: "fluid.prefs.enactor.textSize.getPx2EmFactor",
                 args: ["{that}.container", "{that}.options.fontSizeMap"]
             }
         },
@@ -33476,39 +33478,17 @@ var fluid_1_5 = fluid_1_5 || {};
     });
 
     fluid.prefs.enactor.textSize.set = function (times, that) {
+        times = times || 1;
         // Calculating the initial size here rather than using a members expand because the "font-size"
         // cannot be detected on hidden containers such as separated paenl iframe.
         if (!that.initialSize) {
-            that.initialSize = that.getTextSizeInEm();
+            that.initialSize = that.getTextSizeInPx();
         }
 
         if (that.initialSize) {
             var targetSize = times * that.initialSize;
-            that.container.css("font-size", targetSize + "em");
+            that.root.css("font-size", targetSize + "px");
         }
-    };
-
-    /**
-     * Return "font-size" in em
-     * @param (Object) container
-     * @param (Object) fontSizeMap: the mapping between the font size string values ("small", "medium" etc) to px values
-     */
-    fluid.prefs.enactor.textSize.getTextSizeInEm = function (textSizeInPx, px2emFactor) {
-        // retrieve fontSize in px, convert and return in em
-        return Math.round(textSizeInPx / px2emFactor * 10000) / 10000;
-    };
-
-    /**
-     * Return the base font size used for converting text size from px to em
-     */
-    fluid.prefs.enactor.textSize.getPx2EmFactor = function (container, fontSizeMap) {
-        // The base font size for converting text size to em is the computed font size of the container's
-        // parent element unless the container itself has been the DOM root element "HTML"
-        // The reference to this algorithm: http://clagnut.com/blog/348/
-        if (container.get(0).tagName !== "HTML") {
-            container = container.parent();
-        }
-        return fluid.prefs.enactor.getTextSizeInPx(container, fontSizeMap);
     };
 
     fluid.prefs.enactor.textSize.finalInit = function (that) {
@@ -33545,8 +33525,8 @@ var fluid_1_5 = fluid_1_5 || {};
                 funcName: "fluid.prefs.enactor.lineSpace.getLineHeight",
                 args: "{that}.container"
             },
-            numerizeLineHeight: {
-                funcName: "fluid.prefs.enactor.lineSpace.numerizeLineHeight",
+            getLineHeightMultiplier: {
+                funcName: "fluid.prefs.enactor.lineSpace.getLineHeightMultiplier",
                 args: [{expander: {func: "{that}.getLineHeight"}}, {expander: {func: "{that}.getTextSizeInPx"}}],
                 dynamic: true
             }
@@ -33559,25 +33539,18 @@ var fluid_1_5 = fluid_1_5 || {};
         }
     });
 
-    // Return "line-height" css value
+    // Get the line-height of an element
+    // In IE8 and IE9 this will return the line-height multiplier
+    // In other browsers it will return the pixel value of the line height.
     fluid.prefs.enactor.lineSpace.getLineHeight = function (container) {
-        var lineHeight;
-
-        // A work-around of jQuery + IE bug - http://bugs.jquery.com/ticket/2671
-        if (container[0].currentStyle) {
-            lineHeight = container[0].currentStyle.lineHeight;
-        } else {
-            lineHeight = container.css("line-height");
-        }
-
-        return lineHeight;
+        return container.css("line-height");
     };
 
     // Interprets browser returned "line-height" value, either a string "normal", a number with "px" suffix or "undefined"
     // into a numeric value in em.
     // Return 0 when the given "lineHeight" argument is "undefined" (http://issues.fluidproject.org/browse/FLUID-4500).
-    fluid.prefs.enactor.lineSpace.numerizeLineHeight = function (lineHeight, fontSize) {
-        // Handel the given "lineHeight" argument is "undefined", which occurs when firefox detects
+    fluid.prefs.enactor.lineSpace.getLineHeightMultiplier = function (lineHeight, fontSize) {
+        // Handle the given "lineHeight" argument is "undefined", which occurs when firefox detects
         // "line-height" css value on a hidden container. (http://issues.fluidproject.org/browse/FLUID-4500)
         if (!lineHeight) {
             return 0;
@@ -33601,12 +33574,12 @@ var fluid_1_5 = fluid_1_5 || {};
         // Calculating the initial size here rather than using a members expand because the "line-height"
         // cannot be detected on hidden containers such as separated paenl iframe.
         if (!that.initialSize) {
-            that.initialSize = that.numerizeLineHeight();
+            that.initialSize = that.getLineHeightMultiplier();
         }
 
         // that.initialSize === 0 when the browser returned "lineHeight" css value is undefined,
         // which occurs when firefox detects "line-height" value on a hidden container.
-        // @ See numerizeLineHeight() & http://issues.fluidproject.org/browse/FLUID-4500
+        // @ See getLineHeightMultiplier() & http://issues.fluidproject.org/browse/FLUID-4500
         if (that.initialSize) {
             var targetLineSpace = times * that.initialSize;
             that.container.css("line-height", targetLineSpace);
@@ -34257,7 +34230,7 @@ var fluid_1_5 = fluid_1_5 || {};
                         },
                         operateHide: {
                             funcName: "fluid.prefs.separatedPanel.hidePanel",
-                            args: ["{that}.dom.panel", "{that}.events.afterPanelHide.fire"],
+                            args: ["{that}.dom.panel", "{iframeRenderer}.iframe", "{that}.events.afterPanelHide.fire"],
                             // override default implementation
                             "this": null,
                             "method": null
@@ -34432,7 +34405,8 @@ var fluid_1_5 = fluid_1_5 || {};
 
     // Replace the standard animator since we don't want the panel to become hidden
     // (potential cause of jumping)
-    fluid.prefs.separatedPanel.hidePanel = function (panel, callback) {
+    fluid.prefs.separatedPanel.hidePanel = function (panel, iframe, callback) {
+        iframe.clearQueue(); // FLUID-5334: clear the animation queue
         $(panel).animate({height: 0}, {duration: 400, complete: callback});
     };
 
