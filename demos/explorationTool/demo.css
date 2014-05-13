@@ -619,6 +619,9 @@ div.main-content-image + .fl-explorationTool-moreText {
 .fl-simplify #structure 	{height: 25.4em;}
 .fl-simplify #energylevels 	{height: 26em;  }
 
+.toc {
+    margin-left: 3em;
+}
 /* Overview Panel */
 .exploration-tool-demo .fl-overviewPanel-container {
     font-size: 0.8em;
