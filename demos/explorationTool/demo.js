@@ -34,6 +34,7 @@ var demo = demo || {};
                 titleLinkText: "GPII",
                 titleEnd: "preferences editor demo",
                 componentName: "Preferences Exploration Tool",
+                infusionCodeLinkText: "Exporation Tool code",
                 feedbackText: "Have a comment?",
                 feedbackLinkText: "Email us"
             },
@@ -45,7 +46,8 @@ var demo = demo || {};
             },
             links: {
                 titleLink: "http://gpii.net",
-                codeLink: "https://github.com/fluid-project/prefsEditors/",
+                demoCodeLink: "https://github.com/fluid-project/prefsEditors/tree/master/demos/explorationTool",
+                infusionCodeLink: "https://github.com/fluid-project/prefsEditors/",
                 designLink: "http://wiki.fluidproject.org/display/fluid/Preference+Editing+Tools+Design",
                 feedbackLink: "mailto:fluid-work@fluidproject.org?subject=Prefs Exploration Tool feedback"
             }

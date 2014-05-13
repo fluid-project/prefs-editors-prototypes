@@ -620,7 +620,7 @@ div.main-content-image + .fl-explorationTool-moreText {
 .fl-simplify #energylevels 	{height: 26em;  }
 
 /* Overview Panel */
-.exploration-tool-demo .fl-overviewPanel {
+.exploration-tool-demo .fl-overviewPanel-container {
     font-size: 0.8em;
 }
 .exploration-tool-demo .fl-overviewPanel,
@@ -632,7 +632,4 @@ div.main-content-image + .fl-explorationTool-moreText {
 }
 .exploration-tool-demo .fl-overviewPanel .fl-overviewPanel-title h1 {
     color: #CCCCCC;
-}
-.exploration-tool-demo .fl-overviewPanel {
-    font-size: 0.8em;
 }

@@ -1,4 +1,4 @@
-/*! infusion - v1.5.0-SNAPSHOT Monday, May 12th, 2014, 4:37:14 PM*/
+/*! infusion - v1.5.0-SNAPSHOT Tuesday, May 13th, 2014, 1:15:13 PM*/
 /*!
  * jQuery JavaScript Library v1.11.0
  * http://jquery.com/
@@ -35719,8 +35719,10 @@ var fluid_1_5 = fluid_1_5 || {};
             description: ".flc-overviewPanel-description",
             instructionsHeading: ".flc-overviewPanel-instructionsHeading",
             instructions: ".flc-overviewPanel-instructions",
-            codeLink: ".flc-overviewPanel-codeLink",
-            codeLinkText: ".flc-overviewPanel-codeLinkText",
+            demoCodeLink: ".flc-overviewPanel-demoCodeLink",
+            demoCodeLinkText: ".flc-overviewPanel-demoCodeLinkText",
+            infusionCodeLink: ".flc-overviewPanel-infusionCodeLink",
+            infusionCodeLinkText: ".flc-overviewPanel-infusionCodeLinkText",
             apiLink: ".flc-overviewPanel-apiLink",
             apiLinkText: ".flc-overviewPanel-apiLinkText",
             designLink: ".flc-overviewPanel-designLink",
@@ -35731,7 +35733,7 @@ var fluid_1_5 = fluid_1_5 || {};
             closeControl: ".flc-overviewPanel-closeControl",
             closeText: ".flc-overviewPanel-closeText"
         },
-        selectorsToIgnore: ["toggleControl", "titleLink", "codeLink", "apiLink", "designLink", "feedbackLink", "closeControl"],
+        selectorsToIgnore: ["toggleControl", "titleLink", "demoCodeLink", "infusionCodeLink", "apiLink", "designLink", "feedbackLink", "closeControl"],
         protoTree: {
             titleBegin: {messagekey: "titleBegin"},
             titleLinkText: {messagekey: "titleLinkText"},
@@ -35740,7 +35742,8 @@ var fluid_1_5 = fluid_1_5 || {};
             description: {markup: "${{that}.options.markup.description}"},
             instructionsHeading: {messagekey: "instructionsHeading"},
             instructions: {markup: "${{that}.options.markup.instructions}"},
-            codeLinkText: {messagekey: "codeLinkText"},
+            demoCodeLinkText: {messagekey: "demoCodeLinkText"},
+            infusionCodeLinkText: {messagekey: "infusionCodeLinkText"},
             apiLinkText: {messagekey: "apiLinkText"},
             designLinkText: {messagekey: "designLinkText"},
             feedbackText: {messagekey: "feedbackText"},
@@ -35756,7 +35759,8 @@ var fluid_1_5 = fluid_1_5 || {};
             titleEnd: "component demo",
             componentName: "Component Name",
             instructionsHeading: "Instructions",
-            codeLinkText: "code",
+            demoCodeLinkText: "demo code",
+            infusionCodeLinkText: "get Infusion",
             apiLinkText: "API",
             designLinkText: "design",
             feedbackText: "Found a bug? Have a question?",
@@ -35771,7 +35775,8 @@ var fluid_1_5 = fluid_1_5 || {};
         },
         links: {
             titleLink: "http://fluidproject.org/products/infusion/",
-            codeLink: "#",
+            demoCodeLink: "#",
+            infusionCodeLink: "https://github.com/fluid-project/infusion/",
             apiLink: "#",
             designLink: "#",
             feedbackLink: "#"

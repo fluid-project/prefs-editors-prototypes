@@ -1,5 +1,5 @@
 
-The version of Infusion included in this folder was created using a custom build from commit `cbf0d7d7fceef9c0dfef41a8f2c00daa51dfd74e`
+The version of Infusion included in this folder was created using a custom build from commit `06e37ce605803d1324e0aaa4fbfc3c54caf3b96f`
 
 of the Infusion master branch
 
