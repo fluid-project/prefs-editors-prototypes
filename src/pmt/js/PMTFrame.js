@@ -17,9 +17,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.pmt", {
         gradeNames: ["fluid.prefs.GPIIEditor", "autoInit"],
         prefsEditor: {
-            gradeNames: ["fluid.prefs.stringBundle"],
+            gradeNames: ["fluid.prefs.msgLookup"],
             members: {
-                messageResolver: "{prefsEditorLoader}.msgBundle"
+                messageResolver: "{prefsEditorLoader}.msgResolver"
             },
             events: {
                 onLogin: null,
@@ -102,52 +102,52 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.setMyPreferencesLabelText": {
                     "this": "{that}.dom.myPreferencesLabel",
                     "method": "text",
-                    "args": ["{that}.stringBundle.myPreferencesLabelText"]
+                    "args": ["{that}.msgLookup.myPreferencesLabelText"]
                 },
                 "onReady.setAllPreferencesLabelText": {
                     "this": "{that}.dom.allPreferencesLabel",
                     "method": "text",
-                    "args": ["{that}.stringBundle.allPreferencesLabelText"]
+                    "args": ["{that}.msgLookup.allPreferencesLabelText"]
                 },
                 "onReady.setSaveAndApplyButtonText": {
                     "this": "{that}.dom.saveAndApplyButtonLabel",
                     "method": "attr",
-                    "args": ["value", "{that}.stringBundle.saveAndApplyText"]
+                    "args": ["value", "{that}.msgLookup.saveAndApplyText"]
                 },
                 "onReady.setNotificationMessagePart1": {
                     "this": "{that}.dom.notificationMessagePart1",
                     "method": "text",
-                    "args": ["{that}.stringBundle.notificationMessagePart1"]
+                    "args": ["{that}.msgLookup.notificationMessagePart1"]
                 },
                 "onReady.setNotificationMessagePart2": {
                     "this": "{that}.dom.notificationMessagePart2",
                     "method": "text",
-                    "args": ["{that}.stringBundle.notificationMessagePart2"]
+                    "args": ["{that}.msgLookup.notificationMessagePart2"]
                 },
                 "onReady.setNotificationMessagePart3": {
                     "this": "{that}.dom.notificationMessagePart3",
                     "method": "text",
-                    "args": ["{that}.stringBundle.notificationMessagePart3"]
+                    "args": ["{that}.msgLookup.notificationMessagePart3"]
                 },
                 "onReady.setNotificationTitle": {
                     "this": "{that}.dom.notificationTitle",
                     "method": "text",
-                    "args": ["{that}.stringBundle.notificationTitle"]
+                    "args": ["{that}.msgLookup.notificationTitle"]
                 },
                 "onReady.setNotificationConfirmButton": {
                     "this": "{that}.dom.notificationConfirmButton",
                     "method": "text",
-                    "args": ["{that}.stringBundle.notificationConfirmButton"]
+                    "args": ["{that}.msgLookup.notificationConfirmButton"]
                 },
                 "onReady.setLogoutLinkText": {
                     "this": "{that}.dom.logoutLink",
                     "method": "text",
-                    "args": ["{that}.stringBundle.logoutText"]
+                    "args": ["{that}.msgLookup.logoutText"]
                 },
                 "onReady.setQuickEditorLinkText": {
                     "this": "{that}.dom.quickEditorLink",
                     "method": "text",
-                    "args": ["{that}.stringBundle.quickEditorText"]
+                    "args": ["{that}.msgLookup.quickEditorText"]
                 },
                 // simply hide notification onReady
                 "onReady.prepareSaveNotification": {
@@ -189,7 +189,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 showSaveMessage: {
                     "this": "{that}.dom.messageLineLabel",
                     "method": "text",
-                    "args": ["{that}.stringBundle.preferencesSavedToUSB"]
+                    "args": ["{that}.msgLookup.preferencesSavedToUSB"]
                 },
                 showUserStatusBar: {
                     "this": "{that}.dom.userStatusBar",

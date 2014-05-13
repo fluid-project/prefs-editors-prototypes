@@ -21,7 +21,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             visualAlternativesHeader: {messagekey: "visualAlternativesPresetButtonLabel"}
         },
         members: {
-            messageResolver: "{prefsEditorLoader}.msgBundle"
+            messageResolver: "{prefsEditorLoader}.msgResolver"
         }
     });
 

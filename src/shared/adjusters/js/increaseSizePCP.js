@@ -24,7 +24,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierHeading: ".gpiic-increaseSize-magnifierHeading"
         },
         members: {
-            messageResolver: "{prefsEditorLoader}.msgBundle"
+            messageResolver: "{prefsEditorLoader}.msgResolver"
         },
         protoTree: {
             increaseSizeHeader: {messagekey: "increaseSizeHeader"},

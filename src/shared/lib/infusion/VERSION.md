@@ -1,5 +1,5 @@
 
-The version of Infusion included in this folder was created using a custom build from commit `b6db5eeb923625594d24aa2fe0fe7392b3989926`
+The version of Infusion included in this folder was created using a custom build from commit `06e37ce605803d1324e0aaa4fbfc3c54caf3b96f`
 
 of the Infusion master branch
 
@@ -7,10 +7,11 @@ of the Infusion master branch
 
 using the command line
 
-    grunt custom --source=true --include="preferences, enhancement"--name="prefsFramework"
+    grunt custom --source=true --include="preferences, overviewPanel" --name="prefsFramework"
 
 The following directories were stripped out of the build since they contain code that is included in the infusion-prefsFramework.js file:
 
+* src/shared/lib/infusion/components/overviewPanel/js/
 * src/shared/lib/infusion/components/slidingPanel/
 * src/shared/lib/infusion/components/tableOfContents/js/
 * src/shared/lib/infusion/components/textfieldSlider/

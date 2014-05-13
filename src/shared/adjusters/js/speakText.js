@@ -15,9 +15,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.speakText", {
         gradeNames: ["fluid.prefs.fullNoPreview", "autoInit"],
         prefsEditor: {
-            gradeNames: ["fluid.prefs.stringBundle"],
+            gradeNames: ["fluid.prefs.msgLookup"],
             members: {
-                messageResolver: "{prefsEditorLoader}.msgBundle"
+                messageResolver: "{prefsEditorLoader}.msgResolver"
             },
             selectors: {
                 saveAndApply: ".flc-prefsEditor-save",
@@ -28,17 +28,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.setSaveAndApplyText": {
                     "this": "{that}.dom.saveAndApply",
                     "method": "prop",
-                    "args": ["value", "{that}.stringBundle.saveAndApply"]
+                    "args": ["value", "{that}.msgLookup.saveAndApply"]
                 },
                 "onReady.setResetAndApplyText": {
                     "this": "{that}.dom.resetAndApply",
                     "method": "prop",
-                    "args": ["value", "{that}.stringBundle.resetAndApply"]
+                    "args": ["value", "{that}.msgLookup.resetAndApply"]
                 },
                 "onReady.setCancelText": {
                     "this": "{that}.dom.cancel",
                     "method": "prop",
-                    "args": ["value", "{that}.stringBundle.cancel"]
+                    "args": ["value", "{that}.msgLookup.cancel"]
                 },
                 "onReady.onSaveVisibilityActualisation": {
                     "this": "{that}.dom.saveAndApply",

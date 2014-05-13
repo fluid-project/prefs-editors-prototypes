@@ -21,7 +21,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             volumeHeader: {messagekey: "volumePresetButtonLabel"}
         },
         members: {
-            messageResolver: "{prefsEditorLoader}.msgBundle"
+            messageResolver: "{prefsEditorLoader}.msgResolver"
         }
     });
 
