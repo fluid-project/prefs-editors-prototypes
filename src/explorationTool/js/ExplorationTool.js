@@ -910,7 +910,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             "onCreate.setLabel": {
                 "this": "{that}.dom.label",
                 "method": "html",
-                "args": ["{that}.stringBundle.label"]
+                "args": ["{that}.msgLookup.label"]
             },
             "onCreate.click": {
                 "this": "{that}.container",

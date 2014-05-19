@@ -54,13 +54,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierPositionHeading: {messagekey: "magnifierPositionLabel"}
         },
         members: {
-            messageResolver: "{prefsEditorLoader}.msgBundle"
+            messageResolver: "{prefsEditorLoader}.msgResolver"
         },
         stringArrayIndex: {
             magnifierPosition: ["magnifierPosition-lens", "magnifierPosition-dockedleft", "magnifierPosition-dockedtop", "magnifierPosition-fullscreen", "magnifierPosition-dockedright", "magnifierPosition-dockedbottom"]
         },
         strings: {
-            magnifierPosition: "{that}.stringBundle.magnifierPosition"
+            magnifierPosition: "{that}.msgLookup.magnifierPosition"
         },
         repeatingSelectors: ["magnifierPositionRow"],
         controlValues: {

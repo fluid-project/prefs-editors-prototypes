@@ -33,7 +33,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "onDomBind.setContrastOptionstext": {
                 "this": "{that}.dom.contrastOptions",
                 "method": "text",
-                "args": ["{that}.stringBundle.contrastOptions"]
+                "args": ["{that}.msgLookup.contrastOptions"]
             },
             "onDomBind.style": "{that}.style"
         },

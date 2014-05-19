@@ -103,9 +103,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("gpii.adjuster.visualAlternativesMoreLess", {
-        gradeNames: ["fluid.prefs.panel", "fluid.prefs.stringBundle", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "fluid.prefs.msgLookup", "autoInit"],
         members: {
-            messageResolver: "{prefsEditorLoader}.msgBundle"
+            messageResolver: "{prefsEditorLoader}.msgResolver"
         },
         preferenceMap: {
             "gpii.primarySchema.visualAlternativesMoreLess": {
@@ -144,8 +144,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "funcName": "gpii.visualAlternativesMoreLessConfiguration",
                 "args": ["{that}.model.visualAlternativesMoreLess",
                          "{that}.dom.visualAlternativesMoreLessLabel",
-                         "{that}.stringBundle.more",
-                         "{that}.stringBundle.less"
+                         "{that}.msgLookup.more",
+                         "{that}.msgLookup.less"
                     ],
                 "dynamic": true
             },
@@ -262,7 +262,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         protoTree: {
             universalLanguage: {
                 selection: "${universalLanguage}",
-                optionnames: "${{that}.stringBundle.languages}",
+                optionnames: "${{that}.msgLookup.languages}",
                 optionlist: "${{that}.options.controlValues.universalLanguage}"
             },
             universalLanguageLabel: {messagekey: "universalLanguageLabel"}
@@ -287,7 +287,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         protoTree: {
             screenReaderLanguage: {
                 selection: "${screenReaderLanguage}",
-                optionnames: "${{that}.stringBundle.languages}",
+                optionnames: "${{that}.msgLookup.languages}",
                 optionlist: "${{that}.options.controlValues.screenReaderLanguage}"
             },
             screenReaderLanguageLabel: {messagekey: "screenReaderLanguageLabel"}
@@ -312,7 +312,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         protoTree: {
             textHighlighting: {
                 selection: "${textHighlighting}",
-                optionnames: "${{that}.stringBundle.textHighlightingLevel}",
+                optionnames: "${{that}.msgLookup.textHighlightingLevel}",
                 optionlist: "${{that}.options.controlValues.textHighlighting}"
             },
             textHighlightingLabel: {messagekey: "textHighlightingLabel"}
@@ -349,7 +349,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 inputID: "punctuationVerbosityInput",
                 selectID: "punctuationVerbosity-selection",
                 tree: {
-                    optionnames: "${{that}.stringBundle.punctuationVerbosityLevel}",
+                    optionnames: "${{that}.msgLookup.punctuationVerbosityLevel}",
                     optionlist: "${{that}.options.controlValues.punctuationVerbosity}",
                     selection: "${punctuationVerbosity}"
                 }

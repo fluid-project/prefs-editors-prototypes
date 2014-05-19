@@ -32,18 +32,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             visualAlternativesHeader: {messagekey: "visualAlternativesPresetButtonLabel"}
         },
         members: {
-            messageResolver: "{prefsEditorLoader}.msgBundle"
+            messageResolver: "{prefsEditorLoader}.msgResolver"
         },
         listeners: {
             "afterRender.setExpandedAriaLabel": {
                 "this": "{that}.dom.visualAlternativesHiddenPanel",
                 "method": "attr",
-                "args": ["aria-label", "{that}.stringBundle.additionalVisualAdjusters"]
+                "args": ["aria-label", "{that}.msgLookup.additionalVisualAdjusters"]
             },
             "afterRender.setContainerAriaLabel": {
                 "this": "{that}.dom.speakTextContainer",
                 "method": "attr",
-                "args": ["aria-label", "{that}.stringBundle.additionalVisualAdjusters"]
+                "args": ["aria-label", "{that}.msgLookup.additionalVisualAdjusters"]
             },
             "afterRender.setExpandedAriaExpanded": {
                 "listener": "{that}.setExpandedAriaExpanded"

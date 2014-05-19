@@ -63,11 +63,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             panelLabel: {messagekey: "addContrast"}
         },
         members: {
-            messageResolver: "{prefsEditorLoader}.msgBundle"
+            messageResolver: "{prefsEditorLoader}.msgResolver"
         },
         strings: {
-            tooltipChecked: "{that}.stringBundle.tooltipChecked",
-            tooltipUnchecked: "{that}.stringBundle.tooltipUnchecked"
+            tooltipChecked: "{that}.msgLookup.tooltipChecked",
+            tooltipUnchecked: "{that}.msgLookup.tooltipUnchecked"
         }
     });
 

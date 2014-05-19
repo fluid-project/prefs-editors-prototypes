@@ -18,25 +18,25 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.pmt", {
         gradeNames: ["fluid.prefs.fullNoPreview", "autoInit"],
         prefsEditor: {
-            gradeNames: ["fluid.prefs.stringBundle"],
+            gradeNames: ["fluid.prefs.msgLookup"],
             members: {
-                messageResolver: "{prefsEditorLoader}.msgBundle"
+                messageResolver: "{prefsEditorLoader}.msgResolver"
             },
             listeners: {
                 "onReady.setATTRsaveButton": {
                     "this": "{that}.dom.saveButton",
                     "method": "attr",
-                    "args": ["value", "{that}.stringBundle.saveButtonText"]
+                    "args": ["value", "{that}.msgLookup.saveButtonText"]
                 },
                 "onReady.setATTRresetButton": {
                     "this": "{that}.dom.resetButton",
                     "method": "attr",
-                    "args": ["value", "{that}.stringBundle.resetButtonText"]
+                    "args": ["value", "{that}.msgLookup.resetButtonText"]
                 },
                 "onReady.setATTRcancelButton": {
                     "this": "{that}.dom.cancelButton",
                     "method": "attr",
-                    "args": ["value", "{that}.stringBundle.cancelButtonText"]
+                    "args": ["value", "{that}.msgLookup.cancelButtonText"]
                 },
                 "onReset.logout": {
                     listener: "{gpiiSession}.logout"

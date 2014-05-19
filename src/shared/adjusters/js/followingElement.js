@@ -33,7 +33,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             activatableLabelsSelector: ".gpiic-followingElementLabel"
         },
         members: {
-            messageResolver: "{prefsEditorLoader}.msgBundle"
+            messageResolver: "{prefsEditorLoader}.msgResolver"
         },
         stringArrayIndex: {
             followingElement: ["followingElement-mousecursor", "followingElement-textcursor", "followingElement-keyboardfocus"]
@@ -57,7 +57,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             followingElementStyle: {
                 funcName: "gpii.adjuster.followingElement.style",
                 args: [
-                    "{that}.dom.followingElementLabel", "{that}.stringBundle.followingElement",
+                    "{that}.dom.followingElementLabel", "{that}.msgLookup.followingElement",
                     "{that}.options.markup.followingElementLabel", "{that}.options.controlValues.followingElement",
                     "{that}.options.classnameMap.followingElement",
                     "{that}.options.controlValues.followingElementBorder", "{that}.options.classnameMap.followingElementBorder"
