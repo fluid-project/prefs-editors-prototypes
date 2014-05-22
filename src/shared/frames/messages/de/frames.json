@@ -9,6 +9,7 @@
     "notificationMessagePart3": "auf USB oder RFID-Lesegerät.",
     "notificationTitle": "Bevorzugte Einstellungen wurden in der Cloud gespeichert und auf diesem Gerät angewendet.",
     "notificationConfirmButton": "verstanden",
+    "notificationAriaLabel": "Press Enter to close this dialog",
     "fullEditorText": "Alle Einstellungen",
     "quickEditorText": "Einfache Einstellungen",
     "logoutText": "ausloggen",

@@ -9,6 +9,7 @@
     "notificationMessagePart3": "to a USB or RFID reader.",
     "notificationTitle": "Preferences have been saved to the cloud and applied to this device.",
     "notificationConfirmButton": "got it",
+    "notificationAriaLabel": "Press Enter to close this dialog",
     "fullEditorText": "full editor",
     "quickEditorText": "quick editor",
     "logoutText": "log-out",
