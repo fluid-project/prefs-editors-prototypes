@@ -224,6 +224,7 @@ body {
 .gpii-prefsEditor-pmt-userLogoutLink {
     float: right;
     text-align: right;
+    font-size: 120%;
 }
 
 .gpii-prefsEditor-pmt-userLogoutLink:first-letter,
