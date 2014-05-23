@@ -242,6 +242,7 @@ body {
 .gpii-prefsEditor-pcp-userLogout {
     float: right;
     text-align: right;
+    font-size: 120%;
 }
 
 .gpii-prefsEditor-fullEditor {
