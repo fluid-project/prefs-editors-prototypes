@@ -34,7 +34,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "onDomBind.setColourThemeText": {
                 "this": "{that}.dom.colourTheme",
                 "method": "text",
-                "args": ["{that}.stringBundle.colourTheme"]
+                "args": ["{that}.msgLookup.colourTheme"]
             },
             "onDomBind.style": "{that}.style"
         },

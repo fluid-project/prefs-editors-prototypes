@@ -21,7 +21,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             speakTextHeader: {messagekey: "speakTextPresetButtonLabel"}
         },
         members: {
-            messageResolver: "{prefsEditorLoader}.msgBundle"
+            messageResolver: "{prefsEditorLoader}.msgResolver"
         }
     });
 

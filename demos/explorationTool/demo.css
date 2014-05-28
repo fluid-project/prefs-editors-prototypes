@@ -618,3 +618,21 @@ div.main-content-image + .fl-explorationTool-moreText {
 .fl-simplify #porbital 		{height: 18.5em;}
 .fl-simplify #structure 	{height: 25.4em;}
 .fl-simplify #energylevels 	{height: 26em;  }
+
+.toc {
+    margin-left: 3em;
+}
+/* Overview Panel */
+.exploration-tool-demo .fl-overviewPanel-container {
+    font-size: 0.8em;
+}
+.exploration-tool-demo .fl-overviewPanel,
+.exploration-tool-demo .fl-overviewPanel .fl-overviewPanel-title a,
+.exploration-tool-demo .fl-overviewPanel h2,
+.exploration-tool-demo .fl-overviewPanel div,
+.exploration-tool-demo .fl-overviewPanel li {
+    color: #FFFFFF;
+}
+.exploration-tool-demo .fl-overviewPanel .fl-overviewPanel-title h1 {
+    color: #CCCCCC;
+}

@@ -33,7 +33,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 inputID: "followingElementInput",
                 selectID: "magnifierTracking-radio",
                 tree: {
-                    optionnames: "${{that}.stringBundle.followingElement}",
+                    optionnames: "${{that}.msgLookup.followingElement}",
                     optionlist: "${{that}.options.controlValues.followingElement}",
                     selection: "${value}"
                 }

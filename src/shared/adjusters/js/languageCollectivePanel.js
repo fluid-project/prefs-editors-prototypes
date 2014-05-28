@@ -21,7 +21,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             languageHeader: {messagekey: "languagePresetButtonLabel"}
         },
         members: {
-            messageResolver: "{prefsEditorLoader}.msgBundle"
+            messageResolver: "{prefsEditorLoader}.msgResolver"
         }
     });
 
@@ -37,7 +37,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
         dropdownReadyForCombobox.combobox({
             labelDomElement: dropdownlabel,
-            title: that.stringBundle.lookup(titleLabel)
+            title: that.msgLookup.lookup(titleLabel)
         }).change(function (event, newValue) {
             that.applier.requestChange(common_in_primary + "_" + adjuster, newValue);
         });

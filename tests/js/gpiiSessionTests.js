@@ -119,30 +119,15 @@ https://github.com/gpii/universal/LICENSE.txt
         jqUnit.assertNoValue("User should have been logged out externally", session.options.loggedUser);
     };
     
-    /*
-     * Reusable helper function that generates a test given:
-     * 1) The test title
-     * 2) The assertion function to be used in the test
-     * 3) An array of enabled mock settings (if any) 
-     */
-    gpii.prefs.gpiiSession.tests.mockTest = function (testTitle, assertFunction, enabledMockSettings) {
-        jqUnit.test(testTitle, function () {
-            $.mockjaxClear();
-            fluid.each(enabledMockSettings, $.mockjax);
-            assertFunction();
-            $.mockjaxClear();
-        });
-    };
-    
     // Perform the various tests.
-    gpii.prefs.gpiiSession.tests.mockTest("no user initially logged in", gpii.prefs.gpiiSession.tests.assertNoUserInitially);
-    gpii.prefs.gpiiSession.tests.mockTest("login user", gpii.prefs.gpiiSession.tests.assertLoginUser, [loginSuccessMockSettings]);
-    gpii.prefs.gpiiSession.tests.mockTest("get logged user", gpii.prefs.gpiiSession.tests.assertGetLoggedUser, [tokenSuccessMockSettings]);
-    gpii.prefs.gpiiSession.tests.mockTest("logout user", gpii.prefs.gpiiSession.tests.assertLogoutUser, [logoutSuccessMockSettings]);
-    gpii.prefs.gpiiSession.tests.mockTest("login user error", gpii.prefs.gpiiSession.tests.assertLoginUserError, [loginErrorMockSettings]);
-    gpii.prefs.gpiiSession.tests.mockTest("get logged user error", gpii.prefs.gpiiSession.tests.assertGetLoggedUserError, [tokenErrorMockSettings]);
-    gpii.prefs.gpiiSession.tests.mockTest("login " + userToWorkWith + " and logout user error", gpii.prefs.gpiiSession.tests.assertLoginUserLogoutError, [loginSuccessMockSettings, logoutErrorMockSettings]);
-    gpii.prefs.gpiiSession.tests.mockTest("set logged user", gpii.prefs.gpiiSession.tests.assertSetLoggedUser);
-    gpii.prefs.gpiiSession.tests.mockTest("clear logged user", gpii.prefs.gpiiSession.tests.assertClearLoggedUser);
+    gpii.tests.mockTest("no user initially logged in", gpii.prefs.gpiiSession.tests.assertNoUserInitially);
+    gpii.tests.mockTest("login user", gpii.prefs.gpiiSession.tests.assertLoginUser, [loginSuccessMockSettings]);
+    gpii.tests.mockTest("get logged user", gpii.prefs.gpiiSession.tests.assertGetLoggedUser, [tokenSuccessMockSettings]);
+    gpii.tests.mockTest("logout user", gpii.prefs.gpiiSession.tests.assertLogoutUser, [logoutSuccessMockSettings]);
+    gpii.tests.mockTest("login user error", gpii.prefs.gpiiSession.tests.assertLoginUserError, [loginErrorMockSettings]);
+    gpii.tests.mockTest("get logged user error", gpii.prefs.gpiiSession.tests.assertGetLoggedUserError, [tokenErrorMockSettings]);
+    gpii.tests.mockTest("login " + userToWorkWith + " and logout user error", gpii.prefs.gpiiSession.tests.assertLoginUserLogoutError, [loginSuccessMockSettings, logoutErrorMockSettings]);
+    gpii.tests.mockTest("set logged user", gpii.prefs.gpiiSession.tests.assertSetLoggedUser);
+    gpii.tests.mockTest("clear logged user", gpii.prefs.gpiiSession.tests.assertClearLoggedUser);
     
 })(jQuery);

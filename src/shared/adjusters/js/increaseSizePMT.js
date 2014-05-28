@@ -37,12 +37,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "afterRender.setExpandedAriaLabel": {
                 "this": "{that}.dom.expandingAdjusters",
                 "method": "attr",
-                "args": ["aria-label", "{that}.stringBundle.additionalMagnifierAdjusters"]
+                "args": ["aria-label", "{that}.msgLookup.additionalMagnifierAdjusters"]
             },
             "afterRender.setContainerAriaLabel": {
                 "this": "{that}.dom.magnifierControlsContainer",
                 "method": "attr",
-                "args": ["aria-label", "{that}.stringBundle.additionalMagnifierAdjusters"]
+                "args": ["aria-label", "{that}.msgLookup.additionalMagnifierAdjusters"]
             },
             "afterRender.setContainerAriaRelevant": "{that}.setAriaRelevant"
         },
