@@ -231,8 +231,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     args: ["href", ""]
                 },
                 logoutLinkPreventDefault: {
-                    "funcName": "gpii.eventUtility.preventDefaultEvent",
-                    "args": ["{arguments}.0"]
+                    "funcName": "gpii.eventUtility.preventDefaultEvent"
                 }
             },
             strings: {

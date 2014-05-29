@@ -133,8 +133,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "dynamic": true
                 },
                 preventDefaultLinkEvent: {
-                    "funcName": "gpii.eventUtility.preventDefaultEvent",
-                    "args": ["{arguments}.0"]
+                    "funcName": "gpii.eventUtility.preventDefaultEvent"
                 }
             },
             selectors: {
