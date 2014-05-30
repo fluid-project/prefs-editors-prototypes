@@ -144,6 +144,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "text",
                     "args": ["{that}.msgLookup.logoutText"]
                 },
+                "onReady.logoutLinkPreventDefault": {
+                    "this": "{that}.dom.logoutLink",
+                    "method": "click",
+                    "args": ["{that}.logoutLinkPreventDefault"]
+                },
                 "onReady.setQuickEditorLinkText": {
                     "this": "{that}.dom.quickEditorLink",
                     "method": "text",
@@ -224,6 +229,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.quickEditorLink",
                     method: "attr",
                     args: ["href", ""]
+                },
+                logoutLinkPreventDefault: {
+                    "funcName": "gpii.eventUtility.preventDefaultEvent"
                 }
             },
             strings: {
