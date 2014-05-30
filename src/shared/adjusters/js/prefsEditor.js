@@ -85,6 +85,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "text",
                     "args": ["{that}.msgLookup.fullEditorText"]
                 },
+                "onReady.fullEditorLinkPreventDefault": {
+                    "this": "{that}.dom.fullEditorLink",
+                    "method": "click",
+                    "args": ["{that}.preventDefaultLinkEvent"]
+                },
                 "onReady.setLogoutLinkText": {
                     "this": "{that}.dom.logoutLink",
                     "method": "text",
@@ -94,6 +99,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.logoutLink",
                     "method": "click",
                     "args": ["{that}.events.onLogout.fire"]
+                },
+                "onReady.logoutLinkPreventDefault": {
+                    "this": "{that}.dom.logoutLink",
+                    "method": "click",
+                    "args": ["{that}.preventDefaultLinkEvent"]
                 },
                 "onReady.bindModelChangedListener": {
                     // used instead of the declarative syntax so that
@@ -121,6 +131,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "func": "{gpiiStore}.set",
                     "args": "{that}.model",
                     "dynamic": true
+                },
+                preventDefaultLinkEvent: {
+                    "funcName": "gpii.eventUtility.preventDefaultEvent"
                 }
             },
             selectors: {
