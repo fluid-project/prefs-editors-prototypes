@@ -102,14 +102,6 @@ body {
     word-wrap: break-word;
 }
 
-.gpii-pcp-saveButtonContainer {
-    display: none;
-}
-
-.gpii-PCP-save {
-    background-color: #249FB7;
-    font-weight: bold;
-}
 
 .gpii-prefsEditor-saveAndApplyButtonLabel {
     cursor: pointer;
@@ -146,6 +138,19 @@ body {
 }
 
 .gpii-pcp-saveButtonContainer {
+    display: none;
+}
+
+.gpii-PCP-save {
+    background-color: #249FB7;
+    font-weight: bold;
+}
+
+.gpii-PCP-save:disabled {
+    background-color: grey;
+}
+
+.gpii-pcp-saveButtonContainer {
     float: right;
     width: 165px;
 }
@@ -155,9 +160,18 @@ body {
     background-color: transparent;
 }
 
-.gpii-pcp-saveButtonContainer:hover .gpii-PCP-save {
+.gpii-pcp-saveButtonContainer:hover .gpii-PCP-save:enabled {
     color: #249FB7;
     background-color: white;
+}
+
+.gpii-PCP-save:disabled {
+    cursor: default;
+}
+
+.gpii-disabled {
+    color: white!important;
+    cursor: default;
 }
 
 .gpii-prefsEditor-notification {

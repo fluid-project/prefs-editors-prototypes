@@ -75,8 +75,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onLogout.gpiiLogout": {
                     listener: "{gpiiSession}.logout"
                 },
+                "onLogout.disableSaveButton": {
+                    "this": "{that}.dom.saveAndApply",
+                    "method": "prop",
+                    "args": ["disabled", "true"]
+                },
+                "onLogout.disableCloudIcon": {
+                    "this": "{that}.dom.cloudIcon",
+                    "method": "addClass",
+                    "args": ["gpii-disabled"]
+                },
                 "onReady.setSaveAndApplyButtonText": {
-                    "this": "{that}.dom.saveAndApplyButtonLabel",
+                    "this": "{that}.dom.saveAndApply",
                     "method": "attr",
                     "args": ["value", "{that}.msgLookup.saveAndApplyText"]
                 },
@@ -138,13 +148,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             selectors: {
                 saveAndApply: ".flc-prefsEditor-save",
-                saveAndApplyButtonLabel: ".flc-prefsEditor-save",
                 saveButtonContainer: ".gpii-pcp-saveButtonContainer",
+                cloudIcon: ".gpii-pcp-cloudIcon",
                 messageLineLabel: ".gpiic-prefsEditor-messageLine",
                 fullEditorLink: ".gpiic-prefsEditor-fullEditorLink",
                 logoutLink: ".gpiic-prefsEditor-userLogoutLink"
             },
-            selectorsToIgnore: ["saveAndApply"]
+            selectorsToIgnore: ["cloudIcon"]
         }
     });
 
