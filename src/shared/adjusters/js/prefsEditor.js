@@ -47,7 +47,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": []
                 },
                 "onApply.applySettings": {
-                    "listener": "{socket}.connect"
+                    "listener": "{socket}.applySettings"
                 },
                 "onReady.bindApply": {
                     "this": "{that}.dom.saveAndApply",
@@ -191,7 +191,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         invokers: {
-            connect: {
+            applySettings: {
                 "funcName": "gpii.handleSocketRequest",
                 "args": ["{that}.options.socketConnected", "{that}.events.onEmitRequest.fire", "{that}.events.onConnectRequest.fire"],
                 "dynamic": true
