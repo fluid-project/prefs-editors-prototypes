@@ -147,7 +147,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             selectors: {
-                saveAndApply: ".flc-prefsEditor-save",
+                saveAndApply: ".gpiic-PCP-save",
                 saveButtonContainer: ".gpii-pcp-saveButtonContainer",
                 cloudIcon: ".gpii-pcp-cloudIcon",
                 messageLineLabel: ".gpiic-prefsEditor-messageLine",
