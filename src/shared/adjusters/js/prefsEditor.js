@@ -101,10 +101,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "addClass",
                     "args": ["gpii-disabled"]
                 },
+                "onReady.fullEditorLinkPreventDefault": {
+                    "this": "{that}.dom.fullEditorLink",
+                    "method": "click",
+                    "args": ["{that}.preventDefaultLinkEvent"]
+                },
                 "onReady.setSaveAndApplyButtonText": {
                     "this": "{that}.dom.saveAndApply",
                     "method": "attr",
                     "args": ["value", "{that}.msgLookup.saveAndApplyText"]
+                },
+                "onReady.logoutLinkPreventDefault": {
+                    "this": "{that}.dom.logoutLink",
+                    "method": "click",
+                    "args": ["{that}.preventDefaultLinkEvent"]
                 },
                 "onReady.setFullEditorLinkText": {
                     "this": "{that}.dom.fullEditorLink",
@@ -143,6 +153,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "func": "{gpiiStore}.set",
                     "args": "{that}.model",
                     "dynamic": true
+                },
+                preventDefaultLinkEvent: {
+                    "funcName": "gpii.eventUtility.preventDefaultEvent"
                 }
             },
             selectors: {
@@ -178,7 +191,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         invokers: {
-            // connect: "{that}.events.onConnectRequest.fire"
             connect: {
                 "funcName": "gpii.handleSocketRequest",
                 "args": ["{that}.options.socketConnected", "{that}.events.onEmitRequest.fire", "{that}.events.onConnectRequest.fire"],
