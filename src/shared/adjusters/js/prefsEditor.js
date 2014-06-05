@@ -192,7 +192,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         invokers: {
             applySettings: {
-                "funcName": "gpii.handleSocketRequest",
+                "funcName": "gpii.callFuncDependingOnFlag",
                 "args": ["{that}.options.socketConnected", "{that}.events.onEmitRequest.fire", "{that}.events.onConnectRequest.fire"],
                 "dynamic": true
             },
@@ -204,7 +204,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.handleSocketRequest = function (condition, trueFunc, falseFunc) {
+    gpii.callFuncDependingOnFlag = function (condition, trueFunc, falseFunc) {
         condition ? trueFunc() : falseFunc();
     };
 
