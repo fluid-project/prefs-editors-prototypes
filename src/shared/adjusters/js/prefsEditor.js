@@ -176,7 +176,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         listeners: {
             "onConnectRequest.connectSocket": {
                 "funcName": "gpii.connectSocket",
-                "args": ["{that}"]
+                "args": ["{that}", "{prefsEditor}.options.port", "{prefsEditor}.options.updateURL"]
             },
             "onConnectRequest.bindErrorHandlers": {
                 "funcName": "gpii.bindErrorHandlers",
@@ -187,6 +187,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         invokers: {
+            // connect: "{that}.events.onConnectRequest.fire"
             connect: {
                 "funcName": "gpii.handleSocketRequest",
                 "args": ["{that}.options.socketConnected", "{that}.events.onEmitRequest.fire", "{that}.events.onConnectRequest.fire"],
@@ -209,8 +210,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         that.socket.emit("message", savedSettings, fluid.log);
     };
 
-    gpii.connectSocket = function (that) {
-        that.socket = io.connect("http://localhost:8081/update");
+    gpii.connectSocket = function (that, port, route) {
+        that.socket = io.connect("http://localhost:" + port + "/" + route);
 
         that.socket.on("connect", function () {
             that.options.socketConnected = true;
