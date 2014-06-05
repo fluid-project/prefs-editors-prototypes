@@ -168,48 +168,64 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     fluid.defaults("gpii.pcp.socket", {
         gradeNames: ["fluid.eventedComponent", "autoInit"],
+        socketConnected: false,
         events: {
-            onConnectRequest: null
+            onConnectRequest: null,
+            onEmitRequest: null
         },
         listeners: {
             "onConnectRequest.connectSocket": {
                 "funcName": "gpii.connectSocket",
-                "args": ["{that}", "{prefsEditor}.model", "{gpiiStore}.modelTransform", "gpii.prefs.commonTermsTransformationRules"]
+                "args": ["{that}"]
+            },
+            "onConnectRequest.bindErrorHandlers": {
+                "funcName": "gpii.bindErrorHandlers",
+                "args": ["{that}", ["error", "disconnect"]]
+            },
+            "onEmitRequest.emit": {
+                "func": "{that}.emit"
             }
         },
         invokers: {
-            connect: "{that}.events.onConnectRequest.fire"
+            connect: {
+                "funcName": "gpii.handleSocketRequest",
+                "args": ["{that}.options.socketConnected", "{that}.events.onEmitRequest.fire", "{that}.events.onConnectRequest.fire"],
+                "dynamic": true
+            },
+            emit: {
+                "funcName": "gpii.emitMessage",
+                "args": ["{that}", "{prefsEditor}.model", "{gpiiStore}.modelTransform", "gpii.prefs.commonTermsTransformationRules"],
+                "dynamic": true
+            }
         }
     });
 
-    gpii.connectSocket = function (that, model, transformFunc, transformRules) {
+    gpii.handleSocketRequest = function (condition, trueFunc, falseFunc) {
+        condition ? trueFunc() : falseFunc();
+    };
+
+    gpii.emitMessage = function (that, model, transformFunc, transformRules) {
+        var savedSettings = transformFunc(model, transformRules);
+        that.socket.emit("message", savedSettings, fluid.log);
+    };
+
+    gpii.connectSocket = function (that) {
         that.socket = io.connect("http://localhost:8081/update");
 
         that.socket.on("connect", function () {
-            var savedSettings = transformFunc(model, transformRules);
-            that.socket.emit("message", savedSettings, fluid.log);
+            that.options.socketConnected = true;
+            that.events.onEmitRequest.fire();
         });
     };
 
-    gpii.applySettings = function (that, port, updateURL, gpiiStore) {
-        var savedSettings = gpiiStore.modelTransform(that.model, gpii.prefs.commonTermsTransformationRules);
-
-        if (that.socket) {
-            that.socket.emit("message", savedSettings, fluid.log);
-        } else {
-            var url = "http://localhost:" + port + "/" + updateURL;
-
-            that.socket = that.socket || io.connect(url);
-            that.socket.on("connect", function () {
-                that.socket.emit("message", savedSettings, fluid.log);
+    gpii.bindErrorHandlers = function (that, events) {
+        fluid.each(events, function (event) {
+            that.socket.on(event, function (data) {
+                that.options.socketConnected = false;
+                fluid.log(data);
+                delete that.socket;
             });
-            fluid.each(["error", "disconnect"], function (event) {
-                that.socket.on(event, function (data) {
-                    fluid.log(data);
-                    delete that.socket;
-                });
-            });
-        }
+        });
     };
 
     gpii.prefsEditor.triggerEvent = function (that, targetSelector, event) {
