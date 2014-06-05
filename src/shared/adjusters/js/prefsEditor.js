@@ -135,15 +135,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             invokers: {
-                applySettings: {
-                    "funcName": "gpii.applySettings",
-                    "args": [
-                        "{that}",
-                        "{that}.options.port",
-                        "{that}.options.updateURL",
-                        "{gpiiStore}"
-                    ]
-                },
                 showUserStatusBar: {
                     "this": "{that}.dom.userStatusBar",
                     "method": "slideDown"
