@@ -15,6 +15,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         gradeNames: ["fluid.prefs.GPIIEditor", "autoInit"],
         prefsEditor: {
             gradeNames: ["fluid.prefs.msgLookup"],
+            components: {
+                socket: {
+                    type: "gpii.pcp.socket"
+                }
+            },
             port: 8081,
             updateURL: "update",
             members: {
@@ -42,7 +47,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": []
                 },
                 "onApply.applySettings": {
-                    "listener": "{that}.applySettings"
+                    "listener": "{socket}.connect"
                 },
                 "onReady.bindApply": {
                     "this": "{that}.dom.saveAndApply",
@@ -160,6 +165,31 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             selectorsToIgnore: ["cloudIcon"]
         }
     });
+
+    fluid.defaults("gpii.pcp.socket", {
+        gradeNames: ["fluid.eventedComponent", "autoInit"],
+        events: {
+            onConnectRequest: null
+        },
+        listeners: {
+            "onConnectRequest.connectSocket": {
+                "funcName": "gpii.connectSocket",
+                "args": ["{that}", "{prefsEditor}.model", "{gpiiStore}.modelTransform", "gpii.prefs.commonTermsTransformationRules"]
+            }
+        },
+        invokers: {
+            connect: "{that}.events.onConnectRequest.fire"
+        }
+    });
+
+    gpii.connectSocket = function (that, model, transformFunc, transformRules) {
+        that.socket = io.connect("http://localhost:8081/update");
+
+        that.socket.on("connect", function () {
+            var savedSettings = transformFunc(model, transformRules);
+            that.socket.emit("message", savedSettings, fluid.log);
+        });
+    };
 
     gpii.applySettings = function (that, port, updateURL, gpiiStore) {
         var savedSettings = gpiiStore.modelTransform(that.model, gpii.prefs.commonTermsTransformationRules);
