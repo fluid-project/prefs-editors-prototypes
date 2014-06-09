@@ -370,7 +370,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "{that}.dom.punctuationVerbosityContainer",
                     "{that}.dom.punctuationVerbosityLabel",
                     "{that}.dom.announceLabel"
-                ]
+                ],
+                "dynamic": true
             }
         }
     });
