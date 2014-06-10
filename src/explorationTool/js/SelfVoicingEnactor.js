@@ -84,11 +84,17 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     };
 
     gpii.explorationTool.enactors.selfVoicing.announce = function (that, text) {
-        if (!that.model.value) {return;}
+        if (!that.model.value) {
+            return;
+        }
+
+        text = encodeURIComponent(text);
+
         var audioURL = fluid.stringTemplate(that.options.ttsUrl, {
             lang: that.options.lang,
             text: text
         });
+
         that.currentAnnouncement = new buzz.sound(audioURL);
         that.currentAnnouncement.bind("ended", function () {
             that.speaking = false;
