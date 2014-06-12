@@ -14,7 +14,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     fluid.defaults("gpii.pcp.socket", {
         gradeNames: ["fluid.eventedComponent", "autoInit"],
-        socketConnected: false,
+        members: {
+            socketConnected: false,
+        },
         events: {
             onConnectRequest: null,
             onEmitRequest: null
@@ -35,7 +37,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         invokers: {
             applySettings: {
                 "funcName": "gpii.pcp.callFuncDependingOnFlag",
-                "args": ["{that}.options.socketConnected", "{that}.events.onEmitRequest.fire", "{that}.events.onConnectRequest.fire"],
+                "args": ["{that}.socketConnected", "{that}.events.onEmitRequest.fire", "{that}.events.onConnectRequest.fire"],
                 "dynamic": true
             },
             emit: {
@@ -59,7 +61,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         that.socket = io.connect("http://localhost:" + port + "/" + route);
 
         that.socket.on("connect", function () {
-            that.options.socketConnected = true;
+            that.socketConnected = true;
             that.events.onEmitRequest.fire();
         });
     };
@@ -67,7 +69,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.pcp.bindErrorHandlers = function (that, events) {
         fluid.each(events, function (event) {
             that.socket.on(event, function (data) {
-                that.options.socketConnected = false;
+                that.socketConnected = false;
                 fluid.log(data);
                 delete that.socket;
             });
