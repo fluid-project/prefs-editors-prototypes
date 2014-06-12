@@ -37,7 +37,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "default": 100,
             "minimum": 100,
             "maximum": 10000,
-            "divisibleBy": 50
+            "divisibleBy": 25
         },
         "gpii.primarySchema.magnificationPosition": {
             "type": "string",
