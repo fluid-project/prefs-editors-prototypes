@@ -21,11 +21,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         listeners: {
             "onConnectRequest.connectSocket": {
-                "funcName": "gpii.connectSocket",
+                "funcName": "gpii.pcp.connectSocket",
                 "args": ["{that}", "{prefsEditor}.options.port", "{prefsEditor}.options.updateURL"]
             },
             "onConnectRequest.bindErrorHandlers": {
-                "funcName": "gpii.bindErrorHandlers",
+                "funcName": "gpii.pcp.bindErrorHandlers",
                 "args": ["{that}", ["error", "disconnect"]]
             },
             "onEmitRequest.emit": {
@@ -34,28 +34,28 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         invokers: {
             applySettings: {
-                "funcName": "gpii.callFuncDependingOnFlag",
+                "funcName": "gpii.pcp.callFuncDependingOnFlag",
                 "args": ["{that}.options.socketConnected", "{that}.events.onEmitRequest.fire", "{that}.events.onConnectRequest.fire"],
                 "dynamic": true
             },
             emit: {
-                "funcName": "gpii.emitMessage",
+                "funcName": "gpii.pcp.emitMessage",
                 "args": ["{that}", "{prefsEditor}.model", "{gpiiStore}.modelTransform", "gpii.prefs.commonTermsTransformationRules"],
                 "dynamic": true
             }
         }
     });
 
-    gpii.callFuncDependingOnFlag = function (condition, trueFunc, falseFunc) {
+    gpii.pcp.callFuncDependingOnFlag = function (condition, trueFunc, falseFunc) {
         condition ? trueFunc() : falseFunc();
     };
 
-    gpii.emitMessage = function (that, model, transformFunc, transformRules) {
+    gpii.pcp.emitMessage = function (that, model, transformFunc, transformRules) {
         var savedSettings = transformFunc(model, transformRules);
         that.socket.emit("message", savedSettings, fluid.log);
     };
 
-    gpii.connectSocket = function (that, port, route) {
+    gpii.pcp.connectSocket = function (that, port, route) {
         that.socket = io.connect("http://localhost:" + port + "/" + route);
 
         that.socket.on("connect", function () {
@@ -64,7 +64,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         });
     };
 
-    gpii.bindErrorHandlers = function (that, events) {
+    gpii.pcp.bindErrorHandlers = function (that, events) {
         fluid.each(events, function (event) {
             that.socket.on(event, function (data) {
                 that.options.socketConnected = false;
