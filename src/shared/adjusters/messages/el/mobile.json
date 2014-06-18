@@ -1,0 +1,16 @@
+{
+    "mobile": "κινητό",
+    "addMobile": "Προσθήκη κινητού",
+    "changeAutoShutOff": "αυτόματη απενεργοποίηση",
+    "textSizeLabel": "απενεργοποίηση οθόνης έπειτα από",
+    "textSizeUnit" : "λεπτά",
+    "changeVibration": "δόνηση",
+    "vibrationDescription": "Δόνηση όλων των οπτικών ειδοποιήσεων",
+    "changeOrientation": "κλείδωμα προσανατολισμού",
+    "orientationPositionLabel": "Προσανατολισμός οθόνης",
+    "orientationPosition-default": "Προεπιλογή",
+    "orientationPosition-top": "Επάνω",
+    "orientationPosition-bottom": "Κάτω",
+    "orientationPosition-left": "Αριστερά",
+    "orientationPosition-right": "Δεξιά"   
+}

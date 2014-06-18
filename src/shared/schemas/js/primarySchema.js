@@ -141,7 +141,31 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "string",
             "default": "en",
             "enum": ["en", "el", "de", "es"]
+        },
+        "gpii.primarySchema.autoShutOffEnabled": {
+            "type": "boolean",
+            "default": false
+        },
+        "gpii.primarySchema.shutOffTime": {
+            "type": "number",
+            "default": 2,
+            "minimum": 1,
+            "divisibleBy": 1
+        },
+        "gpii.primarySchema.vibrationEnabled": {
+            "type": "boolean",
+            "default": false
+        },
+        "gpii.primarySchema.orientationLockEnabled": {
+            "type": "boolean",
+            "default": false
+        },
+        "gpii.primarySchema.orientationPosition": {
+            "type": "string",
+            "default": "top",
+        	"enum": ["Top", "Bottom", "Left", "Right"]
         }
+        
     };
 
 })(fluid);

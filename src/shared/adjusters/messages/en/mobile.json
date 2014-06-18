@@ -1,0 +1,12 @@
+{
+    "mobile": "mobile",
+    "addMobile": "add mobile",
+    "changeAutoShutOff": "auto Shutoff",
+    "textSizeLabel": "Shut screen off after",
+    "textSizeUnit" : "min",
+    "changeVibration": "vibration",
+    "vibrationDescription": "Vibrate all visual alerts",
+    "changeOrientation": "orientation Lock",
+    "orientationPositionLabel": "screen orientation",
+    "orientationPosition-default": "Default"
+}

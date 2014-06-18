@@ -80,7 +80,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "panels": {
                     "always": ["universalLanguage"]
                 }
-            }
+            },
+            "addMobile": {
+            	"container": ".gpii-prefsEditor-mobilePanel",
+                "template": "%prefix/addMobileTemplate.html",
+                "message": "%prefix/mobile.json",
+                "type": "gpii.adjuster.addMobile",
+                "panels": {
+                    "always": ["autoShutOffEnabled", "vibrationEnabled", "orientationLockEnabled"],
+                    "gpii.primarySchema.autoShutOffEnabled": ["shutOffTime"],
+                    "gpii.primarySchema.orientationLockEnabled": ["orientationPosition"]
+                }
+            },
         },
         "contrastEnabled": {
             "type": "gpii.primarySchema.contrastEnabled",
@@ -388,6 +399,59 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "template": "%prefix/universalLanguageTemplate.html",
                 "container": ".universalLanguage",
                 "message": "%prefix/message.json"
+            }
+        },
+        
+        "autoShutOffEnabled": {
+            "type": "gpii.primarySchema.autoShutOffEnabled",
+            "panel": {
+                "type": "gpii.adjuster.autoShutOffEnabled",
+                "container": ".gpiic-autoShutOffEnabled",
+                "template": "%prefix/onOffSwitchTemplate.html",
+                "message": "%prefix/mobile.json"
+            }
+        },
+        "shutOffTime": {
+            "type": "gpii.primarySchema.shutOffTime",
+            "panel": {
+                "type": "gpii.adjuster.shutOffTime",
+                "container": ".gpiic-prefsEditor-textSize",
+                "template": "%prefix/shutOffTimeTemplate.html",
+                "message": "%prefix/mobile.json",
+            }
+        },
+        "vibrationEnabled": {
+            "type": "gpii.primarySchema.vibrationEnabled",
+            "panel": {
+                "type": "gpii.adjuster.vibrationEnabled",
+                "container": ".gpiic-vibrationEnabled",
+                "template": "%prefix/onOffSwitchVibrationTemplate.html",
+                "message": "%prefix/mobile.json"
+            }
+        },
+        "orientationLockEnabled": {
+            "type": "gpii.primarySchema.orientationLockEnabled",
+            "panel": {
+                "type": "gpii.adjuster.orientationLockEnabled",
+                "container": ".gpiic-orientationLockEnabled",
+                "template": "%prefix/onOffSwitchOrientationTemplate.html",
+                "message": "%prefix/mobile.json"
+            }
+        },
+        "orientationPosition": {
+            "type": "gpii.primarySchema.orientationPosition",
+            "classes": {
+                "Top": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-orientationPositionTop gpii-increaseSize-orientationPositionIconLabel",
+                "Bottom": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-orientationPositionBottom gpii-increaseSize-orientationPositionIconLabel",
+                "Left": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-orientationPositionLeft gpii-increaseSize-orientationPositionIconLabel",
+                "Right": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-orientationPositionRight gpii-increaseSize-orientationPositionIconLabel"
+            },
+            "panel": {
+                "type": "gpii.adjuster.orientationPosition",
+                "container": ".gpiic-orientationPosition",
+                "template": "%prefix/screenOrientationTemplate.html",
+                "message": "%prefix/mobile.json",
+                "classnameMap": {"orientationPosition": "@orientationPosition.classes"}
             }
         }
     };

@@ -123,6 +123,10 @@ input[type=checkbox]:checked + .gpii-prefsEditor-headerImage > .gpii-prefsEditor
     content: "\e60e";
 }
 
+.gpii-prefsEditor-mobilePanel > .gpii-prefsEditor-headerImage:before {
+    content: "\e609";
+}
+
 .gpii-prefsEditor-headerTitle {
     font-family: 'Roboto Slab', serif;
     color: white;
@@ -298,6 +302,89 @@ input[type=checkbox], input[type=radio] {
 
 .gpii-prefsEditor-category-hidden {
 }
+
+/*
+    Style for orientation font icons
+*/
+.gpii-increaseSize-orientationPositionContainer {
+    display: inline-block;
+    width: 100% !important;
+    margin-top: 20px;
+}
+
+.gpii-increaseSize-orientationPositionIconLabel {
+    height: 6.3em !important;
+    width: 4.7em !important;
+    border: none !important;
+    padding: 0 !important;
+    cursor: pointer;
+    margin-bottom: 0.5em !important;
+    margin-right: 0.5em !important;
+    font-size: 1em !important;
+}
+
+.gpii-increaseSize-orientationPositionIcon {
+    height: 0 !important;
+    width: 0 !important;
+    /*color: #636c7c;
+    margin-top: -1em;*/
+}
+
+
+.gpii-increaseSize-orientationPositionIcon:before {
+    font-size: 6.3em !important;
+}
+
+/*
+.gpii-increaseSize-orientationPositionBackground {
+    height: 4.9em !important;
+    width: 6.3em !important;
+    padding-top: 2px;
+}
+
+
+.gpii-increaseSize-orientationPositionBackground:before {
+    font-size: 6.2em !important;
+    opacity: 0.3;
+}
+
+.gpii-increaseSize-orientationPositionFullscreen > .gpii-increaseSize-orientationPositionFrame:before {
+    font-size: 6.3em !important;
+    content: "\e601" !important;
+}
+
+.gpii-increaseSize-orientationPositionLens > .gpii-increaseSize-orientationPositionIcon:before {
+    content: "\e61e";
+}
+
+.gpii-increaseSize-orientationPositionFullscreen > .gpii-increaseSize-orientationPositionIconMain {
+    opacity:0.5;
+    position: relative;
+}
+
+.gpii-increaseSize-orientationPositionFullscreen > .gpii-increaseSize-orientationPositionIconMain:before {
+    content: "\e601";
+    font-size: 6.3em !important;
+    color: #00a9bd;
+}
+*/
+.gpii-increaseSize-orientationPositionTop > .gpii-increaseSize-orientationPositionIconMain:before {
+    content: "\e609";
+}
+
+.gpii-increaseSize-orientationPositionBottom > .gpii-increaseSize-orientationPositionIconMain:before {
+    content: "\e60d";
+}
+
+.gpii-increaseSize-orientationPositionLeft > .gpii-increaseSize-orientationPositionIconMain:before {
+    content: "\e60b";
+}
+
+.gpii-increaseSize-orientationPositionRight > .gpii-increaseSize-orientationPositionIconMain:before {
+    content: "\e60f";
+}
+
+
 
 /*
     Style for more/less
