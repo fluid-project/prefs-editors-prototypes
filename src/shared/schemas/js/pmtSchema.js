@@ -415,7 +415,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "gpii.primarySchema.shutOffTime",
             "panel": {
                 "type": "gpii.adjuster.shutOffTime",
-                "container": ".gpiic-prefsEditor-textSize",
+                "container": ".gpiic-shutOffTime",
                 "template": "%prefix/shutOffTimeTemplate.html",
                 "message": "%prefix/mobile.json",
             }
@@ -441,10 +441,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         "orientationPosition": {
             "type": "gpii.primarySchema.orientationPosition",
             "classes": {
-                "Top": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-orientationPositionTop gpii-increaseSize-orientationPositionIconLabel",
-                "Bottom": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-orientationPositionBottom gpii-increaseSize-orientationPositionIconLabel",
-                "Left": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-orientationPositionLeft gpii-increaseSize-orientationPositionIconLabel",
-                "Right": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-orientationPositionRight gpii-increaseSize-orientationPositionIconLabel"
+                "0": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-orientationPositionTop gpii-increaseSize-orientationPositionIconLabel",
+                "90": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-orientationPositionBottom gpii-increaseSize-orientationPositionIconLabel",
+                "180": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-orientationPositionLeft gpii-increaseSize-orientationPositionIconLabel",
+                "270": "gpii-prefsEditor-adjusterIcons gpii-increaseSize-orientationPositionRight gpii-increaseSize-orientationPositionIconLabel"
             },
             "panel": {
                 "type": "gpii.adjuster.orientationPosition",

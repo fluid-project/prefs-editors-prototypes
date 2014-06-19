@@ -2,11 +2,15 @@
     "mobile": "mobile",
     "addMobile": "add mobile",
     "changeAutoShutOff": "auto Shutoff",
-    "textSizeLabel": "Shut screen off after",
+    "textSizeLabel": "shut screen off after",
     "textSizeUnit" : "min",
     "changeVibration": "vibration",
     "vibrationDescription": "Vibrate all visual alerts",
     "changeOrientation": "orientation Lock",
     "orientationPositionLabel": "screen orientation",
-    "orientationPosition-default": "Default"
+    "orientationPosition-default": "Default",
+    "orientationPosition-0": "0&deg;",
+    "orientationPosition-90": "90&deg;",
+    "orientationPosition-180": "180&deg;",
+    "orientationPosition-270": "270&deg;"
 }

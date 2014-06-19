@@ -16,7 +16,43 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function ($, fluid) {
 
     fluid.defaults("gpii.adjuster.shutOffTime", {
-        gradeNames: ["gpii.adjuster.textSizePCP", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        preferenceMap: {
+            "gpii.primarySchema.shutOffTime": {
+                "model.shutOffTime": "default",
+                "shutOffTime.range.min": "minimum",
+                "shutOffTime.range.step": "divisibleBy"
+            }
+        },
+        selectors: {
+            textSizeLabel: ".gpiic-textSize-label",
+            textSizeStepper: ".gpiic-textSize-stepper"
+        },
+        components: {
+            textfieldStepper: {
+                type: "gpii.adjuster.textfieldStepper",
+                container: "{shutOffTime}.dom.textSizeStepper",
+                createOnEvent: "afterRender",
+                options: {
+                    sourceApplier: "{shutOffTime}.applier",
+                    rules: {
+                        "shutOffTime": "value"
+                    },
+                    model: {
+                        value: "{shutOffTime}.model.shutOffTime"
+                    },
+                    strings: {
+                        "unit": "{shutOffTime}.msgLookup.textSizeUnit"
+                    },
+                    range: "{shutOffTime}.options.shutOffTime.range",
+                    labelledbyDomElement: "{shutOffTime}.dom.textSizeLabel"
+                }
+            }
+        },
+        selectorsToIgnore: ["textSizeStepper"],
+        protoTree: {
+            textSizeLabel: {messagekey: "textSizeLabel"}
+        }
     });
 
 })(jQuery, fluid);

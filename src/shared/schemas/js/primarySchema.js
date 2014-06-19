@@ -144,12 +144,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "gpii.primarySchema.autoShutOffEnabled": {
             "type": "boolean",
-            "default": false
+            "default": true
         },
         "gpii.primarySchema.shutOffTime": {
             "type": "number",
             "default": 2,
             "minimum": 1,
+            "maximum": 100,
             "divisibleBy": 1
         },
         "gpii.primarySchema.vibrationEnabled": {
@@ -158,12 +159,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "gpii.primarySchema.orientationLockEnabled": {
             "type": "boolean",
-            "default": false
+            "default": true
         },
         "gpii.primarySchema.orientationPosition": {
             "type": "string",
-            "default": "top",
-        	"enum": ["Top", "Bottom", "Left", "Right"]
+            "default": "90",
+        	"enum": ["0", "90", "180", "270"]
         }
         
     };

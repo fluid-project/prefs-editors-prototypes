@@ -123,6 +123,26 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         }],
         "http://registry\\.gpii\\.org/common/showCrosshairs": [{
             value: "gpii_primarySchema_showCrosshairs"
+        }],
+        "http://registry\\.gpii\\.org/common/hapticFeedback": [{
+            value: "gpii_primarySchema_vibrationEnabled"
+        }],
+        "http://registry\\.gpii\\.org/common/screenOffTime": [{
+            transform: {
+                type: "fluid.transforms.linearScale",
+                valuePath: "gpii_primarySchema_shutOffTime",
+                factor: 60,
+                outputPath: "value"
+            }
+        }],
+        "http://registry\\.gpii\\.org/common/screenDim": [{
+            value: "gpii_primarySchema_autoShutOffEnabled"
+        }],
+        "http://registry\\.gpii\\.org/common/screenRotation": [{
+            value: "gpii_primarySchema_orientationLockEnabled"
+        }],
+        "http://registry\\.gpii\\.org/common/screenDefaultRotation": [{
+            value: "gpii_primarySchema_orientationPosition"
         }]
     };
 

@@ -25,6 +25,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         listeners: {
             onDomBind: "{that}.orientationPositionStyle"
+            	
         },
         selectors: {
         	orientationPositionRow: ".gpiic-increaseSize-orientationPositionRow",
@@ -32,9 +33,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             orientationPositionInput: ".gpiic-increaseSize-orientationPositionInput",
             orientationPositionHeading: ".gpiic-increaseSize-orientationPositionHeading",
             singleSelectionLabels: ".gpiic-increaseSize-orientationPositionLabel",
-            orientationPositionContainer: ".gpiic-increaseSize-orientationPositionContainer"
+            orientationPositionContainer: ".gpiic-increaseSize-orientationPositionContainer",
+            orientationPositionText: ".gpiic-orientationPositionText"
         },
-        selectorsToIgnore: ["orientationPositionContainer"],
+        selectorsToIgnore: ["orientationPositionContainer", "orientationPositionText"],
         protoTree: {
             expander: [
                 {
@@ -56,20 +58,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             messageResolver: "{prefsEditorLoader}.msgResolver"
         },
         stringArrayIndex: {
-        	orientationPosition: ["orientationPosition-top", "orientationPosition-bottom", "orientationPosition-left", "orientationPosition-right"]
+        	orientationPosition: ["orientationPosition-0", "orientationPosition-90", "orientationPosition-180", "orientationPosition-270"]
         },
         strings: {
         	orientationPosition: "{that}.msgLookup.orientationPosition"
         },
         repeatingSelectors: ["orientationPositionRow"],
         controlValues: {
-        	orientationPosition: ["Top", "Bottom", "Left", "Right"]
+        	orientationPosition: ["0", "90", "180", "270"]
         },
         markup: {
         	orientationPositionLabel: "<div class=\"gpii-prefsEditor-adjusterIcons gpii-increaseSize-orientationPositionIcon gpii-increaseSize-orientationPositionIconMain\"></div>" +
-                    "<div class=\"gpii-prefsEditor-adjusterIcons gpii-increaseSize-orientationPositionIcon gpii-increaseSize-orientationPositionFrame\"></div>" +
-                    "<div class=\"gpii-prefsEditor-adjusterIcons gpii-increaseSize-orientationPositionIcon gpii-increaseSize-orientationPositionBackground\"></div>" +
-                    "<span class=\"fl-hidden-accessible\">%orientationPosition</span>"
+                    "<div class=\"gpii-prefsEditor-adjusterIcons gpii-increaseSize-orientationPositionIcon\"></div>" +
+                    "<div class=\"gpii-prefsEditor-adjusterIcons gpii-increaseSize-orientationPositionIcon\"></div>" +
+                    "<span class=\"fl-hidden-accessible\">%orientationPosition</span>" 
         },
         invokers: {
             "orientationPositionStyle": {
@@ -77,20 +79,24 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 args: ["{that}.dom.orientationPositionLabel", "{that}.options.strings.orientationPosition",
                     "{that}.options.markup.orientationPositionLabel", "{that}.options.controlValues.orientationPosition",
                     "{that}.options.classnameMap.orientationPosition", "{that}.dom.orientationPositionContainer",
-                    "{that}.dom.orientationPositionHeading"],
+                    "{that}.dom.orientationPositionHeading", "{that}.dom.orientationPositionText"],
                 dynamic: true
             }
         }
     });
 
-    gpii.adjuster.orientationPosition.style = function (labels, strings, markup, orientationPosition, style, container, heading) {
+    gpii.adjuster.orientationPosition.style = function (labels, strings, markup, orientationPosition, style, container, heading, texts) {
         fluid.each(labels, function (label, index) {
             label = $(label);
             label.html(fluid.stringTemplate(markup, {
             	orientationPosition: strings[index]
             }));
             label.addClass(style[orientationPosition[index]]);
-            //label.attr("tooltip", strings[index]);
+        });
+        
+        fluid.each(texts, function (text, index) {
+        	text = $(text);
+            text.html(strings[index]);
         });
         container.attr("aria-labelledby", gpii.ariaUtility.getLabelId(heading));
     };
