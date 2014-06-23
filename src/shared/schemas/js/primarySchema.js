@@ -163,7 +163,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "gpii.primarySchema.orientationPosition": {
             "type": "string",
-            "default": "90",
+            "default": "0",
         	"enum": ["0", "90", "180", "270"]
         }
         
