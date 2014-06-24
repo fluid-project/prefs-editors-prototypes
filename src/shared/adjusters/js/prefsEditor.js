@@ -48,18 +48,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "funcName": "fluid.set",
                     "args": [window, "location.href", "{prefsEditorLoader}.options.pmtUrl"]
                 },
-                "onLogin.setUserLoggedIn": {
-                    listener: "{that}.applier.requestChange",
-                    args: ["userLoggedIn", true]
-                },
-                "onLogin.showSaveMessage": {
-                    "this": "{that}.dom.messageLineLabel",
-                    "method": "text",
-                    "args": ["{that}.msgLookup.preferencesModified"]
-                },
-                "onLogin.showUserStatusBar": {
-                    "listener": "{that}.showUserStatusBar"
-                },
                 "onReset.triggerLogoutEvent": {
                     "listener": "{that}.events.onLogout.fire"
                 },
@@ -67,10 +55,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     listener: "{that}.applier.requestChange",
                     args: ["userLoggedIn", false]
                 },
-                "onLogout.clearMessage": {
+                "onLogout.updateMessage": {
                     "this": "{that}.dom.messageLineLabel",
                     "method": "text",
-                    "args": [""]
+                    "args": ["{that}.msgLookup.onLogoutMessage"]
                 },
                 "onLogout.gpiiLogout": {
                     listener: "{gpiiSession}.logout"

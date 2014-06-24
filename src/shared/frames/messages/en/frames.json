@@ -1,4 +1,5 @@
 {
+    "onLogoutMessage": "Logged Out",
     "myPreferencesLabelText": "my preferences",
     "allPreferencesLabelText": "all preferences",
     "saveAndApplyText": "save & apply",
