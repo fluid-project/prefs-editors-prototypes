@@ -19,7 +19,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 messageResolver: "{prefsEditorLoader}.msgResolver"
             },
             events: {
-                onLogin: null,
                 onLogout: null,
                 onRequestPageTransition: null,
                 onSettingChanged: null

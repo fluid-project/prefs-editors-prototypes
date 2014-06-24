@@ -1,4 +1,5 @@
 {
+    "onLogoutMessage": "Cerrado La Sesión",
     "myPreferencesLabelText": "Mis preferencias",
     "allPreferencesLabelText": "Todas las preferencias",
     "saveAndApplyText": "Guardar y aplicar",
