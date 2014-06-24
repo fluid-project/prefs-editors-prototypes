@@ -82,7 +82,7 @@ body {
 
 .gpii-prefsEditor-PCP-preferences {
     overflow-y: auto;
-    width: 545px;
+    width: 40.9em;
 }
 
 .gpii-prefsEditor-save, .gpii-prefsEditor-gotoPcp {
@@ -122,7 +122,8 @@ body {
 }
 
 .gpii-prefsEditor-messageLine {
-    display: table-cell;
+    display: inline;
+    padding-top: 2em;
     white-space: normal;
     width: 55%;
     font-style:italic;
@@ -153,6 +154,7 @@ body {
 .gpii-pcp-saveButtonContainer {
     float: right;
     width: 165px;
+    margin-top: 1em;
 }
 
 .gpii-pcp-saveButtonContainer:hover .gpii-pcp-cloudIcon {
