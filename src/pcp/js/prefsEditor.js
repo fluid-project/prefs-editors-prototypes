@@ -36,12 +36,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 userLoggedIn: false
             },
             listeners: {
-                "onReady.setATTRsaveButton": {
-                    "this": "{that}.dom.saveButton",
+                "onReady.setATTRapplyButton": {
+                    "this": "{that}.dom.applyButton",
                     "method": "attr",
                     "args": ["value", "{that}.msgLookup.applyText"]
                 },
-                "onApply.hideSaveButton": {
+                "onApply.hideApplyButton": {
                     "this": "{that}.dom.applyButtonContainer",
                     "method": "hide",
                     "args": []
@@ -50,7 +50,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "listener": "{socket}.applySettings"
                 },
                 "onReady.bindApply": {
-                    "this": "{that}.dom.saveAndApply",
+                    "this": "{that}.dom.applyButton",
                     "method": "click",
                     "args": ["{that}.events.onApply.fire"]
                 },
@@ -92,7 +92,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     listener: "{gpiiSession}.logout"
                 },
                 "onLogout.disableSaveButton": {
-                    "this": "{that}.dom.saveAndApply",
+                    "this": "{that}.dom.applyButton",
                     "method": "prop",
                     "args": ["disabled", "true"]
                 },
@@ -106,8 +106,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "click",
                     "args": ["{that}.preventDefaultLinkEvent"]
                 },
-                "onReady.setSaveAndApplyButtonText": {
-                    "this": "{that}.dom.saveAndApply",
+                "onReady.setApplyButtonButtonText": {
+                    "this": "{that}.dom.applyButton",
                     "method": "attr",
                     "args": ["value", "{that}.msgLookup.applyText"]
                 },
@@ -159,7 +159,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             selectors: {
-                saveAndApply: ".gpiic-apply",
+                applyButton: ".gpiic-apply",
                 applyButtonContainer: ".gpiic-applyButtonContainer",
                 cloudIcon: ".gpii-pcp-cloudIcon",
                 messageLineLabel: ".gpiic-prefsEditor-messageLine",
