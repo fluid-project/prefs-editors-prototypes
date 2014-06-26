@@ -103,7 +103,7 @@ body {
 }
 
 
-.gpii-prefsEditor-saveAndApplyButtonLabel {
+.gpii-prefsEditor-saveOrApplyButtonLabel {
     cursor: pointer;
     position: relative;
     vertical-align: middle;
@@ -112,7 +112,7 @@ body {
     font-size: 2em !important;
 }
 
-.gpii-prefsEditor-saveAndApplyButtonLabel:before {
+.gpii-prefsEditor-saveOrApplyButtonLabel:before {
     content: "\e60c"
 }
 
