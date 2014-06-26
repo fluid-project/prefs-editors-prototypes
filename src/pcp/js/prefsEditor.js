@@ -42,7 +42,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": ["value", "{that}.msgLookup.applyText"]
                 },
                 "onApply.hideSaveButton": {
-                    "this": "{that}.dom.saveButtonContainer",
+                    "this": "{that}.dom.applyButtonContainer",
                     "method": "hide",
                     "args": []
                 },
@@ -139,7 +139,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": ["", "{that}.events.onSettingChanged.fire"]
                 },
                 "onSettingChanged.showSaveButton": {
-                    "this": "{that}.dom.saveButtonContainer",
+                    "this": "{that}.dom.applyButtonContainer",
                     "method": "show",
                     "args": []
                 }
@@ -160,7 +160,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             selectors: {
                 saveAndApply: ".gpiic-apply",
-                saveButtonContainer: ".gpii-pcp-saveButtonContainer",
+                applyButtonContainer: ".gpiic-applyButtonContainer",
                 cloudIcon: ".gpii-pcp-cloudIcon",
                 messageLineLabel: ".gpiic-prefsEditor-messageLine",
                 fullEditorLink: ".gpiic-prefsEditor-fullEditorLink",

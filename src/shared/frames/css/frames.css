@@ -137,7 +137,7 @@ body {
     vertical-align: top;
 }
 
-.gpii-pcp-saveButtonContainer {
+.gpii-applyButtonContainer {
     display: none;
 }
 
@@ -150,16 +150,16 @@ body {
     background-color: grey;
 }
 
-.gpii-pcp-saveButtonContainer {
+.gpii-applyButtonContainer {
     float: right;
 }
 
-.gpii-pcp-saveButtonContainer:hover .gpii-pcp-cloudIcon {
+.gpii-applyButtonContainer:hover .gpii-pcp-cloudIcon {
     color: #249FB7;
     background-color: transparent;
 }
 
-.gpii-pcp-saveButtonContainer:hover .gpii-PCP-save:enabled {
+.gpii-applyButtonContainer:hover .gpii-PCP-save:enabled {
     color: #249FB7;
     background-color: white;
 }
