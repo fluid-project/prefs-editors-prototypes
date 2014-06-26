@@ -43,5 +43,7 @@
     "resetAndApply": "Reset and Apply",
     "cancel": "Cancel",
     "onText": "ON",
-    "offText": "OFF"
+    "offText": "OFF",
+    "textPlus" : "plus",
+    "textMinus" : "minus"
 }

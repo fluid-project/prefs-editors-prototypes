@@ -3,5 +3,7 @@
     "magnificationLevel": "επίπεδο μεγέθυνσης",
     "magnifierOFF": "Απενεργοποιημένο",
     "magnifierMAX": "μέγιστο",
-    "magnifierUnit" : "%"
+    "magnifierUnit" : "%",
+    "magnificationPlus" : "αύξηση",
+    "magnificationMinus" : "μείωση"
 }

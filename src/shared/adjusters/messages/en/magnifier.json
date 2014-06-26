@@ -3,5 +3,7 @@
     "magnificationLevel": "magnification level",
     "magnifierOFF": "OFF",
     "magnifierMAX": "maximum",
-    "magnifierUnit" : "%"
+    "magnifierUnit" : "%",
+    "magnificationPlus" : "plus",
+    "magnificationMinus" : "minus"
 }
