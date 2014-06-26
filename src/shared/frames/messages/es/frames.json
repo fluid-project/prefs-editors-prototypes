@@ -1,7 +1,8 @@
 {
     "myPreferencesLabelText": "Mis preferencias",
     "allPreferencesLabelText": "Todas las preferencias",
-    "saveAndApplyText": "Aplicar",
+    "saveAndApplyText": "Guardar y aplicar",
+    "applyText": "Aplicar",
     "preferencesSavedToUSB": "identificador guardado en el USB",
     "preferencesModified": "se han modificado las preferencias",
     "notificationMessagePart1": "Para aplicar las preferencias en otros dispositivos, guarda este identificador:",

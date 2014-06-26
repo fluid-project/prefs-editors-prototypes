@@ -39,7 +39,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.setATTRsaveButton": {
                     "this": "{that}.dom.saveButton",
                     "method": "attr",
-                    "args": ["value", "{that}.msgLookup.saveAndApplyText"]
+                    "args": ["value", "{that}.msgLookup.applyText"]
                 },
                 "onApply.hideSaveButton": {
                     "this": "{that}.dom.saveButtonContainer",
@@ -109,7 +109,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.setSaveAndApplyButtonText": {
                     "this": "{that}.dom.saveAndApply",
                     "method": "attr",
-                    "args": ["value", "{that}.msgLookup.saveAndApplyText"]
+                    "args": ["value", "{that}.msgLookup.applyText"]
                 },
                 "onReady.logoutLinkPreventDefault": {
                     "this": "{that}.dom.logoutLink",
