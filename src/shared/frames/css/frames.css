@@ -141,12 +141,12 @@ body {
     display: none;
 }
 
-.gpii-PCP-save {
+.gpii-PCP-apply {
     background-color: #249FB7;
     font-weight: bold;
 }
 
-.gpii-PCP-save:disabled {
+.gpii-PCP-apply:disabled {
     background-color: grey;
 }
 
@@ -159,12 +159,12 @@ body {
     background-color: transparent;
 }
 
-.gpii-applyButtonContainer:hover .gpii-PCP-save:enabled {
+.gpii-applyButtonContainer:hover .gpii-PCP-apply:enabled {
     color: #249FB7;
     background-color: white;
 }
 
-.gpii-PCP-save:disabled {
+.gpii-PCP-apply:disabled {
     cursor: default;
 }
 

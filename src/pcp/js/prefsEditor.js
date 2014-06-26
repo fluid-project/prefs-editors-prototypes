@@ -91,7 +91,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onLogout.gpiiLogout": {
                     listener: "{gpiiSession}.logout"
                 },
-                "onLogout.disableSaveButton": {
+                "onLogout.disableApplyButton": {
                     "this": "{that}.dom.applyButton",
                     "method": "prop",
                     "args": ["disabled", "true"]
@@ -138,7 +138,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "listener": "{that}.applier.modelChanged.addListener",
                     "args": ["", "{that}.events.onSettingChanged.fire"]
                 },
-                "onSettingChanged.showSaveButton": {
+                "onSettingChanged.showApplyButton": {
                     "this": "{that}.dom.applyButtonContainer",
                     "method": "show",
                     "args": []
