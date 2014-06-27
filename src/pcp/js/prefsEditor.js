@@ -20,7 +20,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     type: "gpii.pcp.socket"
                 }
             },
-            port: 8081,
+            domain: "http://localhost",
+            port: "8081",
             updateURL: "update",
             members: {
                 messageResolver: "{prefsEditorLoader}.msgResolver"
