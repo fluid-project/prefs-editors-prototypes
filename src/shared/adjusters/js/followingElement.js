@@ -23,7 +23,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "onDomBind.addAriaDesc": {
                 listener: "gpii.adjuster.followingElement.addAriaDesc",
                 args: ["{that}.dom.followingElementLabel", "{that}.dom.followingElementHeading"]
-            }
+            },
+            "onDomBind.addAriaLabel": {
+                listener: "gpii.adjuster.followingElement.addAriaLabel",
+                args: ["{that}.dom.followingElementLabel", "{that}.msgLookup.followingElement"]
+            },
         },
         selectors: {
             followingElementRow: ".gpiic-followingElementRow",
@@ -100,6 +104,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.adjuster.followingElement.addAriaDesc = function (labels, headingDom) {
         fluid.each(labels, function (label) {
             $(label).attr("aria-describedby", gpii.ariaUtility.getLabelId(headingDom));
+        });
+    };
+
+    gpii.adjuster.followingElement.addAriaLabel = function (labels, strings) {
+        fluid.each(labels, function (label, index) {
+            $(label).attr("aria-label", strings[index]);
         });
     };
 
