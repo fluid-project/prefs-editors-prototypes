@@ -43,7 +43,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "click",
                     "args": ["{that}.events.onRequestPageTransition.fire"]
                 },
-                "onRequestPageTransition.save": "{that}.saveSettings",
                 "onRequestPageTransition.goToPMT": {
                     "funcName": "fluid.set",
                     "args": [window, "location.href", "{prefsEditorLoader}.options.pmtUrl"]
