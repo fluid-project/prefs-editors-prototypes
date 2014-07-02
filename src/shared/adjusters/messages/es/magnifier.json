@@ -3,5 +3,7 @@
     "magnificationLevel": "Nivel del magnificación",
     "magnifierOFF": "Apagado",
     "magnifierMAX": "Máximo",
-    "magnifierUnit" : "%"
+    "magnifierUnit" : "%",
+    "magnificationPlus" : "más",
+    "magnificationMinus" : "menos"
 }
