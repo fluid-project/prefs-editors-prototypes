@@ -19,7 +19,7 @@ body {
 }
 
 .gpii-prefsEditor-panelContainer {
-    width: 560px;
+    width: 43em;
 }
 
 .gpii-prefsEditor-frameIcon {
@@ -252,7 +252,7 @@ body {
 
 .gpii-prefsEditor-userStatusBar {
     display: inline-block;
-    width: 100%;
+    width: 99%;
 }
 
 .gpii-prefsEditor-pcp-userLogout {
