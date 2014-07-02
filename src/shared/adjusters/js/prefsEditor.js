@@ -37,6 +37,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "hide",
                     "args": []
                 },
+                "onSave.updateMessage": {
+                    "this": "{that}.dom.messageLineLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.onPCPUpdateMessage"]
+                },
                 "onReady.fullEditorLink": {
                     "this": "{that}.dom.fullEditorLink",
                     "method": "click",
@@ -113,6 +118,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.saveButtonContainer",
                     "method": "show",
                     "args": []
+                },
+                "onSettingChanged.updateMessage": {
+                    "this": "{that}.dom.messageLineLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.onSettingChangedMessage"]
                 }
             },
             invokers: {
