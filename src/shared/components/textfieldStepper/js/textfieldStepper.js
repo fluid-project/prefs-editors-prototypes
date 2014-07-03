@@ -27,12 +27,9 @@ var fluid_1_5 = fluid_1_5 || {};
         selectors: {
             valueField: ".gpiic-textfieldStepper-valueField",
             unit: ".gpiic-textfieldStepper-unitField",
-            plusTextLabel: ".gpiic-textfieldStepper-plusTextLabel",
-            minusTextLabel: ".gpiic-textfieldStepper-minusTextLabel",
             increment: ".gpiic-textfieldStepper-increment",
-            decrement: ".gpiic-textfieldStepper-decrement",
+            decrement: ".gpiic-textfieldStepper-decrement"
         },
-        selectorsToIgnore: ["plusTextLabel","minusTextLabel"],
         listeners: {
             "onCreate.modelGuard": {
                 listener: "{that}.applier.guards.addListener",
@@ -132,10 +129,8 @@ var fluid_1_5 = fluid_1_5 || {};
 
         that.locate("increment").attr("role", "button");
         that.locate("decrement").attr("role", "button");
-        that.locate("increment").attr("aria-labelledby", gpii.ariaUtility.getLabelId(that.locate("plusTextLabel")));
-        that.locate("decrement").attr("aria-labelledby", gpii.ariaUtility.getLabelId(that.locate("minusTextLabel")));
-        that.locate("plusTextLabel").text(that.options.strings.plusText);
-        that.locate("minusTextLabel").text(that.options.strings.minusText);
+        that.locate("increment").attr("aria-label", that.options.strings.plusText);
+        that.locate("decrement").attr("aria-label", that.options.strings.minusText);        
     };
 
  })(jQuery, fluid_1_5);

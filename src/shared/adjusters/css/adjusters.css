@@ -1541,7 +1541,3 @@ label.gpii-preset-button-label {
 .gpii-focus {
     outline: 2px solid black !important;
 }
-
-.gpii-hide-element {
-	display: none !important;
-}
