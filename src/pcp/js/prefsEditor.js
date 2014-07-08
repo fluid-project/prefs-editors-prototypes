@@ -20,11 +20,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     type: "gpii.pcp.socket"
                 }
             },
-            domain: "http://localhost",
-            port: "8081",
-            updateURL: "update",
+            socketConnection: {
+                "domain": "http://localhost",
+                "port": "8081",
+                "route": "update",
+                "urlTemplate": "%domain:%port/%route"
+            },
             members: {
-                messageResolver: "{prefsEditorLoader}.msgResolver"
+                messageResolver: "{prefsEditorLoader}.msgResolver",
+                socketURL: {
+                    expander: {
+                        funcName: "fluid.stringTemplate",
+                        args: ["{that}.options.socketConnection.urlTemplate", "{that}.options.socketConnection"]
+                    }
+                }
             },
             events: {
                 onLogin: null,

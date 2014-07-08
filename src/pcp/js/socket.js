@@ -24,7 +24,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         listeners: {
             "onConnectRequest.connectSocket": {
                 "funcName": "gpii.pcp.connectSocket",
-                "args": ["{that}", "{prefsEditor}.options.domain", "{prefsEditor}.options.port", "{prefsEditor}.options.updateURL"]
+                "args": ["{that}", "{prefsEditor}.socketURL"]
             },
             "onConnectRequest.bindErrorHandlers": {
                 "funcName": "gpii.pcp.bindErrorHandlers",
@@ -57,8 +57,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         that.socket.emit("message", savedSettings, fluid.log);
     };
 
-    gpii.pcp.connectSocket = function (that, domain, port, route) {
-        var url = fluid.stringTemplate("%domain:%port/%route", {domain: domain, port: port, route: route});
+    gpii.pcp.connectSocket = function (that, url) {
         that.socket = io.connect(url);
 
         that.socket.on("connect", function () {
