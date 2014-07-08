@@ -37,10 +37,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "hide",
                     "args": []
                 },
-                "onSave.updateMessage": {
+                "onSave.updateStatus": {
                     "this": "{that}.dom.messageLineLabel",
                     "method": "text",
-                    "args": ["{that}.msgLookup.onPCPUpdateMessage"]
+                    "args": ["{that}.msgLookup.onPCPUpdateStatus"]
                 },
                 "onReady.fullEditorLink": {
                     "this": "{that}.dom.fullEditorLink",
@@ -59,7 +59,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     listener: "{that}.applier.requestChange",
                     args: ["userLoggedIn", false]
                 },
-                "onLogout.updateMessage": {
+                "onLogout.updateStatus": {
                     "this": "{that}.dom.messageLineLabel",
                     "method": "text",
                     "args": ["{that}.msgLookup.onLogoutMessage"]
@@ -119,7 +119,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "show",
                     "args": []
                 },
-                "onSettingChanged.updateMessage": {
+                "onSettingChanged.updateStatus": {
                     "this": "{that}.dom.messageLineLabel",
                     "method": "text",
                     "args": ["{that}.msgLookup.onSettingChangedMessage"]

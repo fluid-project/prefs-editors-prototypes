@@ -1,6 +1,6 @@
 {
     "onSettingChangedMessage": "Geändert Einstellungen",
-    "onPCPUpdateMessage": "Einstellungen gespeichert und angewendet",
+    "onPCPUpdateStatus": "Einstellungen gespeichert und angewendet",
     "onLogoutMessage": "Loggt",
     "myPreferencesLabelText": "meine bevorzugten Einstellungen",
     "allPreferencesLabelText": "alle bevorzugten Einstellungen",

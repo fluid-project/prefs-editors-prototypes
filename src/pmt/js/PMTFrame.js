@@ -86,7 +86,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.userStatusBar",
                     "method": "slideUp"
                 },
-                "onLogout.updateMessage": {
+                "onLogout.updateStatus": {
                     "this": "{that}.dom.messageLineLabel",
                     "method": "text",
                     "args": ["{that}.msgLookup.onLogoutMessage"]

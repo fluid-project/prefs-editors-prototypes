@@ -1,6 +1,6 @@
 {
     "onSettingChangedMessage": "ρυθμίσεις Τροποποιημένο",
-    "onPCPUpdateMessage": "Αποθηκευμένες ρυθμίσεις και Εφαρμοσμένης",
+    "onPCPUpdateStatus": "Αποθηκευμένες ρυθμίσεις και Εφαρμοσμένης",
     "onLogoutMessage": "αποσυνδεθεί",
     "myPreferencesLabelText": "οι προτιμήσεις μου",
     "allPreferencesLabelText": "προτιμήσεις",
