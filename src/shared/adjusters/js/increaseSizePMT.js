@@ -23,7 +23,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         protoTree: {
             increaseSizeHeader: {messagekey: "increaseSizeHeader"},
-            appearanceHeading: {messagekey: "appearance"}
+            appearanceHeading: {messagekey: "appearance"},
+            magnifierHeading:  {messagekey: "magnifier"}            
         },
         selectors: {
             magnifierControlsContainer: ".gpiic-prefsEditor-magnifier-container",

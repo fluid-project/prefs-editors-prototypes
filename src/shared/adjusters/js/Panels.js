@@ -113,7 +113,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
-            visualAlternativesMoreLessLabel: ".gpiic-visualAlternativesMoreLess-label",
+            visualAlternativesMoreLessLabel: ".gpiic-visualAlternativesMoreLess-label"
         },
         selectorsToIgnore: ["visualAlternativesMoreLessIcon"],
         protoTree: {
