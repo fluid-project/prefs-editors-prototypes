@@ -44,6 +44,6 @@
     "cancel": "Abbrechen",
     "onText": "AN",
     "offText": "AUS",
-    "moreSpeakTextPreferences": "more speak text preferences",
-    "lessSpeakTextPreferences": "less speak text preferences"
+    "moreSpeakTextPreferences": "mehr Einstellungen für die Vorlesefunktion",
+    "lessSpeakTextPreferences": "weniger Einstellungen für die Vorlesefunktion"
 }
