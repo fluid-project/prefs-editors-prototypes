@@ -43,5 +43,7 @@
     "resetAndApply": "Αρχικοποίηση και εφαρμογή",
     "cancel": "Ακύρωση",
     "onText": "ON",
-    "offText": "OFF"
+    "offText": "OFF",
+    "moreSpeakTextPreferences": "περισσότερες ρυθμίσεις για ανάγνωση κειμένου",
+    "lessSpeakTextPreferences": "λιγότερες ρυθμίσεις για ανάγνωση κειμένου"
 }

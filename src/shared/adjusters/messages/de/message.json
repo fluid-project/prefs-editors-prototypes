@@ -43,5 +43,7 @@
     "resetAndApply": "Zurücksetzen und anwenden",
     "cancel": "Abbrechen",
     "onText": "AN",
-    "offText": "AUS"
+    "offText": "AUS",
+    "moreSpeakTextPreferences": "more speak text preferences",
+    "lessSpeakTextPreferences": "less speak text preferences"
 }

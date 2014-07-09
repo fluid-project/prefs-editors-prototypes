@@ -113,7 +113,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         selectors: {
-            visualAlternativesMoreLessLabel: ".gpiic-visualAlternativesMoreLess-label"
+            visualAlternativesMoreLessLabel: ".gpiic-visualAlternativesMoreLess-label",
         },
         selectorsToIgnore: ["visualAlternativesMoreLessIcon"],
         protoTree: {
@@ -137,10 +137,23 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "onDomBind.addListener": {
                 "listener": "{that}.applier.modelChanged.addListener",
                 "args": ["visualAlternativesMoreLess", "{that}.toggleVisualAlternativesMoreLess"]
+            },
+            "onDomBind.setAriaLabel": {
+                "this": "{that}.dom.visualAlternativesMoreLessLabel",
+                "method": "attr",
+                "args": ["aria-label", "{that}.setVisualAlternativesAriaMoreLess"]
             }
         },
         invokers: {
-            toggleVisualAlternativesMoreLess: {
+            setVisualAlternativesAriaMoreLess: {
+                "funcName": "gpii.visualAlternativesAriaMoreLess",
+                "args": ["{that}.model.visualAlternativesMoreLess",
+                         "{that}.msgLookup.moreSpeakTextPreferences",
+                         "{that}.msgLookup.lessSpeakTextPreferences"
+                        ],
+                "dynamic": true
+            },
+        	toggleVisualAlternativesMoreLess: {
                 "funcName": "gpii.visualAlternativesMoreLessConfiguration",
                 "args": ["{that}.model.visualAlternativesMoreLess",
                          "{that}.dom.visualAlternativesMoreLessLabel",
@@ -156,6 +169,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         }
     });
+
+    gpii.visualAlternativesAriaMoreLess = function (modelValue, more, less) {
+        var newText = modelValue ? less : more;
+        return newText;  
+    };
 
     gpii.visualAlternativesMoreLessConfiguration = function (modelValue, label, more, less) {
         var newText = modelValue ? less : more;

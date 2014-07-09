@@ -23,8 +23,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         protoTree: {
             increaseSizeHeader: {messagekey: "increaseSizeHeader"},
-            appearanceHeading: {messagekey: "appearance"},
-            magnifierHeading:  {messagekey: "magnifier"}
+            appearanceHeading: {messagekey: "appearance"}
         },
         selectors: {
             magnifierControlsContainer: ".gpiic-prefsEditor-magnifier-container",
@@ -34,6 +33,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         selectorsToIgnore: ["magnifierControlsContainer", "elementToFocusOnExpansion"],
         listeners: {
+            "afterRender.setAriaLabel": {
+                "this": "{that}.dom.moreLess",
+                "method": "attr",
+                "args": ["aria-label", "{that}.setMagnifierAriaMoreLess"]
+            },
             "afterRender.setExpandedAriaLabel": {
                 "this": "{that}.dom.expandingAdjusters",
                 "method": "attr",
@@ -63,8 +67,22 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 args: ["{that}.dom.magnifierControlsContainer", "{that}.model.gpii_primarySchema_magnifierEnabled"],
                 dynamic: true
 
+            },
+            setMagnifierAriaMoreLess: {
+                "funcName": "gpii.magnifierAriaMoreLess",
+                "args": ["{that}.model.expandingAdjustersEnabledSwitch",
+                         "{that}.msgLookup.moreMagnifierPreferences",
+                         "{that}.msgLookup.lessMagnifierPreferences"
+                        ],
+                "dynamic": true
             }
         }
     });
 
+    gpii.magnifierAriaMoreLess = function (modelValue, more, less) {
+        var newText = modelValue ? less : more;
+        return newText;  
+    };
+
+    
 })(jQuery, fluid);

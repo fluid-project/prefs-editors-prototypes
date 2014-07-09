@@ -4,5 +4,7 @@
     "appearance": "Aussehen",
     "magnifier": "Lupe",
     "additionalMagnifierAdjusters": "Erweiterte Einstellungen für die Bildschirmlupe",
-    "additionalVisualAdjusters": "Erweiterte Einstellungen für den Screenreader"
+    "additionalVisualAdjusters": "Erweiterte Einstellungen für den Screenreader",
+    "moreMagnifierPreferences": "more magnifier preferences",
+    "lessMagnifierPreferences": "less magnifier preferences"
 }

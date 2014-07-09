@@ -4,5 +4,7 @@
     "appearance": "apariencia",
     "magnifier": "magnificador",
     "additionalMagnifierAdjusters": "más ajustadores de lupa",
-    "additionalVisualAdjusters": "más ajustadores de lectores de pantalla"
+    "additionalVisualAdjusters": "más ajustadores de lectores de pantalla",
+    "moreMagnifierPreferences": "more magnifier preferences",
+    "lessMagnifierPreferences": "less magnifier preferences"
 }
