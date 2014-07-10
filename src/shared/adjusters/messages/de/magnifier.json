@@ -4,7 +4,7 @@
     "magnifierOFF": "AUS",
     "magnifierMAX": "Maximum",
     "magnifierUnit" : "%",
-    "magnificationPlus" : "plus",
-    "magnificationMinus" : "minus"
+    "textPlus" : "plus",
+    "textMinus" : "minus"
    
 }

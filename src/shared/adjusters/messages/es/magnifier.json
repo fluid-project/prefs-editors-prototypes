@@ -4,6 +4,6 @@
     "magnifierOFF": "Apagado",
     "magnifierMAX": "Máximo",
     "magnifierUnit" : "%",
-    "magnificationPlus" : "más",
-    "magnificationMinus" : "menos"
+    "textPlus" : "más",
+    "textMinus" : "menos"
 }
