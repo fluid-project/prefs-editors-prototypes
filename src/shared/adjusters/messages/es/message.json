@@ -44,6 +44,6 @@
     "cancel": "Cancelar",
     "onText": "ON",
     "offText": "OFF",
-    "moreSpeakTextPreferences": "more speak text preferences",
-    "lessSpeakTextPreferences": "less speak text preferences"
+    "moreSpeakTextPreferences": "Más preferencias de lector de texto",
+    "lessSpeakTextPreferences": "Menos preferencias de lector de texto"
 }
