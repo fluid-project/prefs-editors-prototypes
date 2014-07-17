@@ -1449,16 +1449,16 @@ input[type=checkbox] + label.gpii-checkbox-label {
 label.gpii-preset-button-label {
     z-index: 2;
     position: absolute;
-    padding-left: 90px;
+    padding-left: 100px;
     padding-top: 31px;
     color: white;
     background-color: rgb(85, 98, 115);
     border: 1px solid rgb(85, 98, 115);
-    width: 444px;
+    width: 434px;
     height: 59px;
     text-align: left;
     font-family: 'Roboto Slab', serif;
-    font-size: 1.4em!important;
+    font-size: 1.2em!important;
 }
 
 .gpii-checkbox-label-text {
@@ -1540,4 +1540,35 @@ label.gpii-preset-button-label {
 
 .gpii-focus {
     outline: 2px solid black !important;
+}
+
+.universalLanguage > .gpii-dropdown, .textHighlighting  > .gpii-dropdown, .screenReaderLanguage > .gpii-dropdown {
+    width: 14em;
+    overflow: hidden;
+    padding-top: 0.5em; 
+    padding-bottom: 0.5em;
+    font-size: 1em;
+}
+
+h3 {
+    margin-bottom: 5px;
+}
+
+h3.gpii-increaseSize-label{
+	font-size: 1.2em;
+}
+
+h3 > .gpii-speakText-label, h3 > .gpii-label {
+    font-size: 1.2em !important;
+    font-weight: bold;
+    padding: 0px;
+    margin-bottom: 5px;
+}
+
+h3.gpii-label {
+    font-size: 1.25em !important;
+    font-weight: bold;
+    padding: 0px;
+    margin-bottom: 5px;
+    margin-left: 0px !important;
 }
