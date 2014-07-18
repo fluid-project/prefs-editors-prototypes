@@ -146,7 +146,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         invokers: {
             setVisualAlternativesAriaMoreLess: {
-                "funcName": "gpii.visualAlternativesAriaMoreLess",
+                "funcName": "gpii.ariaUtility.setAriaMoreLess",
                 "args": ["{that}.model.visualAlternativesMoreLess",
                          "{that}.msgLookup.moreSpeakTextPreferences",
                          "{that}.msgLookup.lessSpeakTextPreferences"
@@ -169,11 +169,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         }
     });
-
-    gpii.visualAlternativesAriaMoreLess = function (modelValue, more, less) {
-        var newText = modelValue ? less : more;
-        return newText;  
-    };
 
     gpii.visualAlternativesMoreLessConfiguration = function (modelValue, label, more, less) {
         var newText = modelValue ? less : more;

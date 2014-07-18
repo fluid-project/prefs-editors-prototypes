@@ -70,7 +70,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
             },
             setMagnifierAriaMoreLess: {
-                "funcName": "gpii.magnifierAriaMoreLess",
+                "funcName": "gpii.ariaUtility.setAriaMoreLess",
                 "args": ["{that}.model.expandingAdjustersEnabledSwitch",
                          "{that}.msgLookup.moreMagnifierPreferences",
                          "{that}.msgLookup.lessMagnifierPreferences"
@@ -79,11 +79,5 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         }
     });
-
-    gpii.magnifierAriaMoreLess = function (modelValue, more, less) {
-        var newText = modelValue ? less : more;
-        return newText;  
-    };
-
     
 })(jQuery, fluid);

@@ -37,5 +37,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.ariaUtility.setAriaChecked = function (container, checked) {
         container.attr("aria-checked", checked);
     };
+    
+    gpii.ariaUtility.setAriaMoreLess = function (modelValue, more, less) {
+        var newText = modelValue ? less : more;
+        return newText;  
+    };
+
 
 })(jQuery, fluid);
