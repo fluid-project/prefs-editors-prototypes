@@ -145,15 +145,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         },
         invokers: {
-            setVisualAlternativesAriaMoreLess: {
+             setVisualAlternativesAriaMoreLess: {
                 "funcName": "gpii.ariaUtility.setAriaMoreLess",
                 "args": ["{that}.model.visualAlternativesMoreLess",
                          "{that}.msgLookup.moreSpeakTextPreferences",
                          "{that}.msgLookup.lessSpeakTextPreferences"
                         ],
                 "dynamic": true
-            },
-        	toggleVisualAlternativesMoreLess: {
+             },
+        	 toggleVisualAlternativesMoreLess: {
                 "funcName": "gpii.visualAlternativesMoreLessConfiguration",
                 "args": ["{that}.model.visualAlternativesMoreLess",
                          "{that}.dom.visualAlternativesMoreLessLabel",
@@ -161,12 +161,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                          "{that}.msgLookup.less"
                     ],
                 "dynamic": true
-            },
-            visualAlternativesMoreLessRequestChange: {
+             },
+             visualAlternativesMoreLessRequestChange: {
                 "funcName": "gpii.visualAlternativesMoreLessRequestChange",
                 "args": ["{that}"],
                 "dynamic": true
-            }
+             }
         }
     });
 
