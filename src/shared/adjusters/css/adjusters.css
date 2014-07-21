@@ -1572,3 +1572,8 @@ h3.gpii-label {
     margin-bottom: 5px;
     margin-left: 0px !important;
 }
+
+h1.gpii-prefsEditor-headerTitleContrast, h1.gpii-prefsEditor-headerTitleIncreaseSize {
+    font-size: 1em;
+    padding: 0px;
+}
