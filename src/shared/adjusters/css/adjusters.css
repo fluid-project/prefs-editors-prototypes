@@ -1347,7 +1347,12 @@ input[type="radio"] + label {
     Style for Visual Alternatives, Language & Volume
 */
 .gpii-spacingEnsurer {
-    height: 65px;
+    height: 75px;
+    width: 0px;
+}
+
+.gpii-spacingEnsurer-big {
+    height: 100px;
     width: 0px;
 }
 

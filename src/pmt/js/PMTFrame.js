@@ -159,6 +159,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.notification",
                     "method": "hide"
                 },
+                "onReady.hideMessageLine": {
+                    "this": "{that}.dom.messageLineLabel",
+                    "method": "hide"
+                },
                 // hide the logout link if a user is not logged in
                 "onReady.hideUserStatusBarIfNotLoggedIn": {
                     "listener": "{that}.hideUserStatusBarIfNotLoggedIn"
@@ -269,6 +273,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         });
         // also set the token text
         that.dom.locate("notificationMessagePart2").text(userToken);
+        that.dom.locate("messageLineLabel").show();
     };
 
     gpii.pmt.hideSaveNotification = function (that) {
