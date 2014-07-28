@@ -452,6 +452,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "onDomBind.setAriaChecked": {
                 listener: "{that}.setAriaChecked",
                 args: "{that}.model.speakTutorialMessages"
+            },
+            "onDomBind.setAriaLabel": {
+                "this": "{that}.dom.activatableLabelsSelector",
+                "method": "attr",
+                "args": ["aria-label", "{that}.msgLookup.speakTutorialMessagesLabel"]
             }
         },
         modelListeners: {
@@ -540,6 +545,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "onDomBind.setAriaChecked": {
                 listener: "{that}.setAriaChecked",
                 args: "{that}.model.wordEcho"
+            },
+            "onDomBind.setAriaLabel": {
+                "this": "{that}.dom.activatableLabelsSelector",
+                "method": "attr",
+                "args": ["aria-label", "{that}.msgLookup.wordEchoLabel"]
             }
         },
         modelListeners: {

@@ -15,7 +15,14 @@ var fluid_1_5 = fluid_1_5 || {};
     fluid.registerNamespace("gpii.adjuster");
 
     fluid.defaults("gpii.adjuster.textfieldStepper", {
-        gradeNames: ["gpii.textfieldStepper", "fluid.prefs.modelRelay", "autoInit"]
+        gradeNames: ["gpii.textfieldStepper", "fluid.prefs.modelRelay", "fluid.prefs.msgLookup", "autoInit"],
+        members: {
+            messageResolver: "{prefsEditorLoader}.msgResolver"
+        },
+        strings: {
+            plusText: "{that}.msgLookup.textPlus",
+            minusText: "{that}.msgLookup.textMinus"
+        }
     });
 
  })(jQuery, fluid_1_5);

@@ -43,5 +43,7 @@
     "resetAndApply": "Αρχικοποίηση και εφαρμογή",
     "cancel": "Ακύρωση",
     "onText": "ON",
-    "offText": "OFF"
+    "offText": "OFF",
+    "textPlus" : "αύξηση",
+    "textMinus" : "μείωση"
 }
