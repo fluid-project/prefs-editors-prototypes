@@ -34,6 +34,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         selectorsToIgnore: ["magnifierControlsContainer", "elementToFocusOnExpansion"],
         listeners: {
+            "afterRender.setAriaLabel": {
+                "this": "{that}.dom.moreLess",
+                "method": "attr",
+                "args": ["aria-label", "{that}.setMagnifierAriaMoreLess"]
+            },
             "afterRender.setExpandedAriaLabel": {
                 "this": "{that}.dom.expandingAdjusters",
                 "method": "attr",
@@ -63,8 +68,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 args: ["{that}.dom.magnifierControlsContainer", "{that}.model.gpii_primarySchema_magnifierEnabled"],
                 dynamic: true
 
+            },
+            setMagnifierAriaMoreLess: {
+                "funcName": "gpii.ariaUtility.setAriaMoreLess",
+                "args": ["{that}.model.expandingAdjustersEnabledSwitch",
+                         "{that}.msgLookup.moreMagnifierPreferences",
+                         "{that}.msgLookup.lessMagnifierPreferences"
+                        ],
+                "dynamic": true
             }
         }
     });
-
+    
 })(jQuery, fluid);

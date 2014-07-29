@@ -44,6 +44,6 @@
     "cancel": "Ακύρωση",
     "onText": "ON",
     "offText": "OFF",
-    "textPlus" : "αύξηση",
-    "textMinus" : "μείωση"
+    "moreSpeakTextPreferences": "περισσότερες ρυθμίσεις για ανάγνωση κειμένου",
+    "lessSpeakTextPreferences": "λιγότερες ρυθμίσεις για ανάγνωση κειμένου"
 }

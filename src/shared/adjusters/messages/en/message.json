@@ -44,6 +44,6 @@
     "cancel": "Cancel",
     "onText": "ON",
     "offText": "OFF",
-    "textPlus" : "plus",
-    "textMinus" : "minus"
+    "moreSpeakTextPreferences": "more speak text preferences",
+    "lessSpeakTextPreferences": "less speak text preferences"
 }

@@ -137,9 +137,22 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "onDomBind.addListener": {
                 "listener": "{that}.applier.modelChanged.addListener",
                 "args": ["visualAlternativesMoreLess", "{that}.toggleVisualAlternativesMoreLess"]
+            },
+            "onDomBind.setAriaLabel": {
+                "this": "{that}.dom.visualAlternativesMoreLessLabel",
+                "method": "attr",
+                "args": ["aria-label", "{that}.setVisualAlternativesAriaMoreLess"]
             }
         },
         invokers: {
+            setVisualAlternativesAriaMoreLess: {
+                "funcName": "gpii.ariaUtility.setAriaMoreLess",
+                "args": ["{that}.model.visualAlternativesMoreLess",
+                         "{that}.msgLookup.moreSpeakTextPreferences",
+                         "{that}.msgLookup.lessSpeakTextPreferences"
+                        ],
+                "dynamic": true
+            },
             toggleVisualAlternativesMoreLess: {
                 "funcName": "gpii.visualAlternativesMoreLessConfiguration",
                 "args": ["{that}.model.visualAlternativesMoreLess",
