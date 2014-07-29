@@ -3,6 +3,8 @@
     "previewText": "This is how most text will appear.",
     "appearance": "appearance",
     "magnifier": "magnifier",
-    "additionalMagnifierAdjusters": "additional magnifier adjusters",
-    "additionalVisualAdjusters": "additional visual adjusters"
+    "additionalMagnifierAdjusters": "additional magnifier preferences",
+    "additionalVisualAdjusters": "additional visual preferences",
+    "moreMagnifierPreferences": "more magnifier preferences",
+    "lessMagnifierPreferences": "less magnifier preferences"
 }

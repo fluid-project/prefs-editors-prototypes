@@ -118,6 +118,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "attr",
                     "args": ["value", "{that}.msgLookup.saveAndApplyText"]
                 },
+                
+                "onReady.setSaveAndApplyButtonAriaLabel": {
+                    "this": "{that}.dom.saveAndApplyButtonLabel",
+                    "method": "attr",
+                    "args": ["aria-label", "{that}.msgLookup.saveAndApplyText"]
+                },
+
                 "onReady.setNotificationMessagePart1": {
                     "this": "{that}.dom.notificationMessagePart1",
                     "method": "text",

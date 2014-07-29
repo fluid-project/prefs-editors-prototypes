@@ -1546,3 +1546,39 @@ label.gpii-preset-button-label {
 .gpii-focus {
     outline: 2px solid black !important;
 }
+
+.universalLanguage > .gpii-dropdown, .textHighlighting  > .gpii-dropdown, .screenReaderLanguage > .gpii-dropdown {
+    width: 14em;
+    overflow: hidden;
+    padding-top: 0.5em; 
+    padding-bottom: 0.5em;
+    font-size: 1em;
+}
+
+h3 {
+    margin-bottom: 5px;
+}
+
+h3.gpii-increaseSize-label{
+	font-size: 1.2em;
+}
+
+h3 > .gpii-speakText-label, h3 > .gpii-label {
+    font-size: 1.2em !important;
+    font-weight: bold;
+    padding: 0px;
+    margin-bottom: 5px;
+}
+
+h3.gpii-label {
+    font-size: 1.25em !important;
+    font-weight: bold;
+    padding: 0px;
+    margin-bottom: 5px;
+    margin-left: 0px !important;
+}
+
+h1.gpii-prefsEditor-headerTitleContrast, h1.gpii-prefsEditor-headerTitleIncreaseSize {
+    font-size: 1em;
+    padding: 0px;
+}

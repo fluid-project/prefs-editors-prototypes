@@ -43,5 +43,7 @@
     "resetAndApply": "Limpiar y aplicar",
     "cancel": "Cancelar",
     "onText": "ON",
-    "offText": "OFF"
+    "offText": "OFF",
+    "moreSpeakTextPreferences": "Más preferencias de lector de texto",
+    "lessSpeakTextPreferences": "Menos preferencias de lector de texto"
 }

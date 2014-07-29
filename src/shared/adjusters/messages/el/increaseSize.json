@@ -4,5 +4,7 @@
     "appearance": "εμφάνιση",
     "magnifier": "μεγεθυντικός φακός",
     "additionalMagnifierAdjusters": "περισσότερες ρυθμίσεις μεγέθυνσης",
-    "additionalVisualAdjusters": "περισσότερες οπτικές ρυθμίσεις"
+    "additionalVisualAdjusters": "περισσότερες οπτικές ρυθμίσεις",
+    "moreMagnifierPreferences": "περισσότερες ρυθμίσεις μεγέθυνσης",
+    "lessMagnifierPreferences": "λιγότερες ρυθμίσεις μεγένθυσης"
 }
