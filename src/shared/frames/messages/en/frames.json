@@ -1,7 +1,7 @@
 {
     "onSettingChangedMessage": "Preferences modified",
     "onSaveAndApplyStatus": "Preferences saved and applied",
-    "onLogoutMessage": "Logged Out",
+    "onLogoutMessage": "Logged out",
     "myPreferencesLabelText": "my preferences",
     "allPreferencesLabelText": "all preferences",
     "saveAndApplyText": "save & apply",
