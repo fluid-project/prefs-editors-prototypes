@@ -1,6 +1,6 @@
 {
     "onSettingChangedMessage": "Ajustes Modificados",
-    "onSaveAndApplyStatus": "Ajustes Guardados y Aplicada",
+    "onSaveAndApplyStatus": "Preferencias guardan y se aplican",
     "onLogoutMessage": "Cerrado La Sesión",
     "myPreferencesLabelText": "Mis preferencias",
     "allPreferencesLabelText": "Todas las preferencias",
