@@ -91,10 +91,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "text",
                     "args": ["{that}.msgLookup.onLogoutMessage"]
                 },
-                "onLogout.hideMessageLine": {
-                    "this": "{that}.dom.messageLineLabel",
-                    "method": "hide"
-                },
                 // clear href of quick editor link when we log the user out
                 "onLogout.clearQuickEditorLinkHref": {
                     "listener": "{that}.clearQuickEditorLinkHref"
