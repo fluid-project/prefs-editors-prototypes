@@ -52,6 +52,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "onDomBind.setAriaChecked": {
                 listener: "{that}.setAriaChecked",
                 args: "{that}.model.value"
+            },
+            "onDomBind.setAriaLabel": {
+                "this": "{that}.dom.activatableLabelsSelector",
+                "method": "attr",
+                "args": ["aria-label", "{that}.msgLookup.showCrosshairs"]
             }
         },
         modelListeners: {

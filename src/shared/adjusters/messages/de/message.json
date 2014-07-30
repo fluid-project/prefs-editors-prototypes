@@ -43,5 +43,7 @@
     "resetAndApply": "Zurücksetzen und anwenden",
     "cancel": "Abbrechen",
     "onText": "AN",
-    "offText": "AUS"
+    "offText": "AUS",
+    "moreSpeakTextPreferences": "mehr Einstellungen für die Vorlesefunktion",
+    "lessSpeakTextPreferences": "weniger Einstellungen für die Vorlesefunktion"
 }

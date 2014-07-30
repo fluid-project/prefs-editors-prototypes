@@ -20,7 +20,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             },
             events: {
                 onLogout: null,
-                onRequestPageTransition: null,
                 onSettingChanged: null
             },
             model: {
@@ -42,15 +41,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "text",
                     "args": ["{that}.msgLookup.onPCPUpdateStatus"]
                 },
-                "onReady.fullEditorLink": {
+                "onReady.setFullEditorLink": {
                     "this": "{that}.dom.fullEditorLink",
-                    "method": "click",
-                    "args": ["{that}.events.onRequestPageTransition.fire"]
-                },
-                "onRequestPageTransition.save": "{that}.saveSettings",
-                "onRequestPageTransition.goToPMT": {
-                    "funcName": "fluid.set",
-                    "args": [window, "location.href", "{prefsEditorLoader}.options.pmtUrl"]
+                    "method": "attr",
+                    "args": ["href", "{prefsEditorLoader}.options.pmtUrl"]
                 },
                 "onReset.triggerLogoutEvent": {
                     "listener": "{that}.events.onLogout.fire"
@@ -86,11 +80,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.fullEditorLink",
                     "method": "text",
                     "args": ["{that}.msgLookup.fullEditorText"]
-                },
-                "onReady.fullEditorLinkPreventDefault": {
-                    "this": "{that}.dom.fullEditorLink",
-                    "method": "click",
-                    "args": ["{that}.preventDefaultLinkEvent"]
                 },
                 "onReady.setLogoutLinkText": {
                     "this": "{that}.dom.logoutLink",
