@@ -150,6 +150,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "text",
                     "args": ["{that}.msgLookup.notificationConfirmButton"]
                 },
+                "onReady.setNotificationConfirmButtonAriaLabel": {
+                    "this": "{that}.dom.notificationConfirmButton",
+                    "method": "attr",
+                    "args": ["aria-label", "{that}.stringBundle.notificationAriaLabel"]
+                },
                 "onReady.setLogoutLinkText": {
                     "this": "{that}.dom.logoutLink",
                     "method": "text",
@@ -282,6 +287,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             closeOnEscape: false,
             position: { my: "bottom", at: "bottom", of: ".gpii-prefsEditor-preferencesContainer" }
         });
+        
+        /*
+         * FIXME: Dirty fix for triggering the "got it" click with the enter key.
+         * jQuery UI Dialog seems to be lacking certain accessibility features.
+         * This is needed for users that use the screen reader to navigate through the tool.
+         */
+        $('body').on('keypress', '.ui-dialog', function(event) {
+            if (event.keyCode === $.ui.keyCode.ENTER) {
+                that.dom.locate("confirmButton").click();
+            }
+        });
+        
         // also set the token text
         that.dom.locate("notificationMessagePart2").text(userToken);
         that.dom.locate("messageLineLabel").show();
