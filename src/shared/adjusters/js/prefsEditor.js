@@ -39,7 +39,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onSave.updateStatus": {
                     "this": "{that}.dom.messageLineLabel",
                     "method": "text",
-                    "args": ["{that}.msgLookup.onPCPUpdateStatus"]
+                    "args": ["{that}.msgLookup.onSaveAndApplyStatus"]
                 },
                 "onReady.setFullEditorLink": {
                     "this": "{that}.dom.fullEditorLink",

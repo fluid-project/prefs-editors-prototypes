@@ -1,6 +1,6 @@
 {
     "onSettingChangedMessage": "Settings Modified",
-    "onPCPUpdateStatus": "Settings Saved and Applied",
+    "onSaveAndApplyStatus": "Settings Saved and Applied",
     "onLogoutMessage": "Logged Out",
     "myPreferencesLabelText": "my preferences",
     "allPreferencesLabelText": "all preferences",

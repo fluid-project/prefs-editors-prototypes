@@ -201,7 +201,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 showSaveMessage: {
                     "this": "{that}.dom.messageLineLabel",
                     "method": "text",
-                    "args": ["{that}.msgLookup.preferencesSavedToUSB"]
+                    "args": ["{that}.msgLookup.onSaveAndApplyStatus"]
                 },
                 showUserStatusBar: {
                     "this": "{that}.dom.userStatusBar",
