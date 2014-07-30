@@ -91,6 +91,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "text",
                     "args": ["{that}.msgLookup.onLogoutMessage"]
                 },
+                "onLogout.hideMessageLine": {
+                    "this": "{that}.dom.messageLineLabel",
+                    "method": "hide"
+                },
                 // clear href of quick editor link when we log the user out
                 "onLogout.clearQuickEditorLinkHref": {
                     "listener": "{that}.clearQuickEditorLinkHref"
@@ -164,6 +168,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 // simply hide notification onReady
                 "onReady.prepareSaveNotification": {
                     "this": "{that}.dom.notification",
+                    "method": "hide"
+                },
+                "onReady.hideMessageLine": {
+                    "this": "{that}.dom.messageLineLabel",
                     "method": "hide"
                 },
                 // hide the logout link if a user is not logged in
@@ -276,6 +284,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         });
         // also set the token text
         that.dom.locate("notificationMessagePart2").text(userToken);
+        that.dom.locate("messageLineLabel").show();
     };
 
     gpii.pmt.hideSaveNotification = function (that) {
