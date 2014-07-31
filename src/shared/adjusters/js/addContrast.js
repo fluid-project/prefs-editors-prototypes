@@ -18,13 +18,22 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.adjuster.addContrast", {
         gradeNames: ["fluid.prefs.compositePanel", "autoInit"],
         selectors: {
-            panelLabel: ".gpiic-headerTitle"
+            panelLabel: ".gpiic-headerTitle",
+            contrastSection: ".gpiic-contrast-section"
         },
+        selectorsToIgnore: ["contrastSection"],
         protoTree: {
             panelLabel: {messagekey: "changeContrast"}
         },
         members: {
             messageResolver: "{prefsEditorLoader}.msgResolver"
+        },
+        listeners: {
+        	"afterRender.setSectionName": {
+                "this": "{that}.dom.contrastSection",
+                "method": "attr",
+                "args": ["aria-label", "{that}.msgLookup.changeContrast"]
+            }
         }
     });
 })(jQuery, fluid);

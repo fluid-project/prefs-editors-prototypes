@@ -15,13 +15,22 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.panel.languageCollectivePanel", {
         gradeNames: ["fluid.prefs.compositePanel", "autoInit"],
         selectors: {
-            languageHeader: ".gpii-languagePresetButton-label"
+            languageHeader: ".gpii-languagePresetButton-label",
+            languageSection: ".gpiic-language-section"
         },
+        selectorsToIgnore: ["languageSection"],
         protoTree: {
             languageHeader: {messagekey: "languagePresetButtonLabel"}
         },
         members: {
             messageResolver: "{prefsEditorLoader}.msgResolver"
+        },
+        listeners: {
+        	"afterRender.setSectionName": {
+                "this": "{that}.dom.languageSection",
+                "method": "attr",
+                "args": ["aria-label", "{that}.msgLookup.languagePresetButtonLabel"]
+            }
         }
     });
 
