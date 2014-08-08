@@ -105,11 +105,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "addClass",
                     "args": ["gpii-disabled"]
                 },
-                "onReady.fullEditorLinkPreventDefault": {
-                    "this": "{that}.dom.fullEditorLink",
-                    "method": "click",
-                    "args": ["{that}.preventDefaultLinkEvent"]
-                },
                 "onReady.setApplyButtonButtonText": {
                     "this": "{that}.dom.applyButton",
                     "method": "attr",
