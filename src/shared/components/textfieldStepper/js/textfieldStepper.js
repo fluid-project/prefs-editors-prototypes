@@ -122,9 +122,16 @@ var fluid_1_5 = fluid_1_5 || {};
         valueField.attr("autocomplete", "off");
         valueField.attr("aria-labelledby", gpii.ariaUtility.getLabelId(labelledbyDomElement));
         that.alterValueAria();
-
-        that.locate("increment").attr("role", "button");
-        that.locate("decrement").attr("role", "button");
+        
+        that.locate("increment").attr({
+            "role": "button",
+            "aria-label": that.options.strings.plusText
+        });
+        that.locate("decrement").attr({
+            "role": "button",
+            "aria-label": that.options.strings.minusText
+        });
+        
     };
 
  })(jQuery, fluid_1_5);

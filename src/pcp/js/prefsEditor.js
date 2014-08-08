@@ -39,7 +39,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 onLogin: null,
                 onLogout: null,
                 onApply: null,
-                onRequestPageTransition: null,
                 onSettingChanged: null
             },
             model: {
@@ -64,15 +63,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "click",
                     "args": ["{that}.events.onApply.fire"]
                 },
-                "onReady.fullEditorLink": {
+                "onReady.setFullEditorLink": {
                     "this": "{that}.dom.fullEditorLink",
-                    "method": "click",
-                    "args": ["{that}.events.onRequestPageTransition.fire"]
-                },
-                "onRequestPageTransition.save": "{that}.saveSettings",
-                "onRequestPageTransition.goToPMT": {
-                    "funcName": "fluid.set",
-                    "args": [window, "location.href", "{prefsEditorLoader}.options.pmtUrl"]
+                    "method": "attr",
+                    "args": ["href", "{prefsEditorLoader}.options.pmtUrl"]
                 },
                 "onLogin.setUserLoggedIn": {
                     listener: "{that}.applier.requestChange",
