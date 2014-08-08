@@ -68,29 +68,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "attr",
                     "args": ["href", "{prefsEditorLoader}.options.pmtUrl"]
                 },
-                "onLogin.setUserLoggedIn": {
-                    listener: "{that}.applier.requestChange",
-                    args: ["userLoggedIn", true]
-                },
-                "onLogin.showSaveMessage": {
-                    "this": "{that}.dom.messageLineLabel",
-                    "method": "text",
-                    "args": ["{that}.msgLookup.preferencesModified"]
-                },
-                "onLogin.showUserStatusBar": {
-                    "listener": "{that}.showUserStatusBar"
-                },
                 "onReset.triggerLogoutEvent": {
                     "listener": "{that}.events.onLogout.fire"
                 },
                 "onLogout.setUserLoggedIn": {
                     listener: "{that}.applier.requestChange",
                     args: ["userLoggedIn", false]
-                },
-                "onLogout.clearMessage": {
-                    "this": "{that}.dom.messageLineLabel",
-                    "method": "text",
-                    "args": [""]
                 },
                 "onLogout.gpiiLogout": {
                     listener: "{gpiiSession}.logout"
@@ -115,11 +98,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "click",
                     "args": ["{that}.preventDefaultLinkEvent"]
                 },
-                "onReady.setFullEditorLinkText": {
-                    "this": "{that}.dom.fullEditorLink",
-                    "method": "text",
-                    "args": ["{that}.msgLookup.fullEditorText"]
-                },
                 "onReady.setLogoutLinkText": {
                     "this": "{that}.dom.logoutLink",
                     "method": "text",
@@ -129,6 +107,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.logoutLink",
                     "method": "click",
                     "args": ["{that}.events.onLogout.fire"]
+                },
+                "onReady.setFullEditorLinkText": {
+                    "this": "{that}.dom.fullEditorLink",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.fullEditorText"]
                 },
                 "onReady.bindModelChangedListener": {
                     // used instead of the declarative syntax so that
@@ -144,15 +127,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }
             },
             invokers: {
-                showUserStatusBar: {
-                    "this": "{that}.dom.userStatusBar",
-                    "method": "slideDown"
-                },
-                saveSettings: {
-                    "func": "{gpiiStore}.set",
-                    "args": "{that}.model",
-                    "dynamic": true
-                },
                 preventDefaultLinkEvent: {
                     "funcName": "gpii.eventUtility.preventDefaultEvent"
                 }
@@ -161,15 +135,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 applyButton: ".gpiic-apply",
                 applyButtonContainer: ".gpiic-applyButtonContainer",
                 cloudIcon: ".gpii-pcp-cloudIcon",
-                messageLineLabel: ".gpiic-prefsEditor-messageLine",
                 fullEditorLink: ".gpiic-prefsEditor-fullEditorLink",
                 logoutLink: ".gpiic-prefsEditor-userLogoutLink"
             },
             selectorsToIgnore: ["cloudIcon"]
         }
     });
-
-    gpii.prefsEditor.triggerEvent = function (that, targetSelector, event) {
-        that.locate(targetSelector).trigger(event);
-    };
 })(jQuery, fluid);
