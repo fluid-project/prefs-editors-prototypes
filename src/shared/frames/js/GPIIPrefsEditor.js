@@ -32,6 +32,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         onReady: {
                             listener: "{GPIIEditor}.events.onReady",
                             args: "{GPIIEditor}"
+                        },
+                        "onLogout.updateStatus": {
+                            "this": "{that}.dom.messageLineLabel",
+                            "method": "text",
+                            "args": ["{that}.msgLookup.onLogoutMessage"]
                         }
                     }
                 }

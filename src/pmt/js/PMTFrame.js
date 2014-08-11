@@ -86,11 +86,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.userStatusBar",
                     "method": "slideUp"
                 },
-                "onLogout.updateStatus": {
-                    "this": "{that}.dom.messageLineLabel",
-                    "method": "text",
-                    "args": ["{that}.msgLookup.onLogoutMessage"]
-                },
                 // clear href of quick editor link when we log the user out
                 "onLogout.clearQuickEditorLinkHref": {
                     "listener": "{that}.clearQuickEditorLinkHref"

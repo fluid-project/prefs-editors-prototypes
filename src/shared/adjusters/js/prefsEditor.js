@@ -22,9 +22,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 onLogout: null,
                 onSettingChanged: null
             },
-            model: {
-                userLoggedIn: false
-            },
             listeners: {
                 "onReady.setATTRsaveButton": {
                     "this": "{that}.dom.saveButton",
@@ -45,18 +42,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.fullEditorLink",
                     "method": "attr",
                     "args": ["href", "{prefsEditorLoader}.options.pmtUrl"]
-                },
-                "onReset.triggerLogoutEvent": {
-                    "listener": "{that}.events.onLogout.fire"
-                },
-                "onLogout.setUserLoggedIn": {
-                    listener: "{that}.applier.requestChange",
-                    args: ["userLoggedIn", false]
-                },
-                "onLogout.updateStatus": {
-                    "this": "{that}.dom.messageLineLabel",
-                    "method": "text",
-                    "args": ["{that}.msgLookup.onLogoutMessage"]
                 },
                 "onLogout.gpiiLogout": {
                     listener: "{gpiiSession}.logout"
