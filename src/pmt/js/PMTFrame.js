@@ -161,10 +161,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.notification",
                     "method": "hide"
                 },
-                "onReady.hideMessageLine": {
-                    "this": "{that}.dom.messageLineLabel",
-                    "method": "hide"
-                },
                 // hide the logout link if a user is not logged in
                 "onReady.hideUserStatusBarIfNotLoggedIn": {
                     "listener": "{that}.hideUserStatusBarIfNotLoggedIn"
