@@ -97,11 +97,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     gpii.adjuster.onOffSwitch.addAria = function (that) {
         that.container.attr("role", "application");
-        that.container.attr("aria-labelledby", gpii.ariaUtility.getLabelId(that.locate("headingLabel")));
+        that.container.attr("aria-labelledby", fluid.allocateSimpleId(that.locate("headingLabel")));
         
         var onOffSwitch = that.locate("onOffSwitch");
         onOffSwitch.attr("role", "checkbox");
-        onOffSwitch.attr("aria-labelledby", gpii.ariaUtility.getLabelId(that.locate("headingLabel")));
+        onOffSwitch.attr("aria-labelledby", fluid.allocateSimpleId(that.locate("headingLabel")));
         onOffSwitch.attr("aria-checked", that.model[that.options.onOffModelKey]);
     };
 
