@@ -26,7 +26,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             messageResolver: "{prefsEditorLoader}.msgResolver"
         },
         listeners: {
-        	"afterRender.setSectionName": {
+            "afterRender.setSectionName": {
                 "this": "{that}.dom.volumeSection",
                 "method": "attr",
                 "args": ["aria-label", "{that}.msgLookup.volumePresetButtonLabel"]

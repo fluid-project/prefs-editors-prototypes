@@ -29,7 +29,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             messageResolver: "{prefsEditorLoader}.msgResolver"
         },
         listeners: {
-        	"afterRender.setSectionName": {
+            "afterRender.setSectionName": {
                 "this": "{that}.dom.contrastSection",
                 "method": "attr",
                 "args": ["aria-label", "{that}.msgLookup.changeContrast"]

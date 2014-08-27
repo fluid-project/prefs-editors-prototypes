@@ -35,7 +35,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         selectorsToIgnore: ["magnifierControlsContainer", "elementToFocusOnExpansion", "increaseSection"],
         listeners: {
-        	"afterRender.setSectionName": {
+            "afterRender.setSectionName": {
                 "this": "{that}.dom.increaseSection",
                 "method": "attr",
                 "args": ["aria-label", "{that}.msgLookup.increaseSizeHeader"]
