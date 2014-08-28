@@ -18,6 +18,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             members: {
                 messageResolver: "{prefsEditorLoader}.msgResolver"
             },
+            statusMessageID: "gpiic-pcp-messageLine",
             events: {
                 onLogout: null,
                 onSettingChanged: null
@@ -80,6 +81,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.logoutLink",
                     "method": "click",
                     "args": ["{that}.preventDefaultLinkEvent"]
+                },
+                "onReady.addAriaControlsForLogoutLink": {
+                    "this": "{that}.dom.logoutLink",
+                    "method": "attr",
+                    "args": ["aria-controls", "{that}.options.statusMessageID"]
+                },
+                "onReady.addAriaControlsForSaveButton": {
+                    "this": "{that}.dom.saveAndApply",
+                    "method": "attr",
+                    "args": ["aria-controls", "{that}.options.statusMessageID"]
                 },
                 "onReady.bindModelChangedListener": {
                     // used instead of the declarative syntax so that
