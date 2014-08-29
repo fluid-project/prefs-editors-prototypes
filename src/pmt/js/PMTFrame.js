@@ -114,7 +114,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "attr",
                     "args": ["aria-label", "{that}.msgLookup.saveAndApplyText"]
                 },
-
                 "onReady.setNotificationMessagePart1": {
                     "this": "{that}.dom.notificationMessagePart1",
                     "method": "text",
@@ -171,6 +170,21 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.addHidingListener": {
                     "listener": "{that}.applier.modelChanged.addListener",
                     "args": ["{that}.options.strings.mainVisibilitySwitch", "{that}.foldExpandedViewWhenOff"]
+                },
+                "onReady.addStatusMessageID": {
+                    "this": "{that}.dom.messageLineLabel",
+                    "method": "attr",
+                    "args": ["id", "{that}.options.statusMessageID"]
+                },
+                "onReady.addAriaControlsForLogoutLink": {
+                    "this": "{that}.dom.logoutLink",
+                    "method": "attr",
+                    "args": ["aria-controls", "{that}.options.statusMessageID"]
+                },
+                "onReady.addAriaControlsForSaveButton": {
+                    "this": "{that}.dom.saveAndApplyButtonLabel",
+                    "method": "attr",
+                    "args": ["aria-controls", "{that}.options.statusMessageID"]
                 }
             },
             invokers: {
