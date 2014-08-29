@@ -34,6 +34,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                             listener: "{GPIIEditor}.events.onReady",
                             args: "{GPIIEditor}"
                         },
+                        "onReady.addAriaControlsForLogoutLink": {
+                            "this": "{that}.dom.logoutLink",
+                            "method": "attr",
+                            "args": ["aria-controls", "{that}.options.statusMessageID"]
+                        },
                         "onLogout.updateStatus": {
                             "this": "{that}.dom.messageLineLabel",
                             "method": "text",
