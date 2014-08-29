@@ -25,6 +25,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             prefsEditor: {
                 container: "{that}.container",
                 options: {
+                    statusMessageID: "gpiic-prefsEditor-messageLine",
                     listeners: {
                         onReset: [{
                             listener: "{that}.applyChanges"
