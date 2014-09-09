@@ -23,6 +23,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 target: "{that > addContrast > contrastEnabled}.options.ariaControls"
             }, {
                 source: "{that}.options.statusMessageID",
+                target: "{that > addContrast > contrastThemeNoPreview}.options.ariaControls"
+            }, {
+                source: "{that}.options.statusMessageID",
                 target: "{that > increaseSize > magnifierEnabled}.options.ariaControls"
             }],
             events: {
