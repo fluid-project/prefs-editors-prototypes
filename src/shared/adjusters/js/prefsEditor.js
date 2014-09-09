@@ -18,10 +18,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             members: {
                 messageResolver: "{prefsEditorLoader}.msgResolver"
             },
-            distributeOptions: {
+            distributeOptions: [{
                 source: "{that}.options.statusMessageID",
                 target: "{that > addContrast > contrastEnabled}.options.ariaControls"
-            },
+            }, {
+                source: "{that}.options.statusMessageID",
+                target: "{that > increaseSize > magnifierEnabled}.options.ariaControls"
+            }],
             events: {
                 onLogout: null,
                 onSettingChanged: null

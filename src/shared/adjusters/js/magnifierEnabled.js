@@ -30,7 +30,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             headingLabel: {messagekey: "magnifierLabel"},
             valueCheckbox: "${value}"
         },
-        onOffModelKey: "value"
+        onOffModelKey: "value",
+        listeners: {
+            "onDomBind.addAriaControls": {
+                "this": "{that}.dom.valueCheckbox",
+                "method": "attr",
+                "args": ["aria-controls", "{that}.options.ariaControls"]
+            }
+        }
     });
 
 })(jQuery, fluid);
