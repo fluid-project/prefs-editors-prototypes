@@ -27,6 +27,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             headingLabel: {messagekey: "contrast"},
             valueCheckbox: "${contrast}"
         },
-        onOffModelKey: "contrast"
+        onOffModelKey: "contrast",
+        listeners: {
+            "onDomBind.addAriaControls": {
+                "this": "{that}.dom.valueCheckbox",
+                "method": "attr",
+                "args": ["aria-controls", "{that}.options.ariaControls"]
+            }
+        }
     });
 })(jQuery, fluid);

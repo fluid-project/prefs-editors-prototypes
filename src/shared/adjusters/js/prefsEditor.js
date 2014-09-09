@@ -18,6 +18,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             members: {
                 messageResolver: "{prefsEditorLoader}.msgResolver"
             },
+            distributeOptions: {
+                source: "{that}.options.statusMessageID",
+                target: "{that > addContrast > contrastEnabled}.options.ariaControls"
+            },
             events: {
                 onLogout: null,
                 onSettingChanged: null
