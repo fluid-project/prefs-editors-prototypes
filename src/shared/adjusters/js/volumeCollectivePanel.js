@@ -15,14 +15,23 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.panel.volumeCollectivePanel", {
         gradeNames: ["fluid.prefs.compositePanel", "autoInit"],
         selectors: {
-            volumeHeader: ".gpii-volumePresetButton-label"
+            volumeHeader: ".gpii-volumePresetButton-label",
+            volumeSection: ".gpiic-volume-section"
         },
+        selectorsToIgnore: ["volumeSection"],
         protoTree: {
             volumeHeader: {messagekey: "volumePresetButtonLabel"}
         },
         members: {
             messageResolver: "{prefsEditorLoader}.msgResolver"
-        }
+        },
+        listeners: {
+            "afterRender.setSectionName": {
+                "this": "{that}.dom.volumeSection",
+                "method": "attr",
+                "args": ["aria-label", "{that}.msgLookup.volumePresetButtonLabel"]
+            }
+        }        
     });
 
 })(fluid);

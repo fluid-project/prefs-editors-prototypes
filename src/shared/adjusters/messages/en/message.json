@@ -1,9 +1,9 @@
 {
     "tooltipUnchecked": "Add to my preferences",
     "tooltipChecked": "Remove from my preferences",
-    "visualAlternativesPresetButtonLabel": "visual alternatives",
-    "volumePresetButtonLabel": "volume",
-    "languagePresetButtonLabel": "language",
+    "visualAlternativesPresetButtonLabel": "Visual alternatives",
+    "volumePresetButtonLabel": "Volume",
+    "languagePresetButtonLabel": "Language",
     "language-english": "English",
     "language-greek": "Greek (Ελληνικά)",
     "language-german": "German (Deutsch)",

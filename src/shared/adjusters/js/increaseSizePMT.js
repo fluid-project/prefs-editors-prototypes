@@ -30,10 +30,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierControlsContainer: ".gpiic-prefsEditor-magnifier-container",
             expandingAdjusters: ".gpiic-magnifier-hidden",
             moreLess: ".gpiic-magnifier-category",
-            elementToFocusOnExpansion: "input[name='gpii_primarySchema_magnificationPosition_magnifierPosition-radio']:checked"
+            elementToFocusOnExpansion: "input[name='gpii_primarySchema_magnificationPosition_magnifierPosition-radio']:checked",
+            increaseSection: ".gpiic-increaseSize-section"
         },
-        selectorsToIgnore: ["magnifierControlsContainer", "elementToFocusOnExpansion"],
+        selectorsToIgnore: ["magnifierControlsContainer", "elementToFocusOnExpansion", "increaseSection"],
         listeners: {
+            "afterRender.setSectionName": {
+                "this": "{that}.dom.increaseSection",
+                "method": "attr",
+                "args": ["aria-label", "{that}.msgLookup.increaseSizeHeader"]
+            },
             "afterRender.setAriaLabel": {
                 "this": "{that}.dom.moreLess",
                 "method": "attr",

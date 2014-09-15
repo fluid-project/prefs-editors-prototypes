@@ -25,9 +25,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             visualAlternativesHiddenPanel: ".gpiic-visualAlternatives-hiddenPanel",
             voicePitchInput: ".gpiic-voicePitch .gpiic-textfieldStepper-valueField",
             visualAlternativesMoreLess: ".gpiic-visualAlternativesMoreLess-label",
-            speakTextContainer: ".gpiic-speakText-container"
+            speakTextContainer: ".gpiic-speakText-container",
+            visualAlternativesSection: ".gpiic-visualAlternatives-section"
         },
-        selectorsToIgnore: ["visualAlternativesHiddenPanel", "voicePitchInput", "visualAlternativesMoreLess", "speakTextContainer"],
+        selectorsToIgnore: ["visualAlternativesHiddenPanel", "voicePitchInput", "visualAlternativesMoreLess", "speakTextContainer", "visualAlternativesSection"],
         protoTree: {
             visualAlternativesHeader: {messagekey: "visualAlternativesPresetButtonLabel"}
         },
@@ -35,6 +36,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             messageResolver: "{prefsEditorLoader}.msgResolver"
         },
         listeners: {
+        	"afterRender.setSectionName": {
+                "this": "{that}.dom.visualAlternativesSection",
+                "method": "attr",
+                "args": ["aria-label", "{that}.msgLookup.visualAlternativesPresetButtonLabel"]
+            },
             "afterRender.setExpandedAriaLabel": {
                 "this": "{that}.dom.visualAlternativesHiddenPanel",
                 "method": "attr",
