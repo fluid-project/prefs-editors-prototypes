@@ -39,11 +39,19 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                             "method": "attr",
                             "args": ["aria-controls", "{that}.options.statusMessageID"]
                         },
+                        "onReady.addStatusMessageID": {
+                            "this": "{that}.dom.messageLineLabel",
+                            "method": "attr",
+                            "args": ["id", "{that}.options.statusMessageID"]
+                        },
                         "onLogout.updateStatus": {
                             "this": "{that}.dom.messageLineLabel",
                             "method": "text",
                             "args": ["{that}.msgLookup.onLogoutMessage"]
                         }
+                    },
+                    selectors: {
+                        messageLineLabel: ".gpiic-prefsEditor-messageLine"
                     }
                 }
             }

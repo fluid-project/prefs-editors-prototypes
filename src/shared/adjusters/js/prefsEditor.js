@@ -91,11 +91,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "click",
                     "args": ["{that}.preventDefaultLinkEvent"]
                 },
-                "onReady.addStatusMessageID": {
-                    "this": "{that}.dom.messageLineLabel",
-                    "method": "attr",
-                    "args": ["id", "{that}.options.statusMessageID"]
-                },
                 "onReady.addAriaControlsForSaveButton": {
                     "this": "{that}.dom.saveAndApply",
                     "method": "attr",
@@ -141,7 +136,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 saveAndApply: ".flc-prefsEditor-save",
                 saveButtonContainer: ".gpii-pcp-saveButtonContainer",
                 cloudIcon: ".gpii-pcp-cloudIcon",
-                messageLineLabel: ".gpiic-prefsEditor-messageLine",
                 fullEditorLink: ".gpiic-prefsEditor-fullEditorLink",
                 logoutLink: ".gpiic-prefsEditor-userLogoutLink"
             },

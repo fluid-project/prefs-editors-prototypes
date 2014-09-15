@@ -29,7 +29,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 myPreferencesLabel: ".gpiic-pmt-preferenceSetSelectionButtonMyPreferencesLabel",
                 allPreferencesLabel: ".gpiic-pmt-preferenceSetSelectionButtonAllPreferencesLabel",
                 saveAndApplyButtonLabel: ".flc-prefsEditor-save",
-                messageLineLabel: ".gpiic-prefsEditor-messageLine",
                 notification: ".gpiic-prefsEditor-notification",
                 confirmButton: ".gpiic-prefsEditor-notificationConfirmButton",
                 notificationMessagePart1: ".gpiic-prefsEditor-notificationMessagePart1",
@@ -170,11 +169,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.addHidingListener": {
                     "listener": "{that}.applier.modelChanged.addListener",
                     "args": ["{that}.options.strings.mainVisibilitySwitch", "{that}.foldExpandedViewWhenOff"]
-                },
-                "onReady.addStatusMessageID": {
-                    "this": "{that}.dom.messageLineLabel",
-                    "method": "attr",
-                    "args": ["id", "{that}.options.statusMessageID"]
                 },
                 "onReady.addAriaControlsForSaveButton": {
                     "this": "{that}.dom.saveAndApplyButtonLabel",
