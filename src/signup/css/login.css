@@ -1,0 +1,585 @@
+/*
+    Font icons
+*/
+@font-face {
+    font-family: 'C4Aicons';
+    src:url('../fonts/C4Aicons.eot');
+    src:url('../fonts/C4Aicons.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/C4Aicons.ttf') format('truetype'),
+        url('../fonts/C4Aicons.woff') format('woff'),
+        url('../fonts/C4Aicons.svg#C4Aicons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'allIcons';
+    src: url('../fonts/allIcons.ttf') format('truetype'),
+         url('../fonts/allIcons.eot');
+}
+
+@font-face {
+    font-family: 'radioButtonIcons';
+    src: url('../fonts/blackDot.ttf') format('truetype'),
+         url('../fonts/blackDot.eot');
+}
+
+@font-face {
+    font-family: 'checkboxTick';
+    src: url('../fonts/tick.ttf') format('truetype'),
+         url('../fonts/tick.eot');
+}
+
+/*
+    The adjusters' font icons
+*/
+.login-adjusterIcons {
+    float: left;
+    font-family: 'C4Aicons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/*
+    The font icons
+*/
+
+.login-headerImage {
+    -webkit-font-smoothing: antialiased;
+    width: 130px; 
+    margin: 0px;
+    border-top: 5px solid #F2F2F2;
+    display: table;
+}
+
+.login-headerImage:before {
+    font-size: 60px;
+    font-weight: normal;
+    color: #474C66;
+    vertical-align: middle;
+  	padding-left: 20px;
+  	padding-right: 20px;
+}
+
+.login-tab1 .login-headerImage:before {
+    content: "\e64e";
+}
+
+.login-tab2 .login-headerImage:before {
+    content: "\e667";
+}
+
+.login-tab3 .login-headerImage:before {
+    content: "\e66f";
+}
+
+.login-tab4 .login-headerImage:before {
+    content: "\e662";
+}
+
+.login-textfield-icon {
+    -webkit-font-smoothing: antialiased;
+    margin: 0px;
+    width: 30px;
+    display: table;
+}
+
+.login-textfield-icon:before {
+    font-size: 30px;
+    font-weight: normal;
+    background-color: #F2F2F2;
+    color: #474C66;
+    vertical-align: middle;
+  	padding: 3px;
+  	display: inline-block;
+  	height: 1.08em;
+}
+
+.login-tab1 .username .login-textfield-icon:before {
+    content: "\e661";
+}
+
+.login-tab1 .passwd .login-textfield-icon:before, .login-tab1 .cpasswd .login-textfield-icon:before {
+    content: "\e65d";
+}
+
+input[type=checkbox]:checked + label > .checkbox-icon:before {
+	background-color: #474C66;
+    content: "\e60a";
+}
+
+.password-icon, .password-icon-short, .password-icon-match, .password-icon-donotmatch, .username-icon, .username-icon-available, .username-icon-notavailable {
+    -webkit-font-smoothing: antialiased;
+    margin: 0px;
+    width: 35px;
+    display: table;
+    float: right !important;
+}
+
+.password-icon:before, .password-icon-short, .password-icon-match:before, .password-icon-donotmatch:before, .username-icon:before, .username-icon-available:before, .username-icon-notavailable:before {
+    font-size: 22px;
+    font-weight: normal;
+    background-color: #FFFFFF;
+    vertical-align: middle;
+  	padding: 0px;
+  	display: inline-block;
+  	height: 1em;
+}
+
+.login-tab1 .passwd .password-icon:before, .login-tab1 .cpasswd .password-icon-match:before, .login-tab1 .username .username-icon-available:before {
+    content: "\e638";
+}
+
+.login-tab1 .cpasswd .password-icon-donotmatch:before, .password-icon-short:before, .login-tab1 .username .username-icon-notavailable:before {
+    content: "\e639";
+}
+
+/*
+    General preferences styling
+*/
+
+html {
+    font: 1em arial,helvetica,clean,sans-serif;
+    color: #FFFFFF;
+}
+
+body {
+	background-color: #CCCCCC;
+	font-family: "Roboto Slab",serif;
+}
+
+label {
+	display: inline;
+}
+
+input[type=checkbox] {
+	display: none;
+}
+
+.italics{
+	font-style: italic;
+}
+
+.main {
+	background-color: #F2F2F2;
+	font-family: "Roboto Slab",serif;
+	width: 600px;
+	height: 800px;
+	margin: 1em auto;
+	border-radius: 5px;
+}
+
+div.tabs {
+	position: relative;
+	display: block;
+	width: 520px;
+	height: 420px;
+	margin: 1em auto;
+	top: 100px;
+}
+
+div.tabs section {
+	position: absolute;
+	display: block;
+	top: 0em;
+	left: 0;
+	width: 460px;
+	height: 23em;
+	padding: 20px 30px 20px 30px;
+	background-color: #FFFFFF;
+	border-radius:	0px;
+	box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+	z-index: 0;
+}
+
+div.tabs section:first-child {
+	z-index: 1;
+}
+
+div.tabs section h2 {
+	position: absolute;
+	font-size: 1em;
+	font-weight: normal;
+	width: 130px;
+	top: -5.94em;
+	left: 0px;
+	padding: 0;
+	margin: 0;
+	color: #999;
+	background-color: #F2F2F2;
+	border-radius: 0 0 0 0;
+}
+
+div.tabs section:nth-child(2) h2 {
+	left: 130px;
+}
+
+div.tabs section:nth-child(3) h2 {
+	left: 260px;
+}
+
+div.tabs section:nth-child(4) h2 {
+	left: 390px;
+}
+
+div.tabs section h2 a {
+	display: block;
+	width: 100%;
+	line-height: 1.86;
+	text-align: center;
+	text-decoration: none;
+	color: black;
+	outline: 0 none;
+	vertical-align: middle;
+}
+
+div.tabs .icon-text {
+	font-family: "Courier-new";
+}
+
+div.tabs section:target, 
+div.tabs section:target h2 {
+	color: black;
+	background-color: #FFFFFF;
+	font-weight: normal;
+	z-index: 2;
+}
+
+div.tabs section:target h2 {
+	border-radius:	0px;
+	box-shadow: 5px 0px 10px rgba(0,0,0,0.1);
+}
+
+div.tabs section:target .login-headerImage {
+    -webkit-font-smoothing: antialiased;
+    width: 130px; 
+    margin: 0px;
+    border-top: 5px solid #00AAAA;
+    display: table;
+}
+
+div.tabs section,
+div.tabs section h2 {
+	-webkit-transition: all 500ms ease;
+	-moz-transition: all 500ms ease;
+	-ms-transition: all 500ms ease;
+	-o-transition: all 500ms ease;
+	transition: all 500ms ease;
+}
+
+.head {
+	font-weight: normal;
+	font-size: 1em;
+	color: #000000;
+	padding-left: 40px;
+	padding-top: 0.05em;
+}
+
+.head .sign-up {
+	font-family: Book Antiqua;
+	display: block;
+	font-size: 2.2em;	
+}
+
+.head .sign-up-description {
+	font-family: Courier New;
+	font-size: 1em;
+	display: block;
+}
+
+.terms {
+	position: relative;
+	font-weight: normal;
+	font-family: Verdana;
+	font-size: 1em;
+	float: right;
+	margin-right: 40px;
+	height: 1.5em;
+	bottom: -120px;
+	background-color: inherit;
+	color: #474C66;	
+}
+
+.tail {
+	position: relative;
+	display: table;
+	font-weight: normal;
+	font-size: 1em;
+	background-color: #00AAAA;
+	width: inherit;
+	height: 3em;
+	bottom: -160px;	
+	border-radius: 0px 0px 5px 5px;
+}
+
+.login-h3 {
+	font-weight: bold;
+	font-family: Courier New;
+	
+}
+/*
+.login-label {
+	font-weight: normal;
+	font-family: Courier New;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	display: block;
+	width: inherit;
+}
+*/
+.login-label {
+	text-align: left;
+}
+
+.passwd-header, .cpasswd-header, .username-header {
+	font-weight: normal;
+	font-family: Courier New;
+	font-size: 0.95em;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	display: block;
+	width: inherit;
+	line-height: 1.4em;
+}
+
+.textfield {
+	font-weight: normal;
+	font-family: Courier New;
+	font-size: large;
+	display: inline-block;
+	border: 0em;
+}
+
+.login-textfield {
+	width: 23em;
+	height: 2em;
+	background-color: #F2F2F2;
+}
+
+.recovery-textfield {
+	width: 20.5em;
+	height: 3em;
+	background-color: #F2F2F2;
+	margin-top: 20px;
+	margin-bottom: 40px;
+	margin-right: 40px;
+	border-radius: 5px;
+	float: left;
+}
+
+input[type=checkbox] + label > .checkbox-icon {
+	background-color: #FFFFFF;
+	border: 2px solid #474C66;
+	border-radius: 4px;
+	color: #FFF;
+	height: 1em;
+	position: relative;
+	width: 1em;
+	float: left;
+	margin-right: 10px;
+	vertical-align: middle;
+	display: inline-block;
+}
+
+input[type=checkbox]:checked + label > .checkbox-icon {
+	background-color: #474C66;
+}
+
+.checkbox-icon-small {
+	font-size: 1em;
+}
+
+.checkbox-icon-medium {
+	font-size: 1.2em;
+}
+
+a#termsLink{
+	font-weight: bold;
+	color: #474C66;
+}
+
+.createAccountButton {
+	font-weight: bold;
+	font-family: Verdana;
+	font-size: 1.1em;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-right: 10px;
+	padding: 7px;
+	float: right;
+	background-color: #474C66;
+	color: white;
+	border: 0px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.cancelButton {
+	font-weight: bold;
+	font-family: Verdana;
+	font-size: 1.1em;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 10px;
+	padding: 7px;
+	float: left;
+	background-color: #00AAAA;
+	color: #474C66;
+	border: 0px;
+	cursor: pointer;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+	width: 600px;
+	height: 100%;
+    background-color: #00AAAA;
+    opacity: 0.8;
+    z-index: 10;
+    margin: 0em auto;
+	border-radius: 5px;
+}
+
+.modal {
+    width: 450px;
+    height: 400px;
+    line-height: 1em;
+    position: fixed;
+    top: 50%; 
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -225px;
+    background-color: #FFFFFF;
+    border-radius: 1px;
+	box-shadow: 5px 5px 10px rgba(0,0,0,0.1);	
+    text-align: center;
+    z-index: 11; /* 1px higher than the overlay layer */
+}
+
+.recovery {
+	position: relative;
+	font-weight: normal;
+	font-family: Verdana;
+	font-size: 1em;
+    width: 370px;
+    height: 340px;
+	float: left;
+	margin-left: 40px;
+	margin-rigth: 40px;
+	top: 30px;
+	background-color: inherit;
+	color: #474C66;	
+}
+
+.recovery-span-header {
+	font-weight: bold;
+	font-family: Book Antiqua;
+	font-size: 1.5em;
+	width: inherit;
+	padding-top: 10px;
+	padding-bottom: 30px;
+	margin-right: 0px;
+	float: left;
+	display: block;
+	text-align: left;
+}
+
+.recovery-checkbox-text {
+	font-weight: bold;
+	font-family: Book Antiqua;
+	font-size: 1.2em;
+	float: left;
+	line-height: 22px;
+}
+
+.recovery-description {
+	font-weight: normal;
+	font-family: Verdana;
+	font-size: 1em;
+	width: inherit;
+	float: left;
+	text-align: left;
+	padding-top: 20px;
+	display: block;
+}
+
+.revocery-tail {
+	position: relative;
+	font-weight: normal;
+	font-size: 1em;
+	background-color: inherit;
+	width: inherit;
+	height: 3em;
+	margin-: 
+}
+
+.recovery-got-it {
+	font-weight: bold;
+	font-family: Verdana;
+	font-size: 1.1em;
+	padding: 10px 20px 10px 20px;
+	float: right;
+	background-color: #474C66;
+	color: white;
+	border: 0px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.recovery-back {
+	font-weight: bold;
+	font-family: Verdana;
+	font-size: 1.1em;
+	padding: 10px 0px 10px 0px;
+	float: left;
+	background-color: inherit;
+	color: #474C66;
+	border: 0px;
+	cursor: pointer;
+}
+
+.disabled {
+	opacity: 0.5;
+	cursor: default;
+}
+
+:disabled {
+	opacity: 0.4;
+	cursor: default;
+}
+
+#tab1 .short {
+	color: #FF0000;
+}
+
+#tab1 .weak {
+	color: orange;
+}
+
+#tab1 .good {
+	color: #2D98F3;
+}
+
+#tab1 .very-good {
+	color: blue;
+}
+
+#tab1 .strong, #tab1 .match, #tab1 .available {
+	color: #20C857;
+}
+
+#tab1 .donotmatch, #tab1 .notavailable {
+	color: #FF0000;
+}
+
+.passwd-header .passwd-description, .cpasswd-header .passwd-description, .username-header .username-description {
+	float: right;
+	padding-right: 10px;
+}

@@ -1,0 +1,18 @@
+{
+	"signUpLabel": "Εγγραφή",
+	"signUpDescription1": "Επιλέξτε τουλάχιστον μια μέθοδο για πρόσβαση στο λογαριασμό σας.",
+	"signUpDescription2": "Αυτό μπορεί να αλλάξει αργότερα.",
+    "loginLabel": "LOGIN",
+    "usbLabel": "USB",
+    "rfidLabel": "RFID",
+    "qrCodeLabel": "QR CODE",
+    "recommendedForSecurity": "* Συνιστώμενο για ασφάλεια",
+    "usernameLabel": "Εισαγωγή ηλεκτρονικής διεύθυνση ή δημιουργία ονόματος χρήστη",
+    "passwordLabel": "Κωδικός",
+    "confirmPasswordLabel": "Επιβεβαίωση κωδικού",
+    "acceptLabel": "Αποδέχομαι ",
+    "termsAndConditions": "τους όρους και τις προϋποθέσεις",
+    "selectRecoveyMethod": "Επιλέξτε μέθοδο ανάκτησης",
+    "recoveryID": "Αναγνωριστικό ανάκτησης",
+    "recoveryDescription": "Το παρακάτω αναγνωριστικό έχει αντιγραφεί στο πρόχειρο. Παρακαλώ αποθηκεύστε το για ανάκτηση του λογαριαμού σας στην περίπτωση που χάσετε τον κωδικό." 
+}
