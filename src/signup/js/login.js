@@ -73,9 +73,8 @@ $(document).ready(function(){
 			contentType: "application/json; charset=utf-8",
 			dataType:"text",
 			crossDomain: true,
-			success: function(data, textStatus, jqXHR){ 
-				//alert(data+"\n\n"+"Entering to PMT page!");
-				window.location.href="http://160.40.60.237:9999/prefsEditors/demos/prefsEditor/index.html";
+			success: function(data, textStatus, jqXHR){
+				window.location.href= location.origin + "/prefsEditors/demos/prefsEditor/index.html";
 			},
 			error: function(response) { 
 				alert("Server connection error!\n\nPlease try again later.");
