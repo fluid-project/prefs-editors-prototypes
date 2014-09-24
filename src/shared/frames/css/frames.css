@@ -259,9 +259,11 @@ body {
     text-align: center;
     border: 0.3em solid #4D4D4D !important;
     background-color: #BDE2E9!important;
+    border-radius: 2%;
+    outline-color: transparent;
 }
 
-.gpii-prefsEditor-messageLine {
+.gpii-pcp-messageLine {
     padding-top: 7em;
 }
 
