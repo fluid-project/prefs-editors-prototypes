@@ -1508,7 +1508,7 @@ label.gpii-preset-button-label {
     font-size: 90%;
     height: 35px;
     border: 2px;
-    border-color: #D5E1E2 !important;
+    border-color: #D5E1E2;
     border-style: solid none solid solid;
     padding-left: 10px;
 }

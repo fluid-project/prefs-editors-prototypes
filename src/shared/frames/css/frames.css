@@ -256,6 +256,18 @@ body {
 
 .gpii-pcp-statusMessage {
     display: none;
+    text-align: center;
+    border: 0.3em solid #4D4D4D !important;
+    background-color: #BDE2E9!important;
+}
+
+.gpii-prefsEditor-messageLine {
+    padding-top: 7em;
+}
+
+.gpii-pcp-messageButton {
+    margin:auto;
+    padding-top: 6em;
 }
 
 .gpii-prefsEditor-pcp-userLogout {
