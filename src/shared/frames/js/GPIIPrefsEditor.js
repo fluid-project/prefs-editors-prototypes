@@ -43,11 +43,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                             "this": "{that}.dom.messageLineLabel",
                             "method": "attr",
                             "args": ["id", "{that}.options.statusMessageID"]
-                        },
-                        "onLogout.updateStatus": {
-                            "this": "{that}.dom.messageLineLabel",
-                            "method": "text",
-                            "args": ["{that}.msgLookup.onLogoutMessage"]
                         }
                     },
                     selectors: {

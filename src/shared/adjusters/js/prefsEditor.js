@@ -30,6 +30,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }],
             events: {
                 onLogout: null,
+                onMessageUpdate: null,
                 onSettingChanged: null
             },
             listeners: {
@@ -44,8 +45,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": []
                 },
                 "onSave.updateStatus": {
-                    "this": "{that}.dom.messageLineLabel",
-                    "method": "text",
+                    "funcName": "{that}.events.onMessageUpdate.fire",
                     "args": ["{that}.msgLookup.onSaveAndApplyStatus"]
                 },
                 "onReady.setFullEditorLink": {
@@ -65,6 +65,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.cloudIcon",
                     "method": "addClass",
                     "args": ["gpii-disabled"]
+                },
+                "onLogout.updateStatus": {
+                    "funcName": "{that}.events.onMessageUpdate.fire",
+                    "args": ["{that}.msgLookup.onLogoutMessage"]
                 },
                 "onReady.setSaveAndApplyButtonText": {
                     "this": "{that}.dom.saveAndApply",
@@ -109,9 +113,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": []
                 },
                 "onSettingChanged.updateStatus": {
+                    "funcName": "{that}.events.onMessageUpdate.fire",
+                    "args": ["{that}.msgLookup.onSettingChangedMessage"]
+                },
+                "onMessageUpdate.update": {
                     "this": "{that}.dom.messageLineLabel",
                     "method": "text",
-                    "args": ["{that}.msgLookup.onSettingChangedMessage"]
+                    "args": ["{arguments}.0"]
                 }
             },
             invokers: {
