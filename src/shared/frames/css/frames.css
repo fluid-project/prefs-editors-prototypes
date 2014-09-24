@@ -254,6 +254,10 @@ body {
     width: 99%;
 }
 
+.gpii-pcp-statusMessage {
+    display: none;
+}
+
 .gpii-prefsEditor-pcp-userLogout {
     float: right;
     text-align: right;

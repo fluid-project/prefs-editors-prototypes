@@ -107,6 +107,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "listener": "{that}.applier.modelChanged.addListener",
                     "args": ["", "{that}.events.onSettingChanged.fire"]
                 },
+                "onReady.setMessageButtonText": {
+                    "this": "{that}.dom.messageButton",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.messageButtonText"]
+                },
                 "onSettingChanged.showSaveButton": {
                     "this": "{that}.dom.saveButtonContainer",
                     "method": "show",
@@ -116,10 +121,19 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "funcName": "{that}.events.onMessageUpdate.fire",
                     "args": ["{that}.msgLookup.onSettingChangedMessage"]
                 },
-                "onMessageUpdate.update": {
+                "onMessageUpdate.updateText": {
                     "this": "{that}.dom.messageLineLabel",
                     "method": "text",
                     "args": ["{arguments}.0"]
+                },
+                "onMessageUpdate.showMessage": {
+                    "funcName": "gpii.pcp.showMessageDialog",
+                    "args": ["{that}"]
+                },
+                "onReady.closeMessageButton": {
+                    "this": "{that}.dom.messageButton",
+                    "method": "click",
+                    "args": ["{that}.closeMessageDialog"]
                 }
             },
             invokers: {
@@ -138,6 +152,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 preventDefaultLinkEvent: {
                     "funcName": "gpii.eventUtility.preventDefaultEvent"
+                },
+                closeMessageDialog: {
+                    "funcName": "gpii.pcp.closeMessageDialog",
+                    "args": ["{that}"]
                 }
             },
             selectors: {
@@ -145,11 +163,38 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 saveButtonContainer: ".gpii-pcp-saveButtonContainer",
                 cloudIcon: ".gpii-pcp-cloudIcon",
                 fullEditorLink: ".gpiic-prefsEditor-fullEditorLink",
-                logoutLink: ".gpiic-prefsEditor-userLogoutLink"
+                logoutLink: ".gpiic-prefsEditor-userLogoutLink",
+                messageContainer: ".gpiic-pcp-statusMessage",
+                messageButton: ".gpiic-pcp-messageButton"
             },
             selectorsToIgnore: ["cloudIcon"]
         }
     });
+
+    // TODO: perhaps these two functions could be united with pmt's equivalent ones for dialog handling
+
+    gpii.pcp.showMessageDialog = function (that) {
+        // re-wrap jQuery 1.7 element as jQuery 1.9 version in order to support the "appendTo" param.
+        var messagejq1_7 = that.dom.locate("messageContainer");
+        var unwrappedMessage = fluid.unwrap(messagejq1_7);
+        var messagejq1_9 = $(unwrappedMessage);
+        // create and show it immediately
+        messagejq1_9.dialog({
+            autoOpen: true,
+            modal: true,
+            appendTo: ".gpii-prefsEditors-panelBottomRow",
+            dialogClass: "gpii-dialog-noTitle",
+            closeOnEscape: false,
+            position: { my: "bottom", at: "bottom", of: ".gpii-prefsEditor-preferencesContainer" }
+        });
+    };
+
+    gpii.pcp.closeMessageDialog = function (that) {
+        var messagejq1_7 = that.dom.locate("messageContainer");
+        var unwrappedMessage = fluid.unwrap(messagejq1_7);
+        var messagejq1_9 = $(unwrappedMessage);
+        messagejq1_9.dialog("destroy");
+    };
 
     gpii.applySettings = function (that) {
         var savedSettings = that.modelTransform(that.model);
