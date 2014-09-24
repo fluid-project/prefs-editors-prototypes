@@ -1,4 +1,5 @@
 {
+    "messageButtonText": "Cancelar",
     "onSettingChangedMessage": "Preferencias modificados",
     "onSaveAndApplyStatus": "Preferencias guardan y se aplican",
     "onLogoutMessage": "Cerrado la sesión",

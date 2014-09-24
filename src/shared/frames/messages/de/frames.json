@@ -1,4 +1,5 @@
 {
+    "messageButtonText": "Stornieren",
     "onSettingChangedMessage": "Einstellungen geändert",
     "onSaveAndApplyStatus": "Einstellungen gespeichert und angewendet",
     "onLogoutMessage": "Loggt",
