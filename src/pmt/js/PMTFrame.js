@@ -274,6 +274,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             appendTo: ".gpiic-pmt-bottomRow",
             dialogClass: "gpii-dialog-noTitle",
             closeOnEscape: false,
+            width: "28em",
             position: { my: "bottom", at: "bottom", of: ".gpii-prefsEditor-preferencesContainer" }
         });
         // also set the token text

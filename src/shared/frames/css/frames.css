@@ -309,10 +309,6 @@ body {
     border: 1px solid #e5eded;
 }
 
-.gpii-dialog-noTitle {
-    width: 28em !important;
-}
-
 .ui-widget .ui-widget-content {
     border-style: solid solid solid solid !important;
 }
