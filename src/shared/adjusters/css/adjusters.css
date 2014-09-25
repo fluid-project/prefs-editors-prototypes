@@ -80,7 +80,7 @@ h2 > label {
 */
 .gpii-prefsEditor-headerImage {
     -webkit-font-smoothing: antialiased;
-    width: calc(100% - 2px);;
+    /*width: calc(17% - 2px);*/
     margin: 0px !important;
     color: white;
     background-color: #566374;
@@ -119,14 +119,37 @@ input[type=checkbox]:checked + .gpii-prefsEditor-headerImage > .gpii-prefsEditor
     content: "\e613";
 }
 
+.gpii-prefsEditor-increaseSizePanel .gpii-prefsEditor-headerImage:before {
+    content: "\e613";
+}
+
 .gpii-prefsEditor-contrastPanel > .gpii-prefsEditor-headerImage:before {
     content: "\e60e";
+}
+
+.gpii-prefsEditor-contrastPanel .gpii-prefsEditor-headerImage:before {
+    content: "\e60e";
+}
+
+.gpii-prefsEditor-headerTitle-withoutIcon {
+    font-family: 'Roboto Slab', serif;
+    color: white;
+    font-size: 1.8em !important;
+    display: table-cell;
+    color: #FFFFFF;
+    float: none;
+    vertical-align: middle;
+    width: 250px;
+    height: 90px;
+    background-color: #566374;
+    border: 1px solid #566374;
+    padding-right: 230px;
 }
 
 .gpii-prefsEditor-headerTitle {
     font-family: 'Roboto Slab', serif;
     color: white;
-    font-size: 1.6em !important;
+    font-size: 1.8em !important;
     display: table-cell;
     color: #FFFFFF;
     float: none;
@@ -1581,4 +1604,26 @@ h3.gpii-label {
 h1.gpii-prefsEditor-headerTitleContrast, h1.gpii-prefsEditor-headerTitleIncreaseSize {
     font-size: 1em;
     padding: 0px;
+}
+
+h3.gpii-speakText-label {
+    font-size: 1.2em !important;
+    font-weight: bold;
+    padding: 0px;
+    margin-bottom: 5px;
+}
+
+span.gpii-preset-button-label {
+    z-index: 2;
+    position: absolute;
+    padding-left: 90px;
+    padding-top: 31px;
+    color: white;
+    background-color: rgb(85, 98, 115);
+    border: 1px solid rgb(85, 98, 115);
+    width: 444px;
+    height: 59px;
+    text-align: left;
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.4em!important;
 }

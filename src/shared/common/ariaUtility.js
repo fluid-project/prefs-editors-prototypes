@@ -43,5 +43,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         return newText;  
     };
 
+    gpii.ariaUtility.setAriaLabelledBy = function (sourceElement, targetElement) {
+    	sourceElement.attr("aria-labelledby", fluid.allocateSimpleId(targetElement));
+    };
 
 })(jQuery, fluid);
