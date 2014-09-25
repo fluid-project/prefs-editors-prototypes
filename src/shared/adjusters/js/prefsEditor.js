@@ -16,7 +16,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         prefsEditor: {
             gradeNames: ["fluid.prefs.msgLookup"],
             members: {
-                messageResolver: "{prefsEditorLoader}.msgResolver"
+                messageResolver: "{prefsEditorLoader}.msgResolver",
+                messageQueue: []
             },
             distributeOptions: [{
                 source: "{that}.options.statusMessageID",
@@ -30,6 +31,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }],
             events: {
                 onLogout: null,
+                onNewMessage: null,
                 onMessageUpdate: null,
                 onSettingChanged: null
             },
@@ -45,7 +47,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": []
                 },
                 "onSave.updateStatus": {
-                    "funcName": "{that}.events.onMessageUpdate.fire",
+                    "funcName": "{that}.events.onNewMessage.fire",
                     "args": ["{that}.msgLookup.onSaveAndApplyStatus"]
                 },
                 "onReady.setFullEditorLink": {
@@ -67,7 +69,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": ["gpii-disabled"]
                 },
                 "onLogout.updateStatus": {
-                    "funcName": "{that}.events.onMessageUpdate.fire",
+                    "funcName": "{that}.events.onNewMessage.fire",
                     "args": ["{that}.msgLookup.onLogoutMessage"]
                 },
                 "onReady.setSaveAndApplyButtonText": {
@@ -118,13 +120,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": []
                 },
                 "onSettingChanged.updateStatus": {
-                    "funcName": "{that}.events.onMessageUpdate.fire",
+                    "funcName": "{that}.events.onNewMessage.fire",
                     "args": ["{that}.msgLookup.onSettingChangedMessage"]
                 },
-                "onMessageUpdate.updateText": {
-                    "this": "{that}.dom.messageLineLabel",
-                    "method": "text",
-                    "args": ["{arguments}.0"]
+                "onNewMessage.handleMessage": {
+                    "funcName": "gpii.pcp.handleNewMessage",
+                    "args": ["{that}", "{arguments}.0"]
                 },
                 "onMessageUpdate.showMessage": {
                     "funcName": "gpii.pcp.showMessageDialog",
@@ -171,9 +172,19 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
+    gpii.pcp.handleNewMessage = function (that, message) {
+        that.messageQueue.push(message);
+        that.events.onMessageUpdate.fire();
+    };
+
     // TODO: perhaps these two functions could be united with pmt's equivalent ones for dialog handling
 
     gpii.pcp.showMessageDialog = function (that) {
+        if (that.messageQueue.length) {
+            message = that.messageQueue[0];
+            that.dom.locate("messageLineLabel").text(message);
+        };
+
         // re-wrap jQuery 1.7 element as jQuery 1.9 version in order to support the "appendTo" param.
         var messagejq1_7 = that.dom.locate("messageContainer");
         var unwrappedMessage = fluid.unwrap(messagejq1_7);
@@ -194,6 +205,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         var unwrappedMessage = fluid.unwrap(messagejq1_7);
         var messagejq1_9 = $(unwrappedMessage);
         messagejq1_9.dialog("destroy");
+
+        lastMessage = that.messageQueue.shift();
+
+        if (that.messageQueue.length) {
+            if (that.messageQueue[0] === lastMessage) {
+                that.messageQueue.shift();
+            } else {
+                that.events.onMessageUpdate.fire();
+            }
+        };
     };
 
     gpii.applySettings = function (that) {
