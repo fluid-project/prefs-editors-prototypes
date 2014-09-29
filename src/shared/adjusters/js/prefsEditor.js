@@ -186,11 +186,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         };
 
         // re-wrap jQuery 1.7 element as jQuery 1.9 version in order to support the "appendTo" param.
-        var messagejq1_7 = that.dom.locate("messageContainer");
-        var unwrappedMessage = fluid.unwrap(messagejq1_7);
-        var messagejq1_9 = $(unwrappedMessage);
-        // create and show it immediately
-        messagejq1_9.dialog({
+        var messageElement = that.dom.locate("messageContainer");
+
+        messageElement.dialog({
             autoOpen: true,
             modal: true,
             appendTo: ".gpii-prefsEditors-panelBottomRow",
@@ -202,10 +200,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
 
     gpii.pcp.closeMessageDialog = function (that) {
-        var messagejq1_7 = that.dom.locate("messageContainer");
-        var unwrappedMessage = fluid.unwrap(messagejq1_7);
-        var messagejq1_9 = $(unwrappedMessage);
-        messagejq1_9.dialog("destroy");
+        var messageElement = that.dom.locate("messageContainer");
+        messageElement.dialog("destroy");
 
         lastMessage = that.messageQueue.shift();
 
