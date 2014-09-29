@@ -4,4 +4,4 @@ var util = require('util'),
 
 connect.createServer(connect.static(__dirname)).listen(port);
 util.puts('Preferences Management Tool server running...');
-util.puts('Visit http://localhost:8888/demos/prefsEditor/index.html');
+util.puts('Visit http://localhost:' + port + '/demos/prefsEditor/index.html');
