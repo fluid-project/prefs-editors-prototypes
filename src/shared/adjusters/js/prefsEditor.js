@@ -129,7 +129,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 "onMessageUpdate.showMessage": {
                     "funcName": "gpii.pcp.showMessageDialog",
-                    "args": ["{that}"]
+                    "args": ["{that}", "{that}.dom.messageLineLabel", "{that}.dom.messageContainer"]
                 },
                 "onReady.closeMessageButton": {
                     "this": "{that}.dom.messageButton",
@@ -156,7 +156,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 closeMessageDialog: {
                     "funcName": "gpii.pcp.closeMessageDialog",
-                    "args": ["{that}"]
+                    "args": ["{that}", "{that}.dom.messageContainer"]
                 }
             },
             selectors: {
@@ -179,14 +179,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     // TODO: perhaps these two functions could be united with pmt's equivalent ones for dialog handling
 
-    gpii.pcp.showMessageDialog = function (that) {
+    gpii.pcp.showMessageDialog = function (that, messageLabel, messageElement) {
         if (that.messageQueue.length) {
             message = that.messageQueue[0];
-            that.dom.locate("messageLineLabel").text(message);
+            messageLabel.text(message);
         };
-
-        // re-wrap jQuery 1.7 element as jQuery 1.9 version in order to support the "appendTo" param.
-        var messageElement = that.dom.locate("messageContainer");
 
         messageElement.dialog({
             autoOpen: true,
@@ -199,11 +196,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         });
     };
 
-    gpii.pcp.closeMessageDialog = function (that) {
-        var messageElement = that.dom.locate("messageContainer");
+    gpii.pcp.closeMessageDialog = function (that, messageElement) {
         messageElement.dialog("destroy");
 
-        lastMessage = that.messageQueue.shift();
+        var lastMessage = that.messageQueue.shift();
 
         if (that.messageQueue.length) {
             if (that.messageQueue[0] === lastMessage) {
