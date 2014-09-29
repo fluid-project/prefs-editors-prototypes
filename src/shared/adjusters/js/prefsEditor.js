@@ -203,7 +203,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
         if (that.messageQueue.length) {
             if (that.messageQueue[0] === lastMessage) {
-                that.messageQueue.shift();
+                while (that.messageQueue[0] === lastMessage) {
+                    that.messageQueue.shift();
+                }
             } else {
                 that.events.onMessageUpdate.fire();
             }
