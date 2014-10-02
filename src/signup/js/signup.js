@@ -138,9 +138,11 @@ var usernameAvailability;
         	overlayPanel: ".overlay",
         	modalPanel: ".modal",
         	termsLink: "#termsLink",
-        	recoveyCheckBox: "#recoveyCheckBox"
+        	recoveyCheckBox: "#recoveyCheckBox",
+        	passwdMatchDescription: "#passwdMatchDescription",
+        	passwdMatch: "#passwdMatch"
         },
-        selectorsToIgnore: ["termsCheckBox","username","passwd","cpasswd","overlayPanel","modalPanel", "recoveyCheckBox"],
+        selectorsToIgnore: ["termsCheckBox","username","passwd","cpasswd","overlayPanel","modalPanel", "recoveyCheckBox","passwdMatchDescription","passwdMatch"],
         protoTree: {
         	signUpLabel: {messagekey: "signUpLabel"},
         	signUpDescription1: {messagekey: "signUpDescription1"},
@@ -199,50 +201,50 @@ var usernameAvailability;
 
     gpii.signupPanel.termsCheck = function (that) {
 		console.log("Checking password and username availability... ");
-    	if ($("#termsCheckBox").is(":checked"))
+    	if (that.locate("termsCheckBox").is(":checked"))
     		if ((confirmPasswd=="Passwords match")&&(usernameAvailability=="Available"))
-    			$("#createButton").attr('disabled',false);
+    			that.locate("createButton").attr("disabled",false);
     		else 
-    			$("#createButton").attr('disabled',true);
+    			that.locate("createButton").attr("disabled",true);
     	else 
-    		$('#createButton').attr('disabled',true);
+    		that.locate("createButton").attr("disabled",true);
     };
 
     gpii.signupPanel.passwdConfirm = function (that) {
-		confirmPasswd = gpii.signupPanel.confirm($('#passwd').val(),$('#cpasswd').val());
-		$('#passwdMatchDescription').html(confirmPasswd);
-		gpii.signupPanel.termsCheck();
+		confirmPasswd = gpii.signupPanel.confirm(that,that.locate("passwd").val(),that.locate("cpasswd").val());
+		that.locate("passwdMatchDescription").html(confirmPasswd);
+		gpii.signupPanel.termsCheck(that);
     };
     
-    gpii.signupPanel.confirm = function (password,cpassword){
+    gpii.signupPanel.confirm = function (that, password, cpassword){
 		if (cpassword.length < 6) { 
-			$('#passwdMatchDescription').removeClass();
-			$('#passwdMatchDescription').addClass('passwd-description donotmatch');
-			$('#passwdMatch').removeClass();
-			$('#passwdMatch').addClass('login-adjusterIcons password-icon-donotmatch donotmatch');
-			return 'Passwords do not match';			
+			that.locate("passwdMatchDescription").removeClass();
+			that.locate("passwdMatchDescription").addClass("passwd-description donotmatch");
+			that.locate("passwdMatch").removeClass();
+			that.locate("passwdMatch").addClass("login-adjusterIcons password-icon-donotmatch donotmatch");
+			return "Passwords do not match";			
 		}
 		
 		if (cpassword==password && cpassword.length==password.length){
-			$('#passwdMatchDescription').removeClass();
-			$('#passwdMatchDescription').addClass('passwd-description match');
-			$('#passwdMatch').removeClass();
-			$('#passwdMatch').addClass('login-adjusterIcons password-icon-match match');
-			return 'Passwords match';			
+			that.locate("passwdMatchDescription").removeClass();
+			that.locate("passwdMatchDescription").addClass("passwd-description match");
+			that.locate("passwdMatch").removeClass();
+			that.locate("passwdMatch").addClass("login-adjusterIcons password-icon-match match");
+			return "Passwords match";			
 		}
 		else{
-			$('#passwdMatchDescription').removeClass();
-			$('#passwdMatchDescription').addClass('passwd-description donotmatch');
-			$('#passwdMatch').removeClass();
-			$('#passwdMatch').addClass('login-adjusterIcons password-icon-donotmatch donotmatch');
-			return 'Passwords do not match';			
+			that.locate("passwdMatchDescription").removeClass();
+			that.locate("passwdMatchDescription").addClass("passwd-description donotmatch");
+			that.locate("passwdMatch").removeClass();
+			that.locate("passwdMatch").addClass("login-adjusterIcons password-icon-donotmatch donotmatch");
+			return "Passwords do not match";			
 		}
 	}
 
     gpii.signupPanel.usernameAvailability = function (that) {
 		usernameAvailability = gpii.signupPanel.checkUsernameAvailability($('#username').val());
 		$('#usernameDescription').html(usernameAvailability);
-		gpii.signupPanel.termsCheck();
+		gpii.signupPanel.termsCheck(that);
     };
 
     gpii.signupPanel.checkUsernameAvailability = function (username){
