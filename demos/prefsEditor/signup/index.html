@@ -1,111 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Sign Up PMT</title>
-<link rel="stylesheet" type="text/css" media="all" href="../../../src/signup/css/login.css"/>
-<script src="../../../src/signup/lib/jquery-1.11.1.js"></script>
-<script src="../../../src/signup/js/login.js"></script>
-<script src="../../../src/signup/js/parseMessages.js"></script>
-<script src="../../../src/signup/js/usernameAvailability.js"></script>
-<script src="../../../src/signup/js/passwdStrength.js"></script>
-<script src="../../../src/signup/js/passwdConfirm.js"></script>
+	<meta charset="UTF-8">
+	<title>Sign Up PMT</title>
+	<!-- Needed fonts from Google --> 
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- All styling for Sign Up is here -->
+	<link rel="stylesheet" type="text/css" media="all" href="../../../src/signup/css/login.css"/>
+	
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	
+	<!-- The Infusion Library -->
+    <script type="text/javascript" src="../../../src/shared/lib/infusion/infusion-prefsFramework.js"></script>
+
+	<!-- The i18n JS files -->
+	<script type="text/javascript" src="../../../src/shared/i18n/js/i18n.js"></script>
+    
+    <!-- The common JS files -->
+    <script type="text/javascript" src="../../../src/shared/common/ariaUtility.js"></script>
+    <script type="text/javascript" src="../../../src/shared/common/eventUtility.js"></script>
+    <script type="text/javascript" src="../../../src/shared/common/merging.js"></script>
+
+    <!-- The custom JS files -->
+    <script type="text/javascript" src="../../../src/signup/js/signup.js"></script>
+    <script type="text/javascript" src="demo.js"></script>
 </head>
 <body>
-<div class="main">
-	<div class="head">
-		<h1 class="sign-up signUpLabel"></h1>
-		<span class="sign-up-description signUpDescription1"></span>
-		<span class="sign-up-description signUpDescription2"></span>
-	</div>
-	<div class="tabs">
-		<section id="tab1" class="login-tab1">
-			<h2>
-				<a href="#tab1">
-					<span class="login-adjusterIcons login-headerImage"></span>
-					<span class="icon-text loginLabel"></span>
-				</a>
-			</h2>
-            <h3 class="login-h3 italics recommendedForSecurity"></h3>
-			<div class="username">
-				<div class="username-header">
-					<label for="username" class="login-label usernameLabel"></label>
-					<span id="usernameAvailable" class="login-adjusterIcons"></span>
-					<span id="usernameDescription" class="username-description"></span>
-				</div>
-				<span class="login-adjusterIcons login-textfield-icon"></span>
-	            <input id="username" name="username" type="text" class="textfield login-textfield">
-			</div>
-			<div class="passwd">
-				<div class="passwd-header">
-			        <label for="passwd" class="login-label passwordLabel"></label>
-					<span id="passwdStrength" class="login-adjusterIcons"></span>
-		            <span id="passwdStrengthDescription" class="passwd-description"></span>
-				</div>
-				<span class="login-adjusterIcons login-textfield-icon"></span>
-	            <input id="passwd" name="password" type="password" class="textfield login-textfield">
-            </div>
-			<div class="cpasswd">
-				<div class="cpasswd-header">
-		            <label for="cpasswd" class="login-label confirmPasswordLabel"></label>
-					<span id="passwdMatch" class="login-adjusterIcons"></span>
-		            <span id="passwdMatchDescription" class="passwd-description"></span>
-				</div>			
-				<span class="login-adjusterIcons login-textfield-icon"></span>
-    	        <input id="cpasswd" name="cpasswd" type="password" class="textfield login-textfield">
-    	    </div>
-		</section>
-		
-		<section id="tab2" class="login-tab2">
-			<h2>
-				<a href="#tab2">
-					<span class="login-adjusterIcons login-headerImage"></span>
-					<span class="icon-text rfidLabel"></span>
-				</a>
-			</h2>
-			<p>This content appears on tab 2.</p>
-		</section>
-		
-		<section id="tab3" class="login-tab3">
-			<h2>
-				<a href="#tab3">
-					<span class="login-adjusterIcons login-headerImage"></span>
-					<span class="icon-text usbLabel"></span>
-				</a>
-			</h2>
-			<p>This content appears on tab 3.</p>
-		</section>
-	
-		<section id="tab4" class="login-tab4">
-			<h2>
-				<a href="#tab4">
-					<span class="login-adjusterIcons login-headerImage"></span>
-					<span class="icon-text qrCodeLabel"></span>
-				</a>
-			</h2>
-			<p>This content appears on tab 4.</p>
-		</section>
-	</div>
-	<div class="terms">
-		<input id="termsCheckBox" type="checkbox" name="terms"/><label for="termsCheckBox"><span class="login-adjusterIcons checkbox-icon checkbox-icon-small"></span></label><span class="acceptLabel"></span><a id="termsLink" href="#" class="termsAndConditions"></a>
-	</div>
-	<div class="tail">
-		<input id="cancelButton" type="button" class="cancelButton cancelButtonValue">
-		<input id="createButton" type="button" class="createAccountButton createAccountValue" disabled>
-	</div>
-	<div class="overlay"></div>
-	<div class="modal">
-		<div class="recovery">
-			<span class="recovery-span-header selectRecoveyMethod"></span>
-			<input id="recoveyCheckBox" type="checkbox" name="terms"/><label for="recoveyCheckBox"><span class="login-adjusterIcons checkbox-icon checkbox-icon-medium"></span></label>
-			<span class="recovery-checkbox-text recoveryID"></span>
-			<span id="recoveryDescription" class="recovery-description disabled recoveryDescription"></span>
-   	        <input id="recoveryTextfield" name="rtextfield" type="text" class="textfield recovery-textfield" disabled>
-			<input id="recoveryBackButton" type="button" class="recovery-back backValue">
-			<input id="recoveryGotIt" type="button" class="recovery-got-it gotItValue" disabled>
-		</div>
-	</div>	
-</div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            demo.initSignUpPanel();
+        });
+    </script>
+
+
+<div class="main"></div>
 
 </body>
 </html>
