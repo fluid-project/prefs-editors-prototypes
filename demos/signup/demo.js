@@ -9,8 +9,8 @@ var demo = demo || {};
 
 (function ($, fluid) {
 
-    var pathToTemplates = "../../../src/signup/html/";
-    var pathToMessages = "../../../src/signup/messages/";
+    var pathToTemplates = "../../src/signup/html/";
+    var pathToMessages = "../../src/signup/messages/";
 
     demo.initSignUpPanel = function () {
         gpii.signupPanel(".main", {

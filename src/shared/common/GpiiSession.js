@@ -116,7 +116,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     that.options.loggedUser = null;
                     that.events.onLogout.fire();
                     fluid.log("GET: " + data);
-                    window.location.href = location.origin + "/prefsEditors/demos/prefsEditor/signup/";
+                    window.location.href = location.origin + "/prefsEditors/demos/signup/";
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     fluid.log("GET: Error at logging out user " + that.options.loggedUser + "! Test status: " + textStatus);
