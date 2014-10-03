@@ -47,6 +47,15 @@ https://github.com/gpii/universal/LICENSE.txt
 
     fluid.defaults("gpii.tests.pcpMessageTester", {
         gradeNames: ["fluid.test.testCaseHolder", "autoInit"],
+        invokers: {
+            fireMessage: {
+                "func": "{pcpStatusMessages}.pcp.prefsEditorLoader.prefsEditor.events.onNewMessage.fire",
+                "args": ["{arguments}.0"]
+            },
+            closeMessage: {
+                "func": "{pcpStatusMessages}.pcp.prefsEditorLoader.prefsEditor.closeMessageDialog"
+            }
+        },
         modules: [{
             name: "pcp creation",
             tests: [{
@@ -54,6 +63,24 @@ https://github.com/gpii/universal/LICENSE.txt
                 name: "not undefined",
                 func: "jqUnit.assertNotUndefined",
                 args: ["pcp is not undefined", "{pcpStatusMessages}.pcp"]
+            }, {
+                expect: 3,
+                name: "visibility check",
+                sequence: [{
+                    func: jqUnit.notVisible,
+                    args: ["message dialog is hidden in the first place", ".gpiic-pcp-statusMessage"]
+                }, {
+                    func: "{that}.fireMessage",
+                    args: ["Howdy user!"]
+                }, {
+                    func: jqUnit.isVisible,
+                    args: ["a message gets shown - the message dialog pops up", ".gpiic-pcp-statusMessage"]
+                }, {
+                    func: "{that}.closeMessage"
+                }, {
+                    func: jqUnit.notVisible,
+                    args: ["ahe message dialog is hidden after being closed", ".gpiic-pcp-statusMessage"]
+                }]
             }]
         }]
     });
