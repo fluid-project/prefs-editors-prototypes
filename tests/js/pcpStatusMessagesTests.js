@@ -47,6 +47,7 @@ https://github.com/gpii/universal/LICENSE.txt
 
     fluid.defaults("gpii.tests.pcpMessageTester", {
         gradeNames: ["fluid.test.testCaseHolder", "autoInit"],
+        messageDialogSelector: ".gpiic-pcp-statusMessage",
         invokers: {
             fireMessage: {
                 "func": "{pcpStatusMessages}.pcp.prefsEditorLoader.prefsEditor.events.onNewMessage.fire",
@@ -68,18 +69,18 @@ https://github.com/gpii/universal/LICENSE.txt
                 name: "visibility check",
                 sequence: [{
                     func: jqUnit.notVisible,
-                    args: ["message dialog is hidden in the first place", ".gpiic-pcp-statusMessage"]
+                    args: ["message dialog is hidden in the first place", "{that}.options.messageDialogSelector"]
                 }, {
                     func: "{that}.fireMessage",
                     args: ["Howdy user!"]
                 }, {
                     func: jqUnit.isVisible,
-                    args: ["a message gets shown - the message dialog pops up", ".gpiic-pcp-statusMessage"]
+                    args: ["a message gets shown - the message dialog pops up", "{that}.options.messageDialogSelector"]
                 }, {
                     func: "{that}.closeMessage"
                 }, {
                     func: jqUnit.notVisible,
-                    args: ["ahe message dialog is hidden after being closed", ".gpiic-pcp-statusMessage"]
+                    args: ["ahe message dialog is hidden after being closed", "{that}.options.messageDialogSelector"]
                 }]
             }]
         }]
