@@ -17,24 +17,27 @@ https://github.com/gpii/universal/LICENSE.txt
 (function ($) {
     fluid.registerNamespace("gpii.tests");
 
-    fluid.defaults("gpii.tests.pcpCreationEnsurer", {
-        gradeNames: ["fluid.eventedComponent", "autoInit"],
-        listeners: {
-            "onReady": {
-                "funcName": "gpii.tests.pcpCreationEnsurer.runTestsWhenPCPIsReady",
-                "args": ["{that}"]
-            }
-        }
-    });
-
-    gpii.tests.pcpCreationEnsurer.runTestsWhenPCPIsReady = function (that) {
-        fluid.test.runTests([
-            "gpii.tests.pcpStatusMessages"
-        ]);
-    };
-
     fluid.defaults("gpii.tests.pcpStatusMessages", {
         gradeNames: ["fluid.test.testEnvironment", "autoInit"],
+        members: {
+            pcp: {
+                expander: {
+                    funcName: "fluid.prefs.create",
+                    args: [
+                        "#gpiic-pcp",
+                        {
+                            build: {
+                                gradeNames: ["gpii.pcp.progressiveEnhancement", "gpii.pcp.auxiliarySchema.common"],
+                                primarySchema: gpii.primarySchema
+                            },
+                            prefsEditor: {
+                                gradeNames: ["demo.pcp"]
+                            }
+                        }
+                    ]
+                }
+            }
+        },
         components: {
             pcpMessageTester: {
                 type: "gpii.tests.pcpMessageTester"
@@ -44,19 +47,20 @@ https://github.com/gpii/universal/LICENSE.txt
 
     fluid.defaults("gpii.tests.pcpMessageTester", {
         gradeNames: ["fluid.test.testCaseHolder", "autoInit"],
-        invokers: {},
-        modules: [{}]
+        modules: [{
+            name: "pcp creation",
+            tests: [{
+                expect: 1,
+                name: "not undefined",
+                func: "jqUnit.assertNotUndefined",
+                args: ["pcp is not undefined", "{pcpStatusMessages}.pcp"]
+            }]
+        }]
     });
 
     $(document).ready(function () {
-        var pcp = fluid.prefs.create("#gpiic-pcp", {
-            build: {
-                gradeNames: ["gpii.pcp.progressiveEnhancement", "gpii.pcp.auxiliarySchema.common"],
-                primarySchema: gpii.primarySchema
-            },
-            prefsEditor: {
-                gradeNames: ["demo.pcp", "gpii.tests.pcp"]
-            }
-        });
+        fluid.test.runTests([
+            "gpii.tests.pcpStatusMessages"
+        ]);
     });
 })(jQuery);
