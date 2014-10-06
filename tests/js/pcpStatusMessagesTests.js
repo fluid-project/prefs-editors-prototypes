@@ -66,10 +66,16 @@ https://github.com/gpii/universal/LICENSE.txt
                 },
                 "{arguments}.1"],
                 "dynamic": true
+            },
+            fireSettingChange: {
+                "func": "{pcpStatusMessages}.pcp.prefsEditorLoader.prefsEditor.events.onSettingChanged.fire"
+            },
+            fireLogout: {
+                "func": "{pcpStatusMessages}.pcp.prefsEditorLoader.prefsEditor.events.onLogout.fire"
             }
         },
         modules: [{
-            name: "pcp creation",
+            name: "message dialog",
             tests: [{
                 expect: 1,
                 name: "not undefined",
@@ -138,6 +144,33 @@ https://github.com/gpii/universal/LICENSE.txt
                 }, {
                     func: "{that}.checkText",
                     args: ["the repeating message is being shown only once though", "Last message"]
+                }, {
+                    func: "{that}.closeMessage"
+                }, {
+                    func: jqUnit.notVisible,
+                    args: ["the message dialog is hidden after being closed", "{that}.options.messageDialogSelector"]
+                }]
+            }, {
+                expect: 5,
+                name: "firing events which trigger messages",
+                sequence: [{
+                    func: jqUnit.notVisible,
+                    args: ["message dialog is hidden in the first place", "{that}.options.messageDialogSelector"]
+                }, {
+                    func: "{that}.fireSettingChange"
+                }, {
+                    func: jqUnit.isVisible,
+                    args: ["model change triggers a message", "{that}.options.messageDialogSelector"]
+                }, {
+                    func: "{that}.checkText",
+                    args: ["the appropriate text for model change is shown", "{pcpStatusMessages}.pcp.prefsEditorLoader.prefsEditor.msgLookup.onSettingChangedMessage"]
+                }, {
+                    func: "{that}.fireLogout"
+                }, {
+                    func: "{that}.closeMessage"
+                }, {
+                    func: "{that}.checkText",
+                    args: ["the appropriate text for log out is shown", "{pcpStatusMessages}.pcp.prefsEditorLoader.prefsEditor.msgLookup.onLogoutMessage"]
                 }, {
                     func: "{that}.closeMessage"
                 }, {
