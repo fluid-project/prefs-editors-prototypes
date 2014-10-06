@@ -55,6 +55,17 @@ https://github.com/gpii/universal/LICENSE.txt
             },
             closeMessage: {
                 "func": "{pcpStatusMessages}.pcp.prefsEditorLoader.prefsEditor.closeMessageDialog"
+            },
+            checkText: {
+                "funcName": "jqUnit.assertEquals",
+                "args": ["{arguments}.0", {
+                    expander: {
+                        "this": "{pcpStatusMessages}.pcp.prefsEditorLoader.prefsEditor.dom.messageLineLabel",
+                        "method": "text"
+                    }
+                },
+                "{arguments}.1"],
+                "dynamic": true
             }
         },
         modules: [{
@@ -98,25 +109,13 @@ https://github.com/gpii/universal/LICENSE.txt
                     func: "{that}.fireMessage",
                     args: ["Second message"]
                 }, {
-                    func: "jqUnit.assertEquals",
-                    args: ["The first message is being shown", {
-                        expander: {
-                            "this": "{pcpStatusMessages}.pcp.prefsEditorLoader.prefsEditor.dom.messageLineLabel",
-                            "method": "text"
-                        }
-                    },
-                    "First message"]
+                    func: "{that}.checkText",
+                    args: ["the first message is being shown", "First message"]
                 }, {
                     func: "{that}.closeMessage"
                 }, {
-                    func: "jqUnit.assertEquals",
-                    args: ["The second message is being shown", {
-                        expander: {
-                            "this": "{pcpStatusMessages}.pcp.prefsEditorLoader.prefsEditor.dom.messageLineLabel",
-                            "method": "text"
-                        }
-                    },
-                    "Second message"]
+                    func: "{that}.checkText",
+                    args: ["the second message is being shown", "Second message"]
                 }, {
                     func: "{that}.fireMessage",
                     args: ["Repeating message"]
@@ -132,25 +131,13 @@ https://github.com/gpii/universal/LICENSE.txt
                 }, {
                     func: "{that}.closeMessage"
                 }, {
-                    func: "jqUnit.assertEquals",
-                    args: ["The repeating message is being shown", {
-                        expander: {
-                            "this": "{pcpStatusMessages}.pcp.prefsEditorLoader.prefsEditor.dom.messageLineLabel",
-                            "method": "text"
-                        }
-                    },
-                    "Repeating message"]
+                    func: "{that}.checkText",
+                    args: ["the repeating message is being shown", "Repeating message"]
                 }, {
                     func: "{that}.closeMessage"
                 }, {
-                    func: "jqUnit.assertEquals",
-                    args: ["The repeating message is being shown only once though", {
-                        expander: {
-                            "this": "{pcpStatusMessages}.pcp.prefsEditorLoader.prefsEditor.dom.messageLineLabel",
-                            "method": "text"
-                        }
-                    },
-                    "Last message"]
+                    func: "{that}.checkText",
+                    args: ["the repeating message is being shown only once though", "Last message"]
                 }, {
                     func: "{that}.closeMessage"
                 }, {
