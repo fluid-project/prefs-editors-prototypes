@@ -66,7 +66,7 @@ https://github.com/gpii/universal/LICENSE.txt
                 args: ["pcp is not undefined", "{pcpStatusMessages}.pcp"]
             }, {
                 expect: 3,
-                name: "visibility check",
+                name: "show and close single message visibility check",
                 sequence: [{
                     func: jqUnit.notVisible,
                     args: ["message dialog is hidden in the first place", "{that}.options.messageDialogSelector"]
@@ -80,7 +80,82 @@ https://github.com/gpii/universal/LICENSE.txt
                     func: "{that}.closeMessage"
                 }, {
                     func: jqUnit.notVisible,
-                    args: ["ahe message dialog is hidden after being closed", "{that}.options.messageDialogSelector"]
+                    args: ["the message dialog is hidden after being closed", "{that}.options.messageDialogSelector"]
+                }]
+            }, {
+                expect: 7,
+                name: "visibility check with multiple messages piling up",
+                sequence: [{
+                    func: jqUnit.notVisible,
+                    args: ["message dialog is hidden in the first place", "{that}.options.messageDialogSelector"]
+                }, {
+                    func: "{that}.fireMessage",
+                    args: ["First message"]
+                }, {
+                    func: jqUnit.isVisible,
+                    args: ["a message gets shown", "{that}.options.messageDialogSelector"]
+                }, {
+                    func: "{that}.fireMessage",
+                    args: ["Second message"]
+                }, {
+                    func: "jqUnit.assertEquals",
+                    args: ["The first message is being shown", {
+                        expander: {
+                            "this": "{pcpStatusMessages}.pcp.prefsEditorLoader.prefsEditor.dom.messageLineLabel",
+                            "method": "text"
+                        }
+                    },
+                    "First message"]
+                }, {
+                    func: "{that}.closeMessage"
+                }, {
+                    func: "jqUnit.assertEquals",
+                    args: ["The second message is being shown", {
+                        expander: {
+                            "this": "{pcpStatusMessages}.pcp.prefsEditorLoader.prefsEditor.dom.messageLineLabel",
+                            "method": "text"
+                        }
+                    },
+                    "Second message"]
+                }, {
+                    func: "{that}.fireMessage",
+                    args: ["Repeating message"]
+                }, {
+                    func: "{that}.fireMessage",
+                    args: ["Repeating message"]
+                }, {
+                    func: "{that}.fireMessage",
+                    args: ["Repeating message"]
+                }, {
+                    func: "{that}.fireMessage",
+                    args: ["Last message"]
+                }, {
+                    func: "{that}.closeMessage"
+                }, {
+                    func: "jqUnit.assertEquals",
+                    args: ["The repeating message is being shown", {
+                        expander: {
+                            "this": "{pcpStatusMessages}.pcp.prefsEditorLoader.prefsEditor.dom.messageLineLabel",
+                            "method": "text"
+                        }
+                    },
+                    "Repeating message"]
+                }, {
+                    func: "{that}.closeMessage"
+                }, {
+                    func: "jqUnit.assertEquals",
+                    args: ["The repeating message is being shown only once though", {
+                        expander: {
+                            "this": "{pcpStatusMessages}.pcp.prefsEditorLoader.prefsEditor.dom.messageLineLabel",
+                            "method": "text"
+                        }
+                    },
+                    "Last message"]
+                }, {
+                    func: "{that}.closeMessage"
+                }, {
+                    func: jqUnit.notVisible,
+                    args: ["the message dialog is hidden after being closed", "{that}.options.messageDialogSelector"]
                 }]
             }]
         }]
