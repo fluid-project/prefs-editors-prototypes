@@ -18,7 +18,7 @@ var demo = demo || {};
                 template: {
                     href: pathToTemplates+"signupPanelTemplate.html"
                 }
-            }
+            }            
         });
     };
 })(jQuery, fluid);
