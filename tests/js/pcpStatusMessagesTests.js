@@ -56,6 +56,14 @@ https://github.com/gpii/universal/LICENSE.txt
             closeMessage: {
                 "func": "{pcpStatusMessages}.pcp.prefsEditorLoader.prefsEditor.closeMessageDialog"
             },
+            checkMessageDialogHidden: {
+                "func": jqUnit.notVisible,
+                "args": ["{arguments}.0", "{that}.options.messageDialogSelector"]
+            },
+            checkMessageDialogVisible: {
+                "func": jqUnit.isVisible,
+                "args": ["{arguments}.0", "{that}.options.messageDialogSelector"]
+            },
             checkText: {
                 "funcName": "jqUnit.assertEquals",
                 "args": ["{arguments}.0", {
@@ -85,32 +93,32 @@ https://github.com/gpii/universal/LICENSE.txt
                 expect: 3,
                 name: "show and close single message visibility check",
                 sequence: [{
-                    func: jqUnit.notVisible,
-                    args: ["message dialog is hidden in the first place", "{that}.options.messageDialogSelector"]
+                    func: "{that}.checkMessageDialogHidden",
+                    args: ["message dialog is hidden in the first place"]
                 }, {
                     func: "{that}.fireMessage",
                     args: ["Howdy user!"]
                 }, {
-                    func: jqUnit.isVisible,
-                    args: ["a message gets shown - the message dialog pops up", "{that}.options.messageDialogSelector"]
+                    func: "{that}.checkMessageDialogVisible",
+                    args: ["a message gets shown - the message dialog pops up"],
                 }, {
                     func: "{that}.closeMessage"
                 }, {
-                    func: jqUnit.notVisible,
-                    args: ["the message dialog is hidden after being closed", "{that}.options.messageDialogSelector"]
+                    func: "{that}.checkMessageDialogHidden",
+                    args: ["the message dialog is hidden after being closed"],
                 }]
             }, {
                 expect: 7,
                 name: "visibility check with multiple messages piling up",
                 sequence: [{
-                    func: jqUnit.notVisible,
-                    args: ["message dialog is hidden in the first place", "{that}.options.messageDialogSelector"]
+                    func: "{that}.checkMessageDialogHidden",
+                    args: ["message dialog is hidden in the first place"]
                 }, {
                     func: "{that}.fireMessage",
                     args: ["First message"]
                 }, {
-                    func: jqUnit.isVisible,
-                    args: ["a message gets shown", "{that}.options.messageDialogSelector"]
+                    func: "{that}.checkMessageDialogVisible",
+                    args: ["a message gets shown"]
                 }, {
                     func: "{that}.fireMessage",
                     args: ["Second message"]
@@ -147,15 +155,15 @@ https://github.com/gpii/universal/LICENSE.txt
                 }, {
                     func: "{that}.closeMessage"
                 }, {
-                    func: jqUnit.notVisible,
-                    args: ["the message dialog is hidden after being closed", "{that}.options.messageDialogSelector"]
+                    func: "{that}.checkMessageDialogHidden",
+                    args: ["the message dialog is hidden after being closed"]
                 }]
             }, {
                 expect: 5,
                 name: "firing events which trigger messages",
                 sequence: [{
-                    func: jqUnit.notVisible,
-                    args: ["message dialog is hidden in the first place", "{that}.options.messageDialogSelector"]
+                    func: "{that}.checkMessageDialogHidden",
+                    args: ["message dialog is hidden in the first place"]
                 }, {
                     func: "{that}.fireSettingChange"
                 }, {
@@ -174,8 +182,8 @@ https://github.com/gpii/universal/LICENSE.txt
                 }, {
                     func: "{that}.closeMessage"
                 }, {
-                    func: jqUnit.notVisible,
-                    args: ["the message dialog is hidden after being closed", "{that}.options.messageDialogSelector"]
+                    func: "{that}.checkMessageDialogHidden",
+                    args: ["the message dialog is hidden after being closed"]
                 }]
             }]
         }]
