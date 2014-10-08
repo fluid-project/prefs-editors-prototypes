@@ -7,17 +7,69 @@
 
 var confirmPasswd;
 var usernameAvailability;
-
+var completeMessage;
 (function ($, fluid) {
 
     "use strict";
 
     fluid.registerNamespace("gpii.signupPanel");
 
+    fluid.defaults("gpii.signupPanel.messageLoader", {
+        gradeNames: ["fluid.prefs.resourceLoader", "autoInit"],
+        templates: {
+            login: "../../src/signup/messages/en/login.json"
+        }
+    });
+    
     fluid.defaults("gpii.signupPanel", {
         gradeNames: ["fluid.rendererComponent", "autoInit"],
+        members: {
+            messageResolver: "{signupPanel}.msgResolver"
+        },
+    	components: {
+            templateLoader: {
+                type: "fluid.prefs.resourceLoader",
+                options: {
+                    events: {
+                        onResourcesLoaded: "{signupPanel}.events.onSignupTemplatesLoaded"
+                    }
+                }
+            },
+            messageLoader: {
+                type: "fluid.prefs.resourceLoader",
+                options: {
+                    events: {
+                        onResourcesLoaded: "{signupPanel}.events.onSignupMessagesLoaded"
+                    }
+                }
+            }
+        },
+        events: {
+            onSignupTemplatesLoaded: null,
+            onSignupMessagesLoaded: null,
+            onMsgResolverReady: null,
+        },
+        distributeOptions: [{
+            source: "{that}.options.templateLoader",
+            removeSource: true,
+            target: "{that > templateLoader}.options"
+        }, {
+            source: "{that}.options.messageLoader",
+            removeSource: true,
+            target: "{that > messageLoader}.options"
+        }, {
+            source: "{that}.options.templatePrefix",
+            target: "{that > templateLoader > resourcePath}.options.value"
+        }, {
+            source: "{that}.options.messagePrefix",
+            target: "{that > messageLoader > resourcePath}.options.value"
+        }],
         listeners: {
             "onCreate.showTemplate": "gpii.signupPanel.showTemplate",
+            onSignupMessagesLoaded: {
+                funcName: "gpii.signupPanel.createMsgResolver",
+                args: ["{arguments}.0", "{that}"]
+            },
             "afterRender.termsCheck": {
                 "this": "{that}.dom.termsCheckBox",
                 "method": "change",
@@ -194,6 +246,17 @@ var usernameAvailability;
         }
     });
     
+    gpii.signupPanel.createMsgResolver = function (messageResources, that) {
+    	
+    	fluid.each(messageResources, function (oneResource) {
+    		var message = JSON.parse(oneResource.resourceText);
+    		completeMessage = $.extend({}, completeMessage, message);
+    	});
+    	var parentResolver = fluid.messageResolver({messageBase: completeMessage});
+    	that.msgResolver = fluid.messageResolver({messageBase: {}, parents: [parentResolver]});
+    	that.events.onMsgResolverReady.fire();
+    };
+    
     gpii.signupPanel.showTemplate = function (that) {
         fluid.fetchResources(that.options.resources, function () {
             that.refreshView();
@@ -205,7 +268,6 @@ var usernameAvailability;
     };
 
     gpii.signupPanel.termsCheck = function (that) {
-		console.log("Checking password and username availability... ");
     	if (that.locate("termsCheckBox").is(":checked"))
     		if ((confirmPasswd=="Passwords match")&&(usernameAvailability=="Available"))
     			that.locate("createButton").attr("disabled",false);

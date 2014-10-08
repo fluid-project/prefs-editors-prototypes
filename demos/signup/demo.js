@@ -10,7 +10,6 @@ var demo = demo || {};
 (function ($, fluid) {
 
     var pathToTemplates = "../../src/signup/html/";
-    var pathToMessages = "../../src/signup/messages/";
 
     demo.initSignUpPanel = function () {
         gpii.signupPanel(".main", {
@@ -18,7 +17,11 @@ var demo = demo || {};
                 template: {
                     href: pathToTemplates+"signupPanelTemplate.html"
                 }
+            },
+            messageLoader: {
+                gradeNames: ["gpii.signupPanel.messageLoader"]
             }            
         });
     };
+    
 })(jQuery, fluid);

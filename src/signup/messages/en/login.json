@@ -14,5 +14,9 @@
     "termsAndConditions": "terms and conditions",
     "selectRecoveyMethod": "Select recovery method",
     "recoveryID": "Recovery ID",
-    "recoveryDescription": "The following ID has been copied to your clipboard. Please save it for account recovery in case of lost password or token." 
+    "recoveryDescription": "The following ID has been copied to your clipboard. Please save it for account recovery in case of lost password or token.", 
+    "cancelButtonValue": "cancel",
+    "createAccountValue": "create account",
+    "backValue": "back",
+    "gotItValue": "got it"
 }
