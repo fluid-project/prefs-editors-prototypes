@@ -16,7 +16,7 @@ var demo = demo || {};
     demo.initSignUpPanel = function () {
         gpii.signupPanel(".gpii-signup-main", {
             templatePrefix: "../../src/signup/",
-            messagePrefix: "../../src/signup/"
+            messagePrefix: "../../src/signup/messages/" + gpii.prefs.i18n.getDefaultLanguage() +"/"
         });
     };
 

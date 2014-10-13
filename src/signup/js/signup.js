@@ -217,7 +217,7 @@ var completeMessage;
                 type: "fluid.prefs.resourceLoader",
                 options: {
                     templates: {
-                        login: "%prefix/messages/en/login.json"
+                        login: "%prefix/login.json"
                     },
                     events: {
                         onResourcesLoaded: "{signupPanel}.events.onSignupMessagesLoaded"
