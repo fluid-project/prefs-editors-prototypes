@@ -33,7 +33,7 @@
 /*
     The adjusters' font icons
 */
-.login-adjusterIcons {
+.gpii-signup-adjusterIcons {
     float: left;
     font-family: 'C4Aicons';
     speak: none;
@@ -50,7 +50,7 @@
     The font icons
 */
 
-.login-headerImage {
+.gpii-signup-headerImage {
     -webkit-font-smoothing: antialiased;
     width: 130px; 
     margin: 0px;
@@ -58,7 +58,7 @@
     display: table;
 }
 
-.login-headerImage:before {
+.gpii-signup-headerImage:before {
     font-size: 60px;
     font-weight: normal;
     color: #474C66;
@@ -67,30 +67,30 @@
   	padding-right: 20px;
 }
 
-.login-tab1 .login-headerImage:before {
+.gpii-signup-tab1 .gpii-signup-headerImage:before {
     content: "\e64e";
 }
 
-.login-tab2 .login-headerImage:before {
+.gpii-signup-tab2 .gpii-signup-headerImage:before {
     content: "\e667";
 }
 
-.login-tab3 .login-headerImage:before {
+.gpii-signup-tab3 .gpii-signup-headerImage:before {
     content: "\e66f";
 }
 
-.login-tab4 .login-headerImage:before {
+.gpii-signup-tab4 .gpii-signup-headerImage:before {
     content: "\e662";
 }
 
-.login-textfield-icon {
+.gpii-login-textfield-icon {
     -webkit-font-smoothing: antialiased;
     margin: 0px;
     width: 30px;
     display: table;
 }
 
-.login-textfield-icon:before {
+.gpii-login-textfield-icon:before {
     font-size: 30px;
     font-weight: normal;
     background-color: #F2F2F2;
@@ -101,20 +101,20 @@
   	height: 1.08em;
 }
 
-.login-tab1 .username .login-textfield-icon:before {
+.gpii-signup-tab1 .gpii-signup-username .gpii-login-textfield-icon:before {
     content: "\e661";
 }
 
-.login-tab1 .passwd .login-textfield-icon:before, .login-tab1 .cpasswd .login-textfield-icon:before {
+.gpii-signup-tab1 .gpii-signup-passwd .gpii-login-textfield-icon:before, .gpii-signup-tab1 .gpii-signup-cpasswd .gpii-login-textfield-icon:before {
     content: "\e65d";
 }
 
-input[type=checkbox]:checked + label > .checkbox-icon:before {
+input[type=checkbox]:checked + label > .gpii-signup-checkbox-icon:before {
 	background-color: #474C66;
     content: "\e60a";
 }
 
-.password-icon, .password-icon-short, .password-icon-match, .password-icon-donotmatch, .username-icon, .username-icon-available, .username-icon-notavailable {
+.gpii-signup-password-icon, .gpii-signup-password-icon-short, .gpii-signup-password-icon-match, .gpii-signup-password-icon-donotmatch, .gpii-signup-username-icon, .gpii-signup-username-icon-available, .gpii-signup-username-icon-notavailable {
     -webkit-font-smoothing: antialiased;
     margin: 0px;
     width: 35px;
@@ -122,7 +122,7 @@ input[type=checkbox]:checked + label > .checkbox-icon:before {
     float: right !important;
 }
 
-.password-icon:before, .password-icon-short, .password-icon-match:before, .password-icon-donotmatch:before, .username-icon:before, .username-icon-available:before, .username-icon-notavailable:before {
+.gpii-signup-password-icon:before, .gpii-signup-password-icon-short, .gpii-signup-password-icon-match:before, .gpii-signup-password-icon-donotmatch:before, .gpii-signup-username-icon:before, .gpii-signup-username-icon-available:before, .gpii-signup-username-icon-notavailable:before {
     font-size: 22px;
     font-weight: normal;
     background-color: #FFFFFF;
@@ -132,11 +132,11 @@ input[type=checkbox]:checked + label > .checkbox-icon:before {
   	height: 1em;
 }
 
-.login-tab1 .passwd .password-icon:before, .login-tab1 .cpasswd .password-icon-match:before, .login-tab1 .username .username-icon-available:before {
+.gpii-signup-tab1 .gpii-signup-passwd .gpii-signup-password-icon:before, .gpii-signup-tab1 .gpii-signup-cpasswd .gpii-signup-password-icon-match:before, .gpii-signup-tab1 .gpii-signup-username .gpii-signup-username-icon-available:before {
     content: "\e638";
 }
 
-.login-tab1 .cpasswd .password-icon-donotmatch:before, .password-icon-short:before, .login-tab1 .username .username-icon-notavailable:before {
+.gpii-signup-tab1 .gpii-signup-cpasswd .gpii-signup-password-icon-donotmatch:before, .gpii-signup-password-icon-short:before, .gpii-signup-tab1 .gpii-signup-username .gpii-signup-username-icon-notavailable:before {
     content: "\e639";
 }
 
@@ -162,11 +162,11 @@ input[type=checkbox] {
 	display: none;
 }
 
-.italics{
+.gpii-signup-italics{
 	font-style: italic;
 }
 
-.main {
+.gpii-signup-main {
 	background-color: #F2F2F2;
 	font-family: "Roboto Slab",serif;
 	width: 600px;
@@ -175,7 +175,7 @@ input[type=checkbox] {
 	border-radius: 5px;
 }
 
-div.tabs {
+div.gpii-signup-tabs {
 	position: relative;
 	display: block;
 	width: 520px;
@@ -184,7 +184,7 @@ div.tabs {
 	top: 100px;
 }
 
-div.tabs section {
+div.gpii-signup-tabs section {
 	position: absolute;
 	display: block;
 	top: 0em;
@@ -198,11 +198,11 @@ div.tabs section {
 	z-index: 0;
 }
 
-div.tabs section:first-child {
+div.gpii-signup-tabs section:first-child {
 	z-index: 1;
 }
 
-div.tabs section h2 {
+div.gpii-signup-tabs section h2 {
 	position: absolute;
 	font-size: 1em;
 	font-weight: normal;
@@ -216,19 +216,19 @@ div.tabs section h2 {
 	border-radius: 0 0 0 0;
 }
 
-div.tabs section:nth-child(2) h2 {
+div.gpii-signup-tabs section:nth-child(2) h2 {
 	left: 130px;
 }
 
-div.tabs section:nth-child(3) h2 {
+div.gpii-signup-tabs section:nth-child(3) h2 {
 	left: 260px;
 }
 
-div.tabs section:nth-child(4) h2 {
+div.gpii-signup-tabs section:nth-child(4) h2 {
 	left: 390px;
 }
 
-div.tabs section h2 a {
+div.gpii-signup-tabs section h2 a {
 	display: block;
 	width: 100%;
 	line-height: 1.86;
@@ -239,24 +239,24 @@ div.tabs section h2 a {
 	vertical-align: middle;
 }
 
-div.tabs .icon-text {
+div.gpii-signup-tabs .gpii-signup-icon-text {
 	font-family: "Courier-new";
 }
 
-div.tabs section:target, 
-div.tabs section:target h2 {
+div.gpii-signup-tabs section:target, 
+div.gpii-signup-tabs section:target h2 {
 	color: black;
 	background-color: #FFFFFF;
 	font-weight: normal;
 	z-index: 2;
 }
 
-div.tabs section:target h2 {
+div.gpii-signup-tabs section:target h2 {
 	border-radius:	0px;
 	box-shadow: 5px 0px 10px rgba(0,0,0,0.1);
 }
 
-div.tabs section:target .login-headerImage {
+div.gpii-signup-tabs section:target .gpii-signup-headerImage {
     -webkit-font-smoothing: antialiased;
     width: 130px; 
     margin: 0px;
@@ -264,8 +264,8 @@ div.tabs section:target .login-headerImage {
     display: table;
 }
 
-div.tabs section,
-div.tabs section h2 {
+div.gpii-signup-tabs section,
+div.gpii-signup-tabs section h2 {
 	-webkit-transition: all 500ms ease;
 	-moz-transition: all 500ms ease;
 	-ms-transition: all 500ms ease;
@@ -273,7 +273,7 @@ div.tabs section h2 {
 	transition: all 500ms ease;
 }
 
-.head {
+.gpii-signup-head {
 	font-weight: normal;
 	font-size: 1em;
 	color: #000000;
@@ -281,19 +281,19 @@ div.tabs section h2 {
 	padding-top: 0.05em;
 }
 
-.head .sign-up {
+.gpii-signup-head .gpii-signup-label {
 	font-family: Book Antiqua;
 	display: block;
 	font-size: 2.2em;	
 }
 
-.head .sign-up-description {
+.gpii-signup-head .gpii-signup-description {
 	font-family: Courier New;
 	font-size: 1em;
 	display: block;
 }
 
-.terms {
+.gpii-signup-terms {
 	position: relative;
 	font-weight: normal;
 	font-family: Verdana;
@@ -306,7 +306,7 @@ div.tabs section h2 {
 	color: #474C66;	
 }
 
-.tail {
+.gpii-signup-tail {
 	position: relative;
 	display: table;
 	font-weight: normal;
@@ -318,7 +318,7 @@ div.tabs section h2 {
 	border-radius: 0px 0px 5px 5px;
 }
 
-.login-h3 {
+.gpii-signup-login-h3 {
 	font-weight: bold;
 	font-family: Courier New;
 	
@@ -333,11 +333,11 @@ div.tabs section h2 {
 	width: inherit;
 }
 */
-.login-label {
+.gpii-signup-login-label {
 	text-align: left;
 }
 
-.passwd-header, .cpasswd-header, .username-header {
+.gpii-signup-passwd-header, .gpii-signup-cpasswd-header, .gpii-signup-username-header {
 	font-weight: normal;
 	font-family: Courier New;
 	font-size: 0.95em;
@@ -348,7 +348,7 @@ div.tabs section h2 {
 	line-height: 1.4em;
 }
 
-.textfield {
+.gpii-signup-textfield {
 	font-weight: normal;
 	font-family: Courier New;
 	font-size: large;
@@ -356,13 +356,13 @@ div.tabs section h2 {
 	border: 0em;
 }
 
-.login-textfield {
+.gpii-login-textfield {
 	width: 23em;
 	height: 2em;
 	background-color: #F2F2F2;
 }
 
-.recovery-textfield {
+.gpii-signup-recovery-textfield {
 	width: 20.5em;
 	height: 3em;
 	background-color: #F2F2F2;
@@ -373,7 +373,7 @@ div.tabs section h2 {
 	float: left;
 }
 
-input[type=checkbox] + label > .checkbox-icon {
+input[type=checkbox] + label > .gpii-signup-checkbox-icon {
 	background-color: #FFFFFF;
 	border: 2px solid #474C66;
 	border-radius: 4px;
@@ -387,15 +387,15 @@ input[type=checkbox] + label > .checkbox-icon {
 	display: inline-block;
 }
 
-input[type=checkbox]:checked + label > .checkbox-icon {
+input[type=checkbox]:checked + label > .gpii-signup-checkbox-icon {
 	background-color: #474C66;
 }
 
-.checkbox-icon-small {
+.gpii-signup-checkbox-icon-small {
 	font-size: 1em;
 }
 
-.checkbox-icon-medium {
+.gpii-signup-checkbox-icon-medium {
 	font-size: 1.2em;
 }
 
@@ -404,7 +404,7 @@ a#termsLink{
 	color: #474C66;
 }
 
-.createAccountButton {
+.gpii-signup-createAccountButton {
 	font-weight: bold;
 	font-family: Verdana;
 	font-size: 1.1em;
@@ -420,7 +420,7 @@ a#termsLink{
 	cursor: pointer;
 }
 
-.cancelButton {
+.gpii-signup-cancelButton {
 	font-weight: bold;
 	font-family: Verdana;
 	font-size: 1.1em;
@@ -435,7 +435,7 @@ a#termsLink{
 	cursor: pointer;
 }
 
-.overlay {
+.gpii-signup-overlay {
     position: fixed;
     top: 0;
 	width: 600px;
@@ -447,7 +447,7 @@ a#termsLink{
 	border-radius: 5px;
 }
 
-.modal {
+.gpii-signup-modal {
     width: 450px;
     height: 400px;
     line-height: 1em;
@@ -463,7 +463,7 @@ a#termsLink{
     z-index: 11; /* 1px higher than the overlay layer */
 }
 
-.recovery {
+.gpii-signup-recovery {
 	position: relative;
 	font-weight: normal;
 	font-family: Verdana;
@@ -478,7 +478,7 @@ a#termsLink{
 	color: #474C66;	
 }
 
-.recovery-span-header {
+.gpii-signup-recovery-span-header {
 	font-weight: bold;
 	font-family: Book Antiqua;
 	font-size: 1.5em;
@@ -491,7 +491,7 @@ a#termsLink{
 	text-align: left;
 }
 
-.recovery-checkbox-text {
+.gpii-signup-recovery-checkbox-text {
 	font-weight: bold;
 	font-family: Book Antiqua;
 	font-size: 1.2em;
@@ -499,7 +499,7 @@ a#termsLink{
 	line-height: 22px;
 }
 
-.recovery-description {
+.gpii-signup-recovery-description {
 	font-weight: normal;
 	font-family: Verdana;
 	font-size: 1em;
@@ -510,7 +510,7 @@ a#termsLink{
 	display: block;
 }
 
-.revocery-tail {
+.gpii-signup-revocery-tail {
 	position: relative;
 	font-weight: normal;
 	font-size: 1em;
@@ -520,7 +520,7 @@ a#termsLink{
 	margin-: 
 }
 
-.recovery-got-it {
+.gpii-signup-recovery-got-it {
 	font-weight: bold;
 	font-family: Verdana;
 	font-size: 1.1em;
@@ -533,7 +533,7 @@ a#termsLink{
 	cursor: pointer;
 }
 
-.recovery-back {
+.gpii-signup-recovery-back {
 	font-weight: bold;
 	font-family: Verdana;
 	font-size: 1.1em;
@@ -555,31 +555,31 @@ a#termsLink{
 	cursor: default;
 }
 
-#tab1 .short {
+#tab1 .gpii-signup-password-short {
 	color: #FF0000;
 }
 
-#tab1 .weak {
+#tab1 .gpii-signup-password-weak {
 	color: orange;
 }
 
-#tab1 .good {
+#tab1 .gpii-signup-password-good {
 	color: #2D98F3;
 }
 
-#tab1 .very-good {
+#tab1 .gpii-signup-password-very-good {
 	color: blue;
 }
 
-#tab1 .strong, #tab1 .match, #tab1 .available {
+#tab1 .gpii-signup-password-strong, #tab1 .gpii-signup-match, #tab1 .gpii-signup-available {
 	color: #20C857;
 }
 
-#tab1 .donotmatch, #tab1 .notavailable {
+#tab1 .gpii-signup-donotmatch, #tab1 .gpii-signup-notavailable {
 	color: #FF0000;
 }
 
-.passwd-header .passwd-description, .cpasswd-header .passwd-description, .username-header .username-description {
+.gpii-signup-passwd-header .gpii-signup-passwd-description, .gpii-signup-cpasswd-header .gpii-signup-passwd-description, .gpii-signup-username-header .gpii-signup-username-description {
 	float: right;
 	padding-right: 10px;
 }
