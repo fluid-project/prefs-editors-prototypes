@@ -18,5 +18,12 @@
     "cancelButton": "ακύρωση",
     "createAccountButton": "δημιουργία λογαριασμού",
     "backButton": "πίσω",
-    "gotItButton": "το κατάλαβα"     
+    "gotItButton": "το κατάλαβα",
+    "available": "Διαθέσιμο",
+    "notAvailable": "Μη διαθέσιμο",
+    "passwordsMatch": "Επαλήθευση κωδικού",
+    "passwordsDoNotMatch": "Μη επαλήθευση κωδικού",
+    "tooShort": "Πολύ μικρό",
+    "weak": "Αδύναμο",
+    "strong": "Ισχυρό"
 }

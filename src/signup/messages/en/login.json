@@ -18,5 +18,12 @@
     "cancelButton": "cancel",
     "createAccountButton": "create account",
     "backButton": "back",
-    "gotItButton": "got it"
+    "gotItButton": "got it",
+    "available": "Available",
+    "notAvailable": "Not available",
+    "passwordsMatch": "Passwords match",
+    "passwordsDoNotMatch": "Passwords do not match",
+    "tooShort": "Too short",
+    "weak": "Weak",
+    "strong": "Strong"
 }

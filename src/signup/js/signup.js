@@ -10,17 +10,13 @@
  * https://github.com/GPII/prefsEditors/LICENSE.txt
  */
 
-var confirmPasswd;
-var usernameAvailability;
-var completeMessage;
-
 (function ($, fluid) {
     "use strict";
-    
+
     fluid.registerNamespace("gpii.signupPanel");
 
     fluid.defaults("gpii.signupPanel.renderer", {
-        gradeNames: ["fluid.rendererComponent", "autoInit"],
+        gradeNames: ["fluid.rendererComponent", "fluid.prefs.msgLookup", "autoInit"],
         listeners: {
             "onCreate.render": "gpii.signupPanel.showTemplate",
             "afterRender.termsCheck": {
@@ -72,48 +68,48 @@ var completeMessage;
         invokers: {
             termsCheck: {
                 "funcName": "gpii.signupPanel.termsCheck",
-                "args": ["{that}"],
-                "dynamic": true
+                "args": ["{that}","{that}.msgLookup.available","{that}.msgLookup.passwordsMatch"],
+                "dynamic": false
             },
             usernameAvailability: {
                 "funcName": "gpii.signupPanel.usernameAvailability",
-                "args": ["{that}"],
-                "dynamic": true
+                "args": ["{that}","{that}.msgLookup.available","{that}.msgLookup.notAvailable","{that}.msgLookup.passwordsMatch"],
+                "dynamic": false
             },
             passwdStrength: {
                 "funcName": "gpii.signupPanel.passwdStrength",
-                "args": ["{that}"],
-                "dynamic": true
+                "args": ["{that}","{that}.msgLookup.tooShort","{that}.msgLookup.weak","{that}.msgLookup.strong"],
+                "dynamic": false
             },
             passwdConfirm: {
                 "funcName": "gpii.signupPanel.passwdConfirm",
-                "args": ["{that}"],
-                "dynamic": true
+                "args": ["{that}","{that}.msgLookup.available","{that}.msgLookup.passwordsMatch","{that}.msgLookup.passwordsDoNotMatch"],
+                "dynamic": false
             },
             clickTermsLink: {
                 "funcName": "gpii.signupPanel.clickTermsLink",
                 "args": ["{that}.dom.termsLink"],
-                "dynamic": true
+                "dynamic": false
             },
             clickCreateAccountButton: {
                 "funcName": "gpii.signupPanel.clickCreateAccountButton",
                 "args": ["{that}"],
-                "dynamic": true
+                "dynamic": false
             },
             clickRecoveryBackButton: {
                 "funcName": "gpii.signupPanel.clickRecoveryBackButton",
                 "args": ["{that}.dom.overlayPanel","{that}.dom.modalPanel"],
-                "dynamic": true
+                "dynamic": false
             },
             clickRecoveyCheckBox: {
                 "funcName": "gpii.signupPanel.clickRecoveyCheckBox",
                 "args": ["{that}"],
-                "dynamic": true
+                "dynamic": false
             },
             clickGotIt: {
                 "funcName": "gpii.signupPanel.clickGotIt",
                 "args": ["{that}"],
-                "dynamic": true
+                "dynamic": false
             }
         },
         selectors: {
@@ -173,7 +169,14 @@ var completeMessage;
             cancelButton: {messagekey: "cancelButton"},
             createAccountButton: {messagekey: "createAccountButton"},
             recoveryBackButton: {messagekey: "backButton"},
-            gotIt: {messagekey: "gotItButton"}
+            gotIt: {messagekey: "gotItButton"},
+            available: {messagekey: "available"},
+            notAvailable: {messagekey: "notAvailable"},
+            passwordsMatch: {messagekey: "passwordsMatch"},
+            passwordsDoNotMatch: {messagekey: "passwordsDoNotMatch"},
+            tooShort: {messagekey: "tooShort"},
+            weak: {messagekey: "weak"},
+            strong: {messagekey: "strong"}
         },
         strings: {
             // "signUpLabel": "Sign-up",
@@ -277,8 +280,8 @@ var completeMessage;
     });
     
     gpii.signupPanel.createMsgResolver = function (messageResources, that) {
-
-        fluid.each(messageResources, function (oneResource) {
+    	var completeMessage;
+    	fluid.each(messageResources, function (oneResource) {
             var message = JSON.parse(oneResource.resourceText);
             completeMessage = $.extend({}, completeMessage, message);
         });
@@ -298,9 +301,11 @@ var completeMessage;
         });
     };
 
-    gpii.signupPanel.termsCheck = function (that) {
-        if (that.locate("termsCheckBox").is(":checked"))
-            if ((confirmPasswd=="Passwords match")&&(usernameAvailability=="Available"))
+    var confirmPasswd; 
+    var usernameAvailability;
+    gpii.signupPanel.termsCheck = function (that, available, passwordsMatch) {
+    	if (that.locate("termsCheckBox").is(":checked"))
+            if ((confirmPasswd===passwordsMatch)&&(usernameAvailability===available))
                 that.locate("createAccountButton").attr("disabled",false);
             else
                 that.locate("createAccountButton").attr("disabled",true);
@@ -308,44 +313,43 @@ var completeMessage;
             that.locate("createAccountButton").attr("disabled",true);
     };
 
-    gpii.signupPanel.passwdConfirm = function (that) {
-        confirmPasswd = gpii.signupPanel.confirm(that,that.locate("passwd").val(),that.locate("cpasswd").val(),that.locate("passwdMatchDescription"),that.locate("passwdMatch"));
+    gpii.signupPanel.passwdConfirm = function (that, available, passwordsMatch, passwordsDoNotMatch) {
+        confirmPasswd = gpii.signupPanel.confirm(that,that.locate("passwd").val(),that.locate("cpasswd").val(),that.locate("passwdMatchDescription"),that.locate("passwdMatch"), passwordsMatch, passwordsDoNotMatch);
         that.locate("passwdMatchDescription").html(confirmPasswd);
-        gpii.signupPanel.termsCheck(that);
+        gpii.signupPanel.termsCheck(that, available, passwordsMatch);
     };
     
-    gpii.signupPanel.confirm = function (that, password, cpassword, passwdMatchDescription, passwdMatch){
+    gpii.signupPanel.confirm = function (that, password, cpassword, passwdMatchDescription, passwdMatch, passwordsMatch, passwordsDoNotMatch){
         if (cpassword.length < 6) {
             passwdMatchDescription.removeClass();
             passwdMatchDescription.addClass("gpiic-signup-login-passwdMatchDescription gpii-signup-passwd-description gpii-signup-donotmatch");
             passwdMatch.removeClass();
             passwdMatch.addClass("gpiic-signup-login-passwdMatch gpii-signup-adjusterIcons gpii-signup-password-icon-donotmatch gpii-signup-donotmatch");
-            return "Passwords do not match";
+            return passwordsDoNotMatch;
         }
-        if (cpassword==password && cpassword.length==password.length){
+        if (cpassword===password && cpassword.length===password.length){
             passwdMatchDescription.removeClass();
             passwdMatchDescription.addClass("gpiic-signup-login-passwdMatchDescription gpii-signup-passwd-description gpii-signup-match");
             passwdMatch.removeClass();
             passwdMatch.addClass("gpiic-signup-login-passwdMatch gpii-signup-adjusterIcons gpii-signup-password-icon-match gpii-signup-match");
-            return "Passwords match";
+            return passwordsMatch;
         }
         else{
             passwdMatchDescription.removeClass();
             passwdMatchDescription.addClass("gpiic-signup-login-passwdMatchDescription gpii-signup-passwd-description gpii-signup-donotmatch");
             passwdMatch.removeClass();
             passwdMatch.addClass("gpiic-signup-login-passwdMatch gpii-signup-adjusterIcons gpii-signup-password-icon-donotmatch gpii-signup-donotmatch");
-            return "Passwords do not match";
+            return passwordsDoNotMatch;
         }
     }
 
-    gpii.signupPanel.usernameAvailability = function (that) {
-        usernameAvailability = gpii.signupPanel.checkUsernameAvailability(that.locate("username").val(), that.locate("usernameDescription"), that.locate("usernameAvailable"));
+    gpii.signupPanel.usernameAvailability = function (that, available, notAvailable, passwordsMatch) {
+        usernameAvailability = gpii.signupPanel.checkUsernameAvailability(that.locate("username").val(), that.locate("usernameDescription"), that.locate("usernameAvailable"), available, notAvailable);
         that.locate("usernameDescription").html(usernameAvailability);
-        gpii.signupPanel.termsCheck(that);
+        gpii.signupPanel.termsCheck(that, available, passwordsMatch);
     };
 
-    gpii.signupPanel.checkUsernameAvailability = function (usernameVal, usernameDescription, usernameAvailable){
-        var arr = ["dimokas", "kalgik", "spanidis", "simeonidis", "kasper", "justin"];
+    gpii.signupPanel.checkUsernameAvailability = function (usernameVal, usernameDescription, usernameAvailable, available, notAvailable){
         var index;
         var found = false;
 
@@ -354,41 +358,37 @@ var completeMessage;
             usernameDescription.addClass('gpiic-signup-login-usernameDescription gpii-signup-username-description gpii-signup-notavailable');
             usernameAvailable.removeClass();
             usernameAvailable.addClass('gpiic-signup-login-usernameAvailable gpii-signup-adjusterIcons gpii-signup-username-icon-notavailable gpii-signup-notavailable');
-            return 'Not available';
+            return notAvailable;
         }
 
-        for	(index = 0; index < arr.length; index++) {
-            if (usernameVal==arr[index])
-                found = true;
-        }
-        if (found==true){
+        if (found===true){
             usernameDescription.removeClass();
             usernameDescription.addClass('gpiic-signup-login-usernameDescription gpii-signup-username-description gpii-signup-notavailable');
             usernameAvailable.removeClass();
             usernameAvailable.addClass('gpiic-signup-login-usernameAvailable gpii-signup-adjusterIcons gpii-signup-username-icon-notavailable gpii-signup-notavailable');
-            return 'Not available';
+            return notAvailable;
         }
         else{
             usernameDescription.removeClass();
             usernameDescription.addClass('gpiic-signup-login-usernameDescription gpii-signup-username-description gpii-signup-available');
             usernameAvailable.removeClass();
             usernameAvailable.addClass('gpiic-signup-login-usernameAvailable gpii-signup-adjusterIcons gpii-signup-username-icon-available gpii-signup-available');
-            return 'Available';
+            return available;
         }
     }
 
-    gpii.signupPanel.passwdStrength = function (that) {
-        that.locate("passwdStrengthDescription").html(gpii.signupPanel.checkPasswdStrength(that.locate("passwd").val(), that.locate("passwdStrengthDescription"), that.locate("passwdStrength")));
+    gpii.signupPanel.passwdStrength = function (that, tooShort, weak, strong) {
+        that.locate("passwdStrengthDescription").html(gpii.signupPanel.checkPasswdStrength(that.locate("passwd").val(), that.locate("passwdStrengthDescription"), that.locate("passwdStrength"), tooShort, weak, strong));
     };
 
-    gpii.signupPanel.checkPasswdStrength = function (password, passwdStrengthDescription, passwdStrength){
+    gpii.signupPanel.checkPasswdStrength = function (password, passwdStrengthDescription, passwdStrength, tooShort, weak, strong){
         var strength = 0;
         if (password.length < 6){
             passwdStrengthDescription.removeClass();
             passwdStrengthDescription.addClass('gpiic-signup-login-passwdStrengthDescription gpii-signup-passwd-description gpii-signup-password-short');
             passwdStrength.removeClass();
             passwdStrength.addClass('gpiic-signup-login-passwdStrength gpii-signup-adjusterIcons gpii-signup-password-icon-short gpii-signup-password-short');
-            return 'Too short';
+            return tooShort;
         }
         if (password.length > 7) strength += 1;
         if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/))  strength += 1;
@@ -400,14 +400,14 @@ var completeMessage;
             passwdStrengthDescription.addClass('gpiic-signup-login-passwdStrengthDescription gpii-signup-passwd-description gpii-signup-password-weak');
             passwdStrength.removeClass();
             passwdStrength.addClass('gpiic-signup-login-passwdStrength gpii-signup-adjusterIcons gpii-signup-password-icon gpii-signup-password-weak');
-            return 'Weak';
+            return weak;
         }
         else{
             passwdStrengthDescription.removeClass();
             passwdStrengthDescription.addClass('gpiic-signup-login-passwdStrengthDescription gpii-signup-passwd-description gpii-signup-password-strong');
             passwdStrength.removeClass();
             passwdStrength.addClass('gpiic-signup-login-passwdStrength gpii-signup-adjusterIcons gpii-signup-password-icon gpii-signup-password-strong');
-            return 'Strong';
+            return strong;
         }
     }
 
