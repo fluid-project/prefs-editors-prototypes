@@ -19,6 +19,26 @@
         gradeNames: ["fluid.rendererComponent", "fluid.prefs.msgLookup", "autoInit"],
         listeners: {
             "onCreate.render": "gpii.signupPanel.showTemplate",
+            "afterRender.setLoginTabAriaLabel": {
+                "this": "{that}.dom.loginTab",
+                "method": "attr",
+                "args": ["aria-label", "{that}.msgLookup.loginLabel"]
+            },
+            "afterRender.setRfidTabAriaLabel": {
+                "this": "{that}.dom.rfidTab",
+                "method": "attr",
+                "args": ["aria-label", "{that}.msgLookup.rfidLabel"]
+            },
+            "afterRender.setUsbTabAriaLabel": {
+                "this": "{that}.dom.usbTab",
+                "method": "attr",
+                "args": ["aria-label", "{that}.msgLookup.usbLabel"]
+            },
+            "afterRender.setQrcodeTabAriaLabel": {
+                "this": "{that}.dom.qrcodeTab",
+                "method": "attr",
+                "args": ["aria-label", "{that}.msgLookup.qrCodeLabel"]
+            },
             "afterRender.termsCheck": {
                 "this": "{that}.dom.termsCheckBox",
                 "method": "change",
@@ -146,9 +166,15 @@
             passwdStrength: ".gpiic-signup-login-passwdStrength",
             recoveryTextfield: ".gpiic-signup-login-recoveryTextfield",
             usernameDescription: ".gpiic-signup-login-usernameDescription",
-            usernameAvailable: ".gpiic-signup-login-usernameAvailable"
+            usernameAvailable: ".gpiic-signup-login-usernameAvailable",
+            loginTab: ".gpiic-signup-loginTab",
+            rfidTab: ".gpiic-signup-rfidTab",
+            usbTab: ".gpiic-signup-usbTab",
+            qrcodeTab: ".gpiic-signup-qrcodeTab",
+            termsCheckBoxLabel: ".gpiic-signup-termsCheckBoxLabel",
+            recoveryCheckBoxLabel: ".gpiic-signup-recoveryCheckBoxLabel"
         },
-        selectorsToIgnore: ["termsCheckBox","username","passwd","cpasswd","overlayPanel","modalPanel", "recoveyCheckBox","passwdMatchDescription","passwdMatch", "usernameDescription", "passwdStrengthDescription", "passwdStrength", "recoveryTextfield", "usernameAvailable"],
+        selectorsToIgnore: ["termsCheckBox","username","passwd","cpasswd","overlayPanel","modalPanel", "recoveyCheckBox","passwdMatchDescription","passwdMatch", "usernameDescription", "passwdStrengthDescription", "passwdStrength", "recoveryTextfield", "usernameAvailable", "loginTab", "rfidTab", "usbTab", "qrcodeTab", "termsCheckBoxLabel", "recoveryCheckBoxLabel"],
         protoTree: {
             signUpLabel: {messagekey: "signUpLabel"},
             signUpDescription1: {messagekey: "signUpDescription1"},
@@ -304,13 +330,17 @@
     var confirmPasswd; 
     var usernameAvailability;
     gpii.signupPanel.termsCheck = function (that, available, passwordsMatch) {
-    	if (that.locate("termsCheckBox").is(":checked"))
+        if (that.locate("termsCheckBox").is(":checked")){
+            that.locate("termsCheckBoxLabel").attr("aria-checked",true);
             if ((confirmPasswd===passwordsMatch)&&(usernameAvailability===available))
                 that.locate("createAccountButton").attr("disabled",false);
             else
                 that.locate("createAccountButton").attr("disabled",true);
-        else
+        }
+        else{
+            that.locate("termsCheckBoxLabel").attr("aria-checked",false);
             that.locate("createAccountButton").attr("disabled",true);
+        }
     };
 
     gpii.signupPanel.passwdConfirm = function (that, available, passwordsMatch, passwordsDoNotMatch) {
@@ -444,11 +474,13 @@
 
     gpii.signupPanel.clickRecoveyCheckBox = function (that) {
         if (that.locate("recoveyCheckBox").is(":checked")){
+            that.locate("recoveryCheckBoxLabel").attr("aria-checked",true);
             that.locate("gotIt").attr("disabled",false);
             that.locate("recoveryTextfield").attr("disabled",false);
             that.locate("recoveryDescription").removeClass("disabled");
         }
         else{
+            that.locate("recoveryCheckBoxLabel").attr("aria-checked",false);
        	    that.locate("gotIt").attr("disabled",true);
        	    that.locate("recoveryTextfield").attr("disabled",true);
        	    that.locate("recoveryDescription").addClass("disabled");

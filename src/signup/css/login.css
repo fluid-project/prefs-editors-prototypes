@@ -322,6 +322,15 @@ div.gpii-signup-tabs section h2 {
     font-weight: bold;
     font-family: Courier New;	
 }
+
+.gpii-signup-login-h3-normal {
+    font-weight: normal;
+    font-family: Courier New;
+    font-size: 1.0em;
+    line-height: 0em;
+    display: inline;	
+}
+
 /*
 .login-label {
 	font-weight: normal;
