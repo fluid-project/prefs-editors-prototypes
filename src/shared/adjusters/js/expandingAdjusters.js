@@ -11,10 +11,8 @@ You may obtain a copy of the License at
 https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
-/*global fluid, jQuery, gpii*/
-/*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
-
 (function ($, fluid) {
+    "use strict";
 
     fluid.defaults("gpii.panel.expandingAdjusters", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
@@ -134,14 +132,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     gpii.panel.expandingAdjusters.showOrHideDependingOnState = function (state, showEvent, hideEvent, duration) {
-        state ? showEvent(duration) : hideEvent(duration);
+        if (state) {
+            showEvent(duration);
+        } else {
+            hideEvent(duration);
+        }
     };
-    
+
     gpii.panel.expandingAdjusters.requestChangeMoreLess = function (that) {
         that.applier.requestChange("expandingAdjustersEnabledSwitch", !that.model.expandingAdjustersEnabledSwitch);
 
         // we need the refreshView() here since these will not be inside a conditional panel
         that.refreshView();
     };
-    
+
 })(jQuery, fluid);

@@ -10,12 +10,6 @@ You may obtain a copy of the ECL 2.0 License and BSD License at
 https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 */
 
-// Declare dependencies
-/*global demo:true, fluid, gpii, jQuery, window*/
-
-// JSLint options
-/*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
-
 // GPII store is for connecting the preference tools with the GPII server.
 // The preference tools uses the cookie store by default, rather than the
 // GPII store.
@@ -23,6 +17,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 // http://issues.gpii.net/browse/GPII-185
 
 (function ($, fluid) {
+    "use strict";
 
     fluid.registerNamespace("gpii.prefs");
 
@@ -137,7 +132,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
          * will we have GPIISession caching it and getting it from there? Relevant JIRA:
          *      http://issues.gpii.net/browse/GPII-623
          */
-        if (session.options.loggedUser != data.token) {
+        if (session.options.loggedUser !== data.token) {
             // new user, trigger accountCreated event
             session.events.accountCreated.fire(data.token);
         } else {

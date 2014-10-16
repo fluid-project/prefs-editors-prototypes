@@ -12,6 +12,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
 (function ($) {
+    "use strict";
+
     $.widget("custom.combobox", {
         options: {
             labelDomElement: null,
@@ -33,7 +35,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
              A better solution is needed for this issue.
              **/
             this.liveRegionID = fluid.allocateGuid();
-            this.wrapper.append('<span class="ui-helper-hidden-accessible" aria-live="polite" aria-atomic="true" aria-relevant="all" id="' + this.liveRegionID + '"></span>');
+            this.wrapper.append("<span class=\"ui-helper-hidden-accessible\" aria-live=\"polite\" aria-atomic=\"true\" aria-relevant=\"all\" id=\"' + this.liveRegionID + '\"></span>");
 
             this.element.hide();
             this._createAutocomplete(labelDomElement);
@@ -42,8 +44,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
         _createAutocomplete: function () {
             var selected = this.element.children(":selected"),
-                value = selected.val() ? selected.text() : "",
-                labelId = null;
+                value = selected.val() ? selected.text() : "";
 
             // Get the label id to associate with the combobox
             var labelId = gpii.ariaUtility.getLabelId(this.options.labelDomElement);
@@ -76,7 +77,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     var ids = ["#gpii_primarySchema_universalLanguage_universalLanguage", "#gpii_primarySchema_screenReaderLanguage_screenReaderLanguage", "#gpii_primarySchema_textHighlighting_textHighlighting"];
                     fluid.each(ids, function (id) {
                         var newValue = $(id).val();
-                        $(id).trigger('change', newValue);
+                        $(id).trigger("change", newValue);
                     });
                 },
                 autocompletechange: "_removeIfInvalid",
@@ -179,5 +180,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 })(jQuery);
 
 $(function () {
+    "use strict";
+    
     $.noConflict(); //switch namespace to version 1.9.1 of jQuery. Should be unnecessary after version update.
 });

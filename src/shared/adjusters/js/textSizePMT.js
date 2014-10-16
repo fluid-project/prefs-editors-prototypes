@@ -11,13 +11,11 @@ You may obtain a copy of the License at
 https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
-/*global fluid, jQuery*/
-/*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
-
 (function ($, fluid) {
+    "use strict";
 
     fluid.defaults("gpii.adjuster.textSizePMT", {
-        gradeNames: ["gpii.adjuster.textSizePCP", "autoInit"],
+        gradeNames: ["gpii.adjuster.textSizePCP", "autoInit"]
     });
 
     fluid.defaults("gpii.adjuster.textSizePMT.preview", {

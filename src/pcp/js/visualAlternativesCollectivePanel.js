@@ -12,6 +12,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
 (function (fluid) {
+    "use strict";
+    
     fluid.defaults("gpii.panel.visualAlternatives", {
         gradeNames: ["fluid.prefs.compositePanel", "autoInit"],
         selectors: {

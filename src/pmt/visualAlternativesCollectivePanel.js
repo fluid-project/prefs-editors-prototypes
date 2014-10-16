@@ -12,6 +12,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
 (function (fluid) {
+    "use strict";
+
     fluid.defaults("gpii.panel.visualAlternatives", {
         gradeNames: ["fluid.prefs.compositePanel", "gpii.panel.expandingAdjusters", "autoInit"],
         model: {
@@ -36,7 +38,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             messageResolver: "{prefsEditorLoader}.msgResolver"
         },
         listeners: {
-        	"afterRender.setSectionName": {
+            "afterRender.setSectionName": {
                 "this": "{that}.dom.visualAlternativesSection",
                 "method": "attr",
                 "args": ["aria-label", "{that}.msgLookup.visualAlternativesPresetButtonLabel"]

@@ -11,11 +11,9 @@ You may obtain a copy of the License at
 https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
-/*global fluid, jQuery, gpii*/
-/*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
-
 (function ($, fluid) {
-
+    "use strict";
+    
     fluid.defaults("gpii.adjuster.onOffSwitch", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         onOffModelKey: null,    // Must be provided by integrators. The model key that controls on off switch
@@ -98,7 +96,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.adjuster.onOffSwitch.addAria = function (that) {
         that.container.attr("role", "application");
         gpii.ariaUtility.setAriaLabelledBy(that.container, that.locate("headingLabel"));
-        
+
         var onOffSwitch = that.locate("onOffSwitch");
         onOffSwitch.attr("role", "checkbox");
         gpii.ariaUtility.setAriaLabelledBy(onOffSwitch, that.locate("headingLabel"));

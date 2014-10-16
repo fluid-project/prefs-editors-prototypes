@@ -10,10 +10,8 @@ You may obtain a copy of the License at
 https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
-/*global fluid, jQuery, gpii*/
-/*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
-
 (function ($, fluid) {
+    "use strict";
 
     fluid.registerNamespace("gpii.prefs");
 
@@ -78,7 +76,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
 
     gpii.prefs.gpiiSession.login = function (that, userToken) {
-        if (userToken != null) {
+        if (userToken !== null) {
             $.ajax({
                 url: that.options.url + "user/" + userToken + "/login",
                 type: "GET",
@@ -102,7 +100,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
 
     gpii.prefs.gpiiSession.logout = function (that) {
-        if (that.options.loggedUser != null) {
+        if (that.options.loggedUser !== null) {
             $.ajax({
                 url: that.options.url + "user/" + that.options.loggedUser + "/logout",
                 type: "GET",
@@ -124,7 +122,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             });
         }
     };
-    
+
     gpii.prefs.gpiiSession.getLoggedUser = function (that, onGetLoggedUserSuccessEvent, onGetLoggedUserErrorEvent) {
         $.ajax({
             url: that.options.url + "token",
@@ -143,7 +141,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             error: function (jqXHR, textStatus, errorThrown) {
                 fluid.log("GET: Error at getting logged user's token! Test status: " + textStatus);
                 fluid.log(errorThrown);
-                
+
                 onGetLoggedUserErrorEvent.fire();
             }
         });
@@ -152,9 +150,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.prefs.gpiiSession.setLoggedUser = function (that, data) {
         that.options.loggedUser = data;
     };
-    
+
     gpii.prefs.gpiiSession.clearLoggedUser = function (that) {
         that.options.loggedUser = null;
     };
-    
+
 })(jQuery, fluid);

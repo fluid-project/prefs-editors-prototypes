@@ -10,11 +10,9 @@ You may obtain a copy of the License at
 https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
-/*global fluid, jQuery, gpii*/
-/*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
-
 (function ($, fluid) {
-
+    "use strict";
+    
     fluid.defaults("gpii.enactor.contrastTheme", {
         gradeNames: ["fluid.prefs.enactor.classSwapper", "autoInit"],
         preferenceMap: {

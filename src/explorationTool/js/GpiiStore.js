@@ -9,12 +9,6 @@ You may obtain a copy of the ECL 2.0 License and BSD License at
 https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 */
 
-// Declare dependencies
-/*global demo:true, fluid, gpii, jQuery, window*/
-
-// JSLint options
-/*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
-
 // GPII store is for connecting the discovery tool with the GPII server.
 // The discovery tool uses the cookie store by default, rather than the
 // GPII store.
@@ -22,6 +16,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 // http://issues.gpii.net/browse/GPII-185
 
 (function ($, fluid) {
+    "use strict";
 
     fluid.registerNamespace("gpii.explorationTool");
 
@@ -78,11 +73,11 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             type: "POST",
             contentType: "application/json",
             headers: {
-                'X-CORS-REQUEST': 'pingpong'
+                "X-CORS-REQUEST": "pingpong"
             },
             dataType: "json",
             data: JSON.stringify(dataToSave),
-            success: function (data) {
+            success: function () {
                 fluid.log("POST: Saved to GPII server");
             },
             error: function () {

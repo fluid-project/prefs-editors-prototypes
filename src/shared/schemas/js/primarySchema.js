@@ -12,6 +12,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
 (function (fluid) {
+    "use strict";
+    
     fluid.registerNamespace("gpii");
 
     gpii.primarySchema = {

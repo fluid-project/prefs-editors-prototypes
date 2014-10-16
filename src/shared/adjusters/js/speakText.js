@@ -12,6 +12,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
 (function ($, fluid) {
+    "use strict";
+
     fluid.defaults("gpii.speakText", {
         gradeNames: ["fluid.prefs.fullNoPreview", "autoInit"],
         prefsEditor: {
@@ -86,7 +88,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
 
     gpii.speakText.showOrHideDependingOnState = function (state, showEvent, hideEvent) {
-        state ? showEvent() : hideEvent();
+        if (state) {
+            showEvent();
+        } else {
+            hideEvent();
+        }
     };
 
     // gpii.speakText.lookupMsg = function (messageResolver, value) {

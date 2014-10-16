@@ -11,6 +11,7 @@ https://github.com/gpii/universal/LICENSE.txt
 var fluid_1_5 = fluid_1_5 || {};
 
 (function ($, fluid) {
+    "use strict";
 
     fluid.defaults("gpii.adjuster.preview", {
         gradeNames: ["fluid.rendererComponent", "autoInit"],
@@ -27,7 +28,7 @@ var fluid_1_5 = fluid_1_5 || {};
                 createOnEvent: "afterRender",
                 container: "{that}.dom.preview",
                 options: {
-                    model: "{prefsEditor}.model",
+                    model: "{prefsEditor}.model"
                 }
             }
         },
@@ -52,10 +53,10 @@ var fluid_1_5 = fluid_1_5 || {};
                             options: {
                                 gradeNames: ["fluid.prefs.msgLookup"],
                                 members: {
-                                   messageResolver: "{prefsEditorLoader}.msgResolver"
+                                    messageResolver: "{prefsEditorLoader}.msgResolver"
                                 },
                                 strings: {
-                                   previewText: "{that}.msgLookup.previewText"
+                                    previewText: "{that}.msgLookup.previewText"
                                 },
                                 selectors: {
                                     text: ".gpiic-adjuster-preview-text"
@@ -107,7 +108,6 @@ var fluid_1_5 = fluid_1_5 || {};
     };
 
     gpii.enactors.previewConnections.fetchInitialModel = function (rules, sourceModel) {
-        var modelPrefix = "model.";
         var model = {};
         fluid.each(rules, function (internal, external) {
             var externalVal = fluid.get(sourceModel, external);
@@ -116,4 +116,4 @@ var fluid_1_5 = fluid_1_5 || {};
         return model;
     };
 
- })(jQuery, fluid_1_5);
+})(jQuery, fluid_1_5);

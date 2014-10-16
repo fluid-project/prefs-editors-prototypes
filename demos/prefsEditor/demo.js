@@ -11,12 +11,11 @@ You may obtain a copy of the License at
 https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
-/*global demo:true, fluid, jQuery, navigator, gpii*/
-/*jslint white: true, funcinvoke: true, undef: true, newcap: true, regexp: true, browser: true, forin: true, continue: true, maxerr: 100, indent: 4 */
-
 var demo = demo || {};
 
 (function ($, fluid) {
+    "use strict";
+
     // TODO: for switching the PMT and PCP from production to development
     // mode is via a mode=dev query parameter. In the future we hope to
     // employ a system based around the kettle configuration that the rest
@@ -33,7 +32,7 @@ var demo = demo || {};
             var param = paramString.split("=");
             params[param[0]] = param[1];
         });
-        return !!(params["mode"] === "dev");
+        return (params.mode === "dev");
     };
 
     fluid.defaults("demo.prefsEd", {
@@ -44,7 +43,7 @@ var demo = demo || {};
         components: {
             prefsEditorLoader: {
                 options: {
-                    messagePrefix: "../../src/shared/adjusters/messages/" + gpii.prefs.i18n.getDefaultLanguage() + "/",
+                    messagePrefix: "../../src/shared/adjusters/messages/" + gpii.prefs.i18n.getDefaultLanguage() + "/"
                 }
             }
         }

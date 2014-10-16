@@ -10,12 +10,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 */
 
 // Declare dependencies
-/*global demo:true, fluid, gpii, jQuery, window, buzz*/
-
-// JSLint options
-/*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
+/* global buzz */
 
 (function ($, fluid) {
+    "use strict";
 
     fluid.registerNamespace("gpii.explorationTool");
 
@@ -675,7 +673,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     };
 
     gpii.explorationTool.enactors.simplifiedContent.finalInit = function (that) {
-        that.applier.modelChanged.addListener("value", function (newModel) {
+        that.applier.modelChanged.addListener("value", function () {
             that.set();
         });
     };
