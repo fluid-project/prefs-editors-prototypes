@@ -407,6 +407,14 @@
         that.locate("passwdStrengthDescription").html(gpii.signupPanel.checkPasswdStrength(that, that.locate("passwd").val(), that.locate("passwdStrengthDescription"), that.locate("passwdStrength"), tooShort, weak, strong));
     };
 
+    gpii.signupPanel.passwdRegExprs = {
+        expr1: "([a-z].*[A-Z])|([A-Z].*[a-z])",
+        expr2: "([a-zA-Z])",
+        expr3: "([0-9])",
+        expr4: "([!,%,&,@,#,$,^,*,?,_,~])",
+        expr5: "(.*[!,%,&,@,#,$,^,*,?,_,~].*[!,%,&,@,#,$,^,*,?,_,~])"
+    };
+
     gpii.signupPanel.checkPasswdStrength = function (that, password, passwdStrengthDescription, passwdStrength, tooShort, weak, strong) {
         var strength = 0;
         if (password.length < 6) {
@@ -421,10 +429,10 @@
             return tooShort;
         }
         if (password.length > 7) { strength += 1; }
-        if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) { strength += 1; }
-        if (password.match(/([a-zA-Z])/) && password.match(/([0-9])/)) { strength += 1; }
-        if (password.match(/([!,%,&,@,#,$,^,*,?,_,~])/)) { strength += 1; }
-        if (password.match(/(.*[!,%,&,@,#,$,^,*,?,_,~].*[!,%,&,@,#,$,^,*,?,_,~])/)) { strength += 1; }
+        if (password.match(gpii.signupPanel.passwdRegExprs.expr1)) { strength += 1; }
+        if (password.match(gpii.signupPanel.passwdRegExprs.expr2) && password.match(gpii.signupPanel.passwdRegExprs.expr3)) { strength += 1; }
+        if (password.match(gpii.signupPanel.passwdRegExprs.expr4)) { strength += 1; }
+        if (password.match(gpii.signupPanel.passwdRegExprs.expr5)) { strength += 1; }
         if (strength < 2 ) {
             if (passwdStrengthDescription.hasClass(that.options.styles.strong)) {
                 passwdStrengthDescription.removeClass(that.options.styles.strong);
