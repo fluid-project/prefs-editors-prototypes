@@ -88,48 +88,39 @@
         invokers: {
             termsCheck: {
                 "funcName": "gpii.signupPanel.termsCheck",
-                "args": ["{that}","{that}.msgLookup.available","{that}.msgLookup.passwordsMatch"],
-                "dynamic": false
+                "args": ["{that}","{that}.msgLookup.available","{that}.msgLookup.passwordsMatch"]
             },
             usernameAvailability: {
                 "funcName": "gpii.signupPanel.usernameAvailability",
-                "args": ["{that}","{that}.msgLookup.available","{that}.msgLookup.notAvailable","{that}.msgLookup.passwordsMatch"],
-                "dynamic": false
+                "args": ["{that}","{that}.msgLookup.available","{that}.msgLookup.notAvailable","{that}.msgLookup.passwordsMatch"]
             },
             passwdStrength: {
                 "funcName": "gpii.signupPanel.passwdStrength",
-                "args": ["{that}","{that}.msgLookup.tooShort","{that}.msgLookup.weak","{that}.msgLookup.strong"],
-                "dynamic": false
+                "args": ["{that}","{that}.msgLookup.tooShort","{that}.msgLookup.weak","{that}.msgLookup.strong"]
             },
             passwdConfirm: {
                 "funcName": "gpii.signupPanel.passwdConfirm",
-                "args": ["{that}","{that}.msgLookup.available","{that}.msgLookup.passwordsMatch","{that}.msgLookup.passwordsDoNotMatch"],
-                "dynamic": false
+                "args": ["{that}","{that}.msgLookup.available","{that}.msgLookup.passwordsMatch","{that}.msgLookup.passwordsDoNotMatch"]
             },
             clickTermsLink: {
                 "funcName": "gpii.signupPanel.clickTermsLink",
-                "args": ["{that}.dom.termsLink"],
-                "dynamic": false
+                "args": ["{that}.dom.termsLink"]
             },
             clickCreateAccountButton: {
                 "funcName": "gpii.signupPanel.clickCreateAccountButton",
-                "args": ["{that}"],
-                "dynamic": false
+                "args": ["{that}"]
             },
             clickRecoveryBackButton: {
                 "funcName": "gpii.signupPanel.clickRecoveryBackButton",
-                "args": ["{that}.dom.overlayPanel","{that}.dom.modalPanel"],
-                "dynamic": false
+                "args": ["{that}.dom.overlayPanel","{that}.dom.modalPanel"]
             },
             clickRecoveyCheckBox: {
                 "funcName": "gpii.signupPanel.clickRecoveyCheckBox",
-                "args": ["{that}"],
-                "dynamic": false
+                "args": ["{that}"]
             },
             clickGotIt: {
                 "funcName": "gpii.signupPanel.clickGotIt",
-                "args": ["{that}"],
-                "dynamic": false
+                "args": ["{that}"]
             }
         },
         selectors: {
@@ -204,27 +195,24 @@
             weak: {messagekey: "weak"},
             strong: {messagekey: "strong"}
         },
+        styles: {
+            match: "gpii-signup-match",
+            donotMatch: "gpii-signup-donotmatch",
+            iconMatch: "gpii-signup-password-icon-match",
+            iconDonotMatch: "gpii-signup-password-icon-donotmatch",
+            available: "gpii-signup-available",
+            notAvailable: "gpii-signup-notavailable",
+            usernameIconAvailable: "gpii-signup-username-icon-available",
+            usernameIconNotAvailable: "gpii-signup-username-icon-notavailable",
+            short: "gpii-signup-password-short",
+            weak: "gpii-signup-password-weak",
+            strong: "gpii-signup-password-strong",
+            passwdIconShort: "gpii-signup-password-icon-short",
+            passwdIcon: "gpii-signup-password-icon",
+            passwdDescription: "gpii-signup-passwd-description",
+            adjusterIcons: "gpii-signup-adjusterIcons"
+        },
         strings: {
-            // "signUpLabel": "Sign-up",
-            // "signUpDescription1": "Choose at least one method to access your account.",
-            // "signUpDescription2": "This can be changed later.",
-            // "loginLabel": "LOGIN",
-            // "usbLabel": "USB",
-            // "rfidLabel": "RFID",
-            // "qrCodeLabel": "QR CODE",
-            // "recommendedForSecurity": "* Recommended for security",
-            // "usernameLabel": "Enter email or create username",
-            // "passwordLabel": "Password",
-            // "confirmPasswordLabel": "Confirm password",
-            // "acceptLabel": "I accept ",
-            // "termsAndConditions": "terms and conditions",
-            // "selectRecoveyMethod": "Select recovery method",
-            // "recoveryID": "Recovery ID",
-            // "recoveryDescription": "The following ID has been copied to your clipboard. Please save it for account recovery in case of lost password or token.",
-            // "cancelButtonValue": "cancel",
-            // "createButton": "create account",
-            // "backValue": "back",
-            // "gotIt": "got it"
         }
     });
 
@@ -306,15 +294,13 @@
     });
     
     gpii.signupPanel.createMsgResolver = function (messageResources, that) {
-    	var completeMessage;
-    	fluid.each(messageResources, function (oneResource) {
+        var completeMessage;
+        fluid.each(messageResources, function (oneResource) {
             var message = JSON.parse(oneResource.resourceText);
             completeMessage = $.extend({}, completeMessage, message);
         });
-        //var parentResolver = fluid.messageResolver({messageBase: completeMessage});
         that.msgResolver = fluid.messageResolver({messageBase: completeMessage});
-        //that.msgResolver = fluid.messageResolver({messageBase: {}, parents: [parentResolver]});
-    	that.events.onMsgResolverReady.fire();
+        that.events.onMsgResolverReady.fire();
     };
     
     gpii.signupPanel.showTemplate = function (that) {
@@ -330,113 +316,139 @@
     var confirmPasswd; 
     var usernameAvailability;
     gpii.signupPanel.termsCheck = function (that, available, passwordsMatch) {
-        if (that.locate("termsCheckBox").is(":checked")){
+        if (that.locate("termsCheckBox").is(":checked")) {
             that.locate("termsCheckBoxLabel").attr("aria-checked",true);
-            if ((confirmPasswd===passwordsMatch)&&(usernameAvailability===available))
-                that.locate("createAccountButton").attr("disabled",false);
-            else
-                that.locate("createAccountButton").attr("disabled",true);
+            var disable = (confirmPasswd === passwordsMatch) && (usernameAvailability === available);
+            that.locate("createAccountButton").attr("disabled", !disable);
         }
-        else{
+        else {
             that.locate("termsCheckBoxLabel").attr("aria-checked",false);
             that.locate("createAccountButton").attr("disabled",true);
         }
     };
 
     gpii.signupPanel.passwdConfirm = function (that, available, passwordsMatch, passwordsDoNotMatch) {
-        confirmPasswd = gpii.signupPanel.confirm(that,that.locate("passwd").val(),that.locate("cpasswd").val(),that.locate("passwdMatchDescription"),that.locate("passwdMatch"), passwordsMatch, passwordsDoNotMatch);
+        confirmPasswd = gpii.signupPanel.confirm(that, that.locate("passwd").val(), that.locate("cpasswd").val(), that.locate("passwdMatchDescription"), that.locate("passwdMatch"), passwordsMatch, passwordsDoNotMatch);
         that.locate("passwdMatchDescription").html(confirmPasswd);
         gpii.signupPanel.termsCheck(that, available, passwordsMatch);
     };
-    
-    gpii.signupPanel.confirm = function (that, password, cpassword, passwdMatchDescription, passwdMatch, passwordsMatch, passwordsDoNotMatch){
+
+    gpii.signupPanel.confirm = function (that, password, cpassword, passwdMatchDescription, passwdMatch, passwordsMatch, passwordsDoNotMatch) {
         if (cpassword.length < 6) {
-            passwdMatchDescription.removeClass();
-            passwdMatchDescription.addClass("gpiic-signup-login-passwdMatchDescription gpii-signup-passwd-description gpii-signup-donotmatch");
-            passwdMatch.removeClass();
-            passwdMatch.addClass("gpiic-signup-login-passwdMatch gpii-signup-adjusterIcons gpii-signup-password-icon-donotmatch gpii-signup-donotmatch");
+            if (passwdMatch.hasClass(that.options.styles.match)) {
+                passwdMatch.removeClass(that.options.styles.match);
+                passwdMatch.removeClass(that.options.styles.iconMatch);
+                passwdMatchDescription.removeClass(that.options.styles.match);
+            }
+            passwdMatch.addClass(that.options.styles.donotMatch);
+            passwdMatch.addClass(that.options.styles.iconDonotMatch);
+            passwdMatchDescription.addClass(that.options.styles.donotMatch);
             return passwordsDoNotMatch;
         }
-        if (cpassword===password && cpassword.length===password.length){
-            passwdMatchDescription.removeClass();
-            passwdMatchDescription.addClass("gpiic-signup-login-passwdMatchDescription gpii-signup-passwd-description gpii-signup-match");
-            passwdMatch.removeClass();
-            passwdMatch.addClass("gpiic-signup-login-passwdMatch gpii-signup-adjusterIcons gpii-signup-password-icon-match gpii-signup-match");
+        if (cpassword===password && cpassword.length===password.length) {
+            if (passwdMatch.hasClass(that.options.styles.donotMatch)) {
+                passwdMatch.removeClass(that.options.styles.donotMatch);
+                passwdMatch.removeClass(that.options.styles.iconDonotMatch);
+                passwdMatchDescription.removeClass(that.options.styles.donotMatch);
+            }
+            passwdMatch.addClass(that.options.styles.match);
+            passwdMatch.addClass(that.options.styles.iconMatch);
+            passwdMatchDescription.addClass(that.options.styles.match);
             return passwordsMatch;
         }
-        else{
-            passwdMatchDescription.removeClass();
-            passwdMatchDescription.addClass("gpiic-signup-login-passwdMatchDescription gpii-signup-passwd-description gpii-signup-donotmatch");
-            passwdMatch.removeClass();
-            passwdMatch.addClass("gpiic-signup-login-passwdMatch gpii-signup-adjusterIcons gpii-signup-password-icon-donotmatch gpii-signup-donotmatch");
+        else {
+            if (passwdMatch.hasClass(that.options.styles.match)) {
+                passwdMatch.removeClass(that.options.styles.match);
+                passwdMatch.removeClass(that.options.styles.iconMatch);
+                passwdMatchDescription.removeClass(that.options.styles.match);
+            }
+            passwdMatch.addClass(that.options.styles.donotMatch);
+            passwdMatch.addClass(that.options.styles.iconDonotMatch);
+            passwdMatchDescription.addClass(that.options.styles.donotMatch);
             return passwordsDoNotMatch;
         }
     }
 
     gpii.signupPanel.usernameAvailability = function (that, available, notAvailable, passwordsMatch) {
-        usernameAvailability = gpii.signupPanel.checkUsernameAvailability(that.locate("username").val(), that.locate("usernameDescription"), that.locate("usernameAvailable"), available, notAvailable);
+        usernameAvailability = gpii.signupPanel.checkUsernameAvailability(that, that.locate("username").val(), that.locate("usernameDescription"), that.locate("usernameAvailable"), available, notAvailable);
         that.locate("usernameDescription").html(usernameAvailability);
         gpii.signupPanel.termsCheck(that, available, passwordsMatch);
     };
 
-    gpii.signupPanel.checkUsernameAvailability = function (usernameVal, usernameDescription, usernameAvailable, available, notAvailable){
+    gpii.signupPanel.checkUsernameAvailability = function (that, usernameVal, usernameDescription, usernameAvailable, available, notAvailable) {
         var index;
         var found = false;
 
-        if (usernameVal.length < 3) {
-            usernameDescription.removeClass();
-            usernameDescription.addClass('gpiic-signup-login-usernameDescription gpii-signup-username-description gpii-signup-notavailable');
-            usernameAvailable.removeClass();
-            usernameAvailable.addClass('gpiic-signup-login-usernameAvailable gpii-signup-adjusterIcons gpii-signup-username-icon-notavailable gpii-signup-notavailable');
+        if ((usernameVal.length < 3) || (found)) {
+            if (usernameAvailable.hasClass(that.options.styles.available)) {
+                usernameAvailable.removeClass(that.options.styles.available);
+                usernameAvailable.removeClass(that.options.styles.usernameIconAvailable);
+                usernameDescription.removeClass(that.options.styles.available);
+            }
+            usernameAvailable.addClass(that.options.styles.notAvailable);
+            usernameAvailable.addClass(that.options.styles.usernameIconNotAvailable);
+            usernameDescription.addClass(that.options.styles.notAvailable);
             return notAvailable;
         }
-
-        if (found===true){
-            usernameDescription.removeClass();
-            usernameDescription.addClass('gpiic-signup-login-usernameDescription gpii-signup-username-description gpii-signup-notavailable');
-            usernameAvailable.removeClass();
-            usernameAvailable.addClass('gpiic-signup-login-usernameAvailable gpii-signup-adjusterIcons gpii-signup-username-icon-notavailable gpii-signup-notavailable');
-            return notAvailable;
-        }
-        else{
-            usernameDescription.removeClass();
-            usernameDescription.addClass('gpiic-signup-login-usernameDescription gpii-signup-username-description gpii-signup-available');
-            usernameAvailable.removeClass();
-            usernameAvailable.addClass('gpiic-signup-login-usernameAvailable gpii-signup-adjusterIcons gpii-signup-username-icon-available gpii-signup-available');
+        else {
+            if (usernameAvailable.hasClass(that.options.styles.notAvailable)) {
+                usernameAvailable.removeClass(that.options.styles.notAvailable);
+                usernameAvailable.removeClass(that.options.styles.usernameIconNotAvailable);
+                usernameDescription.removeClass(that.options.styles.notAvailable);
+            }
+            usernameAvailable.addClass(that.options.styles.available);
+            usernameAvailable.addClass(that.options.styles.usernameIconAvailable);
+            usernameDescription.addClass(that.options.styles.available);
             return available;
         }
     }
 
     gpii.signupPanel.passwdStrength = function (that, tooShort, weak, strong) {
-        that.locate("passwdStrengthDescription").html(gpii.signupPanel.checkPasswdStrength(that.locate("passwd").val(), that.locate("passwdStrengthDescription"), that.locate("passwdStrength"), tooShort, weak, strong));
+        that.locate("passwdStrengthDescription").html(gpii.signupPanel.checkPasswdStrength(that, that.locate("passwd").val(), that.locate("passwdStrengthDescription"), that.locate("passwdStrength"), tooShort, weak, strong));
     };
 
-    gpii.signupPanel.checkPasswdStrength = function (password, passwdStrengthDescription, passwdStrength, tooShort, weak, strong){
+    gpii.signupPanel.checkPasswdStrength = function (that, password, passwdStrengthDescription, passwdStrength, tooShort, weak, strong) {
         var strength = 0;
-        if (password.length < 6){
-            passwdStrengthDescription.removeClass();
-            passwdStrengthDescription.addClass('gpiic-signup-login-passwdStrengthDescription gpii-signup-passwd-description gpii-signup-password-short');
-            passwdStrength.removeClass();
-            passwdStrength.addClass('gpiic-signup-login-passwdStrength gpii-signup-adjusterIcons gpii-signup-password-icon-short gpii-signup-password-short');
+        if (password.length < 6) {
+            if (passwdStrengthDescription.hasClass(that.options.styles.weak)) {
+                passwdStrengthDescription.removeClass(that.options.styles.weak);
+                passwdStrength.removeClass(that.options.styles.weak);
+                passwdStrength.removeClass(that.options.styles.passwdIcon);
+            }
+            passwdStrengthDescription.addClass(that.options.styles.short);
+            passwdStrength.addClass(that.options.styles.passwdIconShort);
+            passwdStrength.addClass(that.options.styles.short);
             return tooShort;
         }
-        if (password.length > 7) strength += 1;
-        if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/))  strength += 1;
-        if (password.match(/([a-zA-Z])/) && password.match(/([0-9])/))  strength += 1; 
-        if (password.match(/([!,%,&,@,#,$,^,*,?,_,~])/))  strength += 1;
-        if (password.match(/(.*[!,%,&,@,#,$,^,*,?,_,~].*[!,%,&,@,#,$,^,*,?,_,~])/)) strength += 1;
-        if (strength < 2 ){
-            passwdStrengthDescription.removeClass();
-            passwdStrengthDescription.addClass('gpiic-signup-login-passwdStrengthDescription gpii-signup-passwd-description gpii-signup-password-weak');
-            passwdStrength.removeClass();
-            passwdStrength.addClass('gpiic-signup-login-passwdStrength gpii-signup-adjusterIcons gpii-signup-password-icon gpii-signup-password-weak');
+        if (password.length > 7) { strength += 1; }
+        if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) { strength += 1; }
+        if (password.match(/([a-zA-Z])/) && password.match(/([0-9])/)) { strength += 1; }
+        if (password.match(/([!,%,&,@,#,$,^,*,?,_,~])/)) { strength += 1; }
+        if (password.match(/(.*[!,%,&,@,#,$,^,*,?,_,~].*[!,%,&,@,#,$,^,*,?,_,~])/)) { strength += 1; }
+        if (strength < 2 ) {
+            if (passwdStrengthDescription.hasClass(that.options.styles.strong)) {
+                passwdStrengthDescription.removeClass(that.options.styles.strong);
+                passwdStrength.removeClass(that.options.styles.strong);
+                passwdStrengthDescription.addClass(that.options.styles.weak);
+                passwdStrength.addClass(that.options.styles.weak);
+            }
+            else if (passwdStrengthDescription.hasClass(that.options.styles.short)) {
+                passwdStrengthDescription.removeClass(that.options.styles.short);
+                passwdStrength.removeClass(that.options.styles.short);
+                passwdStrength.removeClass(that.options.styles.passwdIconShort);
+                passwdStrengthDescription.addClass(that.options.styles.weak);
+                passwdStrength.addClass(that.options.styles.weak);
+                passwdStrength.addClass(that.options.styles.passwdIcon);
+            }
             return weak;
         }
-        else{
-            passwdStrengthDescription.removeClass();
-            passwdStrengthDescription.addClass('gpiic-signup-login-passwdStrengthDescription gpii-signup-passwd-description gpii-signup-password-strong');
-            passwdStrength.removeClass();
-            passwdStrength.addClass('gpiic-signup-login-passwdStrength gpii-signup-adjusterIcons gpii-signup-password-icon gpii-signup-password-strong');
+        else {
+            if (passwdStrengthDescription.hasClass(that.options.styles.weak)) {
+                passwdStrengthDescription.removeClass(that.options.styles.weak);
+                passwdStrength.removeClass(that.options.styles.weak);
+            }
+            passwdStrengthDescription.addClass(that.options.styles.strong);
+            passwdStrength.addClass(that.options.styles.strong);
             return strong;
         }
     }
@@ -448,14 +460,14 @@
             contentType: "application/json; charset=utf-8",
             dataType:"json",
             crossDomain: true,
-            success: function(data, textStatus, jqXHR){
+            success: function(data, textStatus, jqXHR) {
                 var response = data;
                 var token = response.token;
                 that.locate("overlayPanel").show();
                 that.locate("modalPanel").show();
                 that.locate("recoveryTextfield").val(token);
             },
-            error: function(jqXHR, textStatus, errorThrown){
+            error: function(jqXHR, textStatus, errorThrown) {
                 that.locate("overlayPanel").show();
                 that.locate("modalPanel").show();
             }
@@ -473,18 +485,18 @@
     };
 
     gpii.signupPanel.clickRecoveyCheckBox = function (that) {
-        if (that.locate("recoveyCheckBox").is(":checked")){
+        if (that.locate("recoveyCheckBox").is(":checked")) {
             that.locate("recoveryCheckBoxLabel").attr("aria-checked",true);
             that.locate("gotIt").attr("disabled",false);
             that.locate("recoveryTextfield").attr("disabled",false);
             that.locate("recoveryDescription").removeClass("disabled");
         }
-        else{
+        else {
             that.locate("recoveryCheckBoxLabel").attr("aria-checked",false);
-       	    that.locate("gotIt").attr("disabled",true);
-       	    that.locate("recoveryTextfield").attr("disabled",true);
-       	    that.locate("recoveryDescription").addClass("disabled");
-       	}
+            that.locate("gotIt").attr("disabled",true);
+            that.locate("recoveryTextfield").attr("disabled",true);
+            that.locate("recoveryDescription").addClass("disabled");
+        }
     };
 
     gpii.signupPanel.clickGotIt = function (that) {
@@ -495,12 +507,12 @@
             contentType: "application/json; charset=utf-8",
             dataType:"text",
             crossDomain: true,
-            success: function(data, textStatus, jqXHR){
+            success: function(data, textStatus, jqXHR) {
                 window.location.href= location.origin + "/prefsEditors/demos/prefsEditor/index.html";
             },
             error: function(response) {
-           	    alert("Server connection error!\n\nPlease try again later.");
-           	}
+                alert("Server connection error!\n\nPlease try again later.");
+            }
         });
     };
 

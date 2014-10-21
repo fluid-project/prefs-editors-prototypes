@@ -1,7 +1,7 @@
 {
-	"signUpLabel": "Εγγραφή",
-	"signUpDescription1": "Επιλέξτε τουλάχιστον μια μέθοδο για πρόσβαση στο λογαριασμό σας.",
-	"signUpDescription2": "Αυτό μπορεί να αλλάξει αργότερα.",
+    "signUpLabel": "Εγγραφή",
+    "signUpDescription1": "Επιλέξτε τουλάχιστον μια μέθοδο για πρόσβαση στο λογαριασμό σας.",
+    "signUpDescription2": "Αυτό μπορεί να αλλάξει αργότερα.",
     "loginLabel": "LOGIN",
     "usbLabel": "USB",
     "rfidLabel": "RFID",
