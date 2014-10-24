@@ -6,7 +6,7 @@
     "bugs": "http://wiki.gpii.net/index.php/Main_Page",
     "homepage": "http://gpii.net/",
     "dependencies": {
-        "universal": "git://github.com/GPII/universal.git"
+        "kettle": "git://github.com/fluid-project/kettle.git#2cd608b95a7e908769c91f5120cfc50bfc19c4db"
     },
     "licenses": [
         {

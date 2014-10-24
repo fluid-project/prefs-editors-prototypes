@@ -18,18 +18,21 @@ Run the following command
 
     git clone https://github.com/GPII/prefsEditors
 
+Go to the prefsEditors directory and install its dependencies
+
+	cd prefsEditors
+	npm install
+
+
 Running the preferences editors
 -------------------------------
 
-In the new subdirectory "prefsEditors" you will find this README.md file, 
-a few other files and a few directories. 
+While still in the prefsEditors directory, run
 
-Copy the folders "demos", "src" and "tests" to a web server of your choice.
+	node start.js
 
-Identify the URL that would point to the file prefsEditors/demos/prefsEditor/index.html
-on the web server and enter that URL in your browser to run the preferences editors.
+and visit
 
+	http://localhost:8888/demos/prefsEditor/index.html
 
-More detailed instructions are available on the page [Running the PMT & PCP on ... a local web server](http://wiki.gpii.net/index.php/Running_the_PMT_%26_PCP_on_Windows_and_Linux_with_a_local_web_server).
-
-
+for the Preferences Management Tool (PMT)
