@@ -1,36 +1,36 @@
 {
-  "name": "prefEditors",
-  "description": "Editors, responsible for authoring user preference sets.",
-  "version": "0.1.0",
-  "author": "GPII",
-  "bugs": "http://wiki.gpii.net/index.php/Main_Page",
-  "homepage": "http://gpii.net/",
-  "dependencies": {
-    "universal": "git://github.com/GPII/universal.git"
-  },
-  "licenses": [
-    {
-      "type": "BSD-3-Clause",
-      "url": "http://www.opensource.org/licenses/BSD-3-Clause"
+    "name": "prefEditors",
+    "description": "Editors, responsible for authoring user preference sets.",
+    "version": "0.1.0",
+    "author": "GPII",
+    "bugs": "http://wiki.gpii.net/index.php/Main_Page",
+    "homepage": "http://gpii.net/",
+    "dependencies": {
+        "kettle": "git://github.com/fluid-project/kettle.git#2cd608b95a7e908769c91f5120cfc50bfc19c4db"
+    },
+    "licenses": [
+        {
+            "type": "BSD-3-Clause",
+            "url": "http://www.opensource.org/licenses/BSD-3-Clause"
+        }
+    ],
+    "keywords": [
+        "gpii",
+        "accessibility",
+        "settings",
+        "fluid",
+        "IoC",
+        "Inversion of Control",
+        "configuration",
+        "evented"
+    ],
+    "repository": "git://github.com:GPII/prefsEditors.git",
+    "engines": {
+        "node": ">=0.1.9"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.5",
+        "grunt-contrib-jshint": "~0.9.0",
+        "grunt-jsonlint": "~1.0.4"
     }
-  ],
-  "keywords": [
-    "gpii",
-    "accessibility",
-    "settings",
-    "fluid",
-    "IoC",
-    "Inversion of Control",
-    "configuration",
-    "evented"
-  ],
-  "repository": "git://github.com:GPII/prefsEditors.git",
-  "engines": {
-    "node": ">=0.1.9"
-  },
-  "devDependencies": {
-    "grunt": "~0.4.5",
-    "grunt-contrib-jshint": "~0.9.0",
-    "grunt-jsonlint": "~1.0.4"
-  }
 }
