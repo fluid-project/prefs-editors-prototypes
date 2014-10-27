@@ -10,7 +10,12 @@ You may obtain a copy of the License at
 https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
+// Declare dependencies
+/* global io */
+
 (function ($, fluid) {
+    "use strict";
+
     fluid.defaults("gpii.prefsEditor", {
         gradeNames: ["fluid.prefs.GPIIEditor", "autoInit"],
         prefsEditor: {

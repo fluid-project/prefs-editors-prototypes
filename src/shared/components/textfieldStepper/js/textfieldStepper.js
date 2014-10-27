@@ -12,6 +12,7 @@ https://github.com/gpii/universal/LICENSE.txt
 var fluid_1_5 = fluid_1_5 || {};
 
 (function ($, fluid) {
+    "use strict";
 
     fluid.defaults("gpii.textfieldStepper", {
         gradeNames: ["fluid.rendererComponent", "autoInit"],
@@ -99,7 +100,7 @@ var fluid_1_5 = fluid_1_5 || {};
     };
 
     gpii.textfieldStepper.guard = function (model, changeRequest, range) {
-        var newVal = parseInt(changeRequest.value);
+        var newVal = parseInt(changeRequest.value, 10);
         if (isNaN(newVal) || newVal === fluid.get(model, changeRequest.path)) {
             return false;
         }
@@ -110,19 +111,19 @@ var fluid_1_5 = fluid_1_5 || {};
         valueField.attr("aria-valuenow", currentValue + unit);
     };
 
-    gpii.textfieldStepper.addAria = function (that, range, labelledbyDomElement) {
+    gpii.textfieldStepper.addAria = function (that) {
         var valueField = that.locate("valueField");
         var range = that.options.range;
         var unit = that.options.strings.unit;
         var labelledbyDomElement = that.options.labelledbyDomElement;
 
-        valueField.attr("role", "spinbutton")
+        valueField.attr("role", "spinbutton");
         valueField.attr("aria-valuemin", range.min + unit);
         valueField.attr("aria-valuemax", range.max + unit);
         valueField.attr("autocomplete", "off");
         valueField.attr("aria-labelledby", gpii.ariaUtility.getLabelId(labelledbyDomElement));
         that.alterValueAria();
-        
+
         that.locate("increment").attr({
             "role": "button",
             "aria-label": that.options.strings.plusText
@@ -131,7 +132,7 @@ var fluid_1_5 = fluid_1_5 || {};
             "role": "button",
             "aria-label": that.options.strings.minusText
         });
-        
+
     };
 
- })(jQuery, fluid_1_5);
+})(jQuery, fluid_1_5);

@@ -10,10 +10,8 @@ You may obtain a copy of the License at
 https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
-/*global fluid, jQuery, gpii*/
-/*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
-
 (function ($, fluid) {
+    "use strict";
 
     fluid.defaults("gpii.adjuster.singleSelectionWithKeyboard", {
         gradeNames: ["fluid.littleComponent", "autoInit"],
@@ -36,13 +34,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         }
     });
-    
+
     gpii.adjuster.singleSelectionWithKeyboard.setFocusHandlers = function (labels) {
-        fluid.each(labels, function (label, index) {
+        fluid.each(labels, function (label) {
             label = $(label);
-            
+
             // get the label's associated input
-            var inputCssCompliantSelector = "#" + label.attr("for").replace(/\:/g, '\\:');
+            var inputCssCompliantSelector = "#" + label.attr("for").replace(/\:/g, "\\:");
             var theInput = $(inputCssCompliantSelector);
             // outline container according to focus
             theInput.focusin(function () {

@@ -8,13 +8,9 @@ You may obtain a copy of the License at
 https://github.com/gpii/universal/LICENSE.txt
 */
 
-// Declare dependencies
-/*global fluid, jqUnit, expect, jQuery*/
+(function () {
+    "use strict";
 
-// JSLint options
-/*jslint white: true, funcinvoke: true, undef: true, newcap: true, nomen: true, regexp: true, bitwise: true, browser: true, forin: true, maxerr: 100, indent: 4 */
-
-(function ($) {
     fluid.registerNamespace("gpii.prefs.gpiiStore.tests");
 
     jqUnit.module("GPIIStore Tests");
@@ -26,7 +22,7 @@ https://github.com/gpii/universal/LICENSE.txt
     var userToWorkWith = "sammy";
     var userToBeCreated = "userThatHasJustBeenCreated";
 
-    exampleModel = {
+    var exampleModel = {
         "gpii_primarySchema_volume": 80,
         "gpii_primarySchema_keyEcho": false,
         "gpii_primarySchema_wordEcho": false,
@@ -51,7 +47,7 @@ https://github.com/gpii/universal/LICENSE.txt
         "gpii_primarySchema_screenReaderBrailleOutput": false
     };
 
-    convertedExampleModel = {
+    var convertedExampleModel = {
         "http://registry.gpii.org/common/pitch":[{"value":0.8}],
         "http://registry.gpii.org/common/volume":[{"value":0.8}],
         "http://registry.gpii.org/common/keyEcho":[{"value":false}],
@@ -151,7 +147,7 @@ https://github.com/gpii/universal/LICENSE.txt
         });
 
         store.gpiiSession.login(userToWorkWith);
-        gpiiModel = store.get();
+        var gpiiModel = store.get();
 
         jqUnit.assertDeepEq("Checking if the GET invoker successfully calls the transform function.", Object.keys(gpiiModel), modelKeys);
     };
@@ -180,4 +176,4 @@ https://github.com/gpii/universal/LICENSE.txt
     gpii.tests.mockTest("Get when user is logged.", gpii.prefs.gpiiStore.tests.assertGetSettingsFromLoggedUser, [loginSuccessMockSettings, getRequestMockSettings]);
 
 
-})(jQuery);
+})();

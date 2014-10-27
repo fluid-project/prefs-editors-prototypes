@@ -10,10 +10,9 @@ You may obtain a copy of the License at
 https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
-/*global fluid, gpii, jQuery, navigator*/
-/*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
-
 (function (fluid) {
+    "use strict";
+
     fluid.defaults("gpii.pmt", {
         gradeNames: ["fluid.prefs.GPIIEditor", "autoInit"],
         prefsEditor: {
@@ -118,7 +117,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "attr",
                     "args": ["value", "{that}.msgLookup.saveAndApplyText"]
                 },
-                
+
                 "onReady.setSaveAndApplyButtonAriaLabel": {
                     "this": "{that}.dom.saveAndApplyButtonLabel",
                     "method": "attr",
@@ -257,7 +256,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     gpii.pmt.hideUserStatusBarIfNotLoggedIn = function (loggedUser, statusBarElement) {
-        if (loggedUser == null) {
+        if (loggedUser === null) {
             statusBarElement.hide(0);
         }
     };

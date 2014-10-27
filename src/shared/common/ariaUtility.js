@@ -10,10 +10,8 @@ You may obtain a copy of the License at
 https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
-/*global fluid, jQuery, gpii*/
-/*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
-
 (function ($, fluid) {
+    "use strict";
 
     fluid.registerNamespace("gpii.ariaUtility");
 
@@ -37,14 +35,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.ariaUtility.setAriaChecked = function (container, checked) {
         container.attr("aria-checked", checked);
     };
-    
+
     gpii.ariaUtility.setAriaMoreLess = function (modelValue, more, less) {
         var newText = modelValue ? less : more;
-        return newText;  
+        return newText;
     };
 
     gpii.ariaUtility.setAriaLabelledBy = function (sourceElement, targetElement) {
-    	sourceElement.attr("aria-labelledby", fluid.allocateSimpleId(targetElement));
+        sourceElement.attr("aria-labelledby", fluid.allocateSimpleId(targetElement));
     };
 
 })(jQuery, fluid);

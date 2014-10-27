@@ -12,6 +12,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
 (function (fluid) {
+    "use strict";
 
     fluid.defaults("gpii.adjuster.screenReaderTTSEnabled", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
@@ -164,7 +165,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.adjuster.punctuationVerbosity.punctuationVerbosityStyle = function (labels, values, classes) {
         fluid.each(labels, function (label, index) {
             $(label).addClass(classes[values[index]]);
-            $(label).append('<span></span>');
+            $(label).append("<span></span>");
         });
     };
 

@@ -10,26 +10,24 @@ You may obtain a copy of the License at
 https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
-/*global fluid, jQuery, gpii*/
-/*jslint white: true, onevar: true, funcinvoke: true, forvar: true, undef: true, newcap: true, nomen: true, regexp: true, plusplus: true, bitwise: true, maxerr: 50, indent: 4 */
-
 (function ($, fluid) {
+    "use strict";
 
     fluid.registerNamespace("gpii.os");
 
     fluid.enhance.isWindowsPlatform = function () {
-        return navigator.platform.toUpperCase().indexOf('WIN') !== -1;
+        return navigator.platform.toUpperCase().indexOf("WIN") !== -1;
     };
-    
+
     fluid.enhance.isLinuxPlatform = function () {
-        return navigator.platform.toUpperCase().indexOf('LINUX') !== -1;
+        return navigator.platform.toUpperCase().indexOf("LINUX") !== -1;
     };
-    
+
     fluid.enhance.check({
         "gpii.os.isWindowsPlatform": "fluid.enhance.isWindowsPlatform",
         "gpii.os.isLinuxPlatform": "fluid.enhance.isLinuxPlatform"
     });
-    
+
     fluid.defaults("gpii.pcp.progressiveEnhancement", {
         gradeNames: ["fluid.progressiveCheckerForComponent"],
         componentName: "gpii.pcp.progressiveEnhancement",

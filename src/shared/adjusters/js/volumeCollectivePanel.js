@@ -12,6 +12,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
 (function (fluid) {
+    "use strict";
+    
     fluid.defaults("gpii.panel.volumeCollectivePanel", {
         gradeNames: ["fluid.prefs.compositePanel", "autoInit"],
         selectors: {
@@ -31,7 +33,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "method": "attr",
                 "args": ["aria-label", "{that}.msgLookup.volumePresetButtonLabel"]
             }
-        }        
+        }
     });
 
 })(fluid);

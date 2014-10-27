@@ -12,6 +12,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 */
 
 (function (fluid) {
+    "use strict";
+
     fluid.defaults("gpii.adjuster.speakText", {
         gradeNames: ["gpii.adjuster.onOffSwitch", "autoInit"],
         preferenceMap: {
@@ -393,7 +395,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         fluid.each(labels, function (label, index) {
             label = $(label);
             label.addClass(classes[values[index]]);
-            label.prepend('<span></span>');
+            label.prepend("<span></span>");
         });
         container.attr("aria-labelledby", gpii.ariaUtility.getLabelId(titleLabel));
 
