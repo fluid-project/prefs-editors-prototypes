@@ -1,7 +1,6 @@
 {
     "signUpLabel": "Anmeldung",
-    "signUpDescription1": "Wählen Sie mindestens eine Methode aus, mit der Sie sich an Ihrem Benutzerkonto anmelden.",
-    "signUpDescription2": "Die Methode kann später wieder geändert werden.",
+    "signUpDescription": "Create a new GPII account by providing the following information.",
     "loginLabel": "ANMELDEN",
     "usbLabel": "USB",
     "rfidLabel": "RFID",

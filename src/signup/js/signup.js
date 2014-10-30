@@ -19,26 +19,6 @@
         gradeNames: ["fluid.rendererComponent", "fluid.prefs.msgLookup", "autoInit"],
         listeners: {
             "onCreate.render": "gpii.signupPanel.showTemplate",
-            "afterRender.setLoginTabAriaLabel": {
-                "this": "{that}.dom.loginTab",
-                "method": "attr",
-                "args": ["aria-label", "{that}.msgLookup.loginLabel"]
-            },
-            "afterRender.setRfidTabAriaLabel": {
-                "this": "{that}.dom.rfidTab",
-                "method": "attr",
-                "args": ["aria-label", "{that}.msgLookup.rfidLabel"]
-            },
-            "afterRender.setUsbTabAriaLabel": {
-                "this": "{that}.dom.usbTab",
-                "method": "attr",
-                "args": ["aria-label", "{that}.msgLookup.usbLabel"]
-            },
-            "afterRender.setQrcodeTabAriaLabel": {
-                "this": "{that}.dom.qrcodeTab",
-                "method": "attr",
-                "args": ["aria-label", "{that}.msgLookup.qrCodeLabel"]
-            },
             "afterRender.termsCheck": {
                 "this": "{that}.dom.termsCheckBox",
                 "method": "change",
@@ -129,8 +109,7 @@
             usbLabel: ".gpiic-signup-usbLabel",
             rfidLabel: ".gpiic-signup-rfidLabel",
             qrCodeLabel: ".gpiic-signup-qrCodeLabel",
-            signUpDescription1: ".gpiic-signup-description1",
-            signUpDescription2: ".gpiic-signup-description2",
+            signUpDescription: ".gpiic-signup-description",
             recommendedForSecurity: ".gpiic-signup-login-recommendedForSecurity",
             usernameLabel: ".gpiic-signup-login-usernameLabel",
             passwordLabel: ".gpiic-signup-login-passwordLabel",
@@ -158,18 +137,13 @@
             recoveryTextfield: ".gpiic-signup-login-recoveryTextfield",
             usernameDescription: ".gpiic-signup-login-usernameDescription",
             usernameAvailable: ".gpiic-signup-login-usernameAvailable",
-            loginTab: ".gpiic-signup-loginTab",
-            rfidTab: ".gpiic-signup-rfidTab",
-            usbTab: ".gpiic-signup-usbTab",
-            qrcodeTab: ".gpiic-signup-qrcodeTab",
             termsCheckBoxLabel: ".gpiic-signup-termsCheckBoxLabel",
             recoveryCheckBoxLabel: ".gpiic-signup-recoveryCheckBoxLabel"
         },
-        selectorsToIgnore: ["termsCheckBox","username","passwd","cpasswd","overlayPanel","modalPanel", "recoveyCheckBox","passwdMatchDescription","passwdMatch", "usernameDescription", "passwdStrengthDescription", "passwdStrength", "recoveryTextfield", "usernameAvailable", "loginTab", "rfidTab", "usbTab", "qrcodeTab", "termsCheckBoxLabel", "recoveryCheckBoxLabel"],
+        selectorsToIgnore: ["termsCheckBox","username","passwd","cpasswd","overlayPanel","modalPanel", "recoveyCheckBox","passwdMatchDescription","passwdMatch", "usernameDescription", "passwdStrengthDescription", "passwdStrength", "recoveryTextfield", "usernameAvailable", "termsCheckBoxLabel", "recoveryCheckBoxLabel"],
         protoTree: {
             signUpLabel: {messagekey: "signUpLabel"},
-            signUpDescription1: {messagekey: "signUpDescription1"},
-            signUpDescription2: {messagekey: "signUpDescription2"},
+            signUpDescription: {messagekey: "signUpDescription"},
             loginLabel: {messagekey: "loginLabel"},
             usbLabel: {messagekey: "usbLabel"},
             rfidLabel: {messagekey: "rfidLabel"},
@@ -417,7 +391,7 @@
 
     gpii.signupPanel.checkPasswdStrength = function (that, password, passwdStrengthDescription, passwdStrength, tooShort, weak, strong) {
         var strength = 0;
-        if (password.length < 6) {
+        if (password.length < 8) {
             if (passwdStrengthDescription.hasClass(that.options.styles.weak)) {
                 passwdStrengthDescription.removeClass(that.options.styles.weak);
                 passwdStrength.removeClass(that.options.styles.weak);
@@ -428,7 +402,7 @@
             passwdStrength.addClass(that.options.styles.short);
             return tooShort;
         }
-        if (password.length > 7) { strength += 1; }
+        if (password.length >= 8) { strength += 1; }
         if (password.match(gpii.signupPanel.passwdRegExprs.expr1)) { strength += 1; }
         if (password.match(gpii.signupPanel.passwdRegExprs.expr2) && password.match(gpii.signupPanel.passwdRegExprs.expr3)) { strength += 1; }
         if (password.match(gpii.signupPanel.passwdRegExprs.expr4)) { strength += 1; }

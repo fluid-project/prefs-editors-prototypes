@@ -1,7 +1,6 @@
 {
     "signUpLabel": "Εγγραφή",
-    "signUpDescription1": "Επιλέξτε τουλάχιστον μια μέθοδο για πρόσβαση στο λογαριασμό σας.",
-    "signUpDescription2": "Αυτό μπορεί να αλλάξει αργότερα.",
+    "signUpDescription": "Δημιουργήστε ένα νέο GPII λογαριασμό παρέχοντας την παρακάτω πληροφορία.",
     "loginLabel": "LOGIN",
     "usbLabel": "USB",
     "rfidLabel": "RFID",
@@ -23,7 +22,7 @@
     "notAvailable": "Μη διαθέσιμο",
     "passwordsMatch": "Επαλήθευση κωδικού",
     "passwordsDoNotMatch": "Μη επαλήθευση κωδικού",
-    "tooShort": "Πολύ μικρό",
+    "tooShort": "Πρέπει να έχει τουλάχιστον 8 χαρακτήρες",
     "weak": "Αδύναμο",
     "strong": "Ισχυρό"
 }

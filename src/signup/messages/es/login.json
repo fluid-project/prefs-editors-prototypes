@@ -1,7 +1,6 @@
 {
     "signUpLabel": "Registrarse",
-    "signUpDescription1": "Selecciona como mínimo un método de acceso a tu cuenta de usuario",
-    "signUpDescription2": "Modificable en cualquier momento.",
+    "signUpDescription": "Create a new GPII account by providing the following information.",
     "loginLabel": "LOGIN",
     "usbLabel": "USB",
     "rfidLabel": "RFID",

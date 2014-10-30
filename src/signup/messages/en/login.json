@@ -1,7 +1,6 @@
 {
     "signUpLabel": "Sign-up",
-    "signUpDescription1": "Choose at least one method to access your account.",
-    "signUpDescription2": "This can be changed later.",
+    "signUpDescription": "Create a new GPII account by providing the following information.",
     "loginLabel": "LOGIN",
     "usbLabel": "USB",
     "rfidLabel": "RFID",
@@ -20,10 +19,10 @@
     "backButton": "back",
     "gotItButton": "got it",
     "available": "Available",
-    "notAvailable": "Not available",
+    "notAvailable": "Unavailable",
     "passwordsMatch": "Passwords match",
     "passwordsDoNotMatch": "Passwords do not match",
-    "tooShort": "Too short",
+    "tooShort": "Must be at least 8 characters long",
     "weak": "Weak",
     "strong": "Strong"
 }
