@@ -24,5 +24,7 @@
     "passwordsDoNotMatch": "Passwords do not match",
     "tooShort": "Must be at least 8 characters long",
     "weak": "Weak",
-    "strong": "Strong"
+    "strong": "Strong",
+    "loginLink": "Log in now.",
+    "loginLinkDescription": "Already have an account?"
 }

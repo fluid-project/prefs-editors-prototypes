@@ -24,5 +24,7 @@
     "passwordsDoNotMatch": "Μη επαλήθευση κωδικού",
     "tooShort": "Πρέπει να έχει τουλάχιστον 8 χαρακτήρες",
     "weak": "Αδύναμο",
-    "strong": "Ισχυρό"
+    "strong": "Ισχυρό",
+    "loginLink": "Συνδεθείτε τώρα.",
+    "loginLinkDescription": "Έχετε ήδη λογαριασμό?"
 }

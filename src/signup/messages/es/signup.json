@@ -24,5 +24,7 @@
     "passwordsDoNotMatch": "Las contraseñas no coinciden",
     "tooShort": "Demasiado corto",
     "weak": "Débil",
-    "strong": "Fuerte"
+    "strong": "Fuerte",
+    "loginLink": "Log in now.",
+    "loginLinkDescription": "Already have an account?"
 }

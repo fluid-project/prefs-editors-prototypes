@@ -39,6 +39,11 @@
                 "method": "keyup",
                 "args": ["{that}.passwdConfirm"]
             },
+            "afterRender.clickLoginLink": {
+                "this": "{that}.dom.loginLink",
+                "method": "click",
+                "args": ["{that}.clickLoginLink"]
+            },
             "afterRender.clickTermsLink": {
                 "this": "{that}.dom.termsLink",
                 "method": "click",
@@ -81,6 +86,10 @@
             passwdConfirm: {
                 "funcName": "gpii.signupPanel.passwdConfirm",
                 "args": ["{that}","{that}.msgLookup.available","{that}.msgLookup.passwordsMatch","{that}.msgLookup.passwordsDoNotMatch"]
+            },
+            clickLoginLink: {
+                "funcName": "gpii.signupPanel.clickLoginLink",
+                "args": []
             },
             clickTermsLink: {
                 "funcName": "gpii.signupPanel.clickTermsLink",
@@ -138,7 +147,9 @@
             usernameDescription: ".gpiic-signup-login-usernameDescription",
             usernameAvailable: ".gpiic-signup-login-usernameAvailable",
             termsCheckBoxLabel: ".gpiic-signup-termsCheckBoxLabel",
-            recoveryCheckBoxLabel: ".gpiic-signup-recoveryCheckBoxLabel"
+            recoveryCheckBoxLabel: ".gpiic-signup-recoveryCheckBoxLabel",
+            loginLink: ".gpiic-signup-loginLink",
+            loginLinkDescription: ".gpiic-signup-loginLinkDescription"
         },
         selectorsToIgnore: ["termsCheckBox","username","passwd","cpasswd","overlayPanel","modalPanel", "recoveyCheckBox","passwdMatchDescription","passwdMatch", "usernameDescription", "passwdStrengthDescription", "passwdStrength", "recoveryTextfield", "usernameAvailable", "termsCheckBoxLabel", "recoveryCheckBoxLabel"],
         protoTree: {
@@ -167,7 +178,9 @@
             passwordsDoNotMatch: {messagekey: "passwordsDoNotMatch"},
             tooShort: {messagekey: "tooShort"},
             weak: {messagekey: "weak"},
-            strong: {messagekey: "strong"}
+            strong: {messagekey: "strong"},
+            loginLink: {messagekey: "loginLink"},
+            loginLinkDescription: {messagekey: "loginLinkDescription"}
         },
         styles: {
             match: "gpii-signup-match",
@@ -208,7 +221,7 @@
                 type: "fluid.prefs.resourceLoader",
                 options: {
                     templates: {
-                        login: "%prefix/login.json"
+                        login: "%prefix/signup.json"
                     },
                     events: {
                         onResourcesLoaded: "{signupPanel}.events.onSignupMessagesLoaded"
@@ -497,5 +510,10 @@
             }
         });
     };
+
+    gpii.signupPanel.clickLoginLink = function () {
+        window.location.href = location.origin + "/prefsEditors/demos/login/";
+    };
+
 
 })(jQuery, fluid);

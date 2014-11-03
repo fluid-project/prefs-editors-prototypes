@@ -515,3 +515,27 @@ a#termsLink{
     float: right;
     padding-right: 10px;
 }
+
+.gpii-signup-linkDescription {
+    font-family: Courier New;
+    font-size: 1em;
+    display: inline-block;
+}
+
+.gpii-signup-link {
+    font-family: Courier New;
+    font-weight: bold;
+    color: #474C66;
+}
+.gpii-signup-paddingTop-large {
+    padding-top: 5em;
+}
+
+.gpii-signup-paddingTop-small {
+    padding-top: 0.5em;
+}
+
+.gpii-signup-paddingLeft-small {
+    padding-left: 0.3em;
+}
+
