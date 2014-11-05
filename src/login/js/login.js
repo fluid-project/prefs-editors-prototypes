@@ -70,9 +70,8 @@
             usernameDescription: ".gpiic-login-usernameDescription",
             overlayPanel: ".gpiic-login-overlay",
             modalPanel: ".gpiic-login-modal",
-            accountNotDetected: ".gpiic-login-failed-notification1",
-            doNotMatch: ".gpiic-login-failed-notification2",
-            resetPasswd: ".gpiic-login-failed-notification3",
+            accountNotDetected: ".gpiic-login-failed-header",
+            doNotMatch: ".gpiic-login-failed-description",
             signUpLink: ".gpiic-login-signUpLink",
             signUpLinkDescription: ".gpiic-login-signUpLinkDescription",
             backButton: ".gpiic-login-backButton"
@@ -87,7 +86,6 @@
             loginButton: {messagekey: "loginButton"},
             accountNotDetected: {messagekey: "accountNotDetected"},
             doNotMatch: {messagekey: "doNotMatch"},
-            resetPasswd: {messagekey: "resetPasswd"},
             signUpLink: {messagekey: "signUpLink"},
             signUpLinkDescription: {messagekey: "signUpLinkDescription"},
             backButton: {messagekey: "backButton"}
@@ -207,6 +205,7 @@
             error: function(response) {
                 that.locate("overlayPanel").show();
                 that.locate("modalPanel").show();
+                that.locate("backButton").focus();
             }
         });
     };

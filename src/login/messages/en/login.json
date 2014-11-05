@@ -6,8 +6,7 @@
     "cancelButton": "cancel",
     "loginButton": "log in",
     "accountNotDetected": "Cloud for All account not detected.",
-    "doNotMatch": "Password and username do not match.",
-    "resetPasswd": "Try again or reset your password.",
+    "doNotMatch": "Password and username do not match. Try again or reset your password.",
     "signUpLink": "Sign up now.",
     "signUpLinkDescription": "Don't have an account?",
     "backButton": "back"

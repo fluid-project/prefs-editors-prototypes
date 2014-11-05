@@ -235,12 +235,12 @@ div.gpii-login-form section {
     border-radius: 0px 0px 0.4em 0.4em;
 }
 
-.gpii-login-h3 {
+.gpii-login-h2 {
     font-weight: bold;
     font-family: Courier New;	
 }
 
-.gpii-login-h3-normal {
+.gpii-login-h2-normal {
     font-weight: normal;
     font-family: Courier New;
     font-size: 1.0em;
