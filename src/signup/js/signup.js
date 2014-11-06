@@ -141,6 +141,7 @@
             recoveryBackButton: ".gpiic-signup-login-recoveryBackButton",
             gotIt: ".gpiic-signup-login-gotItButton",
             termsCheckBox: ".gpiic-signup-login-termsCheckBox",
+            termsText: ".gpiic-signup-terms-text",
             username: ".gpiic-signup-login-usernameTextfield",
             passwd: ".gpiic-signup-login-passwdTextfield",
             cpasswd: ".gpiic-signup-login-cpasswdTextfield",
@@ -160,7 +161,7 @@
             loginLink: ".gpiic-signup-loginLink",
             loginLinkDescription: ".gpiic-signup-loginLinkDescription"
         },
-        selectorsToIgnore: ["termsCheckBox","username","passwd","cpasswd","overlayPanel","modalPanel", "recoveyCheckBox","passwdMatchDescription","passwdMatch", "usernameDescription", "passwdStrengthDescription", "passwdStrength", "recoveryTextfield", "usernameAvailable", "termsCheckBoxLabel", "recoveryCheckBoxLabel"],
+        selectorsToIgnore: ["termsCheckBox","username","passwd","cpasswd","overlayPanel","modalPanel", "recoveyCheckBox","passwdMatchDescription","passwdMatch", "usernameDescription", "passwdStrengthDescription", "passwdStrength", "recoveryTextfield", "usernameAvailable", "termsCheckBoxLabel", "recoveryCheckBoxLabel", "termsText"],
         protoTree: {
             signUpLabel: {messagekey: "signUpLabel"},
             signUpDescription: {messagekey: "signUpDescription"},
@@ -206,7 +207,8 @@
             passwdIconShort: "gpii-signup-password-icon-short",
             passwdIcon: "gpii-signup-password-icon",
             passwdDescription: "gpii-signup-passwd-description",
-            adjusterIcons: "gpii-signup-adjusterIcons"
+            adjusterIcons: "gpii-signup-adjusterIcons",
+            focus: "gpii-focus"
         },
         strings: {
         }
@@ -316,10 +318,12 @@
             that.locate("termsCheckBoxLabel").attr("aria-checked",true);
             var disable = (confirmPasswd === passwordsMatch) && (usernameAvailability === available);
             that.locate("createAccountButton").attr("disabled", !disable);
+            that.locate("termsText").addClass(that.options.styles.focus);
         }
         else {
             that.locate("termsCheckBoxLabel").attr("aria-checked",false);
             that.locate("createAccountButton").attr("disabled",true);
+            that.locate("termsText").removeClass(that.options.styles.focus);
         }
     };
 
@@ -494,12 +498,14 @@
             that.locate("gotIt").attr("disabled",false);
             that.locate("recoveryTextfield").attr("disabled",false);
             that.locate("recoveryDescription").removeClass("disabled");
+            that.locate("recoveryID").addClass(that.options.styles.focus);
         }
         else {
             that.locate("recoveryCheckBoxLabel").attr("aria-checked",false);
             that.locate("gotIt").attr("disabled",true);
             that.locate("recoveryTextfield").attr("disabled",true);
             that.locate("recoveryDescription").addClass("disabled");
+            that.locate("recoveryID").removeClass(that.options.styles.focus);
         }
     };
 

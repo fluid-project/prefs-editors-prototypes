@@ -349,6 +349,10 @@ a#termsLink{
     color: #474C66;
 }
 
+.gpii-signup-terms-text {
+    display: inline-block;
+}
+
 .gpii-signup-createAccountButton {
     font-weight: bold;
     font-family: Verdana;
