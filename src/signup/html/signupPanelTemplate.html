@@ -8,7 +8,7 @@
         <section id="account" class="gpii-signup-account">
             <div class="gpii-signup-username">
                 <div class="gpii-signup-username-header">
-                    <h3 class="gpii-signup-login-h3-normal"><label for="username" class="gpiic-signup-login-usernameLabel gpii-signup-login-label"></label></h3>
+                    <h2 class="gpii-signup-login-h2-normal"><label for="username" class="gpiic-signup-login-usernameLabel gpii-signup-login-label"></label></h2>
                     <span class="gpiic-signup-login-usernameAvailable gpii-signup-adjusterIcons"></span>
                     <span class="gpiic-signup-login-usernameDescription gpii-signup-username-description"></span>
                 </div>
@@ -17,7 +17,7 @@
             </div>
             <div class="gpii-signup-passwd">
                 <div class="gpii-signup-passwd-header">
-                    <h3 class="gpii-signup-login-h3-normal"><label for="passwd" class="gpiic-signup-login-passwordLabel gpii-signup-login-label"></label></h3>
+                    <h2 class="gpii-signup-login-h2-normal"><label for="passwd" class="gpiic-signup-login-passwordLabel gpii-signup-login-label"></label></h2>
                     <span class="gpiic-signup-login-passwdStrength gpii-signup-adjusterIcons"></span>
                     <span class="gpiic-signup-login-passwdStrengthDescription gpii-signup-passwd-description"></span>
                 </div>
@@ -26,7 +26,7 @@
             </div>
             <div class="gpii-signup-cpasswd">
                 <div class="gpii-signup-cpasswd-header">
-                    <h3 class="gpii-signup-login-h3-normal"><label for="cpasswd" class="gpiic-signup-login-confirmPasswordLabel gpii-signup-login-label"></label></h3>
+                    <h2 class="gpii-signup-login-h2-normal"><label for="cpasswd" class="gpiic-signup-login-confirmPasswordLabel gpii-signup-login-label"></label></h2>
                     <span class="gpiic-signup-login-passwdMatch gpii-signup-adjusterIcons"></span>
                     <span class="gpiic-signup-login-passwdMatchDescription gpii-signup-passwd-description"></span>
                 </div>
@@ -34,7 +34,11 @@
                 <input id="cpasswd" name="cpasswd" type="password" class="gpiic-signup-login-cpasswdTextfield gpii-signup-textfield gpii-login-textfield" tabindex="0">
             </div>
             <div class="gpii-signup-terms">
-                <input id="termsCheckBox" type="checkbox" name="terms" class="gpiic-signup-login-termsCheckBox"/><label for="termsCheckBox" class="gpiic-signup-termsCheckBoxLabel" role="checkbox" aria-checked="false" tabindex="0"><span class="gpii-signup-adjusterIcons gpii-signup-checkbox-icon gpii-signup-checkbox-icon-small"></span></label><span class="gpiic-signup-login-acceptLabel"></span><a id="termsLink" href="#" class="gpiic-signup-login-termsLink"></a>
+                <input id="termsCheckBox" type="checkbox" name="terms" class="gpiic-signup-login-termsCheckBox"/>
+                <label for="termsCheckBox" class="gpiic-signup-termsCheckBoxLabel" role="checkbox" aria-checked="false" tabindex="0">
+                    <span class="gpii-signup-adjusterIcons gpii-signup-checkbox-icon gpii-signup-checkbox-icon-small"></span>
+                </label>
+                <span class="gpiic-signup-login-acceptLabel"></span><a id="termsLink" href="#" class="gpiic-signup-login-termsLink"></a>
             </div>
         </section>
     </div>
@@ -45,10 +49,15 @@
     <div class="gpiic-signup-login-overlay gpii-signup-overlay"></div>
     <div class="gpiic-signup-login-modal gpii-signup-modal">
         <div class="gpii-signup-recovery">
-            <span class="gpiic-signup-login-selectRecoveyMethod gpii-signup-recovery-span-header"></span>
-            <input id="recoveryCheckBox" type="checkbox" name="recoveryCheck" class="gpiic-signup-login-recoveyCheckBox"/><label for="recoveryCheckBox" class="gpiic-signup-recoveryCheckBoxLabel" role="checkbox" aria-checked="false" tabindex="0"><span class="gpii-signup-adjusterIcons gpii-signup-checkbox-icon gpii-signup-checkbox-icon-medium"></span></label>
-            <span class="gpiic-signup-login-recoveryID gpii-signup-recovery-checkbox-text"></span>
-            <span class="gpiic-signup-login-recoveryDescription gpii-signup-recovery-description disabled"></span>
+            <span id="alertHeading" class="gpiic-signup-login-selectRecoveyMethod gpii-signup-recovery-span-header"></span>
+            <div class="gpii-signup-recovery-checkbox">
+                <input id="recoveryCheckBox" type="checkbox" name="recoveryCheck" class="gpiic-signup-login-recoveyCheckBox"/>
+                <label for="recoveryCheckBox" class="gpiic-signup-recoveryCheckBoxLabel" role="checkbox" aria-checked="false" tabindex="0">
+                    <span class="gpii-signup-adjusterIcons gpii-signup-checkbox-icon gpii-signup-checkbox-icon-small"></span>
+                </label>
+                <span class="gpiic-signup-login-recoveryID gpii-signup-recovery-checkbox-text"></span>
+            </div>
+            <span id="alertText" class="gpiic-signup-login-recoveryDescription gpii-signup-recovery-description disabled"></span>
             <input name="rtextfield" type="text" class="gpiic-signup-login-recoveryTextfield gpii-signup-textfield gpii-signup-recovery-textfield" disabled>
             <input type="button" class="gpiic-signup-login-recoveryBackButton gpii-signup-recovery-back">
             <input type="button" class="gpiic-signup-login-gotItButton gpii-signup-recovery-got-it" disabled>

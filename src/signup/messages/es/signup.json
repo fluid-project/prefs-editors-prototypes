@@ -10,7 +10,7 @@
     "passwordLabel": "Contraseña",
     "confirmPasswordLabel": "Confirma contraseña",
     "acceptLabel": "Acepto ",
-    "termsAndConditions": "términos y condiciones de uso",
+    "termsLink": "términos y condiciones de uso",
     "selectRecoveyMethod": "Selecciona método de recuperación",
     "recoveryID": "ID de recuperación",
     "recoveryDescription": "El siguiente ID se ha copiado en su portapapeles. Por favor, guarda el ID para acceder a la cuenta de usuario en caso de pérdida de la contraseña o token.", 

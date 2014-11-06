@@ -144,7 +144,7 @@ body {
 }
 
 label {
-    display: inline;
+    display: inline-block;
 }
 
 input[type=checkbox] {
@@ -237,6 +237,17 @@ div.gpii-signup-form section {
     color: #474C66;
 }
 
+.gpii-signup-recovery-checkbox {
+    position: relative;
+    font-weight: normal;
+    font-family: Verdana;
+    font-size: 1em;
+    float: left;
+    height: 1.5em;
+    background-color: inherit;
+    color: #474C66;
+}
+
 .gpii-signup-tail {
     position: relative;
     display: table;
@@ -249,12 +260,12 @@ div.gpii-signup-form section {
     border-radius: 0px 0px 0.4em 0.4em;
 }
 
-.gpii-signup-login-h3 {
+.gpii-signup-login-h2 {
     font-weight: bold;
     font-family: Courier New;	
 }
 
-.gpii-signup-login-h3-normal {
+.gpii-signup-login-h2-normal {
     font-weight: normal;
     font-family: Courier New;
     font-size: 1.0em;
@@ -315,6 +326,10 @@ input[type=checkbox] + label > .gpii-signup-checkbox-icon {
     margin-right: 10px;
     vertical-align: middle;
     display: inline-block;
+}
+
+.gpii-focus {
+    outline: 2px solid black !important;
 }
 
 input[type=checkbox]:checked + label > .gpii-signup-checkbox-icon {
@@ -389,7 +404,6 @@ a#termsLink{
     background-color: #FFFFFF;
     border-radius: 1px;
     box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
-    text-align: center;
     z-index: 11;
 }
 
@@ -425,7 +439,7 @@ a#termsLink{
     font-weight: bold;
     font-family: Book Antiqua;
     font-size: 1.2em;
-    float: left;
+    float: right;
     line-height: 22px;
 }
 

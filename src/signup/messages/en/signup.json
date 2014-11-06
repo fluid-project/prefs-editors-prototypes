@@ -10,7 +10,7 @@
     "passwordLabel": "Password",
     "confirmPasswordLabel": "Confirm password",
     "acceptLabel": "I accept ",
-    "termsAndConditions": "terms and conditions",
+    "termsLink": "terms and conditions",
     "selectRecoveyMethod": "Select recovery method",
     "recoveryID": "Recovery ID",
     "recoveryDescription": "The following ID has been copied to your clipboard. Please save it for account recovery in case of lost password or token.", 

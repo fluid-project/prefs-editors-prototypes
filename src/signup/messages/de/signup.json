@@ -10,7 +10,7 @@
     "passwordLabel": "Passwort",
     "confirmPasswordLabel": "Passwort bestätigen",
     "acceptLabel": "Ich erkenne ",
-    "termsAndConditions": "die Nutzungsbedingungen an",
+    "termsLink": "die Nutzungsbedingungen an",
     "selectRecoveyMethod": "Wiederherstellungsmethode auswählen",
     "recoveryID": "Wiederherstellungskennung",
     "recoveryDescription": "Die folgende Wiederherstellungskennung wurde in Ihre Zwischenablage kopiert. Bitte speichern Sie sie zur Wiederherstellung Ihres Benutzerkontos für den Fall, dass Sie Ihr Passwort vergessen oder Ihren Anmeldeschlüssel verlieren.", 

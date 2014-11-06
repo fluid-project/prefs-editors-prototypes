@@ -68,6 +68,15 @@
                 "this": "{that}.dom.gotIt",
                 "method": "click",
                 "args": ["{that}.clickGotIt"]
+            },
+            "afterRender.setAriaLabelTermsCheckBox": {
+                listener: "gpii.signupPanel.setAriaLabelTerms",
+                args: ["{that}.dom.termsCheckBoxLabel", "{that}.msgLookup.acceptLabel", "{that}.msgLookup.termsLink"]
+            },
+            "afterRender.setAriaLabelRecoveryCheckBox": {
+                "this": "{that}.dom.recoveryCheckBoxLabel",
+                "method": "attr",
+                "args": ["aria-label", "{that}.msgLookup.recoveryID"]
             }
         },
         invokers: {
@@ -164,7 +173,7 @@
             passwordLabel: {messagekey: "passwordLabel"},
             confirmPasswordLabel: {messagekey: "confirmPasswordLabel"},
             acceptLabel: {messagekey: "acceptLabel"},
-            termsLink: {messagekey: "termsAndConditions"},
+            termsLink: {messagekey: "termsLink"},
             selectRecoveyMethod: {messagekey: "selectRecoveyMethod"},
             recoveryID: {messagekey: "recoveryID"},
             recoveryDescription: {messagekey: "recoveryDescription"},
@@ -321,7 +330,7 @@
     };
 
     gpii.signupPanel.confirm = function (that, password, cpassword, passwdMatchDescription, passwdMatch, passwordsMatch, passwordsDoNotMatch) {
-        if (cpassword.length < 6) {
+        if (cpassword.length < 8) {
             if (passwdMatch.hasClass(that.options.styles.match)) {
                 passwdMatch.removeClass(that.options.styles.match);
                 passwdMatch.removeClass(that.options.styles.iconMatch);
@@ -515,5 +524,9 @@
         window.location.href = location.origin + "/prefsEditors/demos/login/";
     };
 
+    gpii.signupPanel.setAriaLabelTerms = function (label, accept, terms) {
+        var text = accept + terms;
+        label.attr("aria-label", text);
+    }
 
 })(jQuery, fluid);
