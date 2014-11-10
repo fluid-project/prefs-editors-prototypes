@@ -1481,11 +1481,11 @@ label.gpii-preset-button-label {
     position: absolute;
     padding-left: 90px;
     padding-top: 31px;
-    color: white;
-    background-color: rgb(85, 98, 115);
-    border: 1px solid rgb(85, 98, 115);
-    width: 444px;
-    height: 59px;
+    color: rgb(85, 98, 115);
+    background-color: #FFFFFF;
+    border: 3px solid rgb(85, 98, 115);
+    width: 440px;
+    height: 55px;
     text-align: left;
     font-family: 'Roboto Slab', serif;
     font-size: 1.4em!important;
