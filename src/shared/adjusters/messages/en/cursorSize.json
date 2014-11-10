@@ -1,3 +1,6 @@
 {
-    "cursorSizeLabel": "Cursor Size"
+    "cursorSizeLabel": "Cursor Size",
+    "cursorSizeUnit": "%",
+    "cursorPlus": "plus",
+    "cursorMinus": "minus"
 }

@@ -21,46 +21,37 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "model.value": "default",
                 "controlValues.cursorSize.min": "minimum",
                 "controlValues.cursorSize.max": "maximum",
-                "controlValues.cursorSize.divisibleBy": "divisibleBy"
+                "controlValues.cursorSize.step": "divisibleBy"
             }
         },
         selectors: {
-            cursorSizeSlider: ".gpiic-increaseSize-cursor-size-slider",
-            cursorSizeLabel: ".gpiic-increaseSize-cursor-size-label"
+            cursorSizeStepper: ".gpiic-cursorSize-stepper",
+            cursorSizeLabel: ".gpiic-cursorSize-label"
         },
-        selectorsToIgnore: ["cursorSizeSlider"],
+        selectorsToIgnore: ["cursorSizeStepper"],
         components: {
-            cursorSizeSlider: {
-                type: "fluid.textfieldSlider",
-                container: "{that}.dom.cursorSizeSlider",
+            cursorSizeStepper: {
+                type: "gpii.adjuster.textfieldStepper",
+                container: "{cursorSizePCP}.dom.cursorSizeStepper",
                 createOnEvent: "afterRender",
                 options: {
+                    sourceApplier: "{cursorSizePCP}.applier",
                     rules: {
                         "value": "value"
                     },
                     model: {
                         value: "{cursorSizePCP}.model.value"
                     },
-                    sourceApplier: "{cursorSizePCP}.applier",
+                    strings: {
+                        "unit": "{cursorSizePCP}.msgLookup.cursorSizeUnit"
+                    },
                     range: "{cursorSizePCP}.options.controlValues.cursorSize",
-                    sliderOptions: "{cursorSizePCP}.options.sliderOptions",
-                    listeners: {
-                        "afterRender.setAria": {
-                            "this": "{that}.slider.dom.thumb",
-                            method: "attr",
-                            args: ["aria-labelledby", {expander: {funcName: "gpii.ariaUtility.getLabelId", args: "{cursorSizePCP}.dom.cursorSizeLabel"}}]
-                        }
-                    }
+                    labelledbyDomElement: "{cursorSizePCP}.dom.cursorSizeLabel"
                 }
             }
         },
         protoTree: {
             cursorSizeLabel: {messagekey: "cursorSizeLabel"}
-        },
-        sliderOptions: {
-            orientation: "horizontal",
-            step: 0.2,
-            range: "min"
         }
     });
 })(jQuery, fluid);

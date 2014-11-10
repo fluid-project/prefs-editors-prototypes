@@ -1,3 +1,6 @@
 {
-    "cursorSizeLabel": "Mauszeigergröße"
+    "cursorSizeLabel": "Mauszeigergröße",
+    "cursorSizeUnit": "%",
+    "cursorPlus": "plus",
+    "cursorMinus": "minus"
 }

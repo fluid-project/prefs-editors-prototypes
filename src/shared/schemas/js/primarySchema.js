@@ -25,10 +25,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         "gpii.primarySchema.cursorSize": {
             "type": "number",
-            "default": 1,
-            "minimum": 1,
-            "maximum": 5,
-            "divisibleBy": 0.2
+            "default": 100,
+            "minimum": 100,
+            "maximum": 500,
+            "divisibleBy": 100
         },
         "gpii.primarySchema.magnifierEnabled": {
             "type": "boolean",
