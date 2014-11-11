@@ -1485,7 +1485,7 @@ input[type=checkbox] + label.gpii-checkbox-label {
     content: "\e010";
 }
 
-label.gpii-preset-button-label {
+.gpii-preset-button-label {
     z-index: 2;
     position: absolute;
     padding-left: 90px;
@@ -1622,19 +1622,4 @@ h3.gpii-speakText-label {
     font-weight: bold;
     padding: 0px;
     margin-bottom: 5px;
-}
-
-span.gpii-preset-button-label {
-    z-index: 2;
-    position: absolute;
-    padding-left: 90px;
-    padding-top: 31px;
-    color: rgb(85, 98, 115);
-    background-color: #FFFFFF;
-    border: 3px solid rgb(85, 98, 115);
-    width: 440px;
-    height: 55px;
-    text-align: left;
-    font-family: 'Roboto Slab', serif;
-    font-size: 1.4em!important;
 }
