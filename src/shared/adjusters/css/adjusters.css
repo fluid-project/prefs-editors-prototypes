@@ -147,6 +147,17 @@ input[type=checkbox]:checked + .gpii-prefsEditor-headerImage > .gpii-prefsEditor
     padding-right: 230px;
 }
 
+/*
+ * Hack to fix the height of the adjuster headers in PCP.
+ * For an unknown reason the h1's in the adjuster headers
+ * when run in the PCP are all 6px short. This override
+ * forces a compensation. A better fix would be to determine
+ * why the height is different in PCP and address that directly.
+ */
+.gpii-pcp .gpii-prefsEditor-headerTitle-withoutIcon {
+    height: 96px;
+}
+
 .gpii-prefsEditor-headerTitle {
     font-family: 'Roboto Slab', serif;
     font-size: 1.8em !important;
