@@ -15,7 +15,7 @@ var demo = demo || {};
 
     var pathToTemplates = "../../src/explorationTool/html/";
     var pathToMessages = "../../src/explorationTool/messages/";
-    var pathToTocTemplate = "../../src/shared/lib/infusion/components/tableOfContents/html/TableOfContents.html";
+    var pathToTocTemplate = "../../src/shared/lib/infusion/src/components/tableOfContents/html/TableOfContents.html";
 
     demo.initOverviewPanel = function () {
         fluid.overviewPanel(".flc-overviewPanel", {

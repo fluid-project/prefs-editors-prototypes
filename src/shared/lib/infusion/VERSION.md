@@ -1,5 +1,5 @@
 
-The version of Infusion included in this folder was created using a custom build from commit `06e37ce605803d1324e0aaa4fbfc3c54caf3b96f`
+The version of Infusion included in this folder was created using a custom build from commit `3543061c61bdd42c1a08206773cc3dda68ea1173`
 
 of the Infusion master branch
 
@@ -11,16 +11,16 @@ using the command line
 
 The following directories were stripped out of the build since they contain code that is included in the infusion-prefsFramework.js file:
 
-* src/shared/lib/infusion/components/overviewPanel/js/
-* src/shared/lib/infusion/components/slidingPanel/
-* src/shared/lib/infusion/components/tableOfContents/js/
-* src/shared/lib/infusion/components/textfieldSlider/
-* src/shared/lib/infusion/framework/core/
-* src/shared/lib/infusion/framework/enhancement/
-* src/shared/lib/infusion/framework/preferences/js/
-* src/shared/lib/infusion/framework/renderer/
-* src/shared/lib/infusion/lib/fastXmlPull/
-* src/shared/lib/infusion/lib/jquery/core/
-* src/shared/lib/infusion/lib/jquery/plugins/
-* src/shared/lib/infusion/lib/jquery/ui/js/
-* src/shared/lib/infusion/lib/json/
+* src/shared/lib/infusion/src/components/overviewPanel/js/
+* src/shared/lib/infusion/src/components/slidingPanel/
+* src/shared/lib/infusion/src/components/tableOfContents/js/
+* src/shared/lib/infusion/src/components/textfieldSlider/
+* src/shared/lib/infusion/src/framework/core/js/
+* src/shared/lib/infusion/src/framework/enhancement/
+* src/shared/lib/infusion/src/framework/preferences/js/
+* src/shared/lib/infusion/src/framework/renderer/
+* src/shared/lib/infusion/src/lib/fastXmlPull/
+* src/shared/lib/infusion/src/lib/jquery/core/
+* src/shared/lib/infusion/src/lib/jquery/plugins/
+* src/shared/lib/infusion/src/lib/jquery/ui/js/
+* src/shared/lib/infusion/src/lib/json/
