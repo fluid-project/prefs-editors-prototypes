@@ -82,19 +82,19 @@
         invokers: {
             termsCheck: {
                 "funcName": "gpii.signupPanel.termsCheck",
-                "args": ["{that}","{that}.msgLookup.available","{that}.msgLookup.passwordsMatch"]
+                "args": ["{that}", "{that}.msgLookup.available", "{that}.msgLookup.notAvailable", "{that}.msgLookup.passwordsMatch", "{that}.msgLookup.passwordsDoNotMatch", "{that}.msgLookup.tooShort", "{that}.msgLookup.alphanumeric", "{that}.msgLookup.weak", "{that}.msgLookup.strong"]
             },
             usernameAvailability: {
                 "funcName": "gpii.signupPanel.usernameAvailability",
-                "args": ["{that}","{that}.msgLookup.available","{that}.msgLookup.notAvailable","{that}.msgLookup.passwordsMatch"]
+                "args": ["{that}", "{that}.msgLookup.available", "{that}.msgLookup.notAvailable", "{that}.msgLookup.passwordsMatch", "{that}.msgLookup.passwordsDoNotMatch", "{that}.msgLookup.tooShort", "{that}.msgLookup.alphanumeric", "{that}.msgLookup.weak", "{that}.msgLookup.strong"]
             },
             passwdStrength: {
                 "funcName": "gpii.signupPanel.passwdStrength",
-                "args": ["{that}","{that}.msgLookup.tooShort","{that}.msgLookup.weak","{that}.msgLookup.strong"]
+                "args": ["{that}", "{that}.msgLookup.available", "{that}.msgLookup.notAvailable", "{that}.msgLookup.passwordsMatch", "{that}.msgLookup.passwordsDoNotMatch", "{that}.msgLookup.tooShort", "{that}.msgLookup.alphanumeric", "{that}.msgLookup.weak", "{that}.msgLookup.strong"]
             },
             passwdConfirm: {
                 "funcName": "gpii.signupPanel.passwdConfirm",
-                "args": ["{that}","{that}.msgLookup.available","{that}.msgLookup.passwordsMatch","{that}.msgLookup.passwordsDoNotMatch"]
+                "args": ["{that}", "{that}.msgLookup.available", "{that}.msgLookup.notAvailable", "{that}.msgLookup.passwordsMatch", "{that}.msgLookup.passwordsDoNotMatch", "{that}.msgLookup.tooShort", "{that}.msgLookup.alphanumeric", "{that}.msgLookup.weak", "{that}.msgLookup.strong"]
             },
             clickLoginLink: {
                 "funcName": "gpii.signupPanel.clickLoginLink",
@@ -187,6 +187,7 @@
             passwordsMatch: {messagekey: "passwordsMatch"},
             passwordsDoNotMatch: {messagekey: "passwordsDoNotMatch"},
             tooShort: {messagekey: "tooShort"},
+            alphanumeric: {messagekey: "alphanumeric"},
             weak: {messagekey: "weak"},
             strong: {messagekey: "strong"},
             loginLink: {messagekey: "loginLink"},
@@ -208,7 +209,14 @@
             passwdIcon: "gpii-signup-password-icon",
             passwdDescription: "gpii-signup-passwd-description",
             adjusterIcons: "gpii-signup-adjusterIcons",
-            focus: "gpii-focus"
+            focus: "gpii-focus",
+            matching: "gpii-signup-match gpii-signup-password-icon-match",
+            notMatching: "gpii-signup-donotmatch gpii-signup-password-icon-donotmatch",
+            availability: "gpii-signup-available gpii-signup-username-icon-available",
+            noAvailability: "gpii-signup-notavailable gpii-signup-username-icon-notavailable",
+            rejectPass: "gpii-signup-password-short gpii-signup-password-icon-short",
+            weakPass: "gpii-signup-password-weak gpii-signup-password-icon",
+            strongPass: "gpii-signup-password-strong gpii-signup-password-icon"
         },
         strings: {
         }
@@ -311,153 +319,240 @@
         });
     };
 
-    var confirmPasswd; 
-    var usernameAvailability;
-    gpii.signupPanel.termsCheck = function (that, available, passwordsMatch) {
-        if (that.locate("termsCheckBox").is(":checked")) {
-            that.locate("termsCheckBoxLabel").attr("aria-checked",true);
-            var disable = (confirmPasswd === passwordsMatch) && (usernameAvailability === available);
+    /*
+     *  The function is triggered when the terms and conditions checkbox is checked.
+     *  The function checks whether the username is available, the password is either weak or strong and the confirmation password mathes password.
+     *  The function modifies the attributes of the checkbox label and the create acount button based on the above three criteria.
+     */
+    gpii.signupPanel.termsCheck = function (that, available, notAvailable, passwordsMatch, passwordsDoNotMatch, tooShort, alphanumeric, weak, strong) {
+        var termsCheckBoxChecked = that.locate("termsCheckBox").is(":checked");
+        var usernameAvailability = gpii.signupPanel.checkUsernameAvailability(that, that.locate("username").val(), available, notAvailable);
+        var strength = gpii.signupPanel.checkPasswdStrength(that, that.locate("passwd").val(), tooShort, alphanumeric, weak, strong);
+        var confirmPasswd = gpii.signupPanel.confirm(that, that.locate("passwd").val(), that.locate("cpasswd").val(), passwordsMatch, passwordsDoNotMatch);
+        if (termsCheckBoxChecked) {
+            that.locate("termsCheckBoxLabel").attr("aria-checked", termsCheckBoxChecked);
+            var disable = (confirmPasswd === passwordsMatch) && (usernameAvailability === available) && ((strength === weak) || (strength === strong));
             that.locate("createAccountButton").attr("disabled", !disable);
             that.locate("termsText").addClass(that.options.styles.focus);
         }
         else {
-            that.locate("termsCheckBoxLabel").attr("aria-checked",false);
-            that.locate("createAccountButton").attr("disabled",true);
+            that.locate("termsCheckBoxLabel").attr("aria-checked", termsCheckBoxChecked);
+            that.locate("createAccountButton").attr("disabled", !termsCheckBoxChecked);
             that.locate("termsText").removeClass(that.options.styles.focus);
         }
     };
 
-    gpii.signupPanel.passwdConfirm = function (that, available, passwordsMatch, passwordsDoNotMatch) {
-        confirmPasswd = gpii.signupPanel.confirm(that, that.locate("passwd").val(), that.locate("cpasswd").val(), that.locate("passwdMatchDescription"), that.locate("passwdMatch"), passwordsMatch, passwordsDoNotMatch);
+    /*
+     *  The function is triggered when the user is filling in the confirmation password text field.
+     */
+    gpii.signupPanel.passwdConfirm = function (that, available, notAvailable, passwordsMatch, passwordsDoNotMatch, tooShort, alphanumeric, weak, strong) {
+        var confirmPasswd = gpii.signupPanel.confirm(that, that.locate("passwd").val(), that.locate("cpasswd").val(), passwordsMatch, passwordsDoNotMatch);
+        gpii.signupPanel.confirmStyle(that, that.locate("passwd").val(), that.locate("cpasswd").val(), that.locate("passwdMatchDescription"), that.locate("passwdMatch"));
         that.locate("passwdMatchDescription").html(confirmPasswd);
-        gpii.signupPanel.termsCheck(that, available, passwordsMatch);
+        gpii.signupPanel.termsCheck(that, available, notAvailable, passwordsMatch, passwordsDoNotMatch, tooShort, alphanumeric, weak, strong);
     };
 
-    gpii.signupPanel.confirm = function (that, password, cpassword, passwdMatchDescription, passwdMatch, passwordsMatch, passwordsDoNotMatch) {
+    /*
+     *  The function checks whether the confirmation password matches password.
+     *  return: "passwordsMatch" in case the confirmation password matches password
+     *          "passwordsDoNotMatch" in case the confirmation password does not match password
+     */
+    gpii.signupPanel.confirm = function (that, password, cpassword, passwordsMatch, passwordsDoNotMatch) {
         if (cpassword.length < 8) {
-            if (passwdMatch.hasClass(that.options.styles.match)) {
-                passwdMatch.removeClass(that.options.styles.match);
-                passwdMatch.removeClass(that.options.styles.iconMatch);
-                passwdMatchDescription.removeClass(that.options.styles.match);
-            }
-            passwdMatch.addClass(that.options.styles.donotMatch);
-            passwdMatch.addClass(that.options.styles.iconDonotMatch);
-            passwdMatchDescription.addClass(that.options.styles.donotMatch);
             return passwordsDoNotMatch;
         }
         if (cpassword===password && cpassword.length===password.length) {
-            if (passwdMatch.hasClass(that.options.styles.donotMatch)) {
-                passwdMatch.removeClass(that.options.styles.donotMatch);
-                passwdMatch.removeClass(that.options.styles.iconDonotMatch);
-                passwdMatchDescription.removeClass(that.options.styles.donotMatch);
-            }
-            passwdMatch.addClass(that.options.styles.match);
-            passwdMatch.addClass(that.options.styles.iconMatch);
-            passwdMatchDescription.addClass(that.options.styles.match);
             return passwordsMatch;
         }
         else {
-            if (passwdMatch.hasClass(that.options.styles.match)) {
-                passwdMatch.removeClass(that.options.styles.match);
-                passwdMatch.removeClass(that.options.styles.iconMatch);
-                passwdMatchDescription.removeClass(that.options.styles.match);
-            }
-            passwdMatch.addClass(that.options.styles.donotMatch);
-            passwdMatch.addClass(that.options.styles.iconDonotMatch);
-            passwdMatchDescription.addClass(that.options.styles.donotMatch);
             return passwordsDoNotMatch;
         }
     }
 
-    gpii.signupPanel.usernameAvailability = function (that, available, notAvailable, passwordsMatch) {
-        usernameAvailability = gpii.signupPanel.checkUsernameAvailability(that, that.locate("username").val(), that.locate("usernameDescription"), that.locate("usernameAvailable"), available, notAvailable);
+    /*
+     *  The function adds or removes CSS classes in HTML elements with class selector passwdMatch and passwdMatchDescription.
+     *  The function is based on the comparison between the confirmation password and password.
+     */
+    gpii.signupPanel.confirmStyle = function (that, password, cpassword, passwdMatchDescription, passwdMatch) {
+        if (cpassword.length < 8) {
+            if (passwdMatch.hasClass(that.options.styles.match)) {
+                passwdMatch.removeClass(that.options.styles.matching);
+                passwdMatchDescription.removeClass(that.options.styles.match);
+            }
+            passwdMatch.addClass(that.options.styles.notMatching);
+            passwdMatchDescription.addClass(that.options.styles.donotMatch);
+        }
+        else if (cpassword===password && cpassword.length===password.length) {
+            if (passwdMatch.hasClass(that.options.styles.donotMatch)) {
+                passwdMatch.removeClass(that.options.styles.notMatching);
+                passwdMatchDescription.removeClass(that.options.styles.donotMatch);
+            }
+            passwdMatch.addClass(that.options.styles.matching);
+            passwdMatchDescription.addClass(that.options.styles.match);
+        }
+        else {
+            if (passwdMatch.hasClass(that.options.styles.match)) {
+                passwdMatch.removeClass(that.options.styles.matching);
+                passwdMatchDescription.removeClass(that.options.styles.match);
+            }
+            passwdMatch.addClass(that.options.styles.notMatching);
+            passwdMatchDescription.addClass(that.options.styles.donotMatch);
+        }
+    }
+
+    /*
+     *  The function is triggered when the user is filling in the username text field.
+     */
+    gpii.signupPanel.usernameAvailability = function (that, available, notAvailable, passwordsMatch, passwordsDoNotMatch, tooShort, alphanumeric, weak, strong) {
+        var usernameAvailability = gpii.signupPanel.checkUsernameAvailability(that, that.locate("username").val(), available, notAvailable);
+        gpii.signupPanel.usernameAvailabilityStyle(that, that.locate("username").val(), that.locate("usernameDescription"), that.locate("usernameAvailable"));
         that.locate("usernameDescription").html(usernameAvailability);
-        gpii.signupPanel.termsCheck(that, available, passwordsMatch);
+        gpii.signupPanel.termsCheck(that, available, notAvailable, passwordsMatch, passwordsDoNotMatch, tooShort, alphanumeric, weak, strong);
     };
 
-    gpii.signupPanel.checkUsernameAvailability = function (that, usernameVal, usernameDescription, usernameAvailable, available, notAvailable) {
+    /*
+     *  The function checks whether the username is available or not.
+     *  return: "available" in case the username is available
+     *          "notAvailable" in case the username is not available
+     */
+    gpii.signupPanel.checkUsernameAvailability = function (that, usernameVal, available, notAvailable) {
+        var index;
+        var found = false;
+
+        if ((usernameVal.length < 3) || (found)) {
+            return notAvailable;
+        }
+        else {
+            return available;
+        }
+    }
+
+    /*
+     *  The function adds or removes CSS classes in HTML elements with class selector usernameAvailable and usernameDescription.
+     */
+    gpii.signupPanel.usernameAvailabilityStyle = function (that, usernameVal, usernameDescription, usernameAvailable) {
         var index;
         var found = false;
 
         if ((usernameVal.length < 3) || (found)) {
             if (usernameAvailable.hasClass(that.options.styles.available)) {
-                usernameAvailable.removeClass(that.options.styles.available);
-                usernameAvailable.removeClass(that.options.styles.usernameIconAvailable);
+                usernameAvailable.removeClass(that.options.styles.availability);
                 usernameDescription.removeClass(that.options.styles.available);
             }
-            usernameAvailable.addClass(that.options.styles.notAvailable);
-            usernameAvailable.addClass(that.options.styles.usernameIconNotAvailable);
+            usernameAvailable.addClass(that.options.styles.noAvailability);
             usernameDescription.addClass(that.options.styles.notAvailable);
-            return notAvailable;
         }
         else {
             if (usernameAvailable.hasClass(that.options.styles.notAvailable)) {
-                usernameAvailable.removeClass(that.options.styles.notAvailable);
-                usernameAvailable.removeClass(that.options.styles.usernameIconNotAvailable);
+                usernameAvailable.removeClass(that.options.styles.noAvailability);
                 usernameDescription.removeClass(that.options.styles.notAvailable);
             }
-            usernameAvailable.addClass(that.options.styles.available);
-            usernameAvailable.addClass(that.options.styles.usernameIconAvailable);
+            usernameAvailable.addClass(that.options.styles.availability);
             usernameDescription.addClass(that.options.styles.available);
-            return available;
         }
     }
 
-    gpii.signupPanel.passwdStrength = function (that, tooShort, weak, strong) {
-        that.locate("passwdStrengthDescription").html(gpii.signupPanel.checkPasswdStrength(that, that.locate("passwd").val(), that.locate("passwdStrengthDescription"), that.locate("passwdStrength"), tooShort, weak, strong));
+    /*
+     *  The function is triggered when the user is filling in the password text field.
+     */
+    gpii.signupPanel.passwdStrength = function (that, available, notAvailable, passwordsMatch, passwordsDoNotMatch, tooShort, alphanumeric, weak, strong) {
+        var strength = gpii.signupPanel.checkPasswdStrength(that, that.locate("passwd").val(), tooShort, alphanumeric, weak, strong);
+        gpii.signupPanel.passwdStrengthStyle(that, that.locate("passwd").val(), that.locate("passwdStrengthDescription"), that.locate("passwdStrength"));
+        that.locate("passwdStrengthDescription").html(strength);
+        gpii.signupPanel.termsCheck(that, available, notAvailable, passwordsMatch, passwordsDoNotMatch, tooShort, alphanumeric, weak, strong);
     };
 
     gpii.signupPanel.passwdRegExprs = {
-        expr1: "([a-z].*[A-Z])|([A-Z].*[a-z])",
-        expr2: "([a-zA-Z])",
-        expr3: "([0-9])",
-        expr4: "([!,%,&,@,#,$,^,*,?,_,~])",
-        expr5: "(.*[!,%,&,@,#,$,^,*,?,_,~].*[!,%,&,@,#,$,^,*,?,_,~])"
+        expr1: "([a-zA-Z])",
+        expr2: "([0-9])",
+        expr3: "([!,%,&,@,#,$,^,*,?,_,~])"
     };
 
-    gpii.signupPanel.checkPasswdStrength = function (that, password, passwdStrengthDescription, passwdStrength, tooShort, weak, strong) {
+    /*
+     *  The function checks the strength of password.
+     *  return: "tooShort" in case the password is less than 8 characters
+     *          "alphanumeric" in case the password does not contain both letters and numbers
+     *          "weak" in case the password contains both letters and numbers
+     *          "strong" in case the password contains letters, numbers and special characters
+     */
+    gpii.signupPanel.checkPasswdStrength = function (that, password, tooShort, alphanumeric, weak, strong) {
+        var strength = 0;
+        if (password.length < 8) {
+            return tooShort;
+        }
+        if (password.match(gpii.signupPanel.passwdRegExprs.expr1) || password.match(gpii.signupPanel.passwdRegExprs.expr2)) { strength = 1; }
+        if (password.match(gpii.signupPanel.passwdRegExprs.expr1) && password.match(gpii.signupPanel.passwdRegExprs.expr2)) { strength = 2; }
+        if ((strength === 2) && (password.match(gpii.signupPanel.passwdRegExprs.expr3))) { strength = 3; }
+        if (strength === 1 ) {
+            return alphanumeric;
+        }
+        else if (strength === 2 ) {
+            return weak;
+        }
+        else {
+            return strong;
+        }
+    }
+
+    /*
+     *  The function adds or removes CSS classes in HTML elements with class selector passwdStrength and passwdStrengthDescription.
+     */
+    gpii.signupPanel.passwdStrengthStyle = function (that, password, passwdStrengthDescription, passwdStrength) {
         var strength = 0;
         if (password.length < 8) {
             if (passwdStrengthDescription.hasClass(that.options.styles.weak)) {
                 passwdStrengthDescription.removeClass(that.options.styles.weak);
-                passwdStrength.removeClass(that.options.styles.weak);
-                passwdStrength.removeClass(that.options.styles.passwdIcon);
+                passwdStrength.removeClass(that.options.styles.weakPass);
+            }
+            else if (passwdStrengthDescription.hasClass(that.options.styles.strong)) {
+                passwdStrengthDescription.removeClass(that.options.styles.strong);
+                passwdStrength.removeClass(that.options.styles.strongPass);
             }
             passwdStrengthDescription.addClass(that.options.styles.short);
-            passwdStrength.addClass(that.options.styles.passwdIconShort);
-            passwdStrength.addClass(that.options.styles.short);
-            return tooShort;
+            passwdStrength.addClass(that.options.styles.rejectPass);
         }
-        if (password.length >= 8) { strength += 1; }
-        if (password.match(gpii.signupPanel.passwdRegExprs.expr1)) { strength += 1; }
-        if (password.match(gpii.signupPanel.passwdRegExprs.expr2) && password.match(gpii.signupPanel.passwdRegExprs.expr3)) { strength += 1; }
-        if (password.match(gpii.signupPanel.passwdRegExprs.expr4)) { strength += 1; }
-        if (password.match(gpii.signupPanel.passwdRegExprs.expr5)) { strength += 1; }
-        if (strength < 2 ) {
-            if (passwdStrengthDescription.hasClass(that.options.styles.strong)) {
-                passwdStrengthDescription.removeClass(that.options.styles.strong);
-                passwdStrength.removeClass(that.options.styles.strong);
+        else{
+            if (password.match(gpii.signupPanel.passwdRegExprs.expr1) || password.match(gpii.signupPanel.passwdRegExprs.expr2)) { strength = 1; }
+            if (password.match(gpii.signupPanel.passwdRegExprs.expr1) && password.match(gpii.signupPanel.passwdRegExprs.expr2)) { strength = 2; }
+            if ((strength === 2) && (password.match(gpii.signupPanel.passwdRegExprs.expr3))) { strength = 3; }
+            if (strength === 1 ) {
+                if (passwdStrengthDescription.hasClass(that.options.styles.weak)) {
+                    passwdStrengthDescription.removeClass(that.options.styles.weak);
+                    passwdStrength.removeClass(that.options.styles.weakPass);
+                }
+                else if (passwdStrengthDescription.hasClass(that.options.styles.strong)) {
+                    passwdStrengthDescription.removeClass(that.options.styles.strong);
+                    passwdStrength.removeClass(that.options.styles.strongPass);
+                }
+                passwdStrengthDescription.addClass(that.options.styles.short);
+                passwdStrength.addClass(that.options.styles.rejectPass);
+            }
+            else if (strength === 2 ) {
+                if (passwdStrengthDescription.hasClass(that.options.styles.strong)) {
+                    passwdStrengthDescription.removeClass(that.options.styles.strong);
+                    passwdStrength.removeClass(that.options.styles.strong);
+                }
+                else if (passwdStrengthDescription.hasClass(that.options.styles.short)) {
+                    passwdStrengthDescription.removeClass(that.options.styles.short);
+                    passwdStrength.removeClass(that.options.styles.rejectPass);
+                    passwdStrength.addClass(that.options.styles.passwdIcon);
+                }
                 passwdStrengthDescription.addClass(that.options.styles.weak);
                 passwdStrength.addClass(that.options.styles.weak);
             }
-            else if (passwdStrengthDescription.hasClass(that.options.styles.short)) {
-                passwdStrengthDescription.removeClass(that.options.styles.short);
-                passwdStrength.removeClass(that.options.styles.short);
-                passwdStrength.removeClass(that.options.styles.passwdIconShort);
-                passwdStrengthDescription.addClass(that.options.styles.weak);
-                passwdStrength.addClass(that.options.styles.weak);
-                passwdStrength.addClass(that.options.styles.passwdIcon);
+            else {
+                if (passwdStrengthDescription.hasClass(that.options.styles.weak)) {
+                    passwdStrengthDescription.removeClass(that.options.styles.weak);
+                    passwdStrength.removeClass(that.options.styles.weak);
+                }
+                else if (passwdStrengthDescription.hasClass(that.options.styles.short)) {
+                    passwdStrengthDescription.removeClass(that.options.styles.short);
+                    passwdStrength.removeClass(that.options.styles.rejectPass);
+                    passwdStrength.addClass(that.options.styles.passwdIcon);
+                }
+                passwdStrengthDescription.addClass(that.options.styles.strong);
+                passwdStrength.addClass(that.options.styles.strong);
             }
-            return weak;
-        }
-        else {
-            if (passwdStrengthDescription.hasClass(that.options.styles.weak)) {
-                passwdStrengthDescription.removeClass(that.options.styles.weak);
-                passwdStrength.removeClass(that.options.styles.weak);
-            }
-            passwdStrengthDescription.addClass(that.options.styles.strong);
-            passwdStrength.addClass(that.options.styles.strong);
-            return strong;
         }
     }
 
@@ -493,17 +588,18 @@
     };
 
     gpii.signupPanel.clickRecoveyCheckBox = function (that) {
-        if (that.locate("recoveyCheckBox").is(":checked")) {
-            that.locate("recoveryCheckBoxLabel").attr("aria-checked",true);
-            that.locate("gotIt").attr("disabled",false);
-            that.locate("recoveryTextfield").attr("disabled",false);
+        var recoveyCheckBoxChecked = that.locate("recoveyCheckBox").is(":checked");
+        if (recoveyCheckBoxChecked) {
+            that.locate("recoveryCheckBoxLabel").attr("aria-checked", recoveyCheckBoxChecked);
+            that.locate("gotIt").attr("disabled", !recoveyCheckBoxChecked);
+            that.locate("recoveryTextfield").attr("disabled", !recoveyCheckBoxChecked);
             that.locate("recoveryDescription").removeClass("disabled");
             that.locate("recoveryID").addClass(that.options.styles.focus);
         }
         else {
-            that.locate("recoveryCheckBoxLabel").attr("aria-checked",false);
-            that.locate("gotIt").attr("disabled",true);
-            that.locate("recoveryTextfield").attr("disabled",true);
+            that.locate("recoveryCheckBoxLabel").attr("aria-checked", recoveyCheckBoxChecked);
+            that.locate("gotIt").attr("disabled", !recoveyCheckBoxChecked);
+            that.locate("recoveryTextfield").attr("disabled", !recoveyCheckBoxChecked);
             that.locate("recoveryDescription").addClass("disabled");
             that.locate("recoveryID").removeClass(that.options.styles.focus);
         }

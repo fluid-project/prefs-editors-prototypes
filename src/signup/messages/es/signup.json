@@ -1,6 +1,6 @@
 {
     "signUpLabel": "Registrarse",
-    "signUpDescription": "Create a new GPII account by providing the following information.",
+    "signUpDescription": "Crear una nueva cuenta GPII proporcionando la siguiente información.",
     "loginLabel": "LOGIN",
     "usbLabel": "USB",
     "rfidLabel": "RFID",
@@ -23,8 +23,9 @@
     "passwordsMatch": "Las contraseñas coinciden",
     "passwordsDoNotMatch": "Las contraseñas no coinciden",
     "tooShort": "Demasiado corto",
+    "alphanumeric": "Debe incluir números y letras",
     "weak": "Débil",
     "strong": "Fuerte",
-    "loginLink": "Log in now.",
-    "loginLinkDescription": "Already have an account?"
+    "loginLink": "Inicia sesión ahora.",
+    "loginLinkDescription": "Ya tienes una cuenta?"
 }

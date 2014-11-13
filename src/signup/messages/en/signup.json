@@ -23,6 +23,7 @@
     "passwordsMatch": "Passwords match",
     "passwordsDoNotMatch": "Passwords do not match",
     "tooShort": "Must be at least 8 characters long",
+    "alphanumeric": "Must include numbers and letters",
     "weak": "Weak",
     "strong": "Strong",
     "loginLink": "Log in now.",
