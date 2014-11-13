@@ -9,9 +9,7 @@ You may obtain a copy of the License at
 https://github.com/gpii/universal/LICENSE.txt
 */
 
-var fluid_1_5 = fluid_1_5 || {};
-
-(function ($, fluid) {
+(function ($) {
     "use strict";
 
     fluid.defaults("gpii.textfieldStepper", {
@@ -135,4 +133,4 @@ var fluid_1_5 = fluid_1_5 || {};
 
     };
 
-})(jQuery, fluid_1_5);
+})(jQuery);
