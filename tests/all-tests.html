@@ -4,26 +4,26 @@
     <meta charset="UTF-8" />
     <title>Preferences editors complete tests runner</title>
 
-    <link rel="stylesheet" href="lib/qunit/qunit/css/qunit.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="lib/qunit/qunit/addons/composite/qunit-composite.css">
-    <script src="lib/qunit/qunit/js/qunit.js"></script>
-    <script src="lib/qunit/qunit/addons/composite/qunit-composite.js"></script>
+    <link rel="stylesheet" href="lib/infusion/lib/qunit/css/qunit.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="lib/infusion/lib/qunit/addons/composite/qunit-composite.css">
+    <script src="lib/infusion/lib/qunit/js/qunit.js"></script>
+    <script src="lib/infusion/lib/qunit/addons/composite/qunit-composite.js"></script>
 
     <!--
         command line search:
         find . -name "*-test.html" | awk '{print "\""$1"\","}'
     -->
     <script>
-    QUnit.testSuites([
+    QUnit.testSuites("Utility Components Tests", [
         "./common/html/gpiiSession-Test.html",
         "./common/html/gpiiStore-Test.html"
     ]);
 
-    QUnit.testSuites([
+    QUnit.testSuites("Components Tests", [
         "./components/textfieldStepper/html/textfieldStepper-Test.html"
     ]);
 
-    QUnit.testSuites([
+    QUnit.testSuites("Enactors Tests", [
         "./enactors/html/cursorSize-Test.html"
     ]);
     </script>
