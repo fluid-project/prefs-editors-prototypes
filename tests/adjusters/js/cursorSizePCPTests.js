@@ -79,15 +79,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
 
     gpii.tests.cursorSizePCPTests.pressStepper = function (that) {
-        console.log("in here", that);
         that.cursorSizeStepper.locate("increment").click();
     };
 
-    gpii.tests.cursorSizePCPTests.checkModel = function (expectedValue) {
+    gpii.tests.cursorSizePCPTests.checkModel = function (path, expectedValue) {
         return function (newModel) {
-            console.log(newModel);
-            var newval = fluid.get(newModel, path);
-            jqUnit.assertEquals("Expected model value " + expectedValue + " at path " + path, expectedValue, newval);
+            jqUnit.assertEquals("Expected model value " + expectedValue + " at path " + path, expectedValue, fluid.get(newModel, path));
         };
     };
 
@@ -96,7 +93,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         modules: [{
             name: "Test the PCP cursor size adjuster",
             tests: [{
-                // expect: 2,
+                expect: 3,
                 name: "Test the rendering of the PCP cursor size adjuster",
                 sequence: [{
                     listener: "gpii.tests.cursorSizePCPTests.testDefault",
@@ -105,12 +102,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 }, {
                     func: "gpii.tests.cursorSizePCPTests.pressStepper",
                     args: ["{cursorSizePCP}"]
-                }/*, {
+                }, {
                     listenerMaker: "gpii.tests.cursorSizePCPTests.checkModel",
-                    makerArgs: ["300"],
+                    makerArgs: ["value", "300"],
                     spec: {path: "value", priority: "last"},
                     changeEvent: "{cursorSizePCP}.applier.modelChanged"
-                }*/]
+                }]
             }]
         }]
     });
