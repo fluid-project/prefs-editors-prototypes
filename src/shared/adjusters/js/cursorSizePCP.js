@@ -13,7 +13,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     "use strict";
-    
+
     fluid.defaults("gpii.adjuster.cursorSizePCP", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {

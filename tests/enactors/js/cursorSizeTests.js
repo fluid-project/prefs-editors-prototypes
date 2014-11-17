@@ -13,8 +13,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 (function () {
     "use strict";
 
-    fluid.registerNamespace("gpii.tests");
-
     jqUnit.test("Test the enactor that applies cursor size", function () {
         jqUnit.expect(2);
 

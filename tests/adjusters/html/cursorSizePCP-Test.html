@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Cursor size enactor tests</title>
+
+        <link rel="stylesheet" media="screen" href="../../lib/infusion/lib/qunit/css/qunit.css" />
+
+        <script src="../../../src/shared/lib/infusion/infusion-prefsFramework.js"></script>
+        <script src="../../lib/infusion/lib/qunit/js/qunit.js"></script>
+        <script src="../../lib/infusion/test-core/jqUnit/js/jqUnit.js"></script>
+        <script src="../../lib/infusion/test-core/utils/js/IoCTestUtils.js"></script>
+
+        <!-- Preferences Editors specific files go here: -->
+        <script src="../../../src/shared/common/ariaUtility.js"></script>
+        <script src="../../../src/shared/components/textfieldStepper/js/textfieldStepper.js"></script>
+        <script src="../../../src/shared/adjusters/js/textfieldStepper.js"></script>
+        <script src="../../../src/shared/adjusters/js/cursorSizePCP.js"></script>
+        <!-- Test specific files go here: -->
+        <script src="../js/cursorSizePCPTests.js"></script>
+    </head>
+
+    <body id="body">
+        <h1 id="qunit-header">PCP Cursor size panel tests</h1>
+        <h2 id="qunit-banner"></h2>
+        <div id="qunit-testrunner-toolbar"></div>
+        <h2 id="qunit-userAgent"></h2>
+        <ol id="qunit-tests"></ol>
+
+        <!-- Test HTML -->
+        <div class="gpiic-cursorSizePCP">
+            <h4 class="gpiic-cursorSize-label"></h4>
+
+            <div class="gpiic-cursorSize-stepper gpii-stepper">
+                <label class="gpiic-textfieldStepper-decrement gpii-stepper-buttons"></label>
+                <input type="text" class="gpiic-textfieldStepper-valueField gpii-stepper-valueField fl-inputs"/>
+                <label class="gpiic-textfieldStepper-unitField gpii-stepper-unit"></label>
+                <label class="gpiic-textfieldStepper-increment gpii-stepper-buttons"></label>
+            </div>
+        </div>
+    </body>
+</html>
