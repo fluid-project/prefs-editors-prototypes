@@ -143,7 +143,7 @@ input[type=checkbox]:checked + .gpii-prefsEditor-headerImage > .gpii-prefsEditor
     height: 90px;
     background-color: #566374;
     border: 1px solid #566374;
-    padding-right: 230px;
+    padding-right: 215px;
 }
 
 .gpii-prefsEditor-headerTitle {
@@ -1625,5 +1625,5 @@ span.gpii-preset-button-label {
     height: 59px;
     text-align: left;
     font-family: 'Roboto Slab', serif;
-    font-size: 1.4em!important;
+    font-size: 1em;
 }
