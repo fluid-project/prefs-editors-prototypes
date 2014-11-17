@@ -179,7 +179,7 @@ input[type=checkbox], input[type=radio] {
     width:1px;
     margin:-1px;
     padding:0;
-    border:0; 
+    border:0;
 }
 
 /*
@@ -295,7 +295,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 .gpii-stepper-valueField-no-metric-unit {
-    width: 80% !important;
+    width: 79% !important;
     text-align: center;
 }
 
@@ -304,7 +304,7 @@ input[type=checkbox], input[type=radio] {
     float: left !important;
     font-size: 1.5em !important;
     text-align: left;
-    width: 40%;
+    width: 39%;
     padding-top: 0.37em;
 }
 
@@ -1573,7 +1573,7 @@ label.gpii-preset-button-label {
 .universalLanguage > .gpii-dropdown, .textHighlighting  > .gpii-dropdown, .screenReaderLanguage > .gpii-dropdown {
     width: 14em;
     overflow: hidden;
-    padding-top: 0.5em; 
+    padding-top: 0.5em;
     padding-bottom: 0.5em;
     font-size: 1em;
 }
