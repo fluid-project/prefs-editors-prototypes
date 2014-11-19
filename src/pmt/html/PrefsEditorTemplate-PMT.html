@@ -1,3 +1,6 @@
+<div class="gpii-prefsEditor-contextContainer">
+    <span>...</span>
+</div>
 <form id="options" action="" class="fl-container-flex30 fl-prefsEditor gpii-prefsEditor fl-focus gpii-prefsEditor-panelContainer">
     <div class="gpii-prefsEditor-userStatusBar gpiic-prefsEditor-userStatusBar">
         <a class="gpii-prefsEditor-link gpii-prefsEditor-quickEditorLink gpiic-prefsEditor-quickEditorLink"></a>
@@ -7,7 +10,7 @@
         <span class="gpii-prefsEditor-preferenceSetSelectionButton gpii-prefsEditor-frameIcon gpii-prefsEditor-preferenceSetSelectionButtonMyPreferences gpii-prefsEditor-preferenceSetSelectionButtonSelected">
             <label class="gpiic-pmt-preferenceSetSelectionButtonMyPreferencesLabel gpii-prefsEditor-preferenceSetSelectionButtonLabel"></label>
         </span>
-        <span class="gpii-prefsEditor-preferenceSetSelectionButton gpii-prefsEditor-frameIcon gpii-prefsEditor-preferenceSetSelectionButtonAllPreferences gpii-prefsEditor-preferenceSetSelectionButtonGrayed">
+        <span class="gpii-prefsEditor-preferenceSetSelectionButton gpii-prefsEditor-frameIcon gpii-prefsEditor-preferenceSetSelectionButtonAllPreferences gpii-prefsEditor-preferenceSetSelectionButtonNotSelected">
             <label class="gpiic-pmt-preferenceSetSelectionButtonAllPreferencesLabel gpii-prefsEditor-preferenceSetSelectionButtonLabel"></label>
         </span>
     </div>
@@ -17,15 +20,25 @@
             <div class="gpiic-volumeGroup gpii-prefsEditor-adjusterGroup"></div>
             <div class="gpiic-languageGroup gpii-prefsEditor-adjusterGroup"></div>
             <div class="gpiic-prefsEditor-contrastPanel gpii-prefsEditor-contrastPanel gpii-prefsEditor-adjusterGroup"></div>
-            <div class="gpiic-prefsEditor-increaseSizePanel gpii-prefsEditor-increaseSizePanel gpii-prefsEditor-adjusterGroup"></div>
+            <div class="gpiic-prefsEditor-increaseSizePanel gpii-prefsEditor-increaseSizePanel gpii-prefsEditor-adjusterGroup gpii-prefsEditor-margin-bottom"></div>
         </div>
     </div>
     <div class="gpii-prefsEditor-panelBottomRow gpiic-pmt-bottomRow">
+        <div class="gpii-prefsEditor-panelBottomLeft gpii-prefsEditor-padding-left">
+            <div class="gpii-prefsEditor-panelBottomLink">
+                <label for="setsButton" class="gpii-prefsEditor-adjusterIcons gpii-prefsEditor-context-icon"></label>
+                <input id="setsButton" class="gpiic-prefsEditor-sets-button gpii-prefsEditor-trasparentButton" type="button" value="" />
+            </div>
+            <div class="gpii-prefsEditor-panelBottomLink">
+                <label for="accountButton" class="gpii-prefsEditor-adjusterIcons gpii-prefsEditor-signup-icon"></label>
+                <input id="accountButton" class="gpiic-prefsEditor-account-button gpii-prefsEditor-trasparentButton" type="button" value="" />
+            </div>
+        </div>
         <span class="gpii-prefsEditor-messageLine gpiic-prefsEditor-messageLine"></span>
-        <span class="gpii-pmt-saveButtonContainer">
-            <label for="pmtSaveButton" class="gpii-prefsEditor-frameIcon gpii-prefsEditor-saveAndApplyButtonLabel">
-            </label>
-            <input id="pmtSaveButton" class="flc-prefsEditor-save fl-prefsEditor-save gpii-prefsEditor-save" type="button" value="" />
+        <span class="gpii-pmt-saveButtonContainer gpii-prefsEditor-padding-right">
+            <!-- <label for="pmtSaveButton" class="gpii-prefsEditor-frameIcon gpii-prefsEditor-saveAndApplyButtonLabel">
+            </label> -->
+            <input id="pmtSaveButton" class="flc-prefsEditor-save fl-prefsEditor-save gpii-prefsEditor-save-adjusters" type="button" value="" />
             <input id="pmtResetButton" class="flc-prefsEditor-reset gpii-prefsEditor-reset" type="button" value="" />
         </span>
         <div class="gpii-prefsEditor-notification gpiic-prefsEditor-notification">

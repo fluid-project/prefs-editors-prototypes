@@ -1627,3 +1627,137 @@ span.gpii-preset-button-label {
     font-family: 'Roboto Slab', serif;
     font-size: 1.4em!important;
 }
+
+.gpii-prefsEditor-panelContainer {
+    margin: 0.2em auto;
+}
+
+.gpii-prefsEditor-margin-bottom {
+    margin-bottom: 0.2em;
+}
+
+.gpii-prefsEditor-panelBottomRow .gpii-pmt-saveButtonContainer {
+    background-color: #CED7D9;
+    /*padding: 5px 12px !important;*/
+    width: 33%;
+}
+
+.gpii-prefsEditor-panelBottomRow .gpii-prefsEditor-messageLine {
+    background-color: #CED7D9;
+    padding-left: 0px;
+    width: 33%;
+    text-align: center;
+}
+
+.gpii-pmt-saveButtonContainer .gpii-prefsEditor-save-adjusters {
+    font-weight: bold;
+    font-family: "Roboto Slab",serif !important;
+    font-size: 1.8em;
+    padding: 5px 10px;
+    margin: 0.3em;
+    background-color: #0AA;
+    color: #FFF;
+    border: 0px none;
+    border-radius: 0.3em;
+    line-height: 1.5em;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.gpii-prefsEditor-context-icon, .gpii-prefsEditor-signup-icon {
+    -webkit-font-smoothing: antialiased;
+    margin: 0px;
+    width: 25px;
+    display: table;
+}
+
+.gpii-prefsEditor-context-icon:before, .gpii-prefsEditor-signup-icon:before {
+    font-size: 25px;
+    font-weight: normal;
+    background-color: #CED7D9;
+    color: #474C66;
+    vertical-align: middle;
+    padding: 3px;
+    display: inline-block;
+    height: 1.08em;
+}
+
+.gpii-prefsEditor-context-icon:before {
+    content: "\e625";
+}
+
+.gpii-prefsEditor-signup-icon:before {
+    content: "\e661";
+}
+
+.gpii-prefsEditor-panelBottomLeft {
+    display: table-cell;
+    background-color: #CED7D9;
+    vertical-align: middle;
+    /*padding-left: 1em;*/
+    width: 36%;
+}
+
+.gpii-prefsEditor-panelBottomLink {
+    display: inline-block;
+}
+.gpii-prefsEditor-panelBottomLeft-label {
+    font-family: Book Antiqua;
+    font-size: 1.5em;
+    line-height: 1.5em;
+    margin-left: 0.1em;
+    margin-right: 0.5em;
+}
+
+.gpii-prefsEditor-padding-left {
+    padding-left: 1em;
+}
+
+.gpii-prefsEditor-padding-right {
+    padding-right: 1em;
+}
+
+.gpii-prefsEditor-preferenceSetSelectionHeader {
+    background-color: #0AA;
+    border: 1px solid #0AA;
+    padding: 15px 70px;
+}
+
+.gpii-prefsEditor-preferenceSetSelectionButton {
+    text-align: center;
+}
+.gpii-prefsEditor-preferenceSetSelectionButtonSelected {
+    border: 3px solid #FFFFFF;
+    color: #FFFFFF;
+    background-color: #1E8F94;
+}
+
+.gpii-prefsEditor-preferenceSetSelectionButtonNotSelected {
+    color: #FFFFFF;
+}
+
+.gpii-prefsEditor-trasparentButton {
+    font-weight: bold;
+    font-family: Verdana;
+    font-size: 1.1em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 0px;
+    padding: 0px;
+    float: left;
+    background-color: inherit;
+    color: #474C66;
+    border: 0px;
+    cursor: pointer;
+}
+
+.gpii-prefsEditor-contextContainer {
+    position: absolute;
+    width: 20em;
+    height: inherit;
+    top: 0.17em;
+    bottom:0em;
+    margin: 0.2em auto;
+    background-color: #556273;
+    left: 25.6em;
+}

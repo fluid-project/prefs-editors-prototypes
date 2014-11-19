@@ -38,7 +38,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 notificationConfirmButton: ".gpiic-prefsEditor-notificationConfirmButton",
                 quickEditorLink: ".gpiic-prefsEditor-quickEditorLink",
                 logoutLink: ".gpiic-prefsEditor-userLogoutLink",
-                userStatusBar: ".gpiic-prefsEditor-userStatusBar"
+                userStatusBar: ".gpiic-prefsEditor-userStatusBar",
+                setsButton: ".gpiic-prefsEditor-sets-button",
+                accountButton: ".gpiic-prefsEditor-account-button"
             },
             model: {
                 userLoggedIn: false
@@ -112,18 +114,26 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "text",
                     "args": ["{that}.msgLookup.allPreferencesLabelText"]
                 },
+                "onReady.setSetsButtonText": {
+                    "this": "{that}.dom.setsButton",
+                    "method": "val",
+                    "args": ["{that}.msgLookup.sets"]
+                },
+                "onReady.setAccountButtonText": {
+                    "this": "{that}.dom.accountButton",
+                    "method": "val",
+                    "args": ["{that}.msgLookup.account"]
+                },
                 "onReady.setSaveAndApplyButtonText": {
                     "this": "{that}.dom.saveAndApplyButtonLabel",
                     "method": "attr",
                     "args": ["value", "{that}.msgLookup.saveAndApplyText"]
                 },
-
                 "onReady.setSaveAndApplyButtonAriaLabel": {
                     "this": "{that}.dom.saveAndApplyButtonLabel",
                     "method": "attr",
                     "args": ["aria-label", "{that}.msgLookup.saveAndApplyText"]
                 },
-
                 "onReady.setNotificationMessagePart1": {
                     "this": "{that}.dom.notificationMessagePart1",
                     "method": "text",
