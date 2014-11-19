@@ -43,7 +43,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "template": "%prefix/increaseSizeTemplatePMT.html",
                 "message": "%prefix/increaseSize.json",
                 "panels": {
-                    "always": ["textSize", "cursorSize", "magnifierEnabled"],
+                    "always": ["textSize", "cursorSize", "magnifierEnabled", "autoAdjust"],
                     "gpii.primarySchema.magnifierEnabled": ["magnifier", "magnifierPosition", "magnifierFollows", "showCrosshairs"]
                 }
             },
@@ -78,15 +78,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "message": "%prefix/message.json",
                 "panels": {
                     "always": ["universalLanguage"]
-                }
-            },
-            "addAutoAdjust": {
-                "container": ".gpiic-prefsEditor-autoAdjustPanel",
-                "template": "%prefix/autoAdjustTemplate.html",
-                "message": "%prefix/auto.json",
-                "type": "gpii.adjuster.autoAdjust",
-                "panels": {
-                    "always": ["autoAdjust"]
                 }
             }
         },
@@ -398,13 +389,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "message": "%prefix/message.json"
             }
         },
+
         "autoAdjust": {
             "type": "gpii.primarySchema.autoAdjust",
             "panel": {
                 "type": "gpii.adjuster.autoAdjust",
                 "template": "%prefix/autoAdjustTemplate.html",
-                "container": ".autoAdjust",
-                "message": "%prefix/auto.json"
+                "container": ".gpiic-prefsEditor-autoAdjust",
+                "message": "%prefix/increaseSize.json"
             }
         }
     };

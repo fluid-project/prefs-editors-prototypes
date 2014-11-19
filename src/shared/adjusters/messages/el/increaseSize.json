@@ -6,5 +6,7 @@
     "additionalMagnifierAdjusters": "περισσότερες ρυθμίσεις μεγέθυνσης",
     "additionalVisualAdjusters": "περισσότερες οπτικές ρυθμίσεις",
     "moreMagnifierPreferences": "περισσότερες ρυθμίσεις μεγέθυνσης",
-    "lessMagnifierPreferences": "λιγότερες ρυθμίσεις μεγένθυσης"
+    "lessMagnifierPreferences": "λιγότερες ρυθμίσεις μεγένθυσης",
+    "autoAdjustLabel": "Αυτόματη προσαρμογή",
+    "autoAdjustDescription": "Οι προτιμήσεις θα προσαρμοστούν αυτόματα με βάση το θόρυβο και τα επίπεδα φωτισμού του περιβάλλοντος."
 }

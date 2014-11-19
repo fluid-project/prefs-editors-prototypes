@@ -6,5 +6,7 @@
     "additionalMagnifierAdjusters": "Erweiterte Einstellungen für die Bildschirmlupe",
     "additionalVisualAdjusters": "Erweiterte Einstellungen für den Screenreader",
     "moreMagnifierPreferences": "mehr Einstellungen für Vergrößerung",
-    "lessMagnifierPreferences": "weniger Einstellungen für Vergrößerung"
+    "lessMagnifierPreferences": "weniger Einstellungen für Vergrößerung",
+    "autoAdjustLabel": "Auto-einstellen",
+    "autoAdjustDescription": "Einstellungen werden automatisch eingestellt basieren auf Hintergrundgeräusche und Umgebungslicht."
 }
