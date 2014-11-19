@@ -280,7 +280,8 @@ article h2 {
 .fl-panelBar a::-moz-focus-inner {border:0;}
 
 .fl-panelBar span.fl-icon-explorationTool {
-    font-family: 'DemoIcons';
+    /* use !important to override font change in contrast modes */
+    font-family: 'DemoIcons' !important;
     float:right;
     position: relative;
     right: 0.4em;
@@ -311,6 +312,7 @@ article h2 {
 
 .fl-explorationTool .fl-prefsEditor-separatedPanel-iframe {
     border: none;
+    width: 100%;
 }
 iframe::-webkit-scrollbar {
     display: none;
@@ -327,7 +329,8 @@ iframe::-webkit-scrollbar {
 /* Font Icons */
 
 .fl-icon-tree, .fl-icon-atom {
-    font-family: 'DemoLogos';
+    /* use !important to override font change in contrast modes */
+    font-family: 'DemoLogos' !important;
 }
 .fl-icon-tree:before {
 	content: "\e001";
@@ -350,7 +353,8 @@ iframe::-webkit-scrollbar {
 }
 
 .fl-icon-search, .fl-icon-prev, .fl-icon-next, .fl-icon-thumbsUp, .fl-icon-thumbsDown, .fl-icon-arrow, .fl-icon-light, .fl-icon-book {
-    font-family: 'DemoIcons';
+    /* use !important to override font change in contrast modes */
+    font-family: 'DemoIcons' !important;
 }
 .fl-icon-search:before {
 	content: "\e008";

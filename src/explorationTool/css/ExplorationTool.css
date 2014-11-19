@@ -226,7 +226,8 @@
 
 /* Font Icons */
 .fl-icon-arrow, .fl-icon-check {
-    font-family: 'ExplorationToolIcons';
+    /* use !important to override font change in contrast modes */
+    font-family: 'ExplorationToolIcons' !important;
 }
 
 .fl-icon-arrow:after {
@@ -253,7 +254,8 @@
 }
 
 .fl-explorationTool-panel-icon{
-	font-family: 'ExplorationToolIcons';
+    /* use !important to override font change in contrast modes */
+	font-family: 'ExplorationToolIcons' !important;
 	font-size: 4.6em;
    	width: 1.2em;
     height: 1.2em;
@@ -342,11 +344,6 @@
 .fl-explorationTool-hover .fl-explorationTool-icon-speak:after  {content: "\e00d";}
 
 /* Theming for high and low contrast */
-
-.fl-theme-bw .fl-icon-arrow, .fl-theme-bw .fl-icon-check, .fl-theme-bw .fl-explorationTool-panel-icon,
-.fl-theme-lgdg .fl-icon-arrow, .fl-theme-lgdg .fl-icon-check, .fl-theme-lgdg .fl-explorationTool-panel-icon {
-    font-family: 'ExplorationToolIcons' !important;
-}
 
 .fl-theme-bw .fl-icon-arrow:after { color: #fff; }
 .fl-theme-bw .fl-explorationTool-panel-icon:before { color: #000; }
