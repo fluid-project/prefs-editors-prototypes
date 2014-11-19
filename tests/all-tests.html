@@ -14,6 +14,10 @@
         find . -name "*-test.html" | awk '{print "\""$1"\","}'
     -->
     <script>
+    QUnit.testSuites("Adjusters Tests", [
+        "./adjusters/html/cursorSizePCP-Test.html"
+    ]);
+
     QUnit.testSuites("Utility Components Tests", [
         "./common/html/gpiiSession-Test.html",
         "./common/html/gpiiStore-Test.html"

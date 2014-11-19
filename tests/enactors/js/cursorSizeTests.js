@@ -20,7 +20,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         var newValue = 300;
         var that = gpii.enactor.cursorSize(".gpiic-cursorSize");
 
-        jqUnit.assertEquals("The initial font size is set", baseFontSize * 2 + "px", that.locate("cursorDiv").css("font-size"));
+        jqUnit.assertEquals("The initial font size is set", baseFontSize + "px", that.locate("cursorDiv").css("font-size"));
         that.applier.change("value", newValue);
         jqUnit.assertEquals("The new font size is applied based on the new model value " + newValue, baseFontSize * newValue / 100 + "px", that.locate("cursorDiv").css("font-size"));
     });
