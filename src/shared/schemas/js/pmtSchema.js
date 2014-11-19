@@ -79,6 +79,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "panels": {
                     "always": ["universalLanguage"]
                 }
+            },
+            "addAutoAdjust": {
+                "container": ".gpiic-prefsEditor-autoAdjustPanel",
+                "template": "%prefix/autoAdjustTemplate.html",
+                "message": "%prefix/auto.json",
+                "type": "gpii.adjuster.autoAdjust",
+                "panels": {
+                    "always": ["autoAdjust"]
+                }
             }
         },
         "contrastEnabled": {
@@ -387,6 +396,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "template": "%prefix/universalLanguageTemplate.html",
                 "container": ".universalLanguage",
                 "message": "%prefix/message.json"
+            }
+        },
+        "autoAdjust": {
+            "type": "gpii.primarySchema.autoAdjust",
+            "panel": {
+                "type": "gpii.adjuster.autoAdjust",
+                "template": "%prefix/autoAdjustTemplate.html",
+                "container": ".autoAdjust",
+                "message": "%prefix/auto.json"
             }
         }
     };
