@@ -40,7 +40,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 logoutLink: ".gpiic-prefsEditor-userLogoutLink",
                 userStatusBar: ".gpiic-prefsEditor-userStatusBar",
                 setsButton: ".gpiic-prefsEditor-sets-button",
-                accountButton: ".gpiic-prefsEditor-account-button"
+                accountButton: ".gpiic-prefsEditor-account-button",
+                bottomRow: ".gpiic-pmt-bottomRow",
+                contextPanel: ".gpiic-prefsEditor-contextContainer"
+            },
+            styles: {
+                bottomRow: "gpii-prefsEditor-panelBottomRow",
+                bottomRowExtended: "gpii-prefsEditor-panelBottomRow-extended"
             },
             model: {
                 userLoggedIn: false
@@ -55,6 +61,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.confirmButton",
                     "method": "click",
                     "args": ["{that}.events.onLogin.fire"]
+                },
+                "onReady.hideContextPanel": {
+                    "this": "{that}.dom.contextPanel",
+                    "method": "hide"
+                },
+                "onReady.onClickSetsButton": {
+                    "this": "{that}.dom.setsButton",
+                    "method": "click",
+                    "args": ["{that}.clickSetsButton"]
+                },
+                "onReady.onClickSetsToggle": {
+                    "this": "{that}.dom.setsButton",
+                    "method": "click",
+                    "args": ["{that}.toggleContextPanel"]
                 },
                 // perform these onLogin
                 "onLogin.setUserLoggedIn": {
@@ -256,6 +276,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 logoutLinkPreventDefault: {
                     "funcName": "gpii.eventUtility.preventDefaultEvent"
+                },
+                clickSetsButton: {
+                    "funcName": "gpii.pmt.clickSetsButton",
+                    "args": ["{that}"]
+                },
+                toggleContextPanel: {
+                    "funcName": "gpii.pmt.toggleContextPanel",
+                    "args": ["{that}"]
                 }
             },
             strings: {
@@ -264,6 +292,26 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         }
     });
+
+    gpii.pmt.toggleContextPanel = function (that) {
+        var contextPanel = that.dom.locate("contextPanel");
+        contextPanel.toggle();
+    };
+
+    gpii.pmt.clickSetsButton = function (that) {
+        var contextPanel = that.dom.locate("contextPanel");
+        var bRow = that.dom.locate("bottomRow");
+        if (bRow.hasClass(that.options.styles.bottomRow)) {
+            bRow.removeClass(that.options.styles.bottomRow);
+            bRow.addClass(that.options.styles.bottomRowExtended);
+            //contextPanel.show();
+        }
+        else if (bRow.hasClass(that.options.styles.bottomRowExtended)) {
+            bRow.removeClass(that.options.styles.bottomRowExtended);
+            bRow.addClass(that.options.styles.bottomRow);
+            //contextPanel.hide();
+        }
+    };
 
     gpii.pmt.hideUserStatusBarIfNotLoggedIn = function (loggedUser, statusBarElement) {
         if (loggedUser === null) {

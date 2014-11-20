@@ -1716,11 +1716,18 @@ span.gpii-preset-button-label {
 
 .gpii-prefsEditor-padding-right {
     padding-right: 1em;
+    background-color: #CED7D9;
 }
 
 .gpii-prefsEditor-preferenceSetSelectionHeader {
     background-color: #0AA;
-    border: 1px solid #0AA;
+    /*border: 10px 10px 0px 10px solid #CED7D9;*/
+    border-bottom: 0px;
+    border-top: 10px;
+    border-left: 10px;
+    border-right: 10px;
+    border-color: #CED7D9;
+    border-style: solid;
     padding: 15px 70px;
 }
 
@@ -1762,4 +1769,11 @@ span.gpii-preset-button-label {
     background-color: #556273;
     left: -20em;
     display: table-cell;
+}
+
+.gpii-prefsEditor-panelBottomRow-extended {
+    display: table;
+    position: absolute;
+    left: -20em;
+    width: 63.1em;
 }
