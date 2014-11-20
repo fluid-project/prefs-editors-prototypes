@@ -8,7 +8,7 @@ You may obtain a copy of the License at
 https://github.com/gpii/universal/LICENSE.txt
 */
 
-(function ($) {
+(function ($, fluid) {
     "use strict";
 
     fluid.registerNamespace("gpii.adjuster");
@@ -24,4 +24,4 @@ https://github.com/gpii/universal/LICENSE.txt
         }
     });
 
-})(jQuery);
+})(jQuery, fluid);

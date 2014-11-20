@@ -13,7 +13,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     "use strict";
-    
+
     fluid.defaults("gpii.enactor.cursorSize", {
         gradeNames: ["fluid.viewComponent", "fluid.prefs.enactor", "autoInit"],
         preferenceMap: {
@@ -39,7 +39,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     gpii.enactor.cursorSize.set = function (times, cursorDiv) {
-        cursorDiv.css("font-size", times / 100 + "em");
+        // The cursorSize values defined in the primary schema are in percentage.
+        // A value 300 means to set the cursor size 3 times larger.
+        cursorDiv.css("font-size", (times / 100) + "em");
     };
 
 })(jQuery, fluid);
