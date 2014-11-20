@@ -103,8 +103,8 @@ a:hover {
 
 .main-content header #breadcrumbs {
     float: left;
-    margin-left: -6.15em;
-    margin-top: 4em;
+    margin-left: -9em;
+    margin-top: 5em;
     background: linear-gradient(to bottom, #DDDDDD 0%, #E8E8E8 99%) repeat scroll 0 0 transparent;
     border-bottom: 1px solid white;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) inset;
@@ -211,6 +211,10 @@ a:hover {
     padding-right: 7em;
     height: 6em;
     border-right: 1px dotted #56544D;
+}
+.main-content #article-filter span {
+    font-size: 1.3em;
+    line-height: 1.6em;
 }
 .main-content .article-tab {
     float: left;
