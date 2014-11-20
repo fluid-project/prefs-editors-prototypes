@@ -1630,6 +1630,7 @@ span.gpii-preset-button-label {
 
 .gpii-prefsEditor-panelContainer {
     margin: 0.2em auto;
+    position: relative;
 }
 
 .gpii-prefsEditor-margin-bottom {
@@ -1755,9 +1756,10 @@ span.gpii-preset-button-label {
     position: absolute;
     width: 20em;
     height: inherit;
-    top: 0.17em;
+    top: 0em;
     bottom:0em;
-    margin: 0.2em auto;
+    margin: 0em auto;
     background-color: #556273;
-    left: 25.6em;
+    left: -20em;
+    display: table-cell;
 }
