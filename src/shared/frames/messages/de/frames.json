@@ -15,5 +15,7 @@
     "more": "+ mehr",
     "less": "- weniger",
     "sets": "sets",
-    "account": "kondo"
+    "account": "kondo",
+    "baseSetLabel": "Basis Set",
+    "baseSetDescLabel": "alle Geräte, zu jeder Zeit"
 }

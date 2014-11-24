@@ -42,11 +42,23 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 setsButton: ".gpiic-prefsEditor-sets-button",
                 accountButton: ".gpiic-prefsEditor-account-button",
                 bottomRow: ".gpiic-pmt-bottomRow",
-                contextPanel: ".gpiic-prefsEditor-contextContainer"
+                contextPanel: ".gpiic-prefsEditor-contextContainer",
+                contextIcon: ".gpiic-prefsEditor-context-icon",
+                baseSetLabel: ".gpiic-prefsEditor-baseSetLabel",
+                baseSetDescLabel: ".gpiic-prefsEditor-baseSetDescription",
+                addSetLink: ".gpiic-prefsEditor-contextFrameLink",
+                frameHeader: ".gpiic-prefsEditor-contextFrame-header",
+                addIcon: ".gpiic-prefsEditor-context-addIcon"
             },
             styles: {
                 bottomRow: "gpii-prefsEditor-panelBottomRow",
-                bottomRowExtended: "gpii-prefsEditor-panelBottomRow-extended"
+                bottomRowExtended: "gpii-prefsEditor-panelBottomRow-extended",
+                contextIconLeft: "gpii-prefsEditor-context-icon-left",
+                contextIconRight: "gpii-prefsEditor-context-icon-right",
+                addIconMouseOut: "gpii-prefsEditor-context-addIcon",
+                addIconMouseOver: "gpii-prefsEditor-context-addIconMouseOver",
+                darkStyle: "gpii-prefsEditor-contextFrame-header-stylingDark",
+                brightStyle: "gpii-prefsEditor-contextFrame-header-stylingBright"
             },
             model: {
                 userLoggedIn: false
@@ -65,6 +77,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.hideContextPanel": {
                     "this": "{that}.dom.contextPanel",
                     "method": "hide"
+                },
+                "onReady.onMouseoverAddSetLink": {
+                    "this": "{that}.dom.addSetLink",
+                    "method": "mouseover",
+                    "args": ["{that}.mouseoverAddSetLink"]
+                },
+                "onReady.onMouseoutAddSetLink": {
+                    "this": "{that}.dom.addSetLink",
+                    "method": "mouseout",
+                    "args": ["{that}.mouseoutAddSetLink"]
                 },
                 "onReady.onClickSetsButton": {
                     "this": "{that}.dom.setsButton",
@@ -133,6 +155,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.allPreferencesLabel",
                     "method": "text",
                     "args": ["{that}.msgLookup.allPreferencesLabelText"]
+                },
+                "onReady.setBaseSetLabel": {
+                    "this": "{that}.dom.baseSetLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.baseSetLabel"]
+                },
+                "onReady.setBaseSetDescLabel": {
+                    "this": "{that}.dom.baseSetDescLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.baseSetDescLabel"]
                 },
                 "onReady.setSetsButtonText": {
                     "this": "{that}.dom.setsButton",
@@ -284,7 +316,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 toggleContextPanel: {
                     "funcName": "gpii.pmt.toggleContextPanel",
                     "args": ["{that}"]
+                },
+                mouseoverAddSetLink: {
+                    "funcName": "gpii.pmt.mouseoverAddSetLink",
+                    "args": ["{that}"]
+                },
+                mouseoutAddSetLink: {
+                    "funcName": "gpii.pmt.mouseoutAddSetLink",
+                    "args": ["{that}"]
                 }
+                /*,
+                hoverAddSetLink: {
+                    "funcName": "gpii.pmt.hoverAddSetLink",
+                    "args": ["{that}"]
+                }*/
             },
             strings: {
                 "mainVisibilitySwitch": "gpii_primarySchema_speakText",
@@ -298,18 +343,38 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         contextPanel.toggle();
     };
 
+    gpii.pmt.mouseoverAddSetLink = function (that) {
+        var frameHeader = that.dom.locate("frameHeader");
+        frameHeader.removeClass(that.options.styles.darkStyle);
+        frameHeader.addClass(that.options.styles.brightStyle);
+        var addIcon = that.dom.locate("addIcon");
+        addIcon.removeClass(that.options.styles.addIconMouseOut);
+        addIcon.addClass(that.options.styles.addIconMouseOver);
+    };
+
+    gpii.pmt.mouseoutAddSetLink = function (that) {
+        var frameHeader = that.dom.locate("frameHeader");
+        frameHeader.removeClass(that.options.styles.brightStyle);
+        frameHeader.addClass(that.options.styles.darkStyle);
+        var addIcon = that.dom.locate("addIcon");
+        addIcon.removeClass(that.options.styles.addIconMouseOver);
+        addIcon.addClass(that.options.styles.addIconMouseOut);
+    };
+
     gpii.pmt.clickSetsButton = function (that) {
-        var contextPanel = that.dom.locate("contextPanel");
         var bRow = that.dom.locate("bottomRow");
+        var icon = that.dom.locate("contextIcon");
         if (bRow.hasClass(that.options.styles.bottomRow)) {
             bRow.removeClass(that.options.styles.bottomRow);
             bRow.addClass(that.options.styles.bottomRowExtended);
-            //contextPanel.show();
+            icon.removeClass(that.options.styles.contextIconLeft);
+            icon.addClass(that.options.styles.contextIconRight);
         }
         else if (bRow.hasClass(that.options.styles.bottomRowExtended)) {
             bRow.removeClass(that.options.styles.bottomRowExtended);
             bRow.addClass(that.options.styles.bottomRow);
-            //contextPanel.hide();
+            icon.removeClass(that.options.styles.contextIconRight);
+            icon.addClass(that.options.styles.contextIconLeft);
         }
     };
 

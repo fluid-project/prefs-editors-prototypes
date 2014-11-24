@@ -15,5 +15,7 @@
     "more": "+ more",
     "less": "- less",
     "sets": "sets",
-    "account": "account"
+    "account": "account",
+    "baseSetLabel": "Base Set",
+    "baseSetDescLabel": "any devices, anytime"
 }

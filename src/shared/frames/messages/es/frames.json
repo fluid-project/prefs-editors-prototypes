@@ -15,5 +15,7 @@
     "more": "+ más",
     "less": "- menos",
     "sets": "juegos",
-    "account": "cuenta"
+    "account": "cuenta",
+    "baseSetLabel": "Base Set",
+    "baseSetDescLabel": "cualquier dispositivo, en cualquier momento"
 }

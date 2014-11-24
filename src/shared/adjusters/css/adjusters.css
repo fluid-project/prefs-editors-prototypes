@@ -1639,7 +1639,6 @@ span.gpii-preset-button-label {
 
 .gpii-prefsEditor-panelBottomRow .gpii-pmt-saveButtonContainer {
     background-color: #CED7D9;
-    /*padding: 5px 12px !important;*/
     width: 33%;
 }
 
@@ -1665,14 +1664,14 @@ span.gpii-preset-button-label {
     vertical-align: middle;
 }
 
-.gpii-prefsEditor-context-icon, .gpii-prefsEditor-signup-icon {
+.gpii-prefsEditor-context-icon-left, .gpii-prefsEditor-context-icon-right, .gpii-prefsEditor-signup-icon {
     -webkit-font-smoothing: antialiased;
     margin: 0px;
     width: 25px;
     display: table;
 }
 
-.gpii-prefsEditor-context-icon:before, .gpii-prefsEditor-signup-icon:before {
+.gpii-prefsEditor-context-icon-left:before, .gpii-prefsEditor-context-icon-right:before, .gpii-prefsEditor-signup-icon:before {
     font-size: 25px;
     font-weight: normal;
     background-color: #CED7D9;
@@ -1683,8 +1682,12 @@ span.gpii-preset-button-label {
     height: 1.08em;
 }
 
-.gpii-prefsEditor-context-icon:before {
+.gpii-prefsEditor-context-icon-left:before {
     content: "\e625";
+}
+
+.gpii-prefsEditor-context-icon-right:before {
+    content: "\e622";
 }
 
 .gpii-prefsEditor-signup-icon:before {
@@ -1721,7 +1724,6 @@ span.gpii-preset-button-label {
 
 .gpii-prefsEditor-preferenceSetSelectionHeader {
     background-color: #0AA;
-    /*border: 10px 10px 0px 10px solid #CED7D9;*/
     border-bottom: 0px;
     border-top: 10px;
     border-left: 10px;
@@ -1761,19 +1763,134 @@ span.gpii-preset-button-label {
 
 .gpii-prefsEditor-contextContainer {
     position: absolute;
-    width: 20em;
+    width: 20.5em;
     height: inherit;
     top: 0em;
     bottom:0em;
     margin: 0em auto;
     background-color: #556273;
-    left: -20em;
-    display: table-cell;
+    left: -21.2em;
+    border-top: 10px solid #CED7D9;
+    border-bottom: 12px solid #CED7D9;
+    border-left: 10px solid #CED7D9;
 }
 
 .gpii-prefsEditor-panelBottomRow-extended {
     display: table;
     position: absolute;
-    left: -20em;
-    width: 63.1em;
+    left: -21.2em;
+    width: 64.3em;
+}
+
+.gpii-prefsEditor-baseSetRow {
+    width: inherit;
+    height: 3em;
+    position: relative;
+    background-color: #FFDA00;
+    top: -0.2em;
+    border-left: 0.25em solid #E5EDED;
+    border-right: 0.25em solid #E5EDED;
+    border-bottom: 0.25em solid #E5EDED;
+}
+
+.gpii-prefsEditor-baseSetLabel {
+    font-family: Verdana !important;
+    font-size: 2em;
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    color: #000000;
+    padding-left: 0.7em;
+    padding-top: 0.1em;
+}
+
+.gpii-prefsEditor-contextFrame-header {
+    height: 3em;
+    margin-top: 0.8em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+.gpii-prefsEditor-contextFrame-header-stylingDark {
+    border: 0.1em dashed #FFFFFF;
+    background-color: #556273;
+    color: #FFFFFF;
+}
+
+.gpii-prefsEditor-contextFrame-header-stylingBright {
+    border: 0.1em dashed #556273;
+    background-color: #FFFFFF;
+    color: #556273;
+}
+
+.gpii-prefsEditor-contextFrame-row {
+    height: 6em;
+    position: relative;
+    background-color: #FFDA00;
+    margin: 0.5em;
+}
+
+.gpii-prefsEditor-contextFrame-setLabel {
+    font-family: Courier New !important;
+    font-size: 2em;
+    position: absolute;
+    color: #000000;
+    padding-left: 0.7em;
+    padding-top: 0.5em;
+}
+
+.gpii-prefsEditor-contextFrame-setLabelDescription {
+    font-size: 1em;
+    position: relative;
+    top: 3.5em;
+    font-family: Verdana !important;
+    padding-left: 1.5em;
+}
+
+.gpii-prefsEditor-context-addIcon, .gpii-prefsEditor-context-addIconMouseOver {
+    -webkit-font-smoothing: antialiased;
+    margin: 0px;
+    width: 100%;
+    display: table;
+    text-align: center;
+    height: 3em;
+    padding-top: 6px;
+}
+
+.gpii-prefsEditor-context-addIcon:before, .gpii-prefsEditor-context-addIconMouseOver:before {
+    font-size: 25px;
+    font-weight: normal;
+    border-radius: 50%;
+}
+
+.gpii-prefsEditor-context-addIcon:before {
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+}
+
+.gpii-prefsEditor-context-addIconMouseOver:before {
+    color: #556273;
+    border: 2px solid #556273;
+}
+
+.gpii-prefsEditor-context-addIcon:before, .gpii-prefsEditor-context-addIconMouseOver:before {
+    content: "\e65e";
+}
+
+.gpii-prefsEditor-context-leftArrowIcon {
+    display: table;
+    width: 115%;
+    height: 3em;
+}
+
+.gpii-prefsEditor-context-leftArrowIcon:before {
+    font-weight: normal;
+    color: #CED7D9;
+    float: right;
+    font-size: 80px;
+    margin-top: -0.35em;
+}
+
+.gpii-prefsEditor-context-leftArrowIcon:before {
+    content: "\e606";
 }
