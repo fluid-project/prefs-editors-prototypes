@@ -43,7 +43,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         value: "{cursorSizePCP}.model.value"
                     },
                     strings: {
-                        "unit": "{cursorSizePCP}.msgLookup.cursorSizeUnit"
+                        "hint": "{cursorSizePCP}.msgLookup.cursorHint",
+                        "unit": "{cursorSizePCP}.msgLookup.cursorSizeUnit",
+                        "plusText": "{cursorSizePCP}.msgLookup.cursorSizePlus",
+                        "minusText": "{cursorSizePCP}.msgLookup.cursorSizeMinus"
                     },
                     range: "{cursorSizePCP}.options.controlValues.cursorSize",
                     labelledbyDomElement: "{cursorSizePCP}.dom.cursorSizeLabel"

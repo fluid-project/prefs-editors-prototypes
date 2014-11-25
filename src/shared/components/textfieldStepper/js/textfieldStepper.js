@@ -17,6 +17,7 @@ https://github.com/gpii/universal/LICENSE.txt
         renderOnInit: true,
         labelledbyDomElement: null,   // Must be provided by integrators, used to add "aria-labelledby" for the stepper input field
         strings: {
+            hint: "",
             increment: "+",
             decrement: "-",
             unit: ""
@@ -42,6 +43,18 @@ https://github.com/gpii/universal/LICENSE.txt
                 "this": "{that}.dom.decrement",
                 "method": "click",
                 "args": ["{that}.decrement"]
+            },
+            "afterRender.arrowKeyBinding": {
+                listener: "fluid.activatable",
+                args: ["{that}.dom.valueField", null, {
+                    additionalBindings: [{
+                        key: $.ui.keyCode.UP,
+                        activateHandler: "{that}.increment"
+                    }, {
+                        key: $.ui.keyCode.DOWN,
+                        activateHandler: "{that}.decrement"
+                    }]
+                }]
             }
         },
         modelListeners: {
@@ -106,7 +119,8 @@ https://github.com/gpii/universal/LICENSE.txt
     };
 
     gpii.textfieldStepper.alterValueAria = function (valueField, currentValue, unit) {
-        valueField.attr("aria-valuenow", currentValue + unit);
+        valueField.attr("aria-valuenow", currentValue);
+        valueField.attr("aria-valuetext", currentValue + unit);
     };
 
     gpii.textfieldStepper.addAria = function (that) {
@@ -115,9 +129,10 @@ https://github.com/gpii/universal/LICENSE.txt
         var unit = that.options.strings.unit;
         var labelledbyDomElement = that.options.labelledbyDomElement;
 
+        valueField.attr("title", that.options.strings.hint);
         valueField.attr("role", "spinbutton");
-        valueField.attr("aria-valuemin", range.min + unit);
-        valueField.attr("aria-valuemax", range.max + unit);
+        valueField.attr("aria-valuemin", range.min);
+        valueField.attr("aria-valuemax", range.max);
         valueField.attr("autocomplete", "off");
         valueField.attr("aria-labelledby", gpii.ariaUtility.getLabelId(labelledbyDomElement));
         that.alterValueAria();
@@ -130,7 +145,6 @@ https://github.com/gpii/universal/LICENSE.txt
             "role": "button",
             "aria-label": that.options.strings.minusText
         });
-
     };
 
 })(jQuery, fluid);
