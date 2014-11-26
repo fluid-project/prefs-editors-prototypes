@@ -17,5 +17,7 @@
     "sets": "juegos",
     "account": "cuenta",
     "baseSetLabel": "Base Set",
-    "baseSetDescLabel": "cualquier dispositivo, en cualquier momento"
+    "baseSetDescLabel": "cualquier dispositivo, en cualquier momento",
+    "untitledLabel": "Intitulado 1",
+    "untitledDescLabel": "no se aplica a todos los dispositivos"
 }

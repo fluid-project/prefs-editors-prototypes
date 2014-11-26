@@ -17,5 +17,7 @@
     "sets": "sets",
     "account": "kondo",
     "baseSetLabel": "Basis Set",
-    "baseSetDescLabel": "alle Geräte, zu jeder Zeit"
+    "baseSetDescLabel": "alle Geräte, zu jeder Zeit",
+    "untitledLabel": "ohne Titel 1",
+    "untitledDescLabel": "nicht auf alle Geräte angewendet"
 }

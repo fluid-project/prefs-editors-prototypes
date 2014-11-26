@@ -17,5 +17,7 @@
     "sets": "σύνολα",
     "account": "λογαριασμός",
     "baseSetLabel": "Κύριο Σύνολο",
-    "baseSetDescLabel": "οποιαδήποτε συσκευή, οποτεδήποτε"
+    "baseSetDescLabel": "οποιαδήποτε συσκευή, οποτεδήποτε",
+    "untitledLabel": "Άτιτλο 1",
+    "untitledDescLabel": "μη εφαρμόσιμο σε συσκευές"
 }

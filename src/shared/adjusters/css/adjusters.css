@@ -1823,16 +1823,23 @@ span.gpii-preset-button-label {
     color: #556273;
 }
 
-.gpii-prefsEditor-contextFrame-row {
+.gpii-prefsEditor-contextFrame-row-selected {
     height: 6em;
     position: relative;
     background-color: #FFDA00;
     margin: 0.5em;
 }
 
+.gpii-prefsEditor-contextFrame-row-unselected {
+    height: 6em;
+    position: relative;
+    background-color: #E5EDED;
+    margin: 0.5em;
+}
+
 .gpii-prefsEditor-contextFrame-setLabel {
     font-family: Courier New !important;
-    font-size: 2em;
+    font-size: 1.8em;
     position: absolute;
     color: #000000;
     padding-left: 0.7em;
@@ -1840,7 +1847,7 @@ span.gpii-preset-button-label {
 }
 
 .gpii-prefsEditor-contextFrame-setLabelDescription {
-    font-size: 1em;
+    font-size: 0.9em;
     position: relative;
     top: 3.5em;
     font-family: Verdana !important;
@@ -1893,4 +1900,44 @@ span.gpii-preset-button-label {
 
 .gpii-prefsEditor-context-leftArrowIcon:before {
     content: "\e606";
+}
+
+.gpii-prefsEditor-pencil-icon {
+    -webkit-font-smoothing: antialiased;
+    margin: 0em;
+    width: 100%;
+    display: table;
+    text-align: right;
+}
+
+.gpii-prefsEditor-pencil-icon:before {
+    font-size: 1.2em;
+    font-weight: normal;
+    background-color: #FFDA00;
+    color: #474C66;
+    vertical-align: middle;
+    display: inline-block;
+    margin-top: -2.4em;
+    margin-right: 0.6em;
+}
+
+.gpii-prefsEditor-pencil-icon:before {
+    content: "\e644";
+}
+
+.gpii-prefsEditor-context-edit-button {
+    font-weight: bold;
+    font-family: Verdana;
+    font-size: 0.8em;
+    background-color: inherit;
+    color: #474C66;
+    border: 0em;
+    margin-top: -1.0em;
+    margin-right: 3.0em;
+    margin-bottom: 0.2em;
+    margin-left: 0em;
+    padding: 0em;
+    float: right;
+    cursor: pointer;
+    display: inline-block;
 }

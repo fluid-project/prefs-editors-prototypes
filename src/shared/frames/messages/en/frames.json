@@ -17,5 +17,7 @@
     "sets": "sets",
     "account": "account",
     "baseSetLabel": "Base Set",
-    "baseSetDescLabel": "any devices, anytime"
+    "baseSetDescLabel": "any devices, anytime",
+    "untitledLabel": "Untitled 1",
+    "untitledDescLabel": "not applied to any devices"
 }

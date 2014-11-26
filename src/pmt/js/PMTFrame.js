@@ -44,11 +44,36 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 bottomRow: ".gpiic-pmt-bottomRow",
                 contextPanel: ".gpiic-prefsEditor-contextContainer",
                 contextIcon: ".gpiic-prefsEditor-context-icon",
+                setLabel: ".gpiic-prefsEditor-setLabel",
                 baseSetLabel: ".gpiic-prefsEditor-baseSetLabel",
                 baseSetDescLabel: ".gpiic-prefsEditor-baseSetDescription",
+                untitledLabel: ".gpiic-prefsEditor-untitledLabel",
+                untitledDescLabel: ".gpiic-prefsEditor-untitledDescLabel",
                 addSetLink: ".gpiic-prefsEditor-contextFrameLink",
                 frameHeader: ".gpiic-prefsEditor-contextFrame-header",
-                addIcon: ".gpiic-prefsEditor-context-addIcon"
+                addIcon: ".gpiic-prefsEditor-context-addIcon",
+                leftArrowIcon: ".gpiic-prefsEditor-context-leftArrowIcon",
+                pencilIcon: ".gpiic-prefsEditor-context-pencilIcon",
+                contextRows: ".gpiic-prefsEditor-contextFrame-rows",
+                contextRow: ".gpiic-prefsEditor-contextFrame-row",
+                contextEditButton: ".gpiic-prefsEditor-context-edit-button"
+            },
+            markup: {
+                baseSet:
+                    "<div class='gpiic-prefsEditor-contextFrame-row'>" +
+                    "   <span class='gpiic-prefsEditor-baseSetLabel gpii-prefsEditor-contextFrame-setLabel'></span>" +
+                    "   <span class='gpiic-prefsEditor-baseSetDescription gpii-prefsEditor-contextFrame-setLabelDescription'></span>" +
+                    "</div>",
+                untitledSet:
+                    "<div class='gpiic-prefsEditor-contextFrame-row'>" +
+                    "   <span class='gpiic-prefsEditor-untitledLabel gpii-prefsEditor-contextFrame-setLabel'></span>" +
+                    "   <span class='gpiic-prefsEditor-untitledDescLabel gpii-prefsEditor-contextFrame-setLabelDescription'></span>" +
+                    "</div>",
+                selectedIcon: 
+                    "   <span class='gpiic-prefsEditor-context-leftArrowIcon gpii-prefsEditor-adjusterIcons gpii-prefsEditor-context-leftArrowIcon'></span>",
+                pencilIcon: 
+                    "   <input id='editButton' type='button' value='edit' class='gpiic-prefsEditor-context-edit-button gpii-prefsEditor-context-edit-button'></input>" +
+                    "   <label for='editButton' class='gpiic-prefsEditor-context-pencilIcon gpii-prefsEditor-adjusterIcons gpii-prefsEditor-pencil-icon'></span>"
             },
             styles: {
                 bottomRow: "gpii-prefsEditor-panelBottomRow",
@@ -58,7 +83,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 addIconMouseOut: "gpii-prefsEditor-context-addIcon",
                 addIconMouseOver: "gpii-prefsEditor-context-addIconMouseOver",
                 darkStyle: "gpii-prefsEditor-contextFrame-header-stylingDark",
-                brightStyle: "gpii-prefsEditor-contextFrame-header-stylingBright"
+                brightStyle: "gpii-prefsEditor-contextFrame-header-stylingBright",
+                selected: "gpii-prefsEditor-contextFrame-row-selected",
+                unSelected: "gpii-prefsEditor-contextFrame-row-unselected",
             },
             model: {
                 userLoggedIn: false
@@ -78,6 +105,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.contextPanel",
                     "method": "hide"
                 },
+                "onReady.createBaseSetBox": "{that}.createBaseSetBox",
+                "onReady.createBaseSetBoxStyle": "{that}.createBaseSetBoxStyle",
                 "onReady.onMouseoverAddSetLink": {
                     "this": "{that}.dom.addSetLink",
                     "method": "mouseover",
@@ -87,6 +116,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.addSetLink",
                     "method": "mouseout",
                     "args": ["{that}.mouseoutAddSetLink"]
+                },
+                "onReady.createUntitledBox": {
+                    "this": "{that}.dom.addSetLink",
+                    "method": "click",
+                    "args": ["{that}.createUntitledBox"]
+                },
+                "onReady.createUntitledBoxStyle": {
+                    "this": "{that}.dom.addSetLink",
+                    "method": "click",
+                    "args": ["{that}.createUntitledBoxStyle"]
                 },
                 "onReady.onClickSetsButton": {
                     "this": "{that}.dom.setsButton",
@@ -156,6 +195,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "text",
                     "args": ["{that}.msgLookup.allPreferencesLabelText"]
                 },
+                "onReady.setSetLabel": {
+                    "this": "{that}.dom.setLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.baseSetLabel"]
+                },
                 "onReady.setBaseSetLabel": {
                     "this": "{that}.dom.baseSetLabel",
                     "method": "text",
@@ -171,10 +215,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "val",
                     "args": ["{that}.msgLookup.sets"]
                 },
+                "onReady.setSetsButtonAriaLabel": {
+                    "this": "{that}.dom.setsButton",
+                    "method": "attr",
+                    "args": ["aria-label", "{that}.msgLookup.sets"]
+                },
                 "onReady.setAccountButtonText": {
                     "this": "{that}.dom.accountButton",
                     "method": "val",
                     "args": ["{that}.msgLookup.account"]
+                },
+                "onReady.setAccountButtonAriaLabel": {
+                    "this": "{that}.dom.accountButton",
+                    "method": "attr",
+                    "args": ["aria-label", "{that}.msgLookup.account"]
                 },
                 "onReady.setSaveAndApplyButtonText": {
                     "this": "{that}.dom.saveAndApplyButtonLabel",
@@ -324,12 +378,23 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 mouseoutAddSetLink: {
                     "funcName": "gpii.pmt.mouseoutAddSetLink",
                     "args": ["{that}"]
-                }
-                /*,
-                hoverAddSetLink: {
-                    "funcName": "gpii.pmt.hoverAddSetLink",
+                },
+                createUntitledBox: {
+                    "funcName": "gpii.pmt.createUntitledBox",
+                    "args": ["{that}.dom.contextRows", "{that}.options.markup.untitledSet", "{that}.msgLookup.untitledLabel", "{that}.msgLookup.untitledDescLabel", "{that}", "{that}.dom.setLabel"]
+                },
+                createUntitledBoxStyle: {
+                    "funcName": "gpii.pmt.createUntitledBoxStyle",
                     "args": ["{that}"]
-                }*/
+                },
+                createBaseSetBox: {
+                    "funcName": "gpii.pmt.createBaseSetBox",
+                    "args": ["{that}.dom.contextRows","{that}.options.markup.baseSet"]
+                },
+                createBaseSetBoxStyle: {
+                    "funcName": "gpii.pmt.createBaseSetBoxStyle",
+                    "args": ["{that}.dom.contextRow", "{that}.options.styles.selected", "{that}.options.markup.selectedIcon"]
+                }
             },
             strings: {
                 "mainVisibilitySwitch": "gpii_primarySchema_speakText",
@@ -337,6 +402,46 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         }
     });
+
+    gpii.pmt.createUntitledBoxStyle = function (that) {
+        var contextRows = that.dom.locate("contextRow");
+        var cRow;
+        fluid.each(contextRows, function (contextRow, index) {
+            contextRow = $(contextRow);
+            contextRow.removeClass(that.options.styles.selected);
+            contextRow.addClass(that.options.styles.unSelected);
+            cRow = contextRow;
+        });
+        
+        cRow.removeClass(that.options.styles.unSelected);
+        cRow.addClass(that.options.styles.selected);
+        cRow.append(that.options.markup.selectedIcon);
+        cRow.append(that.options.markup.pencilIcon);
+    };
+
+    gpii.pmt.createUntitledBox = function (contextRows, untitledSetMarkup, label, desc, that, setLabel) {
+        var selectedIcon = that.dom.locate("leftArrowIcon");
+        selectedIcon.remove();
+        var pencilIcon = that.dom.locate("pencilIcon");
+        pencilIcon.remove();
+        var editButton = that.dom.locate("contextEditButton");
+        editButton.remove();
+        contextRows.append(untitledSetMarkup);
+        var untitledLabel = that.dom.locate("untitledLabel");
+        untitledLabel.text(label);
+        var untitledDescription = that.dom.locate("untitledDescLabel");
+        untitledDescription.text(desc);
+        setLabel.text(label);
+    };
+
+    gpii.pmt.createBaseSetBoxStyle = function (contextRow, selectedStyle, selectedIconMarkup) {
+        contextRow.addClass(selectedStyle);
+        contextRow.append(selectedIconMarkup);
+    };
+
+    gpii.pmt.createBaseSetBox = function (contextRows, baseSetMarkup) {
+        contextRows.html(baseSetMarkup);
+    };
 
     gpii.pmt.toggleContextPanel = function (that) {
         var contextPanel = that.dom.locate("contextPanel");
