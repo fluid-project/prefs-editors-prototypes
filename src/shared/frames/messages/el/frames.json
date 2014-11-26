@@ -19,5 +19,7 @@
     "baseSetLabel": "Κύριο Σύνολο",
     "baseSetDescLabel": "οποιαδήποτε συσκευή, οποτεδήποτε",
     "untitledLabel": "Άτιτλο 1",
-    "untitledDescLabel": "μη εφαρμόσιμο σε συσκευές"
+    "untitledDescLabel": "μη εφαρμόσιμο σε συσκευές",
+    "addSet": "προσθήκη συνόλου",
+    "editText": "επεξεργασία"
 }

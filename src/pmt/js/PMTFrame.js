@@ -65,14 +65,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "   <span class='gpiic-prefsEditor-baseSetDescription gpii-prefsEditor-contextFrame-setLabelDescription'></span>" +
                     "</div>",
                 untitledSet:
-                    "<div class='gpiic-prefsEditor-contextFrame-row'>" +
-                    "   <span class='gpiic-prefsEditor-untitledLabel gpii-prefsEditor-contextFrame-setLabel'></span>" +
-                    "   <span class='gpiic-prefsEditor-untitledDescLabel gpii-prefsEditor-contextFrame-setLabelDescription'></span>" +
+                    "<div class='gpiic-prefsEditor-contextFrame-row' role='region' aria-labelledby='alertHeading' aria-describedby='alertText'>" +
+                    "   <span id='alertHeading' class='gpiic-prefsEditor-untitledLabel gpii-prefsEditor-contextFrame-setLabel'></span>" +
+                    "   <span id='alertText' class='gpiic-prefsEditor-untitledDescLabel gpii-prefsEditor-contextFrame-setLabelDescription'></span>" +
                     "</div>",
                 selectedIcon: 
                     "   <span class='gpiic-prefsEditor-context-leftArrowIcon gpii-prefsEditor-adjusterIcons gpii-prefsEditor-context-leftArrowIcon'></span>",
                 pencilIcon: 
-                    "   <input id='editButton' type='button' value='edit' class='gpiic-prefsEditor-context-edit-button gpii-prefsEditor-context-edit-button'></input>" +
+                    "   <input id='editButton' type='button' value='' aria-label='' class='gpiic-prefsEditor-context-edit-button gpii-prefsEditor-context-edit-button' tabindex='0'></input>" +
                     "   <label for='editButton' class='gpiic-prefsEditor-context-pencilIcon gpii-prefsEditor-adjusterIcons gpii-prefsEditor-pencil-icon'></span>"
             },
             styles: {
@@ -126,6 +126,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.addSetLink",
                     "method": "click",
                     "args": ["{that}.createUntitledBoxStyle"]
+                },
+                "onReady.createUntitledBoxAria": {
+                    "this": "{that}.dom.addSetLink",
+                    "method": "click",
+                    "args": ["{that}.createUntitledBoxAria"]
                 },
                 "onReady.onClickSetsButton": {
                     "this": "{that}.dom.setsButton",
@@ -229,6 +234,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.accountButton",
                     "method": "attr",
                     "args": ["aria-label", "{that}.msgLookup.account"]
+                },
+                "onReady.setAddSetLinkAriaLabel": {
+                    "this": "{that}.dom.addSetLink",
+                    "method": "attr",
+                    "args": ["aria-label", "{that}.msgLookup.addSet"]
                 },
                 "onReady.setSaveAndApplyButtonText": {
                     "this": "{that}.dom.saveAndApplyButtonLabel",
@@ -387,6 +397,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "funcName": "gpii.pmt.createUntitledBoxStyle",
                     "args": ["{that}"]
                 },
+                createUntitledBoxAria: {
+                    "funcName": "gpii.pmt.createUntitledBoxAria",
+                    "args": ["{that}","{that}.msgLookup.editText"]
+                },
                 createBaseSetBox: {
                     "funcName": "gpii.pmt.createBaseSetBox",
                     "args": ["{that}.dom.contextRows","{that}.options.markup.baseSet"]
@@ -402,6 +416,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         }
     });
+
+    gpii.pmt.createUntitledBoxAria = function (that, editText) {
+        var editButton = that.dom.locate("contextEditButton");
+        editButton.attr("aria-label", editText);
+        editButton.val(editText);
+    };
 
     gpii.pmt.createUntitledBoxStyle = function (that) {
         var contextRows = that.dom.locate("contextRow");

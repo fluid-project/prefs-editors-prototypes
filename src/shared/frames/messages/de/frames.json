@@ -19,5 +19,7 @@
     "baseSetLabel": "Basis Set",
     "baseSetDescLabel": "alle Geräte, zu jeder Zeit",
     "untitledLabel": "ohne Titel 1",
-    "untitledDescLabel": "nicht auf alle Geräte angewendet"
+    "untitledDescLabel": "nicht auf alle Geräte angewendet",
+    "addSet": "hinzufügen eingestellt",
+    "editText": "bearbeiten"
 }

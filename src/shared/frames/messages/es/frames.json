@@ -19,5 +19,7 @@
     "baseSetLabel": "Base Set",
     "baseSetDescLabel": "cualquier dispositivo, en cualquier momento",
     "untitledLabel": "Intitulado 1",
-    "untitledDescLabel": "no se aplica a todos los dispositivos"
+    "untitledDescLabel": "no se aplica a todos los dispositivos",
+    "addSet": "agregue el conjunto",
+    "editText": "editar"
 }
