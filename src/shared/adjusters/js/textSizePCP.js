@@ -13,7 +13,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     "use strict";
-    
+
     fluid.defaults("gpii.adjuster.textSizePCP", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
@@ -41,7 +41,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         value: "{textSizePCP}.model.fontSize"
                     },
                     strings: {
-                        "unit": "{textSizePCP}.msgLookup.textSizeUnit"
+                        "unit": "{textSizePCP}.msgLookup.textSizeUnit",
+                        "plusText": "{textSizePCP}.msgLookup.textSizePlus",
+                        "minusText": "{textSizePCP}.msgLookup.textSizeMinus"
                     },
                     range: "{textSizePCP}.options.fontSize.range",
                     labelledbyDomElement: "{textSizePCP}.dom.textSizeLabel"

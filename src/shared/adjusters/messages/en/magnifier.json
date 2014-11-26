@@ -4,6 +4,6 @@
     "magnifierOFF": "OFF",
     "magnifierMAX": "maximum",
     "magnifierUnit" : "%",
-    "textPlus" : "plus",
-    "textMinus" : "minus"
+    "magnifierPlus" : "Increase magnification level",
+    "magnifierMinus" : "Decrease magnification level"
 }

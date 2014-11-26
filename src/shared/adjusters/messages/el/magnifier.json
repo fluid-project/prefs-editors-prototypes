@@ -4,6 +4,6 @@
     "magnifierOFF": "Απενεργοποιημένο",
     "magnifierMAX": "μέγιστο",
     "magnifierUnit" : "%",
-    "textPlus" : "αύξηση",
-    "textMinus" : "μείωση"
+    "magnifierPlus" : "Αύξηση μεγέθυνσης",
+    "magnifierMinus" : "Μείωση μεγέθυνσης"
 }

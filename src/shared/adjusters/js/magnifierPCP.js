@@ -13,7 +13,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     "use strict";
-    
+
     fluid.defaults("gpii.adjuster.magnifierPCP", {
         gradeNames: ["fluid.prefs.panel", "autoInit"],
         preferenceMap: {
@@ -47,7 +47,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         value: "{magnifierPCP}.model.magnification"
                     },
                     strings: {
-                        "unit": "{magnifierPCP}.msgLookup.magnifierUnit"
+                        "unit": "{magnifierPCP}.msgLookup.magnifierUnit",
+                        "plusText": "{magnifierPCP}.msgLookup.magnifierPlus",
+                        "minusText": "{magnifierPCP}.msgLookup.magnifierMinus"
                     },
                     range: "{magnifierPCP}.options.magnification.range",
                     labelledbyDomElement: "{magnifierPCP}.dom.magnificationLevel"

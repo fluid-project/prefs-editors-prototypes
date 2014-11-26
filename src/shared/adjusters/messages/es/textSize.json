@@ -1,6 +1,6 @@
 {
     "textSizeLabel": "Tamaño del texto",
     "textSizeUnit" : "pt",
-    "textPlus" : "más",
-    "textMinus" : "menos"
+    "textSizePlus" : "Aumentar tamaño del texto",
+    "textSizeMinus" : "Disminuir tamaño del texto"
 }

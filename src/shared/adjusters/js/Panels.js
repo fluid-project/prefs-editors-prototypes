@@ -55,6 +55,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     model: {
                         value: "{wordsSpokenPerMinute}.model.value"
                     },
+                    strings: {
+                        "plusText": "{wordsSpokenPerMinute}.msgLookup.wordsSpokenPerMinutePlus",
+                        "minusText": "{wordsSpokenPerMinute}.msgLookup.wordsSpokenPerMinuteMinus"
+                    },
                     range: "{wordsSpokenPerMinute}.options.controlValues.wordsSpokenPerMinute",
                     labelledbyDomElement: "{wordsSpokenPerMinute}.dom.wordsSpokenPerMinuteLabel"
                 }
@@ -93,6 +97,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     },
                     model: {
                         value: "{volume}.model.value"
+                    },
+                    strings: {
+                        "plusText": "{volume}.msgLookup.volumePlus",
+                        "minusText": "{volume}.msgLookup.volumeMinus"
                     },
                     range: "{volume}.options.controlValues.volume",
                     labelledbyDomElement: "{volume}.dom.volumeLabel"
@@ -209,6 +217,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     model: {
                         value: "{voicePitch}.model.value"
                     },
+                    strings: {
+                        "plusText": "{voicePitch}.msgLookup.voicePitchPlus",
+                        "minusText": "{voicePitch}.msgLookup.voicePitchMinus"
+                    },
                     range: "{voicePitch}.options.controlValues.voicePitch",
                     labelledbyDomElement: "{voicePitch}.dom.voicePitchLabel"
                 }
@@ -247,6 +259,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     },
                     model: {
                         value: "{universalVolume}.model.value"
+                    },
+                    strings: {
+                        "plusText": "{universalVolume}.msgLookup.universalVolumePlus",
+                        "minusText": "{universalVolume}.msgLookup.universalVolumeMinus"
                     },
                     range: "{universalVolume}.options.controlValues.universalVolume",
                     labelledbyDomElement: "{universalVolume}.dom.universalVolumeLabel"

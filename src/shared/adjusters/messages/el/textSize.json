@@ -1,6 +1,6 @@
 {
     "textSizeLabel": "Μέγεθος κειμένου",
     "textSizeUnit" : "Pt",
-    "textPlus" : "αύξηση",
-    "textMinus" : "μείωση"
+    "textSizePlus" : "Αύξηση μεγέθους κειμένου",
+    "textSizeMinus" : "Μείωση μεγέθους κειμένου"
 }
