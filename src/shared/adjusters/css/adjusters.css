@@ -43,6 +43,23 @@ textarea:focus, input:focus {
     outline: 0 !important;
 }
 
+/* Deal with the html5 number input field:
+   In firefox, chrome and safari, hide the spin box
+   In IE 10+, hide the close(X) button
+*/
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type='number']::-ms-clear {
+    display: none;
+}
+
 .gpii-prefsEditor-preferenceGroup {
     background:#e7f1ef;
 }

@@ -1,6 +1,6 @@
 {
     "cursorSizeLabel": "Tamaño del puntero",
     "cursorSizeUnit": "%",
-    "cursorPlus": "más",
-    "cursorMinus": "menos"
+    "cursorSizePlus": "Aumentar tamaño de cursor",
+    "cursorSizeMinus": "Disminuir tamaño de cursor"
 }

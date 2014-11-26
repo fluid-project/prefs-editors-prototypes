@@ -17,7 +17,6 @@ https://github.com/gpii/universal/LICENSE.txt
         renderOnInit: true,
         labelledbyDomElement: null,   // Must be provided by integrators, used to add "aria-labelledby" for the stepper input field
         strings: {
-            hint: "",
             increment: "+",
             decrement: "-",
             unit: ""
@@ -33,7 +32,7 @@ https://github.com/gpii/universal/LICENSE.txt
                 listener: "{that}.applier.guards.addListener",
                 args: ["value", "{that}.guard"]
             },
-            "onCreate.addAria": "{that}.addAria",
+            "onCreate.initialSetup": "{that}.initialSetup",
             "afterRender.incClick": {
                 "this": "{that}.dom.increment",
                 "method": "click",
@@ -43,18 +42,6 @@ https://github.com/gpii/universal/LICENSE.txt
                 "this": "{that}.dom.decrement",
                 "method": "click",
                 "args": ["{that}.decrement"]
-            },
-            "afterRender.arrowKeyBinding": {
-                listener: "fluid.activatable",
-                args: ["{that}.dom.valueField", null, {
-                    additionalBindings: [{
-                        key: $.ui.keyCode.UP,
-                        activateHandler: "{that}.increment"
-                    }, {
-                        key: $.ui.keyCode.DOWN,
-                        activateHandler: "{that}.decrement"
-                    }]
-                }]
             }
         },
         modelListeners: {
@@ -83,14 +70,9 @@ https://github.com/gpii/universal/LICENSE.txt
                 funcName: "gpii.textfieldStepper.guard",
                 args: ["{arguments}.0", "{arguments}.1", "{that}.options.range"]
             },
-            addAria: {
-                funcName: "gpii.textfieldStepper.addAria",
+            initialSetup: {
+                funcName: "gpii.textfieldStepper.initialSetup",
                 args: ["{that}"]
-            },
-            alterValueAria: {
-                funcName: "gpii.textfieldStepper.alterValueAria",
-                args: ["{that}.dom.valueField", "{that}.model.value", "{that}.options.strings.unit"],
-                dynamic: true
             }
         },
         protoTree: {
@@ -106,8 +88,7 @@ https://github.com/gpii/universal/LICENSE.txt
         var step = that.options.range.step;
         var newValue = currentValue + multiplier * step;
 
-        that.applier.requestChange("value", newValue);
-        that.alterValueAria();
+        that.applier.change("value", newValue);
     };
 
     gpii.textfieldStepper.guard = function (model, changeRequest, range) {
@@ -118,24 +99,17 @@ https://github.com/gpii/universal/LICENSE.txt
         changeRequest.value = Math.min(range.max, Math.max(range.min, newVal));
     };
 
-    gpii.textfieldStepper.alterValueAria = function (valueField, currentValue, unit) {
-        valueField.attr("aria-valuenow", currentValue);
-        valueField.attr("aria-valuetext", currentValue + unit);
-    };
-
-    gpii.textfieldStepper.addAria = function (that) {
+    gpii.textfieldStepper.initialSetup = function (that) {
         var valueField = that.locate("valueField");
         var range = that.options.range;
-        var unit = that.options.strings.unit;
         var labelledbyDomElement = that.options.labelledbyDomElement;
 
-        valueField.attr("title", that.options.strings.hint);
-        valueField.attr("role", "spinbutton");
-        valueField.attr("aria-valuemin", range.min);
-        valueField.attr("aria-valuemax", range.max);
+        valueField.attr("min", range.min);
+        valueField.attr("max", range.max);
+        valueField.attr("step", range.step);
+
         valueField.attr("autocomplete", "off");
         valueField.attr("aria-labelledby", gpii.ariaUtility.getLabelId(labelledbyDomElement));
-        that.alterValueAria();
 
         that.locate("increment").attr({
             "role": "button",

@@ -61,14 +61,24 @@ https://github.com/gpii/universal/LICENSE.txt
                 args: ["{stepper}.dom.unit", "{stepper}.options.strings.unit"]
             }, {
                 expect: 1,
-                name: "input field hint",
-                func: "gpii.tests.assertAttr",
-                args: ["{stepper}.dom.valueField", "title", "{stepper}.options.strings.hint"]
-            }, {
-                expect: 1,
                 name: "input value",
                 func: "gpii.tests.assertValue",
                 args: ["{stepper}.dom.valueField", "{stepper}.model.value"]
+            }, {
+                expect: 1,
+                name: "input field attribute - min",
+                func: "gpii.tests.assertAttr",
+                args: ["{stepper}.dom.valueField", "min", "{stepper}.options.range.min"]
+            }, {
+                expect: 1,
+                name: "input field attribute - max",
+                func: "gpii.tests.assertAttr",
+                args: ["{stepper}.dom.valueField", "max", "{stepper}.options.range.max"]
+            }, {
+                expect: 1,
+                name: "input field attribute - step",
+                func: "gpii.tests.assertAttr",
+                args: ["{stepper}.dom.valueField", "step", "{stepper}.options.range.step"]
             }, {
                 name: "Changing the value",
                 expect: 14,
@@ -120,42 +130,6 @@ https://github.com/gpii/universal/LICENSE.txt
                     args: ["{stepper}", -5],
                     event: "{stepper}.events.afterRender"
                 }]
-            }, {
-                name: "Keyboard interaction",
-                expect: 4,
-                sequence: [{
-                    func: "gpii.tests.keyPress",
-                    args: ["{stepper}.dom.increment"]
-                }, {
-                    listenerMaker: "gpii.tests.checkModel",
-                    makerArgs: ["value", -2],
-                    spec: {path: "value"},
-                    changeEvent: "{stepper}.applier.modelChanged"
-                }, {
-                    func: "gpii.tests.keyPress",
-                    args: ["{stepper}.dom.decrement"]
-                }, {
-                    listenerMaker: "gpii.tests.checkModel",
-                    makerArgs: ["value", -5],
-                    spec: {path: "value"},
-                    changeEvent: "{stepper}.applier.modelChanged"
-                }, {
-                    func: "gpii.tests.simulateKeyEvent",
-                    args: ["{stepper}.dom.valueField", "keydown", $.ui.keyCode.UP]
-                }, {
-                    listenerMaker: "gpii.tests.checkModel",
-                    makerArgs: ["value", -2],
-                    spec: {path: "value"},
-                    changeEvent: "{stepper}.applier.modelChanged"
-                }, {
-                    func: "gpii.tests.simulateKeyEvent",
-                    args: ["{stepper}.dom.valueField", "keydown", $.ui.keyCode.DOWN]
-                }, {
-                    listenerMaker: "gpii.tests.checkModel",
-                    makerArgs: ["value", -5],
-                    spec: {path: "value"},
-                    changeEvent: "{stepper}.applier.modelChanged"
-                }]
             }]
         }]
     });
@@ -180,20 +154,6 @@ https://github.com/gpii/universal/LICENSE.txt
     gpii.tests.makeStateChecker = function (that, expected) {
         jqUnit.assertEquals("The model should be updated", expected, that.model.value);
         jqUnit.assertEquals("The textfield's value should be set", expected, that.locate("valueField").val());
-    };
-
-    gpii.tests.keyPress = function (key) {
-        key.click();
-    };
-
-    gpii.tests.simulateKeyEvent = function (elm, eventType, keyCode) {
-        $(elm).simulate(eventType, {keyCode: keyCode});
-    };
-
-    gpii.tests.checkModel = function (path, expected) {
-        return function (newModel) {
-            jqUnit.assertEquals("The model value should be updated", expected, newModel[path]);
-        }
     };
 
     $(document).ready(function () {

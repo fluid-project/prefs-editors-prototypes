@@ -1,7 +1,6 @@
 {
     "cursorSizeLabel": "Cursor Size",
-    "cursorSizeHint": "Press up and down arrow keys to increase or decrease the value",
     "cursorSizeUnit": "%",
-    "cursorSizePlus": "increase cursor size",
-    "cursorSizeMinus": "decrease cursor size"
+    "cursorSizePlus": "Increase cursor size",
+    "cursorSizeMinus": "Decrease cursor size"
 }

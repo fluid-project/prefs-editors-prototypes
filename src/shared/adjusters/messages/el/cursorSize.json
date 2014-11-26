@@ -1,6 +1,6 @@
 {
     "cursorSizeLabel": "Μέγεθος κέρσορα",
     "cursorSizeUnit": "%",
-    "cursorPlus": "αύξηση",
-    "cursorMinus": "μείωση"
+    "cursorSizePlus": "Αύξηση μεγέθους κέρσορα",
+    "cursorSizeMinus": "Μείωση μεγέθους κέρσορα"
 }

@@ -1,6 +1,6 @@
 {
     "cursorSizeLabel": "Mauszeigergröße",
     "cursorSizeUnit": "%",
-    "cursorPlus": "plus",
-    "cursorMinus": "minus"
+    "cursorSizePlus": "Zeiger vergrößern",
+    "cursorSizeMinus": "Zeiger verkleinern"
 }
