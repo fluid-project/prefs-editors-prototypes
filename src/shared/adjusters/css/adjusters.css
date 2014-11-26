@@ -156,7 +156,7 @@ input[type=checkbox]:checked + .gpii-prefsEditor-headerImage > .gpii-prefsEditor
 
 .gpii-prefsEditor-headerTitle-withoutIcon {
     font-family: 'Roboto Slab', serif;
-    font-size: 1.8em !important;
+    font-size: 1.6em;
     display: table-cell;
     color: #566374;
     float: none;
@@ -1508,7 +1508,7 @@ input[type=checkbox] + label.gpii-checkbox-label {
     height: 55px;
     text-align: left;
     font-family: 'Roboto Slab', serif;
-    font-size: 1.4em!important;
+    font-size: 0.8em;
 }
 
 .gpii-checkbox-label-text {
