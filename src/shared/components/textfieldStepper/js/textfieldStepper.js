@@ -32,7 +32,7 @@ https://github.com/gpii/universal/LICENSE.txt
                 listener: "{that}.applier.guards.addListener",
                 args: ["value", "{that}.guard"]
             },
-            "onCreate.initialSetup": "{that}.initialSetup",
+            "afterRender.initialSetup": "{that}.initialSetup",
             "afterRender.incClick": {
                 "this": "{that}.dom.increment",
                 "method": "click",
@@ -109,7 +109,9 @@ https://github.com/gpii/universal/LICENSE.txt
         valueField.attr("step", range.step);
 
         valueField.attr("autocomplete", "off");
-        valueField.attr("aria-labelledby", gpii.ariaUtility.getLabelId(labelledbyDomElement));
+        if (labelledbyDomElement) {
+            labelledbyDomElement.attr("for", $(valueField).attr("id"));
+        }
 
         that.locate("increment").attr({
             "role": "button",
