@@ -1627,3 +1627,10 @@ span.gpii-preset-button-label {
     font-family: 'Roboto Slab', serif;
     font-size: 1.4em!important;
 }
+
+.gpii-onOffSwitch-onOff {
+    display: inline;
+    float: right !important;
+    font-size: 70% !important;
+    margin-left: 37px;
+}

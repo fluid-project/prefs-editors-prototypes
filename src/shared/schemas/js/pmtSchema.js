@@ -396,7 +396,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.adjuster.autoAdjust",
                 "template": "%prefix/autoAdjustTemplate.html",
                 "container": ".gpiic-prefsEditor-autoAdjust",
-                "message": "%prefix/increaseSize.json"
+                "message": "%prefix/autoAdjust.json"
             }
         }
     };
