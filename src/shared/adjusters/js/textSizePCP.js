@@ -15,7 +15,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     "use strict";
 
     fluid.defaults("gpii.adjuster.textSizePCP", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.stepperConnections", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.fontSize": {
                 "model.fontSize": "default",
@@ -31,7 +31,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             textfieldStepper: {
                 type: "gpii.adjuster.textfieldStepper",
                 container: "{textSizePCP}.dom.textSizeStepper",
-                createOnEvent: "afterRender",
+                createOnEvent: "onCreateStepper",
                 options: {
                     sourceApplier: "{textSizePCP}.applier",
                     rules: {
@@ -46,7 +46,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         "minusText": "{textSizePCP}.msgLookup.textSizeMinus"
                     },
                     range: "{textSizePCP}.options.fontSize.range",
-                    labelledbyDomElement: "{textSizePCP}.dom.textSizeLabel"
+                    labelledbyDomElement: "{textSizePCP}.dom.textSizeLabel",
+                    resources: "{textSizePCP}.options.resources"
                 }
             }
         },

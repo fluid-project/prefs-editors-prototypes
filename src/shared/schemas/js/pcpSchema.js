@@ -17,7 +17,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     "use strict";
-    
+
     fluid.registerNamespace("gpii.pcp");
 
     fluid.defaults("gpii.pcp.auxiliarySchema.common", {
@@ -130,7 +130,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "type": "gpii.adjuster.textSizePCP",
                     "container": ".gpiic-prefsEditor-textSize",
                     "template": "%prefix/textSizeTemplatePCP.html",
-                    "message": "%prefix/textSize.json"
+                    "message": "%prefix/textSize.json",
+                    "stepperTemplate": "../../src/shared/components/textfieldStepper/html/textfieldStepperTemplate.html"
                 }
             },
             "cursorSize": {
@@ -139,7 +140,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "type": "gpii.adjuster.cursorSizePCP",
                     "container": ".gpiic-prefsEditor-cursorSize",
                     "template": "%prefix/cursorSizeTemplatePCP.html",
-                    "message": "%prefix/cursorSize.json"
+                    "message": "%prefix/cursorSize.json",
+                    "stepperTemplate": "../../src/shared/components/textfieldStepper/html/textfieldStepperTemplate.html"
                 }
             },
             "magnifierEnabled": {
@@ -157,7 +159,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "type": "gpii.adjuster.magnifierPCP",
                     "container": ".gpiic-prefsEditor-magnifier",
                     "template": "%prefix/magnifierTemplatePCP.html",
-                    "message": "%prefix/magnifier.json"
+                    "message": "%prefix/magnifier.json",
+                    "stepperTemplate": "../../src/shared/components/textfieldStepper/html/textfieldStepperTemplate.html"
                 }
             }
         }

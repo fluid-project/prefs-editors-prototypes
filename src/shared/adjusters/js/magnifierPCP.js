@@ -15,7 +15,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     "use strict";
 
     fluid.defaults("gpii.adjuster.magnifierPCP", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.stepperConnections", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.magnification": {
                 "model.magnification": "default",
@@ -37,7 +37,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             magnifierStepper: {
                 type: "gpii.adjuster.textfieldStepper",
                 container: "{that}.dom.magnifierStepper",
-                createOnEvent: "afterRender",
+                createOnEvent: "onCreateStepper",
                 options: {
                     sourceApplier: "{magnifierPCP}.applier",
                     rules: {
@@ -52,7 +52,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         "minusText": "{magnifierPCP}.msgLookup.magnifierMinus"
                     },
                     range: "{magnifierPCP}.options.magnification.range",
-                    labelledbyDomElement: "{magnifierPCP}.dom.magnificationLevel"
+                    labelledbyDomElement: "{magnifierPCP}.dom.magnificationLevel",
+                    resources: "{magnifierPCP}.options.resources"
                 }
             }
         },

@@ -29,7 +29,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("gpii.adjuster.wordsSpokenPerMinute", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.stepperConnections", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.wordsSpokenPerMinute": {
                 "model.value": "default",
@@ -46,7 +46,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             textfieldStepper: {
                 type: "gpii.adjuster.textfieldStepper",
                 container: "{that}.dom.wordsSpokenPerMinute",
-                createOnEvent: "afterRender",
+                createOnEvent: "onCreateStepper",
                 options: {
                     sourceApplier: "{wordsSpokenPerMinute}.applier",
                     rules: {
@@ -60,7 +60,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         "minusText": "{wordsSpokenPerMinute}.msgLookup.wordsSpokenPerMinuteMinus"
                     },
                     range: "{wordsSpokenPerMinute}.options.controlValues.wordsSpokenPerMinute",
-                    labelledbyDomElement: "{wordsSpokenPerMinute}.dom.wordsSpokenPerMinuteLabel"
+                    labelledbyDomElement: "{wordsSpokenPerMinute}.dom.wordsSpokenPerMinuteLabel",
+                    resources: "{wordsSpokenPerMinute}.options.resources"
                 }
             }
         },
@@ -190,7 +191,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
 
     fluid.defaults("gpii.adjuster.voicePitch", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.stepperConnections", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.voicePitch": {
                 "model.value": "default",
@@ -208,7 +209,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             textfieldStepper: {
                 type: "gpii.adjuster.textfieldStepper",
                 container: "{that}.dom.voicePitch",
-                createOnEvent: "afterRender",
+                createOnEvent: "onCreateStepper",
                 options: {
                     sourceApplier: "{voicePitch}.applier",
                     rules: {
@@ -222,7 +223,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         "minusText": "{voicePitch}.msgLookup.voicePitchMinus"
                     },
                     range: "{voicePitch}.options.controlValues.voicePitch",
-                    labelledbyDomElement: "{voicePitch}.dom.voicePitchLabel"
+                    labelledbyDomElement: "{voicePitch}.dom.voicePitchLabel",
+                    resources: "{voicePitch}.options.resources"
                 }
             }
         },
@@ -232,7 +234,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     fluid.defaults("gpii.adjuster.universalVolume", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.stepperConnections", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.universalVolume": {
                 "model.value": "default",
@@ -251,7 +253,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             textfieldStepper: {
                 type: "gpii.adjuster.textfieldStepper",
                 container: "{that}.dom.universalVolume",
-                createOnEvent: "afterRender",
+                createOnEvent: "onCreateStepper",
                 options: {
                     sourceApplier: "{universalVolume}.applier",
                     rules: {
@@ -265,7 +267,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         "minusText": "{universalVolume}.msgLookup.universalVolumeMinus"
                     },
                     range: "{universalVolume}.options.controlValues.universalVolume",
-                    labelledbyDomElement: "{universalVolume}.dom.universalVolumeLabel"
+                    labelledbyDomElement: "{universalVolume}.dom.universalVolumeLabel",
+                    resources: "{universalVolume}.options.resources"
                 }
             }
         },
@@ -613,6 +616,40 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             screenReaderBrailleOutputDescription: {messagekey: "screenReaderBrailleOutputDescription"}
         },
         onOffModelKey: "screenReaderBrailleOutput"
+    });
+
+
+    /*
+     * A grade component used by components that has gpii.textfieldStepper as a sub-component.
+     * This component is to ensure the template for gpii.textfieldStepper is loaded before it gets
+     * instantiated. To use this component:
+     * 1. Add gpii.adjuster.stepperConnections as a grade for the component that has gpii.textfieldStepper
+     *    as a sub-component;
+     * 2. Pass in the location of the gpii.textfieldStepper template into the option "stepperTemplate",
+     *    for example, define in the auxiliary schema;
+     * 3. Make sure sub-component gpii.textfieldStepper has these options:
+     *    onCreateEvent: "onCreateStepper",
+     *    resources: "{parent}.options.resources"
+     *
+     */
+    fluid.defaults("gpii.adjuster.stepperConnections", {
+        gradeNames: ["fluid.rendererComponent", "autoInit"],
+        stepperTemplate: "../html/textfieldStepperTemplate.html",
+        events: {
+            onCreateStepper: null
+        },
+        listeners: {
+            "afterRender.fetchResources": {
+                listener: "fluid.fetchResources",
+                args: ["{that}.options.resources", "{that}.events.onCreateStepper.fire"]
+            }
+        },
+        resources: {
+            template: {
+                forceCache: true,
+                url: "{that}.options.stepperTemplate"
+            }
+        }
     });
 
 })(fluid);

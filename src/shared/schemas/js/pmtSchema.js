@@ -13,7 +13,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 (function ($, fluid) {
     "use strict";
-    
+
     fluid.registerNamespace("gpii.pmt");
 
     gpii.pmt.auxiliarySchema = {
@@ -123,7 +123,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "template": "%prefix/textSizeTemplatePMT.html",
                 "message": "%prefix/textSize.json",
                 "gradeNames": ["gpii.adjuster.textSizePMT.preview"],
-                "previewURL": "../../src/shared/preview/html/textPreview.html"
+                "previewURL": "../../src/shared/preview/html/textPreview.html",
+                "stepperTemplate": "../../src/shared/components/textfieldStepper/html/textfieldStepperTemplate.html"
             }
         },
         "cursorSize": {
@@ -137,7 +138,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "template": "%prefix/cursorSizeTemplatePMT.html",
                 "message": "%prefix/cursorSize.json",
                 "gradeNames": ["gpii.adjuster.cursorSizePMT.preview"],
-                "previewURL": "../../src/shared/preview/html/cursorPreview.html"
+                "previewURL": "../../src/shared/preview/html/cursorPreview.html",
+                "stepperTemplate": "../../src/shared/components/textfieldStepper/html/textfieldStepperTemplate.html"
             }
         },
         "magnifierEnabled": {
@@ -163,7 +165,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "template": "%prefix/magnifierTemplatePMT.html",
                 "message": "%prefix/magnifier.json",
                 "gradeNames": ["gpii.adjuster.magnifierPMT.preview", "gpii.adjuster.textSizePMT.preview"],
-                "previewURL": "../../src/shared/preview/html/textPreview.html"
+                "previewURL": "../../src/shared/preview/html/textPreview.html",
+                "stepperTemplate": "../../src/shared/components/textfieldStepper/html/textfieldStepperTemplate.html"
             }
         },
         "magnifierPosition": {
@@ -235,7 +238,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.adjuster.wordsSpokenPerMinute",
                 "template": "%prefix/wordsSpokenPerMinute.html",
                 "container": ".words-spoken-per-minute",
-                "message": "%prefix/message.json"
+                "message": "%prefix/message.json",
+                "stepperTemplate": "../../src/shared/components/textfieldStepper/html/textfieldStepperTemplate.html"
             }
         },
 
@@ -265,7 +269,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.adjuster.voicePitch",
                 "template": "%prefix/voicePitchTemplate.html",
                 "container": ".voicePitch",
-                "message": "%prefix/message.json"
+                "message": "%prefix/message.json",
+                "stepperTemplate": "../../src/shared/components/textfieldStepper/html/textfieldStepperTemplate.html"
             }
         },
 
@@ -376,7 +381,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.adjuster.universalVolume",
                 "template": "%prefix/universalVolumeTemplate.html",
                 "container": ".universalVolume",
-                "message": "%prefix/message.json"
+                "message": "%prefix/message.json",
+                "stepperTemplate": "../../src/shared/components/textfieldStepper/html/textfieldStepperTemplate.html"
             }
         },
 

@@ -15,7 +15,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     "use strict";
 
     fluid.defaults("gpii.adjuster.cursorSizePCP", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.stepperConnections", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.cursorSize": {
                 "model.value": "default",
@@ -33,7 +33,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             cursorSizeStepper: {
                 type: "gpii.adjuster.textfieldStepper",
                 container: "{cursorSizePCP}.dom.cursorSizeStepper",
-                createOnEvent: "afterRender",
+                createOnEvent: "onCreateStepper",
                 options: {
                     sourceApplier: "{cursorSizePCP}.applier",
                     rules: {
@@ -48,7 +48,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         "minusText": "{cursorSizePCP}.msgLookup.cursorSizeMinus"
                     },
                     range: "{cursorSizePCP}.options.controlValues.cursorSize",
-                    labelledbyDomElement: "{cursorSizePCP}.dom.cursorSizeLabel"
+                    labelledbyDomElement: "{cursorSizePCP}.dom.cursorSizeLabel",
+                    resources: "{cursorSizePCP}.options.resources"
                 }
             }
         },
