@@ -53,7 +53,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     },
                     range: "{magnifierPCP}.options.magnification.range",
                     labelledbyDomElement: "{magnifierPCP}.dom.magnificationLevel",
-                    resources: "{magnifierPCP}.options.resources"
+                    resources: "{magnifierPCP}.options.stepperResources"
                 }
             }
         },

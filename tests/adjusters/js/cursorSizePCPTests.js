@@ -53,7 +53,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 container: ".gpiic-cursorSizePCP",
                 createOnEvent: "{cursorSizePCPTester}.events.onTestCaseStart",
                 options: {
-                    gradeNames: "gpii.tests.prefsEditorLoader",
+                    gradeNames: ["gpii.tests.prefsEditorLoader"],
+                    stepperTemplate: "../../../src/shared/components/textfieldStepper/html/textfieldStepperTemplate.html",
                     model: {
                         value: initialStepperValue
                     },
@@ -97,8 +98,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 name: "Test the rendering of the PCP cursor size adjuster",
                 sequence: [{
                     listener: "gpii.tests.cursorSizePCPTests.testDefault",
-                    priority: "last",
-                    event: "{cursorSizePCPTests cursorSizePCP}.events.afterRender"
+                    event: "{cursorSizePCPTests cursorSizePCP}.events.onStepperReady"
                 }, {
                     func: "gpii.tests.cursorSizePCPTests.pressStepper",
                     args: ["{cursorSizePCP}"]

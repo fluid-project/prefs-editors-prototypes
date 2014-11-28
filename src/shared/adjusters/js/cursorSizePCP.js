@@ -49,12 +49,23 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     },
                     range: "{cursorSizePCP}.options.controlValues.cursorSize",
                     labelledbyDomElement: "{cursorSizePCP}.dom.cursorSizeLabel",
-                    resources: "{cursorSizePCP}.options.resources"
+                    resources: "{cursorSizePCP}.options.stepperResources",
+                    listeners: {
+                        "onAttach.escalateToParent": {
+                            listener: "{cursorSizePCP}.events.onStepperReady",
+                            priority: "last",
+                            args: ["{cursorSizePCP}"]
+                        }
+                    }
                 }
             }
         },
         protoTree: {
             cursorSizeLabel: {messagekey: "cursorSizeLabel"}
+        },
+        events: {
+            onStepperReady: null
         }
     });
+
 })(jQuery, fluid);

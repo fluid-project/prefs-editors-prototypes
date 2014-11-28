@@ -61,7 +61,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     },
                     range: "{wordsSpokenPerMinute}.options.controlValues.wordsSpokenPerMinute",
                     labelledbyDomElement: "{wordsSpokenPerMinute}.dom.wordsSpokenPerMinuteLabel",
-                    resources: "{wordsSpokenPerMinute}.options.resources"
+                    resources: "{wordsSpokenPerMinute}.options.stepperResources"
                 }
             }
         },
@@ -224,7 +224,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     },
                     range: "{voicePitch}.options.controlValues.voicePitch",
                     labelledbyDomElement: "{voicePitch}.dom.voicePitchLabel",
-                    resources: "{voicePitch}.options.resources"
+                    resources: "{voicePitch}.options.stepperResources"
                 }
             }
         },
@@ -268,7 +268,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     },
                     range: "{universalVolume}.options.controlValues.universalVolume",
                     labelledbyDomElement: "{universalVolume}.dom.universalVolumeLabel",
-                    resources: "{universalVolume}.options.resources"
+                    resources: "{universalVolume}.options.stepperResources"
                 }
             }
         },
@@ -616,40 +616,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             screenReaderBrailleOutputDescription: {messagekey: "screenReaderBrailleOutputDescription"}
         },
         onOffModelKey: "screenReaderBrailleOutput"
-    });
-
-
-    /*
-     * A grade component used by components that has gpii.textfieldStepper as a sub-component.
-     * This component is to ensure the template for gpii.textfieldStepper is loaded before it gets
-     * instantiated. To use this component:
-     * 1. Add gpii.adjuster.stepperConnections as a grade for the component that has gpii.textfieldStepper
-     *    as a sub-component;
-     * 2. Pass in the location of the gpii.textfieldStepper template into the option "stepperTemplate",
-     *    for example, define in the auxiliary schema;
-     * 3. Make sure sub-component gpii.textfieldStepper has these options:
-     *    onCreateEvent: "onCreateStepper",
-     *    resources: "{parent}.options.resources"
-     *
-     */
-    fluid.defaults("gpii.adjuster.stepperConnections", {
-        gradeNames: ["fluid.rendererComponent", "autoInit"],
-        stepperTemplate: "../html/textfieldStepperTemplate.html",
-        events: {
-            onCreateStepper: null
-        },
-        listeners: {
-            "afterRender.fetchResources": {
-                listener: "fluid.fetchResources",
-                args: ["{that}.options.resources", "{that}.events.onCreateStepper.fire"]
-            }
-        },
-        resources: {
-            template: {
-                forceCache: true,
-                url: "{that}.options.stepperTemplate"
-            }
-        }
     });
 
 })(fluid);

@@ -47,7 +47,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     },
                     range: "{textSizePCP}.options.fontSize.range",
                     labelledbyDomElement: "{textSizePCP}.dom.textSizeLabel",
-                    resources: "{textSizePCP}.options.resources"
+                    resources: "{textSizePCP}.options.stepperResources"
                 }
             }
         },
