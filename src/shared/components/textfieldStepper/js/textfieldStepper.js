@@ -113,14 +113,8 @@ https://github.com/gpii/universal/LICENSE.txt
             labelledbyDomElement.attr("for", $(valueField).attr("id"));
         }
 
-        that.locate("increment").attr({
-            "role": "button",
-            "aria-label": that.options.strings.plusText
-        });
-        that.locate("decrement").attr({
-            "role": "button",
-            "aria-label": that.options.strings.minusText
-        });
+        that.locate("increment").attr("name", that.options.strings.plusText);
+        that.locate("decrement").attr("name", that.options.strings.minusText);
     };
 
 })(jQuery, fluid);
