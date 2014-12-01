@@ -54,7 +54,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 createOnEvent: "{cursorSizePCPTester}.events.onTestCaseStart",
                 options: {
                     gradeNames: ["gpii.tests.prefsEditorLoader"],
-                    stepperTemplate: "../../../src/shared/components/textfieldStepper/html/textfieldStepperTemplate.html",
+                    stepperTemplate: "../../../src/shared/adjusters/html/textfieldStepperTemplate.html",
                     model: {
                         value: initialStepperValue
                     },
