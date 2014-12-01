@@ -72,7 +72,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
 
     fluid.defaults("gpii.adjuster.volume", {
-        gradeNames: ["fluid.prefs.panel", "autoInit"],
+        gradeNames: ["fluid.prefs.panel", "gpii.adjuster.stepperConnections", "autoInit"],
         preferenceMap: {
             "gpii.primarySchema.volume": {
                 "model.value": "default",
@@ -90,7 +90,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             textfieldStepper: {
                 type: "gpii.adjuster.textfieldStepper",
                 container: "{that}.dom.volume",
-                createOnEvent: "afterRender",
+                createOnEvent: "onCreateStepper",
                 options: {
                     sourceApplier: "{volume}.applier",
                     rules: {
@@ -104,7 +104,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                         "minusText": "{volume}.msgLookup.volumeMinus"
                     },
                     range: "{volume}.options.controlValues.volume",
-                    labelledbyDomElement: "{volume}.dom.volumeLabel"
+                    labelledbyDomElement: "{volume}.dom.volumeLabel",
+                    resources: "{volume}.options.stepperResources"
                 }
             }
         },

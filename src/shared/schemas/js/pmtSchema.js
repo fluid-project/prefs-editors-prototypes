@@ -259,7 +259,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "type": "gpii.adjuster.volume",
                 "template": "%prefix/volumeTemplate.html",
                 "container": ".volume",
-                "message": "%prefix/message.json"
+                "message": "%prefix/message.json",
+                "stepperTemplate": "../../src/shared/components/textfieldStepper/html/textfieldStepperTemplate.html"
             }
         },
 

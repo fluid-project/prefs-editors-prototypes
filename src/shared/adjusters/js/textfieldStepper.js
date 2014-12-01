@@ -44,7 +44,7 @@ https://github.com/gpii/universal/LICENSE.txt
             onCreateStepper: null
         },
         listeners: {
-            "afterRender.fetchResources": {
+            "onDomBind.fetchResources": {
                 listener: "fluid.fetchResources",
                 args: ["{that}.options.stepperResources", "{that}.events.onCreateStepper.fire"]
             }
