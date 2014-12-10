@@ -56,7 +56,46 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 pencilIcon: ".gpiic-prefsEditor-context-pencilIcon",
                 contextRows: ".gpiic-prefsEditor-contextFrame-rows",
                 contextRow: ".gpiic-prefsEditor-contextFrame-row",
-                contextEditButton: ".gpiic-prefsEditor-context-edit-button"
+                contextEditButton: ".gpiic-prefsEditor-context-edit-button",
+                overlayPanel: ".gpiic-context-overlay",
+                modalPanel: ".gpiic-context-modal",
+                /* context selectors */
+                conditionsTabLabel: ".gpiic-context-conditions-label",
+                shareTabLabel: ".gpiic-context-share-label",
+                baseSetDescription: ".gpiic-context-baseset-label",
+                deleteSetLabel: ".gpiic-context-deleteset-label",
+                notAppliedToAnyDevicesLabel: ".gpiic-context-devices-notapplied-label",
+                addNewDeviceLabel: ".gpiic-context-devices-add-new-label",
+                devicesLabel: ".gpiic-context-header-devices-label",
+                allLabel: ".gpiic-select-device-all-label",
+                desktopLabel: ".gpiic-select-device-desktop-label",
+                laptopLabel: ".gpiic-select-device-laptop-label",
+                tabletLabel: ".gpiic-select-device-tablet-label",
+                phoneLabel: ".gpiic-select-device-phone-label",
+                kioskLabel: ".gpiic-select-device-kiosk-label",
+                bankMachineLabel: ".gpiic-select-device-bankmachine-label",
+                otherLabel: ".gpiic-select-device-other-label",
+                notAppliedAtAnyTimesLabel: ".gpiic-context-times-notapplied-label",
+                timeLabel: ".gpiic-context-header-time-label",
+                addNewTimeLabel: ".gpiic-context-time-add-new-label",
+                toLabel: ".gpiic-context-time-to-label",
+                appliesToLabel: ".gpiic-context-device-applies-label",
+                devicesTextLabel: ".gpiic-context-devices-label",
+                cancelButton: ".gpiic-context-cancelButton",
+                doneButton: ".gpiic-context-doneButton",
+                linkCopyButton: ".gpiic-context-linkCopyButton",
+                downloadCopyButton: ".gpiic-context-linkDownloadButton",
+                emailCopyButton: ".gpiic-context-emailCopyButton",
+                untitledText: ".gpiic-context-header-untitled",
+                emailAddressLabel: ".gpiic-enter-email-address-input",
+                enterMessageLabel: ".gpiic-enter-message-input",
+                tabConditions: ".gpiic-tab-conditions",
+                tabShare: ".gpiic-tab-share",
+                contextHeader: ".gpiic-context-header",
+                sharingEmail: ".gpiic-link-copy-enter-email-address",
+                contextHeaderDevices: ".gpiic-context-header-devices",
+                contextHeaderTime: ".gpiic-context-header-time",
+                copyIcon: ".gpiic-email-copy-fontIcon"
             },
             markup: {
                 baseSet:
@@ -72,7 +111,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 selectedIcon: 
                     "   <span class='gpiic-prefsEditor-context-leftArrowIcon gpii-prefsEditor-adjusterIcons gpii-prefsEditor-context-leftArrowIcon'></span>",
                 pencilIcon: 
-                    "   <input id='editButton' type='button' value='' aria-label='' class='gpiic-prefsEditor-context-edit-button gpii-prefsEditor-context-edit-button' tabindex='0'></input>" +
+                    "   <input id='editButton' onclick='gpii.pmt.onEditClick($(\"#overlay\"), $(\"#modal\"))' type='button' value='' aria-label='' class='gpiic-prefsEditor-context-edit-button gpii-prefsEditor-context-edit-button' tabindex='0'></input>" +
                     "   <label for='editButton' class='gpiic-prefsEditor-context-pencilIcon gpii-prefsEditor-adjusterIcons gpii-prefsEditor-pencil-icon'></span>"
             },
             styles: {
@@ -86,12 +125,19 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 brightStyle: "gpii-prefsEditor-contextFrame-header-stylingBright",
                 selected: "gpii-prefsEditor-contextFrame-row-selected",
                 unSelected: "gpii-prefsEditor-contextFrame-row-unselected",
+                visible: "gpii-context-visible",
+                invisible: "gpii-context-invisible",
+                activeTab: "gpii-tab-active",
+                deactiveTab: "gpii-tab-deactive",
+                bgHeader: "gpii-context-header-bg-pressed",
+                disabled: "disabled"
             },
             model: {
                 userLoggedIn: false
             },
             listeners: {
                 // on Session accountCreated:
+                "onReady.hidePanels": "{that}.hidePanels",
                 "{gpiiSession}.events.accountCreated": {
                     listener: "{that}.showSaveNotification"
                 },
@@ -105,6 +151,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.contextPanel",
                     "method": "hide"
                 },
+                "onReady.enableTabConditions": "{that}.enableTabConditions",
                 "onReady.createBaseSetBox": "{that}.createBaseSetBox",
                 "onReady.createBaseSetBoxStyle": "{that}.createBaseSetBoxStyle",
                 "onReady.onMouseoverAddSetLink": {
@@ -310,6 +357,131 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.addHidingListener": {
                     "listener": "{that}.applier.modelChanged.addListener",
                     "args": ["{that}.options.strings.mainVisibilitySwitch", "{that}.foldExpandedViewWhenOff"]
+                },
+                "onReady.setUntitledText": {
+                    "this": "{that}.dom.untitledText",
+                    "method": "val",
+                    "args": ["{that}.msgLookup.untitledText"]
+                },
+                "onReady.setConditionsTabLabel": {
+                    "this": "{that}.dom.conditionsTabLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.conditionsTabLabel"]
+                },
+                "onReady.setShareTabLabel": {
+                    "this": "{that}.dom.shareTabLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.shareTabLabel"]
+                },
+                "onReady.setDoneButton": {
+                    "this": "{that}.dom.doneButton",
+                    "method": "val",
+                    "args": ["{that}.msgLookup.doneLabel"]
+                },
+                "onReady.setCancelButton": {
+                    "this": "{that}.dom.cancelButton",
+                    "method": "val",
+                    "args": ["{that}.msgLookup.cancelLabel"]
+                },
+                "onReady.setDevicesLabel": {
+                    "this": "{that}.dom.devicesLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.devicesLabel"]
+                },
+                "onReady.setTimeLabel": {
+                    "this": "{that}.dom.timeLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.timeLabel"]
+                },
+                "onReady.setNewDeviceLabel": {
+                    "this": "{that}.dom.addNewDeviceLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.addNewDeviceLabel"]
+                },
+                "onReady.setNewTimeLabel": {
+                    "this": "{that}.dom.addNewTimeLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.addNewTimeLabel"]
+                },
+                "onReady.setNotAppliedToAnyDevicesLabel": {
+                    "this": "{that}.dom.notAppliedToAnyDevicesLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.notAppliedToAnyDevicesLabel"]
+                },
+                "onReady.setNotAppliedAtAnyTimesLabel": {
+                    "this": "{that}.dom.notAppliedAtAnyTimesLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.notAppliedAtAnyTimesLabel"]
+                },
+                "onReady.setBaseSetDescription": {
+                    "this": "{that}.dom.baseSetDescription",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.baseSetDescription"]
+                },
+                "onReady.setDeleteSetLabel": {
+                    "this": "{that}.dom.deleteSetLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.deleteSetLabel"]
+                },
+                "onReady.clickCancelButton": {
+                    "this": "{that}.dom.cancelButton",
+                    "method": "click",
+                    "args": ["{that}.clickCancelButton"]
+                },
+                "onReady.clickDoneButton": {
+                    "this": "{that}.dom.doneButton",
+                    "method": "click",
+                    "args": ["{that}.clickDoneButton"]
+                },
+                "onReady.clickUntitled": {
+                    "this": "{that}.dom.untitledText",
+                    "method": "click",
+                    "args": ["{that}.clickUntitled"]
+                },
+                "onReady.clickTabConditions": {
+                    "this": "{that}.dom.tabConditions",
+                    "method": "click",
+                    "args": ["{that}.enableTabConditions"]
+                },
+                "onReady.clickTabShare": {
+                    "this": "{that}.dom.tabShare",
+                    "method": "click",
+                    "args": ["{that}.enableTabShare"]
+                },
+                "onReady.setEmailCopyButton": {
+                    "this": "{that}.dom.emailCopyButton",
+                    "method": "val",
+                    "args": ["{that}.msgLookup.emailCopyButton"]
+                },
+                "onReady.setEmailAddressLabel": {
+                    "this": "{that}.dom.emailAddressLabel",
+                    "method": "attr",
+                    "args": ["value", "{that}.msgLookup.emailAddressLabel"]
+                },
+                "onReady.setEnterMessageLabel": {
+                    "this": "{that}.dom.enterMessageLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.enterMessageLabel"]
+                },
+                "onReady.setLinkCopyButton": {
+                    "this": "{that}.dom.linkCopyButton",
+                    "method": "val",
+                    "args": ["{that}.msgLookup.linkCopyButton"]
+                },
+                "onReady.setDownloadCopyButton": {
+                    "this": "{that}.dom.downloadCopyButton",
+                    "method": "val",
+                    "args": ["{that}.msgLookup.downloadCopyButton"]
+                },
+                "onReady.emailValidation": {
+                    "this": "{that}.dom.emailAddressLabel",
+                    "method": "keyup",
+                    "args": ["{that}.emailValidation"]
+                },
+                "onReady.onClickEmailCopyButton": {
+                    "this": "{that}.dom.emailCopyButton",
+                    "method": "click",
+                    "args": ["{that}.clickEmailCopyButton"]
                 }
             },
             invokers: {
@@ -342,22 +514,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 hideUserStatusBarIfNotLoggedIn: {
                     "funcName": "gpii.pmt.hideUserStatusBarIfNotLoggedIn",
-                    /*
-                     * TODO: Can we be sure that "{gpiiSession}.options.loggedUser" will actually have a value here?
-                     * This would mean that GPIISession's "onCreate.getLoggedUser" has finished executing.
-                     * Moreover, logged user acquisition from GPII is made in a synchronous call now. What if this call
-                     * becomes async at some point?
-                     * Ideally, we would need the onReady event of this component to be fired when the onCreate of GPIISession
-                     * has finished. I could hook to "{gpiiSession}.events.onGetLoggedUserError" as i do further up with
-                     * "{gpiiSession}.events.accountCreated", but it seems that if i register a listener there it is
-                     * not executed because the onGetLoggedUserError event is fired from within the onCreate of GPIISession.
-                     * Looks like things get complicated with when {gpiiSession} is available in the static environment,
-                     * along with the event being generated from within the onCreate in GPIISession.
-                     * In any case, tested this many times and, having all AJAX calls synchronous, looks like everything
-                     * works as expected. We might have to synchronize everything better though if we make the AJAX calls
-                     * asynchronous. The relevant JIRA for this is,
-                     *      http://issues.gpii.net/browse/GPII-613
-                     */
                     "args": ["{gpiiSession}.options.loggedUser", "{that}.dom.userStatusBar"]
                 },
                 setQuickEditorLinkHref : {
@@ -391,7 +547,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 createUntitledBox: {
                     "funcName": "gpii.pmt.createUntitledBox",
-                    "args": ["{that}.dom.contextRows", "{that}.options.markup.untitledSet", "{that}.msgLookup.untitledLabel", "{that}.msgLookup.untitledDescLabel", "{that}", "{that}.dom.setLabel"]
+                    "args": ["{that}.dom.contextRows", "{that}.options.markup.untitledSet", "{that}.msgLookup.untitledLabel", "{that}.msgLookup.untitledDescLabel", "{that}", "{that}.dom.setLabel", "{that}.options.selectors.untitledLabel", "{that}.options.selectors.untitledDescLabel"]
                 },
                 createUntitledBoxStyle: {
                     "funcName": "gpii.pmt.createUntitledBoxStyle",
@@ -408,7 +564,39 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 createBaseSetBoxStyle: {
                     "funcName": "gpii.pmt.createBaseSetBoxStyle",
                     "args": ["{that}.dom.contextRow", "{that}.options.styles.selected", "{that}.options.markup.selectedIcon"]
-                }
+                },
+                hidePanels: {
+                    "funcName": "gpii.pmt.hidePanels",
+                    "args": ["{that}.dom.overlayPanel","{that}.dom.modalPanel"]
+                },
+                clickUntitled: {
+                    "funcName": "gpii.pmt.clickUntitled",
+                    "args": ["{that}"]
+                },
+                clickCancelButton: {
+                    "funcName": "gpii.pmt.clickCancelButton",
+                    "args": ["{that}.dom.overlayPanel","{that}.dom.modalPanel"]
+                },
+                clickDoneButton: {
+                    "funcName": "gpii.pmt.clickDoneButton",
+                    "args": ["{that}.dom.overlayPanel", "{that}.dom.modalPanel", "{that}.dom.addNewDeviceLabel", "{that}.dom.addNewTimeLabel", "{that}.dom.untitledText", "{that}.options.selectors.untitledLabel", "{that}.options.selectors.untitledDescLabel"]
+                },
+                enableTabConditions: {
+                    "funcName": "gpii.pmt.enableTabConditions",
+                    "args": ["{that}"]
+                },
+                enableTabShare: {
+                    "funcName": "gpii.pmt.enableTabShare",
+                    "args": ["{that}"]
+                },
+                emailValidation: {
+                    "funcName": "gpii.pmt.emailValidation",
+                    "args": ["{that}.dom.emailAddressLabel", "{that}.dom.emailCopyButton", "{that}.dom.copyIcon", "{that}.options.styles.disabled"]
+                },
+                clickEmailCopyButton: {
+                    "funcName": "gpii.pmt.clickEmailCopyButton",
+                    "args": ["{that}.dom.emailAddressLabel", "{that}.dom.enterMessageLabel", "{that}.msgLookup.emailSubject"]
+                }, 
             },
             strings: {
                 "mainVisibilitySwitch": "gpii_primarySchema_speakText",
@@ -416,6 +604,155 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         }
     });
+
+    gpii.pmt.clickEmailCopyButton = function (to, body, subject) {
+        console.log(to.val());
+        console.log(body.val());
+        console.log(subject);
+        gpii.pmt.sendWithGmail({
+            to: to.val(), 
+            subject: subject,
+            body: body.val()//,
+            //attachment : "sharing.js"
+        });
+    };
+
+    gpii.pmt.emailValidation = function (emailAddressLabel, copyButton, copyIcon, disabled) {
+        var emailValid = gpii.pmt.validateEmail(emailAddressLabel.val());
+        if (emailValid){
+            if (copyButton.hasClass(disabled)) {
+                copyButton.removeClass(disabled);
+                copyIcon.removeClass(disabled);
+            }
+        }
+        else{
+            if (!copyButton.hasClass(disabled)) {
+                copyButton.addClass(disabled);
+                copyIcon.addClass(disabled);
+            }
+        }
+    };
+    
+    gpii.pmt.validateEmail = function (emailaddress) {
+        var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+        if (filter.test(emailaddress)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    gpii.pmt.sendViaMailTo = function (opts) {
+        var link = "mailto:" +opts.to
+        + "&subject=" + opts.subject
+        + "&body=" + opts.body;
+        //+ "&attachment="+opts.attachment;
+        window.location.href = link;
+    };
+
+    gpii.pmt.sendWithGmail = function (opts) {
+        var str = 'http://mail.google.com/mail/?view=cm&fs=1'+
+                  '&to=' + opts.to +
+                  '&su=' + opts.subject +
+                  '&body=' + opts.body.replace(/\n/g,'%0A') +
+                  '&ui=1';
+        location.href = str;
+    };
+    
+    gpii.pmt.enableTabConditions = function (that) {
+        var tabCondition = that.dom.locate("tabConditions");
+        var tabSharing = that.dom.locate("tabShare");
+        var sharingEmail = that.dom.locate("sharingEmail");
+        var contextHeader = that.dom.locate("contextHeader");
+        var contextHeaderDevices = that.dom.locate("contextHeaderDevices");
+        var contextHeaderTime = that.dom.locate("contextHeaderTime");
+
+        if (tabCondition.hasClass(that.options.styles.deactiveTab)){
+            tabCondition.removeClass(that.options.styles.deactiveTab);
+            tabCondition.addClass(that.options.styles.activeTab);
+            if (tabSharing.hasClass(that.options.styles.activeTab)){
+                tabSharing.removeClass(that.options.styles.activeTab);
+            }
+            tabSharing.addClass(that.options.styles.deactiveTab);
+        }
+        contextHeader.show();
+        sharingEmail.hide();
+        if (that.dom.locate("baseSetDescription").hasClass(that.options.styles.invisible)){
+            that.dom.locate("baseSetDescription").removeClass(that.options.styles.invisible)
+            that.dom.locate("deleteSetLabel").removeClass(that.options.styles.invisible)
+        }
+        that.dom.locate("baseSetDescription").addClass(that.options.styles.visible);
+        that.dom.locate("deleteSetLabel").addClass(that.options.styles.visible);
+        contextHeaderDevices.show();
+        contextHeaderTime.show();
+    };
+
+    gpii.pmt.enableTabShare = function (that) {
+        var tabCondition = that.dom.locate("tabConditions");
+        var tabSharing = that.dom.locate("tabShare");
+        var sharingEmail = that.dom.locate("sharingEmail");
+        var contextHeader = that.dom.locate("contextHeader");
+        var contextHeaderDevices = that.dom.locate("contextHeaderDevices");
+        var contextHeaderTime = that.dom.locate("contextHeaderTime");
+
+        if (tabSharing.hasClass(that.options.styles.deactiveTab)){
+            tabSharing.removeClass(that.options.styles.deactiveTab);
+            tabSharing.addClass(that.options.styles.activeTab);
+            if (tabCondition.hasClass(that.options.styles.activeTab)){
+                tabCondition.removeClass(that.options.styles.activeTab);
+            }
+            tabCondition.addClass(that.options.styles.deactiveTab);
+        }
+        contextHeader.show();
+        sharingEmail.show();
+        if (that.dom.locate("baseSetDescription").hasClass(that.options.styles.visible)){
+            that.dom.locate("baseSetDescription").removeClass(that.options.styles.visible)
+            that.dom.locate("deleteSetLabel").removeClass(that.options.styles.visible)
+        }
+        that.dom.locate("baseSetDescription").addClass(that.options.styles.invisible);
+        that.dom.locate("deleteSetLabel").addClass(that.options.styles.invisible);
+        contextHeaderDevices.hide();
+        contextHeaderTime.hide();
+    };
+
+    gpii.pmt.clickDoneButton = function (overlayPanel, modalPanel, contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector) {
+        untitledSelector = untitledSelector + ":last";
+        var untitledLabel = $(untitledSelector);
+        untitledDescSelector = untitledDescSelector + ":last";
+        var untitledDescLabel = $(untitledDescSelector);
+        console.log("title: "+contextUntitled.val());
+        console.log("device: "+contextDevice.text());
+        untitledLabel.text(contextUntitled.val());
+        untitledDescLabel.text(contextDevice.text()+", "+contextTime.text());
+        overlayPanel.hide();
+        modalPanel.hide();
+    };
+
+    gpii.pmt.clickCancelButton = function (overlayPanel,modalPanel) {
+        overlayPanel.hide();
+        modalPanel.hide();
+    };
+
+    gpii.pmt.clickUntitled = function (that) {
+        var untitledHeader = that.dom.locate("untitledText");
+        var baseSet = that.dom.locate("baseSetDescription");
+        var deleteSet = that.dom.locate("deleteSetLabel");
+        
+        untitledHeader.addClass(that.options.styles.bgHeader);
+        baseSet.addClass(that.options.styles.visible);
+        deleteSet.addClass(that.options.styles.visible);
+    };
+
+    gpii.pmt.hidePanels = function (oPanel, mPanel) {
+        oPanel.hide();
+        mPanel.hide();
+    };
+
+    gpii.pmt.onEditClick = function (oPanel, mPanel) {
+        oPanel.show();
+        mPanel.show();
+    };
 
     gpii.pmt.createUntitledBoxAria = function (that, editText) {
         var editButton = that.dom.locate("contextEditButton");
@@ -439,7 +776,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         cRow.append(that.options.markup.pencilIcon);
     };
 
-    gpii.pmt.createUntitledBox = function (contextRows, untitledSetMarkup, label, desc, that, setLabel) {
+    gpii.pmt.createUntitledBox = function (contextRows, untitledSetMarkup, label, desc, that, setLabel, untitledSelector, untitledDescSelector) {
         var selectedIcon = that.dom.locate("leftArrowIcon");
         selectedIcon.remove();
         var pencilIcon = that.dom.locate("pencilIcon");
@@ -447,10 +784,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         var editButton = that.dom.locate("contextEditButton");
         editButton.remove();
         contextRows.append(untitledSetMarkup);
-        var untitledLabel = that.dom.locate("untitledLabel");
+
+        untitledSelector = untitledSelector + ":last";
+        var untitledLabel = $(untitledSelector);
+        untitledDescSelector = untitledDescSelector + ":last";
+        var untitledDescLabel = $(untitledDescSelector);
         untitledLabel.text(label);
-        var untitledDescription = that.dom.locate("untitledDescLabel");
-        untitledDescription.text(desc);
+        untitledDescLabel.text(desc);
         setLabel.text(label);
     };
 
@@ -548,4 +888,5 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         outerPreviewEnhancerOptions: "{originalEnhancerOptions}.options.originalUserOptions",
         emptyComponentType: "fluid.emptySubcomponent"
     });
+    
 })(fluid);

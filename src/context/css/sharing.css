@@ -1,0 +1,164 @@
+/*
+    Font icons
+*/
+@font-face {
+    font-family: 'C4Aicons';
+    src:url('../fonts/C4Aicons.eot');
+    src:url('../fonts/C4Aicons.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/C4Aicons.ttf') format('truetype'),
+        url('../fonts/C4Aicons.woff') format('woff'),
+        url('../fonts/C4Aicons.svg#C4Aicons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.gpii-link-copy {
+    border: 0.5em solid #00aaaa;
+    border-radius: 0.31em;
+    left: -4em;
+    margin-left: 6.4em;
+    position: relative;
+    top: 6em;
+    width: 6em;
+    background-color: #00aaaa;
+}
+
+.gpiic-link-copy-label {
+    text-align: center;
+    color: #FFFFFF;
+    background-color: #00AAAA;
+}
+
+.gpii-link-copy-fontIcon {
+    -webkit-font-smoothing: antialiased;
+    display: table;
+    padding-right: 0.5em;
+}
+
+.gpii-link-copy-fontIcon:before {
+    font-size: 20px;
+    font-weight: normal;
+    color: #FFFFFF;
+    background-color: #00AAAA;
+}
+
+.gpii-link-copy-fontIcon:before {
+    content: "\e64c";
+}
+
+.gpii-link-copy a:link, .gpii-download-copy a:link {
+    text-decoration: none;
+ }
+
+.gpii-email-copy a:link {
+    text-decoration: none;
+    pointer-events : none;
+}
+
+.gpii-enter-email-address {
+    background-color: #ffffff;
+    border: 0.5em solid #ffffff;
+    border-radius: 0.31em;
+    left: 5em;
+    margin-left: 8em;
+    position: relative;
+    top: 2.8em;
+    width: 21em;
+}
+
+.gpii-enter-email-address-input {
+    border: 0 none;
+    margin-left: -0.2em;
+    width: 21em;
+    font-family: "Roboto Slab",serif;
+    font-weight: normal;
+    font-size: 1em;
+}
+
+.gpii-download-copy {
+    border: 0.5em solid #00aaaa;
+    border-radius: 0.31em;
+    left: -4em;
+    margin-left: 6.4em;
+    position: relative;
+    top: 5em;
+    width: 8em;
+    background-color: #00aaaa;
+}
+
+.gpiic-download-copy-label {
+    text-align: center;
+    color: #FFFFFF;
+    background-color: #00AAAA;
+}
+
+.gpii-download-copy-fontIcon {
+    -webkit-font-smoothing: antialiased;
+    display: table;
+    padding-right: 0.5em;
+}
+
+.gpii-download-copy-fontIcon:before {
+    font-size: 20px;
+    font-weight: normal;
+    color: #FFFFFF;
+    background-color: #00AAAA;
+}
+
+.gpii-download-copy-fontIcon:before {
+    content: "\e643";
+}
+
+.gpii-enter-message {
+    background-color: #ffffff;
+    border: 0.5em solid #ffffff;
+    border-radius: 0.31em;
+    left: 5em;
+    margin-left: 8em;
+    position: relative;
+    top: 1em;
+    width: 21em;
+}
+
+.gpii-enter-message-input {
+    border: 0 none;
+    font-family: "Roboto Slab",serif;
+    font-weight: normal;
+    font-size: 1em;
+    margin-left: -0.2em;
+    width: 21em;
+    
+}
+
+.gpii-email-copy {
+    background-color: #A9DCDC;
+    border: 0.5em solid #A9DCDC;
+    border-radius: 0.31em;
+    left: 21em;
+    margin-left: 6.4em;
+    position: relative;
+    top: 2em;
+    width: 6.5em;
+}
+
+.gpiic-email-copy-label {
+    text-align: center;
+    color: #F6F6F6;
+    background-color: #A9DCDC;
+}
+
+.gpii-email-copy-fontIcon {
+    -webkit-font-smoothing: antialiased;
+    display: table;
+    padding-right: 0.5em;
+}
+
+.gpii-email-copy-fontIcon:before {
+    font-size: 20px;
+    font-weight: normal;
+    color: #FFFFFF;
+}
+
+.gpii-email-copy-fontIcon:before {
+    content: "\e656";
+}
