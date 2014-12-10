@@ -114,6 +114,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     that.options.loggedUser = null;
                     that.events.onLogout.fire();
                     fluid.log("GET: " + data);
+                    window.location.href = location.origin + "/prefsEditors/demos/signup/";
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     fluid.log("GET: Error at logging out user " + that.options.loggedUser + "! Test status: " + textStatus);
@@ -125,7 +126,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     gpii.prefs.gpiiSession.getLoggedUser = function (that, onGetLoggedUserSuccessEvent, onGetLoggedUserErrorEvent) {
         $.ajax({
-            url: that.options.url + "token",
+            //url: that.options.url + "token", //Before Fireball
+            url: that.options.url + "userToken",
             type: "GET",
             // TODO: This is non-async because we want the "loggedUser" to be set before any "get" or "set"
             // in the GPIIStore is invoked.

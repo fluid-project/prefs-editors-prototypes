@@ -1,0 +1,13 @@
+{
+    "loginLabel": "Log in",
+    "loginDescription": "Enter your account details.",
+    "usernameLabel": "Enter email or username",
+    "passwordLabel": "Password",
+    "cancelButton": "cancel",
+    "loginButton": "log in",
+    "accountNotDetected": "Cloud for All account not detected.",
+    "doNotMatch": "Password and username do not match. Try again or reset your password.",
+    "signUpLink": "Sign up now.",
+    "signUpLinkDescription": "Don't have an account?",
+    "backButton": "back"
+}

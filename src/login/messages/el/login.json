@@ -1,0 +1,13 @@
+{
+    "loginLabel": "Σύνδεση",
+    "loginDescription": "Εισάγετε τις πληροφορίες λογαριασμού.",
+    "usernameLabel": "Εισαγωγή ηλεκτρονικής διεύθυνση ή ονόματος χρήστη",
+    "passwordLabel": "Κωδικός",
+    "cancelButton": "ακύρωση",
+    "loginButton": "Σύνδεση",
+    "accountNotDetected": "Cloud for All λογαριασμός δεν ανιχνεύτηκε.",
+    "doNotMatch": "Ο κωδικός και το όνομα χρήστη δε ταιριάζουν. Προσπαθείστε ξανά ή επαναφέρετε τον κωδικό.",
+    "signUpLink": "Εγγραφείτε τώρα.",
+    "signUpLinkDescription": "Δεν έχετε λογαριασμό?",
+    "backButton": "πίσω"
+}
