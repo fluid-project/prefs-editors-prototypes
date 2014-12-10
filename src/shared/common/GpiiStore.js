@@ -27,34 +27,34 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     fluid.registerNamespace("gpii.prefs");
 
     gpii.prefs.commonTermsTransformationRules = {
-        "http://registry\\.gpii\\.org/common/announceCapitals": [{
+        "http://registry\\.gpii\\.net/common/announceCapitals": [{
             value: "gpii_primarySchema_announceCapitals"
         }],
-        "http://registry\\.gpii\\.org/common/keyEcho": [{
+        "http://registry\\.gpii\\.net/common/keyEcho": [{
             value: "gpii_primarySchema_keyEcho"
         }],
-        "http://registry\\.gpii\\.org/common/punctuationVerbosity": [{
+        "http://registry\\.gpii\\.net/common/punctuationVerbosity": [{
             value: "gpii_primarySchema_punctuationVerbosity"
         }],
-        "http://registry\\.gpii\\.org/common/screenReaderBrailleOutput": [{
+        "http://registry\\.gpii\\.net/common/screenReaderBrailleOutput": [{
             value: "gpii_primarySchema_screenReaderBrailleOutput"
         }],
-        "http://registry\\.gpii\\.org/common/auditoryOutLanguage": [{
+        "http://registry\\.gpii\\.net/common/auditoryOutLanguage": [{
             value: "gpii_primarySchema_screenReaderLanguage"
         }],
-        "http://registry\\.gpii\\.org/common/screenReaderTTSEnabled": [{
+        "http://registry\\.gpii\\.net/common/screenReaderTTSEnabled": [{
             value: "gpii_primarySchema_speakText"
         }],
-        "http://registry\\.gpii\\.org/common/speakTutorialMessages": [{
+        "http://registry\\.gpii\\.net/common/speakTutorialMessages": [{
             value: "gpii_primarySchema_speakTutorialMessages"
         }],
-        "http://registry\\.gpii\\.org/common/readingUnit": [{
+        "http://registry\\.gpii\\.net/common/readingUnit": [{
             value: "gpii_primarySchema_textHighlighting"
         }],
-        "http://registry\\.gpii\\.org/common/language": [{
+        "http://registry\\.gpii\\.net/common/language": [{
             value: "gpii_primarySchema_universalLanguage"
         }],
-        "http://registry\\.gpii\\.org/common/volume": [{
+        "http://registry\\.gpii\\.net/common/volume": [{
             transform: {
                 type: "fluid.transforms.linearScale",
                 valuePath: "gpii_primarySchema_universalVolume",
@@ -62,7 +62,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 outputPath: "value"
             }
         }],
-        "http://registry\\.gpii\\.org/common/pitch": [{
+        "http://registry\\.gpii\\.net/common/pitch": [{
             transform: {
                 type: "fluid.transforms.linearScale",
                 valuePath: "gpii_primarySchema_voicePitch",
@@ -70,7 +70,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 outputPath: "value"
             }
         }],
-        "http://registry\\.gpii\\.org/common/volumeTTS": [{
+        "http://registry\\.gpii\\.net/common/volumeTTS": [{
             transform: {
                 type: "fluid.transforms.linearScale",
                 valuePath: "gpii_primarySchema_volume",
@@ -78,13 +78,13 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 outputPath: "value"
             }
         }],
-        "http://registry\\.gpii\\.org/common/wordEcho": [{
+        "http://registry\\.gpii\\.net/common/wordEcho": [{
             value: "gpii_primarySchema_wordEcho"
         }],
-        "http://registry\\.gpii\\.org/common/speechRate": [{
+        "http://registry\\.gpii\\.net/common/speechRate": [{
             value: "gpii_primarySchema_wordsSpokenPerMinute"
         }],
-        "http://registry\\.gpii\\.org/common/magnification": [{
+        "http://registry\\.gpii\\.net/common/magnification": [{
             transform: {
                 type: "fluid.transforms.linearScale",
                 valuePath: "gpii_primarySchema_magnification",
@@ -92,16 +92,16 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 outputPath: "value"
             }
         }],
-        "http://registry\\.gpii\\.org/common/fontSize": [{
+        "http://registry\\.gpii\\.net/common/fontSize": [{
             value: "gpii_primarySchema_fontSize"
         }],
-        "http://registry\\.gpii\\.org/common/highContrastEnabled": [{
+        "http://registry\\.gpii\\.net/common/highContrastEnabled": [{
             value: "gpii_primarySchema_contrastEnabled"
         }],
-        "http://registry\\.gpii\\.org/common/highContrastTheme": [{
+        "http://registry\\.gpii\\.net/common/highContrastTheme": [{
             value: "gpii_primarySchema_contrast_theme"
         }],
-        "http://registry\\.gpii\\.org/common/cursorSize": [{
+        "http://registry\\.gpii\\.net/common/cursorSize": [{
             transform: {
                 type: "fluid.transforms.linearScale",
                 valuePath: "gpii_primarySchema_cursorSize",
@@ -109,19 +109,19 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 outputPath: "value"
             }
         }],
-        "http://registry\\.gpii\\.org/common/magnifierEnabled": [{
+        "http://registry\\.gpii\\.net/common/magnifierEnabled": [{
             value: "gpii_primarySchema_magnifierEnabled"
         }],
-        "http://registry\\.gpii\\.org/common/tracking": [{
+        "http://registry\\.gpii\\.net/common/tracking": [{
             value: "gpii_primarySchema_tracking"
         }],
-        "http://registry\\.gpii\\.org/common/trackingTTS": [{
+        "http://registry\\.gpii\\.net/common/trackingTTS": [{
             value: "gpii_primarySchema_screenReaderTracking"
         }],
-        "http://registry\\.gpii\\.org/common/magnifierPosition": [{
+        "http://registry\\.gpii\\.net/common/magnifierPosition": [{
             value: "gpii_primarySchema_magnificationPosition"
         }],
-        "http://registry\\.gpii\\.org/common/showCrosshairs": [{
+        "http://registry\\.gpii\\.net/common/showCrosshairs": [{
             value: "gpii_primarySchema_showCrosshairs"
         }]
     };
@@ -225,7 +225,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     gpii.prefs.gpiiStore.set = function (model, settings, session, modelTransformFunc, onSuccessfulSetFunction) {
         var transformedModel = modelTransformFunc(model);
 
-        var urlToPost = session.options.loggedUser ? (settings.url + "user/" + session.options.loggedUser) : (settings.url + "user/");
+        var urlToPost = session.options.loggedUser ? (settings.url + "user/" + session.options.loggedUser) : (settings.url + "user/"); //Before Fireball
+        //var urlToPost = session.options.loggedUser ? (settings.url + "user/preferences/" + session.options.loggedUser) : (settings.url + "user/preferences/");
         $.ajax({
             url: urlToPost,
             type: "POST",
