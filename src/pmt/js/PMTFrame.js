@@ -79,8 +79,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 timeLabel: ".gpiic-context-header-time-label",
                 addNewTimeLabel: ".gpiic-context-time-add-new-label",
                 toLabel: ".gpiic-context-time-to-label",
-                appliesToLabel: ".gpiic-context-device-applies-label",
-                devicesTextLabel: ".gpiic-context-devices-label",
                 cancelButton: ".gpiic-context-cancelButton",
                 doneButton: ".gpiic-context-doneButton",
                 linkCopyButton: ".gpiic-context-linkCopyButton",
@@ -95,7 +93,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 sharingEmail: ".gpiic-link-copy-enter-email-address",
                 contextHeaderDevices: ".gpiic-context-header-devices",
                 contextHeaderTime: ".gpiic-context-header-time",
-                copyIcon: ".gpiic-email-copy-fontIcon"
+                copyIcon: ".gpiic-email-copy-fontIcon",
+                deviceDiv: ".gpiic-context-devices-add-new",
+                selectDevice: ".gpiic-context-devices-list-items"
             },
             markup: {
                 baseSet:
@@ -482,6 +482,51 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.emailCopyButton",
                     "method": "click",
                     "args": ["{that}.clickEmailCopyButton"]
+                },
+                "onReady.setTabletText": {
+                    "this": "{that}.dom.tabletLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.tabletLabel"]
+                },
+                "onReady.setLaptopText": {
+                    "this": "{that}.dom.laptopLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.laptopLabel"]
+                },
+                "onReady.setDesktopText": {
+                    "this": "{that}.dom.desktopLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.desktopLabel"]
+                },
+                "onReady.setAllText": {
+                    "this": "{that}.dom.allLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.allLabel"]
+                },
+                "onReady.setPhoneText": {
+                    "this": "{that}.dom.phoneLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.phoneLabel"]
+                },
+                "onReady.setKioskText": {
+                    "this": "{that}.dom.kioskLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.kioskLabel"]
+                },
+                "onReady.setBankMachineText": {
+                    "this": "{that}.dom.bankMachineLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.bankMachineLabel"]
+                },
+                "onReady.setOtherText": {
+                    "this": "{that}.dom.otherLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.otherLabel"]
+                },
+                "onReady.selectDevice": {
+                    "this": "{that}.dom.deviceDiv",
+                    "method": "click",
+                    "args": ["{that}.selectDevice"]
                 }
             },
             invokers: {
@@ -596,7 +641,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 clickEmailCopyButton: {
                     "funcName": "gpii.pmt.clickEmailCopyButton",
                     "args": ["{that}.dom.emailAddressLabel", "{that}.dom.enterMessageLabel", "{that}.msgLookup.emailSubject"]
-                }, 
+                },
+                selectDevice: {
+                    "funcName": "gpii.pmt.selectDevice",
+                    "args": ["{that}", "{that}.options.selectors.selectDevice", "{that}.msgLookup.appliesToLabel", "{that}.msgLookup.devicesTextLabel"]
+                }
             },
             strings: {
                 "mainVisibilitySwitch": "gpii_primarySchema_speakText",
@@ -605,6 +654,22 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
+    gpii.pmt.selectDevice = function (that, sDevice, appliesToLabel, devicesTextLabel) {
+        var deviceDiv = that.dom.locate("deviceDiv");
+        var spanAddNew = that.dom.locate("addNewDeviceLabel");
+        var selectDevice = that.dom.locate("selectDevice");
+        var notAppliedToAnyDevicesLabel = that.dom.locate("notAppliedToAnyDevicesLabel");
+        
+        spanAddNew.remove();
+        selectDevice.removeClass(that.options.styles.invisible);
+        selectDevice.addClass(that.options.styles.visible);
+        
+        sDevice = sDevice + " option:selected";
+        var sDeviceSelector = $(sDevice);
+        var value = appliesToLabel + sDeviceSelector.val() + devicesTextLabel;
+        notAppliedToAnyDevicesLabel.text(value);
+    };
+    
     gpii.pmt.clickEmailCopyButton = function (to, body, subject) {
         console.log(to.val());
         console.log(body.val());

@@ -167,7 +167,7 @@ ul {
     display: block;
     border: 3px solid #62CACA;
     width: 32em;
-    height: 1.7em;
+    height: 1.6em;
     background-color: #FFFFFF;
     position: relative;
     border-radius: 0.31em;
@@ -182,8 +182,9 @@ ul {
     font-style: italic;
     font-weight: bold;
     font-size: 1em;
+    line-height: 1.4em;
 }
-
+/*
 .gpii-context-devices-list-box {
     border: 3px solid #62caca;
     background-color: #fff;
@@ -191,43 +192,54 @@ ul {
     display: none;
     height: 12.5em;
     margin-left: 6.4em;
-    position: relative;/*absolute; if you hide times' elements*/
+    position: relative;
     width: 26.25em;
     z-index: 1;
 }
-
+*/
 .gpii-context-devices-list-items {
     color: #6F6A56;
-    margin-top: 0.188em;
     font-weight: normal;
     font-size: 0.8em;
+    width: 100%;
+    border: none !important;
+    color: #474d71;
+    font-size: 0.95em;
 }
 
 .gpii-select-device-labels {
     padding-left: 1em;
+    border-left-color: #62caca;
+    border-left-style: solid;
+    border-right-color: #62caca;
+    border-right-style: solid;
+    color: #474d71;
 }
 
 .gpii-select-device-labels-all {
-    margin-left : 0.2em;
     border-bottom-style: dashed;
-    padding-right : 15em;
 }
 
+.gpii-select-device-labels-other {
+    border-bottom-color: #62caca;
+    border-bottom-style: solid;
+}
+/*
 .gpii-select-device li{
     margin-top: 0.5em;
 }
-
+*/
 .gpii-select-device-all-label {
     border-bottom: medium dashed;
-    width: 15em;/* !important; */
+    width: 15em;
 }
-
+/*
 .gpii-context-devices-Onselect-device-list-item {
     background-color: #FFDD00;
     position: relative;
-    width: inherit;/*32.25em;*/
+    width: inherit;
 }
-
+*/
 .gpii-context-devices-notapplied {
     color: #474D71;
     margin-left: 7em;
