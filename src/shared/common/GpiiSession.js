@@ -76,6 +76,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
 
     gpii.prefs.gpiiSession.login = function (that, userToken) {
+        //userToken = that.options.loggedUser;
         if (userToken !== null) {
             $.ajax({
                 url: that.options.url + "user/" + userToken + "/login",
