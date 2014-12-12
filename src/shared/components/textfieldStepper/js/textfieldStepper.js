@@ -110,7 +110,7 @@ https://github.com/gpii/universal/LICENSE.txt
 
         valueField.attr("autocomplete", "off");
         if (labelledbyDomElement) {
-            labelledbyDomElement.attr("for", $(valueField).attr("id"));
+            labelledbyDomElement.attr("for", fluid.allocateSimpleId(valueField));
         }
 
         that.locate("increment").attr({
