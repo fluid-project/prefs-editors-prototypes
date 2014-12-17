@@ -27,7 +27,6 @@
     "baseSetDescription": "Use as a Base Set",
     "deleteSetLabel": "Delete Set",
     "notAppliedToAnyDevicesLabel": "not applied to any devices",
-    "addNewDeviceLabel": " + add new  ",
     "devicesLabel": " Devices ",
     "allLabel": "all",
     "desktopLabel": "desktop",
@@ -39,7 +38,6 @@
     "otherLabel": "other",
     "notAppliedAtAnyTimesLabel": "not applied at any times",
     "timeLabel": "Time",
-    "addNewTimeLabel": " + add new  ",
     "toLabel": "  to  ",
     "appliesToLabel": "applies to ",
     "devicesTextLabel" : " devices",
@@ -51,5 +49,8 @@
     "untitledText": "Untitled1",
     "emailAddressLabel": "enter email address(es)",
     "enterMessageLabel" : "enter message (optional)",
-    "emailSubject": "CLOUD4ALL:Share needs and preferences"
+    "emailSubject": "CLOUD4ALL:Share needs and preferences",
+    "colon": ":",
+    "editTime": "edit",
+    "deleteTime": "delete"
 }

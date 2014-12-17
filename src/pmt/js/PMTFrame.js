@@ -65,7 +65,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 baseSetDescription: ".gpiic-context-baseset-label",
                 deleteSetLabel: ".gpiic-context-deleteset-label",
                 notAppliedToAnyDevicesLabel: ".gpiic-context-devices-notapplied-label",
-                addNewDeviceLabel: ".gpiic-context-devices-add-new-label",
                 devicesLabel: ".gpiic-context-header-devices-label",
                 allLabel: ".gpiic-select-device-all-label",
                 desktopLabel: ".gpiic-select-device-desktop-label",
@@ -77,7 +76,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 otherLabel: ".gpiic-select-device-other-label",
                 notAppliedAtAnyTimesLabel: ".gpiic-context-times-notapplied-label",
                 timeLabel: ".gpiic-context-header-time-label",
-                addNewTimeLabel: ".gpiic-context-time-add-new-label",
                 toLabel: ".gpiic-context-time-to-label",
                 cancelButton: ".gpiic-context-cancelButton",
                 doneButton: ".gpiic-context-doneButton",
@@ -94,8 +92,19 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 contextHeaderDevices: ".gpiic-context-header-devices",
                 contextHeaderTime: ".gpiic-context-header-time",
                 copyIcon: ".gpiic-email-copy-fontIcon",
-                deviceDiv: ".gpiic-context-devices-add-new",
-                selectDevice: ".gpiic-context-devices-list-items"
+                selectDevice: ".gpiic-context-devices-list-items",
+                timeInputsDiv: ".gpiic-context-time-whole-div",
+                timeFromHour: ".gpiic-context-time-from-hour",
+                timeFromMinute: ".gpiic-context-time-from-minute",
+                timeToHour: ".gpiic-context-time-to-hour",
+                timeToMinute: ".gpiic-context-time-to-minute",
+                fromColon: ".gpiic-context-time-from-colon",
+                toColon: ".gpiic-context-time-to-colon",
+                recordLine: ".gpiic-context-times-new-record-line",
+                editTime: ".gpiic-prefsEditor-editTime-button",
+                deleteTime: ".gpiic-prefsEditor-deleteTime-button",
+                conditionsLink: ".gpiic-prefsEditor-conditionsLink",
+                sharingLink: ".gpiic-prefsEditor-sharingLink"
             },
             markup: {
                 baseSet:
@@ -163,6 +172,36 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.addSetLink",
                     "method": "mouseout",
                     "args": ["{that}.mouseoutAddSetLink"]
+                },
+                "onReady.setEditTime": {
+                    "this": "{that}.dom.editTime",
+                    "method": "val",
+                    "args": ["{that}.msgLookup.editTime"]
+                },
+                "onReady.editTime": {
+                    "this": "{that}.dom.editTime",
+                    "method": "click",
+                    "args": ["{that}.editTime"]
+                },
+                "onReady.setEditTimeAriaLabel": {
+                    "this": "{that}.dom.editTime",
+                    "method": "attr",
+                    "args": ["aria-label", "{that}.msgLookup.editTime"]
+                },
+                "onReady.setDeleteTime": {
+                    "this": "{that}.dom.deleteTime",
+                    "method": "val",
+                    "args": ["{that}.msgLookup.deleteTime"]
+                },
+                "onReady.deleteTime": {
+                    "this": "{that}.dom.deleteTime",
+                    "method": "click",
+                    "args": ["{that}.deleteTime"]
+                },
+                "onReady.setDeleteTimeAriaLabel": {
+                    "this": "{that}.dom.deleteTime",
+                    "method": "attr",
+                    "args": ["aria-label", "{that}.msgLookup.deleteTime"]
                 },
                 "onReady.createUntitledBox": {
                     "this": "{that}.dom.addSetLink",
@@ -287,6 +326,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "attr",
                     "args": ["aria-label", "{that}.msgLookup.addSet"]
                 },
+                "onReady.setConditionsAriaLabel": {
+                    "this": "{that}.dom.conditionsLink",
+                    "method": "attr",
+                    "args": ["aria-label", "{that}.msgLookup.conditionsTabLabel"]
+                },
+                "onReady.setSharingAriaLabel": {
+                    "this": "{that}.dom.sharingLink",
+                    "method": "attr",
+                    "args": ["aria-label", "{that}.msgLookup.shareTabLabel"]
+                },
+                
                 "onReady.setSaveAndApplyButtonText": {
                     "this": "{that}.dom.saveAndApplyButtonLabel",
                     "method": "attr",
@@ -393,15 +443,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "text",
                     "args": ["{that}.msgLookup.timeLabel"]
                 },
-                "onReady.setNewDeviceLabel": {
-                    "this": "{that}.dom.addNewDeviceLabel",
+                "onReady.setFromColonText": {
+                    "this": "{that}.dom.fromColon",
                     "method": "text",
-                    "args": ["{that}.msgLookup.addNewDeviceLabel"]
+                    "args": ["{that}.msgLookup.colon"]
                 },
-                "onReady.setNewTimeLabel": {
-                    "this": "{that}.dom.addNewTimeLabel",
+                "onReady.setToColonText": {
+                    "this": "{that}.dom.toColon",
                     "method": "text",
-                    "args": ["{that}.msgLookup.addNewTimeLabel"]
+                    "args": ["{that}.msgLookup.colon"]
                 },
                 "onReady.setNotAppliedToAnyDevicesLabel": {
                     "this": "{that}.dom.notAppliedToAnyDevicesLabel",
@@ -524,9 +574,34 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": ["{that}.msgLookup.otherLabel"]
                 },
                 "onReady.selectDevice": {
-                    "this": "{that}.dom.deviceDiv",
-                    "method": "click",
+                    "this": "{that}.dom.selectDevice",
+                    "method": "keyup",
                     "args": ["{that}.selectDevice"]
+                },
+                "onReady.setToLabel": {
+                    "this": "{that}.dom.toLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.toLabel"]
+                },
+                "onReady.setFromHour": {
+                    "this": "{that}.dom.timeFromHour",
+                    "method": "keyup",
+                    "args": ["{that}.populateFromHour"]
+                },
+                "onReady.setFromMinute": {
+                    "this": "{that}.dom.timeFromMinute",
+                    "method": "keyup",
+                    "args": ["{that}.populateFromMinute"]
+                },
+                "onReady.setToHour": {
+                    "this": "{that}.dom.timeToHour",
+                    "method": "keyup",
+                    "args": ["{that}.populateToHour"]
+                },
+                "onReady.setToMinute": {
+                    "this": "{that}.dom.timeToMinute",
+                    "method": "keyup",
+                    "args": ["{that}.populateToMinute"]
                 }
             },
             invokers: {
@@ -624,7 +699,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 clickDoneButton: {
                     "funcName": "gpii.pmt.clickDoneButton",
-                    "args": ["{that}.dom.overlayPanel", "{that}.dom.modalPanel", "{that}.dom.addNewDeviceLabel", "{that}.dom.addNewTimeLabel", "{that}.dom.untitledText", "{that}.options.selectors.untitledLabel", "{that}.options.selectors.untitledDescLabel"]
+                    "args": ["{that}.dom.overlayPanel", "{that}.dom.modalPanel", "{that}.dom.notAppliedToAnyDevicesLabel", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.dom.untitledText", "{that}.options.selectors.untitledLabel", "{that}.options.selectors.untitledDescLabel", "{that}.dom.setLabel"]
                 },
                 enableTabConditions: {
                     "funcName": "gpii.pmt.enableTabConditions",
@@ -644,7 +719,35 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 selectDevice: {
                     "funcName": "gpii.pmt.selectDevice",
-                    "args": ["{that}", "{that}.options.selectors.selectDevice", "{that}.msgLookup.appliesToLabel", "{that}.msgLookup.devicesTextLabel"]
+                    "args": ["{that}.options.selectors.selectDevice", "{that}.msgLookup.appliesToLabel", "{that}.msgLookup.devicesTextLabel", "{that}.dom.notAppliedToAnyDevicesLabel"]
+                },
+                selectTime: {
+                    "funcName": "gpii.pmt.selectTime",
+                    "args": ["{that}"]
+                },
+                populateFromHour: {
+                    "funcName": "gpii.pmt.populateTime",
+                    "args": ["{that}", "{that}.dom.timeFromHour", "{that}.dom.timeFromMinute", "{that}.dom.timeToHour", "{that}.dom.timeToMinute", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.msgLookup.toLabel"]
+                },
+                populateFromMinute: {
+                    "funcName": "gpii.pmt.populateTime",
+                    "args": ["{that}", "{that}.dom.timeFromHour", "{that}.dom.timeFromMinute", "{that}.dom.timeToHour", "{that}.dom.timeToMinute", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.msgLookup.toLabel"]
+                },
+                populateToHour: {
+                    "funcName": "gpii.pmt.populateTime",
+                    "args": ["{that}", "{that}.dom.timeFromHour", "{that}.dom.timeFromMinute", "{that}.dom.timeToHour", "{that}.dom.timeToMinute", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.msgLookup.toLabel"]
+                },
+                populateToMinute: {
+                    "funcName": "gpii.pmt.populateTime",
+                    "args": ["{that}", "{that}.dom.timeFromHour", "{that}.dom.timeFromMinute", "{that}.dom.timeToHour", "{that}.dom.timeToMinute", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.msgLookup.toLabel"]
+                },
+                editTime: {
+                    "funcName": "gpii.pmt.editTime",
+                    "args": ["{that}"]
+                },
+                deleteTime: {
+                    "funcName": "gpii.pmt.deleteTime",
+                    "args": ["{that}", "{that}.dom.recordLine", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.msgLookup.notAppliedAtAnyTimesLabel"]
                 }
             },
             strings: {
@@ -654,19 +757,39 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.pmt.selectDevice = function (that, sDevice, appliesToLabel, devicesTextLabel) {
-        var deviceDiv = that.dom.locate("deviceDiv");
-        var spanAddNew = that.dom.locate("addNewDeviceLabel");
-        var selectDevice = that.dom.locate("selectDevice");
-        var notAppliedToAnyDevicesLabel = that.dom.locate("notAppliedToAnyDevicesLabel");
+    gpii.pmt.deleteTime = function (that, recordLine, notAppliedAtAnyTimesLabelObj, notAppliedAtAnyTimesLabelMsg) {
+        var fromHour = that.dom.locate("timeFromHour");
+        var fromMin = that.dom.locate("timeFromMinute");
+        var toHour = that.dom.locate("timeToHour");
+        var toMin = that.dom.locate("timeToMinute");
+        fromHour.val("");
+        fromMin.val("");
+        toHour.val("");
+        toMin.val("");
+        fromHour.focus();
         
-        spanAddNew.remove();
-        selectDevice.removeClass(that.options.styles.invisible);
-        selectDevice.addClass(that.options.styles.visible);
-        
+        recordLine.removeClass(that.options.styles.visible);
+        recordLine.addClass(that.options.styles.invisible);
+        notAppliedAtAnyTimesLabelObj.text(notAppliedAtAnyTimesLabelMsg);
+    };
+
+    gpii.pmt.editTime = function (that) {
+        var fromHour = that.dom.locate("timeFromHour");
+        fromHour.focus();
+    };
+
+    gpii.pmt.populateTime = function (that, timeFromHour, timeFromMinute, timeToHour, timeToMinute, notAppliedAtAnyTimesLabel, toLabel) {
+        notAppliedAtAnyTimesLabel.text(timeFromHour.val() + ":" + timeFromMinute.val() + toLabel + timeToHour.val() + ":" + timeToMinute.val());
+        var rLine = that.dom.locate("recordLine");
+        rLine.removeClass(that.options.styles.invisible);
+        rLine.addClass(that.options.styles.visible);
+    };
+
+    gpii.pmt.selectDevice = function (sDevice, appliesToLabel, devicesTextLabel, notAppliedToAnyDevicesLabel) {
         sDevice = sDevice + " option:selected";
         var sDeviceSelector = $(sDevice);
         var value = appliesToLabel + sDeviceSelector.val() + devicesTextLabel;
+        console.log(sDevice);
         notAppliedToAnyDevicesLabel.text(value);
     };
     
@@ -781,15 +904,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         contextHeaderTime.hide();
     };
 
-    gpii.pmt.clickDoneButton = function (overlayPanel, modalPanel, contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector) {
+    gpii.pmt.clickDoneButton = function (overlayPanel, modalPanel, contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel) {
         untitledSelector = untitledSelector + ":last";
         var untitledLabel = $(untitledSelector);
         untitledDescSelector = untitledDescSelector + ":last";
         var untitledDescLabel = $(untitledDescSelector);
-        console.log("title: "+contextUntitled.val());
-        console.log("device: "+contextDevice.text());
         untitledLabel.text(contextUntitled.val());
         untitledDescLabel.text(contextDevice.text()+", "+contextTime.text());
+        setLabel.text(contextUntitled.val());
         overlayPanel.hide();
         modalPanel.hide();
     };
