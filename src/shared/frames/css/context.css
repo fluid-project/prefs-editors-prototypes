@@ -98,6 +98,7 @@ ul {
 }
 
 .gpii-context-baseset {
+    font-family: Times;
     color: #474D71;
     margin-left: 0em;
     margin-top: 3.2em;
@@ -105,17 +106,16 @@ ul {
     font-weight: bold;
     font-size: 1.1em;
     width: 10em;
-    visibility: hidden;
 }
 
 .gpii-context-deleteset {
+    font-family: Times;
     color: #474D71;
     margin-left: 31.8em;
     margin-top: -1.25em;
     font-style: normal;
     font-weight: bold;
     font-size: 1.1em;
-    visibility: hidden;
 }
 
 .gpii-devices-adjusterIcons {

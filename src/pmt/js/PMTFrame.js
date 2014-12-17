@@ -727,19 +727,19 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 populateFromHour: {
                     "funcName": "gpii.pmt.populateTime",
-                    "args": ["{that}", "{that}.dom.timeFromHour", "{that}.dom.timeFromMinute", "{that}.dom.timeToHour", "{that}.dom.timeToMinute", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.msgLookup.toLabel"]
+                    "args": ["{gpiiSession}", "{that}", "{that}.dom.timeFromHour", "{that}.dom.timeFromMinute", "{that}.dom.timeToHour", "{that}.dom.timeToMinute", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.msgLookup.toLabel"]
                 },
                 populateFromMinute: {
                     "funcName": "gpii.pmt.populateTime",
-                    "args": ["{that}", "{that}.dom.timeFromHour", "{that}.dom.timeFromMinute", "{that}.dom.timeToHour", "{that}.dom.timeToMinute", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.msgLookup.toLabel"]
+                    "args": ["{gpiiSession}", "{that}", "{that}.dom.timeFromHour", "{that}.dom.timeFromMinute", "{that}.dom.timeToHour", "{that}.dom.timeToMinute", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.msgLookup.toLabel"]
                 },
                 populateToHour: {
                     "funcName": "gpii.pmt.populateTime",
-                    "args": ["{that}", "{that}.dom.timeFromHour", "{that}.dom.timeFromMinute", "{that}.dom.timeToHour", "{that}.dom.timeToMinute", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.msgLookup.toLabel"]
+                    "args": ["{gpiiSession}", "{that}", "{that}.dom.timeFromHour", "{that}.dom.timeFromMinute", "{that}.dom.timeToHour", "{that}.dom.timeToMinute", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.msgLookup.toLabel"]
                 },
                 populateToMinute: {
                     "funcName": "gpii.pmt.populateTime",
-                    "args": ["{that}", "{that}.dom.timeFromHour", "{that}.dom.timeFromMinute", "{that}.dom.timeToHour", "{that}.dom.timeToMinute", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.msgLookup.toLabel"]
+                    "args": ["{gpiiSession}", "{that}", "{that}.dom.timeFromHour", "{that}.dom.timeFromMinute", "{that}.dom.timeToHour", "{that}.dom.timeToMinute", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.msgLookup.toLabel"]
                 },
                 editTime: {
                     "funcName": "gpii.pmt.editTime",
@@ -778,18 +778,21 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         fromHour.focus();
     };
 
-    gpii.pmt.populateTime = function (that, timeFromHour, timeFromMinute, timeToHour, timeToMinute, notAppliedAtAnyTimesLabel, toLabel) {
+    gpii.pmt.populateTime = function (sess, that, timeFromHour, timeFromMinute, timeToHour, timeToMinute, notAppliedAtAnyTimesLabel, toLabel) {
         notAppliedAtAnyTimesLabel.text(timeFromHour.val() + ":" + timeFromMinute.val() + toLabel + timeToHour.val() + ":" + timeToMinute.val());
         var rLine = that.dom.locate("recordLine");
         rLine.removeClass(that.options.styles.invisible);
         rLine.addClass(that.options.styles.visible);
+        //sess.options.fromTime = timeFromHour.val() + ":" + timeFromMinute.val();
+        sess.options.context.fromTime = timeFromHour.val() + ":" + timeFromMinute.val();
+        sess.options.context.toTime = timeToHour.val() + ":" + timeToMinute.val();
+        sess.options.context.enabled = true;
     };
 
     gpii.pmt.selectDevice = function (sDevice, appliesToLabel, devicesTextLabel, notAppliedToAnyDevicesLabel) {
         sDevice = sDevice + " option:selected";
         var sDeviceSelector = $(sDevice);
         var value = appliesToLabel + sDeviceSelector.val() + devicesTextLabel;
-        console.log(sDevice);
         notAppliedToAnyDevicesLabel.text(value);
     };
     
