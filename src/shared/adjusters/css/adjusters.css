@@ -1726,8 +1726,8 @@ span.gpii-preset-button-label {
     background-color: #0AA;
     border-bottom: 0px;
     border-top: 10px;
-    border-left: 10px;
-    border-right: 10px;
+    border-left: 12px;
+    border-right: 12px;
     border-color: #CED7D9;
     border-style: solid;
     padding: 15px 70px;
@@ -1763,13 +1763,13 @@ span.gpii-preset-button-label {
 
 .gpii-prefsEditor-contextContainer {
     position: absolute;
-    width: 20.5em;
+    width: 23em;
     height: inherit;
     top: 0em;
     bottom:0em;
     margin: 0em auto;
     background-color: #556273;
-    left: -21.2em;
+    left: -23.7em;
     border-top: 10px solid #CED7D9;
     border-bottom: 12px solid #CED7D9;
     border-left: 10px solid #CED7D9;
@@ -1778,8 +1778,8 @@ span.gpii-preset-button-label {
 .gpii-prefsEditor-panelBottomRow-extended {
     display: table;
     position: absolute;
-    left: -21.2em;
-    width: 64.3em;
+    left: -23.7em;
+    width: 66.8em;
 }
 
 .gpii-prefsEditor-baseSetRow {
@@ -1842,16 +1842,16 @@ span.gpii-preset-button-label {
     font-size: 1.8em;
     position: absolute;
     color: #000000;
-    padding-left: 0.7em;
+    padding-left: 0.5em;
     padding-top: 0.5em;
 }
 
 .gpii-prefsEditor-contextFrame-setLabelDescription {
-    font-size: 0.9em;
+    font-size: 0.8em;
     position: relative;
     top: 3.5em;
     font-family: Verdana !important;
-    padding-left: 1.5em;
+    padding-left: 1.3em;
 }
 
 .gpii-prefsEditor-context-addIcon, .gpii-prefsEditor-context-addIconMouseOver {
@@ -1940,4 +1940,8 @@ span.gpii-preset-button-label {
     float: right;
     cursor: pointer;
     display: inline-block;
+}
+
+.gpii-prefsEditor-quickEditorLink {
+    margin-left: 0.1em;
 }
