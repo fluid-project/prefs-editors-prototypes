@@ -1941,3 +1941,7 @@ span.gpii-preset-button-label {
     cursor: pointer;
     display: inline-block;
 }
+
+.gpii-prefsEditor-quickEditorLink {
+    margin-left: 0.1em;
+}

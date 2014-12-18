@@ -2,7 +2,7 @@
     "myPreferencesLabelText": "my preferences",
     "allPreferencesLabelText": "all preferences",
     "saveAndApplyText": "save",
-    "preferencesSavedToUSB": "preferences saved to usb",
+    "preferencesSavedToUSB": "preferences saved",
     "preferencesModified": "preferences modified",
     "notificationMessagePart1": "To apply preferences on other devices, save this token:",
     "notificationMessagePart2": "TOKEN NUMBER",
