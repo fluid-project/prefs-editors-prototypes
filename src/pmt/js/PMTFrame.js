@@ -336,7 +336,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "attr",
                     "args": ["aria-label", "{that}.msgLookup.shareTabLabel"]
                 },
-                
+                "onReady.clickSharingLink": {
+                    "this": "{that}.dom.sharingLink",
+                    "method": "click",
+                    "args": ["{that}.clickSharingLink"]
+                },
                 "onReady.setSaveAndApplyButtonText": {
                     "this": "{that}.dom.saveAndApplyButtonLabel",
                     "method": "attr",
@@ -511,7 +515,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "onReady.setEnterMessageLabel": {
                     "this": "{that}.dom.enterMessageLabel",
                     "method": "text",
-                    "args": ["{that}.msgLookup.enterMessageLabel"]
+                    "args": ["{that}.enterMessage"]
+                    //"args": ["{that}.msgLookup.enterMessageLabel"]
                 },
                 "onReady.setLinkCopyButton": {
                     "this": "{that}.dom.linkCopyButton",
@@ -748,7 +753,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 deleteTime: {
                     "funcName": "gpii.pmt.deleteTime",
                     "args": ["{that}", "{that}.dom.recordLine", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.msgLookup.notAppliedAtAnyTimesLabel"]
-                }
+                },
+                clickSharingLink: {
+                    "funcName": "gpii.pmt.enterShareTab",
+                    "args": ["{that}.dom.enterMessageLabel", "{that}.msgLookup.enterMessageLabel", "{gpiiSession}"]
+                },
             },
             strings: {
                 "mainVisibilitySwitch": "gpii_primarySchema_speakText",
@@ -756,6 +765,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             }
         }
     });
+
+    gpii.pmt.enterShareTab = function (enterMessageLabelObj, enterMessageLabelTxt, session) {
+        if (session.options.dataToSend == null){
+            enterMessageLabelObj.text(enterMessageLabelTxt);
+        }
+        else{
+            enterMessageLabelObj.text(JSON.stringify(session.options.dataToSend));
+        }
+    }
 
     gpii.pmt.deleteTime = function (that, recordLine, notAppliedAtAnyTimesLabelObj, notAppliedAtAnyTimesLabelMsg) {
         var fromHour = that.dom.locate("timeFromHour");
@@ -779,12 +797,24 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
 
     gpii.pmt.populateTime = function (sess, that, timeFromHour, timeFromMinute, timeToHour, timeToMinute, notAppliedAtAnyTimesLabel, toLabel) {
-        notAppliedAtAnyTimesLabel.text(timeFromHour.val() + ":" + timeFromMinute.val() + toLabel + timeToHour.val() + ":" + timeToMinute.val());
+        notAppliedAtAnyTimesLabel.text(gpii.pmt.twoDigits(timeFromHour.val()) + ":" + gpii.pmt.twoDigits(timeFromMinute.val()) + toLabel + gpii.pmt.twoDigits(timeToHour.val()) + ":" + gpii.pmt.twoDigits(timeToMinute.val()));
         var rLine = that.dom.locate("recordLine");
         rLine.removeClass(that.options.styles.invisible);
         rLine.addClass(that.options.styles.visible);
     };
 
+    gpii.pmt.twoDigits = function (val){
+        if ((val != "") && (val < 10)){
+            val = "0"+val;
+            return val;
+        }
+        else if ((val != "") && (val >= 10)){
+            return val;
+        }
+        else {
+            return "";
+        }
+    }
     gpii.pmt.selectDevice = function (sess, sDevice, appliesToLabel, devicesTextLabel, notAppliedToAnyDevicesLabel) {
         sDevice = sDevice + " option:selected";
         var sDeviceSelector = $(sDevice);
@@ -793,9 +823,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
     
     gpii.pmt.clickEmailCopyButton = function (to, body, subject) {
-        console.log(to.val());
-        console.log(body.val());
-        console.log(subject);
         gpii.pmt.sendWithGmail({
             to: to.val(), 
             subject: subject,

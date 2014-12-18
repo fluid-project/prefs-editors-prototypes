@@ -176,27 +176,33 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
     gpii.prefs.gpiiStore.set = function (model, settings, session, modelTransformFunc, onSuccessfulSetFunction) {
         var transformedModel = modelTransformFunc(model);
+        var name = session.options.context.setName;
         if (session.options.context.enabled != null){
-            var dataToPost = {
+            var dataToSend = {
                 "contexts": {
                     "gpii-default": {
                         "name": "Default preferences",
                         "preferences": transformedModel
                     },
-                    "context": {
+                    "newSet": {
                         "name": session.options.context.setName,
-                        "preferences": {
-                            "http://registry\\.gpii\\.net/common/contextEnabled": session.options.context.enabled,
-                            "http://registry\\.gpii\\.net/common/contextDevice": session.options.context.device,
-                            "http://registry\\.gpii\\.net/common/contextFromTime": session.options.context.fromTime,
-                            "http://registry\\.gpii\\.net/common/contextToTime": session.options.context.toTime
-                        }
+                        "preferences": transformedModel,
+                        "conditions": [{
+                            "type": "http://registry.gpii.net/conditions/timeInRange",
+                            "from": session.options.context.fromTime,
+                            "to": session.options.context.toTime,
+                            "inputPath": "http://registry\\.gpii\\.net/common/environment/temporal\\.time"
+                        }]
                     }
                 }
             };
+            
+            var tmp = JSON.stringify(dataToSend);
+            tmp = tmp.replace("newSet",name);
+            dataToSend = JSON.parse(tmp);
         }
         else {
-            var dataToPost = {
+            var dataToSend = {
                     "contexts": {
                         "gpii-default": {
                             "name": "Default preferences",
@@ -205,6 +211,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     }
               };
         }
+        
+        
         var urlToPost, requestType;
         if (session.options.loggedUser) {
             urlToPost = settings.url + "preferences/" + session.options.loggedUser;
@@ -221,11 +229,12 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             dataType: "json",
             async: false,
             contentType: "application/json",
-            data: JSON.stringify(dataToPost),
+            data: JSON.stringify(dataToSend),
             success: function (data) {
                 if (requestType === "POST"){
                     onSuccessfulSetFunction(session, data);
                 }
+                session.options.dataToSend = dataToSend;
             },
             error: function () {
                 fluid.log("POST: Error at saving to GPII server");
