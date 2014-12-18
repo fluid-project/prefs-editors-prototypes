@@ -25,9 +25,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         // Maybe we should be informed for currently logged user from GPII?
         // This is relevant, http://issues.gpii.net/browse/GPII-290
         loggedUser: null,
-        //fromTime: null,
         context: {
+            setName: null,
             enabled: null,
+            device: null,
             fromTime: null,
             toTime: null
         },

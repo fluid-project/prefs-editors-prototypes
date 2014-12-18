@@ -176,27 +176,35 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
     gpii.prefs.gpiiStore.set = function (model, settings, session, modelTransformFunc, onSuccessfulSetFunction) {
         var transformedModel = modelTransformFunc(model);
-      /*  console.log("Enabled = "+session.options.context.enabled);
-        console.log("FromTime = "+session.options.context.fromTime);
-        console.log("toTime = "+session.options.context.toTime);*/
-        
-        var dataToPost = {
-            "contexts": {
-                "gpii-default": {
-                    "name": "Default preferences",
-                    "preferences": transformedModel
-                }/*,
-                "context": {
-                    "name": "context",
-                    "preferences": {
-                        //"http://registry\\.gpii\\.net/common/fromTime": session.options.fromTime
-                        //"http://registry\\.gpii\\.net/common/contextEnabled": session.options.context.enabled
-                        "http://registry\\.gpii\\.net/common/fromTime": session.options.context.fromTime
-                        //"http://registry\\.gpii\\.net/common/contextToTime": session.options.context.toTime
+        if (session.options.context.enabled != null){
+            var dataToPost = {
+                "contexts": {
+                    "gpii-default": {
+                        "name": "Default preferences",
+                        "preferences": transformedModel
+                    },
+                    "context": {
+                        "name": session.options.context.setName,
+                        "preferences": {
+                            "http://registry\\.gpii\\.net/common/contextEnabled": session.options.context.enabled,
+                            "http://registry\\.gpii\\.net/common/contextDevice": session.options.context.device,
+                            "http://registry\\.gpii\\.net/common/contextFromTime": session.options.context.fromTime,
+                            "http://registry\\.gpii\\.net/common/contextToTime": session.options.context.toTime
+                        }
                     }
-                }*/
-            }
-        };
+                }
+            };
+        }
+        else {
+            var dataToPost = {
+                    "contexts": {
+                        "gpii-default": {
+                            "name": "Default preferences",
+                            "preferences": transformedModel
+                        }
+                    }
+              };
+        }
         var urlToPost, requestType;
         if (session.options.loggedUser) {
             urlToPost = settings.url + "preferences/" + session.options.loggedUser;

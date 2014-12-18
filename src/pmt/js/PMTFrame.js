@@ -695,11 +695,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 clickCancelButton: {
                     "funcName": "gpii.pmt.clickCancelButton",
-                    "args": ["{that}.dom.overlayPanel","{that}.dom.modalPanel"]
+                    "args": ["{gpiiSession}", "{that}.dom.overlayPanel","{that}.dom.modalPanel"]
                 },
                 clickDoneButton: {
                     "funcName": "gpii.pmt.clickDoneButton",
-                    "args": ["{that}.dom.overlayPanel", "{that}.dom.modalPanel", "{that}.dom.notAppliedToAnyDevicesLabel", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.dom.untitledText", "{that}.options.selectors.untitledLabel", "{that}.options.selectors.untitledDescLabel", "{that}.dom.setLabel"]
+                    "args": ["{gpiiSession}", "{that}.dom.overlayPanel", "{that}.dom.modalPanel", "{that}.dom.notAppliedToAnyDevicesLabel", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.dom.untitledText", "{that}.options.selectors.untitledLabel", "{that}.options.selectors.untitledDescLabel", "{that}.dom.setLabel", "{that}.msgLookup.toLabel", "{that}.msgLookup.appliesToLabel", "{that}.msgLookup.devicesTextLabel"]
                 },
                 enableTabConditions: {
                     "funcName": "gpii.pmt.enableTabConditions",
@@ -719,7 +719,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 selectDevice: {
                     "funcName": "gpii.pmt.selectDevice",
-                    "args": ["{that}.options.selectors.selectDevice", "{that}.msgLookup.appliesToLabel", "{that}.msgLookup.devicesTextLabel", "{that}.dom.notAppliedToAnyDevicesLabel"]
+                    "args": ["{gpiiSession}", "{that}.options.selectors.selectDevice", "{that}.msgLookup.appliesToLabel", "{that}.msgLookup.devicesTextLabel", "{that}.dom.notAppliedToAnyDevicesLabel"]
                 },
                 selectTime: {
                     "funcName": "gpii.pmt.selectTime",
@@ -783,13 +783,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         var rLine = that.dom.locate("recordLine");
         rLine.removeClass(that.options.styles.invisible);
         rLine.addClass(that.options.styles.visible);
-        //sess.options.fromTime = timeFromHour.val() + ":" + timeFromMinute.val();
-        sess.options.context.fromTime = timeFromHour.val() + ":" + timeFromMinute.val();
-        sess.options.context.toTime = timeToHour.val() + ":" + timeToMinute.val();
-        sess.options.context.enabled = true;
     };
 
-    gpii.pmt.selectDevice = function (sDevice, appliesToLabel, devicesTextLabel, notAppliedToAnyDevicesLabel) {
+    gpii.pmt.selectDevice = function (sess, sDevice, appliesToLabel, devicesTextLabel, notAppliedToAnyDevicesLabel) {
         sDevice = sDevice + " option:selected";
         var sDeviceSelector = $(sDevice);
         var value = appliesToLabel + sDeviceSelector.val() + devicesTextLabel;
@@ -907,7 +903,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         contextHeaderTime.hide();
     };
 
-    gpii.pmt.clickDoneButton = function (overlayPanel, modalPanel, contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel) {
+    gpii.pmt.clickDoneButton = function (sess, overlayPanel, modalPanel, contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, toLabel, appliesToLabel, devicesTextLabel) {
         untitledSelector = untitledSelector + ":last";
         var untitledLabel = $(untitledSelector);
         untitledDescSelector = untitledDescSelector + ":last";
@@ -915,11 +911,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         untitledLabel.text(contextUntitled.val());
         untitledDescLabel.text(contextDevice.text()+", "+contextTime.text());
         setLabel.text(contextUntitled.val());
+        
+        var timeTemp = contextTime.text().split(toLabel);
+        sess.options.context.fromTime = timeTemp[0];
+        sess.options.context.toTime = timeTemp[1];
+        var deviceTemp = contextDevice.text().split(appliesToLabel);
+        deviceTemp = deviceTemp[1].toString().split(devicesTextLabel);
+        sess.options.context.device = deviceTemp[0];
+        sess.options.context.enabled = true;
+        sess.options.context.setName = contextUntitled.val();
         overlayPanel.hide();
         modalPanel.hide();
     };
 
-    gpii.pmt.clickCancelButton = function (overlayPanel,modalPanel) {
+    gpii.pmt.clickCancelButton = function (sess, overlayPanel,modalPanel) {
         overlayPanel.hide();
         modalPanel.hide();
     };
