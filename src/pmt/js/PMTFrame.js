@@ -14,7 +14,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     "use strict";
 
     fluid.defaults("gpii.pmt", {
-        gradeNames: ["fluid.prefs.GPIIEditor", "autoInit"],
+        gradeNames: ["fluid.prefs.GPIIEditor", "fluid.prefs.rootModel", "autoInit"],
         prefsEditor: {
             gradeNames: ["fluid.prefs.msgLookup"],
             members: {
@@ -672,7 +672,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 createUntitledBox: {
                     "funcName": "gpii.pmt.createUntitledBox",
-                    "args": ["{that}.dom.contextRows", "{that}.options.markup.untitledSet", "{that}.msgLookup.untitledLabel", "{that}.msgLookup.untitledDescLabel", "{that}", "{that}.dom.setLabel", "{that}.options.selectors.untitledLabel", "{that}.options.selectors.untitledDescLabel"]
+                    "args": ["{gpiiSession}", "{that}.dom.contextRows", "{that}.options.markup.untitledSet", "{that}.msgLookup.untitledLabel", "{that}.msgLookup.untitledDescLabel", "{that}", "{that}.dom.setLabel", "{that}.options.selectors.untitledLabel", "{that}.options.selectors.untitledDescLabel"]
                 },
                 createUntitledBoxStyle: {
                     "funcName": "gpii.pmt.createUntitledBoxStyle",
@@ -998,7 +998,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         cRow.append(that.options.markup.pencilIcon);
     };
 
-    gpii.pmt.createUntitledBox = function (contextRows, untitledSetMarkup, label, desc, that, setLabel, untitledSelector, untitledDescSelector) {
+    gpii.pmt.createUntitledBox = function (session, contextRows, untitledSetMarkup, label, desc, that, setLabel, untitledSelector, untitledDescSelector) {
         var selectedIcon = that.dom.locate("leftArrowIcon");
         selectedIcon.remove();
         var pencilIcon = that.dom.locate("pencilIcon");
@@ -1014,6 +1014,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         untitledLabel.text(label);
         untitledDescLabel.text(desc);
         setLabel.text(label);
+        
+        // Store preferences so far
+        var savedSelections = fluid.copy(that.model);
+        fluid.each(savedSelections, function (value, key) {
+            if (fluid.get(that.rootModel, key) === value) {
+                delete savedSelections[key];
+            }
+        });
+        session.options.basicSetPreferences = savedSelections;
     };
 
     gpii.pmt.createBaseSetBoxStyle = function (contextRow, selectedStyle, selectedIconMarkup) {

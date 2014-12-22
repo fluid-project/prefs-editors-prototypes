@@ -176,13 +176,14 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
     gpii.prefs.gpiiStore.set = function (model, settings, session, modelTransformFunc, onSuccessfulSetFunction) {
         var transformedModel = modelTransformFunc(model);
+        var baseSetModel = modelTransformFunc(session.options.basicSetPreferences);
         var name = session.options.context.setName;
         if (session.options.context.enabled != null){
             var dataToSend = {
                 "contexts": {
                     "gpii-default": {
                         "name": "Default preferences",
-                        "preferences": transformedModel
+                        "preferences": baseSetModel
                     },
                     "newSet": {
                         "name": session.options.context.setName,
@@ -206,7 +207,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     "contexts": {
                         "gpii-default": {
                             "name": "Default preferences",
-                            "preferences": transformedModel
+                            "preferences": baseSetModel
                         }
                     }
               };

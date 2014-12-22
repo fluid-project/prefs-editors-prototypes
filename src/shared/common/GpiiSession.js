@@ -26,6 +26,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         // This is relevant, http://issues.gpii.net/browse/GPII-290
         loggedUser: null,
         dataToSend: null,
+        basicSetPreferences: null,
+        newSetPreferences: null,
         context: {
             setName: null,
             enabled: null,
