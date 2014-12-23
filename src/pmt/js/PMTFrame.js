@@ -757,7 +757,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 clickSharingLink: {
                     "funcName": "gpii.pmt.enterShareTab",
                     "args": ["{that}.dom.enterMessageLabel", "{that}.msgLookup.enterMessageLabel", "{gpiiSession}"]
-                },
+                }
             },
             strings: {
                 "mainVisibilitySwitch": "gpii_primarySchema_speakText",
@@ -930,7 +930,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         contextHeaderTime.hide();
     };
 
-    gpii.pmt.clickDoneButton = function (sess, overlayPanel, modalPanel, contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, toLabel, appliesToLabel, devicesTextLabel) {
+    gpii.pmt.clickDoneButton = function (session, overlayPanel, modalPanel, contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, toLabel, appliesToLabel, devicesTextLabel) {
         untitledSelector = untitledSelector + ":last";
         var untitledLabel = $(untitledSelector);
         untitledDescSelector = untitledDescSelector + ":last";
@@ -940,15 +940,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         setLabel.text(contextUntitled.val());
         
         var timeTemp = contextTime.text().split(toLabel);
-        sess.options.context.fromTime = timeTemp[0];
-        sess.options.context.toTime = timeTemp[1];
         var deviceTemp = contextDevice.text().split(appliesToLabel);
         deviceTemp = deviceTemp[1].toString().split(devicesTextLabel);
-        sess.options.context.device = deviceTemp[0];
-        sess.options.context.enabled = true;
-        sess.options.context.setName = contextUntitled.val();
+
         overlayPanel.hide();
         modalPanel.hide();
+        
+        session.options.contextElements.fromTime = timeTemp[0];
+        session.options.contextElements.toTime = timeTemp[1];
+        session.options.contextElements.device = deviceTemp[0];
+        session.options.contextElements.enabled = true;
+        session.options.contextElements.setName = contextUntitled.val();
+        session.options.context.push(JSON.stringify(session.options.contextElements));
     };
 
     gpii.pmt.clickCancelButton = function (sess, overlayPanel,modalPanel) {
@@ -1022,7 +1025,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 delete savedSelections[key];
             }
         });
-        session.options.basicSetPreferences = savedSelections;
+
+        session.options.preferenceSet.push(JSON.stringify(savedSelections));
     };
 
     gpii.pmt.createBaseSetBoxStyle = function (contextRow, selectedStyle, selectedIconMarkup) {

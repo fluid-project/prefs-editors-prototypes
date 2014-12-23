@@ -26,14 +26,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         // This is relevant, http://issues.gpii.net/browse/GPII-290
         loggedUser: null,
         dataToSend: null,
-        basicSetPreferences: null,
-        newSetPreferences: null,
-        context: {
-            setName: null,
-            enabled: null,
-            device: null,
-            fromTime: null,
-            toTime: null
+        preferenceSet: [],
+        context: [],
+        contextElements: { 
+            "setName": null,
+            "enabled": null,
+            "device": null,
+            "fromTime": null,
+            "toTime": null
         },
         events: {
             onLogin: null,
@@ -122,6 +122,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },*/
                 success: function (data) {
                     that.options.loggedUser = null;
+                    if (window.location.href.indexOf('#') > 0) {
+                        var url = window.location.href.split('#');
+                        window.location.href = url[0];
+                    }
                     that.events.onLogout.fire();
                     fluid.log("GET: " + data);
                 },

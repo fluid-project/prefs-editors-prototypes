@@ -175,44 +175,47 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     };
 
     gpii.prefs.gpiiStore.set = function (model, settings, session, modelTransformFunc, onSuccessfulSetFunction) {
-        var transformedModel = modelTransformFunc(model);
-        var baseSetModel = modelTransformFunc(session.options.basicSetPreferences);
-        var name = session.options.context.setName;
-        if (session.options.context.enabled != null){
-            var dataToSend = {
-                "contexts": {
-                    "gpii-default": {
-                        "name": "Default preferences",
-                        "preferences": baseSetModel
-                    },
+        var transformedModel = [];
+        var preferences = session.options.preferenceSet;
+        var contexts = session.options.context;
+
+        fluid.each(preferences, function (preference, index) {
+            transformedModel.push(modelTransformFunc(JSON.parse(preference)));
+        });
+        transformedModel.push(modelTransformFunc(model));
+
+        var dataToSend = {
+            "contexts": {
+                "gpii-default": {
+                    "name": "Default preferences",
+                    "preferences": transformedModel[0]
+                }
+            }
+        };
+
+        fluid.each(contexts, function (context, index) {
+            context = JSON.parse(context);
+            var enabled = context.enabled;
+            if (enabled){
+                var name = context.setName;
+                var newSet = {
                     "newSet": {
-                        "name": session.options.context.setName,
-                        "preferences": transformedModel,
+                        "name": context.setName,
+                        "preferences": transformedModel[index+1],
                         "conditions": [{
                             "type": "http://registry.gpii.net/conditions/timeInRange",
-                            "from": session.options.context.fromTime,
-                            "to": session.options.context.toTime,
+                            "from": context.fromTime,
+                            "to": context.toTime,
                             "inputPath": "http://registry\\.gpii\\.net/common/environment/temporal\\.time"
                         }]
                     }
-                }
-            };
-            
-            var tmp = JSON.stringify(dataToSend);
-            tmp = tmp.replace("newSet",name);
-            dataToSend = JSON.parse(tmp);
-        }
-        else {
-            var dataToSend = {
-                    "contexts": {
-                        "gpii-default": {
-                            "name": "Default preferences",
-                            "preferences": baseSetModel
-                        }
-                    }
-              };
-        }
-        
+                };
+                var tmp = JSON.stringify(newSet);
+                tmp = tmp.replace("newSet",name);
+                newSet = JSON.parse(tmp);
+                $.extend(dataToSend.contexts, newSet);
+            }
+        });
         
         var urlToPost, requestType;
         if (session.options.loggedUser) {
