@@ -935,12 +935,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         overlayPanel.hide();
         modalPanel.hide();
         
-        session.options.contextElements.fromTime = timeTemp[0];
-        session.options.contextElements.toTime = timeTemp[1];
-        session.options.contextElements.device = deviceTemp[0];
-        session.options.contextElements.enabled = true;
-        session.options.contextElements.setName = contextUntitled.val();
-        session.options.context.push(JSON.stringify(session.options.contextElements));
+        if ((timeTemp[0].length === 5) && (timeTemp[1].length === 5)) {
+            session.options.contextElements.fromTime = timeTemp[0];
+            session.options.contextElements.toTime = timeTemp[1];
+            session.options.contextElements.device = deviceTemp[0];
+            session.options.contextElements.enabled = true;
+            session.options.contextElements.setName = contextUntitled.val();
+            session.options.context.push(JSON.stringify(session.options.contextElements));
+        }
     };
 
     gpii.pmt.clickCancelButton = function (sess, overlayPanel,modalPanel) {
