@@ -173,11 +173,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "mouseout",
                     "args": ["{that}.mouseoutAddSetLink"]
                 },
-                "onReady.setEditTime": {
-                    "this": "{that}.dom.editTime",
-                    "method": "val",
-                    "args": ["{that}.msgLookup.editTime"]
-                },
                 "onReady.editTime": {
                     "this": "{that}.dom.editTime",
                     "method": "click",
@@ -187,11 +182,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.editTime",
                     "method": "attr",
                     "args": ["aria-label", "{that}.msgLookup.editTime"]
-                },
-                "onReady.setDeleteTime": {
-                    "this": "{that}.dom.deleteTime",
-                    "method": "val",
-                    "args": ["{that}.msgLookup.deleteTime"]
                 },
                 "onReady.deleteTime": {
                     "this": "{that}.dom.deleteTime",
@@ -516,7 +506,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.enterMessageLabel",
                     "method": "text",
                     "args": ["{that}.enterMessage"]
-                    //"args": ["{that}.msgLookup.enterMessageLabel"]
                 },
                 "onReady.setLinkCopyButton": {
                     "this": "{that}.dom.linkCopyButton",
