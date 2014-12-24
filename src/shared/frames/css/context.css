@@ -12,7 +12,7 @@ ul {
     background-color: #F2F2F2;
     font-family: "Roboto Slab",serif;
     width: 45em;
-    height: 43em;
+    height: 100%;
 }
 
 .gpii-context-header-tabs {
@@ -537,7 +537,7 @@ input[type=number]::-webkit-outer-spin-button {
 .gpii-context-modal {
     position: fixed;
     width: 45em;
-    height: 43em;
+    height: 75%;
     top: 1em;
     margin-top: 0px;
     margin-left: 0px;
