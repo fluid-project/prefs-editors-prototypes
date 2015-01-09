@@ -745,7 +745,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 clickSharingLink: {
                     "funcName": "gpii.pmt.enterShareTab",
-                    "args": ["{that}.dom.enterMessageLabel", "{that}.msgLookup.enterMessageLabel", "{gpiiSession}"]
+                    "args": ["{that}.dom.enterMessageLabel", "{that}.msgLookup.enterMessageLabel", "{gpiiSession}", "{that}"]
                 }
             },
             strings: {
@@ -755,12 +755,58 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.pmt.enterShareTab = function (enterMessageLabelObj, enterMessageLabelTxt, session) {
-        if (session.options.dataToSend == null){
+    gpii.pmt.enterShareTab = function (enterMessageLabelObj, enterMessageLabelTxt, session, that) {
+        if (session.options.contextElements.setName == null){
             enterMessageLabelObj.text(enterMessageLabelTxt);
         }
         else{
-            enterMessageLabelObj.text(JSON.stringify(session.options.dataToSend));
+            var savedSelections = fluid.copy(that.model);
+            fluid.each(savedSelections, function (value, key) {
+                if (fluid.get(that.rootModel, key) === value) {
+                    delete savedSelections[key];
+                }
+            });
+            var preferences = session.options.preferenceSet.slice(0);
+            var contexts = session.options.context;
+            var transformedModel = [];
+            fluid.each(preferences, function (preference, index) {
+                transformedModel.push(fluid.model.transform(JSON.parse(preference), gpii.prefs.commonTermsTransformationRules));
+            });
+            transformedModel.push(fluid.model.transform(savedSelections, gpii.prefs.commonTermsTransformationRules));
+
+            var emailBody = {
+                "contexts": {
+                    "gpii-default": {
+                        "name": "Default preferences",
+                        "preferences": transformedModel[0]
+                    }
+                }
+            };
+
+            fluid.each(contexts, function (context, index) {
+                context = JSON.parse(context);
+                var enabled = context.enabled;
+                if (enabled){
+                    var name = context.setName;
+                    var newSet = {
+                        "newSet": {
+                            "name": context.setName,
+                            "preferences": transformedModel[index+1],
+                            "conditions": [{
+                                "type": "http://registry.gpii.net/conditions/timeInRange",
+                                "from": context.fromTime,
+                                "to": context.toTime,
+                                "inputPath": "http://registry\\.gpii\\.net/common/environment/temporal\\.time"
+                            }]
+                        }
+                    };
+                    var tmp = JSON.stringify(newSet);
+                    tmp = tmp.replace("newSet",name);
+                    newSet = JSON.parse(tmp);
+                    $.extend(emailBody.contexts, newSet);
+                }
+            });
+            enterMessageLabelObj.text(JSON.stringify(emailBody));
         }
     }
 
@@ -1016,7 +1062,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 delete savedSelections[key];
             }
         });
-
         session.options.preferenceSet.push(JSON.stringify(savedSelections));
     };
 
