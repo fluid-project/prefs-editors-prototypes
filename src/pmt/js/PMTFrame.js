@@ -311,6 +311,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "attr",
                     "args": ["aria-label", "{that}.msgLookup.account"]
                 },
+                "onReady.setAccountButtonClick": {
+                    "this": "{that}.dom.accountButton",
+                    "method": "click",
+                    "args": ["{that}.clickAccount"]
+                },
                 "onReady.setAddSetLinkAriaLabel": {
                     "this": "{that}.dom.addSetLink",
                     "method": "attr",
@@ -746,6 +751,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 clickSharingLink: {
                     "funcName": "gpii.pmt.enterShareTab",
                     "args": ["{that}.dom.enterMessageLabel", "{that}.msgLookup.enterMessageLabel", "{gpiiSession}", "{that}"]
+                },
+                clickAccount: {
+                    "funcName": "gpii.pmt.clickAccount",
+                    "args": ["{that}"]
                 }
             },
             strings: {
@@ -755,6 +764,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
+    gpii.pmt.clickAccount = function (that) {
+        window.open('http://205.211.169.224:8081/authorized-services','_blank');
+    }
+    
     gpii.pmt.enterShareTab = function (enterMessageLabelObj, enterMessageLabelTxt, session, that) {
         if (session.options.contextElements.setName == null){
             enterMessageLabelObj.text(enterMessageLabelTxt);
