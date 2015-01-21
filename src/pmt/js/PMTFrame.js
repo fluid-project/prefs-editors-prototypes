@@ -765,7 +765,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     gpii.pmt.clickAccount = function (that) {
-        window.open('http://205.211.169.224:8081/authorized-services','_blank');
+        window.open('https://secureflowmanager.gpii.net/login','_blank');
     }
     
     gpii.pmt.enterShareTab = function (enterMessageLabelObj, enterMessageLabelTxt, session, that) {
