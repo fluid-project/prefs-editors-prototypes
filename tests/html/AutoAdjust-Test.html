@@ -1,0 +1,48 @@
+<!DOCTYPE html      PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Auto Adjust Tests</title>
+
+        <!--  This is the jqUnit test css file -->
+        <link rel="stylesheet" media="screen" href="../lib/qunit/qunit/css/qunit.css" />
+
+        <!--  These are the jqUnit test js files -->
+        <script src="../lib/qunit/qunit/js/qunit.js"></script>
+        <script src="../../src/shared/lib/infusion/infusion-prefsFramework.js"></script>
+        <script src="../lib/infusion/jqUnit/js/jqUnit.js"></script>
+        <script src="../lib/infusion/utils/js/IoCTestUtils.js"></script>
+
+        <!-- Preferences Editors specific files go here: -->
+        <script type="text/javascript" src="../../src/shared/frames/js/GPIIPrefsEditor.js"></script>
+        <script type="text/javascript" src="../../src/shared/common/ariaUtility.js"></script>
+        <script type="text/javascript" src="../../src/shared/common/eventUtility.js"></script>
+        <script type="text/javascript" src="../../src/shared/common/merging.js"></script>
+
+        <script type="text/javascript" src="../../src/shared/adjusters/js/activatableLabelsClickOnActivate.js"></script>
+        <script type="text/javascript" src="../../src/shared/adjusters/js/singleSelectionWithKeyboard.js"></script>
+
+        <!-- The custom adjusters JS files -->
+        <script type="text/javascript" src="../../src/shared/adjusters/js/onOffSwitch.js"></script>
+        <script type="text/javascript" src="../../src/shared/adjusters/js/autoAdjust.js"></script>
+
+        <!--  These are tests that have been written using this page as data -->
+        <script type="text/javascript" src="../js/autoAdjustTests.js"></script>
+
+    </head>
+    <body>
+    <h1 id="qunit-header">Auto Adjust Test Suite</h1>
+    <h2 id="qunit-banner"></h2>
+    <div id="qunit-testrunner-toolbar"></div>
+    <h2 id="qunit-userAgent"></h2>
+    <ol id="qunit-tests"></ol>
+
+    <div class="gpiic-onOffSwitch-container">
+        <input type="checkbox" id="onOffSwitchInputAutoAdjust" class="gpiic-onOffSwitch-input"/>
+        <span class="gpiic-prefsEditor-onOffSwitch fl-prefsEditor-switch" data-checkboxStateOn="ON" data-checkboxStateOff="OFF" tabindex="0">
+            <span class="fl-prefsEditor-switch-inner"></span>
+        </span>
+    </div>
+    <div class="gpiic-autoAdjust-description gpii-description"></div>
+    </body>
+</html>
