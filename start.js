@@ -11,9 +11,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 // Declare dependencies
 /* global require, __dirname */
 
-var net = require('net'); 
-var async = require('async');
-var Socket = net.Socket; 
 var kettlePath = process.argv[2];
 var host = process.argv[3];
 var port = process.argv[4];
