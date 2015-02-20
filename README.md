@@ -36,8 +36,8 @@ npm install
 # find available port, 
 # start the webserver and
 # open url in the default browser
-# command: node start.js <kettle path> <host> <startPort> <endPort>
-node start.js ../kettle/node_modules/express/node_modules/connect 127.0.0.1 3306 3310
+# command: node start.js <kettle path> <host> <port>
+node start.js ../kettle/node_modules/express/node_modules/connect 127.0.0.1 5559
 ```
 
 ## Development ##
