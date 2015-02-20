@@ -69,6 +69,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     gpii.adjuster.onOffSwitch.triggerModelChangeOnActivate = function (that, event) {
+        console.log(">>> gpii.adjuster.onOffSwitch.triggerModelChangeOnActivate");
         /*
          * This isn't the most appropriate way of performing the model change compared to requestChange.
          * The reason for this is that the actual model path will be known only to the sub-components
@@ -83,7 +84,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
          * down when Space key is pressed. So, this is needed in order to suppress this functionality when the
          * on/off switch has focus.
          */
-        event.preventDefault();
+        //event.preventDefault();
     };
 
     gpii.adjuster.onOffSwitch.init = function (that, onOffModelKey) {
