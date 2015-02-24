@@ -69,7 +69,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     });
 
     gpii.adjuster.onOffSwitch.triggerModelChangeOnActivate = function (that, event) {
-        console.log(">>> gpii.adjuster.onOffSwitch.triggerModelChangeOnActivate");
         /*
          * This isn't the most appropriate way of performing the model change compared to requestChange.
          * The reason for this is that the actual model path will be known only to the sub-components

@@ -47,39 +47,37 @@ https://github.com/gpii/universal/LICENSE.txt
         },
         modules: [{
             name: "Auto-adjust adjuster",
+            expect: 4,
             tests: [{
-                name: "Description text",
-                func: "gpii.tests.autoAdjust.validateText",
-                args: ["{autoAdjuster}.dom.autoAdjustDescription", "{autoAdjuster}.options.strings.description"]
-            }, {
-                name: "Validate autoAdjust",
-                expect: 4,
-                sequence: [{
                     name: "Description text",
                     func: "gpii.tests.autoAdjust.validateText",
-                    args: ["{autoAdjuster}.dom.autoAdjustDescription", "{autoAdjuster}.options.strings.description"]
+                    args: ["Valid description text.", "{autoAdjuster}.dom.autoAdjustDescription", "{autoAdjuster}.options.strings.description"]
                 }, {
                     name: "Label text",
                     func: "gpii.tests.autoAdjust.validateText",
-                    args: ["{autoAdjuster}.dom.headingLabel", "{autoAdjuster}.options.strings.label"]
+                    args: ["Valid label text.", "{autoAdjuster}.dom.headingLabel", "{autoAdjuster}.options.strings.label"]
                 }, {
                     name: "Verify checkbox state (unChecked)",
                     func: "gpii.tests.verifyCheckboxState",
                     args: ["The auto adjust option is not checked by default", "{that}.options.testOptions.defaultInputStatus", "{autoAdjuster}.dom.valueCheckbox"]
                 }, {
-                    func: "{autoAdjuster}.triggerModelChangeOnActivate",
-                    args: ["{autoAdjuster}", "{autoAdjuster}.events.afterRender"]
-                }, {
-                    name: "Verify checkbox state (checked)",
-                    func: "gpii.tests.verifyCheckboxState",
-                    args: ["The auto adjust option is checked", "{that}.options.testOptions.newValue", "{autoAdjuster}.dom.valueCheckbox"]
+                    name: "Validate autoAdjust",
+                    expect: 1,
+                    sequence: [{
+                        func: "{autoAdjuster}.triggerModelChangeOnActivate",
+                        args: ["{autoAdjuster}", "{autoAdjuster}.events.afterRender"]
+                    }, {
+                        name: "Verify checkbox state (checked)",
+                        event: "{autoAdjuster}.events.afterRender",
+                        func: "gpii.tests.verifyCheckboxState",
+                        args: ["The auto adjust option is checked", "{that}.options.testOptions.newValue", "{autoAdjuster}.dom.valueCheckbox"]
+                    }]
                 }]
-            }]
         }]
     });
 
-    gpii.tests.autoAdjust.validateText = function (elm, expected) {
-        jqUnit.assertEquals("Valid description text.", expected, elm.text());
+    gpii.tests.autoAdjust.validateText = function (text, elm, expected) {
+        jqUnit.assertEquals(text, expected, elm.text());
     };
 
     gpii.tests.verifyCheckboxState = function (message, expectedState, checkbox) {
