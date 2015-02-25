@@ -28,8 +28,10 @@ https://github.com/gpii/universal/LICENSE.txt
                 container: ".gpii-onOffSwitch-container",
                 options: {
                     strings: {
-                        label: "Auto-adjust",
-                        description: "Preferences will be automatically adjusted based on background noise and ambient light levels.",
+                        autoAdjustLabel: "Auto-adjust",
+                        autoAdjustDescription: "Preferences will be automatically adjusted based on background noise and ambient light levels.",
+                        label: "label",
+                        description: "description"
                     }
                 }
             },
@@ -51,11 +53,11 @@ https://github.com/gpii/universal/LICENSE.txt
             tests: [{
                     name: "Description text",
                     func: "gpii.tests.autoAdjust.validateText",
-                    args: ["Valid description text.", "{autoAdjuster}.dom.autoAdjustDescription", "{autoAdjuster}.options.strings.description"]
+                    args: ["{autoAdjuster}.options.strings.description", "{autoAdjuster}.dom.autoAdjustDescription", "{autoAdjuster}.options.strings.autoAdjustDescription"]
                 }, {
                     name: "Label text",
                     func: "gpii.tests.autoAdjust.validateText",
-                    args: ["Valid label text.", "{autoAdjuster}.dom.headingLabel", "{autoAdjuster}.options.strings.label"]
+                    args: ["{autoAdjuster}.options.strings.label", "{autoAdjuster}.dom.headingLabel", "{autoAdjuster}.options.strings.autoAdjustLabel"]
                 }, {
                     name: "Verify checkbox state (unChecked)",
                     func: "gpii.tests.verifyCheckboxState",
@@ -76,8 +78,8 @@ https://github.com/gpii/universal/LICENSE.txt
         }]
     });
 
-    gpii.tests.autoAdjust.validateText = function (text, elm, expected) {
-        jqUnit.assertEquals(text, expected, elm.text());
+    gpii.tests.autoAdjust.validateText = function (testMessage, elm, expected) {
+        jqUnit.assertEquals("Valid " + testMessage + " text", expected, elm.text());
     };
 
     gpii.tests.verifyCheckboxState = function (message, expectedState, checkbox) {
