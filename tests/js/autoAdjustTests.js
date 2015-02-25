@@ -15,6 +15,12 @@ https://github.com/gpii/universal/LICENSE.txt
 
     fluid.defaults("gpii.tests.autoAdjustControls", {
         gradeNames: ["gpii.adjuster.autoAdjust", "autoInit"],
+        strings: {
+            autoAdjustLabel: "Auto-adjust",
+            autoAdjustDescription: "Preferences will be automatically adjusted based on background noise and ambient light levels.",
+            label: "label",
+            description: "description"
+        },
         model: {
             autoAdjust: false
         }
@@ -25,15 +31,7 @@ https://github.com/gpii/universal/LICENSE.txt
         components: {
             autoAdjuster: {
                 type: "gpii.tests.autoAdjustControls",
-                container: ".gpii-onOffSwitch-container",
-                options: {
-                    strings: {
-                        autoAdjustLabel: "Auto-adjust",
-                        autoAdjustDescription: "Preferences will be automatically adjusted based on background noise and ambient light levels.",
-                        label: "label",
-                        description: "description"
-                    }
-                }
+                container: ".gpii-onOffSwitch-container"
             },
             autoAdjustTester: {
                 type: "gpii.tests.autoAdjustTester"
