@@ -28,7 +28,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         dataToSend: null,
         preferenceSet: [],
         context: [],
-        contextElements: { 
+        contextElements: {
             "setName": null,
             "enabled": null,
             "device": null,
@@ -122,8 +122,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },*/
                 success: function (data) {
                     that.options.loggedUser = null;
-                    if (window.location.href.indexOf('#') > 0) {
-                        var url = window.location.href.split('#');
+                    if (window.location.href.indexOf("#") > 0) {
+                        var url = window.location.href.split("#");
                         window.location.href = url[0];
                     }
                     that.events.onLogout.fire();

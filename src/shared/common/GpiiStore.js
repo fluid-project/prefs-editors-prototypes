@@ -179,7 +179,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         var preferences = session.options.preferenceSet;
         var contexts = session.options.context;
 
-        fluid.each(preferences, function (preference, index) {
+        fluid.each(preferences, function (preference) {
             transformedModel.push(modelTransformFunc(JSON.parse(preference)));
         });
         transformedModel.push(modelTransformFunc(model));
@@ -221,7 +221,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         if (session.options.loggedUser) {
             urlToPost = settings.url + "preferences/" + session.options.loggedUser;
             requestType = "PUT";
-        } 
+        }
         else {
             urlToPost = settings.url + "preferences/";
             requestType = "POST";

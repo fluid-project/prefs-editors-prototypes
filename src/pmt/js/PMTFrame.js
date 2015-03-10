@@ -117,10 +117,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "   <span id='alertHeading' class='gpiic-prefsEditor-untitledLabel gpii-prefsEditor-contextFrame-setLabel'></span>" +
                     "   <span id='alertText' class='gpiic-prefsEditor-untitledDescLabel gpii-prefsEditor-contextFrame-setLabelDescription'></span>" +
                     "</div>",
-                selectedIcon: 
-                    "   <span class='gpiic-prefsEditor-context-leftArrowIcon gpii-prefsEditor-adjusterIcons gpii-prefsEditor-context-leftArrowIcon'></span>",
-                pencilIcon: 
-                    "   <input id='editButton' onclick='gpii.pmt.onEditClick($(\"#overlay\"), $(\"#modal\"))' type='button' value='' aria-label='' class='gpiic-prefsEditor-context-edit-button gpii-prefsEditor-context-edit-button' tabindex='0'></input>" +
+                selectedIcon: "   <span class='gpiic-prefsEditor-context-leftArrowIcon gpii-prefsEditor-adjusterIcons gpii-prefsEditor-context-leftArrowIcon'></span>",
+                pencilIcon: "   <input id='editButton' onclick='gpii.pmt.onEditClick($(\"#overlay\"), $(\"#modal\"))' type='button' value='' aria-label='' class='gpiic-prefsEditor-context-edit-button gpii-prefsEditor-context-edit-button' tabindex='0'></input>" +
                     "   <label for='editButton' class='gpiic-prefsEditor-context-pencilIcon gpii-prefsEditor-adjusterIcons gpii-prefsEditor-pencil-icon'></span>"
             },
             styles: {
@@ -754,7 +752,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 clickAccount: {
                     "funcName": "gpii.pmt.clickAccount",
-                    "args": ["{that}"]
+                    "args": []
                 }
             },
             strings: {
@@ -764,12 +762,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.pmt.clickAccount = function (that) {
-        window.open('https://secureflowmanager.gpii.net/login','_blank');
-    }
+    gpii.pmt.clickAccount = function () {
+        window.open("https://secureflowmanager.gpii.net/login","_blank");
+    };
     
     gpii.pmt.enterShareTab = function (enterMessageLabelObj, enterMessageLabelTxt, session, that) {
-        if (session.options.contextElements.setName == null){
+        if (session.options.contextElements.setName === null){
             enterMessageLabelObj.text(enterMessageLabelTxt);
         }
         else{
@@ -782,7 +780,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             var preferences = session.options.preferenceSet.slice(0);
             var contexts = session.options.context;
             var transformedModel = [];
-            fluid.each(preferences, function (preference, index) {
+            fluid.each(preferences, function (preference) {
                 transformedModel.push(fluid.model.transform(JSON.parse(preference), gpii.prefs.commonTermsTransformationRules));
             });
             transformedModel.push(fluid.model.transform(savedSelections, gpii.prefs.commonTermsTransformationRules));
@@ -821,7 +819,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             });
             enterMessageLabelObj.text(JSON.stringify(emailBody));
         }
-    }
+    };
 
     gpii.pmt.deleteTime = function (that, recordLine, notAppliedAtAnyTimesLabelObj, notAppliedAtAnyTimesLabelMsg) {
         var fromHour = that.dom.locate("timeFromHour");
@@ -852,17 +850,18 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
 
     gpii.pmt.twoDigits = function (val){
-        if ((val != "") && (val < 10)){
+        if ((val !== "") && (val < 10)){
             val = "0"+val;
             return val;
         }
-        else if ((val != "") && (val >= 10)){
+        else if ((val !== "") && (val >= 10)){
             return val;
         }
         else {
             return "";
         }
-    }
+    };
+
     gpii.pmt.selectDevice = function (sess, sDevice, appliesToLabel, devicesTextLabel, notAppliedToAnyDevicesLabel) {
         sDevice = sDevice + " option:selected";
         var sDeviceSelector = $(sDevice);
@@ -872,7 +871,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     
     gpii.pmt.clickEmailCopyButton = function (to, body, subject) {
         gpii.pmt.sendWithGmail({
-            to: to.val(), 
+            to: to.val(),
             subject: subject,
             body: body.val()//,
             //attachment : "sharing.js"
@@ -903,22 +902,22 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         else {
             return false;
         }
-    }
+    };
 
     gpii.pmt.sendViaMailTo = function (opts) {
-        var link = "mailto:" +opts.to
-        + "&subject=" + opts.subject
-        + "&body=" + opts.body;
+        var link = "mailto:" + opts.to +
+        "&subject=" + opts.subject +
+        "&body=" + opts.body;
         //+ "&attachment="+opts.attachment;
         window.location.href = link;
     };
 
     gpii.pmt.sendWithGmail = function (opts) {
-        var str = 'http://mail.google.com/mail/?view=cm&fs=1'+
-                  '&to=' + opts.to +
-                  '&su=' + opts.subject +
-                  '&body=' + opts.body.replace(/\n/g,'%0A') +
-                  '&ui=1';
+        var str = "http://mail.google.com/mail/?view=cm&fs=1"+
+                  "&to=" + opts.to +
+                  "&su=" + opts.subject +
+                  "&body=" + opts.body.replace(/\n/g,"%0A") +
+                  "&ui=1";
         location.href = str;
     };
     
@@ -941,8 +940,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         contextHeader.show();
         sharingEmail.hide();
         if (that.dom.locate("baseSetDescription").hasClass(that.options.styles.invisible)){
-            that.dom.locate("baseSetDescription").removeClass(that.options.styles.invisible)
-            that.dom.locate("deleteSetLabel").removeClass(that.options.styles.invisible)
+            that.dom.locate("baseSetDescription").removeClass(that.options.styles.invisible);
+            that.dom.locate("deleteSetLabel").removeClass(that.options.styles.invisible);
         }
         that.dom.locate("baseSetDescription").addClass(that.options.styles.visible);
         that.dom.locate("deleteSetLabel").addClass(that.options.styles.visible);
@@ -969,8 +968,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         contextHeader.show();
         sharingEmail.show();
         if (that.dom.locate("baseSetDescription").hasClass(that.options.styles.visible)){
-            that.dom.locate("baseSetDescription").removeClass(that.options.styles.visible)
-            that.dom.locate("deleteSetLabel").removeClass(that.options.styles.visible)
+            that.dom.locate("baseSetDescription").removeClass(that.options.styles.visible);
+            that.dom.locate("deleteSetLabel").removeClass(that.options.styles.visible);
         }
         that.dom.locate("baseSetDescription").addClass(that.options.styles.invisible);
         that.dom.locate("deleteSetLabel").addClass(that.options.styles.invisible);
@@ -1038,7 +1037,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.pmt.createUntitledBoxStyle = function (that) {
         var contextRows = that.dom.locate("contextRow");
         var cRow;
-        fluid.each(contextRows, function (contextRow, index) {
+        fluid.each(contextRows, function (contextRow) {
             contextRow = $(contextRow);
             contextRow.removeClass(that.options.styles.selected);
             contextRow.addClass(that.options.styles.unSelected);

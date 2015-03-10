@@ -67,9 +67,9 @@ https://github.com/gpii/universal/LICENSE.txt
             name: "Testing PMT",
             expect: 1,
             tests: [{
-                expect: 1,
+                /*expect: 1,
                 name: "Test left panel of PMT",
-                /*sequence: [{
+                sequence: [{
                     listener: "gpii.tests.contextPanel.pmt.checkAria",
                     spec: {priority: "last"},
                     event: "{gpii.tests.contextPanel.pmt}.events.onPMTReady"
