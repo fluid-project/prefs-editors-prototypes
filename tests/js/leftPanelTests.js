@@ -13,19 +13,42 @@ https://github.com/gpii/universal/LICENSE.txt
     
     fluid.registerNamespace("gpii.tests.contextPanel");
 
-    fluid.defaults("gpii.tests.contextPanel.pmtTestUtils", {
-        gradeNames: ["gpii.pmt", "autoInit"],
+    fluid.defaults("gpii.tests.contextPanel.pmt", {
+        components: {
+            pmt: {
+                type: "gpii.pmt",
+                container: ".gpiic-prefsEditor-contextContainer",
+                createOnEvent: "onSettingsStoreReady",
+                options: {
+                    listeners: {
+                        "onCreate.firePMTReady": "{gpii.tests.contextPanel.pmt}.events.onPMTReady"
+                    }
+                }
+            },
+            settingsStore: {
+                type: "gpii.prefs.gpiiStore",
+                options: {
+                    listeners: {
+                        "onCreate.fireSettingsStoreReady": "{gpii.tests.contextPanel.pmt}.events.onSettingsStoreReady"
+                    }
+                }
+            }
+        },
+        events: {
+            onSettingsStoreReady: null,
+            onPMTReady: null
+        },
         strings: {
             addSet: "add set",
             testMsg: "The ARIA value should be "
         }
     });
-
+    
     fluid.defaults("gpii.tests.contextPanel.leftPanel", {
         gradeNames: ["fluid.test.testEnvironment", "autoInit"],
         components: {
             leftPan: {
-                type: "gpii.tests.contextPanel.pmtTestUtils",
+                type: "gpii.tests.contextPanel.pmt",
                 container: ".gpiic-prefsEditor-contextContainer"
             },
             leftPanTester: {
@@ -41,12 +64,20 @@ https://github.com/gpii/universal/LICENSE.txt
             newValue: true
         },
         modules: [{
-            name: "Test left panel of PMT",
+            name: "Testing PMT",
             expect: 1,
             tests: [{
+                expect: 1,
+                name: "Test left panel of PMT",
+                /*sequence: [{
+                    listener: "gpii.tests.contextPanel.pmt.checkAria",
+                    spec: {priority: "last"},
+                    event: "{gpii.tests.contextPanel.pmt}.events.onPMTReady"
+                }]*/
+                //event: "{builderMunging > prefsEd}.events.onReady"
                 name: "Testing Aria",
                 func: "gpii.tests.contextPanel.leftPanel.checkAria",
-                args: ["{leftPan}.options.strings.testMsg", "{leftPan}.dom.addSetLink", "{leftPan}.options.strings.addSet"]
+                args: ["{leftPan}.options.strings.testMsg", "{leftPan > pmt}.dom.addSetLink", "{leftPan}.options.strings.addSet"]
             }]
         }]
     });
@@ -55,7 +86,7 @@ https://github.com/gpii/universal/LICENSE.txt
         testMessage += expected;
         jqUnit.assertEquals(testMessage, expected, elm.attr("aria-label"));
     };
-
+    
     $(document).ready(function () {
         fluid.test.runTests([
             "gpii.tests.contextPanel.leftPanel"
