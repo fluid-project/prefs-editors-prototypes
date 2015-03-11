@@ -73,8 +73,8 @@ https://github.com/gpii/universal/LICENSE.txt
                         args: ["The auto adjust option is checked", "{that}.options.testOptions.newValue", "{autoAdjuster}.dom.valueCheckbox"]
                     }]
                 }]
-        }]
-    });
+            }]
+        });
 
     gpii.tests.autoAdjust.validateText = function (testMessage, elm, expected) {
         jqUnit.assertEquals("Valid " + testMessage + " text", expected, elm.text());
