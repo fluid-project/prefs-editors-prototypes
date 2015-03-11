@@ -13,7 +13,12 @@ https://github.com/gpii/universal/LICENSE.txt
     
     fluid.registerNamespace("gpii.tests.contextPanel");
 
+    var templatePrefix = "../../src/shared/adjusters/html/";
+    var messagePrefix = "../../src/shared/adjusters/messages/en/";
+    var template = "../../src/pmt/html/PrefsEditorTemplate-PMT.html";
+    
     fluid.defaults("gpii.tests.contextPanel.pmt", {
+        gradeNames: ["fluid.viewComponent", "autoInit"],
         components: {
             pmt: {
                 type: "gpii.pmt",
@@ -22,7 +27,10 @@ https://github.com/gpii/universal/LICENSE.txt
                 options: {
                     listeners: {
                         "onCreate.firePMTReady": "{gpii.tests.contextPanel.pmt}.events.onPMTReady"
-                    }
+                    },
+                    template: template,
+                    templatePrefix: templatePrefix,
+                    messagePrefix: messagePrefix
                 }
             },
             settingsStore: {
@@ -74,10 +82,9 @@ https://github.com/gpii/universal/LICENSE.txt
                     spec: {priority: "last"},
                     event: "{gpii.tests.contextPanel.pmt}.events.onPMTReady"
                 }]*/
-                //event: "{builderMunging > prefsEd}.events.onReady"
                 name: "Testing Aria",
                 func: "gpii.tests.contextPanel.leftPanel.checkAria",
-                args: ["{leftPan}.options.strings.testMsg", "{leftPan > pmt}.dom.addSetLink", "{leftPan}.options.strings.addSet"]
+                args: ["{leftPan}.options.strings.testMsg", "{pmt}.dom.addSetLink", "{leftPan}.options.strings.addSet"]*/
             }]
         }]
     });
