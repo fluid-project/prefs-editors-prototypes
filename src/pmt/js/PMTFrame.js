@@ -993,13 +993,61 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         overlayPanel.hide();
         modalPanel.hide();
         
-        if ((timeTemp[0].length === 5) && (timeTemp[1].length === 5)) {
+        var setFound = false;
+        var update = false;
+        var setFoundIndex = null;
+        if (session.options.contextElements.setName !== null){
+            update = true;
+        }
+        var contexts = session.options.context;
+        fluid.each(contexts, function (context, index) {
+            context = JSON.parse(context);
+            var name = context.setName;
+            if (name === contextUntitled.val()){
+                setFound = true;
+                setFoundIndex = index;
+            }
+        });
+
+        if (!setFound){
             session.options.contextElements.fromTime = timeTemp[0];
             session.options.contextElements.toTime = timeTemp[1];
             session.options.contextElements.device = deviceTemp[0];
             session.options.contextElements.enabled = true;
             session.options.contextElements.setName = contextUntitled.val();
-            session.options.context.push(JSON.stringify(session.options.contextElements));
+            if (!update){
+                if ((timeTemp[0].length === 5) && (timeTemp[1].length === 5)) {
+                    session.options.context.push(JSON.stringify(session.options.contextElements));
+                }
+            }
+            else{
+                session.options.context.splice(session.options.contextElements.id);
+                if ((timeTemp[0].length === 5) && (timeTemp[1].length === 5)) {
+                    session.options.context.push(JSON.stringify(session.options.contextElements));
+                }
+            }
+        }
+        else{
+            if (!update){
+                // Alert. A set with the same name already exist.
+            }
+            else{
+                if (setFoundIndex === session.options.contextElements.id){ // An update of the exisitng set
+                    session.options.contextElements.fromTime = timeTemp[0];
+                    session.options.contextElements.toTime = timeTemp[1];
+                    session.options.contextElements.device = deviceTemp[0];
+                    session.options.contextElements.enabled = true;
+                    session.options.contextElements.setName = contextUntitled.val();
+                    session.options.context.splice(session.options.contextElements.id);
+                    if ((timeTemp[0].length === 5) && (timeTemp[1].length === 5)) {
+                        session.options.context.push(JSON.stringify(session.options.contextElements));
+                    }
+                }
+                else{
+                    // Alert. A set with the same name already exist.
+                }
+            }
+            
         }
     };
 
@@ -1050,6 +1098,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         cRow.append(that.options.markup.pencilIcon);
     };
 
+    var contextId = 0;
     gpii.pmt.createUntitledBox = function (session, contextRows, untitledSetMarkup, label, desc, that, setLabel, untitledSelector, untitledDescSelector) {
         var selectedIcon = that.dom.locate("leftArrowIcon");
         selectedIcon.remove();
@@ -1074,7 +1123,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 delete savedSelections[key];
             }
         });
+
         session.options.preferenceSet.push(JSON.stringify(savedSelections));
+        session.options.contextElements.id = contextId;
+        session.options.contextElements.setName = null;
+        contextId++;
     };
 
     gpii.pmt.createBaseSetBoxStyle = function (contextRow, selectedStyle, selectedIconMarkup) {
