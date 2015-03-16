@@ -43,7 +43,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "template": "%prefix/increaseSizeTemplatePMT.html",
                 "message": "%prefix/increaseSize.json",
                 "panels": {
-                    "always": ["textSize", "cursorSize", "magnifierEnabled", "autoAdjust"],
+                    "always": ["textSize", "cursorSize", "magnifierEnabled"],
                     "gpii.primarySchema.magnifierEnabled": ["magnifier", "magnifierPosition", "magnifierFollows", "showCrosshairs"]
                 }
             },
@@ -79,6 +79,24 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "panels": {
                     "always": ["universalLanguage"]
                 }
+            },
+            "addAutoAdjust": {
+                "type": "gpii.adjuster.addAutoAdjust",
+                "container": ".gpiic-prefsEditor-autoAdjustPanel",
+                "template": "%prefix/addAutoAdjustTemplate.html",
+                "message": "%prefix/autoAdjust.json",
+                "panels": {
+                    "always": ["autoAdjust"]
+                }
+            }
+        },
+        "autoAdjust": {
+            "type": "gpii.primarySchema.autoAdjust",
+            "panel": {
+                "type": "gpii.adjuster.autoAdjust",
+                "template": "%prefix/autoAdjustTemplate.html",
+                "container": ".gpiic-prefsEditor-autoAdjust",
+                "message": "%prefix/autoAdjust.json"
             }
         },
         "contrastEnabled": {
@@ -389,15 +407,5 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 "message": "%prefix/message.json"
             }
         },
-
-        "autoAdjust": {
-            "type": "gpii.primarySchema.autoAdjust",
-            "panel": {
-                "type": "gpii.adjuster.autoAdjust",
-                "template": "%prefix/autoAdjustTemplate.html",
-                "container": ".gpiic-prefsEditor-autoAdjust",
-                "message": "%prefix/autoAdjust.json"
-            }
-        }
     };
 })(jQuery, fluid);
