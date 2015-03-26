@@ -52,7 +52,7 @@
     </div>
     <div class="gpiic-prefsEditor-contextContainer gpii-prefsEditor-contextContainer">
         <div class="gpiic-prefsEditor-contextFrame-header gpii-prefsEditor-contextFrame-header gpii-prefsEditor-contextFrame-header-stylingDark">
-            <a href="#" class="gpiic-prefsEditor-contextFrameLink" aria-label="">
+            <a href="#" class="gpiic-prefsEditor-contextFrameLink" aria-label="" tabindex="0">
                 <span class="gpiic-prefsEditor-context-addIcon gpii-prefsEditor-adjusterIcons gpii-prefsEditor-context-addIcon"></span>
             </a>
         </div>
@@ -152,6 +152,14 @@
         <div class="gpii-context-footer">
             <input type="button" class="gpiic-context-cancelButton gpii-context-cancel-button">
             <input type="button" class="gpiic-context-doneButton gpii-context-done-button">
+        </div>
+        <div class="gpiic-error-overlay gpii-error-overlay"></div>
+        <div class="gpiic-error-modal gpii-error-modal" role="alertdialog" aria-labelledby="alertHeading" aria-describedby="alertText">
+            <div class="gpii-error-notification">
+                <span id="alertHeading" class="gpiic-error-header gpii-error-paddingTop-large gpii-error-notification-description"></span>
+                <span id="alertText" class="gpiic-error-description gpii-error-paddingTop-small gpii-error-notification-description"></span>
+                <input type="button" class="gpiic-error-backButton gpii-error-back">
+            </div>
         </div>
     </div>
 </form>

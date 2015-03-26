@@ -575,3 +575,75 @@ input[type=number]::-webkit-outer-spin-button {
     cursor: pointer;
     display: inline-block;
 }
+
+.gpii-error-overlay {
+    position: fixed;
+    top: 0;
+    width: 600px;
+    height: 100%;
+    background-color: #00AAAA;
+    opacity: 0.8;
+    z-index: 12;
+    margin: 0em auto;
+    border-radius: 0.4em;
+}
+
+.gpii-error-modal {
+    width: 350px;
+    height: 150px;
+    line-height: 1em;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -200px;
+    background-color: #DFEEEB;
+    border-radius: 1px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    z-index: 13;
+}
+
+.gpii-error-notification {
+    position: relative;
+    font-weight: normal;
+    font-family: Verdana;
+    font-size: 1em;
+    width: 300px;
+    height: 100px;
+    float: left;
+    margin-left: 25px;
+    margin-right: 25px;
+    top: 10px;
+    background-color: #DFEEEB;
+    color: #474C66;
+}
+
+.gpii-error-notification-description {
+    font-weight: normal;
+    font-family: Verdana;
+    font-size: 1em;
+    width: inherit;
+    text-align: center;
+    display: block;
+}
+
+.gpii-error-paddingTop-large {
+    padding-top: 2em;
+}
+
+.gpii-error-paddingTop-small {
+    padding-top: 0.5em;
+}
+
+.gpii-error-back {
+    font-weight: bold;
+    font-family: Verdana;
+    font-size: 1.1em;
+    padding: 2em 0em 0em 0em;
+    float: left;
+    background-color: inherit;
+    color: #474C66;
+    border: 0em;
+    cursor: pointer;
+}
