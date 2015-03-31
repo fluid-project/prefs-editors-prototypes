@@ -182,6 +182,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "click",
                     "args": ["{that}.editTime"]
                 },
+                "onReady.initObjs": "{that}.initObjs",
                 "onReady.setAccountNotDetected": {
                     "this": "{that}.dom.accountNotDetected",
                     "method": "text",
@@ -625,11 +626,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.timeToMinute",
                     "method": "keyup",
                     "args": ["{that}.populateToMinute"]
-                },
-                "onDomBind.onClickEditButton": {
-                    "this": "{that}.dom.contextEditButton",
-                    "method": "click",
-                    "args": ["{that}.clickContextEditButton"]
                 }
             },
             invokers: {
@@ -789,9 +785,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "funcName": "gpii.pmt.clickBackButton",
                     "args": ["{that}.dom.setNameOverlayPanel", "{that}.dom.setNameModalPanel", "{that}.dom.untitledText"]
                 },
-                clickContextEditButton: {
-                    "funcName": "gpii.pmt.clickContextEditButton",
-                    "args": ["{that}"]
+                initObjs: {
+                    "funcName": "gpii.pmt.initObjs",
+                    "args": ["{that}", "{gpiiSession}"]
                 }
             },
             strings: {
@@ -801,18 +797,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    var maxSetId = 0;
-    var currentSetId = 0;
     var sessionObj = null;
-    var model = null;
+    var thatObj = null;
     gpii.pmt.clickAccount = function () {
         window.open("https://secureflowmanager.gpii.net/login","_blank");
     };
 
-    gpii.pmt.clickContextEditButton = function (that) {
-        console.log("Edit button clicked!");
-    };
-    
     gpii.pmt.enterShareTab = function (enterMessageLabelObj, enterMessageLabelTxt, session, that) {
         if (session.options.contextElements.setName === null){
             enterMessageLabelObj.text(enterMessageLabelTxt);
@@ -1024,7 +1014,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         contextHeaderTime.hide();
     };
 
-    gpii.pmt.setBoxValues = function (contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, addSetLink) {
+    gpii.pmt.setBoxValues = function (contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, addSetLink, currentSetId) {
         var divSet = "#"+currentSetId;
         untitledSelector = divSet + " > " + untitledSelector;
         var untitledLabel = $(untitledSelector);
@@ -1040,9 +1030,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         var timeTemp = contextTime.text().split(toLabel);
         var deviceTemp = contextDevice.text().split(appliesToLabel);
         deviceTemp = deviceTemp[1].toString().split(devicesTextLabel);
-        sessionObj = session;
-        model = that.model;
-        
+
         var setFoundIndex = null;
         var setFound = false;
         var update = false;
@@ -1055,7 +1043,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 setFound = true;
                 setFoundIndex = contextSetId;
             }
-            if (contextSetId == currentSetId){
+            if (contextSetId == session.options.currentSetId){
                 if (name !== null){
                     update = true;
                 }
@@ -1068,17 +1056,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             session.options.contextElements.device = deviceTemp[0];
             session.options.contextElements.enabled = true;
             session.options.contextElements.setName = contextUntitled.val();
-            session.options.contextElements.id = currentSetId;
+            session.options.contextElements.id = session.options.currentSetId;
             if (!update){
                 if ((timeTemp[0].length === 5) && (timeTemp[1].length === 5)) {
                     session.options.context.push(JSON.stringify(session.options.contextElements));
-                    gpii.pmt.setBoxValues(contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, addSetLink);
+                    gpii.pmt.setBoxValues(contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, addSetLink, session.options.currentSetId);
                 }
             }
             else{
                 if ((timeTemp[0].length === 5) && (timeTemp[1].length === 5)) {
-                    session.options.context.splice(currentSetId, 1, JSON.stringify(session.options.contextElements));
-                    gpii.pmt.setBoxValues(contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, addSetLink);
+                    session.options.context.splice(session.options.currentSetId, 1, JSON.stringify(session.options.contextElements));
+                    gpii.pmt.setBoxValues(contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, addSetLink, session.options.currentSetId);
                 }
             }
             overlayPanel.hide();
@@ -1090,16 +1078,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 sModal.show();
             }
             else{
-                if (setFoundIndex === currentSetId){ // An update of the exisitng set
+                if (setFoundIndex === session.options.currentSetId){ // An update of the exisitng set
                     session.options.contextElements.fromTime = timeTemp[0];
                     session.options.contextElements.toTime = timeTemp[1];
                     session.options.contextElements.device = deviceTemp[0];
                     session.options.contextElements.enabled = true;
                     session.options.contextElements.setName = contextUntitled.val();
-                    session.options.contextElements.id = currentSetId;
+                    session.options.contextElements.id = session.options.currentSetId;
                     if ((timeTemp[0].length === 5) && (timeTemp[1].length === 5)) {
-                        session.options.context.splice(currentSetId, 1, JSON.stringify(session.options.contextElements));
-                        gpii.pmt.setBoxValues(contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, addSetLink);
+                        session.options.context.splice(session.options.currentSetId, 1, JSON.stringify(session.options.contextElements));
+                        gpii.pmt.setBoxValues(contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, addSetLink, session.options.currentSetId);
                     }
                     overlayPanel.hide();
                     modalPanel.hide();
@@ -1145,7 +1133,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 $(this).addClass("gpii-prefsEditor-contextFrame-row-unselected");
             }
         });
-        currentSetId = $(element).parent("div").attr("id");
+        sessionObj.options.currentSetId = $(element).parent("div").attr("id");
         var currentDiv = $(element).parent("div");
         if (currentDiv.hasClass("gpii-prefsEditor-contextFrame-row-unselected")){
             $(currentDiv).removeClass("gpii-prefsEditor-contextFrame-row-unselected");
@@ -1155,31 +1143,28 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             $("<span class=\'gpiic-prefsEditor-context-leftArrowIcon gpii-prefsEditor-adjusterIcons gpii-prefsEditor-context-leftArrowIcon\'></span>").insertBefore(element);
             currentDiv.addClass("gpii-prefsEditor-contextFrame-row-selected");
         }
-        if (currentSetId < (maxSetId-1)){
-            var contexts = sessionObj.options.context;
-            var currentContext = JSON.parse(contexts[currentSetId]);
-            sessionObj.options.contextElements.fromTime = currentContext.fromTime;
-            sessionObj.options.contextElements.toTime = currentContext.toTime;
-            sessionObj.options.contextElements.device = currentContext.device;
-            sessionObj.options.contextElements.enabled = currentContext.enabled;
-            sessionObj.options.contextElements.setName = currentContext.setName;
-            sessionObj.options.contextElements.id = currentContext.id;
+        if (sessionObj.options.currentSetId < (sessionObj.options.maxSetId-1)){
+            // Update current model with need and preferences set
+            var index = parseInt(sessionObj.options.currentSetId) + 1;
+            var currentModel = sessionObj.options.modelSet[index];
+            thatObj.updateModel(JSON.parse(currentModel));
 
-            var index = parseInt(currentSetId) + 1;
-            var currentPreferences = sessionObj.options.preferenceSet[index];
-            
-            /*var preferences = sessionObj.options.preferenceSet;
-            fluid.each(preferences, function (preference) {
-                console.log("- preference = "+preference);
-            });
-            
-            var savedSelections = fluid.copy(model);
-            console.log("savedSelections="+JSON.stringify(savedSelections))
-            fluid.each(savedSelections, function (value, key) {
-                if (fluid.get(that.rootModel, key) === value) {
-                    delete savedSelections[key];
-                }
-            });*/
+            // Update current conditions set
+            var contexts = sessionObj.options.context;
+            var currentContext = JSON.parse(contexts[sessionObj.options.currentSetId]);
+            thatObj.locate("untitledText").val(currentContext.setName);
+            thatObj.locate("timeFromHour").val((currentContext.fromTime).substring(0,2));
+            thatObj.locate("timeFromMinute").val((currentContext.fromTime).substring(3,5));
+            thatObj.locate("timeToHour").val((currentContext.toTime).substring(0,2));
+            thatObj.locate("timeToMinute").val((currentContext.toTime).substring(3,5));
+            thatObj.locate("selectDevice").val(currentContext.device);
+            var value = thatObj.msgLookup.lookup("appliesToLabel") + currentContext.device + thatObj.msgLookup.lookup("devicesTextLabel");
+            thatObj.locate("notAppliedToAnyDevicesLabel").text(value);
+            var value = (currentContext.fromTime).substring(0,2) + ":" + (currentContext.fromTime).substring(3,5) + thatObj.msgLookup.lookup("toLabel") + (currentContext.toTime).substring(0,2) + ":" + (currentContext.toTime).substring(3,5);
+            thatObj.locate("notAppliedAtAnyTimesLabel").text(value);
+
+            // Update set name that lies at the bottom of PMT
+            thatObj.locate("setLabel").text(currentContext.setName);
         }
     };
 
@@ -1205,13 +1190,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         cRow.append(that.options.markup.pencilIcon);
     };
 
+    gpii.pmt.initObjs = function(that, session) {
+        thatObj = that;
+        sessionObj = session;
+    };
+    
     gpii.pmt.createUntitledBox = function (session, contextRows, untitledSetMarkup, label, desc, that, setLabel, untitledSelector, untitledDescSelector, contextRow) {
         var selectedIcon = that.dom.locate("leftArrowIcon");
         selectedIcon.remove();
         var pencilIcon = that.dom.locate("pencilIcon");
-        //pencilIcon.remove();
         var editButton = that.dom.locate("contextEditButton");
-        //editButton.remove();
         contextRows.append(untitledSetMarkup);
 
         untitledSelector = untitledSelector + ":last";
@@ -1223,7 +1211,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         setLabel.text(label);
         contextRow = contextRow + ":last";
         var contextRowElement = $(contextRow);
-        contextRowElement.attr("id", maxSetId);
+        contextRowElement.attr("id", session.options.maxSetId);
         
         // Store preferences so far
         var savedSelections = fluid.copy(that.model);
@@ -1234,9 +1222,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         });
 
         session.options.preferenceSet.push(JSON.stringify(savedSelections));
-        session.options.contextElements.id = maxSetId;
+        session.options.modelSet.push(JSON.stringify(fluid.copy(that.model)));
+        session.options.contextElements.id = session.options.maxSetId;
         session.options.contextElements.setName = null;
-        maxSetId++;
+        session.options.maxSetId++;
     };
 
     gpii.pmt.createBaseSetBoxStyle = function (contextRow, selectedStyle, selectedIconMarkup) {

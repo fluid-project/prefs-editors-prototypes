@@ -26,6 +26,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         // This is relevant, http://issues.gpii.net/browse/GPII-290
         loggedUser: null,
         dataToSend: null,
+        modelSet: [],
         preferenceSet: [],
         context: [],
         contextElements: {
@@ -36,6 +37,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "fromTime": null,
             "toTime": null
         },
+        maxSetId: 0,
+        currentSetId: 0,
         events: {
             onLogin: null,
             onLogout: null,
