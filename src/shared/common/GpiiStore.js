@@ -182,7 +182,8 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         fluid.each(preferences, function (preference) {
             transformedModel.push(modelTransformFunc(JSON.parse(preference)));
         });
-        transformedModel.push(modelTransformFunc(model));
+        //transformedModel.push(modelTransformFunc(model));
+        transformedModel[session.options.currentSetId] = modelTransformFunc(model);
 
         var dataToSend = {
             "contexts": {

@@ -52,5 +52,8 @@
     "emailSubject": "CLOUD4ALL:Teilen Bedürfnisse und Vorlieben",
     "colon": ":",
     "editTime": "bearbeiten",
-    "deleteTime": "löschen"
+    "deleteTime": "löschen",
+    "accountNotDetected": "Diese title ist nicht verfuegbar.",
+    "doNotMatch": "Bitte wiederholen.",
+    "back": "Zueruck"
 }

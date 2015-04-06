@@ -39,6 +39,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         },
         maxSetId: 0,
         currentSetId: 0,
+        previousSetId: 0,
         events: {
             onLogin: null,
             onLogout: null,

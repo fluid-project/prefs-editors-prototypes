@@ -52,5 +52,8 @@
     "emailSubject": "CLOUD4ALL: preferencias de acciones",
     "colon": ":",
     "editTime": "editar",
-    "deleteTime": "borrar"
+    "deleteTime": "borrar",
+    "accountNotDetected": "El título ya está en uso.",
+    "doNotMatch": "Por favor, inténtalo de nuevo.",
+    "back": "De regreso"
 }
