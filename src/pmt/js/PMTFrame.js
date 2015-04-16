@@ -16,7 +16,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     fluid.defaults("gpii.pmt", {
         gradeNames: ["fluid.prefs.GPIIEditor", "fluid.prefs.rootModel", "autoInit"],
         prefsEditor: {
-            gradeNames: ["fluid.prefs.msgLookup"],
+            gradeNames: ["fluid.prefs.msgLookup", "fluid.prefs.panel"],
             members: {
                 messageResolver: "{prefsEditorLoader}.msgResolver"
             },
@@ -57,6 +57,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 contextRows: ".gpiic-prefsEditor-contextFrame-rows",
                 contextRow: ".gpiic-prefsEditor-contextFrame-row",
                 contextEditButton: ".gpiic-prefsEditor-context-edit-button",
+                baseSetEditButton: ".gpiic-prefsEditor-context-edit-baseSet-button",
+                baseSetPencilIcon: ".gpiic-prefsEditor-context-baseSet-pencilIcon",
                 overlayPanel: ".gpiic-context-overlay",
                 modalPanel: ".gpiic-context-modal",
                 /* context selectors */
@@ -104,24 +106,28 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 editTime: ".gpiic-prefsEditor-editTime-button",
                 deleteTime: ".gpiic-prefsEditor-deleteTime-button",
                 conditionsLink: ".gpiic-prefsEditor-conditionsLink",
-                sharingLink: ".gpiic-prefsEditor-sharingLink"
+                sharingLink: ".gpiic-prefsEditor-sharingLink",
+                /* Overlay panel about set name error */
+                setNameOverlayPanel: ".gpiic-error-overlay",
+                setNameModalPanel: ".gpiic-error-modal",
+                accountNotDetected: ".gpiic-error-header",
+                doNotMatch: ".gpiic-error-description",
+                backButton: ".gpiic-error-backButton"
             },
             markup: {
-                baseSet:
+                /*baseSet:
                     "<div class='gpiic-prefsEditor-contextFrame-row'>" +
                     "   <span class='gpiic-prefsEditor-baseSetLabel gpii-prefsEditor-contextFrame-setLabel'></span>" +
                     "   <span class='gpiic-prefsEditor-baseSetDescription gpii-prefsEditor-contextFrame-setLabelDescription'></span>" +
-                    "</div>",
+                    "</div>",*/
                 untitledSet:
                     "<div class='gpiic-prefsEditor-contextFrame-row' role='region' aria-labelledby='alertHeading' aria-describedby='alertText'>" +
                     "   <span id='alertHeading' class='gpiic-prefsEditor-untitledLabel gpii-prefsEditor-contextFrame-setLabel'></span>" +
                     "   <span id='alertText' class='gpiic-prefsEditor-untitledDescLabel gpii-prefsEditor-contextFrame-setLabelDescription'></span>" +
                     "</div>",
-                selectedIcon: 
-                    "   <span class='gpiic-prefsEditor-context-leftArrowIcon gpii-prefsEditor-adjusterIcons gpii-prefsEditor-context-leftArrowIcon'></span>",
-                pencilIcon: 
-                    "   <input id='editButton' onclick='gpii.pmt.onEditClick($(\"#overlay\"), $(\"#modal\"))' type='button' value='' aria-label='' class='gpiic-prefsEditor-context-edit-button gpii-prefsEditor-context-edit-button' tabindex='0'></input>" +
-                    "   <label for='editButton' class='gpiic-prefsEditor-context-pencilIcon gpii-prefsEditor-adjusterIcons gpii-prefsEditor-pencil-icon'></span>"
+                selectedIcon: "<span class='gpiic-prefsEditor-context-leftArrowIcon gpii-prefsEditor-adjusterIcons gpii-prefsEditor-context-leftArrowIcon'></span>",
+                pencilIcon: "   <input id='editButton' onclick='gpii.pmt.onEditClick($(\"#overlay\"), $(\"#modal\"), this)' type='button' value='' aria-label='' class='gpiic-prefsEditor-context-edit-button gpii-prefsEditor-context-edit-button' tabindex='0'></input>" +
+                "   <label for='editButton' class='gpiic-prefsEditor-context-pencilIcon gpii-prefsEditor-adjusterIcons gpii-prefsEditor-pencil-icon'></span>"
             },
             styles: {
                 bottomRow: "gpii-prefsEditor-panelBottomRow",
@@ -161,8 +167,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "hide"
                 },
                 "onReady.enableTabConditions": "{that}.enableTabConditions",
-                "onReady.createBaseSetBox": "{that}.createBaseSetBox",
-                "onReady.createBaseSetBoxStyle": "{that}.createBaseSetBoxStyle",
                 "onReady.onMouseoverAddSetLink": {
                     "this": "{that}.dom.addSetLink",
                     "method": "mouseover",
@@ -177,6 +181,42 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.editTime",
                     "method": "click",
                     "args": ["{that}.editTime"]
+                },
+                "onReady.initObjs": "{that}.initObjs",
+                "onReady.setAccountNotDetected": {
+                    "this": "{that}.dom.accountNotDetected",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.accountNotDetected"]
+                },
+                "onReady.setDoNotMatch": {
+                    "this": "{that}.dom.doNotMatch",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.doNotMatch"]
+                },
+                "onReady.setBackButton": {
+                    "this": "{that}.dom.backButton",
+                    "method": "val",
+                    "args": ["{that}.msgLookup.back"]
+                },
+                "onReady.clickBackButton": {
+                    "this": "{that}.dom.backButton",
+                    "method": "click",
+                    "args": ["{that}.clickBackButton"]
+                },
+                "onReady.setBaseSetEditButton": {
+                    "this": "{that}.dom.baseSetEditButton",
+                    "method": "val",
+                    "args": ["{that}.msgLookup.editText"]
+                },
+                "onReady.setBaseSetEditButtonAriaLabel": {
+                    "this": "{that}.dom.baseSetEditButton",
+                    "method": "attr",
+                    "args": ["aria-label", "{that}.msgLookup.editText"]
+                },
+                "onReady.clickBaseSetEditButton": {
+                    "this": "{that}.dom.baseSetEditButton",
+                    "method": "click",
+                    "args": ["{that}.clickBaseSetEditButton"]
                 },
                 "onReady.setEditTimeAriaLabel": {
                     "this": "{that}.dom.editTime",
@@ -345,6 +385,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.saveAndApplyButtonLabel",
                     "method": "attr",
                     "args": ["aria-label", "{that}.msgLookup.saveAndApplyText"]
+                },
+                "onReady.clickSaveAndApplyButton": {
+                    "this": "{that}.dom.saveAndApplyButtonLabel",
+                    "method": "click",
+                    "args": ["{that}.clickSaveAndApplyButton"]
                 },
                 "onReady.setNotificationMessagePart1": {
                     "this": "{that}.dom.notificationMessagePart1",
@@ -666,7 +711,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 createUntitledBox: {
                     "funcName": "gpii.pmt.createUntitledBox",
-                    "args": ["{gpiiSession}", "{that}.dom.contextRows", "{that}.options.markup.untitledSet", "{that}.msgLookup.untitledLabel", "{that}.msgLookup.untitledDescLabel", "{that}", "{that}.dom.setLabel", "{that}.options.selectors.untitledLabel", "{that}.options.selectors.untitledDescLabel"]
+                    "args": ["{gpiiSession}", "{that}.dom.contextRows", "{that}.options.markup.untitledSet", "{that}.msgLookup.untitledLabel", "{that}.msgLookup.untitledDescLabel", "{that}", "{that}.dom.setLabel", "{that}.options.selectors.untitledLabel", "{that}.options.selectors.untitledDescLabel", "{that}.options.selectors.contextRow", "{that}.dom.baseSetEditButton", "{that}.dom.baseSetPencilIcon"]
                 },
                 createUntitledBoxStyle: {
                     "funcName": "gpii.pmt.createUntitledBoxStyle",
@@ -676,17 +721,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "funcName": "gpii.pmt.createUntitledBoxAria",
                     "args": ["{that}","{that}.msgLookup.editText"]
                 },
-                createBaseSetBox: {
-                    "funcName": "gpii.pmt.createBaseSetBox",
-                    "args": ["{that}.dom.contextRows","{that}.options.markup.baseSet"]
-                },
-                createBaseSetBoxStyle: {
-                    "funcName": "gpii.pmt.createBaseSetBoxStyle",
-                    "args": ["{that}.dom.contextRow", "{that}.options.styles.selected", "{that}.options.markup.selectedIcon"]
-                },
                 hidePanels: {
                     "funcName": "gpii.pmt.hidePanels",
-                    "args": ["{that}.dom.overlayPanel","{that}.dom.modalPanel"]
+                    "args": ["{that}.dom.overlayPanel","{that}.dom.modalPanel","{that}.dom.setNameOverlayPanel","{that}.dom.setNameModalPanel"]
                 },
                 clickUntitled: {
                     "funcName": "gpii.pmt.clickUntitled",
@@ -694,11 +731,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 clickCancelButton: {
                     "funcName": "gpii.pmt.clickCancelButton",
-                    "args": ["{gpiiSession}", "{that}.dom.overlayPanel","{that}.dom.modalPanel"]
+                    "args": ["{gpiiSession}", "{that}.dom.overlayPanel", "{that}.dom.modalPanel", "{that}.dom.addSetLink"]
                 },
                 clickDoneButton: {
                     "funcName": "gpii.pmt.clickDoneButton",
-                    "args": ["{gpiiSession}", "{that}.dom.overlayPanel", "{that}.dom.modalPanel", "{that}.dom.notAppliedToAnyDevicesLabel", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.dom.untitledText", "{that}.options.selectors.untitledLabel", "{that}.options.selectors.untitledDescLabel", "{that}.dom.setLabel", "{that}.msgLookup.toLabel", "{that}.msgLookup.appliesToLabel", "{that}.msgLookup.devicesTextLabel"]
+                    "args": ["{gpiiSession}", "{that}.dom.overlayPanel", "{that}.dom.modalPanel", "{that}.dom.notAppliedToAnyDevicesLabel", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.dom.untitledText", "{that}.options.selectors.untitledLabel", "{that}.options.selectors.untitledDescLabel", "{that}.dom.setLabel", "{that}.msgLookup.toLabel", "{that}.msgLookup.appliesToLabel", "{that}.msgLookup.devicesTextLabel", "{that}.dom.setNameOverlayPanel", "{that}.dom.setNameModalPanel", "{that}.dom.addSetLink", "{that}"]
                 },
                 enableTabConditions: {
                     "funcName": "gpii.pmt.enableTabConditions",
@@ -754,7 +791,23 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 clickAccount: {
                     "funcName": "gpii.pmt.clickAccount",
-                    "args": ["{that}"]
+                    "args": []
+                },
+                clickBackButton: {
+                    "funcName": "gpii.pmt.clickBackButton",
+                    "args": ["{that}.dom.setNameOverlayPanel", "{that}.dom.setNameModalPanel", "{that}.dom.untitledText"]
+                },
+                initObjs: {
+                    "funcName": "gpii.pmt.initObjs",
+                    "args": ["{that}", "{gpiiSession}"]
+                },
+                clickBaseSetEditButton: {
+                    "funcName": "gpii.pmt.clickBaseSetEditButton",
+                    "args": ["{that}", "{gpiiSession}", "{that}.msgLookup.baseSetLabel", "{that}.options.markup.selectedIcon"]
+                },
+                clickSaveAndApplyButton: {
+                    "funcName": "gpii.pmt.clickSaveAndApplyButton",
+                    "args": ["{that}", "{gpiiSession}"]
                 }
             },
             strings: {
@@ -764,12 +817,43 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     });
 
-    gpii.pmt.clickAccount = function (that) {
-        window.open('http://205.211.169.224:8081/authorized-services','_blank');
-    }
+    var sessionObj = null;
+    var thatObj = null;
+    gpii.pmt.clickAccount = function () {
+        window.open("https://secureflowmanager.gpii.net/login","_blank");
+    };
+
+    gpii.pmt.clickSaveAndApplyButton = function (that, session) {
+        gpii.pmt.SavePreferenceSets(that, session, session.options.currentSetId);
+    };
     
+    gpii.pmt.clickBaseSetEditButton = function (that, session, baseSetLabel, selectedIcon) {
+        session.options.currentSetId = 0;
+        gpii.pmt.SavePreferenceSets(that, session, session.options.previousSetId);
+        var currentModel = session.options.modelSet[0];
+        that.updateModel(JSON.parse(currentModel));
+        that.locate("setLabel").text(baseSetLabel);
+
+        var leftArrowIcon = that.locate("leftArrowIcon");
+        leftArrowIcon.remove();
+        var setDivs = that.locate("contextRow");
+        fluid.each(setDivs, function (setDiv, index) {
+            setDiv = $(setDiv);
+            setDiv.removeClass(that.options.styles.selected);
+            setDiv.addClass(that.options.styles.unSelected);
+        });
+        var baseSetEditButton = that.locate("baseSetEditButton");
+        var currentDiv = baseSetEditButton.parent("div");
+        if (currentDiv.hasClass(that.options.styles.unSelected)){
+            currentDiv.removeClass(that.options.styles.unSelected);
+            currentDiv.addClass(that.options.styles.selected);
+            $(selectedIcon).insertBefore(baseSetEditButton);
+        }
+        sessionObj.options.previousSetId = 0;
+    };
+
     gpii.pmt.enterShareTab = function (enterMessageLabelObj, enterMessageLabelTxt, session, that) {
-        if (session.options.contextElements.setName == null){
+        if (session.options.contextElements.setName === null){
             enterMessageLabelObj.text(enterMessageLabelTxt);
         }
         else{
@@ -782,7 +866,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             var preferences = session.options.preferenceSet.slice(0);
             var contexts = session.options.context;
             var transformedModel = [];
-            fluid.each(preferences, function (preference, index) {
+            fluid.each(preferences, function (preference) {
                 transformedModel.push(fluid.model.transform(JSON.parse(preference), gpii.prefs.commonTermsTransformationRules));
             });
             transformedModel.push(fluid.model.transform(savedSelections, gpii.prefs.commonTermsTransformationRules));
@@ -821,7 +905,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             });
             enterMessageLabelObj.text(JSON.stringify(emailBody));
         }
-    }
+    };
 
     gpii.pmt.deleteTime = function (that, recordLine, notAppliedAtAnyTimesLabelObj, notAppliedAtAnyTimesLabelMsg) {
         var fromHour = that.dom.locate("timeFromHour");
@@ -852,17 +936,23 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
 
     gpii.pmt.twoDigits = function (val){
-        if ((val != "") && (val < 10)){
+        if (val.length === 0) {
+            val = "00";
+            return val;
+        }
+        else if (val.length === 1) {
             val = "0"+val;
             return val;
         }
-        else if ((val != "") && (val >= 10)){
+        else if (val.length === 2) {
             return val;
         }
         else {
-            return "";
+            val = "00";
+            return val;
         }
-    }
+    };
+
     gpii.pmt.selectDevice = function (sess, sDevice, appliesToLabel, devicesTextLabel, notAppliedToAnyDevicesLabel) {
         sDevice = sDevice + " option:selected";
         var sDeviceSelector = $(sDevice);
@@ -872,7 +962,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     
     gpii.pmt.clickEmailCopyButton = function (to, body, subject) {
         gpii.pmt.sendWithGmail({
-            to: to.val(), 
+            to: to.val(),
             subject: subject,
             body: body.val()//,
             //attachment : "sharing.js"
@@ -903,22 +993,22 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         else {
             return false;
         }
-    }
+    };
 
     gpii.pmt.sendViaMailTo = function (opts) {
-        var link = "mailto:" +opts.to
-        + "&subject=" + opts.subject
-        + "&body=" + opts.body;
+        var link = "mailto:" + opts.to +
+        "&subject=" + opts.subject +
+        "&body=" + opts.body;
         //+ "&attachment="+opts.attachment;
         window.location.href = link;
     };
 
     gpii.pmt.sendWithGmail = function (opts) {
-        var str = 'http://mail.google.com/mail/?view=cm&fs=1'+
-                  '&to=' + opts.to +
-                  '&su=' + opts.subject +
-                  '&body=' + opts.body.replace(/\n/g,'%0A') +
-                  '&ui=1';
+        var str = "http://mail.google.com/mail/?view=cm&fs=1"+
+                  "&to=" + opts.to +
+                  "&su=" + opts.subject +
+                  "&body=" + opts.body.replace(/\n/g,"%0A") +
+                  "&ui=1";
         location.href = str;
     };
     
@@ -941,8 +1031,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         contextHeader.show();
         sharingEmail.hide();
         if (that.dom.locate("baseSetDescription").hasClass(that.options.styles.invisible)){
-            that.dom.locate("baseSetDescription").removeClass(that.options.styles.invisible)
-            that.dom.locate("deleteSetLabel").removeClass(that.options.styles.invisible)
+            that.dom.locate("baseSetDescription").removeClass(that.options.styles.invisible);
+            that.dom.locate("deleteSetLabel").removeClass(that.options.styles.invisible);
         }
         that.dom.locate("baseSetDescription").addClass(that.options.styles.visible);
         that.dom.locate("deleteSetLabel").addClass(that.options.styles.visible);
@@ -969,8 +1059,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         contextHeader.show();
         sharingEmail.show();
         if (that.dom.locate("baseSetDescription").hasClass(that.options.styles.visible)){
-            that.dom.locate("baseSetDescription").removeClass(that.options.styles.visible)
-            that.dom.locate("deleteSetLabel").removeClass(that.options.styles.visible)
+            that.dom.locate("baseSetDescription").removeClass(that.options.styles.visible);
+            that.dom.locate("deleteSetLabel").removeClass(that.options.styles.visible);
         }
         that.dom.locate("baseSetDescription").addClass(that.options.styles.invisible);
         that.dom.locate("deleteSetLabel").addClass(that.options.styles.invisible);
@@ -978,35 +1068,109 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         contextHeaderTime.hide();
     };
 
-    gpii.pmt.clickDoneButton = function (session, overlayPanel, modalPanel, contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, toLabel, appliesToLabel, devicesTextLabel) {
-        untitledSelector = untitledSelector + ":last";
+    gpii.pmt.setBoxValues = function (contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, addSetLink, currentSetId) {
+        var divSet = "#"+currentSetId;
+        untitledSelector = divSet + " > " + untitledSelector;
         var untitledLabel = $(untitledSelector);
-        untitledDescSelector = untitledDescSelector + ":last";
+        untitledDescSelector =  divSet + " > " + untitledDescSelector;
         var untitledDescLabel = $(untitledDescSelector);
         untitledLabel.text(contextUntitled.val());
         untitledDescLabel.text(contextDevice.text()+", "+contextTime.text());
         setLabel.text(contextUntitled.val());
-        
+        addSetLink.focus();
+    };
+
+    gpii.pmt.SavePreferenceSets = function(that, session, index){
+        // Store preferences so far.
+        var model = fluid.copy(that.model);
+        var savedSelections = fluid.copy(model);
+        fluid.each(savedSelections, function (value, key) {
+            if (fluid.get(that.rootModel, key) === value) {
+                delete savedSelections[key];
+            }
+        });
+        session.options.preferenceSet[index] = JSON.stringify(savedSelections);
+        session.options.modelSet[index] = JSON.stringify(fluid.copy(model));
+    };
+
+    
+    gpii.pmt.clickDoneButton = function (session, overlayPanel, modalPanel, contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, toLabel, appliesToLabel, devicesTextLabel, sPanel, sModal, addSetLink, that) {
         var timeTemp = contextTime.text().split(toLabel);
         var deviceTemp = contextDevice.text().split(appliesToLabel);
         deviceTemp = deviceTemp[1].toString().split(devicesTextLabel);
 
-        overlayPanel.hide();
-        modalPanel.hide();
-        
-        if ((timeTemp[0].length === 5) && (timeTemp[1].length === 5)) {
+        var setFoundIndex = null;
+        var setFound = false;
+        var update = false;
+        var contexts = session.options.context;
+        fluid.each(contexts, function (context, index) {
+            context = JSON.parse(context);
+            var name = context.setName;
+            var contextSetId = context.id;
+            if (name === contextUntitled.val()){ // Search if the set name already exists
+                setFound = true;
+                setFoundIndex = contextSetId;
+            }
+            if (contextSetId == session.options.currentSetId){
+                if (name !== null){
+                    update = true;
+                }
+            }
+        });
+        if (!setFound){
             session.options.contextElements.fromTime = timeTemp[0];
             session.options.contextElements.toTime = timeTemp[1];
             session.options.contextElements.device = deviceTemp[0];
             session.options.contextElements.enabled = true;
             session.options.contextElements.setName = contextUntitled.val();
-            session.options.context.push(JSON.stringify(session.options.contextElements));
+            session.options.contextElements.id = session.options.currentSetId;
+            if (!update){
+                if ((timeTemp[0].length === 5) && (timeTemp[1].length === 5)) {
+                    session.options.context.push(JSON.stringify(session.options.contextElements));
+                    gpii.pmt.setBoxValues(contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, addSetLink, session.options.currentSetId);
+                }
+            }
+            else{
+                if ((timeTemp[0].length === 5) && (timeTemp[1].length === 5)) {
+                    session.options.context.splice(session.options.currentSetId-1, 1, JSON.stringify(session.options.contextElements));
+                    gpii.pmt.setBoxValues(contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, addSetLink, session.options.currentSetId);
+                }
+            }
+            overlayPanel.hide();
+            modalPanel.hide();
+        }
+        else{
+            if (!update){
+                sPanel.show();
+                sModal.show();
+            }
+            else{
+                if (setFoundIndex === session.options.currentSetId){ // An update of the exisitng set
+                    session.options.contextElements.fromTime = timeTemp[0];
+                    session.options.contextElements.toTime = timeTemp[1];
+                    session.options.contextElements.device = deviceTemp[0];
+                    session.options.contextElements.enabled = true;
+                    session.options.contextElements.setName = contextUntitled.val();
+                    session.options.contextElements.id = session.options.currentSetId;
+                    if ((timeTemp[0].length === 5) && (timeTemp[1].length === 5)) {
+                        session.options.context.splice(session.options.currentSetId-1, 1, JSON.stringify(session.options.contextElements));
+                        gpii.pmt.setBoxValues(contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, addSetLink, session.options.currentSetId);
+                    }
+                    overlayPanel.hide();
+                    modalPanel.hide();
+                }
+                else{
+                    sPanel.show();
+                    sModal.show();
+                }
+            }
         }
     };
 
-    gpii.pmt.clickCancelButton = function (sess, overlayPanel,modalPanel) {
+    gpii.pmt.clickCancelButton = function (sess, overlayPanel, modalPanel, addSetLink) {
         overlayPanel.hide();
         modalPanel.hide();
+        addSetLink.focus();
     };
 
     gpii.pmt.clickUntitled = function (that) {
@@ -1019,14 +1183,60 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         deleteSet.addClass(that.options.styles.visible);
     };
 
-    gpii.pmt.hidePanels = function (oPanel, mPanel) {
+    gpii.pmt.hidePanels = function (oPanel, mPanel, soPanel, smPanel) {
         oPanel.hide();
         mPanel.hide();
+        soPanel.hide();
+        smPanel.hide();
     };
 
-    gpii.pmt.onEditClick = function (oPanel, mPanel) {
+    gpii.pmt.onEditClick = function (oPanel, mPanel, element) {
         oPanel.show();
         mPanel.show();
+        var setDivs = $(".gpiic-prefsEditor-contextFrame-row");
+        $(setDivs).each(function(index, value) { 
+            if (index >= 0){
+                $(this).removeClass("gpii-prefsEditor-contextFrame-row-selected");
+                $(this).addClass("gpii-prefsEditor-contextFrame-row-unselected");
+            }
+        });
+        sessionObj.options.currentSetId = $(element).parent("div").attr("id");
+        var currentDiv = $(element).parent("div");
+        if (currentDiv.hasClass("gpii-prefsEditor-contextFrame-row-unselected")){
+            $(currentDiv).removeClass("gpii-prefsEditor-contextFrame-row-unselected");
+        }
+        if (currentDiv.hasClass("gpii-prefsEditor-contextFrame-row-selected") === false){
+            $(".gpiic-prefsEditor-context-leftArrowIcon").remove();
+            $("<span class=\'gpiic-prefsEditor-context-leftArrowIcon gpii-prefsEditor-adjusterIcons gpii-prefsEditor-context-leftArrowIcon\'></span>").insertBefore(element);
+            currentDiv.addClass("gpii-prefsEditor-contextFrame-row-selected");
+        }
+
+        var contexts = sessionObj.options.context;
+        var models = sessionObj.options.modelSet
+        gpii.pmt.SavePreferenceSets(thatObj, sessionObj, sessionObj.options.previousSetId);
+        if ((models.length >= sessionObj.options.currentSetId) && (contexts.length >= sessionObj.options.currentSetId)){
+            // Update current model with need and preferences set
+            var index = parseInt(sessionObj.options.currentSetId);
+            var currentModel = sessionObj.options.modelSet[index];
+            thatObj.updateModel(JSON.parse(currentModel));
+
+            // Update current conditions set
+            var currentContext = JSON.parse(contexts[index-1]);
+            thatObj.locate("untitledText").val(currentContext.setName);
+            thatObj.locate("timeFromHour").val((currentContext.fromTime).substring(0,2));
+            thatObj.locate("timeFromMinute").val((currentContext.fromTime).substring(3,5));
+            thatObj.locate("timeToHour").val((currentContext.toTime).substring(0,2));
+            thatObj.locate("timeToMinute").val((currentContext.toTime).substring(3,5));
+            thatObj.locate("selectDevice").val(currentContext.device);
+            var value = thatObj.msgLookup.lookup("appliesToLabel") + currentContext.device + thatObj.msgLookup.lookup("devicesTextLabel");
+            thatObj.locate("notAppliedToAnyDevicesLabel").text(value);
+            var value = (currentContext.fromTime).substring(0,2) + ":" + (currentContext.fromTime).substring(3,5) + thatObj.msgLookup.lookup("toLabel") + (currentContext.toTime).substring(0,2) + ":" + (currentContext.toTime).substring(3,5);
+            thatObj.locate("notAppliedAtAnyTimesLabel").text(value);
+
+            // Update set name that lies at the bottom of PMT
+            thatObj.locate("setLabel").text(currentContext.setName);
+        }
+        sessionObj.options.previousSetId = sessionObj.options.currentSetId;
     };
 
     gpii.pmt.createUntitledBoxAria = function (that, editText) {
@@ -1038,7 +1248,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.pmt.createUntitledBoxStyle = function (that) {
         var contextRows = that.dom.locate("contextRow");
         var cRow;
-        fluid.each(contextRows, function (contextRow, index) {
+        fluid.each(contextRows, function (contextRow) {
             contextRow = $(contextRow);
             contextRow.removeClass(that.options.styles.selected);
             contextRow.addClass(that.options.styles.unSelected);
@@ -1051,13 +1261,23 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         cRow.append(that.options.markup.pencilIcon);
     };
 
-    gpii.pmt.createUntitledBox = function (session, contextRows, untitledSetMarkup, label, desc, that, setLabel, untitledSelector, untitledDescSelector) {
+    gpii.pmt.initObjs = function(that, session) {
+        thatObj = that;
+        sessionObj = session;
+    };
+    
+    gpii.pmt.createUntitledBox = function (session, contextRows, untitledSetMarkup, label, desc, that, setLabel, untitledSelector, untitledDescSelector, contextRow, baseSetEditButton, baseSetPencilIcon) {
+        if (baseSetEditButton.hasClass(that.options.styles.invisible)){
+            baseSetEditButton.removeClass(that.options.styles.invisible);
+            baseSetEditButton.addClass(that.options.styles.visible);
+            baseSetPencilIcon.removeClass(that.options.styles.invisible);
+            baseSetPencilIcon.addClass(that.options.styles.visible);
+        }
+
         var selectedIcon = that.dom.locate("leftArrowIcon");
         selectedIcon.remove();
         var pencilIcon = that.dom.locate("pencilIcon");
-        pencilIcon.remove();
         var editButton = that.dom.locate("contextEditButton");
-        editButton.remove();
         contextRows.append(untitledSetMarkup);
 
         untitledSelector = untitledSelector + ":last";
@@ -1067,6 +1287,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         untitledLabel.text(label);
         untitledDescLabel.text(desc);
         setLabel.text(label);
+        contextRow = contextRow + ":last";
+        var contextRowElement = $(contextRow);
+        contextRowElement.attr("id", session.options.maxSetId +1);
         
         // Store preferences so far
         var savedSelections = fluid.copy(that.model);
@@ -1075,16 +1298,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 delete savedSelections[key];
             }
         });
-        session.options.preferenceSet.push(JSON.stringify(savedSelections));
-    };
 
-    gpii.pmt.createBaseSetBoxStyle = function (contextRow, selectedStyle, selectedIconMarkup) {
-        contextRow.addClass(selectedStyle);
-        contextRow.append(selectedIconMarkup);
-    };
-
-    gpii.pmt.createBaseSetBox = function (contextRows, baseSetMarkup) {
-        contextRows.html(baseSetMarkup);
+        var index = parseInt(session.options.currentSetId);
+        session.options.preferenceSet[index] = JSON.stringify(savedSelections);
+        session.options.modelSet[index] = JSON.stringify(fluid.copy(that.model));
+        session.options.contextElements.id = session.options.maxSetId;
+        session.options.contextElements.setName = null;
+        session.options.maxSetId++;
+        session.options.currentSetId++;
+        session.options.previousSetId = session.options.currentSetId;
     };
 
     gpii.pmt.toggleContextPanel = function (that) {
@@ -1125,6 +1347,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             icon.removeClass(that.options.styles.contextIconRight);
             icon.addClass(that.options.styles.contextIconLeft);
         }
+    };
+    
+    gpii.pmt.clickBackButton = function (setOverlayPanel, setModalPanel, untitledText) {
+        setOverlayPanel.hide();
+        setModalPanel.hide();
+        untitledText.focus();
     };
 
     gpii.pmt.hideUserStatusBarIfNotLoggedIn = function (loggedUser, statusBarElement) {

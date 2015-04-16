@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>PMT Context Test Suite</title>
+
+        <!--  This is the jqUnit test css file -->
+        <link rel="stylesheet" media="screen" href="../lib/qunit/qunit/css/qunit.css" />
+
+        <!--  These are the jqUnit test js files -->
+        <script src="../lib/qunit/qunit/js/qunit.js"></script>
+        <script src="../../src/shared/lib/infusion/infusion-prefsFramework.js"></script>
+        <script src="../lib/infusion/jqUnit/js/jqUnit.js"></script>
+        <script src="../lib/infusion/utils/js/IoCTestUtils.js"></script>
+
+        <!-- The GPIIPrefsEditor JS files -->
+        <script type="text/javascript" src="../../src/shared/frames/js/GPIIPrefsEditor.js"></script>
+
+        <!-- The common JS files -->
+        <script type="text/javascript" src="../../src/shared/common/ariaUtility.js"></script>
+        <script type="text/javascript" src="../../src/shared/common/eventUtility.js"></script>
+        <script type="text/javascript" src="../../src/shared/common/merging.js"></script>
+
+        <!-- The custom adjusters JS files -->
+        <script type="text/javascript" src="../../src/shared/components/preview/js/preview.js"></script>
+        <script type="text/javascript" src="../../src/shared/components/textfieldStepper/js/textfieldStepper.js"></script>
+        <script type="text/javascript" src="../../src/shared/adjusters/js/expandingAdjusters.js"></script>
+        <script type="text/javascript" src="../../src/shared/adjusters/js/textfieldStepper.js"></script>
+        <script type="text/javascript" src="../../src/shared/adjusters/js/onOffSwitch.js"></script>
+        <script type="text/javascript" src="../../src/shared/adjusters/js/iconCheck.js"></script>
+        <script type="text/javascript" src="../../src/shared/adjusters/js/addContrast.js"></script>
+        <script type="text/javascript" src="../../src/shared/adjusters/js/contrastThemeNoPreview.js"></script>
+        <script type="text/javascript" src="../../src/shared/adjusters/js/contrastEnabled.js"></script>
+        <script type="text/javascript" src="../../src/shared/adjusters/js/increaseSizePCP.js"></script>
+        <script type="text/javascript" src="../../src/shared/adjusters/js/increaseSizePMT.js"></script>
+        <script type="text/javascript" src="../../src/shared/adjusters/js/textSizePCP.js"></script>
+        <script type="text/javascript" src="../../src/shared/adjusters/js/textSizePMT.js"></script>
+        <script type="text/javascript" src="../../src/shared/adjusters/js/cursorSizePCP.js"></script>
+        <script type="text/javascript" src="../../src/shared/adjusters/js/cursorSizePMT.js"></script>
+        <script type="text/javascript" src="../../src/shared/adjusters/js/magnifierEnabled.js"></script>
+        <script type="text/javascript" src="../../src/shared/adjusters/js/magnifierPCP.js"></script>
+        <script type="text/javascript" src="../../src/shared/adjusters/js/magnifierPMT.js"></script>
+        <script type="text/javascript" src="../../src/shared/adjusters/js/magnifierInvertColours.js"></script>
+        <script type="text/javascript" src="../../src/shared/adjusters/js/magnifierPosition.js"></script>
+        <script type="text/javascript" src="../../src/shared/adjusters/js/followingElement.js"></script>
+        <script type="text/javascript" src="../../src/shared/adjusters/js/magnifierFollowsFollowingElement.js"></script>
+        <script type="text/javascript" src="../../src/shared/adjusters/js/screenReaderFollowsFollowingElement.js"></script>
+        <script type="text/javascript" src="../../src/shared/adjusters/js/showCrosshairs.js"></script>
+
+        <!-- The JS files of the enactors of my custom adjusters -->
+        <script type="text/javascript" src="../../src/shared/enactors/js/contrastThemeNoPreview.js"></script>
+        <script type="text/javascript" src="../../src/shared/enactors/js/textSize.js"></script>
+        <script type="text/javascript" src="../../src/shared/enactors/js/cursorSize.js"></script>
+        <script type="text/javascript" src="../../src/shared/enactors/js/magnifier.js"></script>
+
+        <!-- The i18n JS files -->
+        <script type="text/javascript" src="../../src/shared/i18n/js/i18n.js"></script>
+
+        <script type="text/javascript" src="../../src/shared/adjusters/js/Panels.js"></script>
+
+        <!-- PMT-specific files -->
+        <script type="text/javascript" src="../../src/shared/schemas/js/primarySchema.js"></script>
+        <script type="text/javascript" src="../../src/shared/schemas/js/pmtSchema.js"></script>
+        <script type="text/javascript" src="../../src/pmt/js/PMTFrame.js"></script>
+
+        <!-- The GPII related files -->
+        <script type="text/javascript" src="../../src/shared/common/GpiiSession.js"></script>
+        <script type="text/javascript" src="../../src/shared/common/GpiiStore.js"></script>
+
+        <!--  These are tests that have been written using this page as data -->
+        <script type="text/javascript" src="../js/leftPanelTests.js"></script>
+
+    </head>
+    <body>
+        <h1 id="qunit-header">Context Test Suite</h1>
+        <h2 id="qunit-banner"></h2>
+        <div id="qunit-testrunner-toolbar"></div>
+        <h2 id="qunit-userAgent"></h2>
+        <ol id="qunit-tests"></ol>
+
+        <div class="gpiic-prefsEditor-contextContainer">
+            <div class="gpiic-prefsEditor-contextFrame-header">
+                <a href="#" class="gpiic-prefsEditor-contextFrameLink" aria-label="add set">
+                    <span class="gpiic-prefsEditor-context-addIcon gpii-prefsEditor-adjusterIcons gpii-prefsEditor-context-addIcon"></span>
+                </a>
+            </div>
+            <div class='gpiic-prefsEditor-contextFrame-row'>
+                <span class='gpiic-prefsEditor-baseSetLabel gpii-prefsEditor-contextFrame-setLabel'></span>
+                <span class='gpiic-prefsEditor-baseSetDescription gpii-prefsEditor-contextFrame-setLabelDescription'></span>
+            </div>
+            <div class='gpiic-prefsEditor-contextFrame-row' role='region' aria-labelledby='alertHeading' aria-describedby='alertText'>
+                <span id='alertHeading' class='gpiic-prefsEditor-untitledLabel gpii-prefsEditor-contextFrame-setLabel'></span>
+                <span id='alertText' class='gpiic-prefsEditor-untitledDescLabel gpii-prefsEditor-contextFrame-setLabelDescription'></span>
+            </div>
+        </div>
+    </body>
+</html>

@@ -26,15 +26,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         // This is relevant, http://issues.gpii.net/browse/GPII-290
         loggedUser: null,
         dataToSend: null,
+        modelSet: [],
         preferenceSet: [],
         context: [],
-        contextElements: { 
+        contextElements: {
+            "id": null,
             "setName": null,
             "enabled": null,
             "device": null,
             "fromTime": null,
             "toTime": null
         },
+        maxSetId: 0,
+        currentSetId: 0,
+        previousSetId: 0,
         events: {
             onLogin: null,
             onLogout: null,
@@ -122,8 +127,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },*/
                 success: function (data) {
                     that.options.loggedUser = null;
-                    if (window.location.href.indexOf('#') > 0) {
-                        var url = window.location.href.split('#');
+                    if (window.location.href.indexOf("#") > 0) {
+                        var url = window.location.href.split("#");
                         window.location.href = url[0];
                     }
                     that.events.onLogout.fire();

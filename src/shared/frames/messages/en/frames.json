@@ -52,5 +52,8 @@
     "emailSubject": "CLOUD4ALL:Share needs and preferences",
     "colon": ":",
     "editTime": "edit",
-    "deleteTime": "delete"
+    "deleteTime": "delete",
+    "accountNotDetected": "The set name is already in use.",
+    "doNotMatch": "Please try again to set a new name.",
+    "back": "Back"
 }

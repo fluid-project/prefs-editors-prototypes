@@ -52,5 +52,8 @@
     "emailSubject": "CLOUD4ALL: Διαμοιρασμός ρυθμίσεων",
     "colon": ":",
     "editTime": "Επεξεργασία",
-    "deleteTime": "Διαγραφή"
+    "deleteTime": "Διαγραφή",
+    "accountNotDetected": "Το όνομα συνόλου χρησιμοποιείται ήδη.",
+    "doNotMatch": "Παρακαλώ, θέστε ένα νέο όνομα συνόλου.",
+    "back": "Επιστροφή"
 }
