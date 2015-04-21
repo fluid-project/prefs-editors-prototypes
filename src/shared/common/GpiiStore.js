@@ -82,28 +82,33 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
     fluid.registerNamespace("gpii.prefs.gpiiStore");
 
-    gpii.prefs.gpiiStore.onSuccessfulSet = function (session, data) {
+    gpii.prefs.gpiiStore.onSuccessfulSet = function (session, data, operation) {
         /*
          * TODO: Do we still need this check now that we can query the system for the logged in user?
          * Will we query GPII every time a component needs to know about the currently logged user or
          * will we have GPIISession caching it and getting it from there? Relevant JIRA:
          *      http://issues.gpii.net/browse/GPII-623
          */
-        if (session.options.loggedUser !== data.userToken) {
-            // new user, trigger accountCreated event
-            session.events.accountCreated.fire(data.userToken);
-        } else {
-            // already logged in, refresh AT applications
-            // log user out
-            session.logout();
-            // and log user in again
-            session.login(data.userToken);
-            /* TODO: The above procedure should normally be happening on the GPII side.
-             * Preference management tools should not have session management responsibilities.
-             * This is a work-around for the pilot2 tests.
-             * */
+        if (operation === "POST"){
+            if (session.options.loggedUser !== data.userToken) {
+                // new user, trigger accountCreated event
+                session.events.accountCreated.fire(data.userToken);
+            } else {
+                // already logged in, refresh AT applications
+                // log user out
+                session.logout();
+                // and log user in again
+                session.login(data.userToken);
+                /* TODO: The above procedure should normally be happening on the GPII side.
+                 * Preference management tools should not have session management responsibilities.
+                 * This is a work-around for the pilot2 tests.
+                 * */
+            }
+            fluid.log("POST: Saved to GPII server");
         }
-        fluid.log("POST: Saved to GPII server");
+        else if (operation === "PUT"){
+            session.login(data.userToken);
+        }
     };
 
     /**
@@ -237,7 +242,10 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             data: JSON.stringify(dataToSend),
             success: function (data) {
                 if (requestType === "POST"){
-                    onSuccessfulSetFunction(session, data);
+                    onSuccessfulSetFunction(session, data, requestType);
+                }
+                if (requestType === "PUT"){
+                    onSuccessfulSetFunction(session, data, requestType);
                 }
                 session.options.dataToSend = dataToSend;
             },
