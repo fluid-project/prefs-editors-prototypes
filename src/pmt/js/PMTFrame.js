@@ -622,6 +622,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "keyup",
                     "args": ["{that}.selectDevice"]
                 },
+                "onReady.selectDevices": {
+                    "this": "{that}.dom.selectDevice",
+                    "method": "click",
+                    "args": ["{that}.selectDevice"]
+                },
                 "onReady.setToLabel": {
                     "this": "{that}.dom.toLabel",
                     "method": "text",
