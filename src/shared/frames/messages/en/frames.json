@@ -55,5 +55,9 @@
     "deleteTime": "delete",
     "accountNotDetected": "The set name is already in use.",
     "doNotMatch": "Please try again to set a new name.",
-    "back": "Back"
+    "back": "Back",
+    "timeErrorHeader": "The specified time is not valid.",
+    "timeErrorHour": "The hour must be between 0 and 23.",
+    "timeErrorMinutes": "The minutes must be between 0 and 59.",
+    "timeErrorDescription": "The hour must be between 0 and 23. The minutes must be between 0 and 59."
 }

@@ -322,6 +322,17 @@ ul {
     text-align: center;
 }
 
+.gpii-context-time2 {
+    color: #474D71;
+    margin-top: 0.188em;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 0.95em;
+    width: 4em;
+    border: 0 none;
+    text-align: center;
+}
+
 .gpii-context-time-whole-div {
     margin-left: 0.4em;
 }
@@ -352,6 +363,16 @@ input[type='number'] {
 
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type='time'] {
+    -moz-appearance:textfield;
+}
+
+input[type=time]::-webkit-inner-spin-button, 
+input[type=time]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
 }

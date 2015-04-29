@@ -112,7 +112,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 setNameModalPanel: ".gpiic-error-modal",
                 accountNotDetected: ".gpiic-error-header",
                 doNotMatch: ".gpiic-error-description",
-                backButton: ".gpiic-error-backButton"
+                backButton: ".gpiic-error-backButton",
+                timeOverlayPanel: ".gpiic-time-error-overlay",
+                timeModalPanel: ".gpiic-time-error-modal",
+                timeErrorHeader: ".gpiic-time-error-header",
+                timeErrorDescription: ".gpiic-time-error-description",
+                timeBackButton: ".gpiic-time-error-backButton"
             },
             markup: {
                 /*baseSet:
@@ -629,23 +634,43 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 "onReady.setFromHour": {
                     "this": "{that}.dom.timeFromHour",
-                    "method": "keyup",
+                    "method": "focusout",
                     "args": ["{that}.populateFromHour"]
                 },
                 "onReady.setFromMinute": {
                     "this": "{that}.dom.timeFromMinute",
-                    "method": "keyup",
+                    "method": "focusout",
                     "args": ["{that}.populateFromMinute"]
                 },
                 "onReady.setToHour": {
                     "this": "{that}.dom.timeToHour",
-                    "method": "keyup",
+                    "method": "focusout",
                     "args": ["{that}.populateToHour"]
                 },
                 "onReady.setToMinute": {
                     "this": "{that}.dom.timeToMinute",
-                    "method": "keyup",
+                    "method": "focusout",
                     "args": ["{that}.populateToMinute"]
+                },
+                "onReady.setTimeErrorHeader": {
+                    "this": "{that}.dom.timeErrorHeader",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.timeErrorHeader"]
+                },
+                "onReady.setTimeErrorDescription": {
+                    "this": "{that}.dom.timeErrorDescription",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.timeErrorDescription"]
+                },
+                "onReady.setTimeBackButton": {
+                    "this": "{that}.dom.timeBackButton",
+                    "method": "val",
+                    "args": ["{that}.msgLookup.back"]
+                },
+                "onReady.clickTimeBackButton": {
+                    "this": "{that}.dom.timeBackButton",
+                    "method": "click",
+                    "args": ["{that}.clickTimeBackButton"]
                 }
             },
             invokers: {
@@ -723,7 +748,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 hidePanels: {
                     "funcName": "gpii.pmt.hidePanels",
-                    "args": ["{that}.dom.overlayPanel","{that}.dom.modalPanel","{that}.dom.setNameOverlayPanel","{that}.dom.setNameModalPanel"]
+                    "args": ["{that}.dom.overlayPanel", "{that}.dom.modalPanel", "{that}.dom.setNameOverlayPanel", "{that}.dom.setNameModalPanel", "{that}.dom.timeOverlayPanel", "{that}.dom.timeModalPanel"]
                 },
                 clickUntitled: {
                     "funcName": "gpii.pmt.clickUntitled",
@@ -735,7 +760,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 clickDoneButton: {
                     "funcName": "gpii.pmt.clickDoneButton",
-                    "args": ["{gpiiSession}", "{that}.dom.overlayPanel", "{that}.dom.modalPanel", "{that}.dom.notAppliedToAnyDevicesLabel", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.dom.untitledText", "{that}.options.selectors.untitledLabel", "{that}.options.selectors.untitledDescLabel", "{that}.dom.setLabel", "{that}.msgLookup.toLabel", "{that}.msgLookup.appliesToLabel", "{that}.msgLookup.devicesTextLabel", "{that}.dom.setNameOverlayPanel", "{that}.dom.setNameModalPanel", "{that}.dom.addSetLink", "{that}"]
+                    "args": ["{gpiiSession}", "{that}.dom.overlayPanel", "{that}.dom.modalPanel", "{that}.dom.notAppliedToAnyDevicesLabel", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.dom.untitledText", "{that}.options.selectors.untitledLabel", "{that}.options.selectors.untitledDescLabel", "{that}.dom.setLabel", "{that}.msgLookup.toLabel", "{that}.msgLookup.appliesToLabel", "{that}.msgLookup.devicesTextLabel", "{that}.dom.setNameOverlayPanel", "{that}.dom.setNameModalPanel", "{that}.dom.addSetLink", "{that}", "{that}.dom.timeOverlayPanel", "{that}.dom.timeModalPanel", "{that}.msgLookup.timeErrorHour", "{that}.msgLookup.timeErrorMinutes"]
                 },
                 enableTabConditions: {
                     "funcName": "gpii.pmt.enableTabConditions",
@@ -762,20 +787,20 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "args": ["{that}"]
                 },
                 populateFromHour: {
-                    "funcName": "gpii.pmt.populateTime",
-                    "args": ["{gpiiSession}", "{that}", "{that}.dom.timeFromHour", "{that}.dom.timeFromMinute", "{that}.dom.timeToHour", "{that}.dom.timeToMinute", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.msgLookup.toLabel"]
+                    "funcName": "gpii.pmt.populateFromHourTime",
+                    "args": ["{gpiiSession}", "{that}", "{that}.dom.timeFromHour", "{that}.dom.timeFromMinute", "{that}.dom.timeToHour", "{that}.dom.timeToMinute", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.msgLookup.toLabel", "{that}.dom.timeOverlayPanel", "{that}.dom.timeModalPanel", "{that}.dom.timeBackButton", "{that}.msgLookup.timeErrorHour"]
                 },
                 populateFromMinute: {
-                    "funcName": "gpii.pmt.populateTime",
-                    "args": ["{gpiiSession}", "{that}", "{that}.dom.timeFromHour", "{that}.dom.timeFromMinute", "{that}.dom.timeToHour", "{that}.dom.timeToMinute", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.msgLookup.toLabel"]
+                    "funcName": "gpii.pmt.populateFromMinTime",
+                    "args": ["{gpiiSession}", "{that}", "{that}.dom.timeFromHour", "{that}.dom.timeFromMinute", "{that}.dom.timeToHour", "{that}.dom.timeToMinute", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.msgLookup.toLabel", "{that}.dom.timeOverlayPanel", "{that}.dom.timeModalPanel", "{that}.dom.timeBackButton", "{that}.msgLookup.timeErrorMinutes"]
                 },
                 populateToHour: {
-                    "funcName": "gpii.pmt.populateTime",
-                    "args": ["{gpiiSession}", "{that}", "{that}.dom.timeFromHour", "{that}.dom.timeFromMinute", "{that}.dom.timeToHour", "{that}.dom.timeToMinute", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.msgLookup.toLabel"]
+                    "funcName": "gpii.pmt.populateToHourTime",
+                    "args": ["{gpiiSession}", "{that}", "{that}.dom.timeFromHour", "{that}.dom.timeFromMinute", "{that}.dom.timeToHour", "{that}.dom.timeToMinute", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.msgLookup.toLabel", "{that}.dom.timeOverlayPanel", "{that}.dom.timeModalPanel", "{that}.dom.timeBackButton", "{that}.msgLookup.timeErrorHour"]
                 },
                 populateToMinute: {
-                    "funcName": "gpii.pmt.populateTime",
-                    "args": ["{gpiiSession}", "{that}", "{that}.dom.timeFromHour", "{that}.dom.timeFromMinute", "{that}.dom.timeToHour", "{that}.dom.timeToMinute", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.msgLookup.toLabel"]
+                    "funcName": "gpii.pmt.populateToMinTime",
+                    "args": ["{gpiiSession}", "{that}", "{that}.dom.timeFromHour", "{that}.dom.timeFromMinute", "{that}.dom.timeToHour", "{that}.dom.timeToMinute", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.msgLookup.toLabel", "{that}.dom.timeOverlayPanel", "{that}.dom.timeModalPanel", "{that}.dom.timeBackButton", "{that}.msgLookup.timeErrorMinutes"]
                 },
                 editTime: {
                     "funcName": "gpii.pmt.editTime",
@@ -808,6 +833,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 clickSaveAndApplyButton: {
                     "funcName": "gpii.pmt.clickSaveAndApplyButton",
                     "args": ["{that}", "{gpiiSession}"]
+                },
+                validateFromHour: {
+                    "funcName": "gpii.pmt.validateFromHour",
+                    "args": ["{that}.dom.timeFromHour"]
+                },
+                clickTimeBackButton: {
+                    "funcName": "gpii.pmt.clickTimeBackButton",
+                    "args": ["{that}.dom.timeOverlayPanel", "{that}.dom.timeModalPanel", "{that}.dom.untitledText", "{that}.dom.timeFromHour", "{that}.dom.timeFromMinute", "{that}.dom.timeToHour", "{that}.dom.timeToMinute"]
                 }
             },
             strings: {
@@ -928,11 +961,72 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         fromHour.focus();
     };
 
-    gpii.pmt.populateTime = function (sess, that, timeFromHour, timeFromMinute, timeToHour, timeToMinute, notAppliedAtAnyTimesLabel, toLabel) {
-        notAppliedAtAnyTimesLabel.text(gpii.pmt.twoDigits(timeFromHour.val()) + ":" + gpii.pmt.twoDigits(timeFromMinute.val()) + toLabel + gpii.pmt.twoDigits(timeToHour.val()) + ":" + gpii.pmt.twoDigits(timeToMinute.val()));
-        var rLine = that.dom.locate("recordLine");
-        rLine.removeClass(that.options.styles.invisible);
-        rLine.addClass(that.options.styles.visible);
+    gpii.pmt.populateFromHourTime = function (sess, that, timeFromHour, timeFromMinute, timeToHour, timeToMinute, notAppliedAtAnyTimesLabel, toLabel, tPanel, tModal, timeBackButton, timeErrorHour) {
+        var fromHour = timeFromHour.val();
+        var timeErrorDescription = that.locate("timeErrorDescription");
+        if ((fromHour>23 || fromHour<0) || (fromHour.length==0)) {
+            tPanel.show();
+            tModal.show();
+            timeErrorDescription.text(timeErrorHour);
+            timeBackButton.focus();
+        }
+        else {
+            notAppliedAtAnyTimesLabel.text(gpii.pmt.twoDigits(timeFromHour.val()) + ":" + gpii.pmt.twoDigits(timeFromMinute.val()) + toLabel + gpii.pmt.twoDigits(timeToHour.val()) + ":" + gpii.pmt.twoDigits(timeToMinute.val()));
+            var rLine = that.dom.locate("recordLine");
+            rLine.removeClass(that.options.styles.invisible);
+            rLine.addClass(that.options.styles.visible);
+        }
+    };
+
+    gpii.pmt.populateFromMinTime = function (sess, that, timeFromHour, timeFromMinute, timeToHour, timeToMinute, notAppliedAtAnyTimesLabel, toLabel, tPanel, tModal, timeBackButton, timeErrorMinutes) {
+        var fromMin = timeFromMinute.val();
+        var timeErrorDescription = that.locate("timeErrorDescription");
+        if ((fromMin>59 || fromMin<0) || (fromMin.length==0)) {
+            tPanel.show();
+            tModal.show();
+            timeErrorDescription.text(timeErrorMinutes);
+            timeBackButton.focus();
+        }
+        else {
+            notAppliedAtAnyTimesLabel.text(gpii.pmt.twoDigits(timeFromHour.val()) + ":" + gpii.pmt.twoDigits(timeFromMinute.val()) + toLabel + gpii.pmt.twoDigits(timeToHour.val()) + ":" + gpii.pmt.twoDigits(timeToMinute.val()));
+            var rLine = that.dom.locate("recordLine");
+            rLine.removeClass(that.options.styles.invisible);
+            rLine.addClass(that.options.styles.visible);
+        }
+    };
+
+    gpii.pmt.populateToHourTime = function (sess, that, timeFromHour, timeFromMinute, timeToHour, timeToMinute, notAppliedAtAnyTimesLabel, toLabel, tPanel, tModal, timeBackButton, timeErrorHour) {
+        var toHour = timeToHour.val();
+        var timeErrorDescription = that.locate("timeErrorDescription");
+        if ((toHour>23 || toHour<0) || (toHour.length==0)) {
+            tPanel.show();
+            tModal.show();
+            timeErrorDescription.text(timeErrorHour);
+            timeBackButton.focus();
+        }
+        else {
+            notAppliedAtAnyTimesLabel.text(gpii.pmt.twoDigits(timeFromHour.val()) + ":" + gpii.pmt.twoDigits(timeFromMinute.val()) + toLabel + gpii.pmt.twoDigits(timeToHour.val()) + ":" + gpii.pmt.twoDigits(timeToMinute.val()));
+            var rLine = that.dom.locate("recordLine");
+            rLine.removeClass(that.options.styles.invisible);
+            rLine.addClass(that.options.styles.visible);
+        }
+    };
+
+    gpii.pmt.populateToMinTime = function (sess, that, timeFromHour, timeFromMinute, timeToHour, timeToMinute, notAppliedAtAnyTimesLabel, toLabel, tPanel, tModal, timeBackButton, timeErrorMinutes) {
+        var toMin = timeToMinute.val();
+        var timeErrorDescription = that.locate("timeErrorDescription");
+        if ((toMin>59 || toMin<0) || (toMin.length==0)) {
+            tPanel.show();
+            tModal.show();
+            timeErrorDescription.text(timeErrorMinutes);
+            timeBackButton.focus();
+        }
+        else {
+            notAppliedAtAnyTimesLabel.text(gpii.pmt.twoDigits(timeFromHour.val()) + ":" + gpii.pmt.twoDigits(timeFromMinute.val()) + toLabel + gpii.pmt.twoDigits(timeToHour.val()) + ":" + gpii.pmt.twoDigits(timeToMinute.val()));
+            var rLine = that.dom.locate("recordLine");
+            rLine.removeClass(that.options.styles.invisible);
+            rLine.addClass(that.options.styles.visible);
+        }
     };
 
     gpii.pmt.twoDigits = function (val){
@@ -1094,10 +1188,44 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
 
     
-    gpii.pmt.clickDoneButton = function (session, overlayPanel, modalPanel, contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, toLabel, appliesToLabel, devicesTextLabel, sPanel, sModal, addSetLink, that) {
+    gpii.pmt.clickDoneButton = function (session, overlayPanel, modalPanel, contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, toLabel, appliesToLabel, devicesTextLabel, sPanel, sModal, addSetLink, that, tPanel, tModal, timeErrorHour, timeErrorMinutes) {
         var timeTemp = contextTime.text().split(toLabel);
         var deviceTemp = contextDevice.text().split(appliesToLabel);
         deviceTemp = deviceTemp[1].toString().split(devicesTextLabel);
+        var fromHour = that.locate("timeFromHour").val();
+        var fromMin = that.locate("timeFromMinute").val();
+        var toHour = that.locate("timeToHour").val();
+        var toMin = that.locate("timeToMinute").val();
+        var timeBackButton = that.locate("timeBackButton");
+        var timeErrorDescription = that.locate("timeErrorDescription");
+        if ((fromHour>23 || fromHour<0) || (fromHour.length==0)) {
+            tPanel.show();
+            tModal.show();
+            timeErrorDescription.text(timeErrorHour);
+            timeBackButton.focus();
+            return false;
+        }
+        else if ((fromMin>59 || fromMin<0) || (fromMin.length==0)) {
+            tPanel.show();
+            tModal.show();
+            timeErrorDescription.text(timeErrorMinutes);
+            timeBackButton.focus();
+            return false;
+        }
+        else if ((toHour>23 || toHour<0) || (toHour.length==0)) {
+            tPanel.show();
+            tModal.show();
+            timeErrorDescription.text(timeErrorHour);
+            timeBackButton.focus();
+            return false;
+        }
+        else if ((toMin>59 || toMin<0) || (toMin.length==0)) {
+            tPanel.show();
+            tModal.show();
+            timeErrorDescription.text(timeErrorMinutes);
+            timeBackButton.focus();
+            return false;
+        }
 
         var setFoundIndex = null;
         var setFound = false;
@@ -1183,11 +1311,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         deleteSet.addClass(that.options.styles.visible);
     };
 
-    gpii.pmt.hidePanels = function (oPanel, mPanel, soPanel, smPanel) {
+    gpii.pmt.hidePanels = function (oPanel, mPanel, soPanel, smPanel, toPanel, tmPanel) {
         oPanel.hide();
         mPanel.hide();
         soPanel.hide();
         smPanel.hide();
+        toPanel.hide();
+        tmPanel.hide();
     };
 
     gpii.pmt.onEditClick = function (oPanel, mPanel, element) {
@@ -1353,6 +1483,27 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         setOverlayPanel.hide();
         setModalPanel.hide();
         untitledText.focus();
+    };
+
+    gpii.pmt.clickTimeBackButton = function (timeOverlayPanel, timeModalPanel, untitledText, timeFromHour, timeFromMinute, timeToHour, timeToMinute) {
+        timeOverlayPanel.hide();
+        timeModalPanel.hide();
+        var fromHour = timeFromHour.val();
+        var fromMin = timeFromMinute.val();
+        var toHour = timeToHour.val();
+        var toMin = timeToMinute.val();
+        if ((fromHour>23 || fromHour<0) || (fromHour.length==0)) {
+            timeFromHour.focus();
+        }
+        else if ((fromMin>59 || fromMin<0) || (fromMin.length==0)) {
+            timeFromMinute.focus();
+        }
+        else if ((toHour>23 || toHour<0) || (toHour.length==0)) {
+            timeToHour.focus();
+        }
+        else if ((toMin>59 || toMin<0) || (toMin.length==0)) {
+            timeToMinute.focus();
+        }
     };
 
     gpii.pmt.hideUserStatusBarIfNotLoggedIn = function (loggedUser, statusBarElement) {
