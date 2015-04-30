@@ -55,5 +55,9 @@
     "deleteTime": "borrar",
     "accountNotDetected": "El título ya está en uso.",
     "doNotMatch": "Por favor, inténtalo de nuevo.",
-    "back": "De regreso"
+    "back": "De regreso",
+    "timeErrorHeader": "Εl tiempo especificado no es válido.",
+    "timeErrorHour": "La hora debe estar entre 0 y 23.",
+    "timeErrorMinutes": "Los minutos debe estar entre 0 y 59.",
+    "timeErrorDescription": "La hora debe estar entre 0 y 23. Los minutos debe estar entre 0 y 59."
 }

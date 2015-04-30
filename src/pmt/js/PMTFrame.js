@@ -150,7 +150,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 activeTab: "gpii-tab-active",
                 deactiveTab: "gpii-tab-deactive",
                 bgHeader: "gpii-context-header-bg-pressed",
-                disabled: "disabled"
+                disabled: "disabled",
+                invalidTime: "gpii-context-time-invalid"
             },
             model: {
                 userLoggedIn: false
@@ -186,6 +187,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.editTime",
                     "method": "click",
                     "args": ["{that}.editTime"]
+                },
+                "onReady.editTimeWithKeyPress": {
+                    "this": "{that}.dom.editTime",
+                    "method": "keyup",
+                    "args": ["{that}.editTimeWithKeyPress"]
                 },
                 "onReady.initObjs": "{that}.initObjs",
                 "onReady.setAccountNotDetected": {
@@ -232,6 +238,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.deleteTime",
                     "method": "click",
                     "args": ["{that}.deleteTime"]
+                },
+                "onReady.deleteTimeWithKeyPress": {
+                    "this": "{that}.dom.deleteTime",
+                    "method": "keyup",
+                    "args": ["{that}.deleteTimeWithKeyPress"]
                 },
                 "onReady.setDeleteTimeAriaLabel": {
                     "this": "{that}.dom.deleteTime",
@@ -652,6 +663,26 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "focusout",
                     "args": ["{that}.populateToMinute"]
                 },
+                "onReady.addLeadingZeroFromHour": {
+                    "this": "{that}.dom.timeFromHour",
+                    "method": "keyup",
+                    "args": ["{that}.addLeadingZeroFromHour"]
+                },
+                "onReady.addLeadingZeroFromMinute": {
+                    "this": "{that}.dom.timeFromMinute",
+                    "method": "keyup",
+                    "args": ["{that}.addLeadingZeroFromMinute"]
+                },
+                "onReady.addLeadingZeroToHour": {
+                    "this": "{that}.dom.timeToHour",
+                    "method": "keyup",
+                    "args": ["{that}.addLeadingZeroToHour"]
+                },
+                "onReady.addLeadingZeroToMinute": {
+                    "this": "{that}.dom.timeToMinute",
+                    "method": "keyup",
+                    "args": ["{that}.addLeadingZeroToMinute"]
+                },
                 "onReady.setTimeErrorHeader": {
                     "this": "{that}.dom.timeErrorHeader",
                     "method": "text",
@@ -806,9 +837,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "funcName": "gpii.pmt.editTime",
                     "args": ["{that}"]
                 },
+                editTimeWithKeyPress: {
+                    "funcName": "gpii.pmt.editTimeWithKeyPress",
+                    "args": ["{that}", "{arguments}.0"]
+                },
                 deleteTime: {
                     "funcName": "gpii.pmt.deleteTime",
                     "args": ["{that}", "{that}.dom.recordLine", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.msgLookup.notAppliedAtAnyTimesLabel"]
+                },
+                deleteTimeWithKeyPress: {
+                    "funcName": "gpii.pmt.deleteTimeWithKeyPress",
+                    "args": ["{that}", "{that}.dom.recordLine", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.msgLookup.notAppliedAtAnyTimesLabel", "{arguments}.0"]
                 },
                 clickSharingLink: {
                     "funcName": "gpii.pmt.enterShareTab",
@@ -834,13 +873,25 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "funcName": "gpii.pmt.clickSaveAndApplyButton",
                     "args": ["{that}", "{gpiiSession}"]
                 },
-                validateFromHour: {
-                    "funcName": "gpii.pmt.validateFromHour",
-                    "args": ["{that}.dom.timeFromHour"]
-                },
                 clickTimeBackButton: {
                     "funcName": "gpii.pmt.clickTimeBackButton",
                     "args": ["{that}.dom.timeOverlayPanel", "{that}.dom.timeModalPanel", "{that}.dom.untitledText", "{that}.dom.timeFromHour", "{that}.dom.timeFromMinute", "{that}.dom.timeToHour", "{that}.dom.timeToMinute"]
+                },
+                addLeadingZeroFromHour: {
+                    "funcName": "gpii.pmt.addLeadingZero",
+                    "args": ["{that}.dom.timeFromHour", "{arguments}.0", "{that}.options.styles.invalidTime"]
+                },
+                addLeadingZeroFromMinute: {
+                    "funcName": "gpii.pmt.addLeadingZero",
+                    "args": ["{that}.dom.timeFromMinute", "{arguments}.0", "{that}.options.styles.invalidTime"]
+                },
+                addLeadingZeroToHour: {
+                    "funcName": "gpii.pmt.addLeadingZero",
+                    "args": ["{that}.dom.timeToHour", "{arguments}.0", "{that}.options.styles.invalidTime"]
+                },
+                addLeadingZeroToMinute: {
+                    "funcName": "gpii.pmt.addLeadingZero",
+                    "args": ["{that}.dom.timeToMinute", "{arguments}.0", "{that}.options.styles.invalidTime"]
                 }
             },
             strings: {
@@ -858,6 +909,51 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     gpii.pmt.clickSaveAndApplyButton = function (that, session) {
         gpii.pmt.SavePreferenceSets(that, session, session.options.currentSetId);
+    };
+    
+    gpii.pmt.addLeadingZero = function (element, event, invalidTime) {
+        var max = element.attr("max");
+        var min = element.attr("min");
+        var val = parseInt(element.val());
+        if ((isNaN(val)) || ((val < min) || (val > max))){
+            element.focus();
+            if (!element.hasClass(invalidTime)){
+                element.addClass(invalidTime);
+            }
+            return;
+        }
+        else{
+            if (element.hasClass(invalidTime)){
+                element.removeClass(invalidTime);
+            }
+        }
+        switch(event.keyCode) {
+            case 38: // arrow up
+                if(val < max) {
+                    element.val(val+1);
+                    if (element.val() < 10)
+                        element.val("0"+element.val());
+                }
+                break;
+            case 40: // arrow down
+                if(val > 0) {
+                    element.val(val-1);
+                    if (element.val() < 10)
+                        element.val("0"+element.val());
+                }
+                break
+            default: // a numeric key is pressed
+                if ((element.val() < 10) && ((element.val()).length == 1)){
+                    element.val("0"+element.val());
+                }
+                else {
+                    element.val(val);
+                    if ((element.val() < 10) && ((element.val()).length == 1)){
+                        element.val("0"+element.val());
+                    }
+                }
+                break;
+        }
     };
     
     gpii.pmt.clickBaseSetEditButton = function (that, session, baseSetLabel, selectedIcon) {
@@ -945,10 +1041,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         var fromMin = that.dom.locate("timeFromMinute");
         var toHour = that.dom.locate("timeToHour");
         var toMin = that.dom.locate("timeToMinute");
-        fromHour.val("");
-        fromMin.val("");
-        toHour.val("");
-        toMin.val("");
+        fromHour.val("00");
+        fromMin.val("00");
+        toHour.val("00");
+        toMin.val("00");
         fromHour.focus();
         
         recordLine.removeClass(that.options.styles.visible);
@@ -956,15 +1052,27 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         notAppliedAtAnyTimesLabelObj.text(notAppliedAtAnyTimesLabelMsg);
     };
 
+    gpii.pmt.deleteTimeWithKeyPress = function (that, recordLine, notAppliedAtAnyTimesLabelObj, notAppliedAtAnyTimesLabelMsg, event) {
+        if ((event.keyCode == $.ui.keyCode.SPACE) || (event.keyCode == $.ui.keyCode.ENTER)){
+            gpii.pmt.deleteTime(that, recordLine, notAppliedAtAnyTimesLabelObj, notAppliedAtAnyTimesLabelMsg);
+        }
+    };
+
     gpii.pmt.editTime = function (that) {
         var fromHour = that.dom.locate("timeFromHour");
         fromHour.focus();
     };
 
+    gpii.pmt.editTimeWithKeyPress = function (that, event) {
+        if ((event.keyCode == $.ui.keyCode.SPACE) || (event.keyCode == $.ui.keyCode.ENTER)){
+            gpii.pmt.editTime(that);
+        }
+    };
+
     gpii.pmt.populateFromHourTime = function (sess, that, timeFromHour, timeFromMinute, timeToHour, timeToMinute, notAppliedAtAnyTimesLabel, toLabel, tPanel, tModal, timeBackButton, timeErrorHour) {
         var fromHour = timeFromHour.val();
         var timeErrorDescription = that.locate("timeErrorDescription");
-        if ((fromHour>23 || fromHour<0) || (fromHour.length==0)) {
+        if ((isNaN(fromHour)) || (fromHour>23 || fromHour<0) || (fromHour.length==0)) {
             tPanel.show();
             tModal.show();
             timeErrorDescription.text(timeErrorHour);
@@ -981,7 +1089,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.pmt.populateFromMinTime = function (sess, that, timeFromHour, timeFromMinute, timeToHour, timeToMinute, notAppliedAtAnyTimesLabel, toLabel, tPanel, tModal, timeBackButton, timeErrorMinutes) {
         var fromMin = timeFromMinute.val();
         var timeErrorDescription = that.locate("timeErrorDescription");
-        if ((fromMin>59 || fromMin<0) || (fromMin.length==0)) {
+        if ((isNaN(fromMin)) || (fromMin>59 || fromMin<0) || (fromMin.length==0)) {
             tPanel.show();
             tModal.show();
             timeErrorDescription.text(timeErrorMinutes);
@@ -998,7 +1106,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.pmt.populateToHourTime = function (sess, that, timeFromHour, timeFromMinute, timeToHour, timeToMinute, notAppliedAtAnyTimesLabel, toLabel, tPanel, tModal, timeBackButton, timeErrorHour) {
         var toHour = timeToHour.val();
         var timeErrorDescription = that.locate("timeErrorDescription");
-        if ((toHour>23 || toHour<0) || (toHour.length==0)) {
+        if ((isNaN(toHour)) || (toHour>23 || toHour<0) || (toHour.length==0)) {
             tPanel.show();
             tModal.show();
             timeErrorDescription.text(timeErrorHour);
@@ -1015,7 +1123,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     gpii.pmt.populateToMinTime = function (sess, that, timeFromHour, timeFromMinute, timeToHour, timeToMinute, notAppliedAtAnyTimesLabel, toLabel, tPanel, tModal, timeBackButton, timeErrorMinutes) {
         var toMin = timeToMinute.val();
         var timeErrorDescription = that.locate("timeErrorDescription");
-        if ((toMin>59 || toMin<0) || (toMin.length==0)) {
+        if ((isNaN(toMin)) || (toMin>59 || toMin<0) || (toMin.length==0)) {
             tPanel.show();
             tModal.show();
             timeErrorDescription.text(timeErrorMinutes);
@@ -1198,28 +1306,28 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         var toMin = that.locate("timeToMinute").val();
         var timeBackButton = that.locate("timeBackButton");
         var timeErrorDescription = that.locate("timeErrorDescription");
-        if ((fromHour>23 || fromHour<0) || (fromHour.length==0)) {
+        if ((isNaN(fromHour)) || (fromHour>23 || fromHour<0) || (fromHour.length==0)) {
             tPanel.show();
             tModal.show();
             timeErrorDescription.text(timeErrorHour);
             timeBackButton.focus();
             return false;
         }
-        else if ((fromMin>59 || fromMin<0) || (fromMin.length==0)) {
+        else if ((isNaN(fromMin)) || (fromMin>59 || fromMin<0) || (fromMin.length==0)) {
             tPanel.show();
             tModal.show();
             timeErrorDescription.text(timeErrorMinutes);
             timeBackButton.focus();
             return false;
         }
-        else if ((toHour>23 || toHour<0) || (toHour.length==0)) {
+        else if ((isNaN(toHour)) || (toHour>23 || toHour<0) || (toHour.length==0)) {
             tPanel.show();
             tModal.show();
             timeErrorDescription.text(timeErrorHour);
             timeBackButton.focus();
             return false;
         }
-        else if ((toMin>59 || toMin<0) || (toMin.length==0)) {
+        else if ((isNaN(toMin)) || (toMin>59 || toMin<0) || (toMin.length==0)) {
             tPanel.show();
             tModal.show();
             timeErrorDescription.text(timeErrorMinutes);
@@ -1492,16 +1600,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         var fromMin = timeFromMinute.val();
         var toHour = timeToHour.val();
         var toMin = timeToMinute.val();
-        if ((fromHour>23 || fromHour<0) || (fromHour.length==0)) {
+        if ((isNaN(fromHour)) || (fromHour>23 || fromHour<0) || (fromHour.length==0)) {
             timeFromHour.focus();
         }
-        else if ((fromMin>59 || fromMin<0) || (fromMin.length==0)) {
+        else if ((isNaN(fromMin)) || (fromMin>59 || fromMin<0) || (fromMin.length==0)) {
             timeFromMinute.focus();
         }
-        else if ((toHour>23 || toHour<0) || (toHour.length==0)) {
+        else if ((isNaN(toHour)) || (toHour>23 || toHour<0) || (toHour.length==0)) {
             timeToHour.focus();
         }
-        else if ((toMin>59 || toMin<0) || (toMin.length==0)) {
+        else if ((isNaN(toMin)) || (toMin>59 || toMin<0) || (toMin.length==0)) {
             timeToMinute.focus();
         }
     };

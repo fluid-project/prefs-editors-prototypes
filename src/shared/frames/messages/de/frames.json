@@ -55,5 +55,9 @@
     "deleteTime": "löschen",
     "accountNotDetected": "Diese title ist nicht verfuegbar.",
     "doNotMatch": "Bitte wiederholen.",
-    "back": "Zueruck"
+    "back": "Zueruck",
+    "timeErrorHeader": "Die angegebene Zeit ist nicht gültig.",
+    "timeErrorHour": "Die Stunde muss zwischen 0 und 23 sein.",
+    "timeErrorMinutes": "Die Minuten muss zwischen 0 und 59 sein.",
+    "timeErrorDescription": "Die Stunde muss zwischen 0 und 23 sein. Die Minuten muss zwischen 0 und 59 sein."
 }
