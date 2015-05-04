@@ -76,6 +76,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
 
     gpii.prefs.gpiiSession.login = function (that, userToken) {
+        //userToken = that.options.loggedUser;
         if (userToken !== null) {
             $.ajax({
                 url: that.options.url + "user/" + userToken + "/login",
@@ -125,7 +126,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     gpii.prefs.gpiiSession.getLoggedUser = function (that, onGetLoggedUserSuccessEvent, onGetLoggedUserErrorEvent) {
         $.ajax({
-            url: that.options.url + "token",
+            //url: that.options.url + "token", //Before Fireball
+            url: that.options.url + "userToken",
             type: "GET",
             // TODO: This is non-async because we want the "loggedUser" to be set before any "get" or "set"
             // in the GPIIStore is invoked.
