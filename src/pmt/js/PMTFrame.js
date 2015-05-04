@@ -66,7 +66,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 shareTabLabel: ".gpiic-context-share-label",
                 baseSetDescription: ".gpiic-context-baseset-label",
                 deleteSetLabel: ".gpiic-context-deleteset-label",
-                notAppliedToAnyDevicesLabel: ".gpiic-context-devices-notapplied-label",
+                appliesToAllDevicesLabel: ".gpiic-context-devices-notapplied-label",
                 devicesLabel: ".gpiic-context-header-devices-label",
                 allLabel: ".gpiic-select-device-all-label",
                 desktopLabel: ".gpiic-select-device-desktop-label",
@@ -497,10 +497,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "text",
                     "args": ["{that}.msgLookup.colon"]
                 },
-                "onReady.setNotAppliedToAnyDevicesLabel": {
-                    "this": "{that}.dom.notAppliedToAnyDevicesLabel",
+                "onReady.setappliesToAllDevicesLabel": {
+                    "this": "{that}.dom.appliesToAllDevicesLabel",
                     "method": "text",
-                    "args": ["{that}.msgLookup.notAppliedToAnyDevicesLabel"]
+                    "args": ["{that}.msgLookup.appliesToAllDevicesLabel"]
                 },
                 "onReady.setNotAppliedAtAnyTimesLabel": {
                     "this": "{that}.dom.notAppliedAtAnyTimesLabel",
@@ -735,7 +735,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 clickDoneButton: {
                     "funcName": "gpii.pmt.clickDoneButton",
-                    "args": ["{gpiiSession}", "{that}.dom.overlayPanel", "{that}.dom.modalPanel", "{that}.dom.notAppliedToAnyDevicesLabel", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.dom.untitledText", "{that}.options.selectors.untitledLabel", "{that}.options.selectors.untitledDescLabel", "{that}.dom.setLabel", "{that}.msgLookup.toLabel", "{that}.msgLookup.appliesToLabel", "{that}.msgLookup.devicesTextLabel", "{that}.dom.setNameOverlayPanel", "{that}.dom.setNameModalPanel", "{that}.dom.addSetLink", "{that}"]
+                    "args": ["{gpiiSession}", "{that}.dom.overlayPanel", "{that}.dom.modalPanel", "{that}.dom.appliesToAllDevicesLabel", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.dom.untitledText", "{that}.options.selectors.untitledLabel", "{that}.options.selectors.untitledDescLabel", "{that}.dom.setLabel", "{that}.msgLookup.toLabel", "{that}.msgLookup.appliesToLabel", "{that}.msgLookup.devicesTextLabel", "{that}.dom.setNameOverlayPanel", "{that}.dom.setNameModalPanel", "{that}.dom.addSetLink", "{that}"]
                 },
                 enableTabConditions: {
                     "funcName": "gpii.pmt.enableTabConditions",
@@ -755,7 +755,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 selectDevice: {
                     "funcName": "gpii.pmt.selectDevice",
-                    "args": ["{gpiiSession}", "{that}.options.selectors.selectDevice", "{that}.msgLookup.appliesToLabel", "{that}.msgLookup.devicesTextLabel", "{that}.dom.notAppliedToAnyDevicesLabel"]
+                    "args": ["{gpiiSession}", "{that}.options.selectors.selectDevice", "{that}.msgLookup.appliesToLabel", "{that}.msgLookup.devicesTextLabel", "{that}.dom.appliesToAllDevicesLabel"]
                 },
                 selectTime: {
                     "funcName": "gpii.pmt.selectTime",
@@ -953,11 +953,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
     };
 
-    gpii.pmt.selectDevice = function (sess, sDevice, appliesToLabel, devicesTextLabel, notAppliedToAnyDevicesLabel) {
+    gpii.pmt.selectDevice = function (sess, sDevice, appliesToLabel, devicesTextLabel, appliesToAllDevicesLabel) {
         sDevice = sDevice + " option:selected";
         var sDeviceSelector = $(sDevice);
         var value = appliesToLabel + sDeviceSelector.val() + devicesTextLabel;
-        notAppliedToAnyDevicesLabel.text(value);
+        appliesToAllDevicesLabel.text(value);
     };
     
     gpii.pmt.clickEmailCopyButton = function (to, body, subject) {
@@ -1229,7 +1229,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             thatObj.locate("timeToMinute").val((currentContext.toTime).substring(3,5));
             thatObj.locate("selectDevice").val(currentContext.device);
             var value = thatObj.msgLookup.lookup("appliesToLabel") + currentContext.device + thatObj.msgLookup.lookup("devicesTextLabel");
-            thatObj.locate("notAppliedToAnyDevicesLabel").text(value);
+            thatObj.locate("appliesToAllDevicesLabel").text(value);
             var value = (currentContext.fromTime).substring(0,2) + ":" + (currentContext.fromTime).substring(3,5) + thatObj.msgLookup.lookup("toLabel") + (currentContext.toTime).substring(0,2) + ":" + (currentContext.toTime).substring(3,5);
             thatObj.locate("notAppliedAtAnyTimesLabel").text(value);
 

@@ -55,5 +55,6 @@
     "deleteTime": "löschen",
     "accountNotDetected": "Diese title ist nicht verfuegbar.",
     "doNotMatch": "Bitte wiederholen.",
-    "back": "Zueruck"
+    "back": "Zueruck",
+    "appliesToAllDevicesLabel": "wird angewendet auf allen Geräte"
 }

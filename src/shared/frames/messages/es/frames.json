@@ -55,5 +55,6 @@
     "deleteTime": "borrar",
     "accountNotDetected": "El título ya está en uso.",
     "doNotMatch": "Por favor, inténtalo de nuevo.",
-    "back": "De regreso"
+    "back": "De regreso",
+    "appliesToAllDevicesLabel": "aplica a todos los dispositivos"
 }
