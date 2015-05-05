@@ -64,8 +64,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 /* context selectors */
                 conditionsTabLabel: ".gpiic-context-conditions-label",
                 shareTabLabel: ".gpiic-context-share-label",
-                baseSetDescription: ".gpiic-context-baseset-label",
-                deleteSetLabel: ".gpiic-context-deleteset-label",
+                //baseSetDescription: ".gpiic-context-baseset-label",
+                //deleteSetLabel: ".gpiic-context-deleteset-label",
                 notAppliedToAnyDevicesLabel: ".gpiic-context-devices-notapplied-label",
                 devicesLabel: ".gpiic-context-header-devices-label",
                 allLabel: ".gpiic-select-device-all-label",
@@ -507,7 +507,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "text",
                     "args": ["{that}.msgLookup.notAppliedAtAnyTimesLabel"]
                 },
-                "onReady.setBaseSetDescription": {
+                /*"onReady.setBaseSetDescription": {
                     "this": "{that}.dom.baseSetDescription",
                     "method": "text",
                     "args": ["{that}.msgLookup.baseSetDescription"]
@@ -516,7 +516,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.deleteSetLabel",
                     "method": "text",
                     "args": ["{that}.msgLookup.deleteSetLabel"]
-                },
+                },*/
                 "onReady.clickCancelButton": {
                     "this": "{that}.dom.cancelButton",
                     "method": "click",
@@ -1035,12 +1035,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
         contextHeader.show();
         sharingEmail.hide();
-        if (that.dom.locate("baseSetDescription").hasClass(that.options.styles.invisible)){
+        /*if (that.dom.locate("baseSetDescription").hasClass(that.options.styles.invisible)){
             that.dom.locate("baseSetDescription").removeClass(that.options.styles.invisible);
             that.dom.locate("deleteSetLabel").removeClass(that.options.styles.invisible);
         }
         that.dom.locate("baseSetDescription").addClass(that.options.styles.visible);
-        that.dom.locate("deleteSetLabel").addClass(that.options.styles.visible);
+        that.dom.locate("deleteSetLabel").addClass(that.options.styles.visible);*/
         contextHeaderDevices.show();
         contextHeaderTime.show();
     };
@@ -1063,12 +1063,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         }
         contextHeader.show();
         sharingEmail.show();
-        if (that.dom.locate("baseSetDescription").hasClass(that.options.styles.visible)){
+        /*if (that.dom.locate("baseSetDescription").hasClass(that.options.styles.visible)){
             that.dom.locate("baseSetDescription").removeClass(that.options.styles.visible);
             that.dom.locate("deleteSetLabel").removeClass(that.options.styles.visible);
         }
         that.dom.locate("baseSetDescription").addClass(that.options.styles.invisible);
-        that.dom.locate("deleteSetLabel").addClass(that.options.styles.invisible);
+        that.dom.locate("deleteSetLabel").addClass(that.options.styles.invisible);*/
         contextHeaderDevices.hide();
         contextHeaderTime.hide();
     };
@@ -1180,12 +1180,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     gpii.pmt.clickUntitled = function (that) {
         var untitledHeader = that.dom.locate("untitledText");
-        var baseSet = that.dom.locate("baseSetDescription");
-        var deleteSet = that.dom.locate("deleteSetLabel");
-        
         untitledHeader.addClass(that.options.styles.bgHeader);
+        /*var baseSet = that.dom.locate("baseSetDescription");
+        var deleteSet = that.dom.locate("deleteSetLabel");
         baseSet.addClass(that.options.styles.visible);
-        deleteSet.addClass(that.options.styles.visible);
+        deleteSet.addClass(that.options.styles.visible);*/
     };
 
     gpii.pmt.hidePanels = function (oPanel, mPanel, soPanel, smPanel) {
