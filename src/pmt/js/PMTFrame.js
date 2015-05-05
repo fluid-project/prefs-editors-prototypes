@@ -651,6 +651,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.timeToMinute",
                     "method": "keyup",
                     "args": ["{that}.populateToMinute"]
+                },
+                "onReady.pressEscape": {
+                    "this": "{that}.dom.modalPanel",
+                    "method": "keyup",
+                    "args": ["{that}.pressEsc"]
                 }
             },
             invokers: {
@@ -813,6 +818,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 clickSaveAndApplyButton: {
                     "funcName": "gpii.pmt.clickSaveAndApplyButton",
                     "args": ["{that}", "{gpiiSession}"]
+                },
+                pressEsc: {
+                    "funcName": "gpii.pmt.pressEsc",
+                    "args": ["{that}.dom.overlayPanel", "{that}.dom.modalPanel", "{that}.dom.addSetLink", "{arguments}.0"]
                 }
             },
             strings: {
@@ -824,6 +833,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     var sessionObj = null;
     var thatObj = null;
+    
+    gpii.pmt.pressEsc = function (overlayPanel, modalPanel, addSetLink, event) {
+        if (event.keyCode == $.ui.keyCode.ESCAPE){
+            overlayPanel.hide();
+            modalPanel.hide();
+            addSetLink.focus();
+        }
+    };
+
     gpii.pmt.clickAccount = function () {
         window.open("https://secureflowmanager.gpii.net/login","_blank");
     };
