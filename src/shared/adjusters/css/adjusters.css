@@ -1926,9 +1926,11 @@ h3.gpii-speakText-label {
 .gpii-prefsEditor-pencil-icon {
     -webkit-font-smoothing: antialiased;
     margin: 0em;
-    width: 100%;
     display: table;
     text-align: right;
+    position: absolute;
+    bottom: -0.9em;
+    right: 0em;
 }
 
 .gpii-prefsEditor-pencil-icon:before {
@@ -1975,11 +1977,12 @@ h3.gpii-speakText-label {
     background-color: inherit;
     color: #474C66;
     border: 0em none;
-    float: right;
     cursor: pointer;
-    display: inline-block;
-    margin: 0em 3em 0.2em 0em;
-    padding: 1em 0em 0em;
+    margin: 0em;
+    padding: 0em;
+    position: absolute;
+    bottom: 0.2em;
+    right: 3em;
 }
 
 .gpii-prefsEditor-quickEditorLink {

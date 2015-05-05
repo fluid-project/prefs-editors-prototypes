@@ -10,8 +10,8 @@
     background-color: #0AA;
     top: 6em;
     display: inline-block;
-    width: 7.5em;
-    left: 2.4em;
+    width: auto;
+    left: 1.4em;
 
 }
 
@@ -27,7 +27,8 @@
     line-height: 1.3em;
     margin-top: 0em !important;
     display: inline-block;
-    width: 5.2em;
+    width: auto;
+    text-align: left;
 }
 
 .gpii-link-copy-fontIcon {
@@ -76,8 +77,8 @@
     background-color: #0AA;
     top: 6em;
     display: inline-block;
-    width: 11.2em;
-    left: 2.4em;
+    width: auto;
+    left: 1.4em;
 
 }
 
@@ -93,7 +94,7 @@
     line-height: 1.3em;
     margin-top: 0em !important;
     display: inline-block;
-    width: 9em;
+    width: auto;
 }
 
 .gpii-download-copy-fontIcon {
@@ -143,7 +144,7 @@
     background-color: #0AA;
     top: 2em;
     display: inline-block;
-    width: 8.5em;
+    width: auto;
     right: 2.4em;
     float: right;
 }
@@ -160,7 +161,7 @@
     line-height: 1.3em;
     margin-top: 0em !important;
     display: inline-block;
-    width: 6.3em;
+    width: auto;
 }
 
 .gpii-email-copy-fontIcon {
