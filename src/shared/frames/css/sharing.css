@@ -62,7 +62,7 @@
     border: 0 none;
     margin-left: -0.2em;
     width: 25em !important;
-    font-family: Courier New;
+    font-family: "Open Sans",sans-serif;
     font-weight: normal;
     font-size: 1em !important;
 }
@@ -126,7 +126,7 @@
 
 .gpii-enter-message-input {
     border: 0 none;
-    font-family: Courier New;
+    font-family: "Open Sans",sans-serif;
     font-weight: normal;
     font-size: 1em;
     margin-left: -0.2em;

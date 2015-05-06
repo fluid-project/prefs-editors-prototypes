@@ -21,7 +21,7 @@ ul {
     height: 35px;
     background-color: #DBDBDB;
     color: #534B4B;	
-    font-family: Book Antiqua;
+    font-family: inherit;
     font-size: 1em;
 }
 
@@ -53,6 +53,7 @@ ul {
 
 .gpii-context-header-tabs section h2 a {
     color: #534B4B;
+    font-family: "Open Sans",sans-serif;
 }
 
 .gpii-tab-share {
@@ -75,20 +76,20 @@ ul {
 }
 
 .gpii-context-header-untitled {
-    font-family: Courier New !important;
+    font-family: "Open Sans",sans-serif;
     display: inline;
-    font-size: 1.7em !important;
+    font-size: 1.5em !important;
     position: relative;
     top: 1.8em;
     background-color: #FFCC00;
     color: #514D66;
-    width: 6em !important;
+    width: 5em !important;
     border: 0 none;
 }
 
 .gpii-context-header-dotted {
     display: block;
-    font-size: 1.5em;
+    font-size: 1.4em;
     position: relative;
     top: 2em;
     border-top: 1px dotted #3CBCBC;
@@ -130,7 +131,7 @@ ul {
 }
 
 .gpii-context-header-devices {
-    font-family: Book Antiqua;
+    font-family: "Open Sans",sans-serif;
     font-size: 1em;
     display: inline-block;
     position: relative;
@@ -161,13 +162,15 @@ ul {
 .gpii-context-header-devices-label {
     padding-top: 0.8em;
     display: inline-block;
+    color: #534B4B;
+    font-weight: bold;
 }
 
 .gpii-context-devices-add-new {
     display: block;
     border: 3px solid #62CACA;
     width: 32em;
-    height: 1.6em;
+    height: 1.9em;
     background-color: #FFFFFF;
     position: relative;
     border-radius: 0.31em;
@@ -184,19 +187,7 @@ ul {
     font-size: 1em;
     line-height: 1.4em;
 }
-/*
-.gpii-context-devices-list-box {
-    border: 3px solid #62caca;
-    background-color: #fff;
-    margin-top: -0.2em;
-    display: none;
-    height: 12.5em;
-    margin-left: 6.4em;
-    position: relative;
-    width: 26.25em;
-    z-index: 1;
-}
-*/
+
 .gpii-context-devices-list-items {
     color: #6F6A56;
     font-weight: normal;
@@ -204,7 +195,7 @@ ul {
     width: 100%;
     border: none !important;
     color: #474d71;
-    font-size: 0.95em;
+    font-size: 1em;
 }
 
 .gpii-select-device-labels {
@@ -233,30 +224,23 @@ ul {
     border-bottom: medium dashed;
     width: 15em;
 }
-/*
-.gpii-context-devices-Onselect-device-list-item {
-    background-color: #FFDD00;
-    position: relative;
-    width: inherit;
-}
-*/
+
 .gpii-context-devices-notapplied {
     color: #474D71;
     margin-left: 7em;
     margin-top: 0.188em;
     font-style: normal;
-    font-weight: bold;
     font-size: 1em;
+    padding: 0.5em;
 }
 
 .gpii-context-device-applies-label, .gpii-context-devices-label {
-	visibility: hidden;
-	/*display: none;*/ 
+    visibility: hidden;
 }
 
 
 .gpii-context-header-time {
-    font-family: Book Antiqua;
+    font-family: "Open Sans",sans-serif;
     font-size: 1em;
     display: inline-block;
     position: relative;
@@ -288,6 +272,8 @@ ul {
     padding-top: 0.8em;
     display: inline-block;
     font-size: 1.2em;
+    color: #534B4B;
+    font-weight: bold;
 }
 
 .gpii-context-time-add-new {
@@ -316,7 +302,7 @@ ul {
     margin-top: 0.188em;
     font-style: normal;
     font-weight: bold;
-    font-size: 0.95em;
+    font-size: 1em;
     width: 1.6em;
     border: 0 none;
     text-align: center;
@@ -328,7 +314,6 @@ ul {
 
 .gpii-context-times-new-record {
     margin-top: 1em;
-    /*display: none;*/
 }
 
 .gpii-context-times-new-record-label {
@@ -369,7 +354,6 @@ input[type=number]::-webkit-outer-spin-button {
     margin-left: 1em;
     margin-top: 0.6em;
     font-style: normal;
-    font-weight: bold;
     font-size: 1em;
 }
 
@@ -495,8 +479,8 @@ input[type=number]::-webkit-outer-spin-button {
 
 .gpii-context-done-button {
     font-weight: bold;
-    font-family: Verdana;
-    font-size: 1.1em;
+    font-family: "Open Sans",sans-serif;
+    font-size: 1.4em;
     margin-top: 5px;
     margin-bottom: 5px;
     margin-right: 10px;
@@ -514,8 +498,8 @@ input[type=number]::-webkit-outer-spin-button {
 
 .gpii-context-cancel-button {
     font-weight: bold;
-    font-family: Verdana;
-    font-size: 1.1em;
+    font-family: "Open Sans",sans-serif;
+    font-size: 1.4em;
     margin-top: 5px;
     margin-bottom: 5px;
     margin-left: 10px;
@@ -651,5 +635,9 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: inherit;
     color: #474C66;
     border: 0em;
+    cursor: pointer;
+}
+
+.gpii-context-span-cursor {
     cursor: pointer;
 }

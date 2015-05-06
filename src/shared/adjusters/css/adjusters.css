@@ -1652,6 +1652,7 @@ h3.gpii-speakText-label {
     line-height: 1.5em;
     display: inline-block;
     vertical-align: middle;
+    cursor: pointer;
 }
 
 .gpii-prefsEditor-context-icon-left, .gpii-prefsEditor-context-icon-right, .gpii-prefsEditor-signup-icon {
