@@ -53,7 +53,8 @@
     "colon": ":",
     "editTime": "bearbeiten",
     "deleteTime": "löschen",
-    "accountNotDetected": "Dieser Name ist nicht verfügbar.",
-    "doNotMatch": "Bitte versuchen Sie es mit einen anderen Namen.",
-    "back": "Zurück"
+    "accountNotDetected": "Diese title ist nicht verfuegbar.",
+    "doNotMatch": "Bitte wiederholen.",
+    "back": "Zueruck",
+    "appliesToAllDevicesLabel": "wird angewendet auf allen Geräte"
 }

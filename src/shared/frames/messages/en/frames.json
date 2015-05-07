@@ -55,5 +55,6 @@
     "deleteTime": "delete",
     "accountNotDetected": "The set name is already in use.",
     "doNotMatch": "Please try again to set a new name.",
-    "back": "Back"
+    "back": "Back",
+    "appliesToAllDevicesLabel": "applies to all devices"
 }
