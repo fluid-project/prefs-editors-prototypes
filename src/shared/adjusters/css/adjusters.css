@@ -1632,3 +1632,375 @@ h3.gpii-speakText-label {
     font-size: 70% !important;
     margin-left: 37px;
 }
+
+.gpii-prefsEditor-panelContainer {
+    margin: 0.2em auto;
+    position: relative;
+}
+
+.gpii-prefsEditor-margin-bottom {
+    margin-bottom: 0.2em;
+}
+
+.gpii-prefsEditor-panelBottomRow .gpii-pmt-saveButtonContainer {
+    background-color: #CED7D9;
+    width: 33%;
+}
+
+.gpii-prefsEditor-panelBottomRow .gpii-prefsEditor-messageLine {
+    background-color: #CED7D9;
+    padding-left: 0px;
+    width: 33%;
+    text-align: center;
+}
+
+.gpii-pmt-saveButtonContainer .gpii-prefsEditor-save-adjusters {
+    font-weight: bold;
+    font-family: "Roboto Slab",serif !important;
+    font-size: 1.8em;
+    padding: 5px 10px;
+    margin: 0.3em;
+    background-color: #0AA;
+    color: #FFF;
+    border: 0px none;
+    border-radius: 0.3em;
+    line-height: 1.5em;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.gpii-prefsEditor-context-icon-left, .gpii-prefsEditor-context-icon-right, .gpii-prefsEditor-signup-icon {
+    -webkit-font-smoothing: antialiased;
+    margin: 0px;
+    width: 25px;
+    display: table;
+}
+
+.gpii-prefsEditor-context-icon-left:before, .gpii-prefsEditor-context-icon-right:before, .gpii-prefsEditor-signup-icon:before {
+    font-size: 25px;
+    font-weight: normal;
+    background-color: #CED7D9;
+    color: #474C66;
+    vertical-align: middle;
+    padding: 3px;
+    display: inline-block;
+    height: 1.08em;
+}
+
+.gpii-prefsEditor-context-icon-left:before {
+    content: "\e625";
+}
+
+.gpii-prefsEditor-context-icon-right:before {
+    content: "\e622";
+}
+
+.gpii-prefsEditor-signup-icon:before {
+    content: "\e661";
+}
+
+.gpii-prefsEditor-panelBottomLeft {
+    display: table-cell;
+    background-color: #CED7D9;
+    vertical-align: middle;
+    /*padding-left: 1em;*/
+    width: 36%;
+}
+
+.gpii-prefsEditor-panelBottomLink {
+    display: inline-block;
+}
+.gpii-prefsEditor-panelBottomLeft-label {
+    font-family: Book Antiqua;
+    font-size: 1.5em;
+    line-height: 1.5em;
+    margin-left: 0.1em;
+    margin-right: 0.5em;
+}
+
+.gpii-prefsEditor-padding-left {
+    padding-left: 1em;
+}
+
+.gpii-prefsEditor-padding-right {
+    padding-right: 1em;
+    background-color: #CED7D9;
+}
+
+.gpii-prefsEditor-preferenceSetSelectionHeader {
+    background-color: #0AA;
+    border-bottom: 0px;
+    border-top: 10px;
+    border-left: 12px;
+    border-right: 12px;
+    border-color: #CED7D9;
+    border-style: solid;
+    padding: 15px 70px;
+}
+
+.gpii-prefsEditor-preferenceSetSelectionButton {
+    text-align: center;
+}
+.gpii-prefsEditor-preferenceSetSelectionButtonSelected {
+    border: 3px solid #FFFFFF;
+    color: #FFFFFF;
+    background-color: #1E8F94;
+}
+
+.gpii-prefsEditor-preferenceSetSelectionButtonNotSelected {
+    color: #FFFFFF;
+}
+
+.gpii-prefsEditor-trasparentButton {
+    font-weight: bold;
+    font-family: Verdana;
+    font-size: 1.1em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 0px;
+    padding: 0px;
+    float: left;
+    background-color: inherit;
+    color: #474C66;
+    border: 0px;
+    cursor: pointer;
+}
+
+.gpii-prefsEditor-contextContainer {
+    position: absolute;
+    width: 23em;
+    height: inherit;
+    top: 0em;
+    bottom:0em;
+    margin: 0em auto;
+    background-color: #556273;
+    left: -23.7em;
+    border-top: 10px solid #CED7D9;
+    border-bottom: 12px solid #CED7D9;
+    border-left: 10px solid #CED7D9;
+}
+
+.gpii-prefsEditor-panelBottomRow-extended {
+    display: table;
+    position: absolute;
+    left: -23.7em;
+    width: 66.8em;
+}
+
+.gpii-prefsEditor-baseSetRow {
+    width: inherit;
+    height: 3em;
+    position: relative;
+    background-color: #FFDA00;
+    top: -0.2em;
+    border-left: 0.25em solid #E5EDED;
+    border-right: 0.25em solid #E5EDED;
+    border-bottom: 0.25em solid #E5EDED;
+}
+
+.gpii-prefsEditor-baseSetLabel {
+    font-family: Verdana !important;
+    font-size: 2em;
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    color: #000000;
+    padding-left: 0.7em;
+    padding-top: 0.1em;
+}
+
+.gpii-prefsEditor-contextFrame-header {
+    height: 3em;
+    margin-top: 0.8em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+.gpii-prefsEditor-contextFrame-header-stylingDark {
+    border: 0.1em dashed #FFFFFF;
+    background-color: #556273;
+    color: #FFFFFF;
+}
+
+.gpii-prefsEditor-contextFrame-header-stylingBright {
+    border: 0.1em dashed #556273;
+    background-color: #FFFFFF;
+    color: #556273;
+}
+
+.gpii-prefsEditor-contextFrame-row-selected {
+    height: 6em;
+    position: relative;
+    background-color: #FFDA00;
+    margin: 0.5em;
+}
+
+.gpii-prefsEditor-contextFrame-row-unselected {
+    height: 6em;
+    position: relative;
+    background-color: #E5EDED;
+    margin: 0.5em;
+}
+/*
+.gpii-prefsEditor-contextFrame-setLabel {
+    font-family: Courier New !important;
+    font-size: 1.8em;
+    position: absolute;
+    color: #000000;
+    padding-left: 0.5em;
+    padding-top: 0.5em;
+}
+
+.gpii-prefsEditor-contextFrame-setLabelDescription {
+    font-size: 0.8em;
+    position: relative;
+    top: 3.5em;
+    font-family: Verdana !important;
+    padding-left: 1.3em;
+}
+*/
+
+.gpii-prefsEditor-contextFrame-setLabel {
+    font-family: Courier New !important;
+    font-size: 1.8em;
+    position: relative;
+    color: #000;
+    padding-top: 0em;
+    padding-left: 0.5em;
+    top: 0.2em;
+}
+
+.gpii-prefsEditor-contextFrame-setLabelDescription {
+    font-size: 0.8em;
+    position: relative;
+    font-family: Verdana !important;
+    float: left;
+    padding-left: 1.5em;
+    top: 0.2em;
+    margin: 0em;
+    width: 25em;
+}
+
+.gpii-prefsEditor-context-addIcon, .gpii-prefsEditor-context-addIconMouseOver {
+    -webkit-font-smoothing: antialiased;
+    margin: 0px;
+    width: 100%;
+    display: table;
+    text-align: center;
+    height: 3em;
+    padding-top: 6px;
+}
+
+.gpii-prefsEditor-context-addIcon:before, .gpii-prefsEditor-context-addIconMouseOver:before {
+    font-size: 25px;
+    font-weight: normal;
+    border-radius: 50%;
+}
+
+.gpii-prefsEditor-context-addIcon:before {
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+}
+
+.gpii-prefsEditor-context-addIconMouseOver:before {
+    color: #556273;
+    border: 2px solid #556273;
+}
+
+.gpii-prefsEditor-context-addIcon:before, .gpii-prefsEditor-context-addIconMouseOver:before {
+    content: "\e65e";
+}
+/*
+.gpii-prefsEditor-context-leftArrowIcon {
+    display: table;
+    width: 115%;
+    height: 3em;
+}
+*/
+.gpii-prefsEditor-context-leftArrowIcon {
+    width: 15%;
+    float: right;
+    margin-right: -3em;
+    line-height: 3.5em;
+    display: block;
+    height: 2em;
+}
+
+.gpii-prefsEditor-context-leftArrowIcon:before {
+    font-weight: normal;
+    color: #CED7D9;
+    float: right;
+    font-size: 80px;
+    margin-top: -0.35em;
+}
+
+.gpii-prefsEditor-context-leftArrowIcon:before {
+    content: "\e606";
+}
+
+.gpii-prefsEditor-pencil-icon {
+    -webkit-font-smoothing: antialiased;
+    margin: 0em;
+    display: table;
+    text-align: right;
+    position: absolute;
+    bottom: -0.9em;
+    right: 0em;
+}
+
+.gpii-prefsEditor-pencil-icon:before {
+    font-size: 1.2em;
+    font-weight: normal;
+    /*background-color: #FFDA00;*/
+    color: #474C66;
+    vertical-align: middle;
+    display: inline-block;
+    margin-top: -2.4em;
+    margin-right: 0.6em;
+}
+
+.gpii-prefsEditor-pencil-yellow-bg {
+    background-color: #FFDA00;
+}
+
+.gpii-prefsEditor-pencil-icon:before {
+    content: "\e644";
+}
+/*
+.gpii-prefsEditor-context-edit-button {
+    font-weight: bold;
+    font-family: Verdana;
+    font-size: 0.8em;
+    background-color: inherit;
+    color: #474C66;
+    border: 0em;
+    margin-top: -1.0em;
+    margin-right: 3.0em;
+    margin-bottom: 0.2em;
+    margin-left: 0em;
+    padding: 0em;
+    float: right;
+    cursor: pointer;
+    display: inline-block;
+}
+*/
+
+.gpii-prefsEditor-context-edit-button {
+    font-weight: bold;
+    font-family: Verdana;
+    font-size: 0.8em;
+    background-color: inherit;
+    color: #474C66;
+    border: 0em none;
+    cursor: pointer;
+    margin: 0em;
+    padding: 0em;
+    position: absolute;
+    bottom: 0.2em;
+    right: 3em;
+}
+
+.gpii-prefsEditor-quickEditorLink {
+    margin-left: 0.1em;
+}

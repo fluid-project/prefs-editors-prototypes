@@ -32,14 +32,21 @@ cd prefsEditors
 
 # install dependencies
 npm install
+```
 
-# start the webserver
+### Open with default settings (running on `localhost`, port `5559` with default path to the `connect` module)
+```
 node start.js
 ```
 
-Access the Preferences Management Tool (PMT) at:
-http://localhost:8888/demos/prefsEditor/index.html
-
+### Specifying the options of port, host and connect path:
+```
+# find available port, 
+# start the webserver and
+# open url in the default browser
+# command: node start.js <kettle path> <host> <port>
+node start.js ./node_modules/kettle/node_modules/express/node_modules/connect 127.0.0.1 5559
+```
 
 ## Development ##
 

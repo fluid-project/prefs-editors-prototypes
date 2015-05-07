@@ -1,0 +1,637 @@
+/*
+    Font icons
+*/
+
+ul {
+    list-style-type:none;
+    padding-left: 0px;
+    width: inherit;
+    height: inherit;
+}
+.gpii-context-main {
+    background-color: #F2F2F2;
+    font-family: "Roboto Slab",serif;
+    width: 45em;
+    height: 100%;
+}
+
+.gpii-context-header-tabs {
+    display: block;
+    width:  45em;
+    height: 35px;
+    background-color: #DBDBDB;
+    color: #534B4B;	
+    font-family: inherit;
+    font-size: 1em;
+}
+
+.gpii-tab-conditions {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 10em;
+    margin-top: -1.25em;
+}
+
+.gpii-tab-active {
+    background-color: #F2F2F2;
+}
+
+.gpii-tab-deactive {
+    background-color: #dbdbdb;
+}
+
+.gpii-context-header-tabs a:link{
+     text-decoration: none;
+}
+
+.gpii-context-header-tabs section h2 {
+    padding: 0px 20px;
+}
+
+.gpii-context-header-tabs section h2 a {
+    color: #534B4B;
+    font-family: "Open Sans",sans-serif;
+}
+
+.gpii-tab-share {
+    position: relative;
+    display:inline-block;
+    height: inherit;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 10em;
+    text-align: center;
+}
+
+.gpii-context-header {
+    font-weight: normal;
+    font-size: 1em;
+    color: #000000;
+    padding-top: 0.05em;
+    padding-left: 2.5em;
+    padding-right: 2.5em;
+}
+
+.gpii-context-header-untitled {
+    font-family: "Open Sans",sans-serif;
+    display: inline;
+    font-size: 1.5em !important;
+    position: relative;
+    top: 1.8em;
+    background-color: #FFCC00;
+    color: #514D66;
+    width: 5em !important;
+    border: 0 none;
+}
+
+.gpii-context-header-dotted {
+    display: block;
+    font-size: 1.4em;
+    position: relative;
+    top: 2em;
+    border-top: 1px dotted #3CBCBC;
+    border-top-width: medium;
+    text-decoration: none;
+    width: inherit;
+}
+
+.gpii-context-baseset {
+    font-family: Times;
+    color: #474D71;
+    margin-left: 0em;
+    margin-top: 3.2em;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.1em;
+    width: 10em;
+}
+
+.gpii-context-deleteset {
+    font-family: Times;
+    color: #474D71;
+    margin-left: 31.8em;
+    margin-top: -1.25em;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.gpii-devices-adjusterIcons {
+    float: left;
+    font-family: 'C4Aicons';
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}
+
+.gpii-context-header-devices {
+    font-family: "Open Sans",sans-serif;
+    font-size: 1em;
+    display: inline-block;
+    position: relative;
+    margin-top: 4em;
+    margin-left: 2em;
+}
+
+.gpii-devices-header-fontIcon {
+    -webkit-font-smoothing: antialiased;
+    width: 5em; 
+    border-top: 5px solid #F2F2F2;
+    display: table;
+}
+
+.gpii-devices-header-fontIcon:before {
+    font-size: 60px;
+    font-weight: normal;
+    color: #3CBCBC;
+    vertical-align: middle;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.gpii-devices-header-fontIcon:before {
+    content: "\e642";
+}
+
+.gpii-context-header-devices-label {
+    padding-top: 0.8em;
+    display: inline-block;
+    color: #534B4B;
+    font-weight: bold;
+}
+
+.gpii-context-devices-add-new {
+    display: block;
+    border: 3px solid #62CACA;
+    width: 32em;
+    height: 1.9em;
+    background-color: #FFFFFF;
+    position: relative;
+    border-radius: 0.31em;
+    margin-top: 0.5em;
+    margin-left: 7.5em;
+}
+
+.gpii-context-devices-add-new-label {
+    color: #474D71;
+    margin-left: 0.94em;
+    margin-top: 0.3em;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1em;
+    line-height: 1.4em;
+}
+
+.gpii-context-devices-list-items {
+    color: #6F6A56;
+    font-weight: normal;
+    font-size: 0.8em;
+    width: 100%;
+    border: none !important;
+    color: #474d71;
+    font-size: 1em;
+}
+
+.gpii-select-device-labels {
+    padding-left: 1em;
+    border-left-color: #62caca;
+    border-left-style: solid;
+    border-right-color: #62caca;
+    border-right-style: solid;
+    color: #474d71;
+}
+
+.gpii-select-device-labels-all {
+    border-bottom-style: dashed;
+}
+
+.gpii-select-device-labels-other {
+    border-bottom-color: #62caca;
+    border-bottom-style: solid;
+}
+/*
+.gpii-select-device li{
+    margin-top: 0.5em;
+}
+*/
+.gpii-select-device-all-label {
+    border-bottom: medium dashed;
+    width: 15em;
+}
+
+.gpii-context-devices-notapplied {
+    color: #474D71;
+    margin-left: 7em;
+    margin-top: 0.188em;
+    font-style: normal;
+    font-size: 1em;
+    padding: 0.5em;
+}
+
+.gpii-context-device-applies-label, .gpii-context-devices-label {
+    visibility: hidden;
+}
+
+
+.gpii-context-header-time {
+    font-family: "Open Sans",sans-serif;
+    font-size: 1em;
+    display: inline-block;
+    position: relative;
+    margin-top: 3em;
+    margin-left: 2em;
+}
+
+.gpii-context-header-time-fontIcon {
+    width: 5em;
+    border-top: 5px solid #F2F2F2;
+    display: table;
+    margin-top: 0.5em;
+}
+
+.gpii-context-header-time-fontIcon:before {
+    font-size: 60px;
+    font-weight: normal;
+    color: #3CBCBC;
+    vertical-align: middle;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.gpii-context-header-time-fontIcon:before {
+    content: "\e66d";
+}
+
+.gpii-context-header-time-label {
+    padding-top: 0.8em;
+    display: inline-block;
+    font-size: 1.2em;
+    color: #534B4B;
+    font-weight: bold;
+}
+
+.gpii-context-time-add-new {
+    background-color: #FFFFFF;
+    display: block;
+    border: 3px solid #62CACA;
+    width: 32em;
+    height: 1.7em;
+    position: relative;
+    border-radius: 0.31em;
+    margin-top: 0.5em;
+    margin-left: 7.5em;
+}
+
+.gpii-context-time-add-new-label {
+    color: #474D71;
+    margin-left: 0.94em;
+    margin-top: 0.3em;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.gpii-context-time {
+    color: #474D71;
+    margin-top: 0.188em;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1em;
+    width: 1.6em;
+    border: 0 none;
+    text-align: center;
+}
+
+.gpii-context-time-whole-div {
+    margin-left: 0.4em;
+}
+
+.gpii-context-times-new-record {
+    margin-top: 1em;
+}
+
+.gpii-context-times-new-record-label {
+    color: #474D71;
+    font-weight: bold;
+    font-size: 0.95em;
+    width: 1.6em;
+    margin-left : 7em;
+}
+
+.gpii-context-times-new-record-line {
+    border-bottom: 3px solid #62caca;
+    margin-left: 6.4em;
+    width : 26.5em;	
+    /*display: none;*/
+}
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.gpii-context-time-to-label {
+    color: #474d71;
+    font-size: 0.95em;
+    font-style: italic !important;
+    font-weight: bold;
+    margin-right: 0.4em;
+}
+
+.gpii-context-times-notapplied {
+    color: #474D71;
+    margin-left: 1em;
+    margin-top: 0.6em;
+    font-style: normal;
+    font-size: 1em;
+}
+
+.gpii-context-times-new-record-fontIcon-pencil {
+    -webkit-font-smoothing: antialiased;
+    width: 10px; 
+    border-top: 5px solid #F2F2F2;
+    display: inline;
+    margin-top: -1.8em;
+    margin-left: 15em;
+}
+
+.gpii-context-times-new-record-fontIcon-pencil:before {
+    font-weight: normal;
+    color: #4B4B4B;
+    vertical-align: middle;
+}
+
+.gpii-context-times-new-record-fontIcon-pencil:before {
+    content: "\e644";
+}
+
+.gpii-context-times-new-record-fontIcon-delete {
+    -webkit-font-smoothing: antialiased;
+    width: 10px; 
+    border-top: 5px solid #F2F2F2;
+    display: inline;
+    margin-top: -1.8em;
+    margin-left: 25.5em;
+}
+
+.gpii-context-times-new-record-fontIcon-delete:before {
+    font-weight: normal;
+    color: #4B4B4B;
+    vertical-align: middle;
+}
+
+.gpii-context-times-new-record-fontIcon-delete:before {
+    content: "\e63b";
+}
+
+.gpii-context-header-devices-label {
+    padding-top: 0.8em;
+    display: inline-block;
+    font-size: 1.2em;
+}
+
+.gpii-context-footer{
+    width: 37.5em; 
+    height: 50px;
+    display: inline-block;
+    background-color: #00AAAA;
+    margin-top: -10px;
+}
+
+.gpii-button-cancel {
+    margin-top: 0.9em;
+    margin-left: 1em;
+    display: inline-block;
+}
+	
+.gpii-button-cancel a:link {
+    text-align: center;
+    text-decoration: none;
+    padding-top: 5px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 8px;
+}
+
+.gpii-button-cancel-label {
+    color: #474D66;
+}
+
+.gpii-button-done {
+    background-color: #474d66;
+    border-radius: 5px;
+    border-width: 0.6em;
+    display: inline-block;
+    height: 1.5em;
+    margin-left: 24.5em;
+    padding: 8px 10px 6px;
+}
+
+.gpii-button-done a:link {
+    text-decoration: none;
+    text-align: center;
+    padding-top: 5px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 8px;
+}
+
+.gpii-context-visible {
+    visibility: visible;
+}
+
+.gpii-context-invisible {
+    visibility: hidden;
+}
+
+.gpii-context-header-bg-pressed {
+    background-color: #f2f2f2;
+}
+
+.gpii-context-footer {
+    position: relative;
+    display: table;
+    font-weight: normal;
+    font-size: 1em;
+    background-color: #00AAAA;
+    width: inherit;
+    height: 3em;
+    bottom: 0em;
+    border-radius: 0px 0px 0.4em 0.4em;
+}
+
+.gpii-context-done-button {
+    font-weight: bold;
+    font-family: "Open Sans",sans-serif;
+    font-size: 1.4em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 20px;
+    padding-right: 20px;
+    float: right;
+    background-color: #474C66;
+    color: white;
+    border: 0px;
+    border-radius: 0.3em;
+    cursor: pointer;
+}
+
+.gpii-context-cancel-button {
+    font-weight: bold;
+    font-family: "Open Sans",sans-serif;
+    font-size: 1.4em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    padding: 7px;
+    float: left;
+    background-color: #00AAAA;
+    color: #474C66;
+    border: 0px;
+    cursor: pointer;
+}
+
+.gpii-context-overlay {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0AA;
+    opacity: 0.5;
+    z-index: 10;
+    margin: 0em auto;
+    border-radius: 0.4em;
+    left: 0em;
+}
+
+.gpii-context-modal {
+    position: fixed;
+    width: 45em;
+    height: 80%;
+    top: 1em;
+    margin-top: 0px;
+    margin-left: 0px;
+    background-color: #FFF;
+    border-radius: 1px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    z-index: 11;
+    line-height: 1em;
+}
+
+.gpii-context-edit-time-button {
+    font-weight: bold;
+    font-family: Verdana;
+    font-size: 0.8em;
+    background-color: inherit;
+    color: #474C66;
+    border: 0em none;
+    margin: -1.3em 0em 0.2em 9em;
+    padding: 0em;
+    float: left;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.gpii-context-delete-time-button {
+    font-weight: bold;
+    font-family: Verdana;
+    font-size: 0.8em;
+    background-color: inherit;
+    color: #474C66;
+    border: 0em none;
+    margin: -1.3em 0em 0.2em 8.5em;
+    padding: 0em;
+    float: left;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.gpii-error-overlay {
+    position: fixed;
+    top: 0;
+    width: 600px;
+    height: 100%;
+    background-color: #00AAAA;
+    opacity: 0.8;
+    z-index: 12;
+    margin: 0em auto;
+    border-radius: 0.4em;
+}
+
+.gpii-error-modal {
+    width: 350px;
+    height: 150px;
+    line-height: 1em;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -200px;
+    background-color: #DFEEEB;
+    border-radius: 1px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    z-index: 13;
+}
+
+.gpii-error-notification {
+    position: relative;
+    font-weight: normal;
+    font-family: Verdana;
+    font-size: 1em;
+    width: 300px;
+    height: 100px;
+    float: left;
+    margin-left: 25px;
+    margin-right: 25px;
+    top: 10px;
+    background-color: #DFEEEB;
+    color: #474C66;
+}
+
+.gpii-error-notification-description {
+    font-weight: normal;
+    font-family: Verdana;
+    font-size: 1em;
+    width: inherit;
+    text-align: center;
+    display: block;
+}
+
+.gpii-error-paddingTop-large {
+    padding-top: 2em;
+}
+
+.gpii-error-paddingTop-small {
+    padding-top: 0.5em;
+}
+
+.gpii-error-back {
+    font-weight: bold;
+    font-family: Verdana;
+    font-size: 1.1em;
+    padding: 2em 0em 0em 0em;
+    float: left;
+    background-color: inherit;
+    color: #474C66;
+    border: 0em;
+    cursor: pointer;
+}
+
+.gpii-context-span-cursor {
+    cursor: pointer;
+}

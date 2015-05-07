@@ -83,28 +83,33 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
 
     fluid.registerNamespace("gpii.prefs.gpiiStore");
 
-    gpii.prefs.gpiiStore.onSuccessfulSet = function (session, data) {
+    gpii.prefs.gpiiStore.onSuccessfulSet = function (session, data, operation) {
         /*
          * TODO: Do we still need this check now that we can query the system for the logged in user?
          * Will we query GPII every time a component needs to know about the currently logged user or
          * will we have GPIISession caching it and getting it from there? Relevant JIRA:
          *      http://issues.gpii.net/browse/GPII-623
          */
-        if (session.options.loggedUser !== data.userToken) {
-            // new user, trigger accountCreated event
-            session.events.accountCreated.fire(data.userToken);
-        } else {
-            // already logged in, refresh AT applications
-            // log user out
-            session.logout();
-            // and log user in again
-            session.login(data.userToken);
-            /* TODO: The above procedure should normally be happening on the GPII side.
-             * Preference management tools should not have session management responsibilities.
-             * This is a work-around for the pilot2 tests.
-             * */
+        if (operation === "POST"){
+            if (session.options.loggedUser !== data.userToken) {
+                // new user, trigger accountCreated event
+                session.events.accountCreated.fire(data.userToken);
+            } else {
+                // already logged in, refresh AT applications
+                // log user out
+                session.logout();
+                // and log user in again
+                session.login(data.userToken);
+                /* TODO: The above procedure should normally be happening on the GPII side.
+                 * Preference management tools should not have session management responsibilities.
+                 * This is a work-around for the pilot2 tests.
+                 * */
+            }
+            fluid.log("POST: Saved to GPII server");
         }
-        fluid.log("POST: Saved to GPII server");
+        else if (operation === "PUT"){
+            session.login(data.userToken);
+        }
     };
 
     /**
@@ -176,21 +181,54 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
     };
 
     gpii.prefs.gpiiStore.set = function (model, settings, session, modelTransformFunc, onSuccessfulSetFunction) {
-        var transformedModel = modelTransformFunc(model);
-        
-        var dataToPost = {
+        var transformedModel = [];
+        var preferences = session.options.preferenceSet;
+        var contexts = session.options.context;
+
+        fluid.each(preferences, function (preference) {
+            transformedModel.push(modelTransformFunc(JSON.parse(preference)));
+        });
+        //transformedModel.push(modelTransformFunc(model));
+        transformedModel[session.options.currentSetId] = modelTransformFunc(model);
+
+        var dataToSend = {
             "contexts": {
                 "gpii-default": {
                     "name": "Default preferences",
-                    "preferences": transformedModel
+                    "preferences": transformedModel[0]
                 }
             }
         };
+
+        fluid.each(contexts, function (context, index) {
+            context = JSON.parse(context);
+            var enabled = context.enabled;
+            if (enabled){
+                var name = context.setName;
+                var newSet = {
+                    "newSet": {
+                        "name": context.setName,
+                        "preferences": transformedModel[index+1],
+                        "conditions": [{
+                            "type": "http://registry.gpii.net/conditions/timeInRange",
+                            "from": context.fromTime,
+                            "to": context.toTime,
+                            "inputPath": "http://registry\\.gpii\\.net/common/environment/temporal\\.time"
+                        }]
+                    }
+                };
+                var tmp = JSON.stringify(newSet);
+                tmp = tmp.replace("newSet",name);
+                newSet = JSON.parse(tmp);
+                $.extend(dataToSend.contexts, newSet);
+            }
+        });
+        
         var urlToPost, requestType;
         if (session.options.loggedUser) {
             urlToPost = settings.url + "preferences/" + session.options.loggedUser;
             requestType = "PUT";
-        } 
+        }
         else {
             urlToPost = settings.url + "preferences/";
             requestType = "POST";
@@ -202,11 +240,15 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             dataType: "json",
             async: false,
             contentType: "application/json",
-            data: JSON.stringify(dataToPost),
+            data: JSON.stringify(dataToSend),
             success: function (data) {
                 if (requestType === "POST"){
-                    onSuccessfulSetFunction(session, data);
+                    onSuccessfulSetFunction(session, data, requestType);
                 }
+                if (requestType === "PUT"){
+                    onSuccessfulSetFunction(session, data, requestType);
+                }
+                session.options.dataToSend = dataToSend;
             },
             error: function () {
                 fluid.log("POST: Error at saving to GPII server");
