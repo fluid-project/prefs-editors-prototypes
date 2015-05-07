@@ -521,7 +521,7 @@ input[type=number]::-webkit-outer-spin-button {
 .gpii-context-modal {
     position: fixed;
     width: 45em;
-    height: 75%;
+    height: 80%;
     top: 1em;
     margin-top: 0px;
     margin-left: 0px;
