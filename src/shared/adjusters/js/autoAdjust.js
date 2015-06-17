@@ -28,6 +28,12 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             headingLabel: {messagekey: "autoAdjustLabel"},
             autoAdjustDescription: {messagekey: "autoAdjustDescription"}
         },
+        /*
+         *  Force the panel to rerender whenever the model is changed, since there is an issue with panel not re-rendering correctly.
+         */
+        modelListeners: {
+            "": "{that}.refreshView"
+        },
         onOffModelKey: "autoAdjust"
     });
 })(jQuery, fluid);
