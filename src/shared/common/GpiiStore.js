@@ -205,16 +205,30 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             var enabled = context.enabled;
             if (enabled){
                 var name = context.setName;
+                var timeObj = (context.fromTime!==context.toTime) ? {
+                    "type": "http://registry.gpii.net/conditions/timeInRange",
+                    "from": context.fromTime,
+                    "to": context.toTime,
+                    "inputPath": "http://registry\\.gpii\\.net/common/environment/temporal\\.time"
+                } : {}; 
+                var noiseObj = (context.noise!=="any") ? {
+                    "type": "http://registry.gpii.net/conditions/inRange",
+                    "min": context.noise,
+                    "max": context.noise,
+                    "inputPath": "http://registry\\.gpii\\.net/common/environment/auditory\\.noise"
+                    /*"type": "http://registry.gpii.net/conditions/noise",
+                    "value": context.noise,
+                    "inputPath": "http://registry\\.gpii\\.net/common/environment/auditory\\.noise"*/
+                } : {}; 
                 var newSet = {
                     "newSet": {
                         "name": context.setName,
                         "preferences": transformedModel[index+1],
-                        "conditions": [{
-                            "type": "http://registry.gpii.net/conditions/timeInRange",
-                            "from": context.fromTime,
-                            "to": context.toTime,
-                            "inputPath": "http://registry\\.gpii\\.net/common/environment/temporal\\.time"
-                        }]
+                        "conditions": [
+                            timeObj
+                        , 
+                            noiseObj
+                        ]
                     }
                 };
                 var tmp = JSON.stringify(newSet);

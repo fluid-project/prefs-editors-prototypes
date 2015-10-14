@@ -19,7 +19,7 @@
     "baseSetLabel": "Base Set",
     "baseSetDescLabel": "any devices, anytime",
     "untitledLabel": "Untitled 1",
-    "untitledDescLabel": "not applied to any devices",
+    "untitledDescLabel": "not applied to any devices, not applied at any times, any noise level",
     "addSet": "add set",
     "editText": "edit",
     "conditionsTabLabel" : "conditions",
@@ -56,5 +56,12 @@
     "accountNotDetected": "The set name is already in use.",
     "doNotMatch": "Please try again to set a new name.",
     "back": "Back",
-    "appliesToAllDevicesLabel": "applies to all devices"
+    "appliesToAllDevicesLabel": "applies to all devices",
+    "noiseLabel": " Noise ",
+    "noiseLevelLabel": " noise level",
+    "anyNoiseLevelLabel": "any noise level",
+    "anyLabel": "any",
+    "quietLabel": "quiet",
+    "noisyLabel": "noisy",
+    "loudLabel": "loud"
 }

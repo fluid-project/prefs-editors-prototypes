@@ -19,7 +19,7 @@
     "baseSetLabel": "Basis Set",
     "baseSetDescLabel": "alle Geräte, zu jeder Zeit",
     "untitledLabel": "ohne Titel 1",
-    "untitledDescLabel": "nicht auf alle Geräte angewendet",
+    "untitledDescLabel": "nicht auf alle Geräte angewendet, zu keinem Zeitpunkt aktiviert, beliebige Geräuschpegel",
     "addSet": "hinzufügen eingestellt",
     "editText": "bearbeiten",
     "conditionsTabLabel" : "Bedingungen",
@@ -56,5 +56,12 @@
     "accountNotDetected": "Diese title ist nicht verfuegbar.",
     "doNotMatch": "Bitte wiederholen.",
     "back": "Zueruck",
-    "appliesToAllDevicesLabel": "wird angewendet auf allen Geräte"
+    "appliesToAllDevicesLabel": "wird angewendet auf allen Geräte",
+    "noiseLabel": " Lärm ",
+    "noiseLevelLabel": " geräuschpegel",
+    "anyNoiseLevelLabel": "beliebige Geräuschpegel",
+    "anyLabel": "jeder",
+    "quietLabel": "ruhig",
+    "noisyLabel": "laut",
+    "loudLabel": "lautstark"
 }

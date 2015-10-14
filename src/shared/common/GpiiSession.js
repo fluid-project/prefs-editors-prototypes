@@ -35,7 +35,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "enabled": null,
             "device": null,
             "fromTime": null,
-            "toTime": null
+            "toTime": null,
+            "noise": null
         },
         maxSetId: 0,
         currentSetId: 0,

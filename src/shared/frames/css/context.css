@@ -119,7 +119,7 @@ ul {
     font-size: 1.1em;
 }
 
-.gpii-devices-adjusterIcons {
+.gpii-context-icons {
     float: left;
     font-family: 'C4Aicons';
     font-style: normal;
@@ -159,6 +159,46 @@ ul {
     content: "\e642";
 }
 
+.gpii-noise-header-fontIcon {
+    -webkit-font-smoothing: antialiased;
+    width: 5em; 
+    border-top: 5px solid #F2F2F2;
+    display: table;
+}
+
+.gpii-noise-header-fontIcon:before {
+    font-size: 60px;
+    font-weight: normal;
+    color: #3CBCBC;
+    vertical-align: middle;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.gpii-noise-header-fontIcon:before {
+    content: "\e61f";
+}
+
+.gpii-brightness-header-fontIcon {
+    -webkit-font-smoothing: antialiased;
+    width: 5em; 
+    border-top: 5px solid #F2F2F2;
+    display: table;
+}
+
+.gpii-brightness-header-fontIcon:before {
+    font-size: 60px;
+    font-weight: normal;
+    color: #3CBCBC;
+    vertical-align: middle;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.gpii-brightness-header-fontIcon:before {
+    content: "\e63a";
+}
+
 .gpii-context-header-devices-label {
     padding-top: 0.8em;
     display: inline-block;
@@ -166,7 +206,7 @@ ul {
     font-weight: bold;
 }
 
-.gpii-context-devices-add-new {
+.gpii-context-devices-add-new, .gpii-context-noise-add-new {
     display: block;
     border: 3px solid #62CACA;
     width: 32em;
@@ -188,7 +228,7 @@ ul {
     line-height: 1.4em;
 }
 
-.gpii-context-devices-list-items {
+.gpii-context-devices-list-items, .gpii-context-noise-list-items {
     color: #6F6A56;
     font-weight: normal;
     font-size: 0.8em;
@@ -198,7 +238,7 @@ ul {
     font-size: 1em;
 }
 
-.gpii-select-device-labels {
+.gpii-select-device-labels, .gpii-select-noise-labels {
     padding-left: 1em;
     border-left-color: #62caca;
     border-left-style: solid;
@@ -207,7 +247,7 @@ ul {
     color: #474d71;
 }
 
-.gpii-select-device-labels-all {
+.gpii-select-device-labels-all, .gpii-select-noise-labels-any {
     border-bottom-style: dashed;
 }
 
@@ -225,7 +265,7 @@ ul {
     width: 15em;
 }
 
-.gpii-context-devices-notapplied {
+.gpii-context-devices-notapplied, .gpii-context-any-noise {
     color: #474D71;
     margin-left: 7em;
     margin-top: 0.188em;
@@ -239,12 +279,12 @@ ul {
 }
 
 
-.gpii-context-header-time {
+.gpii-context-header-time, .gpii-context-header-noise {
     font-family: "Open Sans",sans-serif;
     font-size: 1em;
     display: inline-block;
     position: relative;
-    margin-top: 3em;
+    margin-top: 1em;
     margin-left: 2em;
 }
 
@@ -268,7 +308,7 @@ ul {
     content: "\e66d";
 }
 
-.gpii-context-header-time-label {
+.gpii-context-header-time-label, .gpii-context-header-noise-label {
     padding-top: 0.8em;
     display: inline-block;
     font-size: 1.2em;

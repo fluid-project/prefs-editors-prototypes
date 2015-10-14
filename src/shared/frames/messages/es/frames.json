@@ -19,7 +19,7 @@
     "baseSetLabel": "Configuración general",
     "baseSetDescLabel": "cualquier dispositivo, en cualquier momento",
     "untitledLabel": "Sin título 1",
-    "untitledDescLabel": "no se aplica a todos los dispositivos",
+    "untitledDescLabel": "no se aplica a todos los dispositivos, no aplicado todo el tiempo, cualquier nivel de ruido",
     "addSet": "agregue el conjunto",
     "editText": "editar",
     "conditionsTabLabel" : "condiciones",
@@ -56,5 +56,12 @@
     "accountNotDetected": "El título ya está en uso.",
     "doNotMatch": "Por favor, inténtalo de nuevo.",
     "back": "De regreso",
-    "appliesToAllDevicesLabel": "aplica a todos los dispositivos"
+    "appliesToAllDevicesLabel": "aplica a todos los dispositivos",
+    "noiseLabel": " Ruido ",
+    "noiseLevelLabel": " nivel de ruido",
+    "anyNoiseLevelLabel": "cualquier nivel de ruido",
+    "anyLabel": "cualquier",
+    "quietLabel": "silencioso",
+    "noisyLabel": "ruidoso",
+    "loudLabel": "muy ruidoso"
 }

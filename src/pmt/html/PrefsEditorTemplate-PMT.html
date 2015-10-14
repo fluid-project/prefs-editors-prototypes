@@ -95,7 +95,7 @@
                 </div> -->
             </div>
             <div class="gpiic-context-header-devices gpii-context-header-devices">
-                <span class="gpii-devices-adjusterIcons gpii-devices-header-fontIcon"></span>
+                <span class="gpii-context-icons gpii-devices-header-fontIcon"></span>
                 <span id="deviceHeader" class="gpiic-context-header-devices-label gpii-context-header-devices-label"></span>
                 <div class="gpiic-context-devices-add-new gpii-context-devices-add-new">
                     <select class="gpiic-context-devices-list-items gpii-context-devices-list-items gpii-context-visible" tabindex="0" aria-labelledby="deviceHeader">
@@ -114,7 +114,7 @@
                 </div>
             </div>
             <div class="gpiic-context-header-time gpii-context-header-time">
-                <span class="gpii-devices-adjusterIcons gpii-context-header-time-fontIcon"></span>
+                <span class="gpii-context-icons gpii-context-header-time-fontIcon"></span>
                 <span class="gpiic-context-header-time-label gpii-context-header-time-label"></span>
                <div class="gpiic-context-time-add-new gpii-context-time-add-new">
                     <div class="gpiic-context-time-whole-div gpii-context-time-whole-div gpii-context-visible">
@@ -130,28 +130,44 @@
                 <div class="gpiic-context-times-notapplied gpii-context-times-notapplied gpii-context-visible">
                     <span class="gpiic-context-times-notapplied-label" role="region" aria-live="assertive"></span>
                     <div class="gpiic-context-times-new-record-line gpii-context-times-new-record-line gpii-context-invisible" >
-                        <span for="editTime" class="gpiic-prefsEditor-editTime-button gpii-devices-adjusterIcons gpii-context-times-new-record-fontIcon-pencil" role="button" tabindex="0"></span>
-                        <span for="deleteTime" class="gpiic-prefsEditor-deleteTime-button gpii-devices-adjusterIcons gpii-context-times-new-record-fontIcon-delete" role="button" tabindex="0"></span>
+                        <span for="editTime" class="gpiic-prefsEditor-editTime-button gpii-context-icons gpii-context-times-new-record-fontIcon-pencil" role="button" tabindex="0"></span>
+                        <span for="deleteTime" class="gpiic-prefsEditor-deleteTime-button gpii-context-icons gpii-context-times-new-record-fontIcon-delete" role="button" tabindex="0"></span>
                     </div>
                 </div>
             </div>
+            <div class="gpiic-context-header-noise gpii-context-header-noise">
+                <span class="gpii-context-icons gpii-noise-header-fontIcon"></span>
+                <span id="noiseHeader" class="gpiic-context-header-noise-label gpii-context-header-noise-label"></span>
+                <div class="gpiic-context-noise-add-new gpii-context-noise-add-new">
+                    <select class="gpiic-context-noise-list-items gpii-context-noise-list-items gpii-context-visible" tabindex="0" aria-labelledby="noiseHeader">
+                        <option selected="selected" class="gpiic-select-noise-any-label gpii-select-noise-labels gpii-select-noise-labels-any" role="option"></option>
+                        <option class="gpiic-select-noise-quiet-label gpii-select-noise-labels" role="option"></option>
+                        <option class="gpiic-select-noise-noisy-label gpii-select-noise-labels" role="option"></option>
+                        <option class="gpiic-select-noise-loud-label gpii-select-noise-labels" role="option"></option>
+                    </select>
+                </div>
+                <div class="gpii-context-any-noise">
+                    <span id="noiseDesc" class="gpiic-context-noise-any-label" role="region" aria-live="assertive"></span>
+                </div>
+            </div>
+
             <div class="gpiic-link-copy-enter-email-address gpii-link-copy-enter-email-address">
                 <div class="gpiic-link-copy gpii-link-copy">
-                    <span class="gpii-devices-adjusterIcons gpii-link-copy-fontIcon"></span>
+                    <span class="gpii-context-icons gpii-link-copy-fontIcon"></span>
                     <input type="button" class="gpiic-context-linkCopyButton gpii-link-copy-label" tabindex="0">
                 </div>
                 <div class="gpiic-enter-email-address gpii-enter-email-address">
                     <input type="text" value="" class="gpiic-enter-email-address-input gpii-enter-email-address-input" tabindex="0"/>
                 </div>
                 <div class="gpiic-download-copy gpii-download-copy">
-                    <span class="gpii-devices-adjusterIcons gpiic-download-copy-fontIcon gpii-download-copy-fontIcon"></span>
+                    <span class="gpii-context-icons gpiic-download-copy-fontIcon gpii-download-copy-fontIcon"></span>
                     <input type="button" class="gpiic-context-linkDownloadButton gpii-download-copy-label" tabindex="0">
                 </div>
                 <div class="gpiic-enter-message gpii-enter-message">
                     <textarea class="gpiic-enter-message-input gpii-enter-message-input" tabindex="0" rows="4" cols=""></textarea> 
                 </div>
                 <div class="gpiic-email-copy gpii-email-copy">
-                    <span class="gpii-devices-adjusterIcons gpiic-email-copy-fontIcon gpii-email-copy-fontIcon disabled"></span>
+                    <span class="gpii-context-icons gpiic-email-copy-fontIcon gpii-email-copy-fontIcon disabled"></span>
                     <input type="button" class="gpiic-context-emailCopyButton gpii-email-copy-label disabled" tabindex="0">
                 </div>
             </div>
