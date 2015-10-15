@@ -66,8 +66,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 deleteSetLabel: ".gpiic-context-deleteset-label",
                 appliesToAllDevicesLabel: ".gpiic-context-devices-notapplied-label",
                 anyNoiseLevelLabel: ".gpiic-context-noise-any-label",
+                anyBrightnessLevelLabel: ".gpiic-context-brightness-any-label",
                 devicesLabel: ".gpiic-context-header-devices-label",
                 noiseLabel: ".gpiic-context-header-noise-label",
+                brightnessLabel: ".gpiic-context-header-brightness-label",
                 allLabel: ".gpiic-select-device-all-label",
                 desktopLabel: ".gpiic-select-device-desktop-label",
                 laptopLabel: ".gpiic-select-device-laptop-label",
@@ -77,9 +79,15 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 bankMachineLabel: ".gpiic-select-device-bankmachine-label",
                 otherLabel: ".gpiic-select-device-other-label",
                 anyLabel: ".gpiic-select-noise-any-label",
+                anyBrightnessLabel: ".gpiic-select-brightness-any-label",
                 quietLabel: ".gpiic-select-noise-quiet-label",
                 noisyLabel: ".gpiic-select-noise-noisy-label",
                 loudLabel: ".gpiic-select-noise-loud-label",
+                veryDarkLabel: ".gpiic-select-brightness-very-dark-label",
+                darkLabel: ".gpiic-select-brightness-dark-label",
+                neutralLabel: ".gpiic-select-brightness-neutral-label",
+                brightLabel: ".gpiic-select-brightness-bright-label",
+                veryBrightLabel: ".gpiic-select-brightness-very-bright-label",
                 notAppliedAtAnyTimesLabel: ".gpiic-context-times-notapplied-label",
                 timeLabel: ".gpiic-context-header-time-label",
                 toLabel: ".gpiic-context-time-to-label",
@@ -98,9 +106,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 contextHeaderDevices: ".gpiic-context-header-devices",
                 contextHeaderTime: ".gpiic-context-header-time",
                 contextHeaderNoise: ".gpiic-context-header-noise",
+                contextHeaderBrightness: ".gpiic-context-header-brightness",
                 copyIcon: ".gpiic-email-copy-fontIcon",
                 selectDevice: ".gpiic-context-devices-list-items",
                 selectNoise: ".gpiic-context-noise-list-items",
+                selectBrightness: ".gpiic-context-brightness-list-items",
                 timeInputsDiv: ".gpiic-context-time-whole-div",
                 timeFromHour: ".gpiic-context-time-from-hour",
                 timeFromMinute: ".gpiic-context-time-from-minute",
@@ -493,6 +503,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "text",
                     "args": ["{that}.msgLookup.noiseLabel"]
                 },
+                "onReady.setBrightnessLabel": {
+                    "this": "{that}.dom.brightnessLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.brightnessLabel"]
+                },
                 "onReady.setFromColonText": {
                     "this": "{that}.dom.fromColon",
                     "method": "text",
@@ -517,6 +532,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.anyNoiseLevelLabel",
                     "method": "text",
                     "args": ["{that}.msgLookup.anyNoiseLevelLabel"]
+                },
+                "onReady.setAnyBrightnessLevelLabel": {
+                    "this": "{that}.dom.anyBrightnessLevelLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.anyBrightnessLevelLabel"]
                 },
                 "onReady.clickCancelButton": {
                     "this": "{that}.dom.cancelButton",
@@ -623,6 +643,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "method": "text",
                     "args": ["{that}.msgLookup.anyLabel"]
                 },
+                "onReady.setAnyBrightnessText": {
+                    "this": "{that}.dom.anyBrightnessLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.anyLabel"]
+                },
                 "onReady.setQuietText": {
                     "this": "{that}.dom.quietLabel",
                     "method": "text",
@@ -637,6 +662,31 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.loudLabel",
                     "method": "text",
                     "args": ["{that}.msgLookup.loudLabel"]
+                },
+                "onReady.setVeryDarkText": {
+                    "this": "{that}.dom.veryDarkLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.veryDarkLabel"]
+                },
+                "onReady.setDarkText": {
+                    "this": "{that}.dom.darkLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.darkLabel"]
+                },
+                "onReady.setNeutralText": {
+                    "this": "{that}.dom.neutralLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.neutralLabel"]
+                },
+                "onReady.setBrightText": {
+                    "this": "{that}.dom.brightLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.brightLabel"]
+                },
+                "onReady.setVeryBrightText": {
+                    "this": "{that}.dom.veryBrightLabel",
+                    "method": "text",
+                    "args": ["{that}.msgLookup.veryBrightLabel"]
                 },
                 "onReady.selectDevice": {
                     "this": "{that}.dom.selectDevice",
@@ -657,6 +707,16 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "this": "{that}.dom.selectNoise",
                     "method": "click",
                     "args": ["{that}.selectNoise"]
+                },
+                "onReady.selectBrightness": {
+                    "this": "{that}.dom.selectBrightness",
+                    "method": "keyup",
+                    "args": ["{that}.selectBrightness"]
+                },
+                "onReady.selectBrights": {
+                    "this": "{that}.dom.selectBrightness",
+                    "method": "click",
+                    "args": ["{that}.selectBrightness"]
                 },
                 "onReady.setToLabel": {
                     "this": "{that}.dom.toLabel",
@@ -776,7 +836,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 clickDoneButton: {
                     "funcName": "gpii.pmt.clickDoneButton",
-                    "args": ["{gpiiSession}", "{that}.dom.overlayPanel", "{that}.dom.modalPanel", "{that}.dom.appliesToAllDevicesLabel", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.dom.untitledText", "{that}.options.selectors.untitledLabel", "{that}.options.selectors.untitledDescLabel", "{that}.dom.setLabel", "{that}.msgLookup.toLabel", "{that}.msgLookup.appliesToLabel", "{that}.msgLookup.devicesTextLabel", "{that}.dom.setNameOverlayPanel", "{that}.dom.setNameModalPanel", "{that}.dom.addSetLink", "{that}.dom.anyNoiseLevelLabel", "{that}.msgLookup.noiseLevelLabel", "{that}.msgLookup.anyLabel", "{that}.msgLookup.notAppliedAtAnyTimesLabel", "{that}"]
+                    "args": ["{gpiiSession}", "{that}.dom.overlayPanel", "{that}.dom.modalPanel", "{that}.dom.appliesToAllDevicesLabel", "{that}.dom.notAppliedAtAnyTimesLabel", "{that}.dom.untitledText", "{that}.options.selectors.untitledLabel", "{that}.options.selectors.untitledDescLabel", "{that}.dom.setLabel", "{that}.msgLookup.toLabel", "{that}.msgLookup.appliesToLabel", "{that}.msgLookup.devicesTextLabel", "{that}.dom.setNameOverlayPanel", "{that}.dom.setNameModalPanel", "{that}.dom.addSetLink", "{that}.dom.anyNoiseLevelLabel", "{that}.msgLookup.noiseLevelLabel", "{that}.msgLookup.anyLabel", "{that}.msgLookup.notAppliedAtAnyTimesLabel",  "{that}.dom.anyBrightnessLevelLabel", "{that}.msgLookup.brightnessLevelLabel", "{that}"]
                 },
                 enableTabConditions: {
                     "funcName": "gpii.pmt.enableTabConditions",
@@ -805,6 +865,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 selectNoise: {
                     "funcName": "gpii.pmt.selectNoise",
                     "args": ["{gpiiSession}", "{that}.options.selectors.selectNoise", "{that}.msgLookup.noiseLevelLabel", "{that}.dom.anyNoiseLevelLabel"]
+                },
+                selectBrightness: {
+                    "funcName": "gpii.pmt.selectBrightness",
+                    "args": ["{gpiiSession}", "{that}.options.selectors.selectBrightness", "{that}.msgLookup.brightnessLevelLabel", "{that}.dom.anyBrightnessLevelLabel"]
                 },
                 populateFromHour: {
                     "funcName": "gpii.pmt.populateTime",
@@ -1036,6 +1100,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         anyNoiseLevelLabel.text(value);
     };
 
+    gpii.pmt.selectBrightness = function (sess, sBrightness, brightnessLevelLabel, anyBrightnessLevelLabel) {
+        sBrightness = sBrightness + " option:selected";
+        var brightnessSelector = $(sBrightness);
+        var value = brightnessSelector.val() + brightnessLevelLabel;
+        anyBrightnessLevelLabel.text(value);
+    };
+
     gpii.pmt.clickEmailCopyButton = function (to, body, subject) {
         gpii.pmt.sendWithGmail({
             to: to.val(),
@@ -1096,7 +1167,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         var contextHeaderDevices = that.dom.locate("contextHeaderDevices");
         var contextHeaderTime = that.dom.locate("contextHeaderTime");
         var contextHeaderNoise = that.dom.locate("contextHeaderNoise");
-
+        var contextHeaderBrightness = that.dom.locate("contextHeaderBrightness");
+        
         if (tabCondition.hasClass(that.options.styles.deactiveTab)){
             tabCondition.removeClass(that.options.styles.deactiveTab);
             tabCondition.addClass(that.options.styles.activeTab);
@@ -1110,6 +1182,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         contextHeaderDevices.show();
         contextHeaderTime.show();
         contextHeaderNoise.show();
+        contextHeaderBrightness.show();
     };
 
     gpii.pmt.enableTabShare = function (that) {
@@ -1120,6 +1193,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         var contextHeaderDevices = that.dom.locate("contextHeaderDevices");
         var contextHeaderTime = that.dom.locate("contextHeaderTime");
         var contextHeaderNoise = that.dom.locate("contextHeaderNoise");
+        var contextHeaderBrightness = that.dom.locate("contextHeaderBrightness");
 
         if (tabSharing.hasClass(that.options.styles.deactiveTab)){
             tabSharing.removeClass(that.options.styles.deactiveTab);
@@ -1134,16 +1208,17 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         contextHeaderDevices.hide();
         contextHeaderTime.hide();
         contextHeaderNoise.hide();
+        contextHeaderBrightness.hide();
     };
 
-    gpii.pmt.setBoxValues = function (contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, addSetLink, currentSetId, contextNoise) {
+    gpii.pmt.setBoxValues = function (contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, addSetLink, currentSetId, contextNoise, contextBrightness) {
         var divSet = "#"+currentSetId;
         untitledSelector = divSet + " > " + untitledSelector;
         var untitledLabel = $(untitledSelector);
         untitledDescSelector =  divSet + " > " + untitledDescSelector;
         var untitledDescLabel = $(untitledDescSelector);
         untitledLabel.text(contextUntitled.val());
-        untitledDescLabel.text(contextDevice.text()+", "+contextTime.text()+", "+contextNoise.text());
+        untitledDescLabel.text(contextDevice.text()+", "+contextTime.text()+", "+contextNoise.text()+", "+contextBrightness.text());
         setLabel.text(contextUntitled.val());
         addSetLink.focus();
     };
@@ -1162,12 +1237,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
     };
 
     
-    gpii.pmt.clickDoneButton = function (session, overlayPanel, modalPanel, contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, toLabel, appliesToLabel, devicesTextLabel, sPanel, sModal, addSetLink, contextNoise, noiseLevelText, noiseLevelAnyText, notAppliedAtAnyTimesText, that) {
+    gpii.pmt.clickDoneButton = function (session, overlayPanel, modalPanel, contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, toLabel, appliesToLabel, devicesTextLabel, sPanel, sModal, addSetLink, contextNoise, noiseLevelText, anyText, notAppliedAtAnyTimesText, contextBrightness, brightnessLevelText, that) {
         var timeTemp = contextTime.text().split(toLabel);
         var deviceTemp = contextDevice.text().split(appliesToLabel);
         deviceTemp = deviceTemp[1].toString().split(devicesTextLabel);
         var noiseLevel = contextNoise.text().split(noiseLevelText);
         noiseLevel = noiseLevel[0].toString();
+        var brightnessLevel = contextBrightness.text().split(brightnessLevelText);
+        brightnessLevel = brightnessLevel[0].toString();
         
         var setFoundIndex = null;
         var setFound = false;
@@ -1193,24 +1270,27 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 session.options.contextElements.toTime = timeTemp[1];
             }
             else{
+                session.options.contextElements.fromTime = null;
+                session.options.contextElements.toTime = null;
                 contextTime.text(notAppliedAtAnyTimesText);
             }
             session.options.contextElements.device = deviceTemp[0];
             session.options.contextElements.setName = contextUntitled.val();
             session.options.contextElements.id = session.options.currentSetId;
             session.options.contextElements.noise = noiseLevel;
+            session.options.contextElements.brightness = brightnessLevel;
             if (!update){
-                if ((session.options.contextElements.fromTime !== session.options.contextElements.toTime) || (noiseLevel !== noiseLevelAnyText)) {
+                if ((session.options.contextElements.fromTime !== session.options.contextElements.toTime) || (noiseLevel !== anyText) || (brightnessLevel !== anyText)) {
                     session.options.contextElements.enabled = true;
                     session.options.context.push(JSON.stringify(session.options.contextElements));
-                    gpii.pmt.setBoxValues(contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, addSetLink, session.options.currentSetId, contextNoise);
+                    gpii.pmt.setBoxValues(contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, addSetLink, session.options.currentSetId, contextNoise, contextBrightness);
                 }
             }
             else{
-                if ((session.options.contextElements.fromTime !== session.options.contextElements.toTime) || (noiseLevel !== noiseLevelAnyText)) {
+                if ((session.options.contextElements.fromTime !== session.options.contextElements.toTime) || (noiseLevel !== anyText) || (brightnessLevel !== anyText)) {
                     session.options.contextElements.enabled = true;
                     session.options.context.splice(session.options.currentSetId-1, 1, JSON.stringify(session.options.contextElements));
-                    gpii.pmt.setBoxValues(contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, addSetLink, session.options.currentSetId, contextNoise);
+                    gpii.pmt.setBoxValues(contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, addSetLink, session.options.currentSetId, contextNoise, contextBrightness);
                 }
             }
             overlayPanel.hide();
@@ -1234,10 +1314,11 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     session.options.contextElements.setName = contextUntitled.val();
                     session.options.contextElements.id = session.options.currentSetId;
                     session.options.contextElements.noise = noiseLevel;
-                    if ((session.options.contextElements.fromTime !== session.options.contextElements.toTime) || (noiseLevel !== noiseLevelAnyText)) {
+                    session.options.contextElements.brightness = brightnessLevel;
+                    if ((session.options.contextElements.fromTime !== session.options.contextElements.toTime) || (noiseLevel !== anyText) || (brightnessLevel !== anyText)) {
                         session.options.contextElements.enabled = true;
                         session.options.context.splice(session.options.currentSetId-1, 1, JSON.stringify(session.options.contextElements));
-                        gpii.pmt.setBoxValues(contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, addSetLink, session.options.currentSetId, contextNoise);
+                        gpii.pmt.setBoxValues(contextDevice, contextTime, contextUntitled, untitledSelector, untitledDescSelector, setLabel, addSetLink, session.options.currentSetId, contextNoise, contextBrightness);
                     }
                     overlayPanel.hide();
                     modalPanel.hide();
@@ -1313,9 +1394,24 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 var timeValue = (currentContext.fromTime).substring(0,2) + ":" + (currentContext.fromTime).substring(3,5) + thatObj.msgLookup.lookup("toLabel") + (currentContext.toTime).substring(0,2) + ":" + (currentContext.toTime).substring(3,5);
                 thatObj.locate("notAppliedAtAnyTimesLabel").text(timeValue);
             }
+            else{
+                thatObj.locate("timeFromHour").val("");
+                thatObj.locate("timeFromMinute").val("");
+                thatObj.locate("timeToHour").val("");
+                thatObj.locate("timeToMinute").val("");
+                thatObj.locate("notAppliedAtAnyTimesLabel").text(thatObj.msgLookup.lookup("notAppliedAtAnyTimesLabel"));
+            }
             thatObj.locate("selectDevice").val(currentContext.device);
             var deviceValue = thatObj.msgLookup.lookup("appliesToLabel") + currentContext.device + thatObj.msgLookup.lookup("devicesTextLabel");
             thatObj.locate("appliesToAllDevicesLabel").text(deviceValue);
+
+            thatObj.locate("selectNoise").val(currentContext.noise);
+            var noiseValue = currentContext.noise + thatObj.msgLookup.lookup("noiseLevelLabel");
+            thatObj.locate("anyNoiseLevelLabel").text(noiseValue);
+
+            thatObj.locate("selectBrightness").val(currentContext.brightness);
+            var brightnessValue = currentContext.brightness + thatObj.msgLookup.lookup("brightnessLevelLabel");
+            thatObj.locate("anyBrightnessLevelLabel").text(brightnessValue);
 
             // Update set name that lies at the bottom of PMT
             thatObj.locate("setLabel").text(currentContext.setName);

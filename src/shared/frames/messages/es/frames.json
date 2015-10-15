@@ -19,7 +19,7 @@
     "baseSetLabel": "Configuración general",
     "baseSetDescLabel": "cualquier dispositivo, en cualquier momento",
     "untitledLabel": "Sin título 1",
-    "untitledDescLabel": "no se aplica a todos los dispositivos, no aplicado todo el tiempo, cualquier nivel de ruido",
+    "untitledDescLabel": "no se aplica a todos los dispositivos, no aplicado todo el tiempo, cualquier nivel de ruido, cualquier nivel de brillo",
     "addSet": "agregue el conjunto",
     "editText": "editar",
     "conditionsTabLabel" : "condiciones",
@@ -63,5 +63,13 @@
     "anyLabel": "cualquier",
     "quietLabel": "silencioso",
     "noisyLabel": "ruidoso",
-    "loudLabel": "muy ruidoso"
+    "loudLabel": "muy ruidoso",
+    "veryDarkLabel": "muy oscuro",
+    "darkLabel": "oscuro",
+    "neutralLabel": "neutral",
+    "brightLabel": "brillante",
+    "veryBrightLabel": "muy brillante",
+    "brightnessLabel": " Brillo ",
+    "brightnessLevelLabel": " nivel de brillo",
+    "anyBrightnessLevelLabel": "cualquier nivel de brillo"
 }

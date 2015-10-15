@@ -36,7 +36,8 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "device": null,
             "fromTime": null,
             "toTime": null,
-            "noise": null
+            "noise": null,
+            "brightness": null
         },
         maxSetId: 0,
         currentSetId: 0,

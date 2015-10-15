@@ -220,14 +220,22 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     "value": context.noise,
                     "inputPath": "http://registry\\.gpii\\.net/common/environment/auditory\\.noise"*/
                 } : {}; 
+                var brightnessObj = (context.brightness!=="any") ? {
+                    "type": "http://registry.gpii.net/conditions/inRange",
+                    "min": context.brightness,
+                    "max": context.brightness,
+                    "inputPath": "http://registry\\.gpii\\.net/common/environment/visual\\.luminance"
+                } : {}; 
                 var newSet = {
                     "newSet": {
                         "name": context.setName,
                         "preferences": transformedModel[index+1],
                         "conditions": [
                             timeObj
-                        , 
+                            , 
                             noiseObj
+                            ,
+                            brightnessObj
                         ]
                     }
                 };

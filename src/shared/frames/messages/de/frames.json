@@ -19,7 +19,7 @@
     "baseSetLabel": "Basis Set",
     "baseSetDescLabel": "alle Geräte, zu jeder Zeit",
     "untitledLabel": "ohne Titel 1",
-    "untitledDescLabel": "nicht auf alle Geräte angewendet, zu keinem Zeitpunkt aktiviert, beliebige Geräuschpegel",
+    "untitledDescLabel": "nicht auf alle Geräte angewendet, zu keinem Zeitpunkt aktiviert, beliebige Geräuschpegel, jede Helligkeitsstufe",
     "addSet": "hinzufügen eingestellt",
     "editText": "bearbeiten",
     "conditionsTabLabel" : "Bedingungen",
@@ -64,4 +64,12 @@
     "quietLabel": "ruhig",
     "noisyLabel": "laut",
     "loudLabel": "lautstark"
+    "veryDarkLabel": "sehr dunkel",
+    "darkLabel": "dunkel",
+    "neutralLabel": "neutral",
+    "brightLabel": "hell",
+    "veryBrightLabel": "sehr hell",
+    "brightnessLabel": " Helligkeit ",
+    "brightnessLevelLabel": " Helligkeitsstufe",
+    "anyBrightnessLevelLabel": "jede Helligkeitsstufe"
 }

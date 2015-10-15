@@ -19,7 +19,7 @@
     "baseSetLabel": "Base Set",
     "baseSetDescLabel": "any devices, anytime",
     "untitledLabel": "Untitled 1",
-    "untitledDescLabel": "not applied to any devices, not applied at any times, any noise level",
+    "untitledDescLabel": "not applied to any devices, not applied at any times, any noise level, any brightness level",
     "addSet": "add set",
     "editText": "edit",
     "conditionsTabLabel" : "conditions",
@@ -63,5 +63,13 @@
     "anyLabel": "any",
     "quietLabel": "quiet",
     "noisyLabel": "noisy",
-    "loudLabel": "loud"
+    "loudLabel": "loud",
+    "veryDarkLabel": "very dark",
+    "darkLabel": "dark",
+    "neutralLabel": "neutral",
+    "brightLabel": "bright",
+    "veryBrightLabel": "very bright",
+    "brightnessLabel": " Brightness ",
+    "brightnessLevelLabel": " brightness level",
+    "anyBrightnessLevelLabel": "any brightness level"
 }

@@ -19,7 +19,7 @@
     "baseSetLabel": "Κύριο Σύνολο",
     "baseSetDescLabel": "οποιαδήποτε συσκευή, οποτεδήποτε",
     "untitledLabel": "Άτιτλο 1",
-    "untitledDescLabel": "μη εφαρμόσιμο σε συσκευές, καμία εφαρμογή σε διαστήματα, οποιοδήποτε επίπεδο θορύβου",
+    "untitledDescLabel": "μη εφαρμόσιμο σε συσκευές, καμία εφαρμογή σε διαστήματα, οποιοδήποτε επίπεδο θορύβου, οποιοδήποτε επίπεδο φωτεινότητας",
     "addSet": "προσθήκη συνόλου",
     "editText": "επεξεργασία",
     "conditionsTabLabel" : "Συνθήκες",
@@ -64,4 +64,12 @@
     "quietLabel": "ήσυχα",
     "noisyLabel": "θορυβώδης",
     "loudLabel": "πολύ θορυβώδης"
+    "veryDarkLabel": "πολύ σκοτεινό",
+    "darkLabel": "σκοτεινό",
+    "neutralLabel": "ουδέτερο",
+    "brightLabel": "φωτεινό",
+    "veryBrightLabel": "πολύ φωτεινό",
+    "brightnessLabel": " Φωτεινότητα ",
+    "brightnessLevelLabel": " επίπεδο φωτεινότητας",
+    "anyBrightnessLevelLabel": "οποιοδήποτε επίπεδο φωτεινότητας"
 }
