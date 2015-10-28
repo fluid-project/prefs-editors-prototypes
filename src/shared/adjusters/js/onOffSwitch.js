@@ -76,14 +76,6 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
          * that sub-component implementers will follow the forced "that.model.value" path...
          */
         that.locate("valueCheckbox").click();
-        //that.applier.requestChange("value", !that.model.value)
-
-        /*
-         * This is needed because most modern browsers have the functionality of scrolling further
-         * down when Space key is pressed. So, this is needed in order to suppress this functionality when the
-         * on/off switch has focus.
-         */
-        event.preventDefault();
     };
 
     gpii.adjuster.onOffSwitch.init = function (that, onOffModelKey) {

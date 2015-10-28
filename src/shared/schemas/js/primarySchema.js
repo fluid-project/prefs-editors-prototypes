@@ -143,6 +143,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
             "type": "string",
             "default": "en",
             "enum": ["en", "el", "de", "es"]
+        },
+        "gpii.primarySchema.autoAdjust": {
+            "type": "boolean",
+            "default": false
         }
     };
 

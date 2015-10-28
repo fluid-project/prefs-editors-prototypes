@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Auto Adjust Tests</title>
+
+        <!--  This is the jqUnit test css file -->
+        <link rel="stylesheet" media="screen" href="../lib/qunit/qunit/css/qunit.css" />
+
+        <!--  These are the jqUnit test js files -->
+        <script src="../lib/qunit/qunit/js/qunit.js"></script>
+        <script src="../../src/shared/lib/infusion/infusion-prefsFramework.js"></script>
+        <script src="../lib/infusion/jqUnit/js/jqUnit.js"></script>
+        <script src="../lib/infusion/utils/js/IoCTestUtils.js"></script>
+
+        <!-- Preferences Editors specific files go here: -->
+        <script src="../../src/shared/common/ariaUtility.js"></script>
+
+        <!-- The custom adjusters JS files -->
+        <script src="../../src/shared/adjusters/js/onOffSwitch.js"></script>
+        <script src="../../src/shared/adjusters/js/autoAdjust.js"></script>
+
+        <!--  These are tests that have been written using this page as data -->
+        <script type="text/javascript" src="../js/autoAdjustTests.js"></script>
+
+    </head>
+    <body>
+        <h1 id="qunit-header">Auto Adjust Test Suite</h1>
+        <h2 id="qunit-banner"></h2>
+        <div id="qunit-testrunner-toolbar"></div>
+        <h2 id="qunit-userAgent"></h2>
+        <ol id="qunit-tests"></ol>
+
+        <div class="gpii-onOffSwitch-container">
+            <label class="gpiic-onOffSwitch-label gpii-onOffSwitch-switch">Auto-adjust</label>
+            <input type="checkbox" id="onOffSwitchInputAutoAdjust" class="gpiic-onOffSwitch-input"/>
+            <span class="gpiic-prefsEditor-onOffSwitch fl-prefsEditor-switch" data-checkboxStateOn="ON" data-checkboxStateOff="OFF" tabindex="0">
+                <span class="fl-prefsEditor-switch-inner"></span>
+            </span>
+            <div class="gpiic-autoAdjust-description gpii-description">Preferences will be automatically adjusted based on background noise and ambient light levels.</div>
+        </div>
+    </body>
+</html>

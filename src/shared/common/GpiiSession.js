@@ -25,6 +25,23 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         // Maybe we should be informed for currently logged user from GPII?
         // This is relevant, http://issues.gpii.net/browse/GPII-290
         loggedUser: null,
+        dataToSend: null,
+        modelSet: [],
+        preferenceSet: [],
+        context: [],
+        contextElements: {
+            "id": null,
+            "setName": null,
+            "enabled": null,
+            "device": null,
+            "fromTime": null,
+            "toTime": null,
+            "noise": null,
+            "brightness": null
+        },
+        maxSetId: 0,
+        currentSetId: 0,
+        previousSetId: 0,
         events: {
             onLogin: null,
             onLogout: null,
@@ -112,6 +129,10 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },*/
                 success: function (data) {
                     that.options.loggedUser = null;
+                    if (window.location.href.indexOf("#") > 0) {
+                        var url = window.location.href.split("#");
+                        window.location.href = url[0];
+                    }
                     that.events.onLogout.fire();
                     fluid.log("GET: " + data);
                 },
@@ -125,7 +146,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
     gpii.prefs.gpiiSession.getLoggedUser = function (that, onGetLoggedUserSuccessEvent, onGetLoggedUserErrorEvent) {
         $.ajax({
-            url: that.options.url + "token",
+            url: that.options.url + "userToken",
             type: "GET",
             // TODO: This is non-async because we want the "loggedUser" to be set before any "get" or "set"
             // in the GPIIStore is invoked.
