@@ -1431,21 +1431,14 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
         var contexts = sessionObj.options.context;
         var models = sessionObj.options.modelSet
-        //console.log("-> 2. sessionObj.options.modelSet="+sessionObj.options.modelSet);
-        console.log("-> 3. sessionObj.options.currentSetId = "+sessionObj.options.currentSetId);
-        console.log("-> 3. sessionObj.options.previousSetId = "+sessionObj.options.previousSetId);
         gpii.pmt.SavePreferenceSets(thatObj, sessionObj, sessionObj.options.previousSetId);
         if ((models.length >= sessionObj.options.currentSetId) && (contexts.length >= sessionObj.options.currentSetId)){
             // Update current model with need and preferences set
             var index = parseInt(sessionObj.options.currentSetId);
             var currentModel = sessionObj.options.modelSet[index];
-
-            //console.log("current model = "+currentModel);
             thatObj.updateModel(JSON.parse(currentModel));
             
-            
             // Update current conditions set
-            console.log("index="+index);
             var currentContext = JSON.parse(contexts[index-1]);
             thatObj.locate("untitledText").val(currentContext.setName);
             if (currentContext.fromTime !== currentContext.toTime){

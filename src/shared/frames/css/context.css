@@ -683,8 +683,8 @@ input[type=number]::-webkit-outer-spin-button {
     display: table;
     text-align: right;
     position: absolute;
-    bottom: -1.1em;
-    left: 3.9em;
+    bottom: -1.05em;
+    left: 3.8em;
 }
 
 .gpii-prefsEditor-priority-icon:before {
