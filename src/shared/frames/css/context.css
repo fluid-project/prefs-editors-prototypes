@@ -676,3 +676,47 @@ input[type=number]::-webkit-outer-spin-button {
 .gpii-context-span-cursor {
     cursor: pointer;
 }
+
+.gpii-prefsEditor-priority-icon {
+    -webkit-font-smoothing: antialiased;
+    margin: 0em;
+    display: table;
+    text-align: right;
+    position: absolute;
+    bottom: -1.1em;
+    left: 3.9em;
+}
+
+.gpii-prefsEditor-priority-icon:before {
+    font-size: 1.2em;
+    font-weight: normal;
+    /*background-color: #FFDA00;*/
+    color: #474C66;
+    vertical-align: middle;
+    display: inline-block;
+    margin-top: -2.4em;
+    margin-right: 0.6em;
+}
+
+.gpii-prefsEditor-priority-yellow-bg {
+    background-color: #FFDA00;
+}
+
+.gpii-prefsEditor-priority-icon:before {
+    content: "\e602";
+}
+
+.gpii-prefsEditor-context-priority-button {
+    font-weight: bold;
+    font-family: Verdana;
+    font-size: 0.8em;
+    background-color: inherit;
+    color: #474C66;
+    border: 0em none;
+    cursor: pointer;
+    margin: 0em;
+    padding: 0em;
+    position: absolute;
+    bottom: 0.2em;
+    left: 0.9em;
+}

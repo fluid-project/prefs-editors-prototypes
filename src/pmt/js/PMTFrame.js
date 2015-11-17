@@ -57,6 +57,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 contextRows: ".gpiic-prefsEditor-contextFrame-rows",
                 contextRow: ".gpiic-prefsEditor-contextFrame-row",
                 contextEditButton: ".gpiic-prefsEditor-context-edit-button",
+                contextPriorityButton: ".gpiic-prefsEditor-context-priority-button",
                 overlayPanel: ".gpiic-context-overlay",
                 modalPanel: ".gpiic-context-modal",
                 /* context selectors */
@@ -143,7 +144,9 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                     "</div>",
                 selectedIcon: "<span class='gpiic-prefsEditor-context-leftArrowIcon gpii-prefsEditor-adjusterIcons gpii-prefsEditor-context-leftArrowIcon'></span>",
                 pencilIcon: "   <input id='editButton' onclick='gpii.pmt.onEditClick($(\"#overlay\"), $(\"#modal\"), this)' type='button' value='' aria-label='' class='gpiic-prefsEditor-context-edit-button gpii-prefsEditor-context-edit-button' tabindex='0'></input>" +
-                "   <label for='editButton' class='gpiic-prefsEditor-context-pencilIcon gpii-prefsEditor-adjusterIcons gpii-prefsEditor-pencil-icon'></span>"
+                "   <label for='editButton' class='gpiic-prefsEditor-context-pencilIcon gpii-prefsEditor-adjusterIcons gpii-prefsEditor-pencil-icon'></span>",
+                priorityIcon: "   <input id='priorityButton' onclick='gpii.pmt.onPriorityClick(this)' type='button' value='' aria-label='' class='gpiic-prefsEditor-context-priority-button gpii-prefsEditor-context-priority-button' tabindex='0'></input>" +
+                "   <label for='priorityButton' class='gpiic-prefsEditor-context-priorityIcon gpii-prefsEditor-adjusterIcons gpii-prefsEditor-priority-icon'></span>"
             },
             styles: {
                 bottomRow: "gpii-prefsEditor-panelBottomRow",
@@ -820,7 +823,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
                 },
                 createUntitledBoxAria: {
                     "funcName": "gpii.pmt.createUntitledBoxAria",
-                    "args": ["{that}","{that}.msgLookup.editText"]
+                    "args": ["{that}","{that}.msgLookup.editText","{that}.msgLookup.priorityText"]
                 },
                 hidePanels: {
                     "funcName": "gpii.pmt.hidePanels",
@@ -1353,6 +1356,58 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         smPanel.hide();
     };
 
+    gpii.pmt.onPriorityClick = function (element) {
+        var currentSetId = $(element).parent("div").attr("id");
+        var currentDiv = $(element).parent("div");
+        var prevDiv = currentDiv;
+        var setDivs = $(".gpiic-prefsEditor-contextFrame-row");
+        $(setDivs).each(function(index, value) { 
+            if (index >= 0){
+                if (currentSetId > 1){ // previous div of the current div
+                    if ((index+1) == currentSetId){
+                        prevDiv = value;
+                    }
+                }
+            }
+        });
+        sessionObj.options.previousSetId = currentSetId;
+        if (prevDiv != currentDiv){
+            var tempModel = sessionObj.options.modelSet[currentSetId];
+            sessionObj.options.modelSet[currentSetId] = sessionObj.options.modelSet[prevDiv.id];
+            sessionObj.options.modelSet[prevDiv.id] = tempModel;
+
+            var contexts1 = JSON.parse(sessionObj.options.context[currentSetId-2]);
+            var contexts2 = JSON.parse(sessionObj.options.context[currentSetId-1]);
+            var tempId = contexts1.id; 
+            contexts1.id=contexts2.id;
+            contexts2.id=tempId;
+            sessionObj.options.context.splice(currentSetId-2,1,JSON.stringify(contexts1));
+            sessionObj.options.context.splice(currentSetId-1,1,JSON.stringify(contexts2));
+
+            var tempPreference = sessionObj.options.preferenceSet[currentSetId];
+            sessionObj.options.preferenceSet[currentSetId] = sessionObj.options.preferenceSet[prevDiv.id];
+            sessionObj.options.preferenceSet[prevDiv.id] = tempPreference;
+
+            var tempContext = sessionObj.options.context[currentSetId-1];
+            sessionObj.options.context[currentSetId-1] = sessionObj.options.context[prevDiv.id-1];
+            sessionObj.options.context[prevDiv.id-1] = tempContext;
+
+            if (sessionObj.options.currentSetId != sessionObj.options.previousSetId){
+                sessionObj.options.currentSetId = prevDiv.id;
+            }
+            else{
+                sessionObj.options.previousSetId = sessionObj.options.currentSetId = prevDiv.id;
+            }
+            var temp = currentSetId;
+            currentDiv.attr("id", prevDiv.id);
+            prevDiv.id = temp;
+            if (currentSetId > 1){
+                currentDiv.insertBefore(prevDiv);
+            }
+        }
+    };
+
+    
     gpii.pmt.onEditClick = function (oPanel, mPanel, element) {
         oPanel.show();
         mPanel.show();
@@ -1376,14 +1431,21 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
 
         var contexts = sessionObj.options.context;
         var models = sessionObj.options.modelSet
+        //console.log("-> 2. sessionObj.options.modelSet="+sessionObj.options.modelSet);
+        console.log("-> 3. sessionObj.options.currentSetId = "+sessionObj.options.currentSetId);
+        console.log("-> 3. sessionObj.options.previousSetId = "+sessionObj.options.previousSetId);
         gpii.pmt.SavePreferenceSets(thatObj, sessionObj, sessionObj.options.previousSetId);
         if ((models.length >= sessionObj.options.currentSetId) && (contexts.length >= sessionObj.options.currentSetId)){
             // Update current model with need and preferences set
             var index = parseInt(sessionObj.options.currentSetId);
             var currentModel = sessionObj.options.modelSet[index];
-            thatObj.updateModel(JSON.parse(currentModel));
 
+            //console.log("current model = "+currentModel);
+            thatObj.updateModel(JSON.parse(currentModel));
+            
+            
             // Update current conditions set
+            console.log("index="+index);
             var currentContext = JSON.parse(contexts[index-1]);
             thatObj.locate("untitledText").val(currentContext.setName);
             if (currentContext.fromTime !== currentContext.toTime){
@@ -1419,10 +1481,13 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         sessionObj.options.previousSetId = sessionObj.options.currentSetId;
     };
 
-    gpii.pmt.createUntitledBoxAria = function (that, editText) {
+    gpii.pmt.createUntitledBoxAria = function (that, editText, priorityText) {
         var editButton = that.dom.locate("contextEditButton");
         editButton.attr("aria-label", editText);
         editButton.val(editText);
+        var priorityButton = that.dom.locate("contextPriorityButton");
+        priorityButton.attr("aria-label", priorityText);
+        priorityButton.val(priorityText);
     };
 
     gpii.pmt.createUntitledBoxStyle = function (that) {
@@ -1439,6 +1504,7 @@ https://github.com/GPII/prefsEditors/LICENSE.txt
         cRow.addClass(that.options.styles.selected);
         cRow.append(that.options.markup.selectedIcon);
         cRow.append(that.options.markup.pencilIcon);
+        cRow.append(that.options.markup.priorityIcon);
     };
 
     gpii.pmt.initObjs = function(that, session) {

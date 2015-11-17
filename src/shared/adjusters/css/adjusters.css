@@ -1830,14 +1830,14 @@ h3.gpii-speakText-label {
 }
 
 .gpii-prefsEditor-contextFrame-row-selected {
-    height: 6em;
+    height: 7em;
     position: relative;
     background-color: #FFDA00;
     margin: 0.5em;
 }
 
 .gpii-prefsEditor-contextFrame-row-unselected {
-    height: 6em;
+    height: 7em;
     position: relative;
     background-color: #E5EDED;
     margin: 0.5em;
