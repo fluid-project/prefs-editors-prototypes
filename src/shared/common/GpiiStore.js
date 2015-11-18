@@ -204,7 +204,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             var enabled = context.enabled;
             if (enabled){
                 var name = context.setName;
-                var priority = 1000 + parseInt(context.id);
+                var priority = 1023 + parseInt(context.id);
                 var timeObj = (context.fromTime!==context.toTime) ? {
                     "type": "http://registry.gpii.net/conditions/timeInRange",
                     "from": context.fromTime,
