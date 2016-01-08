@@ -71,5 +71,6 @@
     "veryBrightLabel": "muy brillante",
     "brightnessLabel": " Brillo ",
     "brightnessLevelLabel": " nivel de brillo",
-    "anyBrightnessLevelLabel": "cualquier nivel de brillo"
+    "anyBrightnessLevelLabel": "cualquier nivel de brillo",
+    "priorityText": "Prioridad"
 }

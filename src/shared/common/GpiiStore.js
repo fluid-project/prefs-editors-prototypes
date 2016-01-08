@@ -188,7 +188,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         fluid.each(preferences, function (preference) {
             transformedModel.push(modelTransformFunc(JSON.parse(preference)));
         });
-        //transformedModel.push(modelTransformFunc(model));
         transformedModel[session.options.currentSetId] = modelTransformFunc(model);
 
         var dataToSend = {
@@ -205,6 +204,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
             var enabled = context.enabled;
             if (enabled){
                 var name = context.setName;
+                var priority = 1023 + parseInt(context.id);
                 var timeObj = (context.fromTime!==context.toTime) ? {
                     "type": "http://registry.gpii.net/conditions/timeInRange",
                     "from": context.fromTime,
@@ -216,9 +216,6 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                     "min": context.noise,
                     "max": context.noise,
                     "inputPath": "http://registry\\.gpii\\.net/common/environment/auditory\\.noise"
-                    /*"type": "http://registry.gpii.net/conditions/noise",
-                    "value": context.noise,
-                    "inputPath": "http://registry\\.gpii\\.net/common/environment/auditory\\.noise"*/
                 } : {}; 
                 var brightnessObj = (context.brightness!=="any") ? {
                     "type": "http://registry.gpii.net/conditions/inRange",
@@ -229,6 +226,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
                 var newSet = {
                     "newSet": {
                         "name": context.setName,
+                        "priority": priority,
                         "preferences": transformedModel[index+1],
                         "conditions": [
                             timeObj

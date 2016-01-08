@@ -71,5 +71,6 @@
     "veryBrightLabel": "sehr hell",
     "brightnessLabel": " Helligkeit ",
     "brightnessLevelLabel": " Helligkeitsstufe",
-    "anyBrightnessLevelLabel": "jede Helligkeitsstufe"
+    "anyBrightnessLevelLabel": "jede Helligkeitsstufe",
+    "priorityText": "Priorität"
 }

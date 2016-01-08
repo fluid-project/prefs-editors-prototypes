@@ -71,5 +71,6 @@
     "veryBrightLabel": "very bright",
     "brightnessLabel": " Brightness ",
     "brightnessLevelLabel": " brightness level",
-    "anyBrightnessLevelLabel": "any brightness level"
+    "anyBrightnessLevelLabel": "any brightness level",
+    "priorityText": "Priority"
 }
