@@ -59,7 +59,7 @@ https://github.com/fluid-project/infusion/raw/master/Infusion-LICENSE.txt
         },
 
         // Fireworks Server
-        ttsUrl: "http://tts.idrc.ocadu.ca?q=%text",
+        ttsUrl: "https://tts.idrc.ocadu.ca?q=%text",
 
         lang: "en"
     });
