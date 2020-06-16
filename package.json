@@ -7,7 +7,7 @@
     "homepage": "http://wiki.gpii.net/w/User_Preferences_UX",
     "dependencies": {
         "kettle": "git://github.com/fluid-project/kettle.git#2cd608b95a7e908769c91f5120cfc50bfc19c4db",
-        "open": "~0.0.5"
+        "open": "~7.0.4"
     },
     "licenses": [
         {
